@@ -1,18 +1,17 @@
 ---
 source_file: "live/src/services/page/core.service.ts"
 type: "code"
-community: "Fetch Description"
+community: "Community 483"
 location: "L134"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Fetch_Description
+  - community/Community_483
 ---
 
 # fetchUserMentions()
 
 ## Connections
-
 - [[core.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Fetch_Description
+#graphify/code #graphify/EXTRACTED #community/Community_483

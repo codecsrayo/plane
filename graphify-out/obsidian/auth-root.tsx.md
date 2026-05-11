@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/account/auth-forms/auth-root.tsx"
 type: "code"
-community: "Auth Terms"
+community: "Community 58"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Terms
+  - community/Community_58
 ---
 
 # auth-root.tsx
 
 ## Connections
-
 - [[AuthBanner()]] - `imports` [EXTRACTED]
 - [[AuthContainer()]] - `contains` [EXTRACTED]
 - [[AuthFormRoot]] - `imports` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[useInstance()]] - `imports` [EXTRACTED]
 - [[useOAuthConfig()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Terms
+#graphify/code #graphify/EXTRACTED #community/Community_58

@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/components/projects/create/root.tsx"
 type: "code"
-community: "Project Common"
+community: "Community 324"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Common
+  - community/Community_324
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[CreateProjectForm]] - `contains` [EXTRACTED]
 - [[ProjectAttributes()]] - `imports` [EXTRACTED]
 - [[TCreateProjectFormProps]] - `contains` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[utils.ts_11]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Common
+#graphify/code #graphify/EXTRACTED #community/Community_324

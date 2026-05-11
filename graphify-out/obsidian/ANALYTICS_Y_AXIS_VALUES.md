@@ -1,18 +1,18 @@
 ---
-source_file: "constants/src/analytics/common.ts"
+source_file: "packages/constants/src/analytics/common.ts"
 type: "code"
-community: "Analytics Axis"
+community: "Community 512"
 location: "L175"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Analytics_Axis
+  - community/Community_512
 ---
 
 # ANALYTICS_Y_AXIS_VALUES
 
 ## Connections
-
 - [[common.ts_3]] - `contains` [EXTRACTED]
+- [[common.ts_12]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Analytics_Axis
+#graphify/code #graphify/EXTRACTED #community/Community_512

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/sub-issue-column.tsx"
 type: "code"
-community: "Project Settings"
+community: "Bulk Operations & Spreadsheet"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Bulk_Operations__Spreadsheet
 ---
 
 # SpreadsheetSubIssueColumn
 
 ## Connections
-
 - [[sub-issue-column.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Bulk_Operations__Spreadsheet

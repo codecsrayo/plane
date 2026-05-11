@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/webhook/base.py"
 type: "code"
-community: "Webhook Endpoint"
+community: "Community 25"
 location: "L39"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Webhook_Endpoint
+  - community/Community_25
 ---
 
 # get()
 
 ## Connections
-
 - [[WebhookLogSerializer]] - `calls` [INFERRED]
 - [[WebhookSerializer]] - `calls` [INFERRED]
 - [[base.py_6]] - `contains` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[post()_8]] - `calls` [EXTRACTED]
 - [[response]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Webhook_Endpoint
+#graphify/code #graphify/EXTRACTED #community/Community_25

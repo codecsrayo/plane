@@ -1,18 +1,17 @@
 ---
 source_file: "constants/src/workspace.ts"
 type: "code"
-community: "Workspace Sidebar"
+community: "Community 335"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Sidebar
+  - community/Community_335
 ---
 
 # workspace.ts
 
 ## Connections
-
 - [[DEFAULT_GLOBAL_VIEWS_LIST]] - `contains` [EXTRACTED]
 - [[EXPORTERS_LIST]] - `contains` [EXTRACTED]
 - [[IMPORTERS_LIST]] - `contains` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[WORKSPACE_SIDEBAR_STATIC_NAVIGATION_ITEMS_LINKS]] - `contains` [EXTRACTED]
 - [[WORKSPACE_SIDEBAR_STATIC_PINNED_NAVIGATION_ITEMS_LINKS]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Sidebar
+#graphify/code #graphify/EXTRACTED #community/Community_335

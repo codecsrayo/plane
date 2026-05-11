@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_334]] - code - web/core/components/global/product-updates/index.ts
+- [[index.ts_432]] - code - web/core/components/comments/index.ts
 
 ## Live Query (requires Dataview plugin)
 

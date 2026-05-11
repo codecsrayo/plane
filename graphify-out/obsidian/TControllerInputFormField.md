@@ -1,18 +1,17 @@
 ---
 source_file: "admin/components/common/controller-input.tsx"
 type: "code"
-community: "Controller Values"
+community: "Community 125"
 location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Controller_Values
+  - community/Community_125
 ---
 
 # TControllerInputFormField
 
 ## Connections
-
 - [[controller-input.tsx]] - `contains` [EXTRACTED]
 - [[email-config-form.tsx]] - `imports` [EXTRACTED]
 - [[form.tsx_13]] - `imports` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[form.tsx_17]] - `imports` [EXTRACTED]
 - [[form.tsx_19]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Controller_Values
+#graphify/code #graphify/EXTRACTED #community/Community_125

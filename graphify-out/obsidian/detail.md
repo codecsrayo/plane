@@ -1,18 +1,17 @@
 ---
 source_file: "web/e2e/issues.spec.ts"
 type: "code"
-community: "Body Cursor"
+community: "Community 473"
 location: "L46"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Body_Cursor
+  - community/Community_473
 ---
 
 # detail
 
 ## Connections
-
 - [[issues.spec.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Body_Cursor
+#graphify/code #graphify/EXTRACTED #community/Community_473

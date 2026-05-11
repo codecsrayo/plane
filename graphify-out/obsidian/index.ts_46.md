@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/types/index.ts"
 type: "code"
-community: "Document Collaborative"
+community: "Editor Extensions"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Document_Collaborative
+  - community/Editor_Extensions
 ---
 
 # index.ts
 
 ## Connections
-
 - [[ai-menu.tsx]] - `imports_from` [EXTRACTED]
 - [[alignment-selector.tsx]] - `imports_from` [EXTRACTED]
 - [[assets.ts_1]] - `imports_from` [EXTRACTED]
@@ -63,4 +62,4 @@ tags:
 - [[utility.ts_1]] - `imports_from` [EXTRACTED]
 - [[utils.ts_8]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Document_Collaborative
+#graphify/code #graphify/EXTRACTED #community/Editor_Extensions

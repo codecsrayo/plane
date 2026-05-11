@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/design-system/design-system-philosophy.stories.tsx"
 type: "code"
-community: "Pattern Layer"
+community: "Community 305"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Pattern_Layer
+  - community/Community_305
 ---
 
 # design-system-philosophy.stories.tsx
 
 ## Connections
-
 - [[ApplicationRoot]] - `contains` [EXTRACTED]
 - [[CardListPattern]] - `contains` [EXTRACTED]
 - [[CommonMistakes]] - `contains` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[TextColorHierarchy]] - `contains` [EXTRACTED]
 - [[TwoColGrid()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Pattern_Layer
+#graphify/code #graphify/EXTRACTED #community/Community_305

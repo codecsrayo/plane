@@ -1,14 +1,14 @@
 ---
 source_file: "propel/src/charts/area-chart/index.ts"
 type: "code"
-community: "Community 1525"
+community: "Community 1508"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_1525
+  - community/Community_1508
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_1525
+#graphify/code #graphify/EXTRACTED #community/Community_1508

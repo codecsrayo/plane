@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/views/(list)/header.tsx"
 type: "code"
-community: "Project Profile"
+community: "Issue Display Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Profile
+  - community/Issue_Display_Filters
 ---
 
 # header.tsx
 
 ## Connections
-
 - [[BreadcrumbLink()]] - `imports` [EXTRACTED]
 - [[CommonProjectBreadcrumbs()]] - `imports` [EXTRACTED]
 - [[ProjectViewsHeader]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[view-list-header.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Profile
+#graphify/code #graphify/EXTRACTED #community/Issue_Display_Filters

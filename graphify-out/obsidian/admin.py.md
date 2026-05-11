@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/license/api/views/admin.py"
 type: "code"
-community: "Endpoint Sign"
+community: "Community 54"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_Sign
+  - community/Community_54
 ---
 
 # admin.py
 
 ## Connections
-
 - [[InstanceAdminEndpoint]] - `contains` [EXTRACTED]
 - [[InstanceAdminSignInEndpoint]] - `contains` [EXTRACTED]
 - [[InstanceAdminSignOutEndpoint]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[get()_41]] - `contains` [EXTRACTED]
 - [[post()_27]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_Sign
+#graphify/code #graphify/EXTRACTED #community/Community_54

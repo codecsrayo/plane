@@ -1,19 +1,18 @@
 ---
 source_file: "api/plane/app/views/issue/reaction.py"
 type: "code"
-community: "Endpoint Workspace"
+community: "Python API Base Classes"
 location: "L65"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Endpoint_Workspace
+  - community/Python_API_Base_Classes
 ---
 
 # destroy()
 
 ## Connections
-
 - [[reaction.py]] - `contains` [EXTRACTED]
 - [[response]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Endpoint_Workspace
+#graphify/code #graphify/INFERRED #community/Python_API_Base_Classes

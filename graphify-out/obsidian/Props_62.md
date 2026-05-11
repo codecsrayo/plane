@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/components/workflow/workflow-group-tree.tsx"
 type: "code"
-community: "Group Workflow"
+community: "Community 793"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group_Workflow
+  - community/Community_793
 ---
 
 # Props
 
 ## Connections
-
 - [[workflow-group-tree.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group_Workflow
+#graphify/code #graphify/EXTRACTED #community/Community_793

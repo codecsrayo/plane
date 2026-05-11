@@ -1,14 +1,14 @@
 ---
 source_file: "api/plane/api/views/cycle.py"
 type: "rationale"
-community: "Retrieve Work"
+community: "Community 1742"
 location: "L847"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Retrieve_Work
+  - community/Community_1742
 ---
 
-# List or retrieve cycle work items Retrieve all work items assigned to a
+# List or retrieve cycle work items          Retrieve all work items assigned to a
 
-#graphify/rationale #graphify/EXTRACTED #community/Retrieve_Work
+#graphify/rationale #graphify/EXTRACTED #community/Community_1742

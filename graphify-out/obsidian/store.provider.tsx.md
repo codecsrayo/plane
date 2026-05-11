@@ -1,18 +1,17 @@
 ---
 source_file: "admin/providers/store.provider.tsx"
 type: "code"
-community: "Instance User"
+community: "Community 156"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Instance_User
+  - community/Community_156
 ---
 
 # store.provider.tsx
 
 ## Connections
-
 - [[RootStore]] - `imports` [EXTRACTED]
 - [[StoreContext_1]] - `contains` [EXTRACTED]
 - [[StoreProvider()_1]] - `contains` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[use-user.tsx]] - `imports_from` [EXTRACTED]
 - [[use-workspace.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Instance_User
+#graphify/code #graphify/EXTRACTED #community/Community_156

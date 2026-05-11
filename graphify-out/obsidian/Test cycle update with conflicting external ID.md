@@ -1,14 +1,14 @@
 ---
 source_file: "api/plane/tests/contract/api/test_cycles.py"
 type: "rationale"
-community: "Test Cycle"
+community: "Community 1842"
 location: "L326"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Test_Cycle
+  - community/Community_1842
 ---
 
 # Test cycle update with conflicting external ID
 
-#graphify/rationale #graphify/EXTRACTED #community/Test_Cycle
+#graphify/rationale #graphify/EXTRACTED #community/Community_1842

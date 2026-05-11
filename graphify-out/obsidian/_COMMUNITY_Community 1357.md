@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_54]] - code - editor/src/core/extensions/slash-commands/index.ts
+- [[index.ts_74]] - code - services/src/state/index.ts
 
 ## Live Query (requires Dataview plugin)
 

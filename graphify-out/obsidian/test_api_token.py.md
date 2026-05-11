@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/tests/contract/app/test_api_token.py"
 type: "code"
-community: "Test Token"
+community: "Community 239"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Test_Token
+  - community/Community_239
 ---
 
 # test_api_token.py
 
 ## Connections
-
 - [[TestApiTokenEndpoint]] - `contains` [EXTRACTED]
 - [[test_all_endpoints_require_authentication()]] - `contains` [EXTRACTED]
 - [[test_create_api_token_for_bot_user()]] - `contains` [EXTRACTED]
@@ -37,4 +36,4 @@ tags:
 - [[test_patch_nonexistent_api_token()]] - `contains` [EXTRACTED]
 - [[test_patch_other_users_api_token()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Test_Token
+#graphify/code #graphify/EXTRACTED #community/Community_239

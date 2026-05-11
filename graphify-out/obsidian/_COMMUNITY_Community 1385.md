@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_81]] - code - constants/src/event-tracker/index.ts
+- [[empty-state.ts_2]] - code - i18n/src/locales/pt-BR/empty-state.ts
 
 ## Live Query (requires Dataview plugin)
 

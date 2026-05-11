@@ -1,17 +1,22 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.33
+members: 7
 ---
 
 # Community 558
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.33 - loosely connected
+**Members:** 7 nodes
 
 ## Members
-
-- [[index.ts_185]] - code - propel/src/empty-state/assets/index.ts
+- [[Initialize OpenTelemetry with proper shutdown handling]] - rationale - api/plane/utils/telemetry.py
+- [[Shutdown OpenTelemetry tracers and processors]] - rationale - api/plane/utils/telemetry.py
+- [[init_tracer()]] - code - api/plane/utils/telemetry.py
+- [[instance_traces()]] - code - api/plane/license/bgtasks/tracer.py
+- [[shutdown_tracer()]] - code - api/plane/utils/telemetry.py
+- [[telemetry.py]] - code - api/plane/utils/telemetry.py
+- [[tracer.py]] - code - api/plane/license/bgtasks/tracer.py
 
 ## Live Query (requires Dataview plugin)
 

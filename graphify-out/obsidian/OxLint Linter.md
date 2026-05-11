@@ -1,13 +1,13 @@
 ---
 source_file: "a_tmp/linting.md"
 type: "document"
-community: "Lint Linter"
+community: "Community 2089"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Lint_Linter
+  - community/Community_2089
 ---
 
 # OxLint Linter
 
-#graphify/document #graphify/EXTRACTED #community/Lint_Linter
+#graphify/document #graphify/EXTRACTED #community/Community_2089

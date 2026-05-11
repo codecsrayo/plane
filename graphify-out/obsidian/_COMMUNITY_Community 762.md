@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 762
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[ActiveModel_111]] - code - api_rust/src/entities/description_versions.rs
+- [[HomeLayout()]] - code - web/app/(home)/layout.tsx
+- [[layout.tsx_1]] - code - web/app/(home)/layout.tsx
+- [[meta()_3]] - code - web/app/(home)/layout.tsx
 
 ## Live Query (requires Dataview plugin)
 

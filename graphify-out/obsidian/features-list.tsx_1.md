@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/project/settings/features-list.tsx"
 type: "code"
-community: "Project Settings"
+community: "Community 115"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Community_115
 ---
 
 # features-list.tsx
 
 ## Connections
-
 - [[PROJECT_FEATURES_LIST]] - `contains` [EXTRACTED]
 - [[ProjectFeatureToggle()]] - `imports` [EXTRACTED]
 - [[ProjectFeaturesList]] - `contains` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Community_115

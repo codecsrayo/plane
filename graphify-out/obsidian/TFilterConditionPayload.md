@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/rich-filters/expression.ts"
+source_file: "packages/types/src/rich-filters/expression.ts"
 type: "code"
-community: "Node Condition"
+community: "Community 190"
 location: "L101"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Node_Condition
+  - community/Community_190
 ---
 
 # TFilterConditionPayload
 
 ## Connections
-
 - [[expression.ts]] - `contains` [EXTRACTED]
+- [[expression.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Node_Condition
+#graphify/code #graphify/EXTRACTED #community/Community_190

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/models/user.py"
 type: "code"
-community: "User Meta"
+community: "Community 107"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User_Meta
+  - community/Community_107
 ---
 
 # user.py
 
 ## Connections
-
 - [[Account]] - `contains` [EXTRACTED]
 - [[BotTypeEnum]] - `contains` [EXTRACTED]
 - [[Meta_48]] - `contains` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[get_mobile_default_onboarding()]] - `contains` [EXTRACTED]
 - [[mixins.py]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User_Meta
+#graphify/code #graphify/EXTRACTED #community/Community_107

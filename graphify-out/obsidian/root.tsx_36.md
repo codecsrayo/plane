@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/components/onboarding/tour/root.tsx"
 type: "code"
-community: "Tour Steps"
+community: "Community 498"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Tour_Steps
+  - community/Community_498
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[TOUR_STEPS]] - `contains` [EXTRACTED]
 - [[TOnboardingTourProps]] - `contains` [EXTRACTED]
 - [[TTourSteps]] - `contains` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[use-command-palette.ts]] - `imports_from` [EXTRACTED]
 - [[useCommandPalette()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Tour_Steps
+#graphify/code #graphify/EXTRACTED #community/Community_498

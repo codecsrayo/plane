@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/dropdowns/date-range.tsx"
 type: "code"
-community: "Cycles Archived"
+community: "Module & Cycle Analytics"
 location: "L73"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycles_Archived
+  - community/Module__Cycle_Analytics
 ---
 
 # DateRangeDropdown
 
 ## Connections
-
 - [[all-properties.tsx]] - `imports` [EXTRACTED]
 - [[cycle-list-item-action.tsx]] - `imports` [EXTRACTED]
 - [[date-range.tsx]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[root.tsx_53]] - `imports` [EXTRACTED]
 - [[sidebar-header.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycles_Archived
+#graphify/code #graphify/EXTRACTED #community/Module__Cycle_Analytics

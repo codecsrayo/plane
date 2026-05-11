@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/webhooks.rs"
 type: "code"
-community: "Workspace Webhook"
+community: "Community 126"
 location: "L194"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Workspace_Webhook
+  - community/Community_126
 ---
 
 # create_webhook()
 
 ## Connections
-
 - [[.from_model()_10]] - `calls` [EXTRACTED]
 - [[.json()]] - `calls` [INFERRED]
 - [[.set()]] - `calls` [INFERRED]
@@ -22,4 +21,4 @@ tags:
 - [[validate_webhook_url()]] - `calls` [EXTRACTED]
 - [[webhooks.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Workspace_Webhook
+#graphify/code #graphify/INFERRED #community/Community_126

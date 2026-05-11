@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/common/switcher-label.tsx"
 type: "code"
-community: "Project Profile"
+community: "Filter UI & Breadcrumbs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Profile
+  - community/Filter_UI__Breadcrumbs
 ---
 
 # switcher-label.tsx
 
 ## Connections
-
 - [[SwitcherIcon()]] - `contains` [EXTRACTED]
 - [[SwitcherLabel()]] - `contains` [EXTRACTED]
 - [[TSwitcherIconProps]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[project-header.tsx]] - `imports_from` [EXTRACTED]
 - [[project.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Profile
+#graphify/code #graphify/EXTRACTED #community/Filter_UI__Breadcrumbs

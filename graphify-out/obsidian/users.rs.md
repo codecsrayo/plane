@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/users.rs"
 type: "code"
-community: "User Github"
+community: "Rust API Handlers"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User_Github
+  - community/Rust_API_Handlers
 ---
 
 # users.rs
 
 ## Connections
-
 - [[AccountResponse]] - `contains` [EXTRACTED]
 - [[GenerateEmailCodeRequest]] - `contains` [EXTRACTED]
 - [[JoinWorkspacesRequest]] - `contains` [EXTRACTED]
@@ -57,4 +56,4 @@ tags:
 - [[update_user_email()]] - `contains` [EXTRACTED]
 - [[user_to_me_response()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User_Github
+#graphify/code #graphify/EXTRACTED #community/Rust_API_Handlers

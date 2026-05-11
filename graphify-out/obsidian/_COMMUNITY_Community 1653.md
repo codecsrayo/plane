@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.tsx_15]] - code - web/core/components/readonly/index.tsx
+- [[Uninstall an integration from the workspace using the provider name.]] - rationale - api/plane/app/views/integration/base.py
 
 ## Live Query (requires Dataview plugin)
 

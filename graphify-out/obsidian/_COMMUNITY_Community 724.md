@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 724
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[ActiveModel_74]] - code - api_rust/src/entities/django_session.rs
+- [[TInstanceAIConfigurationKeys]] - code - packages/types/src/instance/ai.ts
+- [[ai.ts_8]] - code - packages/types/src/instance/ai.ts
+- [[ai.ts_3]] - code - types/src/instance/ai.ts
 
 ## Live Query (requires Dataview plugin)
 

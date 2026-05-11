@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/users_settings.rs"
 type: "code"
-community: "Returns Sign"
+community: "Rust Auth Services"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Sign
+  - community/Rust_Auth_Services
 ---
 
 # users_settings.rs
 
 ## Connections
-
 - [[delete_account_unauthenticated_returns_401()]] - `contains` [EXTRACTED]
 - [[delete_nonexistent_account_returns_4xx()]] - `contains` [EXTRACTED]
 - [[generate_email_code_authenticated_returns_2xx_or_400()]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[update_user_email_unauthenticated_returns_401()]] - `contains` [EXTRACTED]
 - [[update_user_email_with_invalid_code_returns_4xx()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Sign
+#graphify/code #graphify/EXTRACTED #community/Rust_Auth_Services

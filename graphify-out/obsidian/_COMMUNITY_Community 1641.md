@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_360]] - code - web/core/components/issues/issue-layouts/filters/applied-filters/index.ts
+- [[next-navigation.d.ts_1]] - code - admin/app/types/next-navigation.d.ts
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,14 +1,14 @@
 ---
 source_file: "api/plane/api/views/issue.py"
 type: "rationale"
-community: "Label Partially"
+community: "Community 1679"
 location: "L1026"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Label_Partially
+  - community/Community_1679
 ---
 
-# Update label Partially update an existing label's properties like name,
+# Update label          Partially update an existing label's properties like name,
 
-#graphify/rationale #graphify/EXTRACTED #community/Label_Partially
+#graphify/rationale #graphify/EXTRACTED #community/Community_1679

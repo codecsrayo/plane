@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/analytics.ts"
+source_file: "packages/types/src/analytics.ts"
 type: "code"
-community: "Chart Analytics"
+community: "Community 135"
 location: "L56"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Chart_Analytics
+  - community/Community_135
 ---
 
 # IAnalyticsResponse
 
 ## Connections
-
 - [[analytics.ts]] - `contains` [EXTRACTED]
+- [[analytics.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Chart_Analytics
+#graphify/code #graphify/EXTRACTED #community/Community_135

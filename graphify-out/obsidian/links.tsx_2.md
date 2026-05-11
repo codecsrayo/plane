@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-detail/links/links.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Issue Activity Types"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Issue_Activity_Types
 ---
 
 # links.tsx
 
 ## Connections
-
 - [[IssueLinkDetail()]] - `imports` [EXTRACTED]
 - [[IssueLinkList]] - `contains` [EXTRACTED]
 - [[TIssueLinkList]] - `contains` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Types

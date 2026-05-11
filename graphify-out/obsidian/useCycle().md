@@ -1,18 +1,17 @@
 ---
 source_file: "space/hooks/store/use-cycle.ts"
 type: "code"
-community: "Cycle Active"
+community: "Active Cycle Stats"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Active
+  - community/Active_Cycle_Stats
 ---
 
 # useCycle()
 
 ## Connections
-
 - [[base.tsx]] - `imports` [EXTRACTED]
 - [[base.tsx_8]] - `imports` [EXTRACTED]
 - [[commands.ts_2]] - `imports` [EXTRACTED]
@@ -64,4 +63,4 @@ tags:
 - [[use-workspace-issue-properties.ts]] - `imports` [EXTRACTED]
 - [[view.tsx_3]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Active
+#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats

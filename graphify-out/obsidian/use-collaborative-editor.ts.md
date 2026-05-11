@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/hooks/use-collaborative-editor.ts"
 type: "code"
-community: "Document Collaborative"
+community: "Editor Extensions"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Document_Collaborative
+  - community/Editor_Extensions
 ---
 
 # use-collaborative-editor.ts
 
 ## Connections
-
 - [[UseCollaborativeEditorArgs]] - `contains` [EXTRACTED]
 - [[collaborative-editor.tsx]] - `imports_from` [EXTRACTED]
 - [[index.ts_47]] - `imports_from` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[useEditorNavigation()]] - `imports` [EXTRACTED]
 - [[useTitleEditor()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Document_Collaborative
+#graphify/code #graphify/EXTRACTED #community/Editor_Extensions

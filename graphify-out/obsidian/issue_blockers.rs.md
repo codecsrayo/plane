@@ -1,19 +1,18 @@
 ---
 source_file: "api_rust/src/entities/issue_blockers.rs"
 type: "code"
-community: "Model Relation"
+community: "Community 971"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Model_Relation
+  - community/Community_971
 ---
 
 # issue_blockers.rs
 
 ## Connections
-
 - [[Model_91]] - `contains` [EXTRACTED]
 - [[Relation_91]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Model_Relation
+#graphify/code #graphify/EXTRACTED #community/Community_971

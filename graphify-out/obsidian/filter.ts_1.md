@@ -1,18 +1,17 @@
 ---
 source_file: "constants/src/issue/filter.ts"
 type: "code"
-community: "Issue Filters"
+community: "Community 95"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters
+  - community/Community_95
 ---
 
 # filter.ts
 
 ## Connections
-
 - [[ACTIVITY_FILTER_TYPE_OPTIONS]] - `contains` [EXTRACTED]
 - [[BASE_ACTIVITY_FILTER_TYPES]] - `contains` [EXTRACTED]
 - [[EActivityFilterType]] - `contains` [EXTRACTED]
@@ -40,4 +39,4 @@ tags:
 - [[filterActivityOnSelectedFilters()]] - `contains` [EXTRACTED]
 - [[layout.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters
+#graphify/code #graphify/EXTRACTED #community/Community_95

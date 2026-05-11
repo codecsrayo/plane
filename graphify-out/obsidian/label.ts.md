@@ -1,19 +1,18 @@
 ---
 source_file: "constants/src/label.ts"
 type: "code"
-community: "Label Random"
+community: "Community 658"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Random
+  - community/Community_658
 ---
 
 # label.ts
 
 ## Connections
-
 - [[LABEL_COLOR_OPTIONS]] - `contains` [EXTRACTED]
 - [[getRandomLabelColor()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Random
+#graphify/code #graphify/EXTRACTED #community/Community_658

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/power-k/core/types.ts"
 type: "code"
-community: "Power Chat"
+community: "Community 220"
 location: "L73"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Power_Chat
+  - community/Community_220
 ---
 
 # TPowerKCommandConfig
 
 ## Connections
-
 - [[account-commands.ts]] - `imports` [EXTRACTED]
 - [[command.ts]] - `imports` [EXTRACTED]
 - [[command.tsx_1]] - `imports` [EXTRACTED]
@@ -41,4 +40,4 @@ tags:
 - [[types.ts_16]] - `contains` [EXTRACTED]
 - [[wrapper.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Power_Chat
+#graphify/code #graphify/EXTRACTED #community/Community_220

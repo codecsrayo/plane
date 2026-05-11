@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/issues/issue_attachment.ts"
+source_file: "packages/types/src/issues/issue_attachment.ts"
 type: "code"
-community: "Issue Attachment"
+community: "Community 386"
 location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Attachment
+  - community/Community_386
 ---
 
 # TIssueAttachmentIdMap
 
 ## Connections
-
 - [[issue_attachment.ts]] - `contains` [EXTRACTED]
+- [[issue_attachment.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Attachment
+#graphify/code #graphify/EXTRACTED #community/Community_386

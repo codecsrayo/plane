@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/tooltip/tooltip.stories.tsx"
 type: "code"
-community: "Position Custom"
+community: "Community 277"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Position_Custom
+  - community/Community_277
 ---
 
 # tooltip.stories.tsx
 
 ## Connections
-
 - [[AllPositions]] - `contains` [EXTRACTED]
 - [[ComplexContent]] - `contains` [EXTRACTED]
 - [[CustomDelay]] - `contains` [EXTRACTED]
@@ -36,4 +35,4 @@ tags:
 - [[WithIcon]] - `contains` [EXTRACTED]
 - [[root.tsx_19]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Position_Custom
+#graphify/code #graphify/EXTRACTED #community/Community_277

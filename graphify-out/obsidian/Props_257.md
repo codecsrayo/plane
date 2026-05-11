@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/archive-issue-modal.tsx"
 type: "code"
-community: "Issue Work"
+community: "Project Filters & Archives"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Work
+  - community/Project_Filters__Archives
 ---
 
 # Props
 
 ## Connections
-
 - [[archive-issue-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Work
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

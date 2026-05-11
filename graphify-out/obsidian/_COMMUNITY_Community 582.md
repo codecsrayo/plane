@@ -1,18 +1,21 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.47
+members: 6
 ---
 
 # Community 582
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.47 - moderately connected
+**Members:** 6 nodes
 
 ## Members
-
-- [[.to()_84]] - code - api_rust/src/entities/accounts.rs
-- [[Entity_84]] - code - api_rust/src/entities/accounts.rs
+- [[.add_arguments()_8]] - code - api/plane/license/management/commands/register_instance.py
+- [[.check_for_current_version()]] - code - api/plane/license/management/commands/register_instance.py
+- [[.check_for_latest_version()]] - code - api/plane/license/management/commands/register_instance.py
+- [[.handle()_18]] - code - api/plane/license/management/commands/register_instance.py
+- [[Command_19]] - code - api/plane/license/management/commands/register_instance.py
+- [[register_instance.py]] - code - api/plane/license/management/commands/register_instance.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -20,3 +23,9 @@ members: 2
 TABLE source_file, type FROM #community/Community_582
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Community 222]]
+
+## Top bridge nodes
+- [[Command_19]] - degree 6, connects to 1 community

@@ -1,20 +1,19 @@
 ---
 source_file: "web/core/components/issues/issue-detail-widgets/widget-button.tsx"
 type: "code"
-community: "Issue Widget"
+community: "Community 219"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Widget
+  - community/Community_219
 ---
 
 # widget-button.tsx
 
 ## Connections
-
 - [[IssueDetailWidgetButton()]] - `contains` [EXTRACTED]
 - [[Props_341]] - `contains` [EXTRACTED]
 - [[action-buttons.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Widget
+#graphify/code #graphify/EXTRACTED #community/Community_219

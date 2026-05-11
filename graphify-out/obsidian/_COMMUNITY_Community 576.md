@@ -1,18 +1,21 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.60
+members: 6
 ---
 
 # Community 576
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.60 - moderately connected
+**Members:** 6 nodes
 
 ## Members
-
-- [[.to()_78]] - code - api_rust/src/entities/page_labels.rs
-- [[Entity_78]] - code - api_rust/src/entities/page_labels.rs
+- [[AppProgressBar()]] - code - space/lib/b-progress/AppProgressBar.tsx
+- [[AppProgressBar.tsx_1]] - code - admin/lib/b-progress/AppProgressBar.tsx
+- [[AppProgressBar.tsx_2]] - code - space/lib/b-progress/AppProgressBar.tsx
+- [[AppProgressBar.tsx]] - code - web/core/lib/b-progress/AppProgressBar.tsx
+- [[PROGRESS_CONFIG]] - code - space/lib/b-progress/AppProgressBar.tsx
+- [[ProgressConfig]] - code - space/lib/b-progress/AppProgressBar.tsx
 
 ## Live Query (requires Dataview plugin)
 

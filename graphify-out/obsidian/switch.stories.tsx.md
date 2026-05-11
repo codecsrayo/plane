@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/switch/switch.stories.tsx"
 type: "code"
-community: "Checked Disabled"
+community: "Community 253"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Checked_Disabled
+  - community/Community_253
 ---
 
 # switch.stories.tsx
 
 ## Connections
-
 - [[AllSizes_2]] - `contains` [EXTRACTED]
 - [[AllStates]] - `contains` [EXTRACTED]
 - [[Checked]] - `contains` [EXTRACTED]
@@ -33,4 +32,4 @@ tags:
 - [[render()]] - `contains` [EXTRACTED]
 - [[root.tsx_7]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Checked_Disabled
+#graphify/code #graphify/EXTRACTED #community/Community_253

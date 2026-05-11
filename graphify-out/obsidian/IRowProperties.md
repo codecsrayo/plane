@@ -1,18 +1,18 @@
 ---
-source_file: "ui/src/row/helper.tsx"
+source_file: "packages/ui/src/row/helper.tsx"
 type: "code"
-community: "Content Wrapper"
+community: "Community 177"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Content_Wrapper
+  - community/Community_177
 ---
 
 # IRowProperties
 
 ## Connections
-
 - [[helper.tsx_7]] - `contains` [EXTRACTED]
+- [[helper.tsx_39]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Content_Wrapper
+#graphify/code #graphify/EXTRACTED #community/Community_177

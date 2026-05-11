@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-detail/label/root.tsx"
 type: "code"
-community: "Label Dropdown"
+community: "Community 44"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Dropdown
+  - community/Community_44
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[IssueLabel]] - `contains` [EXTRACTED]
 - [[TIssueLabel]] - `contains` [EXTRACTED]
 - [[TLabelOperations]] - `contains` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[useLabel()]] - `imports` [EXTRACTED]
 - [[useProjectInbox()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Community_44

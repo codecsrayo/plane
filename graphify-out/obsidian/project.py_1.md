@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/urls/project.py"
 type: "code"
-community: "Analytic Asset"
+community: "Community 258"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Analytic_Asset
+  - community/Community_258
 ---
 
 # project.py
 
 ## Connections
-
 - [[__init__.py_7]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Analytic_Asset
+#graphify/code #graphify/EXTRACTED #community/Community_258

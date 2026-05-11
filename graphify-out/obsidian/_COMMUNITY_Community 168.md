@@ -1,32 +1,47 @@
 ---
 type: community
-cohesion: 0.17
-members: 16
+cohesion: 0.11
+members: 32
 ---
 
 # Community 168
 
-**Cohesion:** 0.17 - loosely connected
-**Members:** 16 nodes
+**Cohesion:** 0.11 - loosely connected
+**Members:** 32 nodes
 
 ## Members
-
-- [[EstimateInputRoot()]] - code - web/core/components/estimates/inputs/root.tsx
-- [[EstimatePointCreate]] - code - web/core/components/estimates/points/create.tsx
-- [[EstimatePointCreateRoot]] - code - web/core/components/estimates/points/create-root.tsx
-- [[EstimatePointItemPreview]] - code - web/core/components/estimates/points/preview.tsx
-- [[EstimatePointUpdate]] - code - web/core/components/estimates/points/update.tsx
-- [[IEstimatePoint]] - code - web/core/store/estimates/estimate-point.ts
-- [[TEstimatePointCreate]] - code - web/core/components/estimates/points/create.tsx
-- [[TEstimatePointCreateRoot]] - code - web/core/components/estimates/points/create-root.tsx
-- [[TEstimatePointItemPreview]] - code - web/core/components/estimates/points/preview.tsx
-- [[TEstimatePointUpdate]] - code - web/core/components/estimates/points/update.tsx
-- [[create-root.tsx_1]] - code - web/core/components/estimates/points/create-root.tsx
-- [[create.tsx_2]] - code - web/core/components/estimates/points/create.tsx
-- [[preview.tsx]] - code - web/core/components/estimates/points/preview.tsx
-- [[update.tsx_1]] - code - web/core/components/estimates/points/update.tsx
-- [[use-estimate-point.ts]] - code - web/core/hooks/store/estimates/use-estimate-point.ts
-- [[useEstimatePoint()]] - code - web/core/hooks/store/estimates/use-estimate-point.ts
+- [[AllModes]] - code - packages/propel/src/input/input.stories.tsx
+- [[AllSizes_8]] - code - packages/propel/src/input/input.stories.tsx
+- [[AllStates_3]] - code - packages/propel/src/input/input.stories.tsx
+- [[Default_29]] - code - packages/propel/src/input/input.stories.tsx
+- [[Disabled_4]] - code - packages/propel/src/input/input.stories.tsx
+- [[Email]] - code - packages/propel/src/input/input.stories.tsx
+- [[ExtraSmall]] - code - packages/propel/src/input/input.stories.tsx
+- [[Medium_5]] - code - packages/propel/src/input/input.stories.tsx
+- [[Number]] - code - packages/propel/src/input/input.stories.tsx
+- [[Password]] - code - packages/propel/src/input/input.stories.tsx
+- [[Primary_3]] - code - packages/propel/src/input/input.stories.tsx
+- [[Search]] - code - packages/propel/src/input/input.stories.tsx
+- [[Small_8]] - code - packages/propel/src/input/input.stories.tsx
+- [[Story_36]] - code - packages/propel/src/input/input.stories.tsx
+- [[TSubscriptionPriceDetail]] - code - packages/utils/src/subscription.ts
+- [[Transparent]] - code - packages/propel/src/input/input.stories.tsx
+- [[TrueTransparent]] - code - packages/propel/src/input/input.stories.tsx
+- [[WithError]] - code - packages/propel/src/input/input.stories.tsx
+- [[WithValue]] - code - packages/propel/src/input/input.stories.tsx
+- [[calculateYearlyDiscount()]] - code - packages/utils/src/subscription.ts
+- [[createShowcaseStory()]] - code - packages/propel/src/input/input.stories.tsx
+- [[createStory()]] - code - packages/propel/src/input/input.stories.tsx
+- [[getBaseSubscriptionName()]] - code - packages/utils/src/subscription.ts
+- [[getSubscriptionName()]] - code - packages/utils/src/subscription.ts
+- [[getSubscriptionPriceDetails()]] - code - packages/utils/src/subscription.ts
+- [[index.ts_653]] - code - packages/propel/src/input/index.ts
+- [[index.ts_192]] - code - propel/src/input/index.ts
+- [[input.stories.tsx_1]] - code - packages/propel/src/input/input.stories.tsx
+- [[input.stories.tsx]] - code - propel/src/input/input.stories.tsx
+- [[meta_13]] - code - packages/propel/src/input/input.stories.tsx
+- [[subscription.ts_3]] - code - packages/utils/src/subscription.ts
+- [[subscription.ts_1]] - code - utils/src/subscription.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -34,19 +49,3 @@ members: 16
 TABLE source_file, type FROM #community/Community_168
 SORT file.name ASC
 ```
-
-## Connections to other communities
-
-- 3 edges to [[_COMMUNITY_Community 251]]
-- 2 edges to [[_COMMUNITY_Community 58]]
-- 2 edges to [[_COMMUNITY_Community 250]]
-- 1 edge to [[_COMMUNITY_Community 92]]
-- 1 edge to [[_COMMUNITY_Applied Filters UI]]
-
-## Top bridge nodes
-
-- [[use-estimate-point.ts]] - degree 6, connects to 3 communities
-- [[create.tsx_2]] - degree 7, connects to 2 communities
-- [[update.tsx_1]] - degree 7, connects to 1 community
-- [[EstimateInputRoot()]] - degree 3, connects to 1 community
-- [[IEstimatePoint]] - degree 2, connects to 1 community

@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/issues_extras3.rs"
 type: "code"
-community: "Returns Issues"
+community: "Community 344"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Issues
+  - community/Community_344
 ---
 
 # issues_extras3.rs
 
 ## Connections
-
 - [[delete_issue_subscriber_nonexistent_returns_4xx()]] - `contains` [EXTRACTED]
 - [[get_description_version_nonexistent_returns_404()]] - `contains` [EXTRACTED]
 - [[get_issue_version_nonexistent_returns_404()]] - `contains` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[workspace_view_issues_member_returns_200()]] - `contains` [EXTRACTED]
 - [[workspace_view_issues_unauthenticated_returns_401()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Issues
+#graphify/code #graphify/EXTRACTED #community/Community_344

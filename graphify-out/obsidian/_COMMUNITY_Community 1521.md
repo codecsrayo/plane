@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_166]] - code - propel/src/charts/scatter-chart/index.ts
+- [[index.ts_194]] - code - propel/src/tabs/index.ts
 
 ## Live Query (requires Dataview plugin)
 

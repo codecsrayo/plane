@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/middleware/db_routing.py"
 type: "code"
-community: "Read Routing"
+community: "Community 379"
 location: "L24"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Read_Routing
+  - community/Community_379
 ---
 
 # ReadReplicaRoutingMiddleware
 
 ## Connections
-
 - [[.__call__()_3]] - `method` [EXTRACTED]
 - [[.__init__()_8]] - `method` [EXTRACTED]
 - [[._get_use_replica_attribute()]] - `method` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[db_routing.py]] - `contains` [EXTRACTED]
 - [[middleware()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Read_Routing
+#graphify/code #graphify/INFERRED #community/Community_379

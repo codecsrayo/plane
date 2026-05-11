@@ -1,18 +1,17 @@
 ---
 source_file: "ui/src/dropdowns/custom-menu.tsx"
 type: "code"
-community: "Custom Menu"
+community: "Community 109"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Custom_Menu
+  - community/Community_109
 ---
 
 # custom-menu.tsx
 
 ## Connections
-
 - [[CustomMenu()]] - `contains` [EXTRACTED]
 - [[ICustomMenuDropdownProps]] - `imports` [EXTRACTED]
 - [[ICustomMenuItemProps]] - `imports` [EXTRACTED]
@@ -34,4 +33,4 @@ tags:
 - [[useDropdownKeyDown()]] - `imports` [EXTRACTED]
 - [[useSubMenu()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Custom_Menu
+#graphify/code #graphify/EXTRACTED #community/Community_109

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/core/modals/change-email-modal.tsx"
 type: "code"
-community: "Auth Values"
+community: "Community 105"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Values
+  - community/Community_105
 ---
 
 # change-email-modal.tsx
 
 ## Connections
-
 - [[AuthService_1]] - `imports` [EXTRACTED]
 - [[ChangeEmailModal]] - `contains` [EXTRACTED]
 - [[Props_531]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[index.ts_265]] - `imports_from` [EXTRACTED]
 - [[user.service.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Values
+#graphify/code #graphify/EXTRACTED #community/Community_105

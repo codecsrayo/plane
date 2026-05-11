@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_49]] - code - editor/src/core/extensions/work-item-embed/index.ts
+- [[index.ts_72]] - code - services/src/dashboard/index.ts
 
 ## Live Query (requires Dataview plugin)
 

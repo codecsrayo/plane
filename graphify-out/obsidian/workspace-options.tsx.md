@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/settings/profile/sidebar/workspace-options.tsx"
 type: "code"
-community: "Sidebar Settings"
+community: "Community 166"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Settings
+  - community/Community_166
 ---
 
 # workspace-options.tsx
 
 ## Connections
-
 - [[ProfileSettingsSidebarWorkspaceOptions]] - `contains` [EXTRACTED]
 - [[SettingsSidebarItem()]] - `imports` [EXTRACTED]
 - [[WorkspaceLogo]] - `imports` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[use-workspace.ts]] - `imports_from` [EXTRACTED]
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Settings
+#graphify/code #graphify/EXTRACTED #community/Community_166

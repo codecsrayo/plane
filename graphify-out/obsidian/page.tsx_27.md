@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/pages/(detail)/[pageId]/page.tsx"
 type: "code"
-community: "Project Settings"
+community: "Community 24"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Community_24
 ---
 
 # page.tsx
 
 ## Connections
-
 - [[DetailedEmptyState]] - `imports` [EXTRACTED]
 - [[LogoSpinner()]] - `imports` [EXTRACTED]
 - [[PageDetailsPage()]] - `contains` [EXTRACTED]
@@ -42,4 +41,4 @@ tags:
 - [[workspace.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[workspaceService]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Community_24

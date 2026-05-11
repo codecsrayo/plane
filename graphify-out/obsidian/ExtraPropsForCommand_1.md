@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/constants/editor.ts"
 type: "code"
-community: "Toolbar Items"
+community: "Community 111"
 location: "L42"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toolbar_Items
+  - community/Community_111
 ---
 
 # ExtraPropsForCommand
 
 ## Connections
-
 - [[editor.ts_20]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toolbar_Items
+#graphify/code #graphify/EXTRACTED #community/Community_111

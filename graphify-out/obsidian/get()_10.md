@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/issue/base.py"
 type: "code"
-community: "Issue Apply"
+community: "Community 41"
 location: "L85"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Issue_Apply
+  - community/Community_41
 ---
 
 # get()
 
 ## Connections
-
 - [[.apply_annotations()_3]] - `calls` [EXTRACTED]
 - [[.exists()]] - `calls` [INFERRED]
 - [[.get()_22]] - `calls` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[response]] - `calls` [INFERRED]
 - [[user_timezone_converter()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Issue_Apply
+#graphify/code #graphify/INFERRED #community/Community_41

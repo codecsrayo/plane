@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/authentication/adapter/base.py"
 type: "code"
-community: "Check User"
+community: "Community 141"
 location: "L35"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Check_User
+  - community/Community_141
 ---
 
 # Adapter
 
 ## Connections
-
 - [[.__check_signup()]] - `method` [EXTRACTED]
 - [[.__init__()_27]] - `method` [EXTRACTED]
 - [[.authenticate()_1]] - `method` [EXTRACTED]
@@ -36,4 +35,4 @@ tags:
 - [[S3Storage]] - `uses` [INFERRED]
 - [[base.py_29]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Check_User
+#graphify/code #graphify/EXTRACTED #community/Community_141

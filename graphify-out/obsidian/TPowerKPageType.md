@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/power-k/core/types.ts"
 type: "code"
-community: "Power Context"
+community: "Community 85"
 location: "L35"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Power_Context
+  - community/Community_85
 ---
 
 # TPowerKPageType
 
 ## Connections
-
 - [[base-power-k.store.ts]] - `imports` [EXTRACTED]
 - [[commands-list.tsx]] - `imports` [EXTRACTED]
 - [[constants.ts_6]] - `imports` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[shared.ts_11]] - `imports` [EXTRACTED]
 - [[types.ts_16]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Power_Context
+#graphify/code #graphify/EXTRACTED #community/Community_85

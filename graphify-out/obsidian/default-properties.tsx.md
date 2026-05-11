@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-modal/components/default-properties.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Work Item Detail & Layouts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Work_Item_Detail__Layouts
 ---
 
 # default-properties.tsx
 
 ## Connections
-
 - [[CycleDropdown]] - `imports` [EXTRACTED]
 - [[DateDropdown]] - `imports` [EXTRACTED]
 - [[EstimateDropdown]] - `imports` [EXTRACTED]
@@ -40,4 +39,4 @@ tags:
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Work_Item_Detail__Layouts

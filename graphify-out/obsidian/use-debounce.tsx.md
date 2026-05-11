@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/use-debounce.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Project Filters & Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Project_Filters__Archives
 ---
 
 # use-debounce.tsx
 
 ## Connections
-
 - [[bulk-delete-issues-modal.tsx]] - `imports_from` [EXTRACTED]
 - [[existing-issues-list-modal.tsx]] - `imports_from` [EXTRACTED]
 - [[parent-issues-list-modal.tsx]] - `imports_from` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[title-input.tsx]] - `imports_from` [EXTRACTED]
 - [[useDebounce()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

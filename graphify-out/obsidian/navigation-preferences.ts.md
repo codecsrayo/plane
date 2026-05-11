@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/types/navigation-preferences.ts"
 type: "code"
-community: "Sidebar Navigation"
+community: "Community 246"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Navigation
+  - community/Community_246
 ---
 
 # navigation-preferences.ts
 
 ## Connections
-
 - [[DEFAULT_APP_RAIL_PREFERENCES]] - `contains` [EXTRACTED]
 - [[DEFAULT_PERSONAL_PREFERENCES]] - `contains` [EXTRACTED]
 - [[DEFAULT_PROJECT_PREFERENCES]] - `contains` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[customize-navigation-dialog.tsx]] - `imports_from` [EXTRACTED]
 - [[use-navigation-preferences.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation
+#graphify/code #graphify/EXTRACTED #community/Community_246

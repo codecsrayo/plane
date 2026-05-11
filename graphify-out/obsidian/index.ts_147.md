@@ -1,14 +1,14 @@
 ---
 source_file: "propel/src/icons/cycle/index.ts"
 type: "code"
-community: "Community 1506"
+community: "Community 1489"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_1506
+  - community/Community_1489
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_1506
+#graphify/code #graphify/EXTRACTED #community/Community_1489

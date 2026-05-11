@@ -1,13 +1,13 @@
 ---
 source_file: "a_tmp/NIX_SETUP.md"
 type: "document"
-community: "Flake Environment"
+community: "Community 2088"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Flake_Environment
+  - community/Community_2088
 ---
 
 # Nix Flake Dev Environment
 
-#graphify/document #graphify/EXTRACTED #community/Flake_Environment
+#graphify/document #graphify/EXTRACTED #community/Community_2088

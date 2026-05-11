@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/integrations/workspace.rs"
 type: "code"
-community: "Workspace Webhook"
+community: "Community 126"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Webhook
+  - community/Community_126
 ---
 
 # workspace.rs
 
 ## Connections
-
 - [[build_slack_metadata()]] - `contains` [EXTRACTED]
 - [[create_workspace_integration()]] - `contains` [EXTRACTED]
 - [[delete_workspace_integration()]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[provider_install()_1]] - `contains` [EXTRACTED]
 - [[update_workspace_integration()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Webhook
+#graphify/code #graphify/EXTRACTED #community/Community_126

@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/components/issues/issue-layouts/utils.tsx"
 type: "code"
-community: "Group Kanban"
+community: "Bulk Operations & Spreadsheet"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group_Kanban
+  - community/Bulk_Operations__Spreadsheet
 ---
 
 # utils.tsx
 
 ## Connections
-
 - [[SPREADSHEET_COLUMNS]] - `contains` [EXTRACTED]
 - [[SpreadSheetPropertyIconMap]] - `contains` [EXTRACTED]
 - [[TGetScopeMemberIdsResult]] - `contains` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[store-context.tsx]] - `imports_from` [EXTRACTED]
 - [[useGroupByOptions()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group_Kanban
+#graphify/code #graphify/EXTRACTED #community/Bulk_Operations__Spreadsheet

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/power-k/ui/modal/header.tsx"
 type: "code"
-community: "Power Context"
+community: "Community 121"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Power_Context
+  - community/Community_121
 ---
 
 # header.tsx
 
 ## Connections
-
 - [[POWER_K_MODAL_PAGE_DETAILS]] - `imports` [EXTRACTED]
 - [[PowerKModalContextIndicator()]] - `imports` [EXTRACTED]
 - [[PowerKModalHeader()]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[types.ts_16]] - `imports_from` [EXTRACTED]
 - [[wrapper.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Power_Context
+#graphify/code #graphify/EXTRACTED #community/Community_121

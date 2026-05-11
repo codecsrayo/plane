@@ -1,14 +1,14 @@
 ---
 source_file: "api_rust/src/entities/email_notification_logs.rs"
 type: "code"
-community: "Active Model"
+community: "Community 1976"
 location: "L65"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Model
+  - community/Community_1976
 ---
 
 # ActiveModel
 
-#graphify/code #graphify/EXTRACTED #community/Active_Model
+#graphify/code #graphify/EXTRACTED #community/Community_1976

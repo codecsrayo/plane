@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/jobs/cron.rs"
 type: "code"
-community: "Asset Issue"
+community: "Community 34"
 location: "L235"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Asset_Issue
+  - community/Community_34
 ---
 
 # secs_until_utc()
 
 ## Connections
-
 - [[cron.rs]] - `contains` [EXTRACTED]
 - [[daily_at()]] - `calls` [EXTRACTED]
 - [[now]] - `calls` [INFERRED]
@@ -21,4 +20,4 @@ tags:
 - [[secs_until_utc_future_today_returns_positive_under_24h()]] - `calls` [INFERRED]
 - [[secs_until_utc_past_today_wraps_to_tomorrow()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Asset_Issue
+#graphify/code #graphify/INFERRED #community/Community_34

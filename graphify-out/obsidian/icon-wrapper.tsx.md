@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/icons/icon-wrapper.tsx"
 type: "code"
-community: "Icon Property"
+community: "SVG Icon Components"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Icon_Property
+  - community/SVG_Icon_Components
 ---
 
 # icon-wrapper.tsx
 
 ## Connections
-
 - [[IIconWrapper]] - `contains` [EXTRACTED]
 - [[ISvgIcons]] - `imports` [EXTRACTED]
 - [[IconWrapper()]] - `contains` [EXTRACTED]
@@ -100,4 +99,4 @@ tags:
 - [[workflows-icon.tsx]] - `imports_from` [EXTRACTED]
 - [[your-work-icon.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Icon_Property
+#graphify/code #graphify/EXTRACTED #community/SVG_Icon_Components

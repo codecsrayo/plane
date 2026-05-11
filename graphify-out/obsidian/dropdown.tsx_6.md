@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/dropdowns/member/dropdown.tsx"
 type: "code"
-community: "Label Dropdown"
+community: "Work Item Detail & Layouts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Dropdown
+  - community/Work_Item_Detail__Layouts
 ---
 
 # dropdown.tsx
 
 ## Connections
-
 - [[MemberDropdown]] - `contains` [EXTRACTED]
 - [[MemberDropdownBase]] - `imports` [EXTRACTED]
 - [[TMemberDropdownProps]] - `contains` [EXTRACTED]
@@ -35,4 +34,4 @@ tags:
 - [[use-member.ts]] - `imports_from` [EXTRACTED]
 - [[useMember()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Work_Item_Detail__Layouts

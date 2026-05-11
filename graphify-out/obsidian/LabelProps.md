@@ -1,18 +1,18 @@
 ---
-source_file: "ui/src/form-fields/root.tsx"
+source_file: "packages/ui/src/form-fields/root.tsx"
 type: "code"
-community: "Validation Field"
+community: "Community 508"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Validation_Field
+  - community/Community_508
 ---
 
 # LabelProps
 
 ## Connections
-
 - [[root.tsx_1]] - `contains` [EXTRACTED]
+- [[root.tsx_143]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Validation_Field
+#graphify/code #graphify/EXTRACTED #community/Community_508

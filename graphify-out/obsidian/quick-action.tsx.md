@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/workspace/views/quick-action.tsx"
 type: "code"
-community: "Project Work"
+community: "Community 22"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Work
+  - community/Community_22
 ---
 
 # quick-action.tsx
 
 ## Connections
-
 - [[CreateUpdateWorkspaceViewModal]] - `imports` [EXTRACTED]
 - [[DeleteGlobalViewModal]] - `imports` [EXTRACTED]
 - [[Props_112]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[quick-actions-helper.tsx]] - `imports_from` [EXTRACTED]
 - [[useViewMenuItems()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Work
+#graphify/code #graphify/EXTRACTED #community/Community_22

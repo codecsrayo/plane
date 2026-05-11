@@ -1,18 +1,17 @@
 ---
 source_file: "constants/src/project.ts"
 type: "code"
-community: "Project Network"
+community: "Community 439"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Network
+  - community/Community_439
 ---
 
 # project.ts
 
 ## Connections
-
 - [[EProjectFeatureKey]] - `contains` [EXTRACTED]
 - [[GROUP_CHOICES]] - `contains` [EXTRACTED]
 - [[NETWORK_CHOICES]] - `contains` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[TNetworkChoice]] - `contains` [EXTRACTED]
 - [[TNetworkChoiceIconKey]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Network
+#graphify/code #graphify/EXTRACTED #community/Community_439

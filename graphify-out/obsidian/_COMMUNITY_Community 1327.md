@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_18]] - code - ui/src/progress/index.ts
+- [[index.ts_33]] - code - editor/src/index.ts
 
 ## Live Query (requires Dataview plugin)
 

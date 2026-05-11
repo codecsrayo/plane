@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/scrollarea/scrollarea.tsx"
 type: "code"
-community: "Scroll Size"
+community: "Community 218"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Scroll_Size
+  - community/Community_218
 ---
 
 # scrollarea.tsx
 
 ## Connections
-
 - [[ScrollArea()_1]] - `contains` [EXTRACTED]
 - [[ScrollAreaOrientation]] - `contains` [EXTRACTED]
 - [[ScrollAreaProps]] - `contains` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[thumbSizeStyles_1]] - `contains` [EXTRACTED]
 - [[verticalSizeStyles]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Scroll_Size
+#graphify/code #graphify/EXTRACTED #community/Community_218

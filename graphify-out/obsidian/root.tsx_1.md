@@ -1,18 +1,17 @@
 ---
 source_file: "ui/src/form-fields/root.tsx"
 type: "code"
-community: "Validation Field"
+community: "Community 508"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Validation_Field
+  - community/Community_508
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[FormField()]] - `contains` [EXTRACTED]
 - [[FormFieldProps]] - `contains` [EXTRACTED]
 - [[Label()]] - `contains` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[ValidationMessage()]] - `contains` [EXTRACTED]
 - [[ValidationMessageProps]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Validation_Field
+#graphify/code #graphify/EXTRACTED #community/Community_508

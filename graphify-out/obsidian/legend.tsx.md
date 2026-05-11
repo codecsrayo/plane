@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/charts/components/legend.tsx"
 type: "code"
-community: "Custom Chart"
+community: "Community 128"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Custom_Chart
+  - community/Community_128
 ---
 
 # legend.tsx
 
 ## Connections
-
 - [[CustomLegend]] - `contains` [EXTRACTED]
 - [[classname.tsx_1]] - `imports_from` [EXTRACTED]
 - [[cn()_1]] - `imports` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[root.tsx_14]] - `imports_from` [EXTRACTED]
 - [[root.tsx_15]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Custom_Chart
+#graphify/code #graphify/EXTRACTED #community/Community_128

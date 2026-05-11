@@ -1,14 +1,14 @@
 ---
 source_file: "web/ce/types/projects/index.ts"
 type: "code"
-community: "Community 1612"
+community: "Community 1594"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_1612
+  - community/Community_1594
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_1612
+#graphify/code #graphify/EXTRACTED #community/Community_1594

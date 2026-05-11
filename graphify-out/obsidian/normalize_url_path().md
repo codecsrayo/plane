@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/url.py"
 type: "code"
-community: "Test Path"
+community: "Community 269"
 location: "L110"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Test_Path
+  - community/Community_269
 ---
 
 # normalize_url_path()
 
 ## Connections
-
 - [[.test_normalize_url_path_edge_cases()]] - `calls` [INFERRED]
 - [[.test_normalize_url_path_with_complex_path()]] - `calls` [INFERRED]
 - [[.test_normalize_url_path_with_different_schemes()]] - `calls` [INFERRED]
@@ -26,4 +25,4 @@ tags:
 - [[sync_with_external_service()]] - `calls` [INFERRED]
 - [[url.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Test_Path
+#graphify/code #graphify/INFERRED #community/Community_269

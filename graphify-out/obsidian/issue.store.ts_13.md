@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/issue/cycle/issue.store.ts"
 type: "code"
-community: "Filters Issue"
+community: "Community 33"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filters_Issue
+  - community/Community_33
 ---
 
 # issue.store.ts
 
 ## Connections
-
 - [[ActiveCycleIssueDetails]] - `contains` [EXTRACTED]
 - [[CycleIssues]] - `contains` [EXTRACTED]
 - [[IBaseIssuesStore]] - `imports` [EXTRACTED]
@@ -34,4 +33,4 @@ tags:
 - [[toApiError()]] - `imports` [EXTRACTED]
 - [[{ issueList, groupedIssues }]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filters_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_33

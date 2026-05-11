@@ -1,20 +1,22 @@
 ---
-source_file: "propel/src/icons/registry.ts"
+source_file: "packages/propel/src/icons/registry.ts"
 type: "code"
-community: "Icon Copy"
+community: "Community 151"
 location: "L86"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Icon_Copy
+  - community/Community_151
 ---
 
 # ICON_REGISTRY
 
 ## Connections
-
 - [[helpers.ts_1]] - `imports` [EXTRACTED]
+- [[helpers.ts_4]] - `imports` [EXTRACTED]
 - [[icon.tsx]] - `imports` [EXTRACTED]
+- [[icon.tsx_1]] - `imports` [EXTRACTED]
 - [[registry.ts]] - `contains` [EXTRACTED]
+- [[registry.ts_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Icon_Copy
+#graphify/code #graphify/EXTRACTED #community/Community_151

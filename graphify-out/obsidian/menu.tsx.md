@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/menu/menu.tsx"
 type: "code"
-community: "Menu Disabled"
+community: "Community 152"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu_Disabled
+  - community/Community_152
 ---
 
 # menu.tsx
 
 ## Connections
-
 - [[Menu()]] - `contains` [EXTRACTED]
 - [[MenuContext_1]] - `contains` [EXTRACTED]
 - [[MenuItem()_1]] - `contains` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[types.ts_11]] - `imports_from` [EXTRACTED]
 - [[useSubMenu()_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Menu_Disabled
+#graphify/code #graphify/EXTRACTED #community/Community_152

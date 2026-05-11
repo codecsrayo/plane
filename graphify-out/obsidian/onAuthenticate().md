@@ -1,20 +1,19 @@
 ---
 source_file: "live/src/lib/auth.ts"
 type: "code"
-community: "Broadcast Context"
+community: "Community 317"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Broadcast_Context
+  - community/Community_317
 ---
 
 # onAuthenticate()
 
 ## Connections
-
 - [[auth.ts_3]] - `contains` [EXTRACTED]
 - [[handleAuthentication()]] - `calls` [EXTRACTED]
 - [[hocuspocus.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Broadcast_Context
+#graphify/code #graphify/EXTRACTED #community/Community_317

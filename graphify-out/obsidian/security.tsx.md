@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/settings/profile/content/pages/security.tsx"
 type: "code"
-community: "Auth Values"
+community: "Community 98"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Values
+  - community/Community_98
 ---
 
 # security.tsx
 
 ## Connections
-
 - [[AuthService_1]] - `imports` [EXTRACTED]
 - [[FormValues]] - `contains` [EXTRACTED]
 - [[ProfileSettingsHeading()]] - `imports` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[heading.tsx_1]] - `imports_from` [EXTRACTED]
 - [[index.ts_265]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Values
+#graphify/code #graphify/EXTRACTED #community/Community_98

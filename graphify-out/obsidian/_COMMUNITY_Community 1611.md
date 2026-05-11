@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_263]] - code - web/ce/types/issue-types/index.ts
+- [[index.ts_330]] - code - web/core/components/modules/dropdowns/filters/index.ts
 
 ## Live Query (requires Dataview plugin)
 

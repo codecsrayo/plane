@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_309]] - code - web/core/components/gantt-chart/chart/views/index.ts
+- [[index.ts_359]] - code - web/core/components/issues/issue-layouts/filters/header/filters/index.ts
 
 ## Live Query (requires Dataview plugin)
 

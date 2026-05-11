@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/models/state.py"
 type: "code"
-community: "Issue Sync"
+community: "Community 26"
 location: "L14"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Issue_Sync
+  - community/Community_26
 ---
 
 # StateGroup
 
 ## Connections
-
 - [[CommentReaction]] - `uses` [INFERRED]
 - [[Issue]] - `uses` [INFERRED]
 - [[IssueActivity_1]] - `uses` [INFERRED]
@@ -37,4 +36,4 @@ tags:
 - [[SoftDeletionManager]] - `uses` [INFERRED]
 - [[state.py_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Issue_Sync
+#graphify/code #graphify/INFERRED #community/Community_26

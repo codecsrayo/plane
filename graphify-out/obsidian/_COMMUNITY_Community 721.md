@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 721
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[ActiveModel_71]] - code - api_rust/src/entities/cycle_user_properties.rs
+- [[IWebWaitListResponse]] - code - packages/types/src/waitlist.ts
+- [[waitlist.ts_1]] - code - packages/types/src/waitlist.ts
+- [[waitlist.ts]] - code - types/src/waitlist.ts
 
 ## Live Query (requires Dataview plugin)
 

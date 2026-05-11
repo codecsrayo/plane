@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/use-calendar-view.ts"
 type: "code"
-community: "Calendar Issue"
+community: "Community 67"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Issue
+  - community/Community_67
 ---
 
 # use-calendar-view.ts
 
 ## Connections
-
 - [[ICalendarStore]] - `imports` [EXTRACTED]
 - [[StoreContext]] - `imports` [EXTRACTED]
 - [[base-calendar-root.tsx]] - `imports_from` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[store-context.tsx]] - `imports_from` [EXTRACTED]
 - [[useCalendarView()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_67

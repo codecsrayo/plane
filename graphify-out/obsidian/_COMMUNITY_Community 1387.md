@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_83]] - code - constants/src/rich-filters/index.ts
+- [[accessibility.ts_3]] - code - i18n/src/locales/ru/accessibility.ts
 
 ## Live Query (requires Dataview plugin)
 

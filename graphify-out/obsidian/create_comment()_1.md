@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/issue_extras.rs"
 type: "code"
-community: "Issue Request"
+community: "Community 29"
 location: "L313"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Issue_Request
+  - community/Community_29
 ---
 
 # create_comment()
 
 ## Connections
-
 - [[.json()]] - `calls` [INFERRED]
 - [[.set()]] - `calls` [INFERRED]
 - [[comment_to_response()]] - `calls` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[sanitize_description()]] - `calls` [INFERRED]
 - [[strip_html()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Issue_Request
+#graphify/code #graphify/INFERRED #community/Community_29

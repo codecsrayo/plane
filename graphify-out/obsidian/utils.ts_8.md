@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/mentions/utils.ts"
 type: "code"
-community: "Emoji Command"
+community: "Community 31"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Emoji_Command
+  - community/Community_31
 ---
 
 # utils.ts
 
 ## Connections
-
 - [[CORE_EXTENSIONS]] - `imports` [EXTRACTED]
 - [[CommandListInstance]] - `imports` [EXTRACTED]
 - [[DROPDOWN_NAVIGATION_KEYS]] - `imports` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[renderMentionsDropdown()]] - `contains` [EXTRACTED]
 - [[tippy.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Emoji_Command
+#graphify/code #graphify/EXTRACTED #community/Community_31

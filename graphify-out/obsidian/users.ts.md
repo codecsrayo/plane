@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/users.ts"
 type: "code"
-community: "User Instance"
+community: "Community 100"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User_Instance
+  - community/Community_100
 ---
 
 # users.ts
 
 ## Connections
-
 - [[EStartOfTheWeek]] - `contains` [EXTRACTED]
 - [[IInstanceAdminStatus]] - `contains` [EXTRACTED]
 - [[IUser]] - `contains` [EXTRACTED]
@@ -49,4 +48,4 @@ tags:
 - [[workspace-notifications.ts]] - `imports_from` [EXTRACTED]
 - [[workspace.ts_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User_Instance
+#graphify/code #graphify/EXTRACTED #community/Community_100

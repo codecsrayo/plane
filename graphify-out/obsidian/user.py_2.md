@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/serializers/user.py"
 type: "code"
-community: "Serializer Meta"
+community: "Community 77"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Serializer_Meta
+  - community/Community_77
 ---
 
 # user.py
 
 ## Connections
-
 - [[AccountSerializer]] - `contains` [EXTRACTED]
 - [[ChangePasswordSerializer]] - `contains` [EXTRACTED]
 - [[Meta_16]] - `contains` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[notification.py_1]] - `imports_from` [EXTRACTED]
 - [[workspace.py_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Serializer_Meta
+#graphify/code #graphify/EXTRACTED #community/Community_77

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/web/views.py"
 type: "code"
-community: "Views Health"
+community: "Community 857"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Views_Health
+  - community/Community_857
 ---
 
 # robots_txt()
 
 ## Connections
-
 - [[views.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Views_Health
+#graphify/code #graphify/EXTRACTED #community/Community_857

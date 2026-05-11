@@ -1,19 +1,18 @@
 ---
 source_file: "web/ce/store/power-k.store.ts"
 type: "code"
-community: "Power Context"
+community: "Community 175"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Power_Context
+  - community/Community_175
 ---
 
 # PowerKStore
 
 ## Connections
-
 - [[.constructor()_41]] - `method` [EXTRACTED]
 - [[power-k.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Power_Context
+#graphify/code #graphify/EXTRACTED #community/Community_175

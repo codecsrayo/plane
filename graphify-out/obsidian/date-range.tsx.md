@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/dropdowns/date-range.tsx"
 type: "code"
-community: "Label Dropdown"
+community: "Module & Cycle Analytics"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Dropdown
+  - community/Module__Cycle_Analytics
 ---
 
 # date-range.tsx
 
 ## Connections
-
 - [[DateRangeDropdown]] - `contains` [EXTRACTED]
 - [[DropdownButton()_1]] - `imports` [EXTRACTED]
 - [[MergedDateDisplay]] - `imports` [EXTRACTED]
@@ -33,4 +32,4 @@ tags:
 - [[use-dropdown.ts]] - `imports_from` [EXTRACTED]
 - [[useDropdown()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Module__Cycle_Analytics

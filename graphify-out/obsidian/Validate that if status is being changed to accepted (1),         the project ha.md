@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/serializers/intake.py"
 type: "rationale"
-community: "Serializer Issue"
+community: "Community 171"
 location: "L44"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Serializer_Issue
+  - community/Community_171
 ---
 
-# Validate that if status is being changed to accepted (1), the project ha
+# Validate that if status is being changed to accepted (1),         the project ha
 
 ## Connections
-
 - [[.validate()_7]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Serializer_Issue
+#graphify/rationale #graphify/EXTRACTED #community/Community_171

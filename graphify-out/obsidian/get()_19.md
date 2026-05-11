@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/asset/v2.py"
 type: "code"
-community: "Asset Endpoint"
+community: "Community 88"
 location: "L607"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Asset_Endpoint
+  - community/Community_88
 ---
 
 # get()
 
 ## Connections
-
 - [[.delete()_3]] - `calls` [EXTRACTED]
 - [[.delete()_4]] - `calls` [EXTRACTED]
 - [[.entity_asset_delete()]] - `calls` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[response]] - `calls` [INFERRED]
 - [[v2.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Asset_Endpoint
+#graphify/code #graphify/EXTRACTED #community/Community_88

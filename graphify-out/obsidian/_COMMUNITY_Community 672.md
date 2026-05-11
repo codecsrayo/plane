@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.50
+members: 4
 ---
 
 # Community 672
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.50 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_22]] - code - api_rust/src/entities/workspace_user_links.rs
+- [[feature-flags.spec.ts]] - code - web/e2e/feature-flags.spec.ts
+- [[getAdminCtx()]] - code - web/e2e/feature-flags.spec.ts
+- [[groups]] - code - web/e2e/feature-flags.spec.ts
+- [[keys_1]] - code - web/e2e/feature-flags.spec.ts
 
 ## Live Query (requires Dataview plugin)
 

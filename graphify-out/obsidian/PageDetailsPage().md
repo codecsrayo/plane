@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/pages/(detail)/[pageId]/page.tsx"
 type: "code"
-community: "Project Settings"
+community: "Community 42"
 location: "L52"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Project_Settings
+  - community/Community_42
 ---
 
 # PageDetailsPage()
 
 ## Connections
-
 - [[page.tsx_27]] - `contains` [EXTRACTED]
 - [[useAppRouter()]] - `calls` [EXTRACTED]
 - [[useEditorAsset()]] - `calls` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[useTheme()]] - `calls` [INFERRED]
 - [[useUserPermissions()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Project_Settings
+#graphify/code #graphify/INFERRED #community/Community_42

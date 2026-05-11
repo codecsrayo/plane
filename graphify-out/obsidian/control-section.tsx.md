@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/project/settings/control-section.tsx"
 type: "code"
-community: "Project Settings"
+community: "Project Filters & Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Project_Filters__Archives
 ---
 
 # control-section.tsx
 
 ## Connections
-
 - [[ArchiveRestoreProjectModal()]] - `imports` [EXTRACTED]
 - [[DeleteProjectModal]] - `imports` [EXTRACTED]
 - [[GeneralProjectSettingsControlSection]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

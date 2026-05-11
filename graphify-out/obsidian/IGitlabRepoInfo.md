@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/importer/gitlab-importer.ts"
+source_file: "packages/types/src/importer/gitlab-importer.ts"
 type: "code"
-community: "Gitlab Repo"
+community: "Community 666"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gitlab_Repo
+  - community/Community_666
 ---
 
 # IGitlabRepoInfo
 
 ## Connections
-
 - [[gitlab-importer.ts]] - `contains` [EXTRACTED]
+- [[gitlab-importer.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gitlab_Repo
+#graphify/code #graphify/EXTRACTED #community/Community_666

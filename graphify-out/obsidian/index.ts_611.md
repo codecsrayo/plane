@@ -1,0 +1,17 @@
+---
+source_file: "packages/propel/src/icons/properties/index.ts"
+type: "code"
+community: "Community 151"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Community_151
+---
+
+# index.ts
+
+## Connections
+- [[registry.ts_2]] - `imports_from` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Community_151

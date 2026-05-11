@@ -1,18 +1,17 @@
 ---
 source_file: "live/src/server.ts"
 type: "code"
-community: "Start Server"
+community: "Community 435"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Start_Server
+  - community/Community_435
 ---
 
 # Server
 
 ## Connections
-
 - [[.constructor()_183]] - `method` [EXTRACTED]
 - [[.destroy()_23]] - `method` [EXTRACTED]
 - [[.initialize()]] - `method` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[server.ts]] - `contains` [EXTRACTED]
 - [[start.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Start_Server
+#graphify/code #graphify/EXTRACTED #community/Community_435

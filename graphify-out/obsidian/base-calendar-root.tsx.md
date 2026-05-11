@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/calendar/base-calendar-root.tsx"
 type: "code"
-community: "Issue Project"
+community: "Filter UI & Breadcrumbs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Project
+  - community/Filter_UI__Breadcrumbs
 ---
 
 # base-calendar-root.tsx
 
 ## Connections
-
 - [[BaseCalendarRoot]] - `contains` [EXTRACTED]
 - [[CalendarChart]] - `imports` [EXTRACTED]
 - [[CalendarStoreType]] - `contains` [EXTRACTED]
@@ -35,4 +34,4 @@ tags:
 - [[useIssuesActions()]] - `imports` [EXTRACTED]
 - [[utils.ts_17]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Project
+#graphify/code #graphify/EXTRACTED #community/Filter_UI__Breadcrumbs

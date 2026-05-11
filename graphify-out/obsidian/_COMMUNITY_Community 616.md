@@ -1,18 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.60
+members: 5
 ---
 
 # Community 616
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.60 - moderately connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[SvgIcon()]] - code - web/core/components/icons/attachment/svg-file-icon.tsx
-- [[svg-file-icon.tsx]] - code - web/core/components/icons/attachment/svg-file-icon.tsx
+- [[core.ts_32]] - code - packages/utils/src/rich-filters/operators/core.ts
+- [[core.ts_10]] - code - utils/src/rich-filters/operators/core.ts
+- [[getDateOperatorLabel()]] - code - packages/utils/src/rich-filters/operators/core.ts
+- [[getOperatorLabel()]] - code - packages/utils/src/rich-filters/operators/core.ts
+- [[isDateFilterOperator()]] - code - packages/utils/src/rich-filters/operators/core.ts
 
 ## Live Query (requires Dataview plugin)
 

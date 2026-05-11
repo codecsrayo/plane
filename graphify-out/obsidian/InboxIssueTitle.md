@@ -1,19 +1,18 @@
 ---
 source_file: "web/core/components/inbox/modals/create-modal/issue-title.tsx"
 type: "code"
-community: "Issue Inbox"
+community: "Activity & Inbox Filters"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Inbox
+  - community/Activity__Inbox_Filters
 ---
 
 # InboxIssueTitle
 
 ## Connections
-
 - [[create-root.tsx]] - `imports` [EXTRACTED]
 - [[issue-title.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Inbox
+#graphify/code #graphify/EXTRACTED #community/Activity__Inbox_Filters

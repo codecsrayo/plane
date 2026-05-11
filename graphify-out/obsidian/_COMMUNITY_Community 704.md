@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.83
+members: 4
 ---
 
 # Community 704
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.83 - tightly connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_54]] - code - api_rust/src/entities/django_celery_beat_clockedschedule.rs
+- [[boardsPath()]] - code - space/e2e/spaces-deploy-boards.spec.ts
+- [[pid()_19]] - code - space/e2e/spaces-deploy-boards.spec.ts
+- [[slug()_24]] - code - space/e2e/spaces-deploy-boards.spec.ts
+- [[spaces-deploy-boards.spec.ts]] - code - space/e2e/spaces-deploy-boards.spec.ts
 
 ## Live Query (requires Dataview plugin)
 

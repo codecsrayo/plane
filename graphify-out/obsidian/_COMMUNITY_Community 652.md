@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 4
 ---
 
 # Community 652
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_2]] - code - api_rust/src/entities/issue_reactions.rs
+- [[IRadialProgressBar]] - code - packages/ui/src/progress/radial-progress.tsx
+- [[RadialProgressBar()]] - code - packages/ui/src/progress/radial-progress.tsx
+- [[radial-progress.tsx_1]] - code - packages/ui/src/progress/radial-progress.tsx
+- [[radial-progress.tsx]] - code - ui/src/progress/radial-progress.tsx
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/views/intake.py"
 type: "code"
-community: "Intake Endpoint"
+community: "Community 176"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Intake_Endpoint
+  - community/Community_176
 ---
 
 # intake.py
 
 ## Connections
-
 - [[IntakeIssueDetailAPIEndpoint]] - `contains` [EXTRACTED]
 - [[IntakeIssueListCreateAPIEndpoint]] - `contains` [EXTRACTED]
 - [[__init__.py_10]] - `imports_from` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[patch()_18]] - `contains` [EXTRACTED]
 - [[post()_22]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Intake_Endpoint
+#graphify/code #graphify/EXTRACTED #community/Community_176

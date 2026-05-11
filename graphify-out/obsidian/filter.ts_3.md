@@ -1,18 +1,17 @@
 ---
 source_file: "shared-state/src/store/rich-filters/filter.ts"
 type: "code"
-community: "Instance Condition"
+community: "Community 295"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Instance_Condition
+  - community/Community_295
 ---
 
 # filter.ts
 
 ## Connections
-
 - [[FilterConfigManager]] - `imports` [EXTRACTED]
 - [[FilterInstance]] - `contains` [EXTRACTED]
 - [[FilterInstanceHelper]] - `imports` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[updatedExpression]] - `contains` [EXTRACTED]
 - [[{ expression, shouldNotify }]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Instance_Condition
+#graphify/code #graphify/EXTRACTED #community/Community_295

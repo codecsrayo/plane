@@ -1,27 +1,42 @@
 ---
 type: community
-cohesion: 0.22
-members: 11
+cohesion: 0.11
+members: 27
 ---
 
 # Community 211
 
-**Cohesion:** 0.22 - loosely connected
-**Members:** 11 nodes
+**Cohesion:** 0.11 - loosely connected
+**Members:** 27 nodes
 
 ## Members
-
-- [[IStickyDelete]] - code - web/core/components/stickies/delete-modal.tsx
-- [[StickyDeleteModal]] - code - web/core/components/stickies/delete-modal.tsx
-- [[StickyInput()]] - code - web/core/components/stickies/sticky/inputs.tsx
-- [[StickyNote]] - code - web/core/components/stickies/sticky/root.tsx
-- [[TProps_6]] - code - web/core/components/stickies/sticky/inputs.tsx
-- [[TProps_7]] - code - web/core/components/stickies/sticky/root.tsx
-- [[delete-modal.tsx]] - code - web/core/components/stickies/delete-modal.tsx
-- [[getRandomStickyColor()]] - code - web/core/components/stickies/sticky/use-operations.tsx
-- [[index.ts_50]] - code - web/core/components/editor/sticky-editor/index.ts
-- [[inputs.tsx]] - code - web/core/components/stickies/sticky/inputs.tsx
-- [[root.tsx_11]] - code - web/core/components/stickies/sticky/root.tsx
+- [[._format_value()_2]] - code - api/plane/utils/exporters/schemas/base.py
+- [[.create()_10]] - code - api/plane/app/views/workspace/base.py
+- [[.create()_9]] - code - api/plane/app/views/workspace/base.py
+- [[.generate_csv_from_rows()]] - code - api/plane/app/views/workspace/base.py
+- [[.get()_3]] - code - api/plane/app/views/workspace/base.py
+- [[.get()_1]] - code - api/plane/app/views/workspace/base.py
+- [[.get()_2]] - code - api/plane/app/views/workspace/base.py
+- [[.get()_14]] - code - api/plane/app/views/workspace/user.py
+- [[.get_queryset()_2]] - code - api/plane/app/views/workspace/base.py
+- [[.get_queryset()_1]] - code - api/plane/app/views/workspace/base.py
+- [[.post()_1]] - code - api/plane/app/views/workspace/base.py
+- [[.remove_last_workspace_ids_from_user_settings()]] - code - api/plane/app/views/workspace/base.py
+- [[DateField]] - code - api/plane/utils/exporters/schemas/base.py
+- [[Export field for date values with automatic conversion.]] - rationale - api/plane/utils/exporters/schemas/base.py
+- [[ExportWorkspaceUserActivityEndpoint]] - code - api/plane/app/views/workspace/base.py
+- [[Generate CSV buffer from rows.]] - rationale - api/plane/app/views/workspace/base.py
+- [[Remove the last workspace id from the user settings]] - rationale - api/plane/app/views/workspace/base.py
+- [[UserWorkSpacesEndpoint]] - code - api/plane/app/views/workspace/base.py
+- [[UserWorkspaceDashboardEndpoint]] - code - api/plane/app/views/workspace/base.py
+- [[WeekInMonth]] - code - api/plane/app/views/workspace/base.py
+- [[WorkSpaceAvailabilityCheckEndpoint]] - code - api/plane/app/views/workspace/base.py
+- [[WorkSpaceViewSet]] - code - api/plane/app/views/workspace/base.py
+- [[WorkspaceThemeViewSet]] - code - api/plane/app/views/workspace/base.py
+- [[base.py_1]] - code - api/plane/app/views/workspace/base.py
+- [[destroy()]] - code - api/plane/app/views/workspace/base.py
+- [[list()]] - code - api/plane/app/views/workspace/base.py
+- [[partial_update()]] - code - api/plane/app/views/workspace/base.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -31,13 +46,20 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 7 edges to [[_COMMUNITY_Community 104]]
-- 3 edges to [[_COMMUNITY_Authentication UI]]
+- 9 edges to [[_COMMUNITY_Community 27]]
+- 7 edges to [[_COMMUNITY_Python API Base Classes]]
+- 7 edges to [[_COMMUNITY_Community 25]]
+- 5 edges to [[_COMMUNITY_Community 57]]
+- 3 edges to [[_COMMUNITY_Community 41]]
+- 3 edges to [[_COMMUNITY_Community 63]]
+- 1 edge to [[_COMMUNITY_Community 56]]
+- 1 edge to [[_COMMUNITY_Community 48]]
+- 1 edge to [[_COMMUNITY_Community 68]]
+- 1 edge to [[_COMMUNITY_Community 69]]
 
 ## Top bridge nodes
-
-- [[root.tsx_11]] - degree 13, connects to 1 community
-- [[inputs.tsx]] - degree 6, connects to 1 community
-- [[StickyInput()]] - degree 3, connects to 1 community
-- [[getRandomStickyColor()]] - degree 2, connects to 1 community
+- [[ExportWorkspaceUserActivityEndpoint]] - degree 6, connects to 3 communities
+- [[UserWorkspaceDashboardEndpoint]] - degree 5, connects to 3 communities
+- [[UserWorkSpacesEndpoint]] - degree 5, connects to 3 communities
+- [[WeekInMonth]] - degree 5, connects to 3 communities
+- [[WorkSpaceAvailabilityCheckEndpoint]] - degree 5, connects to 3 communities

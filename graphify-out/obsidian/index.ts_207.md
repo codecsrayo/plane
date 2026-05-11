@@ -1,14 +1,14 @@
 ---
 source_file: "web/ce/store/issue/epic/index.ts"
 type: "code"
-community: "Community 1558"
+community: "Community 1540"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_1558
+  - community/Community_1540
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_1558
+#graphify/code #graphify/EXTRACTED #community/Community_1540

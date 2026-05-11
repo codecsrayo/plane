@@ -1,18 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.60
+members: 5
 ---
 
 # Community 615
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.60 - moderately connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[PngIcon()]] - code - web/core/components/icons/attachment/png-file-icon.tsx
-- [[png-file-icon.tsx]] - code - web/core/components/icons/attachment/png-file-icon.tsx
+- [[getCurrentStateSequence()]] - code - packages/utils/src/work-item/state.ts
+- [[orderStateGroups()]] - code - packages/utils/src/work-item/state.ts
+- [[sortStates()]] - code - packages/utils/src/work-item/state.ts
+- [[state.ts_8]] - code - packages/utils/src/work-item/state.ts
+- [[state.ts_3]] - code - utils/src/work-item/state.ts
 
 ## Live Query (requires Dataview plugin)
 

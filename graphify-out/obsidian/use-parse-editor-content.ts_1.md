@@ -1,18 +1,17 @@
 ---
 source_file: "space/hooks/use-parse-editor-content.ts"
 type: "code"
-community: "Text Flagging"
+community: "Community 149"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Text_Flagging
+  - community/Community_149
 ---
 
 # use-parse-editor-content.ts
 
 ## Connections
-
 - [[TArgs_14]] - `contains` [EXTRACTED]
 - [[editor.helper.ts]] - `imports_from` [EXTRACTED]
 - [[getEditorAssetSrc()_1]] - `imports` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[useMember()]] - `imports` [EXTRACTED]
 - [[useParseEditorContent()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Text_Flagging
+#graphify/code #graphify/EXTRACTED #community/Community_149

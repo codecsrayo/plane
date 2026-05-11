@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/power-k/ui/pages/open-entity/project-modules-menu.tsx"
 type: "code"
-community: "Menu Power"
+community: "Community 85"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu_Power
+  - community/Community_85
 ---
 
 # project-modules-menu.tsx
 
 ## Connections
-
 - [[PowerKModulesMenu]] - `imports` [EXTRACTED]
 - [[PowerKOpenProjectModulesMenu]] - `contains` [EXTRACTED]
 - [[Props_406]] - `contains` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[use-module.ts]] - `imports_from` [EXTRACTED]
 - [[useModule()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Menu_Power
+#graphify/code #graphify/EXTRACTED #community/Community_85

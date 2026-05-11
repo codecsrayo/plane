@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 774
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_40]] - code - web/core/components/gantt-chart/sidebar/modules/index.ts
+- [[SignUpLayout()]] - code - web/app/(all)/sign-up/layout.tsx
+- [[layout.tsx_36]] - code - web/app/(all)/sign-up/layout.tsx
+- [[meta()_5]] - code - web/app/(all)/sign-up/layout.tsx
 
 ## Live Query (requires Dataview plugin)
 

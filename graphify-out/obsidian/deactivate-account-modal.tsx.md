@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/account/deactivate-account-modal.tsx"
 type: "code"
-community: "Project Profile"
+community: "Community 105"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Profile
+  - community/Community_105
 ---
 
 # deactivate-account-modal.tsx
 
 ## Connections
-
 - [[DeactivateAccountModal()]] - `contains` [EXTRACTED]
 - [[Props_514]] - `contains` [EXTRACTED]
 - [[form.tsx_5]] - `imports_from` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[use-app-router.tsx]] - `imports_from` [EXTRACTED]
 - [[useAppRouter()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Profile
+#graphify/code #graphify/EXTRACTED #community/Community_105

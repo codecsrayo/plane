@@ -1,14 +1,14 @@
 ---
 source_file: "i18n/src/locales/sk/empty-state.ts"
 type: "code"
-community: "Empty State"
+community: "Community 1445"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_State
+  - community/Community_1445
 ---
 
 # empty-state.ts
 
-#graphify/code #graphify/EXTRACTED #community/Empty_State
+#graphify/code #graphify/EXTRACTED #community/Community_1445

@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/pages/(list)/layout.tsx"
 type: "code"
-community: "Project Issues"
+community: "Community 40"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Issues
+  - community/Community_40
 ---
 
 # layout.tsx
 
 ## Connections
-
 - [[AppHeader]] - `imports` [EXTRACTED]
 - [[ContentWrapper()]] - `imports` [EXTRACTED]
 - [[PagesListHeader]] - `imports` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[content-wrapper.tsx_3]] - `imports_from` [EXTRACTED]
 - [[header.tsx_15]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Issues
+#graphify/code #graphify/EXTRACTED #community/Community_40

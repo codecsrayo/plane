@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/models/module.py"
 type: "code"
-community: "Issue Dummy"
+community: "Community 184"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Dummy
+  - community/Community_184
 ---
 
 # module.py
 
 ## Connections
-
 - [[Meta_46]] - `contains` [EXTRACTED]
 - [[Module]] - `contains` [EXTRACTED]
 - [[ModuleIssue]] - `contains` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[get_default_filters()_3]] - `contains` [EXTRACTED]
 - [[project.py_6]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Dummy
+#graphify/code #graphify/EXTRACTED #community/Community_184

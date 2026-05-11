@@ -1,18 +1,17 @@
 ---
-source_file: "editor/src/core/extensions/table/plugins/drag-handles/utils.ts"
+source_file: "packages/editor/src/core/extensions/table/plugins/drag-handles/utils.ts"
 type: "code"
-community: "Drag Table"
+community: "Community 38"
 location: "L61"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Drag_Table
+  - community/Community_38
 ---
 
 # getSelectedCellPositions()
 
 ## Connections
-
 - [[constructColumnDragPreview()]] - `calls` [EXTRACTED]
 - [[constructRowDragPreview()]] - `calls` [EXTRACTED]
 - [[getSelectedRect()]] - `calls` [EXTRACTED]
@@ -20,5 +19,8 @@ tags:
 - [[utils.ts_2]] - `contains` [EXTRACTED]
 - [[utils.ts_3]] - `imports` [EXTRACTED]
 - [[utils.ts_4]] - `imports` [EXTRACTED]
+- [[utils.ts_21]] - `contains` [EXTRACTED]
+- [[utils.ts_22]] - `imports` [EXTRACTED]
+- [[utils.ts_23]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Drag_Table
+#graphify/code #graphify/EXTRACTED #community/Community_38

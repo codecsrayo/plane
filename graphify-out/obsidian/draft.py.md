@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/workspace/draft.py"
 type: "code"
-community: "Draft Workspace"
+community: "Python API Base Classes"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Draft_Workspace
+  - community/Python_API_Base_Classes
 ---
 
 # draft.py
 
 ## Connections
-
 - [[WorkspaceDraftIssueViewSet]] - `contains` [EXTRACTED]
 - [[__init__.py_3]] - `imports_from` [EXTRACTED]
 - [[create()_3]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[partial_update()_3]] - `contains` [EXTRACTED]
 - [[retrieve()_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Draft_Workspace
+#graphify/code #graphify/EXTRACTED #community/Python_API_Base_Classes

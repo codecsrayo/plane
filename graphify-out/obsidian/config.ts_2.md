@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/types/config.ts"
 type: "code"
-community: "Config Font"
+community: "Community 404"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Config_Font
+  - community/Community_404
 ---
 
 # config.ts
 
 ## Connections
-
 - [[IMarking]] - `contains` [EXTRACTED]
 - [[TDisplayConfig]] - `contains` [EXTRACTED]
 - [[TEditorFontSize]] - `contains` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[TRealtimeConfig]] - `contains` [EXTRACTED]
 - [[TUserDetails]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Config_Font
+#graphify/code #graphify/EXTRACTED #community/Community_404

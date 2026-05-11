@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/pages/project-page.store.ts"
 type: "code"
-community: "Current User"
+community: "Community 136"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Current_User
+  - community/Community_136
 ---
 
 # project-page.store.ts
 
 ## Connections
-
 - [[CoreRootStore]] - `imports` [EXTRACTED]
 - [[IProjectPageStore]] - `contains` [EXTRACTED]
 - [[ProjectPage]] - `imports` [EXTRACTED]
@@ -34,4 +33,4 @@ tags:
 - [[toApiError()]] - `imports` [EXTRACTED]
 - [[use-page-store.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Current_User
+#graphify/code #graphify/EXTRACTED #community/Community_136

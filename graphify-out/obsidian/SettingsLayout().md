@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(settings)/layout.tsx"
 type: "code"
-community: "Power Shortcuts"
+community: "Community 130"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Power_Shortcuts
+  - community/Community_130
 ---
 
 # SettingsLayout()
 
 ## Connections
-
 - [[layout.tsx_30]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Power_Shortcuts
+#graphify/code #graphify/EXTRACTED #community/Community_130

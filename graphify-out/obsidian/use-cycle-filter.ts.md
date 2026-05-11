@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/use-cycle-filter.ts"
 type: "code"
-community: "Cycles Archived"
+community: "Module & Cycle Analytics"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycles_Archived
+  - community/Module__Cycle_Analytics
 ---
 
 # use-cycle-filter.ts
 
 ## Connections
-
 - [[ICycleFilterStore]] - `imports` [EXTRACTED]
 - [[StoreContext]] - `imports` [EXTRACTED]
 - [[cycle_filter.store.ts]] - `imports_from` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[useCycleFilter()]] - `contains` [EXTRACTED]
 - [[view.tsx_3]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycles_Archived
+#graphify/code #graphify/EXTRACTED #community/Module__Cycle_Analytics

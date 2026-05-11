@@ -1,18 +1,17 @@
 ---
 source_file: "utils/src/theme/constants.ts"
 type: "code"
-community: "Color Shade"
+community: "Community 87"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Color_Shade
+  - community/Community_87
 ---
 
 # constants.ts
 
 ## Connections
-
 - [[ALPHA_MAPPING]] - `contains` [EXTRACTED]
 - [[BASELINE_LIGHTNESS_MAP]] - `contains` [EXTRACTED]
 - [[ColorMode]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[theme-application.ts]] - `imports_from` [EXTRACTED]
 - [[theme-inversion.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Color_Shade
+#graphify/code #graphify/EXTRACTED #community/Community_87

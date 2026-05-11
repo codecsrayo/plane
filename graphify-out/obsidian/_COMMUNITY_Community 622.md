@@ -1,18 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.80
+members: 5
 ---
 
 # Community 622
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.80 - tightly connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[DocumentIcon()]] - code - web/core/components/icons/attachment/document-icon.tsx
-- [[document-icon.tsx]] - code - web/core/components/icons/attachment/document-icon.tsx
+- [[pagePath()]] - code - web/e2e/pages.spec.ts
+- [[pages.spec.ts]] - code - web/e2e/pages.spec.ts
+- [[pagesBase()]] - code - web/e2e/pages.spec.ts
+- [[pid()_4]] - code - web/e2e/pages.spec.ts
+- [[slug()_6]] - code - web/e2e/pages.spec.ts
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,18 +1,17 @@
 ---
 source_file: "space/components/issues/peek-overview/header.tsx"
 type: "code"
-community: "Issue Peek"
+community: "Community 80"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Peek
+  - community/Community_80
 ---
 
 # header.tsx
 
 ## Connections
-
 - [[PEEK_MODES]] - `contains` [EXTRACTED]
 - [[PeekOverviewHeader]] - `contains` [EXTRACTED]
 - [[Props_566]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[use-issue-details.tsx]] - `imports_from` [EXTRACTED]
 - [[useIssueDetails()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Peek
+#graphify/code #graphify/EXTRACTED #community/Community_80

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/auth-screens/header.tsx"
 type: "code"
-community: "Workspace Issue"
+community: "Community 70"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Issue
+  - community/Community_70
 ---
 
 # header.tsx
 
 ## Connections
-
 - [[AuthHeader]] - `contains` [EXTRACTED]
 - [[AuthHeaderBase()]] - `contains` [EXTRACTED]
 - [[AuthHeaderProps]] - `contains` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[use-instance.ts]] - `imports_from` [EXTRACTED]
 - [[useInstance()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_70

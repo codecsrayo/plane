@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/project/member-list-item.tsx"
 type: "code"
-community: "Member Members"
+community: "Community 45"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Members
+  - community/Community_45
 ---
 
 # member-list-item.tsx
 
 ## Connections
-
 - [[ConfirmProjectMemberRemove]] - `imports` [EXTRACTED]
 - [[IProjectMemberDetails]] - `imports` [EXTRACTED]
 - [[ProjectMemberListItem]] - `contains` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[useMember()]] - `imports` [EXTRACTED]
 - [[useProjectColumns()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Members
+#graphify/code #graphify/EXTRACTED #community/Community_45

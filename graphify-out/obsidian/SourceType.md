@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/models/intake.py"
 type: "code"
-community: "Intake Endpoint"
+community: "Community 176"
 location: "L38"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Intake_Endpoint
+  - community/Community_176
 ---
 
 # SourceType
 
 ## Connections
-
 - [[IntakeIssueDetailAPIEndpoint]] - `uses` [INFERRED]
 - [[IntakeIssueListCreateAPIEndpoint]] - `uses` [INFERRED]
 - [[IntakeIssuePublicViewSet]] - `uses` [INFERRED]
@@ -23,4 +22,4 @@ tags:
 - [[ProjectBaseModel_1]] - `uses` [INFERRED]
 - [[intake.py_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Intake_Endpoint
+#graphify/code #graphify/INFERRED #community/Community_176

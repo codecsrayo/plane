@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/pragmatic.ts"
+source_file: "packages/types/src/pragmatic.ts"
 type: "code"
-community: "Pragmatic Drop"
+community: "Community 546"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Pragmatic_Drop
+  - community/Community_546
 ---
 
 # IPragmaticDropPayload
 
 ## Connections
-
 - [[pragmatic.ts]] - `contains` [EXTRACTED]
+- [[pragmatic.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Pragmatic_Drop
+#graphify/code #graphify/EXTRACTED #community/Community_546

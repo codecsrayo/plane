@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/views/issue.py"
 type: "code"
-community: "Endpoint Issue"
+community: "Community 32"
 location: "L230"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_Issue
+  - community/Community_32
 ---
 
 # get()
 
 ## Connections
-
 - [[.get_queryset()_47]] - `calls` [EXTRACTED]
 - [[.get_queryset()_48]] - `calls` [EXTRACTED]
 - [[.get_queryset()_54]] - `calls` [EXTRACTED]
@@ -33,4 +32,4 @@ tags:
 - [[response]] - `calls` [INFERRED]
 - [[user_has_issue_permission()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_32

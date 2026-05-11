@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_93]] - code - types/src/favorite/index.ts
+- [[index.ts_125]] - code - utils/src/rich-filters/validators/index.ts
 
 ## Live Query (requires Dataview plugin)
 

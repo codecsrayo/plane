@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/use-instance.ts"
 type: "code"
-community: "Workspace Issue"
+community: "Community 64"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Issue
+  - community/Community_64
 ---
 
 # use-instance.ts
 
 ## Connections
-
 - [[IInstanceStore]] - `imports` [EXTRACTED]
 - [[StoreContext]] - `imports` [EXTRACTED]
 - [[auth-root.tsx]] - `imports_from` [EXTRACTED]
@@ -40,4 +39,4 @@ tags:
 - [[useInstance()]] - `contains` [EXTRACTED]
 - [[workspace-menu-root.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_64

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/exception_logger.py"
 type: "code"
-community: "Task Object"
+community: "Community 48"
 location: "L13"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Task_Object
+  - community/Community_48
 ---
 
 # log_exception()
 
 ## Connections
-
 - [[.copy_object()]] - `calls` [INFERRED]
 - [[.create_update_account()_1]] - `calls` [INFERRED]
 - [[.delete_files()]] - `calls` [INFERRED]
@@ -78,4 +77,4 @@ tags:
 - [[webhook_send_task()]] - `calls` [INFERRED]
 - [[workspace_invitation()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Task_Object
+#graphify/code #graphify/INFERRED #community/Community_48

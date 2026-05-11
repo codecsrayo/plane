@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/project/invite.py"
 type: "code"
-community: "Endpoint User"
+community: "Community 27"
 location: "L37"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Endpoint_User
+  - community/Community_27
 ---
 
 # ProjectInvitationsViewset
 
 ## Connections
-
 - [[.get_queryset()_27]] - `method` [EXTRACTED]
 - [[BaseAPIView]] - `uses` [INFERRED]
 - [[BaseViewSet]] - `uses` [INFERRED]
@@ -20,4 +19,4 @@ tags:
 - [[ProjectNetwork]] - `uses` [INFERRED]
 - [[invite.py_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Endpoint_User
+#graphify/code #graphify/INFERRED #community/Community_27

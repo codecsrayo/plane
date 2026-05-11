@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/rich-filters/derived/core.ts"
+source_file: "packages/types/src/rich-filters/derived/core.ts"
 type: "code"
-community: "Operators Supported"
+community: "Community 230"
 location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Operators_Supported
+  - community/Community_230
 ---
 
 # TCoreSupportedRangeDateFilterOperators
 
 ## Connections
-
 - [[core.ts_8]] - `contains` [EXTRACTED]
+- [[core.ts_30]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Operators_Supported
+#graphify/code #graphify/EXTRACTED #community/Community_230

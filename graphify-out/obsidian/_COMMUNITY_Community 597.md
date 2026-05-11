@@ -1,18 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.60
+members: 5
 ---
 
 # Community 597
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.60 - moderately connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[.to()_99]] - code - api_rust/src/entities/django_celery_beat_periodictask.rs
-- [[Entity_99]] - code - api_rust/src/entities/django_celery_beat_periodictask.rs
+- [[ProgressBar()]] - code - packages/ui/src/progress/progress-bar.tsx
+- [[Props_9]] - code - packages/ui/src/progress/progress-bar.tsx
+- [[calculatePieValue()]] - code - packages/ui/src/progress/progress-bar.tsx
+- [[progress-bar.tsx_1]] - code - packages/ui/src/progress/progress-bar.tsx
+- [[progress-bar.tsx]] - code - ui/src/progress/progress-bar.tsx
 
 ## Live Query (requires Dataview plugin)
 

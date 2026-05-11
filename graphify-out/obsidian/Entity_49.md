@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/entities/django_celery_beat_clockedschedule.rs"
 type: "code"
-community: "Entity"
+community: "Community 1234"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Entity
+  - community/Community_1234
 ---
 
 # Entity
 
 ## Connections
-
 - [[.to()_49]] - `method` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Entity
+#graphify/code #graphify/EXTRACTED #community/Community_1234

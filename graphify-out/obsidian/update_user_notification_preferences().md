@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/notifications.rs"
 type: "code"
-community: "User Github"
+community: "Rust API Handlers"
 location: "L839"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/User_Github
+  - community/Rust_API_Handlers
 ---
 
 # update_user_notification_preferences()
 
 ## Connections
-
 - [[.from_model()_2]] - `calls` [EXTRACTED]
 - [[.json()]] - `calls` [INFERRED]
 - [[.set()]] - `calls` [INFERRED]
@@ -20,4 +19,4 @@ tags:
 - [[notifications.rs_1]] - `contains` [EXTRACTED]
 - [[now]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/User_Github
+#graphify/code #graphify/INFERRED #community/Rust_API_Handlers

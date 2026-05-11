@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/power-k/ui/modal/command-item.tsx"
 type: "code"
-community: "Menu Power"
+community: "Community 124"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu_Power
+  - community/Community_124
 ---
 
 # command-item.tsx
 
 ## Connections
-
 - [[KeySequenceBadge()]] - `imports` [EXTRACTED]
 - [[PowerKModalCommandItem()]] - `contains` [EXTRACTED]
 - [[Props_414]] - `contains` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[themes-menu.tsx]] - `imports_from` [EXTRACTED]
 - [[timezone-menu.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Menu_Power
+#graphify/code #graphify/EXTRACTED #community/Community_124

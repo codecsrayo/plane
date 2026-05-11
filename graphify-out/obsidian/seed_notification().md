@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/notifications.rs"
 type: "code"
-community: "Returns Notification"
+community: "Community 383"
 location: "L115"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Notification
+  - community/Community_383
 ---
 
 # seed_notification()
 
 ## Connections
-
 - [[.new()]] - `calls` [INFERRED]
 - [[.set()]] - `calls` [INFERRED]
 - [[archive_notification_returns_200()]] - `calls` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[notifications.rs]] - `contains` [EXTRACTED]
 - [[now]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Notification
+#graphify/code #graphify/EXTRACTED #community/Community_383

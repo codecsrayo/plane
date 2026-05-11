@@ -1,18 +1,23 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.25
+members: 8
 ---
 
 # Community 523
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.25 - loosely connected
+**Members:** 8 nodes
 
 ## Members
-
-- [[.to()_25]] - code - api_rust/src/entities/workspace_home_preferences.rs
-- [[Entity_25]] - code - api_rust/src/entities/workspace_home_preferences.rs
+- [[.test_should_use_read_replica_with_false_attribute()]] - code - api/plane/tests/unit/middleware/test_db_routing.py
+- [[.test_should_use_read_replica_with_no_attribute_defaults_false()]] - code - api/plane/tests/unit/middleware/test_db_routing.py
+- [[.test_should_use_read_replica_with_true_attribute()]] - code - api/plane/tests/unit/middleware/test_db_routing.py
+- [[Test _should_use_read_replica defaults to False for missing attr.]] - rationale - api/plane/tests/unit/middleware/test_db_routing.py
+- [[Test _should_use_read_replica returns False for False attribute.]] - rationale - api/plane/tests/unit/middleware/test_db_routing.py
+- [[Test _should_use_read_replica returns True for True attribute.]] - rationale - api/plane/tests/unit/middleware/test_db_routing.py
+- [[Test cases for replica decision logic methods.]] - rationale - api/plane/tests/unit/middleware/test_db_routing.py
+- [[TestReplicaDecisionLogic]] - code - api/plane/tests/unit/middleware/test_db_routing.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -20,3 +25,10 @@ members: 2
 TABLE source_file, type FROM #community/Community_523
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Community 221]]
+- 1 edge to [[_COMMUNITY_Community 379]]
+
+## Top bridge nodes
+- [[TestReplicaDecisionLogic]] - degree 6, connects to 2 communities

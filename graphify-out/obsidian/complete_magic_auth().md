@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/auth/magic_auth.rs"
 type: "code"
-community: "Magic Sign"
+community: "Community 52"
 location: "L307"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Magic_Sign
+  - community/Community_52
 ---
 
 # complete_magic_auth()
 
 ## Connections
-
 - [[app_success_redirect()]] - `calls` [EXTRACTED]
 - [[create_magic_user()]] - `calls` [EXTRACTED]
 - [[ensure_profile_exists()]] - `calls` [INFERRED]
@@ -29,4 +28,4 @@ tags:
 - [[safe_next_path()]] - `calls` [INFERRED]
 - [[update_magic_login_metadata()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Magic_Sign
+#graphify/code #graphify/EXTRACTED #community/Community_52

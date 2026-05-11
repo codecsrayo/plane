@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/migrations/0077_draftissue_cycle_user_timezone_project_user_timezone_and_more.py"
 type: "code"
-community: "Meta User"
+community: "Community 66"
 location: "L10"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Meta_User
+  - community/Community_66
 ---
 
 # migrate_draft_issues()
 
 ## Connections
-
 - [[0077_draftissue_cycle_user_timezone_project_user_timezone_and_more.py]] - `contains` [EXTRACTED]
 - [[DraftIssue]] - `calls` [INFERRED]
 - [[DraftIssueAssignee]] - `calls` [INFERRED]
@@ -20,4 +19,4 @@ tags:
 - [[DraftIssueLabel]] - `calls` [INFERRED]
 - [[DraftIssueModule]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Meta_User
+#graphify/code #graphify/INFERRED #community/Community_66

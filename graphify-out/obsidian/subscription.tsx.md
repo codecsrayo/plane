@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-detail/subscription.tsx"
 type: "code"
-community: "Issue Inbox"
+community: "Issue Activity Types"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Inbox
+  - community/Issue_Activity_Types
 ---
 
 # subscription.tsx
 
 ## Connections
-
 - [[IssueSubscription]] - `contains` [EXTRACTED]
 - [[TIssueSubscription]] - `contains` [EXTRACTED]
 - [[header.tsx_51]] - `imports_from` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Inbox
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Types

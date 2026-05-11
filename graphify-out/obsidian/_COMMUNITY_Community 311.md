@@ -1,20 +1,34 @@
 ---
 type: community
-cohesion: 0.67
-members: 4
+cohesion: 0.22
+members: 19
 ---
 
 # Community 311
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 4 nodes
+**Cohesion:** 0.22 - loosely connected
+**Members:** 19 nodes
 
 ## Members
-
-- [[FilterStatus]] - code - web/core/components/inbox/inbox-filter/filters/status.tsx
-- [[Props_83]] - code - web/core/components/inbox/inbox-filter/filters/status.tsx
-- [[status.tsx_3]] - code - web/core/components/cycles/dropdowns/filters/status.tsx
-- [[status.tsx_1]] - code - web/core/components/modules/dropdowns/filters/status.tsx
+- [[Adapter_1]] - code
+- [[FavoriteFolder()]] - code - web/core/components/workspace/sidebar/favorites/favorite-folder.tsx
+- [[FavoriteRoot]] - code - web/core/components/workspace/sidebar/favorites/favorite-items/root.tsx
+- [[NewFavoriteFolder]] - code - web/core/components/workspace/sidebar/favorites/new-fav-folder.tsx
+- [[Props_106]] - code - web/core/components/workspace/sidebar/favorites/favorite-items/root.tsx
+- [[Props_105]] - code - web/core/components/workspace/sidebar/favorites/favorite-folder.tsx
+- [[TForm]] - code - web/core/components/workspace/sidebar/favorites/new-fav-folder.tsx
+- [[TProps_5]] - code - web/core/components/workspace/sidebar/favorites/new-fav-folder.tsx
+- [[TargetData_1]] - code - web/core/components/workspace/sidebar/favorites/favorites.helpers.ts
+- [[favorite-folder.tsx]] - code - web/core/components/workspace/sidebar/favorites/favorite-folder.tsx
+- [[favorites-menu.tsx]] - code - web/core/components/workspace/sidebar/favorites/favorites-menu.tsx
+- [[favorites.helpers.ts]] - code - web/core/components/workspace/sidebar/favorites/favorites.helpers.ts
+- [[getCanDrop()_1]] - code - web/core/components/workspace/sidebar/favorites/favorites.helpers.ts
+- [[getInstructionFromPayload()_1]] - code - web/core/components/workspace/sidebar/favorites/favorites.helpers.ts
+- [[index.ts_298]] - code - web/core/components/workspace/sidebar/favorites/favorite-items/index.ts
+- [[new-fav-folder.tsx]] - code - web/core/components/workspace/sidebar/favorites/new-fav-folder.tsx
+- [[root.tsx_44]] - code - web/core/components/workspace/sidebar/favorites/favorite-items/root.tsx
+- [[use-favorite.ts]] - code - web/core/hooks/store/use-favorite.ts
+- [[useFavorite()]] - code - web/core/hooks/store/use-favorite.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -24,15 +38,28 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 2 edges to [[_COMMUNITY_Community 42]]
-- 2 edges to [[_COMMUNITY_Community 98]]
-- 2 edges to [[_COMMUNITY_Community 85]]
-- 1 edge to [[_COMMUNITY_Community 164]]
+- 5 edges to [[_COMMUNITY_Community 42]]
+- 5 edges to [[_COMMUNITY_Bulk Operations & Spreadsheet]]
+- 4 edges to [[_COMMUNITY_Community 144]]
+- 3 edges to [[_COMMUNITY_Work Item Detail & Layouts]]
+- 3 edges to [[_COMMUNITY_Community 255]]
+- 2 edges to [[_COMMUNITY_Community 20]]
+- 2 edges to [[_COMMUNITY_Community 36]]
+- 2 edges to [[_COMMUNITY_Community 297]]
+- 2 edges to [[_COMMUNITY_Community 67]]
+- 1 edge to [[_COMMUNITY_Community 161]]
+- 1 edge to [[_COMMUNITY_Active Cycle Stats]]
+- 1 edge to [[_COMMUNITY_Community 265]]
+- 1 edge to [[_COMMUNITY_Community 73]]
+- 1 edge to [[_COMMUNITY_Community 23]]
+- 1 edge to [[_COMMUNITY_Community 310]]
+- 1 edge to [[_COMMUNITY_Community 201]]
+- 1 edge to [[_COMMUNITY_Filter UI & Breadcrumbs]]
+- 1 edge to [[_COMMUNITY_Community 396]]
 
 ## Top bridge nodes
-
-- [[FilterStatus]] - degree 5, connects to 3 communities
-- [[status.tsx_3]] - degree 4, connects to 2 communities
-- [[Props_83]] - degree 3, connects to 1 community
-- [[status.tsx_1]] - degree 3, connects to 1 community
+- [[Adapter_1]] - degree 23, connects to 12 communities
+- [[use-favorite.ts]] - degree 10, connects to 4 communities
+- [[favorites-menu.tsx]] - degree 14, connects to 2 communities
+- [[useFavorite()]] - degree 7, connects to 2 communities
+- [[favorite-folder.tsx]] - degree 14, connects to 1 community

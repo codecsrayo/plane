@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/issue_filter.service.ts"
 type: "code"
-community: "Filters Issue"
+community: "Community 33"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filters_Issue
+  - community/Community_33
 ---
 
 # IssueFiltersService
 
 ## Connections
-
 - [[.constructor()_133]] - `method` [EXTRACTED]
 - [[.fetchCycleIssueFilters()]] - `method` [EXTRACTED]
 - [[.fetchModuleIssueFilters()]] - `method` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[filter.store.ts_12]] - `imports` [EXTRACTED]
 - [[issue_filter.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filters_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_33

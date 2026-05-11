@@ -1,0 +1,26 @@
+---
+source_file: "packages/propel/src/button/helper.tsx"
+type: "code"
+community: "Community 290"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Community_290
+---
+
+# helper.tsx
+
+## Connections
+- [[ButtonProps_1]] - `contains` [EXTRACTED]
+- [[TButtonSize]] - `contains` [EXTRACTED]
+- [[TButtonVariant]] - `contains` [EXTRACTED]
+- [[button.tsx_7]] - `imports_from` [EXTRACTED]
+- [[buttonIconStyling]] - `contains` [EXTRACTED]
+- [[buttonVariants_1]] - `contains` [EXTRACTED]
+- [[getButtonStyling()]] - `contains` [EXTRACTED]
+- [[getIconStyling()_1]] - `contains` [EXTRACTED]
+- [[portal.stories.tsx_1]] - `imports_from` [EXTRACTED]
+- [[types.ts_31]] - `imports_from` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Community_290

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/workspace/settings/member-columns.tsx"
 type: "code"
-community: "Member Column"
+community: "Community 35"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Column
+  - community/Community_35
 ---
 
 # member-columns.tsx
 
 ## Connections
-
 - [[AccountTypeColumn]] - `contains` [EXTRACTED]
 - [[AccountTypeProps]] - `contains` [EXTRACTED]
 - [[NameColumn()]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[useMember()]] - `imports` [EXTRACTED]
 - [[useMemberColumns.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Column
+#graphify/code #graphify/EXTRACTED #community/Community_35

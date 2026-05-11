@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/scrollarea/scrollarea.stories.tsx"
 type: "code"
-community: "Scroll Size"
+community: "Community 218"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Scroll_Size
+  - community/Community_218
 ---
 
 # scrollarea.stories.tsx
 
 ## Connections
-
 - [[BothDirections]] - `contains` [EXTRACTED]
 - [[ChatMessages]] - `contains` [EXTRACTED]
 - [[CodeBlock_1]] - `contains` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[Story_24]] - `contains` [EXTRACTED]
 - [[scrollarea.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Scroll_Size
+#graphify/code #graphify/EXTRACTED #community/Community_218

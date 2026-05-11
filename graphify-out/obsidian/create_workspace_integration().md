@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/integrations/workspace.rs"
 type: "code"
-community: "Workspace Webhook"
+community: "Community 126"
 location: "L106"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Workspace_Webhook
+  - community/Community_126
 ---
 
 # create_workspace_integration()
 
 ## Connections
-
 - [[.json()]] - `calls` [INFERRED]
 - [[.set()]] - `calls` [INFERRED]
 - [[Database]] - `calls` [INFERRED]
@@ -21,4 +20,4 @@ tags:
 - [[require_workspace_admin()]] - `calls` [INFERRED]
 - [[workspace.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Workspace_Webhook
+#graphify/code #graphify/INFERRED #community/Community_126

@@ -1,18 +1,17 @@
 ---
 source_file: "space/app/issues/[anchor]/page.tsx"
 type: "code"
-community: "Issue Properties"
+community: "Community 137"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Community_137
 ---
 
 # page.tsx
 
 ## Connections
-
 - [[IssuesPage]] - `contains` [EXTRACTED]
 - [[index.ts_452]] - `imports_from` [EXTRACTED]
 - [[index.ts_456]] - `imports_from` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[useLabel()]] - `imports` [EXTRACTED]
 - [[useStates()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Community_137

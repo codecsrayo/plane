@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/work-item-embed/extension.tsx"
 type: "code"
-community: "Document Custom"
+community: "Community 90"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Document_Custom
+  - community/Community_90
 ---
 
 # extension.tsx
 
 ## Connections
-
 - [[EWorkItemEmbedAttributeNames]] - `imports` [EXTRACTED]
 - [[Props_31]] - `contains` [EXTRACTED]
 - [[TWorkItemEmbedAttributes]] - `imports` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[extension-config.ts]] - `imports_from` [EXTRACTED]
 - [[types.ts_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Document_Custom
+#graphify/code #graphify/EXTRACTED #community/Community_90

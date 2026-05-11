@@ -1,18 +1,18 @@
 ---
-source_file: "utils/src/work-item/modal.ts"
+source_file: "packages/utils/src/work-item/modal.ts"
 type: "code"
-community: "Convert Work"
+community: "Community 614"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Convert_Work
+  - community/Community_614
 ---
 
 # getUpdateFormDataForReset()
 
 ## Connections
-
 - [[modal.ts_1]] - `contains` [EXTRACTED]
+- [[modal.ts_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Convert_Work
+#graphify/code #graphify/EXTRACTED #community/Community_614

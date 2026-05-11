@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/spreadsheet/base-spreadsheet-root.tsx"
 type: "code"
-community: "Issue Project"
+community: "Filter UI & Breadcrumbs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Project
+  - community/Filter_UI__Breadcrumbs
 ---
 
 # base-spreadsheet-root.tsx
 
 ## Connections
-
 - [[BaseSpreadsheetRoot]] - `contains` [EXTRACTED]
 - [[IBaseSpreadsheetRoot]] - `contains` [EXTRACTED]
 - [[IssueLayoutHOC]] - `imports` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[useIssues()]] - `imports` [EXTRACTED]
 - [[useIssuesActions()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Project
+#graphify/code #graphify/EXTRACTED #community/Filter_UI__Breadcrumbs

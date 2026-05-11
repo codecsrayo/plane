@@ -1,18 +1,17 @@
 ---
-source_file: "services/src/workspace/member.service.ts"
+source_file: "packages/services/src/workspace/member.service.ts"
 type: "code"
-community: "Member Workspace"
+community: "Community 492"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Workspace
+  - community/Community_492
 ---
 
 # WorkspaceMemberService
 
 ## Connections
-
 - [[.constructor()_6]] - `method` [EXTRACTED]
 - [[.destroy()_2]] - `method` [EXTRACTED]
 - [[.getWorkspaceUserProjectsRole()]] - `method` [EXTRACTED]
@@ -20,5 +19,6 @@ tags:
 - [[.myInfo()]] - `method` [EXTRACTED]
 - [[.update()_4]] - `method` [EXTRACTED]
 - [[member.service.ts]] - `contains` [EXTRACTED]
+- [[member.service.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_492

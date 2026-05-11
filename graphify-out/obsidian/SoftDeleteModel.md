@@ -1,21 +1,20 @@
 ---
 source_file: "api/plane/db/mixins.py"
 type: "code"
-community: "User Meta"
+community: "Community 107"
 location: "L61"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User_Meta
+  - community/Community_107
 ---
 
 # SoftDeleteModel
 
 ## Connections
-
 - [[.delete()_10]] - `method` [EXTRACTED]
 - [[AuditModel]] - `inherits` [EXTRACTED]
 - [[To soft delete records]] - `rationale_for` [EXTRACTED]
 - [[mixins.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User_Meta
+#graphify/code #graphify/EXTRACTED #community/Community_107

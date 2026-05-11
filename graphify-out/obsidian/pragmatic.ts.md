@@ -1,22 +1,21 @@
 ---
 source_file: "types/src/pragmatic.ts"
 type: "code"
-community: "Pragmatic Drop"
+community: "Community 546"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Pragmatic_Drop
+  - community/Community_546
 ---
 
 # pragmatic.ts
 
 ## Connections
-
 - [[IPragmaticDropPayload]] - `contains` [EXTRACTED]
 - [[IPragmaticPayloadLocation]] - `contains` [EXTRACTED]
 - [[InstructionType]] - `contains` [EXTRACTED]
 - [[TDropTarget]] - `contains` [EXTRACTED]
 - [[TDropTargetMiscellaneousData]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Pragmatic_Drop
+#graphify/code #graphify/EXTRACTED #community/Community_546

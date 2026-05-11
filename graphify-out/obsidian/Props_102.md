@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/workspace/create-workspace-form.tsx"
 type: "code"
-community: "Workspace Issue"
+community: "Community 70"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Issue
+  - community/Community_70
 ---
 
 # Props
 
 ## Connections
-
 - [[create-workspace-form.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_70

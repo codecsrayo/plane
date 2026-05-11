@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/core/filters/date-filter-modal.tsx"
 type: "code"
-community: "Date Start"
+community: "Issue Display Filters"
 location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Date_Start
+  - community/Issue_Display_Filters
 ---
 
 # DateFilterModal()
 
 ## Connections
-
 - [[created-at.tsx]] - `imports` [EXTRACTED]
 - [[created-at.tsx_1]] - `imports` [EXTRACTED]
 - [[date-filter-modal.tsx]] - `contains` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[start-date.tsx_2]] - `imports` [EXTRACTED]
 - [[target-date.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Date_Start
+#graphify/code #graphify/EXTRACTED #community/Issue_Display_Filters

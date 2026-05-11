@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/layouts/default-layout/index.tsx"
 type: "code"
-community: "Workspace Issue"
+community: "Community 70"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Issue
+  - community/Community_70
 ---
 
 # index.tsx
 
 ## Connections
-
 - [[DefaultLayout()]] - `contains` [EXTRACTED]
 - [[Props_80]] - `contains` [EXTRACTED]
 - [[maintenance-view.tsx]] - `imports_from` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[page.tsx_61]] - `imports_from` [EXTRACTED]
 - [[prod.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_70

@@ -1,18 +1,17 @@
 ---
 source_file: "live/src/hocuspocus.ts"
 type: "code"
-community: "Controller Document"
+community: "Community 172"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Controller_Document
+  - community/Community_172
 ---
 
 # hocuspocus.ts
 
 ## Connections
-
 - [[HocusPocusServerManager]] - `contains` [EXTRACTED]
 - [[auth.ts_3]] - `imports_from` [EXTRACTED]
 - [[env]] - `imports` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[server.ts]] - `imports_from` [EXTRACTED]
 - [[stateless.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Controller_Document
+#graphify/code #graphify/EXTRACTED #community/Community_172

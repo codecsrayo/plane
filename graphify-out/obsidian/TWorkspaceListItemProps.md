@@ -1,18 +1,17 @@
 ---
 source_file: "admin/components/workspace/list-item.tsx"
 type: "code"
-community: "Config Image"
+community: "Community 313"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Config_Image
+  - community/Community_313
 ---
 
 # TWorkspaceListItemProps
 
 ## Connections
-
 - [[list-item.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Config_Image
+#graphify/code #graphify/EXTRACTED #community/Community_313

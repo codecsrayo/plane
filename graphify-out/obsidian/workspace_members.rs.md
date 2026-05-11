@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/workspace_members.rs"
 type: "code"
-community: "Workspace Returns"
+community: "Community 459"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Returns
+  - community/Community_459
 ---
 
 # workspace_members.rs
 
 ## Connections
-
 - [[get_workspace_member_not_found_returns_404()]] - `contains` [EXTRACTED]
 - [[get_workspace_member_returns_200()]] - `contains` [EXTRACTED]
 - [[get_workspace_member_unauthenticated_returns_401()]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[setup()_11]] - `contains` [EXTRACTED]
 - [[update_workspace_member_role_returns_200()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Returns
+#graphify/code #graphify/EXTRACTED #community/Community_459

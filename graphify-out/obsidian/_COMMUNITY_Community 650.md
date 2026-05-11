@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 4
 ---
 
 # Community 650
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_1]] - code - api_rust/src/entities/instances.rs
+- [[ColorPicker()]] - code - packages/ui/src/color-picker/color-picker.tsx
+- [[ColorPickerProps]] - code - packages/ui/src/color-picker/color-picker.tsx
+- [[color-picker.tsx_1]] - code - packages/ui/src/color-picker/color-picker.tsx
+- [[color-picker.tsx]] - code - ui/src/color-picker/color-picker.tsx
 
 ## Live Query (requires Dataview plugin)
 

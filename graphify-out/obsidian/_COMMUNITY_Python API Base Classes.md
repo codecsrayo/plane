@@ -1,0 +1,211 @@
+---
+type: community
+cohesion: 0.03
+members: 141
+---
+
+# Python API Base Classes
+
+**Cohesion:** 0.03 - loosely connected
+**Members:** 141 nodes
+
+## Members
+- [[.__str__()_57]] - code - api/plane/db/models/module.py
+- [[.access()]] - code - api/plane/app/views/page/base.py
+- [[.archive()_3]] - code - api/plane/app/views/page/base.py
+- [[.create()_13]] - code - api/plane/app/views/issue/link.py
+- [[.create()_14]] - code - api/plane/app/views/issue/relation.py
+- [[.create()_38]] - code - api/plane/space/views/intake.py
+- [[.delete()_5]] - code - api/plane/app/views/asset/base.py
+- [[.delete()_6]] - code - api/plane/app/views/asset/base.py
+- [[.delete()]] - code - api/plane/app/views/api.py
+- [[.destroy()_13]] - code - api/plane/app/views/issue/link.py
+- [[.destroy()_14]] - code - api/plane/app/views/issue/subscriber.py
+- [[.destroy()_15]] - code - api/plane/app/views/page/base.py
+- [[.destroy()_22]] - code - api/plane/space/views/intake.py
+- [[.get()_28]] - code - api/plane/app/views/asset/base.py
+- [[.get()_29]] - code - api/plane/app/views/asset/base.py
+- [[.get()_31]] - code - api/plane/app/views/project/member.py
+- [[.get()_32]] - code - api/plane/app/views/project/member.py
+- [[.get()_61]] - code - api/plane/license/api/views/admin.py
+- [[.get()]] - code - api/plane/app/views/api.py
+- [[.get_permissions()]] - code - api/plane/app/views/issue/subscriber.py
+- [[.get_queryset()_14]] - code - api/plane/app/views/issue/link.py
+- [[.get_queryset()_19]] - code - api/plane/app/views/issue/subscriber.py
+- [[.get_queryset()_22]] - code - api/plane/app/views/page/base.py
+- [[.get_queryset()_30]] - code - api/plane/app/views/project/member.py
+- [[.get_queryset()_29]] - code - api/plane/app/views/project/member.py
+- [[.get_queryset()_43]] - code - api/plane/app/views/state/base.py
+- [[.get_queryset()_83]] - code - api/plane/space/views/intake.py
+- [[.get_queryset()_6]] - code - api/plane/app/views/workspace/draft.py
+- [[.handle_comment()]] - code - api/plane/app/views/external/sync.py
+- [[.handle_issue()]] - code - api/plane/app/views/external/sync.py
+- [[.handle_issue()_1]] - code - api/plane/app/views/external/sync.py
+- [[.handle_merge_request()]] - code - api/plane/app/views/external/sync.py
+- [[.handle_note()]] - code - api/plane/app/views/external/sync.py
+- [[.handle_pull_request()]] - code - api/plane/app/views/external/sync.py
+- [[.list()_17]] - code - api/plane/app/views/issue/relation.py
+- [[.list()_16]] - code - api/plane/app/views/issue/subscriber.py
+- [[.list()_18]] - code - api/plane/app/views/page/base.py
+- [[.list()_21]] - code - api/plane/space/views/intake.py
+- [[.lock()_1]] - code - api/plane/app/views/page/base.py
+- [[.partial_update()_1]] - code - api/plane/app/views/issue/link.py
+- [[.partial_update()_2]] - code - api/plane/app/views/page/base.py
+- [[.partial_update()_6]] - code - api/plane/space/views/intake.py
+- [[.patch()]] - code - api/plane/app/views/api.py
+- [[.perform_create()_1]] - code - api/plane/app/views/issue/subscriber.py
+- [[.post()_10]] - code - api/plane/app/views/asset/base.py
+- [[.post()_11]] - code - api/plane/app/views/asset/base.py
+- [[.post()_6]] - code - api/plane/app/views/external/sync.py
+- [[.post()_7]] - code - api/plane/app/views/external/sync.py
+- [[.post()]] - code - api/plane/app/views/api.py
+- [[.remove_relation()]] - code - api/plane/app/views/issue/relation.py
+- [[.restore()_2]] - code - api/plane/app/views/asset/base.py
+- [[.retrieve()_10]] - code - api/plane/app/views/page/base.py
+- [[.retrieve()_14]] - code - api/plane/space/views/intake.py
+- [[.subscribe()]] - code - api/plane/app/views/issue/subscriber.py
+- [[.subscription_status()]] - code - api/plane/app/views/issue/subscriber.py
+- [[.summary()]] - code - api/plane/app/views/page/base.py
+- [[.unarchive()_1]] - code - api/plane/app/views/page/base.py
+- [[.unlock()_1]] - code - api/plane/app/views/page/base.py
+- [[.unsubscribe()]] - code - api/plane/app/views/issue/subscriber.py
+- [[ApiTokenEndpoint]] - code - api/plane/app/views/api.py
+- [[BulkCreateIssueLabelsEndpoint]] - code - api/plane/app/views/issue/label.py
+- [[ExportIssuesEndpoint]] - code - api/plane/app/views/exporter/base.py
+- [[FileAssetEndpoint]] - code - api/plane/app/views/asset/base.py
+- [[FileAssetViewSet]] - code - api/plane/app/views/asset/base.py
+- [[GitHubWebhookEndpoint]] - code - api/plane/app/views/external/sync.py
+- [[GitLabWebhookEndpoint]] - code - api/plane/app/views/external/sync.py
+- [[Handle GitHub `issues` webhook events.          - opened   Create a Plane issue]] - rationale - api/plane/app/views/external/sync.py
+- [[Handle GitHub `pull_request` webhook events and update the linked Plane issue]] - rationale - api/plane/app/views/external/sync.py
+- [[Handle GitLab `merge_request` webhook events and update the linked Plane issue]] - rationale - api/plane/app/views/external/sync.py
+- [[IntakeIssuePublicViewSet]] - code - api/plane/space/views/intake.py
+- [[IntakeStateEndpoint]] - code - api/plane/app/views/state/base.py
+- [[IssueLinkViewSet]] - code - api/plane/app/views/issue/link.py
+- [[IssueRelationViewSet]] - code - api/plane/app/views/issue/relation.py
+- [[IssueSubscriberViewSet]] - code - api/plane/app/views/issue/subscriber.py
+- [[ModuleIssue]] - code - api/plane/db/models/module.py
+- [[PageViewSet]] - code - api/plane/app/views/page/base.py
+- [[ProjectMemberPreferenceEndpoint]] - code - api/plane/app/views/project/member.py
+- [[ProjectMemberUserEndpoint]] - code - api/plane/app/views/project/member.py
+- [[ProjectMemberViewSet]] - code - api/plane/app/views/project/member.py
+- [[ROLE_1]] - code - api/plane/utils/permissions/base.py
+- [[Read a webhook secret from InstanceConfiguration DB, falling back to env var.]] - rationale - api/plane/app/views/external/sync.py
+- [[StateViewSet]] - code - api/plane/app/views/state/base.py
+- [[UserAssetsEndpoint]] - code - api/plane/app/views/asset/base.py
+- [[UserProjectRolesEndpoint]] - code - api/plane/app/views/project/member.py
+- [[WorkspaceDraftIssueViewSet]] - code - api/plane/app/views/workspace/draft.py
+- [[_get_webhook_secret()]] - code - api/plane/app/views/external/sync.py
+- [[api.py]] - code - api/plane/app/views/api.py
+- [[base.py_10]] - code - api/plane/app/views/asset/base.py
+- [[base.py_13]] - code - api/plane/app/views/exporter/base.py
+- [[base.py_17]] - code - api/plane/app/views/state/base.py
+- [[create()_5]] - code - api/plane/app/views/issue/label.py
+- [[create()_6]] - code - api/plane/app/views/issue/reaction.py
+- [[create()_13]] - code - api/plane/app/views/project/member.py
+- [[create()_18]] - code - api/plane/app/views/state/base.py
+- [[create()_3]] - code - api/plane/app/views/workspace/draft.py
+- [[create_draft_to_issue()]] - code - api/plane/app/views/workspace/draft.py
+- [[create_issue_modules()]] - code - api/plane/app/views/module/issue.py
+- [[create_module_issues()]] - code - api/plane/app/views/module/issue.py
+- [[delete()_19]] - code - api/plane/license/api/views/admin.py
+- [[destroy()_7]] - code - api/plane/app/views/issue/label.py
+- [[destroy()_8]] - code - api/plane/app/views/issue/reaction.py
+- [[destroy()_6]] - code - api/plane/app/views/module/issue.py
+- [[destroy()_12]] - code - api/plane/app/views/project/member.py
+- [[destroy()_17]] - code - api/plane/app/views/state/base.py
+- [[destroy()_3]] - code - api/plane/app/views/workspace/draft.py
+- [[destroy()_1]] - code - api/plane/app/views/workspace/quick_link.py
+- [[dispatch()]] - code - api/plane/app/views/external/sync.py
+- [[draft.py]] - code - api/plane/app/views/workspace/draft.py
+- [[get()_22]] - code - api/plane/app/views/exporter/base.py
+- [[get()_21]] - code - api/plane/app/views/project/member.py
+- [[get()_25]] - code - api/plane/app/views/state/base.py
+- [[get()_41]] - code - api/plane/license/api/views/admin.py
+- [[get_actual_relation()]] - code - api/plane/utils/issue_relation_mapper.py
+- [[issue.py]] - code - api/plane/app/views/module/issue.py
+- [[label.py_1]] - code - api/plane/app/views/issue/label.py
+- [[leave()_1]] - code - api/plane/app/views/project/member.py
+- [[link.py]] - code - api/plane/app/views/issue/link.py
+- [[list()_12]] - code - api/plane/app/views/project/member.py
+- [[list()_17]] - code - api/plane/app/views/state/base.py
+- [[list()_3]] - code - api/plane/app/views/workspace/draft.py
+- [[list()_1]] - code - api/plane/app/views/workspace/quick_link.py
+- [[mark_as_default()]] - code - api/plane/app/views/state/base.py
+- [[member.py_1]] - code - api/plane/app/views/project/member.py
+- [[partial_update()_6]] - code - api/plane/app/views/issue/label.py
+- [[partial_update()_10]] - code - api/plane/app/views/project/member.py
+- [[partial_update()_13]] - code - api/plane/app/views/state/base.py
+- [[partial_update()_3]] - code - api/plane/app/views/workspace/draft.py
+- [[partial_update()_1]] - code - api/plane/app/views/workspace/quick_link.py
+- [[patch()_10]] - code - api/plane/app/views/project/member.py
+- [[post()_13]] - code - api/plane/app/views/exporter/base.py
+- [[post()_5]] - code - api/plane/app/views/issue/label.py
+- [[quick_link.py]] - code - api/plane/app/views/workspace/quick_link.py
+- [[reaction.py]] - code - api/plane/app/views/issue/reaction.py
+- [[relation.py]] - code - api/plane/app/views/issue/relation.py
+- [[response]] - code - web/core/store/issue/workspace-draft/issue.store.ts
+- [[retrieve()_8]] - code - api/plane/app/views/project/member.py
+- [[retrieve()_1]] - code - api/plane/app/views/workspace/draft.py
+- [[retrieve()]] - code - api/plane/app/views/workspace/quick_link.py
+- [[subscriber.py]] - code - api/plane/app/views/issue/subscriber.py
+- [[sync.py]] - code - api/plane/app/views/external/sync.py
+- [[unarchive_archive_page_and_descendants()]] - code - api/plane/app/views/page/base.py
+
+## Live Query (requires Dataview plugin)
+
+```dataview
+TABLE source_file, type FROM #community/Python_API_Base_Classes
+SORT file.name ASC
+```
+
+## Connections to other communities
+- 58 edges to [[_COMMUNITY_Community 27]]
+- 46 edges to [[_COMMUNITY_Community 41]]
+- 30 edges to [[_COMMUNITY_Community 25]]
+- 27 edges to [[_COMMUNITY_Community 56]]
+- 26 edges to [[_COMMUNITY_Community 57]]
+- 19 edges to [[_COMMUNITY_Community 99]]
+- 18 edges to [[_COMMUNITY_Community 32]]
+- 16 edges to [[_COMMUNITY_Community 53]]
+- 13 edges to [[_COMMUNITY_Community 68]]
+- 12 edges to [[_COMMUNITY_Community 88]]
+- 11 edges to [[_COMMUNITY_Community 176]]
+- 10 edges to [[_COMMUNITY_Community 342]]
+- 9 edges to [[_COMMUNITY_Community 314]]
+- 9 edges to [[_COMMUNITY_Community 54]]
+- 9 edges to [[_COMMUNITY_Community 248]]
+- 8 edges to [[_COMMUNITY_Community 395]]
+- 8 edges to [[_COMMUNITY_Community 360]]
+- 8 edges to [[_COMMUNITY_Community 237]]
+- 7 edges to [[_COMMUNITY_Community 211]]
+- 6 edges to [[_COMMUNITY_Community 77]]
+- 6 edges to [[_COMMUNITY_Community 257]]
+- 6 edges to [[_COMMUNITY_Community 153]]
+- 5 edges to [[_COMMUNITY_Community 328]]
+- 5 edges to [[_COMMUNITY_Community 315]]
+- 4 edges to [[_COMMUNITY_Community 449]]
+- 4 edges to [[_COMMUNITY_Community 329]]
+- 4 edges to [[_COMMUNITY_Community 37]]
+- 4 edges to [[_COMMUNITY_Community 378]]
+- 4 edges to [[_COMMUNITY_Community 267]]
+- 4 edges to [[_COMMUNITY_Community 89]]
+- 3 edges to [[_COMMUNITY_Python Workflow Services]]
+- 3 edges to [[_COMMUNITY_Community 26]]
+- 2 edges to [[_COMMUNITY_Community 448]]
+- 2 edges to [[_COMMUNITY_Community 122]]
+- 2 edges to [[_COMMUNITY_Community 66]]
+- 2 edges to [[_COMMUNITY_Community 34]]
+- 2 edges to [[_COMMUNITY_Community 184]]
+- 2 edges to [[_COMMUNITY_Community 205]]
+- 1 edge to [[_COMMUNITY_Community 339]]
+- 1 edge to [[_COMMUNITY_Community 49]]
+- 1 edge to [[_COMMUNITY_Community 110]]
+- 1 edge to [[_COMMUNITY_Community 860]]
+
+## Top bridge nodes
+- [[response]] - degree 384, connects to 33 communities
+- [[quick_link.py]] - degree 8, connects to 4 communities
+- [[PageViewSet]] - degree 16, connects to 3 communities
+- [[IntakeIssuePublicViewSet]] - degree 10, connects to 3 communities
+- [[ModuleIssue]] - degree 9, connects to 3 communities

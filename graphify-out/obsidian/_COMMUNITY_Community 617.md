@@ -1,18 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.40
+members: 5
 ---
 
 # Community 617
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.40 - moderately connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[ZipIcon()]] - code - web/core/components/icons/attachment/zip-file-icon.tsx
-- [[zip-file-icon.tsx]] - code - web/core/components/icons/attachment/zip-file-icon.tsx
+- [[AllowedExtraAttr]] - code - web/app/compat/next/script.tsx
+- [[DOM_ATTR_NAME]] - code - web/app/compat/next/script.tsx
+- [[Script()]] - code - web/app/compat/next/script.tsx
+- [[ScriptProps_1]] - code - web/app/compat/next/script.tsx
+- [[script.tsx]] - code - web/app/compat/next/script.tsx
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,20 +1,20 @@
 ---
-source_file: "e2e-utils/src/helpers/api.ts"
+source_file: "packages/e2e-utils/src/helpers/api.ts"
 type: "code"
-community: "Global Test"
+community: "Community 174"
 location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Global_Test
+  - community/Community_174
 ---
 
 # extractErrorCode()
 
 ## Connections
-
 - [[api.ts]] - `contains` [EXTRACTED]
+- [[api.ts_1]] - `contains` [EXTRACTED]
 - [[ensureInstanceConfigured()]] - `calls` [EXTRACTED]
 - [[handleAuthRedirect()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Global_Test
+#graphify/code #graphify/EXTRACTED #community/Community_174

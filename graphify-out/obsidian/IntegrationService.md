@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/integrations/integration.service.ts"
 type: "code"
-community: "State Repo"
+community: "Community 375"
 location: "L34"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/State_Repo
+  - community/Community_375
 ---
 
 # IntegrationService
 
 ## Connections
-
 - [[.constructor()_172]] - `method` [EXTRACTED]
 - [[.createPRStateMapping()]] - `method` [EXTRACTED]
 - [[.createRepoSync()]] - `method` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[.getWorkspaceIntegrationsList()]] - `method` [EXTRACTED]
 - [[integration.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/State_Repo
+#graphify/code #graphify/EXTRACTED #community/Community_375

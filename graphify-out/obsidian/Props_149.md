@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/modules/delete-module-modal.tsx"
 type: "code"
-community: "Cycles Archived"
+community: "Module & Cycle Analytics"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycles_Archived
+  - community/Module__Cycle_Analytics
 ---
 
 # Props
 
 ## Connections
-
 - [[delete-module-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycles_Archived
+#graphify/code #graphify/EXTRACTED #community/Module__Cycle_Analytics

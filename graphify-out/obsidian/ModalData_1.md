@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/base-power-k.store.ts"
 type: "code"
-community: "Power Context"
+community: "Community 175"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Power_Context
+  - community/Community_175
 ---
 
 # ModalData
 
 ## Connections
-
 - [[base-power-k.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Power_Context
+#graphify/code #graphify/EXTRACTED #community/Community_175

@@ -1,32 +1,48 @@
 ---
 type: community
-cohesion: 0.23
-members: 16
+cohesion: 0.08
+members: 33
 ---
 
 # Community 167
 
-**Cohesion:** 0.23 - loosely connected
-**Members:** 16 nodes
+**Cohesion:** 0.08 - loosely connected
+**Members:** 33 nodes
 
 ## Members
-
-- [[CONTEXT_ENTITY_MAP]] - code - web/core/components/power-k/ui/pages/context-based/index.ts
-- [[KeySequenceBadge()]] - code - web/core/components/power-k/ui/modal/command-item-shortcut-badge.tsx
-- [[POWER_K_GROUP_I18N_TITLES]] - code - web/core/components/power-k/ui/renderer/shared.ts
-- [[POWER_K_GROUP_PRIORITY]] - code - web/core/components/power-k/ui/renderer/shared.ts
-- [[Props_344]] - code - web/core/components/power-k/ui/renderer/command.tsx
-- [[Props_343]] - code - web/core/components/power-k/ui/renderer/shortcut.tsx
-- [[ShortcutBadge()]] - code - web/core/components/power-k/ui/modal/command-item-shortcut-badge.tsx
-- [[TContextEntityMap]] - code - web/core/components/power-k/ui/pages/context-based/index.ts
-- [[TPowerKCommandGroup]] - code - web/core/components/power-k/core/types.ts
-- [[command-item-shortcut-badge.tsx]] - code - web/core/components/power-k/ui/modal/command-item-shortcut-badge.tsx
-- [[command.tsx]] - code - web/core/components/power-k/ui/renderer/command.tsx
-- [[formatKeySequenceForDisplay()]] - code - web/core/components/power-k/ui/modal/command-item-shortcut-badge.tsx
-- [[formatShortcutForDisplay()]] - code - web/core/components/power-k/ui/modal/command-item-shortcut-badge.tsx
-- [[index.ts_134]] - code - web/core/components/power-k/ui/pages/context-based/index.ts
-- [[shared.ts_1]] - code - web/core/components/power-k/ui/renderer/shared.ts
-- [[shortcut.tsx]] - code - web/core/components/power-k/ui/renderer/shortcut.tsx
+- [[AvatarProps_1]] - code - space/components/issues/issue-layouts/properties/member.tsx
+- [[BlockReactions]] - code - space/components/issues/issue-layouts/kanban/block-reactions.tsx
+- [[ButtonAvatars_1]] - code - space/components/issues/issue-layouts/properties/member.tsx
+- [[IIssueProperties]] - code - space/components/issues/issue-layouts/properties/all-properties.tsx
+- [[IWithDisplayPropertiesHOC_1]] - code - space/components/issues/issue-layouts/with-display-properties-HOC.tsx
+- [[IssueBlock]] - code - space/components/issues/issue-layouts/list/block.tsx
+- [[IssueBlockCycle]] - code - space/components/issues/issue-layouts/properties/cycle.tsx
+- [[IssueBlockDate]] - code - space/components/issues/issue-layouts/properties/due-date.tsx
+- [[IssueBlockLabels]] - code - space/components/issues/issue-layouts/properties/labels.tsx
+- [[IssueBlockMembers]] - code - space/components/issues/issue-layouts/properties/member.tsx
+- [[IssueBlockModules]] - code - space/components/issues/issue-layouts/properties/modules.tsx
+- [[IssueBlockPriority()]] - code - space/components/issues/issue-layouts/properties/priority.tsx
+- [[IssueBlockProps_1]] - code - space/components/issues/issue-layouts/list/block.tsx
+- [[IssueBlockState]] - code - space/components/issues/issue-layouts/properties/state.tsx
+- [[IssueProperties]] - code - space/components/issues/issue-layouts/properties/all-properties.tsx
+- [[Props_266]] - code - space/components/issues/issue-layouts/list/blocks-list.tsx
+- [[Props_563]] - code - space/components/issues/issue-layouts/properties/cycle.tsx
+- [[Props_564]] - code - space/components/issues/issue-layouts/properties/labels.tsx
+- [[Props_562]] - code - space/components/issues/issue-layouts/properties/member.tsx
+- [[Props_561]] - code - space/components/issues/issue-layouts/properties/modules.tsx
+- [[Props_560]] - code - space/components/issues/issue-layouts/properties/state.tsx
+- [[WithDisplayPropertiesHOC_1]] - code - space/components/issues/issue-layouts/with-display-properties-HOC.tsx
+- [[all-properties.tsx_1]] - code - space/components/issues/issue-layouts/properties/all-properties.tsx
+- [[block.tsx_9]] - code - space/components/issues/issue-layouts/kanban/block.tsx
+- [[block.tsx_10]] - code - space/components/issues/issue-layouts/list/block.tsx
+- [[blocks-list.tsx_4]] - code - space/components/issues/issue-layouts/list/blocks-list.tsx
+- [[cycle.tsx_6]] - code - space/components/issues/issue-layouts/properties/cycle.tsx
+- [[labels.tsx_5]] - code - space/components/issues/issue-layouts/properties/labels.tsx
+- [[member.tsx_2]] - code - space/components/issues/issue-layouts/properties/member.tsx
+- [[modules.tsx_1]] - code - space/components/issues/issue-layouts/properties/modules.tsx
+- [[priority.tsx_8]] - code - space/components/issues/issue-layouts/properties/priority.tsx
+- [[state.tsx_7]] - code - space/components/issues/issue-layouts/properties/state.tsx
+- [[with-display-properties-HOC.tsx_1]] - code - space/components/issues/issue-layouts/with-display-properties-HOC.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -36,18 +52,20 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 8 edges to [[_COMMUNITY_Community 45]]
-- 5 edges to [[_COMMUNITY_Community 56]]
-- 4 edges to [[_COMMUNITY_Community 80]]
-- 3 edges to [[_COMMUNITY_Community 202]]
-- 2 edges to [[_COMMUNITY_Community 99]]
-- 1 edge to [[_COMMUNITY_Community 83]]
+- 14 edges to [[_COMMUNITY_Bulk Operations & Spreadsheet]]
+- 8 edges to [[_COMMUNITY_Community 80]]
+- 6 edges to [[_COMMUNITY_Community 137]]
+- 4 edges to [[_COMMUNITY_Community 72]]
+- 4 edges to [[_COMMUNITY_Community 225]]
+- 2 edges to [[_COMMUNITY_Work Item Detail & Layouts]]
+- 1 edge to [[_COMMUNITY_Module & Cycle Analytics]]
+- 1 edge to [[_COMMUNITY_Community 44]]
+- 1 edge to [[_COMMUNITY_Active Cycle Stats]]
+- 1 edge to [[_COMMUNITY_Issue Display Filters]]
 
 ## Top bridge nodes
-
-- [[command.tsx]] - degree 14, connects to 4 communities
-- [[index.ts_134]] - degree 9, connects to 3 communities
-- [[shortcut.tsx]] - degree 14, connects to 2 communities
-- [[TPowerKCommandGroup]] - degree 5, connects to 2 communities
-- [[command-item-shortcut-badge.tsx]] - degree 6, connects to 1 community
+- [[block.tsx_9]] - degree 18, connects to 3 communities
+- [[block.tsx_10]] - degree 10, connects to 2 communities
+- [[member.tsx_2]] - degree 7, connects to 2 communities
+- [[IssueProperties]] - degree 5, connects to 2 communities
+- [[cycle.tsx_6]] - degree 5, connects to 2 communities

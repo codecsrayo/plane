@@ -1,14 +1,14 @@
 ---
 source_file: "api/plane/api/views/module.py"
 type: "rationale"
-community: "Archived Modules"
+community: "Community 1720"
 location: "L1007"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Archived_Modules
+  - community/Community_1720
 ---
 
-# List archived modules Retrieve all modules that have been archived in t
+# List archived modules          Retrieve all modules that have been archived in t
 
-#graphify/rationale #graphify/EXTRACTED #community/Archived_Modules
+#graphify/rationale #graphify/EXTRACTED #community/Community_1720

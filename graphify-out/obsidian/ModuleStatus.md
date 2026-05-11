@@ -1,19 +1,18 @@
 ---
 source_file: "api/plane/db/models/module.py"
 type: "code"
-community: "Issue Dummy"
+community: "Community 184"
 location: "L58"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Issue_Dummy
+  - community/Community_184
 ---
 
 # ModuleStatus
 
 ## Connections
-
 - [[ProjectBaseModel_1]] - `uses` [INFERRED]
 - [[module.py_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Issue_Dummy
+#graphify/code #graphify/INFERRED #community/Community_184

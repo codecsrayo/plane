@@ -1,18 +1,17 @@
 ---
 source_file: "space/components/account/auth-forms/auth-root.tsx"
 type: "code"
-community: "Auth Error"
+community: "Community 58"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Error
+  - community/Community_58
 ---
 
 # auth-root.tsx
 
 ## Connections
-
 - [[AuthBanner()]] - `imports` [EXTRACTED]
 - [[AuthEmailForm]] - `imports` [EXTRACTED]
 - [[AuthHeader()]] - `imports` [EXTRACTED]
@@ -38,4 +37,4 @@ tags:
 - [[useInstance()]] - `imports` [EXTRACTED]
 - [[useOAuthConfig()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Error
+#graphify/code #graphify/EXTRACTED #community/Community_58

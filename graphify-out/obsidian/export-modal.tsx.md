@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/exporter/export-modal.tsx"
 type: "code"
-community: "Project Settings"
+community: "Project Filters & Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Project_Filters__Archives
 ---
 
 # export-modal.tsx
 
 ## Connections
-
 - [[Exporter]] - `contains` [EXTRACTED]
 - [[Props_247]] - `contains` [EXTRACTED]
 - [[index.ts_265]] - `imports_from` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[useAppRouter()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

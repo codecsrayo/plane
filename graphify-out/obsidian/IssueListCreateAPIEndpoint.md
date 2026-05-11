@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/views/issue.py"
 type: "code"
-community: "Endpoint Issue"
+community: "Community 32"
 location: "L253"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_Issue
+  - community/Community_32
 ---
 
 # IssueListCreateAPIEndpoint
 
 ## Connections
-
 - [[.get_queryset()_48]] - `method` [EXTRACTED]
 - [[BaseAPIView]] - `uses` [INFERRED]
 - [[BaseAPIView_1]] - `inherits` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[This viewset provides `list` and `create` on issue level]] - `rationale_for` [EXTRACTED]
 - [[issue.py_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_32

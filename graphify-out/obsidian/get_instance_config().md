@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/utils/instance_config.rs"
 type: "code"
-community: "Session Presigned"
+community: "Community 78"
 location: "L57"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Session_Presigned
+  - community/Community_78
 ---
 
 # get_instance_config()
 
 ## Connections
-
 - [[build_app_jwt()]] - `calls` [INFERRED]
 - [[build_slack_metadata()]] - `calls` [INFERRED]
 - [[gitea_callback()]] - `calls` [INFERRED]
@@ -28,4 +27,4 @@ tags:
 - [[list_gitlab_repositories()]] - `calls` [INFERRED]
 - [[register_github_webhook()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Session_Presigned
+#graphify/code #graphify/INFERRED #community/Community_78

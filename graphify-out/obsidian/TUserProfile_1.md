@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/current-user/profile.ts"
+source_file: "packages/types/src/current-user/profile.ts"
 type: "code"
-community: "Profile User"
+community: "Community 723"
 location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Profile_User
+  - community/Community_723
 ---
 
 # TUserProfile
 
 ## Connections
-
 - [[profile.ts_2]] - `contains` [EXTRACTED]
+- [[profile.ts_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Profile_User
+#graphify/code #graphify/EXTRACTED #community/Community_723

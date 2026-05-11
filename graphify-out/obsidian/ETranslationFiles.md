@@ -1,18 +1,18 @@
 ---
-source_file: "i18n/src/constants/language.ts"
+source_file: "packages/i18n/src/constants/language.ts"
 type: "code"
-community: "Translation Language"
+community: "Community 143"
 location: "L37"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Translation_Language
+  - community/Community_143
 ---
 
 # ETranslationFiles
 
 ## Connections
-
 - [[language.ts]] - `contains` [EXTRACTED]
+- [[language.ts_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Translation_Language
+#graphify/code #graphify/EXTRACTED #community/Community_143

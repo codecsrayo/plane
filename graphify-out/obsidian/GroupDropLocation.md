@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/utils.tsx"
 type: "code"
-community: "Group Kanban"
+community: "Bulk Operations & Spreadsheet"
 location: "L50"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group_Kanban
+  - community/Bulk_Operations__Spreadsheet
 ---
 
 # GroupDropLocation
 
 ## Connections
-
 - [[default.tsx]] - `imports` [EXTRACTED]
 - [[default.tsx_1]] - `imports` [EXTRACTED]
 - [[kanban-group.tsx]] - `imports` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[use-group-dragndrop.ts]] - `imports` [EXTRACTED]
 - [[utils.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group_Kanban
+#graphify/code #graphify/EXTRACTED #community/Bulk_Operations__Spreadsheet

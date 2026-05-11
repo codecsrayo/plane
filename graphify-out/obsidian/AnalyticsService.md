@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/analytics.service.ts"
 type: "code"
-community: "Analytics Advance"
+community: "Community 575"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Analytics_Advance
+  - community/Community_575
 ---
 
 # AnalyticsService
 
 ## Connections
-
 - [[.constructor()_149]] - `method` [EXTRACTED]
 - [[.getAdvanceAnalytics()]] - `method` [EXTRACTED]
 - [[.getAdvanceAnalyticsCharts()]] - `method` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[total-insights.tsx]] - `imports` [EXTRACTED]
 - [[workitems-insight-table.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Analytics_Advance
+#graphify/code #graphify/EXTRACTED #community/Community_575

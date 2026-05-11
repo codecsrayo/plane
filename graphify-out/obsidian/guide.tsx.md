@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/exporter/guide.tsx"
 type: "code"
-community: "Project Settings"
+community: "Community 115"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Community_115
 ---
 
 # guide.tsx
 
 ## Connections
-
 - [[EXPORT_SERVICES_LIST()]] - `imports` [EXTRACTED]
 - [[ExportForm]] - `imports` [EXTRACTED]
 - [[ExportGuide]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[page.tsx_49]] - `imports_from` [EXTRACTED]
 - [[prev-exports.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Community_115

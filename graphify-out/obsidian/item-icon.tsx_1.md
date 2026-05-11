@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/settings/project/sidebar/item-icon.tsx"
 type: "code"
-community: "Settings Project"
+community: "Community 84"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Settings_Project
+  - community/Community_84
 ---
 
 # item-icon.tsx
 
 ## Connections
-
 - [[PROJECT_SETTINGS_ICONS]] - `contains` [EXTRACTED]
 - [[header.tsx_20]] - `imports_from` [EXTRACTED]
 - [[header.tsx_21]] - `imports_from` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[item-categories.tsx_2]] - `imports_from` [EXTRACTED]
 - [[project-settings-menu.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Settings_Project
+#graphify/code #graphify/EXTRACTED #community/Community_84

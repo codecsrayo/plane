@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/use-local-storage.tsx"
 type: "code"
-community: "Project Profile"
+community: "Active Cycle Stats"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Profile
+  - community/Active_Cycle_Stats
 ---
 
 # use-local-storage.tsx
 
 ## Connections
-
 - [[cycle-stats.tsx]] - `imports_from` [EXTRACTED]
 - [[favorites-menu.tsx]] - `imports_from` [EXTRACTED]
 - [[getValueFromLocalStorage()_1]] - `contains` [EXTRACTED]
@@ -35,4 +34,4 @@ tags:
 - [[useLocalStorage()_1]] - `contains` [EXTRACTED]
 - [[workspace-menu.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Profile
+#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats

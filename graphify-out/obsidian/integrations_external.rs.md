@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/integrations_external.rs"
 type: "code"
-community: "Returns Unauthenticated"
+community: "Community 273"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Unauthenticated
+  - community/Community_273
 ---
 
 # integrations_external.rs
 
 ## Connections
-
 - [[ai_assistant_unauthenticated_returns_401()]] - `contains` [EXTRACTED]
 - [[ai_assistant_without_api_key_returns_4xx()]] - `contains` [EXTRACTED]
 - [[create_export_member_returns_2xx()]] - `contains` [EXTRACTED]
@@ -35,4 +34,4 @@ tags:
 - [[setup()_29]] - `contains` [EXTRACTED]
 - [[unsplash_endpoint_returns_expected_status()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Unauthenticated
+#graphify/code #graphify/EXTRACTED #community/Community_273

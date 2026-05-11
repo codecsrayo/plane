@@ -1,14 +1,14 @@
 ---
 source_file: "api/plane/tests/unit/settings/test_storage.py"
 type: "rationale"
-community: "Test That"
+community: "Community 1863"
 location: "L66"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Test_That
+  - community/Community_1863
 ---
 
 # Test that generate_presigned_post uses the configured default expiration
 
-#graphify/rationale #graphify/EXTRACTED #community/Test_That
+#graphify/rationale #graphify/EXTRACTED #community/Community_1863

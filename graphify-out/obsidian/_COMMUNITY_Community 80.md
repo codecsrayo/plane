@@ -1,44 +1,70 @@
 ---
 type: community
-cohesion: 0.12
-members: 28
+cohesion: 0.07
+members: 55
 ---
 
 # Community 80
 
-**Cohesion:** 0.12 - loosely connected
-**Members:** 28 nodes
+**Cohesion:** 0.07 - loosely connected
+**Members:** 55 nodes
 
 ## Members
-
-- [[.constructor()]] - code - web/core/custom-events/chat-support.ts
-- [[ChatSupportEvent]] - code - web/core/custom-events/chat-support.ts
-- [[ChatSupportEventType]] - code - web/core/custom-events/chat-support.ts
-- [[ChatSupportType]] - code - web/core/custom-events/chat-support.ts
-- [[CommandRenderer()]] - code - web/core/components/power-k/ui/renderer/command.tsx
-- [[GlobalShortcutsProps]] - code - web/core/components/power-k/global-shortcuts.tsx
-- [[HelpMenuRoot]] - code - web/core/components/workspace/sidebar/help-section/root.tsx
-- [[IUseChatSupport]] - code - web/core/hooks/use-chat-support.ts
-- [[PowerKModalDefaultPage()]] - code - web/core/components/power-k/ui/pages/default.tsx
-- [[Props_338]] - code - web/core/components/power-k/ui/modal/shortcuts-root.tsx
-- [[Props_311]] - code - web/core/components/power-k/ui/pages/default.tsx
-- [[ShortcutRenderer()]] - code - web/core/components/power-k/ui/renderer/shortcut.tsx
-- [[ShortcutsModal()]] - code - web/core/components/power-k/ui/modal/shortcuts-root.tsx
-- [[chat-support.ts]] - code - web/core/custom-events/chat-support.ts
-- [[context-detector.ts]] - code - web/core/components/power-k/core/context-detector.ts
-- [[default.tsx_3]] - code - web/core/components/power-k/ui/pages/default.tsx
-- [[detectContextFromURL()]] - code - web/core/components/power-k/core/context-detector.ts
-- [[global-shortcuts.tsx]] - code - web/core/components/power-k/global-shortcuts.tsx
-- [[help-commands.ts]] - code - web/core/components/power-k/config/help-commands.ts
-- [[miscellaneous-commands.ts]] - code - web/core/components/power-k/config/miscellaneous-commands.ts
-- [[root.tsx_4]] - code - web/core/components/workspace/sidebar/help-section/root.tsx
-- [[shortcuts-root.tsx]] - code - web/core/components/power-k/ui/modal/shortcuts-root.tsx
-- [[use-chat-support.ts]] - code - web/core/hooks/use-chat-support.ts
-- [[use-power-k.ts]] - code - web/core/hooks/store/use-power-k.ts
-- [[useChatSupport()]] - code - web/core/hooks/use-chat-support.ts
-- [[usePowerK()]] - code - web/core/hooks/store/use-power-k.ts
-- [[usePowerKHelpCommands()]] - code - web/core/components/power-k/config/help-commands.ts
-- [[usePowerKMiscellaneousCommands()]] - code - web/core/components/power-k/config/miscellaneous-commands.ts
+- [[AddComment]] - code - space/components/issues/peek-overview/comment/add-comment.tsx
+- [[CommentCard_1]] - code - space/components/issues/peek-overview/comment/comment-detail-card.tsx
+- [[CommentReactions_1]] - code - space/components/issues/peek-overview/comment/comment-reactions.tsx
+- [[FullScreenPeekView]] - code - space/components/issues/peek-overview/full-screen-peek-view.tsx
+- [[IssueEmojiReactions]] - code - space/components/issues/reactions/issue-emoji-reactions.tsx
+- [[IssueEmojiReactionsProps]] - code - space/components/issues/reactions/issue-emoji-reactions.tsx
+- [[IssuePeekOverview_1]] - code - space/components/issues/peek-overview/layout.tsx
+- [[IssueReactions]] - code - space/components/issues/peek-overview/issue-reaction.tsx
+- [[IssueVotes]] - code - space/components/issues/reactions/issue-vote-reactions.tsx
+- [[LiteTextEditor]] - code - space/components/editor/lite-text-editor.tsx
+- [[PEEK_MODES]] - code - space/components/issues/peek-overview/header.tsx
+- [[PeekOverviewHeader]] - code - space/components/issues/peek-overview/header.tsx
+- [[PeekOverviewIssueActivity]] - code - space/components/issues/peek-overview/issue-activity.tsx
+- [[PeekOverviewIssueDetails_1]] - code - space/components/issues/peek-overview/issue-details.tsx
+- [[PeekOverviewIssueProperties]] - code - space/components/issues/peek-overview/issue-properties.tsx
+- [[Props_573]] - code - space/components/issues/peek-overview/comment/add-comment.tsx
+- [[Props_574]] - code - space/components/issues/peek-overview/comment/comment-detail-card.tsx
+- [[Props_575]] - code - space/components/issues/peek-overview/comment/comment-reactions.tsx
+- [[Props_558]] - code - space/components/issues/issue-layouts/kanban/block-reactions.tsx
+- [[Props_570]] - code - space/components/issues/peek-overview/full-screen-peek-view.tsx
+- [[Props_566]] - code - space/components/issues/peek-overview/header.tsx
+- [[Props_568]] - code - space/components/issues/peek-overview/issue-activity.tsx
+- [[Props_569]] - code - space/components/issues/peek-overview/issue-details.tsx
+- [[Props_567]] - code - space/components/issues/peek-overview/issue-reaction.tsx
+- [[Props_572]] - code - space/components/issues/peek-overview/side-peek-view.tsx
+- [[RichTextEditor]] - code - space/components/editor/rich-text-editor.tsx
+- [[SidePeekView]] - code - space/components/issues/peek-overview/side-peek-view.tsx
+- [[TIssuePeekOverview]] - code - space/components/issues/peek-overview/layout.tsx
+- [[TIssueVotes]] - code - space/components/issues/reactions/issue-vote-reactions.tsx
+- [[add-comment.tsx]] - code - space/components/issues/peek-overview/comment/add-comment.tsx
+- [[block-reactions.tsx]] - code - space/components/issues/issue-layouts/kanban/block-reactions.tsx
+- [[comment-detail-card.tsx]] - code - space/components/issues/peek-overview/comment/comment-detail-card.tsx
+- [[comment-reactions.tsx]] - code - space/components/issues/peek-overview/comment/comment-reactions.tsx
+- [[defaultValues_29]] - code - space/components/issues/peek-overview/comment/add-comment.tsx
+- [[emoji.helper.tsx_1]] - code - space/helpers/emoji.helper.tsx
+- [[emoji.helper.tsx]] - code - web/helpers/emoji.helper.tsx
+- [[fileService_9]] - code - space/components/issues/peek-overview/comment/add-comment.tsx
+- [[full-screen-peek-view.tsx]] - code - space/components/issues/peek-overview/full-screen-peek-view.tsx
+- [[groupReactions()_1]] - code - space/helpers/emoji.helper.tsx
+- [[header.tsx_60]] - code - space/components/issues/peek-overview/header.tsx
+- [[index.ts_452]] - code - space/hooks/store/publish/index.ts
+- [[issue-activity.tsx]] - code - space/components/issues/peek-overview/issue-activity.tsx
+- [[issue-details.tsx]] - code - space/components/issues/peek-overview/issue-details.tsx
+- [[issue-emoji-reactions.tsx]] - code - space/components/issues/reactions/issue-emoji-reactions.tsx
+- [[issue-reaction.tsx]] - code - space/components/issues/peek-overview/issue-reaction.tsx
+- [[issue-vote-reactions.tsx]] - code - space/components/issues/reactions/issue-vote-reactions.tsx
+- [[layout.tsx_52]] - code - space/components/issues/peek-overview/layout.tsx
+- [[renderEmoji()]] - code - space/helpers/emoji.helper.tsx
+- [[side-peek-view.tsx]] - code - space/components/issues/peek-overview/side-peek-view.tsx
+- [[use-clipboard-write-permission.tsx]] - code - space/hooks/use-clipboard-write-permission.tsx
+- [[use-is-in-iframe.tsx]] - code - space/hooks/use-is-in-iframe.tsx
+- [[use-issue-details.tsx]] - code - space/hooks/store/use-issue-details.tsx
+- [[useClipboardWritePermission()]] - code - space/hooks/use-clipboard-write-permission.tsx
+- [[useIsInIframe()]] - code - space/hooks/use-is-in-iframe.tsx
+- [[useIssueDetails()]] - code - space/hooks/store/use-issue-details.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -48,25 +74,18 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 16 edges to [[_COMMUNITY_Community 45]]
-- 13 edges to [[_COMMUNITY_Community 99]]
-- 4 edges to [[_COMMUNITY_Community 167]]
-- 3 edges to [[_COMMUNITY_Authentication UI]]
-- 3 edges to [[_COMMUNITY_Community 63]]
-- 2 edges to [[_COMMUNITY_Community 94]]
-- 2 edges to [[_COMMUNITY_Community 83]]
-- 2 edges to [[_COMMUNITY_Community 32]]
-- 1 edge to [[_COMMUNITY_Empty State Components]]
-- 1 edge to [[_COMMUNITY_Community 92]]
-- 1 edge to [[_COMMUNITY_Applied Filters UI]]
-- 1 edge to [[_COMMUNITY_Community 306]]
-- 1 edge to [[_COMMUNITY_Community 202]]
+- 12 edges to [[_COMMUNITY_Community 223]]
+- 9 edges to [[_COMMUNITY_Community 225]]
+- 9 edges to [[_COMMUNITY_Community 137]]
+- 8 edges to [[_COMMUNITY_Community 167]]
+- 5 edges to [[_COMMUNITY_Community 149]]
+- 3 edges to [[_COMMUNITY_Community 112]]
+- 2 edges to [[_COMMUNITY_Community 72]]
+- 2 edges to [[_COMMUNITY_Community 415]]
 
 ## Top bridge nodes
-
-- [[default.tsx_3]] - degree 10, connects to 4 communities
-- [[global-shortcuts.tsx]] - degree 14, connects to 3 communities
-- [[use-power-k.ts]] - degree 13, connects to 3 communities
-- [[use-chat-support.ts]] - degree 9, connects to 2 communities
-- [[miscellaneous-commands.ts]] - degree 8, connects to 2 communities
+- [[use-issue-details.tsx]] - degree 17, connects to 5 communities
+- [[comment-detail-card.tsx]] - degree 15, connects to 3 communities
+- [[useIssueDetails()]] - degree 13, connects to 3 communities
+- [[index.ts_452]] - degree 12, connects to 3 communities
+- [[add-comment.tsx]] - degree 12, connects to 2 communities

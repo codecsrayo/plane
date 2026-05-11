@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/home.ts"
 type: "code"
-community: "Issue Entity"
+community: "Community 118"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Entity
+  - community/Community_118
 ---
 
 # home.ts
 
 ## Connections
-
 - [[TActivityEntityData]] - `contains` [EXTRACTED]
 - [[THomeWidgetKeys]] - `contains` [EXTRACTED]
 - [[THomeWidgetProps]] - `contains` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[common.ts_4]] - `imports_from` [EXTRACTED]
 - [[issues.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Entity
+#graphify/code #graphify/EXTRACTED #community/Community_118

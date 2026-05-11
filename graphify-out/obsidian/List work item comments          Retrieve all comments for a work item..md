@@ -1,14 +1,14 @@
 ---
 source_file: "api/plane/api/views/issue.py"
 type: "rationale"
-community: "Work Comments"
+community: "Community 1686"
 location: "L1384"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Work_Comments
+  - community/Community_1686
 ---
 
-# List work item comments Retrieve all comments for a work item.
+# List work item comments          Retrieve all comments for a work item.
 
-#graphify/rationale #graphify/EXTRACTED #community/Work_Comments
+#graphify/rationale #graphify/EXTRACTED #community/Community_1686

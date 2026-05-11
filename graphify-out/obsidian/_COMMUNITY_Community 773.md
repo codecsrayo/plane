@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 773
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_39]] - code - web/core/components/gantt-chart/sidebar/index.ts
+- [[ProjectInboxIssuesLayout()]] - code - web/app/(all)/[workspaceSlug]/(projects)/notifications/layout.tsx
+- [[index.ts_385]] - code - web/core/components/workspace-notifications/sidebar/index.ts
+- [[layout.tsx_8]] - code - web/app/(all)/[workspaceSlug]/(projects)/notifications/layout.tsx
 
 ## Live Query (requires Dataview plugin)
 

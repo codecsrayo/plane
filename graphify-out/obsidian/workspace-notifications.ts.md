@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/workspace-notifications.ts"
 type: "code"
-community: "Estimate Notification"
+community: "Community 158"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Estimate_Notification
+  - community/Community_158
 ---
 
 # workspace-notifications.ts
 
 ## Connections
-
 - [[ENotificationFilterType_1]] - `imports` [EXTRACTED]
 - [[IUserLite]] - `imports` [EXTRACTED]
 - [[TNotification]] - `contains` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[enums.ts]] - `imports_from` [EXTRACTED]
 - [[users.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Estimate_Notification
+#graphify/code #graphify/EXTRACTED #community/Community_158

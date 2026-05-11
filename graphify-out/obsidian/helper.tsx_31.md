@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/empty-state/helper.tsx"
 type: "code"
-community: "Empty State"
+community: "Community 1050"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_State
+  - community/Community_1050
 ---
 
 # helper.tsx
 
 ## Connections
-
 - [[getEmptyStateImagePath()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_State
+#graphify/code #graphify/EXTRACTED #community/Community_1050

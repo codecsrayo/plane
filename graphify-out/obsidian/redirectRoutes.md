@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/routes/redirects/index.ts"
 type: "code"
-community: "Redirect Routes"
+community: "Community 573"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Redirect_Routes
+  - community/Community_573
 ---
 
 # redirectRoutes
 
 ## Connections
-
 - [[index.ts_198]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Redirect_Routes
+#graphify/code #graphify/EXTRACTED #community/Community_573

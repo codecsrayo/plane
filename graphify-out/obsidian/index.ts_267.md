@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/notifications/index.ts"
 type: "code"
-community: "Notification Content"
+community: "Community 411"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Notification_Content
+  - community/Community_411
 ---
 
 # index.ts
 
 ## Connections
-
 - [[applied-filter.tsx]] - `imports_from` [EXTRACTED]
 - [[item.tsx_2]] - `imports_from` [EXTRACTED]
 - [[menu-option-item.tsx]] - `imports_from` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[root.tsx_91]] - `imports_from` [EXTRACTED]
 - [[top-navigation-root.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Notification_Content
+#graphify/code #graphify/EXTRACTED #community/Community_411

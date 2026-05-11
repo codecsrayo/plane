@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/integration/github/pr-state-mapping.tsx"
 type: "code"
-community: "Project Workspace"
+community: "Project Filters & Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Workspace
+  - community/Project_Filters__Archives
 ---
 
 # pr-state-mapping.tsx
 
 ## Connections
-
 - [[GithubPRStateMapping]] - `contains` [EXTRACTED]
 - [[IntegrationConfirmActionModal()]] - `imports` [EXTRACTED]
 - [[Props_234]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[useProjectState()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Workspace
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

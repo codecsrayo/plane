@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/settings/boxed-control-item.tsx"
 type: "code"
-community: "Project Settings"
+community: "Community 115"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Community_115
 ---
 
 # boxed-control-item.tsx
 
 ## Connections
-
 - [[Props_180]] - `contains` [EXTRACTED]
 - [[SettingsBoxedControlItem()]] - `contains` [EXTRACTED]
 - [[control-section.tsx]] - `imports_from` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[root.tsx_21]] - `imports_from` [EXTRACTED]
 - [[root.tsx_126]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Community_115

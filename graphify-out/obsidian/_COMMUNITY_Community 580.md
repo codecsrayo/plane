@@ -1,18 +1,21 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.33
+members: 6
 ---
 
 # Community 580
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.33 - loosely connected
+**Members:** 6 nodes
 
 ## Members
-
-- [[.to()_82]] - code - api_rust/src/entities/issue_blockers.rs
-- [[Entity_82]] - code - api_rust/src/entities/issue_blockers.rs
+- [[Test workspace CRUD operations]] - rationale - api/plane/tests/contract/app/test_workspace_app.py
+- [[TestWorkspaceAPI]] - code - api/plane/tests/contract/app/test_workspace_app.py
+- [[test_create_duplicate_workspace()]] - code - api/plane/tests/contract/app/test_workspace_app.py
+- [[test_create_workspace_empty_data()]] - code - api/plane/tests/contract/app/test_workspace_app.py
+- [[test_create_workspace_valid_data()]] - code - api/plane/tests/contract/app/test_workspace_app.py
+- [[test_workspace_app.py]] - code - api/plane/tests/contract/app/test_workspace_app.py
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/analytics/work-items/workitems-insight-table.tsx"
 type: "code"
-community: "Insight Table"
+community: "Community 341"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Insight_Table
+  - community/Community_341
 ---
 
 # workitems-insight-table.tsx
 
 ## Connections
-
 - [[AnalyticsService]] - `imports` [EXTRACTED]
 - [[ColumnMeta]] - `contains` [EXTRACTED]
 - [[WorkItemsInsightTable]] - `contains` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[useAnalytics()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Insight_Table
+#graphify/code #graphify/EXTRACTED #community/Community_341

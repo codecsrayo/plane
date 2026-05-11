@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/auth/email_check.rs"
 type: "code"
-community: "Password Email"
+community: "Community 52"
 location: "L55"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Password_Email
+  - community/Community_52
 ---
 
 # run_email_check()
 
 ## Connections
-
 - [[.email_required()]] - `calls` [INFERRED]
 - [[.instance_not_configured()]] - `calls` [INFERRED]
 - [[.invalid_email()]] - `calls` [INFERRED]
@@ -21,4 +20,4 @@ tags:
 - [[email_check_space()]] - `calls` [EXTRACTED]
 - [[get_config_value()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Password_Email
+#graphify/code #graphify/INFERRED #community/Community_52

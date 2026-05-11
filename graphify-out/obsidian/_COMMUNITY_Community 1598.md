@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_247]] - code - web/ce/components/pages/editor/ai/index.ts
+- [[index.ts_301]] - code - web/core/components/workspace/billing/comparison/index.ts
 
 ## Live Query (requires Dataview plugin)
 

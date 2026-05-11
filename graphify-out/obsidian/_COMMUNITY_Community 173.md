@@ -1,31 +1,46 @@
 ---
 type: community
-cohesion: 0.15
-members: 15
+cohesion: 0.12
+members: 31
 ---
 
 # Community 173
 
-**Cohesion:** 0.15 - loosely connected
-**Members:** 15 nodes
+**Cohesion:** 0.12 - loosely connected
+**Members:** 31 nodes
 
 ## Members
-
-- [[IBaseProjectMemberStore]] - code - web/core/store/member/project/base-project-member.store.ts
-- [[IRouterStore]] - code - web/core/store/router.store.ts
-- [[allMembers]] - code - web/core/store/member/project/base-project-member.store.ts
-- [[base-project-member.store.ts]] - code - web/core/store/member/project/base-project-member.store.ts
-- [[constructor()_7]] - code - web/core/store/member/project/base-project-member.store.ts
-- [[filteredMemberIds_1]] - code - web/core/store/member/project/base-project-member.store.ts
-- [[memberDetails_1]] - code - web/core/store/member/project/base-project-member.store.ts
-- [[memberIds_1]] - code - web/core/store/member/project/base-project-member.store.ts
-- [[members_1]] - code - web/core/store/member/project/base-project-member.store.ts
-- [[membershipBeforeUpdate]] - code - web/core/store/member/project/base-project-member.store.ts
-- [[projectMember]] - code - web/core/store/member/project/base-project-member.store.ts
-- [[projectMembership]] - code - web/core/store/member/project/base-project-member.store.ts
-- [[router.store.ts]] - code - web/core/store/router.store.ts
-- [[updatedProjectRole]] - code - web/core/store/member/project/base-project-member.store.ts
-- [[use-router-params.ts]] - code - web/core/hooks/store/use-router-params.ts
+- [[.cancelUpload()_1]] - code - packages/services/src/file/file-upload.service.ts
+- [[.cancelUpload()]] - code - packages/services/src/file/sites-file.service.ts
+- [[.constructor()_18]] - code - packages/services/src/file/file.service.ts
+- [[.constructor()_17]] - code - packages/services/src/file/file-upload.service.ts
+- [[.constructor()_16]] - code - packages/services/src/file/sites-file.service.ts
+- [[.deleteNewAsset()]] - code - packages/services/src/file/file.service.ts
+- [[.deleteOldEditorAsset()]] - code - packages/services/src/file/file.service.ts
+- [[.duplicateAssets()]] - code - packages/services/src/file/file.service.ts
+- [[.restoreNewAsset()]] - code - packages/services/src/file/sites-file.service.ts
+- [[.restoreOldEditorAsset()]] - code - packages/services/src/file/file.service.ts
+- [[.updateAssetUploadStatus()]] - code - packages/services/src/file/sites-file.service.ts
+- [[.updateBulkAssetsUploadStatus()]] - code - packages/services/src/file/sites-file.service.ts
+- [[.uploadAsset()]] - code - packages/services/src/file/sites-file.service.ts
+- [[.uploadFile()]] - code - packages/services/src/file/file-upload.service.ts
+- [[FileService]] - code - packages/services/src/file/file.service.ts
+- [[FileUploadService]] - code - packages/services/src/file/file-upload.service.ts
+- [[SitesFileService]] - code - packages/services/src/file/sites-file.service.ts
+- [[detectMimeTypeFromSignature()]] - code - packages/services/src/file/helper.ts
+- [[file-upload.service.ts_2]] - code - packages/services/src/file/file-upload.service.ts
+- [[file-upload.service.ts]] - code - services/src/file/file-upload.service.ts
+- [[file.service.ts_2]] - code - packages/services/src/file/file.service.ts
+- [[file.service.ts]] - code - services/src/file/file.service.ts
+- [[generateFileUploadPayload()]] - code - packages/services/src/file/helper.ts
+- [[getAssetIdFromUrl()]] - code - packages/services/src/file/helper.ts
+- [[getFileMetaDataForUpload()]] - code - packages/services/src/file/helper.ts
+- [[helper.ts_9]] - code - packages/services/src/file/helper.ts
+- [[helper.ts]] - code - services/src/file/helper.ts
+- [[sites-file.service.ts_1]] - code - packages/services/src/file/sites-file.service.ts
+- [[sites-file.service.ts]] - code - services/src/file/sites-file.service.ts
+- [[validateAndDetectFileType()]] - code - packages/services/src/file/helper.ts
+- [[validateFilename()]] - code - packages/services/src/file/helper.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -35,24 +50,10 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 4 edges to [[_COMMUNITY_Community 150]]
-- 3 edges to [[_COMMUNITY_Community 230]]
-- 3 edges to [[_COMMUNITY_Community 231]]
-- 2 edges to [[_COMMUNITY_Applied Filters UI]]
-- 2 edges to [[_COMMUNITY_Community 63]]
-- 2 edges to [[_COMMUNITY_Project Estimates]]
-- 2 edges to [[_COMMUNITY_Community 37]]
-- 2 edges to [[_COMMUNITY_Community 67]]
-- 2 edges to [[_COMMUNITY_Community 44]]
-- 1 edge to [[_COMMUNITY_Community 92]]
-- 1 edge to [[_COMMUNITY_Community 161]]
-- 1 edge to [[_COMMUNITY_Git Integrations]]
-- 1 edge to [[_COMMUNITY_Community 58]]
+- 4 edges to [[_COMMUNITY_Community 83]]
 
 ## Top bridge nodes
-
-- [[base-project-member.store.ts]] - degree 30, connects to 9 communities
-- [[use-router-params.ts]] - degree 6, connects to 3 communities
-- [[router.store.ts]] - degree 6, connects to 3 communities
-- [[IRouterStore]] - degree 5, connects to 2 communities
+- [[file.service.ts_2]] - degree 5, connects to 1 community
+- [[file.service.ts]] - degree 5, connects to 1 community
+- [[file-upload.service.ts_2]] - degree 3, connects to 1 community
+- [[file-upload.service.ts]] - degree 3, connects to 1 community

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/estimate/base.py"
 type: "code"
-community: "Partial Endpoint"
+community: "Community 27"
 location: "L36"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Partial_Endpoint
+  - community/Community_27
 ---
 
 # get()
 
 ## Connections
-
 - [[.retrieve()_13]] - `calls` [EXTRACTED]
 - [[base.py_20]] - `contains` [EXTRACTED]
 - [[create()_20]] - `calls` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[partial_update()_15]] - `calls` [EXTRACTED]
 - [[response]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Partial_Endpoint
+#graphify/code #graphify/EXTRACTED #community/Community_27

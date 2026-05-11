@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/core/multiple-select/index.ts"
 type: "code"
-community: "Issue Activity"
+community: "Bulk Operations & Spreadsheet"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Bulk_Operations__Spreadsheet
 ---
 
 # index.ts
 
 ## Connections
-
 - [[block.tsx_4]] - `imports_from` [EXTRACTED]
 - [[block.tsx_7]] - `imports_from` [EXTRACTED]
 - [[default.tsx_1]] - `imports_from` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[spreadsheet-header.tsx]] - `imports_from` [EXTRACTED]
 - [[spreadsheet-view.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Bulk_Operations__Spreadsheet

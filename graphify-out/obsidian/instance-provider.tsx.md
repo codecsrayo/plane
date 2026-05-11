@@ -1,18 +1,17 @@
 ---
 source_file: "space/lib/instance-provider.tsx"
 type: "code"
-community: "Error Provider"
+community: "Community 43"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Error_Provider
+  - community/Community_43
 ---
 
 # instance-provider.tsx
 
 ## Connections
-
 - [[InstanceFailureView()]] - `imports` [EXTRACTED]
 - [[InstanceProvider_1]] - `contains` [EXTRACTED]
 - [[LogoSpinner()]] - `imports` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[useInstance()]] - `imports` [EXTRACTED]
 - [[useUser()_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Error_Provider
+#graphify/code #graphify/EXTRACTED #community/Community_43

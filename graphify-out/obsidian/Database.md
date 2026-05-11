@@ -1,18 +1,17 @@
 ---
 source_file: "live/src/extensions/database.ts"
 type: "code"
-community: "Workspace Webhook"
+community: "Community 126"
 location: "L136"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Workspace_Webhook
+  - community/Community_126
 ---
 
 # Database
 
 ## Connections
-
 - [[.constructor()_188]] - `method` [EXTRACTED]
 - [[bulk_update_issue_dates()]] - `calls` [INFERRED]
 - [[create_draft_issue()]] - `calls` [INFERRED]
@@ -34,4 +33,4 @@ tags:
 - [[update_me()]] - `calls` [INFERRED]
 - [[update_state()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Workspace_Webhook
+#graphify/code #graphify/INFERRED #community/Community_126

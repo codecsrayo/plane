@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/core/sidebar/progress-stats/state_group.tsx"
 type: "code"
-community: "Progress Stats"
+community: "Community 235"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Progress_Stats
+  - community/Community_235
 ---
 
 # state_group.tsx
 
 ## Connections
-
 - [[SingleProgressStats()]] - `imports` [EXTRACTED]
 - [[StateGroupStatComponent]] - `contains` [EXTRACTED]
 - [[TStateGroupData]] - `contains` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[progress-stats.tsx_1]] - `imports_from` [EXTRACTED]
 - [[single-progress-stats.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Progress_Stats
+#graphify/code #graphify/EXTRACTED #community/Community_235

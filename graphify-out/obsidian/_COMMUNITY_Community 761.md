@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 761
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[ActiveModel_110]] - code - api_rust/src/entities/estimates.rs
+- [[PageNotFound()]] - code - web/app/not-found.tsx
+- [[meta()]] - code - web/app/not-found.tsx
+- [[not-found.tsx]] - code - web/app/not-found.tsx
 
 ## Live Query (requires Dataview plugin)
 

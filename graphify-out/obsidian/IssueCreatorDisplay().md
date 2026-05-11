@@ -1,20 +1,19 @@
 ---
 source_file: "web/ce/components/issues/issue-details/issue-creator.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Issue Activity Types"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Issue_Activity_Types
 ---
 
 # IssueCreatorDisplay()
 
 ## Connections
-
 - [[activity-block.tsx]] - `imports` [EXTRACTED]
 - [[issue-creator.tsx]] - `contains` [EXTRACTED]
 - [[useIssueDetail()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Types

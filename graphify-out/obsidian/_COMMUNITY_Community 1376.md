@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_76]] - code - services/src/intake/index.ts
+- [[translations.ts]] - code - i18n/src/locales/vi-VN/translations.ts
 
 ## Live Query (requires Dataview plugin)
 

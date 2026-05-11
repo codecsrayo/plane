@@ -1,14 +1,14 @@
 ---
 source_file: "api/plane/api/views/cycle.py"
 type: "rationale"
-community: "Cycle Development"
+community: "Community 1735"
 location: "L300"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Cycle_Development
+  - community/Community_1735
 ---
 
-# Create cycle Create a new development cycle with specified name, descri
+# Create cycle          Create a new development cycle with specified name, descri
 
-#graphify/rationale #graphify/EXTRACTED #community/Cycle_Development
+#graphify/rationale #graphify/EXTRACTED #community/Community_1735

@@ -1,19 +1,18 @@
 ---
 source_file: "web/core/components/core/list/list-item.tsx"
 type: "code"
-community: "Project Settings"
+community: "Module & Cycle Analytics"
 location: "L37"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Module__Cycle_Analytics
 ---
 
 # ListItem()
 
 ## Connections
-
 - [[list-item.tsx_2]] - `contains` [EXTRACTED]
 - [[useAppRouter()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Module__Cycle_Analytics

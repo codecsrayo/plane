@@ -1,19 +1,18 @@
 ---
 source_file: "utils/src/rich-filters/operations/traversal/shared.ts"
 type: "code"
-community: "Find Conditions"
+community: "Community 374"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Find_Conditions
+  - community/Community_374
 ---
 
 # shared.ts
 
 ## Connections
-
 - [[core.ts_11]] - `imports_from` [EXTRACTED]
 - [[getDisplayOperator()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Find_Conditions
+#graphify/code #graphify/EXTRACTED #community/Community_374

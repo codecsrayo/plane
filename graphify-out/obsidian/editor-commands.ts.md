@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/helpers/editor-commands.ts"
 type: "code"
-community: "Toggle Menu"
+community: "Community 31"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toggle_Menu
+  - community/Community_31
 ---
 
 # editor-commands.ts
 
 ## Connections
-
 - [[CORE_EXTENSIONS]] - `imports` [EXTRACTED]
 - [[ExtendedEmojiStorage]] - `imports` [EXTRACTED]
 - [[InsertImageComponentProps]] - `imports` [EXTRACTED]
@@ -48,4 +47,4 @@ tags:
 - [[types.ts_6]] - `imports_from` [EXTRACTED]
 - [[unsetLinkEditor()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toggle_Menu
+#graphify/code #graphify/EXTRACTED #community/Community_31

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/pages/editor/toolbar/options-dropdown.tsx"
 type: "code"
-community: "Formats Values"
+community: "Community 133"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Formats_Values
+  - community/Community_133
 ---
 
 # options-dropdown.tsx
 
 ## Connections
-
 - [[ExportPageModal()]] - `imports` [EXTRACTED]
 - [[PageOptionsDropdown]] - `contains` [EXTRACTED]
 - [[Props_464]] - `contains` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[usePageFilters()]] - `imports` [EXTRACTED]
 - [[useQueryParams()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Formats_Values
+#graphify/code #graphify/EXTRACTED #community/Community_133

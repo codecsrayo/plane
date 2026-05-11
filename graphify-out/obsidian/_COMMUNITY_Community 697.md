@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.50
+members: 4
 ---
 
 # Community 697
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.50 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_47]] - code - api_rust/src/entities/page_versions.rs
+- [[0123_add_slack_integration.py]] - code - api/plane/db/migrations/0123_add_slack_integration.py
+- [[Migration_113]] - code - api/plane/db/migrations/0123_add_slack_integration.py
+- [[add_slack_integration()]] - code - api/plane/db/migrations/0123_add_slack_integration.py
+- [[remove_slack_integration()]] - code - api/plane/db/migrations/0123_add_slack_integration.py
 
 ## Live Query (requires Dataview plugin)
 

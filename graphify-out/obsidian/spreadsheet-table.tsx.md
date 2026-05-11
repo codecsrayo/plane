@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-table.tsx"
 type: "code"
-community: "Select Multiple"
+community: "Bulk Operations & Spreadsheet"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Select_Multiple
+  - community/Bulk_Operations__Spreadsheet
 ---
 
 # spreadsheet-table.tsx
 
 ## Connections
-
 - [[Props_268]] - `contains` [EXTRACTED]
 - [[SpreadsheetHeader]] - `imports` [EXTRACTED]
 - [[SpreadsheetIssueRow]] - `imports` [EXTRACTED]
@@ -33,4 +32,4 @@ tags:
 - [[useTableKeyboardNavigation()]] - `imports` [EXTRACTED]
 - [[utils.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Select_Multiple
+#graphify/code #graphify/EXTRACTED #community/Bulk_Operations__Spreadsheet

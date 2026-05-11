@@ -1,20 +1,19 @@
 ---
 source_file: "api/plane/app/views/integration/base.py"
 type: "code"
-community: "Endpoint User"
+community: "Community 27"
 location: "L261"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_User
+  - community/Community_27
 ---
 
-# \_postmessage_html()
+# _postmessage_html()
 
 ## Connections
-
 - [[.get()_33]] - `calls` [EXTRACTED]
 - [[Return a minimal HTML page that sends a postMessage to the opener window     and]] - `rationale_for` [EXTRACTED]
 - [[base.py_12]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_User
+#graphify/code #graphify/EXTRACTED #community/Community_27

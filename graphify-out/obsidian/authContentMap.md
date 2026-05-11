@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/auth-screens/header.tsx"
 type: "code"
-community: "Workspace Issue"
+community: "Community 70"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Issue
+  - community/Community_70
 ---
 
 # authContentMap
 
 ## Connections
-
 - [[header.tsx_56]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_70

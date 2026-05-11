@@ -1,33 +1,50 @@
 ---
 type: community
-cohesion: 0.17
-members: 17
+cohesion: 0.09
+members: 35
 ---
 
 # Community 151
 
-**Cohesion:** 0.17 - loosely connected
-**Members:** 17 nodes
+**Cohesion:** 0.09 - loosely connected
+**Members:** 35 nodes
 
 ## Members
-
-- [[AutoArchiveAutomation]] - code - web/core/components/automation/auto-archive-automation.tsx
-- [[Props_173]] - code - web/core/components/automation/auto-archive-automation.tsx
-- [[Props_103]] - code - web/core/components/settings/control-item.tsx
-- [[Props_464]] - code - web/core/components/core/theme/theme-switch.tsx
-- [[SettingsControlItem()]] - code - web/core/components/settings/control-item.tsx
-- [[StartOfWeekPreference]] - code - web/core/components/profile/start-of-week-preference.tsx
-- [[ThemeSwitch()]] - code - web/core/components/core/theme/theme-switch.tsx
-- [[ThemeSwitcher]] - code - web/core/components/appearance/theme-switcher.tsx
-- [[auto-archive-automation.tsx]] - code - web/core/components/automation/auto-archive-automation.tsx
-- [[control-item.tsx]] - code - web/core/components/settings/control-item.tsx
-- [[getStartOfWeekLabel()]] - code - web/core/components/profile/start-of-week-preference.tsx
-- [[index.ts_84]] - code - web/core/components/automation/index.ts
-- [[initialValues]] - code - web/core/components/automation/auto-archive-automation.tsx
-- [[language-and-timezone-list.tsx]] - code - web/core/components/settings/profile/content/pages/preferences/language-and-timezone-list.tsx
-- [[start-of-week-preference.tsx]] - code - web/core/components/profile/start-of-week-preference.tsx
-- [[theme-switch.tsx]] - code - web/core/components/core/theme/theme-switch.tsx
-- [[theme-switcher.tsx]] - code - web/core/components/appearance/theme-switcher.tsx
+- [[CopyLinkIcon()]] - code - packages/propel/src/icons/actions/copy-link.tsx
+- [[DefaultIcon()]] - code - packages/propel/src/icons/default-icon.tsx
+- [[ICON_REGISTRY]] - code - packages/propel/src/icons/registry.ts
+- [[IconName]] - code - packages/propel/src/icons/registry.ts
+- [[LabelFilledIcon()]] - code - packages/propel/src/icons/properties/label-filled-icon.tsx
+- [[copy-link.tsx_1]] - code - packages/propel/src/icons/actions/copy-link.tsx
+- [[copy-link.tsx]] - code - propel/src/icons/actions/copy-link.tsx
+- [[default-icon.tsx_1]] - code - packages/propel/src/icons/default-icon.tsx
+- [[default-icon.tsx]] - code - propel/src/icons/default-icon.tsx
+- [[getIconComponent()]] - code - packages/propel/src/icons/helpers.ts
+- [[getIconNames()]] - code - packages/propel/src/icons/helpers.ts
+- [[getIconsByCategory()]] - code - packages/propel/src/icons/helpers.ts
+- [[helpers.ts_4]] - code - packages/propel/src/icons/helpers.ts
+- [[helpers.ts_1]] - code - propel/src/icons/helpers.ts
+- [[index.ts_607]] - code - packages/propel/src/icons/actions/index.ts
+- [[index.ts_600]] - code - packages/propel/src/icons/arrows/index.ts
+- [[index.ts_604]] - code - packages/propel/src/icons/layouts/index.ts
+- [[index.ts_612]] - code - packages/propel/src/icons/misc/index.ts
+- [[index.ts_606]] - code - packages/propel/src/icons/project/index.ts
+- [[index.ts_611]] - code - packages/propel/src/icons/properties/index.ts
+- [[index.ts_609]] - code - packages/propel/src/icons/sub-brand/index.ts
+- [[index.ts_602]] - code - packages/propel/src/icons/workspace/index.ts
+- [[index.ts_146]] - code - propel/src/icons/actions/index.ts
+- [[index.ts_139]] - code - propel/src/icons/arrows/index.ts
+- [[index.ts_143]] - code - propel/src/icons/layouts/index.ts
+- [[index.ts_151]] - code - propel/src/icons/misc/index.ts
+- [[index.ts_145]] - code - propel/src/icons/project/index.ts
+- [[index.ts_150]] - code - propel/src/icons/properties/index.ts
+- [[index.ts_148]] - code - propel/src/icons/sub-brand/index.ts
+- [[index.ts_141]] - code - propel/src/icons/workspace/index.ts
+- [[isValidIconName()]] - code - packages/propel/src/icons/helpers.ts
+- [[label-filled-icon.tsx_1]] - code - packages/propel/src/icons/properties/label-filled-icon.tsx
+- [[label-filled-icon.tsx]] - code - propel/src/icons/properties/label-filled-icon.tsx
+- [[registry.ts_2]] - code - packages/propel/src/icons/registry.ts
+- [[registry.ts]] - code - propel/src/icons/registry.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -37,19 +54,13 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 4 edges to [[_COMMUNITY_Empty State Components]]
-- 3 edges to [[_COMMUNITY_Community 36]]
-- 2 edges to [[_COMMUNITY_Applied Filters UI]]
-- 2 edges to [[_COMMUNITY_Community 232]]
-- 2 edges to [[_COMMUNITY_Community 182]]
-- 2 edges to [[_COMMUNITY_Community 174]]
-- 1 edge to [[_COMMUNITY_Community 306]]
+- 12 edges to [[_COMMUNITY_Icon Library & Branding]]
+- 12 edges to [[_COMMUNITY_SVG Icon Components]]
+- 6 edges to [[_COMMUNITY_Community 244]]
 
 ## Top bridge nodes
-
-- [[language-and-timezone-list.tsx]] - degree 8, connects to 3 communities
-- [[auto-archive-automation.tsx]] - degree 9, connects to 2 communities
-- [[theme-switcher.tsx]] - degree 8, connects to 2 communities
-- [[control-item.tsx]] - degree 8, connects to 2 communities
-- [[SettingsControlItem()]] - degree 7, connects to 2 communities
+- [[copy-link.tsx_1]] - degree 6, connects to 2 communities
+- [[default-icon.tsx_1]] - degree 6, connects to 2 communities
+- [[label-filled-icon.tsx_1]] - degree 6, connects to 2 communities
+- [[copy-link.tsx]] - degree 6, connects to 2 communities
+- [[default-icon.tsx]] - degree 6, connects to 2 communities

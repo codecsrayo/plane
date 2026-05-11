@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/use-realtime-page-events.tsx"
 type: "code"
-community: "Content Body"
+community: "Community 213"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Content_Body
+  - community/Community_213
 ---
 
 # use-realtime-page-events.tsx
 
 ## Connections
-
 - [[PageUpdateHandler]] - `contains` [EXTRACTED]
 - [[TCustomEventHandlers]] - `contains` [EXTRACTED]
 - [[TEditorBodyHandlers]] - `imports` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[useAppRouter()]] - `imports` [EXTRACTED]
 - [[useRealtimePageEvents()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Content_Body
+#graphify/code #graphify/EXTRACTED #community/Community_213

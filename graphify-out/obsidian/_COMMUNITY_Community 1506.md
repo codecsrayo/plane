@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_147]] - code - propel/src/icons/cycle/index.ts
+- [[index.ts_168]] - code - propel/src/charts/tree-map/index.ts
 
 ## Live Query (requires Dataview plugin)
 

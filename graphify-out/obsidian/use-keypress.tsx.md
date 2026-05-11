@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/use-keypress.tsx"
 type: "code"
-community: "Issue Inbox"
+community: "Activity & Inbox Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Inbox
+  - community/Activity__Inbox_Filters
 ---
 
 # use-keypress.tsx
 
 ## Connections
-
 - [[create-project-modal.tsx]] - `imports_from` [EXTRACTED]
 - [[create-root.tsx]] - `imports_from` [EXTRACTED]
 - [[create-webhook-modal.tsx]] - `imports_from` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[useKeypress()]] - `contains` [EXTRACTED]
 - [[view.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Inbox
+#graphify/code #graphify/EXTRACTED #community/Activity__Inbox_Filters

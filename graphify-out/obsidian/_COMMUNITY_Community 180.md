@@ -1,30 +1,45 @@
 ---
 type: community
-cohesion: 0.15
-members: 14
+cohesion: 0.14
+members: 30
 ---
 
 # Community 180
 
-**Cohesion:** 0.15 - loosely connected
-**Members:** 14 nodes
+**Cohesion:** 0.14 - loosely connected
+**Members:** 30 nodes
 
 ## Members
-
-- [[accepts_full_https()]] - code - api_rust/src/utils/url.rs
-- [[accepts_localhost_and_ipv4()]] - code - api_rust/src/utils/url.rs
-- [[allows_normal_names()]] - code - api_rust/src/utils/url.rs
-- [[contains_url()]] - code - api_rust/src/utils/url.rs
-- [[detects_bare_domain()]] - code - api_rust/src/utils/url.rs
-- [[detects_http_url()]] - code - api_rust/src/utils/url.rs
-- [[detects_ipv4()]] - code - api_rust/src/utils/url.rs
-- [[detects_www_url()]] - code - api_rust/src/utils/url.rs
-- [[long_input_returns_false()]] - code - api_rust/src/utils/url.rs
-- [[prepends_http_when_missing_scheme()]] - code - api_rust/src/utils/url.rs
-- [[rejects_garbage()]] - code - api_rust/src/utils/url.rs
-- [[update_workspace()]] - code - api_rust/src/routes/workspaces.rs
-- [[url.rs]] - code - api_rust/src/utils/url.rs
-- [[url_pattern()]] - code - api_rust/src/utils/url.rs
+- [[CodeBlock]] - code - packages/editor/src/core/extensions/code/code-block.ts
+- [[CodeBlockComponent()]] - code - packages/editor/src/core/extensions/code/code-block-node-view.tsx
+- [[CodeBlockLowlight]] - code - packages/editor/src/core/extensions/code/code-block-lowlight.ts
+- [[CodeBlockLowlightOptions]] - code - packages/editor/src/core/extensions/code/code-block-lowlight.ts
+- [[CodeBlockOptions]] - code - packages/editor/src/core/extensions/code/code-block.ts
+- [[Commands_7]] - code - packages/editor/src/core/extensions/code/code-block.ts
+- [[CustomCodeBlockExtension]] - code - packages/editor/src/core/extensions/code/index.tsx
+- [[ECodeBlockAttributeNames]] - code - packages/editor/src/core/extensions/code/types.ts
+- [[LowlightPlugin()]] - code - packages/editor/src/core/extensions/code/lowlight-plugin.ts
+- [[Props_38]] - code - packages/editor/src/core/extensions/code/code-block-node-view.tsx
+- [[TCodeBlockAttributes]] - code - packages/editor/src/core/extensions/code/types.ts
+- [[code-block-lowlight.ts]] - code - editor/src/core/extensions/code/code-block-lowlight.ts
+- [[code-block-lowlight.ts_1]] - code - packages/editor/src/core/extensions/code/code-block-lowlight.ts
+- [[code-block-node-view.tsx]] - code - editor/src/core/extensions/code/code-block-node-view.tsx
+- [[code-block-node-view.tsx_1]] - code - packages/editor/src/core/extensions/code/code-block-node-view.tsx
+- [[code-block.ts]] - code - editor/src/core/extensions/code/code-block.ts
+- [[code-block.ts_1]] - code - packages/editor/src/core/extensions/code/code-block.ts
+- [[getDecorations()]] - code - packages/editor/src/core/extensions/code/lowlight-plugin.ts
+- [[getHighlightNodes()]] - code - packages/editor/src/core/extensions/code/lowlight-plugin.ts
+- [[index.tsx_1]] - code - editor/src/core/extensions/code/index.tsx
+- [[index.tsx_21]] - code - packages/editor/src/core/extensions/code/index.tsx
+- [[isFunction()]] - code - packages/editor/src/core/extensions/code/lowlight-plugin.ts
+- [[lowlight_2]] - code - packages/editor/src/core/extensions/code/code-block-node-view.tsx
+- [[lowlight]] - code - packages/editor/src/core/extensions/code/index.tsx
+- [[lowlight-plugin.ts]] - code - editor/src/core/extensions/code/lowlight-plugin.ts
+- [[lowlight-plugin.ts_1]] - code - packages/editor/src/core/extensions/code/lowlight-plugin.ts
+- [[parseNodes()]] - code - packages/editor/src/core/extensions/code/lowlight-plugin.ts
+- [[registered()]] - code - packages/editor/src/core/extensions/code/lowlight-plugin.ts
+- [[types.ts_4]] - code - editor/src/core/extensions/code/types.ts
+- [[types.ts_25]] - code - packages/editor/src/core/extensions/code/types.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -34,15 +49,12 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 4 edges to [[_COMMUNITY_Workspace Activity & Analytics]]
-- 1 edge to [[_COMMUNITY_Auth Rust API]]
-- 1 edge to [[_COMMUNITY_Workspace & Issues Rust API]]
-- 1 edge to [[_COMMUNITY_Modules Rust API]]
+- 4 edges to [[_COMMUNITY_Community 30]]
+- 4 edges to [[_COMMUNITY_Community 90]]
 
 ## Top bridge nodes
-
-- [[update_workspace()]] - degree 5, connects to 2 communities
-- [[url.rs]] - degree 13, connects to 1 community
-- [[contains_url()]] - degree 4, connects to 1 community
-- [[url_pattern()]] - degree 3, connects to 1 community
+- [[code-block-lowlight.ts]] - degree 9, connects to 1 community
+- [[code-block-lowlight.ts_1]] - degree 9, connects to 1 community
+- [[CodeBlockLowlight]] - degree 6, connects to 1 community
+- [[code-block.ts]] - degree 6, connects to 1 community
+- [[code-block.ts_1]] - degree 6, connects to 1 community

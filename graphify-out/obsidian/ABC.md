@@ -1,18 +1,17 @@
 ---
 source_file: ""
 type: "code"
-community: "Exporter Formatter"
+community: "Community 69"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Exporter_Formatter
+  - community/Community_69
 ---
 
 # ABC
 
 ## Connections
-
 - [[BaseFormatter_1]] - `inherits` [EXTRACTED]
 - [[formatters.py_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Exporter_Formatter
+#graphify/code #graphify/EXTRACTED #community/Community_69

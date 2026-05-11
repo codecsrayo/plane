@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/project/base.py"
 type: "code"
-community: "Project Endpoint"
+community: "Community 27"
 location: "L469"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Project_Endpoint
+  - community/Community_27
 ---
 
 # ProjectUserViewsEndpoint
 
 ## Connections
-
 - [[.post()_12]] - `method` [EXTRACTED]
 - [[BaseAPIView]] - `uses` [INFERRED]
 - [[BaseAPIView_1]] - `inherits` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[IntakeIssueStatus]] - `uses` [INFERRED]
 - [[base.py_11]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Project_Endpoint
+#graphify/code #graphify/INFERRED #community/Community_27

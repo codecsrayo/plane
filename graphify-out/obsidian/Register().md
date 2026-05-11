@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/routes/redirects/core/register.tsx"
 type: "code"
-community: "Client Register"
+community: "Community 767"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Client_Register
+  - community/Community_767
 ---
 
 # Register()
 
 ## Connections
-
 - [[register.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Client_Register
+#graphify/code #graphify/EXTRACTED #community/Community_767

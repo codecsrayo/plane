@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_423]] - code - web/core/components/pages/navigation-pane/types/index.ts
+- [[__init__.py_1]] - code - api/plane/web/__init__.py
 
 ## Live Query (requires Dataview plugin)
 

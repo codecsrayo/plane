@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/use-power-k.ts"
 type: "code"
-community: "Power Shortcuts"
+community: "Community 130"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Power_Shortcuts
+  - community/Community_130
 ---
 
 # use-power-k.ts
 
 ## Connections
-
 - [[StoreContext]] - `imports` [EXTRACTED]
 - [[default.tsx_3]] - `imports_from` [EXTRACTED]
 - [[global-shortcuts.tsx]] - `imports_from` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[usePowerK()]] - `contains` [EXTRACTED]
 - [[wrapper.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Power_Shortcuts
+#graphify/code #graphify/EXTRACTED #community/Community_130

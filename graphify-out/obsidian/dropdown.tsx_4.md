@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/dropdowns/project/dropdown.tsx"
 type: "code"
-community: "Label Dropdown"
+community: "Module & Cycle Analytics"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Dropdown
+  - community/Module__Cycle_Analytics
 ---
 
 # dropdown.tsx
 
 ## Connections
-
 - [[ProjectDropdown]] - `contains` [EXTRACTED]
 - [[ProjectDropdownBase]] - `imports` [EXTRACTED]
 - [[Props_199]] - `contains` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Module__Cycle_Analytics

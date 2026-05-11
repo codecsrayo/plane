@@ -1,18 +1,17 @@
 ---
 source_file: "space/hooks/store/publish/index.ts"
 type: "code"
-community: "Issue Peek"
+community: "Community 80"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Peek
+  - community/Community_80
 ---
 
 # index.ts
 
 ## Connections
-
 - [[add-comment.tsx]] - `imports_from` [EXTRACTED]
 - [[block-reactions.tsx]] - `imports_from` [EXTRACTED]
 - [[block.tsx_9]] - `imports_from` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[page.tsx_82]] - `imports_from` [EXTRACTED]
 - [[side-peek-view.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Peek
+#graphify/code #graphify/EXTRACTED #community/Community_80

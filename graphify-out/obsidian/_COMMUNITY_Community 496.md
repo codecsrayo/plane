@@ -1,17 +1,24 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.39
+members: 9
 ---
 
 # Community 496
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.39 - loosely connected
+**Members:** 9 nodes
 
 ## Members
-
-- [[index.ts_111]] - code - types/src/intake/index.ts
+- [[EProductSubscriptionEnum]] - code - packages/types/src/payment.ts
+- [[IPaymentProduct]] - code - packages/types/src/payment.ts
+- [[IPaymentProductPrice]] - code - packages/types/src/payment.ts
+- [[TBillingFrequency]] - code - packages/types/src/payment.ts
+- [[TProductBillingFrequency]] - code - packages/types/src/payment.ts
+- [[TProductSubscriptionType]] - code - packages/types/src/payment.ts
+- [[TSubscriptionPrice]] - code - packages/types/src/payment.ts
+- [[payment.ts_3]] - code - packages/types/src/payment.ts
+- [[payment.ts_1]] - code - types/src/payment.ts
 
 ## Live Query (requires Dataview plugin)
 

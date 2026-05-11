@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/power-k/config/creation/command.ts"
 type: "code"
-community: "Project Profile"
+community: "Community 220"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Profile
+  - community/Community_220
 ---
 
 # command.ts
 
 ## Connections
-
 - [[TPowerKCommandConfig]] - `imports` [EXTRACTED]
 - [[TPowerKContext]] - `imports` [EXTRACTED]
 - [[TPowerKCreationCommandKeys]] - `contains` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[usePowerKCreationCommandsRecord()]] - `contains` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Profile
+#graphify/code #graphify/EXTRACTED #community/Community_220

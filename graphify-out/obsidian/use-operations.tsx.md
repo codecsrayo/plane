@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/stickies/sticky/use-operations.tsx"
 type: "code"
-community: "Stickies Sticky"
+community: "Community 357"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Stickies_Sticky
+  - community/Community_357
 ---
 
 # use-operations.tsx
 
 ## Connections
-
 - [[STICKY_COLORS_LIST]] - `imports` [EXTRACTED]
 - [[TOperations]] - `contains` [EXTRACTED]
 - [[TProps_10]] - `contains` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[useStickyOperations()]] - `contains` [EXTRACTED]
 - [[widget.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Stickies_Sticky
+#graphify/code #graphify/EXTRACTED #community/Community_357

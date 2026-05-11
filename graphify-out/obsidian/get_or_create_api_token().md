@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/integrations/helpers.rs"
 type: "code"
-community: "Workspace Webhook"
+community: "Community 126"
 location: "L23"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Workspace_Webhook
+  - community/Community_126
 ---
 
 # get_or_create_api_token()
 
 ## Connections
-
 - [[.new()]] - `calls` [INFERRED]
 - [[.set()]] - `calls` [INFERRED]
 - [[Database]] - `calls` [INFERRED]
@@ -22,4 +21,4 @@ tags:
 - [[now]] - `calls` [INFERRED]
 - [[provider_install()_1]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Workspace_Webhook
+#graphify/code #graphify/INFERRED #community/Community_126

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/onboarding/steps/workspace/join-invites.tsx"
 type: "code"
-community: "Workspace Issue"
+community: "Community 46"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Issue
+  - community/Community_46
 ---
 
 # join-invites.tsx
 
 ## Connections
-
 - [[Props_438]] - `contains` [EXTRACTED]
 - [[WorkspaceJoinInvitesStep()]] - `contains` [EXTRACTED]
 - [[WorkspaceLogo]] - `imports` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[workspace.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[workspaceService_15]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_46

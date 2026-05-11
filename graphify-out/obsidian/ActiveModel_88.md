@@ -1,14 +1,14 @@
 ---
 source_file: "api_rust/src/entities/instance_admins.rs"
 type: "code"
-community: "Active Model"
+community: "Community 2052"
 location: "L64"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Model
+  - community/Community_2052
 ---
 
 # ActiveModel
 
-#graphify/code #graphify/EXTRACTED #community/Active_Model
+#graphify/code #graphify/EXTRACTED #community/Community_2052

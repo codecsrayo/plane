@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/instance/image.ts"
 type: "code"
-community: "Image Instance"
+community: "Community 726"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Image_Instance
+  - community/Community_726
 ---
 
 # image.ts
 
 ## Connections
-
 - [[TInstanceImageConfigurationKeys]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Image_Instance
+#graphify/code #graphify/EXTRACTED #community/Community_726

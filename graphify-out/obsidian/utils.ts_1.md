@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/callout/utils.ts"
 type: "code"
-community: "Callout Custom"
+community: "Community 82"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Callout_Custom
+  - community/Community_82
 ---
 
 # utils.ts
 
 ## Connections
-
 - [[DEFAULT_CALLOUT_BLOCK_ATTRIBUTES]] - `contains` [EXTRACTED]
 - [[ECalloutAttributeNames]] - `imports` [EXTRACTED]
 - [[TCalloutBlockAttributes]] - `imports` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[updateStoredBackgroundColor()]] - `contains` [EXTRACTED]
 - [[updateStoredLogo()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Callout_Custom
+#graphify/code #graphify/EXTRACTED #community/Community_82

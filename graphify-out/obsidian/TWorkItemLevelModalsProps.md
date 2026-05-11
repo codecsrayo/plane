@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/components/command-palette/modals/work-item-level.tsx"
 type: "code"
-community: "Issue Work"
+community: "Project Filters & Archives"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Work
+  - community/Project_Filters__Archives
 ---
 
 # TWorkItemLevelModalsProps
 
 ## Connections
-
 - [[work-item-level.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Work
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

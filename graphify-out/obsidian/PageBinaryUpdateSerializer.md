@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/serializers/page.py"
 type: "code"
-community: "Serializer Validate"
+community: "Community 360"
 location: "L173"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Serializer_Validate
+  - community/Community_360
 ---
 
 # PageBinaryUpdateSerializer
 
 ## Connections
-
 - [[.partial_update()_3]] - `calls` [INFERRED]
 - [[.update()_20]] - `method` [EXTRACTED]
 - [[.validate_description_binary()]] - `method` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[Serializer for updating page binary description with validation]] - `rationale_for` [EXTRACTED]
 - [[page.py_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Serializer_Validate
+#graphify/code #graphify/EXTRACTED #community/Community_360

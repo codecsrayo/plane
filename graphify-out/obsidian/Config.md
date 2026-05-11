@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/config.rs"
 type: "code"
-community: "Config Only"
+community: "Community 240"
 location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Config_Only
+  - community/Community_240
 ---
 
 # Config
 
 ## Connections
-
 - [[.admin_base()]] - `method` [EXTRACTED]
 - [[.app_base()]] - `method` [EXTRACTED]
 - [[.app_base_url_only()]] - `method` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[delete_old_s3_link()]] - `calls` [INFERRED]
 - [[upload_to_s3()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Config_Only
+#graphify/code #graphify/EXTRACTED #community/Community_240

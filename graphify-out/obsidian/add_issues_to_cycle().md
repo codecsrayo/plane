@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/cycles.rs"
 type: "code"
-community: "Cycle Request"
+community: "Community 93"
 location: "L655"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Cycle_Request
+  - community/Community_93
 ---
 
 # add_issues_to_cycle()
 
 ## Connections
-
 - [[.json()]] - `calls` [INFERRED]
 - [[.new()]] - `calls` [INFERRED]
 - [[.set()]] - `calls` [INFERRED]
@@ -20,4 +19,4 @@ tags:
 - [[now]] - `calls` [INFERRED]
 - [[require_role()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Cycle_Request
+#graphify/code #graphify/INFERRED #community/Community_93

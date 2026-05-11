@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/assets.rs"
 type: "code"
-community: "Asset Issue"
+community: "Community 34"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Asset_Issue
+  - community/Community_34
 ---
 
 # assets.rs
 
 ## Connections
-
 - [[AssetCheckResponse]] - `contains` [EXTRACTED]
 - [[AssetResponse]] - `contains` [EXTRACTED]
 - [[BulkAssetRequest]] - `contains` [EXTRACTED]
@@ -58,4 +57,4 @@ tags:
 - [[restore_workspace_asset()]] - `contains` [EXTRACTED]
 - [[soft_delete_asset()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Asset_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_34

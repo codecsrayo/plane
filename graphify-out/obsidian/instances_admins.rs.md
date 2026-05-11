@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/instances_admins.rs"
 type: "code"
-community: "Returns Sign"
+community: "Rust Auth Services"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Sign
+  - community/Rust_Auth_Services
 ---
 
 # instances_admins.rs
 
 ## Connections
-
 - [[admin_sign_in_missing_fields_redirects_error()]] - `contains` [EXTRACTED]
 - [[admin_sign_in_nonexistent_user_redirects_error()]] - `contains` [EXTRACTED]
 - [[admin_sign_in_wrong_password_redirects_error()]] - `contains` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[list_instance_admins_regular_user_returns_403()]] - `contains` [EXTRACTED]
 - [[list_instance_admins_unauthenticated_returns_401()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Sign
+#graphify/code #graphify/EXTRACTED #community/Rust_Auth_Services

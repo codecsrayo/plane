@@ -1,20 +1,19 @@
 ---
 source_file: "web/core/components/labels/label-block/label-name.tsx"
 type: "code"
-community: "Label Drag"
+community: "Community 201"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Drag
+  - community/Community_201
 ---
 
 # LabelName()
 
 ## Connections
-
 - [[label-drag-n-drop-HOC.tsx]] - `imports` [EXTRACTED]
 - [[label-item-block.tsx]] - `imports` [EXTRACTED]
 - [[label-name.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Drag
+#graphify/code #graphify/EXTRACTED #community/Community_201

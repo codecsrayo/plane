@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/settings/profile/sidebar/root.tsx"
 type: "code"
-community: "Sidebar Settings"
+community: "Community 166"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Settings
+  - community/Community_166
 ---
 
 # ProfileSettingsSidebarRoot()
 
 ## Connections
-
 - [[root.tsx_58]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Settings
+#graphify/code #graphify/EXTRACTED #community/Community_166

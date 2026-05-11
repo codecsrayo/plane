@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.50
+members: 4
 ---
 
 # Community 699
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.50 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_49]] - code - api_rust/src/entities/auth_group_permissions.rs
+- [[0043_alter_analyticview_created_by_and_more.py]] - code - api/plane/db/migrations/0043_alter_analyticview_created_by_and_more.py
+- [[Migration_107]] - code - api/plane/db/migrations/0043_alter_analyticview_created_by_and_more.py
+- [[create_issue_relation()]] - code - api/plane/db/migrations/0043_alter_analyticview_created_by_and_more.py
+- [[update_issue_priority_choice()]] - code - api/plane/db/migrations/0043_alter_analyticview_created_by_and_more.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -19,3 +21,9 @@ members: 1
 TABLE source_file, type FROM #community/Community_699
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Community 26]]
+
+## Top bridge nodes
+- [[create_issue_relation()]] - degree 2, connects to 1 community

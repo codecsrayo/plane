@@ -1,18 +1,17 @@
 ---
 source_file: "services/src/file/sites-file.service.ts"
 type: "code"
-community: "Upload Detect"
+community: "Community 173"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Upload_Detect
+  - community/Community_173
 ---
 
 # sites-file.service.ts
 
 ## Connections
-
 - [[FileService]] - `imports` [EXTRACTED]
 - [[FileUploadService]] - `imports` [EXTRACTED]
 - [[SitesFileService]] - `contains` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[getFileMetaDataForUpload()]] - `imports` [EXTRACTED]
 - [[helper.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Upload_Detect
+#graphify/code #graphify/EXTRACTED #community/Community_173

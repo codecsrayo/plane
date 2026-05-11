@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.50
+members: 4
 ---
 
 # Community 671
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.50 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_21]] - code - api_rust/src/entities/workspace_members.rs
+- [[TWorkItemTemplateDropdownSize]] - code - web/ce/components/issues/issue-modal/template-select.tsx
+- [[TWorkItemTemplateSelect]] - code - web/ce/components/issues/issue-modal/template-select.tsx
+- [[WorkItemTemplateSelect()]] - code - web/ce/components/issues/issue-modal/template-select.tsx
+- [[template-select.tsx_1]] - code - web/ce/components/issues/issue-modal/template-select.tsx
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,18 +1,17 @@
 ---
 source_file: "shared-state/src/store/work-item-filters/filter.store.ts"
 type: "code"
-community: "Work Condition"
+community: "Community 264"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Work_Condition
+  - community/Community_264
 ---
 
 # filter.store.ts
 
 ## Connections
-
 - [[FilterInstance]] - `imports` [EXTRACTED]
 - [[IWorkItemFilterInstance]] - `imports` [EXTRACTED]
 - [[IWorkItemFilterStore]] - `contains` [EXTRACTED]
@@ -33,4 +32,4 @@ tags:
 - [[shared.ts_10]] - `imports_from` [EXTRACTED]
 - [[{ operator, isNegation }]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Work_Condition
+#graphify/code #graphify/EXTRACTED #community/Community_264

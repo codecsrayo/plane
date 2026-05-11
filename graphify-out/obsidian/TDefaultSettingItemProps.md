@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/project/project-settings-member-defaults.tsx"
 type: "code"
-community: "Project Workspace"
+community: "Community 36"
 location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Workspace
+  - community/Community_36
 ---
 
 # TDefaultSettingItemProps
 
 ## Connections
-
 - [[project-settings-member-defaults.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_36

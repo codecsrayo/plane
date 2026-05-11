@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/issue-layout-HOC.tsx"
 type: "code"
-community: "Loader Calendar"
+community: "Filter UI & Breadcrumbs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Loader_Calendar
+  - community/Filter_UI__Breadcrumbs
 ---
 
 # issue-layout-HOC.tsx
 
 ## Connections
-
 - [[ActiveLoader()]] - `contains` [EXTRACTED]
 - [[CalendarLayoutLoader()]] - `imports` [EXTRACTED]
 - [[GanttLayoutLoader()]] - `imports` [EXTRACTED]
@@ -39,4 +38,4 @@ tags:
 - [[useIssues()]] - `imports` [EXTRACTED]
 - [[workspace-root.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Loader_Calendar
+#graphify/code #graphify/EXTRACTED #community/Filter_UI__Breadcrumbs

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/analytics/overview/active-projects.tsx"
 type: "code"
-community: "Webhook Workspace"
+community: "Community 341"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Webhook_Workspace
+  - community/Community_341
 ---
 
 # active-projects.tsx
 
 ## Connections
-
 - [[ActiveProjects]] - `contains` [EXTRACTED]
 - [[active-project-item.tsx]] - `imports_from` [EXTRACTED]
 - [[analytics-section-wrapper.tsx]] - `imports_from` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[useAnalytics()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Webhook_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_341

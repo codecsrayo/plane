@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/views/(list)/mobile-header.tsx"
 type: "code"
-community: "Member Members"
+community: "Issue Display Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Members
+  - community/Issue_Display_Filters
 ---
 
 # mobile-header.tsx
 
 ## Connections
-
 - [[ViewFiltersSelection]] - `imports` [EXTRACTED]
 - [[ViewMobileHeader]] - `contains` [EXTRACTED]
 - [[ViewOrderByDropdown()]] - `imports` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[useMember()]] - `imports` [EXTRACTED]
 - [[useProjectView()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Members
+#graphify/code #graphify/EXTRACTED #community/Issue_Display_Filters

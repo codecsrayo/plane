@@ -1,19 +1,19 @@
 ---
-source_file: "services/src/intake/intake.service.ts"
+source_file: "packages/services/src/intake/intake.service.ts"
 type: "code"
-community: "Sites Cycle"
+community: "Community 83"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sites_Cycle
+  - community/Community_83
 ---
 
 # IntakeService
 
 ## Connections
-
 - [[.constructor()_31]] - `method` [EXTRACTED]
 - [[intake.service.ts]] - `contains` [EXTRACTED]
+- [[intake.service.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sites_Cycle
+#graphify/code #graphify/EXTRACTED #community/Community_83

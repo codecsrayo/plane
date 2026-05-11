@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/billing/page.tsx"
 type: "code"
-community: "Project Settings"
+community: "Community 24"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Community_24
 ---
 
 # page.tsx
 
 ## Connections
-
 - [[BillingSettingsPage()]] - `contains` [EXTRACTED]
 - [[BillingWorkspaceSettingsHeader]] - `imports` [EXTRACTED]
 - [[NotAuthorizedView]] - `imports` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[use-workspace.ts]] - `imports_from` [EXTRACTED]
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Community_24

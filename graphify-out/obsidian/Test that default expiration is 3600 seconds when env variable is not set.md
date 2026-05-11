@@ -1,14 +1,14 @@
 ---
 source_file: "api/plane/tests/unit/settings/test_storage.py"
 type: "rationale"
-community: "Test That"
+community: "Community 1860"
 location: "L18"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Test_That
+  - community/Community_1860
 ---
 
 # Test that default expiration is 3600 seconds when env variable is not set
 
-#graphify/rationale #graphify/EXTRACTED #community/Test_That
+#graphify/rationale #graphify/EXTRACTED #community/Community_1860

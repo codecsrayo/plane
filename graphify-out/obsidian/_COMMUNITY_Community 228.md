@@ -1,25 +1,40 @@
 ---
 type: community
-cohesion: 0.25
-members: 9
+cohesion: 0.19
+members: 25
 ---
 
 # Community 228
 
-**Cohesion:** 0.25 - loosely connected
-**Members:** 9 nodes
+**Cohesion:** 0.19 - loosely connected
+**Members:** 25 nodes
 
 ## Members
-
-- [[.as_payload_str()_1]] - code - api_rust/src/utils/webhook_dispatch.rs
-- [[.as_payload_str()]] - code - api_rust/src/utils/webhook_dispatch.rs
-- [[WebhookAction]] - code - api_rust/src/utils/webhook_dispatch.rs
-- [[WebhookEvent]] - code - api_rust/src/utils/webhook_dispatch.rs
-- [[action_payload_strings_match_django()]] - code - api_rust/src/utils/webhook_dispatch.rs
-- [[dispatch_event()]] - code - api_rust/src/utils/webhook_dispatch.rs
-- [[event_payload_strings_match_django()]] - code - api_rust/src/utils/webhook_dispatch.rs
-- [[module_and_module_issue_share_column()]] - code - api_rust/src/utils/webhook_dispatch.rs
-- [[webhook_dispatch.rs]] - code - api_rust/src/utils/webhook_dispatch.rs
+- [[CORE_FILTER_FIELD_TYPE]] - code - packages/types/src/rich-filters/field-types/core.ts
+- [[EXTENDED_FILTER_FIELD_TYPE]] - code - packages/types/src/rich-filters/field-types/extended.ts
+- [[FILTER_FIELD_TYPE]] - code - packages/types/src/rich-filters/field-types/index.ts
+- [[IFilterOption]] - code - packages/types/src/rich-filters/field-types/shared.ts
+- [[TBaseDateFilterFieldConfig]] - code - packages/types/src/rich-filters/field-types/core.ts
+- [[TBaseFilterFieldConfig]] - code - packages/types/src/rich-filters/field-types/shared.ts
+- [[TCoreFilterFieldConfigs]] - code - packages/types/src/rich-filters/field-types/core.ts
+- [[TDateFilterFieldConfig]] - code - packages/types/src/rich-filters/field-types/core.ts
+- [[TDateRangeFilterFieldConfig]] - code - packages/types/src/rich-filters/field-types/core.ts
+- [[TExtendedFilterFieldConfigs]] - code - packages/types/src/rich-filters/field-types/extended.ts
+- [[TFilterFieldType]] - code - packages/types/src/rich-filters/field-types/index.ts
+- [[TFilterValue]] - code - packages/types/src/rich-filters/expression.ts
+- [[TMultiSelectFilterFieldConfig]] - code - packages/types/src/rich-filters/field-types/core.ts
+- [[TNegativeOperatorConfig]] - code - packages/types/src/rich-filters/field-types/shared.ts
+- [[TSingleSelectFilterFieldConfig]] - code - packages/types/src/rich-filters/field-types/core.ts
+- [[TSupportedFilterFieldConfigs]] - code - packages/types/src/rich-filters/field-types/index.ts
+- [[TSupportedOperators]] - code - packages/types/src/rich-filters/operators/index.ts
+- [[core.ts_31]] - code - packages/types/src/rich-filters/field-types/core.ts
+- [[core.ts_9]] - code - types/src/rich-filters/field-types/core.ts
+- [[extended.ts_17]] - code - packages/types/src/rich-filters/field-types/extended.ts
+- [[extended.ts_7]] - code - types/src/rich-filters/field-types/extended.ts
+- [[index.ts_571]] - code - packages/types/src/rich-filters/field-types/index.ts
+- [[index.ts_110]] - code - types/src/rich-filters/field-types/index.ts
+- [[shared.ts_17]] - code - packages/types/src/rich-filters/field-types/shared.ts
+- [[shared.ts_1]] - code - types/src/rich-filters/field-types/shared.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -29,9 +44,14 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 1 edge to [[_COMMUNITY_Auth Rust API]]
+- 14 edges to [[_COMMUNITY_Community 190]]
+- 8 edges to [[_COMMUNITY_Community 230]]
+- 4 edges to [[_COMMUNITY_Community 229]]
+- 4 edges to [[_COMMUNITY_Community 216]]
 
 ## Top bridge nodes
-
-- [[dispatch_event()]] - degree 3, connects to 1 community
+- [[TFilterValue]] - degree 20, connects to 3 communities
+- [[index.ts_571]] - degree 13, connects to 3 communities
+- [[index.ts_110]] - degree 13, connects to 3 communities
+- [[core.ts_31]] - degree 15, connects to 2 communities
+- [[core.ts_9]] - degree 15, connects to 2 communities

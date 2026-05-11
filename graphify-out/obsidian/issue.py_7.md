@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/models/issue.py"
 type: "code"
-community: "Issue Sync"
+community: "Community 26"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Sync
+  - community/Community_26
 ---
 
 # issue.py
 
 ## Connections
-
 - [[TODO Handle identifiers for Bulk Inserts - nk]] - `rationale_for` [EXTRACTED]
 - [[CommentReaction]] - `contains` [EXTRACTED]
 - [[Issue]] - `contains` [EXTRACTED]
@@ -47,4 +46,4 @@ tags:
 - [[project.py_6]] - `imports_from` [EXTRACTED]
 - [[state.py_6]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Sync
+#graphify/code #graphify/EXTRACTED #community/Community_26

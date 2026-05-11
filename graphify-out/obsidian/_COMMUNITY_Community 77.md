@@ -1,44 +1,72 @@
 ---
 type: community
-cohesion: 0.09
-members: 28
+cohesion: 0.05
+members: 57
 ---
 
 # Community 77
 
-**Cohesion:** 0.09 - loosely connected
-**Members:** 28 nodes
+**Cohesion:** 0.05 - loosely connected
+**Members:** 57 nodes
 
 ## Members
-
-- [[AssetItem]] - code - web/core/components/pages/navigation-pane/tab-panels/assets.tsx
-- [[AssetItemProps]] - code - web/core/components/pages/navigation-pane/tab-panels/assets.tsx
-- [[DEFAULT_DOCUMENT_INFO]] - code - web/core/components/pages/navigation-pane/tab-panels/info/document-info.tsx
-- [[PageNavigationPaneAssetsTabPanel]] - code - web/core/components/pages/navigation-pane/tab-panels/assets.tsx
-- [[PageNavigationPaneInfoTabActorsInfo]] - code - web/core/components/pages/navigation-pane/tab-panels/info/actors-info.tsx
-- [[PageNavigationPaneInfoTabDocumentInfo]] - code - web/core/components/pages/navigation-pane/tab-panels/info/document-info.tsx
-- [[PageNavigationPaneInfoTabPanel]] - code - web/core/components/pages/navigation-pane/tab-panels/info/root.tsx
-- [[PageNavigationPaneInfoTabVersionHistory]] - code - web/core/components/pages/navigation-pane/tab-panels/info/version-history.tsx
-- [[PageNavigationPaneOutlineTabPanel()]] - code - web/core/components/pages/navigation-pane/tab-panels/outline.tsx
-- [[PageNavigationPaneTabPanelsRoot()]] - code - web/core/components/pages/navigation-pane/tab-panels/root.tsx
-- [[Props_406]] - code - web/core/components/pages/navigation-pane/tab-panels/info/actors-info.tsx
-- [[Props_403]] - code - web/core/components/pages/navigation-pane/tab-panels/info/document-info.tsx
-- [[Props_405]] - code - web/core/components/pages/navigation-pane/tab-panels/info/root.tsx
-- [[Props_404]] - code - web/core/components/pages/navigation-pane/tab-panels/info/version-history.tsx
-- [[Props_400]] - code - web/core/components/pages/navigation-pane/tab-panels/assets.tsx
-- [[Props_402]] - code - web/core/components/pages/navigation-pane/tab-panels/outline.tsx
-- [[Props_401]] - code - web/core/components/pages/navigation-pane/tab-panels/root.tsx
-- [[TPageRootHandlers]] - code - web/core/components/pages/editor/page-root.tsx
-- [[VersionHistoryItem]] - code - web/core/components/pages/navigation-pane/tab-panels/info/version-history.tsx
-- [[VersionHistoryItemProps]] - code - web/core/components/pages/navigation-pane/tab-panels/info/version-history.tsx
-- [[actors-info.tsx]] - code - web/core/components/pages/navigation-pane/tab-panels/info/actors-info.tsx
-- [[assets.tsx]] - code - web/core/components/pages/navigation-pane/tab-panels/assets.tsx
-- [[document-info.tsx]] - code - web/core/components/pages/navigation-pane/tab-panels/info/document-info.tsx
-- [[index.ts_152]] - code - web/core/components/pages/editor/summary/index.ts
-- [[outline.tsx]] - code - web/core/components/pages/navigation-pane/tab-panels/outline.tsx
-- [[root.tsx_82]] - code - web/core/components/pages/navigation-pane/tab-panels/info/root.tsx
-- [[root.tsx_81]] - code - web/core/components/pages/navigation-pane/tab-panels/root.tsx
-- [[version-history.tsx]] - code - web/core/components/pages/navigation-pane/tab-panels/info/version-history.tsx
+- [[.create()_31]] - code - api/plane/api/serializers/estimate.py
+- [[.get_is_active()]] - code - api/plane/app/serializers/api.py
+- [[.get_workspace()]] - code - api/plane/app/serializers/user.py
+- [[.validate()_3]] - code - api/plane/api/serializers/estimate.py
+- [[.validate()_8]] - code - api/plane/app/serializers/user.py
+- [[.validate_first_name()]] - code - api/plane/app/serializers/user.py
+- [[.validate_last_name()]] - code - api/plane/app/serializers/user.py
+- [[APIActivityLogSerializer]] - code - api/plane/app/serializers/api.py
+- [[APITokenReadSerializer]] - code - api/plane/app/serializers/api.py
+- [[APITokenSerializer]] - code - api/plane/app/serializers/api.py
+- [[AccountSerializer]] - code - api/plane/app/serializers/user.py
+- [[AnalyticViewSerializer]] - code - api/plane/app/serializers/analytic.py
+- [[ChangePasswordSerializer]] - code - api/plane/app/serializers/user.py
+- [[CycleUserPropertiesSerializer]] - code - api/plane/app/serializers/cycle.py
+- [[CycleWriteSerializer]] - code - api/plane/app/serializers/cycle.py
+- [[DraftIssueDetailSerializer]] - code - api/plane/app/serializers/draft.py
+- [[DraftIssueSerializer]] - code - api/plane/app/serializers/draft.py
+- [[EstimatePointSerializer]] - code - api/plane/api/serializers/estimate.py
+- [[EstimateSerializer]] - code - api/plane/api/serializers/estimate.py
+- [[GithubPRStateMappingSerializer]] - code - api/plane/app/serializers/integration.py
+- [[IntegrationSerializer]] - code - api/plane/app/serializers/integration.py
+- [[Meta_20]] - code - api/plane/app/serializers/analytic.py
+- [[Meta_7]] - code - api/plane/app/serializers/api.py
+- [[Meta_10]] - code - api/plane/app/serializers/draft.py
+- [[Meta_8]] - code - api/plane/api/serializers/estimate.py
+- [[Meta_3]] - code - api/plane/app/serializers/exporter.py
+- [[Meta_1]] - code - api/plane/app/serializers/importer.py
+- [[Meta_15]] - code - api/plane/app/serializers/integration.py
+- [[Meta_11]] - code - api/plane/app/serializers/notification.py
+- [[Meta_2]] - code - api/plane/app/serializers/view.py
+- [[Meta_12]] - code - api/plane/app/serializers/webhook.py
+- [[ProfileSerializer]] - code - api/plane/app/serializers/user.py
+- [[ResetPasswordSerializer]] - code - api/plane/app/serializers/user.py
+- [[Serializer for password change endpoint.]] - rationale - api/plane/app/serializers/user.py
+- [[UserMeSerializer]] - code - api/plane/app/serializers/user.py
+- [[UserMeSettingsSerializer]] - code - api/plane/app/serializers/user.py
+- [[UserSerializer]] - code - api/plane/app/serializers/user.py
+- [[WorkspaceEstimateSerializer]] - code - api/plane/app/serializers/estimate.py
+- [[WorkspaceIntegrationSerializer]] - code - api/plane/app/serializers/integration.py
+- [[__init__.py_8]] - code - api/plane/app/serializers/__init__.py
+- [[analytic.py_1]] - code - api/plane/app/serializers/analytic.py
+- [[api.py_2]] - code - api/plane/app/serializers/api.py
+- [[asset.py_2]] - code - api/plane/app/serializers/asset.py
+- [[base.py_22]] - code - api/plane/app/serializers/base.py
+- [[create()_14]] - code - api/plane/app/views/integration/base.py
+- [[cycle.py_2]] - code - api/plane/app/serializers/cycle.py
+- [[draft.py_1]] - code - api/plane/app/serializers/draft.py
+- [[estimate.py_5]] - code - api/plane/api/serializers/estimate.py
+- [[estimate.py_2]] - code - api/plane/app/serializers/estimate.py
+- [[exporter.py_1]] - code - api/plane/app/serializers/exporter.py
+- [[importer.py_1]] - code - api/plane/app/serializers/importer.py
+- [[integration.py_1]] - code - api/plane/app/serializers/integration.py
+- [[notification.py_1]] - code - api/plane/app/serializers/notification.py
+- [[state.py_2]] - code - api/plane/app/serializers/state.py
+- [[user.py_2]] - code - api/plane/app/serializers/user.py
+- [[view.py]] - code - api/plane/app/serializers/view.py
+- [[webhook.py_1]] - code - api/plane/app/serializers/webhook.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -48,16 +76,30 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 14 edges to [[_COMMUNITY_Page Actions]]
-- 6 edges to [[_COMMUNITY_Community 54]]
-- 5 edges to [[_COMMUNITY_Community 78]]
-- 4 edges to [[_COMMUNITY_Member Filters & Description]]
+- 35 edges to [[_COMMUNITY_Community 68]]
+- 29 edges to [[_COMMUNITY_Community 97]]
+- 10 edges to [[_COMMUNITY_Community 37]]
+- 9 edges to [[_COMMUNITY_Community 110]]
+- 7 edges to [[_COMMUNITY_Community 53]]
+- 7 edges to [[_COMMUNITY_Community 41]]
+- 6 edges to [[_COMMUNITY_Python API Base Classes]]
+- 6 edges to [[_COMMUNITY_Community 27]]
+- 4 edges to [[_COMMUNITY_Community 205]]
+- 4 edges to [[_COMMUNITY_Community 171]]
+- 2 edges to [[_COMMUNITY_Community 360]]
+- 2 edges to [[_COMMUNITY_Community 185]]
+- 1 edge to [[_COMMUNITY_Community 56]]
+- 1 edge to [[_COMMUNITY_Community 638]]
+- 1 edge to [[_COMMUNITY_Community 257]]
+- 1 edge to [[_COMMUNITY_Community 329]]
+- 1 edge to [[_COMMUNITY_Community 66]]
+- 1 edge to [[_COMMUNITY_Community 342]]
+- 1 edge to [[_COMMUNITY_Community 25]]
+- 1 edge to [[_COMMUNITY_Community 153]]
 
 ## Top bridge nodes
-
-- [[version-history.tsx]] - degree 14, connects to 4 communities
-- [[root.tsx_81]] - degree 13, connects to 3 communities
-- [[root.tsx_82]] - degree 13, connects to 2 communities
-- [[actors-info.tsx]] - degree 7, connects to 2 communities
-- [[TPageRootHandlers]] - degree 5, connects to 2 communities
+- [[base.py_22]] - degree 23, connects to 6 communities
+- [[__init__.py_8]] - degree 22, connects to 6 communities
+- [[user.py_2]] - degree 18, connects to 4 communities
+- [[CycleWriteSerializer]] - degree 7, connects to 4 communities
+- [[CycleUserPropertiesSerializer]] - degree 6, connects to 4 communities

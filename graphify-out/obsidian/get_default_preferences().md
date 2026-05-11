@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/models/project.py"
 type: "code"
-community: "Project Return"
+community: "Community 89"
 location: "L64"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Return
+  - community/Community_89
 ---
 
 # get_default_preferences()
 
 ## Connections
-
 - [[project.py_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Return
+#graphify/code #graphify/EXTRACTED #community/Community_89

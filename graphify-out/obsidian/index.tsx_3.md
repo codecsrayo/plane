@@ -1,18 +1,17 @@
 ---
 source_file: "i18n/src/context/index.tsx"
 type: "code"
-community: "Translation Language"
+community: "Community 143"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Translation_Language
+  - community/Community_143
 ---
 
 # index.tsx
 
 ## Connections
-
 - [[TranslationContext]] - `contains` [EXTRACTED]
 - [[TranslationProvider]] - `contains` [EXTRACTED]
 - [[TranslationProviderProps]] - `contains` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[index.ts_87]] - `imports_from` [EXTRACTED]
 - [[use-translation.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Translation_Language
+#graphify/code #graphify/EXTRACTED #community/Community_143

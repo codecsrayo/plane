@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/paginator.py"
 type: "code"
-community: "Endpoint User"
+community: "Community 57"
 location: "L389"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Endpoint_User
+  - community/Community_57
 ---
 
 # SubGroupedOffsetPaginator
 
 ## Connections
-
 - [[.__get_field_dict()_1]] - `method` [EXTRACTED]
 - [[.__get_group_total_queryset()]] - `method` [EXTRACTED]
 - [[.__get_subgroup_total_queryset()]] - `method` [EXTRACTED]
@@ -53,4 +52,4 @@ tags:
 - [[WorkspaceUserPropertiesEndpoint]] - `uses` [INFERRED]
 - [[paginator.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Endpoint_User
+#graphify/code #graphify/INFERRED #community/Community_57

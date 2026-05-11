@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/issue/issue_label.service.ts"
 type: "code"
-community: "Issue Project"
+community: "Service Layer"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Project
+  - community/Service_Layer
 ---
 
 # IssueLabelService
 
 ## Connections
-
 - [[.constructor()_160]] - `method` [EXTRACTED]
 - [[.createIssueLabel()]] - `method` [EXTRACTED]
 - [[.deleteIssueLabel()]] - `method` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[.patchIssueLabel()]] - `method` [EXTRACTED]
 - [[issue_label.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Project
+#graphify/code #graphify/EXTRACTED #community/Service_Layer

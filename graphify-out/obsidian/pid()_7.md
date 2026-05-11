@@ -1,18 +1,17 @@
 ---
 source_file: "web/e2e/projects.spec.ts"
 type: "code"
-community: "Projects Spec"
+community: "Community 814"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Projects_Spec
+  - community/Community_814
 ---
 
 # pid()
 
 ## Connections
-
 - [[projects.spec.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Projects_Spec
+#graphify/code #graphify/EXTRACTED #community/Community_814

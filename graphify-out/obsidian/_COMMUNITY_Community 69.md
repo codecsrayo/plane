@@ -1,47 +1,77 @@
 ---
 type: community
-cohesion: 0.08
-members: 31
+cohesion: 0.04
+members: 62
 ---
 
 # Community 69
 
-**Cohesion:** 0.08 - loosely connected
-**Members:** 31 nodes
+**Cohesion:** 0.04 - loosely connected
+**Members:** 62 nodes
 
 ## Members
-
-- [[EProfileSetupSteps]] - code - web/core/components/onboarding/profile-setup.tsx
-- [[MarketingConsent()]] - code - web/core/components/onboarding/steps/profile/consent.tsx
-- [[ProfileSetup]] - code - web/core/components/onboarding/profile-setup.tsx
-- [[ProfileSetupStep]] - code - web/core/components/onboarding/steps/profile/root.tsx
-- [[Props_454]] - code - web/core/components/core/modals/user-image-upload-modal.tsx
-- [[Props_361]] - code - web/core/components/onboarding/profile-setup.tsx
-- [[Props_368]] - code - web/core/components/onboarding/steps/profile/consent.tsx
-- [[Props_369]] - code - web/core/components/onboarding/steps/profile/root.tsx
-- [[Props_366]] - code - web/core/components/onboarding/steps/role/root.tsx
-- [[Props_370]] - code - web/core/components/onboarding/steps/usecase/root.tsx
-- [[ROLES]] - code - web/core/components/onboarding/steps/role/root.tsx
-- [[RoleSetupStep]] - code - web/core/components/onboarding/steps/role/root.tsx
-- [[TProfileSetupFormValues]] - code - web/core/components/onboarding/profile-setup.tsx
-- [[TProfileSetupFormValues_1]] - code - web/core/components/onboarding/steps/profile/root.tsx
-- [[USER_DOMAIN]] - code - web/core/components/onboarding/profile-setup.tsx
-- [[USER_ROLE]] - code - web/core/components/onboarding/profile-setup.tsx
-- [[UseCaseSetupStep]] - code - web/core/components/onboarding/steps/usecase/root.tsx
-- [[UserImageUploadModal]] - code - web/core/components/core/modals/user-image-upload-modal.tsx
-- [[authService_1]] - code - web/core/components/onboarding/profile-setup.tsx
-- [[authService_2]] - code - web/core/components/onboarding/steps/profile/root.tsx
-- [[consent.tsx]] - code - web/core/components/onboarding/steps/profile/consent.tsx
-- [[defaultValues_21]] - code - web/core/components/onboarding/profile-setup.tsx
-- [[defaultValues_23]] - code - web/core/components/onboarding/steps/profile/root.tsx
-- [[defaultValues_22]] - code - web/core/components/onboarding/steps/role/root.tsx
-- [[defaultValues_24]] - code - web/core/components/onboarding/steps/usecase/root.tsx
-- [[fileService_6]] - code - web/core/components/core/modals/user-image-upload-modal.tsx
-- [[profile-setup.tsx]] - code - web/core/components/onboarding/profile-setup.tsx
-- [[root.tsx_68]] - code - web/core/components/onboarding/steps/profile/root.tsx
-- [[root.tsx_66]] - code - web/core/components/onboarding/steps/role/root.tsx
-- [[root.tsx_69]] - code - web/core/components/onboarding/steps/usecase/root.tsx
-- [[user-image-upload-modal.tsx]] - code - web/core/components/core/modals/user-image-upload-modal.tsx
+- [[.__init__()_19]] - code - api/plane/utils/exporters/exporter.py
+- [[.__init__()_24]] - code - api/plane/utils/porters/exporter.py
+- [[.__init__()_22]] - code - api/plane/utils/porters/formatters.py
+- [[.__init__()_21]] - code - api/plane/utils/porters/formatters.py
+- [[.__init__()_23]] - code - api/plane/utils/porters/formatters.py
+- [[._create_formatter()]] - code - api/plane/utils/porters/exporter.py
+- [[._flatten()]] - code - api/plane/utils/porters/formatters.py
+- [[._format_value()_8]] - code - api/plane/utils/porters/formatters.py
+- [[._normalize_header()]] - code - api/plane/utils/porters/formatters.py
+- [[._normalize_header()_1]] - code - api/plane/utils/porters/formatters.py
+- [[._prettify_header()]] - code - api/plane/utils/porters/formatters.py
+- [[._prettify_header()_1]] - code - api/plane/utils/porters/formatters.py
+- [[._unflatten()]] - code - api/plane/utils/porters/formatters.py
+- [[.decode()_1]] - code - api/plane/utils/porters/formatters.py
+- [[.decode()]] - code - api/plane/utils/porters/formatters.py
+- [[.decode()_2]] - code - api/plane/utils/porters/formatters.py
+- [[.encode()_1]] - code - api/plane/utils/porters/formatters.py
+- [[.encode()]] - code - api/plane/utils/porters/formatters.py
+- [[.encode()_2]] - code - api/plane/utils/porters/formatters.py
+- [[.export()]] - code - api/plane/utils/exporters/exporter.py
+- [[.export()_1]] - code - api/plane/utils/porters/exporter.py
+- [[.serialize()_1]] - code - api/plane/utils/porters/exporter.py
+- [[.to_file()]] - code - api/plane/utils/porters/exporter.py
+- [[ABC]] - code
+- [[Args             flatten Whether to flatten nested dicts.             delimite]] - rationale - api/plane/utils/porters/formatters.py
+- [[Args             prettify_headers If True, transforms 'created_by_name' → 'Cre]] - rationale - api/plane/utils/porters/formatters.py
+- [[BaseFormatter_1]] - code - api/plane/utils/porters/formatters.py
+- [[CSVFormatter_1]] - code - api/plane/utils/porters/formatters.py
+- [[Create formatter instance with appropriate options.]] - rationale - api/plane/utils/porters/exporter.py
+- [[DataExporter]] - code - api/plane/utils/porters/exporter.py
+- [[Decode CSV content to list of dicts.          Args             content CSV str]] - rationale - api/plane/utils/porters/formatters.py
+- [[Decode XLSX bytes to list of dicts.          Args             content XLSX fil]] - rationale - api/plane/utils/porters/formatters.py
+- [[Encode data to XLSX bytes.]] - rationale - api/plane/utils/porters/formatters.py
+- [[Export data using DRF serializers with built-in format support.      Usage]] - rationale - api/plane/utils/porters/exporter.py
+- [[Export data using the configured formatter and return (filename, content).]] - rationale - api/plane/utils/exporters/exporter.py
+- [[Export queryset to file with configured format.          Args             filen]] - rationale - api/plane/utils/porters/exporter.py
+- [[Export to file (legacy interface)]] - rationale - api/plane/utils/porters/exporter.py
+- [[Exporter_1]] - code - api/plane/utils/exporters/exporter.py
+- [[Format a value for XLSX cell.]] - rationale - api/plane/utils/porters/formatters.py
+- [[Formatter for XLSX (Excel) files using openpyxl.]] - rationale - api/plane/utils/porters/formatters.py
+- [[Generic exporter class that handles data exports using different formatters.]] - rationale - api/plane/utils/exporters/exporter.py
+- [[Initialize exporter with serializer and optional format type.          Args]] - rationale - api/plane/utils/porters/exporter.py
+- [[Initialize exporter with specified format type and schema.          Args]] - rationale - api/plane/utils/exporters/exporter.py
+- [[JSONFormatter_1]] - code - api/plane/utils/porters/formatters.py
+- [[QuerySet → list of dicts]] - rationale - api/plane/utils/porters/exporter.py
+- [[Sanitize a value for CSV export to prevent formula injection.      Prefixes stri]] - rationale - api/plane/utils/csv_utils.py
+- [[Sanitize all values in a CSV row.]] - rationale - api/plane/utils/csv_utils.py
+- [[Transform 'Display Name' → 'display_name' (reverse of prettify)_1]] - rationale - api/plane/utils/porters/formatters.py
+- [[Transform 'Display Name' → 'display_name' (reverse of prettify)]] - rationale - api/plane/utils/porters/formatters.py
+- [[Transform 'created_by_name' → 'Created By Name_1]] - rationale - api/plane/utils/porters/formatters.py
+- [[Transform 'created_by_name' → 'Created By Name]] - rationale - api/plane/utils/porters/formatters.py
+- [[XLSXFormatter_1]] - code - api/plane/utils/porters/formatters.py
+- [[__init__.py_40]] - code - api/plane/utils/porters/__init__.py
+- [[csv_utils.py]] - code - api/plane/utils/csv_utils.py
+- [[decode()]] - code - api/plane/utils/porters/formatters.py
+- [[encode()]] - code - api/plane/utils/porters/formatters.py
+- [[exporter.py_4]] - code - api/plane/utils/porters/exporter.py
+- [[extension()]] - code - api/plane/utils/porters/formatters.py
+- [[formatters.py_1]] - code - api/plane/utils/porters/formatters.py
+- [[get_available_formats()_1]] - code - api/plane/utils/porters/exporter.py
+- [[sanitize_csv_row()]] - code - api/plane/utils/csv_utils.py
+- [[sanitize_csv_value()]] - code - api/plane/utils/csv_utils.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -51,18 +81,16 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 5 edges to [[_COMMUNITY_Authentication UI]]
-- 4 edges to [[_COMMUNITY_Empty State Components]]
-- 3 edges to [[_COMMUNITY_Git Integrations]]
-- 2 edges to [[_COMMUNITY_Community 110]]
-- 2 edges to [[_COMMUNITY_Community 102]]
-- 1 edge to [[_COMMUNITY_Community 120]]
+- 6 edges to [[_COMMUNITY_Community 123]]
+- 3 edges to [[_COMMUNITY_Community 78]]
+- 2 edges to [[_COMMUNITY_Community 187]]
+- 1 edge to [[_COMMUNITY_Community 211]]
+- 1 edge to [[_COMMUNITY_Community 268]]
+- 1 edge to [[_COMMUNITY_Community 240]]
 
 ## Top bridge nodes
-
-- [[root.tsx_68]] - degree 17, connects to 4 communities
-- [[profile-setup.tsx]] - degree 13, connects to 3 communities
-- [[user-image-upload-modal.tsx]] - degree 8, connects to 3 communities
-- [[root.tsx_66]] - degree 8, connects to 2 communities
-- [[root.tsx_69]] - degree 7, connects to 2 communities
+- [[sanitize_csv_row()]] - degree 7, connects to 3 communities
+- [[DataExporter]] - degree 13, connects to 2 communities
+- [[Exporter_1]] - degree 7, connects to 1 community
+- [[sanitize_csv_value()]] - degree 5, connects to 1 community
+- [[.serialize()_1]] - degree 4, connects to 1 community

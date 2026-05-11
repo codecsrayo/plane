@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/lib/wrappers/authentication-wrapper.tsx"
 type: "code"
-community: "Workspace Issue"
+community: "Community 70"
 location: "L35"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Issue
+  - community/Community_70
 ---
 
 # AuthenticationWrapper
 
 ## Connections
-
 - [[authentication-wrapper.tsx]] - `contains` [EXTRACTED]
 - [[layout.tsx_3]] - `imports` [EXTRACTED]
 - [[layout.tsx_35]] - `imports` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[page.tsx_63]] - `imports` [EXTRACTED]
 - [[page.tsx_64]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_70

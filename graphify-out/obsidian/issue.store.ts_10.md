@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/issue/workspace-draft/issue.store.ts"
 type: "code"
-community: "Draft Issue"
+community: "Community 339"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Draft_Issue
+  - community/Community_339
 ---
 
 # issue.store.ts
 
 ## Connections
-
 - [[IIssueRootStore]] - `imports` [EXTRACTED]
 - [[IWorkspaceDraftIssues]] - `contains` [EXTRACTED]
 - [[TDraftIssuePaginationType]] - `contains` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[toApiError()]] - `imports` [EXTRACTED]
 - [[workspace_draft.service.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Draft_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_339

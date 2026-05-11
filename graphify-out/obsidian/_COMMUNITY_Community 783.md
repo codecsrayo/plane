@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 783
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_63]] - code - web/core/components/modules/archived-modules/index.ts
+- [[Props_56]] - code - web/ce/components/views/publish/modal.tsx
+- [[PublishViewModal()]] - code - web/ce/components/views/publish/modal.tsx
+- [[modal.tsx_1]] - code - web/ce/components/views/publish/modal.tsx
 
 ## Live Query (requires Dataview plugin)
 

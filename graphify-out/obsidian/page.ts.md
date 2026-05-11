@@ -1,20 +1,19 @@
 ---
 source_file: "constants/src/page.ts"
 type: "code"
-community: "Access Epageaccess"
+community: "Community 603"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Access_Epageaccess
+  - community/Community_603
 ---
 
 # page.ts
 
 ## Connections
-
 - [[DEFAULT_CREATE_PAGE_MODAL_DATA]] - `contains` [EXTRACTED]
 - [[EPageAccess]] - `contains` [EXTRACTED]
 - [[TCreatePageModal]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Access_Epageaccess
+#graphify/code #graphify/EXTRACTED #community/Community_603

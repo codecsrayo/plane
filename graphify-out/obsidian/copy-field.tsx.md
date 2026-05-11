@@ -1,18 +1,17 @@
 ---
 source_file: "admin/components/common/copy-field.tsx"
 type: "code"
-community: "Controller Values"
+community: "Community 125"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Controller_Values
+  - community/Community_125
 ---
 
 # copy-field.tsx
 
 ## Connections
-
 - [[CopyField()]] - `contains` [EXTRACTED]
 - [[Props_545]] - `contains` [EXTRACTED]
 - [[TCopyField]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[form.tsx_16]] - `imports_from` [EXTRACTED]
 - [[form.tsx_17]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Controller_Values
+#graphify/code #graphify/EXTRACTED #community/Community_125

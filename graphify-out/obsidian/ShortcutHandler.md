@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/power-k/core/shortcut-handler.ts"
 type: "code"
-community: "Command Shortcut"
+community: "Community 175"
 location: "L47"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Command_Shortcut
+  - community/Community_175
 ---
 
 # ShortcutHandler
 
 ## Connections
-
 - [[.canExecuteCommand()]] - `method` [EXTRACTED]
 - [[.constructor()_181]] - `method` [EXTRACTED]
 - [[.destroy()_10]] - `method` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[global-shortcuts.tsx]] - `imports` [EXTRACTED]
 - [[shortcut-handler.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Command_Shortcut
+#graphify/code #graphify/EXTRACTED #community/Community_175

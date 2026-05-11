@@ -1,20 +1,19 @@
 ---
 source_file: "api_rust/tests/views.rs"
 type: "code"
-community: "Returns Workspace"
+community: "Community 260"
 location: "L318"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Workspace
+  - community/Community_260
 ---
 
 # list_project_views_returns_created_view()
 
 ## Connections
-
 - [[create_proj_view()]] - `calls` [EXTRACTED]
 - [[setup()_35]] - `calls` [EXTRACTED]
 - [[views.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_260

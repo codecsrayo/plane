@@ -1,14 +1,14 @@
 ---
 source_file: "api/plane/api/views/module.py"
 type: "rationale"
-community: "Archive Move"
+community: "Community 1721"
 location: "L1035"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Archive_Move
+  - community/Community_1721
 ---
 
-# Archive module Move a completed module to archived status for historica
+# Archive module          Move a completed module to archived status for historica
 
-#graphify/rationale #graphify/EXTRACTED #community/Archive_Move
+#graphify/rationale #graphify/EXTRACTED #community/Community_1721

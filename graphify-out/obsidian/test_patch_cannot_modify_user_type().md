@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/tests/contract/app/test_api_token.py"
 type: "code"
-community: "Test Token"
+community: "Community 239"
 location: "L354"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Test_Token
+  - community/Community_239
 ---
 
 # test_patch_cannot_modify_user_type()
 
 ## Connections
-
 - [[test_api_token.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Test_Token
+#graphify/code #graphify/EXTRACTED #community/Community_239

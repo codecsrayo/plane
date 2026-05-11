@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/dropdowns/member/avatar.tsx"
 type: "code"
-community: "Label Dropdown"
+community: "Work Item Detail & Layouts"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Dropdown
+  - community/Work_Item_Detail__Layouts
 ---
 
 # ButtonAvatars
 
 ## Connections
-
 - [[attachment-list-item.tsx]] - `imports` [EXTRACTED]
 - [[avatar.tsx_2]] - `contains` [EXTRACTED]
 - [[base.tsx_6]] - `imports` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[sidebar.tsx_4]] - `imports` [EXTRACTED]
 - [[view-list-item-action.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Work_Item_Detail__Layouts

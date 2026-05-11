@@ -1,18 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.40
+members: 5
 ---
 
 # Community 619
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.40 - moderately connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[JavaScriptIcon()]] - code - web/core/components/icons/attachment/js-file-icon.tsx
-- [[js-file-icon.tsx]] - code - web/core/components/icons/attachment/js-file-icon.tsx
+- [[AutomationsListLayout()]] - code - web/app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/automations/layout.tsx
+- [[AutomationsListWrapper()]] - code - web/ce/components/automations/list/wrapper.tsx
+- [[Props_76]] - code - web/ce/components/automations/list/wrapper.tsx
+- [[layout.tsx_33]] - code - web/app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/automations/layout.tsx
+- [[wrapper.tsx]] - code - web/ce/components/automations/list/wrapper.tsx
 
 ## Live Query (requires Dataview plugin)
 

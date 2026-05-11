@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/dashboard.ts"
 type: "code"
-community: "Widget Issue"
+community: "Community 139"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Widget_Issue
+  - community/Community_139
 ---
 
 # dashboard.ts
 
 ## Connections
-
 - [[EDurationFilters_1]] - `imports` [EXTRACTED]
 - [[IIssueActivity]] - `imports` [EXTRACTED]
 - [[TAssignedIssuesWidgetFilters]] - `contains` [EXTRACTED]
@@ -46,4 +45,4 @@ tags:
 - [[issues.ts]] - `imports_from` [EXTRACTED]
 - [[state.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Widget_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_139

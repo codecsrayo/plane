@@ -1,18 +1,18 @@
 ---
-source_file: "propel/src/design-system/design-system-philosophy.stories.tsx"
+source_file: "packages/propel/src/design-system/design-system-philosophy.stories.tsx"
 type: "code"
-community: "Pattern Layer"
+community: "Community 305"
 location: "L58"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Pattern_Layer
+  - community/Community_305
 ---
 
 # Surface()
 
 ## Connections
-
 - [[design-system-philosophy.stories.tsx]] - `contains` [EXTRACTED]
+- [[design-system-philosophy.stories.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Pattern_Layer
+#graphify/code #graphify/EXTRACTED #community/Community_305

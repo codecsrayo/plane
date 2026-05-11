@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_217]] - code - web/ce/components/de-dupe/duplicate-popover/index.ts
+- [[quick-actions-factory.tsx]] - code - web/ce/components/common/quick-actions-factory.tsx
 
 ## Live Query (requires Dataview plugin)
 

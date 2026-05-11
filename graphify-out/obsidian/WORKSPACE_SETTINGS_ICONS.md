@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/settings/workspace/sidebar/item-icon.tsx"
 type: "code"
-community: "Settings Project"
+community: "Community 84"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Settings_Project
+  - community/Community_84
 ---
 
 # WORKSPACE_SETTINGS_ICONS
 
 ## Connections
-
 - [[header.tsx_31]] - `imports` [EXTRACTED]
 - [[header.tsx_32]] - `imports` [EXTRACTED]
 - [[header.tsx_33]] - `imports` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[item-icon.tsx]] - `contains` [EXTRACTED]
 - [[workspace-settings-menu.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Settings_Project
+#graphify/code #graphify/EXTRACTED #community/Community_84

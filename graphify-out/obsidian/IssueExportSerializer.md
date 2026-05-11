@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/porters/serializers/issue.py"
 type: "code"
-community: "Issue Return"
+community: "Community 283"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Return
+  - community/Community_283
 ---
 
 # IssueExportSerializer
 
 ## Connections
-
 - [[.get_assignees()_2]] - `method` [EXTRACTED]
 - [[.get_comments()]] - `method` [EXTRACTED]
 - [[.get_cycles()]] - `method` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[IssueSerializer_1]] - `inherits` [EXTRACTED]
 - [[issue.py_9]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Return
+#graphify/code #graphify/EXTRACTED #community/Community_283

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/migrations/0041_cycle_sort_order_issuecomment_access_and_more.py"
 type: "code"
-community: "Issue Cycle"
+community: "Community 481"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Cycle
+  - community/Community_481
 ---
 
 # 0041_cycle_sort_order_issuecomment_access_and_more.py
 
 ## Connections
-
 - [[Migration_95]] - `contains` [EXTRACTED]
 - [[generate_display_name()]] - `contains` [EXTRACTED]
 - [[random_cycle_order()]] - `contains` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[update_user_issue_properties()]] - `contains` [EXTRACTED]
 - [[workspace_member_properties()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Cycle
+#graphify/code #graphify/EXTRACTED #community/Community_481

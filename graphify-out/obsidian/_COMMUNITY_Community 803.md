@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 803
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_118]] - code - web/core/components/appearance/index.ts
+- [[EndCycleModal()]] - code - web/ce/components/cycles/end-cycle/modal.tsx
+- [[Props_71]] - code - web/ce/components/cycles/end-cycle/modal.tsx
+- [[modal.tsx_2]] - code - web/ce/components/cycles/end-cycle/modal.tsx
 
 ## Live Query (requires Dataview plugin)
 

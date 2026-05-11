@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/issues/issue.ts"
 type: "code"
-community: "Issue Public"
+community: "Community 178"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Public
+  - community/Community_178
 ---
 
 # issue.ts
 
 ## Connections
-
 - [[EIssueLayoutTypes]] - `contains` [EXTRACTED]
 - [[EIssueServiceType]] - `contains` [EXTRACTED]
 - [[EIssuesStoreType]] - `contains` [EXTRACTED]
@@ -54,4 +53,4 @@ tags:
 - [[state.ts_1]] - `imports_from` [EXTRACTED]
 - [[view-props.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Public
+#graphify/code #graphify/EXTRACTED #community/Community_178

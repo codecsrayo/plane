@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/context-menu/context-menu.tsx"
 type: "code"
-community: "Context Menu"
+community: "Community 215"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Context_Menu
+  - community/Community_215
 ---
 
 # context-menu.tsx
 
 ## Connections
-
 - [[ContextMenu]] - `contains` [EXTRACTED]
 - [[ContextMenuContent]] - `contains` [EXTRACTED]
 - [[ContextMenuContentProps]] - `contains` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[context-menu.stories.tsx]] - `imports_from` [EXTRACTED]
 - [[index.ts_191]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Context_Menu
+#graphify/code #graphify/EXTRACTED #community/Community_215

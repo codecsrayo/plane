@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/ui/loader/utils.tsx"
 type: "code"
-community: "Loader Calendar"
+community: "Community 23"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Loader_Calendar
+  - community/Community_23
 ---
 
 # utils.tsx
 
 ## Connections
-
 - [[activity.tsx]] - `imports_from` [EXTRACTED]
 - [[calendar-layout-loader.tsx]] - `imports_from` [EXTRACTED]
 - [[gantt-layout-loader.tsx]] - `imports_from` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[list-layout-loader.tsx]] - `imports_from` [EXTRACTED]
 - [[spreadsheet-layout-loader.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Loader_Calendar
+#graphify/code #graphify/EXTRACTED #community/Community_23

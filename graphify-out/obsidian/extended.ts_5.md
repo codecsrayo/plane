@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/rich-filters/operators/extended.ts"
 type: "code"
-community: "Operator Core"
+community: "Community 216"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Operator_Core
+  - community/Community_216
 ---
 
 # extended.ts
 
 ## Connections
-
 - [[EXTENDED_COLLECTION_OPERATOR]] - `contains` [EXTRACTED]
 - [[EXTENDED_COMPARISON_OPERATOR]] - `contains` [EXTRACTED]
 - [[EXTENDED_EQUALITY_OPERATOR]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[TExtendedSupportedOperators]] - `contains` [EXTRACTED]
 - [[index.ts_107]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Operator_Core
+#graphify/code #graphify/EXTRACTED #community/Community_216

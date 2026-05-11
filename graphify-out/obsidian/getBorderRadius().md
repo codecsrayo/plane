@@ -1,19 +1,20 @@
 ---
-source_file: "ui/src/avatar/helper.tsx"
+source_file: "packages/ui/src/avatar/helper.tsx"
 type: "code"
-community: "Avatar Fallback"
+community: "Community 127"
 location: "L54"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Avatar_Fallback
+  - community/Community_127
 ---
 
 # getBorderRadius()
 
 ## Connections
-
 - [[avatar.tsx]] - `imports` [EXTRACTED]
+- [[avatar.tsx_3]] - `imports` [EXTRACTED]
 - [[helper.tsx_4]] - `contains` [EXTRACTED]
+- [[helper.tsx_36]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Avatar_Fallback
+#graphify/code #graphify/EXTRACTED #community/Community_127

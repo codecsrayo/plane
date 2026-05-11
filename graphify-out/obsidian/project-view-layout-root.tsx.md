@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/roots/project-view-layout-root.tsx"
 type: "code"
-community: "Issue Project"
+community: "Filter UI & Breadcrumbs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Project
+  - community/Filter_UI__Breadcrumbs
 ---
 
 # project-view-layout-root.tsx
 
 ## Connections
-
 - [[IssuesStoreContext]] - `imports` [EXTRACTED]
 - [[ProjectLevelWorkItemFiltersHOC]] - `imports` [EXTRACTED]
 - [[ProjectViewCalendarLayout]] - `imports` [EXTRACTED]
@@ -37,4 +36,4 @@ tags:
 - [[useIssues()]] - `imports` [EXTRACTED]
 - [[useProjectView()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Project
+#graphify/code #graphify/EXTRACTED #community/Filter_UI__Breadcrumbs

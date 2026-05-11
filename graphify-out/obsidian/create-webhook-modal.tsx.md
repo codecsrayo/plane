@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/web-hooks/create-webhook-modal.tsx"
 type: "code"
-community: "Webhook Generated"
+community: "Community 520"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Webhook_Generated
+  - community/Community_520
 ---
 
 # create-webhook-modal.tsx
 
 ## Connections
-
 - [[CreateWebhookModal()]] - `contains` [EXTRACTED]
 - [[GeneratedHookDetails()]] - `imports` [EXTRACTED]
 - [[ICreateWebhookModal]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[use-keypress.tsx]] - `imports_from` [EXTRACTED]
 - [[utils.ts_16]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Webhook_Generated
+#graphify/code #graphify/EXTRACTED #community/Community_520

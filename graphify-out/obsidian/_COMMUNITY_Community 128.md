@@ -1,36 +1,55 @@
 ---
 type: community
-cohesion: 0.19
-members: 20
+cohesion: 0.15
+members: 40
 ---
 
 # Community 128
 
-**Cohesion:** 0.19 - loosely connected
-**Members:** 20 nodes
+**Cohesion:** 0.15 - loosely connected
+**Members:** 40 nodes
 
 ## Members
-
-- [[FavoriteFolder()]] - code - web/core/components/workspace/sidebar/favorites/favorite-folder.tsx
-- [[FavoriteRoot]] - code - web/core/components/workspace/sidebar/favorites/favorite-items/root.tsx
-- [[NewFavoriteFolder]] - code - web/core/components/workspace/sidebar/favorites/new-fav-folder.tsx
-- [[Props_30]] - code - web/core/components/workspace/sidebar/favorites/favorite-items/root.tsx
-- [[Props_29]] - code - web/core/components/workspace/sidebar/favorites/favorite-folder.tsx
-- [[SidebarFavoritesMenu]] - code - web/core/components/workspace/sidebar/favorites/favorites-menu.tsx
-- [[TForm]] - code - web/core/components/workspace/sidebar/favorites/new-fav-folder.tsx
-- [[TProps_3]] - code - web/core/components/workspace/sidebar/favorites/new-fav-folder.tsx
-- [[TargetData_1]] - code - web/core/components/workspace/sidebar/favorites/favorites.helpers.ts
-- [[favorite-folder.tsx]] - code - web/core/components/workspace/sidebar/favorites/favorite-folder.tsx
-- [[favorites-menu.tsx]] - code - web/core/components/workspace/sidebar/favorites/favorites-menu.tsx
-- [[favorites.helpers.ts]] - code - web/core/components/workspace/sidebar/favorites/favorites.helpers.ts
-- [[getCanDrop()_1]] - code - web/core/components/workspace/sidebar/favorites/favorites.helpers.ts
-- [[getInstructionFromPayload()_1]] - code - web/core/components/workspace/sidebar/favorites/favorites.helpers.ts
-- [[index.ts_34]] - code - web/core/components/workspace/sidebar/favorites/favorite-items/common/index.ts
-- [[index.ts_33]] - code - web/core/components/workspace/sidebar/favorites/favorite-items/index.ts
-- [[new-fav-folder.tsx]] - code - web/core/components/workspace/sidebar/favorites/new-fav-folder.tsx
-- [[root.tsx_3]] - code - web/core/components/workspace/sidebar/favorites/favorite-items/root.tsx
-- [[use-favorite.ts]] - code - web/core/hooks/store/use-favorite.ts
-- [[useFavorite()]] - code - web/core/hooks/store/use-favorite.ts
+- [[AreaChart]] - code - packages/propel/src/charts/area-chart/root.tsx
+- [[BarChart]] - code - packages/propel/src/charts/bar-chart/root.tsx
+- [[CustomActiveShape]] - code - packages/propel/src/charts/pie-chart/active-shape.tsx
+- [[CustomLegend]] - code - packages/propel/src/charts/components/legend.tsx
+- [[CustomPieChartTooltip]] - code - packages/propel/src/charts/pie-chart/tooltip.tsx
+- [[CustomRadarAxisTick]] - code - packages/propel/src/charts/components/tick.tsx
+- [[CustomTooltip]] - code - packages/propel/src/charts/components/tooltip.tsx
+- [[CustomXAxisTick]] - code - packages/propel/src/charts/components/tick.tsx
+- [[CustomYAxisTick]] - code - packages/propel/src/charts/components/tick.tsx
+- [[LineChart]] - code - packages/propel/src/charts/line-chart/root.tsx
+- [[PieChart]] - code - packages/propel/src/charts/pie-chart/root.tsx
+- [[Props_51]] - code - packages/propel/src/charts/components/tooltip.tsx
+- [[Props_50]] - code - packages/propel/src/charts/pie-chart/tooltip.tsx
+- [[RadarChart()]] - code - packages/propel/src/charts/radar-chart/root.tsx
+- [[ScatterChart]] - code - packages/propel/src/charts/scatter-chart/root.tsx
+- [[active-shape.tsx_1]] - code - packages/propel/src/charts/pie-chart/active-shape.tsx
+- [[active-shape.tsx]] - code - propel/src/charts/pie-chart/active-shape.tsx
+- [[barShapeVariants]] - code - packages/propel/src/charts/bar-chart/bar.tsx
+- [[getLegendProps()]] - code - packages/propel/src/charts/components/legend.tsx
+- [[index.ts_158]] - code - propel/src/card/index.ts
+- [[legend.tsx_1]] - code - packages/propel/src/charts/components/legend.tsx
+- [[legend.tsx]] - code - propel/src/charts/components/legend.tsx
+- [[root.tsx_155]] - code - packages/propel/src/charts/area-chart/root.tsx
+- [[root.tsx_154]] - code - packages/propel/src/charts/bar-chart/root.tsx
+- [[root.tsx_156]] - code - packages/propel/src/charts/line-chart/root.tsx
+- [[root.tsx_152]] - code - packages/propel/src/charts/pie-chart/root.tsx
+- [[root.tsx_157]] - code - packages/propel/src/charts/radar-chart/root.tsx
+- [[root.tsx_151]] - code - packages/propel/src/charts/scatter-chart/root.tsx
+- [[root.tsx_13]] - code - propel/src/charts/area-chart/root.tsx
+- [[root.tsx_12]] - code - propel/src/charts/bar-chart/root.tsx
+- [[root.tsx_14]] - code - propel/src/charts/line-chart/root.tsx
+- [[root.tsx_10]] - code - propel/src/charts/pie-chart/root.tsx
+- [[root.tsx_15]] - code - propel/src/charts/radar-chart/root.tsx
+- [[root.tsx_9]] - code - propel/src/charts/scatter-chart/root.tsx
+- [[tick.tsx_1]] - code - packages/propel/src/charts/components/tick.tsx
+- [[tick.tsx]] - code - propel/src/charts/components/tick.tsx
+- [[tooltip.tsx_6]] - code - packages/propel/src/charts/components/tooltip.tsx
+- [[tooltip.tsx_5]] - code - packages/propel/src/charts/pie-chart/tooltip.tsx
+- [[tooltip.tsx_2]] - code - propel/src/charts/components/tooltip.tsx
+- [[tooltip.tsx_1]] - code - propel/src/charts/pie-chart/tooltip.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -40,19 +59,12 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 3 edges to [[_COMMUNITY_Layout System]]
-- 3 edges to [[_COMMUNITY_Module Analytics]]
-- 2 edges to [[_COMMUNITY_Community 206]]
-- 2 edges to [[_COMMUNITY_Auth Wrappers]]
-- 1 edge to [[_COMMUNITY_Community 200]]
-- 1 edge to [[_COMMUNITY_Community 92]]
-- 1 edge to [[_COMMUNITY_Applied Filters UI]]
+- 11 edges to [[_COMMUNITY_Community 164]]
+- 4 edges to [[_COMMUNITY_Community 470]]
 
 ## Top bridge nodes
-
-- [[use-favorite.ts]] - degree 9, connects to 4 communities
-- [[favorite-folder.tsx]] - degree 13, connects to 1 community
-- [[favorites-menu.tsx]] - degree 12, connects to 1 community
-- [[root.tsx_3]] - degree 8, connects to 1 community
-- [[useFavorite()]] - degree 6, connects to 1 community
+- [[root.tsx_154]] - degree 10, connects to 1 community
+- [[legend.tsx_1]] - degree 10, connects to 1 community
+- [[tooltip.tsx_6]] - degree 10, connects to 1 community
+- [[root.tsx_12]] - degree 10, connects to 1 community
+- [[legend.tsx]] - degree 10, connects to 1 community

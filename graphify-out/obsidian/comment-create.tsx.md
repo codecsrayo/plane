@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/comments/comment-create.tsx"
 type: "code"
-community: "Workspace Issue"
+community: "Community 409"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Issue
+  - community/Community_409
 ---
 
 # comment-create.tsx
 
 ## Connections
-
 - [[CommentCreate]] - `contains` [EXTRACTED]
 - [[FileService_1]] - `imports` [EXTRACTED]
 - [[TCommentCreate]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[use-workspace.ts]] - `imports_from` [EXTRACTED]
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_409

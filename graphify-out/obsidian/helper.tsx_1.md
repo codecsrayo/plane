@@ -1,18 +1,17 @@
 ---
 source_file: "ui/src/card/helper.tsx"
 type: "code"
-community: "Card Direction"
+community: "Community 279"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Card_Direction
+  - community/Community_279
 ---
 
 # helper.tsx
 
 ## Connections
-
 - [[ECardDirection]] - `contains` [EXTRACTED]
 - [[ECardSpacing]] - `contains` [EXTRACTED]
 - [[ECardVariant]] - `contains` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[getCardStyle()]] - `contains` [EXTRACTED]
 - [[spacings]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Card_Direction
+#graphify/code #graphify/EXTRACTED #community/Community_279

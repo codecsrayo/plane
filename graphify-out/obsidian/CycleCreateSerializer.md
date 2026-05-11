@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/serializers/cycle.py"
 type: "code"
-community: "Serializer Issue"
+community: "Community 110"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Serializer_Issue
+  - community/Community_110
 ---
 
 # CycleCreateSerializer
 
 ## Connections
-
 - [[.__init__()_3]] - `method` [EXTRACTED]
 - [[.validate()_17]] - `method` [EXTRACTED]
 - [[BaseSerializer]] - `inherits` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[cycle.py_5]] - `contains` [EXTRACTED]
 - [[post()_24]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Serializer_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_110

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/path_validator.py"
 type: "rationale"
-community: "Path Redirection"
+community: "Community 54"
 location: "L102"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Path_Redirection
+  - community/Community_54
 ---
 
-# Safely construct a redirect URL with validated next_path. Args: bas
+# Safely construct a redirect URL with validated next_path.      Args:         bas
 
 ## Connections
-
 - [[get_safe_redirect_url()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Path_Redirection
+#graphify/rationale #graphify/EXTRACTED #community/Community_54

@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 4
 ---
 
 # Community 653
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_3]] - code - api_rust/src/entities/issue_links.rs
+- [[CircularProgressIndicator()]] - code - packages/ui/src/progress/circular-progress-indicator.tsx
+- [[ICircularProgressIndicator]] - code - packages/ui/src/progress/circular-progress-indicator.tsx
+- [[circular-progress-indicator.tsx_1]] - code - packages/ui/src/progress/circular-progress-indicator.tsx
+- [[circular-progress-indicator.tsx]] - code - ui/src/progress/circular-progress-indicator.tsx
 
 ## Live Query (requires Dataview plugin)
 

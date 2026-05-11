@@ -1,31 +1,46 @@
 ---
 type: community
-cohesion: 0.19
-members: 15
+cohesion: 0.13
+members: 31
 ---
 
 # Community 178
 
-**Cohesion:** 0.19 - loosely connected
-**Members:** 15 nodes
+**Cohesion:** 0.13 - loosely connected
+**Members:** 31 nodes
 
 ## Members
-
-- [[IssueLinksActionButton]] - code - web/core/components/issues/issue-detail-widgets/links/quick-action-button.tsx
-- [[IssueLinksCollapsibleContent()]] - code - web/core/components/issues/issue-detail-widgets/links/content.tsx
-- [[IssueLinksCollapsibleTitle]] - code - web/core/components/issues/issue-detail-widgets/links/title.tsx
-- [[LinksCollapsible]] - code - web/core/components/issues/issue-detail-widgets/links/root.tsx
-- [[Props_283]] - code - web/core/components/issues/issue-detail-widgets/links/content.tsx
-- [[Props_282]] - code - web/core/components/issues/issue-detail-widgets/links/quick-action-button.tsx
-- [[Props_285]] - code - web/core/components/issues/issue-detail-widgets/links/root.tsx
-- [[Props_284]] - code - web/core/components/issues/issue-detail-widgets/links/title.tsx
-- [[content.tsx_3]] - code - web/core/components/issues/issue-detail-widgets/links/content.tsx
-- [[helper.tsx_7]] - code - web/core/components/issues/issue-detail-widgets/links/helper.tsx
-- [[index.ts_107]] - code - web/core/components/issues/issue-detail/links/index.ts
-- [[quick-action-button.tsx_3]] - code - web/core/components/issues/issue-detail-widgets/links/quick-action-button.tsx
-- [[root.tsx_42]] - code - web/core/components/issues/issue-detail-widgets/links/root.tsx
-- [[title.tsx_3]] - code - web/core/components/issues/issue-detail-widgets/links/title.tsx
-- [[useLinkOperations()]] - code - web/core/components/issues/issue-detail-widgets/links/helper.tsx
+- [[EIssueLayoutTypes]] - code - packages/types/src/issues/issue.ts
+- [[EIssueServiceType]] - code - packages/types/src/issues/issue.ts
+- [[EIssuesStoreType]] - code - packages/types/src/issues/issue.ts
+- [[IIssuePublicReaction]] - code - packages/types/src/issues/issue_reaction.ts
+- [[IPublicIssue]] - code - packages/types/src/issues/issue.ts
+- [[IPublicVote]] - code - packages/types/src/issues/issue_reaction.ts
+- [[IWorkItemPeekOverview]] - code - packages/types/src/issues/issue.ts
+- [[IssueRelation]] - code - packages/types/src/issues/issue.ts
+- [[TBaseIssue]] - code - packages/types/src/issues/issue.ts
+- [[TBulkIssueProperties]] - code - packages/types/src/issues/issue.ts
+- [[TBulkOperationsPayload]] - code - packages/types/src/issues/issue.ts
+- [[TIssueLink]] - code - packages/types/src/issues/issue_link.ts
+- [[TIssueLinkEditableFields]] - code - packages/types/src/issues/issue_link.ts
+- [[TIssueLinkIdMap]] - code - packages/types/src/issues/issue_link.ts
+- [[TIssueLinkMap]] - code - packages/types/src/issues/issue_link.ts
+- [[TIssueMap]] - code - packages/types/src/issues/issue.ts
+- [[TIssueReaction]] - code - packages/types/src/issues/issue_reaction.ts
+- [[TIssueReactionIdMap]] - code - packages/types/src/issues/issue_reaction.ts
+- [[TIssueReactionMap]] - code - packages/types/src/issues/issue_reaction.ts
+- [[TIssueResponseResults]] - code - packages/types/src/issues/issue.ts
+- [[TIssueServiceType]] - code - packages/types/src/issues/issue.ts
+- [[TIssuesResponse]] - code - packages/types/src/issues/issue.ts
+- [[TPublicIssueResponseResults]] - code - packages/types/src/issues/issue.ts
+- [[TPublicIssuesResponse]] - code - packages/types/src/issues/issue.ts
+- [[TWorkItemWidgets]] - code - packages/types/src/issues/issue.ts
+- [[issue.ts_1]] - code - packages/types/src/issues/issue.ts
+- [[issue.ts]] - code - types/src/issues/issue.ts
+- [[issue_link.ts_1]] - code - packages/types/src/issues/issue_link.ts
+- [[issue_link.ts]] - code - types/src/issues/issue_link.ts
+- [[issue_reaction.ts_1]] - code - packages/types/src/issues/issue_reaction.ts
+- [[issue_reaction.ts]] - code - types/src/issues/issue_reaction.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -35,16 +50,19 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 9 edges to [[_COMMUNITY_Issue Activity Tracking]]
-- 2 edges to [[_COMMUNITY_Community 177]]
-- 1 edge to [[_COMMUNITY_Git Integrations]]
-- 1 edge to [[_COMMUNITY_Community 81]]
+- 10 edges to [[_COMMUNITY_Community 139]]
+- 6 edges to [[_COMMUNITY_Community 101]]
+- 4 edges to [[_COMMUNITY_Community 100]]
+- 4 edges to [[_COMMUNITY_Community 194]]
+- 4 edges to [[_COMMUNITY_Community 386]]
+- 4 edges to [[_COMMUNITY_Community 189]]
+- 2 edges to [[_COMMUNITY_Community 262]]
+- 2 edges to [[_COMMUNITY_Community 62]]
+- 2 edges to [[_COMMUNITY_Community 71]]
+- 2 edges to [[_COMMUNITY_Community 291]]
 
 ## Top bridge nodes
-
-- [[helper.tsx_7]] - degree 8, connects to 4 communities
-- [[useLinkOperations()]] - degree 5, connects to 2 communities
-- [[root.tsx_42]] - degree 8, connects to 1 community
-- [[title.tsx_3]] - degree 7, connects to 1 community
-- [[quick-action-button.tsx_3]] - degree 5, connects to 1 community
+- [[issue.ts_1]] - degree 40, connects to 9 communities
+- [[issue.ts]] - degree 40, connects to 9 communities
+- [[issue_reaction.ts_1]] - degree 8, connects to 1 community
+- [[issue_reaction.ts]] - degree 8, connects to 1 community

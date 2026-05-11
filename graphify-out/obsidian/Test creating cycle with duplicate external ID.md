@@ -1,14 +1,14 @@
 ---
 source_file: "api/plane/tests/contract/api/test_cycles.py"
 type: "rationale"
-community: "Test Creating"
+community: "Community 1835"
 location: "L138"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Test_Creating
+  - community/Community_1835
 ---
 
 # Test creating cycle with duplicate external ID
 
-#graphify/rationale #graphify/EXTRACTED #community/Test_Creating
+#graphify/rationale #graphify/EXTRACTED #community/Community_1835

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/cycle.store.ts"
 type: "code"
-community: "Cycle Cycles"
+community: "Community 388"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Cycles
+  - community/Community_388
 ---
 
 # cycle.store.ts
 
 ## Connections
-
 - [[CoreRootStore]] - `imports` [EXTRACTED]
 - [[CycleArchiveService_1]] - `imports` [EXTRACTED]
 - [[CycleService_1]] - `imports` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[root.store.ts_2]] - `imports_from` [EXTRACTED]
 - [[toApiError()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Cycles
+#graphify/code #graphify/EXTRACTED #community/Community_388

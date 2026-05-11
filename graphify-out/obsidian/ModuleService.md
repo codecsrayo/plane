@@ -1,18 +1,17 @@
 ---
-source_file: "services/src/module/module.service.ts"
+source_file: "packages/services/src/module/module.service.ts"
 type: "code"
-community: "Modules Issues"
+community: "Community 306"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Modules_Issues
+  - community/Community_306
 ---
 
 # ModuleService
 
 ## Connections
-
 - [[.addIssuesToModule()_1]] - `method` [EXTRACTED]
 - [[.addModuleToFavorites()_1]] - `method` [EXTRACTED]
 - [[.addModulesToIssue()_1]] - `method` [EXTRACTED]
@@ -30,5 +29,6 @@ tags:
 - [[.updateModuleLink()]] - `method` [EXTRACTED]
 - [[.workspaceModulesList()]] - `method` [EXTRACTED]
 - [[module.service.ts]] - `contains` [EXTRACTED]
+- [[module.service.ts_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Modules_Issues
+#graphify/code #graphify/EXTRACTED #community/Community_306

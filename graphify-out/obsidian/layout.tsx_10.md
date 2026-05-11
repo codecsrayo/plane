@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/layout.tsx"
 type: "code"
-community: "Sidebar Navigation"
+community: "Community 234"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Navigation
+  - community/Community_234
 ---
 
 # layout.tsx
 
 ## Connections
-
 - [[AppSidebarToggleButton]] - `imports` [EXTRACTED]
 - [[ProjectAuthWrapper]] - `imports` [EXTRACTED]
 - [[ProjectLayout()]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[useAppTheme()]] - `imports` [EXTRACTED]
 - [[useProjectNavigationPreferences()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation
+#graphify/code #graphify/EXTRACTED #community/Community_234

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/path_validator.py"
 type: "code"
-community: "Path Redirection"
+community: "Community 54"
 location: "L50"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Path_Redirection
+  - community/Community_54
 ---
 
 # get_allowed_hosts()
 
 ## Connections
-
 - [[.get()_52]] - `calls` [INFERRED]
 - [[.get()_54]] - `calls` [INFERRED]
 - [[.get()_56]] - `calls` [INFERRED]
@@ -24,4 +23,4 @@ tags:
 - [[get_safe_redirect_url()]] - `calls` [EXTRACTED]
 - [[path_validator.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Path_Redirection
+#graphify/code #graphify/INFERRED #community/Community_54

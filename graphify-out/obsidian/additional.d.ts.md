@@ -1,14 +1,14 @@
 ---
 source_file: "space/additional.d.ts"
 type: "code"
-community: "Additional"
+community: "Community 1952"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Additional
+  - community/Community_1952
 ---
 
 # additional.d.ts
 
-#graphify/code #graphify/EXTRACTED #community/Additional
+#graphify/code #graphify/EXTRACTED #community/Community_1952

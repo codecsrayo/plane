@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_20]] - code - ui/src/tooltip/index.ts
+- [[index.ts_34]] - code - editor/src/ee/types/index.ts
 
 ## Live Query (requires Dataview plugin)
 

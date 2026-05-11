@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/space/serializer/cycle.py"
 type: "code"
-community: "Serializer Issue"
+community: "Community 97"
 location: "L10"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Serializer_Issue
+  - community/Community_97
 ---
 
 # CycleBaseSerializer
 
 ## Connections
-
 - [[BaseSerializer]] - `inherits` [EXTRACTED]
 - [[BaseSerializer_2]] - `uses` [INFERRED]
 - [[CommentReactionLiteSerializer]] - `uses` [INFERRED]
@@ -37,4 +36,4 @@ tags:
 - [[RelatedIssueSerializer_1]] - `uses` [INFERRED]
 - [[cycle.py_8]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Serializer_Issue
+#graphify/code #graphify/INFERRED #community/Community_97

@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/settings/profile/[profileTabId]/page.tsx"
 type: "code"
-community: "Workspace Issue"
+community: "Community 24"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Issue
+  - community/Community_24
 ---
 
 # page.tsx
 
 ## Connections
-
 - [[LogoSpinner()]] - `imports` [EXTRACTED]
 - [[PageHead()]] - `imports` [EXTRACTED]
 - [[ProfileSettingsPage()]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[use-app-router.tsx]] - `imports_from` [EXTRACTED]
 - [[useAppRouter()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_24

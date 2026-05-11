@@ -1,19 +1,18 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/spreadsheet/issue-row.tsx"
 type: "code"
-community: "Select Multiple"
+community: "Bulk Operations & Spreadsheet"
 location: "L59"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Select_Multiple
+  - community/Bulk_Operations__Spreadsheet
 ---
 
 # SpreadsheetIssueRow
 
 ## Connections
-
 - [[issue-row.tsx]] - `contains` [EXTRACTED]
 - [[spreadsheet-table.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Select_Multiple
+#graphify/code #graphify/EXTRACTED #community/Bulk_Operations__Spreadsheet

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/inbox/inbox-filter/filters/date.tsx"
 type: "code"
-community: "Date Start"
+community: "Issue Display Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Date_Start
+  - community/Issue_Display_Filters
 ---
 
 # date.tsx
 
 ## Connections
-
 - [[DateFilterModal()]] - `imports` [EXTRACTED]
 - [[FilterDate]] - `contains` [EXTRACTED]
 - [[Props_448]] - `contains` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[use-project-inbox.ts]] - `imports_from` [EXTRACTED]
 - [[useProjectInbox()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Date_Start
+#graphify/code #graphify/EXTRACTED #community/Issue_Display_Filters

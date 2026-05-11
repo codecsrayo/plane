@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/analytic/base.py"
 type: "code"
-community: "Endpoint User"
+community: "Community 27"
 location: "L39"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Endpoint_User
+  - community/Community_27
 ---
 
 # get()
 
 ## Connections
-
 - [[.get_queryset()_24]] - `calls` [EXTRACTED]
 - [[.perform_create()_2]] - `calls` [EXTRACTED]
 - [[.set()]] - `calls` [INFERRED]
@@ -23,4 +22,4 @@ tags:
 - [[post()_10]] - `calls` [EXTRACTED]
 - [[response]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Endpoint_User
+#graphify/code #graphify/INFERRED #community/Community_27

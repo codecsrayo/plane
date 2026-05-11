@@ -1,18 +1,17 @@
 ---
 source_file: "utils/src/filter.ts"
 type: "code"
-community: "Order Should"
+community: "Community 181"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Order_Should
+  - community/Community_181
 ---
 
 # filter.ts
 
 ## Connections
-
 - [[calculateTotalFilters()]] - `contains` [EXTRACTED]
 - [[cycle.ts_2]] - `imports_from` [EXTRACTED]
 - [[datetime.ts]] - `imports_from` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[project.ts_2]] - `imports_from` [EXTRACTED]
 - [[satisfiesDateFilter()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Order_Should
+#graphify/code #graphify/EXTRACTED #community/Community_181

@@ -1,19 +1,18 @@
 ---
 source_file: "api_rust/src/entities/issue_types.rs"
 type: "code"
-community: "Model Relation"
+community: "Community 885"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Model_Relation
+  - community/Community_885
 ---
 
 # issue_types.rs
 
 ## Connections
-
 - [[Model_5]] - `contains` [EXTRACTED]
 - [[Relation_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Model_Relation
+#graphify/code #graphify/EXTRACTED #community/Community_885

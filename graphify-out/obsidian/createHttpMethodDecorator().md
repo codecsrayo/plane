@@ -1,18 +1,18 @@
 ---
-source_file: "decorators/src/rest.ts"
+source_file: "packages/decorators/src/rest.ts"
 type: "code"
-community: "Rest Method"
+community: "Community 441"
 location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Rest_Method
+  - community/Community_441
 ---
 
 # createHttpMethodDecorator()
 
 ## Connections
-
 - [[rest.ts]] - `contains` [EXTRACTED]
+- [[rest.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Rest_Method
+#graphify/code #graphify/EXTRACTED #community/Community_441

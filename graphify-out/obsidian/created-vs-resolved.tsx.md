@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/analytics/work-items/created-vs-resolved.tsx"
 type: "code"
-community: "Analytics Project"
+community: "Community 391"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Analytics_Project
+  - community/Community_391
 ---
 
 # created-vs-resolved.tsx
 
 ## Connections
-
 - [[AnalyticsService]] - `imports` [EXTRACTED]
 - [[ChartLoader()]] - `imports` [EXTRACTED]
 - [[CreatedVsResolved]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[use-analytics.ts]] - `imports_from` [EXTRACTED]
 - [[useAnalytics()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Analytics_Project
+#graphify/code #graphify/EXTRACTED #community/Community_391

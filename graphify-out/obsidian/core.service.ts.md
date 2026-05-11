@@ -1,18 +1,17 @@
 ---
 source_file: "live/src/services/page/core.service.ts"
 type: "code"
-community: "Fetch Description"
+community: "Community 483"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Fetch_Description
+  - community/Community_483
 ---
 
 # core.service.ts
 
 ## Connections
-
 - [[AppError]] - `imports` [EXTRACTED]
 - [[TUserMention]] - `contains` [EXTRACTED]
 - [[api.service.ts_2]] - `imports_from` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[updateDescriptionBinary()]] - `contains` [EXTRACTED]
 - [[updatePageProperties()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Fetch_Description
+#graphify/code #graphify/EXTRACTED #community/Community_483

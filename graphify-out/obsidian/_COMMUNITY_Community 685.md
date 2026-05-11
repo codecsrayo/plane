@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.50
+members: 4
 ---
 
 # Community 685
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.50 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_35]] - code - api_rust/src/entities/issues.rs
+- [[__init__.py]] - code - api/plane/__init__.py
+- [[celery.py]] - code - api/plane/celery.py
+- [[setup_loggers()]] - code - api/plane/celery.py
+- [[setup_task_loggers()]] - code - api/plane/celery.py
 
 ## Live Query (requires Dataview plugin)
 

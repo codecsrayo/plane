@@ -1,18 +1,18 @@
 ---
-source_file: "propel/src/toast/toast.tsx"
+source_file: "packages/propel/src/toast/toast.tsx"
 type: "code"
-community: "Toast Static"
+community: "Community 103"
 location: "L37"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toast_Static
+  - community/Community_103
 ---
 
 # PromiseToastCallback
 
 ## Connections
-
 - [[toast.tsx]] - `contains` [EXTRACTED]
+- [[toast.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toast_Static
+#graphify/code #graphify/EXTRACTED #community/Community_103

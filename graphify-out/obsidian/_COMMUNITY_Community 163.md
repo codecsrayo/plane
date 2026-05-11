@@ -1,32 +1,49 @@
 ---
 type: community
-cohesion: 0.17
-members: 16
+cohesion: 0.08
+members: 34
 ---
 
 # Community 163
 
-**Cohesion:** 0.17 - loosely connected
-**Members:** 16 nodes
+**Cohesion:** 0.08 - loosely connected
+**Members:** 34 nodes
 
 ## Members
-
-- [[LayoutQuickActions]] - code - web/core/components/issues/layout-quick-actions.tsx
-- [[MenuResult]] - code - web/core/components/common/quick-actions-helper.tsx
-- [[Props_176]] - code - web/core/components/issues/layout-quick-actions.tsx
-- [[UseCycleMenuItemsProps]] - code - web/core/components/common/quick-actions-helper.tsx
-- [[UseLayoutMenuItemsProps]] - code - web/core/components/common/quick-actions-helper.tsx
-- [[UseModuleMenuItemsProps]] - code - web/core/components/common/quick-actions-helper.tsx
-- [[UseViewMenuItemsProps]] - code - web/core/components/common/quick-actions-helper.tsx
-- [[layout-quick-actions.tsx]] - code - web/core/components/issues/layout-quick-actions.tsx
-- [[quick-actions-factory.tsx]] - code - web/core/components/common/quick-actions-factory.tsx
-- [[quick-actions-helper.tsx]] - code - web/core/components/common/quick-actions-helper.tsx
-- [[useCycleMenuItems()]] - code - web/core/components/common/quick-actions-helper.tsx
-- [[useIntakeHeaderMenuItems()]] - code - web/core/components/common/quick-actions-helper.tsx
-- [[useLayoutMenuItems()]] - code - web/core/components/common/quick-actions-helper.tsx
-- [[useModuleMenuItems()]] - code - web/core/components/common/quick-actions-helper.tsx
-- [[useQuickActionsFactory()]] - code - web/core/components/common/quick-actions-factory.tsx
-- [[useViewMenuItems()]] - code - web/core/components/common/quick-actions-helper.tsx
+- [[DEFAULT_DOCUMENT_INFO]] - code - web/core/components/pages/navigation-pane/tab-panels/info/document-info.tsx
+- [[INavigationPaneExtension]] - code - web/core/components/pages/navigation-pane/types/extensions.ts
+- [[INavigationPaneExtensionComponent]] - code - web/core/components/pages/navigation-pane/types/extensions.ts
+- [[INavigationPaneExtensionProps]] - code - web/core/components/pages/navigation-pane/types/extensions.ts
+- [[PageNavigationPaneInfoTabActorsInfo]] - code - web/core/components/pages/navigation-pane/tab-panels/info/actors-info.tsx
+- [[PageNavigationPaneInfoTabDocumentInfo]] - code - web/core/components/pages/navigation-pane/tab-panels/info/document-info.tsx
+- [[PageNavigationPaneInfoTabPanel]] - code - web/core/components/pages/navigation-pane/tab-panels/info/root.tsx
+- [[PageNavigationPaneInfoTabVersionHistory]] - code - web/core/components/pages/navigation-pane/tab-panels/info/version-history.tsx
+- [[PageNavigationPaneOutlineTabEmptyState()]] - code - web/ce/components/pages/navigation-pane/tab-panels/empty-states/outline.tsx
+- [[PageNavigationPaneOutlineTabPanel()]] - code - web/core/components/pages/navigation-pane/tab-panels/outline.tsx
+- [[PageNavigationPaneRoot]] - code - web/core/components/pages/navigation-pane/root.tsx
+- [[PageNavigationPaneTabPanelsRoot()]] - code - web/core/components/pages/navigation-pane/tab-panels/root.tsx
+- [[PageNavigationPaneTabsList()]] - code - web/core/components/pages/navigation-pane/tabs-list.tsx
+- [[Props_480]] - code - web/core/components/pages/navigation-pane/tab-panels/info/actors-info.tsx
+- [[Props_477]] - code - web/core/components/pages/navigation-pane/tab-panels/info/document-info.tsx
+- [[Props_479]] - code - web/core/components/pages/navigation-pane/tab-panels/info/root.tsx
+- [[Props_478]] - code - web/core/components/pages/navigation-pane/tab-panels/info/version-history.tsx
+- [[Props_473]] - code - web/core/components/pages/navigation-pane/root.tsx
+- [[Props_476]] - code - web/core/components/pages/navigation-pane/tab-panels/outline.tsx
+- [[Props_475]] - code - web/core/components/pages/navigation-pane/tab-panels/root.tsx
+- [[TPageRootHandlers]] - code - web/core/components/pages/editor/page-root.tsx
+- [[VersionHistoryItem]] - code - web/core/components/pages/navigation-pane/tab-panels/info/version-history.tsx
+- [[VersionHistoryItemProps]] - code - web/core/components/pages/navigation-pane/tab-panels/info/version-history.tsx
+- [[actors-info.tsx]] - code - web/core/components/pages/navigation-pane/tab-panels/info/actors-info.tsx
+- [[document-info.tsx]] - code - web/core/components/pages/navigation-pane/tab-panels/info/document-info.tsx
+- [[extensions.ts_4]] - code - web/core/components/pages/navigation-pane/types/extensions.ts
+- [[index.ts_417]] - code - web/core/components/pages/editor/summary/index.ts
+- [[outline.tsx]] - code - web/ce/components/pages/navigation-pane/tab-panels/empty-states/outline.tsx
+- [[outline.tsx_1]] - code - web/core/components/pages/navigation-pane/tab-panels/outline.tsx
+- [[root.tsx_121]] - code - web/core/components/pages/navigation-pane/root.tsx
+- [[root.tsx_123]] - code - web/core/components/pages/navigation-pane/tab-panels/info/root.tsx
+- [[root.tsx_122]] - code - web/core/components/pages/navigation-pane/tab-panels/root.tsx
+- [[tabs-list.tsx]] - code - web/core/components/pages/navigation-pane/tabs-list.tsx
+- [[version-history.tsx]] - code - web/core/components/pages/navigation-pane/tab-panels/info/version-history.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -36,15 +53,18 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 2 edges to [[_COMMUNITY_Community 105]]
-- 2 edges to [[_COMMUNITY_Community 96]]
-- 2 edges to [[_COMMUNITY_Module Analytics]]
-- 2 edges to [[_COMMUNITY_Cycle Services & Filters]]
+- 16 edges to [[_COMMUNITY_Community 50]]
+- 6 edges to [[_COMMUNITY_Community 133]]
+- 6 edges to [[_COMMUNITY_Community 213]]
+- 4 edges to [[_COMMUNITY_Issue Display Filters]]
+- 2 edges to [[_COMMUNITY_Community 484]]
+- 1 edge to [[_COMMUNITY_Community 24]]
+- 1 edge to [[_COMMUNITY_Community 559]]
+- 1 edge to [[_COMMUNITY_Community 43]]
 
 ## Top bridge nodes
-
-- [[quick-actions-helper.tsx]] - degree 16, connects to 4 communities
-- [[useViewMenuItems()]] - degree 4, connects to 2 communities
-- [[useCycleMenuItems()]] - degree 3, connects to 1 community
-- [[useModuleMenuItems()]] - degree 3, connects to 1 community
+- [[version-history.tsx]] - degree 14, connects to 4 communities
+- [[root.tsx_122]] - degree 14, connects to 4 communities
+- [[root.tsx_121]] - degree 15, connects to 3 communities
+- [[root.tsx_123]] - degree 13, connects to 2 communities
+- [[actors-info.tsx]] - degree 7, connects to 2 communities

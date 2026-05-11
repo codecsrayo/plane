@@ -1,18 +1,17 @@
 ---
 source_file: "live/src/lib/pdf/plane-pdf-exporter.tsx"
 type: "code"
-community: "Colors Render"
+community: "Community 55"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Colors_Render
+  - community/Community_55
 ---
 
 # plane-pdf-exporter.tsx
 
 ## Connections
-
 - [[PDFExportOptions]] - `imports` [EXTRACTED]
 - [[TipTapDocument]] - `imports` [EXTRACTED]
 - [[createKeyGenerator()]] - `imports` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[styles.ts]] - `imports_from` [EXTRACTED]
 - [[types.ts_20]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Colors_Render
+#graphify/code #graphify/EXTRACTED #community/Community_55

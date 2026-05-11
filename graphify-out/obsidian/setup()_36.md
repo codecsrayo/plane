@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/pages.rs"
 type: "code"
-community: "Returns Pages"
+community: "Community 363"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Pages
+  - community/Community_363
 ---
 
 # setup()
 
 ## Connections
-
 - [[.spawn()]] - `calls` [INFERRED]
 - [[archive_page_returns_200_or_204()]] - `calls` [EXTRACTED]
 - [[create_page_no_name_returns_201()]] - `calls` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[pages_summary_returns_200()]] - `calls` [EXTRACTED]
 - [[update_page_returns_200()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Pages
+#graphify/code #graphify/EXTRACTED #community/Community_363

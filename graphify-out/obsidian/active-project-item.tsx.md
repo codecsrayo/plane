@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/analytics/overview/active-project-item.tsx"
 type: "code"
-community: "Project Settings"
+community: "Project Filters & Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Project_Filters__Archives
 ---
 
 # active-project-item.tsx
 
 ## Connections
-
 - [[ActiveProjectItem()]] - `contains` [EXTRACTED]
 - [[CompletionPercentage()]] - `contains` [EXTRACTED]
 - [[Props_509]] - `contains` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

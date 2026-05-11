@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/provider.tsx"
 type: "code"
-community: "Error Provider"
+community: "Community 43"
 location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Error_Provider
+  - community/Community_43
 ---
 
 # IAppProvider
 
 ## Connections
-
 - [[provider.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Error_Provider
+#graphify/code #graphify/EXTRACTED #community/Community_43

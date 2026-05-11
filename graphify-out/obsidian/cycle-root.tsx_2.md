@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/spreadsheet/roots/cycle-root.tsx"
 type: "code"
-community: "Issue Project"
+community: "Active Cycle Stats"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Project
+  - community/Active_Cycle_Stats
 ---
 
 # cycle-root.tsx
 
 ## Connections
-
 - [[BaseSpreadsheetRoot]] - `imports` [EXTRACTED]
 - [[CycleSpreadsheetLayout]] - `contains` [EXTRACTED]
 - [[base-spreadsheet-root.tsx]] - `imports_from` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[use-cycle.ts]] - `imports_from` [EXTRACTED]
 - [[useCycle()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Project
+#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats

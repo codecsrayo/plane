@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/urls/__init__.py"
 type: "code"
-community: "Asset Cycle"
+community: "Community 412"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Asset_Cycle
+  - community/Community_412
 ---
 
-# **init**.py
+# __init__.py
 
 ## Connections
-
 - [[asset.py_4]] - `imports_from` [EXTRACTED]
 - [[cycle.py_4]] - `imports_from` [EXTRACTED]
 - [[intake.py_3]] - `imports_from` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[user.py_4]] - `imports_from` [EXTRACTED]
 - [[work_item.py]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Asset_Cycle
+#graphify/code #graphify/EXTRACTED #community/Community_412

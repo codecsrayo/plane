@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/instances.rs"
 type: "code"
-community: "User Github"
+community: "Rust API Handlers"
 location: "L94"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User_Github
+  - community/Rust_API_Handlers
 ---
 
 # require_instance_admin()
 
 ## Connections
-
 - [[create_instance_admin()]] - `calls` [EXTRACTED]
 - [[delete_instance_admin()]] - `calls` [EXTRACTED]
 - [[disable_email_feature()]] - `calls` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[patch_instance()]] - `calls` [EXTRACTED]
 - [[update_configurations()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User_Github
+#graphify/code #graphify/EXTRACTED #community/Rust_API_Handlers

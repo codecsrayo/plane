@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/utils/django_sessions.rs"
 type: "code"
-community: "Password Email"
+community: "Community 21"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Password_Email
+  - community/Community_21
 ---
 
 # django_sessions.rs
 
 ## Connections
-
 - [[auth_hash_is_stable()]] - `contains` [EXTRACTED]
 - [[base62_encode()]] - `contains` [EXTRACTED]
 - [[base64_hmac_sha256()]] - `contains` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[session_auth_hash()]] - `contains` [EXTRACTED]
 - [[session_roundtrip_preserves_payload()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Password_Email
+#graphify/code #graphify/EXTRACTED #community/Community_21

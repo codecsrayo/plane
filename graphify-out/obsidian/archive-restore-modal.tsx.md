@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/project/archive-restore-modal.tsx"
 type: "code"
-community: "Project Settings"
+community: "Project Filters & Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Project_Filters__Archives
 ---
 
 # archive-restore-modal.tsx
 
 ## Connections
-
 - [[ArchiveRestoreProjectModal()]] - `contains` [EXTRACTED]
 - [[Props_202]] - `contains` [EXTRACTED]
 - [[card.tsx_2]] - `imports_from` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[useAppRouter()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

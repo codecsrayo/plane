@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/modules/applied-filters/root.tsx"
 type: "code"
-community: "Filters Applied"
+community: "Community 169"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filters_Applied
+  - community/Community_169
 ---
 
 # ModuleAppliedFiltersList()
 
 ## Connections
-
 - [[root.tsx_56]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filters_Applied
+#graphify/code #graphify/EXTRACTED #community/Community_169

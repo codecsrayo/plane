@@ -1,17 +1,16 @@
 ---
 source_file: "docker-compose.yml"
 type: "document"
-community: "Rust Django"
+community: "Community 421"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Rust_Django
+  - community/Community_421
 ---
 
 # PostgreSQL 15 Database
 
 ## Connections
-
 - [[API Rust Service (prod)]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Rust_Django
+#graphify/document #graphify/EXTRACTED #community/Community_421

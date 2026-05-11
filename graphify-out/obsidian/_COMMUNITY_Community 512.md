@@ -1,17 +1,23 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.43
+members: 8
 ---
 
 # Community 512
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.43 - moderately connected
+**Members:** 8 nodes
 
 ## Members
-
-- [[index.ts_129]] - code - utils/src/rich-filters/values/index.ts
+- [[ANALYTICS_DURATION_FILTER_OPTIONS]] - code - packages/constants/src/analytics/common.ts
+- [[ANALYTICS_INSIGHTS_FIELDS]] - code - packages/constants/src/analytics/common.ts
+- [[ANALYTICS_V2_DATE_KEYS]] - code - packages/constants/src/analytics/common.ts
+- [[ANALYTICS_X_AXIS_VALUES]] - code - packages/constants/src/analytics/common.ts
+- [[ANALYTICS_Y_AXIS_VALUES]] - code - packages/constants/src/analytics/common.ts
+- [[IInsightField]] - code - packages/constants/src/analytics/common.ts
+- [[common.ts_3]] - code - constants/src/analytics/common.ts
+- [[common.ts_12]] - code - packages/constants/src/analytics/common.ts
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-detail/module-select.tsx"
 type: "code"
-community: "Label Dropdown"
+community: "Work Item Detail & Layouts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Dropdown
+  - community/Work_Item_Detail__Layouts
 ---
 
 # module-select.tsx
 
 ## Connections
-
 - [[IssueModuleSelect]] - `contains` [EXTRACTED]
 - [[ModuleDropdown]] - `imports` [EXTRACTED]
 - [[TIssueModuleSelect]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Work_Item_Detail__Layouts

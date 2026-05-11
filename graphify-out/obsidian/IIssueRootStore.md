@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/issue/root.store.ts"
 type: "code"
-community: "Filters Issue"
+community: "Issue Store & Filters Logic"
 location: "L54"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filters_Issue
+  - community/Issue_Store__Filters_Logic
 ---
 
 # IIssueRootStore
 
 ## Connections
-
 - [[attachment.store.ts]] - `imports` [EXTRACTED]
 - [[base-issues.store.ts]] - `imports` [EXTRACTED]
 - [[filter.store.ts_5]] - `imports` [EXTRACTED]
@@ -37,4 +36,4 @@ tags:
 - [[root.store.ts_3]] - `contains` [EXTRACTED]
 - [[root.store.ts_4]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filters_Issue
+#graphify/code #graphify/EXTRACTED #community/Issue_Store__Filters_Logic

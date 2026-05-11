@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/work_items.rs"
 type: "code"
-community: "Work Returns"
+community: "Community 288"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Work_Returns
+  - community/Community_288
 ---
 
 # work_items.rs
 
 ## Connections
-
 - [[create_work_item()]] - `contains` [EXTRACTED]
 - [[create_work_item_comment_returns_201()]] - `contains` [EXTRACTED]
 - [[create_work_item_empty_name_returns_400()]] - `contains` [EXTRACTED]
@@ -34,4 +33,4 @@ tags:
 - [[update_work_item_comment_returns_200()]] - `contains` [EXTRACTED]
 - [[update_work_item_returns_200()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Work_Returns
+#graphify/code #graphify/EXTRACTED #community/Community_288

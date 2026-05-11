@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/serializers/intake.py"
 type: "rationale"
-community: "Serializer Asset"
+community: "Community 171"
 location: "L13"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Serializer_Asset
+  - community/Community_171
 ---
 
-# Serializer for work item data within intake submissions. Handles essential
+# Serializer for work item data within intake submissions.      Handles essential
 
 ## Connections
-
 - [[IssueForIntakeSerializer]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Serializer_Asset
+#graphify/rationale #graphify/EXTRACTED #community/Community_171

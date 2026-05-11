@@ -1,0 +1,233 @@
+---
+type: community
+cohesion: 0.02
+members: 174
+---
+
+# Bulk Operations & Spreadsheet
+
+**Cohesion:** 0.02 - loosely connected
+**Members:** 174 nodes
+
+## Members
+- [[.getIssueById()]] - code - web/core/services/issue/workspace_draft.service.ts
+- [[BulkOperationsUpgradeBanner()]] - code - web/core/components/issues/bulk-operations/upgrade-banner.tsx
+- [[FilterIssueTypes]] - code - web/ce/components/issues/filters/issue-types.tsx
+- [[GanttChartSidebar]] - code - web/core/components/gantt-chart/sidebar/root.tsx
+- [[GroupDragOverlay()]] - code - web/core/components/issues/issue-layouts/group-drag-overlay.tsx
+- [[GroupDropLocation]] - code - web/core/components/issues/issue-layouts/utils.tsx
+- [[HeaderColumn()]] - code - web/core/components/issues/issue-layouts/spreadsheet/columns/header-column.tsx
+- [[HeaderGroupByCard]] - code - space/components/issues/issue-layouts/list/headers/group-by-card.tsx
+- [[HeaderSubGroupByCard]] - code - space/components/issues/issue-layouts/kanban/headers/sub-group-by-card.tsx
+- [[IHeaderSubGroupByCard]] - code - space/components/issues/issue-layouts/kanban/headers/sub-group-by-card.tsx
+- [[IKanBan]] - code - space/components/issues/issue-layouts/kanban/default.tsx
+- [[IKanBanSwimLanes]] - code - space/components/issues/issue-layouts/kanban/swimlanes.tsx
+- [[IKanbanGroup]] - code - space/components/issues/issue-layouts/kanban/kanban-group.tsx
+- [[ISubGroup]] - code - space/components/issues/issue-layouts/kanban/swimlanes.tsx
+- [[ISubGroupSwimlane]] - code - space/components/issues/issue-layouts/kanban/swimlanes.tsx
+- [[ISubGroupSwimlaneHeader]] - code - space/components/issues/issue-layouts/kanban/swimlanes.tsx
+- [[IWithDisplayPropertiesHOC]] - code - web/core/components/issues/issue-layouts/properties/with-display-properties-HOC.tsx
+- [[IssueBlockProps]] - code - space/components/issues/issue-layouts/kanban/block.tsx
+- [[IssueBlockRoot]] - code - web/core/components/issues/issue-layouts/list/block-root.tsx
+- [[IssueBlocksList()]] - code - space/components/issues/issue-layouts/list/blocks-list.tsx
+- [[IssueBlocksListProps]] - code - space/components/issues/issue-layouts/kanban/blocks-list.tsx
+- [[IssueBulkOperationsRoot]] - code - web/ce/components/issues/bulk-operations/root.tsx
+- [[IssueColumn]] - code - web/core/components/issues/issue-layouts/spreadsheet/issue-column.tsx
+- [[IssueDetailsBlockProps]] - code - space/components/issues/issue-layouts/kanban/block.tsx
+- [[IssueIdentifier]] - code - web/ce/components/issues/issue-details/issue-identifier.tsx
+- [[IssueRowDetails]] - code - web/core/components/issues/issue-layouts/spreadsheet/issue-row.tsx
+- [[IssueRowDetailsProps]] - code - web/core/components/issues/issue-layouts/spreadsheet/issue-row.tsx
+- [[IssueStats()]] - code - web/ce/components/issues/issue-layouts/issue-stats.tsx
+- [[IssueUpdates]] - code - web/core/components/issues/issue-layouts/utils.tsx
+- [[KANBAN_LOADER_KEYS]] - code - space/components/issues/issue-layouts/kanban/kanban-group.tsx
+- [[KanBan]] - code - space/components/issues/issue-layouts/kanban/default.tsx
+- [[KanBanSwimLanes]] - code - space/components/issues/issue-layouts/kanban/swimlanes.tsx
+- [[KanbanColumnLoader()]] - code - web/core/components/ui/loader/layouts/kanban-layout-loader.tsx
+- [[KanbanGroup]] - code - space/components/issues/issue-layouts/kanban/kanban-group.tsx
+- [[KanbanIssueBlock]] - code - space/components/issues/issue-layouts/kanban/block.tsx
+- [[KanbanIssueBlockLoader_1]] - code - space/components/issues/issue-layouts/kanban/kanban-group.tsx
+- [[KanbanIssueBlockLoader]] - code - web/core/components/ui/loader/layouts/kanban-layout-loader.tsx
+- [[KanbanIssueBlocksList]] - code - space/components/issues/issue-layouts/kanban/blocks-list.tsx
+- [[KanbanIssueDetailsBlock]] - code - space/components/issues/issue-layouts/kanban/block.tsx
+- [[LIST_LOADER_KEYS]] - code - space/components/issues/issue-layouts/list/list-group.tsx
+- [[ListGroup]] - code - space/components/issues/issue-layouts/list/list-group.tsx
+- [[ListLoaderItemRow_1]] - code - space/components/issues/issue-layouts/list/list-group.tsx
+- [[MultipleSelectEntityAction]] - code - web/core/components/core/multiple-select/entity-select-action.tsx
+- [[MultipleSelectGroup]] - code - web/core/components/core/multiple-select/select-group.tsx
+- [[MultipleSelectGroupAction()]] - code - web/core/components/core/multiple-select/group-select-action.tsx
+- [[Props_65]] - code - web/ce/components/issues/bulk-operations/root.tsx
+- [[Props_365]] - code - web/core/components/issues/bulk-operations/upgrade-banner.tsx
+- [[Props_281]] - code - web/core/components/issues/issue-layouts/spreadsheet/columns/header-column.tsx
+- [[Props_284]] - code - web/core/components/issues/issue-layouts/spreadsheet/columns/sub-issue-column.tsx
+- [[Props_66]] - code - web/ce/components/issues/filters/issue-types.tsx
+- [[Props_78]] - code - web/core/hooks/use-multiple-select.ts
+- [[Props_261]] - code - web/core/components/issues/issue-layouts/group-drag-overlay.tsx
+- [[Props_64]] - code - web/ce/components/issues/issue-layouts/issue-stats.tsx
+- [[Props_265]] - code - web/core/components/issues/issue-layouts/list/block-root.tsx
+- [[Props_264]] - code - space/components/issues/issue-layouts/list/list-group.tsx
+- [[Props_524]] - code - web/core/components/core/multiple-select/entity-select-action.tsx
+- [[Props_522]] - code - web/core/components/core/multiple-select/group-select-action.tsx
+- [[Props_523]] - code - web/core/components/core/multiple-select/select-group.tsx
+- [[Props_271]] - code - web/core/components/issues/issue-layouts/spreadsheet/issue-column.tsx
+- [[Props_269]] - code - web/core/components/issues/issue-layouts/spreadsheet/issue-row.tsx
+- [[Props_270]] - code - web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-header-column.tsx
+- [[Props_272]] - code - web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-header.tsx
+- [[Props_268]] - code - web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-table.tsx
+- [[SPREADSHEET_COLUMNS]] - code - web/ce/components/issues/issue-layouts/utils.tsx
+- [[SpreadSheetPropertyIcon()]] - code - web/core/components/issues/issue-layouts/utils.tsx
+- [[SpreadSheetPropertyIconMap]] - code - web/ce/components/issues/issue-layouts/utils.tsx
+- [[SpreadsheetHeader]] - code - web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-header.tsx
+- [[SpreadsheetHeaderColumn]] - code - web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-header-column.tsx
+- [[SpreadsheetIssueRow]] - code - web/core/components/issues/issue-layouts/spreadsheet/issue-row.tsx
+- [[SpreadsheetSubIssueColumn]] - code - web/core/components/issues/issue-layouts/spreadsheet/columns/sub-issue-column.tsx
+- [[SpreadsheetTable]] - code - web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-table.tsx
+- [[SubGroup]] - code - space/components/issues/issue-layouts/kanban/swimlanes.tsx
+- [[SubGroupSwimlane]] - code - space/components/issues/issue-layouts/kanban/swimlanes.tsx
+- [[SubGroupSwimlaneHeader]] - code - space/components/issues/issue-layouts/kanban/swimlanes.tsx
+- [[SubIssueDisplayFilters]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/display-filters.tsx
+- [[SubIssueFilters]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/filters.tsx
+- [[TCommandGroup]] - code - web/ce/components/command-palette/helpers.tsx
+- [[TCommandGroups]] - code - web/ce/components/command-palette/helpers.tsx
+- [[TGetGroupByColumns]] - code - web/core/components/issues/issue-layouts/utils.tsx
+- [[TGetScopeMemberIdsResult]] - code - web/ce/components/issues/issue-layouts/utils.tsx
+- [[TSelectionHelper]] - code - web/core/hooks/use-multiple-select.ts
+- [[TSelectionSnapshot]] - code - web/core/hooks/use-multiple-select.ts
+- [[TSubIssueDisplayFiltersProps]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/display-filters.tsx
+- [[TSubIssueFiltersProps]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/filters.tsx
+- [[UseIntersectionObserverProps]] - code - space/hooks/use-intersection-observer.tsx
+- [[WithDisplayPropertiesHOC]] - code - web/core/components/issues/issue-layouts/properties/with-display-properties-HOC.tsx
+- [[block-root.tsx]] - code - web/core/components/issues/issue-layouts/list/block-root.tsx
+- [[block.tsx_6]] - code - web/core/components/issues/issue-layouts/kanban/block.tsx
+- [[block.tsx_7]] - code - web/core/components/issues/issue-layouts/list/block.tsx
+- [[blocks-list.tsx_3]] - code - space/components/issues/issue-layouts/kanban/blocks-list.tsx
+- [[blocks-list.tsx_1]] - code - web/core/components/issues/issue-layouts/kanban/blocks-list.tsx
+- [[blocks-list.tsx_2]] - code - web/core/components/issues/issue-layouts/list/blocks-list.tsx
+- [[calculateIdentifierWidth()]] - code - web/core/components/issues/issue-layouts/utils.tsx
+- [[commandGroups]] - code - web/ce/components/command-palette/helpers.tsx
+- [[default.tsx_4]] - code - space/components/issues/issue-layouts/kanban/default.tsx
+- [[default.tsx]] - code - web/core/components/issues/issue-layouts/kanban/default.tsx
+- [[default.tsx_1]] - code - web/core/components/issues/issue-layouts/list/default.tsx
+- [[display-filters.tsx]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/display-filters.tsx
+- [[entity-select-action.tsx]] - code - web/core/components/core/multiple-select/entity-select-action.tsx
+- [[filters.tsx_3]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/filters.tsx
+- [[getApproximateCardHeight()]] - code - web/core/components/issues/issue-layouts/utils.tsx
+- [[getAssigneeColumns()]] - code - space/components/issues/issue-layouts/utils.tsx
+- [[getCreatedByColumns()]] - code - space/components/issues/issue-layouts/utils.tsx
+- [[getCycleColumns()]] - code - space/components/issues/issue-layouts/utils.tsx
+- [[getDestinationFromDropPayload()]] - code - web/core/components/issues/issue-layouts/utils.tsx
+- [[getDisplayPropertiesCount()]] - code - space/components/issues/issue-layouts/utils.tsx
+- [[getGroupByColumns()]] - code - space/components/issues/issue-layouts/utils.tsx
+- [[getGroupId()]] - code - space/components/issues/issue-layouts/utils.tsx
+- [[getIssueBlockId()]] - code - space/components/issues/issue-layouts/utils.tsx
+- [[getLabelsColumns()]] - code - space/components/issues/issue-layouts/utils.tsx
+- [[getModuleColumns()]] - code - space/components/issues/issue-layouts/utils.tsx
+- [[getNextRow()]] - code - web/core/hooks/use-table-keyboard-navigation.tsx
+- [[getPreviousRow()]] - code - web/core/hooks/use-table-keyboard-navigation.tsx
+- [[getPriorityColumns()]] - code - space/components/issues/issue-layouts/utils.tsx
+- [[getProjectColumns()]] - code - web/core/components/issues/issue-layouts/utils.tsx
+- [[getScopeMemberIds()]] - code - web/ce/components/issues/issue-layouts/utils.tsx
+- [[getSourceFromDropPayload()]] - code - web/core/components/issues/issue-layouts/utils.tsx
+- [[getStateColumns()]] - code - space/components/issues/issue-layouts/utils.tsx
+- [[getStateGroupColumns()]] - code - web/core/components/issues/issue-layouts/utils.tsx
+- [[getTeamProjectColumns()]] - code - web/ce/components/issues/issue-layouts/utils.tsx
+- [[group-by-card.tsx_2]] - code - space/components/issues/issue-layouts/kanban/headers/group-by-card.tsx
+- [[group-by-card.tsx_3]] - code - space/components/issues/issue-layouts/list/headers/group-by-card.tsx
+- [[group-drag-overlay.tsx]] - code - web/core/components/issues/issue-layouts/group-drag-overlay.tsx
+- [[group-select-action.tsx]] - code - web/core/components/core/multiple-select/group-select-action.tsx
+- [[handleGroupDragDrop()]] - code - web/core/components/issues/issue-layouts/utils.tsx
+- [[handleSortOrder()]] - code - web/core/components/issues/issue-layouts/utils.tsx
+- [[header-column.tsx]] - code - web/core/components/issues/issue-layouts/spreadsheet/columns/header-column.tsx
+- [[helpers.tsx]] - code - web/ce/components/command-palette/helpers.tsx
+- [[highlightIssueOnDrop()]] - code - web/core/components/issues/issue-layouts/utils.tsx
+- [[index.ts_443]] - code - web/core/components/core/multiple-select/index.ts
+- [[index.ts_362]] - code - web/core/components/issues/issue-layouts/quick-add/index.ts
+- [[index.ts_351]] - code - web/core/components/issues/issue-layouts/spreadsheet/columns/index.ts
+- [[isDisplayFiltersApplied()]] - code - web/core/components/issues/issue-layouts/utils.tsx
+- [[isFiltersApplied()]] - code - web/core/components/issues/issue-layouts/utils.tsx
+- [[isIssueNew()]] - code - web/core/components/issues/issue-layouts/utils.tsx
+- [[isSubGrouped()]] - code - space/components/issues/issue-layouts/utils.tsx
+- [[isWorkspaceLevel()]] - code - web/core/components/issues/issue-layouts/utils.tsx
+- [[issue-column.tsx]] - code - web/core/components/issues/issue-layouts/spreadsheet/issue-column.tsx
+- [[issue-row.tsx]] - code - web/core/components/issues/issue-layouts/spreadsheet/issue-row.tsx
+- [[issue-stats.tsx]] - code - web/ce/components/issues/issue-layouts/issue-stats.tsx
+- [[issue-types.tsx]] - code - web/ce/components/issues/filters/issue-types.tsx
+- [[kanban-group.tsx_1]] - code - space/components/issues/issue-layouts/kanban/kanban-group.tsx
+- [[kanban-group.tsx]] - code - web/core/components/issues/issue-layouts/kanban/kanban-group.tsx
+- [[kanban-layout-loader.tsx]] - code - web/core/components/ui/loader/layouts/kanban-layout-loader.tsx
+- [[list-group.tsx_2]] - code - space/components/issues/issue-layouts/list/list-group.tsx
+- [[list-group.tsx]] - code - web/core/components/issues/issue-layouts/list/list-group.tsx
+- [[root.tsx_29]] - code - web/ce/components/issues/bulk-operations/root.tsx
+- [[root.tsx_47]] - code - web/core/components/gantt-chart/sidebar/root.tsx
+- [[select-group.tsx]] - code - web/core/components/core/multiple-select/select-group.tsx
+- [[spreadsheet-header-column.tsx]] - code - web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-header-column.tsx
+- [[spreadsheet-header.tsx]] - code - web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-header.tsx
+- [[spreadsheet-table.tsx]] - code - web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-table.tsx
+- [[stopKanbanEventPropagation()]] - code - web/core/components/issues/issue-layouts/kanban/block.tsx
+- [[sub-group-by-card.tsx_1]] - code - space/components/issues/issue-layouts/kanban/headers/sub-group-by-card.tsx
+- [[sub-group-by-card.tsx]] - code - web/core/components/issues/issue-layouts/kanban/headers/sub-group-by-card.tsx
+- [[sub-issue-column.tsx]] - code - web/core/components/issues/issue-layouts/spreadsheet/columns/sub-issue-column.tsx
+- [[swimlanes.tsx_1]] - code - space/components/issues/issue-layouts/kanban/swimlanes.tsx
+- [[swimlanes.tsx]] - code - web/core/components/issues/issue-layouts/kanban/swimlanes.tsx
+- [[upgrade-banner.tsx]] - code - web/core/components/issues/bulk-operations/upgrade-banner.tsx
+- [[use-intersection-observer.ts]] - code - web/core/hooks/use-intersection-observer.ts
+- [[use-intersection-observer.tsx]] - code - space/hooks/use-intersection-observer.tsx
+- [[use-kanban-view.ts]] - code - web/core/hooks/store/use-kanban-view.ts
+- [[use-multiple-select.ts]] - code - web/core/hooks/use-multiple-select.ts
+- [[use-table-keyboard-navigation.tsx]] - code - web/core/hooks/use-table-keyboard-navigation.tsx
+- [[useIntersectionObserver()]] - code - space/hooks/use-intersection-observer.tsx
+- [[useKanbanView()]] - code - web/core/hooks/store/use-kanban-view.ts
+- [[useMultipleSelect()]] - code - web/core/hooks/use-multiple-select.ts
+- [[useMultipleSelectStore()]] - code - web/core/hooks/store/use-multiple-select-store.ts
+- [[useTableKeyboardNavigation()]] - code - web/core/hooks/use-table-keyboard-navigation.tsx
+- [[utils.tsx_3]] - code - space/components/issues/issue-layouts/utils.tsx
+- [[utils.tsx]] - code - web/ce/components/issues/issue-layouts/utils.tsx
+- [[utils.tsx_2]] - code - web/core/components/issues/issue-layouts/utils.tsx
+- [[visibilitySubGroupByGroupCount()]] - code - space/components/issues/issue-layouts/kanban/swimlanes.tsx
+- [[with-display-properties-HOC.tsx]] - code - web/core/components/issues/issue-layouts/properties/with-display-properties-HOC.tsx
+
+## Live Query (requires Dataview plugin)
+
+```dataview
+TABLE source_file, type FROM #community/Bulk_Operations__Spreadsheet
+SORT file.name ASC
+```
+
+## Connections to other communities
+- 48 edges to [[_COMMUNITY_Filter UI & Breadcrumbs]]
+- 29 edges to [[_COMMUNITY_Community 23]]
+- 24 edges to [[_COMMUNITY_Work Item Detail & Layouts]]
+- 22 edges to [[_COMMUNITY_Issue Activity Types]]
+- 16 edges to [[_COMMUNITY_Community 72]]
+- 14 edges to [[_COMMUNITY_Community 167]]
+- 11 edges to [[_COMMUNITY_Project Filters & Archives]]
+- 10 edges to [[_COMMUNITY_Community 42]]
+- 8 edges to [[_COMMUNITY_Community 112]]
+- 7 edges to [[_COMMUNITY_Active Cycle Stats]]
+- 6 edges to [[_COMMUNITY_Community 44]]
+- 5 edges to [[_COMMUNITY_Issue Display Filters]]
+- 5 edges to [[_COMMUNITY_Activity & Inbox Filters]]
+- 5 edges to [[_COMMUNITY_Community 311]]
+- 4 edges to [[_COMMUNITY_Module & Cycle Analytics]]
+- 4 edges to [[_COMMUNITY_Community 137]]
+- 3 edges to [[_COMMUNITY_Community 49]]
+- 3 edges to [[_COMMUNITY_Community 67]]
+- 2 edges to [[_COMMUNITY_Community 22]]
+- 2 edges to [[_COMMUNITY_Community 297]]
+- 2 edges to [[_COMMUNITY_Community 20]]
+- 2 edges to [[_COMMUNITY_Community 75]]
+- 2 edges to [[_COMMUNITY_Community 234]]
+- 2 edges to [[_COMMUNITY_Community 224]]
+- 2 edges to [[_COMMUNITY_Issue Store & Filters Logic]]
+- 2 edges to [[_COMMUNITY_Community 73]]
+- 1 edge to [[_COMMUNITY_Community 476]]
+- 1 edge to [[_COMMUNITY_Community 24]]
+- 1 edge to [[_COMMUNITY_Community 339]]
+- 1 edge to [[_COMMUNITY_Community 376]]
+- 1 edge to [[_COMMUNITY_Community 166]]
+
+## Top bridge nodes
+- [[utils.tsx_2]] - degree 64, connects to 10 communities
+- [[IssueIdentifier]] - degree 22, connects to 8 communities
+- [[default.tsx_4]] - degree 20, connects to 7 communities
+- [[swimlanes.tsx_1]] - degree 27, connects to 6 communities
+- [[block.tsx_6]] - degree 25, connects to 6 communities

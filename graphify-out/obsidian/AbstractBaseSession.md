@@ -1,17 +1,16 @@
 ---
 source_file: ""
 type: "code"
-community: "Session Model"
+community: "Community 455"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Session_Model
+  - community/Community_455
 ---
 
 # AbstractBaseSession
 
 ## Connections
-
 - [[Session]] - `inherits` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Session_Model
+#graphify/code #graphify/EXTRACTED #community/Community_455

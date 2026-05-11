@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/workspace/logo.tsx"
 type: "code"
-community: "Workspace Issue"
+community: "Community 46"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Issue
+  - community/Community_46
 ---
 
 # logo.tsx
 
 ## Connections
-
 - [[Props_103]] - `contains` [EXTRACTED]
 - [[WorkspaceLogo]] - `contains` [EXTRACTED]
 - [[auth-header.tsx]] - `imports_from` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[workspace-options.tsx]] - `imports_from` [EXTRACTED]
 - [[workspaces.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_46

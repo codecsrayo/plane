@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/pages/modals/page-form.tsx"
 type: "code"
-community: "Project Work"
+community: "Community 42"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Work
+  - community/Community_42
 ---
 
 # page-form.tsx
 
 ## Connections
-
 - [[AccessField()]] - `imports` [EXTRACTED]
 - [[PAGE_ACCESS_SPECIFIERS]] - `contains` [EXTRACTED]
 - [[PageForm()]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[use-platform-os.tsx_1]] - `imports_from` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Work
+#graphify/code #graphify/EXTRACTED #community/Community_42

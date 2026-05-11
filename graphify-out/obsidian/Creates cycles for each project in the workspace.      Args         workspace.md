@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/bgtasks/workspace_seed_task.py"
 type: "rationale"
-community: "Project Creates"
+community: "Community 204"
 location: "L392"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Project_Creates
+  - community/Community_204
 ---
 
-# Creates cycles for each project in the workspace. Args: workspace:
+# Creates cycles for each project in the workspace.      Args:         workspace:
 
 ## Connections
-
 - [[create_cycles()_1]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Project_Creates
+#graphify/rationale #graphify/EXTRACTED #community/Community_204

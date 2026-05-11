@@ -1,36 +1,56 @@
 ---
 type: community
 cohesion: 0.12
-members: 20
+members: 41
 ---
 
 # Community 127
 
 **Cohesion:** 0.12 - loosely connected
-**Members:** 20 nodes
+**Members:** 41 nodes
 
 ## Members
-
-- [[ActiveCycleProgress]] - code - web/core/components/cycles/active-cycle/progress.tsx
-- [[ActiveCycleProgressProps]] - code - web/core/components/cycles/active-cycle/progress.tsx
-- [[BulkDeleteIssuesModal]] - code - web/core/components/core/modals/bulk-delete-issues-modal.tsx
-- [[BulkDeleteIssuesModalItem]] - code - web/core/components/core/modals/bulk-delete-issues-modal-item.tsx
-- [[EmptyStateSize_1]] - code - web/core/components/empty-state/simple-empty-state-root.tsx
-- [[FormInput]] - code - web/core/components/core/modals/bulk-delete-issues-modal.tsx
-- [[ProjectMultiSelectModal]] - code - web/core/components/project/multi-select-modal.tsx
-- [[Props_382]] - code - web/core/components/empty-state/simple-empty-state-root.tsx
-- [[Props_459]] - code - web/core/components/core/modals/bulk-delete-issues-modal-item.tsx
-- [[Props_453]] - code - web/core/components/core/modals/bulk-delete-issues-modal.tsx
-- [[Props_133]] - code - web/core/components/project/multi-select-modal.tsx
-- [[SimpleEmptyState]] - code - web/core/components/empty-state/simple-empty-state-root.tsx
-- [[bulk-delete-issues-modal-item.tsx]] - code - web/core/components/core/modals/bulk-delete-issues-modal-item.tsx
-- [[bulk-delete-issues-modal.tsx]] - code - web/core/components/core/modals/bulk-delete-issues-modal.tsx
-- [[getTitleClassName()]] - code - web/core/components/empty-state/simple-empty-state-root.tsx
-- [[multi-select-modal.tsx]] - code - web/core/components/project/multi-select-modal.tsx
-- [[progress.tsx]] - code - web/core/components/cycles/active-cycle/progress.tsx
-- [[projectService_3]] - code - web/core/components/core/modals/bulk-delete-issues-modal.tsx
-- [[simple-empty-state-root.tsx]] - code - web/core/components/empty-state/simple-empty-state-root.tsx
-- [[sizeConfig]] - code - web/core/components/empty-state/simple-empty-state-root.tsx
+- [[AllShapes]] - code - packages/propel/src/avatar/avatar.stories.tsx
+- [[AllSizes_5]] - code - packages/propel/src/avatar/avatar.stories.tsx
+- [[Avatar()]] - code - packages/propel/src/avatar/avatar.tsx
+- [[AvatarGroup]] - code - packages/propel/src/avatar/avatar.stories.tsx
+- [[AvatarGroup()]] - code - packages/ui/src/avatar/avatar-group.tsx
+- [[Base_1]] - code - packages/propel/src/avatar/avatar.stories.tsx
+- [[CircleShape]] - code - packages/propel/src/avatar/avatar.stories.tsx
+- [[Default_3]] - code - packages/propel/src/avatar/avatar.stories.tsx
+- [[Fallback]] - code - packages/propel/src/avatar/avatar.stories.tsx
+- [[FallbackVariations]] - code - packages/propel/src/avatar/avatar.stories.tsx
+- [[FallbackWithCustomColor]] - code - packages/propel/src/avatar/avatar.stories.tsx
+- [[FallbackWithCustomText]] - code - packages/propel/src/avatar/avatar.stories.tsx
+- [[Large]] - code - packages/propel/src/avatar/avatar.stories.tsx
+- [[Medium_4]] - code - packages/propel/src/avatar/avatar.stories.tsx
+- [[Props_4]] - code - packages/ui/src/avatar/avatar-group.tsx
+- [[Props_5]] - code - packages/propel/src/avatar/avatar.tsx
+- [[Small_5]] - code - packages/propel/src/avatar/avatar.stories.tsx
+- [[SquareShape]] - code - packages/propel/src/avatar/avatar.stories.tsx
+- [[Story_3]] - code - packages/propel/src/avatar/avatar.stories.tsx
+- [[TAvatarSize_1]] - code - packages/propel/src/avatar/avatar.tsx
+- [[TAvatarSize]] - code - packages/ui/src/avatar/helper.tsx
+- [[WithName]] - code - packages/propel/src/avatar/avatar.stories.tsx
+- [[avatar-group.tsx_1]] - code - packages/ui/src/avatar/avatar-group.tsx
+- [[avatar-group.tsx]] - code - ui/src/avatar/avatar-group.tsx
+- [[avatar.stories.tsx_3]] - code - packages/propel/src/avatar/avatar.stories.tsx
+- [[avatar.stories.tsx_2]] - code - packages/ui/src/avatar/avatar.stories.tsx
+- [[avatar.stories.tsx_1]] - code - propel/src/avatar/avatar.stories.tsx
+- [[avatar.stories.tsx]] - code - ui/src/avatar/avatar.stories.tsx
+- [[avatar.tsx_4]] - code - packages/propel/src/avatar/avatar.tsx
+- [[avatar.tsx_3]] - code - packages/ui/src/avatar/avatar.tsx
+- [[avatar.tsx_1]] - code - propel/src/avatar/avatar.tsx
+- [[avatar.tsx]] - code - ui/src/avatar/avatar.tsx
+- [[getBorderRadius()_1]] - code - packages/propel/src/avatar/avatar.tsx
+- [[getBorderRadius()]] - code - packages/ui/src/avatar/helper.tsx
+- [[getSizeInfo()_1]] - code - packages/propel/src/avatar/avatar.tsx
+- [[getSizeInfo()]] - code - packages/ui/src/avatar/helper.tsx
+- [[helper.tsx_36]] - code - packages/ui/src/avatar/helper.tsx
+- [[helper.tsx_4]] - code - ui/src/avatar/helper.tsx
+- [[isAValidNumber()_1]] - code - packages/propel/src/avatar/avatar.tsx
+- [[isAValidNumber()]] - code - packages/ui/src/avatar/helper.tsx
+- [[meta_3]] - code - packages/ui/src/avatar/avatar.stories.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -40,19 +60,12 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 6 edges to [[_COMMUNITY_Applied Filters UI]]
-- 2 edges to [[_COMMUNITY_Community 119]]
-- 2 edges to [[_COMMUNITY_Community 152]]
-- 2 edges to [[_COMMUNITY_Cycle Analytics]]
-- 2 edges to [[_COMMUNITY_Active Cycle Stats]]
-- 2 edges to [[_COMMUNITY_Layout System]]
-- 1 edge to [[_COMMUNITY_Issue Filters & Context]]
-- 1 edge to [[_COMMUNITY_Community 41]]
+- 4 edges to [[_COMMUNITY_Community 61]]
+- 4 edges to [[_COMMUNITY_Community 164]]
 
 ## Top bridge nodes
-
-- [[simple-empty-state-root.tsx]] - degree 14, connects to 6 communities
-- [[SimpleEmptyState]] - degree 10, connects to 6 communities
-- [[bulk-delete-issues-modal.tsx]] - degree 12, connects to 3 communities
-- [[multi-select-modal.tsx]] - degree 6, connects to 1 community
+- [[avatar.tsx_4]] - degree 9, connects to 1 community
+- [[avatar.tsx_3]] - degree 9, connects to 1 community
+- [[avatar.tsx_1]] - degree 9, connects to 1 community
+- [[avatar.tsx]] - degree 9, connects to 1 community
+- [[avatar-group.tsx_1]] - degree 7, connects to 1 community

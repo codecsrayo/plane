@@ -1,18 +1,18 @@
 ---
-source_file: "propel/src/spinners/circular-spinner.stories.tsx"
+source_file: "packages/propel/src/spinners/circular-spinner.stories.tsx"
 type: "code"
-community: "Auth Spinner"
+community: "Community 138"
 location: "L131"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Spinner
+  - community/Community_138
 ---
 
 # CenteredInCard
 
 ## Connections
-
 - [[circular-spinner.stories.tsx]] - `contains` [EXTRACTED]
+- [[circular-spinner.stories.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Spinner
+#graphify/code #graphify/EXTRACTED #community/Community_138

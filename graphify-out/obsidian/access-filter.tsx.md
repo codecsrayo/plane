@@ -1,19 +1,18 @@
 ---
 source_file: "web/ce/components/views/filters/access-filter.tsx"
 type: "code"
-community: "Member Members"
+community: "Issue Display Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Members
+  - community/Issue_Display_Filters
 ---
 
 # access-filter.tsx
 
 ## Connections
-
 - [[FilterByAccess()]] - `contains` [EXTRACTED]
 - [[FilterByAccessProps]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Members
+#graphify/code #graphify/EXTRACTED #community/Issue_Display_Filters

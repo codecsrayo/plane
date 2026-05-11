@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/tests/contract/api/test_cycles.py"
 type: "code"
-community: "Cycle Test"
+community: "Community 183"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Test
+  - community/Community_183
 ---
 
 # test_cycles.py
 
 ## Connections
-
 - [[TestCycleDetailAPIEndpoint]] - `contains` [EXTRACTED]
 - [[TestCycleListCreateAPIEndpoint]] - `contains` [EXTRACTED]
 - [[create_cycle()]] - `contains` [EXTRACTED]
@@ -34,4 +33,4 @@ tags:
 - [[test_update_cycle_success()]] - `contains` [EXTRACTED]
 - [[test_update_cycle_with_external_id_conflict()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Test
+#graphify/code #graphify/EXTRACTED #community/Community_183

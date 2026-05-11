@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/asset/v2.py"
 type: "code"
-community: "Asset Endpoint"
+community: "Community 88"
 location: "L783"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Asset_Endpoint
+  - community/Community_88
 ---
 
 # WorkspaceAssetDownloadEndpoint
 
 ## Connections
-
 - [[AssetRateThrottle]] - `uses` [INFERRED]
 - [[BaseAPIView]] - `uses` [INFERRED]
 - [[BaseAPIView_1]] - `inherits` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[S3Storage]] - `uses` [INFERRED]
 - [[v2.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Asset_Endpoint
+#graphify/code #graphify/INFERRED #community/Community_88

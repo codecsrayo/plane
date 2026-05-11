@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/workspace/sidebar/favorites/favorites.helpers.ts"
 type: "code"
-community: "Favorite Folder"
+community: "Community 311"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Favorite_Folder
+  - community/Community_311
 ---
 
 # favorites.helpers.ts
 
 ## Connections
-
 - [[TargetData_1]] - `contains` [EXTRACTED]
 - [[favorite-folder.tsx]] - `imports_from` [EXTRACTED]
 - [[favorites-menu.tsx]] - `imports_from` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[getInstructionFromPayload()_1]] - `contains` [EXTRACTED]
 - [[root.tsx_44]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Favorite_Folder
+#graphify/code #graphify/EXTRACTED #community/Community_311

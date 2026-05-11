@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/serializers/issue.py"
 type: "code"
-community: "Serializer Issue"
+community: "Community 37"
 location: "L1010"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Serializer_Issue
+  - community/Community_37
 ---
 
 # IssueDescriptionVersionDetailSerializer
 
 ## Connections
-
 - [[BaseSerializer]] - `inherits` [EXTRACTED]
 - [[BaseSerializer_2]] - `uses` [INFERRED]
 - [[DynamicBaseSerializer_2]] - `uses` [INFERRED]
@@ -24,4 +23,4 @@ tags:
 - [[get()_26]] - `calls` [INFERRED]
 - [[issue.py_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Serializer_Issue
+#graphify/code #graphify/INFERRED #community/Community_37

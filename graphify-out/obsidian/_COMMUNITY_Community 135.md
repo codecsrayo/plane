@@ -1,34 +1,54 @@
 ---
 type: community
-cohesion: 0.20
-members: 18
+cohesion: 0.10
+members: 39
 ---
 
 # Community 135
 
-**Cohesion:** 0.20 - loosely connected
-**Members:** 18 nodes
+**Cohesion:** 0.10 - loosely connected
+**Members:** 39 nodes
 
 ## Members
-
-- [[ExportIssuesJob]] - code - api_rust/src/jobs/export.rs
-- [[IssueRow]] - code - api_rust/src/jobs/export.rs
-- [[RelationMaps]] - code - api_rust/src/jobs/export.rs
-- [[build_rows()]] - code - api_rust/src/jobs/export.rs
-- [[build_zip()]] - code - api_rust/src/jobs/export.rs
-- [[encode_csv()]] - code - api_rust/src/jobs/export.rs
-- [[encode_issues()]] - code - api_rust/src/jobs/export.rs
-- [[encode_json()]] - code - api_rust/src/jobs/export.rs
-- [[encode_xlsx()]] - code - api_rust/src/jobs/export.rs
-- [[export.rs]] - code - api_rust/src/jobs/export.rs
-- [[fetch_related_maps()]] - code - api_rust/src/jobs/export.rs
-- [[format_user_name()]] - code - api_rust/src/jobs/export.rs
-- [[handle_export_issues()]] - code - api_rust/src/jobs/export.rs
-- [[mark_export_failed()]] - code - api_rust/src/jobs/export.rs
-- [[project_label()]] - code - api_rust/src/jobs/export.rs
-- [[run_export()]] - code - api_rust/src/jobs/export.rs
-- [[sanitize_filename_segment()]] - code - api_rust/src/jobs/export.rs
-- [[unique_base_name()]] - code - api_rust/src/jobs/export.rs
+- [[AnalyticsTab]] - code - packages/types/src/analytics.ts
+- [[AnalyticsTableDataMap]] - code - packages/types/src/analytics.ts
+- [[ChartXAxisProperty]] - code - packages/types/src/analytics.ts
+- [[ChartYAxisMetric]] - code - packages/types/src/analytics.ts
+- [[IAnalyticsParams]] - code - packages/types/src/analytics.ts
+- [[IAnalyticsResponse]] - code - packages/types/src/analytics.ts
+- [[IAnalyticsResponseFields]] - code - packages/types/src/analytics.ts
+- [[IChartResponse]] - code - packages/types/src/analytics.ts
+- [[TAnalyticsFilterParams]] - code - packages/types/src/analytics.ts
+- [[TAnalyticsGraphsBase]] - code - packages/types/src/analytics.ts
+- [[TAnalyticsTabsBase]] - code - packages/types/src/analytics.ts
+- [[TAreaChartProps]] - code - packages/types/src/charts/index.ts
+- [[TAreaItem]] - code - packages/types/src/charts/index.ts
+- [[TAxisChartProps]] - code - packages/types/src/charts/index.ts
+- [[TBarChartProps]] - code - packages/types/src/charts/index.ts
+- [[TBarChartShapeVariant]] - code - packages/types/src/charts/index.ts
+- [[TBarItem]] - code - packages/types/src/charts/index.ts
+- [[TBaseChartProps]] - code - packages/types/src/charts/index.ts
+- [[TBottomSectionConfig]] - code - packages/types/src/charts/index.ts
+- [[TCellItem]] - code - packages/types/src/charts/index.ts
+- [[TChartData]] - code - packages/types/src/charts/index.ts
+- [[TChartLegend]] - code - packages/types/src/charts/index.ts
+- [[TChartMargin]] - code - packages/types/src/charts/index.ts
+- [[TContentVisibility]] - code - packages/types/src/charts/index.ts
+- [[TLineChartProps]] - code - packages/types/src/charts/index.ts
+- [[TLineItem]] - code - packages/types/src/charts/index.ts
+- [[TPieChartProps]] - code - packages/types/src/charts/index.ts
+- [[TRadarChartProps]] - code - packages/types/src/charts/index.ts
+- [[TRadarItem]] - code - packages/types/src/charts/index.ts
+- [[TScatterChartProps]] - code - packages/types/src/charts/index.ts
+- [[TScatterPointItem]] - code - packages/types/src/charts/index.ts
+- [[TTopSectionConfig]] - code - packages/types/src/charts/index.ts
+- [[TreeMapChartProps]] - code - packages/types/src/charts/index.ts
+- [[TreeMapItem]] - code - packages/types/src/charts/index.ts
+- [[WorkItemInsightColumns]] - code - packages/types/src/analytics.ts
+- [[analytics.ts_1]] - code - packages/types/src/analytics.ts
+- [[analytics.ts]] - code - types/src/analytics.ts
+- [[index.ts_560]] - code - packages/types/src/charts/index.ts
+- [[index.ts_99]] - code - types/src/charts/index.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -36,17 +56,3 @@ members: 18
 TABLE source_file, type FROM #community/Community_135
 SORT file.name ASC
 ```
-
-## Connections to other communities
-
-- 7 edges to [[_COMMUNITY_Auth Rust API]]
-- 2 edges to [[_COMMUNITY_Community 181]]
-- 1 edge to [[_COMMUNITY_Workspace Activity & Analytics]]
-
-## Top bridge nodes
-
-- [[run_export()]] - degree 10, connects to 2 communities
-- [[encode_csv()]] - degree 4, connects to 2 communities
-- [[fetch_related_maps()]] - degree 4, connects to 1 community
-- [[handle_export_issues()]] - degree 4, connects to 1 community
-- [[build_zip()]] - degree 3, connects to 1 community

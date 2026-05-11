@@ -1,18 +1,17 @@
 ---
 source_file: "shared-state/src/store/rich-filters/config-manager.ts"
 type: "code"
-community: "Config Operator"
+community: "Community 232"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Config_Operator
+  - community/Community_232
 ---
 
 # config-manager.ts
 
 ## Connections
-
 - [[FilterConfig]] - `imports` [EXTRACTED]
 - [[FilterConfigManager]] - `contains` [EXTRACTED]
 - [[IFilterConfig]] - `imports` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[filter.ts_3]] - `imports_from` [EXTRACTED]
 - [[prevConfig]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Config_Operator
+#graphify/code #graphify/EXTRACTED #community/Community_232

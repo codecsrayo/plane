@@ -1,26 +1,41 @@
 ---
 type: community
-cohesion: 0.24
-members: 10
+cohesion: 0.15
+members: 26
 ---
 
 # Community 226
 
-**Cohesion:** 0.24 - loosely connected
-**Members:** 10 nodes
+**Cohesion:** 0.15 - loosely connected
+**Members:** 26 nodes
 
 ## Members
-
-- [[DataTable()]] - code - web/core/components/analytics/insight-table/data-table.tsx
-- [[DataTableProps]] - code - web/core/components/analytics/insight-table/data-table.tsx
-- [[InsightTable()]] - code - web/core/components/analytics/insight-table/root.tsx
-- [[InsightTableProps]] - code - web/core/components/analytics/insight-table/root.tsx
-- [[TableLoader()]] - code - web/core/components/analytics/insight-table/loader.tsx
-- [[TableSkeletonProps]] - code - web/core/components/analytics/insight-table/loader.tsx
-- [[data-table.tsx]] - code - web/core/components/analytics/insight-table/data-table.tsx
-- [[getColumnKey()]] - code - web/core/components/analytics/insight-table/loader.tsx
-- [[loader.tsx_7]] - code - web/core/components/analytics/insight-table/loader.tsx
-- [[root.tsx_88]] - code - web/core/components/analytics/insight-table/root.tsx
+- [[Combobox]] - code - packages/propel/src/combobox/combobox.tsx
+- [[ComboboxButton]] - code - packages/propel/src/combobox/combobox.tsx
+- [[ComboboxButtonProps]] - code - packages/propel/src/combobox/combobox.tsx
+- [[ComboboxOption()]] - code - packages/propel/src/combobox/combobox.tsx
+- [[ComboboxOptionProps]] - code - packages/propel/src/combobox/combobox.tsx
+- [[ComboboxOptions()]] - code - packages/propel/src/combobox/combobox.tsx
+- [[ComboboxOptionsProps]] - code - packages/propel/src/combobox/combobox.tsx
+- [[ComboboxProps]] - code - packages/propel/src/combobox/combobox.tsx
+- [[ComboboxRoot()]] - code - packages/propel/src/combobox/combobox.tsx
+- [[CustomEmptyMessage]] - code - packages/propel/src/combobox/combobox.stories.tsx
+- [[CustomMaxHeight]] - code - packages/propel/src/combobox/combobox.stories.tsx
+- [[Default_11]] - code - packages/propel/src/combobox/combobox.stories.tsx
+- [[Disabled_1]] - code - packages/propel/src/combobox/combobox.stories.tsx
+- [[DisabledOptions]] - code - packages/propel/src/combobox/combobox.stories.tsx
+- [[MAX_HEIGHT_CLASSES]] - code - packages/propel/src/combobox/combobox.tsx
+- [[MultiSelect]] - code - packages/propel/src/combobox/combobox.stories.tsx
+- [[MultiSelectWithLimit]] - code - packages/propel/src/combobox/combobox.stories.tsx
+- [[Story_12]] - code - packages/propel/src/combobox/combobox.stories.tsx
+- [[TMaxHeight]] - code - packages/propel/src/combobox/combobox.tsx
+- [[WithoutSearch]] - code - packages/propel/src/combobox/combobox.stories.tsx
+- [[combobox.stories.tsx_1]] - code - packages/propel/src/combobox/combobox.stories.tsx
+- [[combobox.stories.tsx]] - code - propel/src/combobox/combobox.stories.tsx
+- [[combobox.tsx_1]] - code - packages/propel/src/combobox/combobox.tsx
+- [[combobox.tsx]] - code - propel/src/combobox/combobox.tsx
+- [[frameworks]] - code - packages/propel/src/combobox/combobox.stories.tsx
+- [[render()_1]] - code - packages/propel/src/combobox/combobox.stories.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -30,10 +45,11 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 2 edges to [[_COMMUNITY_Community 205]]
+- 4 edges to [[_COMMUNITY_Community 276]]
+- 4 edges to [[_COMMUNITY_Community 164]]
 
 ## Top bridge nodes
-
-- [[data-table.tsx]] - degree 4, connects to 1 community
-- [[DataTable()]] - degree 3, connects to 1 community
+- [[combobox.tsx_1]] - degree 15, connects to 2 communities
+- [[combobox.tsx]] - degree 15, connects to 2 communities
+- [[combobox.stories.tsx_1]] - degree 14, connects to 1 community
+- [[combobox.stories.tsx]] - degree 14, connects to 1 community

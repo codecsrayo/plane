@@ -1,20 +1,19 @@
 ---
 source_file: "api/plane/app/views/project/member.py"
 type: "code"
-community: "Partial Endpoint"
+community: "Python API Base Classes"
 location: "L206"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Partial_Endpoint
+  - community/Python_API_Base_Classes
 ---
 
 # partial_update()
 
 ## Connections
-
 - [[get()_21]] - `calls` [EXTRACTED]
 - [[member.py_1]] - `contains` [EXTRACTED]
 - [[response]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Partial_Endpoint
+#graphify/code #graphify/EXTRACTED #community/Python_API_Base_Classes

@@ -1,44 +1,72 @@
 ---
 type: community
-cohesion: 0.12
-members: 28
+cohesion: 0.06
+members: 57
 ---
 
 # Community 76
 
-**Cohesion:** 0.12 - loosely connected
-**Members:** 28 nodes
+**Cohesion:** 0.06 - loosely connected
+**Members:** 57 nodes
 
 ## Members
-
-- [[CreateUpdateLabelInline]] - code - web/core/components/labels/create-update-label-inline.tsx
-- [[ICustomMenuItem]] - code - web/core/components/labels/label-block/label-item-block.tsx
-- [[ILabelItemBlock]] - code - web/core/components/labels/label-block/label-item-block.tsx
-- [[ILabelName]] - code - web/core/components/labels/label-block/label-name.tsx
-- [[LabelDndHOC]] - code - web/core/components/labels/label-drag-n-drop-HOC.tsx
-- [[LabelDragPreview()]] - code - web/core/components/labels/label-drag-n-drop-HOC.tsx
-- [[LabelDragPreviewProps]] - code - web/core/components/labels/label-drag-n-drop-HOC.tsx
-- [[LabelItemBlock()]] - code - web/core/components/labels/label-block/label-item-block.tsx
-- [[LabelName()]] - code - web/core/components/labels/label-block/label-name.tsx
-- [[ProjectSettingLabelGroup]] - code - web/core/components/labels/project-setting-label-group.tsx
-- [[ProjectSettingLabelItem()]] - code - web/core/components/labels/project-setting-label-item.tsx
-- [[Props_64]] - code - web/core/components/labels/label-drag-n-drop-HOC.tsx
-- [[Props_63]] - code - web/core/components/labels/project-setting-label-group.tsx
-- [[Props_62]] - code - web/core/components/labels/project-setting-label-item.tsx
-- [[TCreateUpdateLabelInlineProps]] - code - web/core/components/labels/create-update-label-inline.tsx
-- [[TLabelOperationsCallbacks]] - code - web/core/components/labels/create-update-label-inline.tsx
-- [[TargetData_3]] - code - web/core/components/labels/label-utils.ts
-- [[create-update-label-inline.tsx]] - code - web/core/components/labels/create-update-label-inline.tsx
-- [[defaultValues_3]] - code - web/core/components/labels/create-update-label-inline.tsx
-- [[errorCodes]] - code - web/core/components/labels/create-update-label-inline.tsx
-- [[getCanDrop()_2]] - code - web/core/components/labels/label-utils.ts
-- [[getInstructionFromPayload()_3]] - code - web/core/components/labels/label-utils.ts
-- [[label-drag-n-drop-HOC.tsx]] - code - web/core/components/labels/label-drag-n-drop-HOC.tsx
-- [[label-item-block.tsx]] - code - web/core/components/labels/label-block/label-item-block.tsx
-- [[label-name.tsx]] - code - web/core/components/labels/label-block/label-name.tsx
-- [[label-utils.ts]] - code - web/core/components/labels/label-utils.ts
-- [[project-setting-label-group.tsx]] - code - web/core/components/labels/project-setting-label-group.tsx
-- [[project-setting-label-item.tsx]] - code - web/core/components/labels/project-setting-label-item.tsx
+- [[.__get_email()_1]] - code - api/plane/authentication/provider/oauth/gitea.py
+- [[.__get_email()]] - code - api/plane/authentication/provider/oauth/github.py
+- [[.__init__()_35]] - code - api/plane/authentication/provider/oauth/gitea.py
+- [[.__init__()_34]] - code - api/plane/authentication/provider/oauth/github.py
+- [[.__init__()_32]] - code - api/plane/authentication/provider/oauth/google.py
+- [[.get()_46]] - code - api/plane/authentication/views/app/gitlab.py
+- [[.get()_45]] - code - api/plane/authentication/views/app/gitlab.py
+- [[.is_user_in_organization()]] - code - api/plane/authentication/provider/oauth/github.py
+- [[.post()_18]] - code - api/plane/authentication/views/app/signout.py
+- [[.post()_27]] - code - api/plane/authentication/views/space/signout.py
+- [[.set_token_data()_4]] - code - api/plane/authentication/provider/oauth/gitea.py
+- [[.set_token_data()_3]] - code - api/plane/authentication/provider/oauth/github.py
+- [[.set_token_data()_2]] - code - api/plane/authentication/provider/oauth/gitlab.py
+- [[.set_token_data()_1]] - code - api/plane/authentication/provider/oauth/google.py
+- [[.set_user_data()_7]] - code - api/plane/authentication/provider/oauth/gitea.py
+- [[.set_user_data()_6]] - code - api/plane/authentication/provider/oauth/github.py
+- [[.set_user_data()_5]] - code - api/plane/authentication/provider/oauth/gitlab.py
+- [[.set_user_data()_4]] - code - api/plane/authentication/provider/oauth/google.py
+- [[GitHubCallbackEndpoint]] - code - api/plane/authentication/views/app/github.py
+- [[GitHubCallbackSpaceEndpoint]] - code - api/plane/authentication/views/space/github.py
+- [[GitHubOAuthProvider]] - code - api/plane/authentication/provider/oauth/github.py
+- [[GitHubOauthInitiateEndpoint]] - code - api/plane/authentication/views/app/github.py
+- [[GitHubOauthInitiateSpaceEndpoint]] - code - api/plane/authentication/views/space/github.py
+- [[GitLabCallbackEndpoint]] - code - api/plane/authentication/views/app/gitlab.py
+- [[GitLabCallbackSpaceEndpoint]] - code - api/plane/authentication/views/space/gitlab.py
+- [[GitLabOAuthProvider]] - code - api/plane/authentication/provider/oauth/gitlab.py
+- [[GitLabOauthInitiateEndpoint]] - code - api/plane/authentication/views/app/gitlab.py
+- [[GitLabOauthInitiateSpaceEndpoint]] - code - api/plane/authentication/views/space/gitlab.py
+- [[GiteaCallbackEndpoint]] - code - api/plane/authentication/views/app/gitea.py
+- [[GiteaCallbackSpaceEndpoint]] - code - api/plane/authentication/views/space/gitea.py
+- [[GiteaOAuthProvider]] - code - api/plane/authentication/provider/oauth/gitea.py
+- [[GiteaOauthInitiateEndpoint]] - code - api/plane/authentication/views/app/gitea.py
+- [[GiteaOauthInitiateSpaceEndpoint]] - code - api/plane/authentication/views/space/gitea.py
+- [[GoogleCallbackEndpoint]] - code - api/plane/authentication/views/app/google.py
+- [[GoogleCallbackSpaceEndpoint]] - code - api/plane/authentication/views/space/google.py
+- [[GoogleOAuthProvider]] - code - api/plane/authentication/provider/oauth/google.py
+- [[GoogleOauthInitiateEndpoint]] - code - api/plane/authentication/views/app/google.py
+- [[GoogleOauthInitiateSpaceEndpoint]] - code - api/plane/authentication/views/space/google.py
+- [[OauthAdapter_1]] - code
+- [[SignOutAuthEndpoint]] - code - api/plane/authentication/views/app/signout.py
+- [[SignOutAuthSpaceEndpoint]] - code - api/plane/authentication/views/space/signout.py
+- [[View]] - code
+- [[__init__.py_46]] - code - api/plane/authentication/views/__init__.py
+- [[gitea.py_2]] - code - api/plane/authentication/provider/oauth/gitea.py
+- [[gitea.py]] - code - api/plane/authentication/views/app/gitea.py
+- [[gitea.py_1]] - code - api/plane/authentication/views/space/gitea.py
+- [[github.py_4]] - code - api/plane/authentication/provider/oauth/github.py
+- [[github.py_2]] - code - api/plane/authentication/views/app/github.py
+- [[github.py_3]] - code - api/plane/authentication/views/space/github.py
+- [[gitlab.py_4]] - code - api/plane/authentication/provider/oauth/gitlab.py
+- [[gitlab.py_2]] - code - api/plane/authentication/views/app/gitlab.py
+- [[gitlab.py_3]] - code - api/plane/authentication/views/space/gitlab.py
+- [[google.py_2]] - code - api/plane/authentication/provider/oauth/google.py
+- [[google.py]] - code - api/plane/authentication/views/app/google.py
+- [[google.py_1]] - code - api/plane/authentication/views/space/google.py
+- [[signout.py]] - code - api/plane/authentication/views/app/signout.py
+- [[signout.py_1]] - code - api/plane/authentication/views/space/signout.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -48,12 +76,16 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 3 edges to [[_COMMUNITY_Community 81]]
-- 1 edge to [[_COMMUNITY_Empty State Components]]
+- 73 edges to [[_COMMUNITY_Community 54]]
+- 10 edges to [[_COMMUNITY_Community 153]]
+- 4 edges to [[_COMMUNITY_Community 396]]
+- 4 edges to [[_COMMUNITY_Community 48]]
+- 2 edges to [[_COMMUNITY_Community 53]]
+- 1 edge to [[_COMMUNITY_Community 123]]
 
 ## Top bridge nodes
-
-- [[label-drag-n-drop-HOC.tsx]] - degree 13, connects to 1 community
-- [[project-setting-label-item.tsx]] - degree 13, connects to 1 community
-- [[ProjectSettingLabelItem()]] - degree 3, connects to 1 community
+- [[GitLabOAuthProvider]] - degree 15, connects to 3 communities
+- [[View]] - degree 31, connects to 2 communities
+- [[__init__.py_46]] - degree 19, connects to 2 communities
+- [[GitHubOAuthProvider]] - degree 17, connects to 2 communities
+- [[GiteaOAuthProvider]] - degree 16, connects to 2 communities

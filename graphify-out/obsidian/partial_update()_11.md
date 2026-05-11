@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/cycle/base.py"
 type: "code"
-community: "Cycle Endpoint"
+community: "Community 41"
 location: "L336"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Cycle_Endpoint
+  - community/Community_41
 ---
 
 # partial_update()
 
 ## Connections
-
 - [[.get_queryset()_36]] - `calls` [EXTRACTED]
 - [[CycleWriteSerializer]] - `calls` [INFERRED]
 - [[base.py_14]] - `contains` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[response]] - `calls` [INFERRED]
 - [[user_timezone_converter()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Cycle_Endpoint
+#graphify/code #graphify/INFERRED #community/Community_41

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/views/base.py"
 type: "code"
-community: "Project Endpoint"
+community: "Community 25"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Endpoint
+  - community/Community_25
 ---
 
 # base.py
 
 ## Connections
-
 - [[BaseAPIView]] - `contains` [EXTRACTED]
 - [[BaseViewSet]] - `contains` [EXTRACTED]
 - [[TimezoneMixin]] - `contains` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[state.py_3]] - `imports_from` [EXTRACTED]
 - [[workspace_slug()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Endpoint
+#graphify/code #graphify/EXTRACTED #community/Community_25

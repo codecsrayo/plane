@@ -1,19 +1,18 @@
 ---
 source_file: "web/ce/components/workspace/billing/billing-actions-button.tsx"
 type: "code"
-community: "Project Settings"
+community: "Community 45"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Community_45
 ---
 
 # billing-actions-button.tsx
 
 ## Connections
-
 - [[BillingActionsButton]] - `contains` [EXTRACTED]
 - [[TBillingActionsButtonProps]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Community_45

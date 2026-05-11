@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/views.rs"
 type: "code"
-community: "Project Workspace"
+community: "Rust API Handlers"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Workspace
+  - community/Rust_API_Handlers
 ---
 
 # views.rs
 
 ## Connections
-
 - [[AddFavoriteRequest]] - `contains` [EXTRACTED]
 - [[CreateViewRequest]] - `contains` [EXTRACTED]
 - [[IssueViewResponse]] - `contains` [EXTRACTED]
@@ -33,4 +32,4 @@ tags:
 - [[update_workspace_view()]] - `contains` [EXTRACTED]
 - [[view_to_response()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Workspace
+#graphify/code #graphify/EXTRACTED #community/Rust_API_Handlers

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/use-dropdown.ts"
 type: "code"
-community: "Label Dropdown"
+community: "Work Item Detail & Layouts"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Dropdown
+  - community/Work_Item_Detail__Layouts
 ---
 
 # useDropdown()
 
 ## Connections
-
 - [[PriorityDropdown()]] - `calls` [EXTRACTED]
 - [[base.tsx_2]] - `imports` [EXTRACTED]
 - [[base.tsx_3]] - `imports` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[useDropdownKeyDown()]] - `calls` [EXTRACTED]
 - [[usePlatformOS()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Work_Item_Detail__Layouts

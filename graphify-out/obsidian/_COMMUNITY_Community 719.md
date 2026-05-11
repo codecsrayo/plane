@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 719
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[ActiveModel_69]] - code - api_rust/src/entities/project_public_members.rs
+- [[DEFAULT_WORK_ITEM_FORM_VALUES]] - code - packages/constants/src/issue/modal.ts
+- [[modal.ts]] - code - constants/src/issue/modal.ts
+- [[modal.ts_2]] - code - packages/constants/src/issue/modal.ts
 
 ## Live Query (requires Dataview plugin)
 

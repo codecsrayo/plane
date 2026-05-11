@@ -1,19 +1,20 @@
 ---
-source_file: "editor/src/core/extensions/code/types.ts"
+source_file: "packages/editor/src/core/extensions/code/types.ts"
 type: "code"
-community: "Code Lowlight"
+community: "Community 180"
 location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Code_Lowlight
+  - community/Community_180
 ---
 
 # ECodeBlockAttributeNames
 
 ## Connections
-
 - [[code-block-node-view.tsx]] - `imports` [EXTRACTED]
+- [[code-block-node-view.tsx_1]] - `imports` [EXTRACTED]
 - [[types.ts_4]] - `contains` [EXTRACTED]
+- [[types.ts_25]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Code_Lowlight
+#graphify/code #graphify/EXTRACTED #community/Community_180

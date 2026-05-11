@@ -1,18 +1,17 @@
 ---
 source_file: "live/src/lib/errors.ts"
 type: "code"
-community: "Broadcast Context"
+community: "Community 317"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Broadcast_Context
+  - community/Community_317
 ---
 
 # AppError
 
 ## Connections
-
 - [[.constructor()_187]] - `method` [EXTRACTED]
 - [[api.service.ts_2]] - `imports` [EXTRACTED]
 - [[auth.ts_3]] - `imports` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[title-update-manager.ts]] - `imports` [EXTRACTED]
 - [[user.service.ts_2]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Broadcast_Context
+#graphify/code #graphify/EXTRACTED #community/Community_317

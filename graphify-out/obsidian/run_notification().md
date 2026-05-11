@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/jobs/notifications.rs"
 type: "code"
-community: "Password Email"
+community: "Community 21"
 location: "L59"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Password_Email
+  - community/Community_21
 ---
 
 # run_notification()
 
 ## Connections
-
 - [[.new()]] - `calls` [INFERRED]
 - [[.set()]] - `calls` [INFERRED]
 - [[build_notification_title()]] - `calls` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[notifications.rs_2]] - `contains` [EXTRACTED]
 - [[now]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Password_Email
+#graphify/code #graphify/INFERRED #community/Community_21

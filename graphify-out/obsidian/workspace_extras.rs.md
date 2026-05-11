@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/workspace_extras.rs"
 type: "code"
-community: "Returns Workspace"
+community: "Community 345"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Workspace
+  - community/Community_345
 ---
 
 # workspace_extras.rs
 
 ## Connections
-
 - [[draft_issues_crud()]] - `contains` [EXTRACTED]
 - [[favorites_crud()]] - `contains` [EXTRACTED]
 - [[get_home_preferences_returns_200()]] - `contains` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[stickies_crud()]] - `contains` [EXTRACTED]
 - [[update_workspace_user_properties_returns_200()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_345

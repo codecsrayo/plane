@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/exporter.rs"
 type: "code"
-community: "Project Response"
+community: "Community 214"
 location: "L132"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Project_Response
+  - community/Community_214
 ---
 
 # list_export_issues()
 
 ## Connections
-
 - [[.json()]] - `calls` [INFERRED]
 - [[.new()]] - `calls` [INFERRED]
 - [[build_response()]] - `calls` [INFERRED]
@@ -21,4 +20,4 @@ tags:
 - [[resolve_per_page()]] - `calls` [INFERRED]
 - [[user_to_lite()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Project_Response
+#graphify/code #graphify/INFERRED #community/Community_214

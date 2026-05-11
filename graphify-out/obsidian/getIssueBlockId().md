@@ -1,18 +1,17 @@
 ---
 source_file: "space/components/issues/issue-layouts/utils.tsx"
 type: "code"
-community: "Group Kanban"
+community: "Bulk Operations & Spreadsheet"
 location: "L208"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group_Kanban
+  - community/Bulk_Operations__Spreadsheet
 ---
 
 # getIssueBlockId()
 
 ## Connections
-
 - [[block-root.tsx]] - `imports` [EXTRACTED]
 - [[block.tsx_6]] - `imports` [EXTRACTED]
 - [[block.tsx_9]] - `imports` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[utils.tsx_2]] - `contains` [EXTRACTED]
 - [[utils.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group_Kanban
+#graphify/code #graphify/EXTRACTED #community/Bulk_Operations__Spreadsheet

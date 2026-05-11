@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 4
 ---
 
 # Community 706
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_56]] - code - api_rust/src/entities/issue_activities.rs
+- [[LUCIDE_ICONS_LIST]] - code - packages/ui/src/constants/icons.ts
+- [[MATERIAL_ICONS_LIST]] - code - packages/ui/src/constants/icons.ts
+- [[icons.ts_3]] - code - packages/ui/src/constants/icons.ts
+- [[icons.ts]] - code - ui/src/constants/icons.ts
 
 ## Live Query (requires Dataview plugin)
 

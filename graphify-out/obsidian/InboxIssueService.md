@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/inbox/inbox-issue.service.ts"
 type: "code"
-community: "Issue Project"
+community: "Service Layer"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Project
+  - community/Service_Layer
 ---
 
 # InboxIssueService
 
 ## Connections
-
 - [[.constructor()_179]] - `method` [EXTRACTED]
 - [[.create()_8]] - `method` [EXTRACTED]
 - [[.destroy()_9]] - `method` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[.updateIssue()_1]] - `method` [EXTRACTED]
 - [[inbox-issue.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Project
+#graphify/code #graphify/EXTRACTED #community/Service_Layer

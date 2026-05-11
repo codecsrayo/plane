@@ -1,21 +1,20 @@
 ---
 source_file: "api/plane/app/permissions/base.py"
 type: "code"
-community: "Project Return"
+community: "Community 89"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Return
+  - community/Community_89
 ---
 
 # base.py
 
 ## Connections
-
 - [[Enum]] - `imports_from` [EXTRACTED]
 - [[ROLE_1]] - `contains` [EXTRACTED]
 - [[__init__.py_5]] - `imports_from` [EXTRACTED]
 - [[allow_permission()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Return
+#graphify/code #graphify/EXTRACTED #community/Community_89

@@ -1,18 +1,18 @@
 ---
-source_file: "propel/src/popover/popover.stories.tsx"
+source_file: "packages/propel/src/popover/popover.stories.tsx"
 type: "code"
-community: "Side Align"
+community: "Community 367"
 location: "L175"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Side_Align
+  - community/Community_367
 ---
 
 # AlignEnd
 
 ## Connections
-
 - [[popover.stories.tsx_1]] - `contains` [EXTRACTED]
+- [[popover.stories.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Side_Align
+#graphify/code #graphify/EXTRACTED #community/Community_367

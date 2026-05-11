@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/jobs/cron.rs"
 type: "code"
-community: "Asset Issue"
+community: "Community 34"
 location: "L47"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Asset_Issue
+  - community/Community_34
 ---
 
 # start_cron()
 
 ## Connections
-
 - [[.spawn()]] - `calls` [INFERRED]
 - [[build_s3_client()]] - `calls` [INFERRED]
 - [[cron.rs]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[enqueue_issue_automation()]] - `calls` [EXTRACTED]
 - [[main()_1]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Asset_Issue
+#graphify/code #graphify/INFERRED #community/Community_34

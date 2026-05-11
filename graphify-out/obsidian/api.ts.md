@@ -1,18 +1,17 @@
 ---
 source_file: "e2e-utils/src/helpers/api.ts"
 type: "code"
-community: "Global Test"
+community: "Community 174"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Global_Test
+  - community/Community_174
 ---
 
 # api.ts
 
 ## Connections
-
 - [[createProject()]] - `contains` [EXTRACTED]
 - [[createWorkspace()]] - `contains` [EXTRACTED]
 - [[ensureInstanceConfigured()]] - `contains` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[signUp()]] - `contains` [EXTRACTED]
 - [[waitForHealth()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Global_Test
+#graphify/code #graphify/EXTRACTED #community/Community_174

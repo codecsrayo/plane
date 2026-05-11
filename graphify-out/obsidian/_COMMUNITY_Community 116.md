@@ -1,37 +1,58 @@
 ---
 type: community
-cohesion: 0.16
-members: 21
+cohesion: 0.07
+members: 43
 ---
 
 # Community 116
 
-**Cohesion:** 0.16 - loosely connected
-**Members:** 21 nodes
+**Cohesion:** 0.07 - loosely connected
+**Members:** 43 nodes
 
 ## Members
-
-- [[DeliverWebhookJob]] - code - api_rust/src/jobs/webhook_delivery.rs
-- [[accepts_public_urls()]] - code - api_rust/src/jobs/webhook_delivery.rs
-- [[build_envelope()]] - code - api_rust/src/jobs/webhook_delivery.rs
-- [[envelope_carries_activity_when_provided()]] - code - api_rust/src/jobs/webhook_delivery.rs
-- [[envelope_omits_delivery_id_from_body()]] - code - api_rust/src/jobs/webhook_delivery.rs
-- [[envelope_shape_matches_django_for_create()]] - code - api_rust/src/jobs/webhook_delivery.rs
-- [[handle_deliver_webhook()]] - code - api_rust/src/jobs/webhook_delivery.rs
-- [[hex_encode_lower()]] - code - api_rust/src/jobs/webhook_delivery.rs
-- [[hex_encoding_matches_openssl()]] - code - api_rust/src/jobs/webhook_delivery.rs
-- [[is_blocked_ip()]] - code - api_rust/src/jobs/webhook_delivery.rs
-- [[is_ipv4_cgnat()]] - code - api_rust/src/jobs/webhook_delivery.rs
-- [[is_ipv6_link_local()]] - code - api_rust/src/jobs/webhook_delivery.rs
-- [[is_ipv6_ula()]] - code - api_rust/src/jobs/webhook_delivery.rs
-- [[rejects_loopback_and_private()]] - code - api_rust/src/jobs/webhook_delivery.rs
-- [[rejects_non_http_schemes()]] - code - api_rust/src/jobs/webhook_delivery.rs
-- [[run_delivery()]] - code - api_rust/src/jobs/webhook_delivery.rs
-- [[truncate_passes_short_strings_through()]] - code - api_rust/src/jobs/webhook_delivery.rs
-- [[truncate_respects_utf8_boundaries()]] - code - api_rust/src/jobs/webhook_delivery.rs
-- [[truncate_utf8()]] - code - api_rust/src/jobs/webhook_delivery.rs
-- [[validate_outbound_url()]] - code - api_rust/src/jobs/webhook_delivery.rs
-- [[webhook_delivery.rs]] - code - api_rust/src/jobs/webhook_delivery.rs
+- [[ComingSoonBadge()]] - code - web/core/constants/plans.tsx
+- [[DiscountInfo()]] - code - web/core/components/license/modal/card/discount-info.tsx
+- [[ForumIcon()]] - code - web/core/constants/plans.tsx
+- [[PLANE_PLANS]] - code - web/core/constants/plans.tsx
+- [[PLANS_COMPARISON_LIST]] - code - web/core/constants/plans.tsx
+- [[PLANS_LIST]] - code - web/core/constants/plans.tsx
+- [[PLANS_WITH_DISCOUNT]] - code - web/core/components/license/modal/card/discount-info.tsx
+- [[PaidPlanUpgradeModal]] - code - web/ce/components/license/modal/upgrade-modal.tsx
+- [[PaidPlanUpgradeModalProps]] - code - web/ce/components/license/modal/upgrade-modal.tsx
+- [[PlanCheckoutButton]] - code - web/core/components/license/modal/card/checkout-button.tsx
+- [[PlanDetail]] - code - web/ce/components/workspace/billing/comparison/plan-detail.tsx
+- [[PlanFeatureDetail()]] - code - web/core/components/workspace/billing/comparison/feature-detail.tsx
+- [[PlanFrequencyToggle]] - code - web/ce/components/workspace/billing/comparison/frequency-toggle.tsx
+- [[PlanUpgradeCard]] - code - web/core/components/license/modal/card/plan-upgrade.tsx
+- [[PlanUpgradeCardProps]] - code - web/core/components/license/modal/card/plan-upgrade.tsx
+- [[PlanePlans]] - code - web/core/constants/plans.tsx
+- [[PlansComparisonBase]] - code - web/core/components/workspace/billing/comparison/base.tsx
+- [[Props_513]] - code - web/core/components/license/modal/card/checkout-button.tsx
+- [[TCheckoutParams]] - code - web/core/components/license/modal/card/checkout-button.tsx
+- [[TDiscountInfoProps]] - code - web/core/components/license/modal/card/discount-info.tsx
+- [[TPlanDetail]] - code - web/core/constants/plans.tsx
+- [[TPlanDetailProps]] - code - web/ce/components/workspace/billing/comparison/plan-detail.tsx
+- [[TPlanFeatureData]] - code - web/core/constants/plans.tsx
+- [[TPlanFeatureDetailProps]] - code - web/core/components/workspace/billing/comparison/feature-detail.tsx
+- [[TPlanFeatureDetails]] - code - web/core/constants/plans.tsx
+- [[TPlanFrequencyToggleProps]] - code - web/ce/components/workspace/billing/comparison/frequency-toggle.tsx
+- [[TPlanePlans]] - code - web/core/constants/plans.tsx
+- [[TPlansComparisonBaseProps]] - code - web/core/components/workspace/billing/comparison/base.tsx
+- [[TPlansComparisonDetails]] - code - web/core/constants/plans.tsx
+- [[TPlansComparisonProps]] - code - web/ce/components/workspace/billing/comparison/root.tsx
+- [[base.tsx_1]] - code - web/core/components/workspace/billing/comparison/base.tsx
+- [[checkout-button.tsx]] - code - web/core/components/license/modal/card/checkout-button.tsx
+- [[discount-info.tsx]] - code - web/core/components/license/modal/card/discount-info.tsx
+- [[feature-detail.tsx]] - code - web/core/components/workspace/billing/comparison/feature-detail.tsx
+- [[frequency-toggle.tsx]] - code - web/ce/components/workspace/billing/comparison/frequency-toggle.tsx
+- [[getActualPrice()]] - code - web/core/components/license/modal/card/discount-info.tsx
+- [[index.ts_437]] - code - web/core/components/license/index.ts
+- [[plan-detail.tsx]] - code - web/ce/components/workspace/billing/comparison/plan-detail.tsx
+- [[plan-upgrade.tsx]] - code - web/core/components/license/modal/card/plan-upgrade.tsx
+- [[plans.tsx]] - code - web/core/constants/plans.tsx
+- [[root.tsx_22]] - code - web/ce/components/workspace/billing/comparison/root.tsx
+- [[shouldRenderPlanDetail()]] - code - web/core/components/workspace/billing/comparison/base.tsx
+- [[upgrade-modal.tsx]] - code - web/ce/components/license/modal/upgrade-modal.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -41,9 +62,9 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 1 edge to [[_COMMUNITY_Auth Rust API]]
+- 2 edges to [[_COMMUNITY_Community 115]]
+- 1 edge to [[_COMMUNITY_Community 43]]
 
 ## Top bridge nodes
-
-- [[handle_deliver_webhook()]] - degree 3, connects to 1 community
+- [[root.tsx_22]] - degree 11, connects to 1 community
+- [[DiscountInfo()]] - degree 5, connects to 1 community

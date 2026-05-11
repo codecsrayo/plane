@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/search_tests.rs"
 type: "code"
-community: "Search Returns"
+community: "Community 457"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Search_Returns
+  - community/Community_457
 ---
 
 # search_tests.rs
 
 ## Connections
-
 - [[entity_search_member_returns_200()]] - `contains` [EXTRACTED]
 - [[entity_search_unauthenticated_returns_401()]] - `contains` [EXTRACTED]
 - [[global_search_empty_query_returns_200()]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[search_issues_unauthenticated_returns_401()]] - `contains` [EXTRACTED]
 - [[setup()_32]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Search_Returns
+#graphify/code #graphify/EXTRACTED #community/Community_457

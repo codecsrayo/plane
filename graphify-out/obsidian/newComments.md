@@ -1,18 +1,17 @@
 ---
 source_file: "space/store/issue-detail.store.ts"
 type: "code"
-community: "Publish Cycle"
+community: "Community 415"
 location: "L277"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Publish_Cycle
+  - community/Community_415
 ---
 
 # newComments
 
 ## Connections
-
 - [[issue-detail.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Publish_Cycle
+#graphify/code #graphify/EXTRACTED #community/Community_415

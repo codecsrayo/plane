@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/issue/subscriber.py"
 type: "code"
-community: "Partial Endpoint"
+community: "Python API Base Classes"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Partial_Endpoint
+  - community/Python_API_Base_Classes
 ---
 
 # IssueSubscriberViewSet
 
 ## Connections
-
 - [[.destroy()_14]] - `method` [EXTRACTED]
 - [[.get_permissions()]] - `method` [EXTRACTED]
 - [[.get_queryset()_19]] - `method` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[BaseViewSet_1]] - `inherits` [EXTRACTED]
 - [[subscriber.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Partial_Endpoint
+#graphify/code #graphify/EXTRACTED #community/Python_API_Base_Classes

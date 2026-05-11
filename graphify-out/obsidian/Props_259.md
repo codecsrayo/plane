@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/preview-card/date.tsx"
 type: "code"
-community: "Issue Work"
+community: "Community 137"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Work
+  - community/Community_137
 ---
 
 # Props
 
 ## Connections
-
 - [[date.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Work
+#graphify/code #graphify/EXTRACTED #community/Community_137

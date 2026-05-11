@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/toast/toast.tsx"
 type: "code"
-community: "Toast Static"
+community: "Community 103"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toast_Static
+  - community/Community_103
 ---
 
 # toast.tsx
 
 ## Connections
-
 - [[ActionItemsPromiseToastCallback]] - `contains` [EXTRACTED]
 - [[CircularBarSpinner()]] - `imports` [EXTRACTED]
 - [[CloseIcon()]] - `imports` [EXTRACTED]
@@ -39,4 +38,4 @@ tags:
 - [[toastManager]] - `contains` [EXTRACTED]
 - [[updateToast()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toast_Static
+#graphify/code #graphify/EXTRACTED #community/Community_103

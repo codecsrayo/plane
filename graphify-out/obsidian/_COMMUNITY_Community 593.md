@@ -1,18 +1,21 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.53
+members: 6
 ---
 
 # Community 593
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.53 - moderately connected
+**Members:** 6 nodes
 
 ## Members
-
-- [[.to()_95]] - code - api_rust/src/entities/workspaces.rs
-- [[Entity_95]] - code - api_rust/src/entities/workspaces.rs
+- [[TCallbackMentionComponentProps]] - code - packages/editor/src/core/types/mention.ts
+- [[TMentionHandler]] - code - packages/editor/src/core/types/mention.ts
+- [[TMentionSection]] - code - packages/editor/src/core/types/mention.ts
+- [[TMentionSuggestion]] - code - packages/editor/src/core/types/mention.ts
+- [[mention.ts]] - code - editor/src/core/types/mention.ts
+- [[mention.ts_1]] - code - packages/editor/src/core/types/mention.ts
 
 ## Live Query (requires Dataview plugin)
 

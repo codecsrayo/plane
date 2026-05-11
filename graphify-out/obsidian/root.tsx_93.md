@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/cycles/archived-cycles/root.tsx"
 type: "code"
-community: "Cycles Archived"
+community: "Module & Cycle Analytics"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycles_Archived
+  - community/Module__Cycle_Analytics
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[ArchivedCycleLayoutRoot]] - `contains` [EXTRACTED]
 - [[ArchivedCyclesView]] - `imports` [EXTRACTED]
 - [[CycleModuleListLayoutLoader()]] - `imports` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[useCycleFilter()]] - `imports` [EXTRACTED]
 - [[view.tsx_3]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycles_Archived
+#graphify/code #graphify/EXTRACTED #community/Module__Cycle_Analytics

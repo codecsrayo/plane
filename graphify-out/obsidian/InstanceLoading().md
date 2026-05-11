@@ -1,19 +1,18 @@
 ---
 source_file: "admin/components/instance/loading.tsx"
 type: "code"
-community: "Project Settings"
+community: "Community 43"
 location: "L12"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Project_Settings
+  - community/Community_43
 ---
 
 # InstanceLoading()
 
 ## Connections
-
 - [[loading.tsx]] - `contains` [EXTRACTED]
 - [[useTheme()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Project_Settings
+#graphify/code #graphify/INFERRED #community/Community_43

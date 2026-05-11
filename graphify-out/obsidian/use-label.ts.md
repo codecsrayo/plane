@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/use-label.ts"
 type: "code"
-community: "Label Dropdown"
+community: "Community 44"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Dropdown
+  - community/Community_44
 ---
 
 # use-label.ts
 
 ## Connections
-
 - [[ILabelStore]] - `imports` [EXTRACTED]
 - [[StoreContext]] - `imports` [EXTRACTED]
 - [[activity.tsx_2]] - `imports_from` [EXTRACTED]
@@ -44,4 +43,4 @@ tags:
 - [[useLabel()]] - `contains` [EXTRACTED]
 - [[workspace-level.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Community_44

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/modules/module-view-header.tsx"
 type: "code"
-community: "Member Members"
+community: "Issue Display Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Members
+  - community/Issue_Display_Filters
 ---
 
 # module-view-header.tsx
 
 ## Connections
-
 - [[ModuleLayoutIcon()]] - `imports` [EXTRACTED]
 - [[ModuleViewHeader]] - `contains` [EXTRACTED]
 - [[index.ts_355]] - `imports_from` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[useModuleFilter()]] - `imports` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Members
+#graphify/code #graphify/EXTRACTED #community/Issue_Display_Filters

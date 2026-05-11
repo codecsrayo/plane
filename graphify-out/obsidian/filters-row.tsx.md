@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/work-item-filters/filters-row.tsx"
 type: "code"
-community: "Issue Project"
+community: "Filter UI & Breadcrumbs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Project
+  - community/Filter_UI__Breadcrumbs
 ---
 
 # filters-row.tsx
 
 ## Connections
-
 - [[FiltersRow]] - `imports` [EXTRACTED]
 - [[TFiltersRowProps]] - `imports` [EXTRACTED]
 - [[TWorkItemFiltersRowProps]] - `contains` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[project-layout-root.tsx]] - `imports_from` [EXTRACTED]
 - [[project-view-layout-root.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Project
+#graphify/code #graphify/EXTRACTED #community/Filter_UI__Breadcrumbs

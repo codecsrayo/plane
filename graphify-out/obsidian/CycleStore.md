@@ -1,18 +1,17 @@
 ---
 source_file: "space/store/cycle.store.ts"
 type: "code"
-community: "Publish Cycle"
+community: "Community 527"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Publish_Cycle
+  - community/Community_527
 ---
 
 # CycleStore
 
 ## Connections
-
 - [[.constructor()_70]] - `method` [EXTRACTED]
 - [[.currentProjectActiveCycle()]] - `method` [EXTRACTED]
 - [[.currentProjectActiveCycleId()]] - `method` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[root.store.ts_2]] - `imports` [EXTRACTED]
 - [[root.store.ts_6]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Publish_Cycle
+#graphify/code #graphify/EXTRACTED #community/Community_527

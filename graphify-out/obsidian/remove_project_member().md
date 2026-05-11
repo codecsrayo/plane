@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/projects.rs"
 type: "code"
-community: "Project Response"
+community: "Rust Workspace Helpers"
 location: "L1371"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Response
+  - community/Rust_Workspace_Helpers
 ---
 
 # remove_project_member()
 
 ## Connections
-
 - [[.set()]] - `calls` [INFERRED]
 - [[now]] - `calls` [INFERRED]
 - [[project_by_id()]] - `calls` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[require_project_admin()]] - `calls` [EXTRACTED]
 - [[workspace_by_slug()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Response
+#graphify/code #graphify/EXTRACTED #community/Rust_Workspace_Helpers

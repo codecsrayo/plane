@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/project/project-publish.service.ts"
 type: "code"
-community: "Issue Project"
+community: "Service Layer"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Project
+  - community/Service_Layer
 ---
 
 # ProjectPublishService
 
 ## Connections
-
 - [[.constructor()_173]] - `method` [EXTRACTED]
 - [[.fetchPublishSettings()]] - `method` [EXTRACTED]
 - [[.publishProject()]] - `method` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[.updatePublishSettings()]] - `method` [EXTRACTED]
 - [[project-publish.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Project
+#graphify/code #graphify/EXTRACTED #community/Service_Layer

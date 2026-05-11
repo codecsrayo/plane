@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/views/issue.py"
 type: "code"
-community: "Endpoint Issue"
+community: "Community 32"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_Issue
+  - community/Community_32
 ---
 
 # issue.py
 
 ## Connections
-
 - [[IssueActivityDetailAPIEndpoint]] - `contains` [EXTRACTED]
 - [[IssueActivityListAPIEndpoint]] - `contains` [EXTRACTED]
 - [[IssueAttachmentDetailAPIEndpoint]] - `contains` [EXTRACTED]
@@ -38,4 +37,4 @@ tags:
 - [[put()_2]] - `contains` [EXTRACTED]
 - [[user_has_issue_permission()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_32

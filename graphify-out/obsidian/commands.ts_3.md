@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/power-k/config/commands.ts"
 type: "code"
-community: "Power Chat"
+community: "Community 220"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Power_Chat
+  - community/Community_220
 ---
 
 # commands.ts
 
 ## Connections
-
 - [[TPowerKCommandConfig]] - `imports` [EXTRACTED]
 - [[account-commands.ts]] - `imports_from` [EXTRACTED]
 - [[help-commands.ts]] - `imports_from` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[usePowerKPreferencesCommands()]] - `imports` [EXTRACTED]
 - [[useProjectsAppPowerKCommands()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Power_Chat
+#graphify/code #graphify/EXTRACTED #community/Community_220

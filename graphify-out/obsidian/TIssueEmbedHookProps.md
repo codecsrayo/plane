@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/hooks/use-issue-embed.tsx"
 type: "code"
-community: "Issue Embed"
+community: "Community 670"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Embed
+  - community/Community_670
 ---
 
 # TIssueEmbedHookProps
 
 ## Connections
-
 - [[use-issue-embed.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Embed
+#graphify/code #graphify/EXTRACTED #community/Community_670

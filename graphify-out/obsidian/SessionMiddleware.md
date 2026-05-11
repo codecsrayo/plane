@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/authentication/middleware/session.py"
 type: "code"
-community: "Session Test"
+community: "Community 398"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Session_Test
+  - community/Community_398
 ---
 
 # SessionMiddleware
 
 ## Connections
-
 - [[.__init__()_26]] - `method` [EXTRACTED]
 - [[._get_session_key()]] - `method` [EXTRACTED]
 - [[.process_request()_1]] - `method` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[middleware()_1]] - `calls` [INFERRED]
 - [[session.py_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Session_Test
+#graphify/code #graphify/EXTRACTED #community/Community_398

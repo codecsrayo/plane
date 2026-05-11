@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/use-project.ts"
 type: "code"
-community: "Project Settings"
+community: "Project Filters & Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Project_Filters__Archives
 ---
 
 # use-project.ts
 
 ## Connections
-
 - [[IProjectStore]] - `imports` [EXTRACTED]
 - [[StoreContext]] - `imports` [EXTRACTED]
 - [[active-project-item.tsx]] - `imports_from` [EXTRACTED]
@@ -182,4 +181,4 @@ tags:
 - [[workspace-level.tsx_1]] - `imports_from` [EXTRACTED]
 - [[workspace-wrapper.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

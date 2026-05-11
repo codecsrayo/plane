@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/inbox/inbox-issue.store.ts"
 type: "code"
-community: "Issue Inbox"
+community: "Activity & Inbox Filters"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Inbox
+  - community/Activity__Inbox_Filters
 ---
 
 # IInboxIssueStore
 
 ## Connections
-
 - [[inbox-issue-header.tsx]] - `imports` [EXTRACTED]
 - [[inbox-issue-mobile-header.tsx]] - `imports` [EXTRACTED]
 - [[inbox-issue-status.tsx]] - `imports` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[project-inbox.store.ts_1]] - `imports` [EXTRACTED]
 - [[use-inbox-issues.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Inbox
+#graphify/code #graphify/EXTRACTED #community/Activity__Inbox_Filters

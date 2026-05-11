@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/cycles/analytics-sidebar/progress-stats.tsx"
 type: "code"
-community: "Progress Stats"
+community: "Community 235"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Progress_Stats
+  - community/Community_235
 ---
 
 # TCycleProgressStats
 
 ## Connections
-
 - [[progress-stats.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Progress_Stats
+#graphify/code #graphify/EXTRACTED #community/Community_235

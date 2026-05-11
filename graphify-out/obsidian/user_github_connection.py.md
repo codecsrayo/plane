@@ -1,20 +1,19 @@
 ---
 source_file: "api/plane/db/models/integration/user_github_connection.py"
 type: "code"
-community: "Meta User"
+community: "Python Workflow Services"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Meta_User
+  - community/Python_Workflow_Services
 ---
 
 # user_github_connection.py
 
 ## Connections
-
 - [[Meta_59]] - `contains` [EXTRACTED]
 - [[UserGithubConnection]] - `contains` [EXTRACTED]
 - [[__init__.py_31]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Meta_User
+#graphify/code #graphify/EXTRACTED #community/Python_Workflow_Services

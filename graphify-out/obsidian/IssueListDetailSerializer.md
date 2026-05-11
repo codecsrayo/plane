@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/serializers/issue.py"
 type: "code"
-community: "Issue Serializer"
+community: "Community 414"
 location: "L814"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Issue_Serializer
+  - community/Community_414
 ---
 
 # IssueListDetailSerializer
 
 ## Connections
-
 - [[.__init__()_1]] - `method` [EXTRACTED]
 - [[.get_assignee_ids()_1]] - `method` [EXTRACTED]
 - [[.get_label_ids()_1]] - `method` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[get()_10]] - `calls` [INFERRED]
 - [[issue.py_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Issue_Serializer
+#graphify/code #graphify/INFERRED #community/Community_414

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/filters/filterset.py"
 type: "code"
-community: "Excluding Soft"
+community: "Community 132"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Excluding_Soft
+  - community/Community_132
 ---
 
 # filterset.py
 
 ## Connections
-
 - [[BaseFilterSet]] - `contains` [EXTRACTED]
 - [[CharInFilter]] - `contains` [EXTRACTED]
 - [[IssueFilterSet]] - `contains` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[__init__.py_42]] - `imports_from` [EXTRACTED]
 - [[get_filters()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Excluding_Soft
+#graphify/code #graphify/EXTRACTED #community/Community_132

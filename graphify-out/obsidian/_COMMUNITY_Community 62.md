@@ -1,48 +1,82 @@
 ---
 type: community
-cohesion: 0.08
-members: 32
+cohesion: 0.06
+members: 67
 ---
 
 # Community 62
 
-**Cohesion:** 0.08 - loosely connected
-**Members:** 32 nodes
+**Cohesion:** 0.06 - loosely connected
+**Members:** 67 nodes
 
 ## Members
-
-- [[.canUserDragDropHorizontally()]] - code - web/core/store/issue/issue_kanban_view.store.ts
-- [[.canUserDragDropVertically()]] - code - web/core/store/issue/issue_kanban_view.store.ts
-- [[.constructor()_27]] - code - web/core/store/issue/issue_kanban_view.store.ts
-- [[.constructor()_26]] - code - web/core/store/issue/root.store.ts
-- [[HeaderColumn()]] - code - web/core/components/issues/issue-layouts/spreadsheet/columns/header-column.tsx
-- [[IIssueKanBanViewStore]] - code - web/core/store/issue/issue_kanban_view.store.ts
-- [[IWithDisplayPropertiesHOC]] - code - web/core/components/issues/issue-layouts/properties/with-display-properties-HOC.tsx
-- [[IssueBlockProps]] - code - web/core/components/issues/issue-layouts/kanban/block.tsx
-- [[IssueBlocksListProps]] - code - web/core/components/issues/issue-layouts/kanban/blocks-list.tsx
-- [[IssueColumn]] - code - web/core/components/issues/issue-layouts/spreadsheet/issue-column.tsx
-- [[IssueDetailsBlockProps]] - code - web/core/components/issues/issue-layouts/kanban/block.tsx
-- [[IssueKanBanViewStore]] - code - web/core/store/issue/issue_kanban_view.store.ts
-- [[IssueProperties]] - code - web/core/components/issues/issue-layouts/properties/all-properties.tsx
-- [[IssueRootStore]] - code - web/core/store/issue/root.store.ts
-- [[KanbanIssueBlock]] - code - web/core/components/issues/issue-layouts/kanban/block.tsx
-- [[KanbanIssueBlocksList]] - code - web/core/components/issues/issue-layouts/kanban/blocks-list.tsx
-- [[KanbanIssueDetailsBlock]] - code - web/core/components/issues/issue-layouts/kanban/block.tsx
-- [[Props_206]] - code - web/core/components/issues/issue-layouts/spreadsheet/columns/header-column.tsx
-- [[Props_196]] - code - web/core/components/issues/issue-layouts/spreadsheet/issue-column.tsx
-- [[Props_195]] - code - web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-header-column.tsx
-- [[SpreadSheetPropertyIcon()]] - code - web/core/components/issues/issue-layouts/utils.tsx
-- [[WithDisplayPropertiesHOC]] - code - web/core/components/issues/issue-layouts/properties/with-display-properties-HOC.tsx
-- [[block.tsx_3]] - code - web/core/components/issues/issue-layouts/kanban/block.tsx
-- [[blocks-list.tsx]] - code - web/core/components/issues/issue-layouts/kanban/blocks-list.tsx
-- [[header-column.tsx]] - code - web/core/components/issues/issue-layouts/spreadsheet/columns/header-column.tsx
-- [[issue-column.tsx]] - code - web/core/components/issues/issue-layouts/spreadsheet/issue-column.tsx
-- [[issue_kanban_view.store.ts]] - code - web/core/store/issue/issue_kanban_view.store.ts
-- [[spreadsheet-header-column.tsx]] - code - web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-header-column.tsx
-- [[stopKanbanEventPropagation()]] - code - web/core/components/issues/issue-layouts/kanban/block.tsx
-- [[use-kanban-view.ts]] - code - web/core/hooks/store/use-kanban-view.ts
-- [[useKanbanView()]] - code - web/core/hooks/store/use-kanban-view.ts
-- [[with-display-properties-HOC.tsx]] - code - web/core/components/issues/issue-layouts/properties/with-display-properties-HOC.tsx
+- [[ECreateOrJoinWorkspaceViews]] - code - packages/types/src/workspace.ts
+- [[EOnboardingSteps]] - code - packages/types/src/workspace.ts
+- [[EUserWorkspaceRoles]] - code - packages/types/src/workspace.ts
+- [[IExportData]] - code - packages/types/src/importer/index.ts
+- [[IExportServiceResponse]] - code - packages/types/src/importer/index.ts
+- [[IGptResponse]] - code - packages/types/src/ai.ts
+- [[IImporterService]] - code - packages/types/src/importer/index.ts
+- [[ILastActiveWorkspaceDetails]] - code - packages/types/src/workspace.ts
+- [[IProductUpdateResponse]] - code - packages/types/src/workspace.ts
+- [[IUser]] - code - packages/types/src/users.ts
+- [[IWorkspace]] - code - packages/types/src/workspace.ts
+- [[IWorkspaceActiveCyclesResponse]] - code - packages/types/src/workspace.ts
+- [[IWorkspaceAnalyticsResponse]] - code - packages/types/src/workspace.ts
+- [[IWorkspaceBulkInviteFormData]] - code - packages/types/src/workspace.ts
+- [[IWorkspaceDefaultSearchResult]] - code - packages/types/src/workspace.ts
+- [[IWorkspaceIssueSearchResult]] - code - packages/types/src/workspace.ts
+- [[IWorkspaceLite]] - code - packages/types/src/workspace.ts
+- [[IWorkspaceMember]] - code - packages/types/src/workspace.ts
+- [[IWorkspaceMemberInvitation]] - code - packages/types/src/workspace.ts
+- [[IWorkspaceMemberMe]] - code - packages/types/src/workspace.ts
+- [[IWorkspacePageSearchResult]] - code - packages/types/src/workspace.ts
+- [[IWorkspaceProgressResponse]] - code - packages/types/src/workspace.ts
+- [[IWorkspaceProjectSearchResult]] - code - packages/types/src/workspace.ts
+- [[IWorkspaceSearchResult]] - code - packages/types/src/workspace.ts
+- [[IWorkspaceSearchResults]] - code - packages/types/src/workspace.ts
+- [[IWorkspaceSidebarNavigation]] - code - packages/types/src/workspace.ts
+- [[Properties]] - code - packages/types/src/workspace.ts
+- [[TCycleSearchResponse]] - code - packages/types/src/search.ts
+- [[TIssueSearchResponse]] - code - packages/types/src/search.ts
+- [[TModuleSearchResponse]] - code - packages/types/src/search.ts
+- [[TOnboardingStep]] - code - packages/types/src/workspace.ts
+- [[TPageSearchResponse]] - code - packages/types/src/search.ts
+- [[TProfileSettingsTabs]] - code - packages/types/src/settings.ts
+- [[TProjectDetails]] - code - packages/types/src/publish.ts
+- [[TProjectPublishLayouts]] - code - packages/types/src/publish.ts
+- [[TProjectPublishSettings]] - code - packages/types/src/publish.ts
+- [[TProjectPublishViewProps]] - code - packages/types/src/publish.ts
+- [[TProjectSearchResponse]] - code - packages/types/src/search.ts
+- [[TProjectSettingsItem]] - code - packages/types/src/settings.ts
+- [[TProjectSettingsTabs]] - code - packages/types/src/settings.ts
+- [[TPublishEntityType]] - code - packages/types/src/publish.ts
+- [[TPublishSettings]] - code - packages/types/src/publish.ts
+- [[TSearchEntities]] - code - packages/types/src/search.ts
+- [[TSearchEntityRequestPayload]] - code - packages/types/src/search.ts
+- [[TSearchResponse]] - code - packages/types/src/search.ts
+- [[TUserSearchResponse]] - code - packages/types/src/search.ts
+- [[TWorkspacePaginationInfo]] - code - packages/types/src/workspace.ts
+- [[TWorkspaceSettingsItem]] - code - packages/types/src/settings.ts
+- [[TWorkspaceSettingsTabs]] - code - packages/types/src/settings.ts
+- [[ai.ts_7]] - code - packages/types/src/ai.ts
+- [[ai.ts_2]] - code - types/src/ai.ts
+- [[index.ts_573]] - code - packages/types/src/importer/index.ts
+- [[index.ts_553]] - code - packages/types/src/index.ts
+- [[index.ts_558]] - code - packages/types/src/page/index.ts
+- [[index.ts_559]] - code - packages/types/src/project/index.ts
+- [[index.ts_112]] - code - types/src/importer/index.ts
+- [[index.ts_92]] - code - types/src/index.ts
+- [[index.ts_97]] - code - types/src/page/index.ts
+- [[index.ts_98]] - code - types/src/project/index.ts
+- [[publish.ts_1]] - code - packages/types/src/publish.ts
+- [[publish.ts]] - code - types/src/publish.ts
+- [[search.ts_1]] - code - packages/types/src/search.ts
+- [[search.ts]] - code - types/src/search.ts
+- [[settings.ts_1]] - code - packages/types/src/settings.ts
+- [[settings.ts]] - code - types/src/settings.ts
+- [[workspace.ts_7]] - code - packages/types/src/workspace.ts
+- [[workspace.ts_2]] - code - types/src/workspace.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -52,25 +86,20 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 7 edges to [[_COMMUNITY_Group & Drag UI]]
-- 6 edges to [[_COMMUNITY_Active Cycle Stats]]
-- 6 edges to [[_COMMUNITY_Spreadsheet Column Components]]
-- 4 edges to [[_COMMUNITY_Calendar UI]]
-- 3 edges to [[_COMMUNITY_Issue Activity Tracking]]
-- 3 edges to [[_COMMUNITY_Applied Filters UI]]
-- 2 edges to [[_COMMUNITY_Layout System]]
-- 2 edges to [[_COMMUNITY_Community 200]]
-- 2 edges to [[_COMMUNITY_Issue Filters & Context]]
-- 2 edges to [[_COMMUNITY_Community 63]]
-- 2 edges to [[_COMMUNITY_Community 177]]
-- 1 edge to [[_COMMUNITY_Community 92]]
-- 1 edge to [[_COMMUNITY_Project Estimates]]
+- 16 edges to [[_COMMUNITY_Community 100]]
+- 12 edges to [[_COMMUNITY_Community 101]]
+- 6 edges to [[_COMMUNITY_Community 194]]
+- 6 edges to [[_COMMUNITY_Community 71]]
+- 4 edges to [[_COMMUNITY_Community 158]]
+- 4 edges to [[_COMMUNITY_Community 118]]
+- 4 edges to [[_COMMUNITY_Community 189]]
+- 2 edges to [[_COMMUNITY_Community 335]]
+- 2 edges to [[_COMMUNITY_Community 178]]
+- 2 edges to [[_COMMUNITY_Community 139]]
 
 ## Top bridge nodes
-
-- [[block.tsx_3]] - degree 22, connects to 6 communities
-- [[use-kanban-view.ts]] - degree 8, connects to 4 communities
-- [[with-display-properties-HOC.tsx]] - degree 9, connects to 3 communities
-- [[WithDisplayPropertiesHOC]] - degree 8, connects to 3 communities
-- [[header-column.tsx]] - degree 6, connects to 2 communities
+- [[workspace.ts_7]] - degree 44, connects to 8 communities
+- [[workspace.ts_2]] - degree 44, connects to 8 communities
+- [[search.ts_1]] - degree 19, connects to 4 communities
+- [[search.ts]] - degree 19, connects to 4 communities
+- [[IWorkspaceLite]] - degree 10, connects to 2 communities

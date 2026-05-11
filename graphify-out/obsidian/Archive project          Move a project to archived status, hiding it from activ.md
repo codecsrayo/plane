@@ -1,14 +1,14 @@
 ---
 source_file: "api/plane/api/views/project.py"
 type: "rationale"
-community: "Project Archive"
+community: "Community 1706"
 location: "L524"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Project_Archive
+  - community/Community_1706
 ---
 
-# Archive project Move a project to archived status, hiding it from activ
+# Archive project          Move a project to archived status, hiding it from activ
 
-#graphify/rationale #graphify/EXTRACTED #community/Project_Archive
+#graphify/rationale #graphify/EXTRACTED #community/Community_1706

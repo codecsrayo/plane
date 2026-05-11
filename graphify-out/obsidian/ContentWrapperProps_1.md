@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/core/content-wrapper.tsx"
 type: "code"
-community: "Project Issues"
+community: "Community 40"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Issues
+  - community/Community_40
 ---
 
 # ContentWrapperProps
 
 ## Connections
-
 - [[content-wrapper.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Issues
+#graphify/code #graphify/EXTRACTED #community/Community_40

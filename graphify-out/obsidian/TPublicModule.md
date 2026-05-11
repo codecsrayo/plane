@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/module/modules.ts"
+source_file: "packages/types/src/module/modules.ts"
 type: "code"
-community: "Distribution Link"
+community: "Community 101"
 location: "L123"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Distribution_Link
+  - community/Community_101
 ---
 
 # TPublicModule
 
 ## Connections
-
 - [[modules.ts]] - `contains` [EXTRACTED]
+- [[modules.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Distribution_Link
+#graphify/code #graphify/EXTRACTED #community/Community_101

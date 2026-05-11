@@ -1,14 +1,14 @@
 ---
 source_file: "api_rust/src/entities/github_comment_syncs.rs"
 type: "code"
-community: "Active Model"
+community: "Community 2063"
 location: "L99"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Model
+  - community/Community_2063
 ---
 
 # ActiveModel
 
-#graphify/code #graphify/EXTRACTED #community/Active_Model
+#graphify/code #graphify/EXTRACTED #community/Community_2063

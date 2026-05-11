@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/spreadsheet/issue-row.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Bulk Operations & Spreadsheet"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Bulk_Operations__Spreadsheet
 ---
 
 # issue-row.tsx
 
 ## Connections
-
 - [[IssueColumn]] - `imports` [EXTRACTED]
 - [[IssueIdentifier]] - `imports` [EXTRACTED]
 - [[IssueRowDetails]] - `contains` [EXTRACTED]
@@ -37,4 +36,4 @@ tags:
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[utils.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Bulk_Operations__Spreadsheet

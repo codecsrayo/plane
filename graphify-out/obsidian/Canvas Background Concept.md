@@ -1,18 +1,17 @@
 ---
 source_file: "packages/tailwind-config/AGENTS.md"
 type: "document"
-community: "Background Concept"
+community: "Community 338"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Background_Concept
+  - community/Community_338
 ---
 
 # Canvas Background Concept
 
 ## Connections
-
+- [[Design System Philosophy (CanvasSurfaceLayer)]] - `references` [EXTRACTED]
 - [[Surface Background Concept]] - `conceptually_related_to` [EXTRACTED]
-- [[Tailwind Design System]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Background_Concept
+#graphify/document #graphify/EXTRACTED #community/Community_338

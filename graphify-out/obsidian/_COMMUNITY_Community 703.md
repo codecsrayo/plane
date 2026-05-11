@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.50
+members: 4
 ---
 
 # Community 703
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.50 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_53]] - code - api_rust/src/entities/draft_issue_cycles.rs
+- [[.asJSONExtended()]] - code - web/ce/store/pages/extended-base-page.ts
+- [[ExtendedBasePage]] - code - web/ce/store/pages/extended-base-page.ts
+- [[TExtendedPageInstance]] - code - web/ce/store/pages/extended-base-page.ts
+- [[extended-base-page.ts]] - code - web/ce/store/pages/extended-base-page.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -19,3 +21,9 @@ members: 1
 TABLE source_file, type FROM #community/Community_703
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Community 50]]
+
+## Top bridge nodes
+- [[ExtendedBasePage]] - degree 3, connects to 1 community

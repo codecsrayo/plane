@@ -1,21 +1,20 @@
 ---
 source_file: "web/core/components/issues/issue-detail/issue-activity/index.ts"
 type: "code"
-community: "Issue Inbox"
+community: "Activity & Inbox Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Inbox
+  - community/Activity__Inbox_Filters
 ---
 
 # index.ts
 
 ## Connections
-
 - [[filter-root.tsx]] - `imports_from` [EXTRACTED]
 - [[issue-root.tsx]] - `imports_from` [EXTRACTED]
 - [[main-content.tsx_1]] - `imports_from` [EXTRACTED]
 - [[view.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Inbox
+#graphify/code #graphify/EXTRACTED #community/Activity__Inbox_Filters

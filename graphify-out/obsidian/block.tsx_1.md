@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/callout/block.tsx"
 type: "code"
-community: "Callout Custom"
+community: "Community 82"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Callout_Custom
+  - community/Community_82
 ---
 
 # block.tsx
 
 ## Connections
-
 - [[COLORS_LIST]] - `imports` [EXTRACTED]
 - [[CalloutBlockColorSelector()]] - `imports` [EXTRACTED]
 - [[CalloutBlockLogoSelector()]] - `imports` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[updateStoredBackgroundColor()]] - `imports` [EXTRACTED]
 - [[utils.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Callout_Custom
+#graphify/code #graphify/EXTRACTED #community/Community_82

@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_221]] - code - web/ce/components/gantt-chart/layers/index.ts
+- [[index.ts_238]] - code - web/ce/components/cycles/analytics-sidebar/index.ts
 
 ## Live Query (requires Dataview plugin)
 

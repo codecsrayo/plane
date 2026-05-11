@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/auth/session.rs"
 type: "code"
-community: "Session Presigned"
+community: "Community 78"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Session_Presigned
+  - community/Community_78
 ---
 
 # session.rs
 
 ## Connections
-
 - [[SessionKind]] - `contains` [EXTRACTED]
 - [[SessionSurface]] - `contains` [EXTRACTED]
 - [[SessionUser]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[session_kind_uses_admin_cookie_for_instances_paths()]] - `contains` [EXTRACTED]
 - [[session_kind_uses_app_cookie_elsewhere()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Session_Presigned
+#graphify/code #graphify/EXTRACTED #community/Community_78

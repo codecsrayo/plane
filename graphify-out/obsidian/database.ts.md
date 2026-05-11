@@ -1,18 +1,17 @@
 ---
 source_file: "live/src/extensions/database.ts"
 type: "code"
-community: "Broadcast Context"
+community: "Community 241"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Broadcast_Context
+  - community/Community_241
 ---
 
 # database.ts
 
 ## Connections
-
 - [[AppError]] - `imports` [EXTRACTED]
 - [[CloseCode]] - `imports` [EXTRACTED]
 - [[Database]] - `contains` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[index.ts_451]] - `imports_from` [EXTRACTED]
 - [[storeDocument()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Broadcast_Context
+#graphify/code #graphify/EXTRACTED #community/Community_241

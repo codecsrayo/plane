@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/workspace/sidebar/sidebar-item.tsx"
 type: "code"
-community: "Sidebar Navigation"
+community: "Community 161"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Navigation
+  - community/Community_161
 ---
 
 # sidebar-item.tsx
 
 ## Connections
-
 - [[Props_58]] - `contains` [EXTRACTED]
 - [[SidebarItemBase]] - `contains` [EXTRACTED]
 - [[SidebarNavItem()]] - `imports` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[useAppTheme()]] - `imports` [EXTRACTED]
 - [[useWorkspaceNavigationPreferences()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation
+#graphify/code #graphify/EXTRACTED #community/Community_161

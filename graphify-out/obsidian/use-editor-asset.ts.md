@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/use-editor-asset.ts"
 type: "code"
-community: "Workspace Issue"
+community: "Community 42"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Issue
+  - community/Community_42
 ---
 
 # use-editor-asset.ts
 
 ## Connections
-
 - [[IEditorAssetStore]] - `imports` [EXTRACTED]
 - [[StoreContext]] - `imports` [EXTRACTED]
 - [[asset.store.ts]] - `imports_from` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[use-editor-config.ts]] - `imports_from` [EXTRACTED]
 - [[useEditorAsset()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_42

@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/auth_spaces.rs"
 type: "code"
-community: "Space Sign"
+community: "Rust Auth Services"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Space_Sign
+  - community/Rust_Auth_Services
 ---
 
 # auth_spaces.rs
 
 ## Connections
-
 - [[location_has_error()_3]] - `contains` [EXTRACTED]
 - [[space_email_check_accepts_valid_email()]] - `contains` [EXTRACTED]
 - [[space_email_check_rejects_empty_email()]] - `contains` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[space_sign_in_unknown_user_redirects_with_error()]] - `contains` [EXTRACTED]
 - [[space_sign_out_without_session_returns_401()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Space_Sign
+#graphify/code #graphify/EXTRACTED #community/Rust_Auth_Services

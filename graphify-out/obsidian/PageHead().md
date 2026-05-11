@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/core/page-title.tsx"
 type: "code"
-community: "Project Settings"
+community: "Community 24"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Community_24
 ---
 
 # PageHead()
 
 ## Connections
-
 - [[header.tsx_56]] - `imports` [EXTRACTED]
 - [[page-title.tsx]] - `contains` [EXTRACTED]
 - [[page.tsx_7]] - `imports` [EXTRACTED]
@@ -64,4 +63,4 @@ tags:
 - [[root.tsx_62]] - `imports` [EXTRACTED]
 - [[root.tsx_65]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Community_24

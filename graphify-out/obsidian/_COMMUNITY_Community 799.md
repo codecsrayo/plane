@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 799
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_95]] - code - web/core/components/issues/issue-layouts/filters/applied-filters/index.ts
+- [[IssueTypeActivity]] - code - web/ce/components/issues/issue-details/issue-type-activity.tsx
+- [[TIssueTypeActivity]] - code - web/ce/components/issues/issue-details/issue-type-activity.tsx
+- [[issue-type-activity.tsx]] - code - web/ce/components/issues/issue-details/issue-type-activity.tsx
 
 ## Live Query (requires Dataview plugin)
 

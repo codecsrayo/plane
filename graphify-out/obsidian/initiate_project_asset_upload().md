@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/assets.rs"
 type: "code"
-community: "Asset Issue"
+community: "Community 34"
 location: "L1339"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Asset_Issue
+  - community/Community_34
 ---
 
 # initiate_project_asset_upload()
 
 ## Connections
-
 - [[.json()]] - `calls` [INFERRED]
 - [[.set()]] - `calls` [INFERRED]
 - [[asset_url_from_key()]] - `calls` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[now]] - `calls` [INFERRED]
 - [[public_s3_endpoint()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Asset_Issue
+#graphify/code #graphify/INFERRED #community/Community_34

@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/components/cycles/active-cycle/root.tsx"
 type: "code"
-community: "Cycle Active"
+community: "Active Cycle Stats"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Active
+  - community/Active_Cycle_Stats
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[ActiveCycleProductivity]] - `imports` [EXTRACTED]
 - [[ActiveCycleProgress]] - `imports` [EXTRACTED]
 - [[ActiveCycleRoot]] - `contains` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[use-cycles-details.ts]] - `imports_from` [EXTRACTED]
 - [[useCycle()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Active
+#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats

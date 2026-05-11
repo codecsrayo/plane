@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-detail-widgets/attachments/helper.tsx"
 type: "code"
-community: "Attachment Issue"
+community: "Issue Activity Types"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Attachment_Issue
+  - community/Issue_Activity_Types
 ---
 
 # helper.tsx
 
 ## Connections
-
 - [[TAttachmentHelpers]] - `contains` [EXTRACTED]
 - [[TAttachmentOperations]] - `contains` [EXTRACTED]
 - [[TAttachmentSnapshot]] - `contains` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[useAttachmentOperations()]] - `contains` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Attachment_Issue
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Types

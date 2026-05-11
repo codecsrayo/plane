@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 819
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_171]] - code - web/core/components/navigation/index.ts
+- [[AudioIcon()]] - code - web/core/components/icons/attachment/audio-file-icon.tsx
+- [[AudioIconProps]] - code - web/core/components/icons/attachment/audio-file-icon.tsx
+- [[audio-file-icon.tsx_1]] - code - web/core/components/icons/attachment/audio-file-icon.tsx
 
 ## Live Query (requires Dataview plugin)
 

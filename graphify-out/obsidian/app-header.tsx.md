@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/core/app-header.tsx"
 type: "code"
-community: "Project Issues"
+community: "Community 40"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Issues
+  - community/Community_40
 ---
 
 # app-header.tsx
 
 ## Connections
-
 - [[AppHeader]] - `contains` [EXTRACTED]
 - [[AppHeaderProps]] - `contains` [EXTRACTED]
 - [[ExtendedAppHeader]] - `imports` [EXTRACTED]
@@ -42,4 +41,4 @@ tags:
 - [[layout.tsx_29]] - `imports_from` [EXTRACTED]
 - [[page.tsx_7]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Issues
+#graphify/code #graphify/EXTRACTED #community/Community_40

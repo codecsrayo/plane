@@ -1,19 +1,18 @@
 ---
 source_file: "web/app/routes/redirects/core/accounts-signup.tsx"
 type: "code"
-community: "Accounts Client"
+community: "Community 766"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Accounts_Client
+  - community/Community_766
 ---
 
 # accounts-signup.tsx
 
 ## Connections
-
 - [[AccountsSignup()]] - `contains` [EXTRACTED]
 - [[clientLoader()_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Accounts_Client
+#graphify/code #graphify/EXTRACTED #community/Community_766

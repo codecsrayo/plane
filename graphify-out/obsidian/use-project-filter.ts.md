@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/use-project-filter.ts"
 type: "code"
-community: "Workspace Issue"
+community: "Community 20"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Issue
+  - community/Community_20
 ---
 
 # use-project-filter.ts
 
 ## Connections
-
 - [[IProjectFilterStore]] - `imports` [EXTRACTED]
 - [[StoreContext]] - `imports` [EXTRACTED]
 - [[card-list.tsx]] - `imports_from` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[store-context.tsx]] - `imports_from` [EXTRACTED]
 - [[useProjectFilter()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_20

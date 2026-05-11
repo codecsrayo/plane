@@ -1,18 +1,18 @@
 ---
-source_file: "utils/src/emoji.ts"
+source_file: "packages/utils/src/emoji.ts"
 type: "code"
-community: "Emoji Convert"
+community: "Community 570"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Emoji_Convert
+  - community/Community_570
 ---
 
 # convertHexEmojiToDecimal()
 
 ## Connections
-
 - [[emoji.ts_2]] - `contains` [EXTRACTED]
+- [[emoji.ts_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Emoji_Convert
+#graphify/code #graphify/EXTRACTED #community/Community_570

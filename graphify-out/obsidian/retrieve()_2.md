@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/workspace/member.py"
 type: "code"
-community: "Member Workspace"
+community: "Community 395"
 location: "L58"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Member_Workspace
+  - community/Community_395
 ---
 
 # retrieve()
 
 ## Connections
-
 - [[.get()_6]] - `calls` [EXTRACTED]
 - [[.get_queryset()_7]] - `calls` [EXTRACTED]
 - [[WorkSpaceMemberSerializer]] - `calls` [INFERRED]
@@ -20,4 +19,4 @@ tags:
 - [[member.py]] - `contains` [EXTRACTED]
 - [[response]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Member_Workspace
+#graphify/code #graphify/INFERRED #community/Community_395

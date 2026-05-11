@@ -1,18 +1,17 @@
 ---
 source_file: "space/store/root.store.ts"
 type: "code"
-community: "Publish Cycle"
+community: "Community 72"
 location: "L34"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Publish_Cycle
+  - community/Community_72
 ---
 
 # RootStore
 
 ## Connections
-
 - [[.constructor()_42]] - `method` [EXTRACTED]
 - [[.hydrate()]] - `method` [EXTRACTED]
 - [[.reset()]] - `method` [EXTRACTED]
@@ -41,4 +40,4 @@ tags:
 - [[user.store.ts_2]] - `imports` [EXTRACTED]
 - [[workspace.store.ts_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Publish_Cycle
+#graphify/code #graphify/EXTRACTED #community/Community_72

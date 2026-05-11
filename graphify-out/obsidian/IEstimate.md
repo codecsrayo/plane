@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/estimate.ts"
+source_file: "packages/types/src/estimate.ts"
 type: "code"
-community: "Estimate Notification"
+community: "Community 158"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Estimate_Notification
+  - community/Community_158
 ---
 
 # IEstimate
 
 ## Connections
-
 - [[estimate.ts]] - `contains` [EXTRACTED]
+- [[estimate.ts_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Estimate_Notification
+#graphify/code #graphify/EXTRACTED #community/Community_158

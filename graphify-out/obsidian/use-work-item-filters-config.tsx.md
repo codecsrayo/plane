@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/hooks/work-item-filters/use-work-item-filters-config.tsx"
 type: "code"
-community: "Issue Work"
+community: "Community 44"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Work
+  - community/Community_44
 ---
 
 # use-work-item-filters-config.tsx
 
 ## Connections
-
 - [[TUseWorkItemFiltersConfigProps]] - `contains` [EXTRACTED]
 - [[TWorkItemFiltersConfig]] - `contains` [EXTRACTED]
 - [[TWorkItemFiltersEntityProps]] - `contains` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[useProjectState()]] - `imports` [EXTRACTED]
 - [[useWorkItemFiltersConfig()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Work
+#graphify/code #graphify/EXTRACTED #community/Community_44

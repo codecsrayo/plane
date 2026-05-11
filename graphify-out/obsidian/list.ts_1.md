@@ -1,0 +1,25 @@
+---
+source_file: "packages/types/src/base-layouts/list.ts"
+type: "code"
+community: "Community 102"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Community_102
+---
+
+# list.ts
+
+## Connections
+- [[IBaseLayoutsBaseGroupProps]] - `imports` [EXTRACTED]
+- [[IBaseLayoutsBaseItem]] - `imports` [EXTRACTED]
+- [[IBaseLayoutsBaseItemProps]] - `imports` [EXTRACTED]
+- [[IBaseLayoutsBaseProps]] - `imports` [EXTRACTED]
+- [[IBaseLayoutsListGroupProps]] - `contains` [EXTRACTED]
+- [[IBaseLayoutsListItem]] - `contains` [EXTRACTED]
+- [[IBaseLayoutsListItemProps]] - `contains` [EXTRACTED]
+- [[IBaseLayoutsListProps]] - `contains` [EXTRACTED]
+- [[base.ts_10]] - `imports_from` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Community_102

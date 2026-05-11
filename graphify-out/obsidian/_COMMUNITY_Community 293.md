@@ -1,21 +1,35 @@
 ---
 type: community
-cohesion: 0.50
-members: 5
+cohesion: 0.30
+members: 20
 ---
 
 # Community 293
 
-**Cohesion:** 0.50 - moderately connected
-**Members:** 5 nodes
+**Cohesion:** 0.30 - loosely connected
+**Members:** 20 nodes
 
 ## Members
-
-- [[AnalyticsFilterActions]] - code - web/core/components/analytics/analytics-filter-actions.tsx
-- [[ProjectSelect]] - code - web/core/components/analytics/select/project.tsx
-- [[Props_429]] - code - web/core/components/analytics/select/project.tsx
-- [[analytics-filter-actions.tsx]] - code - web/core/components/analytics/analytics-filter-actions.tsx
-- [[project.tsx_3]] - code - web/core/components/analytics/select/project.tsx
+- [[ListKeymap()]] - code - packages/editor/src/core/extensions/custom-list-keymap/list-keymap.ts
+- [[ListKeymapOptions]] - code - packages/editor/src/core/extensions/custom-list-keymap/list-keymap.ts
+- [[findListItemPos()]] - code - packages/editor/src/core/extensions/custom-list-keymap/list-helpers.ts
+- [[getNextListDepth()]] - code - packages/editor/src/core/extensions/custom-list-keymap/list-helpers.ts
+- [[getPrevListDepth()]] - code - packages/editor/src/core/extensions/custom-list-keymap/list-helpers.ts
+- [[handleBackspace()]] - code - packages/editor/src/core/extensions/custom-list-keymap/list-helpers.ts
+- [[handleDelete()]] - code - packages/editor/src/core/extensions/custom-list-keymap/list-helpers.ts
+- [[hasListBefore()]] - code - packages/editor/src/core/extensions/custom-list-keymap/list-helpers.ts
+- [[hasListItemBefore()]] - code - packages/editor/src/core/extensions/custom-list-keymap/list-helpers.ts
+- [[isCurrentParagraphASibling()]] - code - packages/editor/src/core/extensions/custom-list-keymap/list-helpers.ts
+- [[isCursorInSubList()]] - code - packages/editor/src/core/extensions/custom-list-keymap/list-helpers.ts
+- [[list-helpers.ts]] - code - editor/src/core/extensions/custom-list-keymap/list-helpers.ts
+- [[list-helpers.ts_1]] - code - packages/editor/src/core/extensions/custom-list-keymap/list-helpers.ts
+- [[list-keymap.ts]] - code - editor/src/core/extensions/custom-list-keymap/list-keymap.ts
+- [[list-keymap.ts_1]] - code - packages/editor/src/core/extensions/custom-list-keymap/list-keymap.ts
+- [[listItemHasSubList()]] - code - packages/editor/src/core/extensions/custom-list-keymap/list-helpers.ts
+- [[nextListIsDeeper()]] - code - packages/editor/src/core/extensions/custom-list-keymap/list-helpers.ts
+- [[nextListIsHigher()]] - code - packages/editor/src/core/extensions/custom-list-keymap/list-helpers.ts
+- [[nextListIsSibling()]] - code - packages/editor/src/core/extensions/custom-list-keymap/list-helpers.ts
+- [[prevListIsHigher()]] - code - packages/editor/src/core/extensions/custom-list-keymap/list-helpers.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -25,11 +39,12 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 4 edges to [[_COMMUNITY_Applied Filters UI]]
-- 2 edges to [[_COMMUNITY_Community 193]]
+- 8 edges to [[_COMMUNITY_Community 30]]
+- 1 edge to [[_COMMUNITY_Community 86]]
 
 ## Top bridge nodes
-
-- [[analytics-filter-actions.tsx]] - degree 7, connects to 2 communities
-- [[project.tsx_3]] - degree 5, connects to 1 community
+- [[list-helpers.ts]] - degree 17, connects to 1 community
+- [[list-helpers.ts_1]] - degree 17, connects to 1 community
+- [[list-keymap.ts]] - degree 7, connects to 1 community
+- [[list-keymap.ts_1]] - degree 7, connects to 1 community
+- [[ListKeymap()]] - degree 3, connects to 1 community

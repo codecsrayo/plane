@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/users_me.rs"
 type: "code"
-community: "Returns Sign"
+community: "Rust Auth Services"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Sign
+  - community/Rust_Auth_Services
 ---
 
 # users_me.rs
 
 ## Connections
-
 - [[get_me_authenticated_returns_user()]] - `contains` [EXTRACTED]
 - [[get_me_unauthenticated_returns_401()]] - `contains` [EXTRACTED]
 - [[get_session_authenticated_returns_user_data()]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[patch_me_updates_display_name()]] - `contains` [EXTRACTED]
 - [[patch_me_valid_display_name_always_200()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Sign
+#graphify/code #graphify/EXTRACTED #community/Rust_Auth_Services

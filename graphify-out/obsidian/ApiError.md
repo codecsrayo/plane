@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/api.service.ts"
 type: "code"
-community: "Issue Project"
+community: "Service Layer"
 location: "L59"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Project
+  - community/Service_Layer
 ---
 
 # ApiError
 
 ## Connections
-
 - [[.constructor()_143]] - `method` [EXTRACTED]
 - [[account.store.ts]] - `imports` [EXTRACTED]
 - [[ai.service.ts_1]] - `imports` [EXTRACTED]
@@ -61,4 +60,4 @@ tags:
 - [[workspace.service.ts_1]] - `imports` [EXTRACTED]
 - [[workspace_draft.service.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Project
+#graphify/code #graphify/EXTRACTED #community/Service_Layer

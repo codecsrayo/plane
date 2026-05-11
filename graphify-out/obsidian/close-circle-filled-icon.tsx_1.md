@@ -1,0 +1,21 @@
+---
+source_file: "packages/propel/src/icons/misc/close-circle-filled-icon.tsx"
+type: "code"
+community: "SVG Icon Components"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/SVG_Icon_Components
+---
+
+# close-circle-filled-icon.tsx
+
+## Connections
+- [[CloseCircleFilledIcon()]] - `contains` [EXTRACTED]
+- [[ISvgIcons]] - `imports` [EXTRACTED]
+- [[IconWrapper()]] - `imports` [EXTRACTED]
+- [[icon-wrapper.tsx_1]] - `imports_from` [EXTRACTED]
+- [[type.ts_1]] - `imports_from` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/SVG_Icon_Components

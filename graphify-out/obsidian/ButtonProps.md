@@ -1,18 +1,18 @@
 ---
-source_file: "ui/src/button/button.tsx"
+source_file: "packages/ui/src/button/button.tsx"
 type: "code"
-community: "Button Styling"
+community: "Community 290"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Button_Styling
+  - community/Community_290
 ---
 
 # ButtonProps
 
 ## Connections
-
 - [[button.tsx]] - `contains` [EXTRACTED]
+- [[button.tsx_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Button_Styling
+#graphify/code #graphify/EXTRACTED #community/Community_290

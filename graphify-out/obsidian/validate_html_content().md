@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/content_validator.py"
 type: "code"
-community: "Serializer Validate"
+community: "Community 212"
 location: "L211"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Serializer_Validate
+  - community/Community_212
 ---
 
 # validate_html_content()
 
 ## Connections
-
 - [[.validate()]] - `calls` [INFERRED]
 - [[.validate()_1]] - `calls` [INFERRED]
 - [[.validate()_2]] - `calls` [INFERRED]
@@ -26,4 +25,4 @@ tags:
 - [[content_validator.py]] - `contains` [EXTRACTED]
 - [[log_exception()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Serializer_Validate
+#graphify/code #graphify/INFERRED #community/Community_212

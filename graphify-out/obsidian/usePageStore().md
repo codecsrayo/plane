@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/hooks/store/use-page-store.ts"
 type: "code"
-community: "Project Settings"
+community: "Community 42"
 location: "L21"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Project_Settings
+  - community/Community_42
 ---
 
 # usePageStore()
 
 ## Connections
-
 - [[CreatePageModal()]] - `calls` [INFERRED]
 - [[PageDetailsPage()]] - `calls` [INFERRED]
 - [[ProjectPageDetailsLayout()]] - `calls` [INFERRED]
@@ -22,4 +21,4 @@ tags:
 - [[usePowerKPageContextBasedActions()]] - `calls` [INFERRED]
 - [[useRealtimePageEvents()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Project_Settings
+#graphify/code #graphify/INFERRED #community/Community_42

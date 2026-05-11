@@ -1,0 +1,217 @@
+---
+type: community
+cohesion: 0.02
+members: 180
+---
+
+# Icon Library & Branding
+
+**Cohesion:** 0.02 - loosely connected
+**Members:** 180 nodes
+
+## Members
+- [[AccentureLogo()]] - code - packages/propel/src/icons/brand/accenture-logo.tsx
+- [[ActivityIcon()]] - code - packages/propel/src/icons/activity-icon.tsx
+- [[AddIcon()]] - code - packages/propel/src/icons/actions/add-icon.tsx
+- [[AiIcon()]] - code - packages/propel/src/icons/ai-icon.tsx
+- [[AtRiskIcon()]] - code - packages/propel/src/icons/at-risk-icon.tsx
+- [[BarIcon()]] - code - packages/propel/src/icons/bar-icon.tsx
+- [[BlockedIcon()]] - code - packages/propel/src/icons/blocked-icon.tsx
+- [[BlockerIcon()]] - code - packages/propel/src/icons/blocker-icon.tsx
+- [[CalendarAfterIcon()]] - code - packages/propel/src/icons/calendar-after-icon.tsx
+- [[CalendarBeforeIcon()]] - code - packages/propel/src/icons/calendar-before-icon.tsx
+- [[CenterPanelIcon()]] - code - packages/propel/src/icons/center-panel-icon.tsx
+- [[CheckCircleFilledIcon()]] - code - packages/propel/src/icons/misc/check-circle-filled-icon.tsx
+- [[CommentFillIcon()]] - code - packages/propel/src/icons/comment-fill-icon.tsx
+- [[ContrastIcon()]] - code - packages/propel/src/icons/cycle/contrast-icon.tsx
+- [[CreateIcon()]] - code - packages/propel/src/icons/create-icon.tsx
+- [[DiceIcon()]] - code - packages/propel/src/icons/dice-icon.tsx
+- [[DisplayPropertiesIcon()]] - code - packages/propel/src/icons/display-properties.tsx
+- [[DolbyLogo()]] - code - packages/propel/src/icons/brand/dolby-logo.tsx
+- [[DoneState()]] - code - packages/propel/src/icons/done-icon.tsx
+- [[DoubleCircleIcon()]] - code - packages/propel/src/icons/cycle/double-circle-icon.tsx
+- [[DropdownIcon()]] - code - packages/propel/src/icons/dropdown-icon.tsx
+- [[FavoriteFolderIcon()]] - code - packages/propel/src/icons/favorite-folder-icon.tsx
+- [[FilterIcon()]] - code - packages/propel/src/icons/actions/filter-icon.tsx
+- [[FullScreenPanelIcon()]] - code - packages/propel/src/icons/full-screen-panel-icon.tsx
+- [[GithubIcon()]] - code - packages/propel/src/icons/github-icon.tsx
+- [[GitlabIcon()]] - code - packages/propel/src/icons/gitlab-icon.tsx
+- [[ISvgIcons]] - code - packages/propel/src/icons/type.ts
+- [[InProgressState()]] - code - packages/propel/src/icons/in-progress-icon.tsx
+- [[InfoFillIcon()]] - code - packages/propel/src/icons/info-fill-icon.tsx
+- [[Intake()]] - code - packages/propel/src/icons/intake.tsx
+- [[LayerStackIcon()]] - code - packages/propel/src/icons/layer-stack.tsx
+- [[LayersIcon()]] - code - packages/propel/src/icons/layers-icon.tsx
+- [[LeadIcon()]] - code - packages/propel/src/icons/lead-icon.tsx
+- [[MonospaceIcon()]] - code - packages/propel/src/icons/monospace-icon.tsx
+- [[OffTrackIcon()]] - code - packages/propel/src/icons/off-track-icon.tsx
+- [[OnTrackIcon()]] - code - packages/propel/src/icons/on-track-icon.tsx
+- [[PendingState()]] - code - packages/propel/src/icons/pending-icon.tsx
+- [[PhotoFilterIcon()]] - code - packages/propel/src/icons/photo-filter-icon.tsx
+- [[PlaneLockup()]] - code - packages/propel/src/icons/brand/plane-lockup.tsx
+- [[PlaneLogo()]] - code - packages/propel/src/icons/brand/plane-logo.tsx
+- [[PlaneWordmark()]] - code - packages/propel/src/icons/brand/plane-wordmark.tsx
+- [[PlannedState()]] - code - packages/propel/src/icons/planned-icon.tsx
+- [[RecentStickyIcon()]] - code - packages/propel/src/icons/multiple-sticky.tsx
+- [[RelatedIcon()]] - code - packages/propel/src/icons/related-icon.tsx
+- [[SansSerifIcon()]] - code - packages/propel/src/icons/sans-serif-icon.tsx
+- [[SerifIcon()]] - code - packages/propel/src/icons/serif-icon.tsx
+- [[SetAsDefaultIcon()]] - code - packages/propel/src/icons/set-as-default-icon.tsx
+- [[SidePanelIcon()]] - code - packages/propel/src/icons/side-panel-icon.tsx
+- [[SonyLogo()]] - code - packages/propel/src/icons/brand/sony-logo.tsx
+- [[StickyNoteIcon()]] - code - packages/propel/src/icons/sticky-note-icon.tsx
+- [[SuspendedUserIcon()]] - code - packages/propel/src/icons/suspended-user.tsx
+- [[TeamsIcon()]] - code - packages/propel/src/icons/teams.tsx
+- [[TransferIcon()]] - code - packages/propel/src/icons/transfer-icon.tsx
+- [[TreeMapIcon()]] - code - packages/propel/src/icons/tree-map-icon.tsx
+- [[UpdatesIcon()]] - code - packages/propel/src/icons/updates-icon.tsx
+- [[UserActivityIcon()]] - code - packages/propel/src/icons/user-activity-icon.tsx
+- [[WorkflowsPropertyIcon()]] - code - packages/propel/src/icons/properties/workflows-icon.tsx
+- [[WorkspaceIcon()]] - code - packages/propel/src/icons/workspace-icon.tsx
+- [[YourWorkIcon()]] - code - packages/propel/src/icons/workspace/your-work-icon.tsx
+- [[ZerodhaLogo()]] - code - packages/propel/src/icons/brand/zerodha-logo.tsx
+- [[accenture-logo.tsx_1]] - code - packages/propel/src/icons/brand/accenture-logo.tsx
+- [[accenture-logo.tsx]] - code - propel/src/icons/brand/accenture-logo.tsx
+- [[activity-icon.tsx_1]] - code - packages/propel/src/icons/activity-icon.tsx
+- [[activity-icon.tsx]] - code - propel/src/icons/activity-icon.tsx
+- [[add-icon.tsx_1]] - code - packages/propel/src/icons/actions/add-icon.tsx
+- [[add-icon.tsx]] - code - propel/src/icons/actions/add-icon.tsx
+- [[ai-icon.tsx_1]] - code - packages/propel/src/icons/ai-icon.tsx
+- [[ai-icon.tsx]] - code - propel/src/icons/ai-icon.tsx
+- [[at-risk-icon.tsx_1]] - code - packages/propel/src/icons/at-risk-icon.tsx
+- [[at-risk-icon.tsx]] - code - propel/src/icons/at-risk-icon.tsx
+- [[bar-icon.tsx_1]] - code - packages/propel/src/icons/bar-icon.tsx
+- [[bar-icon.tsx]] - code - propel/src/icons/bar-icon.tsx
+- [[blocked-icon.tsx_1]] - code - packages/propel/src/icons/blocked-icon.tsx
+- [[blocked-icon.tsx]] - code - propel/src/icons/blocked-icon.tsx
+- [[blocker-icon.tsx_1]] - code - packages/propel/src/icons/blocker-icon.tsx
+- [[blocker-icon.tsx]] - code - propel/src/icons/blocker-icon.tsx
+- [[calendar-after-icon.tsx_1]] - code - packages/propel/src/icons/calendar-after-icon.tsx
+- [[calendar-after-icon.tsx]] - code - propel/src/icons/calendar-after-icon.tsx
+- [[calendar-before-icon.tsx_1]] - code - packages/propel/src/icons/calendar-before-icon.tsx
+- [[calendar-before-icon.tsx]] - code - propel/src/icons/calendar-before-icon.tsx
+- [[center-panel-icon.tsx_1]] - code - packages/propel/src/icons/center-panel-icon.tsx
+- [[center-panel-icon.tsx]] - code - propel/src/icons/center-panel-icon.tsx
+- [[check-circle-filled-icon.tsx_1]] - code - packages/propel/src/icons/misc/check-circle-filled-icon.tsx
+- [[check-circle-filled-icon.tsx]] - code - propel/src/icons/misc/check-circle-filled-icon.tsx
+- [[comment-fill-icon.tsx_1]] - code - packages/propel/src/icons/comment-fill-icon.tsx
+- [[comment-fill-icon.tsx]] - code - propel/src/icons/comment-fill-icon.tsx
+- [[contrast-icon.tsx_1]] - code - packages/propel/src/icons/cycle/contrast-icon.tsx
+- [[contrast-icon.tsx]] - code - propel/src/icons/cycle/contrast-icon.tsx
+- [[create-icon.tsx_1]] - code - packages/propel/src/icons/create-icon.tsx
+- [[create-icon.tsx]] - code - propel/src/icons/create-icon.tsx
+- [[dice-icon.tsx_1]] - code - packages/propel/src/icons/dice-icon.tsx
+- [[dice-icon.tsx]] - code - propel/src/icons/dice-icon.tsx
+- [[display-properties.tsx_2]] - code - packages/propel/src/icons/display-properties.tsx
+- [[display-properties.tsx]] - code - propel/src/icons/display-properties.tsx
+- [[dolby-logo.tsx_1]] - code - packages/propel/src/icons/brand/dolby-logo.tsx
+- [[dolby-logo.tsx]] - code - propel/src/icons/brand/dolby-logo.tsx
+- [[done-icon.tsx_1]] - code - packages/propel/src/icons/done-icon.tsx
+- [[done-icon.tsx]] - code - propel/src/icons/done-icon.tsx
+- [[double-circle-icon.tsx_1]] - code - packages/propel/src/icons/cycle/double-circle-icon.tsx
+- [[double-circle-icon.tsx]] - code - propel/src/icons/cycle/double-circle-icon.tsx
+- [[dropdown-icon.tsx_2]] - code - packages/propel/src/icons/dropdown-icon.tsx
+- [[dropdown-icon.tsx]] - code - propel/src/icons/dropdown-icon.tsx
+- [[favorite-folder-icon.tsx_1]] - code - packages/propel/src/icons/favorite-folder-icon.tsx
+- [[favorite-folder-icon.tsx]] - code - propel/src/icons/favorite-folder-icon.tsx
+- [[filter-icon.tsx_1]] - code - packages/propel/src/icons/actions/filter-icon.tsx
+- [[filter-icon.tsx]] - code - propel/src/icons/actions/filter-icon.tsx
+- [[full-screen-panel-icon.tsx_1]] - code - packages/propel/src/icons/full-screen-panel-icon.tsx
+- [[full-screen-panel-icon.tsx]] - code - propel/src/icons/full-screen-panel-icon.tsx
+- [[github-icon.tsx_1]] - code - packages/propel/src/icons/github-icon.tsx
+- [[github-icon.tsx]] - code - propel/src/icons/github-icon.tsx
+- [[gitlab-icon.tsx_1]] - code - packages/propel/src/icons/gitlab-icon.tsx
+- [[gitlab-icon.tsx]] - code - propel/src/icons/gitlab-icon.tsx
+- [[in-progress-icon.tsx_1]] - code - packages/propel/src/icons/in-progress-icon.tsx
+- [[in-progress-icon.tsx]] - code - propel/src/icons/in-progress-icon.tsx
+- [[info-fill-icon.tsx_1]] - code - packages/propel/src/icons/info-fill-icon.tsx
+- [[info-fill-icon.tsx]] - code - propel/src/icons/info-fill-icon.tsx
+- [[intake.tsx_2]] - code - packages/propel/src/icons/intake.tsx
+- [[intake.tsx]] - code - propel/src/icons/intake.tsx
+- [[layer-stack.tsx_1]] - code - packages/propel/src/icons/layer-stack.tsx
+- [[layer-stack.tsx]] - code - propel/src/icons/layer-stack.tsx
+- [[layers-icon.tsx_1]] - code - packages/propel/src/icons/layers-icon.tsx
+- [[layers-icon.tsx]] - code - propel/src/icons/layers-icon.tsx
+- [[lead-icon.tsx_1]] - code - packages/propel/src/icons/lead-icon.tsx
+- [[lead-icon.tsx]] - code - propel/src/icons/lead-icon.tsx
+- [[monospace-icon.tsx_1]] - code - packages/propel/src/icons/monospace-icon.tsx
+- [[monospace-icon.tsx]] - code - propel/src/icons/monospace-icon.tsx
+- [[multiple-sticky.tsx_1]] - code - packages/propel/src/icons/multiple-sticky.tsx
+- [[multiple-sticky.tsx]] - code - propel/src/icons/multiple-sticky.tsx
+- [[off-track-icon.tsx_1]] - code - packages/propel/src/icons/off-track-icon.tsx
+- [[off-track-icon.tsx]] - code - propel/src/icons/off-track-icon.tsx
+- [[on-track-icon.tsx_1]] - code - packages/propel/src/icons/on-track-icon.tsx
+- [[on-track-icon.tsx]] - code - propel/src/icons/on-track-icon.tsx
+- [[pending-icon.tsx_1]] - code - packages/propel/src/icons/pending-icon.tsx
+- [[pending-icon.tsx]] - code - propel/src/icons/pending-icon.tsx
+- [[photo-filter-icon.tsx_1]] - code - packages/propel/src/icons/photo-filter-icon.tsx
+- [[photo-filter-icon.tsx]] - code - propel/src/icons/photo-filter-icon.tsx
+- [[plane-lockup.tsx_1]] - code - packages/propel/src/icons/brand/plane-lockup.tsx
+- [[plane-lockup.tsx]] - code - propel/src/icons/brand/plane-lockup.tsx
+- [[plane-logo.tsx_1]] - code - packages/propel/src/icons/brand/plane-logo.tsx
+- [[plane-logo.tsx]] - code - propel/src/icons/brand/plane-logo.tsx
+- [[plane-wordmark.tsx_1]] - code - packages/propel/src/icons/brand/plane-wordmark.tsx
+- [[plane-wordmark.tsx]] - code - propel/src/icons/brand/plane-wordmark.tsx
+- [[planned-icon.tsx_1]] - code - packages/propel/src/icons/planned-icon.tsx
+- [[planned-icon.tsx]] - code - propel/src/icons/planned-icon.tsx
+- [[related-icon.tsx_1]] - code - packages/propel/src/icons/related-icon.tsx
+- [[related-icon.tsx]] - code - propel/src/icons/related-icon.tsx
+- [[sans-serif-icon.tsx_1]] - code - packages/propel/src/icons/sans-serif-icon.tsx
+- [[sans-serif-icon.tsx]] - code - propel/src/icons/sans-serif-icon.tsx
+- [[serif-icon.tsx_1]] - code - packages/propel/src/icons/serif-icon.tsx
+- [[serif-icon.tsx]] - code - propel/src/icons/serif-icon.tsx
+- [[set-as-default-icon.tsx_1]] - code - packages/propel/src/icons/set-as-default-icon.tsx
+- [[set-as-default-icon.tsx]] - code - propel/src/icons/set-as-default-icon.tsx
+- [[side-panel-icon.tsx_1]] - code - packages/propel/src/icons/side-panel-icon.tsx
+- [[side-panel-icon.tsx]] - code - propel/src/icons/side-panel-icon.tsx
+- [[sony-logo.tsx_1]] - code - packages/propel/src/icons/brand/sony-logo.tsx
+- [[sony-logo.tsx]] - code - propel/src/icons/brand/sony-logo.tsx
+- [[sticky-note-icon.tsx_1]] - code - packages/propel/src/icons/sticky-note-icon.tsx
+- [[sticky-note-icon.tsx]] - code - propel/src/icons/sticky-note-icon.tsx
+- [[suspended-user.tsx_1]] - code - packages/propel/src/icons/suspended-user.tsx
+- [[suspended-user.tsx]] - code - propel/src/icons/suspended-user.tsx
+- [[teams.tsx_1]] - code - packages/propel/src/icons/teams.tsx
+- [[teams.tsx]] - code - propel/src/icons/teams.tsx
+- [[transfer-icon.tsx_1]] - code - packages/propel/src/icons/transfer-icon.tsx
+- [[transfer-icon.tsx]] - code - propel/src/icons/transfer-icon.tsx
+- [[tree-map-icon.tsx_1]] - code - packages/propel/src/icons/tree-map-icon.tsx
+- [[tree-map-icon.tsx]] - code - propel/src/icons/tree-map-icon.tsx
+- [[type.ts_1]] - code - packages/propel/src/icons/type.ts
+- [[type.ts]] - code - propel/src/icons/type.ts
+- [[updates-icon.tsx_1]] - code - packages/propel/src/icons/updates-icon.tsx
+- [[updates-icon.tsx]] - code - propel/src/icons/updates-icon.tsx
+- [[user-activity-icon.tsx_1]] - code - packages/propel/src/icons/user-activity-icon.tsx
+- [[user-activity-icon.tsx]] - code - propel/src/icons/user-activity-icon.tsx
+- [[workflows-icon.tsx_1]] - code - packages/propel/src/icons/properties/workflows-icon.tsx
+- [[workflows-icon.tsx]] - code - propel/src/icons/properties/workflows-icon.tsx
+- [[workspace-icon.tsx_1]] - code - packages/propel/src/icons/workspace-icon.tsx
+- [[workspace-icon.tsx]] - code - propel/src/icons/workspace-icon.tsx
+- [[your-work-icon.tsx_1]] - code - packages/propel/src/icons/workspace/your-work-icon.tsx
+- [[your-work-icon.tsx]] - code - propel/src/icons/workspace/your-work-icon.tsx
+- [[zerodha-logo.tsx_1]] - code - packages/propel/src/icons/brand/zerodha-logo.tsx
+- [[zerodha-logo.tsx]] - code - propel/src/icons/brand/zerodha-logo.tsx
+
+## Live Query (requires Dataview plugin)
+
+```dataview
+TABLE source_file, type FROM #community/Icon_Library__Branding
+SORT file.name ASC
+```
+
+## Connections to other communities
+- 280 edges to [[_COMMUNITY_SVG Icon Components]]
+- 32 edges to [[_COMMUNITY_Community 92]]
+- 24 edges to [[_COMMUNITY_Community 251]]
+- 24 edges to [[_COMMUNITY_Community 120]]
+- 12 edges to [[_COMMUNITY_Community 151]]
+- 8 edges to [[_COMMUNITY_Community 244]]
+- 4 edges to [[_COMMUNITY_Community 200]]
+- 4 edges to [[_COMMUNITY_Community 296]]
+- 4 edges to [[_COMMUNITY_Community 243]]
+
+## Top bridge nodes
+- [[ISvgIcons]] - degree 306, connects to 9 communities
+- [[type.ts_1]] - degree 153, connects to 9 communities
+- [[type.ts]] - degree 153, connects to 9 communities
+- [[add-icon.tsx_1]] - degree 5, connects to 1 community
+- [[filter-icon.tsx_1]] - degree 5, connects to 1 community

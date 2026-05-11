@@ -1,18 +1,18 @@
 ---
-source_file: "propel/src/tooltip/tooltip.stories.tsx"
+source_file: "packages/propel/src/tooltip/tooltip.stories.tsx"
 type: "code"
-community: "Position Custom"
+community: "Community 277"
 location: "L62"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Position_Custom
+  - community/Community_277
 ---
 
 # PositionRight
 
 ## Connections
-
 - [[tooltip.stories.tsx]] - `contains` [EXTRACTED]
+- [[tooltip.stories.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Position_Custom
+#graphify/code #graphify/EXTRACTED #community/Community_277

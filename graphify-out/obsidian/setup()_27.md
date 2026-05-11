@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/workspace_user_profiles.rs"
 type: "code"
-community: "User Returns"
+community: "Community 381"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User_Returns
+  - community/Community_381
 ---
 
 # setup()
 
 ## Connections
-
 - [[.spawn()]] - `calls` [INFERRED]
 - [[export_user_activity_member_returns_2xx()]] - `calls` [EXTRACTED]
 - [[export_user_activity_unauthenticated_returns_401()]] - `calls` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[list_user_issues_unauthenticated_returns_401()]] - `calls` [EXTRACTED]
 - [[workspace_user_profiles.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User_Returns
+#graphify/code #graphify/EXTRACTED #community/Community_381

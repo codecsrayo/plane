@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/user/base.py"
 type: "code"
-community: "Endpoint User"
+community: "Community 53"
 location: "L394"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Endpoint_User
+  - community/Community_53
 ---
 
 # AccountEndpoint
 
 ## Connections
-
 - [[.delete()_1]] - `method` [EXTRACTED]
 - [[.get()_20]] - `method` [EXTRACTED]
 - [[BaseAPIView]] - `uses` [INFERRED]
@@ -22,4 +21,4 @@ tags:
 - [[EmailVerificationThrottle]] - `uses` [INFERRED]
 - [[base.py_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Endpoint_User
+#graphify/code #graphify/INFERRED #community/Community_53

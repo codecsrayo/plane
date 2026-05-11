@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/waitlist.ts"
 type: "code"
-community: "Wait Response"
+community: "Community 721"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Wait_Response
+  - community/Community_721
 ---
 
 # waitlist.ts
 
 ## Connections
-
 - [[IWebWaitListResponse]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Wait_Response
+#graphify/code #graphify/EXTRACTED #community/Community_721

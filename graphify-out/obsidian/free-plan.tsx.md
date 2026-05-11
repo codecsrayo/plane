@@ -1,19 +1,18 @@
 ---
 source_file: "web/core/components/license/modal/card/free-plan.tsx"
 type: "code"
-community: "Free Plan"
+community: "Community 851"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Free_Plan
+  - community/Community_851
 ---
 
 # free-plan.tsx
 
 ## Connections
-
 - [[FreePlanCard]] - `contains` [EXTRACTED]
 - [[FreePlanCardProps]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Free_Plan
+#graphify/code #graphify/EXTRACTED #community/Community_851

@@ -1,18 +1,18 @@
 ---
-source_file: "editor/src/core/components/menus/bubble-menu/root.tsx"
+source_file: "packages/editor/src/core/components/menus/bubble-menu/root.tsx"
 type: "code"
-community: "Toggle Menu"
+community: "Community 198"
 location: "L39"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toggle_Menu
+  - community/Community_198
 ---
 
 # EditorBubbleMenuProps
 
 ## Connections
-
 - [[root.tsx_3]] - `contains` [EXTRACTED]
+- [[root.tsx_145]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toggle_Menu
+#graphify/code #graphify/EXTRACTED #community/Community_198

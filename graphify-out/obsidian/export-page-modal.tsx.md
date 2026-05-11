@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/pages/modals/export-page-modal.tsx"
 type: "code"
-community: "Formats Values"
+community: "Community 133"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Formats_Values
+  - community/Community_133
 ---
 
 # export-page-modal.tsx
 
 ## Connections
-
 - [[CONTENT_VARIETY]] - `contains` [EXTRACTED]
 - [[EXPORT_FORMATS]] - `contains` [EXTRACTED]
 - [[ExportPageModal()]] - `contains` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[use-parse-editor-content.ts]] - `imports_from` [EXTRACTED]
 - [[useParseEditorContent()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Formats_Values
+#graphify/code #graphify/EXTRACTED #community/Community_133

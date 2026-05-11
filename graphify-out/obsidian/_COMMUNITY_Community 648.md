@@ -1,17 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.40
+members: 5
 ---
 
 # Community 648
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.40 - moderately connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[mod.rs_4]] - code - api_rust/src/utils/mod.rs
+- [[remove-directives.spec.ts]] - code - codemods/tests/remove-directives.spec.ts
+- [[remove-directives.spec.ts_1]] - code - packages/codemods/tests/remove-directives.spec.ts
+- [[remove-directives.ts]] - code - codemods/remove-directives.ts
+- [[remove-directives.ts_1]] - code - packages/codemods/remove-directives.ts
+- [[transform()_1]] - code - packages/codemods/remove-directives.ts
 
 ## Live Query (requires Dataview plugin)
 

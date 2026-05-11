@@ -1,33 +1,50 @@
 ---
 type: community
-cohesion: 0.15
-members: 17
+cohesion: 0.09
+members: 35
 ---
 
 # Community 155
 
-**Cohesion:** 0.15 - loosely connected
-**Members:** 17 nodes
+**Cohesion:** 0.09 - loosely connected
+**Members:** 35 nodes
 
 ## Members
-
-- [[DraftIssueBlock]] - code - web/core/components/issues/workspace-draft/draft-issue-block.tsx
-- [[DraftIssueProperties]] - code - web/core/components/issues/workspace-draft/draft-issue-properties.tsx
-- [[IdentifierText()]] - code - web/core/components/issues/issue-detail/identifier-text.tsx
-- [[Props_253]] - code - web/core/components/issues/workspace-draft/draft-issue-block.tsx
-- [[Props_252]] - code - web/core/components/issues/workspace-draft/quick-action.tsx
-- [[SIZE_MAP]] - code - web/core/components/issues/issue-detail/identifier-text.tsx
-- [[TWorkspaceDraftIssuesRoot]] - code - web/core/components/issues/workspace-draft/root.tsx
-- [[VARIANT_MAP]] - code - web/core/components/issues/issue-detail/identifier-text.tsx
-- [[WorkspaceDraftEmptyState]] - code - web/core/components/issues/workspace-draft/empty-state.tsx
-- [[WorkspaceDraftIssueQuickActions]] - code - web/core/components/issues/workspace-draft/quick-action.tsx
-- [[WorkspaceDraftIssuesRoot]] - code - web/core/components/issues/workspace-draft/root.tsx
-- [[draft-issue-block.tsx]] - code - web/core/components/issues/workspace-draft/draft-issue-block.tsx
-- [[empty-state.tsx_2]] - code - web/core/components/issues/workspace-draft/empty-state.tsx
-- [[identifier-text.tsx]] - code - web/core/components/issues/issue-detail/identifier-text.tsx
-- [[index.ts_1]] - code - web/core/hooks/store/workspace-draft/index.ts
-- [[quick-action.tsx_1]] - code - web/core/components/issues/workspace-draft/quick-action.tsx
-- [[root.tsx_29]] - code - web/core/components/issues/workspace-draft/root.tsx
+- [[MetadataResult]] - code - live/src/services/pdf-export/types.ts
+- [[PageContent]] - code - live/src/services/pdf-export/types.ts
+- [[PdfAuthenticationError]] - code - live/src/schema/pdf-export.ts
+- [[PdfContentFetchError]] - code - live/src/schema/pdf-export.ts
+- [[PdfExportError]] - code - live/src/schema/pdf-export.ts
+- [[PdfExportInput]] - code - live/src/services/pdf-export/types.ts
+- [[PdfExportRequestBody]] - code - live/src/schema/pdf-export.ts
+- [[PdfExportResult]] - code - live/src/services/pdf-export/types.ts
+- [[PdfExportService]] - code - live/src/services/pdf-export/pdf-export.service.ts
+- [[PdfGenerationError]] - code - live/src/schema/pdf-export.ts
+- [[PdfImageProcessingError]] - code - live/src/schema/pdf-export.ts
+- [[PdfMetadataFetchError]] - code - live/src/schema/pdf-export.ts
+- [[PdfTimeoutError]] - code - live/src/schema/pdf-export.ts
+- [[PdfValidationError]] - code - live/src/schema/pdf-export.ts
+- [[TPdfExportRequestBody]] - code - live/src/schema/pdf-export.ts
+- [[TipTapNode]] - code - live/src/services/pdf-export/pdf-export.service.ts
+- [[attemptCounter]] - code - live/tests/services/pdf-export/effect-utils.test.ts
+- [[effect]] - code - live/tests/services/pdf-export/effect-utils.test.ts
+- [[effect-utils.test.ts]] - code - live/tests/services/pdf-export/effect-utils.test.ts
+- [[effect-utils.ts]] - code - live/src/services/pdf-export/effect-utils.ts
+- [[exportToPdf()]] - code - live/src/services/pdf-export/pdf-export.service.ts
+- [[fallback]] - code - live/tests/services/pdf-export/effect-utils.test.ts
+- [[flakyEffect]] - code - live/tests/services/pdf-export/effect-utils.test.ts
+- [[index.ts_449]] - code - live/src/lib/pdf/index.ts
+- [[index.ts_448]] - code - live/src/services/pdf-export/index.ts
+- [[logs]] - code - live/tests/services/pdf-export/effect-utils.test.ts
+- [[pdf-export.controller.ts]] - code - live/src/controllers/pdf-export.controller.ts
+- [[pdf-export.service.ts]] - code - live/src/services/pdf-export/pdf-export.service.ts
+- [[pdf-export.ts]] - code - live/src/schema/pdf-export.ts
+- [[recoverWithDefault()]] - code - live/src/services/pdf-export/effect-utils.ts
+- [[slowEffect]] - code - live/tests/services/pdf-export/effect-utils.test.ts
+- [[tryAsync()]] - code - live/src/services/pdf-export/effect-utils.ts
+- [[types.ts_19]] - code - live/src/services/pdf-export/types.ts
+- [[withTimeoutAndRetry()]] - code - live/src/services/pdf-export/effect-utils.ts
+- [[wrapped]] - code - live/tests/services/pdf-export/effect-utils.test.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -37,21 +54,14 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 4 edges to [[_COMMUNITY_Empty State Components]]
-- 4 edges to [[_COMMUNITY_Applied Filters UI]]
-- 4 edges to [[_COMMUNITY_Community 55]]
-- 3 edges to [[_COMMUNITY_Spreadsheet Column Components]]
-- 3 edges to [[_COMMUNITY_Community 41]]
-- 2 edges to [[_COMMUNITY_Auth Wrappers]]
-- 2 edges to [[_COMMUNITY_Community 63]]
-- 2 edges to [[_COMMUNITY_Community 48]]
-- 1 edge to [[_COMMUNITY_Community 36]]
+- 5 edges to [[_COMMUNITY_Community 317]]
+- 2 edges to [[_COMMUNITY_Community 241]]
+- 1 edge to [[_COMMUNITY_Community 642]]
+- 1 edge to [[_COMMUNITY_Community 172]]
+- 1 edge to [[_COMMUNITY_Community 702]]
 
 ## Top bridge nodes
-
-- [[draft-issue-block.tsx]] - degree 18, connects to 5 communities
-- [[root.tsx_29]] - degree 16, connects to 4 communities
-- [[index.ts_1]] - degree 5, connects to 3 communities
-- [[empty-state.tsx_2]] - degree 5, connects to 2 communities
-- [[DraftIssueProperties]] - degree 2, connects to 1 community
+- [[pdf-export.controller.ts]] - degree 9, connects to 3 communities
+- [[pdf-export.service.ts]] - degree 22, connects to 2 communities
+- [[index.ts_449]] - degree 3, connects to 1 community
+- [[exportToPdf()]] - degree 2, connects to 1 community

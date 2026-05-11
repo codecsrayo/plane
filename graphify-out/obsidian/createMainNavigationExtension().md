@@ -1,19 +1,19 @@
 ---
-source_file: "editor/src/core/hooks/use-editor-navigation.ts"
+source_file: "packages/editor/src/core/hooks/use-editor-navigation.ts"
 type: "code"
-community: "Document Collaborative"
+community: "Editor Extensions"
 location: "L69"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Document_Collaborative
+  - community/Editor_Extensions
 ---
 
 # createMainNavigationExtension()
 
 ## Connections
-
 - [[use-editor-navigation.ts]] - `contains` [EXTRACTED]
+- [[use-editor-navigation.ts_1]] - `contains` [EXTRACTED]
 - [[useEditorNavigation()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Document_Collaborative
+#graphify/code #graphify/EXTRACTED #community/Editor_Extensions

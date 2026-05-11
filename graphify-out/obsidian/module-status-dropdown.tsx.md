@@ -1,21 +1,20 @@
 ---
 source_file: "web/core/components/modules/module-status-dropdown.tsx"
 type: "code"
-community: "Cycles Archived"
+community: "Module & Cycle Analytics"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycles_Archived
+  - community/Module__Cycle_Analytics
 ---
 
 # module-status-dropdown.tsx
 
 ## Connections
-
 - [[ModuleStatusDropdown]] - `contains` [EXTRACTED]
 - [[Props_143]] - `contains` [EXTRACTED]
 - [[module-card-item.tsx]] - `imports_from` [EXTRACTED]
 - [[module-list-item-action.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycles_Archived
+#graphify/code #graphify/EXTRACTED #community/Module__Cycle_Analytics

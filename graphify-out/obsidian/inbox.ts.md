@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/inbox.ts"
 type: "code"
-community: "Inbox Issue"
+community: "Community 262"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Inbox_Issue
+  - community/Community_262
 ---
 
 # inbox.ts
 
 ## Connections
-
 - [[EInboxIssueCurrentTab]] - `contains` [EXTRACTED]
 - [[EInboxIssueSource]] - `contains` [EXTRACTED]
 - [[EInboxIssueStatus]] - `contains` [EXTRACTED]
@@ -43,4 +42,4 @@ tags:
 - [[issue_activity.ts]] - `imports_from` [EXTRACTED]
 - [[issues.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Inbox_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_262

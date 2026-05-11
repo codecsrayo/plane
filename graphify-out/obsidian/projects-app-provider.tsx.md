@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/power-k/projects-app-provider.tsx"
 type: "code"
-community: "Power Shortcuts"
+community: "Community 130"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Power_Shortcuts
+  - community/Community_130
 ---
 
 # projects-app-provider.tsx
 
 ## Connections
-
 - [[GlobalShortcutsProvider]] - `imports` [EXTRACTED]
 - [[ProjectLevelModals]] - `imports` [EXTRACTED]
 - [[ProjectsAppPowerKCommandsList()]] - `imports` [EXTRACTED]
@@ -39,4 +38,4 @@ tags:
 - [[useProjectsAppPowerKCommands()]] - `imports` [EXTRACTED]
 - [[wrapper.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Power_Shortcuts
+#graphify/code #graphify/EXTRACTED #community/Community_130

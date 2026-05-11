@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/license/migrations/0002_rename_version_instance_current_version_and_more.py"
 type: "code"
-community: "Version Migration"
+community: "Community 1169"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Version_Migration
+  - community/Community_1169
 ---
 
 # 0002_rename_version_instance_current_version_and_more.py
 
 ## Connections
-
 - [[Migration_129]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Version_Migration
+#graphify/code #graphify/EXTRACTED #community/Community_1169

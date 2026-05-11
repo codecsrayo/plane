@@ -1,18 +1,17 @@
 ---
 source_file: "web/public/workbox-9f2f79cf.js"
 type: "code"
-community: "Strategy Network"
+community: "Community 192"
 location: "L1422"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Strategy_Network
+  - community/Community_192
 ---
 
 # StrategyHandler
 
 ## Connections
-
 - [[._ensureResponseSafeToCache()]] - `method` [EXTRACTED]
 - [[.cacheMatch()]] - `method` [EXTRACTED]
 - [[.cachePut()]] - `method` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[.waitUntil()]] - `method` [EXTRACTED]
 - [[workbox-9f2f79cf.js]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Strategy_Network
+#graphify/code #graphify/EXTRACTED #community/Community_192

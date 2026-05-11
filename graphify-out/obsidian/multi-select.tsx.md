@@ -1,18 +1,17 @@
 ---
 source_file: "ui/src/dropdown/multi-select.tsx"
 type: "code"
-community: "Dropdown Select"
+community: "Community 61"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dropdown_Select
+  - community/Community_61
 ---
 
 # multi-select.tsx
 
 ## Connections
-
 - [[DropdownOptions()]] - `imports` [EXTRACTED]
 - [[MultiSelectDropdown()]] - `contains` [EXTRACTED]
 - [[index.ts_14]] - `imports_from` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[use-dropdown-key-pressed.ts]] - `imports_from` [EXTRACTED]
 - [[useDropdownKeyPressed()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dropdown_Select
+#graphify/code #graphify/EXTRACTED #community/Community_61

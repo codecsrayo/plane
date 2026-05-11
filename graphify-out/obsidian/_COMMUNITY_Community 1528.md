@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_173]] - code - propel/src/avatar/index.ts
+- [[entry.client.tsx]] - code - web/app/entry.client.tsx
 
 ## Live Query (requires Dataview plugin)
 

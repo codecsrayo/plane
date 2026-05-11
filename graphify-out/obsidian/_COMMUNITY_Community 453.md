@@ -1,17 +1,26 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.18
+members: 11
 ---
 
 # Community 453
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.18 - loosely connected
+**Members:** 11 nodes
 
 ## Members
-
-- [[editor.ts_11]] - code - i18n/src/locales/ko/editor.ts
+- [[.__str__()_65]] - code - api/plane/db/models/cycle.py
+- [[.__str__()_66]] - code - api/plane/db/models/cycle.py
+- [[.save()_17]] - code - api/plane/db/models/cycle.py
+- [[Cycle]] - code - api/plane/db/models/cycle.py
+- [[CycleIssue]] - code - api/plane/db/models/cycle.py
+- [[Meta_51]] - code - api/plane/db/models/cycle.py
+- [[Return name of the cycle]] - rationale - api/plane/db/models/cycle.py
+- [[cycle.py_6]] - code - api/plane/db/models/cycle.py
+- [[get_default_display_filters()_4]] - code - api/plane/db/models/cycle.py
+- [[get_default_display_properties()_4]] - code - api/plane/db/models/cycle.py
+- [[get_default_filters()_4]] - code - api/plane/db/models/cycle.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -19,3 +28,17 @@ members: 1
 TABLE source_file, type FROM #community/Community_453
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 6 edges to [[_COMMUNITY_Community 26]]
+- 1 edge to [[_COMMUNITY_Community 41]]
+- 1 edge to [[_COMMUNITY_Community 267]]
+- 1 edge to [[_COMMUNITY_Community 184]]
+- 1 edge to [[_COMMUNITY_Python Workflow Services]]
+- 1 edge to [[_COMMUNITY_Community 89]]
+
+## Top bridge nodes
+- [[CycleIssue]] - degree 7, connects to 4 communities
+- [[cycle.py_6]] - degree 9, connects to 3 communities
+- [[Cycle]] - degree 5, connects to 1 community
+- [[Meta_51]] - degree 2, connects to 1 community

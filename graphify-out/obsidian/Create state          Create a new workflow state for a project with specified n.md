@@ -1,14 +1,14 @@
 ---
 source_file: "api/plane/api/views/state.py"
 type: "rationale"
-community: "State Workflow"
+community: "Community 1729"
 location: "L81"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/State_Workflow
+  - community/Community_1729
 ---
 
-# Create state Create a new workflow state for a project with specified n
+# Create state          Create a new workflow state for a project with specified n
 
-#graphify/rationale #graphify/EXTRACTED #community/State_Workflow
+#graphify/rationale #graphify/EXTRACTED #community/Community_1729

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/models/description.py"
 type: "code"
-community: "Issue Sync"
+community: "Community 26"
 location: "L10"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Issue_Sync
+  - community/Community_26
 ---
 
 # Description
 
 ## Connections
-
 - [[.handle()_16]] - `calls` [INFERRED]
 - [[.save()_19]] - `method` [EXTRACTED]
 - [[CommentReaction]] - `uses` [INFERRED]
@@ -39,4 +38,4 @@ tags:
 - [[WorkspaceBaseModel_1]] - `uses` [INFERRED]
 - [[description.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Issue_Sync
+#graphify/code #graphify/INFERRED #community/Community_26

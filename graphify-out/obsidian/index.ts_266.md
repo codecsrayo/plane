@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/workspace-draft/index.ts"
 type: "code"
-community: "Issue Work"
+community: "Project Filters & Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Work
+  - community/Project_Filters__Archives
 ---
 
 # index.ts
 
 ## Connections
-
 - [[draft-issue-block.tsx]] - `imports_from` [EXTRACTED]
 - [[draft-issue-layout.tsx]] - `imports_from` [EXTRACTED]
 - [[draft-issue-properties.tsx]] - `imports_from` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[header.tsx_19]] - `imports_from` [EXTRACTED]
 - [[root.tsx_70]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Work
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

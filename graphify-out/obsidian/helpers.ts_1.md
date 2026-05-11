@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/icons/helpers.ts"
 type: "code"
-community: "Icon Copy"
+community: "Community 151"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Icon_Copy
+  - community/Community_151
 ---
 
 # helpers.ts
 
 ## Connections
-
 - [[ICON_REGISTRY]] - `imports` [EXTRACTED]
 - [[IconName]] - `imports` [EXTRACTED]
 - [[getIconComponent()]] - `contains` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[isValidIconName()]] - `contains` [EXTRACTED]
 - [[registry.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Icon_Copy
+#graphify/code #graphify/EXTRACTED #community/Community_151

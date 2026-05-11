@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-detail/sidebar.tsx"
 type: "code"
-community: "Label Dropdown"
+community: "Work Item Detail & Layouts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Dropdown
+  - community/Work_Item_Detail__Layouts
 ---
 
 # sidebar.tsx
 
 ## Connections
-
 - [[ButtonAvatars]] - `imports` [EXTRACTED]
 - [[DateAlert()]] - `imports` [EXTRACTED]
 - [[DateDropdown]] - `imports` [EXTRACTED]
@@ -50,4 +49,4 @@ tags:
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[useProjectState()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Work_Item_Detail__Layouts

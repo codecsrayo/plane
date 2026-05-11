@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_55]] - code - editor/src/core/extensions/mentions/index.ts
+- [[index.ts_75]] - code - services/src/ai/index.ts
 
 ## Live Query (requires Dataview plugin)
 

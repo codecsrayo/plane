@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 812
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_158]] - code - web/core/components/pages/navigation-pane/types/index.ts
+- [[analytics.spec.ts]] - code - web/e2e/analytics.spec.ts
+- [[pid()_3]] - code - web/e2e/analytics.spec.ts
+- [[slug()_5]] - code - web/e2e/analytics.spec.ts
 
 ## Live Query (requires Dataview plugin)
 

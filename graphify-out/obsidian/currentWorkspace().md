@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/workspace/index.ts"
 type: "code"
-community: "Webhook Workspace"
+community: "Community 129"
 location: "L149"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Webhook_Workspace
+  - community/Community_129
 ---
 
 # currentWorkspace()
 
 ## Connections
-
 - [[index.ts_271]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Webhook_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_129

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/workspace/index.ts"
 type: "code"
-community: "Webhook Workspace"
+community: "Community 129"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Webhook_Workspace
+  - community/Community_129
 ---
 
 # index.ts
 
 ## Connections
-
 - [[CoreRootStore]] - `imports` [EXTRACTED]
 - [[HomeStore]] - `imports` [EXTRACTED]
 - [[IHomeStore]] - `imports` [EXTRACTED]
@@ -35,4 +34,4 @@ tags:
 - [[workspace.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[workspacesCreatedByCurrentUser()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Webhook_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_129

@@ -1,18 +1,17 @@
 ---
 source_file: "space/components/views/auth.tsx"
 type: "code"
-community: "Issue Applied"
+community: "Community 223"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Applied
+  - community/Community_223
 ---
 
 # AuthView()
 
 ## Connections
-
 - [[auth.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Applied
+#graphify/code #graphify/EXTRACTED #community/Community_223

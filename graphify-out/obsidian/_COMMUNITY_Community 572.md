@@ -1,18 +1,21 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.47
+members: 6
 ---
 
 # Community 572
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.47 - moderately connected
+**Members:** 6 nodes
 
 ## Members
-
-- [[.to()_74]] - code - api_rust/src/entities/workspace_themes.rs
-- [[Entity_74]] - code - api_rust/src/entities/workspace_themes.rs
+- [[@planedecorators Package]] - document - packages/decorators/README.md
+- [[BaseController]] - document - packages/decorators/README.md
+- [[BaseWebSocketController]] - document - packages/decorators/README.md
+- [[Controller Decorator]] - document - packages/decorators/README.md
+- [[Express.js]] - document - packages/decorators/README.md
+- [[Express.js Framework]] - document - packages/decorators/README.md
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/modules/archived-modules/header.tsx"
 type: "code"
-community: "Member Members"
+community: "Module & Cycle Analytics"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Members
+  - community/Module__Cycle_Analytics
 ---
 
 # header.tsx
 
 ## Connections
-
 - [[ArchivedModulesHeader]] - `contains` [EXTRACTED]
 - [[index.ts_323]] - `imports_from` [EXTRACTED]
 - [[index.ts_335]] - `imports_from` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[useMember()]] - `imports` [EXTRACTED]
 - [[useModuleFilter()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Members
+#graphify/code #graphify/EXTRACTED #community/Module__Cycle_Analytics

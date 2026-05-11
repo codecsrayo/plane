@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/callout/logo-selector.tsx"
 type: "code"
-community: "Callout Custom"
+community: "Community 82"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Callout_Custom
+  - community/Community_82
 ---
 
 # logo-selector.tsx
 
 ## Connections
-
 - [[CalloutBlockLogoSelector()]] - `contains` [EXTRACTED]
 - [[DEFAULT_CALLOUT_BLOCK_ATTRIBUTES]] - `imports` [EXTRACTED]
 - [[Props_32]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[updateStoredLogo()]] - `imports` [EXTRACTED]
 - [[utils.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Callout_Custom
+#graphify/code #graphify/EXTRACTED #community/Community_82

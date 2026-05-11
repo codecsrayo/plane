@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/components/issues/issue-layouts/empty-states/team-project.tsx"
 type: "code"
-community: "Project Profile"
+community: "Community 22"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Profile
+  - community/Community_22
 ---
 
 # team-project.tsx
 
 ## Connections
-
 - [[TeamProjectWorkItemEmptyState]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Profile
+#graphify/code #graphify/EXTRACTED #community/Community_22

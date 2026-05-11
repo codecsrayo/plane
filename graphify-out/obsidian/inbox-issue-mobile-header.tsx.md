@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/inbox/content/inbox-issue-mobile-header.tsx"
 type: "code"
-community: "Issue Inbox"
+community: "Activity & Inbox Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Inbox
+  - community/Activity__Inbox_Filters
 ---
 
 # inbox-issue-mobile-header.tsx
 
 ## Connections
-
 - [[IInboxIssueStore]] - `imports` [EXTRACTED]
 - [[InboxIssueActionsMobileHeader]] - `contains` [EXTRACTED]
 - [[InboxIssueStatus]] - `imports` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[useAppRouter()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Inbox
+#graphify/code #graphify/EXTRACTED #community/Activity__Inbox_Filters

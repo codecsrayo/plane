@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/estimates_v1.rs"
 type: "code"
-community: "Estimate Point"
+community: "Community 382"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Estimate_Point
+  - community/Community_382
 ---
 
 # estimates_v1.rs
 
 ## Connections
-
 - [[create_estimate()]] - `contains` [EXTRACTED]
 - [[create_estimate_point_v1_creates_and_lists()]] - `contains` [EXTRACTED]
 - [[create_estimate_point_v1_nonexistent_estimate_returns_404()]] - `contains` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[patch_estimate_point_v1_updates_value()]] - `contains` [EXTRACTED]
 - [[setup()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Estimate_Point
+#graphify/code #graphify/EXTRACTED #community/Community_382

@@ -1,34 +1,54 @@
 ---
 type: community
-cohesion: 0.16
-members: 18
+cohesion: 0.06
+members: 39
 ---
 
 # Community 136
 
-**Cohesion:** 0.16 - loosely connected
-**Members:** 18 nodes
+**Cohesion:** 0.06 - loosely connected
+**Members:** 39 nodes
 
 ## Members
-
-- [[AiAssistantRequest]] - code - api_rust/src/routes/external.rs
-- [[AiAssistantResponse]] - code - api_rust/src/routes/external.rs
-- [[RephraseGrammarRequest]] - code - api_rust/src/routes/external.rs
-- [[RephraseGrammarResponse]] - code - api_rust/src/routes/external.rs
-- [[UnsplashQuery]] - code - api_rust/src/routes/external.rs
-- [[call_llm()]] - code - api_rust/src/routes/external.rs
-- [[external.rs]] - code - api_rust/src/routes/external.rs
-- [[get_config_value()]] - code - api_rust/src/utils/instance_config.rs
-- [[github_webhook()]] - code - api_rust/src/routes/external.rs
-- [[gitlab_webhook()]] - code - api_rust/src/routes/external.rs
-- [[handle_github_issue_event()]] - code - api_rust/src/routes/external.rs
-- [[hex_encode_bytes()]] - code - api_rust/src/routes/external.rs
-- [[instance_config.rs]] - code - api_rust/src/utils/instance_config.rs
-- [[project_ai_assistant()]] - code - api_rust/src/routes/external.rs
-- [[rephrase_grammar()]] - code - api_rust/src/routes/external.rs
-- [[unsplash()]] - code - api_rust/src/routes/external.rs
-- [[verify_github_signature()]] - code - api_rust/src/routes/external.rs
-- [[workspace_ai_assistant()]] - code - api_rust/src/routes/external.rs
+- [[.asJSON()]] - code - web/core/store/pages/base-page.ts
+- [[.canCurrentUserAccessPage()]] - code - web/core/store/pages/project-page.ts
+- [[.canCurrentUserArchivePage()]] - code - web/core/store/pages/project-page.ts
+- [[.canCurrentUserChangeAccess()]] - code - web/core/store/pages/project-page.ts
+- [[.canCurrentUserCreatePage()]] - code - web/core/store/pages/project-page.store.ts
+- [[.canCurrentUserDeletePage()]] - code - web/core/store/pages/project-page.ts
+- [[.canCurrentUserDuplicatePage()]] - code - web/core/store/pages/project-page.ts
+- [[.canCurrentUserEditPage()]] - code - web/core/store/pages/project-page.ts
+- [[.canCurrentUserFavoritePage()]] - code - web/core/store/pages/project-page.ts
+- [[.canCurrentUserLockPage()]] - code - web/core/store/pages/project-page.ts
+- [[.canCurrentUserMovePage()]] - code - web/core/store/pages/project-page.ts
+- [[.constructor()_125]] - code - web/core/store/pages/base-page.ts
+- [[.constructor()_124]] - code - web/core/store/pages/project-page.ts
+- [[.constructor()_122]] - code - web/core/store/pages/project-page.store.ts
+- [[.isAnyPageAvailable()]] - code - web/core/store/pages/project-page.store.ts
+- [[.isContentEditable()]] - code - web/core/store/pages/project-page.ts
+- [[.isCurrentUserOwner()]] - code - web/core/store/pages/base-page.ts
+- [[BasePage]] - code - web/core/store/pages/base-page.ts
+- [[EPageStoreType]] - code - web/ce/hooks/store/use-page-store.ts
+- [[IProjectPageStore]] - code - web/core/store/pages/project-page.store.ts
+- [[ProjectPage]] - code - web/core/store/pages/project-page.ts
+- [[ProjectPageStore]] - code - web/core/store/pages/project-page.store.ts
+- [[ROLE_PERMISSIONS_TO_CREATE_PAGE]] - code - web/core/store/pages/project-page.store.ts
+- [[TError_3]] - code - web/core/store/pages/project-page.store.ts
+- [[TLoader_2]] - code - web/core/store/pages/project-page.store.ts
+- [[TProjectPage]] - code - web/core/store/pages/project-page.ts
+- [[TReturnType_1]] - code - web/ce/hooks/store/use-page-store.ts
+- [[currentPageId]] - code - web/core/store/pages/project-page.store.ts
+- [[currentUserProjectRole]] - code - web/core/store/pages/project-page.ts
+- [[existingPage]] - code - web/core/store/pages/project-page.store.ts
+- [[filteredPages]] - code - web/core/store/pages/project-page.store.ts
+- [[index.ts_285]] - code - web/core/services/page/index.ts
+- [[pageInstance]] - code - web/core/store/pages/project-page.store.ts
+- [[pages]] - code - web/core/store/pages/project-page.store.ts
+- [[pagesByType]] - code - web/core/store/pages/project-page.store.ts
+- [[project-page.store.ts]] - code - web/core/store/pages/project-page.store.ts
+- [[project-page.ts]] - code - web/core/store/pages/project-page.ts
+- [[projectPageService_1]] - code - web/core/store/pages/project-page.ts
+- [[use-page-store.ts]] - code - web/ce/hooks/store/use-page-store.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -38,17 +58,16 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 6 edges to [[_COMMUNITY_Auth Rust API]]
-- 2 edges to [[_COMMUNITY_Community 50]]
-- 2 edges to [[_COMMUNITY_Community 57]]
-- 2 edges to [[_COMMUNITY_Workspace Activity & Analytics]]
-- 1 edge to [[_COMMUNITY_Modules Rust API]]
-- 1 edge to [[_COMMUNITY_Community 43]]
+- 4 edges to [[_COMMUNITY_Community 20]]
+- 3 edges to [[_COMMUNITY_Community 42]]
+- 3 edges to [[_COMMUNITY_Community 50]]
+- 1 edge to [[_COMMUNITY_Community 24]]
+- 1 edge to [[_COMMUNITY_Service Layer]]
+- 1 edge to [[_COMMUNITY_Community 59]]
 
 ## Top bridge nodes
-
-- [[get_config_value()]] - degree 15, connects to 4 communities
-- [[project_ai_assistant()]] - degree 3, connects to 1 community
-- [[verify_github_signature()]] - degree 3, connects to 1 community
-- [[instance_config.rs]] - degree 2, connects to 1 community
+- [[project-page.store.ts]] - degree 20, connects to 3 communities
+- [[project-page.ts]] - degree 9, connects to 1 community
+- [[use-page-store.ts]] - degree 7, connects to 1 community
+- [[BasePage]] - degree 5, connects to 1 community
+- [[ProjectPageStore]] - degree 5, connects to 1 community

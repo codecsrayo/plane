@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/components/menus/block-menu.tsx"
 type: "code"
-community: "Table Node"
+community: "Community 30"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Table_Node
+  - community/Community_30
 ---
 
 # block-menu.tsx
 
 ## Connections
-
 - [[BlockMenu()]] - `contains` [EXTRACTED]
 - [[BlockMenuOption]] - `contains` [EXTRACTED]
 - [[CORE_EXTENSIONS]] - `imports` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[getNodeOptions()]] - `imports` [EXTRACTED]
 - [[index.ts_46]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Table_Node
+#graphify/code #graphify/EXTRACTED #community/Community_30

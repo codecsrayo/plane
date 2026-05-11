@@ -1,51 +1,92 @@
 ---
 type: community
-cohesion: 0.12
-members: 35
+cohesion: 0.04
+members: 77
 ---
 
 # Community 50
 
-**Cohesion:** 0.12 - loosely connected
-**Members:** 35 nodes
+**Cohesion:** 0.04 - loosely connected
+**Members:** 77 nodes
 
 ## Members
-
-- [[CredentialAuthForm]] - code - api_rust/src/auth/email_auth.rs
-- [[MagicAuthForm]] - code - api_rust/src/auth/magic_auth.rs
-- [[MagicCodeData]] - code - api_rust/src/auth/magic_auth.rs
-- [[MagicGenerateRequest]] - code - api_rust/src/auth/magic_auth.rs
-- [[MagicGenerateResponse]] - code - api_rust/src/auth/magic_auth.rs
-- [[app_default_path()]] - code - api_rust/src/auth/email_auth.rs
-- [[app_success_redirect()]] - code - api_rust/src/auth/magic_auth.rs
-- [[authenticate_existing_user()]] - code - api_rust/src/auth/email_auth.rs
-- [[complete_magic_auth()]] - code - api_rust/src/auth/magic_auth.rs
-- [[create_and_authenticate_user()]] - code - api_rust/src/auth/email_auth.rs
-- [[create_magic_user()]] - code - api_rust/src/auth/magic_auth.rs
-- [[email_auth.rs]] - code - api_rust/src/auth/email_auth.rs
-- [[ensure_email_password_enabled()]] - code - api_rust/src/auth/email_auth.rs
-- [[ensure_instance_ready()]] - code - api_rust/src/auth/email_auth.rs
-- [[ensure_profile_exists()]] - code - api_rust/src/auth/email_auth.rs
-- [[ensure_signup_allowed()]] - code - api_rust/src/auth/email_auth.rs
-- [[is_valid_email()_1]] - code - api_rust/src/auth/email_auth.rs
-- [[magic_auth.rs]] - code - api_rust/src/auth/magic_auth.rs
-- [[magic_generate()]] - code - api_rust/src/auth/magic_auth.rs
-- [[magic_generate_space()]] - code - api_rust/src/auth/magic_auth.rs
-- [[magic_sign_in()]] - code - api_rust/src/auth/magic_auth.rs
-- [[magic_sign_in_space()]] - code - api_rust/src/auth/magic_auth.rs
-- [[magic_sign_up()]] - code - api_rust/src/auth/magic_auth.rs
-- [[magic_sign_up_space()]] - code - api_rust/src/auth/magic_auth.rs
-- [[normalize_email()]] - code - api_rust/src/auth/email_auth.rs
-- [[redirect_error()]] - code - api_rust/src/auth/email_auth.rs
-- [[redirect_url()]] - code - api_rust/src/auth/email_auth.rs
-- [[safe_next_path()]] - code - api_rust/src/auth/email_auth.rs
-- [[sign_in()]] - code - api_rust/src/auth/email_auth.rs
-- [[sign_in_space()]] - code - api_rust/src/auth/email_auth.rs
-- [[sign_up()]] - code - api_rust/src/auth/email_auth.rs
-- [[sign_up_space()]] - code - api_rust/src/auth/email_auth.rs
-- [[success_redirect()]] - code - api_rust/src/auth/email_auth.rs
-- [[update_login_metadata()]] - code - api_rust/src/auth/email_auth.rs
-- [[update_magic_login_metadata()]] - code - api_rust/src/auth/magic_auth.rs
+- [[.constructor()_123]] - code - web/core/store/pages/page-editor-info.ts
+- [[BlockItemAction]] - code - web/core/components/pages/list/block-item-action.tsx
+- [[CollaborativeAction]] - code - web/core/hooks/use-collaborative-page-actions.tsx
+- [[CollaborativeActionEvent]] - code - web/core/hooks/use-collaborative-page-actions.tsx
+- [[LockDisplayState]] - code - web/ce/components/pages/header/lock-control.tsx
+- [[MovePageModal()]] - code - web/ce/components/pages/modals/move-page-modal.tsx
+- [[PageArchivedBadge]] - code - web/core/components/pages/header/archived-badge.tsx
+- [[PageCollaboratorsList()]] - code - web/ce/components/pages/header/collaborators-list.tsx
+- [[PageCopyLinkControl]] - code - web/core/components/pages/header/copy-link-control.tsx
+- [[PageDetailsHeaderExtraActions()]] - code - web/ce/components/pages/extra-actions.tsx
+- [[PageEditorHeaderLogoPicker]] - code - web/core/components/pages/editor/header/logo-picker.tsx
+- [[PageEditorHeaderRoot]] - code - web/core/components/pages/editor/header/root.tsx
+- [[PageEditorInstance]] - code - web/core/store/pages/page-editor-info.ts
+- [[PageEditorToolbarRoot]] - code - web/core/components/pages/editor/toolbar/root.tsx
+- [[PageFavoriteControl]] - code - web/core/components/pages/header/favorite-control.tsx
+- [[PageLockControl]] - code - web/ce/components/pages/header/lock-control.tsx
+- [[PageModals]] - code - web/ce/components/pages/modals/modals.tsx
+- [[PageMoveControl()]] - code - web/ce/components/pages/header/move-control.tsx
+- [[PageOfflineBadge]] - code - web/core/components/pages/header/offline-badge.tsx
+- [[PageShareControl()]] - code - web/ce/components/pages/header/share-control.tsx
+- [[Props_482]] - code - web/core/components/pages/header/actions.tsx
+- [[Props_484]] - code - web/core/components/pages/header/archived-badge.tsx
+- [[Props_487]] - code - web/core/components/pages/header/copy-link-control.tsx
+- [[Props_483]] - code - web/core/components/pages/header/favorite-control.tsx
+- [[Props_75]] - code - web/ce/components/pages/header/lock-control.tsx
+- [[Props_468]] - code - web/core/components/pages/editor/header/logo-picker.tsx
+- [[Props_486]] - code - web/core/components/pages/header/offline-badge.tsx
+- [[Props_79]] - code - web/core/hooks/use-collaborative-page-actions.tsx
+- [[Props_77]] - code - web/core/hooks/use-page-operations.ts
+- [[Props_470]] - code - web/core/components/pages/list/block-item-action.tsx
+- [[TBasePage]] - code - web/core/store/pages/base-page.ts
+- [[TBasePagePermissions]] - code - web/core/store/pages/base-page.ts
+- [[TBasePageServices]] - code - web/core/store/pages/base-page.ts
+- [[TExtendedEditorExtensionsConfig]] - code - web/ce/hooks/pages/use-extended-editor-extensions.ts
+- [[TExtendedEditorExtensionsHookParams]] - code - web/ce/hooks/pages/use-extended-editor-extensions.ts
+- [[TMovePageModalProps]] - code - web/ce/components/pages/modals/move-page-modal.tsx
+- [[TPageCollaboratorsListProps]] - code - web/ce/components/pages/header/collaborators-list.tsx
+- [[TPageEditorInstance]] - code - web/core/store/pages/page-editor-info.ts
+- [[TPageHeaderExtraActionsProps]] - code - web/ce/components/pages/extra-actions.tsx
+- [[TPageInstance]] - code - web/core/store/pages/base-page.ts
+- [[TPageModalsProps]] - code - web/ce/components/pages/modals/modals.tsx
+- [[TPageMoveControlProps]] - code - web/ce/components/pages/header/move-control.tsx
+- [[TPageOperations]] - code - web/core/hooks/use-page-operations.ts
+- [[TPageShareControlProps]] - code - web/ce/components/pages/header/share-control.tsx
+- [[actions.tsx_2]] - code - web/core/components/pages/header/actions.tsx
+- [[archived-badge.tsx]] - code - web/core/components/pages/header/archived-badge.tsx
+- [[base-page.ts]] - code - web/core/store/pages/base-page.ts
+- [[block-item-action.tsx]] - code - web/core/components/pages/list/block-item-action.tsx
+- [[collaborators-list.tsx]] - code - web/ce/components/pages/header/collaborators-list.tsx
+- [[copy-link-control.tsx]] - code - web/core/components/pages/header/copy-link-control.tsx
+- [[currentPageKey]] - code - web/core/store/pages/base-page.ts
+- [[extra-actions.tsx]] - code - web/ce/components/pages/extra-actions.tsx
+- [[favorite-control.tsx]] - code - web/core/components/pages/header/favorite-control.tsx
+- [[index.ts_201]] - code - web/ce/hooks/store/index.ts
+- [[index.ts_424]] - code - web/core/components/pages/dropdowns/index.ts
+- [[index.ts_416]] - code - web/core/components/pages/editor/toolbar/index.ts
+- [[lock-control.tsx]] - code - web/ce/components/pages/header/lock-control.tsx
+- [[logo-picker.tsx]] - code - web/core/components/pages/editor/header/logo-picker.tsx
+- [[logoProps]] - code - web/core/store/pages/base-page.ts
+- [[logoValue]] - code - web/core/store/pages/base-page.ts
+- [[modals.tsx_1]] - code - web/ce/components/pages/modals/modals.tsx
+- [[move-control.tsx]] - code - web/ce/components/pages/header/move-control.tsx
+- [[move-page-modal.tsx]] - code - web/ce/components/pages/modals/move-page-modal.tsx
+- [[offline-badge.tsx]] - code - web/core/components/pages/header/offline-badge.tsx
+- [[originalLogoProps]] - code - web/core/store/pages/base-page.ts
+- [[page-editor-info.ts]] - code - web/core/store/pages/page-editor-info.ts
+- [[root.tsx_117]] - code - web/core/components/pages/editor/header/root.tsx
+- [[root.tsx_116]] - code - web/core/components/pages/editor/toolbar/root.tsx
+- [[share-control.tsx]] - code - web/ce/components/pages/header/share-control.tsx
+- [[use-collaborative-page-actions.tsx]] - code - web/core/hooks/use-collaborative-page-actions.tsx
+- [[use-extended-editor-extensions.ts]] - code - web/ce/hooks/pages/use-extended-editor-extensions.ts
+- [[use-online-status.ts]] - code - web/core/hooks/use-online-status.ts
+- [[use-page-operations.ts]] - code - web/core/hooks/use-page-operations.ts
+- [[useCollaborativePageActions()]] - code - web/core/hooks/use-collaborative-page-actions.tsx
+- [[useExtendedEditorProps()]] - code - web/ce/hooks/pages/use-extended-editor-extensions.ts
+- [[useOnlineStatus()]] - code - web/core/hooks/use-online-status.ts
+- [[usePageOperations()]] - code - web/core/hooks/use-page-operations.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -55,17 +96,26 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 10 edges to [[_COMMUNITY_Auth Rust API]]
-- 4 edges to [[_COMMUNITY_Community 43]]
-- 2 edges to [[_COMMUNITY_Community 136]]
-- 1 edge to [[_COMMUNITY_Community 187]]
-- 1 edge to [[_COMMUNITY_Community 73]]
+- 16 edges to [[_COMMUNITY_Community 163]]
+- 9 edges to [[_COMMUNITY_Community 213]]
+- 7 edges to [[_COMMUNITY_Community 133]]
+- 6 edges to [[_COMMUNITY_Community 456]]
+- 4 edges to [[_COMMUNITY_Community 484]]
+- 3 edges to [[_COMMUNITY_Community 136]]
+- 2 edges to [[_COMMUNITY_Community 40]]
+- 2 edges to [[_COMMUNITY_Community 559]]
+- 2 edges to [[_COMMUNITY_Active Cycle Stats]]
+- 2 edges to [[_COMMUNITY_Issue Display Filters]]
+- 2 edges to [[_COMMUNITY_Community 22]]
+- 1 edge to [[_COMMUNITY_Community 28]]
+- 1 edge to [[_COMMUNITY_Community 703]]
+- 1 edge to [[_COMMUNITY_Service Layer]]
+- 1 edge to [[_COMMUNITY_Community 59]]
+- 1 edge to [[_COMMUNITY_Community 362]]
 
 ## Top bridge nodes
-
-- [[create_and_authenticate_user()]] - degree 12, connects to 3 communities
-- [[complete_magic_auth()]] - degree 15, connects to 2 communities
-- [[magic_auth.rs]] - degree 17, connects to 1 community
-- [[authenticate_existing_user()]] - degree 11, connects to 1 community
-- [[redirect_url()]] - degree 7, connects to 1 community
+- [[base-page.ts]] - degree 53, connects to 10 communities
+- [[TPageInstance]] - degree 40, connects to 7 communities
+- [[use-page-operations.ts]] - degree 13, connects to 2 communities
+- [[block-item-action.tsx]] - degree 10, connects to 2 communities
+- [[usePageOperations()]] - degree 8, connects to 2 communities

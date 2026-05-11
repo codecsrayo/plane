@@ -1,18 +1,18 @@
 ---
-source_file: "ui/src/row/row.tsx"
+source_file: "packages/ui/src/row/row.tsx"
 type: "code"
-community: "Content Wrapper"
+community: "Community 177"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Content_Wrapper
+  - community/Community_177
 ---
 
 # Row
 
 ## Connections
-
 - [[row.tsx]] - `contains` [EXTRACTED]
+- [[row.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Content_Wrapper
+#graphify/code #graphify/EXTRACTED #community/Community_177

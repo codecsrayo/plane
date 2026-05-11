@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/use-query-params.ts"
 type: "code"
-community: "Pane Navigation"
+community: "Community 133"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Pane_Navigation
+  - community/Community_133
 ---
 
 # useQueryParams()
 
 ## Connections
-
 - [[options-dropdown.tsx_1]] - `imports` [EXTRACTED]
 - [[root.tsx_121]] - `imports` [EXTRACTED]
 - [[root.tsx_125]] - `imports` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[usePagesPaneExtensions()]] - `calls` [EXTRACTED]
 - [[version-history.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Pane_Navigation
+#graphify/code #graphify/EXTRACTED #community/Community_133

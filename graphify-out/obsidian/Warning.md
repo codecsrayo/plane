@@ -1,18 +1,18 @@
 ---
-source_file: "propel/src/pill/pill.stories.tsx"
+source_file: "packages/propel/src/pill/pill.stories.tsx"
 type: "code"
-community: "Pill Radius"
+community: "Community 197"
 location: "L41"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Pill_Radius
+  - community/Community_197
 ---
 
 # Warning
 
 ## Connections
-
 - [[pill.stories.tsx]] - `contains` [EXTRACTED]
+- [[pill.stories.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Pill_Radius
+#graphify/code #graphify/EXTRACTED #community/Community_197

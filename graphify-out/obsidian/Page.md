@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/models/page.py"
 type: "code"
-community: "Meta User"
+community: "Community 204"
 location: "L23"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Meta_User
+  - community/Community_204
 ---
 
 # Page
 
 ## Connections
-
 - [[.__str__()_32]] - `method` [EXTRACTED]
 - [[.save()_7]] - `method` [EXTRACTED]
 - [[BaseModel]] - `inherits` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[page.py_3]] - `contains` [EXTRACTED]
 - [[set_page_sort_order()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Meta_User
+#graphify/code #graphify/INFERRED #community/Community_204

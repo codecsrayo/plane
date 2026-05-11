@@ -1,18 +1,17 @@
 ---
 source_file: "space/helpers/date-time.helper.ts"
 type: "code"
-community: "Issue Activity"
+community: "Community 137"
 location: "L55"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Issue_Activity
+  - community/Community_137
 ---
 
 # renderFormattedDate()
 
 ## Connections
-
 - [[ActivityBlockComponent()]] - `calls` [INFERRED]
 - [[CreateApiTokenForm()]] - `calls` [INFERRED]
 - [[DateFilterModal()]] - `calls` [INFERRED]
@@ -28,4 +27,4 @@ tags:
 - [[getDurationFilterDropdownLabel()]] - `calls` [INFERRED]
 - [[issue-properties.tsx_2]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Issue_Activity
+#graphify/code #graphify/INFERRED #community/Community_137

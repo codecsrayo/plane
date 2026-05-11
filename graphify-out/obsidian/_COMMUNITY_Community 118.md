@@ -1,37 +1,58 @@
 ---
 type: community
-cohesion: 0.10
-members: 21
+cohesion: 0.09
+members: 43
 ---
 
 # Community 118
 
-**Cohesion:** 0.10 - loosely connected
-**Members:** 21 nodes
+**Cohesion:** 0.09 - loosely connected
+**Members:** 43 nodes
 
 ## Members
-
-- [[.constructor()_39]] - code - web/core/store/issue/profile/issue.store.ts
-- [[.getPaginationParams()]] - code - web/core/store/issue/helpers/issue-filter-helper.store.ts
-- [[.setViewId()]] - code - web/core/store/issue/profile/issue.store.ts
-- [[.viewFlags()]] - code - web/core/store/issue/profile/issue.store.ts
-- [[IProfileIssues]] - code - web/core/store/issue/profile/issue.store.ts
-- [[IProfileIssuesFilter]] - code - web/core/store/issue/profile/filter.store.ts
-- [[IssueFilterHelperStore]] - code - web/core/store/issue/helpers/issue-filter-helper.store.ts
-- [[ProfileIssues]] - code - web/core/store/issue/profile/issue.store.ts
-- [[_filters_5]] - code - web/core/store/issue/profile/filter.store.ts
-- [[cursorObject_4]] - code - web/core/store/issue/profile/issue.store.ts
-- [[displayFilters_7]] - code - web/core/store/issue/profile/filter.store.ts
-- [[displayProperties_4]] - code - web/core/store/issue/profile/filter.store.ts
-- [[filter.store.ts_5]] - code - web/core/store/issue/profile/filter.store.ts
-- [[filterParams_6]] - code - web/core/store/issue/profile/filter.store.ts
-- [[issue.store.ts_6]] - code - web/core/store/issue/profile/issue.store.ts
-- [[kanbanFilters_5]] - code - web/core/store/issue/profile/filter.store.ts
-- [[paginationParams_5]] - code - web/core/store/issue/profile/filter.store.ts
-- [[params_5]] - code - web/core/store/issue/profile/issue.store.ts
-- [[updatedDisplayFilters_5]] - code - web/core/store/issue/profile/filter.store.ts
-- [[updatedDisplayProperties_5]] - code - web/core/store/issue/profile/filter.store.ts
-- [[updatedKanbanFilters_4]] - code - web/core/store/issue/profile/filter.store.ts
+- [[EPageAccess_1]] - code - packages/types/src/enums.ts
+- [[ICustomSearchSelectOption]] - code - packages/types/src/common.ts
+- [[IFavorite]] - code - packages/types/src/favorite/favorite.ts
+- [[TActivityEntityData]] - code - packages/types/src/home.ts
+- [[TDocumentPayload]] - code - packages/types/src/page/core.ts
+- [[TFetchStatus]] - code - packages/types/src/common.ts
+- [[THomeWidgetKeys]] - code - packages/types/src/home.ts
+- [[THomeWidgetProps]] - code - packages/types/src/home.ts
+- [[TIssueEntityData]] - code - packages/types/src/home.ts
+- [[TLink]] - code - packages/types/src/home.ts
+- [[TLinkEditableFields]] - code - packages/types/src/home.ts
+- [[TLinkIdMap]] - code - packages/types/src/home.ts
+- [[TLinkMap]] - code - packages/types/src/home.ts
+- [[TLogoProps]] - code - packages/types/src/common.ts
+- [[TNameDescriptionLoader]] - code - packages/types/src/common.ts
+- [[TPage]] - code - packages/types/src/page/core.ts
+- [[TPageEmbedType]] - code - packages/types/src/page/core.ts
+- [[TPageEntityData]] - code - packages/types/src/home.ts
+- [[TPageExtended]] - code - packages/types/src/page/extended.ts
+- [[TPageFilterProps]] - code - packages/types/src/page/core.ts
+- [[TPageFilters]] - code - packages/types/src/page/core.ts
+- [[TPageFiltersSortBy]] - code - packages/types/src/page/core.ts
+- [[TPageFiltersSortKey]] - code - packages/types/src/page/core.ts
+- [[TPageNavigationTabs]] - code - packages/types/src/page/core.ts
+- [[TPageVersion]] - code - packages/types/src/page/core.ts
+- [[TPaginationInfo]] - code - packages/types/src/common.ts
+- [[TProjectEntityData]] - code - packages/types/src/home.ts
+- [[TRecentActivityFilterKeys]] - code - packages/types/src/home.ts
+- [[TSticky]] - code - packages/types/src/stickies.ts
+- [[TWebhookConnectionQueryParams]] - code - packages/types/src/page/core.ts
+- [[TWidgetEntityData]] - code - packages/types/src/home.ts
+- [[common.ts_13]] - code - packages/types/src/common.ts
+- [[common.ts_4]] - code - types/src/common.ts
+- [[core.ts_26]] - code - packages/types/src/page/core.ts
+- [[core.ts_4]] - code - types/src/page/core.ts
+- [[extended.ts_12]] - code - packages/types/src/page/extended.ts
+- [[extended.ts_2]] - code - types/src/page/extended.ts
+- [[favorite.ts_1]] - code - packages/types/src/favorite/favorite.ts
+- [[favorite.ts]] - code - types/src/favorite/favorite.ts
+- [[home.ts_2]] - code - packages/types/src/home.ts
+- [[home.ts]] - code - types/src/home.ts
+- [[stickies.ts_3]] - code - packages/types/src/stickies.ts
+- [[stickies.ts_1]] - code - types/src/stickies.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -41,26 +62,16 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 3 edges to [[_COMMUNITY_Community 138]]
-- 3 edges to [[_COMMUNITY_Git Integrations]]
-- 2 edges to [[_COMMUNITY_Calendar UI]]
-- 2 edges to [[_COMMUNITY_Community 88]]
-- 2 edges to [[_COMMUNITY_Community 149]]
-- 2 edges to [[_COMMUNITY_Community 58]]
-- 2 edges to [[_COMMUNITY_Community 87]]
-- 1 edge to [[_COMMUNITY_Community 84]]
-- 1 edge to [[_COMMUNITY_Community 93]]
-- 1 edge to [[_COMMUNITY_Community 37]]
-- 1 edge to [[_COMMUNITY_Community 65]]
-- 1 edge to [[_COMMUNITY_Issue State Management]]
-- 1 edge to [[_COMMUNITY_Community 242]]
-- 1 edge to [[_COMMUNITY_Community 268]]
-- 1 edge to [[_COMMUNITY_Community 103]]
-- 1 edge to [[_COMMUNITY_Community 71]]
+- 4 edges to [[_COMMUNITY_Community 158]]
+- 4 edges to [[_COMMUNITY_Community 262]]
+- 4 edges to [[_COMMUNITY_Community 101]]
+- 4 edges to [[_COMMUNITY_Community 71]]
+- 4 edges to [[_COMMUNITY_Community 62]]
+- 4 edges to [[_COMMUNITY_Community 194]]
 
 ## Top bridge nodes
-
-- [[filter.store.ts_5]] - degree 21, connects to 8 communities
-- [[issue.store.ts_6]] - degree 14, connects to 8 communities
-- [[IssueFilterHelperStore]] - degree 10, connects to 8 communities
+- [[common.ts_13]] - degree 13, connects to 4 communities
+- [[common.ts_4]] - degree 13, connects to 4 communities
+- [[TLogoProps]] - degree 14, connects to 2 communities
+- [[TPaginationInfo]] - degree 6, connects to 2 communities
+- [[home.ts_2]] - degree 16, connects to 1 community

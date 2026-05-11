@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/filters/converters.py"
 type: "code"
-community: "Field Validate"
+community: "Community 146"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Field_Validate
+  - community/Community_146
 ---
 
 # LegacyToRichFiltersConverter
 
 ## Connections
-
 - [[.__init__()_25]] - `method` [EXTRACTED]
 - [[._add_rich_filter()]] - `method` [EXTRACTED]
 - [[._add_validation_error()]] - `method` [EXTRACTED]
@@ -34,4 +33,4 @@ tags:
 - [[converters.py]] - `contains` [EXTRACTED]
 - [[migrate_filters_to_rich_filters()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Field_Validate
+#graphify/code #graphify/EXTRACTED #community/Community_146

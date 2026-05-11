@@ -1,17 +1,30 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.26
+members: 15
 ---
 
 # Community 380
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.26 - loosely connected
+**Members:** 15 nodes
 
 ## Members
-
-- [[index.ts_55]] - code - editor/src/core/extensions/mentions/index.ts
+- [[archive_module_nonexistent_returns_4xx()]] - code - api_rust/tests/cycles_modules_extras.rs
+- [[archive_module_unauthenticated_returns_401()]] - code - api_rust/tests/cycles_modules_extras.rs
+- [[cycles_modules_extras.rs]] - code - api_rust/tests/cycles_modules_extras.rs
+- [[get_archived_cycle_nonexistent_returns_404()]] - code - api_rust/tests/cycles_modules_extras.rs
+- [[get_archived_cycle_unauthenticated_returns_401()]] - code - api_rust/tests/cycles_modules_extras.rs
+- [[get_archived_module_nonexistent_returns_404()]] - code - api_rust/tests/cycles_modules_extras.rs
+- [[get_archived_module_unauthenticated_returns_401()]] - code - api_rust/tests/cycles_modules_extras.rs
+- [[list_project_estimates_member_returns_200()]] - code - api_rust/tests/cycles_modules_extras.rs
+- [[list_project_estimates_unauthenticated_returns_401()]] - code - api_rust/tests/cycles_modules_extras.rs
+- [[setup()_22]] - code - api_rust/tests/cycles_modules_extras.rs
+- [[transfer_issues_nonexistent_cycle_returns_4xx()]] - code - api_rust/tests/cycles_modules_extras.rs
+- [[transfer_issues_unauthenticated_returns_401()]] - code - api_rust/tests/cycles_modules_extras.rs
+- [[unarchive_cycle_nonexistent_returns_4xx()]] - code - api_rust/tests/cycles_modules_extras.rs
+- [[unarchive_cycle_unauthenticated_returns_401()]] - code - api_rust/tests/cycles_modules_extras.rs
+- [[unarchive_module_nonexistent_returns_4xx()]] - code - api_rust/tests/cycles_modules_extras.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -19,3 +32,9 @@ members: 1
 TABLE source_file, type FROM #community/Community_380
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Rust Auth Services]]
+
+## Top bridge nodes
+- [[setup()_22]] - degree 15, connects to 1 community

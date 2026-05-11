@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/workspace-notifications/sidebar/header/root.tsx"
 type: "code"
-community: "Settings Project"
+community: "Community 84"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Settings_Project
+  - community/Community_84
 ---
 
 # TNotificationSidebarHeader
 
 ## Connections
-
 - [[root.tsx_89]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Settings_Project
+#graphify/code #graphify/EXTRACTED #community/Community_84

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/models/favorite.py"
 type: "code"
-community: "Meta User"
+community: "Community 66"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Meta_User
+  - community/Community_66
 ---
 
 # UserFavorite
 
 ## Connections
-
 - [[.__str__()_68]] - `method` [EXTRACTED]
 - [[.save()_18]] - `method` [EXTRACTED]
 - [[WorkspaceBaseModel]] - `inherits` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[favorite.py_2]] - `contains` [EXTRACTED]
 - [[user_favorite_migration()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Meta_User
+#graphify/code #graphify/EXTRACTED #community/Community_66

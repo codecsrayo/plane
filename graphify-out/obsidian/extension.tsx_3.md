@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/mentions/extension.tsx"
 type: "code"
-community: "Mention Extension"
+community: "Community 90"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Mention_Extension
+  - community/Community_90
 ---
 
 # extension.tsx
 
 ## Connections
-
 - [[CustomMentionExtension()]] - `contains` [EXTRACTED]
 - [[CustomMentionExtensionConfig]] - `imports` [EXTRACTED]
 - [[MentionNodeView()]] - `imports` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[renderMentionsDropdown()]] - `imports` [EXTRACTED]
 - [[utils.ts_8]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Mention_Extension
+#graphify/code #graphify/EXTRACTED #community/Community_90

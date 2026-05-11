@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_71]] - code - services/src/label/index.ts
+- [[tsdown.config.ts_5]] - code - i18n/tsdown.config.ts
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-detail/issue-detail-quick-actions.tsx"
 type: "code"
-community: "Project Settings"
+community: "Issue Activity Types"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Issue_Activity_Types
 ---
 
 # issue-detail-quick-actions.tsx
 
 ## Connections
-
 - [[IssueDetailQuickActions]] - `contains` [EXTRACTED]
 - [[IssueSubscription]] - `imports` [EXTRACTED]
 - [[Props_332]] - `contains` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[work-item-header.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Types

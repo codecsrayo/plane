@@ -1,18 +1,17 @@
 ---
 source_file: "utils/src/auth.ts"
 type: "code"
-community: "Password Strength"
+community: "Community 336"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Password_Strength
+  - community/Community_336
 ---
 
 # auth.ts
 
 ## Connections
-
 - [[PasswordCriteria]] - `contains` [EXTRACTED]
 - [[PasswordStrength]] - `contains` [EXTRACTED]
 - [[authErrorHandler()]] - `contains` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[getPasswordCriteria()]] - `contains` [EXTRACTED]
 - [[getPasswordStrength()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Password_Strength
+#graphify/code #graphify/EXTRACTED #community/Community_336

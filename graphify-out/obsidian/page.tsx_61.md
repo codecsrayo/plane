@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/accounts/set-password/page.tsx"
 type: "code"
-community: "Workspace Issue"
+community: "Community 70"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Issue
+  - community/Community_70
 ---
 
 # page.tsx
 
 ## Connections
-
 - [[AuthHeader]] - `imports` [EXTRACTED]
 - [[AuthenticationWrapper]] - `imports` [EXTRACTED]
 - [[SetPasswordPage()]] - `contains` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[header.tsx_56]] - `imports_from` [EXTRACTED]
 - [[index.tsx_6]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_70

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/user/user-user.ts"
 type: "code"
-community: "Label Dropdown"
+community: "Module & Cycle Analytics"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Dropdown
+  - community/Module__Cycle_Analytics
 ---
 
 # user-user.ts
 
 ## Connections
-
 - [[IUserStore_1]] - `imports` [EXTRACTED]
 - [[StoreContext]] - `imports` [EXTRACTED]
 - [[form.tsx_4]] - `imports_from` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[store-context.tsx]] - `imports_from` [EXTRACTED]
 - [[useUser()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Module__Cycle_Analytics

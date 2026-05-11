@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/estimates/estimate-disable-switch.tsx"
 type: "code"
-community: "Label Dropdown"
+community: "Community 115"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Dropdown
+  - community/Community_115
 ---
 
 # estimate-disable-switch.tsx
 
 ## Connections
-
 - [[EstimateDisableSwitch]] - `contains` [EXTRACTED]
 - [[TEstimateDisableSwitch]] - `contains` [EXTRACTED]
 - [[index.ts_268]] - `imports_from` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Community_115

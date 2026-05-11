@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/analytics/work-items/modal/index.tsx"
 type: "code"
-community: "Webhook Workspace"
+community: "Filter UI & Breadcrumbs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Webhook_Workspace
+  - community/Filter_UI__Breadcrumbs
 ---
 
 # index.tsx
 
 ## Connections
-
 - [[Props_508]] - `contains` [EXTRACTED]
 - [[WorkItemsModal]] - `contains` [EXTRACTED]
 - [[WorkItemsModalHeader]] - `imports` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[use-analytics.ts]] - `imports_from` [EXTRACTED]
 - [[useAnalytics()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Webhook_Workspace
+#graphify/code #graphify/EXTRACTED #community/Filter_UI__Breadcrumbs

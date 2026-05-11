@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/table/plugins/selection-outline/plugin.ts"
 type: "code"
-community: "Table Node"
+community: "Community 489"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Table_Node
+  - community/Community_489
 ---
 
 # plugin.ts
 
 ## Connections
-
 - [[TABLE_SELECTION_OUTLINE_PLUGIN_KEY]] - `contains` [EXTRACTED]
 - [[TableCellSelectionOutlinePlugin()]] - `contains` [EXTRACTED]
 - [[TableCellSelectionOutlinePluginState]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[table-cell.ts]] - `imports_from` [EXTRACTED]
 - [[utils.ts_6]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Table_Node
+#graphify/code #graphify/EXTRACTED #community/Community_489

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/integration/base.py"
 type: "code"
-community: "Endpoint User"
+community: "Community 77"
 location: "L74"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Endpoint_User
+  - community/Community_77
 ---
 
 # create()
 
 ## Connections
-
 - [[._register_github_webhook()]] - `calls` [EXTRACTED]
 - [[.get()_33]] - `calls` [EXTRACTED]
 - [[GithubPRStateMappingSerializer]] - `calls` [INFERRED]
@@ -20,4 +19,4 @@ tags:
 - [[base.py_12]] - `contains` [EXTRACTED]
 - [[response]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Endpoint_User
+#graphify/code #graphify/INFERRED #community/Community_77

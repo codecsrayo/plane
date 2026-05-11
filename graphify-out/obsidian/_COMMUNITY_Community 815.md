@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 815
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_166]] - code - web/core/components/base-layouts/gantt/index.ts
+- [[pid()_8]] - code - web/e2e/views.spec.ts
+- [[slug()_11]] - code - web/e2e/views.spec.ts
+- [[views.spec.ts]] - code - web/e2e/views.spec.ts
 
 ## Live Query (requires Dataview plugin)
 

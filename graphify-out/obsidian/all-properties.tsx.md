@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/properties/all-properties.tsx"
 type: "code"
-community: "Label Dropdown"
+community: "Work Item Detail & Layouts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Dropdown
+  - community/Work_Item_Detail__Layouts
 ---
 
 # all-properties.tsx
 
 ## Connections
-
 - [[CycleDropdown]] - `imports` [EXTRACTED]
 - [[DateDropdown]] - `imports` [EXTRACTED]
 - [[DateRangeDropdown]] - `imports` [EXTRACTED]
@@ -54,4 +53,4 @@ tags:
 - [[useProjectState()]] - `imports` [EXTRACTED]
 - [[with-display-properties-HOC.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Work_Item_Detail__Layouts

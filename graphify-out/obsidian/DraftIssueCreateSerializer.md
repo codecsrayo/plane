@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/serializers/draft.py"
 type: "code"
-community: "Serializer Validate"
+community: "Community 66"
 location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Serializer_Validate
+  - community/Community_66
 ---
 
 # DraftIssueCreateSerializer
 
 ## Connections
-
 - [[.create()_24]] - `method` [EXTRACTED]
 - [[.to_representation()_4]] - `method` [EXTRACTED]
 - [[.update()_21]] - `method` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[draft.py_1]] - `contains` [EXTRACTED]
 - [[partial_update()_3]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Serializer_Validate
+#graphify/code #graphify/EXTRACTED #community/Community_66

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/common/pro-icon.tsx"
 type: "code"
-community: "Upgrade Workspace"
+community: "Community 443"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Upgrade_Workspace
+  - community/Community_443
 ---
 
 # TProIcon
 
 ## Connections
-
 - [[pro-icon.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Upgrade_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_443

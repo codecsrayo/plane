@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/license/utils/instance_value.py"
 type: "code"
-community: "Endpoint Magic"
+community: "Community 48"
 location: "L17"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Endpoint_Magic
+  - community/Community_48
 ---
 
 # get_configuration_value()
 
 ## Connections
-
 - [[.__check_signup()]] - `calls` [INFERRED]
 - [[.__init__()_30]] - `calls` [INFERRED]
 - [[.__init__()_31]] - `calls` [INFERRED]
@@ -38,4 +37,4 @@ tags:
 - [[posthogConfiguration()]] - `calls` [INFERRED]
 - [[provider_install()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Endpoint_Magic
+#graphify/code #graphify/INFERRED #community/Community_48

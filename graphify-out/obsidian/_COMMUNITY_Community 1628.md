@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_328]] - code - web/core/components/modules/archived-modules/index.ts
+- [[index.ts_419]] - code - web/core/components/pages/list/index.ts
 
 ## Live Query (requires Dataview plugin)
 

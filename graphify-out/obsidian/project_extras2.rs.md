@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/project_extras2.rs"
 type: "code"
-community: "Returns Project"
+community: "Community 259"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Project
+  - community/Community_259
 ---
 
 # project_extras2.rs
 
 ## Connections
-
 - [[create_project_invitation_returns_2xx()]] - `contains` [EXTRACTED]
 - [[delete_user_favorite_view_nonexistent_returns_4xx()]] - `contains` [EXTRACTED]
 - [[get_member_preferences_own_returns_200()]] - `contains` [EXTRACTED]
@@ -36,4 +35,4 @@ tags:
 - [[patch_project_member_nonexistent_returns_4xx()]] - `contains` [EXTRACTED]
 - [[setup()_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Project
+#graphify/code #graphify/EXTRACTED #community/Community_259

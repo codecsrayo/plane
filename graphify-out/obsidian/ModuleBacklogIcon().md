@@ -1,19 +1,20 @@
 ---
-source_file: "propel/src/icons/module/backlog.tsx"
+source_file: "packages/propel/src/icons/module/backlog.tsx"
 type: "code"
-community: "Status Backlog"
+community: "Community 251"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Status_Backlog
+  - community/Community_251
 ---
 
 # ModuleBacklogIcon()
 
 ## Connections
-
 - [[backlog.tsx]] - `contains` [EXTRACTED]
+- [[backlog.tsx_1]] - `contains` [EXTRACTED]
 - [[module-status-icon.tsx]] - `imports` [EXTRACTED]
+- [[module-status-icon.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Status_Backlog
+#graphify/code #graphify/EXTRACTED #community/Community_251

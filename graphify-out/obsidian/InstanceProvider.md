@@ -1,19 +1,18 @@
 ---
 source_file: "admin/providers/instance.provider.tsx"
 type: "code"
-community: "Error Provider"
+community: "Community 401"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Error_Provider
+  - community/Community_401
 ---
 
 # InstanceProvider
 
 ## Connections
-
 - [[core.tsx_3]] - `imports` [EXTRACTED]
 - [[instance.provider.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Error_Provider
+#graphify/code #graphify/EXTRACTED #community/Community_401

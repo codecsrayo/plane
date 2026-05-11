@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/issue/project/filter.store.ts"
 type: "code"
-community: "Filters Issue"
+community: "Community 33"
 location: "L60"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filters_Issue
+  - community/Community_33
 ---
 
 # ProjectIssuesFilter
 
 ## Connections
-
 - [[.appliedFilters()_6]] - `method` [EXTRACTED]
 - [[.constructor()_99]] - `method` [EXTRACTED]
 - [[.getAppliedFilters()_5]] - `method` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[.issueFilters()_6]] - `method` [EXTRACTED]
 - [[filter.store.ts_11]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filters_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_33

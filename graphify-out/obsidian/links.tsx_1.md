@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/home/widgets/links/links.tsx"
 type: "code"
-community: "Link Links"
+community: "Community 281"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Link_Links
+  - community/Community_281
 ---
 
 # links.tsx
 
 ## Connections
-
 - [[ContentOverflowWrapper]] - `imports` [EXTRACTED]
 - [[LinksEmptyState()]] - `imports` [EXTRACTED]
 - [[ProjectLinkDetail]] - `imports` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[use-links.tsx]] - `imports_from` [EXTRACTED]
 - [[useHome()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Link_Links
+#graphify/code #graphify/EXTRACTED #community/Community_281

@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/side-menu.ts"
 type: "code"
-community: "Handle Node"
+community: "Community 199"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Handle_Node
+  - community/Community_199
 ---
 
 # side-menu.ts
 
 ## Connections
-
 - [[AIHandlePlugin()]] - `imports` [EXTRACTED]
 - [[CORE_EXTENSIONS]] - `imports` [EXTRACTED]
 - [[DragHandlePlugin()]] - `imports` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[extension.ts]] - `imports_from` [EXTRACTED]
 - [[nodeDOMAtCoords()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Handle_Node
+#graphify/code #graphify/EXTRACTED #community/Community_199

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-detail-widgets/attachments/content.tsx"
 type: "code"
-community: "Attachment Issue"
+community: "Issue Activity Types"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Attachment_Issue
+  - community/Issue_Activity_Types
 ---
 
 # content.tsx
 
 ## Connections
-
 - [[IssueAttachmentItemList]] - `imports` [EXTRACTED]
 - [[IssueAttachmentsCollapsibleContent]] - `contains` [EXTRACTED]
 - [[Props_343]] - `contains` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[root.tsx_79]] - `imports_from` [EXTRACTED]
 - [[useAttachmentOperations()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Attachment_Issue
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Types

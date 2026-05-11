@@ -1,14 +1,14 @@
 ---
 source_file: "api/plane/settings/mongo.py"
 type: "rationale"
-community: "Check Mongo"
+community: "Community 1903"
 location: "L117"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Check_Mongo
+  - community/Community_1903
 ---
 
-# Check if MongoDB is properly configured and connected. Returns:
+# Check if MongoDB is properly configured and connected.          Returns:
 
-#graphify/rationale #graphify/EXTRACTED #community/Check_Mongo
+#graphify/rationale #graphify/EXTRACTED #community/Community_1903

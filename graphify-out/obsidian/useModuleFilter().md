@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/use-module-filter.ts"
 type: "code"
-community: "Cycles Archived"
+community: "Module & Cycle Analytics"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycles_Archived
+  - community/Module__Cycle_Analytics
 ---
 
 # useModuleFilter()
 
 ## Connections
-
 - [[ProjectModulesPage()]] - `calls` [EXTRACTED]
 - [[header.tsx_44]] - `imports` [EXTRACTED]
 - [[mobile-header.tsx_3]] - `imports` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[use-module-filter.ts]] - `contains` [EXTRACTED]
 - [[view.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycles_Archived
+#graphify/code #graphify/EXTRACTED #community/Module__Cycle_Analytics

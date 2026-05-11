@@ -1,19 +1,18 @@
 ---
 source_file: "api_rust/tests/cycles.rs"
 type: "code"
-community: "Cycle Returns"
+community: "Community 331"
 location: "L98"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Returns
+  - community/Community_331
 ---
 
 # create_cycle_empty_name_returns_400()
 
 ## Connections
-
 - [[cycles.rs]] - `contains` [EXTRACTED]
 - [[setup()_3]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Returns
+#graphify/code #graphify/EXTRACTED #community/Community_331

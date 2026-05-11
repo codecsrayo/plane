@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_63]] - code - services/src/workspace/index.ts
+- [[metadata.ts]] - code - constants/src/metadata.ts
 
 ## Live Query (requires Dataview plugin)
 

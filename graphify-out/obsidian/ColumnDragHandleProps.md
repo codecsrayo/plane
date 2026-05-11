@@ -1,19 +1,20 @@
 ---
-source_file: "editor/src/core/extensions/table/plugins/drag-handles/column/drag-handle.tsx"
+source_file: "packages/editor/src/core/extensions/table/plugins/drag-handles/column/drag-handle.tsx"
 type: "code"
-community: "Drag Table"
+community: "Community 38"
 location: "L49"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Drag_Table
+  - community/Community_38
 ---
 
 # ColumnDragHandleProps
 
 ## Connections
-
 - [[drag-handle.tsx_1]] - `contains` [EXTRACTED]
+- [[drag-handle.tsx_4]] - `contains` [EXTRACTED]
 - [[plugin.ts]] - `imports` [EXTRACTED]
+- [[plugin.ts_5]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Drag_Table
+#graphify/code #graphify/EXTRACTED #community/Community_38

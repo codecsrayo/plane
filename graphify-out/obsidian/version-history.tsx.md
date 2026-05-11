@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/pages/navigation-pane/tab-panels/info/version-history.tsx"
 type: "code"
-community: "Pane Navigation"
+community: "Community 163"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Pane_Navigation
+  - community/Community_163
 ---
 
 # version-history.tsx
 
 ## Connections
-
 - [[PageNavigationPaneInfoTabVersionHistory]] - `contains` [EXTRACTED]
 - [[Props_478]] - `contains` [EXTRACTED]
 - [[TPageInstance]] - `imports` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[useMember()]] - `imports` [EXTRACTED]
 - [[useQueryParams()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Pane_Navigation
+#graphify/code #graphify/EXTRACTED #community/Community_163

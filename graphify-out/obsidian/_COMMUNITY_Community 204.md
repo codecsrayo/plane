@@ -1,28 +1,43 @@
 ---
 type: community
-cohesion: 0.21
-members: 12
+cohesion: 0.11
+members: 28
 ---
 
 # Community 204
 
-**Cohesion:** 0.21 - loosely connected
-**Members:** 12 nodes
+**Cohesion:** 0.11 - loosely connected
+**Members:** 28 nodes
 
 ## Members
-
-- [[PROJECT_FEATURES_LIST]] - code - web/core/components/project/settings/features-list.tsx
-- [[ProjectFeatureToggle()]] - code - web/core/components/project/settings/helper.tsx
-- [[ProjectSettingsLabelList]] - code - web/core/components/labels/project-setting-label-list.tsx
-- [[Props_145]] - code - web/core/components/project/settings/features-list.tsx
-- [[Props_106]] - code - web/core/components/settings/heading.tsx
-- [[Props_146]] - code - web/core/components/project/settings/helper.tsx
-- [[SettingsHeading()]] - code - web/core/components/settings/heading.tsx
-- [[features-list.tsx]] - code - web/core/components/project/settings/features-list.tsx
-- [[heading.tsx]] - code - web/core/components/settings/heading.tsx
-- [[helper.tsx_2]] - code - web/core/components/project/settings/helper.tsx
-- [[index.ts_57]] - code - web/core/components/labels/index.ts
-- [[project-setting-label-list.tsx]] - code - web/core/components/labels/project-setting-label-list.tsx
+- [[.__str__()_32]] - code - api/plane/db/models/page.py
+- [[0106_auto_20250912_0845.py]] - code - api/plane/db/migrations/0106_auto_20250912_0845.py
+- [[Creates a project and associated members for a workspace.      Creates a new pro]] - rationale - api/plane/bgtasks/workspace_seed_task.py
+- [[Creates cycles for each project in the workspace.      Args         workspace]] - rationale - api/plane/bgtasks/workspace_seed_task.py
+- [[Creates issues and their associated records for each project.      Creates issue]] - rationale - api/plane/bgtasks/workspace_seed_task.py
+- [[Creates labels for each project in the workspace.      Args         workspace]] - rationale - api/plane/bgtasks/workspace_seed_task.py
+- [[Creates modules for each project in the workspace.      Args         workspace]] - rationale - api/plane/bgtasks/workspace_seed_task.py
+- [[Creates pages for each project in the workspace.      Args         workspace T]] - rationale - api/plane/bgtasks/workspace_seed_task.py
+- [[Creates states for each project in the workspace.      Args         workspace]] - rationale - api/plane/bgtasks/workspace_seed_task.py
+- [[Creates views for each project in the workspace.      Args         workspace T]] - rationale - api/plane/bgtasks/workspace_seed_task.py
+- [[Migration_102]] - code - api/plane/db/migrations/0106_auto_20250912_0845.py
+- [[Page]] - code - api/plane/db/models/page.py
+- [[Read a JSON file from the seed directory.      Args         filename (str) Nam]] - rationale - api/plane/bgtasks/workspace_seed_task.py
+- [[Return owner email and page name]] - rationale - api/plane/db/models/page.py
+- [[Seeds a new workspace with initial project data.      Creates a complete workspa]] - rationale - api/plane/bgtasks/workspace_seed_task.py
+- [[create_cycles()_1]] - code - api/plane/bgtasks/workspace_seed_task.py
+- [[create_modules()_1]] - code - api/plane/bgtasks/workspace_seed_task.py
+- [[create_pages()_1]] - code - api/plane/bgtasks/workspace_seed_task.py
+- [[create_project_and_member()]] - code - api/plane/bgtasks/workspace_seed_task.py
+- [[create_project_issues()]] - code - api/plane/bgtasks/workspace_seed_task.py
+- [[create_project_labels()]] - code - api/plane/bgtasks/workspace_seed_task.py
+- [[create_project_states()]] - code - api/plane/bgtasks/workspace_seed_task.py
+- [[create_views()]] - code - api/plane/bgtasks/workspace_seed_task.py
+- [[read_seed_file()]] - code - api/plane/bgtasks/workspace_seed_task.py
+- [[reverse_set_page_sort_order()]] - code - api/plane/db/migrations/0106_auto_20250912_0845.py
+- [[set_page_sort_order()]] - code - api/plane/db/migrations/0106_auto_20250912_0845.py
+- [[workspace_seed()]] - code - api/plane/bgtasks/workspace_seed_task.py
+- [[workspace_seed_task.py]] - code - api/plane/bgtasks/workspace_seed_task.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -32,16 +47,12 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 4 edges to [[_COMMUNITY_Community 142]]
-- 2 edges to [[_COMMUNITY_Community 81]]
-- 2 edges to [[_COMMUNITY_Applied Filters UI]]
-- 1 edge to [[_COMMUNITY_Empty State Components]]
-- 1 edge to [[_COMMUNITY_Community 249]]
+- 3 edges to [[_COMMUNITY_Python Workflow Services]]
+- 2 edges to [[_COMMUNITY_Community 184]]
+- 1 edge to [[_COMMUNITY_Community 89]]
+- 1 edge to [[_COMMUNITY_Community 270]]
 
 ## Top bridge nodes
-
-- [[features-list.tsx]] - degree 11, connects to 3 communities
-- [[project-setting-label-list.tsx]] - degree 7, connects to 2 communities
-- [[heading.tsx]] - degree 5, connects to 1 community
-- [[SettingsHeading()]] - degree 4, connects to 1 community
+- [[Page]] - degree 8, connects to 3 communities
+- [[create_modules()_1]] - degree 5, connects to 1 community
+- [[create_project_and_member()]] - degree 5, connects to 1 community

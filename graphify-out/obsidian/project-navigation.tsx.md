@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/workspace/sidebar/project-navigation.tsx"
 type: "code"
-community: "Sidebar Navigation"
+community: "Project Filters & Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Navigation
+  - community/Project_Filters__Archives
 ---
 
 # project-navigation.tsx
 
 ## Connections
-
 - [[ProjectNavigation]] - `contains` [EXTRACTED]
 - [[SidebarNavItem()]] - `imports` [EXTRACTED]
 - [[TNavigationItem]] - `contains` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

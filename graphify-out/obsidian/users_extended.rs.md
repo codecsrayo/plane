@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/users_extended.rs"
 type: "code"
-community: "Returns Graph"
+community: "Community 416"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Graph
+  - community/Community_416
 ---
 
 # users_extended.rs
 
 ## Connections
-
 - [[get_activity_graph_returns_200()]] - `contains` [EXTRACTED]
 - [[get_issues_completed_graph_returns_200()]] - `contains` [EXTRACTED]
 - [[get_last_workspace_returns_200_or_404()]] - `contains` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[update_profile_returns_200()]] - `contains` [EXTRACTED]
 - [[update_tour_completed_returns_200()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Graph
+#graphify/code #graphify/EXTRACTED #community/Community_416

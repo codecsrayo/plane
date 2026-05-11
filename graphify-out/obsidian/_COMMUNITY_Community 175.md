@@ -1,31 +1,46 @@
 ---
 type: community
-cohesion: 0.13
-members: 15
+cohesion: 0.09
+members: 31
 ---
 
 # Community 175
 
-**Cohesion:** 0.13 - loosely connected
-**Members:** 15 nodes
+**Cohesion:** 0.09 - loosely connected
+**Members:** 31 nodes
 
 ## Members
-
-- [[.addProjectToFavorites()]] - code - web/core/services/project/project.service.ts
-- [[.checkProjectIdentifierAvailability()]] - code - web/core/services/project/project.service.ts
-- [[.constructor()_119]] - code - web/core/services/project/project.service.ts
-- [[.createProject()]] - code - web/core/services/project/project.service.ts
-- [[.deleteProject()]] - code - web/core/services/project/project.service.ts
-- [[.getProject()]] - code - web/core/services/project/project.service.ts
-- [[.getProjectAnalyticsCount()]] - code - web/core/services/project/project.service.ts
-- [[.getProjects()]] - code - web/core/services/project/project.service.ts
-- [[.getProjectsLite()]] - code - web/core/services/project/project.service.ts
-- [[.getUserProjectFavorites()]] - code - web/core/services/project/project.service.ts
-- [[.projectIssuesSearch()]] - code - web/core/services/project/project.service.ts
-- [[.removeProjectFromFavorites()]] - code - web/core/services/project/project.service.ts
-- [[.updateProject()]] - code - web/core/services/project/project.service.ts
-- [[.updateProjectUserProperties()]] - code - web/core/services/project/project.service.ts
-- [[ProjectService]] - code - web/core/services/project/project.service.ts
+- [[.canExecuteCommand()]] - code - web/core/components/power-k/core/shortcut-handler.ts
+- [[.constructor()_182]] - code - web/core/components/power-k/core/registry.ts
+- [[.constructor()_181]] - code - web/core/components/power-k/core/shortcut-handler.ts
+- [[.constructor()_41]] - code - web/ce/store/power-k.store.ts
+- [[.destroy()_10]] - code - web/core/components/power-k/core/shortcut-handler.ts
+- [[.executeCommand()]] - code - web/core/components/power-k/core/shortcut-handler.ts
+- [[.handleKeyOrSequence()]] - code - web/core/components/power-k/core/shortcut-handler.ts
+- [[.handleModifierShortcut()]] - code - web/core/components/power-k/core/shortcut-handler.ts
+- [[.isCommandVisible()]] - code - web/core/components/power-k/core/registry.ts
+- [[.resetSequence()]] - code - web/core/components/power-k/core/shortcut-handler.ts
+- [[.scheduleSequenceReset()]] - code - web/core/components/power-k/core/shortcut-handler.ts
+- [[.setEnabled()]] - code - web/core/components/power-k/core/shortcut-handler.ts
+- [[IBasePowerKStore]] - code - web/core/store/base-power-k.store.ts
+- [[IPowerKCommandRegistry]] - code - web/core/components/power-k/core/registry.ts
+- [[IPowerKStore]] - code - web/ce/store/power-k.store.ts
+- [[ModalData_1]] - code - web/core/store/base-power-k.store.ts
+- [[PowerKCommandRegistry]] - code - web/core/components/power-k/core/registry.ts
+- [[PowerKStore]] - code - web/ce/store/power-k.store.ts
+- [[ShortcutHandler]] - code - web/core/components/power-k/core/shortcut-handler.ts
+- [[base-power-k.store.ts]] - code - web/core/store/base-power-k.store.ts
+- [[commandId]] - code - web/core/components/power-k/core/registry.ts
+- [[constructor()_4]] - code - web/core/store/base-power-k.store.ts
+- [[formatModifierShortcut()]] - code - web/core/components/power-k/core/shortcut-handler.ts
+- [[isTypingInInput()]] - code - web/core/components/power-k/core/shortcut-handler.ts
+- [[key]] - code - web/core/components/power-k/core/shortcut-handler.ts
+- [[keySequenceMap]] - code - web/core/components/power-k/core/registry.ts
+- [[modifierShortcutMap]] - code - web/core/components/power-k/core/registry.ts
+- [[power-k.store.ts]] - code - web/ce/store/power-k.store.ts
+- [[registry.ts_1]] - code - web/core/components/power-k/core/registry.ts
+- [[shortcut-handler.ts]] - code - web/core/components/power-k/core/shortcut-handler.ts
+- [[shortcutMap]] - code - web/core/components/power-k/core/registry.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -35,10 +50,13 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 1 edge to [[_COMMUNITY_Git Integrations]]
-- 1 edge to [[_COMMUNITY_Community 132]]
+- 5 edges to [[_COMMUNITY_Community 121]]
+- 4 edges to [[_COMMUNITY_Community 220]]
+- 2 edges to [[_COMMUNITY_Community 130]]
+- 1 edge to [[_COMMUNITY_Community 85]]
 
 ## Top bridge nodes
-
-- [[ProjectService]] - degree 16, connects to 2 communities
+- [[shortcut-handler.ts]] - degree 10, connects to 3 communities
+- [[registry.ts_1]] - degree 12, connects to 2 communities
+- [[base-power-k.store.ts]] - degree 10, connects to 2 communities
+- [[ShortcutHandler]] - degree 11, connects to 1 community

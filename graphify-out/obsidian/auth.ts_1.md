@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/instance/auth.ts"
 type: "code"
-community: "Authentication Instance"
+community: "Community 349"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Authentication_Instance
+  - community/Community_349
 ---
 
 # auth.ts
 
 ## Connections
-
 - [[TCoreInstanceAuthenticationModeKeys]] - `contains` [EXTRACTED]
 - [[TCoreLoginMediums]] - `contains` [EXTRACTED]
 - [[TGetBaseAuthenticationModeProps]] - `contains` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[TOAuthConfigs]] - `contains` [EXTRACTED]
 - [[TOAuthOption_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Authentication_Instance
+#graphify/code #graphify/EXTRACTED #community/Community_349

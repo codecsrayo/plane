@@ -1,18 +1,18 @@
 ---
-source_file: "propel/src/icons/cycle/cycle-group-icon.tsx"
+source_file: "packages/propel/src/icons/cycle/cycle-group-icon.tsx"
 type: "code"
-community: "Icon Cycle"
+community: "Community 92"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Icon_Cycle
+  - community/Community_92
 ---
 
 # CycleGroupIcon()
 
 ## Connections
-
 - [[cycle-group-icon.tsx]] - `contains` [EXTRACTED]
+- [[cycle-group-icon.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Icon_Cycle
+#graphify/code #graphify/EXTRACTED #community/Community_92

@@ -1,19 +1,18 @@
 ---
 source_file: "api_rust/src/routes/modules.rs"
 type: "code"
-community: "Request Intake"
+community: "Rust Issues & Modules API"
 location: "L807"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Request_Intake
+  - community/Rust_Issues__Modules_API
 ---
 
 # module_default_display_filters()
 
 ## Connections
-
 - [[get_or_create_module_user_properties()]] - `calls` [EXTRACTED]
 - [[modules.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Request_Intake
+#graphify/code #graphify/EXTRACTED #community/Rust_Issues__Modules_API

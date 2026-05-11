@@ -1,20 +1,19 @@
 ---
 source_file: "api/plane/bgtasks/dummy_data_task.py"
 type: "code"
-community: "Issue Dummy"
+community: "Community 184"
 location: "L391"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Dummy
+  - community/Community_184
 ---
 
 # create_issue_assignees()
 
 ## Connections
-
 - [[IssueAssignee]] - `calls` [INFERRED]
 - [[create_dummy_data()]] - `calls` [EXTRACTED]
 - [[dummy_data_task.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Dummy
+#graphify/code #graphify/EXTRACTED #community/Community_184

@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/components/issues/issue-details/issue-identifier.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Bulk Operations & Spreadsheet"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Bulk_Operations__Spreadsheet
 ---
 
 # IssueIdentifier
 
 ## Connections
-
 - [[block.tsx_6]] - `imports` [EXTRACTED]
 - [[block.tsx_7]] - `imports` [EXTRACTED]
 - [[blocks.tsx_1]] - `imports` [EXTRACTED]
@@ -36,4 +35,4 @@ tags:
 - [[search-results-map.tsx_1]] - `imports` [EXTRACTED]
 - [[sibling-item.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Bulk_Operations__Spreadsheet

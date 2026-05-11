@@ -1,18 +1,17 @@
 ---
 source_file: "utils/src/array.ts"
 type: "code"
-community: "Sort Check"
+community: "Community 370"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sort_Check
+  - community/Community_370
 ---
 
 # array.ts
 
 ## Connections
-
 - [[GroupedItems]] - `contains` [EXTRACTED]
 - [[base.ts_5]] - `imports_from` [EXTRACTED]
 - [[buildTree()]] - `contains` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[sortByField()]] - `contains` [EXTRACTED]
 - [[sortBySelectedFirst()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sort_Check
+#graphify/code #graphify/EXTRACTED #community/Community_370

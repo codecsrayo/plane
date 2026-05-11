@@ -1,19 +1,20 @@
 ---
-source_file: "propel/src/empty-state/assets/vertical-stack/constant.tsx"
+source_file: "packages/propel/src/empty-state/assets/vertical-stack/constant.tsx"
 type: "code"
-community: "Assets Stack"
+community: "Community 261"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Assets_Stack
+  - community/Community_261
 ---
 
 # VerticalStackAssetsMap
 
 ## Connections
-
 - [[assets-showcase.stories.tsx]] - `imports` [EXTRACTED]
+- [[assets-showcase.stories.tsx_1]] - `imports` [EXTRACTED]
 - [[constant.tsx_1]] - `contains` [EXTRACTED]
+- [[constant.tsx_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Assets_Stack
+#graphify/code #graphify/EXTRACTED #community/Community_261

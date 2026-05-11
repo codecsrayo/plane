@@ -1,19 +1,25 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 0.36
+members: 10
 ---
 
 # Community 467
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 0.36 - loosely connected
+**Members:** 10 nodes
 
 ## Members
-
-- [[Props_175]] - code - web/core/components/automation/select-month-modal.tsx
-- [[SelectMonthModal()]] - code - web/core/components/automation/select-month-modal.tsx
-- [[select-month-modal.tsx]] - code - web/core/components/automation/select-month-modal.tsx
+- [[TGroupedIssueCount]] - code - packages/types/src/issues/base.ts
+- [[TGroupedIssues]] - code - packages/types/src/issues/base.ts
+- [[TIssuePaginationData]] - code - packages/types/src/issues/base.ts
+- [[TIssues]] - code - packages/types/src/issues/base.ts
+- [[TLoader]] - code - packages/types/src/issues/base.ts
+- [[TPaginationData]] - code - packages/types/src/issues/base.ts
+- [[TSubGroupedIssues]] - code - packages/types/src/issues/base.ts
+- [[TUnGroupedIssues]] - code - packages/types/src/issues/base.ts
+- [[base.ts_6]] - code - packages/types/src/issues/base.ts
+- [[base.ts]] - code - types/src/issues/base.ts
 
 ## Live Query (requires Dataview plugin)
 

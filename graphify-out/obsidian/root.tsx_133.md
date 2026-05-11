@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/rich-filters/filter-value-input/root.tsx"
 type: "code"
-community: "Value Input"
+community: "Community 117"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Value_Input
+  - community/Community_117
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[AdditionalFilterValueInput]] - `imports` [EXTRACTED]
 - [[DateRangeFilterValueInput]] - `imports` [EXTRACTED]
 - [[FilterValueInput]] - `contains` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[single.tsx_1]] - `imports_from` [EXTRACTED]
 - [[single.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Value_Input
+#graphify/code #graphify/EXTRACTED #community/Community_117

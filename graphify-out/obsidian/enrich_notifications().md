@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/notifications.rs"
 type: "code"
-community: "User Github"
+community: "Rust API Handlers"
 location: "L120"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User_Github
+  - community/Rust_API_Handlers
 ---
 
 # enrich_notifications()
 
 ## Connections
-
 - [[.from_model()_2]] - `calls` [EXTRACTED]
 - [[.new()]] - `calls` [INFERRED]
 - [[archive_notification()]] - `calls` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[unarchive_notification()]] - `calls` [EXTRACTED]
 - [[update_notification()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User_Github
+#graphify/code #graphify/EXTRACTED #community/Rust_API_Handlers

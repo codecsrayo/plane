@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/pages/header/actions.tsx"
 type: "code"
-community: "Control Move"
+community: "Community 50"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Control_Move
+  - community/Community_50
 ---
 
 # actions.tsx
 
 ## Connections
-
 - [[PageArchivedBadge]] - `imports` [EXTRACTED]
 - [[PageCopyLinkControl]] - `imports` [EXTRACTED]
 - [[PageFavoriteControl]] - `imports` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[index.ts_416]] - `imports_from` [EXTRACTED]
 - [[offline-badge.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Control_Move
+#graphify/code #graphify/EXTRACTED #community/Community_50

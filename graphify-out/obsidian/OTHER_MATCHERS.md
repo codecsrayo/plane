@@ -1,18 +1,18 @@
 ---
-source_file: "utils/src/get-icon-for-link.ts"
+source_file: "packages/utils/src/get-icon-for-link.ts"
 type: "code"
-community: "Matchers Icon"
+community: "Community 531"
 location: "L58"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Matchers_Icon
+  - community/Community_531
 ---
 
 # OTHER_MATCHERS
 
 ## Connections
-
 - [[get-icon-for-link.ts]] - `contains` [EXTRACTED]
+- [[get-icon-for-link.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Matchers_Icon
+#graphify/code #graphify/EXTRACTED #community/Community_531

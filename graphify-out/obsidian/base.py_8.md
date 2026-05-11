@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/notification/base.py"
 type: "code"
-community: "Partial Endpoint"
+community: "Community 342"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Partial_Endpoint
+  - community/Community_342
 ---
 
 # base.py
 
 ## Connections
-
 - [[MarkAllReadNotificationViewSet]] - `contains` [EXTRACTED]
 - [[NotificationViewSet]] - `contains` [EXTRACTED]
 - [[UnreadNotificationEndpoint]] - `contains` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[partial_update()_9]] - `contains` [EXTRACTED]
 - [[unarchive()_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Partial_Endpoint
+#graphify/code #graphify/EXTRACTED #community/Community_342

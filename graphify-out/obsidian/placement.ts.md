@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/utils/placement.ts"
 type: "code"
-community: "Emoji Icon"
+community: "Community 81"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Emoji_Icon
+  - community/Community_81
 ---
 
 # placement.ts
 
 ## Connections
-
 - [[PLACEMENT_MAP]] - `contains` [EXTRACTED]
 - [[TAlign]] - `contains` [EXTRACTED]
 - [[TPlacement]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[root.tsx_19]] - `imports_from` [EXTRACTED]
 - [[types.ts_10]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Emoji_Icon
+#graphify/code #graphify/EXTRACTED #community/Community_81

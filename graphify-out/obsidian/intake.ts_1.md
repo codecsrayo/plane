@@ -1,20 +1,19 @@
 ---
 source_file: "utils/src/intake.ts"
 type: "code"
-community: "Calendar Generate"
+community: "Community 497"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Generate
+  - community/Community_497
 ---
 
 # intake.ts
 
 ## Connections
-
 - [[datetime.ts]] - `imports_from` [EXTRACTED]
 - [[getCustomDates()]] - `contains` [EXTRACTED]
 - [[renderFormattedPayloadDate()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Generate
+#graphify/code #graphify/EXTRACTED #community/Community_497

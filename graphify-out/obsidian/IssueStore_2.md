@@ -1,20 +1,19 @@
 ---
 source_file: "space/store/issue.store.ts"
 type: "code"
-community: "Publish Cycle"
+community: "Community 72"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Publish_Cycle
+  - community/Community_72
 ---
 
 # IssueStore
 
 ## Connections
-
 - [[.constructor()_195]] - `method` [EXTRACTED]
 - [[issue.store.ts_15]] - `contains` [EXTRACTED]
 - [[root.store.ts_6]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Publish_Cycle
+#graphify/code #graphify/EXTRACTED #community/Community_72

@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.50
+members: 4
 ---
 
 # Community 694
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.50 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_44]] - code - api_rust/src/entities/exporters.rs
+- [[0115_auto_20260105_1406.py]] - code - api/plane/db/migrations/0115_auto_20260105_1406.py
+- [[Migration_65]] - code - api/plane/db/migrations/0115_auto_20260105_1406.py
+- [[migrate_existing_api_tokens()]] - code - api/plane/db/migrations/0115_auto_20260105_1406.py
+- [[move_issue_user_properties_to_project_user_properties()]] - code - api/plane/db/migrations/0115_auto_20260105_1406.py
 
 ## Live Query (requires Dataview plugin)
 

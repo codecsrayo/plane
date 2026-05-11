@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/use-dropdown-key-down.tsx"
 type: "code"
-community: "Label Dropdown"
+community: "Community 109"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Dropdown
+  - community/Community_109
 ---
 
 # use-dropdown-key-down.tsx
 
 ## Connections
-
 - [[TUseDropdownKeyDown]] - `contains` [EXTRACTED]
 - [[base.tsx_7]] - `imports_from` [EXTRACTED]
 - [[image-picker-popover.tsx]] - `imports_from` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[use-dropdown.ts]] - `imports_from` [EXTRACTED]
 - [[useDropdownKeyDown()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Community_109

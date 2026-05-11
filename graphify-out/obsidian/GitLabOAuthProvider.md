@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/authentication/provider/oauth/gitlab.py"
 type: "code"
-community: "Endpoint Sign"
+community: "Community 76"
 location: "L22"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Endpoint_Sign
+  - community/Community_76
 ---
 
 # GitLabOAuthProvider
 
 ## Connections
-
 - [[.__init__()_33]] - `method` [EXTRACTED]
 - [[.get()_45]] - `calls` [INFERRED]
 - [[.get()_46]] - `calls` [INFERRED]
@@ -29,4 +28,4 @@ tags:
 - [[OauthAdapter_1]] - `inherits` [EXTRACTED]
 - [[gitlab.py_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Endpoint_Sign
+#graphify/code #graphify/INFERRED #community/Community_76

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/properties/with-display-properties-HOC.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Bulk Operations & Spreadsheet"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Bulk_Operations__Spreadsheet
 ---
 
 # WithDisplayPropertiesHOC
 
 ## Connections
-
 - [[all-properties.tsx]] - `imports` [EXTRACTED]
 - [[block.tsx_6]] - `imports` [EXTRACTED]
 - [[block.tsx_7]] - `imports` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[spreadsheet-header-column.tsx]] - `imports` [EXTRACTED]
 - [[with-display-properties-HOC.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Bulk_Operations__Spreadsheet

@@ -1,19 +1,18 @@
 ---
 source_file: "space/components/issues/peek-overview/issue-reaction.tsx"
 type: "code"
-community: "Issue Peek"
+community: "Community 80"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Peek
+  - community/Community_80
 ---
 
 # IssueReactions
 
 ## Connections
-
 - [[issue-details.tsx]] - `imports` [EXTRACTED]
 - [[issue-reaction.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Peek
+#graphify/code #graphify/EXTRACTED #community/Community_80

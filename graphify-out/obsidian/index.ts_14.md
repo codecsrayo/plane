@@ -1,18 +1,17 @@
 ---
 source_file: "ui/src/utils/index.ts"
 type: "code"
-community: "Input Checkbox"
+community: "Community 61"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Input_Checkbox
+  - community/Community_61
 ---
 
 # index.ts
 
 ## Connections
-
 - [[alert-modal.tsx]] - `imports_from` [EXTRACTED]
 - [[auth-form.tsx]] - `imports_from` [EXTRACTED]
 - [[auth-input.tsx]] - `imports_from` [EXTRACTED]
@@ -63,4 +62,4 @@ tags:
 - [[toggle-switch.tsx]] - `imports_from` [EXTRACTED]
 - [[tooltip.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Input_Checkbox
+#graphify/code #graphify/EXTRACTED #community/Community_61

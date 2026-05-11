@@ -1,20 +1,21 @@
 ---
-source_file: "propel/src/empty-state/assets/asset-registry.tsx"
+source_file: "packages/propel/src/empty-state/assets/asset-registry.tsx"
 type: "code"
-community: "Empty State"
+community: "Community 193"
 location: "L129"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_State
+  - community/Community_193
 ---
 
 # getDetailedAsset()
 
 ## Connections
-
 - [[EmptyStateDetailed()]] - `calls` [EXTRACTED]
 - [[asset-registry.tsx]] - `contains` [EXTRACTED]
+- [[asset-registry.tsx_1]] - `contains` [EXTRACTED]
 - [[detailed-empty-state.tsx]] - `imports` [EXTRACTED]
+- [[detailed-empty-state.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_State
+#graphify/code #graphify/EXTRACTED #community/Community_193

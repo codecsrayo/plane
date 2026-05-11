@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/charts/tree-map/map-content.tsx"
 type: "code"
-community: "Tabs Custom"
+community: "Community 164"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Tabs_Custom
+  - community/Community_164
 ---
 
 # map-content.tsx
 
 ## Connections
-
 - [[CustomTreeMapContent()]] - `contains` [EXTRACTED]
 - [[LAYOUT]] - `contains` [EXTRACTED]
 - [[calculateBottomSectionConfig()]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[root.tsx_11]] - `imports_from` [EXTRACTED]
 - [[truncateText()_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Tabs_Custom
+#graphify/code #graphify/EXTRACTED #community/Community_164

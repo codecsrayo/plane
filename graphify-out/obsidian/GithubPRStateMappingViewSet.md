@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/integration/base.py"
 type: "code"
-community: "Endpoint User"
+community: "Community 27"
 location: "L765"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_User
+  - community/Community_27
 ---
 
 # GithubPRStateMappingViewSet
 
 ## Connections
-
 - [[.get_queryset()_34]] - `method` [EXTRACTED]
 - [[BaseAPIView]] - `uses` [INFERRED]
 - [[BaseViewSet]] - `uses` [INFERRED]
@@ -20,4 +19,4 @@ tags:
 - [[Manage PR state mappings for a WorkspaceIntegration.      GET    workspaces{sl]] - `rationale_for` [EXTRACTED]
 - [[base.py_12]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_User
+#graphify/code #graphify/EXTRACTED #community/Community_27

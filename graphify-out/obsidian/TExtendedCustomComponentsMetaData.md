@@ -1,18 +1,18 @@
 ---
-source_file: "utils/src/editor/markdown-parser/types.ts"
+source_file: "packages/utils/src/editor/markdown-parser/types.ts"
 type: "code"
-community: "Custom Components"
+community: "Community 263"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Custom_Components
+  - community/Community_263
 ---
 
 # TExtendedCustomComponentsMetaData
 
 ## Connections
-
 - [[types.ts_9]] - `contains` [EXTRACTED]
+- [[types.ts_30]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Custom_Components
+#graphify/code #graphify/EXTRACTED #community/Community_263

@@ -1,21 +1,24 @@
 ---
-source_file: "editor/src/core/extensions/callout/types.ts"
+source_file: "packages/editor/src/core/extensions/callout/types.ts"
 type: "code"
-community: "Callout Custom"
+community: "Community 82"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Callout_Custom
+  - community/Community_82
 ---
 
 # ECalloutAttributeNames
 
 ## Connections
-
 - [[block.tsx_1]] - `imports` [EXTRACTED]
+- [[block.tsx_12]] - `imports` [EXTRACTED]
 - [[extension-config.ts_1]] - `imports` [EXTRACTED]
+- [[extension-config.ts_5]] - `imports` [EXTRACTED]
 - [[types.ts_3]] - `contains` [EXTRACTED]
+- [[types.ts_24]] - `contains` [EXTRACTED]
 - [[utils.ts_1]] - `imports` [EXTRACTED]
+- [[utils.ts_20]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Callout_Custom
+#graphify/code #graphify/EXTRACTED #community/Community_82

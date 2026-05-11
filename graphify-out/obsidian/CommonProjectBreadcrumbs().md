@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/components/breadcrumbs/common.tsx"
 type: "code"
-community: "Project Profile"
+community: "Filter UI & Breadcrumbs"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Profile
+  - community/Filter_UI__Breadcrumbs
 ---
 
 # CommonProjectBreadcrumbs()
 
 ## Connections
-
 - [[common.tsx]] - `contains` [EXTRACTED]
 - [[header.tsx_5]] - `imports` [EXTRACTED]
 - [[header.tsx_6]] - `imports` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[useProjectNavigationPreferences()]] - `calls` [EXTRACTED]
 - [[work-item-header.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Profile
+#graphify/code #graphify/EXTRACTED #community/Filter_UI__Breadcrumbs

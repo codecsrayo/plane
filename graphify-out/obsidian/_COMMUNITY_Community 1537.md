@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_190]] - code - propel/src/button/index.ts
+- [[issue.store.ts]] - code - web/ce/store/issue/workspace/issue.store.ts
 
 ## Live Query (requires Dataview plugin)
 

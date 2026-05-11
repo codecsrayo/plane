@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/components/workflow/workflow-disabled-message.tsx"
 type: "code"
-community: "Disabled Workflow"
+community: "Community 791"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Disabled_Workflow
+  - community/Community_791
 ---
 
 # WorkFlowDisabledMessage()
 
 ## Connections
-
 - [[workflow-disabled-message.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Disabled_Workflow
+#graphify/code #graphify/EXTRACTED #community/Community_791

@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/module/modules.ts"
 type: "code"
-community: "Distribution Link"
+community: "Community 101"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Distribution_Link
+  - community/Community_101
 ---
 
 # modules.ts
 
 ## Connections
-
 - [[IIssueFilterOptions]] - `imports` [EXTRACTED]
 - [[ILinkDetails]] - `imports` [EXTRACTED]
 - [[IModule]] - `contains` [EXTRACTED]
@@ -34,4 +33,4 @@ tags:
 - [[issues.ts]] - `imports_from` [EXTRACTED]
 - [[view-props.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Distribution_Link
+#graphify/code #graphify/EXTRACTED #community/Community_101

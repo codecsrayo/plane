@@ -1,17 +1,22 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.29
+members: 7
 ---
 
 # Community 555
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.29 - loosely connected
+**Members:** 7 nodes
 
 ## Members
-
-- [[index.ts_180]] - code - propel/src/command/index.ts
+- [[.test_workspace_lite_serializer_fields()]] - code - api/plane/tests/unit/serializers/test_workspace.py
+- [[.test_workspace_lite_serializer_read_only()]] - code - api/plane/tests/unit/serializers/test_workspace.py
+- [[Test that the serializer fields are read-only]] - rationale - api/plane/tests/unit/serializers/test_workspace.py
+- [[Test that the serializer includes the correct fields_1]] - rationale - api/plane/tests/unit/serializers/test_workspace.py
+- [[Test the WorkspaceLiteSerializer]] - rationale - api/plane/tests/unit/serializers/test_workspace.py
+- [[TestWorkspaceLiteSerializer]] - code - api/plane/tests/unit/serializers/test_workspace.py
+- [[test_workspace.py]] - code - api/plane/tests/unit/serializers/test_workspace.py
 
 ## Live Query (requires Dataview plugin)
 

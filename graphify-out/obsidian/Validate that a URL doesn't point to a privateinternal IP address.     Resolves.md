@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/bgtasks/work_item_link_task.py"
 type: "rationale"
-community: "Work Link"
+community: "Community 478"
 location: "L28"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Work_Link
+  - community/Community_478
 ---
 
-# Validate that a URL doesn't point to a private/internal IP address. Resolves
+# Validate that a URL doesn't point to a private/internal IP address.     Resolves
 
 ## Connections
-
 - [[validate_url_ip()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Work_Link
+#graphify/rationale #graphify/EXTRACTED #community/Community_478

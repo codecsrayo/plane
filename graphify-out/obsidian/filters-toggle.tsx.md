@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/work-item-filters/filters-toggle.tsx"
 type: "code"
-community: "Project Profile"
+community: "Filter UI & Breadcrumbs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Profile
+  - community/Filter_UI__Breadcrumbs
 ---
 
 # filters-toggle.tsx
 
 ## Connections
-
 - [[FiltersToggle]] - `imports` [EXTRACTED]
 - [[TWorkItemFiltersToggleProps]] - `contains` [EXTRACTED]
 - [[WorkItemFiltersToggle]] - `contains` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[use-work-item-filters.ts]] - `imports_from` [EXTRACTED]
 - [[useWorkItemFilters()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Profile
+#graphify/code #graphify/EXTRACTED #community/Filter_UI__Breadcrumbs

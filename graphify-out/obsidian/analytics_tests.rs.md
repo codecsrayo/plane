@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/analytics_tests.rs"
 type: "code"
-community: "Returns Analytics"
+community: "Community 272"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Analytics
+  - community/Community_272
 ---
 
 # analytics_tests.rs
 
 ## Connections
-
 - [[advance_analytics_charts_member_returns_200()]] - `contains` [EXTRACTED]
 - [[advance_analytics_member_returns_200()]] - `contains` [EXTRACTED]
 - [[advance_analytics_stats_member_returns_200()]] - `contains` [EXTRACTED]
@@ -35,4 +34,4 @@ tags:
 - [[workspace_analytics_member_returns_200()]] - `contains` [EXTRACTED]
 - [[workspace_analytics_unauthenticated_returns_401()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Analytics
+#graphify/code #graphify/EXTRACTED #community/Community_272

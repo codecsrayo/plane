@@ -1,13 +1,13 @@
 ---
 source_file: "docker-compose.yml"
 type: "document"
-community: "Object Storage"
+community: "Community 2082"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Object_Storage
+  - community/Community_2082
 ---
 
 # MinIO Object Storage
 
-#graphify/document #graphify/EXTRACTED #community/Object_Storage
+#graphify/document #graphify/EXTRACTED #community/Community_2082

@@ -1,14 +1,14 @@
 ---
 source_file: "api/plane/tests/contract/app/test_api_token.py"
 type: "rationale"
-community: "Test Deleting"
+community: "Community 1765"
 location: "L220"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Test_Deleting
+  - community/Community_1765
 ---
 
 # Test deleting another user's API token (should fail)
 
-#graphify/rationale #graphify/EXTRACTED #community/Test_Deleting
+#graphify/rationale #graphify/EXTRACTED #community/Community_1765

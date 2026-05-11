@@ -1,18 +1,17 @@
 ---
 source_file: "admin/app/(all)/(dashboard)/ai/form.tsx"
 type: "code"
-community: "Controller Values"
+community: "Community 551"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Controller_Values
+  - community/Community_551
 ---
 
 # form.tsx
 
 ## Connections
-
 - [[AIFormValues]] - `contains` [EXTRACTED]
 - [[ControllerInput()]] - `imports` [EXTRACTED]
 - [[IInstanceAIForm]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[logger.ts]] - `imports_from` [EXTRACTED]
 - [[page.tsx_78]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Controller_Values
+#graphify/code #graphify/EXTRACTED #community/Community_551

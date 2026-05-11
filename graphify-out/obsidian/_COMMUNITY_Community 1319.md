@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_8]] - code - ui/src/badge/index.ts
+- [[index.ts_27]] - code - ui/src/tabs/index.ts
 
 ## Live Query (requires Dataview plugin)
 

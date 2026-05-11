@@ -1,18 +1,17 @@
 ---
 source_file: "utils/src/theme/color-conversion.ts"
 type: "code"
-community: "Color Shade"
+community: "Community 87"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Color_Shade
+  - community/Community_87
 ---
 
 # color-conversion.ts
 
 ## Connections
-
 - [[OKLCH]] - `contains` [EXTRACTED]
 - [[RGB]] - `contains` [EXTRACTED]
 - [[color-validation.ts]] - `imports_from` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[toHex()_1]] - `contains` [EXTRACTED]
 - [[validateAndAdjustOKLCH()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Color_Shade
+#graphify/code #graphify/EXTRACTED #community/Community_87

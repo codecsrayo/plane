@@ -1,14 +1,14 @@
 ---
 source_file: "i18n/src/locales/ja/accessibility.ts"
 type: "code"
-community: "Accessibility"
+community: "Community 1431"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Accessibility
+  - community/Community_1431
 ---
 
 # accessibility.ts
 
-#graphify/code #graphify/EXTRACTED #community/Accessibility
+#graphify/code #graphify/EXTRACTED #community/Community_1431

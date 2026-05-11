@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/onboarding/create-or-join-workspaces.tsx"
 type: "code"
-community: "Workspace Issue"
+community: "Community 45"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Issue
+  - community/Community_45
 ---
 
 # create-or-join-workspaces.tsx
 
 ## Connections
-
 - [[CreateOrJoinWorkspaces]] - `contains` [EXTRACTED]
 - [[CreateWorkspace]] - `imports` [EXTRACTED]
 - [[ECreateOrJoinWorkspaceViews_1]] - `contains` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[use-instance.ts]] - `imports_from` [EXTRACTED]
 - [[useInstance()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_45

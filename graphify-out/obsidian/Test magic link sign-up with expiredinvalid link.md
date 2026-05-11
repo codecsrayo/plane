@@ -1,14 +1,14 @@
 ---
 source_file: "api/plane/tests/contract/app/test_authentication.py"
 type: "rationale"
-community: "Link Test"
+community: "Community 1828"
 location: "L352"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Link_Test
+  - community/Community_1828
 ---
 
 # Test magic link sign-up with expired/invalid link
 
-#graphify/rationale #graphify/EXTRACTED #community/Link_Test
+#graphify/rationale #graphify/EXTRACTED #community/Community_1828

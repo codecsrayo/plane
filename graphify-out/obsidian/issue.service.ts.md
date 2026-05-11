@@ -1,19 +1,18 @@
 ---
 source_file: "services/src/intake/issue.service.ts"
 type: "code"
-community: "Issue Intake"
+community: "Community 83"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Intake
+  - community/Community_83
 ---
 
 # issue.service.ts
 
 ## Connections
-
 - [[IntakeIssueService]] - `contains` [EXTRACTED]
 - [[api.service.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Intake
+#graphify/code #graphify/EXTRACTED #community/Community_83

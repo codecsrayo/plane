@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/settings/page-header.tsx"
 type: "code"
-community: "Settings Project"
+community: "Community 84"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Settings_Project
+  - community/Community_84
 ---
 
 # Props
 
 ## Connections
-
 - [[page-header.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Settings_Project
+#graphify/code #graphify/EXTRACTED #community/Community_84

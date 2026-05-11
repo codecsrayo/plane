@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/migration/src/main.rs"
 type: "code"
-community: "Password Email"
+community: "Community 21"
 location: "L5"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Password_Email
+  - community/Community_21
 ---
 
 # main()
 
 ## Connections
-
 - [[.connect()]] - `calls` [INFERRED]
 - [[.from_env()]] - `calls` [INFERRED]
 - [[.from_path()]] - `calls` [INFERRED]
@@ -29,4 +28,4 @@ tags:
 - [[start_cron()]] - `calls` [INFERRED]
 - [[start_job_workers()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Password_Email
+#graphify/code #graphify/INFERRED #community/Community_21

@@ -1,19 +1,18 @@
 ---
 source_file: "space/components/editor/rich-text-editor.tsx"
 type: "code"
-community: "Text Flagging"
+community: "Community 149"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Text_Flagging
+  - community/Community_149
 ---
 
 # rich-text-editor.tsx
 
 ## Connections
-
-- [[RichTextEditor_1]] - `contains` [EXTRACTED]
+- [[RichTextEditor]] - `contains` [EXTRACTED]
 - [[RichTextEditorWrapperProps_1]] - `contains` [EXTRACTED]
 - [[editor.helper.ts]] - `imports_from` [EXTRACTED]
 - [[getEditorFileHandlers()]] - `imports` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[useMember()]] - `imports` [EXTRACTED]
 - [[useParseEditorContent()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Text_Flagging
+#graphify/code #graphify/EXTRACTED #community/Community_149

@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/utils/url.rs"
 type: "code"
-community: "Detects Accepts"
+community: "Community 399"
 location: "L177"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Detects_Accepts
+  - community/Community_399
 ---
 
 # accepts_localhost_and_ipv4()
 
 ## Connections
-
 - [[url.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Detects_Accepts
+#graphify/code #graphify/EXTRACTED #community/Community_399

@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/table/plugins/drag-handles/utils.ts"
 type: "code"
-community: "Drag Table"
+community: "Community 38"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Drag_Table
+  - community/Community_38
 ---
 
 # utils.ts
 
 ## Connections
-
 - [[CORE_EDITOR_META]] - `imports` [EXTRACTED]
 - [[TableNodeLocation]] - `imports` [EXTRACTED]
 - [[cloneTableCell()]] - `contains` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[utils.ts_3]] - `imports_from` [EXTRACTED]
 - [[utils.ts_4]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Drag_Table
+#graphify/code #graphify/EXTRACTED #community/Community_38

@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/table/plugins/drag-handles/color-selector.tsx"
 type: "code"
-community: "Drag Table"
+community: "Community 38"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Drag_Table
+  - community/Community_38
 ---
 
 # color-selector.tsx
 
 ## Connections
-
 - [[COLORS_LIST]] - `imports` [EXTRACTED]
 - [[CORE_EXTENSIONS]] - `imports` [EXTRACTED]
 - [[Props_35]] - `contains` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[extension.ts]] - `imports_from` [EXTRACTED]
 - [[handleBackgroundColorChange()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Drag_Table
+#graphify/code #graphify/EXTRACTED #community/Community_38

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/settings/storage.py"
 type: "code"
-community: "Endpoint Issue"
+community: "Community 32"
 location: "L20"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Endpoint_Issue
+  - community/Community_32
 ---
 
 # S3Storage
 
 ## Connections
-
 - [[.__init__()_4]] - `method` [EXTRACTED]
 - [[._get_content_disposition()]] - `method` [EXTRACTED]
 - [[.copy_object()]] - `method` [EXTRACTED]
@@ -86,4 +85,4 @@ tags:
 - [[test_generate_presigned_url_uses_custom_expiration()]] - `calls` [INFERRED]
 - [[test_generate_presigned_url_uses_default_expiration()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Endpoint_Issue
+#graphify/code #graphify/INFERRED #community/Community_32

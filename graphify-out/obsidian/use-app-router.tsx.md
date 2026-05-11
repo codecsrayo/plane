@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/use-app-router.tsx"
 type: "code"
-community: "Project Settings"
+community: "Community 24"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Community_24
 ---
 
 # use-app-router.tsx
 
 ## Connections
-
 - [[account-commands.ts]] - `imports_from` [EXTRACTED]
 - [[all-issue-layout-root.tsx]] - `imports_from` [EXTRACTED]
 - [[all-properties.tsx]] - `imports_from` [EXTRACTED]
@@ -99,4 +98,4 @@ tags:
 - [[work-item-header.tsx]] - `imports_from` [EXTRACTED]
 - [[work-item-level.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Community_24

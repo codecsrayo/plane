@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/inbox/modals/create-modal/index.ts"
 type: "code"
-community: "Issue Inbox"
+community: "Community 84"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Inbox
+  - community/Community_84
 ---
 
 # index.ts
 
 ## Connections
-
 - [[header.tsx_40]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Inbox
+#graphify/code #graphify/EXTRACTED #community/Community_84

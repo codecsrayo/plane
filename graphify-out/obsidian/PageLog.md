@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/models/page.py"
 type: "code"
-community: "Meta User"
+community: "Python Workflow Services"
 location: "L80"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Meta_User
+  - community/Python_Workflow_Services
 ---
 
 # PageLog
 
 ## Connections
-
 - [[.__str__()_33]] - `method` [EXTRACTED]
 - [[BaseModel]] - `inherits` [EXTRACTED]
 - [[BaseModel_1]] - `uses` [INFERRED]
@@ -20,4 +19,4 @@ tags:
 - [[page_transaction()]] - `calls` [INFERRED]
 - [[update_pages()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Meta_User
+#graphify/code #graphify/INFERRED #community/Python_Workflow_Services

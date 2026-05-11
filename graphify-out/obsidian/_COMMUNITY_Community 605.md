@@ -1,18 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.60
+members: 5
 ---
 
 # Community 605
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.60 - moderately connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[use-extended-sidebar-overview-outside-click.tsx]] - code - web/core/hooks/use-extended-sidebar-overview-outside-click.tsx
-- [[useExtendedSidebarOutsideClickDetector()]] - code - web/core/hooks/use-extended-sidebar-overview-outside-click.tsx
+- [[VIEW_ACCESS_SPECIFIERS]] - code - packages/constants/src/views.ts
+- [[VIEW_SORTING_KEY_OPTIONS]] - code - packages/constants/src/views.ts
+- [[VIEW_SORT_BY_OPTIONS]] - code - packages/constants/src/views.ts
+- [[views.ts]] - code - constants/src/views.ts
+- [[views.ts_2]] - code - packages/constants/src/views.ts
 
 ## Live Query (requires Dataview plugin)
 

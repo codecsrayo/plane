@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/roots/cycle-layout-root.tsx"
 type: "code"
-community: "Issue Project"
+community: "Active Cycle Stats"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Project
+  - community/Active_Cycle_Stats
 ---
 
 # cycle-layout-root.tsx
 
 ## Connections
-
 - [[CycleCalendarLayout]] - `imports` [EXTRACTED]
 - [[CycleIssueLayout()]] - `contains` [EXTRACTED]
 - [[CycleKanBanLayout]] - `imports` [EXTRACTED]
@@ -41,4 +40,4 @@ tags:
 - [[useCycle()]] - `imports` [EXTRACTED]
 - [[useIssues()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Project
+#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats

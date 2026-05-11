@@ -1,25 +1,40 @@
 ---
 type: community
-cohesion: 0.28
-members: 9
+cohesion: 0.17
+members: 25
 ---
 
 # Community 235
 
-**Cohesion:** 0.28 - loosely connected
-**Members:** 9 nodes
+**Cohesion:** 0.17 - loosely connected
+**Members:** 25 nodes
 
 ## Members
-
-- [[ChartDraggable]] - code - web/core/components/gantt-chart/helpers/draggable.tsx
-- [[LeftResizable]] - code - web/core/components/gantt-chart/helpers/blockResizables/left-resizable.tsx
-- [[LeftResizableProps]] - code - web/core/components/gantt-chart/helpers/blockResizables/left-resizable.tsx
-- [[Props_50]] - code - web/core/components/gantt-chart/helpers/draggable.tsx
-- [[RightResizable]] - code - web/core/components/gantt-chart/helpers/blockResizables/right-resizable.tsx
-- [[RightResizableProps]] - code - web/core/components/gantt-chart/helpers/blockResizables/right-resizable.tsx
-- [[draggable.tsx]] - code - web/core/components/gantt-chart/helpers/draggable.tsx
-- [[left-resizable.tsx]] - code - web/core/components/gantt-chart/helpers/blockResizables/left-resizable.tsx
-- [[right-resizable.tsx]] - code - web/core/components/gantt-chart/helpers/blockResizables/right-resizable.tsx
+- [[AssigneeStatComponent]] - code - web/core/components/core/sidebar/progress-stats/assignee.tsx
+- [[LabelStatComponent]] - code - web/core/components/core/sidebar/progress-stats/label.tsx
+- [[ModuleProgressStats]] - code - web/core/components/modules/analytics-sidebar/progress-stats.tsx
+- [[PROGRESS_STATS]] - code - web/core/components/core/sidebar/progress-stats/shared.ts
+- [[SingleProgressStats()]] - code - web/core/components/core/sidebar/single-progress-stats.tsx
+- [[StateGroupStatComponent]] - code - web/core/components/core/sidebar/progress-stats/state_group.tsx
+- [[TAssigneeData]] - code - web/core/components/core/sidebar/progress-stats/assignee.tsx
+- [[TAssigneeStatComponent]] - code - web/core/components/core/sidebar/progress-stats/assignee.tsx
+- [[TCycleProgressStats]] - code - web/core/components/cycles/analytics-sidebar/progress-stats.tsx
+- [[TLabelData]] - code - web/core/components/core/sidebar/progress-stats/label.tsx
+- [[TLabelStatComponent]] - code - web/core/components/core/sidebar/progress-stats/label.tsx
+- [[TModuleProgressStats]] - code - web/core/components/modules/analytics-sidebar/progress-stats.tsx
+- [[TSelectedFilterProgressStats]] - code - web/core/components/core/sidebar/progress-stats/shared.ts
+- [[TSelectedFilterProgressStatsType]] - code - web/core/components/core/sidebar/progress-stats/shared.ts
+- [[TSingleProgressStatsProps]] - code - web/core/components/core/sidebar/single-progress-stats.tsx
+- [[TStateGroupData]] - code - web/core/components/core/sidebar/progress-stats/state_group.tsx
+- [[TStateGroupStatComponent]] - code - web/core/components/core/sidebar/progress-stats/state_group.tsx
+- [[assignee.tsx_2]] - code - web/core/components/core/sidebar/progress-stats/assignee.tsx
+- [[createFilterUpdateHandler()]] - code - web/core/components/core/sidebar/progress-stats/shared.ts
+- [[label.tsx_5]] - code - web/core/components/core/sidebar/progress-stats/label.tsx
+- [[progress-stats.tsx_1]] - code - web/core/components/cycles/analytics-sidebar/progress-stats.tsx
+- [[progress-stats.tsx]] - code - web/core/components/modules/analytics-sidebar/progress-stats.tsx
+- [[shared.ts_15]] - code - web/core/components/core/sidebar/progress-stats/shared.ts
+- [[single-progress-stats.tsx]] - code - web/core/components/core/sidebar/single-progress-stats.tsx
+- [[state_group.tsx]] - code - web/core/components/core/sidebar/progress-stats/state_group.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -29,10 +44,10 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 4 edges to [[_COMMUNITY_Community 90]]
+- 6 edges to [[_COMMUNITY_Active Cycle Stats]]
 
 ## Top bridge nodes
-
-- [[left-resizable.tsx]] - degree 5, connects to 1 community
-- [[right-resizable.tsx]] - degree 5, connects to 1 community
+- [[progress-stats.tsx_1]] - degree 17, connects to 1 community
+- [[progress-stats.tsx]] - degree 16, connects to 1 community
+- [[single-progress-stats.tsx]] - degree 6, connects to 1 community
+- [[SingleProgressStats()]] - degree 5, connects to 1 community

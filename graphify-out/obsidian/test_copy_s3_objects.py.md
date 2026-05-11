@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/tests/unit/bg_tasks/test_copy_s3_objects.py"
 type: "code"
-community: "Copy Test"
+community: "Community 48"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Copy_Test
+  - community/Community_48
 ---
 
 # test_copy_s3_objects.py
 
 ## Connections
-
 - [[TestCopyS3Objects]] - `contains` [EXTRACTED]
 - [[file_asset()]] - `contains` [EXTRACTED]
 - [[issue()]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[test_copy_assets_successful()]] - `contains` [EXTRACTED]
 - [[test_copy_s3_objects_of_description_and_assets()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Copy_Test
+#graphify/code #graphify/EXTRACTED #community/Community_48

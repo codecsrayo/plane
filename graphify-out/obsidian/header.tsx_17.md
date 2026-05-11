@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(projects)/workspace-views/header.tsx"
 type: "code"
-community: "Project Work"
+community: "Community 22"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Work
+  - community/Community_22
 ---
 
 # header.tsx
 
 ## Connections
-
 - [[BreadcrumbLink()]] - `imports` [EXTRACTED]
 - [[CreateUpdateWorkspaceViewModal]] - `imports` [EXTRACTED]
 - [[DefaultWorkspaceViewQuickActions]] - `imports` [EXTRACTED]
@@ -36,4 +35,4 @@ tags:
 - [[useGlobalView()]] - `imports` [EXTRACTED]
 - [[useIssues()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Work
+#graphify/code #graphify/EXTRACTED #community/Community_22

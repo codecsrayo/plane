@@ -1,13 +1,13 @@
 ---
 source_file: "docker-compose.yml"
 type: "document"
-community: "Traefik Reverse"
+community: "Community 2087"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Traefik_Reverse
+  - community/Community_2087
 ---
 
 # Traefik Reverse Proxy
 
-#graphify/document #graphify/EXTRACTED #community/Traefik_Reverse
+#graphify/document #graphify/EXTRACTED #community/Community_2087

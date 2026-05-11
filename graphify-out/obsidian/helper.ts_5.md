@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-detail-widgets/sub-issues/helper.ts"
 type: "code"
-community: "Issue Activity"
+community: "Issue Activity Types"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Issue_Activity_Types
 ---
 
 # helper.ts
 
 ## Connections
-
 - [[content.tsx_2]] - `imports_from` [EXTRACTED]
 - [[issue-detail-widget-modals.tsx]] - `imports_from` [EXTRACTED]
 - [[list-item.tsx_1]] - `imports_from` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 - [[useSubIssueOperations()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Types

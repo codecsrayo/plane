@@ -1,19 +1,18 @@
 ---
 source_file: "api_rust/src/jobs/export.rs"
 type: "code"
-community: "Encode Sanitize"
+community: "Community 21"
 location: "L508"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Encode_Sanitize
+  - community/Community_21
 ---
 
 # build_rows()
 
 ## Connections
-
 - [[encode_issues()]] - `calls` [EXTRACTED]
 - [[export.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Encode_Sanitize
+#graphify/code #graphify/EXTRACTED #community/Community_21

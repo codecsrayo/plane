@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/project/index.ts"
 type: "code"
-community: "Issue Activity"
+community: "Project Filters & Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Project_Filters__Archives
 ---
 
 # index.ts
 
 ## Connections
-
 - [[base-project-member.store.ts]] - `imports_from` [EXTRACTED]
 - [[bulk-delete-issues-modal.tsx]] - `imports_from` [EXTRACTED]
 - [[cycle.store.ts]] - `imports_from` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[project.store.ts]] - `imports_from` [EXTRACTED]
 - [[select-duplicate.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

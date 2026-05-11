@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 800
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_98]] - code - web/core/components/issues/issue-layouts/quick-add/button/index.ts
+- [[AdditionalActivityRoot]] - code - web/ce/components/issues/issue-details/additional-activity-root.tsx
+- [[TAdditionalActivityRoot]] - code - web/ce/components/issues/issue-details/additional-activity-root.tsx
+- [[additional-activity-root.tsx]] - code - web/ce/components/issues/issue-details/additional-activity-root.tsx
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(projects)/page.tsx"
 type: "code"
-community: "Workspace Dashboard"
+community: "Community 65"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Dashboard
+  - community/Community_65
 ---
 
 # page.tsx
 
 ## Connections
-
 - [[AppHeader]] - `imports` [EXTRACTED]
 - [[ContentWrapper()]] - `imports` [EXTRACTED]
 - [[PageHead()]] - `imports` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[use-workspace.ts]] - `imports_from` [EXTRACTED]
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Dashboard
+#graphify/code #graphify/EXTRACTED #community/Community_65

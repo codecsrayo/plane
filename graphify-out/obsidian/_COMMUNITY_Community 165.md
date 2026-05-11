@@ -1,32 +1,48 @@
 ---
 type: community
-cohesion: 0.15
-members: 16
+cohesion: 0.06
+members: 33
 ---
 
 # Community 165
 
-**Cohesion:** 0.15 - loosely connected
-**Members:** 16 nodes
+**Cohesion:** 0.06 - loosely connected
+**Members:** 33 nodes
 
 ## Members
-
-- [[PAGE_SORTING_KEY_OPTIONS]] - code - web/core/components/pages/list/order-by.tsx
-- [[PageOrderByDropdown()]] - code - web/core/components/pages/list/order-by.tsx
-- [[PageSearchInput()]] - code - web/core/components/pages/list/search-input.tsx
-- [[PageTabNavigation()]] - code - web/core/components/pages/list/tab-navigation.tsx
-- [[PagesListHeaderRoot]] - code - web/core/components/pages/header/root.tsx
-- [[Props_393]] - code - web/core/components/pages/header/root.tsx
-- [[Props_397]] - code - web/core/components/pages/list/order-by.tsx
-- [[Props_395]] - code - web/core/components/pages/list/search-input.tsx
-- [[TPageTabNavigation]] - code - web/core/components/pages/list/tab-navigation.tsx
-- [[index.ts_156]] - code - web/core/components/pages/list/applied-filters/index.ts
-- [[index.ts_155]] - code - web/core/components/pages/list/filters/index.ts
-- [[order-by.tsx_5]] - code - web/core/components/pages/list/order-by.tsx
-- [[pageTabs]] - code - web/core/components/pages/list/tab-navigation.tsx
-- [[root.tsx_83]] - code - web/core/components/pages/header/root.tsx
-- [[search-input.tsx]] - code - web/core/components/pages/list/search-input.tsx
-- [[tab-navigation.tsx]] - code - web/core/components/pages/list/tab-navigation.tsx
+- [[.addIssueToCycle()]] - code - web/core/services/issue/issue.service.ts
+- [[.addSubIssues()]] - code - web/core/services/issue/issue.service.ts
+- [[.bulkArchiveIssues()]] - code - web/core/services/issue/issue.service.ts
+- [[.bulkDeleteIssues()]] - code - web/core/services/issue/issue.service.ts
+- [[.bulkOperations()]] - code - web/core/services/issue/issue.service.ts
+- [[.bulkSubscribeIssues()]] - code - web/core/services/issue/issue.service.ts
+- [[.constructor()_157]] - code - web/core/services/issue/issue.service.ts
+- [[.createIssue()]] - code - web/core/services/issue/issue.service.ts
+- [[.createIssueLink()]] - code - web/core/services/issue/issue.service.ts
+- [[.deleteIssue()]] - code - web/core/services/issue/issue.service.ts
+- [[.deleteIssueLink()]] - code - web/core/services/issue/issue.service.ts
+- [[.fetchIssueLinks()]] - code - web/core/services/issue/issue.service.ts
+- [[.getDeletedIssues()]] - code - web/core/services/issue/issue.service.ts
+- [[.getIssueActivities()]] - code - web/core/services/issue/issue.service.ts
+- [[.getIssueDisplayProperties()]] - code - web/core/services/issue/issue.service.ts
+- [[.getIssueMetaFromURL()]] - code - web/core/services/issue/issue.service.ts
+- [[.getIssueNotificationSubscriptionStatus()]] - code - web/core/services/issue/issue.service.ts
+- [[.getIssues()]] - code - web/core/services/issue/issue.service.ts
+- [[.getIssuesForSync()]] - code - web/core/services/issue/issue.service.ts
+- [[.getIssuesFromServer()]] - code - web/core/services/issue/issue.service.ts
+- [[.getIssuesWithParams()]] - code - web/core/services/issue/issue.service.ts
+- [[.patchIssue()]] - code - web/core/services/issue/issue.service.ts
+- [[.removeIssueFromCycle()]] - code - web/core/services/issue/issue.service.ts
+- [[.retrieve()_8]] - code - web/core/services/issue/issue.service.ts
+- [[.retrieveIssues()]] - code - web/core/services/issue/issue.service.ts
+- [[.retrieveWithIdentifier()]] - code - web/core/services/issue/issue.service.ts
+- [[.subIssues()]] - code - web/core/services/issue/issue.service.ts
+- [[.subscribeToIssueNotifications()]] - code - web/core/services/issue/issue.service.ts
+- [[.unsubscribeFromIssueNotifications()]] - code - web/core/services/issue/issue.service.ts
+- [[.updateIssueDates()]] - code - web/core/services/issue/issue.service.ts
+- [[.updateIssueDisplayProperties()]] - code - web/core/services/issue/issue.service.ts
+- [[.updateIssueLink()]] - code - web/core/services/issue/issue.service.ts
+- [[IssueService]] - code - web/core/services/issue/issue.service.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -36,12 +52,8 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 2 edges to [[_COMMUNITY_Member Filters & Description]]
-- 1 edge to [[_COMMUNITY_Community 42]]
-- 1 edge to [[_COMMUNITY_Page Actions]]
+- 2 edges to [[_COMMUNITY_Issue Store & Filters Logic]]
+- 1 edge to [[_COMMUNITY_Community 43]]
 
 ## Top bridge nodes
-
-- [[root.tsx_83]] - degree 13, connects to 2 communities
-- [[Props_393]] - degree 2, connects to 1 community
+- [[IssueService]] - degree 35, connects to 2 communities

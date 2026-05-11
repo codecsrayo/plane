@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/base-layouts/gantt/index.ts"
+source_file: "packages/types/src/base-layouts/gantt/index.ts"
 type: "code"
-community: "Layouts Gantt"
+community: "Community 102"
 location: "L36"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Layouts_Gantt
+  - community/Community_102
 ---
 
 # IGanttRenderProps
 
 ## Connections
-
 - [[index.ts_104]] - `contains` [EXTRACTED]
+- [[index.ts_565]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Layouts_Gantt
+#graphify/code #graphify/EXTRACTED #community/Community_102

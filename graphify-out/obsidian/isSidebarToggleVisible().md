@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/components/desktop/helper.ts"
 type: "code"
-community: "Sidebar Toggle"
+community: "Community 1012"
 location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Toggle
+  - community/Community_1012
 ---
 
 # isSidebarToggleVisible()
 
 ## Connections
-
 - [[helper.ts_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Toggle
+#graphify/code #graphify/EXTRACTED #community/Community_1012

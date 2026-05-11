@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/store/estimates/estimate.ts"
 type: "code"
-community: "Estimate Project"
+community: "Community 59"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Estimate_Project
+  - community/Community_59
 ---
 
 # estimate.ts
 
 ## Connections
-
 - [[CoreRootStore]] - `imports` [EXTRACTED]
 - [[Estimate]] - `contains` [EXTRACTED]
 - [[EstimatePoint]] - `imports` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[estimate.service.ts]] - `imports_from` [EXTRACTED]
 - [[root.store.ts_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Estimate_Project
+#graphify/code #graphify/EXTRACTED #community/Community_59

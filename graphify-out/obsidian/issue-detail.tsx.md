@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/quick-action-dropdowns/issue-detail.tsx"
 type: "code"
-community: "Issue Work"
+community: "Project Filters & Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Work
+  - community/Project_Filters__Archives
 ---
 
 # issue-detail.tsx
 
 ## Connections
-
 - [[ArchiveIssueModal()]] - `imports` [EXTRACTED]
 - [[CreateUpdateIssueModal]] - `imports` [EXTRACTED]
 - [[DeleteIssueModal]] - `imports` [EXTRACTED]
@@ -33,4 +32,4 @@ tags:
 - [[useProjectState()]] - `imports` [EXTRACTED]
 - [[useWorkItemDetailMenuItems()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Work
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

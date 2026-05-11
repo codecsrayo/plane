@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/workspaces.rs"
 type: "code"
-community: "Workspace User"
+community: "Community 47"
 location: "L53"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_User
+  - community/Community_47
 ---
 
 # require_admin()
 
 ## Connections
-
 - [[create_invitations()]] - `calls` [EXTRACTED]
 - [[delete_invitation()]] - `calls` [EXTRACTED]
 - [[delete_workspace()]] - `calls` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[update_workspace()]] - `calls` [EXTRACTED]
 - [[workspaces.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_User
+#graphify/code #graphify/EXTRACTED #community/Community_47

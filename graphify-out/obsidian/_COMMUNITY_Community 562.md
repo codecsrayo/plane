@@ -1,17 +1,21 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.53
+members: 6
 ---
 
 # Community 562
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.53 - moderately connected
+**Members:** 6 nodes
 
 ## Members
-
-- [[index.ts_196]] - code - propel/src/menu/index.ts
+- [[constructor()]] - code - packages/services/src/indexedDB.service.ts
+- [[indexedDB.service.ts_1]] - code - packages/services/src/indexedDB.service.ts
+- [[indexedDB.service.ts]] - code - services/src/indexedDB.service.ts
+- [[init()]] - code - packages/services/src/indexedDB.service.ts
+- [[query()]] - code - packages/services/src/indexedDB.service.ts
+- [[save()]] - code - packages/services/src/indexedDB.service.ts
 
 ## Live Query (requires Dataview plugin)
 

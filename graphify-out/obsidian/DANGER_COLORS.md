@@ -1,18 +1,17 @@
 ---
 source_file: "live/src/lib/pdf/colors.ts"
 type: "code"
-community: "Colors Render"
+community: "Community 55"
 location: "L228"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Colors_Render
+  - community/Community_55
 ---
 
 # DANGER_COLORS
 
 ## Connections
-
 - [[colors.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Colors_Render
+#graphify/code #graphify/EXTRACTED #community/Community_55

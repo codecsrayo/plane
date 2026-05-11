@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/api.service.ts"
 type: "code"
-community: "Estimate Project"
+community: "Community 59"
 location: "L112"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Estimate_Project
+  - community/Community_59
 ---
 
 # toApiError()
 
 ## Connections
-
 - [[.createEstimate()]] - `calls` [EXTRACTED]
 - [[.createEstimatePoint()]] - `calls` [EXTRACTED]
 - [[.createGlobalView()]] - `calls` [EXTRACTED]
@@ -89,4 +88,4 @@ tags:
 - [[workspace-notification.service.ts]] - `imports` [EXTRACTED]
 - [[workspace-notifications.store.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Estimate_Project
+#graphify/code #graphify/EXTRACTED #community/Community_59

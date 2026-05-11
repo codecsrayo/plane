@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/core/description-versions/modal.tsx"
 type: "code"
-community: "Member Members"
+community: "Community 408"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Members
+  - community/Community_408
 ---
 
 # modal.tsx
 
 ## Connections
-
 - [[DescriptionVersionsModal]] - `contains` [EXTRACTED]
 - [[Props_519]] - `contains` [EXTRACTED]
 - [[index.ts_318]] - `imports_from` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[useMember()]] - `imports` [EXTRACTED]
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Members
+#graphify/code #graphify/EXTRACTED #community/Community_408

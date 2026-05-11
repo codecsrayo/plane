@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/core/activity.tsx"
 type: "code"
-community: "Activity User"
+community: "Community 44"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Activity_User
+  - community/Community_44
 ---
 
 # activity.tsx
 
 ## Connections
-
 - [[ActivityIcon()_1]] - `contains` [EXTRACTED]
 - [[ActivityMessage()]] - `contains` [EXTRACTED]
 - [[ActivityMessageProps]] - `contains` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[useLabel()]] - `imports` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Activity_User
+#graphify/code #graphify/EXTRACTED #community/Community_44

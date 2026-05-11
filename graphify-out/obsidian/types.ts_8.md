@@ -1,18 +1,17 @@
 ---
 source_file: "e2e-utils/src/helpers/types.ts"
 type: "code"
-community: "Shape Issue"
+community: "Community 428"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Shape_Issue
+  - community/Community_428
 ---
 
 # types.ts
 
 ## Connections
-
 - [[IssueCreatePayload]] - `contains` [EXTRACTED]
 - [[IssueCreateShape]] - `contains` [EXTRACTED]
 - [[IssueDetailShape]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[buildCursor()]] - `contains` [EXTRACTED]
 - [[parseCursor()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Shape_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_428

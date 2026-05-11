@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/cycles.rs"
 type: "code"
-community: "Cycle Returns"
+community: "Community 331"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Returns
+  - community/Community_331
 ---
 
 # setup()
 
 ## Connections
-
 - [[.spawn()]] - `calls` [INFERRED]
 - [[add_issue_to_cycle_and_remove()]] - `calls` [EXTRACTED]
 - [[archive_cycle_and_list_archived()]] - `calls` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[list_cycles_unauthenticated_returns_401()]] - `calls` [EXTRACTED]
 - [[update_cycle_returns_200()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Returns
+#graphify/code #graphify/EXTRACTED #community/Community_331

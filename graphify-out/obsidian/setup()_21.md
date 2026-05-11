@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/workspace_extras2.rs"
 type: "code"
-community: "Returns Unauthenticated"
+community: "Community 418"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Unauthenticated
+  - community/Community_418
 ---
 
 # setup()
 
 ## Connections
-
 - [[.spawn()]] - `calls` [INFERRED]
 - [[delete_project_identifier_nonexistent_returns_4xx()]] - `calls` [EXTRACTED]
 - [[draft_to_issue_nonexistent_draft_returns_4xx()]] - `calls` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[patch_home_preference_key_returns_200()]] - `calls` [EXTRACTED]
 - [[workspace_extras2.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Unauthenticated
+#graphify/code #graphify/EXTRACTED #community/Community_418

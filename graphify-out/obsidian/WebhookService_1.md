@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/webhook.service.ts"
 type: "code"
-community: "Webhook Workspace"
+community: "Community 129"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Webhook_Workspace
+  - community/Community_129
 ---
 
 # WebhookService
 
 ## Connections
-
 - [[.constructor()_140]] - `method` [EXTRACTED]
 - [[.createWebhook()]] - `method` [EXTRACTED]
 - [[.deleteWebhook()]] - `method` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[webhook.service.ts_1]] - `contains` [EXTRACTED]
 - [[webhook.store.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Webhook_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_129

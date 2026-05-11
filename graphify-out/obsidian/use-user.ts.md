@@ -1,18 +1,17 @@
 ---
 source_file: "space/hooks/store/use-user.ts"
 type: "code"
-community: "Issue Peek"
+community: "Community 223"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Peek
+  - community/Community_223
 ---
 
 # use-user.ts
 
 ## Connections
-
 - [[IUserStore]] - `imports` [EXTRACTED]
 - [[StoreContext_2]] - `imports` [EXTRACTED]
 - [[add-comment.tsx]] - `imports_from` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[user.store.ts_2]] - `imports_from` [EXTRACTED]
 - [[user.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Peek
+#graphify/code #graphify/EXTRACTED #community/Community_223

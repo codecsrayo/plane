@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/layout.tsx"
 type: "code"
-community: "Project Workspace"
+community: "Community 340"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Workspace
+  - community/Community_340
 ---
 
 # layout.tsx
 
 ## Connections
-
 - [[NotAuthorizedView]] - `imports` [EXTRACTED]
 - [[SettingsMobileNav]] - `imports` [EXTRACTED]
 - [[WorkspaceSettingLayout]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[not-authorized-view.tsx]] - `imports_from` [EXTRACTED]
 - [[pathnameToAccessKey()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_340

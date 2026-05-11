@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/billing/header.tsx"
 type: "code"
-community: "Settings Project"
+community: "Community 84"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Settings_Project
+  - community/Community_84
 ---
 
 # header.tsx
 
 ## Connections
-
 - [[BillingWorkspaceSettingsHeader]] - `contains` [EXTRACTED]
 - [[BreadcrumbLink()]] - `imports` [EXTRACTED]
 - [[SettingsPageHeader()]] - `imports` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[page-header.tsx]] - `imports_from` [EXTRACTED]
 - [[page.tsx_50]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Settings_Project
+#graphify/code #graphify/EXTRACTED #community/Community_84

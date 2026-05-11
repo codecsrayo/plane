@@ -1,33 +1,50 @@
 ---
 type: community
-cohesion: 0.17
-members: 17
+cohesion: 0.10
+members: 35
 ---
 
 # Community 154
 
-**Cohesion:** 0.17 - loosely connected
-**Members:** 17 nodes
+**Cohesion:** 0.10 - loosely connected
+**Members:** 35 nodes
 
 ## Members
-
-- [[IssueDetailWidgetActionButtons()]] - code - web/core/components/issues/issue-detail-widgets/action-buttons.tsx
-- [[IssueDetailWidgetButton()]] - code - web/core/components/issues/issue-detail-widgets/widget-button.tsx
-- [[IssueDetailWidgetCollapsibles]] - code - web/core/components/issues/issue-detail-widgets/issue-detail-widget-collapsibles.tsx
-- [[IssueDetailWidgetModals]] - code - web/core/components/issues/issue-detail-widgets/issue-detail-widget-modals.tsx
-- [[IssueDetailWidgets()]] - code - web/core/components/issues/issue-detail-widgets/root.tsx
-- [[Props_265]] - code - web/core/components/issues/issue-detail-widgets/action-buttons.tsx
-- [[Props_262]] - code - web/core/components/issues/issue-detail-widgets/issue-detail-widget-collapsibles.tsx
-- [[Props_264]] - code - web/core/components/issues/issue-detail-widgets/root.tsx
-- [[Props_266]] - code - web/core/components/issues/issue-detail-widgets/widget-button.tsx
-- [[action-buttons.tsx]] - code - web/core/components/issues/issue-detail-widgets/action-buttons.tsx
-- [[index.ts_113]] - code - web/core/components/issues/issue-detail-widgets/attachments/index.ts
-- [[index.ts_116]] - code - web/core/components/issues/issue-detail-widgets/links/index.ts
-- [[index.ts_114]] - code - web/core/components/issues/issue-detail-widgets/relations/index.ts
-- [[index.ts_115]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/index.ts
-- [[issue-detail-widget-collapsibles.tsx]] - code - web/core/components/issues/issue-detail-widgets/issue-detail-widget-collapsibles.tsx
-- [[root.tsx_37]] - code - web/core/components/issues/issue-detail-widgets/root.tsx
-- [[widget-button.tsx]] - code - web/core/components/issues/issue-detail-widgets/widget-button.tsx
+- [[.get_project_url()]] - code - api/plane/tests/contract/app/test_project_app.py
+- [[Constructs the project endpoint URL for the given workspace as reverse() is]] - rationale - api/plane/tests/contract/app/test_project_app.py
+- [[Test project GET operations]] - rationale - api/plane/tests/contract/app/test_project_app.py
+- [[Test project PATCH, and DELETE operations]] - rationale - api/plane/tests/contract/app/test_project_app.py
+- [[Test project POST operations]] - rationale - api/plane/tests/contract/app/test_project_app.py
+- [[TestProjectAPIGet]] - code - api/plane/tests/contract/app/test_project_app.py
+- [[TestProjectAPIPatchDelete]] - code - api/plane/tests/contract/app/test_project_app.py
+- [[TestProjectAPIPost]] - code - api/plane/tests/contract/app/test_project_app.py
+- [[TestProjectBase]] - code - api/plane/tests/contract/app/test_project_app.py
+- [[test_create_project_duplicate_identifier()]] - code - api/plane/tests/contract/app/test_project_app.py
+- [[test_create_project_duplicate_name()]] - code - api/plane/tests/contract/app/test_project_app.py
+- [[test_create_project_empty_data()]] - code - api/plane/tests/contract/app/test_project_app.py
+- [[test_create_project_guest_forbidden()]] - code - api/plane/tests/contract/app/test_project_app.py
+- [[test_create_project_missing_required_fields()]] - code - api/plane/tests/contract/app/test_project_app.py
+- [[test_create_project_unauthenticated()]] - code - api/plane/tests/contract/app/test_project_app.py
+- [[test_create_project_valid_data()]] - code - api/plane/tests/contract/app/test_project_app.py
+- [[test_create_project_with_all_optional_fields()]] - code - api/plane/tests/contract/app/test_project_app.py
+- [[test_create_project_with_project_lead()]] - code - api/plane/tests/contract/app/test_project_app.py
+- [[test_delete_project_forbidden_non_admin()]] - code - api/plane/tests/contract/app/test_project_app.py
+- [[test_delete_project_success_project_admin()]] - code - api/plane/tests/contract/app/test_project_app.py
+- [[test_delete_project_success_workspace_admin()]] - code - api/plane/tests/contract/app/test_project_app.py
+- [[test_delete_project_unauthenticated()]] - code - api/plane/tests/contract/app/test_project_app.py
+- [[test_list_detail_projects()]] - code - api/plane/tests/contract/app/test_project_app.py
+- [[test_list_projects_authenticated_admin()]] - code - api/plane/tests/contract/app/test_project_app.py
+- [[test_list_projects_authenticated_guest()]] - code - api/plane/tests/contract/app/test_project_app.py
+- [[test_list_projects_unauthenticated()]] - code - api/plane/tests/contract/app/test_project_app.py
+- [[test_partial_update_duplicate_identifier_conflict()]] - code - api/plane/tests/contract/app/test_project_app.py
+- [[test_partial_update_duplicate_name_conflict()]] - code - api/plane/tests/contract/app/test_project_app.py
+- [[test_partial_update_invalid_data()]] - code - api/plane/tests/contract/app/test_project_app.py
+- [[test_partial_update_project_forbidden_non_admin()]] - code - api/plane/tests/contract/app/test_project_app.py
+- [[test_partial_update_project_success()]] - code - api/plane/tests/contract/app/test_project_app.py
+- [[test_project_app.py]] - code - api/plane/tests/contract/app/test_project_app.py
+- [[test_retrieve_archived_project()]] - code - api/plane/tests/contract/app/test_project_app.py
+- [[test_retrieve_project_not_found()]] - code - api/plane/tests/contract/app/test_project_app.py
+- [[test_retrieve_project_success()]] - code - api/plane/tests/contract/app/test_project_app.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -37,15 +54,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 2 edges to [[_COMMUNITY_Issue Activity Tracking]]
-- 2 edges to [[_COMMUNITY_Community 177]]
-- 1 edge to [[_COMMUNITY_Community 166]]
-- 1 edge to [[_COMMUNITY_Empty State Components]]
+- 1 edge to [[_COMMUNITY_Community 34]]
 
 ## Top bridge nodes
-
-- [[index.ts_114]] - degree 4, connects to 2 communities
-- [[issue-detail-widget-collapsibles.tsx]] - degree 9, connects to 1 community
-- [[root.tsx_37]] - degree 8, connects to 1 community
-- [[IssueDetailWidgetModals]] - degree 2, connects to 1 community
+- [[test_create_project_valid_data()]] - degree 3, connects to 1 community

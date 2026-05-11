@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/components/preferences/theme-switcher.tsx"
 type: "code"
-community: "Theme Custom"
+community: "Community 106"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Custom
+  - community/Community_106
 ---
 
 # theme-switcher.tsx
 
 ## Connections
-
 - [[CustomThemeSelector]] - `imports` [EXTRACTED]
 - [[SettingsControlItem()]] - `imports` [EXTRACTED]
 - [[ThemeSwitch()]] - `imports` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[index.ts_265]] - `imports_from` [EXTRACTED]
 - [[theme-switch.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Custom
+#graphify/code #graphify/EXTRACTED #community/Community_106

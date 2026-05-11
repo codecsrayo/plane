@@ -1,18 +1,17 @@
 ---
 source_file: "space/components/issues/issue-layouts/properties/all-properties.tsx"
 type: "code"
-community: "Issue Properties"
+community: "Community 167"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Community_167
 ---
 
 # all-properties.tsx
 
 ## Connections
-
 - [[IIssueProperties]] - `contains` [EXTRACTED]
 - [[IssueBlockCycle]] - `imports` [EXTRACTED]
 - [[IssueBlockDate]] - `imports` [EXTRACTED]
@@ -36,4 +35,4 @@ tags:
 - [[state.tsx_7]] - `imports_from` [EXTRACTED]
 - [[with-display-properties-HOC.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Community_167

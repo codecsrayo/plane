@@ -1,18 +1,17 @@
 ---
 source_file: "space/store/label.store.ts"
 type: "code"
-community: "Publish Cycle"
+community: "Community 20"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Publish_Cycle
+  - community/Community_20
 ---
 
 # LabelStore
 
 ## Connections
-
 - [[.constructor()_62]] - `method` [EXTRACTED]
 - [[.labels()]] - `method` [EXTRACTED]
 - [[.projectLabels()]] - `method` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[root.store.ts_2]] - `imports` [EXTRACTED]
 - [[root.store.ts_6]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Publish_Cycle
+#graphify/code #graphify/EXTRACTED #community/Community_20

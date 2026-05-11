@@ -1,18 +1,17 @@
 ---
 source_file: "space/components/issues/navbar/root.tsx"
 type: "code"
-community: "Project Navbar"
+community: "Community 225"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Navbar
+  - community/Community_225
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[IssuesNavbarRoot]] - `contains` [EXTRACTED]
 - [[NavbarControls]] - `imports` [EXTRACTED]
 - [[ProjectLogo()]] - `imports` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[project-logo.tsx]] - `imports_from` [EXTRACTED]
 - [[publish.store.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Navbar
+#graphify/code #graphify/EXTRACTED #community/Community_225

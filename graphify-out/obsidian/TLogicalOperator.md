@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/rich-filters/operators/index.ts"
+source_file: "packages/types/src/rich-filters/operators/index.ts"
 type: "code"
-community: "Operator Core"
+community: "Community 216"
 location: "L53"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Operator_Core
+  - community/Community_216
 ---
 
 # TLogicalOperator
 
 ## Connections
-
 - [[index.ts_107]] - `contains` [EXTRACTED]
+- [[index.ts_568]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Operator_Core
+#graphify/code #graphify/EXTRACTED #community/Community_216

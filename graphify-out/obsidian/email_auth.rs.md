@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/auth/email_auth.rs"
 type: "code"
-community: "Magic Sign"
+community: "Community 52"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Magic_Sign
+  - community/Community_52
 ---
 
 # email_auth.rs
 
 ## Connections
-
 - [[CredentialAuthForm]] - `contains` [EXTRACTED]
 - [[app_default_path()]] - `contains` [EXTRACTED]
 - [[authenticate_existing_user()]] - `contains` [EXTRACTED]
@@ -33,4 +32,4 @@ tags:
 - [[success_redirect()]] - `contains` [EXTRACTED]
 - [[update_login_metadata()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Magic_Sign
+#graphify/code #graphify/EXTRACTED #community/Community_52

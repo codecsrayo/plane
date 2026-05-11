@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/space/serializer/intake.py"
 type: "code"
-community: "Serializer Issue"
+community: "Community 97"
 location: "L21"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Serializer_Issue
+  - community/Community_97
 ---
 
 # Meta
 
 ## Connections
-
 - [[BaseSerializer_2]] - `uses` [INFERRED]
 - [[IssueFlatSerializer_1]] - `uses` [INFERRED]
 - [[LabelLiteSerializer_1]] - `uses` [INFERRED]
@@ -21,4 +20,4 @@ tags:
 - [[UserLiteSerializer_1]] - `uses` [INFERRED]
 - [[intake.py_8]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Serializer_Issue
+#graphify/code #graphify/INFERRED #community/Community_97

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/dropdowns/module/base.tsx"
 type: "code"
-community: "Label Dropdown"
+community: "Work Item Detail & Layouts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Dropdown
+  - community/Work_Item_Detail__Layouts
 ---
 
 # base.tsx
 
 ## Connections
-
 - [[BUTTON_VARIANTS_WITHOUT_TEXT]] - `imports` [EXTRACTED]
 - [[DropdownButton()_1]] - `imports` [EXTRACTED]
 - [[ModuleButtonContent()]] - `imports` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[useDropdown()]] - `imports` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Work_Item_Detail__Layouts

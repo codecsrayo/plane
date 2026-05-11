@@ -1,17 +1,18 @@
 ---
 type: community
 cohesion: 1.00
-members: 1
+members: 3
 ---
 
 # Community 822
 
 **Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.tsx_9]] - code - web/core/components/readonly/index.tsx
+- [[RecentsEmptyState()]] - code - web/core/components/home/widgets/empty-states/recents.tsx
+- [[getDisplayContent()]] - code - web/core/components/home/widgets/empty-states/recents.tsx
+- [[recents.tsx]] - code - web/core/components/home/widgets/empty-states/recents.tsx
 
 ## Live Query (requires Dataview plugin)
 

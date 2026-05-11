@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/table/plugins/drag-handles/row/dropdown.tsx"
 type: "code"
-community: "Drag Table"
+community: "Community 38"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Drag_Table
+  - community/Community_38
 ---
 
 # dropdown.tsx
 
 ## Connections
-
 - [[DROPDOWN_ITEMS_1]] - `contains` [EXTRACTED]
 - [[Props_37]] - `contains` [EXTRACTED]
 - [[RowOptionsDropdown()]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[getSelectedRows()]] - `imports` [EXTRACTED]
 - [[helpers.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Drag_Table
+#graphify/code #graphify/EXTRACTED #community/Community_38

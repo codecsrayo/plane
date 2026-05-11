@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[editor.ts_11]] - code - i18n/src/locales/ko/editor.ts
+- [[accessibility.ts_14]] - code - i18n/src/locales/ja/accessibility.ts
 
 ## Live Query (requires Dataview plugin)
 

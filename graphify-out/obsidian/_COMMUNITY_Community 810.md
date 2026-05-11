@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 810
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_150]] - code - web/core/components/inbox/modals/create-modal/index.ts
+- [[TIssuePropertyValueErrors]] - code - web/ce/types/issue-types/issue-property-values.d.ts
+- [[TIssuePropertyValues]] - code - web/ce/types/issue-types/issue-property-values.d.ts
+- [[issue-property-values.d.ts]] - code - web/ce/types/issue-types/issue-property-values.d.ts
 
 ## Live Query (requires Dataview plugin)
 

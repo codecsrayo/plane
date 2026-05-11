@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/empty-state/detailed-empty-state.stories.tsx"
 type: "code"
-community: "State Error"
+community: "Community 334"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/State_Error
+  - community/Community_334
 ---
 
 # detailed-empty-state.stories.tsx
 
 ## Connections
-
 - [[ArchivedState]] - `contains` [EXTRACTED]
 - [[BaseEmptyStateCommonProps]] - `imports` [EXTRACTED]
 - [[CycleState]] - `contains` [EXTRACTED]
@@ -34,4 +33,4 @@ tags:
 - [[meta_12]] - `contains` [EXTRACTED]
 - [[types.ts_10]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/State_Error
+#graphify/code #graphify/EXTRACTED #community/Community_334

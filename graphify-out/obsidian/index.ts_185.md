@@ -1,14 +1,14 @@
 ---
 source_file: "propel/src/empty-state/assets/index.ts"
 type: "code"
-community: "Community 1536"
+community: "Community 1519"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_1536
+  - community/Community_1519
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_1536
+#graphify/code #graphify/EXTRACTED #community/Community_1519

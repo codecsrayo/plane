@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/auth/magic_auth.rs"
 type: "code"
-community: "Magic Sign"
+community: "Community 52"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Magic_Sign
+  - community/Community_52
 ---
 
 # magic_auth.rs
 
 ## Connections
-
 - [[MagicAuthForm]] - `contains` [EXTRACTED]
 - [[MagicCodeData]] - `contains` [EXTRACTED]
 - [[MagicGenerateRequest]] - `contains` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[send_magic_code_email()]] - `contains` [EXTRACTED]
 - [[update_magic_login_metadata()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Magic_Sign
+#graphify/code #graphify/EXTRACTED #community/Community_52

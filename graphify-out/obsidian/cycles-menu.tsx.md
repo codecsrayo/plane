@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/power-k/ui/pages/context-based/work-item/cycles-menu.tsx"
 type: "code"
-community: "Menu Power"
+community: "Community 210"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu_Power
+  - community/Community_210
 ---
 
 # cycles-menu.tsx
 
 ## Connections
-
 - [[PowerKCyclesMenu]] - `imports` [EXTRACTED]
 - [[PowerKWorkItemCyclesMenu]] - `contains` [EXTRACTED]
 - [[Props_397]] - `contains` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[use-cycle.ts]] - `imports_from` [EXTRACTED]
 - [[useCycle()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Menu_Power
+#graphify/code #graphify/EXTRACTED #community/Community_210

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/openapi/auth.py"
 type: "rationale"
-community: "Authentication Extension"
+community: "Community 585"
 location: "L26"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Authentication_Extension
+  - community/Community_585
 ---
 
 # Return the security definition for API key authentication.
 
 ## Connections
-
 - [[.get_security_definition()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Authentication_Extension
+#graphify/rationale #graphify/EXTRACTED #community/Community_585

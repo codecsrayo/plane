@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/utils/index.ts"
 type: "code"
-community: "Navigation Input"
+community: "Community 292"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Navigation_Input
+  - community/Community_292
 ---
 
 # index.ts
 
 ## Connections
-
 - [[animated-counter.tsx]] - `imports_from` [EXTRACTED]
 - [[badge.tsx_1]] - `imports_from` [EXTRACTED]
 - [[banner.tsx]] - `imports_from` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[tab-navigation-list.tsx]] - `imports_from` [EXTRACTED]
 - [[toolbar.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Navigation_Input
+#graphify/code #graphify/EXTRACTED #community/Community_292

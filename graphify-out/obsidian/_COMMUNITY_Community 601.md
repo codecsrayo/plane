@@ -1,18 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.60
+members: 5
 ---
 
 # Community 601
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.60 - moderately connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[.to()_103]] - code - api_rust/src/entities/webhooks.rs
-- [[Entity_103]] - code - api_rust/src/entities/webhooks.rs
+- [[IProjectMemberDisplayProperties]] - code - packages/constants/src/members.ts
+- [[MEMBER_PROPERTY_DETAILS]] - code - packages/constants/src/members.ts
+- [[TMemberOrderByOptions]] - code - packages/constants/src/members.ts
+- [[members.ts]] - code - constants/src/members.ts
+- [[members.ts_1]] - code - packages/constants/src/members.ts
 
 ## Live Query (requires Dataview plugin)
 

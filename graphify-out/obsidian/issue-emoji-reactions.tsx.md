@@ -1,18 +1,17 @@
 ---
 source_file: "space/components/issues/reactions/issue-emoji-reactions.tsx"
 type: "code"
-community: "Issue Peek"
+community: "Community 80"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Peek
+  - community/Community_80
 ---
 
 # issue-emoji-reactions.tsx
 
 ## Connections
-
 - [[IssueEmojiReactions]] - `contains` [EXTRACTED]
 - [[IssueEmojiReactionsProps]] - `contains` [EXTRACTED]
 - [[block-reactions.tsx]] - `imports_from` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[useIssueDetails()]] - `imports` [EXTRACTED]
 - [[useUser()_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Peek
+#graphify/code #graphify/EXTRACTED #community/Community_80

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/analytics/work-items/modal/content.tsx"
 type: "code"
-community: "Webhook Workspace"
+community: "Community 341"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Webhook_Workspace
+  - community/Community_341
 ---
 
 # content.tsx
 
 ## Connections
-
 - [[Props_507]] - `contains` [EXTRACTED]
 - [[WorkItemsModalMainContent]] - `contains` [EXTRACTED]
 - [[created-vs-resolved.tsx]] - `imports_from` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[useAnalytics()]] - `imports` [EXTRACTED]
 - [[workitems-insight-table.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Webhook_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_341

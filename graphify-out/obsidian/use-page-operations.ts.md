@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/use-page-operations.ts"
 type: "code"
-community: "Control Move"
+community: "Community 50"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Control_Move
+  - community/Community_50
 ---
 
 # use-page-operations.ts
 
 ## Connections
-
 - [[Props_77]] - `contains` [EXTRACTED]
 - [[TPageInstance]] - `imports` [EXTRACTED]
 - [[TPageOperations]] - `contains` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[useCollaborativePageActions()]] - `imports` [EXTRACTED]
 - [[usePageOperations()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Control_Move
+#graphify/code #graphify/EXTRACTED #community/Community_50

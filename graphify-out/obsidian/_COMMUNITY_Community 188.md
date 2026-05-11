@@ -1,29 +1,45 @@
 ---
 type: community
-cohesion: 0.19
-members: 13
+cohesion: 0.16
+members: 30
 ---
 
 # Community 188
 
-**Cohesion:** 0.19 - loosely connected
-**Members:** 13 nodes
+**Cohesion:** 0.16 - loosely connected
+**Members:** 30 nodes
 
 ## Members
-
-- [[.from_model()_6]] - code - api_rust/src/routes/labels.rs
-- [[BulkCreateLabelsRequest]] - code - api_rust/src/routes/labels.rs
-- [[CreateLabelRequest]] - code - api_rust/src/routes/labels.rs
-- [[LabelEntry]] - code - api_rust/src/routes/labels.rs
-- [[LabelResponse]] - code - api_rust/src/routes/labels.rs
-- [[UpdateLabelRequest]] - code - api_rust/src/routes/labels.rs
-- [[bulk_create_labels()]] - code - api_rust/src/routes/labels.rs
-- [[create_label()]] - code - api_rust/src/routes/labels.rs
-- [[delete_label()]] - code - api_rust/src/routes/labels.rs
-- [[get_label()]] - code - api_rust/src/routes/labels.rs
-- [[labels.rs]] - code - api_rust/src/routes/labels.rs
-- [[list_labels()]] - code - api_rust/src/routes/labels.rs
-- [[update_label()]] - code - api_rust/src/routes/labels.rs
+- [[CoreEditorExtensionsWithoutProps]] - code - packages/editor/src/core/extensions/core-without-props.ts
+- [[DOCUMENT_EDITOR_EXTENSIONS]] - code - packages/editor/src/core/helpers/yjs-utils.ts
+- [[DocumentEditorExtensionsWithoutProps]] - code - packages/editor/src/core/extensions/core-without-props.ts
+- [[TConvertHTMLDocumentToAllFormatsArgs]] - code - packages/editor/src/core/helpers/yjs-utils.ts
+- [[TitleExtensions]] - code - packages/editor/src/core/extensions/title-extension.ts
+- [[applyUpdates()]] - code - packages/editor/src/core/helpers/yjs-utils.ts
+- [[convertBase64StringToBinaryData()]] - code - packages/editor/src/core/helpers/yjs-utils.ts
+- [[convertBinaryDataToBase64String()]] - code - packages/editor/src/core/helpers/yjs-utils.ts
+- [[convertHTMLDocumentToAllFormats()]] - code - packages/editor/src/core/helpers/yjs-utils.ts
+- [[documentEditorSchema]] - code - packages/editor/src/core/helpers/yjs-utils.ts
+- [[extractAdditionalAssetsFromHTMLContent()]] - code - packages/editor/src/ce/helpers/parser.ts
+- [[extractAssetsFromHTMLContent()]] - code - packages/editor/src/core/helpers/parser.ts
+- [[extractTextFromHTML()]] - code - packages/editor/src/core/helpers/yjs-utils.ts
+- [[generateTitleProsemirrorJson()]] - code - packages/editor/src/core/helpers/yjs-utils.ts
+- [[getAllDocumentFormatsFromDocumentEditorBinaryData()]] - code - packages/editor/src/core/helpers/yjs-utils.ts
+- [[getAllDocumentFormatsFromRichTextEditorBinaryData()]] - code - packages/editor/src/core/helpers/yjs-utils.ts
+- [[getBinaryDataFromDocumentEditorHTMLString()]] - code - packages/editor/src/core/helpers/yjs-utils.ts
+- [[getBinaryDataFromRichTextEditorHTMLString()]] - code - packages/editor/src/core/helpers/yjs-utils.ts
+- [[getEditorContentWithReplacedAssets()]] - code - packages/editor/src/core/helpers/parser.ts
+- [[parser.ts]] - code - editor/src/ce/helpers/parser.ts
+- [[parser.ts_1]] - code - editor/src/core/helpers/parser.ts
+- [[parser.ts_2]] - code - packages/editor/src/ce/helpers/parser.ts
+- [[parser.ts_3]] - code - packages/editor/src/core/helpers/parser.ts
+- [[replaceAdditionalAssetsInHTMLContent()]] - code - packages/editor/src/ce/helpers/parser.ts
+- [[replaceAssetsInHTMLContent()]] - code - packages/editor/src/core/helpers/parser.ts
+- [[richTextEditorSchema]] - code - packages/editor/src/core/helpers/yjs-utils.ts
+- [[title-extension.ts]] - code - editor/src/core/extensions/title-extension.ts
+- [[title-extension.ts_1]] - code - packages/editor/src/core/extensions/title-extension.ts
+- [[yjs-utils.ts]] - code - editor/src/core/helpers/yjs-utils.ts
+- [[yjs-utils.ts_1]] - code - packages/editor/src/core/helpers/yjs-utils.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -33,13 +49,12 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 5 edges to [[_COMMUNITY_Modules Rust API]]
+- 6 edges to [[_COMMUNITY_Community 90]]
+- 4 edges to [[_COMMUNITY_Editor Extensions]]
 
 ## Top bridge nodes
-
-- [[create_label()]] - degree 3, connects to 1 community
-- [[get_label()]] - degree 3, connects to 1 community
-- [[update_label()]] - degree 3, connects to 1 community
-- [[delete_label()]] - degree 2, connects to 1 community
-- [[list_labels()]] - degree 2, connects to 1 community
+- [[yjs-utils.ts]] - degree 20, connects to 1 community
+- [[yjs-utils.ts_1]] - degree 20, connects to 1 community
+- [[TitleExtensions]] - degree 6, connects to 1 community
+- [[CoreEditorExtensionsWithoutProps]] - degree 4, connects to 1 community
+- [[DocumentEditorExtensionsWithoutProps]] - degree 4, connects to 1 community

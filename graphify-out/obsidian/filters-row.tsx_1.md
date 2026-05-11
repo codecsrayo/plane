@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/rich-filters/filters-row.tsx"
 type: "code"
-community: "Value Input"
+community: "Filter UI & Breadcrumbs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Value_Input
+  - community/Filter_UI__Breadcrumbs
 ---
 
 # filters-row.tsx
 
 ## Connections
-
 - [[AddFilterButton]] - `imports` [EXTRACTED]
 - [[ElementTransition]] - `contains` [EXTRACTED]
 - [[FilterItem]] - `imports` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[filters-row.tsx]] - `imports_from` [EXTRACTED]
 - [[root.tsx_132]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Value_Input
+#graphify/code #graphify/EXTRACTED #community/Filter_UI__Breadcrumbs

@@ -1,18 +1,17 @@
 ---
 source_file: "utils/src/datetime.ts"
 type: "code"
-community: "Date Convert"
+community: "Community 231"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Date_Convert
+  - community/Community_231
 ---
 
 # datetime.ts
 
 ## Connections
-
 - [[addDaysToDate()]] - `contains` [EXTRACTED]
 - [[base.ts_5]] - `imports_from` [EXTRACTED]
 - [[calculateTimeAgo()]] - `contains` [EXTRACTED]
@@ -52,4 +51,4 @@ tags:
 - [[renderFormattedPayloadDate()]] - `contains` [EXTRACTED]
 - [[renderFormattedTime()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Date_Convert
+#graphify/code #graphify/EXTRACTED #community/Community_231

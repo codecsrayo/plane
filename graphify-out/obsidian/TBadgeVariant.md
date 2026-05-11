@@ -1,20 +1,22 @@
 ---
-source_file: "propel/src/badge/helper.tsx"
+source_file: "packages/propel/src/badge/helper.tsx"
 type: "code"
-community: "Badge Styling"
+community: "Community 140"
 location: "L37"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Badge_Styling
+  - community/Community_140
 ---
 
 # TBadgeVariant
 
 ## Connections
-
 - [[badge.tsx]] - `imports` [EXTRACTED]
+- [[badge.tsx_2]] - `imports` [EXTRACTED]
 - [[helper.tsx_2]] - `contains` [EXTRACTED]
 - [[helper.tsx_12]] - `contains` [EXTRACTED]
+- [[helper.tsx_34]] - `contains` [EXTRACTED]
+- [[helper.tsx_44]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Badge_Styling
+#graphify/code #graphify/EXTRACTED #community/Community_140

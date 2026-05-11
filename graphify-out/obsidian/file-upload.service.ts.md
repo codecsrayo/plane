@@ -1,20 +1,19 @@
 ---
 source_file: "services/src/file/file-upload.service.ts"
 type: "code"
-community: "Upload Detect"
+community: "Community 173"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Upload_Detect
+  - community/Community_173
 ---
 
 # file-upload.service.ts
 
 ## Connections
-
 - [[FileUploadService]] - `contains` [EXTRACTED]
 - [[api.service.ts]] - `imports_from` [EXTRACTED]
 - [[sites-file.service.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Upload_Detect
+#graphify/code #graphify/EXTRACTED #community/Community_173

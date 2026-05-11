@@ -1,18 +1,17 @@
 ---
-source_file: "services/src/user/favorite.service.ts"
+source_file: "packages/services/src/user/favorite.service.ts"
 type: "code"
-community: "Favorite User"
+community: "Community 490"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Favorite_User
+  - community/Community_490
 ---
 
 # UserFavoriteService
 
 ## Connections
-
 - [[.add()]] - `method` [EXTRACTED]
 - [[.constructor()_10]] - `method` [EXTRACTED]
 - [[.groupedList()]] - `method` [EXTRACTED]
@@ -20,5 +19,6 @@ tags:
 - [[.remove()]] - `method` [EXTRACTED]
 - [[.update()_7]] - `method` [EXTRACTED]
 - [[favorite.service.ts]] - `contains` [EXTRACTED]
+- [[favorite.service.ts_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Favorite_User
+#graphify/code #graphify/EXTRACTED #community/Community_490

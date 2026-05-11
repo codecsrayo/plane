@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_195]] - code - propel/src/collapsible/index.ts
+- [[index.ts_206]] - code - web/ce/store/issue/team/index.ts
 
 ## Live Query (requires Dataview plugin)
 

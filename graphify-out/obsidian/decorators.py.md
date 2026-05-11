@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/openapi/decorators.py"
 type: "code"
-community: "Sample Schema"
+community: "Community 505"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sample_Schema
+  - community/Community_505
 ---
 
 # decorators.py
 
 ## Connections
-
 - [[__init__.py_37]] - `imports_from` [EXTRACTED]
 - [[_merge_schema_options()]] - `contains` [EXTRACTED]
 - [[asset_docs()]] - `contains` [EXTRACTED]
@@ -38,4 +37,4 @@ tags:
 - [[work_item_relation_docs()]] - `contains` [EXTRACTED]
 - [[workspace_docs()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sample_Schema
+#graphify/code #graphify/EXTRACTED #community/Community_505

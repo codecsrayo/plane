@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/estimates/points/update.tsx"
 type: "code"
-community: "Estimate Point"
+community: "Community 256"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Estimate_Point
+  - community/Community_256
 ---
 
 # update.tsx
 
 ## Connections
-
 - [[EstimateInputRoot()]] - `imports` [EXTRACTED]
 - [[EstimatePointUpdate]] - `contains` [EXTRACTED]
 - [[TEstimatePointUpdate]] - `contains` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[use-estimate-point.ts]] - `imports_from` [EXTRACTED]
 - [[useEstimatePoint()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Estimate_Point
+#graphify/code #graphify/EXTRACTED #community/Community_256

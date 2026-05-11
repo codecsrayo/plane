@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/cache.py"
 type: "code"
-community: "Asset Endpoint"
+community: "Community 88"
 location: "L54"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Asset_Endpoint
+  - community/Community_88
 ---
 
 # invalidate_cache_directly()
 
 ## Connections
-
 - [[.entity_asset_delete()]] - `calls` [INFERRED]
 - [[.entity_asset_delete()_1]] - `calls` [INFERRED]
 - [[.entity_asset_save()]] - `calls` [INFERRED]
@@ -22,4 +21,4 @@ tags:
 - [[generate_cache_key()]] - `calls` [EXTRACTED]
 - [[process_workspace_project_invitations()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Asset_Endpoint
+#graphify/code #graphify/INFERRED #community/Community_88

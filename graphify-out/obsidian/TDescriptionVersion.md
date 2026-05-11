@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/description_version.ts"
+source_file: "packages/types/src/description_version.ts"
 type: "code"
-community: "Description Version"
+community: "Community 608"
 location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Description_Version
+  - community/Community_608
 ---
 
 # TDescriptionVersion
 
 ## Connections
-
 - [[description_version.ts]] - `contains` [EXTRACTED]
+- [[description_version.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Description_Version
+#graphify/code #graphify/EXTRACTED #community/Community_608

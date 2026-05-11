@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/modules_extras.rs"
 type: "code"
-community: "Returns Link"
+community: "Community 301"
 location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Link
+  - community/Community_301
 ---
 
 # create_module()
 
 ## Connections
-
 - [[add_favorite_module_returns_201()]] - `calls` [EXTRACTED]
 - [[create_module_link_invalid_url_returns_400()]] - `calls` [EXTRACTED]
 - [[create_module_link_returns_201()]] - `calls` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[update_module_link_returns_200()]] - `calls` [EXTRACTED]
 - [[update_module_user_properties_returns_200()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Link
+#graphify/code #graphify/EXTRACTED #community/Community_301

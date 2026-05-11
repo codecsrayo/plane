@@ -1,17 +1,24 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.22
+members: 9
 ---
 
 # Community 501
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.22 - loosely connected
+**Members:** 9 nodes
 
 ## Members
-
-- [[index.ts_116]] - code - utils/src/editor/markdown-parser/index.ts
+- [[Mock Celery for testing without actual task execution.      This fixture patches]] - rationale - api/plane/tests/conftest_external.py
+- [[Mock Elasticsearch for testing without actual ES connection.      This fixture p]] - rationale - api/plane/tests/conftest_external.py
+- [[Mock MongoDB for testing without actual MongoDB connection.      This fixture pa]] - rationale - api/plane/tests/conftest_external.py
+- [[Mock Redis for testing without actual Redis connection.      This fixture patche]] - rationale - api/plane/tests/conftest_external.py
+- [[conftest_external.py]] - code - api/plane/tests/conftest_external.py
+- [[mock_celery()]] - code - api/plane/tests/conftest_external.py
+- [[mock_elasticsearch()]] - code - api/plane/tests/conftest_external.py
+- [[mock_mongodb()]] - code - api/plane/tests/conftest_external.py
+- [[mock_redis()]] - code - api/plane/tests/conftest_external.py
 
 ## Live Query (requires Dataview plugin)
 

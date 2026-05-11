@@ -1,0 +1,22 @@
+---
+type: community
+cohesion: 0.67
+members: 3
+---
+
+# Community 988
+
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
+
+## Members
+- [[Model_108]] - code - api_rust/src/entities/django_celery_beat_periodictask.rs
+- [[Relation_108]] - code - api_rust/src/entities/django_celery_beat_periodictask.rs
+- [[django_celery_beat_periodictask.rs]] - code - api_rust/src/entities/django_celery_beat_periodictask.rs
+
+## Live Query (requires Dataview plugin)
+
+```dataview
+TABLE source_file, type FROM #community/Community_988
+SORT file.name ASC
+```

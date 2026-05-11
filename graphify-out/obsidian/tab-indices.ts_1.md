@@ -1,18 +1,17 @@
 ---
 source_file: "utils/src/tab-indices.ts"
 type: "code"
-community: "Indices"
+community: "Community 728"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Indices
+  - community/Community_728
 ---
 
 # tab-indices.ts
 
 ## Connections
-
 - [[getTabIndex()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Indices
+#graphify/code #graphify/EXTRACTED #community/Community_728

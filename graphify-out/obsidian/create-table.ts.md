@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/table/table/utilities/create-table.ts"
 type: "code"
-community: "Table Node"
+community: "Community 462"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Table_Node
+  - community/Community_462
 ---
 
 # create-table.ts
 
 ## Connections
-
 - [[Props_34]] - `contains` [EXTRACTED]
 - [[create-cell.ts]] - `imports_from` [EXTRACTED]
 - [[createCell()]] - `imports` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[getTableNodeTypes()]] - `imports` [EXTRACTED]
 - [[table.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Table_Node
+#graphify/code #graphify/EXTRACTED #community/Community_462

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/constants/fetch-keys.ts"
 type: "code"
-community: "Project Workspace"
+community: "Community 36"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Workspace
+  - community/Community_36
 ---
 
 # fetch-keys.ts
 
 ## Connections
-
 - [[APPLICATIONS_LIST()]] - `contains` [EXTRACTED]
 - [[APPLICATION_BY_CLIENT_ID()]] - `contains` [EXTRACTED]
 - [[APPLICATION_CATEGORIES_LIST()]] - `contains` [EXTRACTED]
@@ -84,4 +83,4 @@ tags:
 - [[workspace-activity-list.tsx]] - `imports_from` [EXTRACTED]
 - [[workspace-wrapper.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_36

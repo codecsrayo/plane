@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/member/utils.ts"
 type: "code"
-community: "Workspace Member"
+community: "Community 35"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Member
+  - community/Community_35
 ---
 
 # utils.ts
 
 ## Connections
-
 - [[IMemberFilters]] - `contains` [EXTRACTED]
 - [[base-project-member.store.ts]] - `imports_from` [EXTRACTED]
 - [[filterProjectMembersByRole()]] - `contains` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[useProjectColumns.tsx]] - `imports_from` [EXTRACTED]
 - [[workspace-member-filters.store.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Member
+#graphify/code #graphify/EXTRACTED #community/Community_35

@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/components/menus/bubble-menu/node-selector.tsx"
 type: "code"
-community: "Toggle Menu"
+community: "Community 198"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toggle_Menu
+  - community/Community_198
 ---
 
 # node-selector.tsx
 
 ## Connections
-
 - [[BubbleMenuNodeSelector()]] - `contains` [EXTRACTED]
 - [[FloatingMenuRoot()]] - `imports` [EXTRACTED]
 - [[Props_19]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[use-floating-menu.ts]] - `imports_from` [EXTRACTED]
 - [[useFloatingMenu()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toggle_Menu
+#graphify/code #graphify/EXTRACTED #community/Community_198

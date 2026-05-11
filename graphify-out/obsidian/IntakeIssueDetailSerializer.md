@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/serializers/intake.py"
 type: "code"
-community: "Serializer Issue"
+community: "Community 171"
 location: "L93"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Serializer_Issue
+  - community/Community_171
 ---
 
 # IntakeIssueDetailSerializer
 
 ## Connections
-
 - [[.to_representation()_7]] - `method` [EXTRACTED]
 - [[BaseSerializer]] - `inherits` [EXTRACTED]
 - [[BaseSerializer_2]] - `uses` [INFERRED]
@@ -27,4 +26,4 @@ tags:
 - [[partial_update()_14]] - `calls` [INFERRED]
 - [[retrieve()_11]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Serializer_Issue
+#graphify/code #graphify/INFERRED #community/Community_171

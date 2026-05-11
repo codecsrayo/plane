@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/charts/bar-chart/bar.tsx"
 type: "code"
-community: "Tabs Custom"
+community: "Community 470"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Tabs_Custom
+  - community/Community_470
 ---
 
 # bar.tsx
 
 ## Connections
-
 - [[CustomBar]] - `contains` [EXTRACTED]
 - [[CustomBarLollipop]] - `contains` [EXTRACTED]
 - [[PercentageText()]] - `contains` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[getBarPath()]] - `contains` [EXTRACTED]
 - [[root.tsx_12]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Tabs_Custom
+#graphify/code #graphify/EXTRACTED #community/Community_470

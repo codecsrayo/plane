@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(projects)/drafts/header.tsx"
 type: "code"
-community: "Settings Project"
+community: "Project Filters & Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Settings_Project
+  - community/Project_Filters__Archives
 ---
 
 # header.tsx
 
 ## Connections
-
 - [[BreadcrumbLink()]] - `imports` [EXTRACTED]
 - [[CountChip()]] - `imports` [EXTRACTED]
 - [[CreateUpdateIssueModal]] - `imports` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Settings_Project
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

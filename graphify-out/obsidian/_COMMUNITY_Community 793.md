@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 793
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_79]] - code - web/core/components/settings/project/sidebar/index.ts
+- [[Props_62]] - code - web/ce/components/workflow/workflow-group-tree.tsx
+- [[WorkFlowGroupTree()]] - code - web/ce/components/workflow/workflow-group-tree.tsx
+- [[workflow-group-tree.tsx]] - code - web/ce/components/workflow/workflow-group-tree.tsx
 
 ## Live Query (requires Dataview plugin)
 

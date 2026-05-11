@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/search.ts"
 type: "code"
-community: "Workspace Search"
+community: "Community 62"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Search
+  - community/Community_62
 ---
 
 # search.ts
 
 ## Connections
-
 - [[IUser]] - `imports` [EXTRACTED]
 - [[IWorkspace]] - `imports` [EXTRACTED]
 - [[TCycleSearchResponse]] - `contains` [EXTRACTED]
@@ -33,4 +32,4 @@ tags:
 - [[users.ts]] - `imports_from` [EXTRACTED]
 - [[workspace.ts_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Search
+#graphify/code #graphify/EXTRACTED #community/Community_62

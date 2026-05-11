@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_169]] - code - propel/src/charts/bar-chart/index.ts
+- [[Plane Lockup Logo]] - image - packages/propel/public/plane-lockup-light.svg
 
 ## Live Query (requires Dataview plugin)
 

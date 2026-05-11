@@ -1,18 +1,17 @@
 ---
 source_file: "space/components/issues/peek-overview/issue-properties.tsx"
 type: "code"
-community: "Issue Properties"
+community: "Community 137"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Community_137
 ---
 
 # issue-properties.tsx
 
 ## Connections
-
 - [[PeekOverviewIssueProperties]] - `contains` [EXTRACTED]
 - [[Props_571]] - `contains` [EXTRACTED]
 - [[addSpaceIfCamelCase()_1]] - `imports` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[use-state.ts]] - `imports_from` [EXTRACTED]
 - [[useStates()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Community_137

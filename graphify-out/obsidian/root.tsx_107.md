@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/onboarding/steps/role/root.tsx"
 type: "code"
-community: "Setup Values"
+community: "Community 98"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Setup_Values
+  - community/Community_98
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[Props_441]] - `contains` [EXTRACTED]
 - [[ROLES_1]] - `contains` [EXTRACTED]
 - [[RoleSetupStep]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[index.ts_410]] - `imports_from` [EXTRACTED]
 - [[root.tsx_109]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Setup_Values
+#graphify/code #graphify/EXTRACTED #community/Community_98

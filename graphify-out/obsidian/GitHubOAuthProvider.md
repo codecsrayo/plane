@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/authentication/provider/oauth/github.py"
 type: "code"
-community: "Endpoint Github"
+community: "Community 76"
 location: "L24"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Endpoint_Github
+  - community/Community_76
 ---
 
 # GitHubOAuthProvider
 
 ## Connections
-
 - [[.__get_email()]] - `method` [EXTRACTED]
 - [[.__init__()_34]] - `method` [EXTRACTED]
 - [[.get()_47]] - `calls` [INFERRED]
@@ -31,4 +30,4 @@ tags:
 - [[OauthAdapter_1]] - `inherits` [EXTRACTED]
 - [[github.py_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Endpoint_Github
+#graphify/code #graphify/INFERRED #community/Community_76

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/stickies/action-bar.tsx"
 type: "code"
-community: "Stickies Sticky"
+community: "Community 282"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Stickies_Sticky
+  - community/Community_282
 ---
 
 # action-bar.tsx
 
 ## Connections
-
 - [[AllStickiesModal()]] - `imports` [EXTRACTED]
 - [[STICKY_COLORS_LIST]] - `imports` [EXTRACTED]
 - [[StickyActionBar]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[useCommandPalette()]] - `imports` [EXTRACTED]
 - [[useSticky()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Stickies_Sticky
+#graphify/code #graphify/EXTRACTED #community/Community_282

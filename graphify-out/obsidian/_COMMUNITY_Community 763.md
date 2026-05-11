@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 763
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[ActiveModel_112]] - code - api_rust/src/entities/webhooks.rs
+- [[Signin()]] - code - web/app/routes/redirects/core/signin.tsx
+- [[clientLoader()_1]] - code - web/app/routes/redirects/core/signin.tsx
+- [[signin.tsx]] - code - web/app/routes/redirects/core/signin.tsx
 
 ## Live Query (requires Dataview plugin)
 

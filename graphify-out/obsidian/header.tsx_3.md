@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(projects)/browse/[workItem]/header.tsx"
 type: "code"
-community: "Sidebar Navigation"
+community: "Community 234"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Navigation
+  - community/Community_234
 ---
 
 # header.tsx
 
 ## Connections
-
 - [[AppHeader]] - `imports` [EXTRACTED]
 - [[AppSidebarToggleButton]] - `imports` [EXTRACTED]
 - [[ProjectWorkItemDetailsHeader]] - `contains` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[useProjectNavigationPreferences()]] - `imports` [EXTRACTED]
 - [[work-item-header.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation
+#graphify/code #graphify/EXTRACTED #community/Community_234

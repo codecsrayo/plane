@@ -1,18 +1,17 @@
 ---
 source_file: "codemods/tests/remove-directives.spec.ts"
 type: "code"
-community: "Remove Directives"
+community: "Community 648"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Remove_Directives
+  - community/Community_648
 ---
 
 # remove-directives.spec.ts
 
 ## Connections
-
 - [[remove-directives.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Remove_Directives
+#graphify/code #graphify/EXTRACTED #community/Community_648

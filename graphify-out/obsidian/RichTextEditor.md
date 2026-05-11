@@ -1,20 +1,18 @@
 ---
-source_file: "web/core/components/editor/rich-text/editor.tsx"
+source_file: "space/components/editor/rich-text-editor.tsx"
 type: "code"
-community: "Document Collaborative"
-location: "L42"
+community: "Community 80"
+location: "L38"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Document_Collaborative
+  - community/Community_80
 ---
 
 # RichTextEditor
 
 ## Connections
+- [[issue-details.tsx]] - `imports` [EXTRACTED]
+- [[rich-text-editor.tsx]] - `contains` [EXTRACTED]
 
-- [[editor.tsx]] - `contains` [EXTRACTED]
-- [[editor.tsx_4]] - `contains` [EXTRACTED]
-- [[issue-description.tsx]] - `imports` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Document_Collaborative
+#graphify/code #graphify/EXTRACTED #community/Community_80

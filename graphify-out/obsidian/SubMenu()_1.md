@@ -1,18 +1,18 @@
 ---
-source_file: "propel/src/menu/menu.tsx"
+source_file: "packages/propel/src/menu/menu.tsx"
 type: "code"
-community: "Menu Disabled"
+community: "Community 152"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu_Disabled
+  - community/Community_152
 ---
 
 # SubMenu()
 
 ## Connections
-
 - [[menu.tsx]] - `contains` [EXTRACTED]
+- [[menu.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Menu_Disabled
+#graphify/code #graphify/EXTRACTED #community/Community_152

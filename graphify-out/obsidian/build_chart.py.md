@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/build_chart.py"
 type: "code"
-community: "Analytics Advance"
+community: "Community 122"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Analytics_Advance
+  - community/Community_122
 ---
 
 # build_chart.py
 
 ## Connections
-
 - [[build_analytics_chart()]] - `contains` [EXTRACTED]
 - [[build_grouped_chart_response()]] - `contains` [EXTRACTED]
 - [[build_number_chart_response()]] - `contains` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[get_y_axis_filter()]] - `contains` [EXTRACTED]
 - [[process_grouped_data()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Analytics_Advance
+#graphify/code #graphify/EXTRACTED #community/Community_122

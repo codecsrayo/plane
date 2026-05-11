@@ -1,18 +1,17 @@
 ---
 source_file: "live/src/start.ts"
 type: "code"
-community: "Start Server"
+community: "Community 435"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Start_Server
+  - community/Community_435
 ---
 
 # start.ts
 
 ## Connections
-
 - [[AppError]] - `imports` [EXTRACTED]
 - [[Server]] - `imports` [EXTRACTED]
 - [[error]] - `contains` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[server.ts]] - `imports_from` [EXTRACTED]
 - [[startServer()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Start_Server
+#graphify/code #graphify/EXTRACTED #community/Community_435

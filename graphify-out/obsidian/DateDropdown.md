@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/dropdowns/date.tsx"
 type: "code"
-community: "Label Dropdown"
+community: "Work Item Detail & Layouts"
 location: "L47"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Dropdown
+  - community/Work_Item_Detail__Layouts
 ---
 
 # DateDropdown
 
 ## Connections
-
 - [[all-properties.tsx]] - `imports` [EXTRACTED]
 - [[date.tsx_1]] - `contains` [EXTRACTED]
 - [[default-properties.tsx]] - `imports` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[single.tsx_1]] - `imports` [EXTRACTED]
 - [[start-date-column.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Work_Item_Detail__Layouts

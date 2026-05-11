@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/pages_extras.rs"
 type: "code"
-community: "Returns Nonexistent"
+community: "Community 419"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Nonexistent
+  - community/Community_419
 ---
 
 # pages_extras.rs
 
 ## Connections
-
 - [[add_favorite_page_nonexistent_returns_4xx()]] - `contains` [EXTRACTED]
 - [[add_favorite_page_unauthenticated_returns_401()]] - `contains` [EXTRACTED]
 - [[get_page_description_nonexistent_returns_4xx()]] - `contains` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[update_page_access_unauthenticated_returns_401()]] - `contains` [EXTRACTED]
 - [[update_page_description_nonexistent_page_returns_4xx()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Nonexistent
+#graphify/code #graphify/EXTRACTED #community/Community_419

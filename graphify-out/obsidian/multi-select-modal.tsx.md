@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/project/multi-select-modal.tsx"
 type: "code"
-community: "Cycle Active"
+community: "Active Cycle Stats"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Active
+  - community/Active_Cycle_Stats
 ---
 
 # multi-select-modal.tsx
 
 ## Connections
-
 - [[ProjectMultiSelectModal]] - `contains` [EXTRACTED]
 - [[Props_208]] - `contains` [EXTRACTED]
 - [[SimpleEmptyState]] - `imports` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Active
+#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats

@@ -1,18 +1,21 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.53
+members: 6
 ---
 
 # Community 570
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.53 - moderately connected
+**Members:** 6 nodes
 
 ## Members
-
-- [[.to()_72]] - code - api_rust/src/entities/issue_comments.rs
-- [[Entity_72]] - code - api_rust/src/entities/issue_comments.rs
+- [[convertHexEmojiToDecimal()]] - code - packages/utils/src/emoji.ts
+- [[emoji.ts_5]] - code - packages/utils/src/emoji.ts
+- [[emoji.ts_2]] - code - utils/src/emoji.ts
+- [[emojiCodeToUnicode()]] - code - packages/utils/src/emoji.ts
+- [[getRandomEmoji()]] - code - packages/utils/src/emoji.ts
+- [[groupReactions()]] - code - packages/utils/src/emoji.ts
 
 ## Live Query (requires Dataview plugin)
 

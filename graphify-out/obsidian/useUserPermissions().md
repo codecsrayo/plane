@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/user/user-permissions.ts"
 type: "code"
-community: "Project Settings"
+community: "Community 24"
 location: "L13"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Project_Settings
+  - community/Community_24
 ---
 
 # useUserPermissions()
 
 ## Connections
-
 - [[AnalyticsPage()]] - `calls` [INFERRED]
 - [[AutomationSettingsPage()]] - `calls` [INFERRED]
 - [[BillingSettingsPage()]] - `calls` [INFERRED]
@@ -46,4 +45,4 @@ tags:
 - [[useProjectColumns()]] - `calls` [INFERRED]
 - [[user-permissions.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Project_Settings
+#graphify/code #graphify/INFERRED #community/Community_24

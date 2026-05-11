@@ -1,19 +1,18 @@
 ---
 source_file: "api_rust/tests/issues_extras3.rs"
 type: "code"
-community: "Returns Issues"
+community: "Community 344"
 location: "L162"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Issues
+  - community/Community_344
 ---
 
 # list_issues_by_ids_member_returns_200()
 
 ## Connections
-
 - [[issues_extras3.rs]] - `contains` [EXTRACTED]
 - [[setup()_26]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Issues
+#graphify/code #graphify/EXTRACTED #community/Community_344

@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/issues_extras2.rs"
 type: "code"
-community: "Returns Issue"
+community: "Community 300"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Issue
+  - community/Community_300
 ---
 
 # issues_extras2.rs
 
 ## Connections
-
 - [[archive_issue_returns_200_or_204()]] - `contains` [EXTRACTED]
 - [[archive_nonexistent_issue_returns_404()]] - `contains` [EXTRACTED]
 - [[bulk_update_issue_dates_empty_list_returns_400_or_200()]] - `contains` [EXTRACTED]
@@ -33,4 +32,4 @@ tags:
 - [[setup()_12]] - `contains` [EXTRACTED]
 - [[unarchive_issue_returns_200_or_204()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_300

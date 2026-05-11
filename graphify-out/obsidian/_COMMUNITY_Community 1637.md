@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_356]] - code - web/core/components/issues/issue-layouts/filters/header/index.ts
+- [[react-router.config.ts_1]] - code - admin/react-router.config.ts
 
 ## Live Query (requires Dataview plugin)
 

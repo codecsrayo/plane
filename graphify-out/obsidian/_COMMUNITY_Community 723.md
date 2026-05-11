@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 723
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[ActiveModel_73]] - code - api_rust/src/entities/importers.rs
+- [[TUserProfile_1]] - code - packages/types/src/current-user/profile.ts
+- [[profile.ts_5]] - code - packages/types/src/current-user/profile.ts
+- [[profile.ts_2]] - code - types/src/current-user/profile.ts
 
 ## Live Query (requires Dataview plugin)
 

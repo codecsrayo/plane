@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/auth/god_mode.rs"
 type: "code"
-community: "Password Email"
+community: "Community 78"
 location: "L122"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Password_Email
+  - community/Community_78
 ---
 
 # admin_sign_up()
 
 ## Connections
-
 - [[.new()]] - `calls` [INFERRED]
 - [[.set()]] - `calls` [INFERRED]
 - [[admin_error()]] - `calls` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[issue_session_cookie()]] - `calls` [INFERRED]
 - [[now]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Password_Email
+#graphify/code #graphify/INFERRED #community/Community_78

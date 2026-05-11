@@ -1,26 +1,41 @@
 ---
 type: community
-cohesion: 0.22
-members: 10
+cohesion: 0.10
+members: 26
 ---
 
 # Community 219
 
-**Cohesion:** 0.22 - loosely connected
-**Members:** 10 nodes
+**Cohesion:** 0.10 - loosely connected
+**Members:** 26 nodes
 
 ## Members
-
-- [[EmailRole]] - code - web/core/hooks/use-workspace-invitation.tsx
-- [[InvitationFields]] - code - web/core/components/workspace/invite-modal/fields.tsx
-- [[InvitationFormValues]] - code - web/core/hooks/use-workspace-invitation.tsx
-- [[SEND_WORKSPACE_INVITATION_MODAL_DEFAULT_VALUES]] - code - web/core/hooks/use-workspace-invitation.tsx
-- [[TInvitationFieldsProps]] - code - web/core/components/workspace/invite-modal/fields.tsx
-- [[TUseWorkspaceInvitationProps]] - code - web/core/hooks/use-workspace-invitation.tsx
-- [[TUseWorkspaceInvitationReturn]] - code - web/core/hooks/use-workspace-invitation.tsx
-- [[fields.tsx]] - code - web/core/components/workspace/invite-modal/fields.tsx
-- [[use-workspace-invitation.tsx]] - code - web/core/hooks/use-workspace-invitation.tsx
-- [[useWorkspaceInvitationActions()]] - code - web/core/hooks/use-workspace-invitation.tsx
+- [[ISSUE_RELATION_OPTIONS]] - code - web/ce/components/relations/index.tsx
+- [[IssueDetailWidgetActionButtons()]] - code - web/core/components/issues/issue-detail-widgets/action-buttons.tsx
+- [[IssueDetailWidgetButton()]] - code - web/core/components/issues/issue-detail-widgets/widget-button.tsx
+- [[IssueDetailWidgetCollapsibles]] - code - web/core/components/issues/issue-detail-widgets/issue-detail-widget-collapsibles.tsx
+- [[IssueDetailWidgetModals]] - code - web/core/components/issues/issue-detail-widgets/issue-detail-widget-modals.tsx
+- [[IssueDetailWidgets()]] - code - web/core/components/issues/issue-detail-widgets/root.tsx
+- [[Props_340]] - code - web/core/components/issues/issue-detail-widgets/action-buttons.tsx
+- [[Props_337]] - code - web/core/components/issues/issue-detail-widgets/issue-detail-widget-collapsibles.tsx
+- [[Props_339]] - code - web/core/components/issues/issue-detail-widgets/root.tsx
+- [[Props_341]] - code - web/core/components/issues/issue-detail-widgets/widget-button.tsx
+- [[TWorkItemAdditionalWidgetActionButtonsProps]] - code - web/ce/components/issues/issue-detail-widgets/action-buttons.tsx
+- [[TWorkItemAdditionalWidgetCollapsiblesProps]] - code - web/ce/components/issues/issue-detail-widgets/collapsibles.tsx
+- [[WorkItemAdditionalWidgetActionButtons()]] - code - web/ce/components/issues/issue-detail-widgets/action-buttons.tsx
+- [[WorkItemAdditionalWidgetCollapsibles()]] - code - web/ce/components/issues/issue-detail-widgets/collapsibles.tsx
+- [[action-buttons.tsx]] - code - web/ce/components/issues/issue-detail-widgets/action-buttons.tsx
+- [[action-buttons.tsx_1]] - code - web/core/components/issues/issue-detail-widgets/action-buttons.tsx
+- [[collapsibles.tsx]] - code - web/ce/components/issues/issue-detail-widgets/collapsibles.tsx
+- [[index.ts_378]] - code - web/core/components/issues/issue-detail-widgets/attachments/index.ts
+- [[index.ts_381]] - code - web/core/components/issues/issue-detail-widgets/links/index.ts
+- [[index.ts_379]] - code - web/core/components/issues/issue-detail-widgets/relations/index.ts
+- [[index.ts_380]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/index.ts
+- [[index.tsx_5]] - code - web/ce/components/relations/index.tsx
+- [[issue-detail-widget-collapsibles.tsx]] - code - web/core/components/issues/issue-detail-widgets/issue-detail-widget-collapsibles.tsx
+- [[root.tsx_78]] - code - web/core/components/issues/issue-detail-widgets/root.tsx
+- [[useTimeLineRelationOptions()]] - code - web/ce/components/relations/index.tsx
+- [[widget-button.tsx]] - code - web/core/components/issues/issue-detail-widgets/widget-button.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -30,9 +45,13 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 1 edge to [[_COMMUNITY_Empty State Components]]
+- 4 edges to [[_COMMUNITY_Issue Activity Types]]
+- 2 edges to [[_COMMUNITY_Issue Store & Filters Logic]]
+- 1 edge to [[_COMMUNITY_Community 22]]
 
 ## Top bridge nodes
-
-- [[fields.tsx]] - degree 5, connects to 1 community
+- [[index.ts_379]] - degree 5, connects to 2 communities
+- [[issue-detail-widget-collapsibles.tsx]] - degree 10, connects to 1 community
+- [[root.tsx_78]] - degree 8, connects to 1 community
+- [[index.tsx_5]] - degree 4, connects to 1 community
+- [[IssueDetailWidgetModals]] - degree 2, connects to 1 community

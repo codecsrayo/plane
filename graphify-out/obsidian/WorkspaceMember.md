@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/models/workspace.py"
 type: "code"
-community: "Meta User"
+community: "Python Workflow Services"
 location: "L198"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Meta_User
+  - community/Python_Workflow_Services
 ---
 
 # WorkspaceMember
 
 ## Connections
-
 - [[.__str__()_10]] - `method` [EXTRACTED]
 - [[.handle()_5]] - `calls` [INFERRED]
 - [[BaseModel]] - `inherits` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[process_workspace_project_invitations()]] - `calls` [INFERRED]
 - [[workspace.py_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Meta_User
+#graphify/code #graphify/INFERRED #community/Python_Workflow_Services

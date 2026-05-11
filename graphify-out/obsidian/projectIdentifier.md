@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/issue/issue.store.ts"
 type: "code"
-community: "Issue Reaction"
+community: "Community 75"
 location: "L66"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Reaction
+  - community/Community_75
 ---
 
 # projectIdentifier
 
 ## Connections
-
 - [[issue.store.ts_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Reaction
+#graphify/code #graphify/EXTRACTED #community/Community_75

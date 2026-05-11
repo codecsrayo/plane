@@ -1,32 +1,47 @@
 ---
 type: community
-cohesion: 0.16
-members: 16
+cohesion: 0.11
+members: 32
 ---
 
 # Community 169
 
-**Cohesion:** 0.16 - loosely connected
-**Members:** 16 nodes
+**Cohesion:** 0.11 - loosely connected
+**Members:** 32 nodes
 
 ## Members
-
-- [[CreateProjectModal()]] - code - web/core/components/project/create-project-modal.tsx
-- [[CreateWebhookModal()]] - code - web/core/components/web-hooks/create-webhook-modal.tsx
-- [[InboxIssueCreateModalRoot()]] - code - web/core/components/inbox/modals/create-modal/modal.tsx
-- [[InboxIssueCreateRoot]] - code - web/core/components/inbox/modals/create-modal/create-root.tsx
-- [[InboxIssueProperties]] - code - web/core/components/inbox/modals/create-modal/issue-properties.tsx
-- [[InboxIssueTitle]] - code - web/core/components/inbox/modals/create-modal/issue-title.tsx
-- [[TInboxIssueCreateModalRoot]] - code - web/core/components/inbox/modals/create-modal/modal.tsx
-- [[TInboxIssueCreateRoot]] - code - web/core/components/inbox/modals/create-modal/create-root.tsx
-- [[TInboxIssueTitle]] - code - web/core/components/inbox/modals/create-modal/issue-title.tsx
-- [[create-root.tsx]] - code - web/core/components/inbox/modals/create-modal/create-root.tsx
-- [[defaultIssueData]] - code - web/core/components/inbox/modals/create-modal/create-root.tsx
-- [[fileService_3]] - code - web/core/components/inbox/modals/create-modal/create-root.tsx
-- [[issue-title.tsx]] - code - web/core/components/inbox/modals/create-modal/issue-title.tsx
-- [[modal.tsx_11]] - code - web/core/components/inbox/modals/create-modal/modal.tsx
-- [[use-keypress.tsx]] - code - web/core/hooks/use-keypress.tsx
-- [[useKeypress()]] - code - web/core/hooks/use-keypress.tsx
+- [[AppliedAccessFilters]] - code - web/core/components/project/applied-filters/access.tsx
+- [[AppliedDateFilters]] - code - web/core/components/cycles/applied-filters/date.tsx
+- [[AppliedProjectDisplayFilters]] - code - web/core/components/project/applied-filters/project-display-filters.tsx
+- [[AppliedStatusFilters]] - code - web/core/components/cycles/applied-filters/status.tsx
+- [[CycleAppliedFiltersList]] - code - web/core/components/cycles/applied-filters/root.tsx
+- [[DATE_FILTERS]] - code - web/core/components/pages/list/applied-filters/root.tsx
+- [[MEMBERS_FILTERS]] - code - web/core/components/pages/list/applied-filters/root.tsx
+- [[ModuleAppliedFiltersList()]] - code - web/core/components/modules/applied-filters/root.tsx
+- [[PageAppliedFiltersList()]] - code - web/core/components/pages/list/applied-filters/root.tsx
+- [[ProjectAppliedFiltersList()]] - code - web/core/components/project/applied-filters/root.tsx
+- [[Props_98]] - code - web/core/components/project/applied-filters/access.tsx
+- [[Props_166]] - code - web/core/components/cycles/applied-filters/date.tsx
+- [[Props_226]] - code - web/core/components/project/applied-filters/project-display-filters.tsx
+- [[Props_99]] - code - web/core/components/pages/list/applied-filters/root.tsx
+- [[Props_165]] - code - web/core/components/cycles/applied-filters/status.tsx
+- [[VIEW_ACCESS_FILTERS]] - code - web/core/components/views/applied-filters/root.tsx
+- [[ViewAppliedFiltersList()]] - code - web/core/components/views/applied-filters/root.tsx
+- [[access.tsx_2]] - code - web/core/components/project/applied-filters/access.tsx
+- [[access.tsx]] - code - web/core/components/views/applied-filters/access.tsx
+- [[date.tsx_5]] - code - web/core/components/common/applied-filters/date.tsx
+- [[date.tsx_6]] - code - web/core/components/cycles/applied-filters/date.tsx
+- [[date.tsx_4]] - code - web/core/components/issues/issue-layouts/filters/applied-filters/date.tsx
+- [[date.tsx]] - code - web/core/components/modules/applied-filters/date.tsx
+- [[date.tsx_2]] - code - web/core/components/project/applied-filters/date.tsx
+- [[project-display-filters.tsx]] - code - web/core/components/project/applied-filters/project-display-filters.tsx
+- [[root.tsx_97]] - code - web/core/components/cycles/applied-filters/root.tsx
+- [[root.tsx_56]] - code - web/core/components/modules/applied-filters/root.tsx
+- [[root.tsx_120]] - code - web/core/components/pages/list/applied-filters/root.tsx
+- [[root.tsx_67]] - code - web/core/components/project/applied-filters/root.tsx
+- [[root.tsx_43]] - code - web/core/components/views/applied-filters/root.tsx
+- [[status.tsx_4]] - code - web/core/components/cycles/applied-filters/status.tsx
+- [[status.tsx_2]] - code - web/core/components/modules/applied-filters/status.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -36,28 +51,13 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 4 edges to [[_COMMUNITY_Layout System]]
-- 3 edges to [[_COMMUNITY_Authentication UI]]
-- 2 edges to [[_COMMUNITY_Account & Sub-Issues]]
-- 2 edges to [[_COMMUNITY_Community 249]]
-- 2 edges to [[_COMMUNITY_Community 247]]
-- 2 edges to [[_COMMUNITY_Cycle Services & Filters]]
-- 2 edges to [[_COMMUNITY_Community 98]]
-- 2 edges to [[_COMMUNITY_Applied Filters UI]]
-- 2 edges to [[_COMMUNITY_Community 141]]
-- 2 edges to [[_COMMUNITY_Spreadsheet Column Components]]
-- 1 edge to [[_COMMUNITY_Community 117]]
-- 1 edge to [[_COMMUNITY_Module Analytics]]
-- 1 edge to [[_COMMUNITY_Empty States & Inbox]]
-- 1 edge to [[_COMMUNITY_Git Integrations]]
-- 1 edge to [[_COMMUNITY_Community 120]]
-- 1 edge to [[_COMMUNITY_Community 63]]
+- 6 edges to [[_COMMUNITY_Issue Display Filters]]
+- 1 edge to [[_COMMUNITY_Community 45]]
+- 1 edge to [[_COMMUNITY_Module & Cycle Analytics]]
 
 ## Top bridge nodes
-
-- [[create-root.tsx]] - degree 24, connects to 9 communities
-- [[use-keypress.tsx]] - degree 10, connects to 7 communities
-- [[CreateProjectModal()]] - degree 3, connects to 2 communities
-- [[useKeypress()]] - degree 5, connects to 1 community
-- [[issue-title.tsx]] - degree 5, connects to 1 community
+- [[root.tsx_67]] - degree 12, connects to 1 community
+- [[root.tsx_43]] - degree 11, connects to 1 community
+- [[root.tsx_97]] - degree 8, connects to 1 community
+- [[root.tsx_120]] - degree 8, connects to 1 community
+- [[root.tsx_56]] - degree 5, connects to 1 community

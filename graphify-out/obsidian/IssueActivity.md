@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-detail/issue-activity/root.tsx"
 type: "code"
-community: "Workspace Issue"
+community: "Community 42"
 location: "L46"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Issue
+  - community/Community_42
 ---
 
 # IssueActivity
 
 ## Connections
-
 - [[root.tsx_72]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_42

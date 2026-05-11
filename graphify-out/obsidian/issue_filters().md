@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/issue_filters.py"
 type: "code"
-community: "Issue Apply"
+community: "Community 41"
 location: "L428"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Issue_Apply
+  - community/Community_41
 ---
 
 # issue_filters()
 
 ## Connections
-
 - [[.create()_18]] - `calls` [INFERRED]
 - [[.create()_28]] - `calls` [INFERRED]
 - [[.get()_9]] - `calls` [INFERRED]
@@ -35,4 +34,4 @@ tags:
 - [[list()_16]] - `calls` [INFERRED]
 - [[list()_18]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Issue_Apply
+#graphify/code #graphify/INFERRED #community/Community_41

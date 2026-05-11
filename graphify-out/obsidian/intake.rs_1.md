@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/intake.rs"
 type: "code"
-community: "Request Intake"
+community: "Rust Issues & Modules API"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Request_Intake
+  - community/Rust_Issues__Modules_API
 ---
 
 # intake.rs
 
 ## Connections
-
 - [[CreateIntakeIssueBody]] - `contains` [EXTRACTED]
 - [[CreateIntakeIssueRequest]] - `contains` [EXTRACTED]
 - [[CreateIntakeRequest]] - `contains` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[update_intake()]] - `contains` [EXTRACTED]
 - [[update_intake_issue()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Request_Intake
+#graphify/code #graphify/EXTRACTED #community/Rust_Issues__Modules_API

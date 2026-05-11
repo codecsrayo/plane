@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/router.store.ts"
 type: "code"
-community: "Router Routerstore"
+community: "Community 35"
 location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Router_Routerstore
+  - community/Community_35
 ---
 
 # RouterStore
 
 ## Connections
-
 - [[.constructor()_71]] - `method` [EXTRACTED]
 - [[.cycleId()]] - `method` [EXTRACTED]
 - [[.epicId()]] - `method` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[root.store.ts_2]] - `imports` [EXTRACTED]
 - [[router.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Router_Routerstore
+#graphify/code #graphify/EXTRACTED #community/Community_35

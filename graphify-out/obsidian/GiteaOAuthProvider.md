@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/authentication/provider/oauth/gitea.py"
 type: "code"
-community: "Gitea Endpoint"
+community: "Community 76"
 location: "L21"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Gitea_Endpoint
+  - community/Community_76
 ---
 
 # GiteaOAuthProvider
 
 ## Connections
-
 - [[.__get_email()_1]] - `method` [EXTRACTED]
 - [[.__init__()_35]] - `method` [EXTRACTED]
 - [[.get()_49]] - `calls` [INFERRED]
@@ -30,4 +29,4 @@ tags:
 - [[OauthAdapter_1]] - `inherits` [EXTRACTED]
 - [[gitea.py_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Gitea_Endpoint
+#graphify/code #graphify/INFERRED #community/Community_76

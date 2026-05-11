@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/power-k/menus/members.tsx"
 type: "code"
-community: "Member Members"
+community: "Community 124"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Members
+  - community/Community_124
 ---
 
 # members.tsx
 
 ## Connections
-
 - [[PowerKMembersMenu]] - `contains` [EXTRACTED]
 - [[PowerKModalCommandItem()]] - `imports` [EXTRACTED]
 - [[Props_429]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[use-member.ts]] - `imports_from` [EXTRACTED]
 - [[useMember()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Members
+#graphify/code #graphify/EXTRACTED #community/Community_124

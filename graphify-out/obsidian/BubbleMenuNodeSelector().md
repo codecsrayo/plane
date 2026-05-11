@@ -1,18 +1,17 @@
 ---
-source_file: "editor/src/core/components/menus/bubble-menu/node-selector.tsx"
+source_file: "packages/editor/src/core/components/menus/bubble-menu/node-selector.tsx"
 type: "code"
-community: "Toggle Menu"
+community: "Community 31"
 location: "L38"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Toggle_Menu
+  - community/Community_31
 ---
 
 # BubbleMenuNodeSelector()
 
 ## Connections
-
 - [[BulletListItem()]] - `calls` [INFERRED]
 - [[CodeItem()]] - `calls` [INFERRED]
 - [[HeadingFiveItem()]] - `calls` [INFERRED]
@@ -26,6 +25,7 @@ tags:
 - [[TextItem()]] - `calls` [INFERRED]
 - [[TodoListItem()]] - `calls` [INFERRED]
 - [[node-selector.tsx]] - `contains` [EXTRACTED]
+- [[node-selector.tsx_1]] - `contains` [EXTRACTED]
 - [[useFloatingMenu()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Toggle_Menu
+#graphify/code #graphify/INFERRED #community/Community_31

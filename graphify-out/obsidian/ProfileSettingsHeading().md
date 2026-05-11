@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/settings/profile/heading.tsx"
 type: "code"
-community: "Settings Profile"
+community: "Community 106"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Settings_Profile
+  - community/Community_106
 ---
 
 # ProfileSettingsHeading()
 
 ## Connections
-
 - [[custom-theme-selector.tsx]] - `imports` [EXTRACTED]
 - [[heading.tsx_1]] - `contains` [EXTRACTED]
 - [[root.tsx_60]] - `imports` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[root.tsx_63]] - `imports` [EXTRACTED]
 - [[security.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Settings_Profile
+#graphify/code #graphify/EXTRACTED #community/Community_106

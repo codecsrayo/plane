@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/views/form.tsx"
 type: "code"
-community: "Issue Project"
+community: "Filter UI & Breadcrumbs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Project
+  - community/Filter_UI__Breadcrumbs
 ---
 
 # form.tsx
 
 ## Connections
-
 - [[AccessController()]] - `imports` [EXTRACTED]
 - [[DEFAULT_VALUES]] - `contains` [EXTRACTED]
 - [[LayoutDropDown]] - `imports` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Project
+#graphify/code #graphify/EXTRACTED #community/Filter_UI__Breadcrumbs

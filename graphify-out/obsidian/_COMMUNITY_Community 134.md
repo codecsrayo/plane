@@ -1,35 +1,54 @@
 ---
 type: community
-cohesion: 0.13
-members: 19
+cohesion: 0.10
+members: 39
 ---
 
 # Community 134
 
-**Cohesion:** 0.13 - loosely connected
-**Members:** 19 nodes
+**Cohesion:** 0.10 - loosely connected
+**Members:** 39 nodes
 
 ## Members
-
-- [[IInboxSidebarProps]] - code - web/core/components/inbox/sidebar/root.tsx
-- [[InboxIssueAppliedFilters]] - code - web/core/components/inbox/inbox-filter/applied-filters/root.tsx
-- [[InboxIssueList]] - code - web/core/components/inbox/sidebar/inbox-list.tsx
-- [[InboxIssueListItem]] - code - web/core/components/inbox/sidebar/inbox-list-item.tsx
-- [[InboxIssueListProps]] - code - web/core/components/inbox/sidebar/inbox-list.tsx
-- [[InboxIssueRoot]] - code - web/core/components/inbox/root.tsx
-- [[InboxLayoutLoader()]] - code - web/core/components/ui/loader/layouts/project-inbox/inbox-layout-loader.tsx
-- [[InboxSidebar]] - code - web/core/components/inbox/sidebar/root.tsx
-- [[InboxSidebarLoader()]] - code - web/core/components/ui/loader/layouts/project-inbox/inbox-sidebar-loader.tsx
-- [[TInboxIssueRoot]] - code - web/core/components/inbox/root.tsx
-- [[inbox-layout-loader.tsx]] - code - web/core/components/ui/loader/layouts/project-inbox/inbox-layout-loader.tsx
-- [[inbox-list.tsx]] - code - web/core/components/inbox/sidebar/inbox-list.tsx
-- [[inbox-sidebar-loader.tsx]] - code - web/core/components/ui/loader/layouts/project-inbox/inbox-sidebar-loader.tsx
-- [[index.ts_149]] - code - web/core/components/inbox/content/index.ts
-- [[index.ts_148]] - code - web/core/components/inbox/inbox-filter/index.ts
-- [[index.ts_147]] - code - web/core/components/inbox/sidebar/index.ts
-- [[root.tsx_70]] - code - web/core/components/inbox/root.tsx
-- [[root.tsx_71]] - code - web/core/components/inbox/sidebar/root.tsx
-- [[tabNavigationOptions]] - code - web/core/components/inbox/sidebar/root.tsx
+- [[AUTH_TRACKER_ELEMENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[AUTH_TRACKER_EVENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[COMMAND_PALETTE_TRACKER_ELEMENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[CYCLE_TRACKER_ELEMENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[CYCLE_TRACKER_EVENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[GLOBAL_VIEW_TRACKER_ELEMENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[GLOBAL_VIEW_TRACKER_EVENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[MEMBER_TRACKER_ELEMENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[MEMBER_TRACKER_EVENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[MODULE_TRACKER_ELEMENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[MODULE_TRACKER_EVENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[NOTIFICATION_TRACKER_ELEMENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[NOTIFICATION_TRACKER_EVENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[ONBOARDING_TRACKER_ELEMENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[PRODUCT_TOUR_TRACKER_ELEMENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[PRODUCT_TOUR_TRACKER_EVENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[PROFILE_SETTINGS_TRACKER_ELEMENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[PROFILE_SETTINGS_TRACKER_EVENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[PROJECT_PAGE_TRACKER_ELEMENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[PROJECT_PAGE_TRACKER_EVENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[PROJECT_SETTINGS_TRACKER_ELEMENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[PROJECT_SETTINGS_TRACKER_EVENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[PROJECT_TRACKER_ELEMENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[PROJECT_TRACKER_EVENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[PROJECT_VIEW_TRACKER_ELEMENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[PROJECT_VIEW_TRACKER_EVENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[SIDEBAR_TRACKER_ELEMENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[STATE_TRACKER_ELEMENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[STATE_TRACKER_EVENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[USER_TRACKER_ELEMENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[USER_TRACKER_EVENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[WORKSPACE_SETTINGS_TRACKER_ELEMENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[WORKSPACE_SETTINGS_TRACKER_EVENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[WORKSPACE_TRACKER_ELEMENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[WORKSPACE_TRACKER_EVENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[WORK_ITEM_TRACKER_ELEMENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[WORK_ITEM_TRACKER_EVENTS]] - code - packages/constants/src/event-tracker/core.ts
+- [[core.ts_1]] - code - constants/src/event-tracker/core.ts
+- [[core.ts_23]] - code - packages/constants/src/event-tracker/core.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -37,20 +56,3 @@ members: 19
 TABLE source_file, type FROM #community/Community_134
 SORT file.name ASC
 ```
-
-## Connections to other communities
-
-- 6 edges to [[_COMMUNITY_Community 98]]
-- 2 edges to [[_COMMUNITY_Active Cycle Stats]]
-- 2 edges to [[_COMMUNITY_Account & Sub-Issues]]
-- 2 edges to [[_COMMUNITY_Applied Filters UI]]
-- 2 edges to [[_COMMUNITY_Module Analytics]]
-- 1 edge to [[_COMMUNITY_Authentication UI]]
-
-## Top bridge nodes
-
-- [[root.tsx_71]] - degree 18, connects to 4 communities
-- [[root.tsx_70]] - degree 8, connects to 1 community
-- [[inbox-list.tsx]] - degree 5, connects to 1 community
-- [[InboxIssueAppliedFilters]] - degree 2, connects to 1 community
-- [[InboxIssueListItem]] - degree 2, connects to 1 community

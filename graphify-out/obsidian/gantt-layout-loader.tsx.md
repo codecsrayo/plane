@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/ui/loader/layouts/gantt-layout-loader.tsx"
 type: "code"
-community: "Gantt Chart"
+community: "Community 23"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Chart
+  - community/Community_23
 ---
 
 # gantt-layout-loader.tsx
 
 ## Connections
-
 - [[GanttLayoutListItemLoader()]] - `contains` [EXTRACTED]
 - [[GanttLayoutLoader()]] - `contains` [EXTRACTED]
 - [[constants.ts_4]] - `imports_from` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[sidebar.tsx_5]] - `imports_from` [EXTRACTED]
 - [[utils.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Chart
+#graphify/code #graphify/EXTRACTED #community/Community_23

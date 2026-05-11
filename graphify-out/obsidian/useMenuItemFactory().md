@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx"
 type: "code"
-community: "Issue Work"
+community: "Project Filters & Archives"
 location: "L139"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Work
+  - community/Project_Filters__Archives
 ---
 
 # useMenuItemFactory()
 
 ## Connections
-
 - [[helper.tsx_25]] - `contains` [EXTRACTED]
 - [[useAllIssueMenuItems()]] - `calls` [EXTRACTED]
 - [[useArchivedIssueMenuItems()]] - `calls` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[useProjectIssueMenuItems()]] - `calls` [EXTRACTED]
 - [[useWorkItemDetailMenuItems()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Work
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

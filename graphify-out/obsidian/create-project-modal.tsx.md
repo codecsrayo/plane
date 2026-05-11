@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/project/create-project-modal.tsx"
 type: "code"
-community: "Project Profile"
+community: "Community 144"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Profile
+  - community/Community_144
 ---
 
 # create-project-modal.tsx
 
 ## Connections
-
 - [[CreateProjectForm]] - `imports` [EXTRACTED]
 - [[CreateProjectModal()]] - `contains` [EXTRACTED]
 - [[EProjectCreationSteps]] - `contains` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[use-keypress.tsx]] - `imports_from` [EXTRACTED]
 - [[workspace-level.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Profile
+#graphify/code #graphify/EXTRACTED #community/Community_144

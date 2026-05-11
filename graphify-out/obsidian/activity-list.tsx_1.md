@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/settings/profile/content/pages/activity/activity-list.tsx"
 type: "code"
-community: "Activity User"
+community: "Community 36"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Activity_User
+  - community/Community_36
 ---
 
 # activity-list.tsx
 
 ## Connections
-
 - [[ActivityIcon()_1]] - `imports` [EXTRACTED]
 - [[ActivityMessage()]] - `imports` [EXTRACTED]
 - [[ActivityProfileSettingsList]] - `contains` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[user.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[userService_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Activity_User
+#graphify/code #graphify/EXTRACTED #community/Community_36

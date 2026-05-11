@@ -1,18 +1,17 @@
 ---
 source_file: "web/e2e/integrations.spec.ts"
 type: "code"
-community: "First Integrations"
+community: "Community 677"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/First_Integrations
+  - community/Community_677
 ---
 
 # pid()
 
 ## Connections
-
 - [[integrations.spec.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/First_Integrations
+#graphify/code #graphify/EXTRACTED #community/Community_677

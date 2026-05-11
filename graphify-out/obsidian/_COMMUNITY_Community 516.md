@@ -1,17 +1,23 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.50
+members: 8
 ---
 
 # Community 516
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.50 - moderately connected
+**Members:** 8 nodes
 
 ## Members
-
-- [[index.ts_131]] - code - shared-state/src/index.ts
+- [[ControllerConstructor]] - code - packages/decorators/src/controller.ts
+- [[ControllerInstance]] - code - packages/decorators/src/controller.ts
+- [[HttpMethod]] - code - packages/decorators/src/controller.ts
+- [[controller.ts]] - code - decorators/src/controller.ts
+- [[controller.ts_1]] - code - packages/decorators/src/controller.ts
+- [[registerController()]] - code - packages/decorators/src/controller.ts
+- [[registerRestController()]] - code - packages/decorators/src/controller.ts
+- [[registerWebSocketController()]] - code - packages/decorators/src/controller.ts
 
 ## Live Query (requires Dataview plugin)
 

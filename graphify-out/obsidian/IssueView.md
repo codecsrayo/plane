@@ -1,19 +1,18 @@
 ---
 source_file: "web/core/components/issues/peek-overview/view.tsx"
 type: "code"
-community: "Issue Inbox"
+community: "Filter UI & Breadcrumbs"
 location: "L43"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Inbox
+  - community/Filter_UI__Breadcrumbs
 ---
 
 # IssueView
 
 ## Connections
-
 - [[root.tsx_84]] - `imports` [EXTRACTED]
 - [[view.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Inbox
+#graphify/code #graphify/EXTRACTED #community/Filter_UI__Breadcrumbs

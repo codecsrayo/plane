@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 821
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_174]] - code - web/core/components/license/modal/card/index.ts
+- [[Props_86]] - code - web/core/components/sidebar/search-button.tsx
+- [[SidebarSearchButton()]] - code - web/core/components/sidebar/search-button.tsx
+- [[search-button.tsx]] - code - web/core/components/sidebar/search-button.tsx
 
 ## Live Query (requires Dataview plugin)
 

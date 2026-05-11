@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/relations/issue-list-item.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Issue Activity Types"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Issue_Activity_Types
 ---
 
 # issue-list-item.tsx
 
 ## Connections
-
 - [[IssueIdentifier]] - `imports` [EXTRACTED]
 - [[Props_362]] - `contains` [EXTRACTED]
 - [[RelationIssueListItem]] - `contains` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[useRelationOperations()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Types

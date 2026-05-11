@@ -1,18 +1,18 @@
 ---
-source_file: "hooks/src/use-hash-scroll.ts"
+source_file: "packages/hooks/src/use-hash-scroll.ts"
 type: "code"
-community: "Hash Scroll"
+community: "Community 532"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Hash_Scroll
+  - community/Community_532
 ---
 
 # TArgs
 
 ## Connections
-
 - [[use-hash-scroll.ts]] - `contains` [EXTRACTED]
+- [[use-hash-scroll.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Hash_Scroll
+#graphify/code #graphify/EXTRACTED #community/Community_532

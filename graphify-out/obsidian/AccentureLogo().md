@@ -1,18 +1,18 @@
 ---
-source_file: "propel/src/icons/brand/accenture-logo.tsx"
+source_file: "packages/propel/src/icons/brand/accenture-logo.tsx"
 type: "code"
-community: "Icon Panel"
+community: "Icon Library & Branding"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Icon_Panel
+  - community/Icon_Library__Branding
 ---
 
 # AccentureLogo()
 
 ## Connections
-
 - [[accenture-logo.tsx]] - `contains` [EXTRACTED]
+- [[accenture-logo.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Icon_Panel
+#graphify/code #graphify/EXTRACTED #community/Icon_Library__Branding

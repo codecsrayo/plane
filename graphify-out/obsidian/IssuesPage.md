@@ -1,18 +1,17 @@
 ---
 source_file: "space/app/issues/[anchor]/page.tsx"
 type: "code"
-community: "Issue Properties"
+community: "Community 137"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Community_137
 ---
 
 # IssuesPage
 
 ## Connections
-
 - [[page.tsx_82]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Community_137

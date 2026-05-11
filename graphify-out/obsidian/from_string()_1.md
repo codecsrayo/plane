@@ -1,19 +1,18 @@
 ---
 source_file: "api/plane/utils/global_paginator.py"
 type: "code"
-community: "Global Paginator"
+community: "Community 584"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Global_Paginator
+  - community/Community_584
 ---
 
 # from_string()
 
 ## Connections
-
 - [[global_paginator.py]] - `contains` [EXTRACTED]
 - [[paginate()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Global_Paginator
+#graphify/code #graphify/EXTRACTED #community/Community_584

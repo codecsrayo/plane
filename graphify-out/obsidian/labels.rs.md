@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/labels.rs"
 type: "code"
-community: "Returns Sign"
+community: "Rust Auth Services"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Sign
+  - community/Rust_Auth_Services
 ---
 
 # labels.rs
 
 ## Connections
-
 - [[bulk_create_labels_returns_201()]] - `contains` [EXTRACTED]
 - [[create_label_default_color()]] - `contains` [EXTRACTED]
 - [[create_label_empty_name_returns_400()]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[list_labels_unauthenticated_returns_401()]] - `contains` [EXTRACTED]
 - [[update_label_returns_200()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Sign
+#graphify/code #graphify/EXTRACTED #community/Rust_Auth_Services

@@ -1,20 +1,19 @@
 ---
 source_file: "space/app/root.tsx"
 type: "code"
-community: "Error Provider"
+community: "Community 43"
 location: "L75"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Error_Provider
+  - community/Community_43
 ---
 
 # meta()
 
 ## Connections
-
 - [[root.tsx_20]] - `contains` [EXTRACTED]
 - [[root.tsx_135]] - `contains` [EXTRACTED]
 - [[root.tsx_136]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Error_Provider
+#graphify/code #graphify/EXTRACTED #community/Community_43

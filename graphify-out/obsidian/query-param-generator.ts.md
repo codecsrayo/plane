@@ -1,18 +1,17 @@
 ---
 source_file: "space/helpers/query-param-generator.ts"
 type: "code"
-community: "Issue Peek"
+community: "Community 225"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Peek
+  - community/Community_225
 ---
 
 # query-param-generator.ts
 
 ## Connections
-
 - [[TQueryParamValue]] - `contains` [EXTRACTED]
 - [[block.tsx_9]] - `imports_from` [EXTRACTED]
 - [[block.tsx_10]] - `imports_from` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[root.tsx_140]] - `imports_from` [EXTRACTED]
 - [[user-avatar.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Peek
+#graphify/code #graphify/EXTRACTED #community/Community_225

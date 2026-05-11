@@ -1,34 +1,53 @@
 ---
 type: community
-cohesion: 0.15
-members: 18
+cohesion: 0.12
+members: 38
 ---
 
 # Community 140
 
-**Cohesion:** 0.15 - loosely connected
-**Members:** 18 nodes
+**Cohesion:** 0.12 - loosely connected
+**Members:** 38 nodes
 
 ## Members
-
-- [[ILabelCreate]] - code - web/core/components/issues/issue-detail/label/create-label.tsx
-- [[IssueLabel]] - code - web/core/components/issues/issue-detail/label/root.tsx
-- [[IssueLabelSelect_1]] - code - web/core/components/issues/issue-detail/label/select/label-select.tsx
-- [[IssueLabelSelectRoot()]] - code - web/core/components/issues/issue-detail/label/select/root.tsx
-- [[LabelCreate()]] - code - web/core/components/issues/issue-detail/label/create-label.tsx
-- [[LabelList]] - code - web/core/components/issues/issue-detail/label/label-list.tsx
-- [[LabelListItem]] - code - web/core/components/issues/issue-detail/label/label-list-item.tsx
-- [[TIssueLabel]] - code - web/core/components/issues/issue-detail/label/root.tsx
-- [[TIssueLabelSelectRoot]] - code - web/core/components/issues/issue-detail/label/select/root.tsx
-- [[TLabelList]] - code - web/core/components/issues/issue-detail/label/label-list.tsx
-- [[TLabelListItem]] - code - web/core/components/issues/issue-detail/label/label-list-item.tsx
-- [[TLabelOperations]] - code - web/core/components/issues/issue-detail/label/root.tsx
-- [[create-label.tsx]] - code - web/core/components/issues/issue-detail/label/create-label.tsx
-- [[defaultValues_15]] - code - web/core/components/issues/issue-detail/label/create-label.tsx
-- [[label-list-item.tsx]] - code - web/core/components/issues/issue-detail/label/label-list-item.tsx
-- [[label-list.tsx]] - code - web/core/components/issues/issue-detail/label/label-list.tsx
-- [[root.tsx_32]] - code - web/core/components/issues/issue-detail/label/root.tsx
-- [[root.tsx_33]] - code - web/core/components/issues/issue-detail/label/select/root.tsx
+- [[AllSizes_4]] - code - packages/propel/src/badge/badge.stories.tsx
+- [[AllVariants_2]] - code - packages/propel/src/badge/badge.stories.tsx
+- [[Badge]] - code - packages/propel/src/badge/badge.tsx
+- [[BadgeProps]] - code - packages/ui/src/badge/badge.tsx
+- [[BadgeProps_1]] - code - packages/propel/src/badge/helper.tsx
+- [[Base]] - code - packages/propel/src/badge/badge.stories.tsx
+- [[Brand]] - code - packages/propel/src/badge/badge.stories.tsx
+- [[Danger]] - code - packages/propel/src/badge/badge.stories.tsx
+- [[Default_15]] - code - packages/propel/src/badge/badge.stories.tsx
+- [[IBadgeStyling]] - code - packages/ui/src/badge/helper.tsx
+- [[Large_5]] - code - packages/propel/src/badge/badge.stories.tsx
+- [[Neutral]] - code - packages/propel/src/badge/badge.stories.tsx
+- [[Small_4]] - code - packages/propel/src/badge/badge.stories.tsx
+- [[Story_16]] - code - packages/propel/src/badge/badge.stories.tsx
+- [[Success_1]] - code - packages/propel/src/badge/badge.stories.tsx
+- [[TBadgeSize]] - code - packages/propel/src/badge/helper.tsx
+- [[TBadgeSizes]] - code - packages/ui/src/badge/helper.tsx
+- [[TBadgeVariant]] - code - packages/propel/src/badge/helper.tsx
+- [[Warning_1]] - code - packages/propel/src/badge/badge.stories.tsx
+- [[WithAppendIcon]] - code - packages/propel/src/badge/badge.stories.tsx
+- [[WithPrependIcon]] - code - packages/propel/src/badge/badge.stories.tsx
+- [[badge.stories.tsx_1]] - code - packages/propel/src/badge/badge.stories.tsx
+- [[badge.stories.tsx]] - code - propel/src/badge/badge.stories.tsx
+- [[badge.tsx_3]] - code - packages/propel/src/badge/badge.tsx
+- [[badge.tsx_2]] - code - packages/ui/src/badge/badge.tsx
+- [[badge.tsx_1]] - code - propel/src/badge/badge.tsx
+- [[badge.tsx]] - code - ui/src/badge/badge.tsx
+- [[badgeIconStyling]] - code - packages/propel/src/badge/helper.tsx
+- [[badgeSizeStyling]] - code - packages/ui/src/badge/helper.tsx
+- [[badgeStyling]] - code - packages/ui/src/badge/helper.tsx
+- [[badgeVariants]] - code - packages/propel/src/badge/helper.tsx
+- [[getBadgeIconStyling()]] - code - packages/propel/src/badge/helper.tsx
+- [[getBadgeStyling()]] - code - packages/propel/src/badge/helper.tsx
+- [[getIconStyling()]] - code - packages/ui/src/badge/helper.tsx
+- [[helper.tsx_44]] - code - packages/propel/src/badge/helper.tsx
+- [[helper.tsx_34]] - code - packages/ui/src/badge/helper.tsx
+- [[helper.tsx_12]] - code - propel/src/badge/helper.tsx
+- [[helper.tsx_2]] - code - ui/src/badge/helper.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -38,15 +57,11 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 6 edges to [[_COMMUNITY_Community 81]]
-- 2 edges to [[_COMMUNITY_Community 98]]
-- 2 edges to [[_COMMUNITY_Issue Activity Tracking]]
-- 1 edge to [[_COMMUNITY_Spreadsheet Column Components]]
+- 2 edges to [[_COMMUNITY_Community 61]]
+- 2 edges to [[_COMMUNITY_Community 292]]
 
 ## Top bridge nodes
-
-- [[root.tsx_32]] - degree 14, connects to 4 communities
-- [[label-list-item.tsx]] - degree 7, connects to 1 community
-- [[root.tsx_33]] - degree 6, connects to 1 community
-- [[IssueLabelSelect_1]] - degree 2, connects to 1 community
+- [[badge.tsx_2]] - degree 8, connects to 1 community
+- [[badge.tsx]] - degree 8, connects to 1 community
+- [[badge.tsx_3]] - degree 7, connects to 1 community
+- [[badge.tsx_1]] - degree 7, connects to 1 community

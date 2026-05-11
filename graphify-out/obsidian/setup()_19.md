@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/cycles_extras.rs"
 type: "code"
-community: "Returns Cycle"
+community: "Community 285"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Cycle
+  - community/Community_285
 ---
 
 # setup()
 
 ## Connections
-
 - [[.spawn()]] - `calls` [INFERRED]
 - [[add_favorite_cycle_returns_201()]] - `calls` [EXTRACTED]
 - [[cycle_date_check_non_overlapping_returns_200()]] - `calls` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[unarchive_cycle_returns_204()]] - `calls` [EXTRACTED]
 - [[update_cycle_user_properties_returns_200()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Cycle
+#graphify/code #graphify/EXTRACTED #community/Community_285

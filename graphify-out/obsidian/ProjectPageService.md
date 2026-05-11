@@ -1,18 +1,17 @@
 ---
 source_file: "live/src/services/page/project-page.service.ts"
 type: "code"
-community: "Project Projectpageservice"
+community: "Community 299"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Projectpageservice
+  - community/Community_299
 ---
 
 # ProjectPageService
 
 ## Connections
-
 - [[.addToFavorites()_1]] - `method` [EXTRACTED]
 - [[.archive()_2]] - `method` [EXTRACTED]
 - [[.constructor()_167]] - `method` [EXTRACTED]
@@ -36,4 +35,4 @@ tags:
 - [[project-page.service.ts]] - `contains` [EXTRACTED]
 - [[project-page.service.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Projectpageservice
+#graphify/code #graphify/EXTRACTED #community/Community_299

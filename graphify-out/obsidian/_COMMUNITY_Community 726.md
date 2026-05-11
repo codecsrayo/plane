@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 726
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[ActiveModel_76]] - code - api_rust/src/entities/users_user_permissions.rs
+- [[TInstanceImageConfigurationKeys]] - code - packages/types/src/instance/image.ts
+- [[image.ts_1]] - code - packages/types/src/instance/image.ts
+- [[image.ts]] - code - types/src/instance/image.ts
 
 ## Live Query (requires Dataview plugin)
 

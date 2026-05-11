@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 770
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_35]] - code - web/core/components/workspace/sidebar/help-section/index.ts
+- [[Analytics()]] - code - web/app/routes/redirects/core/analytics.tsx
+- [[analytics.tsx]] - code - web/app/routes/redirects/core/analytics.tsx
+- [[clientLoader()_8]] - code - web/app/routes/redirects/core/analytics.tsx
 
 ## Live Query (requires Dataview plugin)
 

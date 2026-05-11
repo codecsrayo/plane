@@ -1,18 +1,21 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.33
+members: 6
 ---
 
 # Community 587
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.33 - loosely connected
+**Members:** 6 nodes
 
 ## Members
-
-- [[.to()_89]] - code - api_rust/src/entities/workspace_member_invites.rs
-- [[Entity_89]] - code - api_rust/src/entities/workspace_member_invites.rs
+- [[.cancel()_1]] - code - live/src/extensions/title-update/title-update-manager.ts
+- [[.constructor()_192]] - code - live/src/extensions/title-update/title-update-manager.ts
+- [[.forceSave()]] - code - live/src/extensions/title-update/title-update-manager.ts
+- [[.scheduleUpdate()]] - code - live/src/extensions/title-update/title-update-manager.ts
+- [[.updateTitle()]] - code - live/src/extensions/title-update/title-update-manager.ts
+- [[TitleUpdateManager]] - code - live/src/extensions/title-update/title-update-manager.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -20,3 +23,11 @@ members: 2
 TABLE source_file, type FROM #community/Community_587
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 2 edges to [[_COMMUNITY_Community 317]]
+- 1 edge to [[_COMMUNITY_Community 241]]
+
+## Top bridge nodes
+- [[TitleUpdateManager]] - degree 7, connects to 1 community
+- [[.updateTitle()]] - degree 2, connects to 1 community

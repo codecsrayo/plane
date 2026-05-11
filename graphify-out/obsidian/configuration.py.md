@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/license/api/views/configuration.py"
 type: "code"
-community: "Instance Endpoint"
+community: "Community 248"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Instance_Endpoint
+  - community/Community_248
 ---
 
 # configuration.py
 
 ## Connections
-
 - [[DisableEmailFeatureEndpoint]] - `contains` [EXTRACTED]
 - [[EmailCredentialCheckEndpoint]] - `contains` [EXTRACTED]
 - [[InstanceConfigurationEndpoint]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[get()_39]] - `contains` [EXTRACTED]
 - [[patch()_21]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Instance_Endpoint
+#graphify/code #graphify/EXTRACTED #community/Community_248

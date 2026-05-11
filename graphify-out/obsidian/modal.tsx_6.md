@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/workspace/views/modal.tsx"
 type: "code"
-community: "Project Work"
+community: "Community 22"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Work
+  - community/Community_22
 ---
 
 # modal.tsx
 
 ## Connections
-
 - [[CreateUpdateWorkspaceViewModal]] - `contains` [EXTRACTED]
 - [[Props_94]] - `contains` [EXTRACTED]
 - [[WorkspaceViewForm]] - `imports` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[view-list-item.tsx_1]] - `imports_from` [EXTRACTED]
 - [[workspace-level.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Work
+#graphify/code #graphify/EXTRACTED #community/Community_22

@@ -1,18 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.50
+members: 5
 ---
 
 # Community 618
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.50 - moderately connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[DocIcon()]] - code - web/core/components/icons/attachment/doc-file-icon.tsx
-- [[doc-file-icon.tsx]] - code - web/core/components/icons/attachment/doc-file-icon.tsx
+- [[AppLayout()]] - code - web/app/(all)/layout.tsx
+- [[PreloadResources()]] - code - web/app/(all)/layout.preload.tsx
+- [[layout.preload.tsx]] - code - web/app/(all)/layout.preload.tsx
+- [[layout.tsx_2]] - code - web/app/(all)/layout.tsx
+- [[meta()_4]] - code - web/app/(all)/layout.tsx
 
 ## Live Query (requires Dataview plugin)
 

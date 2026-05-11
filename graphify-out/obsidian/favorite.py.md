@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/workspace/favorite.py"
 type: "code"
-community: "Favorite Serializer"
+community: "Community 329"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Favorite_Serializer
+  - community/Community_329
 ---
 
 # favorite.py
 
 ## Connections
-
 - [[WorkspaceFavoriteEndpoint]] - `contains` [EXTRACTED]
 - [[WorkspaceFavoriteGroupEndpoint]] - `contains` [EXTRACTED]
 - [[__init__.py_3]] - `imports_from` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[patch()_4]] - `contains` [EXTRACTED]
 - [[post()_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Favorite_Serializer
+#graphify/code #graphify/EXTRACTED #community/Community_329

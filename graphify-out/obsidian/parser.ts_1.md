@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/helpers/parser.ts"
 type: "code"
-community: "Document Custom"
+community: "Community 188"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Document_Custom
+  - community/Community_188
 ---
 
 # parser.ts
 
 ## Connections
-
 - [[convertHTMLDocumentToAllFormats()]] - `imports` [EXTRACTED]
 - [[extractAdditionalAssetsFromHTMLContent()]] - `imports` [EXTRACTED]
 - [[extractAssetsFromHTMLContent()]] - `contains` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[replaceAssetsInHTMLContent()]] - `contains` [EXTRACTED]
 - [[yjs-utils.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Document_Custom
+#graphify/code #graphify/EXTRACTED #community/Community_188

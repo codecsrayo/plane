@@ -1,17 +1,26 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.33
+members: 11
 ---
 
 # Community 457
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.33 - loosely connected
+**Members:** 11 nodes
 
 ## Members
-
-- [[editor.ts_12]] - code - i18n/src/locales/fr/editor.ts
+- [[entity_search_member_returns_200()]] - code - api_rust/tests/search_tests.rs
+- [[entity_search_unauthenticated_returns_401()]] - code - api_rust/tests/search_tests.rs
+- [[global_search_empty_query_returns_200()]] - code - api_rust/tests/search_tests.rs
+- [[global_search_nonmember_returns_403()]] - code - api_rust/tests/search_tests.rs
+- [[global_search_unauthenticated_returns_401()]] - code - api_rust/tests/search_tests.rs
+- [[global_search_with_query_returns_200()]] - code - api_rust/tests/search_tests.rs
+- [[search_issues_empty_query_returns_200()]] - code - api_rust/tests/search_tests.rs
+- [[search_issues_member_returns_200()]] - code - api_rust/tests/search_tests.rs
+- [[search_issues_unauthenticated_returns_401()]] - code - api_rust/tests/search_tests.rs
+- [[search_tests.rs]] - code - api_rust/tests/search_tests.rs
+- [[setup()_32]] - code - api_rust/tests/search_tests.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -19,3 +28,10 @@ members: 1
 TABLE source_file, type FROM #community/Community_457
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 2 edges to [[_COMMUNITY_Rust Auth Services]]
+
+## Top bridge nodes
+- [[setup()_32]] - degree 10, connects to 1 community
+- [[global_search_unauthenticated_returns_401()]] - degree 2, connects to 1 community

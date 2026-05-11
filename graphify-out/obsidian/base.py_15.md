@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/view/base.py"
 type: "code"
-community: "Issue Apply"
+community: "Community 257"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Apply
+  - community/Community_257
 ---
 
 # base.py
 
 ## Connections
-
 - [[IssueViewFavoriteViewSet]] - `contains` [EXTRACTED]
 - [[IssueViewViewSet]] - `contains` [EXTRACTED]
 - [[WorkspaceViewIssuesViewSet]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[partial_update()_12]] - `contains` [EXTRACTED]
 - [[retrieve()_10]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Apply
+#graphify/code #graphify/EXTRACTED #community/Community_257

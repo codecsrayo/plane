@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/navigation/tab-navigation-root.tsx"
 type: "code"
-community: "Project Navigation"
+community: "Community 73"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Navigation
+  - community/Community_73
 ---
 
 # tab-navigation-root.tsx
 
 ## Connections
-
 - [[LeaveProjectModal]] - `imports` [EXTRACTED]
 - [[ProjectActionsMenu()]] - `imports` [EXTRACTED]
 - [[ProjectHeader]] - `imports` [EXTRACTED]
@@ -45,4 +44,4 @@ tags:
 - [[useResponsiveTabLayout()]] - `imports` [EXTRACTED]
 - [[useTabPreferences()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Navigation
+#graphify/code #graphify/EXTRACTED #community/Community_73

@@ -1,0 +1,276 @@
+---
+type: community
+cohesion: 0.02
+members: 214
+---
+
+# Filter UI & Breadcrumbs
+
+**Cohesion:** 0.02 - loosely connected
+**Members:** 214 nodes
+
+## Members
+- [[AccessController()]] - code - web/ce/components/views/access-controller.tsx
+- [[AccessControllerProps]] - code - web/ce/components/views/access-controller.tsx
+- [[ActiveLoader()]] - code - web/core/components/issues/issue-layouts/issue-layout-HOC.tsx
+- [[AddFilterButton]] - code - web/core/components/rich-filters/add-filters/button.tsx
+- [[AddFilterDropdown]] - code - web/core/components/rich-filters/add-filters/dropdown.tsx
+- [[AdditionalHeaderItems()]] - code - web/ce/components/views/helper.tsx
+- [[ArchivedIssueLayoutRoot]] - code - web/core/components/issues/issue-layouts/roots/archived-issue-layout-root.tsx
+- [[ArchivedIssueListLayout]] - code - web/core/components/issues/issue-layouts/list/roots/archived-issue-root.tsx
+- [[ArchivedIssuesHeader]] - code - web/core/components/issues/archived-issues-header.tsx
+- [[BaseCalendarRoot]] - code - web/core/components/issues/issue-layouts/calendar/base-calendar-root.tsx
+- [[BaseGanttRoot]] - code - web/core/components/issues/issue-layouts/gantt/base-gantt-root.tsx
+- [[BaseKanBanRoot]] - code - web/core/components/issues/issue-layouts/kanban/base-kanban-root.tsx
+- [[BaseListRoot]] - code - web/core/components/issues/issue-layouts/list/base-list-root.tsx
+- [[BaseSpreadsheetRoot]] - code - web/core/components/issues/issue-layouts/spreadsheet/base-spreadsheet-root.tsx
+- [[CalendarChart]] - code - web/core/components/issues/issue-layouts/calendar/calendar.tsx
+- [[CalendarLayout]] - code - web/core/components/issues/issue-layouts/calendar/roots/project-root.tsx
+- [[CalendarStoreType]] - code - web/core/components/issues/issue-layouts/calendar/base-calendar-root.tsx
+- [[CommonProjectBreadcrumbs()]] - code - web/ce/components/breadcrumbs/common.tsx
+- [[DEFAULT_VALUES]] - code - web/core/components/workspace/views/form.tsx
+- [[DNDStoreType]] - code - web/core/hooks/use-group-dragndrop.ts
+- [[ElementTransition]] - code - web/core/components/rich-filters/filters-row.tsx
+- [[FilterItem]] - code - web/core/components/rich-filters/filter-item/root.tsx
+- [[FiltersRow]] - code - web/core/components/rich-filters/filters-row.tsx
+- [[FiltersToggle]] - code - web/core/components/rich-filters/filters-toggle.tsx
+- [[GanttStoreType]] - code - web/core/components/issues/issue-layouts/gantt/base-gantt-root.tsx
+- [[GlobalViewLayoutSelection()]] - code - web/ce/components/views/helper.tsx
+- [[HeaderFilters_1]] - code - web/core/components/issues/filters.tsx
+- [[HomePeekOverviewsRoot]] - code - web/ce/components/home/peek-overviews.tsx
+- [[IBaseCalendarRoot]] - code - web/core/components/issues/issue-layouts/calendar/base-calendar-root.tsx
+- [[IBaseGanttRoot]] - code - web/core/components/issues/issue-layouts/gantt/base-gantt-root.tsx
+- [[IBaseKanBanLayout]] - code - web/core/components/issues/issue-layouts/kanban/base-kanban-root.tsx
+- [[IBaseListRoot]] - code - web/core/components/issues/issue-layouts/list/base-list-root.tsx
+- [[IBaseSpreadsheetRoot]] - code - web/core/components/issues/issue-layouts/spreadsheet/base-spreadsheet-root.tsx
+- [[IHeaderGroupByCard]] - code - space/components/issues/issue-layouts/list/headers/group-by-card.tsx
+- [[IssueActions]] - code - web/core/hooks/use-issues-actions.tsx
+- [[IssueGanttBlock]] - code - web/core/components/issues/issue-layouts/gantt/blocks.tsx
+- [[IssueLayoutHOC]] - code - space/components/issues/issue-layouts/issue-layout-HOC.tsx
+- [[IssueLayoutIcon()]] - code - web/core/components/issues/issue-layouts/layout-icon.tsx
+- [[IssuePeekOverview]] - code - web/core/components/issues/peek-overview/root.tsx
+- [[IssueView]] - code - web/core/components/issues/peek-overview/view.tsx
+- [[IssuesStoreContext]] - code - web/core/hooks/use-issue-layout-store.ts
+- [[KanBanLayout]] - code - web/core/components/issues/issue-layouts/kanban/roots/project-root.tsx
+- [[KanbanStoreType]] - code - web/core/components/issues/issue-layouts/kanban/base-kanban-root.tsx
+- [[LAYOUTS]] - code - web/core/components/issues/filters.tsx
+- [[LayoutDropDown]] - code - web/core/components/dropdowns/layout.tsx
+- [[ListLayout]] - code - web/core/components/issues/issue-layouts/list/roots/project-root.tsx
+- [[ListStoreType]] - code - web/core/components/issues/issue-layouts/list/base-list-root.tsx
+- [[MobileLayoutSelection()]] - code - web/core/components/issues/issue-layouts/filters/header/mobile-layout-selection.tsx
+- [[ModuleCalendarLayout]] - code - web/core/components/issues/issue-layouts/calendar/roots/module-root.tsx
+- [[ModuleIssueLayout()]] - code - web/core/components/issues/issue-layouts/roots/module-layout-root.tsx
+- [[ModuleKanBanLayout]] - code - web/core/components/issues/issue-layouts/kanban/roots/module-root.tsx
+- [[ModuleLayoutRoot]] - code - web/core/components/issues/issue-layouts/roots/module-layout-root.tsx
+- [[ModuleListLayout]] - code - web/core/components/issues/issue-layouts/list/roots/module-root.tsx
+- [[ModuleSpreadsheetLayout]] - code - web/core/components/issues/issue-layouts/spreadsheet/roots/module-root.tsx
+- [[ProfileIssuesKanBanLayout]] - code - web/core/components/issues/issue-layouts/kanban/roots/profile-issues-root.tsx
+- [[ProfileIssuesListLayout]] - code - web/core/components/issues/issue-layouts/list/roots/profile-issues-root.tsx
+- [[ProjectArchivedIssuesPage()]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/issues/(list)/page.tsx
+- [[ProjectBreadcrumb]] - code - web/ce/components/breadcrumbs/project.tsx
+- [[ProjectIssueLayout()]] - code - web/core/components/issues/issue-layouts/roots/project-layout-root.tsx
+- [[ProjectLevelWorkItemFiltersHOC]] - code - web/core/components/work-item-filters/filters-hoc/project-level.tsx
+- [[ProjectSpreadsheetLayout]] - code - web/core/components/issues/issue-layouts/spreadsheet/roots/project-root.tsx
+- [[ProjectViewCalendarLayout]] - code - web/core/components/issues/issue-layouts/calendar/roots/project-view-root.tsx
+- [[ProjectViewIssueLayout()]] - code - web/core/components/issues/issue-layouts/roots/project-view-layout-root.tsx
+- [[ProjectViewIssuesPage()]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/views/(detail)/[viewId]/page.tsx
+- [[ProjectViewKanBanLayout]] - code - web/core/components/issues/issue-layouts/kanban/roots/project-view-root.tsx
+- [[ProjectViewLayoutRoot]] - code - web/core/components/issues/issue-layouts/roots/project-view-layout-root.tsx
+- [[ProjectViewListLayout]] - code - web/core/components/issues/issue-layouts/list/roots/project-view-root.tsx
+- [[ProjectViewSpreadsheetLayout]] - code - web/core/components/issues/issue-layouts/spreadsheet/roots/project-view-root.tsx
+- [[Props_290]] - code - web/core/components/issues/issue-layouts/calendar/issue-block.tsx
+- [[Props_289]] - code - web/core/components/issues/issue-layouts/gantt/blocks.tsx
+- [[Props_255]] - code - web/core/components/issues/filters.tsx
+- [[Props_410]] - code - web/core/components/analytics/work-items/modal/header.tsx
+- [[Props_508]] - code - web/core/components/analytics/work-items/modal/index.tsx
+- [[Props_170]] - code - web/core/components/profile/profile-issues.tsx
+- [[Props_326]] - code - web/core/components/issues/issue-layouts/roots/all-issue-layout-root.tsx
+- [[Props_288]] - code - web/core/components/issues/issue-layouts/spreadsheet/roots/workspace-root.tsx
+- [[Props_267]] - code - web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-view.tsx
+- [[Props_90]] - code - web/core/components/workspace/views/form.tsx
+- [[Props_329]] - code - web/core/components/issues/workspace-draft/delete-modal.tsx
+- [[RowTransition]] - code - web/core/components/rich-filters/filters-row.tsx
+- [[SUPPORTED_LAYOUTS]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(detail)/mobile-header.tsx
+- [[SpreadsheetLayoutLoader()]] - code - web/core/components/ui/loader/layouts/spreadsheet-layout-loader.tsx
+- [[SpreadsheetStoreType]] - code - web/core/components/issues/issue-layouts/spreadsheet/base-spreadsheet-root.tsx
+- [[SpreadsheetView]] - code - web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-view.tsx
+- [[SwitcherIcon()]] - code - web/core/components/common/switcher-label.tsx
+- [[SwitcherLabel()]] - code - web/core/components/common/switcher-label.tsx
+- [[TAddFilterButtonProps]] - code - web/core/components/rich-filters/add-filters/button.tsx
+- [[TAddFilterDropdownProps]] - code - web/core/components/rich-filters/add-filters/dropdown.tsx
+- [[TCommonProjectBreadcrumbProps]] - code - web/ce/components/breadcrumbs/common.tsx
+- [[TElementTransitionProps]] - code - web/core/components/rich-filters/filters-row.tsx
+- [[TFiltersRowProps]] - code - web/core/components/rich-filters/filters-row.tsx
+- [[TFiltersToggleProps]] - code - web/core/components/rich-filters/filters-toggle.tsx
+- [[TLayoutDropDown]] - code - web/core/components/dropdowns/layout.tsx
+- [[TLayoutSelectionProps]] - code - web/ce/components/views/helper.tsx
+- [[TProjectBreadcrumbProps]] - code - web/ce/components/breadcrumbs/project.tsx
+- [[TRowTransitionProps]] - code - web/core/components/rich-filters/filters-row.tsx
+- [[TStoreIssues]] - code - web/core/hooks/store/use-issues.ts
+- [[TSwitcherIconProps]] - code - web/core/components/common/switcher-label.tsx
+- [[TSwitcherLabelProps]] - code - web/core/components/common/switcher-label.tsx
+- [[TWorkItemFiltersRowProps]] - code - web/core/components/work-item-filters/filters-row.tsx
+- [[TWorkItemFiltersToggleProps]] - code - web/core/components/work-item-filters/filters-toggle.tsx
+- [[TWorkspaceLayoutProps]] - code - web/core/components/views/helper.tsx
+- [[WorkItemFiltersRow]] - code - web/core/components/work-item-filters/filters-row.tsx
+- [[WorkItemFiltersToggle]] - code - web/core/components/work-item-filters/filters-toggle.tsx
+- [[WorkItemsModal]] - code - web/core/components/analytics/work-items/modal/index.tsx
+- [[WorkItemsModalHeader]] - code - web/core/components/analytics/work-items/modal/header.tsx
+- [[WorkspaceActiveLayout()]] - code - web/core/components/views/helper.tsx
+- [[WorkspaceAdditionalLayouts()]] - code - web/ce/components/views/helper.tsx
+- [[WorkspaceDraftIssueDeleteIssueModal()]] - code - web/core/components/issues/workspace-draft/delete-modal.tsx
+- [[WorkspaceLevelWorkItemFiltersHOC]] - code - web/core/components/work-item-filters/filters-hoc/workspace-level.tsx
+- [[WorkspaceSpreadsheetRoot]] - code - web/core/components/issues/issue-layouts/spreadsheet/roots/workspace-root.tsx
+- [[WorkspaceViewForm]] - code - web/core/components/workspace/views/form.tsx
+- [[access-controller.tsx]] - code - web/ce/components/views/access-controller.tsx
+- [[all-issue-layout-root.tsx]] - code - web/core/components/issues/issue-layouts/roots/all-issue-layout-root.tsx
+- [[archived-issue-layout-root.tsx]] - code - web/core/components/issues/issue-layouts/roots/archived-issue-layout-root.tsx
+- [[archived-issue-root.tsx]] - code - web/core/components/issues/issue-layouts/list/roots/archived-issue-root.tsx
+- [[archived-issues-header.tsx]] - code - web/core/components/issues/archived-issues-header.tsx
+- [[base-calendar-root.tsx]] - code - web/core/components/issues/issue-layouts/calendar/base-calendar-root.tsx
+- [[base-gantt-root.tsx]] - code - web/core/components/issues/issue-layouts/gantt/base-gantt-root.tsx
+- [[base-kanban-root.tsx]] - code - web/core/components/issues/issue-layouts/kanban/base-kanban-root.tsx
+- [[base-list-root.tsx]] - code - web/core/components/issues/issue-layouts/list/base-list-root.tsx
+- [[base-spreadsheet-root.tsx]] - code - web/core/components/issues/issue-layouts/spreadsheet/base-spreadsheet-root.tsx
+- [[blocks.tsx_1]] - code - web/core/components/issues/issue-layouts/gantt/blocks.tsx
+- [[button.tsx_4]] - code - web/core/components/rich-filters/add-filters/button.tsx
+- [[canEditPropertiesBasedOnProject()]] - code - web/core/components/issues/issue-layouts/list/roots/archived-issue-root.tsx
+- [[common.tsx]] - code - web/ce/components/breadcrumbs/common.tsx
+- [[cycle-root.tsx]] - code - web/core/components/issues/issue-layouts/kanban/roots/cycle-root.tsx
+- [[cycle-root.tsx_1]] - code - web/core/components/issues/issue-layouts/list/roots/cycle-root.tsx
+- [[defaultIssueStore]] - code - web/core/hooks/store/use-issues.ts
+- [[delete-modal.tsx_1]] - code - web/core/components/issues/workspace-draft/delete-modal.tsx
+- [[dropdown.tsx_9]] - code - web/core/components/rich-filters/add-filters/dropdown.tsx
+- [[filters-row.tsx_1]] - code - web/core/components/rich-filters/filters-row.tsx
+- [[filters-row.tsx]] - code - web/core/components/work-item-filters/filters-row.tsx
+- [[filters-toggle.tsx_1]] - code - web/core/components/rich-filters/filters-toggle.tsx
+- [[filters-toggle.tsx]] - code - web/core/components/work-item-filters/filters-toggle.tsx
+- [[filters.tsx_2]] - code - web/core/components/issues/filters.tsx
+- [[form.tsx]] - code - web/core/components/views/form.tsx
+- [[form.tsx_1]] - code - web/core/components/workspace/views/form.tsx
+- [[getBlockViewDetails()]] - code - web/core/components/issues/issue-layouts/utils.tsx
+- [[group-by-card.tsx]] - code - web/core/components/issues/issue-layouts/kanban/headers/group-by-card.tsx
+- [[group-by-card.tsx_1]] - code - web/core/components/issues/issue-layouts/list/headers/group-by-card.tsx
+- [[handleDragDrop()]] - code - web/core/components/issues/issue-layouts/calendar/utils.ts
+- [[header.tsx_12]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(detail)/header.tsx
+- [[header.tsx_7]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/modules/(detail)/header.tsx
+- [[header.tsx_5]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/views/(detail)/[viewId]/header.tsx
+- [[header.tsx_41]] - code - web/ce/components/issues/header.tsx
+- [[header.tsx_57]] - code - web/core/components/analytics/work-items/modal/header.tsx
+- [[helper.tsx_18]] - code - web/ce/components/views/helper.tsx
+- [[helper.tsx_22]] - code - web/core/components/views/helper.tsx
+- [[index.ts_352]] - code - web/core/components/issues/issue-layouts/gantt/index.ts
+- [[index.ts_361]] - code - web/core/components/issues/issue-layouts/quick-action-dropdowns/index.ts
+- [[index.ts_382]] - code - web/core/components/issues/peek-overview/index.ts
+- [[index.ts_350]] - code - web/core/components/issues/preview-card/index.ts
+- [[index.tsx_14]] - code - web/core/components/analytics/work-items/modal/index.tsx
+- [[issue-block.tsx]] - code - web/core/components/issues/issue-layouts/calendar/issue-block.tsx
+- [[issue-layout-HOC.tsx]] - code - web/core/components/issues/issue-layouts/issue-layout-HOC.tsx
+- [[layout-icon.tsx]] - code - web/core/components/issues/issue-layouts/layout-icon.tsx
+- [[layout.tsx_45]] - code - web/core/components/dropdowns/layout.tsx
+- [[mobile-header.tsx]] - code - web/app/(all)/[workspaceSlug]/(projects)/profile/[userId]/mobile-header.tsx
+- [[mobile-header.tsx_5]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(detail)/mobile-header.tsx
+- [[mobile-header.tsx_4]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/issues/(list)/mobile-header.tsx
+- [[mobile-header.tsx_2]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/modules/(detail)/mobile-header.tsx
+- [[mobile-layout-selection.tsx]] - code - web/core/components/issues/issue-layouts/filters/header/mobile-layout-selection.tsx
+- [[module-layout-root.tsx]] - code - web/core/components/issues/issue-layouts/roots/module-layout-root.tsx
+- [[module-root.tsx_3]] - code - web/core/components/issues/issue-layouts/calendar/roots/module-root.tsx
+- [[module-root.tsx]] - code - web/core/components/issues/issue-layouts/kanban/roots/module-root.tsx
+- [[module-root.tsx_1]] - code - web/core/components/issues/issue-layouts/list/roots/module-root.tsx
+- [[module-root.tsx_2]] - code - web/core/components/issues/issue-layouts/spreadsheet/roots/module-root.tsx
+- [[page.tsx_21]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/issues/(list)/page.tsx
+- [[page.tsx_15]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/views/(detail)/[viewId]/page.tsx
+- [[peek-overviews.tsx]] - code - web/ce/components/home/peek-overviews.tsx
+- [[profile-issues-filter.tsx]] - code - web/core/components/profile/profile-issues-filter.tsx
+- [[profile-issues-root.tsx]] - code - web/core/components/issues/issue-layouts/kanban/roots/profile-issues-root.tsx
+- [[profile-issues-root.tsx_1]] - code - web/core/components/issues/issue-layouts/list/roots/profile-issues-root.tsx
+- [[profile-issues.tsx]] - code - web/core/components/profile/profile-issues.tsx
+- [[project-layout-root.tsx]] - code - web/core/components/issues/issue-layouts/roots/project-layout-root.tsx
+- [[project-root.tsx_3]] - code - web/core/components/issues/issue-layouts/calendar/roots/project-root.tsx
+- [[project-root.tsx]] - code - web/core/components/issues/issue-layouts/kanban/roots/project-root.tsx
+- [[project-root.tsx_1]] - code - web/core/components/issues/issue-layouts/list/roots/project-root.tsx
+- [[project-root.tsx_2]] - code - web/core/components/issues/issue-layouts/spreadsheet/roots/project-root.tsx
+- [[project-view-layout-root.tsx]] - code - web/core/components/issues/issue-layouts/roots/project-view-layout-root.tsx
+- [[project-view-root.tsx_3]] - code - web/core/components/issues/issue-layouts/calendar/roots/project-view-root.tsx
+- [[project-view-root.tsx]] - code - web/core/components/issues/issue-layouts/kanban/roots/project-view-root.tsx
+- [[project-view-root.tsx_1]] - code - web/core/components/issues/issue-layouts/list/roots/project-view-root.tsx
+- [[project-view-root.tsx_2]] - code - web/core/components/issues/issue-layouts/spreadsheet/roots/project-view-root.tsx
+- [[project.tsx_2]] - code - web/ce/components/breadcrumbs/project.tsx
+- [[renderProjectIcon()]] - code - web/ce/components/breadcrumbs/project.tsx
+- [[root.tsx_84]] - code - web/core/components/issues/peek-overview/root.tsx
+- [[spreadsheet-view.tsx]] - code - web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-view.tsx
+- [[switcher-label.tsx]] - code - web/core/components/common/switcher-label.tsx
+- [[use-bulk-operation-status.ts]] - code - web/ce/hooks/use-bulk-operation-status.ts
+- [[use-group-dragndrop.ts]] - code - web/core/hooks/use-group-dragndrop.ts
+- [[use-issue-layout-store.ts]] - code - web/core/hooks/use-issue-layout-store.ts
+- [[use-issues-actions.tsx]] - code - web/core/hooks/use-issues-actions.tsx
+- [[use-issues.ts]] - code - web/core/hooks/store/use-issues.ts
+- [[use-project-view.ts]] - code - web/core/hooks/store/use-project-view.ts
+- [[useArchivedIssueActions()]] - code - web/core/hooks/use-issues-actions.tsx
+- [[useBulkOperationStatus()]] - code - web/ce/hooks/use-bulk-operation-status.ts
+- [[useCycleIssueActions()]] - code - web/core/hooks/use-issues-actions.tsx
+- [[useGlobalIssueActions()]] - code - web/core/hooks/use-issues-actions.tsx
+- [[useGroupIssuesDragNDrop()]] - code - web/core/hooks/use-group-dragndrop.ts
+- [[useIssueStoreType()]] - code - web/core/hooks/use-issue-layout-store.ts
+- [[useIssues()]] - code - web/core/hooks/store/use-issues.ts
+- [[useIssuesActions()]] - code - web/core/hooks/use-issues-actions.tsx
+- [[useIssuesStore()]] - code - web/core/hooks/use-issue-layout-store.ts
+- [[useModuleIssueActions()]] - code - web/core/hooks/use-issues-actions.tsx
+- [[useProfileIssueActions()]] - code - web/core/hooks/use-issues-actions.tsx
+- [[useProjectEpicsActions()]] - code - web/core/hooks/use-issues-actions.tsx
+- [[useProjectIssueActions()]] - code - web/core/hooks/use-issues-actions.tsx
+- [[useProjectView()]] - code - web/core/hooks/store/use-project-view.ts
+- [[useProjectViewIssueActions()]] - code - web/core/hooks/use-issues-actions.tsx
+- [[useWorkspaceDraftIssueActions()]] - code - web/core/hooks/use-issues-actions.tsx
+- [[utils.ts_17]] - code - web/core/components/issues/issue-layouts/calendar/utils.ts
+- [[workspace-root.tsx]] - code - web/core/components/issues/issue-layouts/spreadsheet/roots/workspace-root.tsx
+
+## Live Query (requires Dataview plugin)
+
+```dataview
+TABLE source_file, type FROM #community/Filter_UI__Breadcrumbs
+SORT file.name ASC
+```
+
+## Connections to other communities
+- 67 edges to [[_COMMUNITY_Project Filters & Archives]]
+- 50 edges to [[_COMMUNITY_Community 22]]
+- 48 edges to [[_COMMUNITY_Bulk Operations & Spreadsheet]]
+- 40 edges to [[_COMMUNITY_Active Cycle Stats]]
+- 32 edges to [[_COMMUNITY_Work Item Detail & Layouts]]
+- 24 edges to [[_COMMUNITY_Community 40]]
+- 24 edges to [[_COMMUNITY_Community 23]]
+- 22 edges to [[_COMMUNITY_Issue Activity Types]]
+- 22 edges to [[_COMMUNITY_Community 45]]
+- 18 edges to [[_COMMUNITY_Module & Cycle Analytics]]
+- 17 edges to [[_COMMUNITY_Issue Display Filters]]
+- 16 edges to [[_COMMUNITY_Community 67]]
+- 16 edges to [[_COMMUNITY_Community 44]]
+- 15 edges to [[_COMMUNITY_Community 24]]
+- 11 edges to [[_COMMUNITY_Community 84]]
+- 8 edges to [[_COMMUNITY_Community 42]]
+- 6 edges to [[_COMMUNITY_Activity & Inbox Filters]]
+- 4 edges to [[_COMMUNITY_Community 341]]
+- 4 edges to [[_COMMUNITY_Community 117]]
+- 3 edges to [[_COMMUNITY_Community 75]]
+- 3 edges to [[_COMMUNITY_Community 112]]
+- 2 edges to [[_COMMUNITY_Community 65]]
+- 2 edges to [[_COMMUNITY_Community 234]]
+- 2 edges to [[_COMMUNITY_Community 49]]
+- 2 edges to [[_COMMUNITY_Community 36]]
+- 2 edges to [[_COMMUNITY_Community 85]]
+- 2 edges to [[_COMMUNITY_Community 43]]
+- 2 edges to [[_COMMUNITY_Community 73]]
+- 1 edge to [[_COMMUNITY_Community 246]]
+- 1 edge to [[_COMMUNITY_Service Layer]]
+- 1 edge to [[_COMMUNITY_Community 137]]
+- 1 edge to [[_COMMUNITY_Community 311]]
+- 1 edge to [[_COMMUNITY_Community 149]]
+- 1 edge to [[_COMMUNITY_Community 121]]
+
+## Top bridge nodes
+- [[use-issues.ts]] - degree 76, connects to 11 communities
+- [[header.tsx_7]] - degree 29, connects to 10 communities
+- [[useIssues()]] - degree 78, connects to 9 communities
+- [[header.tsx_12]] - degree 26, connects to 9 communities
+- [[header.tsx_5]] - degree 24, connects to 8 communities

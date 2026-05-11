@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/gantt-chart/views/month-view.ts"
 type: "code"
-community: "Time Month"
+community: "Community 60"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Time_Month
+  - community/Community_60
 ---
 
 # month-view.ts
 
 ## Connections
-
 - [[IMonthBlock]] - `contains` [EXTRACTED]
 - [[IMonthView]] - `contains` [EXTRACTED]
 - [[IWeekBlock]] - `imports` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[quarter-view.ts]] - `imports_from` [EXTRACTED]
 - [[week-view.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Time_Month
+#graphify/code #graphify/EXTRACTED #community/Community_60

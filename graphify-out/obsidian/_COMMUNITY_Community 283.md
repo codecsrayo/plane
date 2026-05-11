@@ -1,21 +1,36 @@
 ---
 type: community
-cohesion: 0.40
-members: 5
+cohesion: 0.10
+members: 21
 ---
 
 # Community 283
 
-**Cohesion:** 0.40 - moderately connected
-**Members:** 5 nodes
+**Cohesion:** 0.10 - loosely connected
+**Members:** 21 nodes
 
 ## Members
-
-- [[.constructor()_109]] - code - web/core/services/page/project-page-version.service.ts
-- [[.fetchAllVersions()]] - code - web/core/services/page/project-page-version.service.ts
-- [[.fetchVersionById()]] - code - web/core/services/page/project-page-version.service.ts
-- [[.restoreVersion()]] - code - web/core/services/page/project-page-version.service.ts
-- [[ProjectPageVersionService]] - code - web/core/services/page/project-page-version.service.ts
+- [[.get_assignees()_2]] - code - api/plane/utils/porters/serializers/issue.py
+- [[.get_comments()]] - code - api/plane/utils/porters/serializers/issue.py
+- [[.get_cycles()]] - code - api/plane/utils/porters/serializers/issue.py
+- [[.get_estimate()]] - code - api/plane/utils/porters/serializers/issue.py
+- [[.get_identifier()]] - code - api/plane/utils/porters/serializers/issue.py
+- [[.get_labels()_1]] - code - api/plane/utils/porters/serializers/issue.py
+- [[.get_links()]] - code - api/plane/utils/porters/serializers/issue.py
+- [[.get_modules()]] - code - api/plane/utils/porters/serializers/issue.py
+- [[.get_parent()]] - code - api/plane/utils/porters/serializers/issue.py
+- [[.get_relations()]] - code - api/plane/utils/porters/serializers/issue.py
+- [[.get_subscribers()]] - code - api/plane/utils/porters/serializers/issue.py
+- [[Export-optimized serializer that extends IssueSerializer with human-readable fie]] - rationale - api/plane/utils/porters/serializers/issue.py
+- [[IssueExportSerializer]] - code - api/plane/utils/porters/serializers/issue.py
+- [[IssueSerializer_1]] - code
+- [[Return estimate point value.]] - rationale - api/plane/utils/porters/serializers/issue.py
+- [[Return list of comments with author and timestamp.]] - rationale - api/plane/utils/porters/serializers/issue.py
+- [[Return list of issue links with titles.]] - rationale - api/plane/utils/porters/serializers/issue.py
+- [[Return list of related issues.]] - rationale - api/plane/utils/porters/serializers/issue.py
+- [[Return list of subscriber names.]] - rationale - api/plane/utils/porters/serializers/issue.py
+- [[__init__.py_41]] - code - api/plane/utils/porters/serializers/__init__.py
+- [[issue.py_9]] - code - api/plane/utils/porters/serializers/issue.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -25,9 +40,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 1 edge to [[_COMMUNITY_Git Integrations]]
+- 1 edge to [[_COMMUNITY_Community 37]]
 
 ## Top bridge nodes
-
-- [[ProjectPageVersionService]] - degree 5, connects to 1 community
+- [[issue.py_9]] - degree 3, connects to 1 community

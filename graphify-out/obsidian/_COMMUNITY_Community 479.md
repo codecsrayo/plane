@@ -1,19 +1,25 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 0.24
+members: 10
 ---
 
 # Community 479
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 0.24 - loosely connected
+**Members:** 10 nodes
 
 ## Members
-
-- [[ActivityFilter]] - code - web/core/components/issues/issue-detail/issue-activity/activity-filter.tsx
-- [[TActivityFilter]] - code - web/core/components/issues/issue-detail/issue-activity/activity-filter.tsx
-- [[activity-filter.tsx]] - code - web/core/components/issues/issue-detail/issue-activity/activity-filter.tsx
+- [[AppClaims]] - code - api_rust/src/utils/github_app.rs
+- [[Exchange a GitHub App installation_id for a short-lived installation access toke]] - rationale - api/plane/utils/github_app.py
+- [[GitHub App authentication helpers.  Usage     from plane.utils.github_app impor]] - rationale - api/plane/utils/github_app.py
+- [[Read a value using the same InstanceConfigurationenv resolution as the rest of]] - rationale - api/plane/utils/github_app.py
+- [[Return the installation access token plus a machine-readable error string.]] - rationale - api/plane/utils/github_app.py
+- [[_get_config_value()]] - code - api/plane/utils/github_app.py
+- [[get_installation_access_token()]] - code - api_rust/src/utils/github_app.rs
+- [[get_installation_access_token_result()]] - code - api/plane/utils/github_app.py
+- [[github_app.py]] - code - api/plane/utils/github_app.py
+- [[github_app.rs]] - code - api_rust/src/utils/github_app.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -21,3 +27,14 @@ members: 3
 TABLE source_file, type FROM #community/Community_479
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 2 edges to [[_COMMUNITY_Community 78]]
+- 1 edge to [[_COMMUNITY_Community 237]]
+- 1 edge to [[_COMMUNITY_Community 48]]
+
+## Top bridge nodes
+- [[get_installation_access_token()]] - degree 5, connects to 1 community
+- [[get_installation_access_token_result()]] - degree 5, connects to 1 community
+- [[_get_config_value()]] - degree 4, connects to 1 community
+- [[github_app.rs]] - degree 3, connects to 1 community

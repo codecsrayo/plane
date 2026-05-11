@@ -1,17 +1,16 @@
 ---
 source_file: ""
 type: "code"
-community: "Command Issue"
+community: "Community 222"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Command_Issue
+  - community/Community_222
 ---
 
 # BaseCommand
 
 ## Connections
-
 - [[Command_2]] - `inherits` [EXTRACTED]
 - [[Command_3]] - `inherits` [EXTRACTED]
 - [[Command_4]] - `inherits` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[Command_18]] - `inherits` [EXTRACTED]
 - [[Command_19]] - `inherits` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Command_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_222

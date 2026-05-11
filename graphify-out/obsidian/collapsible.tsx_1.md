@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/collapsible/collapsible.tsx"
 type: "code"
-community: "Collapsible Chevron"
+community: "Community 200"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Collapsible_Chevron
+  - community/Community_200
 ---
 
 # collapsible.tsx
 
 ## Connections
-
 - [[Collapsible]] - `contains` [EXTRACTED]
 - [[CollapsibleContext]] - `contains` [EXTRACTED]
 - [[CollapsibleContextType]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[collapsible.stories.tsx]] - `imports_from` [EXTRACTED]
 - [[useCollapsible()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Collapsible_Chevron
+#graphify/code #graphify/EXTRACTED #community/Community_200

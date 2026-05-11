@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/instance/auth.ts"
+source_file: "packages/types/src/instance/auth.ts"
 type: "code"
-community: "Authentication Instance"
+community: "Community 349"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Authentication_Instance
+  - community/Community_349
 ---
 
 # TInstanceAuthenticationModeKeys
 
 ## Connections
-
 - [[auth.ts_1]] - `contains` [EXTRACTED]
+- [[auth.ts_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Authentication_Instance
+#graphify/code #graphify/EXTRACTED #community/Community_349

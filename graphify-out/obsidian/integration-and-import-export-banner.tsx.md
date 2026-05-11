@@ -1,20 +1,19 @@
 ---
 source_file: "web/core/components/ui/integration-and-import-export-banner.tsx"
 type: "code"
-community: "Project Workspace"
+community: "Community 64"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Workspace
+  - community/Community_64
 ---
 
 # integration-and-import-export-banner.tsx
 
 ## Connections
-
 - [[IntegrationAndImportExportBanner()]] - `contains` [EXTRACTED]
 - [[Props_84]] - `contains` [EXTRACTED]
 - [[page.tsx_52]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_64

@@ -1,20 +1,19 @@
 ---
 source_file: "types/src/charts/common.ts"
 type: "code"
-community: "Chart Tchart"
+community: "Community 610"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Chart_Tchart
+  - community/Community_610
 ---
 
 # common.ts
 
 ## Connections
-
 - [[TChart]] - `contains` [EXTRACTED]
 - [[TChartColorScheme]] - `contains` [EXTRACTED]
 - [[TChartDatum]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Chart_Tchart
+#graphify/code #graphify/EXTRACTED #community/Community_610

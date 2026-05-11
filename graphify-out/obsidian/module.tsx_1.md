@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/empty-states/module.tsx"
 type: "code"
-community: "Project Profile"
+community: "Community 22"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Profile
+  - community/Community_22
 ---
 
 # module.tsx
 
 ## Connections
-
 - [[ExistingIssuesListModal()]] - `imports` [EXTRACTED]
 - [[ModuleEmptyState]] - `contains` [EXTRACTED]
 - [[existing-issues-list-modal.tsx]] - `imports_from` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[useIssues()]] - `imports` [EXTRACTED]
 - [[useWorkItemFilterInstance()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Profile
+#graphify/code #graphify/EXTRACTED #community/Community_22

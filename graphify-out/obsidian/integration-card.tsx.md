@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/project/integration-card.tsx"
 type: "code"
-community: "Project Workspace"
+community: "Community 64"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Workspace
+  - community/Community_64
 ---
 
 # integration-card.tsx
 
 ## Connections
-
 - [[IntegrationCard()]] - `contains` [EXTRACTED]
 - [[IntegrationProviderMeta]] - `contains` [EXTRACTED]
 - [[Props_215]] - `contains` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[select-channel.tsx]] - `imports_from` [EXTRACTED]
 - [[select-repository.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_64

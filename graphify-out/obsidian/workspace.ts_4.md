@@ -1,18 +1,17 @@
 ---
 source_file: "utils/src/workspace.ts"
 type: "code"
-community: "Order Workspaces"
+community: "Community 733"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Order_Workspaces
+  - community/Community_733
 ---
 
 # workspace.ts
 
 ## Connections
-
 - [[orderWorkspacesList()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Order_Workspaces
+#graphify/code #graphify/EXTRACTED #community/Community_733

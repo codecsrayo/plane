@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/view-props.ts"
+source_file: "packages/types/src/view-props.ts"
 type: "code"
-community: "Issue Identifier"
+community: "Community 71"
 location: "L204"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Identifier
+  - community/Community_71
 ---
 
 # IProjectUserPropertiesResponse
 
 ## Connections
-
 - [[view-props.ts]] - `contains` [EXTRACTED]
+- [[view-props.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Identifier
+#graphify/code #graphify/EXTRACTED #community/Community_71

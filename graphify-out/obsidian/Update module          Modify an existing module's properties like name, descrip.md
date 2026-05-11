@@ -1,14 +1,14 @@
 ---
 source_file: "api/plane/api/views/module.py"
 type: "rationale"
-community: "Modify Existing"
+community: "Community 1713"
 location: "L403"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Modify_Existing
+  - community/Community_1713
 ---
 
-# Update module Modify an existing module's properties like name, descrip
+# Update module          Modify an existing module's properties like name, descrip
 
-#graphify/rationale #graphify/EXTRACTED #community/Modify_Existing
+#graphify/rationale #graphify/EXTRACTED #community/Community_1713

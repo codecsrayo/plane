@@ -1,18 +1,17 @@
 ---
 source_file: "utils/src/distribution-update.ts"
 type: "code"
-community: "Distribution Chart"
+community: "Community 469"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Distribution_Chart
+  - community/Community_469
 ---
 
 # distribution-update.ts
 
 ## Connections
-
 - [[ChartUpdates]] - `contains` [EXTRACTED]
 - [[DistributionObjectUpdate]] - `contains` [EXTRACTED]
 - [[DistributionUpdates]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[getObjectDistributionArray()]] - `contains` [EXTRACTED]
 - [[updateDistribution()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Distribution_Chart
+#graphify/code #graphify/EXTRACTED #community/Community_469

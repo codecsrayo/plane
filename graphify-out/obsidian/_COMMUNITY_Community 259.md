@@ -1,23 +1,38 @@
 ---
 type: community
-cohesion: 0.33
-members: 7
+cohesion: 0.17
+members: 23
 ---
 
 # Community 259
 
-**Cohesion:** 0.33 - loosely connected
-**Members:** 7 nodes
+**Cohesion:** 0.17 - loosely connected
+**Members:** 23 nodes
 
 ## Members
-
-- [[TTimezoneSelect]] - code - web/core/components/global/timezone-select.tsx
-- [[TimezoneSelect]] - code - web/core/components/global/timezone-select.tsx
-- [[getTimeZoneLabel()]] - code - web/core/hooks/use-timezone.tsx
-- [[groupTimezones()]] - code - web/core/hooks/use-timezone.tsx
-- [[timezone-select.tsx]] - code - web/core/components/global/timezone-select.tsx
-- [[use-timezone.tsx]] - code - web/core/hooks/use-timezone.tsx
-- [[useTimezone()]] - code - web/core/hooks/use-timezone.tsx
+- [[create_project_invitation_returns_2xx()]] - code - api_rust/tests/project_extras2.rs
+- [[delete_user_favorite_view_nonexistent_returns_4xx()]] - code - api_rust/tests/project_extras2.rs
+- [[get_member_preferences_own_returns_200()]] - code - api_rust/tests/project_extras2.rs
+- [[get_member_preferences_unauthenticated_returns_401()]] - code - api_rust/tests/project_extras2.rs
+- [[get_project_invitation_nonexistent_returns_404()]] - code - api_rust/tests/project_extras2.rs
+- [[get_project_member_by_pk_unauthenticated_returns_401()]] - code - api_rust/tests/project_extras2.rs
+- [[get_project_member_nonexistent_returns_404()]] - code - api_rust/tests/project_extras2.rs
+- [[get_user_project_roles_member_returns_200()]] - code - api_rust/tests/project_extras2.rs
+- [[get_user_project_roles_unauthenticated_returns_401()]] - code - api_rust/tests/project_extras2.rs
+- [[list_deploy_boards_member_returns_200()]] - code - api_rust/tests/project_extras2.rs
+- [[list_deploy_boards_unauthenticated_returns_401()]] - code - api_rust/tests/project_extras2.rs
+- [[list_project_invitations_member_returns_200()]] - code - api_rust/tests/project_extras2.rs
+- [[list_project_invitations_unauthenticated_returns_401()]] - code - api_rust/tests/project_extras2.rs
+- [[list_project_members_public_returns_200()]] - code - api_rust/tests/project_extras2.rs
+- [[list_project_views_member_returns_200()]] - code - api_rust/tests/project_extras2.rs
+- [[list_project_views_unauthenticated_returns_401()]] - code - api_rust/tests/project_extras2.rs
+- [[list_user_favorite_views_member_returns_200()]] - code - api_rust/tests/project_extras2.rs
+- [[list_user_favorite_views_unauthenticated_returns_401()]] - code - api_rust/tests/project_extras2.rs
+- [[list_user_project_invitations_member_returns_200()]] - code - api_rust/tests/project_extras2.rs
+- [[list_user_project_invitations_unauthenticated_returns_401()]] - code - api_rust/tests/project_extras2.rs
+- [[patch_project_member_nonexistent_returns_4xx()]] - code - api_rust/tests/project_extras2.rs
+- [[project_extras2.rs]] - code - api_rust/tests/project_extras2.rs
+- [[setup()_5]] - code - api_rust/tests/project_extras2.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -27,13 +42,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 2 edges to [[_COMMUNITY_Authentication UI]]
-- 1 edge to [[_COMMUNITY_Git Integrations]]
-- 1 edge to [[_COMMUNITY_Community 56]]
+- 1 edge to [[_COMMUNITY_Rust Auth Services]]
 
 ## Top bridge nodes
-
-- [[use-timezone.tsx]] - degree 6, connects to 2 communities
-- [[timezone-select.tsx]] - degree 4, connects to 1 community
-- [[TimezoneSelect]] - degree 2, connects to 1 community
+- [[setup()_5]] - degree 23, connects to 1 community

@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/icons/state/helper.tsx"
 type: "code"
-community: "Group Icon"
+community: "Community 120"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group_Icon
+  - community/Community_120
 ---
 
 # helper.tsx
 
 ## Connections
-
 - [[IIntakeStateGroupIcon]] - `contains` [EXTRACTED]
 - [[INTAKE_STATE_GROUP_COLORS]] - `contains` [EXTRACTED]
 - [[IStateGroupIcon]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[intake-state-group-icon.tsx]] - `imports_from` [EXTRACTED]
 - [[state-group-icon.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group_Icon
+#graphify/code #graphify/EXTRACTED #community/Community_120

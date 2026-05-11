@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/permissions/project.py"
 type: "code"
-community: "Permission Project"
+community: "Community 378"
 location: "L85"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Permission_Project
+  - community/Community_378
 ---
 
 # ProjectEntityPermission
 
 ## Connections
-
 - [[.has_permission()_9]] - `method` [EXTRACTED]
 - [[BasePermission]] - `inherits` [EXTRACTED]
 - [[EstimatePointDetailAPIEndpoint]] - `uses` [INFERRED]
@@ -22,4 +21,4 @@ tags:
 - [[project.py]] - `contains` [EXTRACTED]
 - [[project.py_7]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Permission_Project
+#graphify/code #graphify/EXTRACTED #community/Community_378

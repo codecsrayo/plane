@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/enums.ts"
 type: "code"
-community: "Estimate Notification"
+community: "Community 158"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Estimate_Notification
+  - community/Community_158
 ---
 
 # enums.ts
 
 ## Connections
-
 - [[EDurationFilters_1]] - `contains` [EXTRACTED]
 - [[EEstimateSystem_1]] - `contains` [EXTRACTED]
 - [[EEstimateUpdateStages_1]] - `contains` [EXTRACTED]
@@ -35,4 +34,4 @@ tags:
 - [[workspace-notifications.ts]] - `imports_from` [EXTRACTED]
 - [[workspace.ts_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Estimate_Notification
+#graphify/code #graphify/EXTRACTED #community/Community_158

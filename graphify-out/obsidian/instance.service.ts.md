@@ -1,19 +1,18 @@
 ---
 source_file: "services/src/instance/instance.service.ts"
 type: "code"
-community: "Instance Instanceservice"
+community: "Community 425"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Instance_Instanceservice
+  - community/Community_425
 ---
 
 # instance.service.ts
 
 ## Connections
-
 - [[InstanceService]] - `contains` [EXTRACTED]
 - [[api.service.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Instance_Instanceservice
+#graphify/code #graphify/EXTRACTED #community/Community_425

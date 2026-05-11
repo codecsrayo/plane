@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/views/cycle.py"
 type: "code"
-community: "Cycle Endpoint"
+community: "Community 267"
 location: "L299"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Cycle_Endpoint
+  - community/Community_267
 ---
 
 # post()
 
 ## Connections
-
 - [[.get_queryset()_74]] - `calls` [EXTRACTED]
 - [[.set()]] - `calls` [INFERRED]
 - [[CycleCreateSerializer]] - `calls` [INFERRED]
@@ -22,4 +21,4 @@ tags:
 - [[get()_38]] - `calls` [EXTRACTED]
 - [[response]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Cycle_Endpoint
+#graphify/code #graphify/INFERRED #community/Community_267

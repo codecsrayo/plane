@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/calendar/dropdowns/options-dropdown.tsx"
 type: "code"
-community: "Calendar Issue"
+community: "Community 67"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Issue
+  - community/Community_67
 ---
 
 # options-dropdown.tsx
 
 ## Connections
-
 - [[CALENDAR_LAYOUTS]] - `imports` [EXTRACTED]
 - [[CalendarOptionsDropdown]] - `contains` [EXTRACTED]
 - [[ICalendarHeader_1]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[use-window-size.tsx]] - `imports_from` [EXTRACTED]
 - [[useCalendarView()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_67

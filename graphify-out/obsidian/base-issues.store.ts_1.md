@@ -1,18 +1,17 @@
 ---
 source_file: "space/store/helpers/base-issues.store.ts"
 type: "code"
-community: "Issue Group"
+community: "Community 49"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Group
+  - community/Community_49
 ---
 
 # base-issues.store.ts
 
 ## Connections
-
 - [[EIssueGroupedAction]] - `contains` [EXTRACTED]
 - [[IBaseIssuesStore]] - `contains` [EXTRACTED]
 - [[ISSUE_FILTER_DEFAULT_DATA]] - `contains` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[updateIssueCount()]] - `contains` [EXTRACTED]
 - [[updateIssueGroup()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Group
+#graphify/code #graphify/EXTRACTED #community/Community_49

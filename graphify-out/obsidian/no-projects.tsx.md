@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/home/widgets/empty-states/no-projects.tsx"
 type: "code"
-community: "Project Profile"
+community: "Community 65"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Profile
+  - community/Community_65
 ---
 
 # no-projects.tsx
 
 ## Connections
-
 - [[NoProjectsEmptyState]] - `contains` [EXTRACTED]
 - [[index.ts_265]] - `imports_from` [EXTRACTED]
 - [[use-command-palette.ts]] - `imports_from` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Profile
+#graphify/code #graphify/EXTRACTED #community/Community_65

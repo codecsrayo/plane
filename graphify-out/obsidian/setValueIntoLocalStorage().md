@@ -1,18 +1,18 @@
 ---
-source_file: "hooks/src/use-local-storage.tsx"
+source_file: "packages/hooks/src/use-local-storage.tsx"
 type: "code"
-community: "Local Value"
+community: "Community 243"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Local_Value
+  - community/Community_243
 ---
 
 # setValueIntoLocalStorage()
 
 ## Connections
-
 - [[use-local-storage.tsx]] - `contains` [EXTRACTED]
+- [[use-local-storage.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Local_Value
+#graphify/code #graphify/EXTRACTED #community/Community_243

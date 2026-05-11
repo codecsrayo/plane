@@ -1,20 +1,19 @@
 ---
 source_file: "api_rust/src/routes/workspaces.rs"
 type: "code"
-community: "Workspace User"
+community: "Community 47"
 location: "L1433"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Workspace_User
+  - community/Community_47
 ---
 
 # get_workspace_member_me()
 
 ## Connections
-
 - [[.json()]] - `calls` [INFERRED]
 - [[workspace_by_slug()]] - `calls` [INFERRED]
 - [[workspaces.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Workspace_User
+#graphify/code #graphify/INFERRED #community/Community_47

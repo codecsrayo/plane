@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/license/api/serializers/base.py"
 type: "code"
-community: "Meta Serializer"
+community: "Community 205"
 location: "L8"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Meta_Serializer
+  - community/Community_205
 ---
 
 # BaseSerializer
 
 ## Connections
-
 - [[.__init__()_2]] - `method` [EXTRACTED]
 - [[._filter_fields()_1]] - `method` [EXTRACTED]
 - [[.to_representation()_8]] - `method` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[base.py_24]] - `contains` [EXTRACTED]
 - [[base.py_31]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Meta_Serializer
+#graphify/code #graphify/EXTRACTED #community/Community_205

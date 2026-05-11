@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_27]] - code - ui/src/tabs/index.ts
+- [[index.ts_43]] - code - editor/src/core/components/editors/document/index.ts
 
 ## Live Query (requires Dataview plugin)
 

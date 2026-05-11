@@ -1,18 +1,17 @@
 ---
 source_file: "admin/app/(all)/(home)/sign-in-form.tsx"
 type: "code"
-community: "Auth Error"
+community: "Community 162"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Error
+  - community/Community_162
 ---
 
 # sign-in-form.tsx
 
 ## Connections
-
 - [[AuthBanner()_1]] - `imports` [EXTRACTED]
 - [[AuthHeader()_1]] - `imports` [EXTRACTED]
 - [[Banner()]] - `imports` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[form-header.tsx]] - `imports_from` [EXTRACTED]
 - [[page.tsx_79]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Error
+#graphify/code #graphify/EXTRACTED #community/Community_162

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/power-k/ui/renderer/command.tsx"
 type: "code"
-community: "Context Power"
+community: "Community 121"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Context_Power
+  - community/Community_121
 ---
 
 # command.tsx
 
 ## Connections
-
 - [[CONTEXT_ENTITY_MAP]] - `imports` [EXTRACTED]
 - [[CommandRenderer()]] - `contains` [EXTRACTED]
 - [[POWER_K_GROUP_I18N_TITLES]] - `imports` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[shared.ts_12]] - `imports_from` [EXTRACTED]
 - [[types.ts_16]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Context_Power
+#graphify/code #graphify/EXTRACTED #community/Community_121

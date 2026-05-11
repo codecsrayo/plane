@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/use-page-filters.ts"
 type: "code"
-community: "Formats Values"
+community: "Community 133"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Formats_Values
+  - community/Community_133
 ---
 
 # use-page-filters.ts
 
 ## Connections
-
 - [[DEFAULT_PERSONALIZATION_VALUES]] - `contains` [EXTRACTED]
 - [[TPagesPersonalizationConfig]] - `contains` [EXTRACTED]
 - [[editor-body.tsx]] - `imports_from` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[use-local-storage.tsx_1]] - `imports_from` [EXTRACTED]
 - [[usePageFilters()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Formats_Values
+#graphify/code #graphify/EXTRACTED #community/Community_133

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/serializers/page.py"
 type: "code"
-community: "Serializer Validate"
+community: "Community 360"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Serializer_Validate
+  - community/Community_360
 ---
 
 # page.py
 
 ## Connections
-
 - [[Meta_6]] - `contains` [EXTRACTED]
 - [[PageBinaryUpdateSerializer]] - `contains` [EXTRACTED]
 - [[PageDetailSerializer]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[__init__.py_8]] - `imports_from` [EXTRACTED]
 - [[base.py_22]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Serializer_Validate
+#graphify/code #graphify/EXTRACTED #community/Community_360

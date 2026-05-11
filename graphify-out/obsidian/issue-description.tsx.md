@@ -1,20 +1,19 @@
 ---
 source_file: "web/core/components/inbox/modals/create-modal/issue-description.tsx"
 type: "code"
-community: "Workspace Issue"
+community: "Activity & Inbox Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Issue
+  - community/Activity__Inbox_Filters
 ---
 
 # issue-description.tsx
 
 ## Connections
-
 - [[InboxIssueDescription]] - `contains` [EXTRACTED]
-- [[RichTextEditor]] - `imports` [EXTRACTED]
+- [[RichTextEditor()]] - `imports` [EXTRACTED]
 - [[TInboxIssueDescription]] - `contains` [EXTRACTED]
 - [[WorkspaceService_1]] - `imports` [EXTRACTED]
 - [[create-root.tsx]] - `imports_from` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[workspace.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[workspaceService_18]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Issue
+#graphify/code #graphify/EXTRACTED #community/Activity__Inbox_Filters

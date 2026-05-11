@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/api.service.ts"
 type: "code"
-community: "Issue Project"
+community: "Service Layer"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Project
+  - community/Service_Layer
 ---
 
 # api.service.ts
 
 ## Connections
-
 - [[AUTH_LANDING_ROUTES]] - `contains` [EXTRACTED]
 - [[ApiError]] - `contains` [EXTRACTED]
 - [[account.store.ts]] - `imports_from` [EXTRACTED]
@@ -134,4 +133,4 @@ tags:
 - [[workspace.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[workspace_draft.service.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Project
+#graphify/code #graphify/EXTRACTED #community/Service_Layer

@@ -1,18 +1,18 @@
 ---
-source_file: "propel/src/icons/workspace/archive-icon.tsx"
+source_file: "packages/propel/src/icons/workspace/archive-icon.tsx"
 type: "code"
-community: "Icon Panel"
+community: "SVG Icon Components"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Icon_Panel
+  - community/SVG_Icon_Components
 ---
 
 # ArchiveIcon()
 
 ## Connections
-
 - [[archive-icon.tsx]] - `contains` [EXTRACTED]
+- [[archive-icon.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Icon_Panel
+#graphify/code #graphify/EXTRACTED #community/SVG_Icon_Components

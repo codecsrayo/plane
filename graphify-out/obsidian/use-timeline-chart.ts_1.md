@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/use-timeline-chart.ts"
 type: "code"
-community: "Gantt Chart"
+community: "Community 23"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Chart
+  - community/Community_23
 ---
 
 # use-timeline-chart.ts
 
 ## Connections
-
 - [[StoreContext]] - `imports` [EXTRACTED]
 - [[add-block.tsx]] - `imports_from` [EXTRACTED]
 - [[base-gantt-root.tsx]] - `imports_from` [EXTRACTED]
@@ -42,4 +41,4 @@ tags:
 - [[useTimeLineType()]] - `imports` [EXTRACTED]
 - [[week.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Chart
+#graphify/code #graphify/EXTRACTED #community/Community_23

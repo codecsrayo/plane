@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/serializers/project.py"
 type: "code"
-community: "Serializer Project"
+community: "Community 68"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Serializer_Project
+  - community/Community_68
 ---
 
 # project.py
 
 ## Connections
-
 - [[DeployBoardSerializer]] - `contains` [EXTRACTED]
 - [[Meta_9]] - `contains` [EXTRACTED]
 - [[ProjectDetailSerializer]] - `contains` [EXTRACTED]
@@ -34,4 +33,4 @@ tags:
 - [[issue.py_4]] - `imports_from` [EXTRACTED]
 - [[module.py_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Serializer_Project
+#graphify/code #graphify/EXTRACTED #community/Community_68

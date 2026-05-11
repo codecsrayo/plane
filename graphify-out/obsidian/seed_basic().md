@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/jobs_scheduler.rs"
 type: "code"
-community: "Asset Issue"
+community: "Community 34"
 location: "L48"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Asset_Issue
+  - community/Community_34
 ---
 
 # seed_basic()
 
 ## Connections
-
 - [[delete_email_notification_logs_filters_by_sent_at()]] - `calls` [EXTRACTED]
 - [[delete_issue_description_versions_keeps_top_20_per_issue()]] - `calls` [EXTRACTED]
 - [[delete_old_s3_links_selects_correct_rows()]] - `calls` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[issue_automation_runs_without_panic_on_empty_workspace()]] - `calls` [EXTRACTED]
 - [[jobs_scheduler.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Asset_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_34

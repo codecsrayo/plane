@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/power-k/ui/modal/search-results-map.tsx"
 type: "code"
-community: "Search Results"
+community: "Community 476"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Search_Results
+  - community/Community_476
 ---
 
 # search-results-map.tsx
 
 ## Connections
-
 - [[IssueIdentifier]] - `imports` [EXTRACTED]
 - [[POWER_K_SEARCH_RESULTS_GROUPS_MAP]] - `contains` [EXTRACTED]
 - [[SEARCH_RESULTS_GROUPS_MAP_EXTENDED]] - `imports` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[search-results.tsx]] - `imports_from` [EXTRACTED]
 - [[types.ts_16]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Search_Results
+#graphify/code #graphify/EXTRACTED #community/Community_476

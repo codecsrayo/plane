@@ -1,18 +1,18 @@
 ---
-source_file: "editor/src/core/extensions/unique-id/extension.ts"
+source_file: "packages/editor/src/core/extensions/unique-id/extension.ts"
 type: "code"
-community: "Unique Core"
+community: "Community 86"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Unique_Core
+  - community/Community_86
 ---
 
 # COMBINED_BLOCK_NODE_TYPES
 
 ## Connections
-
 - [[extension.ts_2]] - `contains` [EXTRACTED]
+- [[extension.ts_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Unique_Core
+#graphify/code #graphify/EXTRACTED #community/Community_86

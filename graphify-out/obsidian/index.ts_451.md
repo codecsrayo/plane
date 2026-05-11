@@ -1,18 +1,17 @@
 ---
 source_file: "live/src/extensions/index.ts"
 type: "code"
-community: "Logger Title"
+community: "Community 298"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Logger_Title
+  - community/Community_298
 ---
 
 # index.ts
 
 ## Connections
-
 - [[Database]] - `imports` [EXTRACTED]
 - [[ForceCloseHandler]] - `imports` [EXTRACTED]
 - [[Logger]] - `imports` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[redis.ts_1]] - `imports_from` [EXTRACTED]
 - [[title-sync.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Logger_Title
+#graphify/code #graphify/EXTRACTED #community/Community_298

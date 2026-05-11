@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/space/views/base.py"
 type: "code"
-community: "Endpoint User"
+community: "Community 27"
 location: "L45"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Endpoint_User
+  - community/Community_27
 ---
 
 # BaseViewSet
 
 ## Connections
-
 - [[.dispatch()]] - `method` [EXTRACTED]
 - [[.get_queryset()]] - `method` [EXTRACTED]
 - [[.handle_exception()]] - `method` [EXTRACTED]
@@ -98,4 +97,4 @@ tags:
 - [[base.py_23]] - `contains` [EXTRACTED]
 - [[base.py_32]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Endpoint_User
+#graphify/code #graphify/INFERRED #community/Community_27

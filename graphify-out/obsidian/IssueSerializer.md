@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/serializers/issue.py"
 type: "code"
-community: "Serializer Issue"
+community: "Community 37"
 location: "L46"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Serializer_Issue
+  - community/Community_37
 ---
 
 # IssueSerializer
 
 ## Connections
-
 - [[.create()_29]] - `method` [EXTRACTED]
 - [[.to_representation()_9]] - `method` [EXTRACTED]
 - [[.update()_27]] - `method` [EXTRACTED]
@@ -34,4 +33,4 @@ tags:
 - [[issue.py_4]] - `contains` [EXTRACTED]
 - [[issue.py_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Serializer_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_37

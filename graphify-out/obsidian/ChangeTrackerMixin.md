@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/mixins.py"
 type: "code"
-community: "Issue Sync"
+community: "Community 26"
 location: "L92"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Issue_Sync
+  - community/Community_26
 ---
 
 # ChangeTrackerMixin
 
 ## Connections
-
 - [[.__init__()_9]] - `method` [EXTRACTED]
 - [[._reset_tracked_fields()]] - `method` [EXTRACTED]
 - [[._track_fields()]] - `method` [EXTRACTED]
@@ -41,4 +40,4 @@ tags:
 - [[Meta_35]] - `uses` [INFERRED]
 - [[mixins.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Issue_Sync
+#graphify/code #graphify/INFERRED #community/Community_26

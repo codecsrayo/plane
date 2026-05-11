@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-detail/links/create-update-link-modal.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Issue Activity Types"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Issue_Activity_Types
 ---
 
 # create-update-link-modal.tsx
 
 ## Connections
-
 - [[IssueLinkCreateUpdateModal]] - `contains` [EXTRACTED]
 - [[TIssueLinkCreateEditModal]] - `contains` [EXTRACTED]
 - [[TIssueLinkCreateFormFieldOptions]] - `contains` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Types

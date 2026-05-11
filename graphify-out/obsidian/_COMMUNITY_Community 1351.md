@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_40]] - code - editor/src/core/components/menus/bubble-menu/index.ts
+- [[index.ts_68]] - code - services/src/file/index.ts
 
 ## Live Query (requires Dataview plugin)
 

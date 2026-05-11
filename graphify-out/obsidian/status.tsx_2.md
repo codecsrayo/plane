@@ -1,19 +1,18 @@
 ---
 source_file: "web/core/components/modules/applied-filters/status.tsx"
 type: "code"
-community: "Filters Applied"
+community: "Community 169"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filters_Applied
+  - community/Community_169
 ---
 
 # status.tsx
 
 ## Connections
-
 - [[AppliedStatusFilters]] - `contains` [EXTRACTED]
 - [[Props_165]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filters_Applied
+#graphify/code #graphify/EXTRACTED #community/Community_169

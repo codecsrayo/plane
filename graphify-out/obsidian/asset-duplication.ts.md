@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/ce/helpers/asset-duplication.ts"
 type: "code"
-community: "Image Custom"
+community: "Community 28"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Image_Custom
+  - community/Community_28
 ---
 
 # asset-duplication.ts
 
 ## Connections
-
 - [[AssetDuplicationContext]] - `contains` [EXTRACTED]
 - [[AssetDuplicationHandler]] - `contains` [EXTRACTED]
 - [[AssetDuplicationResult]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[imageComponentHandler()]] - `contains` [EXTRACTED]
 - [[types.ts_6]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Image_Custom
+#graphify/code #graphify/EXTRACTED #community/Community_28

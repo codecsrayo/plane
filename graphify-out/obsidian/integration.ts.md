@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/integration.ts"
 type: "code"
-community: "Payload Integration"
+community: "Community 368"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Payload_Integration
+  - community/Community_368
 ---
 
 # integration.ts
 
 ## Connections
-
 - [[IAppIntegration]] - `contains` [EXTRACTED]
 - [[IGithubRepo]] - `contains` [EXTRACTED]
 - [[IGithubRepoSync]] - `contains` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[TSlackChannelCreatePayload]] - `contains` [EXTRACTED]
 - [[TSlackInstallPayload]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Payload_Integration
+#graphify/code #graphify/EXTRACTED #community/Community_368

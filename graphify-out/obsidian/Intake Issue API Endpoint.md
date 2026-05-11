@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/views/intake.py"
 type: "rationale"
-community: "Intake Endpoint"
+community: "Community 176"
 location: "L223"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Intake_Endpoint
+  - community/Community_176
 ---
 
 # Intake Issue API Endpoint
 
 ## Connections
-
 - [[IntakeIssueDetailAPIEndpoint]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Intake_Endpoint
+#graphify/rationale #graphify/EXTRACTED #community/Community_176

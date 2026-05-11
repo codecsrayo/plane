@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/empty-state/compact-empty-state.tsx"
 type: "code"
-community: "Empty State"
+community: "Community 193"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_State
+  - community/Community_193
 ---
 
 # compact-empty-state.tsx
 
 ## Connections
-
 - [[BaseEmptyStateCommonProps]] - `imports` [EXTRACTED]
 - [[Button]] - `imports` [EXTRACTED]
 - [[CompactAssetType]] - `imports` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[getCompactAsset()]] - `imports` [EXTRACTED]
 - [[types.ts_10]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_State
+#graphify/code #graphify/EXTRACTED #community/Community_193

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/exporters/schemas/issue.py"
 type: "code"
-community: "Prepare Issue"
+community: "Community 63"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Prepare_Issue
+  - community/Community_63
 ---
 
 # issue.py
 
 ## Connections
-
 - [[IssueExportSchema]] - `contains` [EXTRACTED]
 - [[__init__.py_39]] - `imports_from` [EXTRACTED]
 - [[_format_date()]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[get_issue_attachments_dict()]] - `contains` [EXTRACTED]
 - [[get_issue_last_cycles_dict()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Prepare_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_63

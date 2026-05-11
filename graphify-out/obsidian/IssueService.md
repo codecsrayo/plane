@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/issue/issue.service.ts"
 type: "code"
-community: "Issue Issues"
+community: "Community 165"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Issues
+  - community/Community_165
 ---
 
 # IssueService
 
 ## Connections
-
 - [[.addIssueToCycle()]] - `method` [EXTRACTED]
 - [[.addSubIssues()]] - `method` [EXTRACTED]
 - [[.bulkArchiveIssues()]] - `method` [EXTRACTED]
@@ -49,4 +48,4 @@ tags:
 - [[page.tsx_23]] - `imports` [EXTRACTED]
 - [[subscription.store.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Issues
+#graphify/code #graphify/EXTRACTED #community/Community_165

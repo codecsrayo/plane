@@ -1,18 +1,17 @@
 ---
 source_file: "constants/src/rich-filters/option.ts"
 type: "code"
-community: "Options Config"
+community: "Community 427"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Options_Config
+  - community/Community_427
 ---
 
 # option.ts
 
 ## Connections
-
 - [[DEFAULT_FILTER_CONFIG_OPTIONS]] - `contains` [EXTRACTED]
 - [[DEFAULT_FILTER_EXPRESSION_OPTIONS]] - `contains` [EXTRACTED]
 - [[DEFAULT_FILTER_VISIBILITY_OPTIONS]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[TSaveViewOptions]] - `contains` [EXTRACTED]
 - [[TUpdateViewOptions]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Options_Config
+#graphify/code #graphify/EXTRACTED #community/Community_427

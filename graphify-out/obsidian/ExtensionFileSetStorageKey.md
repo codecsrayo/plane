@@ -1,19 +1,20 @@
 ---
-source_file: "editor/src/ce/types/storage.ts"
+source_file: "packages/editor/src/ce/types/storage.ts"
 type: "code"
-community: "Assets Node"
+community: "Community 91"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Assets_Node
+  - community/Community_91
 ---
 
 # ExtensionFileSetStorageKey
 
 ## Connections
-
 - [[storage.ts]] - `contains` [EXTRACTED]
+- [[storage.ts_1]] - `contains` [EXTRACTED]
 - [[utility.ts]] - `imports` [EXTRACTED]
+- [[utility.ts_2]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Assets_Node
+#graphify/code #graphify/EXTRACTED #community/Community_91

@@ -1,19 +1,20 @@
 ---
-source_file: "types/src/charts/index.ts"
+source_file: "packages/types/src/charts/index.ts"
 type: "code"
-community: "Chart Analytics"
+community: "Community 135"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Chart_Analytics
+  - community/Community_135
 ---
 
 # TChartData
 
 ## Connections
-
 - [[analytics.ts]] - `imports` [EXTRACTED]
+- [[analytics.ts_1]] - `imports` [EXTRACTED]
 - [[index.ts_99]] - `contains` [EXTRACTED]
+- [[index.ts_560]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Chart_Analytics
+#graphify/code #graphify/EXTRACTED #community/Community_135

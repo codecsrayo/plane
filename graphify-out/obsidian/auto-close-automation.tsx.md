@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/automation/auto-close-automation.tsx"
 type: "code"
-community: "Issue Work"
+community: "Project Filters & Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Work
+  - community/Project_Filters__Archives
 ---
 
 # auto-close-automation.tsx
 
 ## Connections
-
 - [[AutoCloseAutomation]] - `contains` [EXTRACTED]
 - [[Props_249]] - `contains` [EXTRACTED]
 - [[SettingsControlItem()]] - `imports` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[useProjectState()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Work
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

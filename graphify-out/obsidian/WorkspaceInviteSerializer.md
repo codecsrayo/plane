@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/serializers/invite.py"
 type: "code"
-community: "Endpoint State"
+community: "Community 99"
 location: "L16"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Endpoint_State
+  - community/Community_99
 ---
 
 # WorkspaceInviteSerializer
 
 ## Connections
-
 - [[.validate()_11]] - `method` [EXTRACTED]
 - [[.validate_email()]] - `method` [EXTRACTED]
 - [[.validate_role()]] - `method` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[partial_update()_16]] - `calls` [INFERRED]
 - [[retrieve()_12]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Endpoint_State
+#graphify/code #graphify/INFERRED #community/Community_99

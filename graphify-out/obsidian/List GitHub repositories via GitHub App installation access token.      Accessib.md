@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/importer/github.py"
 type: "rationale"
-community: "Endpoint Repositories"
+community: "Community 237"
 location: "L25"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Endpoint_Repositories
+  - community/Community_237
 ---
 
-# List GitHub repositories via GitHub App installation access token. Accessib
+# List GitHub repositories via GitHub App installation access token.      Accessib
 
 ## Connections
-
 - [[GithubRepositoriesEndpoint]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Endpoint_Repositories
+#graphify/rationale #graphify/EXTRACTED #community/Community_237

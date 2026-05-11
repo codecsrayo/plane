@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/portal/constants.ts"
 type: "code"
-community: "Portal Handler"
+community: "Community 302"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Portal_Handler
+  - community/Community_302
 ---
 
 # constants.ts
 
 ## Connections
-
 - [[EPortalPosition]] - `contains` [EXTRACTED]
 - [[EPortalWidth]] - `contains` [EXTRACTED]
 - [[PORTAL_POSITION_CLASSES]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[portal.stories.tsx]] - `imports_from` [EXTRACTED]
 - [[types.ts_12]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Portal_Handler
+#graphify/code #graphify/EXTRACTED #community/Community_302

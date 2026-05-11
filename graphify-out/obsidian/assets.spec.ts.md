@@ -1,18 +1,17 @@
 ---
 source_file: "web/e2e/assets.spec.ts"
 type: "code"
-community: "Chromium Available"
+community: "Community 518"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Chromium_Available
+  - community/Community_518
 ---
 
 # assets.spec.ts
 
 ## Connections
-
 - [[CHROMIUM_AVAILABLE]] - `contains` [EXTRACTED]
 - [[InitiateResponse]] - `contains` [EXTRACTED]
 - [[fd]] - `contains` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[requiredS3Fields]] - `contains` [EXTRACTED]
 - [[slug()_15]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Chromium_Available
+#graphify/code #graphify/EXTRACTED #community/Community_518

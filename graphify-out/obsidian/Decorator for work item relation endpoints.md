@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/openapi/decorators.py"
 type: "rationale"
-community: "Work Relation"
+community: "Community 1151"
 location: "L227"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Work_Relation
+  - community/Community_1151
 ---
 
 # Decorator for work item relation endpoints
 
 ## Connections
-
 - [[work_item_relation_docs()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Work_Relation
+#graphify/rationale #graphify/EXTRACTED #community/Community_1151

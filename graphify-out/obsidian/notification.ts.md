@@ -1,18 +1,17 @@
 ---
 source_file: "constants/src/notification.ts"
 type: "code"
-community: "Notification Options"
+community: "Community 440"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Notification_Options
+  - community/Community_440
 ---
 
 # notification.ts
 
 ## Connections
-
 - [[ENotificationFilterType]] - `contains` [EXTRACTED]
 - [[ENotificationLoader]] - `contains` [EXTRACTED]
 - [[ENotificationQueryParamType]] - `contains` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[TNotificationTab]] - `contains` [EXTRACTED]
 - [[allTimeIn30MinutesInterval12HoursFormat]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Notification_Options
+#graphify/code #graphify/EXTRACTED #community/Community_440

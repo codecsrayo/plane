@@ -1,18 +1,17 @@
 ---
 source_file: "web/e2e/search.spec.ts"
 type: "code"
-community: "Search Spec"
+community: "Community 817"
 location: "L6"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Search_Spec
+  - community/Community_817
 ---
 
 # pid()
 
 ## Connections
-
 - [[search.spec.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Search_Spec
+#graphify/code #graphify/EXTRACTED #community/Community_817

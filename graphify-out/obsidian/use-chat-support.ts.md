@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/use-chat-support.ts"
 type: "code"
-community: "Power Chat"
+community: "Community 74"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Power_Chat
+  - community/Community_74
 ---
 
 # use-chat-support.ts
 
 ## Connections
-
 - [[ChatSupportEvent]] - `imports` [EXTRACTED]
 - [[IUseChatSupport]] - `contains` [EXTRACTED]
 - [[chat-support.ts]] - `imports_from` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[useChatSupport()]] - `contains` [EXTRACTED]
 - [[useInstance()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Power_Chat
+#graphify/code #graphify/EXTRACTED #community/Community_74

@@ -1,18 +1,18 @@
 ---
-source_file: "editor/src/core/types/collaboration.ts"
+source_file: "packages/editor/src/core/types/collaboration.ts"
 type: "code"
-community: "Collaboration Collab"
+community: "Community 337"
 location: "L41"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Collaboration_Collab
+  - community/Community_337
 ---
 
 # TServerHandler
 
 ## Connections
-
 - [[collaboration.ts]] - `contains` [EXTRACTED]
+- [[collaboration.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Collaboration_Collab
+#graphify/code #graphify/EXTRACTED #community/Community_337

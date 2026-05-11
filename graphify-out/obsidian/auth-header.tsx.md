@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/account/auth-forms/auth-header.tsx"
 type: "code"
-community: "Auth Titles"
+community: "Community 58"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Titles
+  - community/Community_58
 ---
 
 # auth-header.tsx
 
 ## Connections
-
 - [[AuthHeader()]] - `contains` [EXTRACTED]
 - [[AuthHeaderBase()_1]] - `contains` [EXTRACTED]
 - [[LogoSpinner()]] - `imports` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[workSpaceService]] - `contains` [EXTRACTED]
 - [[workspace.service.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Titles
+#graphify/code #graphify/EXTRACTED #community/Community_58

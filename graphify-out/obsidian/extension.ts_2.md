@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/unique-id/extension.ts"
 type: "code"
-community: "Unique Core"
+community: "Community 86"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Unique_Core
+  - community/Community_86
 ---
 
 # extension.ts
 
 ## Connections
-
 - [[ADDITIONAL_BLOCK_NODE_TYPES]] - `imports` [EXTRACTED]
 - [[BLOCK_NODE_TYPES]] - `imports` [EXTRACTED]
 - [[COMBINED_BLOCK_NODE_TYPES]] - `contains` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[plugin.ts_4]] - `imports_from` [EXTRACTED]
 - [[utils.ts_7]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Unique_Core
+#graphify/code #graphify/EXTRACTED #community/Community_86

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/workspace/sidebar/project-navigation.tsx"
 type: "code"
-community: "Sidebar Navigation"
+community: "Project Filters & Archives"
 location: "L35"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Navigation
+  - community/Project_Filters__Archives
 ---
 
 # TProjectItemsProps
 
 ## Connections
-
 - [[project-navigation.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

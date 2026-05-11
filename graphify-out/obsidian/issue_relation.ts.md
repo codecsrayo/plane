@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/issues/issue_relation.ts"
 type: "code"
-community: "Widget Issue"
+community: "Community 139"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Widget_Issue
+  - community/Community_139
 ---
 
 # issue_relation.ts
 
 ## Connections
-
 - [[TIssue]] - `imports` [EXTRACTED]
 - [[TIssueRelation]] - `contains` [EXTRACTED]
 - [[TIssueRelationIdMap]] - `contains` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[dashboard.ts_1]] - `imports_from` [EXTRACTED]
 - [[issue.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Widget_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_139

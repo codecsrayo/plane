@@ -1,32 +1,49 @@
 ---
 type: community
 cohesion: 0.13
-members: 16
+members: 34
 ---
 
 # Community 159
 
 **Cohesion:** 0.13 - loosely connected
-**Members:** 16 nodes
+**Members:** 34 nodes
 
 ## Members
-
-- [[.asJson()]] - code - web/core/store/notifications/notification.ts
-- [[.constructor()_61]] - code - web/core/store/notifications/notification.ts
-- [[.constructor()_62]] - code - web/core/store/notifications/workspace-notifications.store.ts
-- [[IWorkspaceNotificationStore]] - code - web/core/store/notifications/workspace-notifications.store.ts
-- [[Notification]] - code - web/core/store/notifications/notification.ts
-- [[TNotificationLoader]] - code - web/core/store/notifications/workspace-notifications.store.ts
-- [[TNotificationQueryParamType]] - code - web/core/store/notifications/workspace-notifications.store.ts
-- [[WorkspaceNotificationStore]] - code - web/core/store/notifications/workspace-notifications.store.ts
-- [[params_8]] - code - web/core/store/notifications/workspace-notifications.store.ts
-- [[queryParams_1]] - code - web/core/store/notifications/workspace-notifications.store.ts
-- [[use-workspace-notifications.ts]] - code - web/core/hooks/store/notifications/use-workspace-notifications.ts
-- [[useWorkspaceNotifications()]] - code - web/core/hooks/store/notifications/use-workspace-notifications.ts
-- [[validCount]] - code - web/core/store/notifications/workspace-notifications.store.ts
-- [[workspace-notifications.store.ts]] - code - web/core/store/notifications/workspace-notifications.store.ts
-- [[workspaceNotificationIds]] - code - web/core/store/notifications/workspace-notifications.store.ts
-- [[workspaceNotifications]] - code - web/core/store/notifications/workspace-notifications.store.ts
+- [[ApiServerPayload]] - code - packages/editor/src/core/types/document-collaborative-events.ts
+- [[ArchivedPayload]] - code - packages/editor/src/core/constants/document-collaborative-events.ts
+- [[BaseActionPayload]] - code - packages/editor/src/core/types/document-collaborative-events.ts
+- [[BroadcastPayloadUnion]] - code - packages/editor/src/core/types/document-collaborative-events.ts
+- [[BroadcastedEvent]] - code - packages/editor/src/core/types/document-collaborative-events.ts
+- [[BroadcastedEventUnion]] - code - packages/editor/src/core/types/document-collaborative-events.ts
+- [[CommonRealtimeFields]] - code - packages/editor/src/core/types/document-collaborative-events.ts
+- [[CreatePayload]] - code - packages/editor/src/core/types/document-collaborative-events.ts
+- [[DeletedPayload]] - code - packages/editor/src/core/constants/document-collaborative-events.ts
+- [[DocumentCollaborativeEvents]] - code - packages/editor/src/core/constants/document-collaborative-events.ts
+- [[DuplicatedPayload]] - code - packages/editor/src/core/constants/document-collaborative-events.ts
+- [[ErrorPayload]] - code - packages/editor/src/core/constants/document-collaborative-events.ts
+- [[EventToPayloadMap]] - code - packages/editor/src/core/types/document-collaborative-events.ts
+- [[LockedPayload]] - code - packages/editor/src/core/constants/document-collaborative-events.ts
+- [[MadePrivatePayload]] - code - packages/editor/src/core/constants/document-collaborative-events.ts
+- [[MadePublicPayload]] - code - packages/editor/src/core/constants/document-collaborative-events.ts
+- [[MovedPayload]] - code - packages/editor/src/core/constants/document-collaborative-events.ts
+- [[PropertyUpdatedPayload]] - code - packages/editor/src/core/constants/document-collaborative-events.ts
+- [[RestoredPayload]] - code - packages/editor/src/core/constants/document-collaborative-events.ts
+- [[TAllEventTypes]] - code - packages/editor/src/core/types/document-collaborative-events.ts
+- [[TDocumentEventEmitter]] - code - packages/editor/src/core/types/document-collaborative-events.ts
+- [[TDocumentEventKey]] - code - packages/editor/src/core/types/document-collaborative-events.ts
+- [[TDocumentEventsClient]] - code - packages/editor/src/core/types/document-collaborative-events.ts
+- [[TDocumentEventsServer]] - code - packages/editor/src/core/types/document-collaborative-events.ts
+- [[UnarchivedPayload]] - code - packages/editor/src/core/constants/document-collaborative-events.ts
+- [[UnlockedPayload]] - code - packages/editor/src/core/constants/document-collaborative-events.ts
+- [[createRealtimeEvent()]] - code - packages/editor/src/core/types/document-collaborative-events.ts
+- [[document-collaborative-events.ts]] - code - editor/src/core/constants/document-collaborative-events.ts
+- [[document-collaborative-events.ts_1]] - code - editor/src/core/types/document-collaborative-events.ts
+- [[document-collaborative-events.ts_2]] - code - packages/editor/src/core/constants/document-collaborative-events.ts
+- [[document-collaborative-events.ts_3]] - code - packages/editor/src/core/types/document-collaborative-events.ts
+- [[get-document-server-event.ts]] - code - editor/src/core/helpers/get-document-server-event.ts
+- [[get-document-server-event.ts_1]] - code - packages/editor/src/core/helpers/get-document-server-event.ts
+- [[getServerEventName()]] - code - packages/editor/src/core/helpers/get-document-server-event.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -36,18 +53,8 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 4 edges to [[_COMMUNITY_Project Estimates]]
-- 3 edges to [[_COMMUNITY_Community 139]]
-- 2 edges to [[_COMMUNITY_Community 58]]
-- 2 edges to [[_COMMUNITY_Git Integrations]]
-- 1 edge to [[_COMMUNITY_Community 92]]
-- 1 edge to [[_COMMUNITY_Applied Filters UI]]
+- 2 edges to [[_COMMUNITY_Editor Extensions]]
 
 ## Top bridge nodes
-
-- [[workspace-notifications.store.ts]] - degree 19, connects to 4 communities
-- [[use-workspace-notifications.ts]] - degree 5, connects to 2 communities
-- [[Notification]] - degree 4, connects to 1 community
-- [[IWorkspaceNotificationStore]] - degree 3, connects to 1 community
-- [[WorkspaceNotificationStore]] - degree 3, connects to 1 community
+- [[document-collaborative-events.ts]] - degree 16, connects to 1 community
+- [[document-collaborative-events.ts_2]] - degree 16, connects to 1 community

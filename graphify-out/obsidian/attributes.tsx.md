@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/components/projects/create/attributes.tsx"
 type: "code"
-community: "Project Common"
+community: "Community 324"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Common
+  - community/Community_324
 ---
 
 # attributes.tsx
 
 ## Connections
-
 - [[MemberDropdown]] - `imports` [EXTRACTED]
 - [[ProjectAttributes()]] - `contains` [EXTRACTED]
 - [[ProjectNetworkIcon()]] - `imports` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[project-network-icon.tsx]] - `imports_from` [EXTRACTED]
 - [[root.tsx_26]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Common
+#graphify/code #graphify/EXTRACTED #community/Community_324

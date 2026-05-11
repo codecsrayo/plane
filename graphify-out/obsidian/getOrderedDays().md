@@ -1,18 +1,18 @@
 ---
-source_file: "utils/src/calendar.ts"
+source_file: "packages/utils/src/calendar.ts"
 type: "code"
-community: "Calendar Generate"
+community: "Community 497"
 location: "L84"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Generate
+  - community/Community_497
 ---
 
 # getOrderedDays()
 
 ## Connections
-
 - [[calendar.ts_1]] - `contains` [EXTRACTED]
+- [[calendar.ts_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Generate
+#graphify/code #graphify/EXTRACTED #community/Community_497

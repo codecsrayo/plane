@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 784
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_65]] - code - web/core/components/modules/dropdowns/filters/index.ts
+- [[DuplicateModalRoot()]] - code - web/ce/components/de-dupe/duplicate-modal/root.tsx
+- [[TDuplicateModalRootProps]] - code - web/ce/components/de-dupe/duplicate-modal/root.tsx
+- [[root.tsx_23]] - code - web/ce/components/de-dupe/duplicate-modal/root.tsx
 
 ## Live Query (requires Dataview plugin)
 

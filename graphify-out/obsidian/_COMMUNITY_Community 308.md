@@ -1,20 +1,34 @@
 ---
 type: community
-cohesion: 0.50
-members: 4
+cohesion: 0.20
+members: 19
 ---
 
 # Community 308
 
-**Cohesion:** 0.50 - moderately connected
-**Members:** 4 nodes
+**Cohesion:** 0.20 - loosely connected
+**Members:** 19 nodes
 
 ## Members
-
-- [[Props_313]] - code - web/core/components/power-k/ui/pages/work-item-selection-page.tsx
-- [[WorkItemSelectionPage()]] - code - web/core/components/power-k/ui/pages/work-item-selection-page.tsx
-- [[work-item-selection-page.tsx]] - code - web/core/components/power-k/ui/pages/work-item-selection-page.tsx
-- [[workspaceService_6]] - code - web/core/components/power-k/ui/pages/work-item-selection-page.tsx
+- [[Command_1]] - code - packages/propel/src/command/command.tsx
+- [[CommandComponent()]] - code - packages/propel/src/command/command.tsx
+- [[CommandEmpty()]] - code - packages/propel/src/command/command.tsx
+- [[CommandInput()]] - code - packages/propel/src/command/command.tsx
+- [[CommandItem()]] - code - packages/propel/src/command/command.tsx
+- [[CommandList()]] - code - packages/propel/src/command/command.tsx
+- [[CustomStyling_1]] - code - packages/propel/src/command/command.stories.tsx
+- [[Default_23]] - code - packages/propel/src/command/command.stories.tsx
+- [[DisabledItems_1]] - code - packages/propel/src/command/command.stories.tsx
+- [[EmptyState_1]] - code - packages/propel/src/command/command.stories.tsx
+- [[LongList]] - code - packages/propel/src/command/command.stories.tsx
+- [[Story_27]] - code - packages/propel/src/command/command.stories.tsx
+- [[WithCategories]] - code - packages/propel/src/command/command.stories.tsx
+- [[WithIcons_1]] - code - packages/propel/src/command/command.stories.tsx
+- [[WithoutSearch_1]] - code - packages/propel/src/command/command.stories.tsx
+- [[command.stories.tsx_1]] - code - packages/propel/src/command/command.stories.tsx
+- [[command.stories.tsx]] - code - propel/src/command/command.stories.tsx
+- [[command.tsx_2]] - code - packages/propel/src/command/command.tsx
+- [[command.tsx]] - code - propel/src/command/command.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -24,10 +38,9 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 1 edge to [[_COMMUNITY_Authentication UI]]
-- 1 edge to [[_COMMUNITY_Community 33]]
+- 4 edges to [[_COMMUNITY_Community 164]]
+- 2 edges to [[_COMMUNITY_Community 276]]
 
 ## Top bridge nodes
-
-- [[work-item-selection-page.tsx]] - degree 5, connects to 2 communities
+- [[command.tsx_2]] - degree 10, connects to 2 communities
+- [[command.tsx]] - degree 10, connects to 2 communities

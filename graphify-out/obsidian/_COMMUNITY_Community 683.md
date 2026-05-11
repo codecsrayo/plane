@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.50
+members: 4
 ---
 
 # Community 683
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.50 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_33]] - code - api_rust/src/entities/issue_attachments.rs
+- [[INDIVIDUAL_WEBHOOK_OPTIONS]] - code - web/core/components/web-hooks/form/individual-event-options.tsx
+- [[Props_242]] - code - web/core/components/web-hooks/form/individual-event-options.tsx
+- [[WebhookIndividualEventOptions()]] - code - web/core/components/web-hooks/form/individual-event-options.tsx
+- [[individual-event-options.tsx]] - code - web/core/components/web-hooks/form/individual-event-options.tsx
 
 ## Live Query (requires Dataview plugin)
 

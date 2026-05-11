@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/navigation/tab-navigation-root.tsx"
 type: "code"
-community: "Project Navigation"
+community: "Community 73"
 location: "L34"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Navigation
+  - community/Community_73
 ---
 
 # TNavigationItem
 
 ## Connections
-
 - [[tab-navigation-overflow-menu.tsx]] - `imports` [EXTRACTED]
 - [[tab-navigation-root.tsx]] - `contains` [EXTRACTED]
 - [[tab-navigation-visible-item.tsx]] - `imports` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[use-project-actions.ts]] - `imports` [EXTRACTED]
 - [[use-responsive-tab-layout.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Navigation
+#graphify/code #graphify/EXTRACTED #community/Community_73

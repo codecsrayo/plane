@@ -1,32 +1,48 @@
 ---
 type: community
-cohesion: 0.18
-members: 16
+cohesion: 0.13
+members: 33
 ---
 
 # Community 164
 
-**Cohesion:** 0.18 - loosely connected
-**Members:** 16 nodes
+**Cohesion:** 0.13 - loosely connected
+**Members:** 33 nodes
 
 ## Members
-
-- [[FilterDate]] - code - web/core/components/inbox/inbox-filter/filters/date.tsx
-- [[FilterLabels]] - code - web/core/components/inbox/inbox-filter/filters/labels.tsx
-- [[FilterMember]] - code - web/core/components/inbox/inbox-filter/filters/members.tsx
-- [[FilterPriority]] - code - web/core/components/inbox/inbox-filter/filters/priority.tsx
-- [[LabelIcons()]] - code - web/core/components/inbox/inbox-filter/filters/labels.tsx
-- [[Props_373]] - code - web/core/components/inbox/inbox-filter/filters/date.tsx
-- [[Props_242]] - code - web/core/components/inbox/inbox-filter/filters/labels.tsx
-- [[Props_236]] - code - web/core/components/inbox/inbox-filter/filters/priority.tsx
-- [[date.tsx_7]] - code - web/core/components/inbox/inbox-filter/filters/date.tsx
-- [[filter-selection.tsx_1]] - code - web/core/components/inbox/inbox-filter/filters/filter-selection.tsx
-- [[isDate()]] - code - web/core/components/inbox/inbox-filter/filters/date.tsx
-- [[labels.tsx_3]] - code - web/core/components/inbox/inbox-filter/filters/labels.tsx
-- [[labels.tsx_1]] - code - web/core/components/issues/issue-layouts/filters/header/filters/labels.tsx
-- [[members.tsx_8]] - code - web/core/components/inbox/inbox-filter/filters/members.tsx
-- [[priority.tsx_4]] - code - web/core/components/inbox/inbox-filter/filters/priority.tsx
-- [[priority.tsx_1]] - code - web/core/components/issues/issue-layouts/filters/header/filters/priority.tsx
+- [[CUSTOM_TEXT_COLORS_1]] - code - packages/propel/src/utils/classname.tsx
+- [[CustomTreeMapContent()]] - code - packages/propel/src/charts/tree-map/map-content.tsx
+- [[ItemProps_1]] - code - packages/propel/src/skeleton/root.tsx
+- [[LAYOUT]] - code - packages/propel/src/charts/tree-map/map-content.tsx
+- [[Skeleton]] - code - packages/propel/src/skeleton/root.tsx
+- [[SkeletonItem()]] - code - packages/propel/src/skeleton/root.tsx
+- [[SkeletonProps]] - code - packages/propel/src/skeleton/root.tsx
+- [[SkeletonRoot()]] - code - packages/propel/src/skeleton/root.tsx
+- [[TreeMapChart]] - code - packages/propel/src/charts/tree-map/root.tsx
+- [[TreeMapTooltip]] - code - packages/propel/src/charts/tree-map/tooltip.tsx
+- [[TreeMapTooltipProps]] - code - packages/propel/src/charts/tree-map/tooltip.tsx
+- [[calculateBottomSectionConfig()]] - code - packages/propel/src/charts/tree-map/map-content.tsx
+- [[calculateContentWidth()]] - code - packages/propel/src/charts/tree-map/map-content.tsx
+- [[calculateTopSectionConfig()]] - code - packages/propel/src/charts/tree-map/map-content.tsx
+- [[calculateVisibility()]] - code - packages/propel/src/charts/tree-map/map-content.tsx
+- [[classname.tsx_3]] - code - packages/propel/src/utils/classname.tsx
+- [[classname.tsx_1]] - code - propel/src/utils/classname.tsx
+- [[cn()_1]] - code - packages/propel/src/utils/classname.tsx
+- [[getSupportEmail()_1]] - code - packages/propel/src/utils/classname.tsx
+- [[index.ts_619]] - code - packages/propel/src/card/index.ts
+- [[isCustomFontSize()_1]] - code - packages/propel/src/utils/classname.tsx
+- [[isCustomTextColor()_1]] - code - packages/propel/src/utils/classname.tsx
+- [[isCustomTypography()_1]] - code - packages/propel/src/utils/classname.tsx
+- [[map-content.tsx_1]] - code - packages/propel/src/charts/tree-map/map-content.tsx
+- [[map-content.tsx]] - code - propel/src/charts/tree-map/map-content.tsx
+- [[root.tsx_153]] - code - packages/propel/src/charts/tree-map/root.tsx
+- [[root.tsx_159]] - code - packages/propel/src/skeleton/root.tsx
+- [[root.tsx_11]] - code - propel/src/charts/tree-map/root.tsx
+- [[root.tsx_17]] - code - propel/src/skeleton/root.tsx
+- [[tooltip.tsx_7]] - code - packages/propel/src/charts/tree-map/tooltip.tsx
+- [[tooltip.tsx_3]] - code - propel/src/charts/tree-map/tooltip.tsx
+- [[truncateText()_1]] - code - packages/propel/src/charts/tree-map/map-content.tsx
+- [[twMerge_1]] - code - packages/propel/src/utils/classname.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -36,20 +52,25 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 9 edges to [[_COMMUNITY_Community 98]]
-- 7 edges to [[_COMMUNITY_Community 42]]
-- 4 edges to [[_COMMUNITY_Member Filters & Description]]
-- 2 edges to [[_COMMUNITY_Community 81]]
-- 2 edges to [[_COMMUNITY_Community 256]]
-- 2 edges to [[_COMMUNITY_Community 85]]
-- 1 edge to [[_COMMUNITY_Empty State Components]]
-- 1 edge to [[_COMMUNITY_Community 311]]
+- 12 edges to [[_COMMUNITY_Community 81]]
+- 11 edges to [[_COMMUNITY_Community 128]]
+- 8 edges to [[_COMMUNITY_Community 193]]
+- 4 edges to [[_COMMUNITY_Community 253]]
+- 4 edges to [[_COMMUNITY_Community 226]]
+- 4 edges to [[_COMMUNITY_Community 279]]
+- 4 edges to [[_COMMUNITY_Community 182]]
+- 4 edges to [[_COMMUNITY_Community 252]]
+- 4 edges to [[_COMMUNITY_Community 103]]
+- 4 edges to [[_COMMUNITY_Community 470]]
+- 4 edges to [[_COMMUNITY_Community 127]]
+- 4 edges to [[_COMMUNITY_Community 218]]
+- 4 edges to [[_COMMUNITY_Community 308]]
+- 4 edges to [[_COMMUNITY_Community 442]]
+- 4 edges to [[_COMMUNITY_Community 152]]
 
 ## Top bridge nodes
-
-- [[filter-selection.tsx_1]] - degree 16, connects to 5 communities
-- [[members.tsx_8]] - degree 9, connects to 4 communities
-- [[date.tsx_7]] - degree 9, connects to 3 communities
-- [[labels.tsx_3]] - degree 7, connects to 2 communities
-- [[priority.tsx_4]] - degree 6, connects to 2 communities
+- [[cn()_1]] - degree 47, connects to 15 communities
+- [[classname.tsx_3]] - degree 29, connects to 15 communities
+- [[classname.tsx_1]] - degree 29, connects to 15 communities
+- [[tooltip.tsx_3]] - degree 4, connects to 1 community
+- [[index.ts_619]] - degree 3, connects to 1 community

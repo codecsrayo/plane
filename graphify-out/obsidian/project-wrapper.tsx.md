@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/layouts/auth-layout/project-wrapper.tsx"
 type: "code"
-community: "Project Workspace"
+community: "Community 36"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Workspace
+  - community/Community_36
 ---
 
 # project-wrapper.tsx
 
 ## Connections
-
 - [[IProjectAuthWrapper]] - `contains` [EXTRACTED]
 - [[PROJECT_ALL_CYCLES()]] - `imports` [EXTRACTED]
 - [[PROJECT_DETAILS()]] - `imports` [EXTRACTED]
@@ -51,4 +50,4 @@ tags:
 - [[useProjectView()]] - `imports` [EXTRACTED]
 - [[useTimeLineChart()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_36

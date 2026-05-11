@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/permissions/page.py"
 type: "code"
-community: "Permission Project"
+community: "Community 96"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Permission_Project
+  - community/Community_96
 ---
 
 # ProjectPagePermission
 
 ## Connections
-
 - [[._check_access_and_get_role()]] - `method` [EXTRACTED]
 - [[._check_project_action_access()]] - `method` [EXTRACTED]
 - [[._check_project_member_access()]] - `method` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[page.py]] - `contains` [EXTRACTED]
 - [[page.py_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Permission_Project
+#graphify/code #graphify/EXTRACTED #community/Community_96

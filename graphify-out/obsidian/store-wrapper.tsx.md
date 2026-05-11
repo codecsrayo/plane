@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/lib/wrappers/store-wrapper.tsx"
 type: "code"
-community: "Sidebar Navigation"
+community: "Community 234"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Navigation
+  - community/Community_234
 ---
 
 # store-wrapper.tsx
 
 ## Connections
-
 - [[StoreWrapper()]] - `contains` [EXTRACTED]
 - [[TStoreWrapper]] - `contains` [EXTRACTED]
 - [[index.ts_265]] - `imports_from` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[useAppTheme()]] - `imports` [EXTRACTED]
 - [[useRouterParams()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation
+#graphify/code #graphify/EXTRACTED #community/Community_234

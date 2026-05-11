@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/issue/profile/filter.store.ts"
 type: "code"
-community: "Filters Display"
+community: "Community 233"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filters_Display
+  - community/Community_233
 ---
 
 # filter.store.ts
 
 ## Connections
-
 - [[IBaseIssueFilterStore]] - `imports` [EXTRACTED]
 - [[IIssueRootStore]] - `imports` [EXTRACTED]
 - [[IProfileIssuesFilter]] - `contains` [EXTRACTED]
@@ -35,4 +34,4 @@ tags:
 - [[updatedDisplayProperties_5]] - `contains` [EXTRACTED]
 - [[updatedKanbanFilters_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filters_Display
+#graphify/code #graphify/EXTRACTED #community/Community_233

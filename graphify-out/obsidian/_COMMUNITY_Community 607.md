@@ -1,18 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.60
+members: 5
 ---
 
 # Community 607
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.60 - moderately connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[index.ts_24]] - code - web/core/lib/polyfills/index.ts
-- [[start]] - code - web/core/lib/polyfills/index.ts
+- [[TCommandPaletteActionList]] - code - packages/types/src/command-palette.ts
+- [[TCommandPaletteShortcut]] - code - packages/types/src/command-palette.ts
+- [[TCommandPaletteShortcutList]] - code - packages/types/src/command-palette.ts
+- [[command-palette.ts_1]] - code - packages/types/src/command-palette.ts
+- [[command-palette.ts]] - code - types/src/command-palette.ts
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/power-k/ui/modal/shortcuts-root.tsx"
 type: "code"
-community: "Power Shortcuts"
+community: "Community 130"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Power_Shortcuts
+  - community/Community_130
 ---
 
 # shortcuts-root.tsx
 
 ## Connections
-
 - [[Props_413]] - `contains` [EXTRACTED]
 - [[ShortcutRenderer()]] - `imports` [EXTRACTED]
 - [[ShortcutsModal()]] - `contains` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[use-power-k.ts]] - `imports_from` [EXTRACTED]
 - [[usePowerK()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Power_Shortcuts
+#graphify/code #graphify/EXTRACTED #community/Community_130

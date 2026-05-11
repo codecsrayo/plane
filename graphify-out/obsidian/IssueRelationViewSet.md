@@ -1,22 +1,21 @@
 ---
 source_file: "api/plane/app/views/issue/relation.py"
 type: "code"
-community: "Partial Endpoint"
+community: "Python API Base Classes"
 location: "L37"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Partial_Endpoint
+  - community/Python_API_Base_Classes
 ---
 
 # IssueRelationViewSet
 
 ## Connections
-
 - [[.create()_14]] - `method` [EXTRACTED]
 - [[.list()_17]] - `method` [EXTRACTED]
 - [[.remove_relation()]] - `method` [EXTRACTED]
 - [[BaseViewSet_1]] - `inherits` [EXTRACTED]
 - [[relation.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Partial_Endpoint
+#graphify/code #graphify/EXTRACTED #community/Python_API_Base_Classes

@@ -1,18 +1,17 @@
 ---
 source_file: "space/store/profile.store.ts"
 type: "code"
-community: "Publish Cycle"
+community: "Community 72"
 location: "L119"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Publish_Cycle
+  - community/Community_72
 ---
 
 # userKey
 
 ## Connections
-
 - [[profile.store.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Publish_Cycle
+#graphify/code #graphify/EXTRACTED #community/Community_72

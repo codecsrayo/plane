@@ -1,18 +1,21 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.40
+members: 6
 ---
 
 # Community 594
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.40 - moderately connected
+**Members:** 6 nodes
 
 ## Members
-
-- [[.to()_96]] - code - api_rust/src/entities/db_githubprstatemapping.rs
-- [[Entity_96]] - code - api_rust/src/entities/db_githubprstatemapping.rs
+- [[Astro (SSG Framework)]] - document - graphify-out/memory/query_20260511_023029_se_puede_pasar_el_home_a_astro.md
+- [[HomeStore_1]] - document - graphify-out/memory/query_20260511_023029_se_puede_pasar_el_home_a_astro.md
+- [[Query se puede pasar el home a astro]] - document - graphify-out/memory/query_20260511_023029_se_puede_pasar_el_home_a_astro.md
+- [[WorkspaceHomeView_1]] - document - graphify-out/memory/query_20260511_023029_se_puede_pasar_el_home_a_astro.md
+- [[appshome (static HTMLnginx)]] - document - graphify-out/memory/query_20260511_023029_se_puede_pasar_el_home_a_astro.md
+- [[home.ts_3]] - document - graphify-out/memory/query_20260511_023029_se_puede_pasar_el_home_a_astro.md
 
 ## Live Query (requires Dataview plugin)
 

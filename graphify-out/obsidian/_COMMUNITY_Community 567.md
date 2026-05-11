@@ -1,18 +1,21 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.53
+members: 6
 ---
 
 # Community 567
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.53 - moderately connected
+**Members:** 6 nodes
 
 ## Members
-
-- [[.to()_69]] - code - api_rust/src/entities/users_user_permissions.rs
-- [[Entity_69]] - code - api_rust/src/entities/users_user_permissions.rs
+- [[MODULE_ORDER_BY_OPTIONS]] - code - packages/constants/src/module.ts
+- [[MODULE_STATUS]] - code - packages/constants/src/module.ts
+- [[MODULE_STATUS_COLORS]] - code - packages/constants/src/module.ts
+- [[MODULE_VIEW_LAYOUTS]] - code - packages/constants/src/module.ts
+- [[module.ts]] - code - constants/src/module.ts
+- [[module.ts_3]] - code - packages/constants/src/module.ts
 
 ## Live Query (requires Dataview plugin)
 

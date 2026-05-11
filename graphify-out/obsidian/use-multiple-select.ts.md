@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/use-multiple-select.ts"
 type: "code"
-community: "Select Multiple"
+community: "Bulk Operations & Spreadsheet"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Select_Multiple
+  - community/Bulk_Operations__Spreadsheet
 ---
 
 # use-multiple-select.ts
 
 ## Connections
-
 - [[Props_78]] - `contains` [EXTRACTED]
 - [[TEntityDetails]] - `contains` [EXTRACTED]
 - [[TSelectionHelper]] - `contains` [EXTRACTED]
@@ -40,4 +39,4 @@ tags:
 - [[useMultipleSelect()]] - `contains` [EXTRACTED]
 - [[useMultipleSelectStore()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Select_Multiple
+#graphify/code #graphify/EXTRACTED #community/Bulk_Operations__Spreadsheet

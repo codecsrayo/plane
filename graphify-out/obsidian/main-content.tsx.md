@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/gantt-chart/chart/main-content.tsx"
 type: "code"
-community: "Gantt Chart"
+community: "Community 23"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Chart
+  - community/Community_23
 ---
 
 # main-content.tsx
 
 ## Connections
-
 - [[GanttChartBlocksList()]] - `imports` [EXTRACTED]
 - [[GanttChartMainContent]] - `contains` [EXTRACTED]
 - [[GanttChartRowList()]] - `imports` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[useBulkOperationStatus()]] - `imports` [EXTRACTED]
 - [[useTimeLineChartStore()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Chart
+#graphify/code #graphify/EXTRACTED #community/Community_23

@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 4
 ---
 
 # Community 654
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_4]] - code - api_rust/src/entities/cycles.rs
+- [[ControlLink]] - code - packages/ui/src/control-link/control-link.tsx
+- [[TControlLink]] - code - packages/ui/src/control-link/control-link.tsx
+- [[control-link.tsx_1]] - code - packages/ui/src/control-link/control-link.tsx
+- [[control-link.tsx]] - code - ui/src/control-link/control-link.tsx
 
 ## Live Query (requires Dataview plugin)
 

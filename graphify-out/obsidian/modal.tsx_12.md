@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-modal/modal.tsx"
 type: "code"
-community: "Issue Work"
+community: "Project Filters & Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Work
+  - community/Project_Filters__Archives
 ---
 
 # modal.tsx
 
 ## Connections
-
 - [[CreateUpdateIssueModal]] - `contains` [EXTRACTED]
 - [[CreateUpdateIssueModalBase]] - `imports` [EXTRACTED]
 - [[IssueModalProvider]] - `imports` [EXTRACTED]
@@ -35,4 +34,4 @@ tags:
 - [[quick-actions.tsx_1]] - `imports_from` [EXTRACTED]
 - [[work-item-level.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Work
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

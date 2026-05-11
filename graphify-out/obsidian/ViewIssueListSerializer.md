@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/serializers/view.py"
 type: "code"
-community: "Issue Serializer"
+community: "Community 638"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Serializer
+  - community/Community_638
 ---
 
 # ViewIssueListSerializer
 
 ## Connections
-
 - [[.get_assignee_ids()]] - `method` [EXTRACTED]
 - [[.get_label_ids()]] - `method` [EXTRACTED]
 - [[.get_module_ids()]] - `method` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[list()_16]] - `calls` [INFERRED]
 - [[view.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Serializer
+#graphify/code #graphify/EXTRACTED #community/Community_638

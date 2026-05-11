@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_30]] - code - ui/src/collapsible/index.ts
+- [[index.ts_49]] - code - editor/src/core/extensions/work-item-embed/index.ts
 
 ## Live Query (requires Dataview plugin)
 

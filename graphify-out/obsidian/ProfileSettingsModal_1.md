@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/settings/profile/modal.tsx"
 type: "code"
-community: "Workspace Issue"
+community: "Community 24"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Issue
+  - community/Community_24
 ---
 
 # ProfileSettingsModal
 
 ## Connections
-
 - [[modal.tsx_10]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_24

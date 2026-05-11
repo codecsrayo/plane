@@ -1,18 +1,17 @@
 ---
 source_file: "space/app/compat/next/helper.ts"
 type: "code"
-community: "Link Navigation"
+community: "Community 394"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Link_Navigation
+  - community/Community_394
 ---
 
 # ensureTrailingSlash()
 
 ## Connections
-
 - [[helper.ts_2]] - `contains` [EXTRACTED]
 - [[helper.ts_7]] - `contains` [EXTRACTED]
 - [[helper.ts_8]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[navigation.ts_2]] - `imports` [EXTRACTED]
 - [[navigation.ts_3]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Link_Navigation
+#graphify/code #graphify/EXTRACTED #community/Community_394

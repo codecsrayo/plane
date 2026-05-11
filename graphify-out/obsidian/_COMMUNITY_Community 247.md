@@ -1,24 +1,39 @@
 ---
 type: community
-cohesion: 0.36
-members: 8
+cohesion: 0.12
+members: 24
 ---
 
 # Community 247
 
-**Cohesion:** 0.36 - loosely connected
-**Members:** 8 nodes
+**Cohesion:** 0.12 - loosely connected
+**Members:** 24 nodes
 
 ## Members
-
-- [[GeneratedHookDetails()]] - code - web/core/components/web-hooks/generated-hook-details.tsx
-- [[ICreateWebhookModal]] - code - web/core/components/web-hooks/create-webhook-modal.tsx
-- [[Props_163]] - code - web/core/components/web-hooks/generated-hook-details.tsx
-- [[create-webhook-modal.tsx]] - code - web/core/components/web-hooks/create-webhook-modal.tsx
-- [[generated-hook-details.tsx]] - code - web/core/components/web-hooks/generated-hook-details.tsx
-- [[getCurrentHookAsCSV()]] - code - web/core/components/web-hooks/utils.ts
-- [[index.ts_83]] - code - web/core/components/web-hooks/form/index.ts
-- [[utils.ts_4]] - code - web/core/components/web-hooks/utils.ts
+- [[CalendarQuickAddIssueForm]] - code - web/core/components/issues/issue-layouts/quick-add/form/calendar.tsx
+- [[GanttQuickAddIssueButton]] - code - web/core/components/issues/issue-layouts/quick-add/button/gantt.tsx
+- [[GanttQuickAddIssueForm]] - code - web/core/components/issues/issue-layouts/quick-add/form/gantt.tsx
+- [[KanbanQuickAddIssueButton]] - code - web/core/components/issues/issue-layouts/quick-add/button/kanban.tsx
+- [[KanbanQuickAddIssueForm]] - code - web/core/components/issues/issue-layouts/quick-add/form/kanban.tsx
+- [[ListQuickAddIssueButton]] - code - web/core/components/issues/issue-layouts/quick-add/button/list.tsx
+- [[ListQuickAddIssueForm]] - code - web/core/components/issues/issue-layouts/quick-add/form/list.tsx
+- [[QuickAddIssueRoot]] - code - web/core/components/issues/issue-layouts/quick-add/root.tsx
+- [[SpreadsheetAddIssueButton]] - code - web/core/components/issues/issue-layouts/quick-add/button/spreadsheet.tsx
+- [[SpreadsheetQuickAddIssueForm]] - code - web/core/components/issues/issue-layouts/quick-add/form/spreadsheet.tsx
+- [[TQuickAddIssueButton]] - code - web/core/components/issues/issue-layouts/quick-add/root.tsx
+- [[TQuickAddIssueForm]] - code - web/core/components/issues/issue-layouts/quick-add/root.tsx
+- [[TQuickAddIssueRoot]] - code - web/core/components/issues/issue-layouts/quick-add/root.tsx
+- [[calendar.tsx_1]] - code - web/core/components/issues/issue-layouts/quick-add/form/calendar.tsx
+- [[defaultValues_14]] - code - web/core/components/issues/issue-layouts/quick-add/root.tsx
+- [[gantt.tsx]] - code - web/core/components/issues/issue-layouts/quick-add/button/gantt.tsx
+- [[gantt.tsx_1]] - code - web/core/components/issues/issue-layouts/quick-add/form/gantt.tsx
+- [[kanban.tsx]] - code - web/core/components/issues/issue-layouts/quick-add/button/kanban.tsx
+- [[kanban.tsx_1]] - code - web/core/components/issues/issue-layouts/quick-add/form/kanban.tsx
+- [[list.tsx_1]] - code - web/core/components/issues/issue-layouts/quick-add/button/list.tsx
+- [[list.tsx_2]] - code - web/core/components/issues/issue-layouts/quick-add/form/list.tsx
+- [[root.tsx_69]] - code - web/core/components/issues/issue-layouts/quick-add/root.tsx
+- [[spreadsheet.tsx]] - code - web/core/components/issues/issue-layouts/quick-add/button/spreadsheet.tsx
+- [[spreadsheet.tsx_1]] - code - web/core/components/issues/issue-layouts/quick-add/form/spreadsheet.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -28,9 +43,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 2 edges to [[_COMMUNITY_Community 169]]
+- 2 edges to [[_COMMUNITY_Project Filters & Archives]]
 
 ## Top bridge nodes
-
-- [[create-webhook-modal.tsx]] - degree 8, connects to 1 community
+- [[root.tsx_69]] - degree 16, connects to 1 community

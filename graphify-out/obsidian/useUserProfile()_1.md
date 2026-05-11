@@ -1,18 +1,17 @@
 ---
 source_file: "space/hooks/store/use-user-profile.ts"
 type: "code"
-community: "Publish Cycle"
+community: "Community 72"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Publish_Cycle
+  - community/Community_72
 ---
 
 # useUserProfile()
 
 ## Connections
-
 - [[use-user-profile.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Publish_Cycle
+#graphify/code #graphify/EXTRACTED #community/Community_72

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/use-issues-actions.tsx"
 type: "code"
-community: "Issue Project"
+community: "Filter UI & Breadcrumbs"
 location: "L47"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Project
+  - community/Filter_UI__Breadcrumbs
 ---
 
 # useIssuesActions()
 
 ## Connections
-
 - [[base-calendar-root.tsx]] - `imports` [EXTRACTED]
 - [[base-gantt-root.tsx]] - `imports` [EXTRACTED]
 - [[base-kanban-root.tsx]] - `imports` [EXTRACTED]
@@ -35,4 +34,4 @@ tags:
 - [[work-item-level.tsx]] - `imports` [EXTRACTED]
 - [[workspace-root.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Project
+#graphify/code #graphify/EXTRACTED #community/Filter_UI__Breadcrumbs

@@ -1,18 +1,17 @@
 ---
 source_file: "ui/src/breadcrumbs/breadcrumbs.tsx"
 type: "code"
-community: "Breadcrumb Navigation"
+community: "Community 147"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Breadcrumb_Navigation
+  - community/Community_147
 ---
 
 # breadcrumbs.tsx
 
 ## Connections
-
 - [[BreadcrumbIcon()]] - `contains` [EXTRACTED]
 - [[BreadcrumbIconProps]] - `contains` [EXTRACTED]
 - [[BreadcrumbItem()]] - `contains` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[navigation-dropdown.tsx]] - `imports_from` [EXTRACTED]
 - [[navigation-search-dropdown.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Breadcrumb_Navigation
+#graphify/code #graphify/EXTRACTED #community/Community_147

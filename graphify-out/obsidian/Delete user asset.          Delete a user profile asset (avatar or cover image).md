@@ -1,14 +1,14 @@
 ---
 source_file: "api/plane/api/views/asset.py"
 type: "rationale"
-community: "User Profile"
+community: "Community 1662"
 location: "L232"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/User_Profile
+  - community/Community_1662
 ---
 
-# Delete user asset. Delete a user profile asset (avatar or cover image)
+# Delete user asset.          Delete a user profile asset (avatar or cover image)
 
-#graphify/rationale #graphify/EXTRACTED #community/User_Profile
+#graphify/rationale #graphify/EXTRACTED #community/Community_1662

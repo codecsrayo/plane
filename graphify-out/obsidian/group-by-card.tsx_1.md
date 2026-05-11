@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/list/headers/group-by-card.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Filter UI & Breadcrumbs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Filter_UI__Breadcrumbs
 ---
 
 # group-by-card.tsx
 
 ## Connections
-
 - [[CreateUpdateIssueModal]] - `imports` [EXTRACTED]
 - [[ExistingIssuesListModal()]] - `imports` [EXTRACTED]
 - [[HeaderGroupByCard]] - `contains` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[use-multiple-select.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueStoreType()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Filter_UI__Breadcrumbs

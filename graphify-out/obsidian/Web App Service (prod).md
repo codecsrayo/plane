@@ -1,17 +1,16 @@
 ---
 source_file: "docker-compose.yml"
 type: "document"
-community: "Rust Django"
+community: "Community 421"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Rust_Django
+  - community/Community_421
 ---
 
 # Web App Service (prod)
 
 ## Connections
-
 - [[Traefik Reverse Proxy (prod)]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Rust_Django
+#graphify/document #graphify/EXTRACTED #community/Community_421

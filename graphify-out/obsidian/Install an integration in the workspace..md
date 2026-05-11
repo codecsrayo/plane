@@ -1,14 +1,14 @@
 ---
 source_file: "api/plane/app/views/integration/base.py"
 type: "rationale"
-community: "Install Integration"
+community: "Community 1651"
 location: "L75"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Install_Integration
+  - community/Community_1651
 ---
 
 # Install an integration in the workspace.
 
-#graphify/rationale #graphify/EXTRACTED #community/Install_Integration
+#graphify/rationale #graphify/EXTRACTED #community/Community_1651

@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/tooltip/root.tsx"
 type: "code"
-community: "Emoji Icon"
+community: "Community 81"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Emoji_Icon
+  - community/Community_81
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[ITooltipProps_1]] - `contains` [EXTRACTED]
 - [[TAlign]] - `imports` [EXTRACTED]
 - [[TPlacement]] - `imports` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[placement.ts]] - `imports_from` [EXTRACTED]
 - [[tooltip.stories.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Emoji_Icon
+#graphify/code #graphify/EXTRACTED #community/Community_81

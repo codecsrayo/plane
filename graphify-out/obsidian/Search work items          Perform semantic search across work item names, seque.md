@@ -1,14 +1,14 @@
 ---
 source_file: "api/plane/api/views/issue.py"
 type: "rationale"
-community: "Search Work"
+community: "Community 1698"
 location: "L2215"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Search_Work
+  - community/Community_1698
 ---
 
-# Search work items Perform semantic search across work item names, seque
+# Search work items          Perform semantic search across work item names, seque
 
-#graphify/rationale #graphify/EXTRACTED #community/Search_Work
+#graphify/rationale #graphify/EXTRACTED #community/Community_1698

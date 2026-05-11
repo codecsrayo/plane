@@ -1,14 +1,14 @@
 ---
 source_file: "api/plane/tests/contract/app/test_workspace_app.py"
 type: "rationale"
-community: "Test Creating"
+community: "Community 1781"
 location: "L19"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Test_Creating
+  - community/Community_1781
 ---
 
 # Test creating a workspace with empty data
 
-#graphify/rationale #graphify/EXTRACTED #community/Test_Creating
+#graphify/rationale #graphify/EXTRACTED #community/Community_1781

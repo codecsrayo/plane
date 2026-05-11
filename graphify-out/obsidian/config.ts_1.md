@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/constants/config.ts"
 type: "code"
-community: "Document Collaborative"
+community: "Editor Extensions"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Document_Collaborative
+  - community/Editor_Extensions
 ---
 
 # config.ts
 
 ## Connections
-
 - [[ACCEPTED_ATTACHMENT_MIME_TYPES]] - `contains` [EXTRACTED]
 - [[ACCEPTED_IMAGE_MIME_TYPES]] - `contains` [EXTRACTED]
 - [[DEFAULT_DISPLAY_CONFIG]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[index.ts_46]] - `imports_from` [EXTRACTED]
 - [[uploader.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Document_Collaborative
+#graphify/code #graphify/EXTRACTED #community/Editor_Extensions

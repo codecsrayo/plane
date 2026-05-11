@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/settings/redis.py"
 type: "code"
-community: "Test Magic"
+community: "Community 131"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Test_Magic
+  - community/Community_131
 ---
 
 # redis.py
 
 ## Connections
-
 - [[redis_instance()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Test_Magic
+#graphify/code #graphify/EXTRACTED #community/Community_131

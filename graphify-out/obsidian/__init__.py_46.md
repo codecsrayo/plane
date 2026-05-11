@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/authentication/views/__init__.py"
 type: "code"
-community: "Endpoint Sign"
+community: "Community 76"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_Sign
+  - community/Community_76
 ---
 
-# **init**.py
+# __init__.py
 
 ## Connections
-
 - [[check.py]] - `imports_from` [EXTRACTED]
 - [[check.py_1]] - `imports_from` [EXTRACTED]
 - [[common.py_1]] - `imports_from` [EXTRACTED]
@@ -33,4 +32,4 @@ tags:
 - [[signout.py]] - `imports_from` [EXTRACTED]
 - [[signout.py_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_Sign
+#graphify/code #graphify/EXTRACTED #community/Community_76

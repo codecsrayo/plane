@@ -1,18 +1,17 @@
 ---
 source_file: "space/store/issue-filters.store.ts"
 type: "code"
-community: "Filters Issue"
+community: "Community 343"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filters_Issue
+  - community/Community_343
 ---
 
 # issue-filters.store.ts
 
 ## Connections
-
 - [[IIssueFilterStore]] - `contains` [EXTRACTED]
 - [[IssueFilterStore]] - `contains` [EXTRACTED]
 - [[RootStore]] - `imports` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[root.store.ts_6]] - `imports_from` [EXTRACTED]
 - [[use-issue-filter.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filters_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_343

@@ -1,18 +1,18 @@
 ---
-source_file: "propel/src/table/table.stories.tsx"
+source_file: "packages/propel/src/table/table.stories.tsx"
 type: "code"
-community: "Table Caption"
+community: "Community 252"
 location: "L215"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Table_Caption
+  - community/Community_252
 ---
 
 # WithCheckboxes
 
 ## Connections
-
 - [[table.stories.tsx_1]] - `contains` [EXTRACTED]
+- [[table.stories.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Table_Caption
+#graphify/code #graphify/EXTRACTED #community/Community_252

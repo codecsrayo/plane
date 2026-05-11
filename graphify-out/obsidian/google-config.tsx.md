@@ -1,18 +1,17 @@
 ---
 source_file: "admin/components/authentication/google-config.tsx"
 type: "code"
-community: "Config Authentication"
+community: "Community 203"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Config_Authentication
+  - community/Community_203
 ---
 
 # google-config.tsx
 
 ## Connections
-
 - [[GoogleConfiguration]] - `contains` [EXTRACTED]
 - [[Props_554]] - `contains` [EXTRACTED]
 - [[config.ts_5]] - `imports_from` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[index.ts_445]] - `imports_from` [EXTRACTED]
 - [[toBool()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Config_Authentication
+#graphify/code #graphify/EXTRACTED #community/Community_203

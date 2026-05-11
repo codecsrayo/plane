@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/home/widgets/recents/index.tsx"
 type: "code"
-community: "Filters Recent"
+community: "Community 407"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filters_Recent
+  - community/Community_407
 ---
 
 # index.tsx
 
 ## Connections
-
 - [[ContentOverflowWrapper]] - `imports` [EXTRACTED]
 - [[FiltersDropdown]] - `imports` [EXTRACTED]
 - [[RecentActivityWidget]] - `contains` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[workspace.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[workspaceService_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filters_Recent
+#graphify/code #graphify/EXTRACTED #community/Community_407

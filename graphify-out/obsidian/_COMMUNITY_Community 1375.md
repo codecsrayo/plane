@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_75]] - code - services/src/ai/index.ts
+- [[accessibility.ts]] - code - i18n/src/locales/vi-VN/accessibility.ts
 
 ## Live Query (requires Dataview plugin)
 

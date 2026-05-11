@@ -1,18 +1,17 @@
 ---
 source_file: "admin/store/theme.store.ts"
 type: "code"
-community: "Config Image"
+community: "Community 156"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Config_Image
+  - community/Community_156
 ---
 
 # TTheme
 
 ## Connections
-
 - [[theme.store.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Config_Image
+#graphify/code #graphify/EXTRACTED #community/Community_156

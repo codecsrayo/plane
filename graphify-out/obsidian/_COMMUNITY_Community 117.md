@@ -1,37 +1,58 @@
 ---
 type: community
-cohesion: 0.13
-members: 21
+cohesion: 0.09
+members: 43
 ---
 
 # Community 117
 
-**Cohesion:** 0.13 - loosely connected
-**Members:** 21 nodes
+**Cohesion:** 0.09 - loosely connected
+**Members:** 43 nodes
 
 ## Members
-
-- [[ArchivedIssuesHeader]] - code - web/core/components/issues/archived-issues-header.tsx
-- [[CYCLE_ISSUES_WITH_PARAMS()]] - code - web/core/constants/fetch-keys.ts
-- [[HeaderFilters_1]] - code - web/core/components/issues/filters.tsx
-- [[IActiveCycleDetails]] - code - web/core/components/cycles/active-cycle/use-cycles-details.ts
-- [[LAYOUTS]] - code - web/core/components/issues/filters.tsx
-- [[ProfileIssuesFilter_1]] - code - web/core/components/profile/profile-issues-filter.tsx
-- [[ProjectViewForm]] - code - web/core/components/views/form.tsx
-- [[Props_180]] - code - web/core/components/issues/filters.tsx
-- [[Props_17]] - code - web/core/components/workspace/views/modal.tsx
-- [[TWorkItemFiltersToggleProps]] - code - web/core/components/work-item-filters/filters-toggle.tsx
-- [[WorkItemFiltersToggle]] - code - web/core/components/work-item-filters/filters-toggle.tsx
-- [[archived-issues-header.tsx]] - code - web/core/components/issues/archived-issues-header.tsx
-- [[filters-toggle.tsx]] - code - web/core/components/work-item-filters/filters-toggle.tsx
-- [[filters.tsx_2]] - code - web/core/components/issues/filters.tsx
-- [[modal.tsx]] - code - web/core/components/views/modal.tsx
-- [[paramsToKey()]] - code - web/core/constants/fetch-keys.ts
-- [[profile-issues-filter.tsx]] - code - web/core/components/profile/profile-issues-filter.tsx
-- [[use-cycles-details.ts]] - code - web/core/components/cycles/active-cycle/use-cycles-details.ts
-- [[use-work-item-filters.ts]] - code - web/core/hooks/store/work-item-filters/use-work-item-filters.ts
-- [[useCyclesDetails()]] - code - web/core/components/cycles/active-cycle/use-cycles-details.ts
-- [[useWorkItemFilters()]] - code - web/core/hooks/store/work-item-filters/use-work-item-filters.ts
+- [[AdditionalFilterValueInput]] - code - web/ce/components/rich-filters/filter-value-input/root.tsx
+- [[DateRangeFilterValueInput]] - code - web/core/components/rich-filters/filter-value-input/date/range.tsx
+- [[FilterItemCloseButton]] - code - web/core/components/rich-filters/filter-item/close-button.tsx
+- [[FilterItemCloseButtonProps]] - code - web/core/components/rich-filters/filter-item/close-button.tsx
+- [[FilterItemContainer()]] - code - web/core/components/rich-filters/filter-item/container.tsx
+- [[FilterItemContainerProps]] - code - web/core/components/rich-filters/filter-item/container.tsx
+- [[FilterItemLoader()]] - code - web/core/components/rich-filters/filter-item/loader.tsx
+- [[FilterItemProperty]] - code - web/core/components/rich-filters/filter-item/property.tsx
+- [[FilterValueInput]] - code - web/core/components/rich-filters/filter-value-input/root.tsx
+- [[IFilterItemPropertyProps]] - code - web/core/components/rich-filters/filter-item/property.tsx
+- [[IFilterItemProps]] - code - web/core/components/rich-filters/filter-item/root.tsx
+- [[InvalidFilterItem]] - code - web/core/components/rich-filters/filter-item/invalid.tsx
+- [[MultiSelectFilterValueInput]] - code - web/core/components/rich-filters/filter-value-input/select/multi.tsx
+- [[PropertyButton()]] - code - web/core/components/rich-filters/filter-item/property.tsx
+- [[SelectedOptionsDisplay()]] - code - web/core/components/rich-filters/filter-value-input/select/selected-options-display.tsx
+- [[SingleDateFilterValueInput]] - code - web/core/components/rich-filters/filter-value-input/date/single.tsx
+- [[SingleSelectFilterValueInput]] - code - web/core/components/rich-filters/filter-value-input/select/single.tsx
+- [[TDateRangeFilterValueInputProps]] - code - web/core/components/rich-filters/filter-value-input/date/range.tsx
+- [[TFilterValueInputProps]] - code - web/core/components/rich-filters/shared.ts
+- [[TLoadOptionsProps]] - code - web/core/components/rich-filters/filter-value-input/select/shared.tsx
+- [[TMultiSelectFilterValueInputProps]] - code - web/core/components/rich-filters/filter-value-input/select/multi.tsx
+- [[TPropertyButtonProps]] - code - web/core/components/rich-filters/filter-item/property.tsx
+- [[TSelectedOptionsDisplayProps]] - code - web/core/components/rich-filters/filter-value-input/select/selected-options-display.tsx
+- [[TSingleDateFilterValueInputProps]] - code - web/core/components/rich-filters/filter-value-input/date/single.tsx
+- [[TSingleSelectFilterValueInputProps]] - code - web/core/components/rich-filters/filter-value-input/select/single.tsx
+- [[close-button.tsx]] - code - web/core/components/rich-filters/filter-item/close-button.tsx
+- [[container.tsx]] - code - web/core/components/rich-filters/filter-item/container.tsx
+- [[getCommonCustomSearchSelectProps()]] - code - web/core/components/rich-filters/filter-value-input/select/shared.tsx
+- [[getFormattedOptions()]] - code - web/core/components/rich-filters/filter-value-input/select/shared.tsx
+- [[invalid.tsx]] - code - web/core/components/rich-filters/filter-item/invalid.tsx
+- [[loadOptions()]] - code - web/core/components/rich-filters/filter-value-input/select/shared.tsx
+- [[loader.tsx_11]] - code - web/core/components/rich-filters/filter-item/loader.tsx
+- [[multi.tsx]] - code - web/core/components/rich-filters/filter-value-input/select/multi.tsx
+- [[property.tsx]] - code - web/core/components/rich-filters/filter-item/property.tsx
+- [[range.tsx]] - code - web/core/components/rich-filters/filter-value-input/date/range.tsx
+- [[root.tsx_39]] - code - web/ce/components/rich-filters/filter-value-input/root.tsx
+- [[root.tsx_132]] - code - web/core/components/rich-filters/filter-item/root.tsx
+- [[root.tsx_133]] - code - web/core/components/rich-filters/filter-value-input/root.tsx
+- [[selected-options-display.tsx]] - code - web/core/components/rich-filters/filter-value-input/select/selected-options-display.tsx
+- [[shared.ts_14]] - code - web/core/components/rich-filters/shared.ts
+- [[shared.tsx]] - code - web/core/components/rich-filters/filter-value-input/select/shared.tsx
+- [[single.tsx_1]] - code - web/core/components/rich-filters/filter-value-input/date/single.tsx
+- [[single.tsx]] - code - web/core/components/rich-filters/filter-value-input/select/single.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -41,30 +62,12 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 7 edges to [[_COMMUNITY_Issue Filters & Context]]
-- 6 edges to [[_COMMUNITY_Community 41]]
-- 5 edges to [[_COMMUNITY_Community 105]]
-- 3 edges to [[_COMMUNITY_Cycle Services & Filters]]
-- 3 edges to [[_COMMUNITY_Applied Filters UI]]
-- 3 edges to [[_COMMUNITY_Empty State Components]]
-- 3 edges to [[_COMMUNITY_Community 96]]
-- 3 edges to [[_COMMUNITY_Cycle Analytics]]
-- 3 edges to [[_COMMUNITY_Community 162]]
-- 3 edges to [[_COMMUNITY_Auth Wrappers]]
-- 3 edges to [[_COMMUNITY_Community 42]]
-- 2 edges to [[_COMMUNITY_Account & Sub-Issues]]
-- 2 edges to [[_COMMUNITY_Module Analytics]]
-- 2 edges to [[_COMMUNITY_Community 193]]
-- 2 edges to [[_COMMUNITY_Filter Components]]
-- 1 edge to [[_COMMUNITY_Community 169]]
-- 1 edge to [[_COMMUNITY_Community 92]]
-- 1 edge to [[_COMMUNITY_Community 97]]
+- 4 edges to [[_COMMUNITY_Filter UI & Breadcrumbs]]
+- 2 edges to [[_COMMUNITY_Module & Cycle Analytics]]
+- 2 edges to [[_COMMUNITY_Work Item Detail & Layouts]]
 
 ## Top bridge nodes
-
-- [[use-work-item-filters.ts]] - degree 11, connects to 7 communities
-- [[modal.tsx]] - degree 16, connects to 6 communities
-- [[use-cycles-details.ts]] - degree 11, connects to 5 communities
-- [[useWorkItemFilters()]] - degree 11, connects to 5 communities
-- [[archived-issues-header.tsx]] - degree 9, connects to 5 communities
+- [[root.tsx_132]] - degree 16, connects to 1 community
+- [[property.tsx]] - degree 9, connects to 1 community
+- [[range.tsx]] - degree 6, connects to 1 community
+- [[single.tsx_1]] - degree 6, connects to 1 community

@@ -1,19 +1,18 @@
 ---
 source_file: "web/ce/components/issues/filters/applied-filters/issue-types.tsx"
 type: "code"
-community: "Issue Applied"
+community: "Community 798"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Applied
+  - community/Community_798
 ---
 
 # issue-types.tsx
 
 ## Connections
-
 - [[AppliedIssueTypeFilters]] - `contains` [EXTRACTED]
 - [[Props_68]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Applied
+#graphify/code #graphify/EXTRACTED #community/Community_798

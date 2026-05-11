@@ -1,18 +1,17 @@
 ---
 source_file: "ui/src/dropdown/dropdown.d.ts"
 type: "code"
-community: "Dropdown Select"
+community: "Community 437"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dropdown_Select
+  - community/Community_437
 ---
 
 # dropdown.d.ts
 
 ## Connections
-
 - [[IDropdown]] - `contains` [EXTRACTED]
 - [[IDropdownButton]] - `contains` [EXTRACTED]
 - [[IDropdownOptions]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[ISingleSelectDropdownOptions]] - `contains` [EXTRACTED]
 - [[TDropdownOption]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dropdown_Select
+#graphify/code #graphify/EXTRACTED #community/Community_437

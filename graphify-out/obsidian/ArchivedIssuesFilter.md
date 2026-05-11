@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/issue/archived/filter.store.ts"
 type: "code"
-community: "Filters Archived"
+community: "Community 254"
 location: "L60"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filters_Archived
+  - community/Community_254
 ---
 
 # ArchivedIssuesFilter
 
 ## Connections
-
 - [[.appliedFilters()]] - `method` [EXTRACTED]
 - [[.constructor()_87]] - `method` [EXTRACTED]
 - [[.getAppliedFilters()]] - `method` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[.issueFilters()]] - `method` [EXTRACTED]
 - [[filter.store.ts_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filters_Archived
+#graphify/code #graphify/EXTRACTED #community/Community_254

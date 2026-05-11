@@ -1,35 +1,55 @@
 ---
 type: community
-cohesion: 0.18
-members: 19
+cohesion: 0.06
+members: 40
 ---
 
 # Community 129
 
-**Cohesion:** 0.18 - loosely connected
-**Members:** 19 nodes
+**Cohesion:** 0.06 - loosely connected
+**Members:** 40 nodes
 
 ## Members
-
-- [[ConfigDefault]] - code - api_rust/src/utils/startup.rs
-- [[decrypt_token()]] - code - api_rust/src/utils/token_cipher.rs
-- [[encrypt_config_value()]] - code - api_rust/src/utils/fernet.rs
-- [[encrypt_token()]] - code - api_rust/src/utils/token_cipher.rs
-- [[encrypt_without_key_returns_plaintext_with_warning()]] - code - api_rust/src/utils/token_cipher.rs
-- [[ensure_configurations_seeded()]] - code - api_rust/src/utils/startup.rs
-- [[ensure_instance_registered()]] - code - api_rust/src/utils/startup.rs
-- [[legacy_plaintext_passthrough()]] - code - api_rust/src/utils/token_cipher.rs
-- [[load_key()]] - code - api_rust/src/utils/token_cipher.rs
-- [[main()]] - code - api_rust/src/main.rs
-- [[main.rs]] - code - api_rust/src/main.rs
-- [[nonces_are_unique_per_call()]] - code - api_rust/src/utils/token_cipher.rs
-- [[roundtrip_encrypt_decrypt()]] - code - api_rust/src/utils/token_cipher.rs
-- [[set_test_key()]] - code - api_rust/src/utils/token_cipher.rs
-- [[shutdown_signal()]] - code - api_rust/src/main.rs
-- [[start_job_workers()]] - code - api_rust/src/main.rs
-- [[startup.rs]] - code - api_rust/src/utils/startup.rs
-- [[tampered_ciphertext_fails_auth()]] - code - api_rust/src/utils/token_cipher.rs
-- [[token_cipher.rs]] - code - api_rust/src/utils/token_cipher.rs
+- [[.constructor()_140]] - code - web/core/services/webhook.service.ts
+- [[.constructor()_75]] - code - web/core/store/workspace/home.ts
+- [[.constructor()_74]] - code - web/core/store/workspace/link.store.ts
+- [[.constructor()_73]] - code - web/core/store/workspace/webhook.store.ts
+- [[.createWebhook()]] - code - web/core/services/webhook.service.ts
+- [[.currentWebhook()]] - code - web/core/store/workspace/webhook.store.ts
+- [[.deleteWebhook()]] - code - web/core/services/webhook.service.ts
+- [[.fetchWebhookDetails()]] - code - web/core/services/webhook.service.ts
+- [[.fetchWebhooksList()]] - code - web/core/services/webhook.service.ts
+- [[.isAnyWidgetEnabled()]] - code - web/core/store/workspace/home.ts
+- [[.orderedWidgets()]] - code - web/core/store/workspace/home.ts
+- [[.regenerateSecretKey()_1]] - code - web/core/services/webhook.service.ts
+- [[.updateWebhook()]] - code - web/core/services/webhook.service.ts
+- [[HomeStore]] - code - web/core/store/workspace/home.ts
+- [[IHomeStore]] - code - web/core/store/workspace/home.ts
+- [[IWebhookStore]] - code - web/core/store/workspace/webhook.store.ts
+- [[IWorkspaceLinkStore]] - code - web/core/store/workspace/link.store.ts
+- [[IWorkspaceLinkStoreActions]] - code - web/core/store/workspace/link.store.ts
+- [[IWorkspaceRootStore]] - code - web/core/store/workspace/index.ts
+- [[WebhookService_1]] - code - web/core/services/webhook.service.ts
+- [[WebhookStore]] - code - web/core/store/workspace/webhook.store.ts
+- [[WorkspaceLinkStore]] - code - web/core/store/workspace/link.store.ts
+- [[WorkspaceRootStore]] - code - web/ce/store/workspace/index.ts
+- [[beforeUpdateData]] - code - web/core/store/workspace/index.ts
+- [[constructor()_6]] - code - web/core/store/workspace/index.ts
+- [[currentWorkspace()]] - code - web/core/store/workspace/index.ts
+- [[destinationIndex_1]] - code - web/core/store/workspace/home.ts
+- [[home.ts_1]] - code - web/core/store/workspace/home.ts
+- [[index.ts_204]] - code - web/ce/store/workspace/index.ts
+- [[index.ts_271]] - code - web/core/store/workspace/index.ts
+- [[isCurrentWorkspaceValid]] - code - web/core/store/workspace/index.ts
+- [[link.store.ts]] - code - web/core/store/workspace/link.store.ts
+- [[linkIndex]] - code - web/core/store/workspace/link.store.ts
+- [[sortOrderBeforeUpdate]] - code - web/core/store/workspace/home.ts
+- [[sortedIds_1]] - code - web/core/store/workspace/home.ts
+- [[updatedPreferences]] - code - web/core/store/workspace/index.ts
+- [[webHookObject]] - code - web/core/store/workspace/webhook.store.ts
+- [[webhook.service.ts_1]] - code - web/core/services/webhook.service.ts
+- [[webhook.store.ts]] - code - web/core/store/workspace/webhook.store.ts
+- [[workspacesCreatedByCurrentUser()]] - code - web/core/store/workspace/index.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -39,18 +59,17 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 4 edges to [[_COMMUNITY_Auth Rust API]]
-- 3 edges to [[_COMMUNITY_Community 57]]
-- 1 edge to [[_COMMUNITY_Community 170]]
-- 1 edge to [[_COMMUNITY_Community 115]]
-- 1 edge to [[_COMMUNITY_Community 144]]
-- 1 edge to [[_COMMUNITY_Community 107]]
+- 6 edges to [[_COMMUNITY_Community 46]]
+- 5 edges to [[_COMMUNITY_Community 20]]
+- 4 edges to [[_COMMUNITY_Service Layer]]
+- 3 edges to [[_COMMUNITY_Community 59]]
+- 2 edges to [[_COMMUNITY_Community 65]]
+- 2 edges to [[_COMMUNITY_Community 281]]
+- 2 edges to [[_COMMUNITY_Community 326]]
 
 ## Top bridge nodes
-
-- [[main()]] - degree 10, connects to 4 communities
-- [[encrypt_token()]] - degree 8, connects to 1 community
-- [[encrypt_config_value()]] - degree 4, connects to 1 community
-- [[decrypt_token()]] - degree 4, connects to 1 community
-- [[start_job_workers()]] - degree 3, connects to 1 community
+- [[index.ts_271]] - degree 21, connects to 5 communities
+- [[home.ts_1]] - degree 14, connects to 4 communities
+- [[webhook.store.ts]] - degree 9, connects to 2 communities
+- [[IWorkspaceRootStore]] - degree 3, connects to 2 communities
+- [[link.store.ts]] - degree 7, connects to 1 community

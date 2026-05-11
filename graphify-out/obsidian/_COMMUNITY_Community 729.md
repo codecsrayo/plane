@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 729
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[ActiveModel_79]] - code - api_rust/src/entities/issue_comments.rs
+- [[getProgress()]] - code - packages/utils/src/math.ts
+- [[math.ts_1]] - code - packages/utils/src/math.ts
+- [[math.ts]] - code - utils/src/math.ts
 
 ## Live Query (requires Dataview plugin)
 

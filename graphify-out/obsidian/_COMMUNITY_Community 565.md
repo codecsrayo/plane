@@ -1,18 +1,21 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.53
+members: 6
 ---
 
 # Community 565
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.53 - moderately connected
+**Members:** 6 nodes
 
 ## Members
-
-- [[.to()_67]] - code - api_rust/src/entities/importers.rs
-- [[Entity_67]] - code - api_rust/src/entities/importers.rs
+- [[PREFERENCE_OPTIONS]] - code - packages/constants/src/profile.ts
+- [[PROFILE_ADMINS_TAB]] - code - packages/constants/src/profile.ts
+- [[PROFILE_VIEWER_TAB]] - code - packages/constants/src/profile.ts
+- [[START_OF_THE_WEEK_OPTIONS]] - code - packages/constants/src/profile.ts
+- [[profile.ts]] - code - constants/src/profile.ts
+- [[profile.ts_3]] - code - packages/constants/src/profile.ts
 
 ## Live Query (requires Dataview plugin)
 

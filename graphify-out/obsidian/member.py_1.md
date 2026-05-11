@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/project/member.py"
 type: "code"
-community: "Partial Endpoint"
+community: "Python API Base Classes"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Partial_Endpoint
+  - community/Python_API_Base_Classes
 ---
 
 # member.py
 
 ## Connections
-
 - [[ProjectMemberPreferenceEndpoint]] - `contains` [EXTRACTED]
 - [[ProjectMemberUserEndpoint]] - `contains` [EXTRACTED]
 - [[ProjectMemberViewSet]] - `contains` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[patch()_10]] - `contains` [EXTRACTED]
 - [[retrieve()_8]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Partial_Endpoint
+#graphify/code #graphify/EXTRACTED #community/Python_API_Base_Classes

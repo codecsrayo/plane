@@ -1,18 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.40
+members: 5
 ---
 
 # Community 626
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.40 - moderately connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[DefaultIcon()]] - code - web/core/components/icons/attachment/default-file-icon.tsx
-- [[default-file-icon.tsx]] - code - web/core/components/icons/attachment/default-file-icon.tsx
+- [[Props_497]] - code - web/core/components/analytics/trend-piece.tsx
+- [[TrendPiece()]] - code - web/core/components/analytics/trend-piece.tsx
+- [[sizeConfig_1]] - code - web/core/components/analytics/trend-piece.tsx
+- [[trend-piece.tsx]] - code - web/core/components/analytics/trend-piece.tsx
+- [[variants]] - code - web/core/components/analytics/trend-piece.tsx
 
 ## Live Query (requires Dataview plugin)
 

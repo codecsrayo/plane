@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_66]] - code - services/src/issue/index.ts
+- [[index.ts_79]] - code - constants/src/issue/index.ts
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-modal/components/description-editor.tsx"
 type: "code"
-community: "Workspace Issue"
+community: "Community 202"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Issue
+  - community/Community_202
 ---
 
 # description-editor.tsx
 
 ## Connections
-
 - [[AIService_1]] - `imports` [EXTRACTED]
 - [[GptAssistantPopover()]] - `imports` [EXTRACTED]
 - [[IssueDescriptionEditor]] - `contains` [EXTRACTED]
@@ -34,4 +33,4 @@ tags:
 - [[workspace.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[workspaceService_9]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_202

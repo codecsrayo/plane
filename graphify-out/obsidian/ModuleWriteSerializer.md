@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/serializers/module.py"
 type: "code"
-community: "Serializer Member"
+community: "Community 185"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Serializer_Member
+  - community/Community_185
 ---
 
 # ModuleWriteSerializer
 
 ## Connections
-
 - [[.create()_26]] - `method` [EXTRACTED]
 - [[.to_representation()_5]] - `method` [EXTRACTED]
 - [[.update()_23]] - `method` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[module.py_2]] - `contains` [EXTRACTED]
 - [[partial_update()_5]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Serializer_Member
+#graphify/code #graphify/EXTRACTED #community/Community_185

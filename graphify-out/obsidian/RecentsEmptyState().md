@@ -1,19 +1,18 @@
 ---
 source_file: "web/core/components/home/widgets/empty-states/recents.tsx"
 type: "code"
-community: "Recents Display"
+community: "Community 822"
 location: "L36"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Recents_Display
+  - community/Community_822
 ---
 
 # RecentsEmptyState()
 
 ## Connections
-
 - [[getDisplayContent()]] - `calls` [EXTRACTED]
 - [[recents.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Recents_Display
+#graphify/code #graphify/EXTRACTED #community/Community_822

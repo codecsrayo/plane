@@ -1,18 +1,17 @@
 ---
 source_file: "admin/app/(all)/(dashboard)/authentication/github/form.tsx"
 type: "code"
-community: "Controller Values"
+community: "Community 125"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Controller_Values
+  - community/Community_125
 ---
 
 # form.tsx
 
 ## Connections
-
 - [[CodeBlock()]] - `imports` [EXTRACTED]
 - [[ConfirmDiscardModal()]] - `imports` [EXTRACTED]
 - [[ControllerInput()]] - `imports` [EXTRACTED]
@@ -34,4 +33,4 @@ tags:
 - [[use-origin.ts]] - `imports_from` [EXTRACTED]
 - [[useOrigin()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Controller_Values
+#graphify/code #graphify/EXTRACTED #community/Community_125

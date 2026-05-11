@@ -1,14 +1,14 @@
 ---
 source_file: "api/plane/api/views/state.py"
 type: "rationale"
-community: "States Retrieve"
+community: "Community 1730"
 location: "L150"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/States_Retrieve
+  - community/Community_1730
 ---
 
-# List states Retrieve all workflow states for a project. Returns
+# List states          Retrieve all workflow states for a project.         Returns
 
-#graphify/rationale #graphify/EXTRACTED #community/States_Retrieve
+#graphify/rationale #graphify/EXTRACTED #community/Community_1730

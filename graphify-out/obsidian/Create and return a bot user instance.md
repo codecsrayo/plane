@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/tests/conftest.py"
 type: "rationale"
-community: "Return Token"
+community: "Community 238"
 location: "L76"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Return_Token
+  - community/Community_238
 ---
 
 # Create and return a bot user instance
 
 ## Connections
-
 - [[create_bot_user()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Return_Token
+#graphify/rationale #graphify/EXTRACTED #community/Community_238

@@ -1,18 +1,17 @@
 ---
 source_file: "live/src/server.ts"
 type: "code"
-community: "Controller Document"
+community: "Community 172"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Controller_Document
+  - community/Community_172
 ---
 
 # server.ts
 
 ## Connections
-
 - [[CONTROLLERS]] - `imports` [EXTRACTED]
 - [[HocusPocusServerManager]] - `imports` [EXTRACTED]
 - [[RedisManager]] - `imports` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[redis.ts]] - `imports_from` [EXTRACTED]
 - [[start.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Controller_Document
+#graphify/code #graphify/EXTRACTED #community/Community_172

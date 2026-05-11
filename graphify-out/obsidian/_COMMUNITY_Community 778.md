@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 778
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_49]] - code - web/core/components/project-states/create-update/index.ts
+- [[SetPasswordLayout()]] - code - web/app/(all)/accounts/set-password/layout.tsx
+- [[layout.tsx_40]] - code - web/app/(all)/accounts/set-password/layout.tsx
+- [[meta()_9]] - code - web/app/(all)/accounts/set-password/layout.tsx
 
 ## Live Query (requires Dataview plugin)
 

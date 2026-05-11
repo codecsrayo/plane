@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/constants/common.ts"
 type: "code"
-community: "Items Extended"
+community: "Community 82"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Items_Extended
+  - community/Community_82
 ---
 
 # common.ts
 
 ## Connections
-
 - [[BASIC_MARK_ITEMS]] - `contains` [EXTRACTED]
 - [[COLORS_LIST]] - `contains` [EXTRACTED]
 - [[COMPLEX_ITEMS]] - `contains` [EXTRACTED]
@@ -35,4 +34,4 @@ tags:
 - [[editor.ts]] - `imports_from` [EXTRACTED]
 - [[root.tsx_3]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Items_Extended
+#graphify/code #graphify/EXTRACTED #community/Community_82

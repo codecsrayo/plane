@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/settings/content-wrapper.tsx"
 type: "code"
-community: "Project Settings"
+community: "Community 24"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Community_24
 ---
 
 # content-wrapper.tsx
 
 ## Connections
-
 - [[AppHeader]] - `imports` [EXTRACTED]
 - [[Props_179]] - `contains` [EXTRACTED]
 - [[SettingsContentWrapper()]] - `contains` [EXTRACTED]
@@ -35,4 +34,4 @@ tags:
 - [[page.tsx_54]] - `imports_from` [EXTRACTED]
 - [[page.tsx_55]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Community_24

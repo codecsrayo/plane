@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/issue/project/issue.store.ts"
 type: "code"
-community: "Filters Issue"
+community: "Community 33"
 location: "L145"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filters_Issue
+  - community/Community_33
 ---
 
 # cursorObject
 
 ## Connections
-
 - [[issue.store.ts_12]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filters_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_33

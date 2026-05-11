@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/utils/serde_date.rs"
 type: "code"
-community: "Start Date"
+community: "Community 208"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Start_Date
+  - community/Community_208
 ---
 
 # serde_date.rs
 
 ## Connections
-
 - [[TestDto_1]] - `contains` [EXTRACTED]
 - [[TzConvertError]] - `contains` [EXTRACTED]
 - [[bad_month_errors()]] - `contains` [EXTRACTED]
@@ -41,4 +40,4 @@ tags:
 - [[whitespace_is_none()]] - `contains` [EXTRACTED]
 - [[ymd()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Start_Date
+#graphify/code #graphify/EXTRACTED #community/Community_208

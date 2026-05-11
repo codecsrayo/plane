@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/workspace-notification.service.ts"
 type: "code"
-community: "Estimate Project"
+community: "Community 59"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Estimate_Project
+  - community/Community_59
 ---
 
 # WorkspaceNotificationService
 
 ## Connections
-
 - [[.constructor()_150]] - `method` [EXTRACTED]
 - [[.fetchNotifications()]] - `method` [EXTRACTED]
 - [[.fetchUnreadNotificationsCount()]] - `method` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[.updateNotificationById()]] - `method` [EXTRACTED]
 - [[workspace-notification.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Estimate_Project
+#graphify/code #graphify/EXTRACTED #community/Community_59

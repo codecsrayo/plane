@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/models/workspace.py"
 type: "code"
-community: "Meta User"
+community: "Python Workflow Services"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Meta_User
+  - community/Python_Workflow_Services
 ---
 
 # workspace.py
 
 ## Connections
-
 - [[HomeWidgetKeys]] - `contains` [EXTRACTED]
 - [[Meta_34]] - `contains` [EXTRACTED]
 - [[NavigationControlPreference]] - `contains` [EXTRACTED]
@@ -44,4 +43,4 @@ tags:
 - [[slug_validator()]] - `contains` [EXTRACTED]
 - [[view.py_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Meta_User
+#graphify/code #graphify/EXTRACTED #community/Python_Workflow_Services

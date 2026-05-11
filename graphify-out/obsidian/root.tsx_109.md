@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/onboarding/steps/profile/root.tsx"
 type: "code"
-community: "Setup Values"
+community: "Community 98"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Setup_Values
+  - community/Community_98
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[AuthService_1]] - `imports` [EXTRACTED]
 - [[MarketingConsent()]] - `imports` [EXTRACTED]
 - [[ProfileSetupStep]] - `contains` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[useInstance()]] - `imports` [EXTRACTED]
 - [[user-image-upload-modal.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Setup_Values
+#graphify/code #graphify/EXTRACTED #community/Community_98

@@ -1,18 +1,17 @@
 ---
 source_file: "utils/src/page.ts"
 type: "code"
-community: "Order Should"
+community: "Community 181"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Order_Should
+  - community/Community_181
 ---
 
 # page.ts
 
 ## Connections
-
 - [[datetime.ts]] - `imports_from` [EXTRACTED]
 - [[filter.ts_2]] - `imports_from` [EXTRACTED]
 - [[filterPagesByPageType()]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[satisfiesDateFilter()]] - `imports` [EXTRACTED]
 - [[shouldFilterPage()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Order_Should
+#graphify/code #graphify/EXTRACTED #community/Community_181

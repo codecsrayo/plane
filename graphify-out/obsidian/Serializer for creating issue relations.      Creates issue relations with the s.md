@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/serializers/issue.py"
 type: "rationale"
-community: "Serializer Issue"
+community: "Community 37"
 location: "L525"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Serializer_Issue
+  - community/Community_37
 ---
 
-# Serializer for creating issue relations. Creates issue relations with the s
+# Serializer for creating issue relations.      Creates issue relations with the s
 
 ## Connections
-
 - [[IssueRelationCreateSerializer]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Serializer_Issue
+#graphify/rationale #graphify/EXTRACTED #community/Community_37

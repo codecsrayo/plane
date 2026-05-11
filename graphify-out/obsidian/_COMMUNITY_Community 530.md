@@ -1,17 +1,23 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.29
+members: 8
 ---
 
 # Community 530
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.29 - loosely connected
+**Members:** 8 nodes
 
 ## Members
-
-- [[index.ts_152]] - code - propel/src/spinners/index.ts
+- [[default_display_filters()_2]] - code - api_rust/src/utils/django_defaults.rs
+- [[default_display_properties()_2]] - code - api_rust/src/utils/django_defaults.rs
+- [[default_filters()_2]] - code - api_rust/src/utils/django_defaults.rs
+- [[default_preferences()_1]] - code - api_rust/src/utils/django_defaults.rs
+- [[default_props()]] - code - api_rust/src/utils/django_defaults.rs
+- [[default_props_combines_filters_and_display_filters()]] - code - api_rust/src/utils/django_defaults.rs
+- [[defaults_are_objects()]] - code - api_rust/src/utils/django_defaults.rs
+- [[django_defaults.rs]] - code - api_rust/src/utils/django_defaults.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -19,3 +25,9 @@ members: 1
 TABLE source_file, type FROM #community/Community_530
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Rust Workspace Helpers]]
+
+## Top bridge nodes
+- [[default_props()]] - degree 3, connects to 1 community

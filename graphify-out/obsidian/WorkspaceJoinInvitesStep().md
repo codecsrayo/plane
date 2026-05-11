@@ -1,19 +1,18 @@
 ---
 source_file: "web/core/components/onboarding/steps/workspace/join-invites.tsx"
 type: "code"
-community: "Workspace Issue"
+community: "Community 46"
 location: "L31"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Workspace_Issue
+  - community/Community_46
 ---
 
 # WorkspaceJoinInvitesStep()
 
 ## Connections
-
 - [[join-invites.tsx]] - `contains` [EXTRACTED]
 - [[useUserSettings()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Workspace_Issue
+#graphify/code #graphify/INFERRED #community/Community_46

@@ -1,17 +1,30 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.15
+members: 15
 ---
 
 # Community 379
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.15 - loosely connected
+**Members:** 15 nodes
 
 ## Members
-
-- [[index.ts_54]] - code - editor/src/core/extensions/slash-commands/index.ts
+- [[.__init__()_8]] - code - api/plane/middleware/db_routing.py
+- [[._get_use_replica_attribute()]] - code - api/plane/middleware/db_routing.py
+- [[._should_use_read_replica()]] - code - api/plane/middleware/db_routing.py
+- [[.process_view()]] - code - api/plane/middleware/db_routing.py
+- [[Determine if the view should use read replica based on its configuration.]] - rationale - api/plane/middleware/db_routing.py
+- [[Extract the use_read_replica attribute from various view types.         Args]] - rationale - api/plane/middleware/db_routing.py
+- [[Hook called just before Django calls the view.         This is more efficient th]] - rationale - api/plane/middleware/db_routing.py
+- [[Initialize the middleware with the next middlewareview in the chain.         Ar]] - rationale - api/plane/middleware/db_routing.py
+- [[Middleware for intelligent database routing to read replicas.     Routing Logic]] - rationale - api/plane/middleware/db_routing.py
+- [[ReadReplicaRoutingMiddleware]] - code - api/plane/middleware/db_routing.py
+- [[Test cases for exception handling and cleanup.]] - rationale - api/plane/tests/unit/middleware/test_db_routing.py
+- [[Test middleware with real DjangoDRF view classes.]] - rationale - api/plane/tests/unit/middleware/test_db_routing.py
+- [[TestExceptionHandling]] - code - api/plane/tests/unit/middleware/test_db_routing.py
+- [[TestRealViewIntegration]] - code - api/plane/tests/unit/middleware/test_db_routing.py
+- [[db_routing.py]] - code - api/plane/middleware/db_routing.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -19,3 +32,18 @@ members: 1
 TABLE source_file, type FROM #community/Community_379
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 3 edges to [[_COMMUNITY_Community 221]]
+- 3 edges to [[_COMMUNITY_Community 525]]
+- 1 edge to [[_COMMUNITY_Community 581]]
+- 1 edge to [[_COMMUNITY_Community 687]]
+- 1 edge to [[_COMMUNITY_Community 523]]
+- 1 edge to [[_COMMUNITY_Community 480]]
+- 1 edge to [[_COMMUNITY_Community 524]]
+
+## Top bridge nodes
+- [[ReadReplicaRoutingMiddleware]] - degree 16, connects to 7 communities
+- [[.process_view()]] - degree 4, connects to 1 community
+- [[TestExceptionHandling]] - degree 3, connects to 1 community
+- [[TestRealViewIntegration]] - degree 3, connects to 1 community

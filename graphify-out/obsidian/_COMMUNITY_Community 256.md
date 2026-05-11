@@ -1,23 +1,38 @@
 ---
 type: community
-cohesion: 0.43
-members: 7
+cohesion: 0.12
+members: 23
 ---
 
 # Community 256
 
-**Cohesion:** 0.43 - moderately connected
-**Members:** 7 nodes
+**Cohesion:** 0.12 - loosely connected
+**Members:** 23 nodes
 
 ## Members
-
-- [[FiltersRoot()]] - code - web/core/components/inbox/inbox-filter/root.tsx
-- [[InboxIssueFilterSelection]] - code - web/core/components/inbox/inbox-filter/filters/filter-selection.tsx
-- [[InboxIssueOrderByDropdown]] - code - web/core/components/inbox/inbox-filter/sorting/order-by.tsx
-- [[order-by.tsx_4]] - code - web/core/components/inbox/inbox-filter/sorting/order-by.tsx
-- [[root.tsx_72]] - code - web/core/components/inbox/inbox-filter/root.tsx
-- [[use-window-size.tsx]] - code - web/core/hooks/use-window-size.tsx
-- [[useSize()]] - code - web/core/hooks/use-window-size.tsx
+- [[EstimateInputRoot()]] - code - web/core/components/estimates/inputs/root.tsx
+- [[EstimateNumberInput()]] - code - web/core/components/estimates/inputs/number-input.tsx
+- [[EstimatePointCreate]] - code - web/core/components/estimates/points/create.tsx
+- [[EstimatePointCreateRoot]] - code - web/core/components/estimates/points/create-root.tsx
+- [[EstimatePointItemPreview]] - code - web/core/components/estimates/points/preview.tsx
+- [[EstimatePointUpdate]] - code - web/core/components/estimates/points/update.tsx
+- [[EstimateTextInput()]] - code - web/core/components/estimates/inputs/text-input.tsx
+- [[TEstimateInputRootProps]] - code - web/core/components/estimates/inputs/root.tsx
+- [[TEstimateNumberInputProps]] - code - web/core/components/estimates/inputs/number-input.tsx
+- [[TEstimatePointCreate]] - code - web/core/components/estimates/points/create.tsx
+- [[TEstimatePointCreateRoot]] - code - web/core/components/estimates/points/create-root.tsx
+- [[TEstimatePointItemPreview]] - code - web/core/components/estimates/points/preview.tsx
+- [[TEstimatePointUpdate]] - code - web/core/components/estimates/points/update.tsx
+- [[TEstimateTextInputProps]] - code - web/core/components/estimates/inputs/text-input.tsx
+- [[create-root.tsx_1]] - code - web/core/components/estimates/points/create-root.tsx
+- [[create.tsx_2]] - code - web/core/components/estimates/points/create.tsx
+- [[number-input.tsx]] - code - web/core/components/estimates/inputs/number-input.tsx
+- [[preview.tsx]] - code - web/core/components/estimates/points/preview.tsx
+- [[root.tsx_127]] - code - web/core/components/estimates/inputs/root.tsx
+- [[text-input.tsx]] - code - web/core/components/estimates/inputs/text-input.tsx
+- [[update.tsx_2]] - code - web/core/components/estimates/points/update.tsx
+- [[use-estimate-point.ts]] - code - web/core/hooks/store/estimates/use-estimate-point.ts
+- [[useEstimatePoint()]] - code - web/core/hooks/store/estimates/use-estimate-point.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -27,17 +42,9 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 2 edges to [[_COMMUNITY_Calendar UI]]
-- 2 edges to [[_COMMUNITY_Community 98]]
-- 2 edges to [[_COMMUNITY_Community 164]]
-- 1 edge to [[_COMMUNITY_Community 272]]
-- 1 edge to [[_COMMUNITY_Empty States & Inbox]]
-- 1 edge to [[_COMMUNITY_Community 42]]
+- 4 edges to [[_COMMUNITY_Community 42]]
+- 2 edges to [[_COMMUNITY_Community 59]]
 
 ## Top bridge nodes
-
-- [[use-window-size.tsx]] - degree 7, connects to 3 communities
-- [[root.tsx_72]] - degree 7, connects to 2 communities
-- [[order-by.tsx_4]] - degree 5, connects to 1 community
-- [[InboxIssueFilterSelection]] - degree 2, connects to 1 community
+- [[use-estimate-point.ts]] - degree 6, connects to 2 communities
+- [[create.tsx_2]] - degree 7, connects to 1 community

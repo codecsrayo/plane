@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/empty-state/simple-empty-state-root.tsx"
 type: "code"
-community: "Cycle Active"
+community: "Active Cycle Stats"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Active
+  - community/Active_Cycle_Stats
 ---
 
 # simple-empty-state-root.tsx
 
 ## Connections
-
 - [[EmptyStateSize_1]] - `contains` [EXTRACTED]
 - [[Props_457]] - `contains` [EXTRACTED]
 - [[SimpleEmptyState]] - `contains` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[sizeConfig]] - `contains` [EXTRACTED]
 - [[stickies-list.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Active
+#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats

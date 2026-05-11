@@ -1,18 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.40
+members: 5
 ---
 
 # Community 632
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.40 - moderately connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[IntegrationsSettingsLoader()]] - code - web/core/components/ui/loader/settings/integration.tsx
-- [[integration.tsx]] - code - web/core/components/ui/loader/settings/integration.tsx
+- [[common.py]] - code - api/plane/settings/common.py
+- [[local.py]] - code - api/plane/settings/local.py
+- [[openapi.py]] - code - api/plane/settings/openapi.py
+- [[production.py]] - code - api/plane/settings/production.py
+- [[test.py]] - code - api/plane/settings/test.py
 
 ## Live Query (requires Dataview plugin)
 

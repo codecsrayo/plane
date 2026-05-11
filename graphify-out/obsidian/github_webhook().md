@@ -1,22 +1,21 @@
 ---
 source_file: "api_rust/src/routes/external.rs"
 type: "code"
-community: "Magic Sign"
+community: "Community 52"
 location: "L591"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Magic_Sign
+  - community/Community_52
 ---
 
 # github_webhook()
 
 ## Connections
-
 - [[.json()]] - `calls` [INFERRED]
 - [[external.rs]] - `contains` [EXTRACTED]
 - [[get_config_value()]] - `calls` [INFERRED]
 - [[handle_github_issue_event()]] - `calls` [EXTRACTED]
 - [[verify_github_signature()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Magic_Sign
+#graphify/code #graphify/EXTRACTED #community/Community_52

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/use-project-inbox.ts"
 type: "code"
-community: "Issue Inbox"
+community: "Activity & Inbox Filters"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Inbox
+  - community/Activity__Inbox_Filters
 ---
 
 # useProjectInbox()
 
 ## Connections
-
 - [[create-root.tsx]] - `imports` [EXTRACTED]
 - [[date.tsx_7]] - `imports` [EXTRACTED]
 - [[date.tsx_8]] - `imports` [EXTRACTED]
@@ -39,4 +38,4 @@ tags:
 - [[status.tsx_6]] - `imports` [EXTRACTED]
 - [[use-project-inbox.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Inbox
+#graphify/code #graphify/EXTRACTED #community/Activity__Inbox_Filters

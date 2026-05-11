@@ -1,82 +1,162 @@
 ---
 type: community
-cohesion: 0.05
-members: 66
+cohesion: 0.02
+members: 147
 ---
 
 # Active Cycle Stats
 
-**Cohesion:** 0.05 - loosely connected
-**Members:** 66 nodes
+**Cohesion:** 0.02 - loosely connected
+**Members:** 147 nodes
 
 ## Members
-
+- [[.addCycleToFavorites()]] - code - web/core/services/cycle.service.ts
+- [[.constructor()_151]] - code - web/core/services/cycle.service.ts
+- [[.createCycle()]] - code - web/core/services/cycle.service.ts
+- [[.cycleDateCheck()]] - code - web/core/services/cycle.service.ts
+- [[.deleteCycle()]] - code - web/core/services/cycle.service.ts
+- [[.getCycleDetails()]] - code - web/core/services/cycle.service.ts
+- [[.getCycleIssues()_1]] - code - web/core/services/cycle.service.ts
+- [[.getCyclesWithParams()]] - code - web/core/services/cycle.service.ts
+- [[.getWorkspaceCycles()_1]] - code - web/core/services/cycle.service.ts
+- [[.patchCycle()]] - code - web/core/services/cycle.service.ts
+- [[.removeCycleFromFavorites()]] - code - web/core/services/cycle.service.ts
+- [[.transferIssues()_1]] - code - web/core/services/cycle.service.ts
+- [[.workspaceActiveCycles()_1]] - code - web/core/services/cycle.service.ts
+- [[.workspaceActiveCyclesAnalytics()_1]] - code - web/core/services/cycle.service.ts
+- [[.workspaceActiveCyclesProgress()_1]] - code - web/core/services/cycle.service.ts
+- [[.workspaceActiveCyclesProgressPro()_1]] - code - web/core/services/cycle.service.ts
+- [[ActiveCycleProductivity]] - code - web/core/components/cycles/active-cycle/productivity.tsx
+- [[ActiveCycleProductivityProps]] - code - web/core/components/cycles/active-cycle/productivity.tsx
+- [[ActiveCycleProgress]] - code - web/core/components/cycles/active-cycle/progress.tsx
+- [[ActiveCycleProgressProps]] - code - web/core/components/cycles/active-cycle/progress.tsx
+- [[ActiveCycleRoot]] - code - web/ce/components/cycles/active-cycle/root.tsx
 - [[ActiveCycleStats]] - code - web/core/components/cycles/active-cycle/cycle-stats.tsx
 - [[ActiveCycleStatsProps]] - code - web/core/components/cycles/active-cycle/cycle-stats.tsx
-- [[GanttChartSidebar]] - code - web/core/components/gantt-chart/sidebar/root.tsx
-- [[HeaderGroupByCard]] - code - web/core/components/issues/issue-layouts/list/headers/group-by-card.tsx
-- [[IssueBlock]] - code - web/core/components/issues/issue-layouts/list/block.tsx
-- [[IssueBlockRoot]] - code - web/core/components/issues/issue-layouts/list/block-root.tsx
-- [[IssueBlocksList()]] - code - web/core/components/issues/issue-layouts/list/blocks-list.tsx
-- [[IssueRowDetails]] - code - web/core/components/issues/issue-layouts/spreadsheet/issue-row.tsx
-- [[IssueRowDetailsProps]] - code - web/core/components/issues/issue-layouts/spreadsheet/issue-row.tsx
-- [[MultipleSelectEntityAction]] - code - web/core/components/core/multiple-select/entity-select-action.tsx
-- [[MultipleSelectGroup]] - code - web/core/components/core/multiple-select/select-group.tsx
-- [[MultipleSelectGroupAction()]] - code - web/core/components/core/multiple-select/group-select-action.tsx
-- [[Props_441]] - code - web/core/components/core/render-if-visible-HOC.tsx
-- [[Props_1]] - code - web/core/hooks/use-multiple-select.ts
-- [[Props_190]] - code - web/core/components/issues/issue-layouts/list/block-root.tsx
-- [[Props_191]] - code - web/core/components/issues/issue-layouts/list/blocks-list.tsx
-- [[Props_189]] - code - web/core/components/issues/issue-layouts/list/list-group.tsx
-- [[Props_450]] - code - web/core/components/core/multiple-select/entity-select-action.tsx
-- [[Props_448]] - code - web/core/components/core/multiple-select/group-select-action.tsx
-- [[Props_449]] - code - web/core/components/core/multiple-select/select-group.tsx
-- [[Props_194]] - code - web/core/components/issues/issue-layouts/spreadsheet/issue-row.tsx
-- [[Props_197]] - code - web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-header.tsx
-- [[Props_193]] - code - web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-table.tsx
-- [[Props_192]] - code - web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-view.tsx
-- [[RenderIfVisible()]] - code - web/core/components/core/render-if-visible-HOC.tsx
-- [[SpreadsheetHeader]] - code - web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-header.tsx
-- [[SpreadsheetHeaderColumn]] - code - web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-header-column.tsx
-- [[SpreadsheetIssueRow]] - code - web/core/components/issues/issue-layouts/spreadsheet/issue-row.tsx
-- [[SpreadsheetTable]] - code - web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-table.tsx
-- [[StickiesInfinite]] - code - web/core/components/stickies/layout/stickies-infinite.tsx
-- [[TEntityDetails]] - code - web/core/hooks/use-multiple-select.ts
-- [[TSelectionHelper]] - code - web/core/hooks/use-multiple-select.ts
-- [[TSelectionSnapshot]] - code - web/core/hooks/use-multiple-select.ts
-- [[UseIntersectionObserverProps]] - code - web/core/hooks/use-intersection-observer.ts
-- [[block-root.tsx]] - code - web/core/components/issues/issue-layouts/list/block-root.tsx
-- [[blocks-list.tsx_1]] - code - web/core/components/issues/issue-layouts/list/blocks-list.tsx
+- [[ActiveCyclesComponent]] - code - web/ce/components/cycles/active-cycle/root.tsx
+- [[ActiveCyclesComponentProps]] - code - web/ce/components/cycles/active-cycle/root.tsx
+- [[AppliedCycleFilters]] - code - web/core/components/issues/issue-layouts/filters/applied-filters/cycle.tsx
+- [[ArchiveCycleModal()]] - code - web/core/components/cycles/archived-cycles/modal.tsx
+- [[CYCLE_ISSUES_WITH_PARAMS()]] - code - web/core/constants/fetch-keys.ts
+- [[CycleAnalyticsProgress]] - code - web/core/components/cycles/analytics-sidebar/issue-progress.tsx
+- [[CycleCalendarLayout]] - code - web/core/components/issues/issue-layouts/calendar/roots/cycle-root.tsx
+- [[CycleCreateUpdateModal()]] - code - web/core/components/cycles/modal.tsx
+- [[CycleDeleteModal]] - code - web/core/components/cycles/delete-modal.tsx
+- [[CycleDetailPage()]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(detail)/[cycleId]/page.tsx
+- [[CycleDetailsSidebar]] - code - web/core/components/cycles/analytics-sidebar/root.tsx
+- [[CycleIssueLayout()]] - code - web/core/components/issues/issue-layouts/roots/cycle-layout-root.tsx
+- [[CycleKanBanLayout]] - code - web/core/components/issues/issue-layouts/kanban/roots/cycle-root.tsx
+- [[CycleLayoutRoot]] - code - web/core/components/issues/issue-layouts/roots/cycle-layout-root.tsx
+- [[CycleListGroupHeader()]] - code - web/core/components/cycles/list/cycle-list-group-header.tsx
+- [[CycleListItemAction]] - code - web/core/components/cycles/list/cycle-list-item-action.tsx
+- [[CycleListLayout]] - code - web/core/components/issues/issue-layouts/list/roots/cycle-root.tsx
+- [[CycleModalProps]] - code - web/core/components/cycles/modal.tsx
+- [[CyclePeekOverview]] - code - web/core/components/cycles/cycle-peek-overview.tsx
+- [[CycleProgressStats]] - code - web/core/components/cycles/analytics-sidebar/progress-stats.tsx
+- [[CycleQuickActions]] - code - web/core/components/cycles/quick-actions.tsx
+- [[CycleService_1]] - code - web/core/services/cycle.service.ts
+- [[CycleSidebarDetails]] - code - web/core/components/cycles/analytics-sidebar/sidebar-details.tsx
+- [[CycleSidebarHeader]] - code - web/core/components/cycles/analytics-sidebar/sidebar-header.tsx
+- [[CycleSpreadsheetLayout]] - code - web/core/components/issues/issue-layouts/spreadsheet/roots/cycle-root.tsx
+- [[CyclesList]] - code - web/core/components/cycles/list/root.tsx
+- [[CyclesListItem]] - code - web/core/components/cycles/list/cycles-list-item.tsx
+- [[CyclesListMap()]] - code - web/core/components/cycles/list/cycles-list-map.tsx
+- [[EmptyStateContainer()]] - code - web/core/components/core/modals/issue-search-modal-empty-state.tsx
+- [[EmptyStateProps_1]] - code - web/core/components/core/modals/issue-search-modal-empty-state.tsx
+- [[EmptyStateSize_1]] - code - web/core/components/empty-state/simple-empty-state-root.tsx
+- [[EstimateTypeDropdown]] - code - web/core/components/cycles/dropdowns/estimate-type-dropdown.tsx
+- [[FilterCycle]] - code - web/core/components/issues/issue-layouts/filters/header/filters/cycle.tsx
+- [[IActiveCycleDetails]] - code - web/ce/components/cycles/active-cycle/root.tsx
+- [[IActiveCycleDetails_1]] - code - web/core/components/cycles/active-cycle/use-cycles-details.ts
+- [[ICycleDelete]] - code - web/core/components/cycles/delete-modal.tsx
+- [[ICyclesList]] - code - web/core/components/cycles/list/root.tsx
+- [[IssueSearchModalEmptyState()]] - code - web/core/components/core/modals/issue-search-modal-empty-state.tsx
+- [[Options]] - code - web/core/components/cycles/analytics-sidebar/issue-progress.tsx
+- [[ProgressChart()]] - code - web/core/components/core/sidebar/progress-chart.tsx
+- [[ProgressChartProps]] - code - web/ce/components/cycles/analytics-sidebar/base.tsx
+- [[ProjectMultiSelectModal]] - code - web/core/components/project/multi-select-modal.tsx
+- [[Props_70]] - code - web/core/components/cycles/analytics-sidebar/root.tsx
+- [[Props_380]] - code - web/core/components/cycles/analytics-sidebar/sidebar-details.tsx
+- [[Props_379]] - code - web/core/components/cycles/analytics-sidebar/sidebar-header.tsx
+- [[Props_325]] - code - web/core/components/issues/issue-layouts/filters/applied-filters/cycle.tsx
+- [[Props_378]] - code - web/core/components/cycles/archived-cycles/modal.tsx
+- [[Props_376]] - code - web/core/components/cycles/cycle-peek-overview.tsx
+- [[Props_377]] - code - web/core/components/cycles/quick-actions.tsx
+- [[Props_372]] - code - web/core/components/cycles/transfer-issues-modal.tsx
+- [[Props_375]] - code - web/core/components/cycles/transfer-issues.tsx
+- [[Props_457]] - code - web/core/components/empty-state/simple-empty-state-root.tsx
+- [[Props_316]] - code - web/core/components/issues/issue-layouts/filters/header/filters/cycle.tsx
+- [[Props_382]] - code - web/core/components/cycles/list/cycle-list-group-header.tsx
+- [[Props_383]] - code - web/core/components/cycles/list/cycle-list-item-action.tsx
+- [[Props_384]] - code - web/core/components/cycles/list/cycles-list-map.tsx
+- [[Props_208]] - code - web/core/components/project/multi-select-modal.tsx
+- [[Props_517]] - code - web/core/components/core/sidebar/progress-chart.tsx
+- [[ReadonlyCycle]] - code - web/core/components/readonly/cycle.tsx
+- [[SidebarChart]] - code - web/ce/components/cycles/analytics-sidebar/base.tsx
+- [[SidebarChartRoot()]] - code - web/ce/components/cycles/analytics-sidebar/root.tsx
+- [[SimpleEmptyState]] - code - web/core/components/empty-state/simple-empty-state-root.tsx
+- [[TCycleAnalyticsProgress]] - code - web/core/components/cycles/analytics-sidebar/issue-progress.tsx
+- [[TCyclesListItem]] - code - web/core/components/cycles/list/cycles-list-item.tsx
+- [[TProps_13]] - code - web/core/components/cycles/dropdowns/estimate-type-dropdown.tsx
+- [[TReadonlyCycleProps]] - code - web/core/components/readonly/cycle.tsx
+- [[TransferIssues()]] - code - web/core/components/cycles/transfer-issues.tsx
+- [[TransferIssuesModal]] - code - web/core/components/cycles/transfer-issues-modal.tsx
+- [[base.tsx]] - code - web/ce/components/cycles/analytics-sidebar/base.tsx
+- [[cycle-layout-root.tsx]] - code - web/core/components/issues/issue-layouts/roots/cycle-layout-root.tsx
+- [[cycle-list-group-header.tsx]] - code - web/core/components/cycles/list/cycle-list-group-header.tsx
+- [[cycle-list-item-action.tsx]] - code - web/core/components/cycles/list/cycle-list-item-action.tsx
+- [[cycle-peek-overview.tsx]] - code - web/core/components/cycles/cycle-peek-overview.tsx
+- [[cycle-root.tsx_3]] - code - web/core/components/issues/issue-layouts/calendar/roots/cycle-root.tsx
+- [[cycle-root.tsx_2]] - code - web/core/components/issues/issue-layouts/spreadsheet/roots/cycle-root.tsx
 - [[cycle-stats.tsx]] - code - web/core/components/cycles/active-cycle/cycle-stats.tsx
-- [[entity-select-action.tsx]] - code - web/core/components/core/multiple-select/entity-select-action.tsx
-- [[getDisplayPropertiesCount()]] - code - web/core/components/issues/issue-layouts/utils.tsx
-- [[getIssueBlockId()]] - code - web/core/components/issues/issue-layouts/utils.tsx
-- [[getNextRow()]] - code - web/core/hooks/use-table-keyboard-navigation.tsx
-- [[getPreviousRow()]] - code - web/core/hooks/use-table-keyboard-navigation.tsx
+- [[cycle.service.ts_1]] - code - web/core/services/cycle.service.ts
+- [[cycle.tsx_3]] - code - web/core/components/issues/issue-layouts/filters/applied-filters/cycle.tsx
+- [[cycle.tsx_2]] - code - web/core/components/issues/issue-layouts/filters/header/filters/cycle.tsx
+- [[cycle.tsx_5]] - code - web/core/components/readonly/cycle.tsx
+- [[cycleChartOptions]] - code - web/core/components/cycles/analytics-sidebar/issue-progress.tsx
+- [[cycleEstimateOptions]] - code - web/core/components/cycles/analytics-sidebar/issue-progress.tsx
+- [[cycleService_1]] - code - web/core/components/cycles/analytics-sidebar/sidebar-header.tsx
+- [[cycleService]] - code - web/core/components/cycles/modal.tsx
+- [[cycles-list-item.tsx]] - code - web/core/components/cycles/list/cycles-list-item.tsx
+- [[cycles-list-map.tsx]] - code - web/core/components/cycles/list/cycles-list-map.tsx
+- [[defaultValues_19]] - code - web/core/components/cycles/analytics-sidebar/sidebar-header.tsx
+- [[defaultValues_20]] - code - web/core/components/cycles/list/cycle-list-item-action.tsx
+- [[delete-modal.tsx_2]] - code - web/core/components/cycles/delete-modal.tsx
+- [[estimate-type-dropdown.tsx]] - code - web/core/components/cycles/dropdowns/estimate-type-dropdown.tsx
 - [[getTabIndexByValue()]] - code - web/core/components/cycles/active-cycle/cycle-stats.tsx
-- [[group-by-card.tsx_1]] - code - web/core/components/issues/issue-layouts/list/headers/group-by-card.tsx
-- [[group-select-action.tsx]] - code - web/core/components/core/multiple-select/group-select-action.tsx
-- [[index.ts_178]] - code - web/core/components/core/multiple-select/index.ts
-- [[isIssueNew()]] - code - web/core/components/issues/issue-layouts/utils.tsx
-- [[issue-row.tsx]] - code - web/core/components/issues/issue-layouts/spreadsheet/issue-row.tsx
-- [[list-group.tsx]] - code - web/core/components/issues/issue-layouts/list/list-group.tsx
-- [[render-if-visible-HOC.tsx]] - code - web/core/components/core/render-if-visible-HOC.tsx
-- [[root.tsx_6]] - code - web/core/components/gantt-chart/sidebar/root.tsx
-- [[select-group.tsx]] - code - web/core/components/core/multiple-select/select-group.tsx
-- [[spreadsheet-header.tsx]] - code - web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-header.tsx
-- [[spreadsheet-table.tsx]] - code - web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-table.tsx
-- [[spreadsheet-view.tsx]] - code - web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-view.tsx
-- [[stickies-infinite.tsx]] - code - web/core/components/stickies/layout/stickies-infinite.tsx
-- [[use-intersection-observer.ts]] - code - web/core/hooks/use-intersection-observer.ts
-- [[use-multiple-select-store.ts]] - code - web/core/hooks/store/use-multiple-select-store.ts
-- [[use-multiple-select.ts]] - code - web/core/hooks/use-multiple-select.ts
-- [[use-reload-confirmation.tsx]] - code - web/core/hooks/use-reload-confirmation.tsx
-- [[use-table-keyboard-navigation.tsx]] - code - web/core/hooks/use-table-keyboard-navigation.tsx
-- [[useIntersectionObserver()]] - code - web/core/hooks/use-intersection-observer.ts
-- [[useMultipleSelect()]] - code - web/core/hooks/use-multiple-select.ts
-- [[useMultipleSelectStore()]] - code - web/core/hooks/store/use-multiple-select-store.ts
-- [[useReloadConfirmations()]] - code - web/core/hooks/use-reload-confirmation.tsx
-- [[useTableKeyboardNavigation()]] - code - web/core/hooks/use-table-keyboard-navigation.tsx
+- [[getTitleClassName()]] - code - web/core/components/empty-state/simple-empty-state-root.tsx
+- [[getValueFromLocalStorage()_1]] - code - web/core/hooks/use-local-storage.tsx
+- [[index.ts_393]] - code - web/core/components/cycles/analytics-sidebar/index.ts
+- [[index.ts_395]] - code - web/core/components/cycles/dropdowns/index.ts
+- [[issue-progress.tsx_1]] - code - web/core/components/cycles/analytics-sidebar/issue-progress.tsx
+- [[issue-search-modal-empty-state.tsx]] - code - web/core/components/core/modals/issue-search-modal-empty-state.tsx
+- [[modal.tsx_15]] - code - web/core/components/cycles/archived-cycles/modal.tsx
+- [[modal.tsx_14]] - code - web/core/components/cycles/modal.tsx
+- [[multi-select-modal.tsx]] - code - web/core/components/project/multi-select-modal.tsx
+- [[page.tsx_25]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(detail)/[cycleId]/page.tsx
+- [[paramsToKey()]] - code - web/core/constants/fetch-keys.ts
+- [[productivity.tsx]] - code - web/core/components/cycles/active-cycle/productivity.tsx
+- [[progress-chart.tsx]] - code - web/core/components/core/sidebar/progress-chart.tsx
+- [[progress.tsx]] - code - web/core/components/cycles/active-cycle/progress.tsx
+- [[quick-actions.tsx_3]] - code - web/core/components/cycles/quick-actions.tsx
+- [[root.tsx_34]] - code - web/ce/components/cycles/active-cycle/root.tsx
+- [[root.tsx_33]] - code - web/ce/components/cycles/analytics-sidebar/root.tsx
+- [[root.tsx_94]] - code - web/core/components/cycles/analytics-sidebar/root.tsx
+- [[root.tsx_95]] - code - web/core/components/cycles/list/root.tsx
+- [[setValueIntoLocalStorage()_1]] - code - web/core/hooks/use-local-storage.tsx
+- [[sidebar-details.tsx]] - code - web/core/components/cycles/analytics-sidebar/sidebar-details.tsx
+- [[sidebar-header.tsx]] - code - web/core/components/cycles/analytics-sidebar/sidebar-header.tsx
+- [[simple-empty-state-root.tsx]] - code - web/core/components/empty-state/simple-empty-state-root.tsx
+- [[sizeConfig]] - code - web/core/components/empty-state/simple-empty-state-root.tsx
+- [[transfer-issues-modal.tsx]] - code - web/core/components/cycles/transfer-issues-modal.tsx
+- [[transfer-issues.tsx]] - code - web/core/components/cycles/transfer-issues.tsx
+- [[use-cycle.ts]] - code - web/core/hooks/store/use-cycle.ts
+- [[use-cycles-details.ts]] - code - web/core/components/cycles/active-cycle/use-cycles-details.ts
+- [[use-local-storage.tsx_1]] - code - web/core/hooks/use-local-storage.tsx
+- [[useCycle()]] - code - space/hooks/store/use-cycle.ts
+- [[useCyclesDetails()]] - code - web/core/components/cycles/active-cycle/use-cycles-details.ts
+- [[useLocalStorage()_1]] - code - web/core/hooks/use-local-storage.tsx
+- [[validateCycleSnapshot()]] - code - web/core/components/cycles/analytics-sidebar/issue-progress.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -86,40 +166,45 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 21 edges to [[_COMMUNITY_Group & Drag UI]]
-- 17 edges to [[_COMMUNITY_Community 38]]
-- 8 edges to [[_COMMUNITY_Community 48]]
-- 7 edges to [[_COMMUNITY_Issue Activity Tracking]]
-- 6 edges to [[_COMMUNITY_Community 62]]
-- 5 edges to [[_COMMUNITY_Community 63]]
-- 5 edges to [[_COMMUNITY_Applied Filters UI]]
-- 4 edges to [[_COMMUNITY_Layout System]]
-- 4 edges to [[_COMMUNITY_Community 90]]
-- 3 edges to [[_COMMUNITY_Community 176]]
-- 3 edges to [[_COMMUNITY_Empty States & Inbox]]
-- 3 edges to [[_COMMUNITY_Community 41]]
-- 3 edges to [[_COMMUNITY_Calendar UI]]
-- 2 edges to [[_COMMUNITY_Community 134]]
-- 2 edges to [[_COMMUNITY_Community 192]]
-- 2 edges to [[_COMMUNITY_Community 104]]
-- 2 edges to [[_COMMUNITY_Issue Filters & Context]]
-- 2 edges to [[_COMMUNITY_Community 36]]
-- 2 edges to [[_COMMUNITY_Community 152]]
-- 2 edges to [[_COMMUNITY_Spreadsheet Column Components]]
-- 2 edges to [[_COMMUNITY_Empty State Components]]
-- 2 edges to [[_COMMUNITY_Community 55]]
-- 2 edges to [[_COMMUNITY_Cycle Analytics]]
-- 2 edges to [[_COMMUNITY_Community 127]]
-- 1 edge to [[_COMMUNITY_Community 200]]
-- 1 edge to [[_COMMUNITY_Community 92]]
-- 1 edge to [[_COMMUNITY_Community 68]]
-- 1 edge to [[_COMMUNITY_Community 234]]
+- 40 edges to [[_COMMUNITY_Filter UI & Breadcrumbs]]
+- 29 edges to [[_COMMUNITY_Module & Cycle Analytics]]
+- 21 edges to [[_COMMUNITY_Work Item Detail & Layouts]]
+- 19 edges to [[_COMMUNITY_Project Filters & Archives]]
+- 15 edges to [[_COMMUNITY_Community 22]]
+- 13 edges to [[_COMMUNITY_Community 24]]
+- 9 edges to [[_COMMUNITY_Community 44]]
+- 7 edges to [[_COMMUNITY_Bulk Operations & Spreadsheet]]
+- 6 edges to [[_COMMUNITY_Community 235]]
+- 5 edges to [[_COMMUNITY_Community 36]]
+- 5 edges to [[_COMMUNITY_Issue Display Filters]]
+- 4 edges to [[_COMMUNITY_Community 42]]
+- 4 edges to [[_COMMUNITY_Community 210]]
+- 4 edges to [[_COMMUNITY_Community 45]]
+- 2 edges to [[_COMMUNITY_Community 67]]
+- 2 edges to [[_COMMUNITY_Community 74]]
+- 2 edges to [[_COMMUNITY_Community 50]]
+- 2 edges to [[_COMMUNITY_Community 133]]
+- 2 edges to [[_COMMUNITY_Community 161]]
+- 2 edges to [[_COMMUNITY_Activity & Inbox Filters]]
+- 2 edges to [[_COMMUNITY_Community 376]]
+- 2 edges to [[_COMMUNITY_Community 121]]
+- 2 edges to [[_COMMUNITY_Issue Activity Types]]
+- 2 edges to [[_COMMUNITY_Community 388]]
+- 2 edges to [[_COMMUNITY_Community 49]]
+- 2 edges to [[_COMMUNITY_Service Layer]]
+- 2 edges to [[_COMMUNITY_Community 265]]
+- 2 edges to [[_COMMUNITY_Community 297]]
+- 1 edge to [[_COMMUNITY_Community 246]]
+- 1 edge to [[_COMMUNITY_Community 144]]
+- 1 edge to [[_COMMUNITY_Community 311]]
+- 1 edge to [[_COMMUNITY_Community 72]]
+- 1 edge to [[_COMMUNITY_Community 112]]
+- 1 edge to [[_COMMUNITY_Community 167]]
+- 1 edge to [[_COMMUNITY_Community 43]]
 
 ## Top bridge nodes
-
-- [[cycle-stats.tsx]] - degree 17, connects to 8 communities
-- [[issue-row.tsx]] - degree 22, connects to 7 communities
-- [[list-group.tsx]] - degree 26, connects to 5 communities
-- [[block-root.tsx]] - degree 17, connects to 5 communities
-- [[render-if-visible-HOC.tsx]] - degree 9, connects to 5 communities
+- [[useCycle()]] - degree 50, connects to 16 communities
+- [[use-cycle.ts]] - degree 47, connects to 12 communities
+- [[use-local-storage.tsx_1]] - degree 21, connects to 12 communities
+- [[cycle-list-item-action.tsx]] - degree 25, connects to 6 communities
+- [[cycle-stats.tsx]] - degree 19, connects to 6 communities

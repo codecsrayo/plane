@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_364]] - code - web/core/components/issues/issue-layouts/quick-add/form/index.ts
+- [[manage.py]] - code - api/manage.py
 
 ## Live Query (requires Dataview plugin)
 

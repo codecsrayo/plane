@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/date_utils.py"
 type: "rationale"
-community: "Analytics Advance"
+community: "Community 122"
 location: "L93"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Analytics_Advance
+  - community/Community_122
 ---
 
-# Get date range for chart visualization. Returns a tuple of (start*date, end*
+# Get date range for chart visualization.     Returns a tuple of (start_date, end_
 
 ## Connections
-
 - [[get_chart_period_range()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Analytics_Advance
+#graphify/rationale #graphify/EXTRACTED #community/Community_122

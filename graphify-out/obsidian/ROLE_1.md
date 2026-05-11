@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/permissions/base.py"
 type: "code"
-community: "Project Return"
+community: "Python API Base Classes"
 location: "L13"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Project_Return
+  - community/Python_API_Base_Classes
 ---
 
 # ROLE
 
 ## Connections
-
 - [[Enum]] - `inherits` [EXTRACTED]
 - [[Meta_21]] - `uses` [INFERRED]
 - [[ProjectMemberPreferenceEndpoint]] - `uses` [INFERRED]
@@ -23,4 +22,4 @@ tags:
 - [[base.py_21]] - `contains` [EXTRACTED]
 - [[base.py_27]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Project_Return
+#graphify/code #graphify/INFERRED #community/Python_API_Base_Classes

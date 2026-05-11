@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/core/render-if-visible-HOC.tsx"
 type: "code"
-community: "Gantt Chart"
+community: "Community 23"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Chart
+  - community/Community_23
 ---
 
 # render-if-visible-HOC.tsx
 
 ## Connections
-
 - [[Props_515]] - `contains` [EXTRACTED]
 - [[RenderIfVisible()]] - `contains` [EXTRACTED]
 - [[block-root.tsx]] - `imports_from` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[sidebar.tsx_2]] - `imports_from` [EXTRACTED]
 - [[sidebar.tsx_5]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Chart
+#graphify/code #graphify/EXTRACTED #community/Community_23

@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/animated-counter/animated-counter.stories.tsx"
 type: "code"
-community: "Animated Counter"
+community: "Community 366"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Animated_Counter
+  - community/Community_366
 ---
 
 # animated-counter.stories.tsx
 
 ## Connections
-
 - [[AnimatedCounter()]] - `imports` [EXTRACTED]
 - [[Countdown]] - `contains` [EXTRACTED]
 - [[Default_27]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[Story_34]] - `contains` [EXTRACTED]
 - [[animated-counter.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Animated_Counter
+#graphify/code #graphify/EXTRACTED #community/Community_366

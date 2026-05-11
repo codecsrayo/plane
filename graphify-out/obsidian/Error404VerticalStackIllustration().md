@@ -1,18 +1,18 @@
 ---
-source_file: "propel/src/empty-state/assets/vertical-stack/404-error.tsx"
+source_file: "packages/propel/src/empty-state/assets/vertical-stack/404-error.tsx"
 type: "code"
-community: "Stack Vertical"
+community: "Community 472"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Stack_Vertical
+  - community/Community_472
 ---
 
 # Error404VerticalStackIllustration()
 
 ## Connections
-
 - [[404-error.tsx]] - `contains` [EXTRACTED]
+- [[404-error.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Stack_Vertical
+#graphify/code #graphify/EXTRACTED #community/Community_472

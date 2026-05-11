@@ -1,18 +1,17 @@
 ---
 source_file: "space/components/issues/filters/root.tsx"
 type: "code"
-community: "Issue Peek"
+community: "Community 206"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Peek
+  - community/Community_206
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[FilterSelection]] - `imports` [EXTRACTED]
 - [[FiltersDropdown()]] - `imports` [EXTRACTED]
 - [[IssueFiltersDropdown]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[use-issue-filter.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueFilter()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Peek
+#graphify/code #graphify/EXTRACTED #community/Community_206

@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/icons/default-icon.tsx"
 type: "code"
-community: "Icon Copy"
+community: "Community 151"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Icon_Copy
+  - community/Community_151
 ---
 
 # default-icon.tsx
 
 ## Connections
-
 - [[DefaultIcon()]] - `contains` [EXTRACTED]
 - [[ISvgIcons]] - `imports` [EXTRACTED]
 - [[IconWrapper()]] - `imports` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[registry.ts]] - `imports_from` [EXTRACTED]
 - [[type.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Icon_Copy
+#graphify/code #graphify/EXTRACTED #community/Community_151

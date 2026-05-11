@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/base-layouts/kanban.ts"
 type: "code"
-community: "Layouts Gantt"
+community: "Community 102"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Layouts_Gantt
+  - community/Community_102
 ---
 
 # kanban.ts
 
 ## Connections
-
 - [[IBaseLayoutsBaseGroupProps]] - `imports` [EXTRACTED]
 - [[IBaseLayoutsBaseItem]] - `imports` [EXTRACTED]
 - [[IBaseLayoutsBaseItemProps]] - `imports` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[IBaseLayoutsKanbanProps]] - `contains` [EXTRACTED]
 - [[base.ts_4]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Layouts_Gantt
+#graphify/code #graphify/EXTRACTED #community/Community_102

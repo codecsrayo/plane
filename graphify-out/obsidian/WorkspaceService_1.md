@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/workspace.service.ts"
 type: "code"
-community: "Workspace Sidebar"
+community: "Community 46"
 location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Sidebar
+  - community/Community_46
 ---
 
 # WorkspaceService
 
 ## Connections
-
 - [[.constructor()_152]] - `method` [EXTRACTED]
 - [[.createView()_2]] - `method` [EXTRACTED]
 - [[.createWorkspace()]] - `method` [EXTRACTED]
@@ -85,4 +84,4 @@ tags:
 - [[workspace-member.store.ts]] - `imports` [EXTRACTED]
 - [[workspace.service.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Sidebar
+#graphify/code #graphify/EXTRACTED #community/Community_46

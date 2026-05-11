@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/api-token/modal/form.tsx"
 type: "code"
-community: "Expiry Token"
+community: "Community 560"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Expiry_Token
+  - community/Community_560
 ---
 
 # form.tsx
 
 ## Connections
-
 - [[CreateApiTokenForm()]] - `contains` [EXTRACTED]
 - [[DateDropdown]] - `imports` [EXTRACTED]
 - [[EXPIRY_DATE_OPTIONS]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[getExpiryDate()]] - `contains` [EXTRACTED]
 - [[getFormattedDate()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Expiry_Token
+#graphify/code #graphify/EXTRACTED #community/Community_560

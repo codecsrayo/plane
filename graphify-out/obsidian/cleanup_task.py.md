@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/bgtasks/cleanup_task.py"
 type: "code"
-community: "Transform Logs"
+community: "Community 145"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Transform_Logs
+  - community/Community_145
 ---
 
 # cleanup_task.py
 
 ## Connections
-
 - [[delete_api_logs()]] - `contains` [EXTRACTED]
 - [[delete_email_notification_logs()]] - `contains` [EXTRACTED]
 - [[delete_issue_description_versions()]] - `contains` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[transform_page_version()]] - `contains` [EXTRACTED]
 - [[transform_webhook_log()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Transform_Logs
+#graphify/code #graphify/EXTRACTED #community/Community_145

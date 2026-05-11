@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.50
+members: 4
 ---
 
 # Community 690
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.50 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_40]] - code - api_rust/src/entities/draft_issue_assignees.rs
+- [[.add_arguments()_2]] - code - api/plane/db/management/commands/clear_cache.py
+- [[.handle()_7]] - code - api/plane/db/management/commands/clear_cache.py
+- [[Command_8]] - code - api/plane/db/management/commands/clear_cache.py
+- [[clear_cache.py]] - code - api/plane/db/management/commands/clear_cache.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -19,3 +21,9 @@ members: 1
 TABLE source_file, type FROM #community/Community_690
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Community 222]]
+
+## Top bridge nodes
+- [[Command_8]] - degree 4, connects to 1 community

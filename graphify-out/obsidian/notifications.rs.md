@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/notifications.rs"
 type: "code"
-community: "Returns Notification"
+community: "Community 383"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Notification
+  - community/Community_383
 ---
 
 # notifications.rs
 
 ## Connections
-
 - [[archive_notification_returns_200()]] - `contains` [EXTRACTED]
 - [[delete_notification_returns_204()]] - `contains` [EXTRACTED]
 - [[get_notification_by_id_returns_200()]] - `contains` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[unread_count_returns_200_with_counts()]] - `contains` [EXTRACTED]
 - [[update_notification_preferences_returns_200()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Notification
+#graphify/code #graphify/EXTRACTED #community/Community_383

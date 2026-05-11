@@ -1,39 +1,60 @@
 ---
 type: community
-cohesion: 0.19
-members: 23
+cohesion: 0.05
+members: 45
 ---
 
 # Community 104
 
-**Cohesion:** 0.19 - loosely connected
-**Members:** 23 nodes
+**Cohesion:** 0.05 - loosely connected
+**Members:** 45 nodes
 
 ## Members
-
-- [[AllStickiesModal()]] - code - web/core/components/stickies/modal/index.tsx
-- [[STICKY_COLORS_LIST]] - code - web/core/components/editor/sticky-editor/color-palette.tsx
-- [[Stickies]] - code - web/core/components/stickies/modal/stickies.tsx
-- [[StickiesTruncated]] - code - web/core/components/stickies/layout/stickies-truncated.tsx
-- [[StickiesTruncatedProps]] - code - web/core/components/stickies/layout/stickies-truncated.tsx
-- [[StickyActionBar]] - code - web/core/components/stickies/action-bar.tsx
-- [[StickySearch]] - code - web/core/components/stickies/modal/search.tsx
-- [[TOperations]] - code - web/core/components/stickies/sticky/use-operations.tsx
-- [[TProps_9]] - code - web/core/components/stickies/modal/index.tsx
-- [[TProps_10]] - code - web/core/components/stickies/modal/stickies.tsx
-- [[TProps_4]] - code - web/core/components/editor/sticky-editor/color-palette.tsx
-- [[TProps_8]] - code - web/core/components/stickies/sticky/use-operations.tsx
-- [[action-bar.tsx]] - code - web/core/components/stickies/action-bar.tsx
-- [[color-palette.tsx]] - code - web/core/components/editor/sticky-editor/color-palette.tsx
-- [[index.tsx_5]] - code - web/core/components/stickies/modal/index.tsx
-- [[search.tsx]] - code - web/core/components/stickies/modal/search.tsx
-- [[stickies-truncated.tsx]] - code - web/core/components/stickies/layout/stickies-truncated.tsx
-- [[stickies.tsx_1]] - code - web/core/components/stickies/modal/stickies.tsx
-- [[use-operations.tsx]] - code - web/core/components/stickies/sticky/use-operations.tsx
-- [[use-stickies.tsx]] - code - web/core/hooks/use-stickies.tsx
-- [[useSticky()]] - code - web/core/hooks/use-stickies.tsx
-- [[useStickyOperations()]] - code - web/core/components/stickies/sticky/use-operations.tsx
-- [[widget.tsx]] - code - web/core/components/stickies/widget.tsx
+- [[.addViewToFavorites()]] - code - web/core/services/view.service.ts
+- [[.appliedFilters()_1]] - code - web/core/store/issue/project-views/filter.store.ts
+- [[.constructor()_89]] - code - web/core/store/issue/project-views/filter.store.ts
+- [[.constructor()_88]] - code - web/core/store/issue/project-views/issue.store.ts
+- [[.constructor()_135]] - code - web/core/services/view.service.ts
+- [[.constructor()_59]] - code - web/core/store/project-view.store.ts
+- [[.createView()_1]] - code - web/core/services/view.service.ts
+- [[.createView()]] - code - web/core/store/project-view.store.ts
+- [[.deleteView()]] - code - web/core/services/view.service.ts
+- [[.getAppliedFilters()_1]] - code - web/core/store/issue/project-views/filter.store.ts
+- [[.getIssueFilters()_1]] - code - web/core/store/issue/project-views/filter.store.ts
+- [[.getViewDetails()]] - code - web/core/services/view.service.ts
+- [[.getViewIssues()_1]] - code - web/core/services/view.service.ts
+- [[.getViews()]] - code - web/core/services/view.service.ts
+- [[.issueFilters()_1]] - code - web/core/store/issue/project-views/filter.store.ts
+- [[.patchView()]] - code - web/core/services/view.service.ts
+- [[.projectViewIds()]] - code - web/core/store/project-view.store.ts
+- [[.removeViewFromFavorites()]] - code - web/core/services/view.service.ts
+- [[.updateView()]] - code - web/core/store/project-view.store.ts
+- [[IProjectViewIssues]] - code - web/core/store/issue/project-views/issue.store.ts
+- [[IProjectViewIssuesFilter]] - code - web/core/store/issue/project-views/filter.store.ts
+- [[IProjectViewStore]] - code - web/core/store/project-view.store.ts
+- [[ProjectViewIssues]] - code - web/core/store/issue/project-views/issue.store.ts
+- [[ProjectViewIssuesFilter]] - code - web/core/store/issue/project-views/filter.store.ts
+- [[ProjectViewStore]] - code - web/core/store/project-view.store.ts
+- [[ViewService]] - code - web/core/services/view.service.ts
+- [[ViewsList]] - code - web/core/store/project-view.store.ts
+- [[_filters_1]] - code - web/core/store/issue/project-views/filter.store.ts
+- [[currentView]] - code - web/core/store/project-view.store.ts
+- [[cursorObject_1]] - code - web/core/store/issue/project-views/issue.store.ts
+- [[displayFilters_4]] - code - web/core/store/issue/project-views/filter.store.ts
+- [[displayProperties_1]] - code - web/core/store/issue/project-views/filter.store.ts
+- [[filter.store.ts_6]] - code - web/core/store/issue/project-views/filter.store.ts
+- [[filterParams_1]] - code - web/core/store/issue/project-views/filter.store.ts
+- [[filteredViews]] - code - web/core/store/project-view.store.ts
+- [[issue.store.ts_7]] - code - web/core/store/issue/project-views/issue.store.ts
+- [[kanbanFilters_1]] - code - web/core/store/issue/project-views/filter.store.ts
+- [[paginationParams_1]] - code - web/core/store/issue/project-views/filter.store.ts
+- [[params_1]] - code - web/core/store/issue/project-views/issue.store.ts
+- [[project-view.store.ts_1]] - code - web/core/store/project-view.store.ts
+- [[updatedDisplayFilters_1]] - code - web/core/store/issue/project-views/filter.store.ts
+- [[updatedDisplayProperties_1]] - code - web/core/store/issue/project-views/filter.store.ts
+- [[updatedKanbanFilters_1]] - code - web/core/store/issue/project-views/filter.store.ts
+- [[view.service.ts_2]] - code - web/core/services/view.service.ts
+- [[viewDetails]] - code - web/core/store/issue/project-views/filter.store.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -43,22 +64,17 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 7 edges to [[_COMMUNITY_Community 152]]
-- 7 edges to [[_COMMUNITY_Community 211]]
-- 2 edges to [[_COMMUNITY_Community 158]]
-- 2 edges to [[_COMMUNITY_Active Cycle Stats]]
-- 2 edges to [[_COMMUNITY_Empty State Components]]
-- 2 edges to [[_COMMUNITY_Community 119]]
-- 2 edges to [[_COMMUNITY_Editor Styles]]
+- 4 edges to [[_COMMUNITY_Community 20]]
+- 4 edges to [[_COMMUNITY_Service Layer]]
+- 3 edges to [[_COMMUNITY_Community 33]]
 - 2 edges to [[_COMMUNITY_Community 75]]
-- 1 edge to [[_COMMUNITY_Community 92]]
-- 1 edge to [[_COMMUNITY_Applied Filters UI]]
+- 2 edges to [[_COMMUNITY_Issue Store & Filters Logic]]
+- 2 edges to [[_COMMUNITY_Community 49]]
+- 2 edges to [[_COMMUNITY_Community 59]]
 
 ## Top bridge nodes
-
-- [[use-stickies.tsx]] - degree 14, connects to 6 communities
-- [[useSticky()]] - degree 11, connects to 3 communities
-- [[use-operations.tsx]] - degree 12, connects to 2 communities
-- [[action-bar.tsx]] - degree 10, connects to 2 communities
-- [[stickies-truncated.tsx]] - degree 10, connects to 2 communities
+- [[filter.store.ts_6]] - degree 22, connects to 5 communities
+- [[issue.store.ts_7]] - degree 12, connects to 5 communities
+- [[project-view.store.ts_1]] - degree 9, connects to 1 community
+- [[ProjectViewStore]] - degree 6, connects to 1 community
+- [[view.service.ts_2]] - degree 5, connects to 1 community

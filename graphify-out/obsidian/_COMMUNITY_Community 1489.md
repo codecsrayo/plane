@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_128]] - code - utils/src/rich-filters/factories/configs/properties/index.ts
+- [[index.ts_147]] - code - propel/src/icons/cycle/index.ts
 
 ## Live Query (requires Dataview plugin)
 

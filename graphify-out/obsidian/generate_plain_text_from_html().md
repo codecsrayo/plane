@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/email.py"
 type: "code"
-community: "Email Task"
+community: "Community 48"
 location: "L19"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Email_Task
+  - community/Community_48
 ---
 
 # generate_plain_text_from_html()
 
 ## Connections
-
 - [[Generate clean plain text from HTML email template.     Removes all HTML tags, C]] - `rationale_for` [EXTRACTED]
 - [[email.py]] - `contains` [EXTRACTED]
 - [[forgot_password()]] - `calls` [INFERRED]
@@ -29,4 +28,4 @@ tags:
 - [[user_deactivation_email()]] - `calls` [INFERRED]
 - [[workspace_invitation()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Email_Task
+#graphify/code #graphify/INFERRED #community/Community_48

@@ -1,28 +1,44 @@
 ---
 type: community
-cohesion: 0.17
-members: 12
+cohesion: 0.14
+members: 29
 ---
 
 # Community 196
 
-**Cohesion:** 0.17 - loosely connected
-**Members:** 12 nodes
+**Cohesion:** 0.14 - loosely connected
+**Members:** 29 nodes
 
 ## Members
-
-- [[.constructor()_45]] - code - web/core/store/issue/issue-details/sub_issues_filter.store.ts
-- [[DEFAULT_DISPLAY_PROPERTIES]] - code - web/core/store/issue/issue-details/sub_issues_filter.store.ts
-- [[IWorkItemSubIssueFiltersStore]] - code - web/core/store/issue/issue-details/sub_issues_filter.store.ts
-- [[WorkItemSubIssueFiltersStore]] - code - web/core/store/issue/issue-details/sub_issues_filter.store.ts
-- [[filteredWorkItems]] - code - web/core/store/issue/issue-details/sub_issues_filter.store.ts
-- [[getFilteredWorkItems()]] - code - web/core/store/issue/helpers/base-issues-utils.ts
-- [[groupedWorkItemIds]] - code - web/core/store/issue/issue-details/sub_issues_filter.store.ts
-- [[subIssueFilters]] - code - web/core/store/issue/issue-details/sub_issues_filter.store.ts
-- [[subIssueIds]] - code - web/core/store/issue/issue-details/sub_issues_filter.store.ts
-- [[sub_issues_filter.store.ts]] - code - web/core/store/issue/issue-details/sub_issues_filter.store.ts
-- [[updateSubWorkItemFilters()]] - code - web/core/store/issue/helpers/base-issues-utils.ts
-- [[workItems]] - code - web/core/store/issue/issue-details/sub_issues_filter.store.ts
+- [[AllSizes_6]] - code - packages/propel/src/icon-button/icon-button.stories.tsx
+- [[AllStates_1]] - code - packages/propel/src/icon-button/icon-button.stories.tsx
+- [[AllVariants_3]] - code - packages/propel/src/icon-button/icon-button.stories.tsx
+- [[Base_2]] - code - packages/propel/src/icon-button/icon-button.stories.tsx
+- [[Default_19]] - code - packages/propel/src/icon-button/icon-button.stories.tsx
+- [[Disabled_2]] - code - packages/propel/src/icon-button/icon-button.stories.tsx
+- [[ErrorFill]] - code - packages/propel/src/icon-button/icon-button.stories.tsx
+- [[ErrorOutline]] - code - packages/propel/src/icon-button/icon-button.stories.tsx
+- [[ExtraLarge_2]] - code - packages/propel/src/icon-button/icon-button.stories.tsx
+- [[Ghost]] - code - packages/propel/src/icon-button/icon-button.stories.tsx
+- [[IconButton]] - code - packages/propel/src/icon-button/icon-button.tsx
+- [[IconButtonProps]] - code - packages/propel/src/icon-button/helper.tsx
+- [[IconButtonPropsWithChildren]] - code - packages/propel/src/icon-button/helper.tsx
+- [[Large_6]] - code - packages/propel/src/icon-button/icon-button.stories.tsx
+- [[Loading_1]] - code - packages/propel/src/icon-button/icon-button.stories.tsx
+- [[Primary_1]] - code - packages/propel/src/icon-button/icon-button.stories.tsx
+- [[Secondary]] - code - packages/propel/src/icon-button/icon-button.stories.tsx
+- [[Small_6]] - code - packages/propel/src/icon-button/icon-button.stories.tsx
+- [[Story_22]] - code - packages/propel/src/icon-button/icon-button.stories.tsx
+- [[Tertiary]] - code - packages/propel/src/icon-button/icon-button.stories.tsx
+- [[getIconButtonStyling()]] - code - packages/propel/src/icon-button/helper.tsx
+- [[helper.tsx_46]] - code - packages/propel/src/icon-button/helper.tsx
+- [[helper.tsx_14]] - code - propel/src/icon-button/helper.tsx
+- [[icon()]] - code - packages/propel/src/icon-button/icon-button.stories.tsx
+- [[icon-button.stories.tsx_1]] - code - packages/propel/src/icon-button/icon-button.stories.tsx
+- [[icon-button.stories.tsx]] - code - propel/src/icon-button/icon-button.stories.tsx
+- [[icon-button.tsx_1]] - code - packages/propel/src/icon-button/icon-button.tsx
+- [[icon-button.tsx]] - code - propel/src/icon-button/icon-button.tsx
+- [[iconButtonVariants]] - code - packages/propel/src/icon-button/helper.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -32,15 +48,8 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 4 edges to [[_COMMUNITY_Issue State Management]]
-- 4 edges to [[_COMMUNITY_Community 184]]
-- 2 edges to [[_COMMUNITY_Group & Drag UI]]
+- 2 edges to [[_COMMUNITY_Community 292]]
 
 ## Top bridge nodes
-
-- [[sub_issues_filter.store.ts]] - degree 15, connects to 3 communities
-- [[WorkItemSubIssueFiltersStore]] - degree 3, connects to 1 community
-- [[getFilteredWorkItems()]] - degree 2, connects to 1 community
-- [[updateSubWorkItemFilters()]] - degree 2, connects to 1 community
-- [[DEFAULT_DISPLAY_PROPERTIES]] - degree 2, connects to 1 community
+- [[icon-button.tsx_1]] - degree 6, connects to 1 community
+- [[icon-button.tsx]] - degree 6, connects to 1 community

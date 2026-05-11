@@ -1,18 +1,17 @@
 ---
 source_file: "constants/src/cycle.ts"
 type: "code"
-community: "Cycle Status"
+community: "Community 717"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Status
+  - community/Community_717
 ---
 
 # cycle.ts
 
 ## Connections
-
 - [[CYCLE_STATUS]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Status
+#graphify/code #graphify/EXTRACTED #community/Community_717

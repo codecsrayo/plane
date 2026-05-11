@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/entities/pages.rs"
 type: "code"
-community: "Entity"
+community: "Community 1291"
 location: "L100"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Entity
+  - community/Community_1291
 ---
 
 # Entity
 
 ## Connections
-
 - [[.to()_106]] - `method` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Entity
+#graphify/code #graphify/EXTRACTED #community/Community_1291

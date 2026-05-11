@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_25]] - code - ui/src/form-fields/password/index.ts
+- [[index.ts_40]] - code - editor/src/core/components/menus/bubble-menu/index.ts
 
 ## Live Query (requires Dataview plugin)
 

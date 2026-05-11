@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/use-intersection-observer.ts"
 type: "code"
-community: "Group Kanban"
+community: "Bulk Operations & Spreadsheet"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group_Kanban
+  - community/Bulk_Operations__Spreadsheet
 ---
 
 # use-intersection-observer.ts
 
 ## Connections
-
 - [[UseIntersectionObserverProps]] - `contains` [EXTRACTED]
 - [[cycle-stats.tsx]] - `imports_from` [EXTRACTED]
 - [[kanban-group.tsx]] - `imports_from` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[stickies-infinite.tsx]] - `imports_from` [EXTRACTED]
 - [[useIntersectionObserver()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group_Kanban
+#graphify/code #graphify/EXTRACTED #community/Bulk_Operations__Spreadsheet

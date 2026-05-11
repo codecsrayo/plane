@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 820
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_173]] - code - web/core/components/license/modal/index.ts
+- [[ProfileEmptyState()]] - code - web/core/components/ui/profile-empty-state.tsx
+- [[Props_83]] - code - web/core/components/ui/profile-empty-state.tsx
+- [[profile-empty-state.tsx]] - code - web/core/components/ui/profile-empty-state.tsx
 
 ## Live Query (requires Dataview plugin)
 

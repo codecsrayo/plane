@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/integrations/github.rs"
 type: "code"
-community: "User Github"
+community: "Rust API Handlers"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User_Github
+  - community/Rust_API_Handlers
 ---
 
 # github.rs
 
 ## Connections
-
 - [[create_github_repo_sync()]] - `contains` [EXTRACTED]
 - [[delete_github_repo_sync()]] - `contains` [EXTRACTED]
 - [[github_app_callback()]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[list_integrations()]] - `contains` [EXTRACTED]
 - [[register_github_webhook()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User_Github
+#graphify/code #graphify/EXTRACTED #community/Rust_API_Handlers

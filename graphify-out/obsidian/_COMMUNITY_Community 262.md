@@ -1,22 +1,38 @@
 ---
 type: community
-cohesion: 0.33
-members: 6
+cohesion: 0.17
+members: 23
 ---
 
 # Community 262
 
-**Cohesion:** 0.33 - loosely connected
-**Members:** 6 nodes
+**Cohesion:** 0.17 - loosely connected
+**Members:** 23 nodes
 
 ## Members
-
-- [[default_display_filters()_2]] - code - api_rust/src/utils/django_defaults.rs
-- [[default_display_properties()_2]] - code - api_rust/src/utils/django_defaults.rs
-- [[default_filters()_2]] - code - api_rust/src/utils/django_defaults.rs
-- [[default_preferences()_1]] - code - api_rust/src/utils/django_defaults.rs
-- [[defaults_are_objects()]] - code - api_rust/src/utils/django_defaults.rs
-- [[django_defaults.rs]] - code - api_rust/src/utils/django_defaults.rs
+- [[EInboxIssueCurrentTab]] - code - packages/types/src/inbox.ts
+- [[EInboxIssueStatus]] - code - packages/types/src/inbox.ts
+- [[TAnchors]] - code - packages/types/src/inbox.ts
+- [[TInboxDuplicateIssueDetails]] - code - packages/types/src/inbox.ts
+- [[TInboxForm]] - code - packages/types/src/inbox.ts
+- [[TInboxIssue]] - code - packages/types/src/inbox.ts
+- [[TInboxIssueCurrentTab]] - code - packages/types/src/inbox.ts
+- [[TInboxIssueFilter]] - code - packages/types/src/inbox.ts
+- [[TInboxIssueFilterDateKeys]] - code - packages/types/src/inbox.ts
+- [[TInboxIssueFilterMemberKeys]] - code - packages/types/src/inbox.ts
+- [[TInboxIssueForm]] - code - packages/types/src/inbox.ts
+- [[TInboxIssuePaginationInfo]] - code - packages/types/src/inbox.ts
+- [[TInboxIssueSorting]] - code - packages/types/src/inbox.ts
+- [[TInboxIssueSortingKeys]] - code - packages/types/src/inbox.ts
+- [[TInboxIssueSortingOrderByKeys]] - code - packages/types/src/inbox.ts
+- [[TInboxIssueSortingOrderByQueryParam]] - code - packages/types/src/inbox.ts
+- [[TInboxIssueSortingOrderByQueryParamKeys]] - code - packages/types/src/inbox.ts
+- [[TInboxIssueSortingSortByKeys]] - code - packages/types/src/inbox.ts
+- [[TInboxIssueStatus]] - code - packages/types/src/inbox.ts
+- [[TInboxIssueWithPagination]] - code - packages/types/src/inbox.ts
+- [[TInboxIssuesQueryParams]] - code - packages/types/src/inbox.ts
+- [[inbox.ts_1]] - code - packages/types/src/inbox.ts
+- [[inbox.ts]] - code - types/src/inbox.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -26,9 +42,12 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 2 edges to [[_COMMUNITY_Projects Rust API]]
+- 4 edges to [[_COMMUNITY_Community 118]]
+- 4 edges to [[_COMMUNITY_Community 101]]
+- 4 edges to [[_COMMUNITY_Community 189]]
+- 2 edges to [[_COMMUNITY_Community 178]]
+- 2 edges to [[_COMMUNITY_Community 139]]
 
 ## Top bridge nodes
-
-- [[django_defaults.rs]] - degree 7, connects to 1 community
+- [[inbox.ts_1]] - degree 29, connects to 5 communities
+- [[inbox.ts]] - degree 29, connects to 5 communities

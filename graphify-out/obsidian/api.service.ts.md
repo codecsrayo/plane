@@ -1,18 +1,17 @@
 ---
 source_file: "services/src/api.service.ts"
 type: "code"
-community: "Sites Cycle"
+community: "Community 83"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sites_Cycle
+  - community/Community_83
 ---
 
 # api.service.ts
 
 ## Connections
-
 - [[ai.service.ts]] - `imports_from` [EXTRACTED]
 - [[auth.service.ts]] - `imports_from` [EXTRACTED]
 - [[constructor()_1]] - `contains` [EXTRACTED]
@@ -55,4 +54,4 @@ tags:
 - [[webhook.service.ts]] - `imports_from` [EXTRACTED]
 - [[workspace.service.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sites_Cycle
+#graphify/code #graphify/EXTRACTED #community/Community_83

@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/store/user/permission.store.ts"
 type: "code"
-community: "Project User"
+community: "Community 309"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_User
+  - community/Community_309
 ---
 
 # IUserPermissionStore
 
 ## Connections
-
 - [[permission.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_User
+#graphify/code #graphify/EXTRACTED #community/Community_309

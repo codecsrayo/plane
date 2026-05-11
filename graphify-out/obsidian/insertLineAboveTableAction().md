@@ -1,20 +1,21 @@
 ---
-source_file: "editor/src/core/extensions/table/table/utilities/insert-line-above-table-action.ts"
+source_file: "packages/editor/src/core/extensions/table/table/utilities/insert-line-above-table-action.ts"
 type: "code"
-community: "Table Node"
+community: "Community 30"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Table_Node
+  - community/Community_30
 ---
 
 # insertLineAboveTableAction()
 
 ## Connections
-
 - [[findParentNodeOfType()]] - `calls` [EXTRACTED]
 - [[insert-line-above-table-action.ts]] - `contains` [EXTRACTED]
+- [[insert-line-above-table-action.ts_1]] - `contains` [EXTRACTED]
 - [[table.ts]] - `imports` [EXTRACTED]
+- [[table.ts_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Table_Node
+#graphify/code #graphify/EXTRACTED #community/Community_30

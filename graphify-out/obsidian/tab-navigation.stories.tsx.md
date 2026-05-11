@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/tab-navigation/tab-navigation.stories.tsx"
 type: "code"
-community: "Icon Cycle"
+community: "Community 92"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Icon_Cycle
+  - community/Community_92
 ---
 
 # tab-navigation.stories.tsx
 
 ## Connections
-
 - [[CycleIcon()]] - `imports` [EXTRACTED]
 - [[Default_17]] - `contains` [EXTRACTED]
 - [[IntakeIcon()]] - `imports` [EXTRACTED]
@@ -35,4 +34,4 @@ tags:
 - [[view-icon.tsx]] - `imports_from` [EXTRACTED]
 - [[work-items-icon.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Icon_Cycle
+#graphify/code #graphify/EXTRACTED #community/Community_92

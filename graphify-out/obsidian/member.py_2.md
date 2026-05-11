@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/views/member.py"
 type: "code"
-community: "Endpoint State"
+community: "Community 99"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_State
+  - community/Community_99
 ---
 
 # member.py
 
 ## Connections
-
 - [[ProjectMemberDetailAPIEndpoint]] - `contains` [EXTRACTED]
 - [[ProjectMemberListCreateAPIEndpoint]] - `contains` [EXTRACTED]
 - [[WorkspaceMemberAPIEndpoint]] - `contains` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[patch()_16]] - `contains` [EXTRACTED]
 - [[post()_20]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_State
+#graphify/code #graphify/EXTRACTED #community/Community_99

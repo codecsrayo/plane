@@ -1,14 +1,14 @@
 ---
 source_file: "api/plane/tests/contract/app/test_authentication.py"
 type: "rationale"
-community: "Test Successful"
+community: "Community 1824"
 location: "L265"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Test_Successful
+  - community/Community_1824
 ---
 
 # Test successful magic link sign-in process
 
-#graphify/rationale #graphify/EXTRACTED #community/Test_Successful
+#graphify/rationale #graphify/EXTRACTED #community/Community_1824

@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 772
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_37]] - code - web/core/components/user/index.ts
+- [[Props_53]] - code - admin/app/types/next-link.d.ts
+- [[next-link.d.ts_1]] - code - admin/app/types/next-link.d.ts
+- [[next-link.d.ts]] - code - web/app/types/next-link.d.ts
 
 ## Live Query (requires Dataview plugin)
 

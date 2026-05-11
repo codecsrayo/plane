@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/authentication/provider/oauth/google.py"
 type: "code"
-community: "Google Endpoint"
+community: "Community 76"
 location: "L22"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Google_Endpoint
+  - community/Community_76
 ---
 
 # GoogleOAuthProvider
 
 ## Connections
-
 - [[.__init__()_32]] - `method` [EXTRACTED]
 - [[.get()_43]] - `calls` [INFERRED]
 - [[.get()_44]] - `calls` [INFERRED]
@@ -29,4 +28,4 @@ tags:
 - [[OauthAdapter_1]] - `inherits` [EXTRACTED]
 - [[google.py_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Google_Endpoint
+#graphify/code #graphify/INFERRED #community/Community_76

@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/components/active-cycles/workspace-active-cycles-upgrade.tsx"
 type: "code"
-community: "Upgrade Workspace"
+community: "Community 443"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Upgrade_Workspace
+  - community/Community_443
 ---
 
 # workspace-active-cycles-upgrade.tsx
 
 ## Connections
-
 - [[ProIcon()]] - `imports` [EXTRACTED]
 - [[WORKSPACE_ACTIVE_CYCLES_DETAILS]] - `contains` [EXTRACTED]
 - [[WorkspaceActiveCyclesUpgrade]] - `contains` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[pro-icon.tsx]] - `imports_from` [EXTRACTED]
 - [[root.tsx_35]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Upgrade_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_443

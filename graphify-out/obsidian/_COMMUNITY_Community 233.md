@@ -1,25 +1,40 @@
 ---
 type: community
-cohesion: 0.31
-members: 9
+cohesion: 0.09
+members: 25
 ---
 
 # Community 233
 
-**Cohesion:** 0.31 - loosely connected
-**Members:** 9 nodes
+**Cohesion:** 0.09 - loosely connected
+**Members:** 25 nodes
 
 ## Members
-
-- [[IssueLabelSelect]] - code - web/core/components/issues/select/dropdown.tsx
-- [[IssueLabelsList()]] - code - web/core/components/ui/labels-list.tsx
-- [[IssueLabelsListProps]] - code - web/core/components/ui/labels-list.tsx
-- [[TWorkItemLabelSelectBaseProps]] - code - web/core/components/issues/select/base.tsx
-- [[TWorkItemLabelSelectProps]] - code - web/core/components/issues/select/dropdown.tsx
-- [[WorkItemLabelSelectBase]] - code - web/core/components/issues/select/base.tsx
-- [[base.tsx_6]] - code - web/core/components/issues/select/base.tsx
-- [[dropdown.tsx_6]] - code - web/core/components/issues/select/dropdown.tsx
-- [[labels-list.tsx]] - code - web/core/components/ui/labels-list.tsx
+- [[.appliedFilters()_5]] - code - web/core/store/issue/profile/filter.store.ts
+- [[.constructor()_97]] - code - web/core/store/issue/profile/filter.store.ts
+- [[.constructor()_96]] - code - web/core/store/issue/profile/issue.store.ts
+- [[.getAppliedFilters()_4]] - code - web/core/store/issue/profile/filter.store.ts
+- [[.getIssueFilters()_4]] - code - web/core/store/issue/profile/filter.store.ts
+- [[.issueFilters()_5]] - code - web/core/store/issue/profile/filter.store.ts
+- [[.setViewId()]] - code - web/core/store/issue/profile/issue.store.ts
+- [[.viewFlags()]] - code - web/core/store/issue/profile/issue.store.ts
+- [[IProfileIssues]] - code - web/core/store/issue/profile/issue.store.ts
+- [[IProfileIssuesFilter]] - code - web/core/store/issue/profile/filter.store.ts
+- [[ProfileIssues]] - code - web/core/store/issue/profile/issue.store.ts
+- [[ProfileIssuesFilter]] - code - web/core/store/issue/profile/filter.store.ts
+- [[_filters_5]] - code - web/core/store/issue/profile/filter.store.ts
+- [[cursorObject_4]] - code - web/core/store/issue/profile/issue.store.ts
+- [[displayFilters_7]] - code - web/core/store/issue/profile/filter.store.ts
+- [[displayProperties_4]] - code - web/core/store/issue/profile/filter.store.ts
+- [[filter.store.ts_10]] - code - web/core/store/issue/profile/filter.store.ts
+- [[filterParams_6]] - code - web/core/store/issue/profile/filter.store.ts
+- [[issue.store.ts_11]] - code - web/core/store/issue/profile/issue.store.ts
+- [[kanbanFilters_5]] - code - web/core/store/issue/profile/filter.store.ts
+- [[paginationParams_5]] - code - web/core/store/issue/profile/filter.store.ts
+- [[params_5]] - code - web/core/store/issue/profile/issue.store.ts
+- [[updatedDisplayFilters_5]] - code - web/core/store/issue/profile/filter.store.ts
+- [[updatedDisplayProperties_5]] - code - web/core/store/issue/profile/filter.store.ts
+- [[updatedKanbanFilters_4]] - code - web/core/store/issue/profile/filter.store.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -29,14 +44,14 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 5 edges to [[_COMMUNITY_Layout System]]
-- 4 edges to [[_COMMUNITY_Community 81]]
-- 1 edge to [[_COMMUNITY_Empty State Components]]
+- 5 edges to [[_COMMUNITY_Community 33]]
+- 2 edges to [[_COMMUNITY_Community 75]]
+- 2 edges to [[_COMMUNITY_Issue Store & Filters Logic]]
+- 2 edges to [[_COMMUNITY_Community 51]]
+- 2 edges to [[_COMMUNITY_Community 49]]
+- 2 edges to [[_COMMUNITY_Service Layer]]
+- 2 edges to [[_COMMUNITY_Community 59]]
 
 ## Top bridge nodes
-
-- [[base.tsx_6]] - degree 9, connects to 2 communities
-- [[dropdown.tsx_6]] - degree 8, connects to 2 communities
-- [[labels-list.tsx]] - degree 5, connects to 1 community
-- [[IssueLabelsList()]] - degree 3, connects to 1 community
+- [[issue.store.ts_11]] - degree 14, connects to 6 communities
+- [[filter.store.ts_10]] - degree 21, connects to 5 communities

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/use-group-dragndrop.ts"
 type: "code"
-community: "Issue Project"
+community: "Filter UI & Breadcrumbs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Project
+  - community/Filter_UI__Breadcrumbs
 ---
 
 # use-group-dragndrop.ts
 
 ## Connections
-
 - [[DNDStoreType]] - `contains` [EXTRACTED]
 - [[GroupDropLocation]] - `imports` [EXTRACTED]
 - [[ISSUE_FILTER_DEFAULT_DATA]] - `imports` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[useIssuesActions()]] - `imports` [EXTRACTED]
 - [[utils.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Project
+#graphify/code #graphify/EXTRACTED #community/Filter_UI__Breadcrumbs

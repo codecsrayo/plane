@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/use-navigation-preferences.ts"
 type: "code"
-community: "Sidebar Navigation"
+community: "Community 246"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Navigation
+  - community/Community_246
 ---
 
 # use-navigation-preferences.ts
 
 ## Connections
-
 - [[DEFAULT_APP_RAIL_PREFERENCES]] - `imports` [EXTRACTED]
 - [[DEFAULT_PERSONAL_PREFERENCES]] - `imports` [EXTRACTED]
 - [[DEFAULT_PROJECT_PREFERENCES]] - `imports` [EXTRACTED]
@@ -47,4 +46,4 @@ tags:
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 - [[useWorkspaceNavigationPreferences()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation
+#graphify/code #graphify/EXTRACTED #community/Community_246

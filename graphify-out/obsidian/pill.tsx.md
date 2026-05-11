@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/pill/pill.tsx"
 type: "code"
-community: "Pill Radius"
+community: "Community 197"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Pill_Radius
+  - community/Community_197
 ---
 
 # pill.tsx
 
 ## Connections
-
 - [[EPillSize]] - `contains` [EXTRACTED]
 - [[EPillVariant]] - `contains` [EXTRACTED]
 - [[ERadius]] - `contains` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[pillSizes]] - `contains` [EXTRACTED]
 - [[pillVariants]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Pill_Radius
+#graphify/code #graphify/EXTRACTED #community/Community_197

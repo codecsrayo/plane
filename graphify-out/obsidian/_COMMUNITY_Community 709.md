@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 4
 ---
 
 # Community 709
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_59]] - code - api_rust/src/entities/profiles.rs
+- [[IWebhook]] - code - packages/types/src/webhook.ts
+- [[TWebhookEventTypes]] - code - packages/types/src/webhook.ts
+- [[webhook.ts_1]] - code - packages/types/src/webhook.ts
+- [[webhook.ts]] - code - types/src/webhook.ts
 
 ## Live Query (requires Dataview plugin)
 

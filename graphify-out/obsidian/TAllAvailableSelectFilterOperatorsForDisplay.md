@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/rich-filters/derived/index.ts"
+source_file: "packages/types/src/rich-filters/derived/index.ts"
 type: "code"
-community: "Operators Supported"
+community: "Community 230"
 location: "L41"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Operators_Supported
+  - community/Community_230
 ---
 
 # TAllAvailableSelectFilterOperatorsForDisplay
 
 ## Connections
-
 - [[index.ts_109]] - `contains` [EXTRACTED]
+- [[index.ts_570]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Operators_Supported
+#graphify/code #graphify/EXTRACTED #community/Community_230

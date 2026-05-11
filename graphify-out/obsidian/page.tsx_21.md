@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/issues/(list)/page.tsx"
 type: "code"
-community: "Project Settings"
+community: "Filter UI & Breadcrumbs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Filter_UI__Breadcrumbs
 ---
 
 # page.tsx
 
 ## Connections
-
 - [[ArchivedIssueLayoutRoot]] - `imports` [EXTRACTED]
 - [[ArchivedIssuesHeader]] - `imports` [EXTRACTED]
 - [[PageHead()]] - `imports` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Filter_UI__Breadcrumbs

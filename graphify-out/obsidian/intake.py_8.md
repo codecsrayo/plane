@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/space/serializer/intake.py"
 type: "code"
-community: "Serializer Issue"
+community: "Community 97"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Serializer_Issue
+  - community/Community_97
 ---
 
 # intake.py
 
 ## Connections
-
 - [[IntakeIssueLiteSerializer_1]] - `contains` [EXTRACTED]
 - [[IntakeIssueSerializer_1]] - `contains` [EXTRACTED]
 - [[IssueStateIntakeSerializer_1]] - `contains` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[state.py_8]] - `imports_from` [EXTRACTED]
 - [[user.py_8]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Serializer_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_97

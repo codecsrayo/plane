@@ -1,0 +1,256 @@
+---
+type: community
+cohesion: 0.02
+members: 184
+---
+
+# Project Filters & Archives
+
+**Cohesion:** 0.02 - loosely connected
+**Members:** 184 nodes
+
+## Members
+- [[ARCHIVES_TAB_LIST]] - code - web/core/components/archives/archive-tabs-list.tsx
+- [[ActiveProjectItem()]] - code - web/core/components/analytics/overview/active-project-item.tsx
+- [[AllIssueQuickActions]] - code - web/core/components/issues/issue-layouts/quick-action-dropdowns/all-issue.tsx
+- [[AppliedProjectFilters]] - code - web/core/components/issues/issue-layouts/filters/applied-filters/project.tsx
+- [[ArchiveIssueModal()]] - code - web/core/components/issues/archive-issue-modal.tsx
+- [[ArchiveRestoreProjectModal()]] - code - web/core/components/project/archive-restore-modal.tsx
+- [[ArchiveTabsList]] - code - web/core/components/archives/archive-tabs-list.tsx
+- [[ArchivedIssueQuickActions]] - code - web/core/components/issues/issue-layouts/quick-action-dropdowns/archived-issue.tsx
+- [[AutoCloseAutomation]] - code - web/core/components/automation/auto-close-automation.tsx
+- [[BulkDeleteIssuesModal]] - code - web/core/components/core/modals/bulk-delete-issues-modal.tsx
+- [[BulkDeleteIssuesModalItem]] - code - web/core/components/core/modals/bulk-delete-issues-modal-item.tsx
+- [[CompletionPercentage()]] - code - web/core/components/analytics/overview/active-project-item.tsx
+- [[ConfirmIssueDiscard()]] - code - web/core/components/issues/confirm-issue-discard.tsx
+- [[CreateIssueToastActionItems]] - code - web/core/components/issues/create-issue-toast-action-items.tsx
+- [[CreateUpdateIssueModal]] - code - web/core/components/issues/issue-modal/modal.tsx
+- [[CreateUpdateIssueModalBase]] - code - web/core/components/issues/issue-modal/base.tsx
+- [[CycleIssueQuickActions]] - code - web/core/components/issues/issue-layouts/quick-action-dropdowns/cycle-issue.tsx
+- [[CycleListProjectGroupHeader]] - code - web/core/components/cycles/list/cycle-list-project-group-header.tsx
+- [[DeclineIssueModal()]] - code - web/core/components/inbox/modals/decline-issue-modal.tsx
+- [[DeleteIssueModal]] - code - web/core/components/issues/delete-issue-modal.tsx
+- [[DeleteProjectModal]] - code - web/core/components/project/delete-project-modal.tsx
+- [[DraftIssueBlock]] - code - web/core/components/issues/workspace-draft/draft-issue-block.tsx
+- [[DraftIssueLayout]] - code - web/core/components/issues/issue-modal/draft-issue-layout.tsx
+- [[DraftIssueProperties]] - code - web/core/components/issues/workspace-draft/draft-issue-properties.tsx
+- [[DraftIssueProps]] - code - web/core/components/issues/issue-modal/draft-issue-layout.tsx
+- [[DuplicateWorkItemModal()]] - code - web/ce/components/issues/issue-layouts/quick-action-dropdowns/duplicate-modal.tsx
+- [[Exporter]] - code - web/core/components/exporter/export-modal.tsx
+- [[FilterProjects]] - code - web/core/components/issues/issue-layouts/filters/header/filters/project.tsx
+- [[FormInput]] - code - web/core/components/core/modals/bulk-delete-issues-modal.tsx
+- [[GITHUB_PR_STATES]] - code - web/core/components/integration/github/pr-state-mapping-modal.tsx
+- [[GeneralProjectSettingsControlSection]] - code - web/core/components/project/settings/control-section.tsx
+- [[GithubPRStateMapping]] - code - web/core/components/integration/github/pr-state-mapping.tsx
+- [[GithubPRStateMappingModal]] - code - web/core/components/integration/github/pr-state-mapping-modal.tsx
+- [[IdentifierText()]] - code - web/core/components/issues/issue-detail/identifier-text.tsx
+- [[IssueFormProps]] - code - web/core/components/issues/issue-modal/form.tsx
+- [[IssueFormRoot]] - code - web/core/components/issues/issue-modal/form.tsx
+- [[IssueParentSiblingItem]] - code - web/core/components/issues/issue-detail/parent/sibling-item.tsx
+- [[IssueTypeIdentifier]] - code - web/ce/components/issues/issue-details/issue-identifier.tsx
+- [[IssuesModalProps]] - code - web/core/components/issues/issue-modal/modal.tsx
+- [[JoinProjectModal()]] - code - web/core/components/project/join-project-modal.tsx
+- [[MenuItemFactoryProps]] - code - web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx
+- [[ModuleIssueQuickActions]] - code - web/core/components/issues/issue-layouts/quick-action-dropdowns/module-issue.tsx
+- [[ProjectArchivedModulesPage()]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/modules/page.tsx
+- [[ProjectCard]] - code - web/core/components/project/card.tsx
+- [[ProjectCardList]] - code - web/core/components/project/card-list.tsx
+- [[ProjectFeatureBreadcrumb]] - code - web/ce/components/breadcrumbs/project-feature.tsx
+- [[ProjectIssueQuickActions]] - code - web/core/components/issues/issue-layouts/quick-action-dropdowns/project-issue.tsx
+- [[ProjectIssuesPage()]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/issues/(list)/page.tsx
+- [[ProjectLayoutRoot]] - code - web/core/components/issues/issue-layouts/roots/project-layout-root.tsx
+- [[ProjectNavigation]] - code - web/core/components/workspace/sidebar/project-navigation.tsx
+- [[ProjectNavigationRoot()]] - code - web/ce/components/sidebar/project-navigation-root.tsx
+- [[ProjectSettingsLayout()]] - code - web/app/(all)/[workspaceSlug]/(settings)/settings/projects/layout.tsx
+- [[ProjectsLoader()]] - code - web/core/components/ui/loader/projects-loader.tsx
+- [[Props_322]] - code - web/core/components/issues/issue-layouts/filters/applied-filters/project.tsx
+- [[Props_249]] - code - web/core/components/automation/auto-close-automation.tsx
+- [[Props_247]] - code - web/core/components/exporter/export-modal.tsx
+- [[Props_312]] - code - web/core/components/issues/issue-layouts/filters/header/filters/project.tsx
+- [[Props_232]] - code - web/core/components/integration/github/pr-state-mapping-modal.tsx
+- [[Props_234]] - code - web/core/components/integration/github/pr-state-mapping.tsx
+- [[Props_257]] - code - web/core/components/issues/archive-issue-modal.tsx
+- [[Props_253]] - code - web/core/components/issues/confirm-issue-discard.tsx
+- [[Props_256]] - code - web/core/components/issues/delete-issue-modal.tsx
+- [[Props_381]] - code - web/core/components/cycles/list/cycle-list-project-group-header.tsx
+- [[Props_533]] - code - web/core/components/core/modals/bulk-delete-issues-modal-item.tsx
+- [[Props_527]] - code - web/core/components/core/modals/bulk-delete-issues-modal.tsx
+- [[Props_453]] - code - web/core/components/inbox/modals/decline-issue-modal.tsx
+- [[Props_452]] - code - web/core/components/inbox/modals/select-duplicate.tsx
+- [[Props_509]] - code - web/core/components/analytics/overview/active-project-item.tsx
+- [[Props_260]] - code - web/core/components/issues/preview-card/root.tsx
+- [[Props_202]] - code - web/core/components/project/archive-restore-modal.tsx
+- [[Props_213]] - code - web/core/components/project/card.tsx
+- [[Props_222]] - code - web/core/components/project/settings/control-section.tsx
+- [[Props_85]] - code - web/core/components/sidebar/add-button.tsx
+- [[Props_328]] - code - web/core/components/issues/workspace-draft/draft-issue-block.tsx
+- [[Props_327]] - code - web/core/components/issues/workspace-draft/quick-action.tsx
+- [[QuickAddIssueFormRoot]] - code - web/ce/components/issues/quick-add/root.tsx
+- [[SIZE_MAP]] - code - web/core/components/issues/issue-detail/identifier-text.tsx
+- [[SelectDuplicateInboxIssueModal()]] - code - web/core/components/inbox/modals/select-duplicate.tsx
+- [[SidebarAddButton()]] - code - web/core/components/sidebar/add-button.tsx
+- [[StateMappingRow]] - code - web/core/components/integration/github/pr-state-mapping-modal.tsx
+- [[TCreateIssueToastActionItems]] - code - web/core/components/issues/create-issue-toast-action-items.tsx
+- [[TDuplicateWorkItemModalProps]] - code - web/ce/components/issues/issue-layouts/quick-action-dropdowns/duplicate-modal.tsx
+- [[TIssueParentSiblingItem]] - code - web/core/components/issues/issue-detail/parent/sibling-item.tsx
+- [[TJoinProjectModalProps]] - code - web/core/components/project/join-project-modal.tsx
+- [[TNavigationItem]] - code - web/core/components/workspace/sidebar/project-navigation.tsx
+- [[TProjectCardListProps]] - code - web/core/components/project/card-list.tsx
+- [[TProjectFeatureBreadcrumbProps]] - code - web/ce/components/breadcrumbs/project-feature.tsx
+- [[TProjectItemsProps]] - code - web/core/components/workspace/sidebar/project-navigation.tsx
+- [[TProjectItemsRootProps]] - code - web/ce/components/sidebar/project-navigation-root.tsx
+- [[TQuickAddIssueFormRoot]] - code - web/ce/components/issues/quick-add/root.tsx
+- [[TWorkItemDetailQuickActionProps]] - code - web/core/components/issues/issue-layouts/quick-action-dropdowns/issue-detail.tsx
+- [[TWorkItemLevelModalsProps]] - code - web/ce/components/command-palette/modals/work-item-level.tsx
+- [[TWorkItemModalAdditionalPropertiesProps]] - code - web/ce/components/issues/issue-modal/modal-additional-properties.tsx
+- [[TWorkspaceDraftIssuesRoot]] - code - web/core/components/issues/workspace-draft/root.tsx
+- [[VARIANT_MAP]] - code - web/core/components/issues/issue-detail/identifier-text.tsx
+- [[WorkItemDetailQuickActions]] - code - web/core/components/issues/issue-layouts/quick-action-dropdowns/issue-detail.tsx
+- [[WorkItemModalAdditionalProperties()]] - code - web/ce/components/issues/issue-modal/modal-additional-properties.tsx
+- [[WorkItemPreviewCard]] - code - web/core/components/issues/preview-card/root.tsx
+- [[WorkspaceDraftEmptyState]] - code - web/core/components/issues/workspace-draft/empty-state.tsx
+- [[WorkspaceDraftIssueQuickActions]] - code - web/core/components/issues/workspace-draft/quick-action.tsx
+- [[WorkspaceDraftIssuesRoot]] - code - web/core/components/issues/workspace-draft/root.tsx
+- [[active-project-item.tsx]] - code - web/core/components/analytics/overview/active-project-item.tsx
+- [[add-button.tsx]] - code - web/core/components/sidebar/add-button.tsx
+- [[all-issue.tsx]] - code - web/core/components/issues/issue-layouts/quick-action-dropdowns/all-issue.tsx
+- [[archive-issue-modal.tsx]] - code - web/core/components/issues/archive-issue-modal.tsx
+- [[archive-restore-modal.tsx]] - code - web/core/components/project/archive-restore-modal.tsx
+- [[archive-tabs-list.tsx]] - code - web/core/components/archives/archive-tabs-list.tsx
+- [[archived-issue.tsx]] - code - web/core/components/issues/issue-layouts/quick-action-dropdowns/archived-issue.tsx
+- [[auto-close-automation.tsx]] - code - web/core/components/automation/auto-close-automation.tsx
+- [[base.tsx_8]] - code - web/core/components/issues/issue-modal/base.tsx
+- [[bulk-delete-issues-modal-item.tsx]] - code - web/core/components/core/modals/bulk-delete-issues-modal-item.tsx
+- [[bulk-delete-issues-modal.tsx]] - code - web/core/components/core/modals/bulk-delete-issues-modal.tsx
+- [[card-list.tsx]] - code - web/core/components/project/card-list.tsx
+- [[card.tsx_2]] - code - web/core/components/project/card.tsx
+- [[confirm-issue-discard.tsx]] - code - web/core/components/issues/confirm-issue-discard.tsx
+- [[control-section.tsx]] - code - web/core/components/project/settings/control-section.tsx
+- [[create-issue-toast-action-items.tsx]] - code - web/core/components/issues/create-issue-toast-action-items.tsx
+- [[cycle-issue.tsx]] - code - web/core/components/issues/issue-layouts/quick-action-dropdowns/cycle-issue.tsx
+- [[cycle-list-project-group-header.tsx]] - code - web/core/components/cycles/list/cycle-list-project-group-header.tsx
+- [[decline-issue-modal.tsx]] - code - web/core/components/inbox/modals/decline-issue-modal.tsx
+- [[defaultValues_12]] - code - web/core/components/project/delete-project-modal.tsx
+- [[delete-issue-modal.tsx]] - code - web/core/components/issues/delete-issue-modal.tsx
+- [[delete-project-modal.tsx]] - code - web/core/components/project/delete-project-modal.tsx
+- [[draft-issue-block.tsx]] - code - web/core/components/issues/workspace-draft/draft-issue-block.tsx
+- [[draft-issue-layout.tsx]] - code - web/core/components/issues/issue-modal/draft-issue-layout.tsx
+- [[duplicate-modal.tsx]] - code - web/ce/components/issues/issue-layouts/quick-action-dropdowns/duplicate-modal.tsx
+- [[empty-state.tsx_3]] - code - web/core/components/issues/workspace-draft/empty-state.tsx
+- [[export-modal.tsx]] - code - web/core/components/exporter/export-modal.tsx
+- [[fileService_3]] - code - web/core/components/issues/issue-modal/base.tsx
+- [[form.tsx_8]] - code - web/core/components/issues/issue-modal/form.tsx
+- [[getProjectFeatureNavigation()]] - code - web/ce/components/projects/navigation/helper.tsx
+- [[handleOptionalAction()]] - code - web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx
+- [[header.tsx_19]] - code - web/app/(all)/[workspaceSlug]/(projects)/drafts/header.tsx
+- [[helper.tsx_20]] - code - web/ce/components/projects/navigation/helper.tsx
+- [[helper.tsx_25]] - code - web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx
+- [[identifier-text.tsx]] - code - web/core/components/issues/issue-detail/identifier-text.tsx
+- [[index.ts_375]] - code - web/core/components/issues/issue-modal/components/index.ts
+- [[index.ts_266]] - code - web/core/hooks/store/workspace-draft/index.ts
+- [[index.ts_287]] - code - web/core/services/project/index.ts
+- [[issue-detail.tsx]] - code - web/core/components/issues/issue-layouts/quick-action-dropdowns/issue-detail.tsx
+- [[issue-identifier.tsx]] - code - web/ce/components/issues/issue-details/issue-identifier.tsx
+- [[join-project-modal.tsx]] - code - web/core/components/project/join-project-modal.tsx
+- [[layout.tsx_31]] - code - web/app/(all)/[workspaceSlug]/(settings)/settings/projects/layout.tsx
+- [[modal-additional-properties.tsx]] - code - web/ce/components/issues/issue-modal/modal-additional-properties.tsx
+- [[modal.tsx_12]] - code - web/core/components/issues/issue-modal/modal.tsx
+- [[module-issue.tsx]] - code - web/core/components/issues/issue-layouts/quick-action-dropdowns/module-issue.tsx
+- [[page.tsx_19]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/modules/page.tsx
+- [[page.tsx_24]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/issues/(list)/page.tsx
+- [[pr-state-mapping-modal.tsx]] - code - web/core/components/integration/github/pr-state-mapping-modal.tsx
+- [[pr-state-mapping.tsx]] - code - web/core/components/integration/github/pr-state-mapping.tsx
+- [[project-feature.tsx]] - code - web/ce/components/breadcrumbs/project-feature.tsx
+- [[project-issue.tsx]] - code - web/core/components/issues/issue-layouts/quick-action-dropdowns/project-issue.tsx
+- [[project-navigation-root.tsx]] - code - web/ce/components/sidebar/project-navigation-root.tsx
+- [[project-navigation.tsx]] - code - web/core/components/workspace/sidebar/project-navigation.tsx
+- [[project.tsx_5]] - code - web/core/components/issues/issue-layouts/filters/applied-filters/project.tsx
+- [[project.tsx_4]] - code - web/core/components/issues/issue-layouts/filters/header/filters/project.tsx
+- [[projectExportService_1]] - code - web/core/components/exporter/export-modal.tsx
+- [[projectService_3]] - code - web/core/components/core/modals/bulk-delete-issues-modal.tsx
+- [[projectService_2]] - code - web/core/components/inbox/modals/select-duplicate.tsx
+- [[projects-loader.tsx]] - code - web/core/components/ui/loader/projects-loader.tsx
+- [[quick-action.tsx_1]] - code - web/core/components/issues/workspace-draft/quick-action.tsx
+- [[quick-actions.tsx_1]] - code - web/core/components/workspace/sidebar/quick-actions.tsx
+- [[root.tsx_30]] - code - web/ce/components/issues/quick-add/root.tsx
+- [[root.tsx_68]] - code - web/core/components/issues/preview-card/root.tsx
+- [[root.tsx_70]] - code - web/core/components/issues/workspace-draft/root.tsx
+- [[select-duplicate.tsx]] - code - web/core/components/inbox/modals/select-duplicate.tsx
+- [[sibling-item.tsx]] - code - web/core/components/issues/issue-detail/parent/sibling-item.tsx
+- [[use-debounce.tsx]] - code - web/core/hooks/use-debounce.tsx
+- [[use-issue-modal.tsx]] - code - web/core/hooks/context/use-issue-modal.tsx
+- [[use-project.ts]] - code - web/core/hooks/store/use-project.ts
+- [[use-timezone-converter.tsx]] - code - web/core/hooks/use-timezone-converter.tsx
+- [[useAllIssueMenuItems()]] - code - web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx
+- [[useArchivedIssueMenuItems()]] - code - web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx
+- [[useCycleIssueMenuItems()]] - code - web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx
+- [[useDebounce()]] - code - web/core/hooks/use-debounce.tsx
+- [[useIssueActionHandlers()]] - code - web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx
+- [[useIssueModal()]] - code - web/core/hooks/context/use-issue-modal.tsx
+- [[useMenuItemFactory()]] - code - web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx
+- [[useModuleIssueMenuItems()]] - code - web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx
+- [[useProject()]] - code - web/core/hooks/store/use-project.ts
+- [[useProjectIssueMenuItems()]] - code - web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx
+- [[useTimeZoneConverter()]] - code - web/core/hooks/use-timezone-converter.tsx
+- [[useWorkItemDetailMenuItems()]] - code - web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx
+- [[work-item-level.tsx]] - code - web/ce/components/command-palette/modals/work-item-level.tsx
+
+## Live Query (requires Dataview plugin)
+
+```dataview
+TABLE source_file, type FROM #community/Project_Filters__Archives
+SORT file.name ASC
+```
+
+## Connections to other communities
+- 67 edges to [[_COMMUNITY_Filter UI & Breadcrumbs]]
+- 62 edges to [[_COMMUNITY_Community 24]]
+- 50 edges to [[_COMMUNITY_Work Item Detail & Layouts]]
+- 42 edges to [[_COMMUNITY_Issue Activity Types]]
+- 37 edges to [[_COMMUNITY_Module & Cycle Analytics]]
+- 28 edges to [[_COMMUNITY_Activity & Inbox Filters]]
+- 22 edges to [[_COMMUNITY_Community 45]]
+- 19 edges to [[_COMMUNITY_Active Cycle Stats]]
+- 18 edges to [[_COMMUNITY_Community 22]]
+- 14 edges to [[_COMMUNITY_Community 42]]
+- 13 edges to [[_COMMUNITY_Community 64]]
+- 12 edges to [[_COMMUNITY_Community 40]]
+- 11 edges to [[_COMMUNITY_Community 65]]
+- 11 edges to [[_COMMUNITY_Community 44]]
+- 11 edges to [[_COMMUNITY_Bulk Operations & Spreadsheet]]
+- 10 edges to [[_COMMUNITY_Community 115]]
+- 9 edges to [[_COMMUNITY_Community 341]]
+- 8 edges to [[_COMMUNITY_Community 144]]
+- 8 edges to [[_COMMUNITY_Community 105]]
+- 7 edges to [[_COMMUNITY_Community 84]]
+- 6 edges to [[_COMMUNITY_Community 36]]
+- 6 edges to [[_COMMUNITY_Community 73]]
+- 6 edges to [[_COMMUNITY_Community 220]]
+- 5 edges to [[_COMMUNITY_Issue Display Filters]]
+- 5 edges to [[_COMMUNITY_Community 20]]
+- 5 edges to [[_COMMUNITY_Community 106]]
+- 4 edges to [[_COMMUNITY_Community 234]]
+- 3 edges to [[_COMMUNITY_Community 130]]
+- 3 edges to [[_COMMUNITY_Community 376]]
+- 2 edges to [[_COMMUNITY_Community 324]]
+- 2 edges to [[_COMMUNITY_Community 265]]
+- 2 edges to [[_COMMUNITY_Community 166]]
+- 2 edges to [[_COMMUNITY_Community 85]]
+- 2 edges to [[_COMMUNITY_Community 161]]
+- 2 edges to [[_COMMUNITY_Community 247]]
+- 2 edges to [[_COMMUNITY_Community 137]]
+- 2 edges to [[_COMMUNITY_Community 23]]
+- 1 edge to [[_COMMUNITY_Community 114]]
+- 1 edge to [[_COMMUNITY_Community 388]]
+- 1 edge to [[_COMMUNITY_Community 33]]
+- 1 edge to [[_COMMUNITY_Community 35]]
+- 1 edge to [[_COMMUNITY_Service Layer]]
+- 1 edge to [[_COMMUNITY_Community 266]]
+- 1 edge to [[_COMMUNITY_Community 43]]
+
+## Top bridge nodes
+- [[use-project.ts]] - degree 168, connects to 31 communities
+- [[useProject()]] - degree 208, connects to 30 communities
+- [[index.ts_287]] - degree 12, connects to 8 communities
+- [[work-item-level.tsx]] - degree 17, connects to 7 communities
+- [[base.tsx_8]] - degree 29, connects to 6 communities

@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/rich-filters/adapter.ts"
 type: "code"
-community: "Node Condition"
+community: "Community 190"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Node_Condition
+  - community/Community_190
 ---
 
 # adapter.ts
 
 ## Connections
-
 - [[IFilterAdapter]] - `contains` [EXTRACTED]
 - [[TExternalFilter]] - `contains` [EXTRACTED]
 - [[TFilterExpression]] - `imports` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[builder.ts]] - `imports_from` [EXTRACTED]
 - [[expression.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Node_Condition
+#graphify/code #graphify/EXTRACTED #community/Community_190

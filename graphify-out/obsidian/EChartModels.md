@@ -1,18 +1,18 @@
 ---
-source_file: "constants/src/chart.ts"
+source_file: "packages/constants/src/chart.ts"
 type: "code"
-community: "Chart Axis"
+community: "Community 540"
 location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Chart_Axis
+  - community/Community_540
 ---
 
 # EChartModels
 
 ## Connections
-
 - [[chart.ts]] - `contains` [EXTRACTED]
+- [[chart.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Chart_Axis
+#graphify/code #graphify/EXTRACTED #community/Community_540

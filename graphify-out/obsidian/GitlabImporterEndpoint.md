@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/importer/gitlab.py"
 type: "code"
-community: "Endpoint Repositories"
+community: "Community 237"
 location: "L89"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_Repositories
+  - community/Community_237
 ---
 
 # GitlabImporterEndpoint
 
 ## Connections
-
 - [[.delete()_7]] - `method` [EXTRACTED]
 - [[.get()_38]] - `method` [EXTRACTED]
 - [[.post()_15]] - `method` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[Create, list, and delete GitLab imports]] - `rationale_for` [EXTRACTED]
 - [[gitlab.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_Repositories
+#graphify/code #graphify/EXTRACTED #community/Community_237

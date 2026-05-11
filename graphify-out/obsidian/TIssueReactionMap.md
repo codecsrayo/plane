@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/issues/issue_reaction.ts"
+source_file: "packages/types/src/issues/issue_reaction.ts"
 type: "code"
-community: "Issue Public"
+community: "Community 178"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Public
+  - community/Community_178
 ---
 
 # TIssueReactionMap
 
 ## Connections
-
 - [[issue_reaction.ts]] - `contains` [EXTRACTED]
+- [[issue_reaction.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Public
+#graphify/code #graphify/EXTRACTED #community/Community_178

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/labels/project-setting-label-group.tsx"
 type: "code"
-community: "Label Project"
+community: "Community 201"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Project
+  - community/Community_201
 ---
 
 # project-setting-label-group.tsx
 
 ## Connections
-
 - [[CreateUpdateLabelInline]] - `imports` [EXTRACTED]
 - [[ICustomMenuItem]] - `imports` [EXTRACTED]
 - [[LabelDndHOC]] - `imports` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[label-item-block.tsx]] - `imports_from` [EXTRACTED]
 - [[project-setting-label-item.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Project
+#graphify/code #graphify/EXTRACTED #community/Community_201

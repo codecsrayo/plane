@@ -1,19 +1,18 @@
 ---
 source_file: "i18n/src/types/language.ts"
 type: "code"
-community: "Language Option"
+community: "Community 660"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Language_Option
+  - community/Community_660
 ---
 
 # language.ts
 
 ## Connections
-
 - [[ILanguageOption]] - `contains` [EXTRACTED]
 - [[TLanguage]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Language_Option
+#graphify/code #graphify/EXTRACTED #community/Community_660

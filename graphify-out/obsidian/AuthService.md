@@ -1,18 +1,17 @@
 ---
-source_file: "services/src/auth/auth.service.ts"
+source_file: "packages/services/src/auth/auth.service.ts"
 type: "code"
-community: "Auth Authservice"
+community: "Community 464"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Authservice
+  - community/Community_464
 ---
 
 # AuthService
 
 ## Connections
-
 - [[.constructor()_1]] - `method` [EXTRACTED]
 - [[.emailCheck()]] - `method` [EXTRACTED]
 - [[.generateUniqueCode()]] - `method` [EXTRACTED]
@@ -21,5 +20,6 @@ tags:
 - [[.setPassword()]] - `method` [EXTRACTED]
 - [[.signOut()]] - `method` [EXTRACTED]
 - [[auth.service.ts]] - `contains` [EXTRACTED]
+- [[auth.service.ts_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Authservice
+#graphify/code #graphify/EXTRACTED #community/Community_464

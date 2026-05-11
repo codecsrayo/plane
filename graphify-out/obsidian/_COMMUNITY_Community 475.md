@@ -1,19 +1,25 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 0.27
+members: 10
 ---
 
 # Community 475
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 0.27 - loosely connected
+**Members:** 10 nodes
 
 ## Members
-
-- [[AppliedStateGroupFilters]] - code - web/core/components/issues/issue-layouts/filters/applied-filters/state-group.tsx
-- [[Props_244]] - code - web/core/components/issues/issue-layouts/filters/applied-filters/state-group.tsx
-- [[state-group.tsx_1]] - code - web/core/components/issues/issue-layouts/filters/applied-filters/state-group.tsx
+- [[CommentCardDisplay]] - code - web/core/components/comments/card/display.tsx
+- [[CommentCardEditForm]] - code - web/core/components/comments/card/edit-form.tsx
+- [[CommentReactions]] - code - web/core/components/comments/comment-reaction.tsx
+- [[Props_496]] - code - web/core/components/comments/card/edit-form.tsx
+- [[TCommentCardDisplayProps]] - code - web/core/components/comments/card/display.tsx
+- [[TProps_15]] - code - web/core/components/comments/comment-reaction.tsx
+- [[comment-reaction.tsx]] - code - web/core/components/comments/comment-reaction.tsx
+- [[display.tsx]] - code - web/core/components/comments/card/display.tsx
+- [[edit-form.tsx]] - code - web/core/components/comments/card/edit-form.tsx
+- [[index.ts_320]] - code - web/core/components/editor/lite-text/index.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -21,3 +27,12 @@ members: 3
 TABLE source_file, type FROM #community/Community_475
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 2 edges to [[_COMMUNITY_Issue Display Filters]]
+- 1 edge to [[_COMMUNITY_Community 390]]
+- 1 edge to [[_COMMUNITY_Community 409]]
+
+## Top bridge nodes
+- [[index.ts_320]] - degree 4, connects to 2 communities
+- [[display.tsx]] - degree 9, connects to 1 community

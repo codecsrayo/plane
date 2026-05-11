@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/filters/header/layout-selection.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Work Item Detail & Layouts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Work_Item_Detail__Layouts
 ---
 
 # layout-selection.tsx
 
 ## Connections
-
 - [[IssueLayoutIcon()]] - `imports` [EXTRACTED]
 - [[LayoutSelection()]] - `contains` [EXTRACTED]
 - [[Props_298]] - `contains` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[use-platform-os.tsx_1]] - `imports_from` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Work_Item_Detail__Layouts

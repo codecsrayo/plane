@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/views/(detail)/[viewId]/header.tsx"
 type: "code"
-community: "Project Profile"
+community: "Filter UI & Breadcrumbs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Profile
+  - community/Filter_UI__Breadcrumbs
 ---
 
 # header.tsx
 
 ## Connections
-
 - [[BreadcrumbLink()]] - `imports` [EXTRACTED]
 - [[CommonProjectBreadcrumbs()]] - `imports` [EXTRACTED]
 - [[ProjectViewIssuesHeader]] - `contains` [EXTRACTED]
@@ -38,4 +37,4 @@ tags:
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[useProjectView()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Profile
+#graphify/code #graphify/EXTRACTED #community/Filter_UI__Breadcrumbs

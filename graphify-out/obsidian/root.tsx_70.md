@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/workspace-draft/root.tsx"
 type: "code"
-community: "Project Profile"
+community: "Project Filters & Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Profile
+  - community/Project_Filters__Archives
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[DraftIssueBlock]] - `imports` [EXTRACTED]
 - [[TWorkspaceDraftIssuesRoot]] - `contains` [EXTRACTED]
 - [[WorkspaceDraftEmptyState]] - `imports` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[useWorkspaceIssueProperties()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Profile
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/issue_filters.rs"
 type: "code"
-community: "Load Apply"
+community: "Community 320"
 location: "L302"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Load_Apply
+  - community/Community_320
 ---
 
 # apply_issue_filters()
 
 ## Connections
-
 - [[apply_cycle_membership()]] - `calls` [EXTRACTED]
 - [[apply_date_filter()]] - `calls` [EXTRACTED]
 - [[apply_module_membership()]] - `calls` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[parse_uuids_csv()]] - `calls` [EXTRACTED]
 - [[split_csv()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Load_Apply
+#graphify/code #graphify/EXTRACTED #community/Community_320

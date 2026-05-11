@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/analytic/base.py"
 type: "code"
-community: "Endpoint User"
+community: "Community 27"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_User
+  - community/Community_27
 ---
 
 # base.py
 
 ## Connections
-
 - [[AnalyticViewViewset]] - `contains` [EXTRACTED]
 - [[AnalyticsEndpoint]] - `contains` [EXTRACTED]
 - [[DefaultAnalyticsEndpoint]] - `contains` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[get()_17]] - `contains` [EXTRACTED]
 - [[post()_10]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_User
+#graphify/code #graphify/EXTRACTED #community/Community_27

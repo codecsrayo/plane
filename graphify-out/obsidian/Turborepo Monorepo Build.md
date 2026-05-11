@@ -1,13 +1,13 @@
 ---
 source_file: "a_tmp/CLAUDE.md"
 type: "document"
-community: "Turborepo Monorepo"
+community: "Community 2090"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Turborepo_Monorepo
+  - community/Community_2090
 ---
 
 # Turborepo Monorepo Build
 
-#graphify/document #graphify/EXTRACTED #community/Turborepo_Monorepo
+#graphify/document #graphify/EXTRACTED #community/Community_2090

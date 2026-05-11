@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/emoji-icon-picker/icon/icon-root.tsx"
 type: "code"
-community: "Emoji Icon"
+community: "Community 81"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Emoji_Icon
+  - community/Community_81
 ---
 
 # icon-root.tsx
 
 ## Connections
-
 - [[DEFAULT_COLORS]] - `imports` [EXTRACTED]
 - [[IconRoot()]] - `contains` [EXTRACTED]
 - [[IconRootProps]] - `contains` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[lucide-root.tsx]] - `imports_from` [EXTRACTED]
 - [[material-root.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Emoji_Icon
+#graphify/code #graphify/EXTRACTED #community/Community_81

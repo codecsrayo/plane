@@ -1,4 +1,4792 @@
 {
+  "/home/nixos/plane/packages/ui/tsdown.config.ts": {
+    "mtime": 1776988145.2743125,
+    "hash": "701ed4cb66ec6fb09c1783abe91153d7"
+  },
+  "/home/nixos/plane/packages/ui/postcss.config.js": {
+    "mtime": 1776988145.2503126,
+    "hash": "2314f1e1f6f6b7f93c5d290cf58726ae"
+  },
+  "/home/nixos/plane/packages/ui/src/drag-handle.tsx": {
+    "mtime": 1776988268.650334,
+    "hash": "9e45344b3f5a88db1322880df6020cb7"
+  },
+  "/home/nixos/plane/packages/ui/src/favorite-star.tsx": {
+    "mtime": 1776988145.2583127,
+    "hash": "a2af629752ba7b0d71ba58e28b656315"
+  },
+  "/home/nixos/plane/packages/ui/src/index.ts": {
+    "mtime": 1776988145.2663126,
+    "hash": "3de6b481e035164d23b100120413e176"
+  },
+  "/home/nixos/plane/packages/ui/src/scroll-area.tsx": {
+    "mtime": 1776988145.2703125,
+    "hash": "aefecfbc1f7765ed3dc799a8fc32edcb"
+  },
+  "/home/nixos/plane/packages/ui/src/loader.tsx": {
+    "mtime": 1776988145.2663126,
+    "hash": "e2b2356299d5d2a8d458309c824d6711"
+  },
+  "/home/nixos/plane/packages/ui/src/drop-indicator.tsx": {
+    "mtime": 1776988145.2583127,
+    "hash": "98518e1b67435358b006bf71bb70b658"
+  },
+  "/home/nixos/plane/packages/ui/src/spinners/index.ts": {
+    "mtime": 1776988145.2703125,
+    "hash": "9917f08deed9e480ae9770b7df8f65e2"
+  },
+  "/home/nixos/plane/packages/ui/src/spinners/circular-bar-spinner.tsx": {
+    "mtime": 1776988145.2703125,
+    "hash": "085fcdd5a71b8c3980ab8c4e01180e14"
+  },
+  "/home/nixos/plane/packages/ui/src/spinners/circular-spinner.tsx": {
+    "mtime": 1776988145.2703125,
+    "hash": "4ebb2a2f90eff375304bc6873d78507e"
+  },
+  "/home/nixos/plane/packages/ui/src/tag/index.ts": {
+    "mtime": 1776988145.2743125,
+    "hash": "ee1a96e4ec356e98e21d88f9defea54b"
+  },
+  "/home/nixos/plane/packages/ui/src/tag/helper.tsx": {
+    "mtime": 1776988145.2743125,
+    "hash": "26143c66d9b3e079a0c13f3c48389b90"
+  },
+  "/home/nixos/plane/packages/ui/src/tag/tag.tsx": {
+    "mtime": 1776988145.2743125,
+    "hash": "144aa3b7e38ddaf0f53fb93772f90617"
+  },
+  "/home/nixos/plane/packages/ui/src/color-picker/color-picker.tsx": {
+    "mtime": 1776988268.650334,
+    "hash": "728ae27324c3260ddc6480295f1e3483"
+  },
+  "/home/nixos/plane/packages/ui/src/color-picker/index.ts": {
+    "mtime": 1776988145.2543125,
+    "hash": "f1f69d0661d41a2cf868b3ccd54b1c3c"
+  },
+  "/home/nixos/plane/packages/ui/src/hooks/use-platform-os.ts": {
+    "mtime": 1776988145.2663126,
+    "hash": "384713ec3e29e300c58f67503b0b60e3"
+  },
+  "/home/nixos/plane/packages/ui/src/hooks/use-auto-resize-textarea.ts": {
+    "mtime": 1776988145.2663126,
+    "hash": "cfb2e82a263baa9d2f9b7c943ade32ae"
+  },
+  "/home/nixos/plane/packages/ui/src/hooks/use-dropdown-key-down.tsx": {
+    "mtime": 1776988268.6543338,
+    "hash": "50778cb945edd54353142a913e79a900"
+  },
+  "/home/nixos/plane/packages/ui/src/hooks/use-dropdown-key-pressed.ts": {
+    "mtime": 1776988145.2663126,
+    "hash": "0e26197f096b9f8d0ce858f265a7fdd9"
+  },
+  "/home/nixos/plane/packages/ui/src/constants/index.ts": {
+    "mtime": 1776988145.2543125,
+    "hash": "8bf514ad492788abf3ff37f09a947ffd"
+  },
+  "/home/nixos/plane/packages/ui/src/constants/icons.ts": {
+    "mtime": 1776988145.2543125,
+    "hash": "25742c089580b572680f3fca964a0575"
+  },
+  "/home/nixos/plane/packages/ui/src/card/index.ts": {
+    "mtime": 1776988145.2543125,
+    "hash": "99d5f7a0dd5ef2a0a08c93dcbca784d3"
+  },
+  "/home/nixos/plane/packages/ui/src/card/helper.tsx": {
+    "mtime": 1776988145.2543125,
+    "hash": "8f78a675594803d123124de2e6963d4c"
+  },
+  "/home/nixos/plane/packages/ui/src/card/card.tsx": {
+    "mtime": 1776988145.2543125,
+    "hash": "2c0ca25f187e0075eb84ba27bf41725c"
+  },
+  "/home/nixos/plane/packages/ui/src/tables/table.stories.tsx": {
+    "mtime": 1776988145.2703125,
+    "hash": "5384d09312e03533366c11ea1dde602f"
+  },
+  "/home/nixos/plane/packages/ui/src/tables/table.tsx": {
+    "mtime": 1776988145.2703125,
+    "hash": "653f4e72b7ff54960311d7714cac1eda"
+  },
+  "/home/nixos/plane/packages/ui/src/tables/index.ts": {
+    "mtime": 1776988145.2703125,
+    "hash": "ef020886dc1e487b9e39989cc3780848"
+  },
+  "/home/nixos/plane/packages/ui/src/tables/types.ts": {
+    "mtime": 1776988145.2703125,
+    "hash": "798f290eb5e3c23eacb9ffdbec81c170"
+  },
+  "/home/nixos/plane/packages/ui/src/popovers/popover-menu.tsx": {
+    "mtime": 1776988268.6543338,
+    "hash": "2dde9a192e6208861196b53646e0e03a"
+  },
+  "/home/nixos/plane/packages/ui/src/popovers/popover.tsx": {
+    "mtime": 1776988145.2703125,
+    "hash": "a6a19e7336cbf6505c69a69d70dbb1a8"
+  },
+  "/home/nixos/plane/packages/ui/src/popovers/index.ts": {
+    "mtime": 1776988145.2703125,
+    "hash": "d2c9fb6ef4d417c1368b4956ce3ebb4d"
+  },
+  "/home/nixos/plane/packages/ui/src/popovers/popover.stories.tsx": {
+    "mtime": 1776988145.2703125,
+    "hash": "a2e787afd7db651140adfe1afdfa5771"
+  },
+  "/home/nixos/plane/packages/ui/src/popovers/popover-menu.stories.tsx": {
+    "mtime": 1776988145.2703125,
+    "hash": "c5761b010f51d49522debe0bd4c3b9cc"
+  },
+  "/home/nixos/plane/packages/ui/src/popovers/types.ts": {
+    "mtime": 1776988145.2703125,
+    "hash": "261a64f8643eab2f31dfd08e3b2099f6"
+  },
+  "/home/nixos/plane/packages/ui/src/badge/badge.tsx": {
+    "mtime": 1776988145.2503126,
+    "hash": "407809a9857cd24b9153531bab88c2bc"
+  },
+  "/home/nixos/plane/packages/ui/src/badge/index.ts": {
+    "mtime": 1776988145.2503126,
+    "hash": "4ec0d66e5ce3745b28a1475a911c92ba"
+  },
+  "/home/nixos/plane/packages/ui/src/badge/helper.tsx": {
+    "mtime": 1776988268.650334,
+    "hash": "c6262285c16674253dc9c0fd7d3cef01"
+  },
+  "/home/nixos/plane/packages/ui/src/dropdowns/custom-search-select.tsx": {
+    "mtime": 1776988268.6543338,
+    "hash": "c7989406a78e785b8050b95b6e311486"
+  },
+  "/home/nixos/plane/packages/ui/src/dropdowns/index.ts": {
+    "mtime": 1776988145.2583127,
+    "hash": "b4ed69547c676f2e76c1871b3ca110b8"
+  },
+  "/home/nixos/plane/packages/ui/src/dropdowns/custom-menu.tsx": {
+    "mtime": 1776988268.6543338,
+    "hash": "40f9d855fec661f41a1777ac89bee82c"
+  },
+  "/home/nixos/plane/packages/ui/src/dropdowns/helper.tsx": {
+    "mtime": 1776988145.2583127,
+    "hash": "3965de694cf6f9ba82c2798bad9be224"
+  },
+  "/home/nixos/plane/packages/ui/src/dropdowns/custom-select.tsx": {
+    "mtime": 1776988268.6543338,
+    "hash": "53251ba7c13ac1c0010234f43d3cb041"
+  },
+  "/home/nixos/plane/packages/ui/src/dropdowns/combo-box.tsx": {
+    "mtime": 1776988268.6543338,
+    "hash": "d5a84fbc2254630f5d042ea2ac96731e"
+  },
+  "/home/nixos/plane/packages/ui/src/dropdowns/context-menu/item.tsx": {
+    "mtime": 1776988268.6543338,
+    "hash": "f8499912ad194c0f0d1b9caf5299d37e"
+  },
+  "/home/nixos/plane/packages/ui/src/dropdowns/context-menu/index.ts": {
+    "mtime": 1776988145.2583127,
+    "hash": "3411034508d311b614981c08807981b7"
+  },
+  "/home/nixos/plane/packages/ui/src/dropdowns/context-menu/root.tsx": {
+    "mtime": 1776988268.6543338,
+    "hash": "f74b481d6c89facea08813922e8a9544"
+  },
+  "/home/nixos/plane/packages/ui/src/avatar/avatar-group.tsx": {
+    "mtime": 1776988268.650334,
+    "hash": "ceec8762cead8b26c32e61cad48147a7"
+  },
+  "/home/nixos/plane/packages/ui/src/avatar/index.ts": {
+    "mtime": 1776988145.2503126,
+    "hash": "e2033c746f165778e1b07aa855cfcd68"
+  },
+  "/home/nixos/plane/packages/ui/src/avatar/avatar.stories.tsx": {
+    "mtime": 1776988145.2503126,
+    "hash": "1ef72586a57fd1899de256be9aaf68c6"
+  },
+  "/home/nixos/plane/packages/ui/src/avatar/helper.tsx": {
+    "mtime": 1776988145.2503126,
+    "hash": "69d1d6e0475e911d9c98b4bcc89f22da"
+  },
+  "/home/nixos/plane/packages/ui/src/avatar/avatar.tsx": {
+    "mtime": 1776988145.2503126,
+    "hash": "5314a264ecc0cf0a9f97e0a93fcdcf0b"
+  },
+  "/home/nixos/plane/packages/ui/src/typography/index.tsx": {
+    "mtime": 1776988145.2743125,
+    "hash": "2eb095244fc15de640587efbfb2364df"
+  },
+  "/home/nixos/plane/packages/ui/src/typography/sub-heading.tsx": {
+    "mtime": 1776988145.2743125,
+    "hash": "bdd7a774568ef59c90ae276d29444eea"
+  },
+  "/home/nixos/plane/packages/ui/src/header/header.tsx": {
+    "mtime": 1776988145.2663126,
+    "hash": "8fd057bbed2bb5d6531aec9ecc2d34fb"
+  },
+  "/home/nixos/plane/packages/ui/src/header/index.ts": {
+    "mtime": 1776988145.2663126,
+    "hash": "89ca41a7d004550dd7846d9cc91b8937"
+  },
+  "/home/nixos/plane/packages/ui/src/header/helper.tsx": {
+    "mtime": 1776988145.2663126,
+    "hash": "0b35ce574c3f8aaa2e81ce58ec186c8c"
+  },
+  "/home/nixos/plane/packages/ui/src/button/index.ts": {
+    "mtime": 1776988145.2543125,
+    "hash": "7268344198df6e89a39b81fcf98a08bc"
+  },
+  "/home/nixos/plane/packages/ui/src/button/toggle-switch.tsx": {
+    "mtime": 1776988145.2543125,
+    "hash": "3a1d0b0cbfddbc343c8f5bdbf8e8d4e4"
+  },
+  "/home/nixos/plane/packages/ui/src/button/helper.tsx": {
+    "mtime": 1776988145.2543125,
+    "hash": "f6fe6f055a9e660416d1c37bf439d82f"
+  },
+  "/home/nixos/plane/packages/ui/src/button/button.tsx": {
+    "mtime": 1776988145.2543125,
+    "hash": "c0106489a4a1246c15e0ad078c57cb39"
+  },
+  "/home/nixos/plane/packages/ui/src/utils/classname.tsx": {
+    "mtime": 1776988145.2743125,
+    "hash": "bd7751cc25b6f156d1b1e49d91f84c9a"
+  },
+  "/home/nixos/plane/packages/ui/src/utils/index.ts": {
+    "mtime": 1776988145.2743125,
+    "hash": "f505607f6d2fbb126fbe52e383b5899a"
+  },
+  "/home/nixos/plane/packages/ui/src/utils/icons.ts": {
+    "mtime": 1776988145.2743125,
+    "hash": "57d4455ba0631706006bb2f3a84d8891"
+  },
+  "/home/nixos/plane/packages/ui/src/breadcrumbs/breadcrumbs.stories.tsx": {
+    "mtime": 1776988145.2503126,
+    "hash": "3d36f318ab1b3674baaa587600866266"
+  },
+  "/home/nixos/plane/packages/ui/src/breadcrumbs/index.ts": {
+    "mtime": 1776988145.2543125,
+    "hash": "d479890071600292b4472577203d37c2"
+  },
+  "/home/nixos/plane/packages/ui/src/breadcrumbs/navigation-dropdown.tsx": {
+    "mtime": 1776988145.2543125,
+    "hash": "c5f6d9ad60306ab20829b59b91a2cad1"
+  },
+  "/home/nixos/plane/packages/ui/src/breadcrumbs/navigation-search-dropdown.tsx": {
+    "mtime": 1776988268.650334,
+    "hash": "5279cf5716886c0606b26fd6336676a6"
+  },
+  "/home/nixos/plane/packages/ui/src/breadcrumbs/breadcrumbs.tsx": {
+    "mtime": 1776988268.650334,
+    "hash": "1843eddc59e729dc10d018133c789cf2"
+  },
+  "/home/nixos/plane/packages/ui/src/row/index.ts": {
+    "mtime": 1776988145.2703125,
+    "hash": "5463b40adbb90bb3f4a25f5c45509230"
+  },
+  "/home/nixos/plane/packages/ui/src/row/row.tsx": {
+    "mtime": 1776988145.2703125,
+    "hash": "a38c3eac73a6854f53f5ba24556d1f6f"
+  },
+  "/home/nixos/plane/packages/ui/src/row/helper.tsx": {
+    "mtime": 1776988145.2703125,
+    "hash": "c63669586929a17bed20be04c6f1deb4"
+  },
+  "/home/nixos/plane/packages/ui/src/sortable/index.ts": {
+    "mtime": 1776988145.2703125,
+    "hash": "c6ab4d93fbe6325a616de1f2c93cfbfa"
+  },
+  "/home/nixos/plane/packages/ui/src/sortable/sortable.tsx": {
+    "mtime": 1776988268.6543338,
+    "hash": "2b0db89dcaa46d9228590aeb3b114030"
+  },
+  "/home/nixos/plane/packages/ui/src/sortable/sortable.stories.tsx": {
+    "mtime": 1776988145.2703125,
+    "hash": "25fa5932590535f1819c273690e9ac6e"
+  },
+  "/home/nixos/plane/packages/ui/src/sortable/draggable.tsx": {
+    "mtime": 1776988145.2703125,
+    "hash": "dce4764862685b5be97c6fc7595436d1"
+  },
+  "/home/nixos/plane/packages/ui/src/progress/radial-progress.tsx": {
+    "mtime": 1776988268.6543338,
+    "hash": "30316252fa2f659354e47c6b1b89bcf8"
+  },
+  "/home/nixos/plane/packages/ui/src/progress/index.ts": {
+    "mtime": 1776988145.2703125,
+    "hash": "a46a90693a1ebb3c854af7c4b780b7a2"
+  },
+  "/home/nixos/plane/packages/ui/src/progress/progress-bar.tsx": {
+    "mtime": 1776988268.6543338,
+    "hash": "e59c6f46aab96b8385fa5e7205e189f5"
+  },
+  "/home/nixos/plane/packages/ui/src/progress/linear-progress-indicator.tsx": {
+    "mtime": 1776988145.2703125,
+    "hash": "914250e9eebb41c855cd2caa6c826ab1"
+  },
+  "/home/nixos/plane/packages/ui/src/progress/circular-progress-indicator.tsx": {
+    "mtime": 1776988145.2703125,
+    "hash": "072e3e45e668070a6b79925ea6b2937f"
+  },
+  "/home/nixos/plane/packages/ui/src/oauth/index.ts": {
+    "mtime": 1776988145.2663126,
+    "hash": "1e3024958e9759b9333b2d148fb4f791"
+  },
+  "/home/nixos/plane/packages/ui/src/oauth/oauth-options.tsx": {
+    "mtime": 1776988268.6543338,
+    "hash": "5c78fc69c8172b5e0ae17fdd4dfca9d3"
+  },
+  "/home/nixos/plane/packages/ui/src/oauth/oauth-button.tsx": {
+    "mtime": 1776988145.2663126,
+    "hash": "9b163f296b68576933e37edcda109618"
+  },
+  "/home/nixos/plane/packages/ui/src/tooltip/index.ts": {
+    "mtime": 1776988145.2743125,
+    "hash": "6cef3fe4af62559ccd43733891231a8b"
+  },
+  "/home/nixos/plane/packages/ui/src/tooltip/tooltip.tsx": {
+    "mtime": 1776988268.6543338,
+    "hash": "a820a1fe82ce25b660c8c69dd13613b0"
+  },
+  "/home/nixos/plane/packages/ui/src/control-link/index.ts": {
+    "mtime": 1776988145.2583127,
+    "hash": "d299c34b67a376bbf249968cd2a9027f"
+  },
+  "/home/nixos/plane/packages/ui/src/control-link/control-link.tsx": {
+    "mtime": 1776988268.650334,
+    "hash": "4d162d7b717f10015f0d8aa09507dd89"
+  },
+  "/home/nixos/plane/packages/ui/src/content-wrapper/content-wrapper.tsx": {
+    "mtime": 1776988268.650334,
+    "hash": "1970e817193938acb5301e7308499997"
+  },
+  "/home/nixos/plane/packages/ui/src/content-wrapper/index.ts": {
+    "mtime": 1776988145.2543125,
+    "hash": "b20464cfaa86ecc151d8488fb1f96cb6"
+  },
+  "/home/nixos/plane/packages/ui/src/link/index.ts": {
+    "mtime": 1776988145.2663126,
+    "hash": "19991fb1cfc984f479a6c0f250082aad"
+  },
+  "/home/nixos/plane/packages/ui/src/link/block.tsx": {
+    "mtime": 1776988268.6543338,
+    "hash": "6fd797b43ad14daf67e7fa031c0a55d5"
+  },
+  "/home/nixos/plane/packages/ui/src/form-fields/textarea.tsx": {
+    "mtime": 1776988145.2623127,
+    "hash": "a9af697d223ef15bd40f4ebcfecaea6a"
+  },
+  "/home/nixos/plane/packages/ui/src/form-fields/input-color-picker.tsx": {
+    "mtime": 1776988145.2623127,
+    "hash": "8b7929d64d8b5583a8ebbb034f9f2790"
+  },
+  "/home/nixos/plane/packages/ui/src/form-fields/input.tsx": {
+    "mtime": 1776988145.2623127,
+    "hash": "b68276ffc75daa30202135fc18a9b26a"
+  },
+  "/home/nixos/plane/packages/ui/src/form-fields/index.ts": {
+    "mtime": 1776988145.2623127,
+    "hash": "d5c77f4896f9645c5646a69a3accd9fc"
+  },
+  "/home/nixos/plane/packages/ui/src/form-fields/root.tsx": {
+    "mtime": 1776988145.2623127,
+    "hash": "f66f793dbe7520ddc73d801f88cca915"
+  },
+  "/home/nixos/plane/packages/ui/src/form-fields/checkbox.tsx": {
+    "mtime": 1776988145.2623127,
+    "hash": "7a7b37ff639effe9147508587e45ac5b"
+  },
+  "/home/nixos/plane/packages/ui/src/form-fields/password/index.ts": {
+    "mtime": 1776988145.2623127,
+    "hash": "a359ebebfdafbb043b3eee8500aa0e5b"
+  },
+  "/home/nixos/plane/packages/ui/src/form-fields/password/indicator.tsx": {
+    "mtime": 1776988268.6543338,
+    "hash": "7ab1846becef38fc41cfeffac8fffee1"
+  },
+  "/home/nixos/plane/packages/ui/src/form-fields/password/helper.tsx": {
+    "mtime": 1776988145.2623127,
+    "hash": "f5a8ea8b4d62ffa380c559268a39afeb"
+  },
+  "/home/nixos/plane/packages/ui/src/auth-form/auth-form.tsx": {
+    "mtime": 1776988145.2503126,
+    "hash": "a8f4d77fd06dacfa3993f3790f378f67"
+  },
+  "/home/nixos/plane/packages/ui/src/auth-form/index.ts": {
+    "mtime": 1776988145.2503126,
+    "hash": "c7b5cb9a8cd450f5631b1c0e8f566394"
+  },
+  "/home/nixos/plane/packages/ui/src/auth-form/auth-input.tsx": {
+    "mtime": 1776988145.2503126,
+    "hash": "737b6a670bc37ddde6c60603c19ad4e6"
+  },
+  "/home/nixos/plane/packages/ui/src/tabs/tab-list.tsx": {
+    "mtime": 1776988145.2743125,
+    "hash": "1eae92a277e356e876c8bcbe15096abe"
+  },
+  "/home/nixos/plane/packages/ui/src/tabs/index.ts": {
+    "mtime": 1776988145.2743125,
+    "hash": "cc77859e4becc6a4fd9c33aa380e481f"
+  },
+  "/home/nixos/plane/packages/ui/src/tabs/tabs.tsx": {
+    "mtime": 1776988145.2743125,
+    "hash": "409d92cda2ef2c6503637b447676dba4"
+  },
+  "/home/nixos/plane/packages/ui/src/dropdown/dropdown.d.ts": {
+    "mtime": 1776988145.2583127,
+    "hash": "0cfe5539cf8e5690aad259ad6d7b00bd"
+  },
+  "/home/nixos/plane/packages/ui/src/dropdown/index.ts": {
+    "mtime": 1776988145.2583127,
+    "hash": "6f3bee2322d4ab38c53cac18820de751"
+  },
+  "/home/nixos/plane/packages/ui/src/dropdown/single-select.tsx": {
+    "mtime": 1776988268.650334,
+    "hash": "f94033d61b4fab0a7f7552f98097d19b"
+  },
+  "/home/nixos/plane/packages/ui/src/dropdown/multi-select.tsx": {
+    "mtime": 1776988268.650334,
+    "hash": "6d8552c25019f1b9e5d62cce807329eb"
+  },
+  "/home/nixos/plane/packages/ui/src/dropdown/common/index.ts": {
+    "mtime": 1776988145.2583127,
+    "hash": "c033b2a5944380929315d47695b113f1"
+  },
+  "/home/nixos/plane/packages/ui/src/dropdown/common/input-search.tsx": {
+    "mtime": 1776988145.2583127,
+    "hash": "41d7b32411e127ba5c420d592c413308"
+  },
+  "/home/nixos/plane/packages/ui/src/dropdown/common/loader.tsx": {
+    "mtime": 1776988145.2583127,
+    "hash": "09a8f0a39963d6b8e4247c120389744c"
+  },
+  "/home/nixos/plane/packages/ui/src/dropdown/common/options.tsx": {
+    "mtime": 1776988268.650334,
+    "hash": "0348706b0094dec0f61db9aab87ca160"
+  },
+  "/home/nixos/plane/packages/ui/src/dropdown/common/button.tsx": {
+    "mtime": 1776988268.650334,
+    "hash": "7a67e3e3adca0a877303decbe06fe6af"
+  },
+  "/home/nixos/plane/packages/ui/src/collapsible/index.ts": {
+    "mtime": 1776988145.2543125,
+    "hash": "62c3dbedf8a8f050c73461886058879c"
+  },
+  "/home/nixos/plane/packages/ui/src/collapsible/collapsible-button.tsx": {
+    "mtime": 1776988268.650334,
+    "hash": "fcda9e459fd64e12217343cce6978f65"
+  },
+  "/home/nixos/plane/packages/ui/src/collapsible/collapsible.tsx": {
+    "mtime": 1776988268.650334,
+    "hash": "05fd379d00d4cb12459421bf1cdc7a7b"
+  },
+  "/home/nixos/plane/packages/ui/src/modals/constants.ts": {
+    "mtime": 1776988145.2663126,
+    "hash": "56efbbe1e70d4817bf46f47675436954"
+  },
+  "/home/nixos/plane/packages/ui/src/modals/index.ts": {
+    "mtime": 1776988145.2663126,
+    "hash": "d264872e4ee1eb90cfe4c44fd8983b37"
+  },
+  "/home/nixos/plane/packages/ui/src/modals/modal-core.tsx": {
+    "mtime": 1776988145.2663126,
+    "hash": "35d2666e7acc7583789c00417618ec46"
+  },
+  "/home/nixos/plane/packages/ui/src/modals/alert-modal.tsx": {
+    "mtime": 1776988268.6543338,
+    "hash": "5217976fa163e40b532043f33bc5b504"
+  },
+  "/home/nixos/plane/packages/hooks/tsdown.config.ts": {
+    "mtime": 1776988145.074313,
+    "hash": "701ed4cb66ec6fb09c1783abe91153d7"
+  },
+  "/home/nixos/plane/packages/hooks/src/use-platform-os.tsx": {
+    "mtime": 1776988145.074313,
+    "hash": "e84e073800b1d3b30c8700e83966db09"
+  },
+  "/home/nixos/plane/packages/hooks/src/use-local-storage.tsx": {
+    "mtime": 1776988268.626334,
+    "hash": "6a7a9e3ac2ffd3f2333db7ba8a5c009a"
+  },
+  "/home/nixos/plane/packages/hooks/src/use-outside-click-detector.tsx": {
+    "mtime": 1776988145.074313,
+    "hash": "0226840a8b66f39af9173462d9a0154a"
+  },
+  "/home/nixos/plane/packages/hooks/src/index.ts": {
+    "mtime": 1776988145.074313,
+    "hash": "7b786ea23bd4cc8794138097ed0fd1c6"
+  },
+  "/home/nixos/plane/packages/hooks/src/use-hash-scroll.ts": {
+    "mtime": 1776988268.6223338,
+    "hash": "5ba3531f06592fdb55b0af2f3c6e01ec"
+  },
+  "/home/nixos/plane/packages/editor/tsdown.config.ts": {
+    "mtime": 1776988145.074313,
+    "hash": "e0c02f2e4715cd34543a7d73e5e1a5be"
+  },
+  "/home/nixos/plane/packages/editor/postcss.config.js": {
+    "mtime": 1776988145.018313,
+    "hash": "2314f1e1f6f6b7f93c5d290cf58726ae"
+  },
+  "/home/nixos/plane/packages/editor/src/index.ts": {
+    "mtime": 1776988145.070313,
+    "hash": "ad31b690fc454f13aaa20469fe99f88f"
+  },
+  "/home/nixos/plane/packages/editor/src/lib.ts": {
+    "mtime": 1776988145.070313,
+    "hash": "1695ec1bc7ed91c83ab87c0bfea81d6a"
+  },
+  "/home/nixos/plane/packages/editor/src/ee/types/index.ts": {
+    "mtime": 1776988145.070313,
+    "hash": "1272d5d6d5d8276d6e6e9cd08c818518"
+  },
+  "/home/nixos/plane/packages/editor/src/ee/extensions/index.ts": {
+    "mtime": 1776988145.070313,
+    "hash": "67d6665c7d09faa130dd4604293a4bce"
+  },
+  "/home/nixos/plane/packages/editor/src/ce/constants/utility.ts": {
+    "mtime": 1776988145.0223129,
+    "hash": "805318cfb82309038b6aaa039c413e71"
+  },
+  "/home/nixos/plane/packages/editor/src/ce/constants/extensions.ts": {
+    "mtime": 1776988145.0223129,
+    "hash": "47baad0fd905e4fe6a75bdf5cc408f95"
+  },
+  "/home/nixos/plane/packages/editor/src/ce/constants/assets.ts": {
+    "mtime": 1776988145.0223129,
+    "hash": "da3ce1e37f59ef84b371ceb8c0026875"
+  },
+  "/home/nixos/plane/packages/editor/src/ce/components/document-editor-side-effects.ts": {
+    "mtime": 1776988145.0223129,
+    "hash": "9f97f4a9d9d147b9ad0fc8a5cfcac883"
+  },
+  "/home/nixos/plane/packages/editor/src/ce/components/link-container.tsx": {
+    "mtime": 1776988145.0223129,
+    "hash": "eedd5a101419dd9169482bdd58db54f2"
+  },
+  "/home/nixos/plane/packages/editor/src/ce/types/storage.ts": {
+    "mtime": 1776988145.0223129,
+    "hash": "25600a6d0189934abdb06b7ca73b43d2"
+  },
+  "/home/nixos/plane/packages/editor/src/ce/types/config.ts": {
+    "mtime": 1776988145.0223129,
+    "hash": "fd6558e8e1c6cabdcfafef6145f00134"
+  },
+  "/home/nixos/plane/packages/editor/src/ce/types/issue-embed.ts": {
+    "mtime": 1776988145.0223129,
+    "hash": "5992765272b5129369afd4088f097e45"
+  },
+  "/home/nixos/plane/packages/editor/src/ce/types/editor-extended.ts": {
+    "mtime": 1776988145.0223129,
+    "hash": "8f4b7f6bdda7624a7a2f338fb559148d"
+  },
+  "/home/nixos/plane/packages/editor/src/ce/types/index.ts": {
+    "mtime": 1776988145.0223129,
+    "hash": "902005eafedf5cefd8ea134b34fa8823"
+  },
+  "/home/nixos/plane/packages/editor/src/ce/types/asset.ts": {
+    "mtime": 1776988145.0223129,
+    "hash": "95c22079679416b034f7d3674d3686aa"
+  },
+  "/home/nixos/plane/packages/editor/src/ce/types/utils.ts": {
+    "mtime": 1776988145.0223129,
+    "hash": "45fcc75e75ef664201859dc7d8498e85"
+  },
+  "/home/nixos/plane/packages/editor/src/ce/extensions/slash-commands.tsx": {
+    "mtime": 1776988268.6143339,
+    "hash": "913b5ab2ec21db4905852d9db2ca4936"
+  },
+  "/home/nixos/plane/packages/editor/src/ce/extensions/index.ts": {
+    "mtime": 1776988145.0223129,
+    "hash": "f11c60af59f77146276bf28948710439"
+  },
+  "/home/nixos/plane/packages/editor/src/ce/extensions/document-extensions.tsx": {
+    "mtime": 1776988145.0223129,
+    "hash": "67d7b8a9bfefc604582093acb4c547f8"
+  },
+  "/home/nixos/plane/packages/editor/src/ce/extensions/rich-text-extensions.tsx": {
+    "mtime": 1776988145.0223129,
+    "hash": "ee40b2733799c0f3556ad9eb7d155aac"
+  },
+  "/home/nixos/plane/packages/editor/src/ce/extensions/core/index.ts": {
+    "mtime": 1776988145.0223129,
+    "hash": "1bca23051f6e89580535b9d9521f29e6"
+  },
+  "/home/nixos/plane/packages/editor/src/ce/extensions/core/extensions.ts": {
+    "mtime": 1776988268.6143339,
+    "hash": "aeb3c2b2a364ae26945a5a272d1348a1"
+  },
+  "/home/nixos/plane/packages/editor/src/ce/extensions/core/without-props.ts": {
+    "mtime": 1776988145.0223129,
+    "hash": "c20bb3d22ca927bbf702a39a1af981bd"
+  },
+  "/home/nixos/plane/packages/editor/src/ce/helpers/parser.ts": {
+    "mtime": 1776988145.0223129,
+    "hash": "fc52fe06a54dea59d1ac3e2a1289d728"
+  },
+  "/home/nixos/plane/packages/editor/src/ce/helpers/asset-duplication.ts": {
+    "mtime": 1776988145.0223129,
+    "hash": "c6c2965b6279776ee4792653828a27dd"
+  },
+  "/home/nixos/plane/packages/editor/src/core/props.ts": {
+    "mtime": 1776988145.0663128,
+    "hash": "8bea05954bfb343e66f9b7006d91f652"
+  },
+  "/home/nixos/plane/packages/editor/src/core/hooks/use-editor-navigation.ts": {
+    "mtime": 1776988145.0623128,
+    "hash": "6948034fd2ab88749999cf80aee5fb8d"
+  },
+  "/home/nixos/plane/packages/editor/src/core/hooks/use-file-upload.ts": {
+    "mtime": 1776988268.6223338,
+    "hash": "ab0c8a0505f5c6e150b4130879200050"
+  },
+  "/home/nixos/plane/packages/editor/src/core/hooks/use-collaborative-editor.ts": {
+    "mtime": 1776988268.6223338,
+    "hash": "e43a0d320f7da61ae5a3f5e75a36e81d"
+  },
+  "/home/nixos/plane/packages/editor/src/core/hooks/use-editor.ts": {
+    "mtime": 1776988268.6223338,
+    "hash": "00a355ee15c1e351c4bbdc36e67d88b6"
+  },
+  "/home/nixos/plane/packages/editor/src/core/hooks/use-title-editor.ts": {
+    "mtime": 1776988268.6223338,
+    "hash": "c5f6ab49f01966389e5770b7ec108b29"
+  },
+  "/home/nixos/plane/packages/editor/src/core/hooks/use-yjs-setup.ts": {
+    "mtime": 1776988145.0663128,
+    "hash": "4afb6b683e06402349c29bd89d0371db"
+  },
+  "/home/nixos/plane/packages/editor/src/core/constants/config.ts": {
+    "mtime": 1776988145.034313,
+    "hash": "ea2fe1cf89e28a94ebbde6581872939d"
+  },
+  "/home/nixos/plane/packages/editor/src/core/constants/extension.ts": {
+    "mtime": 1776988145.034313,
+    "hash": "0a7fde8f57a782ec46747a06a8dc06db"
+  },
+  "/home/nixos/plane/packages/editor/src/core/constants/document-collaborative-events.ts": {
+    "mtime": 1776988145.034313,
+    "hash": "8876656448ca655083a9f321f2b493ad"
+  },
+  "/home/nixos/plane/packages/editor/src/core/constants/common.ts": {
+    "mtime": 1776988145.034313,
+    "hash": "e8c4e8ad6e92c7c03044db24b7ee01d9"
+  },
+  "/home/nixos/plane/packages/editor/src/core/constants/meta.ts": {
+    "mtime": 1776988145.034313,
+    "hash": "1c3b92d180e37111c083da15160ef9c4"
+  },
+  "/home/nixos/plane/packages/editor/src/core/components/menus/ai-menu.tsx": {
+    "mtime": 1776988145.030313,
+    "hash": "65efff1f96cd20b02ac9241969cbe395"
+  },
+  "/home/nixos/plane/packages/editor/src/core/components/menus/index.ts": {
+    "mtime": 1776988145.034313,
+    "hash": "8bdd1dd2f23bc61f1a016a119c73b121"
+  },
+  "/home/nixos/plane/packages/editor/src/core/components/menus/block-menu.tsx": {
+    "mtime": 1776988145.030313,
+    "hash": "6bb34762b2d900802ad55a4e7abcb924"
+  },
+  "/home/nixos/plane/packages/editor/src/core/components/menus/menu-items.ts": {
+    "mtime": 1776988145.034313,
+    "hash": "104fec5da83c2c9b5def51e6c3cb51ea"
+  },
+  "/home/nixos/plane/packages/editor/src/core/components/menus/block-menu-options.tsx": {
+    "mtime": 1776988145.030313,
+    "hash": "75fcfa9236d4ddfc3fc92bda13dde543"
+  },
+  "/home/nixos/plane/packages/editor/src/core/components/menus/floating-menu/use-floating-menu.ts": {
+    "mtime": 1776988145.034313,
+    "hash": "cd29eac2392753cb3c4bbc773cf2518d"
+  },
+  "/home/nixos/plane/packages/editor/src/core/components/menus/floating-menu/root.tsx": {
+    "mtime": 1776988145.030313,
+    "hash": "68549300080c05a541a15464053c55c9"
+  },
+  "/home/nixos/plane/packages/editor/src/core/components/menus/bubble-menu/color-selector.tsx": {
+    "mtime": 1776988145.030313,
+    "hash": "e52cf5fb40601b8ab45a7396b2041b5c"
+  },
+  "/home/nixos/plane/packages/editor/src/core/components/menus/bubble-menu/index.ts": {
+    "mtime": 1776988145.030313,
+    "hash": "389e36fa2e72fef3171631e0d149385a"
+  },
+  "/home/nixos/plane/packages/editor/src/core/components/menus/bubble-menu/node-selector.tsx": {
+    "mtime": 1776988268.6143339,
+    "hash": "37a88725383367ed34ec94d658cbc24e"
+  },
+  "/home/nixos/plane/packages/editor/src/core/components/menus/bubble-menu/alignment-selector.tsx": {
+    "mtime": 1776988145.030313,
+    "hash": "9744232ca6556a2fc3ec642fcccb2843"
+  },
+  "/home/nixos/plane/packages/editor/src/core/components/menus/bubble-menu/root.tsx": {
+    "mtime": 1776988268.6143339,
+    "hash": "4cc49a3b5b625d3df6ee6bf484bd3909"
+  },
+  "/home/nixos/plane/packages/editor/src/core/components/menus/bubble-menu/link-selector.tsx": {
+    "mtime": 1776988268.6143339,
+    "hash": "cd0b08fdfb4816b4c9dadbc71e040f62"
+  },
+  "/home/nixos/plane/packages/editor/src/core/components/editors/editor-content.tsx": {
+    "mtime": 1776988145.026313,
+    "hash": "494a472dcbc3508ec2f06090788bc4b7"
+  },
+  "/home/nixos/plane/packages/editor/src/core/components/editors/editor-container.tsx": {
+    "mtime": 1776988268.6143339,
+    "hash": "8219562bd0e8d6fc2fb8aa6f438f6563"
+  },
+  "/home/nixos/plane/packages/editor/src/core/components/editors/index.ts": {
+    "mtime": 1776988145.026313,
+    "hash": "38498ccf0606a799a1a0a8fe0a65cf7e"
+  },
+  "/home/nixos/plane/packages/editor/src/core/components/editors/editor-wrapper.tsx": {
+    "mtime": 1776988145.026313,
+    "hash": "ba08b837556733dae0ae0c7b2ccdb457"
+  },
+  "/home/nixos/plane/packages/editor/src/core/components/editors/link-view-container.tsx": {
+    "mtime": 1776988268.6143339,
+    "hash": "59d52e6a1983e38fcc13880b29e2dcd6"
+  },
+  "/home/nixos/plane/packages/editor/src/core/components/editors/rich-text/index.ts": {
+    "mtime": 1776988145.026313,
+    "hash": "e327e1ad482b4d42ea9b5ab6f63c5f0a"
+  },
+  "/home/nixos/plane/packages/editor/src/core/components/editors/rich-text/editor.tsx": {
+    "mtime": 1776988145.026313,
+    "hash": "a2fb3074f258d06bedd69a1ffff0ec08"
+  },
+  "/home/nixos/plane/packages/editor/src/core/components/editors/document/index.ts": {
+    "mtime": 1776988145.026313,
+    "hash": "c36dede23e6315e8f585885fd3dd2003"
+  },
+  "/home/nixos/plane/packages/editor/src/core/components/editors/document/collaborative-editor.tsx": {
+    "mtime": 1776988145.026313,
+    "hash": "dea52c8669f643d617555cfdc3d38870"
+  },
+  "/home/nixos/plane/packages/editor/src/core/components/editors/document/page-renderer.tsx": {
+    "mtime": 1776988145.026313,
+    "hash": "5a64d633aac839f103509bb276759ac3"
+  },
+  "/home/nixos/plane/packages/editor/src/core/components/editors/document/loader.tsx": {
+    "mtime": 1776988145.026313,
+    "hash": "baffd62f9e1ec3a87468ae0af672bc39"
+  },
+  "/home/nixos/plane/packages/editor/src/core/components/editors/document/editor.tsx": {
+    "mtime": 1776988145.026313,
+    "hash": "f93ca0b69c92f4d03496773633d541f8"
+  },
+  "/home/nixos/plane/packages/editor/src/core/components/editors/lite-text/index.ts": {
+    "mtime": 1776988145.026313,
+    "hash": "e327e1ad482b4d42ea9b5ab6f63c5f0a"
+  },
+  "/home/nixos/plane/packages/editor/src/core/components/editors/lite-text/editor.tsx": {
+    "mtime": 1776988145.026313,
+    "hash": "6c518521102d6c2b0b50b7da484055b9"
+  },
+  "/home/nixos/plane/packages/editor/src/core/components/links/link-preview.tsx": {
+    "mtime": 1776988145.030313,
+    "hash": "91397285a3075406d23d8242f742003e"
+  },
+  "/home/nixos/plane/packages/editor/src/core/components/links/link-view.tsx": {
+    "mtime": 1776988145.030313,
+    "hash": "3d3a695fc60af7e0a23728a774941b87"
+  },
+  "/home/nixos/plane/packages/editor/src/core/components/links/index.ts": {
+    "mtime": 1776988145.030313,
+    "hash": "be06206fc62327d4f174b67e6bcdaa2f"
+  },
+  "/home/nixos/plane/packages/editor/src/core/components/links/link-edit-view.tsx": {
+    "mtime": 1776988268.6143339,
+    "hash": "08abbb76e1b76484943d2eb853d1791c"
+  },
+  "/home/nixos/plane/packages/editor/src/core/types/config.ts": {
+    "mtime": 1776988145.0663128,
+    "hash": "7be31dbe31f0eaafe354cd0269632b94"
+  },
+  "/home/nixos/plane/packages/editor/src/core/types/hook.ts": {
+    "mtime": 1776988145.0663128,
+    "hash": "c38b13bf54fa06030e7a94233b6101f5"
+  },
+  "/home/nixos/plane/packages/editor/src/core/types/embed.ts": {
+    "mtime": 1776988145.0663128,
+    "hash": "9ba49fadcdfd627c6189f6da134f8abb"
+  },
+  "/home/nixos/plane/packages/editor/src/core/types/mention.ts": {
+    "mtime": 1776988145.0663128,
+    "hash": "6409534515834bd69ccf94bca0ffe611"
+  },
+  "/home/nixos/plane/packages/editor/src/core/types/ai.ts": {
+    "mtime": 1776988145.0663128,
+    "hash": "c1a6df829b7c3324278ed0813ee62c76"
+  },
+  "/home/nixos/plane/packages/editor/src/core/types/index.ts": {
+    "mtime": 1776988145.0663128,
+    "hash": "50d0ee08d536f9cd69e39aa38ffe2ccc"
+  },
+  "/home/nixos/plane/packages/editor/src/core/types/asset.ts": {
+    "mtime": 1776988145.0663128,
+    "hash": "d4a4184b8750d04ce3597f971fec9e71"
+  },
+  "/home/nixos/plane/packages/editor/src/core/types/slash-commands-suggestion.ts": {
+    "mtime": 1776988145.070313,
+    "hash": "2844bfb8bdfc8d93baf7eafc9ec11e69"
+  },
+  "/home/nixos/plane/packages/editor/src/core/types/editor.ts": {
+    "mtime": 1776988145.0663128,
+    "hash": "f8fb32cbdc5c0ff09c642f3f66773622"
+  },
+  "/home/nixos/plane/packages/editor/src/core/types/extensions.ts": {
+    "mtime": 1776988145.0663128,
+    "hash": "5d1b28a489b34e7cc7722fd529e37e42"
+  },
+  "/home/nixos/plane/packages/editor/src/core/types/document-collaborative-events.ts": {
+    "mtime": 1776988145.0663128,
+    "hash": "9021937f4f6414ccded9272015a2b77f"
+  },
+  "/home/nixos/plane/packages/editor/src/core/types/collaboration.ts": {
+    "mtime": 1776988145.0663128,
+    "hash": "b3cd7fc0e4ea9f193b50a4d6dd79bf3b"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/headings-list.ts": {
+    "mtime": 1776988145.046313,
+    "hash": "aa3ca6c6ea8d960e7a42c169a6708c19"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/trailing-node.ts": {
+    "mtime": 1776988145.058313,
+    "hash": "ca2faa9b0a817b4b71a5c043ef221b9f"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/keymap.ts": {
+    "mtime": 1776988145.050313,
+    "hash": "7e8303d993965df3109224d72d361385"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/enter-key.ts": {
+    "mtime": 1776988145.046313,
+    "hash": "3b6a36d5f7e0c3ed0b972ea31dd38438"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/utility.ts": {
+    "mtime": 1776988268.6223338,
+    "hash": "a79ff8d3df114ec0c887246070886023"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/text-align.ts": {
+    "mtime": 1776988268.6223338,
+    "hash": "0813142e12ae29679729b7f00322d162"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/index.ts": {
+    "mtime": 1776988145.050313,
+    "hash": "6daaea777594af343f3aef8c98383cfc"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/placeholder.ts": {
+    "mtime": 1776988145.050313,
+    "hash": "9e0c76b254893d11e011b68a0d3f1518"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/core-without-props.ts": {
+    "mtime": 1776988268.6143339,
+    "hash": "16ca4ebde2c51007f7e40edc6fb120f0"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/side-menu.ts": {
+    "mtime": 1776988145.050313,
+    "hash": "690e05cb4366443f0acfd57d671738e6"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/extensions.ts": {
+    "mtime": 1776988268.6183338,
+    "hash": "f95314d79210a2b6b851cedf570be028"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/custom-color.ts": {
+    "mtime": 1776988145.038313,
+    "hash": "64a463a542a81d17710aa3f95a53a7f6"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/title-extension.ts": {
+    "mtime": 1776988268.6223338,
+    "hash": "aac7a6ee8cc31dbb3e0ceead3a265a69"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/horizontal-rule.ts": {
+    "mtime": 1776988145.046313,
+    "hash": "54e8f9a16299f9dd92b0fb1c88b16c71"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/starter-kit.ts": {
+    "mtime": 1776988268.6183338,
+    "hash": "5fa74869b15331fae589b359fe606dda"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/quote.ts": {
+    "mtime": 1776988268.6183338,
+    "hash": "cd32cfd0bda3d5a9b8204d5e5db577aa"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/custom-link/index.ts": {
+    "mtime": 1776988145.0423129,
+    "hash": "0f01c76b375f2490224a7c15de212665"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/custom-link/extension.tsx": {
+    "mtime": 1776988145.0423129,
+    "hash": "b055f3d6857695a8c56ffc0141d43d46"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/custom-link/helpers/clickHandler.ts": {
+    "mtime": 1776988145.0423129,
+    "hash": "6a73758ff9b751c84192038bccc29fbf"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/custom-link/helpers/autolink.ts": {
+    "mtime": 1776988268.6183338,
+    "hash": "eba26b1ef8a61e0d58919d23f65cbf42"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/custom-link/helpers/pasteHandler.ts": {
+    "mtime": 1776988145.0423129,
+    "hash": "4f81ffa4fa3c50e09771d5ccb4e3e4c1"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/work-item-embed/index.ts": {
+    "mtime": 1776988145.0623128,
+    "hash": "0f01c76b375f2490224a7c15de212665"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/work-item-embed/extension-config.ts": {
+    "mtime": 1776988145.058313,
+    "hash": "6419d3ed7dece70449fe60859a863c37"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/work-item-embed/extension.tsx": {
+    "mtime": 1776988145.0623128,
+    "hash": "7d1a468764f8ef8128a23d119c550e04"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/work-item-embed/types.ts": {
+    "mtime": 1776988145.0623128,
+    "hash": "44e374e3b466bb29c924ba818b370dff"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/callout/logo-selector.tsx": {
+    "mtime": 1776988145.034313,
+    "hash": "959e63c585a73781cbd465a89a207c3e"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/callout/color-selector.tsx": {
+    "mtime": 1776988145.034313,
+    "hash": "74855918d71b105832ef6dd63d051877"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/callout/index.ts": {
+    "mtime": 1776988145.034313,
+    "hash": "0f01c76b375f2490224a7c15de212665"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/callout/block.tsx": {
+    "mtime": 1776988145.034313,
+    "hash": "e13b6ca18c4c113783e36a3852562469"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/callout/extension-config.ts": {
+    "mtime": 1776988268.6143339,
+    "hash": "62a0334b813e04ad54ec9789e30bbc9d"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/callout/utils.ts": {
+    "mtime": 1776988145.038313,
+    "hash": "8fb1513f5db95664854541c434222a81"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/callout/extension.tsx": {
+    "mtime": 1776988145.034313,
+    "hash": "5b42bce13f9f6469cb4c51d600a300f8"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/callout/types.ts": {
+    "mtime": 1776988145.034313,
+    "hash": "d206a8450fbc86e602479919aa864295"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/emoji/emoji.ts": {
+    "mtime": 1776988268.6183338,
+    "hash": "131353b1196186ab633a3b6c2e8972d5"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/emoji/extension.ts": {
+    "mtime": 1776988145.046313,
+    "hash": "512846faf0d5f8a75b243cbe61d6fd2d"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/emoji/suggestion.ts": {
+    "mtime": 1776988268.6183338,
+    "hash": "8a3722e37e84dda6931528ca93d94075"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/emoji/components/emojis-list.tsx": {
+    "mtime": 1776988268.6183338,
+    "hash": "548ffc45d4bea778ed925e8768c398a5"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/table-header.ts": {
+    "mtime": 1776988145.054313,
+    "hash": "6aa815c50d7ab9e1a70f1adaad1a5113"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/table-cell.ts": {
+    "mtime": 1776988145.054313,
+    "hash": "fce2e054bc79a68e76b5c1f02b896481"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/index.ts": {
+    "mtime": 1776988145.050313,
+    "hash": "c25c66d4ab645ec21a6a2b8574869566"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/table-row.ts": {
+    "mtime": 1776988145.054313,
+    "hash": "35bcbd13abcb13b4da252e5a5cda566e"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/table/table.ts": {
+    "mtime": 1776988145.058313,
+    "hash": "9250effa5417b302a97fa1b1dabe551a"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/table/index.ts": {
+    "mtime": 1776988145.058313,
+    "hash": "d7456083542bb6633a55f696afbe3495"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/table/icons.ts": {
+    "mtime": 1776988145.058313,
+    "hash": "23ed0a4f3925068f8a29bb9a138a0f80"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/table/table-view.tsx": {
+    "mtime": 1776988145.058313,
+    "hash": "15b65f92519cdd7703805f192d8a57eb"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/table/utilities/delete-key-shortcut.ts": {
+    "mtime": 1776988145.058313,
+    "hash": "cd5138a11ad8d4cb8c314b56eaf80571"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/table/utilities/delete-row.ts": {
+    "mtime": 1776988145.058313,
+    "hash": "9f0444475a1891acac814aa546ec86b3"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/table/utilities/create-cell.ts": {
+    "mtime": 1776988145.058313,
+    "hash": "12b79264fb5c1fd01e0322d2dfea79a8"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/table/utilities/get-table-node-types.ts": {
+    "mtime": 1776988145.058313,
+    "hash": "208f7dae21aa8b0988fff8304d14c666"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/table/utilities/insert-line-above-table-action.ts": {
+    "mtime": 1776988145.058313,
+    "hash": "86f5fecab30c91c28d40c30038003cda"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/table/utilities/delete-column.ts": {
+    "mtime": 1776988145.058313,
+    "hash": "e48179a27f4314068e7e8d8f4f9b32a1"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/table/utilities/helpers.ts": {
+    "mtime": 1776988145.058313,
+    "hash": "3ca9d29d8240e46bb9f209345b884c08"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/table/utilities/create-table.ts": {
+    "mtime": 1776988145.058313,
+    "hash": "edb603bf83a8f66a863aa8a5b2e5ec01"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/table/utilities/insert-line-below-table-action.ts": {
+    "mtime": 1776988145.058313,
+    "hash": "53e2bfb78957e5afe3568fe97b1aafca"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/plugins/drag-state.ts": {
+    "mtime": 1776988145.054313,
+    "hash": "bea0e5c4bbd87c0bc6f3eb6a7d698b91"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/plugins/drag-handles/color-selector.tsx": {
+    "mtime": 1776988145.054313,
+    "hash": "f56c0c18beaff21c3f1482a3ff7e4a46"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/plugins/drag-handles/utils.ts": {
+    "mtime": 1776988145.054313,
+    "hash": "e20f0d92e11d89f3acce13e21c5d0bc9"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/plugins/drag-handles/marker-utils.ts": {
+    "mtime": 1776988145.054313,
+    "hash": "9f6b8a47a70e78b4d8f6308235e56f52"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/plugins/drag-handles/actions.ts": {
+    "mtime": 1776988145.054313,
+    "hash": "111a2e8328f4986eb7d098d16911e1a1"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/plugins/drag-handles/column/plugin.ts": {
+    "mtime": 1776988145.054313,
+    "hash": "0bab5305165d903d79d33e86b5ad2622"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/plugins/drag-handles/column/drag-handle.tsx": {
+    "mtime": 1776988268.6183338,
+    "hash": "c5d91bbb962e7ddf298ad3ef1fbd8e26"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/plugins/drag-handles/column/dropdown.tsx": {
+    "mtime": 1776988145.054313,
+    "hash": "e8e74b643f3acfb8b2fc764ba67f2bd3"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/plugins/drag-handles/column/utils.ts": {
+    "mtime": 1776988145.054313,
+    "hash": "23061078f3ac43cf2b821a060031d4c8"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/plugins/drag-handles/row/plugin.ts": {
+    "mtime": 1776988145.054313,
+    "hash": "ed1ea3b6f4b1be0d4efafe15345d22e1"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/plugins/drag-handles/row/drag-handle.tsx": {
+    "mtime": 1776988268.6183338,
+    "hash": "5f774518b18c654ca6a233427f063313"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/plugins/drag-handles/row/dropdown.tsx": {
+    "mtime": 1776988145.054313,
+    "hash": "af49477b94363fc1762d6c6065ddf920"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/plugins/drag-handles/row/utils.ts": {
+    "mtime": 1776988145.054313,
+    "hash": "69cf1f3808614ea6e4d61609b8815663"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/plugins/insert-handlers/plugin.ts": {
+    "mtime": 1776988145.054313,
+    "hash": "0940004031a78de05c0afc5c1af6d0cb"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/plugins/insert-handlers/utils.ts": {
+    "mtime": 1776988145.054313,
+    "hash": "4013afc96331589824a593fbf7ff1cb5"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/plugins/selection-outline/plugin.ts": {
+    "mtime": 1776988145.054313,
+    "hash": "f10de835bc348ede3e549b1c76162374"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/table/plugins/selection-outline/utils.ts": {
+    "mtime": 1776988145.054313,
+    "hash": "5a049437ed0a3447be622adf83a917f9"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/code/code-block-lowlight.ts": {
+    "mtime": 1776988145.038313,
+    "hash": "541b0adc15478b38b2259c997fc9a974"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/code/index.tsx": {
+    "mtime": 1776988145.038313,
+    "hash": "c095a64289050be05daedd1329666791"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/code/without-props.tsx": {
+    "mtime": 1776988145.038313,
+    "hash": "85641433ad94c3c3fea555eb4850f042"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/code/lowlight-plugin.ts": {
+    "mtime": 1776988268.6143339,
+    "hash": "fe40bc5805efae71dbf9ea1d51f5ae9d"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/code/code-block.ts": {
+    "mtime": 1776988145.038313,
+    "hash": "1c21edaf8fe349d704c812f0790e6823"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/code/code-block-node-view.tsx": {
+    "mtime": 1776988145.038313,
+    "hash": "1df7b4343003caf705bb355972952670"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/code/types.ts": {
+    "mtime": 1776988145.038313,
+    "hash": "1bb7684abf2a742d45c4d36da2156c71"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/code/utils/replace-code-block-with-text.ts": {
+    "mtime": 1776988145.038313,
+    "hash": "cf92fac77ee0417f83def5f495f87407"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/typography/index.ts": {
+    "mtime": 1776988145.058313,
+    "hash": "83624c6ea0d0bb5b16d39e2cd3e34acd"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/typography/inputRules.ts": {
+    "mtime": 1776988145.058313,
+    "hash": "259fca980dfb2992d34aafa4d2760f44"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/code-inline/index.tsx": {
+    "mtime": 1776988145.038313,
+    "hash": "7dd4d27529f577cad4476e5ed2955869"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/slash-commands/command-items-list.tsx": {
+    "mtime": 1776988268.6183338,
+    "hash": "5e1064d041c0dc0c1ddb02ad1411a26f"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/slash-commands/command-menu.tsx": {
+    "mtime": 1776988268.6183338,
+    "hash": "0b83052c1fd0d0ec1decfd3efb3da157"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/slash-commands/index.ts": {
+    "mtime": 1776988145.050313,
+    "hash": "0b6ab204878a9cd091bdc33d4348f832"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/slash-commands/command-menu-item.tsx": {
+    "mtime": 1776988145.050313,
+    "hash": "806bd9e59e41e6c1b67a015203b27a0d"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/slash-commands/root.tsx": {
+    "mtime": 1776988268.6183338,
+    "hash": "c842dfadf80384127584747770bd451c"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/unique-id/plugin.ts": {
+    "mtime": 1776988145.058313,
+    "hash": "4ff879197db03660cfac14417a4b34cb"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/unique-id/extension.ts": {
+    "mtime": 1776988145.058313,
+    "hash": "226fa5c6e723679c9306afd2a9eb421e"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/unique-id/utils.ts": {
+    "mtime": 1776988145.058313,
+    "hash": "548d48d8c48c2c9cdb7e545820e6c81d"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/mentions/index.ts": {
+    "mtime": 1776988145.050313,
+    "hash": "2bd15a07a362b4655a03bfd38f47052f"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/mentions/mentions-list-dropdown.tsx": {
+    "mtime": 1776988268.6183338,
+    "hash": "6329515e863464d956764aa1810045d0"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/mentions/mention-node-view.tsx": {
+    "mtime": 1776988145.050313,
+    "hash": "4c53ad900e6fece4f2bc388ad89bb391"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/mentions/extension-config.ts": {
+    "mtime": 1776988268.6183338,
+    "hash": "9964b4972625d5d7295ab7db1dc98eab"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/mentions/utils.ts": {
+    "mtime": 1776988268.6183338,
+    "hash": "c5cafe3b87ef4b5a1fcd56ddb7d33b8a"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/mentions/extension.tsx": {
+    "mtime": 1776988268.6183338,
+    "hash": "1d26898d5b23cc0f59d5678881b375be"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/mentions/types.ts": {
+    "mtime": 1776988145.050313,
+    "hash": "907ff103e1471aa335cd91f015e37a80"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/image/index.ts": {
+    "mtime": 1776988145.050313,
+    "hash": "2bd15a07a362b4655a03bfd38f47052f"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/image/extension-config.tsx": {
+    "mtime": 1776988145.046313,
+    "hash": "d96ed598622a118f1c7c69c91efa2f28"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/image/extension.tsx": {
+    "mtime": 1776988268.6183338,
+    "hash": "e8c70a9c382ee5bfb0d6331dfd88f8c6"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/custom-image/extension-config.ts": {
+    "mtime": 1776988145.0423129,
+    "hash": "c544288b1749fd573f0d6c096e034514"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/custom-image/utils.ts": {
+    "mtime": 1776988145.0423129,
+    "hash": "b58e33a9b680f8dcb8415e0629f07c03"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/custom-image/extension.tsx": {
+    "mtime": 1776988268.6143339,
+    "hash": "eed905245ffdeb5e3de6b117a45c2fa7"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/custom-image/types.ts": {
+    "mtime": 1776988145.0423129,
+    "hash": "c136228b11b280916851bbd09a3933b0"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/custom-image/components/block.tsx": {
+    "mtime": 1776988268.6143339,
+    "hash": "7419ca99fd9d34c507afc6b3e1cdc822"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/custom-image/components/node-view.tsx": {
+    "mtime": 1776988145.038313,
+    "hash": "0a67081aa3a09585e0f0d491c12633c2"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/custom-image/components/upload-status.tsx": {
+    "mtime": 1776988268.6143339,
+    "hash": "7d32bb9c53c90edd4921a2ef448540a2"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/custom-image/components/uploader.tsx": {
+    "mtime": 1776988268.6143339,
+    "hash": "e6551a3e56daa0be1f770791b0ae64a7"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/custom-image/components/toolbar/index.ts": {
+    "mtime": 1776988145.0423129,
+    "hash": "0b6ab204878a9cd091bdc33d4348f832"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/custom-image/components/toolbar/download.tsx": {
+    "mtime": 1776988145.0423129,
+    "hash": "76f4dd0b2b43a5737fdef3ef0a9c2e42"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/custom-image/components/toolbar/root.tsx": {
+    "mtime": 1776988145.0423129,
+    "hash": "9e7e36e87a06ad460322c76f9a10536c"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/custom-image/components/toolbar/alignment.tsx": {
+    "mtime": 1776988145.038313,
+    "hash": "a0ffb9bf0a5529fc1c24a17e4c2de3bc"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/custom-image/components/toolbar/full-screen/index.ts": {
+    "mtime": 1776988145.0423129,
+    "hash": "0b6ab204878a9cd091bdc33d4348f832"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/custom-image/components/toolbar/full-screen/modal.tsx": {
+    "mtime": 1776988268.6143339,
+    "hash": "d22fc6dd6119c1f33e380991dcfa572e"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/custom-image/components/toolbar/full-screen/root.tsx": {
+    "mtime": 1776988145.0423129,
+    "hash": "a3c3b08dec4c91c7c617f0c35a042034"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/custom-list-keymap/index.ts": {
+    "mtime": 1776988145.0423129,
+    "hash": "c00ead14416b471d692d6c21fb0f26cf"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/custom-list-keymap/list-helpers.ts": {
+    "mtime": 1776988145.0423129,
+    "hash": "67bb460a909c247ada7bb94808f8bfb8"
+  },
+  "/home/nixos/plane/packages/editor/src/core/extensions/custom-list-keymap/list-keymap.ts": {
+    "mtime": 1776988145.046313,
+    "hash": "363d019935f447cedc1bcb6386fc76a9"
+  },
+  "/home/nixos/plane/packages/editor/src/core/helpers/insert-content-at-cursor-position.ts": {
+    "mtime": 1776988145.0623128,
+    "hash": "7fadd121477dd6708574fb04eac580fb"
+  },
+  "/home/nixos/plane/packages/editor/src/core/helpers/find-suggestion-match.ts": {
+    "mtime": 1776988145.0623128,
+    "hash": "3611d2e11898ee23c6d942d08d0dc6ad"
+  },
+  "/home/nixos/plane/packages/editor/src/core/helpers/get-document-server-event.ts": {
+    "mtime": 1776988145.0623128,
+    "hash": "deac1c77bd597a28ebfc3d991429da70"
+  },
+  "/home/nixos/plane/packages/editor/src/core/helpers/scroll-to-node.ts": {
+    "mtime": 1776988145.0623128,
+    "hash": "e8afbc7119181b5643574d31a4c45bff"
+  },
+  "/home/nixos/plane/packages/editor/src/core/helpers/insert-empty-paragraph-at-node-boundary.ts": {
+    "mtime": 1776988145.0623128,
+    "hash": "4cf57c585f050b6c76e43df673efb9fd"
+  },
+  "/home/nixos/plane/packages/editor/src/core/helpers/paste-asset.ts": {
+    "mtime": 1776988145.0623128,
+    "hash": "dc2548d2a63095a409bdff830998be73"
+  },
+  "/home/nixos/plane/packages/editor/src/core/helpers/tippy.ts": {
+    "mtime": 1776988145.0623128,
+    "hash": "466f33f13bcb43b15f5cde64103abf78"
+  },
+  "/home/nixos/plane/packages/editor/src/core/helpers/image-helpers.ts": {
+    "mtime": 1776988145.0623128,
+    "hash": "19b1b55cf072e40a5e0b26884e06141c"
+  },
+  "/home/nixos/plane/packages/editor/src/core/helpers/editor-commands.ts": {
+    "mtime": 1776988268.6223338,
+    "hash": "a5f88779478e5c3cd9fb3afb7cb5c1ce"
+  },
+  "/home/nixos/plane/packages/editor/src/core/helpers/editor-ref.ts": {
+    "mtime": 1776988268.6223338,
+    "hash": "a9b0230ce7aa6176b6c90f660398a063"
+  },
+  "/home/nixos/plane/packages/editor/src/core/helpers/parser.ts": {
+    "mtime": 1776988145.0623128,
+    "hash": "b594857b6ceb4902b67518f7a5cc549b"
+  },
+  "/home/nixos/plane/packages/editor/src/core/helpers/common.ts": {
+    "mtime": 1776988268.6223338,
+    "hash": "0a41bb839111480eb2f817ee19af570a"
+  },
+  "/home/nixos/plane/packages/editor/src/core/helpers/file.ts": {
+    "mtime": 1776988145.0623128,
+    "hash": "5daf00bb41bcef671ef8a1a74061d759"
+  },
+  "/home/nixos/plane/packages/editor/src/core/helpers/assets.ts": {
+    "mtime": 1776988145.0623128,
+    "hash": "3de488e879f08b51d6eba1a52f6c4f6a"
+  },
+  "/home/nixos/plane/packages/editor/src/core/helpers/yjs-utils.ts": {
+    "mtime": 1776988145.0623128,
+    "hash": "ceabe686fa96b0578bebf9f55d806b42"
+  },
+  "/home/nixos/plane/packages/editor/src/core/helpers/floating-ui.ts": {
+    "mtime": 1776988268.6223338,
+    "hash": "04bbcf74d48cc86332e1809753e3882a"
+  },
+  "/home/nixos/plane/packages/editor/src/core/contexts/index.ts": {
+    "mtime": 1776988145.034313,
+    "hash": "74c52bb3297a04a2f0f1289abd937080"
+  },
+  "/home/nixos/plane/packages/editor/src/core/contexts/collaboration-context.tsx": {
+    "mtime": 1776988145.034313,
+    "hash": "c97d64da32c2f22d9b9e1b0ffa0def87"
+  },
+  "/home/nixos/plane/packages/editor/src/core/plugins/ai-handle.ts": {
+    "mtime": 1776988268.6223338,
+    "hash": "4a984ede30b404e872c811c2fc5835f3"
+  },
+  "/home/nixos/plane/packages/editor/src/core/plugins/markdown-clipboard.ts": {
+    "mtime": 1776988145.0663128,
+    "hash": "15660157b53eed0a3284895a7021d0c3"
+  },
+  "/home/nixos/plane/packages/editor/src/core/plugins/drag-handle.ts": {
+    "mtime": 1776988268.6223338,
+    "hash": "274522794fb37b3157b93de5d5a1b8b5"
+  },
+  "/home/nixos/plane/packages/editor/src/core/plugins/drop.ts": {
+    "mtime": 1776988145.0663128,
+    "hash": "ad5f81d83e8855176d65e7345259ac06"
+  },
+  "/home/nixos/plane/packages/editor/src/core/plugins/highlight.ts": {
+    "mtime": 1776988145.0663128,
+    "hash": "9759f8298206d73b9578c47420f1edec"
+  },
+  "/home/nixos/plane/packages/editor/src/core/plugins/file/restore.ts": {
+    "mtime": 1776988145.0663128,
+    "hash": "c9f92d02ecefc6f4d149dc182a0494a1"
+  },
+  "/home/nixos/plane/packages/editor/src/core/plugins/file/root.ts": {
+    "mtime": 1776988145.0663128,
+    "hash": "c0b5cdd9ec11bd898dadf0e33fd74f9b"
+  },
+  "/home/nixos/plane/packages/editor/src/core/plugins/file/delete.ts": {
+    "mtime": 1776988145.0663128,
+    "hash": "644691d2d23912f271f5245a17ff0d2f"
+  },
+  "/home/nixos/plane/packages/editor/src/core/plugins/file/types.ts": {
+    "mtime": 1776988145.0663128,
+    "hash": "7281d571064e0e9e429876dae4281fad"
+  },
+  "/home/nixos/plane/packages/services/tsdown.config.ts": {
+    "mtime": 1776988145.2103126,
+    "hash": "701ed4cb66ec6fb09c1783abe91153d7"
+  },
+  "/home/nixos/plane/packages/services/src/index.ts": {
+    "mtime": 1776988145.2063127,
+    "hash": "784fb2fabc7e6e6ed587ede5b74f7a92"
+  },
+  "/home/nixos/plane/packages/services/src/indexedDB.service.ts": {
+    "mtime": 1776988268.650334,
+    "hash": "0336c799ca0ef3381f003218515fa622"
+  },
+  "/home/nixos/plane/packages/services/src/api.service.ts": {
+    "mtime": 1776988145.2023127,
+    "hash": "4c3636178305de0db266b12e6a8acd53"
+  },
+  "/home/nixos/plane/packages/services/src/live.service.ts": {
+    "mtime": 1776988145.2063127,
+    "hash": "b5ca909f6a0b16a1bdd9ed28aa438651"
+  },
+  "/home/nixos/plane/packages/services/src/auth/index.ts": {
+    "mtime": 1776988145.2023127,
+    "hash": "d203fa78a9906fa339f21430fadd7950"
+  },
+  "/home/nixos/plane/packages/services/src/auth/auth.service.ts": {
+    "mtime": 1776988268.650334,
+    "hash": "0d886c9f951119363d8671aaed40df6f"
+  },
+  "/home/nixos/plane/packages/services/src/auth/sites-auth.service.ts": {
+    "mtime": 1776988145.2023127,
+    "hash": "bbac85e960788c8838999084236a9844"
+  },
+  "/home/nixos/plane/packages/services/src/workspace/notification.service.ts": {
+    "mtime": 1776988145.2103126,
+    "hash": "abe5f37a4e799aeb1c9a2b266288c54c"
+  },
+  "/home/nixos/plane/packages/services/src/workspace/view.service.ts": {
+    "mtime": 1776988145.2103126,
+    "hash": "c4ae15288b7f44065c0016216f5e5743"
+  },
+  "/home/nixos/plane/packages/services/src/workspace/invitation.service.ts": {
+    "mtime": 1776988145.2103126,
+    "hash": "508bec7e2067a7aeaec28d55200ce1e7"
+  },
+  "/home/nixos/plane/packages/services/src/workspace/index.ts": {
+    "mtime": 1776988145.2103126,
+    "hash": "0988109e9455338ee07f5c5df06e3d9c"
+  },
+  "/home/nixos/plane/packages/services/src/workspace/member.service.ts": {
+    "mtime": 1776988145.2103126,
+    "hash": "ace0f82fb962d84bd381eec1b507d457"
+  },
+  "/home/nixos/plane/packages/services/src/workspace/instance-workspace.service.ts": {
+    "mtime": 1776988145.2103126,
+    "hash": "0680f2575ca20786f0f497ba368609ca"
+  },
+  "/home/nixos/plane/packages/services/src/workspace/workspace.service.ts": {
+    "mtime": 1776988145.2103126,
+    "hash": "d5cdb51f1843064d6bf13bfc90d22379"
+  },
+  "/home/nixos/plane/packages/services/src/user/user.service.ts": {
+    "mtime": 1776988145.2103126,
+    "hash": "76e2f5d778e494e59afeb58af20a93c6"
+  },
+  "/home/nixos/plane/packages/services/src/user/index.ts": {
+    "mtime": 1776988145.2103126,
+    "hash": "db34adfa419f05bb51a93dd920b94c6d"
+  },
+  "/home/nixos/plane/packages/services/src/user/favorite.service.ts": {
+    "mtime": 1776988145.2103126,
+    "hash": "ae173011fd82eb16ab8541e973c75b02"
+  },
+  "/home/nixos/plane/packages/services/src/user/sites-member.service.ts": {
+    "mtime": 1776988145.2103126,
+    "hash": "0add8d5b284083f9e85416708a801493"
+  },
+  "/home/nixos/plane/packages/services/src/module/sites-module.service.ts": {
+    "mtime": 1776988145.2063127,
+    "hash": "99995ab3f8d979d7b6894fbdd13c9473"
+  },
+  "/home/nixos/plane/packages/services/src/module/index.ts": {
+    "mtime": 1776988145.2063127,
+    "hash": "16f814eb01ce0c0bef65ab338e246f9a"
+  },
+  "/home/nixos/plane/packages/services/src/module/operations.service.ts": {
+    "mtime": 1776988145.2063127,
+    "hash": "74571e033a86c65ca8300109e1d637b5"
+  },
+  "/home/nixos/plane/packages/services/src/module/link.service.ts": {
+    "mtime": 1776988145.2063127,
+    "hash": "a5ece913fc06f05c3ff6ee789485750f"
+  },
+  "/home/nixos/plane/packages/services/src/module/module.service.ts": {
+    "mtime": 1776988145.2063127,
+    "hash": "63f4e60b4193097339f94e3f269cc6c1"
+  },
+  "/home/nixos/plane/packages/services/src/issue/index.ts": {
+    "mtime": 1776988145.2063127,
+    "hash": "421eb2801df39ee267ccd79dd0972280"
+  },
+  "/home/nixos/plane/packages/services/src/issue/sites-issue.service.ts": {
+    "mtime": 1776988145.2063127,
+    "hash": "ede971bc789ecc10725cdb15b0b5e951"
+  },
+  "/home/nixos/plane/packages/services/src/project/sites-publish.service.ts": {
+    "mtime": 1776988145.2063127,
+    "hash": "522b6a9888608486db7f953987595c9f"
+  },
+  "/home/nixos/plane/packages/services/src/project/view.service.ts": {
+    "mtime": 1776988145.2063127,
+    "hash": "2a6be87c2895a31ef452ccdbed99ca41"
+  },
+  "/home/nixos/plane/packages/services/src/project/index.ts": {
+    "mtime": 1776988145.2063127,
+    "hash": "a7a4ea7b4e1c4d320e169d7e10937151"
+  },
+  "/home/nixos/plane/packages/services/src/file/sites-file.service.ts": {
+    "mtime": 1776988268.650334,
+    "hash": "cb8f835686559e55bf29cb60d3b5746e"
+  },
+  "/home/nixos/plane/packages/services/src/file/file-upload.service.ts": {
+    "mtime": 1776988268.650334,
+    "hash": "19624f6f657fdda71234e2217e2db3bb"
+  },
+  "/home/nixos/plane/packages/services/src/file/index.ts": {
+    "mtime": 1776988145.2063127,
+    "hash": "685b92eda535cd77cbdc2e959ed473d1"
+  },
+  "/home/nixos/plane/packages/services/src/file/helper.ts": {
+    "mtime": 1776988145.2063127,
+    "hash": "7d6caec4cb41f6aab10e8873981412c8"
+  },
+  "/home/nixos/plane/packages/services/src/file/file.service.ts": {
+    "mtime": 1776988145.2063127,
+    "hash": "e60c2f23f6c5c467e6c47be252be30d9"
+  },
+  "/home/nixos/plane/packages/services/src/developer/index.ts": {
+    "mtime": 1776988145.2023127,
+    "hash": "2a6be5c2acde8221bc97fa79f5d88d4f"
+  },
+  "/home/nixos/plane/packages/services/src/developer/webhook.service.ts": {
+    "mtime": 1776988145.2023127,
+    "hash": "0657f932d75410701b68ff5bd41b8209"
+  },
+  "/home/nixos/plane/packages/services/src/cycle/cycle-analytics.service.ts": {
+    "mtime": 1776988145.2023127,
+    "hash": "31432bd6c8a4821e04dabd4edcf84339"
+  },
+  "/home/nixos/plane/packages/services/src/cycle/index.ts": {
+    "mtime": 1776988145.2023127,
+    "hash": "78f84fcef9420bb2875f0ed6ef14003e"
+  },
+  "/home/nixos/plane/packages/services/src/cycle/sites-cycle.service.ts": {
+    "mtime": 1776988145.2023127,
+    "hash": "9a131d631f7ceef42c7966a2b6f0771b"
+  },
+  "/home/nixos/plane/packages/services/src/cycle/cycle-operations.service.ts": {
+    "mtime": 1776988145.2023127,
+    "hash": "e4c5fc4196da8b77e444f1f57c1aab48"
+  },
+  "/home/nixos/plane/packages/services/src/cycle/cycle-archive.service.ts": {
+    "mtime": 1776988145.2023127,
+    "hash": "2a44a28f97abb4e471907f5d5e3eb865"
+  },
+  "/home/nixos/plane/packages/services/src/cycle/cycle.service.ts": {
+    "mtime": 1776988145.2023127,
+    "hash": "a52a39a1b8489c8f71e89519facdbe6f"
+  },
+  "/home/nixos/plane/packages/services/src/label/sites-label.service.ts": {
+    "mtime": 1776988145.2063127,
+    "hash": "1f9afa4d0ec2b94d00e8725631c958a5"
+  },
+  "/home/nixos/plane/packages/services/src/label/index.ts": {
+    "mtime": 1776988145.2063127,
+    "hash": "abe5d45fcd3ea3b2d5fc2a0f4c81d46c"
+  },
+  "/home/nixos/plane/packages/services/src/dashboard/index.ts": {
+    "mtime": 1776988145.2023127,
+    "hash": "55545a88ec40f684875b27b2d2dfa218"
+  },
+  "/home/nixos/plane/packages/services/src/dashboard/dashboard.service.ts": {
+    "mtime": 1776988145.2023127,
+    "hash": "ffb61ed8d9fc1b23301a3657a829c361"
+  },
+  "/home/nixos/plane/packages/services/src/instance/instance.service.ts": {
+    "mtime": 1776988145.2063127,
+    "hash": "dabd805a7ba5c8195e498f4ba543f0e7"
+  },
+  "/home/nixos/plane/packages/services/src/instance/index.ts": {
+    "mtime": 1776988145.2063127,
+    "hash": "24fa697f0d619df24870baa472cfba9d"
+  },
+  "/home/nixos/plane/packages/services/src/state/index.ts": {
+    "mtime": 1776988145.2103126,
+    "hash": "53b436a80d54af758174b1450a7bc666"
+  },
+  "/home/nixos/plane/packages/services/src/state/sites-state.service.ts": {
+    "mtime": 1776988145.2103126,
+    "hash": "e4dd40f15d2c01e11fb65bf0daada8b9"
+  },
+  "/home/nixos/plane/packages/services/src/ai/index.ts": {
+    "mtime": 1776988145.2023127,
+    "hash": "04001bfcbc5408791d35efd8f09ad1c9"
+  },
+  "/home/nixos/plane/packages/services/src/ai/ai.service.ts": {
+    "mtime": 1776988145.2023127,
+    "hash": "4d5c3505b2ebdd0d6d9f168e1238df93"
+  },
+  "/home/nixos/plane/packages/services/src/intake/issue.service.ts": {
+    "mtime": 1776988145.2063127,
+    "hash": "f9fcb3dcb41f73259305c5ca87cbd486"
+  },
+  "/home/nixos/plane/packages/services/src/intake/index.ts": {
+    "mtime": 1776988145.2063127,
+    "hash": "90fc2c86b4371b75f5cfa321f25a9141"
+  },
+  "/home/nixos/plane/packages/services/src/intake/intake.service.ts": {
+    "mtime": 1776988145.2063127,
+    "hash": "8c3143416e6e08562bf599121b4099a1"
+  },
+  "/home/nixos/plane/packages/constants/tsdown.config.ts": {
+    "mtime": 1776988145.018313,
+    "hash": "573ae130eb00a9b808c5da77609b2368"
+  },
+  "/home/nixos/plane/packages/constants/src/project.ts": {
+    "mtime": 1776988145.014313,
+    "hash": "b95b8330b09844bc0cdb8f85bb4dd8c8"
+  },
+  "/home/nixos/plane/packages/constants/src/emoji.ts": {
+    "mtime": 1776988145.010313,
+    "hash": "12aff75b384119ac733521e223926902"
+  },
+  "/home/nixos/plane/packages/constants/src/members.ts": {
+    "mtime": 1776988145.014313,
+    "hash": "fd42afc19f224dc60ff4819221e190f8"
+  },
+  "/home/nixos/plane/packages/constants/src/filter.ts": {
+    "mtime": 1776988145.010313,
+    "hash": "1c4d4b20dd0d888b40ae1ab8b526294b"
+  },
+  "/home/nixos/plane/packages/constants/src/tab-indices.ts": {
+    "mtime": 1776988145.018313,
+    "hash": "33754d221187e49b50030941ffc8a96f"
+  },
+  "/home/nixos/plane/packages/constants/src/themes.ts": {
+    "mtime": 1776988145.018313,
+    "hash": "74d4b0fa28556c1b1b2b02d6c04a372c"
+  },
+  "/home/nixos/plane/packages/constants/src/stickies.ts": {
+    "mtime": 1776988145.018313,
+    "hash": "3a3b6455798dd3d9846b0fbfabc718b1"
+  },
+  "/home/nixos/plane/packages/constants/src/profile.ts": {
+    "mtime": 1776988145.014313,
+    "hash": "4eaad1289ebc8b73ff2fceefce28e145"
+  },
+  "/home/nixos/plane/packages/constants/src/ai.ts": {
+    "mtime": 1776988145.006313,
+    "hash": "dbfc7c0bd8a80d10bcbe3e4c58e8c923"
+  },
+  "/home/nixos/plane/packages/constants/src/swr.ts": {
+    "mtime": 1776988145.018313,
+    "hash": "a683d2b882fa5f6e7eb0cfadee00ef9c"
+  },
+  "/home/nixos/plane/packages/constants/src/graph.ts": {
+    "mtime": 1776988145.010313,
+    "hash": "3c61c1a16500981e086399bfcfb439af"
+  },
+  "/home/nixos/plane/packages/constants/src/payment.ts": {
+    "mtime": 1776988145.014313,
+    "hash": "2cc7205891e64829669d34001780d44b"
+  },
+  "/home/nixos/plane/packages/constants/src/index.ts": {
+    "mtime": 1776988145.010313,
+    "hash": "8b92ca3bc42f8bcbbc992986c039ebb0"
+  },
+  "/home/nixos/plane/packages/constants/src/label.ts": {
+    "mtime": 1776988145.014313,
+    "hash": "b937d224f9c498030a572b4a8ff3b761"
+  },
+  "/home/nixos/plane/packages/constants/src/intake.ts": {
+    "mtime": 1776988145.010313,
+    "hash": "d8126e196f8486cad6e65598bec6e06b"
+  },
+  "/home/nixos/plane/packages/constants/src/dashboard.ts": {
+    "mtime": 1776988145.010313,
+    "hash": "73bf5421b02609e536bb5381226c88b9"
+  },
+  "/home/nixos/plane/packages/constants/src/metadata.ts": {
+    "mtime": 1776988145.014313,
+    "hash": "063b688a3c2f015f4ff1ff0a33e0a0a2"
+  },
+  "/home/nixos/plane/packages/constants/src/spreadsheet.ts": {
+    "mtime": 1776988145.014313,
+    "hash": "1f0c5a285be07a956aeebf149bdc93a6"
+  },
+  "/home/nixos/plane/packages/constants/src/estimates.ts": {
+    "mtime": 1776988145.010313,
+    "hash": "88f1f021b79d7923cfb3b76582e10b90"
+  },
+  "/home/nixos/plane/packages/constants/src/page.ts": {
+    "mtime": 1776988145.014313,
+    "hash": "1ea4a66bafc473cff67ba4eef8718c6d"
+  },
+  "/home/nixos/plane/packages/constants/src/notification.ts": {
+    "mtime": 1776988145.014313,
+    "hash": "8c92cbd0f52a70f8e9057608ca2917df"
+  },
+  "/home/nixos/plane/packages/constants/src/subscription.ts": {
+    "mtime": 1776988145.018313,
+    "hash": "5888ed4060895d33416e27be6b5bbb13"
+  },
+  "/home/nixos/plane/packages/constants/src/chart.ts": {
+    "mtime": 1776988145.010313,
+    "hash": "09a09edf57ca50686926c95a9a8bdec3"
+  },
+  "/home/nixos/plane/packages/constants/src/module.ts": {
+    "mtime": 1776988145.014313,
+    "hash": "cf07ddb004d6696dda1212a645378771"
+  },
+  "/home/nixos/plane/packages/constants/src/file.ts": {
+    "mtime": 1776988145.010313,
+    "hash": "702f25f0f12bc515628fa74e215527e3"
+  },
+  "/home/nixos/plane/packages/constants/src/sidebar.ts": {
+    "mtime": 1776988145.014313,
+    "hash": "1ec7158b221ad219615a2c239bbebe40"
+  },
+  "/home/nixos/plane/packages/constants/src/user.ts": {
+    "mtime": 1776988145.018313,
+    "hash": "f307473742dc399851b07cdb140ac582"
+  },
+  "/home/nixos/plane/packages/constants/src/endpoints.ts": {
+    "mtime": 1776988145.010313,
+    "hash": "11bff5f75ae56f133ec6383a210a4d97"
+  },
+  "/home/nixos/plane/packages/constants/src/views.ts": {
+    "mtime": 1776988145.018313,
+    "hash": "61d3b5800f403ca7ee39972fa95f089c"
+  },
+  "/home/nixos/plane/packages/constants/src/icon.ts": {
+    "mtime": 1776988145.010313,
+    "hash": "def88e95e1eede9270397a88a36d2624"
+  },
+  "/home/nixos/plane/packages/constants/src/instance.ts": {
+    "mtime": 1776988145.010313,
+    "hash": "96c3beea76998d836bd2eda0e5e89b8f"
+  },
+  "/home/nixos/plane/packages/constants/src/workspace.ts": {
+    "mtime": 1776988145.018313,
+    "hash": "65b71567779240c6d951fcc3f13aa6cd"
+  },
+  "/home/nixos/plane/packages/constants/src/cycle.ts": {
+    "mtime": 1776988145.010313,
+    "hash": "7313a9fe0aa98384bc562cd039002fe3"
+  },
+  "/home/nixos/plane/packages/constants/src/workspace-drafts.ts": {
+    "mtime": 1776988145.018313,
+    "hash": "e02d5c362af31d5b812da1d322d3799d"
+  },
+  "/home/nixos/plane/packages/constants/src/state.ts": {
+    "mtime": 1776988145.014313,
+    "hash": "fcc43c75bcdb59fcaa5df6cc2f03d07e"
+  },
+  "/home/nixos/plane/packages/constants/src/auth/extended.ts": {
+    "mtime": 1776988145.010313,
+    "hash": "ad70e04fa681949021f8ad59dfcac723"
+  },
+  "/home/nixos/plane/packages/constants/src/auth/index.ts": {
+    "mtime": 1776988145.010313,
+    "hash": "65ac9dbadda31b6b2d2ae05e6dbd15b8"
+  },
+  "/home/nixos/plane/packages/constants/src/auth/core.ts": {
+    "mtime": 1776988145.010313,
+    "hash": "f809ef7dfca63aff11594e64e34e5b5b"
+  },
+  "/home/nixos/plane/packages/constants/src/issue/filter.ts": {
+    "mtime": 1776988268.610334,
+    "hash": "02ba18ddac0b17885303a992fbb48dcc"
+  },
+  "/home/nixos/plane/packages/constants/src/issue/index.ts": {
+    "mtime": 1776988145.014313,
+    "hash": "0b81cee5816a53d47ca8b12f47d57b09"
+  },
+  "/home/nixos/plane/packages/constants/src/issue/modal.ts": {
+    "mtime": 1776988145.014313,
+    "hash": "3966bdd2396113ee7a7fa68ec56ad54a"
+  },
+  "/home/nixos/plane/packages/constants/src/issue/layout.ts": {
+    "mtime": 1776988145.014313,
+    "hash": "e760e0478dfaba0d58a12c0ad68299b3"
+  },
+  "/home/nixos/plane/packages/constants/src/issue/common.ts": {
+    "mtime": 1776988268.610334,
+    "hash": "f188c27a8fb2118be6fb3f0e035fae48"
+  },
+  "/home/nixos/plane/packages/constants/src/settings/project.ts": {
+    "mtime": 1776988145.014313,
+    "hash": "cb687faac000f64300a612561ef405e9"
+  },
+  "/home/nixos/plane/packages/constants/src/settings/profile.ts": {
+    "mtime": 1776988145.014313,
+    "hash": "59aebcd1ab556b4f607666ac1607bcf2"
+  },
+  "/home/nixos/plane/packages/constants/src/settings/index.ts": {
+    "mtime": 1776988145.014313,
+    "hash": "1964c6aa255914b01965b930e64b7169"
+  },
+  "/home/nixos/plane/packages/constants/src/settings/workspace.ts": {
+    "mtime": 1776988268.6143339,
+    "hash": "06a700305f49455cd54b5a49933d4ef7"
+  },
+  "/home/nixos/plane/packages/constants/src/event-tracker/index.ts": {
+    "mtime": 1776988145.010313,
+    "hash": "3cf16726535197852ce0d4d1b53c250f"
+  },
+  "/home/nixos/plane/packages/constants/src/event-tracker/core.ts": {
+    "mtime": 1776988145.010313,
+    "hash": "d0007ae0721cc804eb96bb0c75b2cf9b"
+  },
+  "/home/nixos/plane/packages/constants/src/analytics/index.ts": {
+    "mtime": 1776988145.010313,
+    "hash": "389fdb9eaa956573906dd4f7431177b3"
+  },
+  "/home/nixos/plane/packages/constants/src/analytics/common.ts": {
+    "mtime": 1776988145.010313,
+    "hash": "9fc7b133719aeeb3b7515b5e82a11ffc"
+  },
+  "/home/nixos/plane/packages/constants/src/rich-filters/index.ts": {
+    "mtime": 1776988145.014313,
+    "hash": "ee4cb18265f81a00d6e0898ed42ee6ef"
+  },
+  "/home/nixos/plane/packages/constants/src/rich-filters/option.ts": {
+    "mtime": 1776988145.014313,
+    "hash": "24e9c4ae7fb4a8256356388cf2629db2"
+  },
+  "/home/nixos/plane/packages/constants/src/rich-filters/operator-labels/extended.ts": {
+    "mtime": 1776988145.014313,
+    "hash": "3f98a99fd99a9a88b1ed2962697f46be"
+  },
+  "/home/nixos/plane/packages/constants/src/rich-filters/operator-labels/index.ts": {
+    "mtime": 1776988145.014313,
+    "hash": "e9b69be3b53457c61c4b2bf5eb10f85c"
+  },
+  "/home/nixos/plane/packages/constants/src/rich-filters/operator-labels/core.ts": {
+    "mtime": 1776988145.014313,
+    "hash": "1ef240b8da45adb0af77e4da2a949fd2"
+  },
+  "/home/nixos/plane/packages/i18n/tsdown.config.ts": {
+    "mtime": 1776988145.110313,
+    "hash": "701ed4cb66ec6fb09c1783abe91153d7"
+  },
+  "/home/nixos/plane/packages/i18n/src/index.ts": {
+    "mtime": 1776988145.0783129,
+    "hash": "2d2b062063889bea036af853c2d7f4b5"
+  },
+  "/home/nixos/plane/packages/i18n/src/context/index.tsx": {
+    "mtime": 1776988145.074313,
+    "hash": "76089a6569db9fbad5df5df15a5a9f22"
+  },
+  "/home/nixos/plane/packages/i18n/src/hooks/index.ts": {
+    "mtime": 1776988145.0783129,
+    "hash": "00349d53e4b97a7b5d15270f776580f9"
+  },
+  "/home/nixos/plane/packages/i18n/src/hooks/use-translation.ts": {
+    "mtime": 1776988145.0783129,
+    "hash": "e8620bdee18af47ce670c4d6e018a2db"
+  },
+  "/home/nixos/plane/packages/i18n/src/store/index.ts": {
+    "mtime": 1776988268.6423337,
+    "hash": "d438f6a43647ee97dc8dc98254184fce"
+  },
+  "/home/nixos/plane/packages/i18n/src/constants/language.ts": {
+    "mtime": 1776988145.074313,
+    "hash": "e987fe6b023d3fe3d5aaf61905006587"
+  },
+  "/home/nixos/plane/packages/i18n/src/constants/index.ts": {
+    "mtime": 1776988145.074313,
+    "hash": "9bcb7d0efc342068600bf13422b0788c"
+  },
+  "/home/nixos/plane/packages/i18n/src/types/language.ts": {
+    "mtime": 1776988145.110313,
+    "hash": "355c6aa3f5310e85e6ac255ccefc032b"
+  },
+  "/home/nixos/plane/packages/i18n/src/types/translation.ts": {
+    "mtime": 1776988145.110313,
+    "hash": "1c9679547893c8d2564c80ceec5d55a9"
+  },
+  "/home/nixos/plane/packages/i18n/src/types/index.ts": {
+    "mtime": 1776988145.110313,
+    "hash": "4a906a41d94501a51a863b6c846104ee"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/index.ts": {
+    "mtime": 1776988145.0863128,
+    "hash": "6977a03dd7d69293ae325eeaa1f6de0f"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/vi-VN/editor.ts": {
+    "mtime": 1776988145.1063128,
+    "hash": "23c1f0b5612706ad83d0173cd39ef1ba"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/vi-VN/accessibility.ts": {
+    "mtime": 1776988145.1063128,
+    "hash": "02d4db4234bfac5177eef4d9aa5d77f4"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/vi-VN/translations.ts": {
+    "mtime": 1776988268.6383338,
+    "hash": "74a3389a66bede4cc6acf91681bcf446"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/vi-VN/empty-state.ts": {
+    "mtime": 1776988145.1063128,
+    "hash": "7347e2ccb9d6d92af82df46f337cbd00"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/es/editor.ts": {
+    "mtime": 1776988145.0863128,
+    "hash": "23c1f0b5612706ad83d0173cd39ef1ba"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/es/accessibility.ts": {
+    "mtime": 1776988145.0863128,
+    "hash": "84030c5d835e61871c29900c142b6bde"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/es/translations.ts": {
+    "mtime": 1776988268.630334,
+    "hash": "8196ca60a9b45fdb88d50397d066c2b6"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/es/empty-state.ts": {
+    "mtime": 1776988145.0863128,
+    "hash": "d87e243ed85b148768004cd23340e211"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/pt-BR/editor.ts": {
+    "mtime": 1776988145.094313,
+    "hash": "23c1f0b5612706ad83d0173cd39ef1ba"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/pt-BR/accessibility.ts": {
+    "mtime": 1776988145.094313,
+    "hash": "020ddc115a80db714f1bd87c4121bfdf"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/pt-BR/translations.ts": {
+    "mtime": 1776988268.6343338,
+    "hash": "e35aedbddb4345f30c6181a6a0423b8c"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/pt-BR/empty-state.ts": {
+    "mtime": 1776988145.094313,
+    "hash": "62c8524871ff1605bbbf2ca811eb4e88"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/ru/editor.ts": {
+    "mtime": 1776988145.0983129,
+    "hash": "23c1f0b5612706ad83d0173cd39ef1ba"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/ru/accessibility.ts": {
+    "mtime": 1776988145.0983129,
+    "hash": "8479d9019c9f0016a348e40dbf35b464"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/ru/translations.ts": {
+    "mtime": 1776988268.6383338,
+    "hash": "db61d38f5813b6f408675664dc3ff644"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/ru/empty-state.ts": {
+    "mtime": 1776988145.0983129,
+    "hash": "e11b8b84fedbaa306b73254d22a10a23"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/zh-TW/editor.ts": {
+    "mtime": 1776988145.110313,
+    "hash": "23c1f0b5612706ad83d0173cd39ef1ba"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/zh-TW/accessibility.ts": {
+    "mtime": 1776988145.110313,
+    "hash": "82b790fef7a44fe8a1cab757a2452c3d"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/zh-TW/translations.ts": {
+    "mtime": 1776988268.6423337,
+    "hash": "42a62b9feb2f4d173da50a2611696daf"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/zh-TW/empty-state.ts": {
+    "mtime": 1776988145.110313,
+    "hash": "d7c5adb944878fe5f7b26456783fbd51"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/ro/editor.ts": {
+    "mtime": 1776988145.0983129,
+    "hash": "23c1f0b5612706ad83d0173cd39ef1ba"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/ro/accessibility.ts": {
+    "mtime": 1776988145.0983129,
+    "hash": "239f336b82a02bc0ec9eadeb9f389ba9"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/ro/translations.ts": {
+    "mtime": 1776988268.6343338,
+    "hash": "39388a2af6be61c8fee33adbde927449"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/ro/empty-state.ts": {
+    "mtime": 1776988145.0983129,
+    "hash": "97119eca2684f2b592cb1000bc6a55c7"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/de/editor.ts": {
+    "mtime": 1776988145.0823128,
+    "hash": "23c1f0b5612706ad83d0173cd39ef1ba"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/de/accessibility.ts": {
+    "mtime": 1776988145.0823128,
+    "hash": "82757a5f4893cbfcb0387ca1431e61a9"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/de/translations.ts": {
+    "mtime": 1776988268.626334,
+    "hash": "2c0c5343bb38c55c1056f7b542e1e341"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/de/empty-state.ts": {
+    "mtime": 1776988145.0823128,
+    "hash": "22573c3f528e70c37e3a9a4f06a4693a"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/it/editor.ts": {
+    "mtime": 1776988145.090313,
+    "hash": "23c1f0b5612706ad83d0173cd39ef1ba"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/it/accessibility.ts": {
+    "mtime": 1776988145.090313,
+    "hash": "054a82f2fed6028d9efdfb4973ce871e"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/it/translations.ts": {
+    "mtime": 1776988268.630334,
+    "hash": "5e4b131ead010266675989e4ac1197a7"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/it/empty-state.ts": {
+    "mtime": 1776988145.090313,
+    "hash": "62496d3c98a0a5818023296a10a48141"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/tr-TR/editor.ts": {
+    "mtime": 1776988145.1023128,
+    "hash": "23c1f0b5612706ad83d0173cd39ef1ba"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/tr-TR/accessibility.ts": {
+    "mtime": 1776988145.1023128,
+    "hash": "2b09c7a8e3614eb1b6ca5603d4090398"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/tr-TR/translations.ts": {
+    "mtime": 1776988268.6383338,
+    "hash": "328a1873c44a81d4a56b77ac71bcbfef"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/tr-TR/empty-state.ts": {
+    "mtime": 1776988145.1023128,
+    "hash": "4db9201ecd75b3ce7721f9c83461655c"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/zh-CN/editor.ts": {
+    "mtime": 1776988145.1063128,
+    "hash": "23c1f0b5612706ad83d0173cd39ef1ba"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/zh-CN/accessibility.ts": {
+    "mtime": 1776988145.1063128,
+    "hash": "249256b289ac9aaee0d7b7f331611cb5"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/zh-CN/translations.ts": {
+    "mtime": 1776988268.6383338,
+    "hash": "53190d7a3af209b180255a99b646cc87"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/zh-CN/empty-state.ts": {
+    "mtime": 1776988145.1063128,
+    "hash": "452000d77836dd9625e4a717b6089c4f"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/ko/editor.ts": {
+    "mtime": 1776988145.090313,
+    "hash": "23c1f0b5612706ad83d0173cd39ef1ba"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/ko/accessibility.ts": {
+    "mtime": 1776988145.090313,
+    "hash": "fdbd4e527dba970f71e7b7dd267cd7cc"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/ko/translations.ts": {
+    "mtime": 1776988268.6343338,
+    "hash": "63b364462777b739b72688c6ba1d88a7"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/ko/empty-state.ts": {
+    "mtime": 1776988145.090313,
+    "hash": "1b851c7a0e732bb068d65e426f89a850"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/fr/editor.ts": {
+    "mtime": 1776988145.0863128,
+    "hash": "23c1f0b5612706ad83d0173cd39ef1ba"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/fr/accessibility.ts": {
+    "mtime": 1776988145.0863128,
+    "hash": "ad155593af5c4beee30d13efe5cceef2"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/fr/translations.ts": {
+    "mtime": 1776988268.630334,
+    "hash": "9cf872f099d519983d28a69a7624df17"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/fr/empty-state.ts": {
+    "mtime": 1776988145.0863128,
+    "hash": "e6badea288d7b8a5a4024d198874ee07"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/cs/editor.ts": {
+    "mtime": 1776988145.0783129,
+    "hash": "23c1f0b5612706ad83d0173cd39ef1ba"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/cs/accessibility.ts": {
+    "mtime": 1776988145.0783129,
+    "hash": "a522919756bf4699aad1c706a180a397"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/cs/translations.ts": {
+    "mtime": 1776988268.626334,
+    "hash": "f9b4a5390d0bc24b2d995b7321d1e749"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/cs/empty-state.ts": {
+    "mtime": 1776988145.0783129,
+    "hash": "3c87adb4b2eb127007c84772fcaf788e"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/id/editor.ts": {
+    "mtime": 1776988145.0863128,
+    "hash": "23c1f0b5612706ad83d0173cd39ef1ba"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/id/accessibility.ts": {
+    "mtime": 1776988145.0863128,
+    "hash": "5e1c05276d5cade74b9d19222943dedc"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/id/translations.ts": {
+    "mtime": 1776988268.630334,
+    "hash": "b3aca9957d7759c2d7ad2d0f5254ee35"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/id/empty-state.ts": {
+    "mtime": 1776988145.0863128,
+    "hash": "1f9180be12553002ac59aeca994fddcd"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/ja/editor.ts": {
+    "mtime": 1776988145.090313,
+    "hash": "23c1f0b5612706ad83d0173cd39ef1ba"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/ja/accessibility.ts": {
+    "mtime": 1776988145.090313,
+    "hash": "2878f7be2ca567ac70c4316472521ad9"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/ja/translations.ts": {
+    "mtime": 1776988268.630334,
+    "hash": "6a9fc4de61939a0bdbe78f1919e7c4c1"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/ja/empty-state.ts": {
+    "mtime": 1776988145.090313,
+    "hash": "e968a108915d51f107afe91421e5f683"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/ua/editor.ts": {
+    "mtime": 1776988145.1023128,
+    "hash": "23c1f0b5612706ad83d0173cd39ef1ba"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/ua/accessibility.ts": {
+    "mtime": 1776988145.1023128,
+    "hash": "213993916f92485876ddbd660415de8f"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/ua/translations.ts": {
+    "mtime": 1776988268.6383338,
+    "hash": "8228b7c8fc4fb070f27d772bb044ed22"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/ua/empty-state.ts": {
+    "mtime": 1776988145.1023128,
+    "hash": "2af278027e8d2f26cc12374f09b927f5"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/pl/editor.ts": {
+    "mtime": 1776988145.094313,
+    "hash": "23c1f0b5612706ad83d0173cd39ef1ba"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/pl/accessibility.ts": {
+    "mtime": 1776988145.094313,
+    "hash": "cf6a1fd7cc16b332ef96d1dbf9a4eddd"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/pl/translations.ts": {
+    "mtime": 1776988268.6343338,
+    "hash": "55c6e1a24198aee2ec4485bfa03ce96a"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/pl/empty-state.ts": {
+    "mtime": 1776988145.094313,
+    "hash": "1c6e3511368594b9c56f3cb8f55a2ea5"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/sk/editor.ts": {
+    "mtime": 1776988145.0983129,
+    "hash": "23c1f0b5612706ad83d0173cd39ef1ba"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/sk/accessibility.ts": {
+    "mtime": 1776988145.0983129,
+    "hash": "94adcd6f040f51b45f78e947a2ea0cd7"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/sk/translations.ts": {
+    "mtime": 1776988268.6383338,
+    "hash": "6f56651e6793419937b5f0100684d19b"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/sk/empty-state.ts": {
+    "mtime": 1776988145.0983129,
+    "hash": "8ac57e74a021dca14236c1a4ad0049a9"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/en/editor.ts": {
+    "mtime": 1776988145.0823128,
+    "hash": "23c1f0b5612706ad83d0173cd39ef1ba"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/en/accessibility.ts": {
+    "mtime": 1776988145.0823128,
+    "hash": "32befaa5ef6c40cd08226cd9a9642cfa"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/en/translations.ts": {
+    "mtime": 1776988268.630334,
+    "hash": "58b5a796645c1b30503e56db7ac44818"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/en/empty-state.ts": {
+    "mtime": 1776988145.0823128,
+    "hash": "b46df860a570b997791cca6187d7d34d"
+  },
+  "/home/nixos/plane/packages/i18n/src/locales/en/core.ts": {
+    "mtime": 1776988145.0823128,
+    "hash": "95ebd00f4066253dd8590fa5b4226634"
+  },
+  "/home/nixos/plane/packages/e2e-utils/src/setup/global-setup.ts": {
+    "mtime": 1777230132.6438031,
+    "hash": "2b193359199c0908bcfcca66a9ffb885"
+  },
+  "/home/nixos/plane/packages/e2e-utils/src/setup/base-config.ts": {
+    "mtime": 1777217132.151625,
+    "hash": "320da5e1e6629b93309702f4134a8e17"
+  },
+  "/home/nixos/plane/packages/e2e-utils/src/setup/global-teardown.ts": {
+    "mtime": 1777217132.151625,
+    "hash": "b8b11c332f90dce9b864f72784c7d467"
+  },
+  "/home/nixos/plane/packages/e2e-utils/src/helpers/feature-flags.ts": {
+    "mtime": 1777217991.539372,
+    "hash": "45a299ea3b7b50d118c2ff4a02b51a3a"
+  },
+  "/home/nixos/plane/packages/e2e-utils/src/helpers/env.ts": {
+    "mtime": 1777217132.151625,
+    "hash": "7e18f616414621eb07c47d30f4354164"
+  },
+  "/home/nixos/plane/packages/e2e-utils/src/helpers/api.ts": {
+    "mtime": 1777230132.6438031,
+    "hash": "a53b504803807dd02250dfa5b353ef2b"
+  },
+  "/home/nixos/plane/packages/e2e-utils/src/helpers/roles.ts": {
+    "mtime": 1777217991.539372,
+    "hash": "e6251ce9b2f6bbe9cc90eabc86a2f352"
+  },
+  "/home/nixos/plane/packages/e2e-utils/src/helpers/types.ts": {
+    "mtime": 1777217991.539372,
+    "hash": "1b539272d79dc93006a89699b3f1fa91"
+  },
+  "/home/nixos/plane/packages/e2e-utils/src/fixtures/index.ts": {
+    "mtime": 1777230401.3997073,
+    "hash": "dfc1734fa48040b421db5e7425846e11"
+  },
+  "/home/nixos/plane/packages/types/tsdown.config.ts": {
+    "mtime": 1776988145.2463126,
+    "hash": "573ae130eb00a9b808c5da77609b2368"
+  },
+  "/home/nixos/plane/packages/types/src/auth.ts": {
+    "mtime": 1776988145.2223127,
+    "hash": "97a14444c5c8ee6dc18608cd6e73ba3e"
+  },
+  "/home/nixos/plane/packages/types/src/command-palette.ts": {
+    "mtime": 1776988145.2263126,
+    "hash": "6ca47152f189301c96a3286149743abd"
+  },
+  "/home/nixos/plane/packages/types/src/activity.ts": {
+    "mtime": 1776988145.2223127,
+    "hash": "f8d041763ce597ca2dd027340f560fb2"
+  },
+  "/home/nixos/plane/packages/types/src/stickies.ts": {
+    "mtime": 1776988145.2463126,
+    "hash": "f16df611240b24d3b58b1b6b54134700"
+  },
+  "/home/nixos/plane/packages/types/src/ai.ts": {
+    "mtime": 1776988145.2223127,
+    "hash": "d92ee8abf6a1138beff2ff594f8227e2"
+  },
+  "/home/nixos/plane/packages/types/src/enums.ts": {
+    "mtime": 1776988145.2303126,
+    "hash": "791397e5c98b5d2b5b2b347e134b0351"
+  },
+  "/home/nixos/plane/packages/types/src/publish.ts": {
+    "mtime": 1776988145.2383127,
+    "hash": "4b9319be484b54b89891cae21af8bab2"
+  },
+  "/home/nixos/plane/packages/types/src/payment.ts": {
+    "mtime": 1776988145.2383127,
+    "hash": "db86d8436c39e5a908766b326529c584"
+  },
+  "/home/nixos/plane/packages/types/src/analytics.ts": {
+    "mtime": 1776988145.2223127,
+    "hash": "76feb4014564b9f8c2ec6987b9a39d5b"
+  },
+  "/home/nixos/plane/packages/types/src/description_version.ts": {
+    "mtime": 1776988145.2303126,
+    "hash": "2d2b7f717f8cd53d63f0c60125c6a73a"
+  },
+  "/home/nixos/plane/packages/types/src/index.ts": {
+    "mtime": 1776988145.2303126,
+    "hash": "2d186d2d4ab4330781ef3163f4362fde"
+  },
+  "/home/nixos/plane/packages/types/src/webhook.ts": {
+    "mtime": 1776988145.2463126,
+    "hash": "6704af7ccdc7c6bfd835c96205d04aca"
+  },
+  "/home/nixos/plane/packages/types/src/inbox.ts": {
+    "mtime": 1776988145.2303126,
+    "hash": "c46a43f2fcf3e7d08d7e2df3d04fdcca"
+  },
+  "/home/nixos/plane/packages/types/src/users.ts": {
+    "mtime": 1777345007.5031705,
+    "hash": "4671687e7d2741e70413a363b410a715"
+  },
+  "/home/nixos/plane/packages/types/src/timezone.ts": {
+    "mtime": 1776988145.2463126,
+    "hash": "ebfce3db121adae429b401d6531603ed"
+  },
+  "/home/nixos/plane/packages/types/src/workspace-notifications.ts": {
+    "mtime": 1776988145.2463126,
+    "hash": "5fb6f7e7848e7bda52205c9f9def40f5"
+  },
+  "/home/nixos/plane/packages/types/src/epics.ts": {
+    "mtime": 1776988145.2303126,
+    "hash": "0f4715277f98873e1ce86eb70b3f6d61"
+  },
+  "/home/nixos/plane/packages/types/src/dashboard.ts": {
+    "mtime": 1776988145.2303126,
+    "hash": "fa1073dcff47cf8d5cdcb30d51b77a18"
+  },
+  "/home/nixos/plane/packages/types/src/issues.ts": {
+    "mtime": 1776988145.2343125,
+    "hash": "5b5fe5e023c2e1a3fb1db27ccbe2b4d6"
+  },
+  "/home/nixos/plane/packages/types/src/search.ts": {
+    "mtime": 1776988145.2423127,
+    "hash": "b23cdd7080116a34a0d3fffc0a539544"
+  },
+  "/home/nixos/plane/packages/types/src/api_token.ts": {
+    "mtime": 1776988145.2223127,
+    "hash": "c2455c38facea9031324fd9b1d4796bc"
+  },
+  "/home/nixos/plane/packages/types/src/settings.ts": {
+    "mtime": 1776988268.650334,
+    "hash": "02c2c37e6d6171b980b599da7d8bf9d0"
+  },
+  "/home/nixos/plane/packages/types/src/utils.ts": {
+    "mtime": 1776988145.2463126,
+    "hash": "f3794944dcfcce03e0e1b9449bf1de42"
+  },
+  "/home/nixos/plane/packages/types/src/de-dupe.ts": {
+    "mtime": 1776988145.2303126,
+    "hash": "eb287d2942c84461f1bac709f2c40eec"
+  },
+  "/home/nixos/plane/packages/types/src/home.ts": {
+    "mtime": 1776988145.2303126,
+    "hash": "69aa496e879008047058ff662e1e82e7"
+  },
+  "/home/nixos/plane/packages/types/src/reaction.ts": {
+    "mtime": 1776988145.2383127,
+    "hash": "e7640e5632280fd9e78edabe1916fbff"
+  },
+  "/home/nixos/plane/packages/types/src/common.ts": {
+    "mtime": 1776988145.2263126,
+    "hash": "6149950dfafa591e3ad84384cdc2c91f"
+  },
+  "/home/nixos/plane/packages/types/src/file.ts": {
+    "mtime": 1776988145.2303126,
+    "hash": "71146846e11a5e6ddf3b2a1a7050cf57"
+  },
+  "/home/nixos/plane/packages/types/src/pragmatic.ts": {
+    "mtime": 1776988145.2383127,
+    "hash": "7b8455d792490ea175944fee776b2976"
+  },
+  "/home/nixos/plane/packages/types/src/estimate.ts": {
+    "mtime": 1776988145.2303126,
+    "hash": "80a22d648721c43d1825482cdd5a4c62"
+  },
+  "/home/nixos/plane/packages/types/src/views.ts": {
+    "mtime": 1776988145.2463126,
+    "hash": "02d4b5a44ef44f22d9aafba8178bd71f"
+  },
+  "/home/nixos/plane/packages/types/src/calendar.ts": {
+    "mtime": 1776988145.2263126,
+    "hash": "f55cf023e3be118cb6aa71f07a99d298"
+  },
+  "/home/nixos/plane/packages/types/src/view-props.ts": {
+    "mtime": 1776988145.2463126,
+    "hash": "c5b411425b177aba07098e6a84324328"
+  },
+  "/home/nixos/plane/packages/types/src/workspace.ts": {
+    "mtime": 1777345007.5071707,
+    "hash": "3f165c98f6ae677b9701e55331e856a5"
+  },
+  "/home/nixos/plane/packages/types/src/waitlist.ts": {
+    "mtime": 1776988145.2463126,
+    "hash": "c12139311b9b9005d6aa37c428ca4286"
+  },
+  "/home/nixos/plane/packages/types/src/workspace-views.ts": {
+    "mtime": 1776988145.2463126,
+    "hash": "32fe447b3441211978afcb78f201e420"
+  },
+  "/home/nixos/plane/packages/types/src/integration.ts": {
+    "mtime": 1776988268.650334,
+    "hash": "4785320be7f8d6158b455f607318b075"
+  },
+  "/home/nixos/plane/packages/types/src/pagination.ts": {
+    "mtime": 1776988145.2383127,
+    "hash": "c4edbf7f6b950ac90f4107df74342ef3"
+  },
+  "/home/nixos/plane/packages/types/src/state.ts": {
+    "mtime": 1777345007.5031705,
+    "hash": "9317f3eea33d2c4d386d90795fc5c2e7"
+  },
+  "/home/nixos/plane/packages/types/src/favorite/index.ts": {
+    "mtime": 1776988145.2303126,
+    "hash": "0987342d231a1d18b2b1bf3705b7b3e5"
+  },
+  "/home/nixos/plane/packages/types/src/favorite/favorite.ts": {
+    "mtime": 1776988145.2303126,
+    "hash": "188dd58597f6909c94405b1e54ad76dc"
+  },
+  "/home/nixos/plane/packages/types/src/module/index.ts": {
+    "mtime": 1776988145.2383127,
+    "hash": "cb8fbcc89072dc493a368323bac2583e"
+  },
+  "/home/nixos/plane/packages/types/src/module/module_filters.ts": {
+    "mtime": 1776988145.2383127,
+    "hash": "3f49376deef04a57f4343fbdbf62eb14"
+  },
+  "/home/nixos/plane/packages/types/src/module/modules.ts": {
+    "mtime": 1777345007.5031705,
+    "hash": "8a960426fe1d16d0e303c2f221b49bd6"
+  },
+  "/home/nixos/plane/packages/types/src/editor/index.ts": {
+    "mtime": 1776988145.2303126,
+    "hash": "20a4c92ad5d3acc110637118d4881da1"
+  },
+  "/home/nixos/plane/packages/types/src/editor/editor-content.ts": {
+    "mtime": 1776988145.2303126,
+    "hash": "a40bd95a1e178dc4da22dbb389bc7abd"
+  },
+  "/home/nixos/plane/packages/types/src/layout/index.ts": {
+    "mtime": 1776988145.2383127,
+    "hash": "2d4e4c409992de11ebbdd22b8ce6367c"
+  },
+  "/home/nixos/plane/packages/types/src/layout/gantt.ts": {
+    "mtime": 1776988145.2383127,
+    "hash": "e4ac29d9943aa0342021652889d94148"
+  },
+  "/home/nixos/plane/packages/types/src/page/extended.ts": {
+    "mtime": 1776988145.2383127,
+    "hash": "19d74b39063ec04a75c7b07abb701787"
+  },
+  "/home/nixos/plane/packages/types/src/page/index.ts": {
+    "mtime": 1776988145.2383127,
+    "hash": "d2a24f784ea15b3022c501d86a92afd8"
+  },
+  "/home/nixos/plane/packages/types/src/page/core.ts": {
+    "mtime": 1776988145.2383127,
+    "hash": "b777949b561a92460d73623ad6f1df85"
+  },
+  "/home/nixos/plane/packages/types/src/project/projects.ts": {
+    "mtime": 1776988145.2383127,
+    "hash": "5295afedde780286536d84bf72a8ce10"
+  },
+  "/home/nixos/plane/packages/types/src/project/index.ts": {
+    "mtime": 1776988145.2383127,
+    "hash": "5bb76d4f565e7a843f05e205ea144694"
+  },
+  "/home/nixos/plane/packages/types/src/project/project_link.ts": {
+    "mtime": 1776988145.2383127,
+    "hash": "045765e0f2455afdfff12f9358a9cf3b"
+  },
+  "/home/nixos/plane/packages/types/src/project/project_filters.ts": {
+    "mtime": 1776988145.2383127,
+    "hash": "86773c36d76da2fd1f8223b710e83a0a"
+  },
+  "/home/nixos/plane/packages/types/src/charts/index.ts": {
+    "mtime": 1776988145.2263126,
+    "hash": "8734f56d0e713d7db6938ba72b2f9939"
+  },
+  "/home/nixos/plane/packages/types/src/charts/common.ts": {
+    "mtime": 1776988145.2263126,
+    "hash": "e33b4bcf69dc576f20db96be884f0cdd"
+  },
+  "/home/nixos/plane/packages/types/src/cycle/index.ts": {
+    "mtime": 1776988145.2303126,
+    "hash": "22fc839bf9f2239927758697b0508160"
+  },
+  "/home/nixos/plane/packages/types/src/cycle/cycle_filters.ts": {
+    "mtime": 1776988145.2263126,
+    "hash": "d1f90a8c7318e317a5aea54bc48a4e43"
+  },
+  "/home/nixos/plane/packages/types/src/cycle/cycle.ts": {
+    "mtime": 1777345007.5031705,
+    "hash": "497802994378cf7b9d889d71f9782901"
+  },
+  "/home/nixos/plane/packages/types/src/issues/issue_link.ts": {
+    "mtime": 1776988145.2343125,
+    "hash": "c96240ae3c09339079f4f2a937067a2b"
+  },
+  "/home/nixos/plane/packages/types/src/issues/base.ts": {
+    "mtime": 1776988145.2343125,
+    "hash": "64ec16131d074498a22d9187fefdc8d8"
+  },
+  "/home/nixos/plane/packages/types/src/issues/issue_attachment.ts": {
+    "mtime": 1776988145.2343125,
+    "hash": "3e3ed4d975bacc89fc54bdd6f7d44b3b"
+  },
+  "/home/nixos/plane/packages/types/src/issues/issue_relation.ts": {
+    "mtime": 1776988145.2343125,
+    "hash": "78e08e7a897c4026903f56b9165568d6"
+  },
+  "/home/nixos/plane/packages/types/src/issues/issue-identifier.ts": {
+    "mtime": 1776988145.2343125,
+    "hash": "88c00d1a8c80fcf34d79a099b6afaaaf"
+  },
+  "/home/nixos/plane/packages/types/src/issues/issue.ts": {
+    "mtime": 1777345007.5031705,
+    "hash": "0f97c9a0500830874d74b4829f0f5dde"
+  },
+  "/home/nixos/plane/packages/types/src/issues/issue_reaction.ts": {
+    "mtime": 1776988145.2343125,
+    "hash": "ee603ddff32601fd9dac4e9cc46caef8"
+  },
+  "/home/nixos/plane/packages/types/src/issues/issue_sub_issues.ts": {
+    "mtime": 1776988145.2343125,
+    "hash": "f7746c0aee808d3b3f20b8f6c4220c30"
+  },
+  "/home/nixos/plane/packages/types/src/issues/activity/issue_activity.ts": {
+    "mtime": 1776988145.2343125,
+    "hash": "87c73aca32a41cf1f0fb1f9c2594da3a"
+  },
+  "/home/nixos/plane/packages/types/src/issues/activity/issue_comment_reaction.ts": {
+    "mtime": 1776988145.2343125,
+    "hash": "7d0d955bb7157f90a213fa12ed54e21c"
+  },
+  "/home/nixos/plane/packages/types/src/issues/activity/base.ts": {
+    "mtime": 1776988145.2343125,
+    "hash": "16bcea43803854b3f680ad335cc990ba"
+  },
+  "/home/nixos/plane/packages/types/src/issues/activity/issue_comment.ts": {
+    "mtime": 1776988145.2343125,
+    "hash": "437c20e3e62c351e0d66b674f898ac5d"
+  },
+  "/home/nixos/plane/packages/types/src/workspace-draft-issues/base.ts": {
+    "mtime": 1776988145.2463126,
+    "hash": "110baf7e864a1b12639af2aafa620af6"
+  },
+  "/home/nixos/plane/packages/types/src/current-user/profile.ts": {
+    "mtime": 1776988145.2263126,
+    "hash": "6df6b9001e4d9046548399fd15b78057"
+  },
+  "/home/nixos/plane/packages/types/src/current-user/index.ts": {
+    "mtime": 1776988145.2263126,
+    "hash": "bfb0759cdcacd8bf4229e0a8bfd2c8b2"
+  },
+  "/home/nixos/plane/packages/types/src/instance/auth.ts": {
+    "mtime": 1776988268.650334,
+    "hash": "13be252ac23960979aed3b4838aa7d1e"
+  },
+  "/home/nixos/plane/packages/types/src/instance/auth-ee.ts": {
+    "mtime": 1776988145.2343125,
+    "hash": "063e7168272f6bebff67e8c793ab7cc2"
+  },
+  "/home/nixos/plane/packages/types/src/instance/ai.ts": {
+    "mtime": 1776988145.2343125,
+    "hash": "3cee7186908cbbbf102ebcb89a317dc2"
+  },
+  "/home/nixos/plane/packages/types/src/instance/base.ts": {
+    "mtime": 1776988268.650334,
+    "hash": "59f051c84622fadb4f7ccb94d6c1fc30"
+  },
+  "/home/nixos/plane/packages/types/src/instance/index.ts": {
+    "mtime": 1776988145.2343125,
+    "hash": "8cda86a73160c8b49bb7d1b2e55c7415"
+  },
+  "/home/nixos/plane/packages/types/src/instance/email.ts": {
+    "mtime": 1776988145.2343125,
+    "hash": "a835a4f1bd80cf553d0bea9273826406"
+  },
+  "/home/nixos/plane/packages/types/src/instance/image.ts": {
+    "mtime": 1776988145.2343125,
+    "hash": "e236fc9ed70708153efb6ddc96bc26b1"
+  },
+  "/home/nixos/plane/packages/types/src/instance/workspace.ts": {
+    "mtime": 1776988145.2343125,
+    "hash": "7a095a1308622b118fa399b705fadec4"
+  },
+  "/home/nixos/plane/packages/types/src/base-layouts/base.ts": {
+    "mtime": 1776988145.2223127,
+    "hash": "357eda0b0faccb13cf99d6df75a4398c"
+  },
+  "/home/nixos/plane/packages/types/src/base-layouts/index.ts": {
+    "mtime": 1776988145.2223127,
+    "hash": "2334f191d25eeacd6cb09924ca45b3ed"
+  },
+  "/home/nixos/plane/packages/types/src/base-layouts/list.ts": {
+    "mtime": 1776988145.2263126,
+    "hash": "6ba67750170785df59ad445a4a8c9225"
+  },
+  "/home/nixos/plane/packages/types/src/base-layouts/kanban.ts": {
+    "mtime": 1776988145.2263126,
+    "hash": "2d0a8a8fe4542e0d46f023027e276044"
+  },
+  "/home/nixos/plane/packages/types/src/base-layouts/gantt/extended.ts": {
+    "mtime": 1776988145.2223127,
+    "hash": "b49b88b3dd287f01ba13f78eea98968b"
+  },
+  "/home/nixos/plane/packages/types/src/base-layouts/gantt/index.ts": {
+    "mtime": 1776988145.2223127,
+    "hash": "715f3db05b52089b81b42004badc18d7"
+  },
+  "/home/nixos/plane/packages/types/src/base-layouts/gantt/core.ts": {
+    "mtime": 1776988145.2223127,
+    "hash": "b7525efae74b37314e7cd72f604d8812"
+  },
+  "/home/nixos/plane/packages/types/src/rich-filters/expression.ts": {
+    "mtime": 1776988145.2423127,
+    "hash": "6e39d96db8d3e8a0d4302d1f1d580f9b"
+  },
+  "/home/nixos/plane/packages/types/src/rich-filters/index.ts": {
+    "mtime": 1776988145.2423127,
+    "hash": "09ba6f47856f9c434cf9e43185954487"
+  },
+  "/home/nixos/plane/packages/types/src/rich-filters/builder.ts": {
+    "mtime": 1776988145.2423127,
+    "hash": "910b5c5ed0790ae0f16bb09d9557c5c9"
+  },
+  "/home/nixos/plane/packages/types/src/rich-filters/adapter.ts": {
+    "mtime": 1776988145.2383127,
+    "hash": "f9976c395007a86ae2759b53e78ba64c"
+  },
+  "/home/nixos/plane/packages/types/src/rich-filters/operator-configs/extended.ts": {
+    "mtime": 1776988145.2423127,
+    "hash": "9331584b9a827be652ddfcba0296ae44"
+  },
+  "/home/nixos/plane/packages/types/src/rich-filters/operator-configs/index.ts": {
+    "mtime": 1776988145.2423127,
+    "hash": "c58ca105df17624bb29b6c22b9b31022"
+  },
+  "/home/nixos/plane/packages/types/src/rich-filters/operator-configs/core.ts": {
+    "mtime": 1776988145.2423127,
+    "hash": "4f10a996b8d5a203dfb3b1308d0a9ae1"
+  },
+  "/home/nixos/plane/packages/types/src/rich-filters/operators/extended.ts": {
+    "mtime": 1776988145.2423127,
+    "hash": "bdc134513d4abdca2d402f4a0e49bdc9"
+  },
+  "/home/nixos/plane/packages/types/src/rich-filters/operators/index.ts": {
+    "mtime": 1776988145.2423127,
+    "hash": "fc6a97ba8113e27502672a7419724933"
+  },
+  "/home/nixos/plane/packages/types/src/rich-filters/operators/core.ts": {
+    "mtime": 1776988145.2423127,
+    "hash": "9ed96659ebaae117ab15fc29d8b219af"
+  },
+  "/home/nixos/plane/packages/types/src/rich-filters/config/index.ts": {
+    "mtime": 1776988145.2423127,
+    "hash": "d294b2f5753e1fdfa90b2743d840d2f5"
+  },
+  "/home/nixos/plane/packages/types/src/rich-filters/config/filter-config.ts": {
+    "mtime": 1776988145.2423127,
+    "hash": "30326819f16c13594b41bb94782ee6bb"
+  },
+  "/home/nixos/plane/packages/types/src/rich-filters/derived/extended.ts": {
+    "mtime": 1776988145.2423127,
+    "hash": "734506efe02a738dba08299058b63a32"
+  },
+  "/home/nixos/plane/packages/types/src/rich-filters/derived/index.ts": {
+    "mtime": 1776988145.2423127,
+    "hash": "f4f56034b40d42861e54d6ef0ec6d8cb"
+  },
+  "/home/nixos/plane/packages/types/src/rich-filters/derived/shared.ts": {
+    "mtime": 1776988145.2423127,
+    "hash": "00db71ceba041d6172dcdf02b7afb75f"
+  },
+  "/home/nixos/plane/packages/types/src/rich-filters/derived/core.ts": {
+    "mtime": 1776988145.2423127,
+    "hash": "c6dd06aad453e4b0225cafe7cc48ba66"
+  },
+  "/home/nixos/plane/packages/types/src/rich-filters/field-types/extended.ts": {
+    "mtime": 1776988145.2423127,
+    "hash": "8cdc7a36d910fd5af99b79be3f78d6ba"
+  },
+  "/home/nixos/plane/packages/types/src/rich-filters/field-types/index.ts": {
+    "mtime": 1776988145.2423127,
+    "hash": "906e81283b384a134e0dcb8dfcdbd45f"
+  },
+  "/home/nixos/plane/packages/types/src/rich-filters/field-types/shared.ts": {
+    "mtime": 1776988145.2423127,
+    "hash": "861d72c4cf3426b137575f9e55a41bcb"
+  },
+  "/home/nixos/plane/packages/types/src/rich-filters/field-types/core.ts": {
+    "mtime": 1776988145.2423127,
+    "hash": "3b6356f7d5a115fa154a2b4b016851a1"
+  },
+  "/home/nixos/plane/packages/types/src/intake/index.ts": {
+    "mtime": 1776988145.2343125,
+    "hash": "7705eb37bee02480ac68566737908d8d"
+  },
+  "/home/nixos/plane/packages/types/src/intake/state.ts": {
+    "mtime": 1776988145.2343125,
+    "hash": "065f996ecda3668c7088a29f0a7a8b8a"
+  },
+  "/home/nixos/plane/packages/types/src/importer/github-importer.ts": {
+    "mtime": 1776988145.2303126,
+    "hash": "33962a614817bb656af7749131b500d7"
+  },
+  "/home/nixos/plane/packages/types/src/importer/index.ts": {
+    "mtime": 1776988268.650334,
+    "hash": "98cf9e74267371c6a4a9c2beff067e3e"
+  },
+  "/home/nixos/plane/packages/types/src/importer/gitlab-importer.ts": {
+    "mtime": 1776988268.650334,
+    "hash": "58dec0ae7f81d33c675ec981e9c4977c"
+  },
+  "/home/nixos/plane/packages/types/src/importer/jira-importer.ts": {
+    "mtime": 1776988145.2303126,
+    "hash": "727e8b966e978431813077c9d7196278"
+  },
+  "/home/nixos/plane/packages/tailwind-config/postcss.config.js": {
+    "mtime": 1776988145.2223127,
+    "hash": "8b96fa898c480e577ffa9ba89e706879"
+  },
+  "/home/nixos/plane/packages/utils/tsdown.config.ts": {
+    "mtime": 1776988145.2943125,
+    "hash": "701ed4cb66ec6fb09c1783abe91153d7"
+  },
+  "/home/nixos/plane/packages/utils/src/project.ts": {
+    "mtime": 1776988268.6583338,
+    "hash": "798d0e67e0ac279ff878fa3ea1e0e903"
+  },
+  "/home/nixos/plane/packages/utils/src/auth.ts": {
+    "mtime": 1776988268.6543338,
+    "hash": "c911690ed90dbb82d32a5df5566ee699"
+  },
+  "/home/nixos/plane/packages/utils/src/emoji.ts": {
+    "mtime": 1776988268.6583338,
+    "hash": "6a387d910d80f0e75efa562922bd26f3"
+  },
+  "/home/nixos/plane/packages/utils/src/filter.ts": {
+    "mtime": 1776988145.2823126,
+    "hash": "498e65507663db79d7eb118235b9a63a"
+  },
+  "/home/nixos/plane/packages/utils/src/tab-indices.ts": {
+    "mtime": 1776988145.2903125,
+    "hash": "9601c3f776e4269a1c26f6ee5848d0d6"
+  },
+  "/home/nixos/plane/packages/utils/src/math.ts": {
+    "mtime": 1776988145.2823126,
+    "hash": "79855fa04d0f18e7ee50d822abe6bd14"
+  },
+  "/home/nixos/plane/packages/utils/src/array.ts": {
+    "mtime": 1776988268.6543338,
+    "hash": "855116c4624ab8776e786dee13b76db7"
+  },
+  "/home/nixos/plane/packages/utils/src/index.ts": {
+    "mtime": 1776988145.2823126,
+    "hash": "0ea666cfc0eb14c35f4a1a0f69f2bc34"
+  },
+  "/home/nixos/plane/packages/utils/src/color.ts": {
+    "mtime": 1776988145.2783127,
+    "hash": "d2226110c74e4514929f456f600baa36"
+  },
+  "/home/nixos/plane/packages/utils/src/url.ts": {
+    "mtime": 1776988268.6623337,
+    "hash": "c049dbdcebec759565d219a8bbe8ad1a"
+  },
+  "/home/nixos/plane/packages/utils/src/project-views.ts": {
+    "mtime": 1776988145.2823126,
+    "hash": "45cedb46c5e7d68a7c750f22f2d3fedb"
+  },
+  "/home/nixos/plane/packages/utils/src/intake.ts": {
+    "mtime": 1776988145.2823126,
+    "hash": "3314f6b79d735aee8c238bb3ced013cc"
+  },
+  "/home/nixos/plane/packages/utils/src/attachment.ts": {
+    "mtime": 1776988145.2783127,
+    "hash": "350333fc76cc3e3c5981e51fc13613c2"
+  },
+  "/home/nixos/plane/packages/utils/src/validation.ts": {
+    "mtime": 1776988145.2903125,
+    "hash": "08223c162bb16ba53f571b31e5e956f0"
+  },
+  "/home/nixos/plane/packages/utils/src/loader.ts": {
+    "mtime": 1776988145.2823126,
+    "hash": "9bbb61b629d0caa17d1431e6825a9782"
+  },
+  "/home/nixos/plane/packages/utils/src/tlds.ts": {
+    "mtime": 1776988145.2903125,
+    "hash": "de066deebe6da8e5dae3bfa2880a832f"
+  },
+  "/home/nixos/plane/packages/utils/src/estimates.ts": {
+    "mtime": 1776988145.2823126,
+    "hash": "6205e82bb5d7a2b6c681e268db9ff694"
+  },
+  "/home/nixos/plane/packages/utils/src/string.ts": {
+    "mtime": 1777343723.931535,
+    "hash": "04aba72bdbc59d3f843f373bbd8b91c9"
+  },
+  "/home/nixos/plane/packages/utils/src/datetime.ts": {
+    "mtime": 1776988268.6583338,
+    "hash": "86307e819221ba57a4162d06b8ad5bcf"
+  },
+  "/home/nixos/plane/packages/utils/src/page.ts": {
+    "mtime": 1776988268.6583338,
+    "hash": "aa3b70fc4891a3d30301dbc8c538487f"
+  },
+  "/home/nixos/plane/packages/utils/src/notification.ts": {
+    "mtime": 1776988145.2823126,
+    "hash": "f878cbe43d3726cc4e4bd6221fdb45ad"
+  },
+  "/home/nixos/plane/packages/utils/src/subscription.ts": {
+    "mtime": 1776988145.2903125,
+    "hash": "568e8e74a1273d6f5dadf24290e092bd"
+  },
+  "/home/nixos/plane/packages/utils/src/distribution-update.ts": {
+    "mtime": 1776988145.2783127,
+    "hash": "12061958be53be7d8ab3d453766e14fc"
+  },
+  "/home/nixos/plane/packages/utils/src/module.ts": {
+    "mtime": 1776988268.6583338,
+    "hash": "b33d0d2d9d6b87696704ecb49ef336ef"
+  },
+  "/home/nixos/plane/packages/utils/src/get-icon-for-link.ts": {
+    "mtime": 1776988145.2823126,
+    "hash": "8f241c18b428dcbd059857ee9ee7c2ab"
+  },
+  "/home/nixos/plane/packages/utils/src/theme-legacy.ts": {
+    "mtime": 1776988145.2903125,
+    "hash": "161364e2fa41bb4838dba5612aa5b8b4"
+  },
+  "/home/nixos/plane/packages/utils/src/common.ts": {
+    "mtime": 1776988268.6583338,
+    "hash": "05f9b6ea5df5552bd4057d8ac647b918"
+  },
+  "/home/nixos/plane/packages/utils/src/file.ts": {
+    "mtime": 1776988268.6583338,
+    "hash": "404be2e3a9adb6bd1be7d49cc34c57f4"
+  },
+  "/home/nixos/plane/packages/utils/src/calendar.ts": {
+    "mtime": 1776988268.6583338,
+    "hash": "e38a37e1ca503af7667eda2f77a94b33"
+  },
+  "/home/nixos/plane/packages/utils/src/workspace.ts": {
+    "mtime": 1776988145.2943125,
+    "hash": "4529a5a323a4dcc8e4b6fd6c43c476d6"
+  },
+  "/home/nixos/plane/packages/utils/src/router.ts": {
+    "mtime": 1776988268.6583338,
+    "hash": "bcd584819f469bf7771c986a0747089d"
+  },
+  "/home/nixos/plane/packages/utils/src/cycle.ts": {
+    "mtime": 1776988268.6583338,
+    "hash": "f37e731617466ce3a0fe9c2194045214"
+  },
+  "/home/nixos/plane/packages/utils/src/permission/index.ts": {
+    "mtime": 1776988145.2823126,
+    "hash": "c67543657547e9447e54102c5388f0ad"
+  },
+  "/home/nixos/plane/packages/utils/src/permission/role.ts": {
+    "mtime": 1776988145.2823126,
+    "hash": "8415b4e3b410780307b487a73636081a"
+  },
+  "/home/nixos/plane/packages/utils/src/editor/index.ts": {
+    "mtime": 1776988145.2783127,
+    "hash": "2ea23989dba2ed570e954f556f994f43"
+  },
+  "/home/nixos/plane/packages/utils/src/editor/common.ts": {
+    "mtime": 1776988145.2783127,
+    "hash": "5707bf5b695894653b2fa2ab57e327f1"
+  },
+  "/home/nixos/plane/packages/utils/src/editor/markdown-parser/index.ts": {
+    "mtime": 1776988145.2783127,
+    "hash": "6e8c8e20db78739a2866c7cf65c37549"
+  },
+  "/home/nixos/plane/packages/utils/src/editor/markdown-parser/root.ts": {
+    "mtime": 1776988268.6583338,
+    "hash": "46e73058b3537cb15f97e15fdcaa9606"
+  },
+  "/home/nixos/plane/packages/utils/src/editor/markdown-parser/custom-components-handler.ts": {
+    "mtime": 1776988145.2783127,
+    "hash": "5beb84c6fb578ae3e1fd56dd7b490daa"
+  },
+  "/home/nixos/plane/packages/utils/src/editor/markdown-parser/common.ts": {
+    "mtime": 1776988145.2783127,
+    "hash": "d974e82d3983e9af62324cf76efaed09"
+  },
+  "/home/nixos/plane/packages/utils/src/editor/markdown-parser/marks-handler.ts": {
+    "mtime": 1776988145.2783127,
+    "hash": "2ad21634be457b4ff98dbb138332118a"
+  },
+  "/home/nixos/plane/packages/utils/src/editor/markdown-parser/types.ts": {
+    "mtime": 1776988145.2783127,
+    "hash": "e6b59e33598890d47c5584cd9097698e"
+  },
+  "/home/nixos/plane/packages/utils/src/work-item/base.ts": {
+    "mtime": 1776988145.2943125,
+    "hash": "3c9cd373f6cb05be24088b86e25d350c"
+  },
+  "/home/nixos/plane/packages/utils/src/work-item/index.ts": {
+    "mtime": 1776988145.2943125,
+    "hash": "51d085e38af2fcb93e43572b560e1880"
+  },
+  "/home/nixos/plane/packages/utils/src/work-item/modal.ts": {
+    "mtime": 1776988145.2943125,
+    "hash": "d6690d1d122f9c8902ac958609a11da0"
+  },
+  "/home/nixos/plane/packages/utils/src/work-item/state.ts": {
+    "mtime": 1776988268.6623337,
+    "hash": "053f6e6462acbf03ee09951c09f2ac73"
+  },
+  "/home/nixos/plane/packages/utils/src/work-item-filters/index.ts": {
+    "mtime": 1776988145.2943125,
+    "hash": "fb077b987bd61b8e82f0ceede408dc94"
+  },
+  "/home/nixos/plane/packages/utils/src/work-item-filters/configs/index.ts": {
+    "mtime": 1776988145.2943125,
+    "hash": "43e55697273586edf8a785dbaca86afb"
+  },
+  "/home/nixos/plane/packages/utils/src/work-item-filters/configs/filters/project.ts": {
+    "mtime": 1776988145.2943125,
+    "hash": "9356027c870b2582976540a45bd49800"
+  },
+  "/home/nixos/plane/packages/utils/src/work-item-filters/configs/filters/index.ts": {
+    "mtime": 1776988145.2943125,
+    "hash": "81fcc0c059e170c9aface074c5a90949"
+  },
+  "/home/nixos/plane/packages/utils/src/work-item-filters/configs/filters/label.ts": {
+    "mtime": 1776988145.2943125,
+    "hash": "753433d7dcf7adf21aaea8fc6f9eaccc"
+  },
+  "/home/nixos/plane/packages/utils/src/work-item-filters/configs/filters/priority.ts": {
+    "mtime": 1776988145.2943125,
+    "hash": "3ecb3c2326a137b56198b94763583c61"
+  },
+  "/home/nixos/plane/packages/utils/src/work-item-filters/configs/filters/date.ts": {
+    "mtime": 1776988145.2943125,
+    "hash": "b57975fd3901591c3e3b5940ff3f8783"
+  },
+  "/home/nixos/plane/packages/utils/src/work-item-filters/configs/filters/module.ts": {
+    "mtime": 1776988145.2943125,
+    "hash": "2119f80b926281a783c5b15fcc880320"
+  },
+  "/home/nixos/plane/packages/utils/src/work-item-filters/configs/filters/shared.ts": {
+    "mtime": 1776988145.2943125,
+    "hash": "2d4a46edb327a172c5a22c86675c7a88"
+  },
+  "/home/nixos/plane/packages/utils/src/work-item-filters/configs/filters/user.ts": {
+    "mtime": 1776988145.2943125,
+    "hash": "99d3cc4bce54bf32b6c729c6e770fa02"
+  },
+  "/home/nixos/plane/packages/utils/src/work-item-filters/configs/filters/cycle.ts": {
+    "mtime": 1776988145.2943125,
+    "hash": "3c22b80a2a0ec177ce6c000d8a074ab7"
+  },
+  "/home/nixos/plane/packages/utils/src/work-item-filters/configs/filters/state.ts": {
+    "mtime": 1776988145.2943125,
+    "hash": "ad4eb9adbcf53e5fe2cd198032805904"
+  },
+  "/home/nixos/plane/packages/utils/src/rich-filters/index.ts": {
+    "mtime": 1776988145.2863126,
+    "hash": "54f1555f06513f79e955a96ac3096f1b"
+  },
+  "/home/nixos/plane/packages/utils/src/rich-filters/operators/index.ts": {
+    "mtime": 1776988145.2863126,
+    "hash": "e0f7e88105b274dd912ae31b511674f1"
+  },
+  "/home/nixos/plane/packages/utils/src/rich-filters/operators/shared.ts": {
+    "mtime": 1776988145.2863126,
+    "hash": "dd8dc623e9b5dfeb172ba161e0bcd69f"
+  },
+  "/home/nixos/plane/packages/utils/src/rich-filters/operators/core.ts": {
+    "mtime": 1776988145.2863126,
+    "hash": "d0a7c67b1b887f7ac5e7b337099edf03"
+  },
+  "/home/nixos/plane/packages/utils/src/rich-filters/operations/comparison.ts": {
+    "mtime": 1776988145.2863126,
+    "hash": "c1455750bf27bca570313bd385f884fd"
+  },
+  "/home/nixos/plane/packages/utils/src/rich-filters/operations/index.ts": {
+    "mtime": 1776988145.2863126,
+    "hash": "dbc64b0d70cf971e336c2e0c10c49e1f"
+  },
+  "/home/nixos/plane/packages/utils/src/rich-filters/operations/traversal/shared.ts": {
+    "mtime": 1776988145.2863126,
+    "hash": "28d0b93233e08a9b31ca602deddc666e"
+  },
+  "/home/nixos/plane/packages/utils/src/rich-filters/operations/traversal/core.ts": {
+    "mtime": 1776988268.6583338,
+    "hash": "43bbaa3c5b43bc2c55acab145a61b4cb"
+  },
+  "/home/nixos/plane/packages/utils/src/rich-filters/operations/transformation/shared.ts": {
+    "mtime": 1776988145.2863126,
+    "hash": "f0ed8ceff024d0d1995d399bbf2f12ad"
+  },
+  "/home/nixos/plane/packages/utils/src/rich-filters/operations/transformation/core.ts": {
+    "mtime": 1776988145.2863126,
+    "hash": "2c6a42fb62698ae07212579b46933e6d"
+  },
+  "/home/nixos/plane/packages/utils/src/rich-filters/operations/manipulation/core.ts": {
+    "mtime": 1776988145.2863126,
+    "hash": "3014a96630265ea1b7a475921c0625f6"
+  },
+  "/home/nixos/plane/packages/utils/src/rich-filters/types/index.ts": {
+    "mtime": 1776988145.2863126,
+    "hash": "e0f7e88105b274dd912ae31b511674f1"
+  },
+  "/home/nixos/plane/packages/utils/src/rich-filters/types/shared.ts": {
+    "mtime": 1776988145.2863126,
+    "hash": "e13b8c0ae5b6ee398fde43307a2f73e4"
+  },
+  "/home/nixos/plane/packages/utils/src/rich-filters/types/core.ts": {
+    "mtime": 1776988145.2863126,
+    "hash": "c06b6c7aba3b1fcc7b422bc8c577ad20"
+  },
+  "/home/nixos/plane/packages/utils/src/rich-filters/validators/index.ts": {
+    "mtime": 1776988145.2903125,
+    "hash": "e0f7e88105b274dd912ae31b511674f1"
+  },
+  "/home/nixos/plane/packages/utils/src/rich-filters/validators/shared.ts": {
+    "mtime": 1776988145.2903125,
+    "hash": "6c537b8233c6896993fe467b85055eae"
+  },
+  "/home/nixos/plane/packages/utils/src/rich-filters/validators/core.ts": {
+    "mtime": 1776988145.2903125,
+    "hash": "3212ebf07994ba6885610489f04c46dc"
+  },
+  "/home/nixos/plane/packages/utils/src/rich-filters/factories/index.ts": {
+    "mtime": 1776988145.2863126,
+    "hash": "a3fa861fb39b9ea0152f497182c86ae8"
+  },
+  "/home/nixos/plane/packages/utils/src/rich-filters/factories/nodes/core.ts": {
+    "mtime": 1776988145.2863126,
+    "hash": "abcab9fe4a3434e8518de3358b515c0d"
+  },
+  "/home/nixos/plane/packages/utils/src/rich-filters/factories/configs/index.ts": {
+    "mtime": 1776988145.2823126,
+    "hash": "fe68b52003bbc4cb5ecba42acab316af"
+  },
+  "/home/nixos/plane/packages/utils/src/rich-filters/factories/configs/shared.ts": {
+    "mtime": 1776988145.2863126,
+    "hash": "69a196792602d2e9544dd956f9428cd2"
+  },
+  "/home/nixos/plane/packages/utils/src/rich-filters/factories/configs/core.ts": {
+    "mtime": 1776988145.2823126,
+    "hash": "9834263b4dfa8ffe3cf95b2defecd0e5"
+  },
+  "/home/nixos/plane/packages/utils/src/rich-filters/factories/configs/properties/index.ts": {
+    "mtime": 1776988145.2823126,
+    "hash": "81751fa403cff0a50602d31d615352fb"
+  },
+  "/home/nixos/plane/packages/utils/src/rich-filters/factories/configs/properties/date.ts": {
+    "mtime": 1776988145.2823126,
+    "hash": "8d20d4f2764ee83b63b6ca4be116c95f"
+  },
+  "/home/nixos/plane/packages/utils/src/rich-filters/factories/configs/properties/shared.ts": {
+    "mtime": 1776988145.2823126,
+    "hash": "18bf4e4d292ba20f35786c5b1b11137f"
+  },
+  "/home/nixos/plane/packages/utils/src/rich-filters/factories/configs/properties/member-picker.ts": {
+    "mtime": 1776988145.2823126,
+    "hash": "0e9883481b8a6c2e0b19e15df8642cc7"
+  },
+  "/home/nixos/plane/packages/utils/src/rich-filters/values/index.ts": {
+    "mtime": 1776988145.2903125,
+    "hash": "3cf16726535197852ce0d4d1b53c250f"
+  },
+  "/home/nixos/plane/packages/utils/src/rich-filters/values/core.ts": {
+    "mtime": 1776988145.2903125,
+    "hash": "900f164e078647820b02728e4afc2b61"
+  },
+  "/home/nixos/plane/packages/utils/src/theme/constants.ts": {
+    "mtime": 1776988145.2903125,
+    "hash": "620cfe2f3e2b468f2bed090f1608c573"
+  },
+  "/home/nixos/plane/packages/utils/src/theme/color-validation.ts": {
+    "mtime": 1776988145.2903125,
+    "hash": "27738583d19320304eb75bd84ebd65c0"
+  },
+  "/home/nixos/plane/packages/utils/src/theme/theme-application.ts": {
+    "mtime": 1776988145.2903125,
+    "hash": "c0257ae99f3eb724bb90e41eb20ac812"
+  },
+  "/home/nixos/plane/packages/utils/src/theme/color-conversion.ts": {
+    "mtime": 1776988268.6583338,
+    "hash": "d603f6fb4fa7e4a3b9cdbbcbd73a8e10"
+  },
+  "/home/nixos/plane/packages/utils/src/theme/index.ts": {
+    "mtime": 1776988145.2903125,
+    "hash": "cb22bbafbe0368340e22127ee32a1169"
+  },
+  "/home/nixos/plane/packages/utils/src/theme/palette-generator.ts": {
+    "mtime": 1776988145.2903125,
+    "hash": "f3d2ba546ae92f08997e24329a992e6d"
+  },
+  "/home/nixos/plane/packages/utils/src/theme/theme-inversion.ts": {
+    "mtime": 1776988145.2903125,
+    "hash": "77a07731c8bc2742bce60b65972bc1c0"
+  },
+  "/home/nixos/plane/packages/codemods/function-declaration.ts": {
+    "mtime": 1776988145.006313,
+    "hash": "fd55b9d87d50019a9f4dc3a9e9c087c7"
+  },
+  "/home/nixos/plane/packages/codemods/vitest.config.ts": {
+    "mtime": 1776988145.006313,
+    "hash": "88b1ee0447db8f2787cc0d0ab6ffaed2"
+  },
+  "/home/nixos/plane/packages/codemods/remove-directives.ts": {
+    "mtime": 1776988145.006313,
+    "hash": "76d1e45e923f83e180e817e08f11c044"
+  },
+  "/home/nixos/plane/packages/codemods/tests/function-declaration.spec.ts": {
+    "mtime": 1776988145.006313,
+    "hash": "b719487fd4f00196f92018dfb3211e1b"
+  },
+  "/home/nixos/plane/packages/codemods/tests/remove-directives.spec.ts": {
+    "mtime": 1776988145.006313,
+    "hash": "89aaf50289dacfd701b9bd43d98a486b"
+  },
+  "/home/nixos/plane/packages/shared-state/tsdown.config.ts": {
+    "mtime": 1776988145.2183127,
+    "hash": "701ed4cb66ec6fb09c1783abe91153d7"
+  },
+  "/home/nixos/plane/packages/shared-state/src/index.ts": {
+    "mtime": 1776988145.2143128,
+    "hash": "46a7a2b33b1add6b68ff865f9a1b5b6e"
+  },
+  "/home/nixos/plane/packages/shared-state/src/store/index.ts": {
+    "mtime": 1776988145.2143128,
+    "hash": "06ac75224d77cf932ce1a8ed579594f2"
+  },
+  "/home/nixos/plane/packages/shared-state/src/store/user.store.ts": {
+    "mtime": 1776988145.2143128,
+    "hash": "1653f098777d52d9bd0b5d25c91d987a"
+  },
+  "/home/nixos/plane/packages/shared-state/src/store/workspace.store.ts": {
+    "mtime": 1776988145.2183127,
+    "hash": "7c09009b914912aa2d6bbcf49249cb64"
+  },
+  "/home/nixos/plane/packages/shared-state/src/store/work-item-filters/index.ts": {
+    "mtime": 1776988145.2183127,
+    "hash": "7ef7f11b5de9bcbec134f449f61bf949"
+  },
+  "/home/nixos/plane/packages/shared-state/src/store/work-item-filters/filter.store.ts": {
+    "mtime": 1776988145.2183127,
+    "hash": "ef01b38ec46229e1a1aae7958e375d09"
+  },
+  "/home/nixos/plane/packages/shared-state/src/store/work-item-filters/shared.ts": {
+    "mtime": 1776988145.2183127,
+    "hash": "f87eed13a82ea6ac5ecd94c09f3cafd2"
+  },
+  "/home/nixos/plane/packages/shared-state/src/store/work-item-filters/adapter.ts": {
+    "mtime": 1776988145.2143128,
+    "hash": "7ec6f6471fc7e4d7c9786128d4d90dde"
+  },
+  "/home/nixos/plane/packages/shared-state/src/store/rich-filters/config.ts": {
+    "mtime": 1776988145.2143128,
+    "hash": "6bf2c894cdc14f114dc36557aced5a94"
+  },
+  "/home/nixos/plane/packages/shared-state/src/store/rich-filters/filter.ts": {
+    "mtime": 1776988145.2143128,
+    "hash": "b81e818e81cf9aec6e223a44b017f967"
+  },
+  "/home/nixos/plane/packages/shared-state/src/store/rich-filters/index.ts": {
+    "mtime": 1776988145.2143128,
+    "hash": "6ed25ca3e7ed57a5ef8b2c493c4d78a7"
+  },
+  "/home/nixos/plane/packages/shared-state/src/store/rich-filters/filter-helpers.ts": {
+    "mtime": 1776988145.2143128,
+    "hash": "9ded874503efb34b3200c7e202237fb9"
+  },
+  "/home/nixos/plane/packages/shared-state/src/store/rich-filters/config-manager.ts": {
+    "mtime": 1776988145.2143128,
+    "hash": "ad385a1cdf3cda2f072eb2caceb155f1"
+  },
+  "/home/nixos/plane/packages/shared-state/src/store/rich-filters/adapter.ts": {
+    "mtime": 1776988145.2143128,
+    "hash": "01290af0a5d60a423e06ee124941b54b"
+  },
+  "/home/nixos/plane/packages/shared-state/src/utils/index.ts": {
+    "mtime": 1776988145.2183127,
+    "hash": "b88eb1a862880278fc3b0af77450c498"
+  },
+  "/home/nixos/plane/packages/shared-state/src/utils/work-item-filters.helper.ts": {
+    "mtime": 1776988145.2183127,
+    "hash": "c486e39f6c5381f5a50b35a063e04015"
+  },
+  "/home/nixos/plane/packages/shared-state/src/utils/rich-filter.helper.ts": {
+    "mtime": 1776988145.2183127,
+    "hash": "afc951352635e59350faeb8ae27844fb"
+  },
+  "/home/nixos/plane/packages/logger/tsdown.config.ts": {
+    "mtime": 1776988145.114313,
+    "hash": "573ae130eb00a9b808c5da77609b2368"
+  },
+  "/home/nixos/plane/packages/logger/src/config.ts": {
+    "mtime": 1776988145.114313,
+    "hash": "76fd27fa6ebdbe2926533381c0101722"
+  },
+  "/home/nixos/plane/packages/logger/src/middleware.ts": {
+    "mtime": 1776988145.114313,
+    "hash": "fe3fe22706a5acc0ca79f70a11c6eda3"
+  },
+  "/home/nixos/plane/packages/logger/src/index.ts": {
+    "mtime": 1776988145.114313,
+    "hash": "8b6a147eceb16397df5380c72e51fd2f"
+  },
+  "/home/nixos/plane/packages/decorators/tsdown.config.ts": {
+    "mtime": 1776988145.018313,
+    "hash": "573ae130eb00a9b808c5da77609b2368"
+  },
+  "/home/nixos/plane/packages/decorators/src/rest.ts": {
+    "mtime": 1776988268.6143339,
+    "hash": "511e5fe6f78d3a69c4311d53fe594b51"
+  },
+  "/home/nixos/plane/packages/decorators/src/index.ts": {
+    "mtime": 1776988145.018313,
+    "hash": "30158bc3ace4be4447adf74b0623ab71"
+  },
+  "/home/nixos/plane/packages/decorators/src/websocket.ts": {
+    "mtime": 1776988268.6143339,
+    "hash": "8c4886e4baf0e7906f6572055f4834c7"
+  },
+  "/home/nixos/plane/packages/decorators/src/controller.ts": {
+    "mtime": 1776988268.6143339,
+    "hash": "54bfda0a51fc674483bb6104c06e41eb"
+  },
+  "/home/nixos/plane/packages/propel/tsdown.config.ts": {
+    "mtime": 1776988145.1983128,
+    "hash": "92c77ed44368e65d84dc20288f9b7737"
+  },
+  "/home/nixos/plane/packages/propel/postcss.config.js": {
+    "mtime": 1776988145.114313,
+    "hash": "2314f1e1f6f6b7f93c5d290cf58726ae"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/pending-icon.tsx": {
+    "mtime": 1776988145.1743128,
+    "hash": "22205988c5b2265c7eb5d7cd7b243cbb"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/planned-icon.tsx": {
+    "mtime": 1776988145.1743128,
+    "hash": "8f7c0662f598a6876d25b562f6594ad9"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/photo-filter-icon.tsx": {
+    "mtime": 1776988145.1743128,
+    "hash": "157e9af4560a7d47a0f76da299ddee97"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/calendar-before-icon.tsx": {
+    "mtime": 1776988145.1663127,
+    "hash": "94c6c4d2b3736bd6c17b43b083c7b282"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/favorite-folder-icon.tsx": {
+    "mtime": 1776988145.1663127,
+    "hash": "afabfeecc0e9634b4a954b819bfdb83f"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/github-icon.tsx": {
+    "mtime": 1776988145.1663127,
+    "hash": "227b501bd25aaf1f07a294baf1401a81"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/suspended-user.tsx": {
+    "mtime": 1776988145.1823127,
+    "hash": "6bd6491becbb9d7511afb6d9066ec3db"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/priority-icon.tsx": {
+    "mtime": 1776988145.1743128,
+    "hash": "149f5eeae2498d9f0595e32d1a75cf74"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/serif-icon.tsx": {
+    "mtime": 1776988145.1783128,
+    "hash": "09623beebf2dd9de3363f47e5798ba48"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/done-icon.tsx": {
+    "mtime": 1776988145.1663127,
+    "hash": "a561028d5470904337f5b9e4ba18cd86"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/bar-icon.tsx": {
+    "mtime": 1776988145.1623127,
+    "hash": "dc8021c4de60425b926399075cbfd0eb"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/center-panel-icon.tsx": {
+    "mtime": 1776988145.1663127,
+    "hash": "7c16282dde9ac4ef77a2812bbec06b88"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/icons.stories.tsx": {
+    "mtime": 1776988145.1663127,
+    "hash": "9a42e65dc7ae8b4afdf3587a2d41bc3c"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/index.ts": {
+    "mtime": 1776988145.1703126,
+    "hash": "e9b3443c542fa0620f094362c9e75274"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/intake.tsx": {
+    "mtime": 1776988145.1703126,
+    "hash": "3aeb9a6eb46a90fd3b2b5d07405e75df"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/ai-icon.tsx": {
+    "mtime": 1776988145.1583128,
+    "hash": "56584afe676a6b700f45ad98489b7cee"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/helpers.ts": {
+    "mtime": 1776988145.1663127,
+    "hash": "093e3bb01a65d46141134030cf2f0ee4"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/comment-fill-icon.tsx": {
+    "mtime": 1776988145.1663127,
+    "hash": "dc12694afe2ec2da64d85728887ea51f"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/type.ts": {
+    "mtime": 1776988145.1823127,
+    "hash": "5b7f3e2104d6fd4f9daacd9cd75ed3e2"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/full-screen-panel-icon.tsx": {
+    "mtime": 1776988145.1663127,
+    "hash": "fad7a883a2627c6a03b8d161584d304b"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/set-as-default-icon.tsx": {
+    "mtime": 1776988145.1783128,
+    "hash": "79d499f12b1f3156a0a7e4c6a590cc7d"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/teams.tsx": {
+    "mtime": 1776988145.1823127,
+    "hash": "667951588a758f6efeac525f70430b88"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/transfer-icon.tsx": {
+    "mtime": 1776988145.1823127,
+    "hash": "462575c984375953facd2b3975d2c87a"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/monospace-icon.tsx": {
+    "mtime": 1776988145.1743128,
+    "hash": "cc3385ccd0b1aa6b53ae3ba0ae51eaf5"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/user-activity-icon.tsx": {
+    "mtime": 1776988145.1823127,
+    "hash": "b8050debe0e8813b29f4417e63ad3754"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/constants.tsx": {
+    "mtime": 1776988145.1663127,
+    "hash": "b17b05b8402534eb567b978625756b6f"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/dropdown-icon.tsx": {
+    "mtime": 1776988145.1663127,
+    "hash": "cf18d7d7cee5ec70d3b2b9445ad781ee"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/workspace-icon.tsx": {
+    "mtime": 1776988145.1863127,
+    "hash": "23af6b452b9445844fae7fed63ba51a3"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/in-progress-icon.tsx": {
+    "mtime": 1776988145.1703126,
+    "hash": "e3bc4477d28e4644bd47fae325bd4f86"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/side-panel-icon.tsx": {
+    "mtime": 1776988145.1783128,
+    "hash": "6a7d72a7133b9449dd1b689f5fdca442"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/gitlab-icon.tsx": {
+    "mtime": 1776988145.1663127,
+    "hash": "a419d2b712400ce6fd5c19524d893359"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/sticky-note-icon.tsx": {
+    "mtime": 1776988145.1823127,
+    "hash": "a19263a13525535d9efdf5cd9ee3bdca"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/calendar-after-icon.tsx": {
+    "mtime": 1776988145.1663127,
+    "hash": "267e5a90a375a220ca90043df659edaf"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/create-icon.tsx": {
+    "mtime": 1776988145.1663127,
+    "hash": "1da0b90531a191125d88ab9037121400"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/lead-icon.tsx": {
+    "mtime": 1776988145.1703126,
+    "hash": "1a1dfe2a4641cc70fe6efe4cd1c3465d"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/off-track-icon.tsx": {
+    "mtime": 1776988145.1743128,
+    "hash": "17a64699e793fb1334c14acf8852b648"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/related-icon.tsx": {
+    "mtime": 1776988145.1783128,
+    "hash": "d54b3517ea12d053a372463e7f28ce8b"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/info-fill-icon.tsx": {
+    "mtime": 1776988145.1703126,
+    "hash": "0f610787f5604a3d920d1abcb8738883"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/multiple-sticky.tsx": {
+    "mtime": 1776988145.1743128,
+    "hash": "cbbde0b9d04e8d5171bda9583c264829"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/display-properties.tsx": {
+    "mtime": 1776988145.1663127,
+    "hash": "70ae0c92a327864d8bcd543f9ad45543"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/activity-icon.tsx": {
+    "mtime": 1776988145.1583128,
+    "hash": "dd78a2eff530da314ab36dad1b5bb6b1"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/overview-icon.tsx": {
+    "mtime": 1776988145.1743128,
+    "hash": "396062869e84cc090cf94828fc6565b2"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/default-icon.tsx": {
+    "mtime": 1776988145.1663127,
+    "hash": "6267f8cae21ecd263ec1fc21eebf13eb"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/at-risk-icon.tsx": {
+    "mtime": 1776988145.1623127,
+    "hash": "23c7f8875c448abdfdda3a129e89a037"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/layers-icon.tsx": {
+    "mtime": 1776988145.1703126,
+    "hash": "ed49284d9aeb26f7a894a77253d8b5d3"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/icon-wrapper.tsx": {
+    "mtime": 1776988145.1663127,
+    "hash": "88eac5d2b81175d9e3537952c6d0233c"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/blocker-icon.tsx": {
+    "mtime": 1776988145.1623127,
+    "hash": "a9a85277507f53dbfb30850f4ae16f70"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/sans-serif-icon.tsx": {
+    "mtime": 1776988145.1783128,
+    "hash": "84b5c3b22c84242cef7115919a5a64d4"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/tree-map-icon.tsx": {
+    "mtime": 1776988145.1823127,
+    "hash": "b835fd0308b6efba29526faee3eed5a3"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/blocked-icon.tsx": {
+    "mtime": 1776988145.1623127,
+    "hash": "5a55eb72228faafafae7fb52a5030e60"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/dice-icon.tsx": {
+    "mtime": 1776988145.1663127,
+    "hash": "dbffb6eede564510dc59226f979efe41"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/updates-icon.tsx": {
+    "mtime": 1776988145.1823127,
+    "hash": "15d525afb9854cbebf1205ad946c44f1"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/layer-stack.tsx": {
+    "mtime": 1776988145.1703126,
+    "hash": "2f0cec70606279bb3d1f0e4948e6b402"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/on-track-icon.tsx": {
+    "mtime": 1776988145.1743128,
+    "hash": "f91e1e0516d63b15e6418d0d66c4260f"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/registry.ts": {
+    "mtime": 1776988145.1783128,
+    "hash": "7f969f558640f2009c3c6ad24b799872"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/icon.tsx": {
+    "mtime": 1776988145.1663127,
+    "hash": "8e4de4b6e3fb22a3d867a2304e38fc5f"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/arrows/chevron-up.tsx": {
+    "mtime": 1776988145.1623127,
+    "hash": "b19d495cf27997b64616dc555f1145be"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/arrows/chevron-right.tsx": {
+    "mtime": 1776988145.1623127,
+    "hash": "ac1c7e0cbcbe16e57dd04aa60543ab88"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/arrows/chevron-down.tsx": {
+    "mtime": 1776988145.1623127,
+    "hash": "8916131ed9204bca6533e06e79106d5f"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/arrows/reply-icon.tsx": {
+    "mtime": 1776988145.1623127,
+    "hash": "5dd32182537f6c614d13e214f023bcbd"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/arrows/index.ts": {
+    "mtime": 1776988145.1623127,
+    "hash": "179ecf2c57ca486f8a17502abe449adf"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/arrows/chevron-left.tsx": {
+    "mtime": 1776988145.1623127,
+    "hash": "667cdf5365ddddd0b0359ea3cc9d4172"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/attachments/index.ts": {
+    "mtime": 1776988145.1623127,
+    "hash": "e103eb65a27dae9a475f660e38c8cace"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/attachments/image-file-icon.tsx": {
+    "mtime": 1776988145.1623127,
+    "hash": "7fcd2ffb9a0bee6e0aa7a7675fabe974"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/attachments/code-file-icon.tsx": {
+    "mtime": 1776988145.1623127,
+    "hash": "748c1795993f8385964e5fb8f77e60e7"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/attachments/video-file-icon.tsx": {
+    "mtime": 1776988145.1623127,
+    "hash": "46bfc1e49c5bce1923059756e8d8bf4a"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/attachments/document-file-icon.tsx": {
+    "mtime": 1776988145.1623127,
+    "hash": "d106387bc094bfd6ca6a74cf5e9ac1ab"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/attachments/audio-file-icon.tsx": {
+    "mtime": 1776988145.1623127,
+    "hash": "ff30853c006391de643663791203949f"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/workspace/project-icon.tsx": {
+    "mtime": 1776988145.1863127,
+    "hash": "cc6baa0e4d0ae6f7872fe81d9cec7659"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/workspace/multiple-sticky-icon.tsx": {
+    "mtime": 1776988145.1863127,
+    "hash": "6203e1a6adaf5c05c7b65aea0e544639"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/workspace/your-work-icon.tsx": {
+    "mtime": 1776988145.1863127,
+    "hash": "257b449fac8709c8751b85bb4fc3011a"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/workspace/index.ts": {
+    "mtime": 1776988145.1863127,
+    "hash": "5da5ba1f44262a745563c6b4798eff2a"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/workspace/archive-icon.tsx": {
+    "mtime": 1776988145.1863127,
+    "hash": "ec286a660c8a6e17f0b5d46d90a72799"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/workspace/analytics-icon.tsx": {
+    "mtime": 1776988145.1863127,
+    "hash": "27a4c7831951eb3ded4bb33cd1333e13"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/workspace/draft-icon.tsx": {
+    "mtime": 1776988145.1863127,
+    "hash": "5dd1b20bca1f17352c212653f40a373f"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/workspace/home-icon.tsx": {
+    "mtime": 1776988145.1863127,
+    "hash": "edb839501a785fe796167d5d683d278e"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/workspace/inbox-icon.tsx": {
+    "mtime": 1776988145.1863127,
+    "hash": "cfcab2608b569b5d6ce2f40df8467404"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/workspace/dashboard-icon.tsx": {
+    "mtime": 1776988145.1863127,
+    "hash": "891aa47b7d284aa7b193e4c9c364f5ca"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/module/paused.tsx": {
+    "mtime": 1776988145.1743128,
+    "hash": "e36bcd83bb61862144e808b732132872"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/module/cancelled.tsx": {
+    "mtime": 1776988145.1743128,
+    "hash": "6792a34e30bfc91cfaa1b150166baf8a"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/module/index.ts": {
+    "mtime": 1776988145.1743128,
+    "hash": "baf5ba137390c83debad814a3f2a81ca"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/module/in-progress.tsx": {
+    "mtime": 1776988145.1743128,
+    "hash": "8829ed84663156209ea9708e535bbf60"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/module/completed.tsx": {
+    "mtime": 1776988145.1743128,
+    "hash": "c0bc1938b82dfef3c44e88243b2b47db"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/module/backlog.tsx": {
+    "mtime": 1776988145.1743128,
+    "hash": "0c335cc79a80de3d581a85a77f650131"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/module/module-status-icon.tsx": {
+    "mtime": 1776988145.1743128,
+    "hash": "1a04a4a042fb50dd2eeb92c3471388cd"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/module/planned.tsx": {
+    "mtime": 1776988145.1743128,
+    "hash": "8c0d327d523e6e0b830b3b386c27a3f3"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/layouts/board-icon.tsx": {
+    "mtime": 1776988145.1703126,
+    "hash": "a3f6d853c00cc0fa5541e14d8a73da36"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/layouts/card-icon.tsx": {
+    "mtime": 1776988145.1703126,
+    "hash": "30e534048fc3d9aae5bd1b7e7991f041"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/layouts/sheet-icon.tsx": {
+    "mtime": 1776988145.1703126,
+    "hash": "ada00f878f55a86f8d25b84179dea51b"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/layouts/list-icon.tsx": {
+    "mtime": 1776988145.1703126,
+    "hash": "ddc1039550e7a226bce4e912493520e4"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/layouts/index.ts": {
+    "mtime": 1776988145.1703126,
+    "hash": "52891819dcfade06f19ece1ec83c0b98"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/layouts/calendar-icon.tsx": {
+    "mtime": 1776988145.1703126,
+    "hash": "434edc683447839d5acfa9476ff42a5a"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/layouts/timeline-icon.tsx": {
+    "mtime": 1776988145.1703126,
+    "hash": "ad28fb936d23257b5df82bea993a2845"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/layouts/grid-icon.tsx": {
+    "mtime": 1776988145.1703126,
+    "hash": "737de7f5e84a8a09eda943a113f53119"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/brand/dolby-logo.tsx": {
+    "mtime": 1776988145.1623127,
+    "hash": "2b73cfce6fa3ba096ac9f3a32a5bf014"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/brand/plane-logo.tsx": {
+    "mtime": 1776988145.1663127,
+    "hash": "df0623f7b288ccbd3ae59db66906f626"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/brand/index.ts": {
+    "mtime": 1776988145.1623127,
+    "hash": "04836cd9eded570cef1afe85a3e2bbef"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/brand/plane-wordmark.tsx": {
+    "mtime": 1776988145.1663127,
+    "hash": "52f8ca9b4788e833698050eda3a3f7d4"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/brand/plane-lockup.tsx": {
+    "mtime": 1776988145.1663127,
+    "hash": "6274b314a91f080f4f9e80c0544432ad"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/brand/zerodha-logo.tsx": {
+    "mtime": 1776988145.1663127,
+    "hash": "7505afbad4ef9c687c4b3d769fb478f3"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/brand/accenture-logo.tsx": {
+    "mtime": 1776988145.1623127,
+    "hash": "4749ea5345cc01197eaad581afaf9094"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/brand/sony-logo.tsx": {
+    "mtime": 1776988145.1663127,
+    "hash": "00a3c9d792fb9c3bf933b4239f376a7f"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/project/intake-icon.tsx": {
+    "mtime": 1776988145.1743128,
+    "hash": "4bd3fe41f540479d25fbc08e0102ff56"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/project/module-icon.tsx": {
+    "mtime": 1776988145.1743128,
+    "hash": "13b77a6843bc6db309b570652e8f0a79"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/project/index.ts": {
+    "mtime": 1776988145.1743128,
+    "hash": "133955a65f6edbfa5bb57e4b092e4ffe"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/project/view-icon.tsx": {
+    "mtime": 1776988145.1743128,
+    "hash": "a5c4b12225855cd38071fbd1ca848618"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/project/work-items-icon.tsx": {
+    "mtime": 1776988145.1743128,
+    "hash": "87fafd992942b1a20e011dd3c59eed59"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/project/page-icon.tsx": {
+    "mtime": 1776988145.1743128,
+    "hash": "c37bf24849769314480a16941b186a4f"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/project/cycle-icon.tsx": {
+    "mtime": 1776988145.1743128,
+    "hash": "81041b5d038127e21c1c1f188910de9b"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/project/epic-icon.tsx": {
+    "mtime": 1776988145.1743128,
+    "hash": "1173398ebacc64c3ae97ae5dc9ee1418"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/actions/copy-link.tsx": {
+    "mtime": 1776988145.1583128,
+    "hash": "065709725e9f36e8926cf0abd680609d"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/actions/add-circle-icon.tsx": {
+    "mtime": 1776988145.1583128,
+    "hash": "bcc3a7802b850efe804452daa77f686a"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/actions/upgrade-icon.tsx": {
+    "mtime": 1776988145.1583128,
+    "hash": "bd0657d001bed4a9f92cda8a05528c63"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/actions/filter-icon.tsx": {
+    "mtime": 1776988145.1583128,
+    "hash": "b1d8e02d1968ab7dee3ea0ca0542d71b"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/actions/globe-icon.tsx": {
+    "mtime": 1776988145.1583128,
+    "hash": "ef207f29c87eeaf750f40c666a70d46d"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/actions/check-icon.tsx": {
+    "mtime": 1776988145.1583128,
+    "hash": "419aa50ea66e590cae1601afcc7d174b"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/actions/close-icon.tsx": {
+    "mtime": 1776988145.1583128,
+    "hash": "5a44c8166d6cbd53b58b3bd0b193ae17"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/actions/lock-icon.tsx": {
+    "mtime": 1776988145.1583128,
+    "hash": "e3f86285e72d917e1fd4cc2ffd7f10ec"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/actions/index.ts": {
+    "mtime": 1776988145.1583128,
+    "hash": "913f80ac3704290c979201992c8474a2"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/actions/add-icon.tsx": {
+    "mtime": 1776988145.1583128,
+    "hash": "73a8e4ac8dc351982eaef9eaa11bd5f5"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/actions/copy-icon.tsx": {
+    "mtime": 1776988145.1583128,
+    "hash": "78e4566c3bee55665dc2401aafce2cb2"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/actions/add-workitem-icon.tsx": {
+    "mtime": 1776988145.1583128,
+    "hash": "9260b99223395f59351a10d77c797829"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/actions/new-tab-icon.tsx": {
+    "mtime": 1776988145.1583128,
+    "hash": "0bb279ff2221b876fa47136bbab46204"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/actions/filter-applied-icon.tsx": {
+    "mtime": 1776988145.1583128,
+    "hash": "04b067c5dfe997806720ceae60f0df1b"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/actions/edit-icon.tsx": {
+    "mtime": 1776988145.1583128,
+    "hash": "119ba931a104832a6068de49dd225e2a"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/actions/trash-icon.tsx": {
+    "mtime": 1776988145.1583128,
+    "hash": "0a74dd4ec8478384de69745a03acb18f"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/actions/plus-icon.tsx": {
+    "mtime": 1776988145.1583128,
+    "hash": "395c0f704302197a3fa0cd565c55b61d"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/actions/link-icon.tsx": {
+    "mtime": 1776988145.1583128,
+    "hash": "0a0757be6732ba073b9412fa551d1669"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/actions/add-reaction-icon.tsx": {
+    "mtime": 1776988145.1583128,
+    "hash": "881be2472ad66ec3876c95cb2928b0a5"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/actions/search-icon.tsx": {
+    "mtime": 1776988145.1583128,
+    "hash": "f9afb9b8d611e3341e23ea4d0e3e5f59"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/actions/preferences-icon.tsx": {
+    "mtime": 1776988145.1583128,
+    "hash": "e8155300696f2b890928001611ae2fab"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/cycle/cycle-group-icon.tsx": {
+    "mtime": 1776988145.1663127,
+    "hash": "5b63788dbbb57b21fda7e2794dadc040"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/cycle/index.ts": {
+    "mtime": 1776988145.1663127,
+    "hash": "22bc1109241d15967baaa74d2b02f8d9"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/cycle/double-circle-icon.tsx": {
+    "mtime": 1776988145.1663127,
+    "hash": "5ec370c4857c5fd1bede9123a804be22"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/cycle/circle-dot-full-icon.tsx": {
+    "mtime": 1776988145.1663127,
+    "hash": "a018424bb48a889b489deaabf052073c"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/cycle/contrast-icon.tsx": {
+    "mtime": 1776988145.1663127,
+    "hash": "5a13de47f6dd0986b94d0855f5e73af8"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/cycle/helper.tsx": {
+    "mtime": 1776988145.1663127,
+    "hash": "d0516300910f9f4eab766b5fe5c4e8aa"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/sub-brand/pi-chat.tsx": {
+    "mtime": 1776988145.1823127,
+    "hash": "ae59c5bc66dd7bd29b036e1926ffcd20"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/sub-brand/index.ts": {
+    "mtime": 1776988145.1823127,
+    "hash": "ec011ab04b597fa5bea7c1645ef2aabe"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/sub-brand/wiki-icon.tsx": {
+    "mtime": 1776988145.1823127,
+    "hash": "13e8d24ec15ad005ce348356d8050d29"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/sub-brand/plane-icon.tsx": {
+    "mtime": 1776988145.1823127,
+    "hash": "2cd306925acac34490d9d25fbcefb6a9"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/state/dashed-circle.tsx": {
+    "mtime": 1776988145.1823127,
+    "hash": "de45ae25d87a6b13c347c2e0e489eb07"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/state/backlog-group-icon.tsx": {
+    "mtime": 1776988145.1823127,
+    "hash": "8762b80b36c7dbc66fba813472d6ef02"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/state/started-group-icon.tsx": {
+    "mtime": 1776988145.1823127,
+    "hash": "b750f416ecc460f59a009ccccc950b71"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/state/index.ts": {
+    "mtime": 1776988145.1823127,
+    "hash": "67c14c56383949e3f08a6c4959ee3a85"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/state/triage-group-icon.tsx": {
+    "mtime": 1776988145.1823127,
+    "hash": "7a2cf29f6ce5aabaeb987b57ec884b73"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/state/helper.tsx": {
+    "mtime": 1776988145.1823127,
+    "hash": "1ec4f5fcd7159fe99bc76242594a5e44"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/state/state-group-icon.tsx": {
+    "mtime": 1776988145.1823127,
+    "hash": "b70d6e5d666dfb7965e52d73b961f8bd"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/state/cancelled-group-icon.tsx": {
+    "mtime": 1776988145.1823127,
+    "hash": "3d456b4cab4a4dc98f379456f16e0ec2"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/state/intake-state-group-icon.tsx": {
+    "mtime": 1776988145.1823127,
+    "hash": "f9408ad9f45447c0f7fd498de5bddbbd"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/state/progress-circle.tsx": {
+    "mtime": 1776988145.1823127,
+    "hash": "89eb67a9942407ced1bd62ba774f3075"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/state/unstarted-group-icon.tsx": {
+    "mtime": 1776988145.1823127,
+    "hash": "781e86145761c5d353e6580da1257a72"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/state/completed-group-icon.tsx": {
+    "mtime": 1776988145.1823127,
+    "hash": "8b521bceef214fd986fe8296e53df4f5"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/properties/state-icon.tsx": {
+    "mtime": 1776988145.1783128,
+    "hash": "f216045451a320cffba9d7dc2cc15719"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/properties/user-icon.tsx": {
+    "mtime": 1776988145.1783128,
+    "hash": "cf1bce171b1648f8ebac35b1f736238f"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/properties/label-filled-icon.tsx": {
+    "mtime": 1776988145.1783128,
+    "hash": "2dc9b3df875f8c199bc893859d4d25a5"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/properties/comment-reply-icon.tsx": {
+    "mtime": 1776988145.1783128,
+    "hash": "1facb1bad7adff750a2c885b6338784f"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/properties/priority-icon.tsx": {
+    "mtime": 1776988145.1783128,
+    "hash": "29503c79f6e0d652617f4ff52ed92505"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/properties/start-date-icon.tsx": {
+    "mtime": 1776988145.1783128,
+    "hash": "f177e4ddb26bc02f8c4fd64d444a1b94"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/properties/parent-icon.tsx": {
+    "mtime": 1776988145.1783128,
+    "hash": "046afb1e55338b686be53bba905951e4"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/properties/relates-to-icon.tsx": {
+    "mtime": 1776988145.1783128,
+    "hash": "30482294f37aa87718666357c3d3b584"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/properties/index.ts": {
+    "mtime": 1776988145.1783128,
+    "hash": "64f79791fcf67ce6269c5cfb81135dbe"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/properties/boolean-icon.tsx": {
+    "mtime": 1776988145.1783128,
+    "hash": "84e34d789698ccb48c3e1b966787fce4"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/properties/relation-icon.tsx": {
+    "mtime": 1776988145.1783128,
+    "hash": "dbf6f82e64b117774501fdd848c7bf67"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/properties/scope-icon.tsx": {
+    "mtime": 1776988145.1783128,
+    "hash": "50422b57dcde13928dc636b5e91de993"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/properties/estimate-icon.tsx": {
+    "mtime": 1776988145.1783128,
+    "hash": "7306d26bec58df69c522001f5f0285f7"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/properties/dropdown-icon.tsx": {
+    "mtime": 1776988145.1783128,
+    "hash": "5fb0619c982bdfe838329d8a1bf39e5a"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/properties/members-icon.tsx": {
+    "mtime": 1776988145.1783128,
+    "hash": "b86a942a12ead71c62c0085bb529da80"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/properties/user-square-icon.tsx": {
+    "mtime": 1776988145.1783128,
+    "hash": "990c8257500f4b8afcaea4ed260bb719"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/properties/workflows-icon.tsx": {
+    "mtime": 1776988145.1783128,
+    "hash": "831b359ac05c0175e63dbe2293492c93"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/properties/hash-icon.tsx": {
+    "mtime": 1776988145.1783128,
+    "hash": "1a79d69287f1ab2b2bf014e584e9286e"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/properties/due-date-icon.tsx": {
+    "mtime": 1776988145.1783128,
+    "hash": "e8e6574d8d6dfa6f2c3ccffb85b3fd1e"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/properties/duplicate-icon.tsx": {
+    "mtime": 1776988145.1783128,
+    "hash": "c7605ee3c34ba2cebae24ca0d5cd4968"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/properties/label-icon.tsx": {
+    "mtime": 1776988145.1783128,
+    "hash": "50a5418c0ae5cc4ddf5818facbe4b672"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/properties/user-circle-icon.tsx": {
+    "mtime": 1776988145.1783128,
+    "hash": "f945f032b1b63901440e2f8f3ad3f272"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/properties/overdue-date-icon.tsx": {
+    "mtime": 1776988145.1783128,
+    "hash": "42803d2ad3504fcb2a5da5a14ef68130"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/misc/index.ts": {
+    "mtime": 1776988145.1743128,
+    "hash": "99d210965a1e83d4fc0f845a9034034c"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/misc/check-circle-filled-icon.tsx": {
+    "mtime": 1776988145.1703126,
+    "hash": "b0744ffdb9e3a9c5bcee2870d970bf58"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/misc/close-circle-filled-icon.tsx": {
+    "mtime": 1776988145.1743128,
+    "hash": "3d65c585c06e1f872982dfa5bd3c7ef9"
+  },
+  "/home/nixos/plane/packages/propel/src/icons/misc/info-icon.tsx": {
+    "mtime": 1776988145.1743128,
+    "hash": "99bdc19bc85583679f369a41ecefc00e"
+  },
+  "/home/nixos/plane/packages/propel/src/spinners/circular-spinner.stories.tsx": {
+    "mtime": 1776988145.1943128,
+    "hash": "c8165c998d48396d7cff22a970fd5299"
+  },
+  "/home/nixos/plane/packages/propel/src/spinners/index.ts": {
+    "mtime": 1776988145.1943128,
+    "hash": "9917f08deed9e480ae9770b7df8f65e2"
+  },
+  "/home/nixos/plane/packages/propel/src/spinners/circular-bar-spinner.stories.tsx": {
+    "mtime": 1776988145.1903126,
+    "hash": "680b64c1ee2a498db0e10167dc8a293e"
+  },
+  "/home/nixos/plane/packages/propel/src/spinners/circular-bar-spinner.tsx": {
+    "mtime": 1776988145.1943128,
+    "hash": "73b764d8d522d475f9122f4f8071a6cb"
+  },
+  "/home/nixos/plane/packages/propel/src/spinners/circular-spinner.tsx": {
+    "mtime": 1776988268.646334,
+    "hash": "a56e77aa59ec480104a31e89c25e5e16"
+  },
+  "/home/nixos/plane/packages/propel/src/toolbar/index.ts": {
+    "mtime": 1776988145.1983128,
+    "hash": "c04b10f3f34c2ab72036708339ac2de9"
+  },
+  "/home/nixos/plane/packages/propel/src/toolbar/toolbar.stories.tsx": {
+    "mtime": 1776988145.1983128,
+    "hash": "aa9e440503db7feec51bd6689eb53066"
+  },
+  "/home/nixos/plane/packages/propel/src/toolbar/toolbar.tsx": {
+    "mtime": 1776988145.1983128,
+    "hash": "ad184ec50003226bdaa72c84c7cf5a09"
+  },
+  "/home/nixos/plane/packages/propel/src/switch/index.ts": {
+    "mtime": 1776988145.1943128,
+    "hash": "0b6ab204878a9cd091bdc33d4348f832"
+  },
+  "/home/nixos/plane/packages/propel/src/switch/root.tsx": {
+    "mtime": 1776988145.1943128,
+    "hash": "87ace0c521e5a74334a91ecf363eeefb"
+  },
+  "/home/nixos/plane/packages/propel/src/switch/switch.stories.tsx": {
+    "mtime": 1776988268.646334,
+    "hash": "b7ac8a4fdbb056b007e735ac011e80a3"
+  },
+  "/home/nixos/plane/packages/propel/src/pill/pill.tsx": {
+    "mtime": 1776988145.1863127,
+    "hash": "769f1bc885f68ed9eb2c5fb4c90d7187"
+  },
+  "/home/nixos/plane/packages/propel/src/pill/index.ts": {
+    "mtime": 1776988145.1863127,
+    "hash": "818dc102ebf00f54c37d3d3530abed34"
+  },
+  "/home/nixos/plane/packages/propel/src/pill/pill.stories.tsx": {
+    "mtime": 1776988145.1863127,
+    "hash": "36117e7615788c0bebf0988e9606d87f"
+  },
+  "/home/nixos/plane/packages/propel/src/combobox/index.ts": {
+    "mtime": 1776988145.130313,
+    "hash": "83503747ab8dfce217f576de70535864"
+  },
+  "/home/nixos/plane/packages/propel/src/combobox/combobox.stories.tsx": {
+    "mtime": 1776988145.130313,
+    "hash": "08a7614cc144e9a83e8c38d4e412c0b2"
+  },
+  "/home/nixos/plane/packages/propel/src/combobox/combobox.tsx": {
+    "mtime": 1776988145.130313,
+    "hash": "47ac6c49144419c715fbaa6062d50729"
+  },
+  "/home/nixos/plane/packages/propel/src/context-menu/context-menu.tsx": {
+    "mtime": 1776988145.1343129,
+    "hash": "11f30720ec1cbe44c63b49a238bac4bc"
+  },
+  "/home/nixos/plane/packages/propel/src/context-menu/index.ts": {
+    "mtime": 1776988145.1343129,
+    "hash": "22f8d917a6c69d32f7840c9a52fc249c"
+  },
+  "/home/nixos/plane/packages/propel/src/context-menu/context-menu.stories.tsx": {
+    "mtime": 1776988145.1343129,
+    "hash": "a976d4b5ed5c697baf0b9c2945f4c4fc"
+  },
+  "/home/nixos/plane/packages/propel/src/card/card.stories.tsx": {
+    "mtime": 1776988145.1223128,
+    "hash": "9d11e3c9a9ed9b4908130f52fc7b6781"
+  },
+  "/home/nixos/plane/packages/propel/src/card/index.ts": {
+    "mtime": 1776988145.1223128,
+    "hash": "99d5f7a0dd5ef2a0a08c93dcbca784d3"
+  },
+  "/home/nixos/plane/packages/propel/src/card/helper.tsx": {
+    "mtime": 1776988145.1223128,
+    "hash": "8f78a675594803d123124de2e6963d4c"
+  },
+  "/home/nixos/plane/packages/propel/src/card/card.tsx": {
+    "mtime": 1776988145.1223128,
+    "hash": "8adce3dd41016505dd515de2e70106a1"
+  },
+  "/home/nixos/plane/packages/propel/src/dialog/index.ts": {
+    "mtime": 1776988145.1343129,
+    "hash": "0b6ab204878a9cd091bdc33d4348f832"
+  },
+  "/home/nixos/plane/packages/propel/src/dialog/root.tsx": {
+    "mtime": 1776988145.1343129,
+    "hash": "cb9dfa2f313d2dca8452685fcc354f5f"
+  },
+  "/home/nixos/plane/packages/propel/src/dialog/dialog.stories.tsx": {
+    "mtime": 1776988145.1343129,
+    "hash": "e032a0e0092dc33d9e67935a228a6450"
+  },
+  "/home/nixos/plane/packages/propel/src/badge/badge.tsx": {
+    "mtime": 1776988145.1183128,
+    "hash": "4d38df934d576d7354f4b443b80fa2c4"
+  },
+  "/home/nixos/plane/packages/propel/src/badge/index.ts": {
+    "mtime": 1776988145.1183128,
+    "hash": "b291060bb0f12a668d7f4730fe414e17"
+  },
+  "/home/nixos/plane/packages/propel/src/badge/badge.stories.tsx": {
+    "mtime": 1776988145.1183128,
+    "hash": "09953405dd7566de050be37395ba2dde"
+  },
+  "/home/nixos/plane/packages/propel/src/badge/helper.tsx": {
+    "mtime": 1776988145.1183128,
+    "hash": "b941e25c249d56950d188430bbaf297e"
+  },
+  "/home/nixos/plane/packages/propel/src/table/table.stories.tsx": {
+    "mtime": 1776988145.1943128,
+    "hash": "e834ae1ed211a4a7fbeb95025e99d72c"
+  },
+  "/home/nixos/plane/packages/propel/src/table/index.ts": {
+    "mtime": 1776988145.1943128,
+    "hash": "3cf16726535197852ce0d4d1b53c250f"
+  },
+  "/home/nixos/plane/packages/propel/src/table/core.tsx": {
+    "mtime": 1776988145.1943128,
+    "hash": "a3e7e4b9baffdf6529f2b59181afc01e"
+  },
+  "/home/nixos/plane/packages/propel/src/tab-navigation/tab-navigation-types.ts": {
+    "mtime": 1776988145.1943128,
+    "hash": "28f7b2528248dbaaed76106d270924e2"
+  },
+  "/home/nixos/plane/packages/propel/src/tab-navigation/tab-navigation-list.tsx": {
+    "mtime": 1776988145.1943128,
+    "hash": "96403daab0ef5bb3cce3b829e89911d1"
+  },
+  "/home/nixos/plane/packages/propel/src/tab-navigation/index.ts": {
+    "mtime": 1776988145.1943128,
+    "hash": "899e02165017273c0951721c09a78514"
+  },
+  "/home/nixos/plane/packages/propel/src/tab-navigation/tab-navigation-item.tsx": {
+    "mtime": 1776988145.1943128,
+    "hash": "01280c14d8ba4c910e18315cc13b4cbc"
+  },
+  "/home/nixos/plane/packages/propel/src/tab-navigation/tab-navigation.stories.tsx": {
+    "mtime": 1776988145.1943128,
+    "hash": "fcfa34730ab81ffca2b9f3a95671bd8c"
+  },
+  "/home/nixos/plane/packages/propel/src/toast/toast.stories.tsx": {
+    "mtime": 1776988268.650334,
+    "hash": "51cf5ceef111bcb89c77805a1bf5565e"
+  },
+  "/home/nixos/plane/packages/propel/src/toast/index.ts": {
+    "mtime": 1776988145.1983128,
+    "hash": "c181f3578d3ea388b8f34c993103d437"
+  },
+  "/home/nixos/plane/packages/propel/src/toast/toast.tsx": {
+    "mtime": 1776988145.1983128,
+    "hash": "2d026898c332fd1c115a957ac44c83e0"
+  },
+  "/home/nixos/plane/packages/propel/src/banner/banner.stories.tsx": {
+    "mtime": 1776988145.1183128,
+    "hash": "5959523a102898498c58f9c15e69d5c4"
+  },
+  "/home/nixos/plane/packages/propel/src/banner/index.ts": {
+    "mtime": 1776988145.1183128,
+    "hash": "92c68ce1479a67a43feafb7bd55cb5db"
+  },
+  "/home/nixos/plane/packages/propel/src/banner/helper.tsx": {
+    "mtime": 1776988145.1183128,
+    "hash": "60ce46d9ed3da6f4462291f88921e0e2"
+  },
+  "/home/nixos/plane/packages/propel/src/banner/banner.tsx": {
+    "mtime": 1776988145.1183128,
+    "hash": "ea7cb5792947637def4dbd1fa1435b78"
+  },
+  "/home/nixos/plane/packages/propel/src/accordion/accordion.stories.tsx": {
+    "mtime": 1776988145.1183128,
+    "hash": "39c2531ad5e85068de3427f9e9b0cebd"
+  },
+  "/home/nixos/plane/packages/propel/src/accordion/index.ts": {
+    "mtime": 1776988145.1183128,
+    "hash": "2f4f90a14c1df06d1fc36fa9fa35c6e7"
+  },
+  "/home/nixos/plane/packages/propel/src/accordion/accordion.tsx": {
+    "mtime": 1776988145.1183128,
+    "hash": "933979c427ae57e85a0222bb099571b5"
+  },
+  "/home/nixos/plane/packages/propel/src/charts/scatter-chart/index.ts": {
+    "mtime": 1776988145.1263127,
+    "hash": "0b6ab204878a9cd091bdc33d4348f832"
+  },
+  "/home/nixos/plane/packages/propel/src/charts/scatter-chart/root.tsx": {
+    "mtime": 1776988268.6423337,
+    "hash": "eca8ddcfcca382d842e5d6aaeb23cb3b"
+  },
+  "/home/nixos/plane/packages/propel/src/charts/pie-chart/active-shape.tsx": {
+    "mtime": 1776988145.1263127,
+    "hash": "939c7ea99732b88c54dc34ac8755b10c"
+  },
+  "/home/nixos/plane/packages/propel/src/charts/pie-chart/index.ts": {
+    "mtime": 1776988145.1263127,
+    "hash": "0b6ab204878a9cd091bdc33d4348f832"
+  },
+  "/home/nixos/plane/packages/propel/src/charts/pie-chart/tooltip.tsx": {
+    "mtime": 1776988145.1263127,
+    "hash": "e3b24d7bf976ad76055d62e60877e85e"
+  },
+  "/home/nixos/plane/packages/propel/src/charts/pie-chart/root.tsx": {
+    "mtime": 1776988268.6423337,
+    "hash": "08d061acaa0ef54cc629e9d2910de39b"
+  },
+  "/home/nixos/plane/packages/propel/src/charts/components/tick.tsx": {
+    "mtime": 1776988145.1223128,
+    "hash": "10ade29f96458be7557748c52101d891"
+  },
+  "/home/nixos/plane/packages/propel/src/charts/components/legend.tsx": {
+    "mtime": 1776988268.6423337,
+    "hash": "916a96c8f7eb5d75d4c4e9a4c2949e3c"
+  },
+  "/home/nixos/plane/packages/propel/src/charts/components/tooltip.tsx": {
+    "mtime": 1776988145.1223128,
+    "hash": "ede8490acc45bb5650b5bf4eea0cb678"
+  },
+  "/home/nixos/plane/packages/propel/src/charts/tree-map/index.ts": {
+    "mtime": 1776988145.1263127,
+    "hash": "0b6ab204878a9cd091bdc33d4348f832"
+  },
+  "/home/nixos/plane/packages/propel/src/charts/tree-map/tooltip.tsx": {
+    "mtime": 1776988145.130313,
+    "hash": "eca0cccacfc7b9e0c2ae17c00a23130c"
+  },
+  "/home/nixos/plane/packages/propel/src/charts/tree-map/root.tsx": {
+    "mtime": 1776988145.130313,
+    "hash": "4f9e306cc20e5c542ff740ed6aa2c585"
+  },
+  "/home/nixos/plane/packages/propel/src/charts/tree-map/map-content.tsx": {
+    "mtime": 1776988145.130313,
+    "hash": "439a3f3dbe2d24bc291a192dfd3d3139"
+  },
+  "/home/nixos/plane/packages/propel/src/charts/bar-chart/index.ts": {
+    "mtime": 1776988145.1223128,
+    "hash": "0b6ab204878a9cd091bdc33d4348f832"
+  },
+  "/home/nixos/plane/packages/propel/src/charts/bar-chart/bar.tsx": {
+    "mtime": 1776988145.1223128,
+    "hash": "852ec9f3fac47ac18ad69351e2da40ea"
+  },
+  "/home/nixos/plane/packages/propel/src/charts/bar-chart/root.tsx": {
+    "mtime": 1776988268.6423337,
+    "hash": "c672edefe57eae32e93ad17211cc03e4"
+  },
+  "/home/nixos/plane/packages/propel/src/charts/area-chart/index.ts": {
+    "mtime": 1776988145.1223128,
+    "hash": "0b6ab204878a9cd091bdc33d4348f832"
+  },
+  "/home/nixos/plane/packages/propel/src/charts/area-chart/root.tsx": {
+    "mtime": 1776988268.6423337,
+    "hash": "bedff66dd2f3a48925aadc5414ffcd97"
+  },
+  "/home/nixos/plane/packages/propel/src/charts/line-chart/index.ts": {
+    "mtime": 1776988145.1263127,
+    "hash": "0b6ab204878a9cd091bdc33d4348f832"
+  },
+  "/home/nixos/plane/packages/propel/src/charts/line-chart/root.tsx": {
+    "mtime": 1776988268.6423337,
+    "hash": "04f8f954a0e0be533b31e2ad0f94d1f2"
+  },
+  "/home/nixos/plane/packages/propel/src/charts/radar-chart/index.ts": {
+    "mtime": 1776988145.1263127,
+    "hash": "0b6ab204878a9cd091bdc33d4348f832"
+  },
+  "/home/nixos/plane/packages/propel/src/charts/radar-chart/root.tsx": {
+    "mtime": 1776988268.6423337,
+    "hash": "c5d704487dc654c0823a3081415e7577"
+  },
+  "/home/nixos/plane/packages/propel/src/avatar/index.ts": {
+    "mtime": 1776988145.1183128,
+    "hash": "5b7e74ba37c3a688b60b9508bcad503a"
+  },
+  "/home/nixos/plane/packages/propel/src/avatar/avatar.stories.tsx": {
+    "mtime": 1776988145.1183128,
+    "hash": "640d167cc2cb9bd29140ed07d07129c2"
+  },
+  "/home/nixos/plane/packages/propel/src/avatar/avatar.tsx": {
+    "mtime": 1776988145.1183128,
+    "hash": "f6ece403f519188b70bbbb0daa9334b0"
+  },
+  "/home/nixos/plane/packages/propel/src/icon-button/index.ts": {
+    "mtime": 1776988145.1583128,
+    "hash": "e7bfd8f38225583d105982801965d26c"
+  },
+  "/home/nixos/plane/packages/propel/src/icon-button/icon-button.tsx": {
+    "mtime": 1776988145.1583128,
+    "hash": "587e2d2216742aa2bd7418c4570666da"
+  },
+  "/home/nixos/plane/packages/propel/src/icon-button/icon-button.stories.tsx": {
+    "mtime": 1776988145.1583128,
+    "hash": "cd5d6e173495f849a89cf277d6a245ca"
+  },
+  "/home/nixos/plane/packages/propel/src/icon-button/helper.tsx": {
+    "mtime": 1776988145.1583128,
+    "hash": "3772fb5ab11cd0255a289a6b1c8e7c30"
+  },
+  "/home/nixos/plane/packages/propel/src/emoji-icon-picker/emoji-picker.stories.tsx": {
+    "mtime": 1776988268.6423337,
+    "hash": "8ac63f44d00011af2cb2f4d982a3d03c"
+  },
+  "/home/nixos/plane/packages/propel/src/emoji-icon-picker/lucide-icons.tsx": {
+    "mtime": 1776988145.1383128,
+    "hash": "7fe7fe8e1bcd096aa7df20afc9e81a00"
+  },
+  "/home/nixos/plane/packages/propel/src/emoji-icon-picker/index.ts": {
+    "mtime": 1776988145.1383128,
+    "hash": "795534d5a3d7637f7816fa238e22429d"
+  },
+  "/home/nixos/plane/packages/propel/src/emoji-icon-picker/emoji-picker.tsx": {
+    "mtime": 1776988145.1343129,
+    "hash": "8c67548b91908f6107f405927a08a788"
+  },
+  "/home/nixos/plane/packages/propel/src/emoji-icon-picker/logo.tsx": {
+    "mtime": 1776988145.1383128,
+    "hash": "e18c07f74f55ada64824ef0bdde20f25"
+  },
+  "/home/nixos/plane/packages/propel/src/emoji-icon-picker/material-icons.tsx": {
+    "mtime": 1776988145.1383128,
+    "hash": "dcc05b8bdba29b1fd2253a5686cff47f"
+  },
+  "/home/nixos/plane/packages/propel/src/emoji-icon-picker/helper.tsx": {
+    "mtime": 1776988268.6423337,
+    "hash": "7cca81d943f482d0ea7533b799e47ece"
+  },
+  "/home/nixos/plane/packages/propel/src/emoji-icon-picker/emoji/index.ts": {
+    "mtime": 1776988145.1343129,
+    "hash": "c418343fa5f4c43d20a80d804cb20b5b"
+  },
+  "/home/nixos/plane/packages/propel/src/emoji-icon-picker/emoji/emoji.tsx": {
+    "mtime": 1776988268.6423337,
+    "hash": "0b66e09066dd6ab1a1cf3ed2722ddc73"
+  },
+  "/home/nixos/plane/packages/propel/src/emoji-icon-picker/icon/icon-root.tsx": {
+    "mtime": 1776988268.646334,
+    "hash": "17aec30a50a3feba23380d210d8a0462"
+  },
+  "/home/nixos/plane/packages/propel/src/emoji-icon-picker/icon/material-root.tsx": {
+    "mtime": 1776988145.1383128,
+    "hash": "31a256f5d32b429a70a1454257d7e8df"
+  },
+  "/home/nixos/plane/packages/propel/src/emoji-icon-picker/icon/index.ts": {
+    "mtime": 1776988145.1383128,
+    "hash": "18cb193611a0e3e09c9b8f9777db9ce0"
+  },
+  "/home/nixos/plane/packages/propel/src/emoji-icon-picker/icon/lucide-root.tsx": {
+    "mtime": 1776988145.1383128,
+    "hash": "005aaec7bb35ba9a2b63fee2b4f1d1c5"
+  },
+  "/home/nixos/plane/packages/propel/src/scrollarea/index.ts": {
+    "mtime": 1776988145.1903126,
+    "hash": "5869c01272a25f5f178f8528cc1ed9be"
+  },
+  "/home/nixos/plane/packages/propel/src/scrollarea/scrollarea.stories.tsx": {
+    "mtime": 1776988268.646334,
+    "hash": "cfa35c12dfe532e1d6ef7db24e9f2eb6"
+  },
+  "/home/nixos/plane/packages/propel/src/scrollarea/scrollarea.tsx": {
+    "mtime": 1776988145.1903126,
+    "hash": "d7991a9a7cac95644d2345cc5f7a50f2"
+  },
+  "/home/nixos/plane/packages/propel/src/emoji-reaction/emoji-reaction-picker.stories.tsx": {
+    "mtime": 1776988268.646334,
+    "hash": "91505fa03aff1539fb8b0db24e3e3568"
+  },
+  "/home/nixos/plane/packages/propel/src/emoji-reaction/index.ts": {
+    "mtime": 1776988145.1423128,
+    "hash": "ee79d4ac629fa00c8b1f986b2de276a6"
+  },
+  "/home/nixos/plane/packages/propel/src/emoji-reaction/emoji-reaction.stories.tsx": {
+    "mtime": 1776988268.646334,
+    "hash": "133e9db905649781b136386463a436c8"
+  },
+  "/home/nixos/plane/packages/propel/src/emoji-reaction/emoji-reaction.tsx": {
+    "mtime": 1776988268.646334,
+    "hash": "8c198fa45458cad4446dd52befe647d4"
+  },
+  "/home/nixos/plane/packages/propel/src/emoji-reaction/emoji-reaction-picker.tsx": {
+    "mtime": 1776988145.1383128,
+    "hash": "643a6cd8268fcd416d8fdb763a6dfe2a"
+  },
+  "/home/nixos/plane/packages/propel/src/command/index.ts": {
+    "mtime": 1776988145.130313,
+    "hash": "67ca0b3de9c6a8aa1cc1416db37e4587"
+  },
+  "/home/nixos/plane/packages/propel/src/command/command.tsx": {
+    "mtime": 1776988145.130313,
+    "hash": "47880050c4628e77c3ab6f35a6030ac9"
+  },
+  "/home/nixos/plane/packages/propel/src/command/command.stories.tsx": {
+    "mtime": 1776988145.130313,
+    "hash": "5b7255c4f249006fbad59f672fa8c6f1"
+  },
+  "/home/nixos/plane/packages/propel/src/calendar/index.ts": {
+    "mtime": 1776988145.1223128,
+    "hash": "e07918e6e2b91e2d72e5f0671d5c5178"
+  },
+  "/home/nixos/plane/packages/propel/src/calendar/calendar.stories.tsx": {
+    "mtime": 1776988268.6423337,
+    "hash": "8d6fa0e0186da66e0852350b48123087"
+  },
+  "/home/nixos/plane/packages/propel/src/calendar/root.tsx": {
+    "mtime": 1776988268.6423337,
+    "hash": "5bfe7feaa67911c0b17a9d600606b667"
+  },
+  "/home/nixos/plane/packages/propel/src/skeleton/index.ts": {
+    "mtime": 1776988145.1903126,
+    "hash": "0b6ab204878a9cd091bdc33d4348f832"
+  },
+  "/home/nixos/plane/packages/propel/src/skeleton/root.tsx": {
+    "mtime": 1776988145.1903126,
+    "hash": "8fab9bb856c49390c0bd1a5731b3d886"
+  },
+  "/home/nixos/plane/packages/propel/src/skeleton/skeleton.stories.tsx": {
+    "mtime": 1776988268.646334,
+    "hash": "7c78da19f872ee19768fb3a2e9ade627"
+  },
+  "/home/nixos/plane/packages/propel/src/popover/index.ts": {
+    "mtime": 1776988145.1903126,
+    "hash": "0b6ab204878a9cd091bdc33d4348f832"
+  },
+  "/home/nixos/plane/packages/propel/src/popover/popover.stories.tsx": {
+    "mtime": 1776988145.1903126,
+    "hash": "d00505fbd55fa406852420b648acc0b2"
+  },
+  "/home/nixos/plane/packages/propel/src/popover/root.tsx": {
+    "mtime": 1776988145.1903126,
+    "hash": "b861c9fe924888c952b0b7ae50f6cb62"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets-showcase.stories.tsx": {
+    "mtime": 1776988145.1423128,
+    "hash": "9bad4a9bc6f92d2c9127cb2c71dbfd14"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/index.ts": {
+    "mtime": 1776988145.1543128,
+    "hash": "ba2d328da2cc160e6f361c8376af1a23"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/compact-empty-state.tsx": {
+    "mtime": 1776988268.646334,
+    "hash": "8786395cc27ecfd2ef595cc6e6a5da7a"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/compact-empty-state.stories.tsx": {
+    "mtime": 1776988145.1543128,
+    "hash": "c64a89556bccbc5676cb25c13dc5672e"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/empty-state.tsx": {
+    "mtime": 1776988145.1543128,
+    "hash": "d17c83ab653797bb6fc2ca0fe76cc6c2"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/detailed-empty-state.tsx": {
+    "mtime": 1776988268.646334,
+    "hash": "3cc9491eca363761c2c5fd6967e5e89e"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/types.ts": {
+    "mtime": 1776988145.1543128,
+    "hash": "4deb3a17d3d45e659facf6d8705dfebd"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/detailed-empty-state.stories.tsx": {
+    "mtime": 1776988145.1543128,
+    "hash": "6ae7c79d95608fb18112190da943c8a4"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/asset-types.ts": {
+    "mtime": 1776988145.1423128,
+    "hash": "61842fc5304360a6e21a4b44a0568177"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/index.ts": {
+    "mtime": 1776988145.1463127,
+    "hash": "df4333c9d96db9b0f4e836c27761de1e"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/asset-registry.tsx": {
+    "mtime": 1776988145.1423128,
+    "hash": "c058ab09158ade52daeb0ae6bbf889c0"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/helper.tsx": {
+    "mtime": 1776988145.1423128,
+    "hash": "330b6f4e84641ff23ca38b07cd0150ce"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/illustration/index.ts": {
+    "mtime": 1776988145.1463127,
+    "hash": "0a234398e9102416f6fdc3ef597e17bb"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/illustration/search.tsx": {
+    "mtime": 1776988145.1463127,
+    "hash": "0df8a07abf749f1cf1315e5190e2f370"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/illustration/inbox.tsx": {
+    "mtime": 1776988145.1463127,
+    "hash": "ab3d476b9e9ae1157e5f8a5c32e5b55e"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/illustration/constant.tsx": {
+    "mtime": 1776988145.1463127,
+    "hash": "250acafb31bbca7284f8bcefbee0fd7e"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/vertical-stack/no-access.tsx": {
+    "mtime": 1776988145.1543128,
+    "hash": "242c712ca405a9e1d04931724f803929"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/vertical-stack/dashboard.tsx": {
+    "mtime": 1776988145.1503127,
+    "hash": "68ac6a4b7d5ce97c63a4380ad6100606"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/vertical-stack/epic.tsx": {
+    "mtime": 1776988145.1503127,
+    "hash": "13d8d9ed19b502c16ef5a21105a4bb63"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/vertical-stack/view.tsx": {
+    "mtime": 1776988145.1543128,
+    "hash": "a8bbae81c8789c694a5d387c4d263132"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/vertical-stack/initiative.tsx": {
+    "mtime": 1776988145.1543128,
+    "hash": "7d60dc09a39c2d7066b5092939f3910b"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/vertical-stack/archived-cycle.tsx": {
+    "mtime": 1776988145.1503127,
+    "hash": "28b8f35d9fadcf2c0440736cf8482e31"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/vertical-stack/customer.tsx": {
+    "mtime": 1776988145.1503127,
+    "hash": "8c070ccf6a0f14163a27e078587052fd"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/vertical-stack/invalid-link.tsx": {
+    "mtime": 1776988145.1543128,
+    "hash": "a316a92c8d5b2971b72bc5569bf3c295"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/vertical-stack/teamspace.tsx": {
+    "mtime": 1776988145.1543128,
+    "hash": "72ae982517454582737d0d4374643e6b"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/vertical-stack/project.tsx": {
+    "mtime": 1776988145.1543128,
+    "hash": "b0bcab646a04d69146004b59fc7d0a93"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/vertical-stack/archived-work-item.tsx": {
+    "mtime": 1776988145.1503127,
+    "hash": "9b85fc836e7c0572b4821cd3311420c5"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/vertical-stack/work-item.tsx": {
+    "mtime": 1776988145.1543128,
+    "hash": "0a239b9e8e9df0de35ac9835b92af12d"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/vertical-stack/index.ts": {
+    "mtime": 1776988145.1503127,
+    "hash": "ec0acb17dc2d9766c2a898615bc9cb25"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/vertical-stack/404-error.tsx": {
+    "mtime": 1776988145.1463127,
+    "hash": "2c6254f170c3c5079794333ecd53d333"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/vertical-stack/module.tsx": {
+    "mtime": 1776988145.1543128,
+    "hash": "aa4da878927f400bb66125ba11681c88"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/vertical-stack/draft.tsx": {
+    "mtime": 1776988145.1503127,
+    "hash": "b1527f6f16579c5567fa5a45cea90a08"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/vertical-stack/constant.tsx": {
+    "mtime": 1776988145.1503127,
+    "hash": "03efd35e013e7a0104056ee541e4e635"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/vertical-stack/page.tsx": {
+    "mtime": 1776988145.1543128,
+    "hash": "73b219950be3914240f352fe0a941d96"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/vertical-stack/cycle.tsx": {
+    "mtime": 1776988145.1503127,
+    "hash": "7ea6c2664c2b4d3dfc7f0ff06f173f86"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/vertical-stack/changelog.tsx": {
+    "mtime": 1776988145.1503127,
+    "hash": "bb96a6660b65dc22d71d0348b2f166f3"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/vertical-stack/archived-module.tsx": {
+    "mtime": 1776988145.1503127,
+    "hash": "b120b7e0935d93fb17223e40e36de6c5"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/vertical-stack/server-error.tsx": {
+    "mtime": 1776988145.1543128,
+    "hash": "ba312cdb0b377e5d83592b18e1e56d02"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/horizontal-stack/template.tsx": {
+    "mtime": 1776988145.1463127,
+    "hash": "d1810a736d97b34fb815f9354d1a9b79"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/horizontal-stack/epic.tsx": {
+    "mtime": 1776988145.1423128,
+    "hash": "5b992943104bcd9c2fe153ab34b09c45"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/horizontal-stack/settings.tsx": {
+    "mtime": 1776988145.1463127,
+    "hash": "65e6bad974a6d53d73b0639cb483a8de"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/horizontal-stack/state.tsx": {
+    "mtime": 1776988145.1463127,
+    "hash": "4337d9c8c88f01e203cfc4e988edca0c"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/horizontal-stack/priority.tsx": {
+    "mtime": 1776988145.1423128,
+    "hash": "aede20ddf7a51a660c462718f8b9b30b"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/horizontal-stack/customer.tsx": {
+    "mtime": 1776988145.1423128,
+    "hash": "5d84bfcb394ca44f5a7e26bbaba1df0d"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/horizontal-stack/project.tsx": {
+    "mtime": 1776988145.1463127,
+    "hash": "ad946b70c0115367f6f7f302181f8f4f"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/horizontal-stack/work-item.tsx": {
+    "mtime": 1776988145.1463127,
+    "hash": "f203ee35ad7f28c7df52bb00c2f24efd"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/horizontal-stack/index.ts": {
+    "mtime": 1776988145.1423128,
+    "hash": "a5b50c59fc0db4d234a7f39566ca2cd8"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/horizontal-stack/estimate.tsx": {
+    "mtime": 1776988145.1423128,
+    "hash": "56c6a45c5abed074ed54e29656c9d220"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/horizontal-stack/intake.tsx": {
+    "mtime": 1776988145.1423128,
+    "hash": "1731c07d0e7e7e08113ec25aa0945d38"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/horizontal-stack/webhook.tsx": {
+    "mtime": 1776988145.1463127,
+    "hash": "465fe540607ff8bbd9e730edebc77dfd"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/horizontal-stack/note.tsx": {
+    "mtime": 1776988145.1423128,
+    "hash": "5b3dbf4ffc75f095c56d07e7aba94520"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/horizontal-stack/label.tsx": {
+    "mtime": 1776988145.1423128,
+    "hash": "57ee3aeb758525b60cd0798f3b23e78e"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/horizontal-stack/unknown.tsx": {
+    "mtime": 1776988145.1463127,
+    "hash": "b14d73adf0e2cd6d217cb47e551ce287"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/horizontal-stack/export.tsx": {
+    "mtime": 1776988145.1423128,
+    "hash": "82d3f806ad740532cf22604ea8c24526"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/horizontal-stack/worklog.tsx": {
+    "mtime": 1776988145.1463127,
+    "hash": "bcff5ca18b4b82f2c539a1dddfe3d0cc"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/horizontal-stack/constant.tsx": {
+    "mtime": 1776988145.1423128,
+    "hash": "0ab4ab48933cdd47b9a41e308156fba6"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/horizontal-stack/link.tsx": {
+    "mtime": 1776988145.1423128,
+    "hash": "55febb76b53ebe86cce94f2521094f3e"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/horizontal-stack/update.tsx": {
+    "mtime": 1776988145.1463127,
+    "hash": "0c59536ce321d9235c17aff2f1cc5f10"
+  },
+  "/home/nixos/plane/packages/propel/src/empty-state/assets/horizontal-stack/members.tsx": {
+    "mtime": 1776988145.1423128,
+    "hash": "a8d73d859da42d6b535c6574d559a310"
+  },
+  "/home/nixos/plane/packages/propel/src/animated-counter/animated-counter.tsx": {
+    "mtime": 1776988145.1183128,
+    "hash": "2516940f52e73a59abf93cef77b9ce6c"
+  },
+  "/home/nixos/plane/packages/propel/src/animated-counter/animated-counter.stories.tsx": {
+    "mtime": 1776988145.1183128,
+    "hash": "93e1028f62a35e525a23ef2704d9c55b"
+  },
+  "/home/nixos/plane/packages/propel/src/animated-counter/index.ts": {
+    "mtime": 1776988145.1183128,
+    "hash": "f3f6f1c53e45be0abbc20cf3da5ea549"
+  },
+  "/home/nixos/plane/packages/propel/src/button/button.stories.tsx": {
+    "mtime": 1776988145.1183128,
+    "hash": "1064c3fa1a1442c9f85b4c71c58f9c55"
+  },
+  "/home/nixos/plane/packages/propel/src/button/index.ts": {
+    "mtime": 1776988145.1183128,
+    "hash": "76ceebf0a707e6c5af4365740c8ee648"
+  },
+  "/home/nixos/plane/packages/propel/src/button/helper.tsx": {
+    "mtime": 1776988145.1183128,
+    "hash": "5cf80601edc7abed3e830d5c2eee9c01"
+  },
+  "/home/nixos/plane/packages/propel/src/button/button.tsx": {
+    "mtime": 1776988145.1183128,
+    "hash": "c5be012e6398ef68cca60b60491b94a1"
+  },
+  "/home/nixos/plane/packages/propel/src/utils/classname.tsx": {
+    "mtime": 1776988268.650334,
+    "hash": "49982d6de88798fcdcba12599c10b379"
+  },
+  "/home/nixos/plane/packages/propel/src/utils/placement.ts": {
+    "mtime": 1776988145.1983128,
+    "hash": "ade590538f4e9022cdd795a582cd3e9a"
+  },
+  "/home/nixos/plane/packages/propel/src/utils/index.ts": {
+    "mtime": 1776988145.1983128,
+    "hash": "9339538a4d2e63509310a3e5b7aab616"
+  },
+  "/home/nixos/plane/packages/propel/src/input/input.stories.tsx": {
+    "mtime": 1776988268.646334,
+    "hash": "4564516fa9e1fc4faba262f00b79f9a0"
+  },
+  "/home/nixos/plane/packages/propel/src/input/input.tsx": {
+    "mtime": 1776988145.1863127,
+    "hash": "29c973398b0ccb20407701c539a6ec6b"
+  },
+  "/home/nixos/plane/packages/propel/src/input/index.ts": {
+    "mtime": 1776988145.1863127,
+    "hash": "da07d3f9bd5c9798456997ad737986eb"
+  },
+  "/home/nixos/plane/packages/propel/src/tooltip/index.ts": {
+    "mtime": 1776988145.1983128,
+    "hash": "0b6ab204878a9cd091bdc33d4348f832"
+  },
+  "/home/nixos/plane/packages/propel/src/tooltip/tooltip.stories.tsx": {
+    "mtime": 1776988268.650334,
+    "hash": "ac9675d355f809d43f5861c759c880e0"
+  },
+  "/home/nixos/plane/packages/propel/src/tooltip/root.tsx": {
+    "mtime": 1776988268.650334,
+    "hash": "1e78c1eda82655e7628c4fa0be03d400"
+  },
+  "/home/nixos/plane/packages/propel/src/separator/separator.stories.tsx": {
+    "mtime": 1776988145.1903126,
+    "hash": "a046d5b1c35cefa0365e3a6c9390739a"
+  },
+  "/home/nixos/plane/packages/propel/src/separator/separator.tsx": {
+    "mtime": 1776988145.1903126,
+    "hash": "c5fc76a7866eba8582bf9dc55846cbfc"
+  },
+  "/home/nixos/plane/packages/propel/src/design-system/design-system-philosophy.stories.tsx": {
+    "mtime": 1776988268.6423337,
+    "hash": "13a28f44f0823ba812872969aadef510"
+  },
+  "/home/nixos/plane/packages/propel/src/tabs/index.ts": {
+    "mtime": 1776988145.1983128,
+    "hash": "6556af4af519a57b92274b00b563caa7"
+  },
+  "/home/nixos/plane/packages/propel/src/tabs/tabs.tsx": {
+    "mtime": 1776988268.650334,
+    "hash": "189c8651bbe8ee9fec324a1f2c03f3c6"
+  },
+  "/home/nixos/plane/packages/propel/src/tabs/tabs.stories.tsx": {
+    "mtime": 1776988268.650334,
+    "hash": "a3d6834b7e38f3edf8d62202c664df44"
+  },
+  "/home/nixos/plane/packages/propel/src/collapsible/index.ts": {
+    "mtime": 1776988145.130313,
+    "hash": "488dd54b6f4573fe1006ac3b3ec906c8"
+  },
+  "/home/nixos/plane/packages/propel/src/collapsible/collapsible.stories.tsx": {
+    "mtime": 1776988145.130313,
+    "hash": "514fc9c1873dae5d9a34d576c3b791ad"
+  },
+  "/home/nixos/plane/packages/propel/src/collapsible/collapsible.tsx": {
+    "mtime": 1776988268.6423337,
+    "hash": "557280e06428803c2016e9073792c401"
+  },
+  "/home/nixos/plane/packages/propel/src/menu/index.ts": {
+    "mtime": 1776988145.1863127,
+    "hash": "eba42c8c8291724e03d9e5a430da239b"
+  },
+  "/home/nixos/plane/packages/propel/src/menu/menu.tsx": {
+    "mtime": 1776988268.646334,
+    "hash": "e66753851cb5f05a84d9eed1a01b1fda"
+  },
+  "/home/nixos/plane/packages/propel/src/menu/types.ts": {
+    "mtime": 1776988145.1863127,
+    "hash": "e36252dadf861bb015187087d9036518"
+  },
+  "/home/nixos/plane/packages/propel/src/menu/menu.stories.tsx": {
+    "mtime": 1776988145.1863127,
+    "hash": "548d05085536d5cc153c660e45e6ee57"
+  },
+  "/home/nixos/plane/packages/propel/src/portal/constants.ts": {
+    "mtime": 1776988145.1903126,
+    "hash": "f5b87b1172da51279ecd91878b303235"
+  },
+  "/home/nixos/plane/packages/propel/src/portal/portal.stories.tsx": {
+    "mtime": 1776988145.1903126,
+    "hash": "bb204bf35363313165a6fb843d8d4dbc"
+  },
+  "/home/nixos/plane/packages/propel/src/portal/index.ts": {
+    "mtime": 1776988145.1903126,
+    "hash": "499eb81f9389eb929f57bdd6b0cf138d"
+  },
+  "/home/nixos/plane/packages/propel/src/portal/modal-portal.tsx": {
+    "mtime": 1776988145.1903126,
+    "hash": "fa8acdacbe10f4d3655aa89060ea091f"
+  },
+  "/home/nixos/plane/packages/propel/src/portal/types.ts": {
+    "mtime": 1776988145.1903126,
+    "hash": "c38dcd9e8e5160b8ff2d238f0ef0d9fd"
+  },
+  "/home/nixos/plane/packages/propel/src/portal/portal-wrapper.tsx": {
+    "mtime": 1776988145.1903126,
+    "hash": "552a3bf094ff10f0c113dd7982f81f59"
+  },
   "/home/nixos/plane/apps/web/playwright.config.ts": {
     "mtime": 1777218294.5792804,
     "hash": "e4051e833c773b13e97cff5868e1745d"
@@ -8379,6 +13167,10 @@
     "mtime": 1776988144.982313,
     "hash": "3956a1d6cd3b861e1bc56ab55e5457a9"
   },
+  "/home/nixos/plane/apps/home/astro.config.mjs": {
+    "mtime": 1778467928.9713857,
+    "hash": "0f023a4ad9ced2f0f68accc8978be797"
+  },
   "/home/nixos/plane/apps/admin/playwright.config.ts": {
     "mtime": 1777217132.139625,
     "hash": "8f26a48e9d0d9075812aaff4e8121d6a"
@@ -13419,6 +18211,34 @@
     "mtime": 1776988143.9463146,
     "hash": "d203c4d5d1025a26fa500370164f59eb"
   },
+  "/home/nixos/plane/packages/ui/README.md": {
+    "mtime": 1776988145.2503126,
+    "hash": "c1c467ba37fe97b97bc194dde8e5d21f"
+  },
+  "/home/nixos/plane/packages/ui/src/dropdown/Readme.md": {
+    "mtime": 1776988145.2583127,
+    "hash": "56f105fa8ddc01f0cf6ef4019867ce71"
+  },
+  "/home/nixos/plane/packages/editor/Readme.md": {
+    "mtime": 1776988145.018313,
+    "hash": "025bfeded15c412eb3f19fa60038c7ac"
+  },
+  "/home/nixos/plane/packages/tailwind-config/AGENTS.md": {
+    "mtime": 1776988145.2223127,
+    "hash": "a962c7027dfc58246c8986ea2edefa66"
+  },
+  "/home/nixos/plane/packages/codemods/instructions.md": {
+    "mtime": 1776988145.006313,
+    "hash": "a68607847c844e7552d88afa3a902791"
+  },
+  "/home/nixos/plane/packages/logger/README.md": {
+    "mtime": 1776988145.114313,
+    "hash": "e3ffdd87c73c9945d71f33f12cb306ab"
+  },
+  "/home/nixos/plane/packages/decorators/README.md": {
+    "mtime": 1776988145.018313,
+    "hash": "f31074e9490636e049131c7a2e128b1b"
+  },
   "/home/nixos/plane/deployments/cli/community/docker-compose.yml": {
     "mtime": 1776988144.998313,
     "hash": "72b8214211650efe543e7b63ccfc6c38"
@@ -14870,6 +19690,14 @@
   "/home/nixos/plane/apps/api_rust/todo_frontend.md": {
     "mtime": 1777290986.2312016,
     "hash": "27b0ed0c83b97bdadc844dd4c3ec626c"
+  },
+  "/home/nixos/plane/graphify-out/memory/query_20260511_023029_se_puede_pasar_el_home_a_astro.md": {
+    "mtime": 1778467914.9793897,
+    "hash": "81b3e7285e9e6ff368b1cc24edbbe34c"
+  },
+  "/home/nixos/plane/packages/propel/public/plane-lockup-light.svg": {
+    "mtime": 1776988145.114313,
+    "hash": "e1ddcbb04bed6fe49999e79ad15e6289"
   },
   "/home/nixos/plane/deployments/cli/community/images/migrate-error.png": {
     "mtime": 1776988144.998313,
@@ -16578,6 +21406,82 @@
   "/home/nixos/plane/apps/web/public/plane-logos/plane-mobile-pwa.png": {
     "mtime": 1776988144.990313,
     "hash": "3baca1b6f89a0022c792b0fe6d5eef8c"
+  },
+  "/home/nixos/plane/apps/home/public/assets/clients/cootrafa.svg": {
+    "mtime": 1778467680.4834096,
+    "hash": "4e281eff6045b552bee71e0c743fd614"
+  },
+  "/home/nixos/plane/apps/home/public/assets/clients/afroamericana.png": {
+    "mtime": 1778467680.4794097,
+    "hash": "b06b60f40a6b76d37e3c9663ac97cd7a"
+  },
+  "/home/nixos/plane/apps/home/public/assets/clients/comfamigos.png": {
+    "mtime": 1778467680.4834096,
+    "hash": "5259b29f80733de6c583b5ea54a5c535"
+  },
+  "/home/nixos/plane/apps/home/public/assets/clients/icontec.png": {
+    "mtime": 1778467680.4914095,
+    "hash": "165d66662ea8a181da5eab4d49fe9d36"
+  },
+  "/home/nixos/plane/apps/home/public/assets/clients/solla.png": {
+    "mtime": 1778467680.4914095,
+    "hash": "9646021a4e49a963414007ac5a0e3315"
+  },
+  "/home/nixos/plane/apps/home/public/assets/clients/comsab.png": {
+    "mtime": 1778467680.4834096,
+    "hash": "9337be8ea4142c23d98cae6cd3696b96"
+  },
+  "/home/nixos/plane/apps/home/public/assets/clients/elcolombiano.jpeg": {
+    "mtime": 1778467680.4834096,
+    "hash": "4f6f2e74ded3acf7d3c980275414a836"
+  },
+  "/home/nixos/plane/apps/home/public/assets/clients/pronostica.png": {
+    "mtime": 1778467680.4914095,
+    "hash": "eecf76fa36ca77dbe34795ad78c94630"
+  },
+  "/home/nixos/plane/apps/home/public/assets/clients/diyotta.jpg": {
+    "mtime": 1778467680.4834096,
+    "hash": "ec9d3b23ea6660a008ece44df2a69008"
+  },
+  "/home/nixos/plane/apps/home/public/assets/clients/maaji.png": {
+    "mtime": 1778467680.4914095,
+    "hash": "b528ed476f5cfb60ca2737578dbb1d19"
+  },
+  "/home/nixos/plane/apps/home/public/assets/clients/coimpresores.png": {
+    "mtime": 1778467680.4794097,
+    "hash": "0cef3af7e876ae9c27e77d51fe15f7fe"
+  },
+  "/home/nixos/plane/apps/home/public/assets/clients/bna.png": {
+    "mtime": 1778467680.4794097,
+    "hash": "77f76ea9eb15dc66fff3efaf6414f081"
+  },
+  "/home/nixos/plane/apps/home/public/assets/clients/argos.png": {
+    "mtime": 1778467680.4794097,
+    "hash": "6800f0d7bb566c34d1eb3f7c4a5125e8"
+  },
+  "/home/nixos/plane/apps/home/public/assets/clients/confiar.png": {
+    "mtime": 1778467680.4834096,
+    "hash": "149c9f5aaccba0fd21a4f182ed1a3eb9"
+  },
+  "/home/nixos/plane/apps/home/public/assets/clients/codenet.jpg": {
+    "mtime": 1778467680.4794097,
+    "hash": "3647731c89931c06f98ba4ccdff59310"
+  },
+  "/home/nixos/plane/apps/home/public/assets/clients/aliassmith.png": {
+    "mtime": 1778467680.4794097,
+    "hash": "c084cd08385c106d21eda8b400aa5b21"
+  },
+  "/home/nixos/plane/apps/home/public/assets/clients/jfk.png": {
+    "mtime": 1778467680.4914095,
+    "hash": "79f756440e32e41fd66da3f2a478df8f"
+  },
+  "/home/nixos/plane/apps/home/public/assets/clients/coltabaco.jpg": {
+    "mtime": 1778467680.4834096,
+    "hash": "f2b813e0f86b82cc9be8b18af1ccdb87"
+  },
+  "/home/nixos/plane/apps/home/public/assets/clients/femont.png": {
+    "mtime": 1778467680.4874096,
+    "hash": "503aa1ff3a0a6b4505294eb61921fd78"
   },
   "/home/nixos/plane/apps/home/assets/clients/cootrafa.svg": {
     "mtime": 1776988268.406334,

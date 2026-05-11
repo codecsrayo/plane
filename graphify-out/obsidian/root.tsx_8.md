@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/dialog/root.tsx"
 type: "code"
-community: "Dialog Width"
+community: "Community 182"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dialog_Width
+  - community/Community_182
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[Dialog]] - `contains` [EXTRACTED]
 - [[DialogComponent]] - `contains` [EXTRACTED]
 - [[DialogOverlay]] - `contains` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[dialog.stories.tsx]] - `imports_from` [EXTRACTED]
 - [[getPositionClassNames()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dialog_Width
+#graphify/code #graphify/EXTRACTED #community/Community_182

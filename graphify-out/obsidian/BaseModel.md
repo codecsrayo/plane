@@ -1,17 +1,16 @@
 ---
 source_file: ""
 type: "code"
-community: "Meta User"
+community: "Python Workflow Services"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Meta_User
+  - community/Python_Workflow_Services
 ---
 
 # BaseModel
 
 ## Connections
-
 - [[APIActivityLog]] - `inherits` [EXTRACTED]
 - [[APIToken]] - `inherits` [EXTRACTED]
 - [[AnalyticView]] - `inherits` [EXTRACTED]
@@ -51,4 +50,4 @@ tags:
 - [[WorkspaceUserPreference]] - `inherits` [EXTRACTED]
 - [[WorkspaceUserProperties]] - `inherits` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Meta_User
+#graphify/code #graphify/EXTRACTED #community/Python_Workflow_Services

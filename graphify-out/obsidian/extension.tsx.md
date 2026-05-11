@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/custom-link/extension.tsx"
 type: "code"
-community: "Link Options"
+community: "Community 113"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Link_Options
+  - community/Community_113
 ---
 
 # extension.tsx
 
 ## Connections
-
 - [[CORE_EXTENSIONS]] - `imports` [EXTRACTED]
 - [[Commands_4]] - `contains` [EXTRACTED]
 - [[CustomLinkExtension]] - `contains` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[pasteHandler()]] - `imports` [EXTRACTED]
 - [[pasteHandler.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Link_Options
+#graphify/code #graphify/EXTRACTED #community/Community_113

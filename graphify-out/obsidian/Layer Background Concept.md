@@ -1,17 +1,16 @@
 ---
 source_file: "packages/tailwind-config/AGENTS.md"
 type: "document"
-community: "Background Concept"
+community: "Community 338"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Background_Concept
+  - community/Community_338
 ---
 
 # Layer Background Concept
 
 ## Connections
-
 - [[Surface Background Concept]] - `conceptually_related_to` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Background_Concept
+#graphify/document #graphify/EXTRACTED #community/Community_338

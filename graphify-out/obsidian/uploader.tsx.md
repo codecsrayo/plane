@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/custom-image/components/uploader.tsx"
 type: "code"
-community: "Image Custom"
+community: "Community 28"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Image_Custom
+  - community/Community_28
 ---
 
 # uploader.tsx
 
 ## Connections
-
 - [[ACCEPTED_IMAGE_MIME_TYPES]] - `imports` [EXTRACTED]
 - [[CORE_EXTENSIONS]] - `imports` [EXTRACTED]
 - [[CustomImageNodeViewProps]] - `imports` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[useUploader()]] - `imports` [EXTRACTED]
 - [[utils.ts_9]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Image_Custom
+#graphify/code #graphify/EXTRACTED #community/Community_28

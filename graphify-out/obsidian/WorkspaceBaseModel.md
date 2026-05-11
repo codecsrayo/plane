@@ -1,17 +1,16 @@
 ---
 source_file: ""
 type: "code"
-community: "Meta User"
+community: "Community 66"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Meta_User
+  - community/Community_66
 ---
 
 # WorkspaceBaseModel
 
 ## Connections
-
 - [[DeployBoard]] - `inherits` [EXTRACTED]
 - [[Description_1]] - `inherits` [EXTRACTED]
 - [[DescriptionVersion]] - `inherits` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[UserFavorite]] - `inherits` [EXTRACTED]
 - [[UserRecentVisit]] - `inherits` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Meta_User
+#graphify/code #graphify/EXTRACTED #community/Community_66

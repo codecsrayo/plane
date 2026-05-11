@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/issue/helpers/base-issues.store.ts"
 type: "code"
-community: "Issue Group"
+community: "Community 59"
 location: "L281"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Issue_Group
+  - community/Community_59
 ---
 
 # orderBy()
 
 ## Connections
-
 - [[.archivedEstimateIds()]] - `calls` [INFERRED]
 - [[.estimatePointIds()]] - `calls` [INFERRED]
 - [[.issueIds()]] - `calls` [INFERRED]
@@ -22,4 +21,4 @@ tags:
 - [[getOrderedWorkItems()]] - `calls` [EXTRACTED]
 - [[populateIssueDataForSorting()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Issue_Group
+#graphify/code #graphify/INFERRED #community/Community_59

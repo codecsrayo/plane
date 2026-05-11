@@ -1,18 +1,17 @@
 ---
 source_file: "admin/app/(all)/(dashboard)/authentication/gitlab/page.tsx"
 type: "code"
-community: "Instance Authentication"
+community: "Community 191"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Instance_Authentication
+  - community/Community_191
 ---
 
 # page.tsx
 
 ## Connections
-
 - [[AuthenticationMethodCard()]] - `imports` [EXTRACTED]
 - [[InstanceGitlabAuthenticationPage]] - `contains` [EXTRACTED]
 - [[InstanceGitlabConfigForm()]] - `imports` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[page-wrapper.tsx]] - `imports_from` [EXTRACTED]
 - [[toBool()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Instance_Authentication
+#graphify/code #graphify/EXTRACTED #community/Community_191

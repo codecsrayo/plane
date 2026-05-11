@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/project/join-project-modal.tsx"
 type: "code"
-community: "Project Settings"
+community: "Project Filters & Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Project_Filters__Archives
 ---
 
 # join-project-modal.tsx
 
 ## Connections
-
 - [[JoinProjectModal()]] - `contains` [EXTRACTED]
 - [[TJoinProjectModalProps]] - `contains` [EXTRACTED]
 - [[card.tsx_2]] - `imports_from` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[use-app-router.tsx]] - `imports_from` [EXTRACTED]
 - [[useAppRouter()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

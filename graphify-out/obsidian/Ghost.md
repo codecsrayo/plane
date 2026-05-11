@@ -1,18 +1,18 @@
 ---
-source_file: "propel/src/icon-button/icon-button.stories.tsx"
+source_file: "packages/propel/src/icon-button/icon-button.stories.tsx"
 type: "code"
-community: "Large Disabled"
+community: "Community 196"
 location: "L81"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Large_Disabled
+  - community/Community_196
 ---
 
 # Ghost
 
 ## Connections
-
 - [[icon-button.stories.tsx]] - `contains` [EXTRACTED]
+- [[icon-button.stories.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Large_Disabled
+#graphify/code #graphify/EXTRACTED #community/Community_196

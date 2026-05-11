@@ -1,18 +1,18 @@
 ---
-source_file: "shared-state/src/store/rich-filters/config-manager.ts"
+source_file: "packages/shared-state/src/store/rich-filters/config-manager.ts"
 type: "code"
-community: "Config Operator"
+community: "Community 232"
 location: "L51"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Config_Operator
+  - community/Community_232
 ---
 
 # TConfigManagerParams
 
 ## Connections
-
 - [[config-manager.ts]] - `contains` [EXTRACTED]
+- [[config-manager.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Config_Operator
+#graphify/code #graphify/EXTRACTED #community/Community_232

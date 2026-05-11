@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/kanban/base-kanban-root.tsx"
 type: "code"
-community: "Issue Project"
+community: "Filter UI & Breadcrumbs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Project
+  - community/Filter_UI__Breadcrumbs
 ---
 
 # base-kanban-root.tsx
 
 ## Connections
-
 - [[Adapter_1]] - `imports_from` [EXTRACTED]
 - [[BaseKanBanRoot]] - `contains` [EXTRACTED]
 - [[DeleteIssueModal]] - `imports` [EXTRACTED]
@@ -46,4 +45,4 @@ tags:
 - [[useKanbanView()]] - `imports` [EXTRACTED]
 - [[utils.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Project
+#graphify/code #graphify/EXTRACTED #community/Filter_UI__Breadcrumbs

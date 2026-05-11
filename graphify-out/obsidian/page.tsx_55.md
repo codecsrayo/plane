@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/webhooks/[webhookId]/page.tsx"
 type: "code"
-community: "Webhook Workspace"
+community: "Community 326"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Webhook_Workspace
+  - community/Community_326
 ---
 
 # page.tsx
 
 ## Connections
-
 - [[LogoSpinner()]] - `imports` [EXTRACTED]
 - [[PageHead()]] - `imports` [EXTRACTED]
 - [[SettingsContentWrapper()]] - `imports` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[useWebhook()]] - `imports` [EXTRACTED]
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Webhook_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_326

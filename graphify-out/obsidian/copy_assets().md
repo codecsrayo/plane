@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/bgtasks/copy_s3_object.py"
 type: "code"
-community: "Copy Test"
+community: "Community 48"
 location: "L88"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Copy_Test
+  - community/Community_48
 ---
 
 # copy_assets()
 
 ## Connections
-
 - [[S3Storage]] - `calls` [INFERRED]
 - [[copy_s3_object.py]] - `contains` [EXTRACTED]
 - [[copy_s3_objects_of_description_and_assets()]] - `calls` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[test_copy_assets_nonexistent_asset()]] - `calls` [INFERRED]
 - [[test_copy_assets_successful()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Copy_Test
+#graphify/code #graphify/INFERRED #community/Community_48

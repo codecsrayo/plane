@@ -1,20 +1,19 @@
 ---
 source_file: "editor/src/core/components/editors/document/editor.tsx"
 type: "code"
-community: "Document Collaborative"
+community: "Editor Extensions"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Document_Collaborative
+  - community/Editor_Extensions
 ---
 
 # editor.tsx
 
 ## Connections
-
 - [[DEFAULT_DISPLAY_CONFIG]] - `imports` [EXTRACTED]
-- [[DocumentEditor]] - `contains` [EXTRACTED]
+- [[DocumentEditor()]] - `contains` [EXTRACTED]
 - [[DocumentEditorWithRef]] - `contains` [EXTRACTED]
 - [[common.ts_1]] - `imports_from` [EXTRACTED]
 - [[config.ts_1]] - `imports_from` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[use-editor.ts]] - `imports_from` [EXTRACTED]
 - [[useEditor()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Document_Collaborative
+#graphify/code #graphify/EXTRACTED #community/Editor_Extensions

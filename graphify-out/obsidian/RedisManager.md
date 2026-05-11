@@ -1,18 +1,17 @@
 ---
 source_file: "live/src/redis.ts"
 type: "code"
-community: "Redis Manager"
+community: "Community 434"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Redis_Manager
+  - community/Community_434
 ---
 
 # RedisManager
 
 ## Connections
-
 - [[.connect()]] - `method` [EXTRACTED]
 - [[.constructor()_185]] - `method` [EXTRACTED]
 - [[.del()]] - `method` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[redis.ts_1]] - `imports` [EXTRACTED]
 - [[server.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Redis_Manager
+#graphify/code #graphify/EXTRACTED #community/Community_434

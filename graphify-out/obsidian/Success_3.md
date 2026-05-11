@@ -1,18 +1,18 @@
 ---
-source_file: "propel/src/banner/banner.stories.tsx"
+source_file: "packages/propel/src/banner/banner.stories.tsx"
 type: "code"
-community: "Error Info"
+community: "Community 195"
 location: "L163"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Error_Info
+  - community/Community_195
 ---
 
 # Success
 
 ## Connections
-
 - [[banner.stories.tsx]] - `contains` [EXTRACTED]
+- [[banner.stories.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Error_Info
+#graphify/code #graphify/EXTRACTED #community/Community_195

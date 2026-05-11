@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/ai.service.ts"
 type: "code"
-community: "Aiservice Menu"
+community: "Community 202"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Aiservice_Menu
+  - community/Community_202
 ---
 
 # AIService
 
 ## Connections
-
 - [[.constructor()_144]] - `method` [EXTRACTED]
 - [[.createGptTask()]] - `method` [EXTRACTED]
 - [[.performEditorTask()]] - `method` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[gpt-assistant-popover.tsx]] - `imports` [EXTRACTED]
 - [[menu.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Aiservice_Menu
+#graphify/code #graphify/EXTRACTED #community/Community_202

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/dropdowns/constants.ts"
 type: "code"
-community: "Label Dropdown"
+community: "Work Item Detail & Layouts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Dropdown
+  - community/Work_Item_Detail__Layouts
 ---
 
 # constants.ts
 
 ## Connections
-
 - [[BACKGROUND_BUTTON_VARIANTS]] - `contains` [EXTRACTED]
 - [[BORDER_BUTTON_VARIANTS]] - `contains` [EXTRACTED]
 - [[BUTTON_VARIANTS_WITHOUT_TEXT]] - `contains` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[index.tsx_12]] - `imports_from` [EXTRACTED]
 - [[priority.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Work_Item_Detail__Layouts

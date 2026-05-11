@@ -1,18 +1,17 @@
 ---
 source_file: "space/store/issue.store.ts"
 type: "code"
-community: "Issue Group"
+community: "Community 49"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Group
+  - community/Community_49
 ---
 
 # issue.store.ts
 
 ## Connections
-
 - [[IBaseIssuesStore]] - `imports` [EXTRACTED]
 - [[IIssueStore_2]] - `contains` [EXTRACTED]
 - [[IssueStore_2]] - `contains` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[root.store.ts_6]] - `imports_from` [EXTRACTED]
 - [[use-issue.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Group
+#graphify/code #graphify/EXTRACTED #community/Community_49

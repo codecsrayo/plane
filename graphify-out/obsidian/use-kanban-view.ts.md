@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/use-kanban-view.ts"
 type: "code"
-community: "Webhook Workspace"
+community: "Bulk Operations & Spreadsheet"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Webhook_Workspace
+  - community/Bulk_Operations__Spreadsheet
 ---
 
 # use-kanban-view.ts
 
 ## Connections
-
 - [[IIssueKanBanViewStore]] - `imports` [EXTRACTED]
 - [[StoreContext]] - `imports` [EXTRACTED]
 - [[base-kanban-root.tsx]] - `imports_from` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[store-context.tsx]] - `imports_from` [EXTRACTED]
 - [[useKanbanView()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Webhook_Workspace
+#graphify/code #graphify/EXTRACTED #community/Bulk_Operations__Spreadsheet

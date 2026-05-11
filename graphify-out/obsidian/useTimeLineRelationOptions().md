@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/components/relations/index.tsx"
 type: "code"
-community: "Relation Issue"
+community: "Community 219"
 location: "L45"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Relation_Issue
+  - community/Community_219
 ---
 
 # useTimeLineRelationOptions()
 
 ## Connections
-
 - [[index.tsx_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Relation_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_219

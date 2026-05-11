@@ -1,18 +1,18 @@
 ---
-source_file: "i18n/src/hooks/use-translation.ts"
+source_file: "packages/i18n/src/hooks/use-translation.ts"
 type: "code"
-community: "Translation Language"
+community: "Community 143"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Translation_Language
+  - community/Community_143
 ---
 
 # TTranslationStore
 
 ## Connections
-
 - [[use-translation.ts]] - `contains` [EXTRACTED]
+- [[use-translation.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Translation_Language
+#graphify/code #graphify/EXTRACTED #community/Community_143

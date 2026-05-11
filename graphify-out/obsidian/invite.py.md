@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/workspace/invite.py"
 type: "code"
-community: "Endpoint Workspace"
+community: "Community 449"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_Workspace
+  - community/Community_449
 ---
 
 # invite.py
 
 ## Connections
-
 - [[UserWorkspaceInvitationsViewSet]] - `contains` [EXTRACTED]
 - [[WorkspaceInvitationsViewset]] - `contains` [EXTRACTED]
 - [[WorkspaceJoinEndpoint]] - `contains` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[create()_1]] - `contains` [EXTRACTED]
 - [[post()_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_449

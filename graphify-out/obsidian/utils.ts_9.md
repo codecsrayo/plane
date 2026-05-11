@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/custom-image/utils.ts"
 type: "code"
-community: "Image Custom"
+community: "Community 28"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Image_Custom
+  - community/Community_28
 ---
 
 # utils.ts
 
 ## Connections
-
 - [[DEFAULT_CUSTOM_IMAGE_ATTRIBUTES]] - `contains` [EXTRACTED]
 - [[ECustomImageAttributeNames]] - `imports` [EXTRACTED]
 - [[ECustomImageStatus]] - `imports` [EXTRACTED]
@@ -35,4 +34,4 @@ tags:
 - [[types.ts_6]] - `imports_from` [EXTRACTED]
 - [[uploader.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Image_Custom
+#graphify/code #graphify/EXTRACTED #community/Community_28

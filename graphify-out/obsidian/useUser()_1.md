@@ -1,18 +1,17 @@
 ---
 source_file: "space/hooks/store/use-user.ts"
 type: "code"
-community: "Issue Peek"
+community: "Community 223"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Peek
+  - community/Community_223
 ---
 
 # useUser()
 
 ## Connections
-
 - [[add-comment.tsx]] - `imports` [EXTRACTED]
 - [[comment-detail-card.tsx]] - `imports` [EXTRACTED]
 - [[comment-reactions.tsx]] - `imports` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[user-logged-in.tsx]] - `imports` [EXTRACTED]
 - [[user.tsx_2]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Peek
+#graphify/code #graphify/EXTRACTED #community/Community_223

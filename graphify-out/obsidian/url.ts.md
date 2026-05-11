@@ -1,18 +1,17 @@
 ---
 source_file: "utils/src/url.ts"
 type: "code"
-community: "Extract Valid"
+community: "Community 351"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Extract_Valid
+  - community/Community_351
 ---
 
 # url.ts
 
 ## Connections
-
 - [[IURLComponents]] - `contains` [EXTRACTED]
 - [[LOCALHOST_ADDRESSES]] - `contains` [EXTRACTED]
 - [[extractHostname()]] - `contains` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[tlds.ts]] - `imports_from` [EXTRACTED]
 - [[validateIPAddress()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Extract_Valid
+#graphify/code #graphify/EXTRACTED #community/Community_351

@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 4
 ---
 
 # Community 669
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_19]] - code - api_rust/src/entities/analytic_views.rs
+- [[Image()]] - code - admin/app/compat/next/image.tsx
+- [[NextImageProps]] - code - admin/app/compat/next/image.tsx
+- [[image.tsx_1]] - code - admin/app/compat/next/image.tsx
+- [[image.tsx]] - code - web/app/compat/next/image.tsx
 
 ## Live Query (requires Dataview plugin)
 

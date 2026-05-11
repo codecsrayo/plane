@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/auth/session.rs"
 type: "code"
-community: "Session Presigned"
+community: "Community 78"
 location: "L215"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Session_Presigned
+  - community/Community_78
 ---
 
 # replace_session_cookie()
 
 ## Connections
-
 - [[.cookie_name()]] - `calls` [EXTRACTED]
 - [[admin_sign_in()]] - `calls` [INFERRED]
 - [[authenticate_existing_user()]] - `calls` [INFERRED]
@@ -22,4 +21,4 @@ tags:
 - [[session.rs]] - `contains` [EXTRACTED]
 - [[set_password()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Session_Presigned
+#graphify/code #graphify/INFERRED #community/Community_78

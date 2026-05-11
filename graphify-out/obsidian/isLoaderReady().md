@@ -1,18 +1,18 @@
 ---
-source_file: "utils/src/loader.ts"
+source_file: "packages/utils/src/loader.ts"
 type: "code"
-community: "Loader"
+community: "Community 730"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Loader
+  - community/Community_730
 ---
 
 # isLoaderReady()
 
 ## Connections
-
 - [[loader.ts]] - `contains` [EXTRACTED]
+- [[loader.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Loader
+#graphify/code #graphify/EXTRACTED #community/Community_730

@@ -1,18 +1,17 @@
 ---
 source_file: "space/helpers/date-time.helper.ts"
 type: "code"
-community: "Issue Properties"
+community: "Community 137"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Community_137
 ---
 
 # date-time.helper.ts
 
 ## Connections
-
 - [[all-properties.tsx_1]] - `imports_from` [EXTRACTED]
 - [[comment-detail-card.tsx]] - `imports_from` [EXTRACTED]
 - [[due-date.tsx_1]] - `imports_from` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[renderFormattedDate()_1]] - `contains` [EXTRACTED]
 - [[timeAgo()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Community_137

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/serializers/page.py"
 type: "rationale"
-community: "Serializer Validate"
+community: "Community 360"
 location: "L174"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Serializer_Validate
+  - community/Community_360
 ---
 
 # Serializer for updating page binary description with validation
 
 ## Connections
-
 - [[PageBinaryUpdateSerializer]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Serializer_Validate
+#graphify/rationale #graphify/EXTRACTED #community/Community_360

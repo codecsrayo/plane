@@ -1,18 +1,17 @@
 ---
 source_file: "utils/src/rich-filters/factories/configs/properties/member-picker.ts"
 type: "code"
-community: "Params Date"
+community: "Community 39"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Params_Date
+  - community/Community_39
 ---
 
 # member-picker.ts
 
 ## Connections
-
 - [[TCreateFilterConfig]] - `imports` [EXTRACTED]
 - [[TCreateMemberPickerPropertyFilterParams]] - `contains` [EXTRACTED]
 - [[TCreateUserFilterParams]] - `imports` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[shared.ts_8]] - `imports_from` [EXTRACTED]
 - [[shared.ts_9]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Params_Date
+#graphify/code #graphify/EXTRACTED #community/Community_39

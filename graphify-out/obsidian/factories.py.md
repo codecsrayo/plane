@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/tests/factories.py"
 type: "code"
-community: "Factory Creating"
+community: "Community 432"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Factory_Creating
+  - community/Community_432
 ---
 
 # factories.py
 
 ## Connections
-
 - [[Meta_24]] - `contains` [EXTRACTED]
 - [[ProjectFactory]] - `contains` [EXTRACTED]
 - [[ProjectMemberFactory]] - `contains` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[WorkspaceFactory]] - `contains` [EXTRACTED]
 - [[WorkspaceMemberFactory]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Factory_Creating
+#graphify/code #graphify/EXTRACTED #community/Community_432

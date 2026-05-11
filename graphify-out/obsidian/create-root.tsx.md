@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/inbox/modals/create-modal/create-root.tsx"
 type: "code"
-community: "Issue Inbox"
+community: "Activity & Inbox Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Inbox
+  - community/Activity__Inbox_Filters
 ---
 
 # create-root.tsx
 
 ## Connections
-
 - [[DeDupeButtonRoot()]] - `imports` [EXTRACTED]
 - [[FileService_1]] - `imports` [EXTRACTED]
 - [[InboxIssueCreateRoot]] - `contains` [EXTRACTED]
@@ -40,4 +39,4 @@ tags:
 - [[useProjectInbox()]] - `imports` [EXTRACTED]
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Inbox
+#graphify/code #graphify/EXTRACTED #community/Activity__Inbox_Filters

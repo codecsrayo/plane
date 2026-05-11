@@ -1,18 +1,17 @@
 ---
 source_file: "utils/src/theme/theme-application.ts"
 type: "code"
-community: "Color Shade"
+community: "Community 87"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Color_Shade
+  - community/Community_87
 ---
 
 # theme-application.ts
 
 ## Connections
-
 - [[ALPHA_MAPPING]] - `imports` [EXTRACTED]
 - [[DarknessDetectionMethod]] - `contains` [EXTRACTED]
 - [[EDITOR_COLORS_DARK]] - `imports` [EXTRACTED]
@@ -35,4 +34,4 @@ tags:
 - [[palette-generator.ts]] - `imports_from` [EXTRACTED]
 - [[theme-inversion.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Color_Shade
+#graphify/code #graphify/EXTRACTED #community/Community_87

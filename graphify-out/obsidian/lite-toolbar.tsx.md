@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/editor/lite-text/lite-toolbar.tsx"
 type: "code"
-community: "Toolbar Items"
+community: "Community 111"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toolbar_Items
+  - community/Community_111
 ---
 
 # lite-toolbar.tsx
 
 ## Connections
-
 - [[IMAGE_ITEM]] - `imports` [EXTRACTED]
 - [[LiteToolbar()]] - `contains` [EXTRACTED]
 - [[LiteToolbarProps]] - `contains` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[editor.ts_20]] - `imports_from` [EXTRACTED]
 - [[editor.tsx_6]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toolbar_Items
+#graphify/code #graphify/EXTRACTED #community/Community_111

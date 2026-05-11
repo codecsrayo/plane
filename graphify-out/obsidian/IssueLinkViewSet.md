@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/issue/link.py"
 type: "code"
-community: "Partial Endpoint"
+community: "Python API Base Classes"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Partial_Endpoint
+  - community/Python_API_Base_Classes
 ---
 
 # IssueLinkViewSet
 
 ## Connections
-
 - [[.create()_13]] - `method` [EXTRACTED]
 - [[.destroy()_13]] - `method` [EXTRACTED]
 - [[.get_queryset()_14]] - `method` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[BaseViewSet_1]] - `inherits` [EXTRACTED]
 - [[link.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Partial_Endpoint
+#graphify/code #graphify/EXTRACTED #community/Python_API_Base_Classes

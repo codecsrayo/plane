@@ -1,19 +1,25 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 0.36
+members: 10
 ---
 
 # Community 468
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 0.36 - loosely connected
+**Members:** 10 nodes
 
 ## Members
-
-- [[IQuickActionProps]] - code - web/core/components/issues/issue-layouts/list/list-view-types.d.ts
-- [[TRenderQuickActions]] - code - web/core/components/issues/issue-layouts/list/list-view-types.d.ts
-- [[list-view-types.d.ts]] - code - web/core/components/issues/issue-layouts/list/list-view-types.d.ts
+- [[IJiraConfig]] - code - packages/types/src/importer/jira-importer.ts
+- [[IJiraData]] - code - packages/types/src/importer/jira-importer.ts
+- [[IJiraImporterForm]] - code - packages/types/src/importer/jira-importer.ts
+- [[IJiraMetadata]] - code - packages/types/src/importer/jira-importer.ts
+- [[IJiraResponse]] - code - packages/types/src/importer/jira-importer.ts
+- [[IJiraResponseAvatarUrls]] - code - packages/types/src/importer/jira-importer.ts
+- [[IJiraResponseUser]] - code - packages/types/src/importer/jira-importer.ts
+- [[User]] - code - packages/types/src/importer/jira-importer.ts
+- [[jira-importer.ts_1]] - code - packages/types/src/importer/jira-importer.ts
+- [[jira-importer.ts]] - code - types/src/importer/jira-importer.ts
 
 ## Live Query (requires Dataview plugin)
 

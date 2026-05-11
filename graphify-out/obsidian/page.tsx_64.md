@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/create-workspace/page.tsx"
 type: "code"
-community: "Workspace Issue"
+community: "Community 70"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Issue
+  - community/Community_70
 ---
 
 # page.tsx
 
 ## Connections
-
 - [[AuthenticationWrapper]] - `imports` [EXTRACTED]
 - [[CreateWorkspaceForm]] - `imports` [EXTRACTED]
 - [[CreateWorkspacePage]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[useAppRouter()]] - `imports` [EXTRACTED]
 - [[useInstance()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_70

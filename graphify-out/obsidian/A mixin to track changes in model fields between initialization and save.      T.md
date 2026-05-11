@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/mixins.py"
 type: "rationale"
-community: "Issue Sync"
+community: "Community 26"
 location: "L93"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Issue_Sync
+  - community/Community_26
 ---
 
-# A mixin to track changes in model fields between initialization and save. T
+# A mixin to track changes in model fields between initialization and save.      T
 
 ## Connections
-
 - [[ChangeTrackerMixin]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Issue_Sync
+#graphify/rationale #graphify/EXTRACTED #community/Community_26

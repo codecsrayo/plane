@@ -1,47 +1,78 @@
 ---
 type: community
-cohesion: 0.08
-members: 31
+cohesion: 0.05
+members: 63
 ---
 
 # Community 67
 
-**Cohesion:** 0.08 - loosely connected
-**Members:** 31 nodes
+**Cohesion:** 0.05 - loosely connected
+**Members:** 63 nodes
 
 ## Members
-
-- [[.archivedProjectIds()]] - code - web/core/store/project/project.store.ts
-- [[.constructor()_58]] - code - web/core/store/project/index.ts
-- [[.constructor()_57]] - code - web/core/store/project/project-publish.store.ts
-- [[.constructor()_60]] - code - web/core/store/project/project.store.ts
-- [[.currentProjectDetails()]] - code - web/core/store/project/project.store.ts
-- [[.currentProjectNextSequenceId()]] - code - web/core/store/project/project.store.ts
-- [[.favoriteProjectIds()]] - code - web/core/store/project/project.store.ts
-- [[.filteredProjectIds()]] - code - web/core/store/project/project.store.ts
-- [[.isInitializingProjects()]] - code - web/core/store/project/project.store.ts
-- [[.joinedProjectIds()]] - code - web/core/store/project/project.store.ts
-- [[.totalProjectIds()]] - code - web/core/store/project/project.store.ts
-- [[.workspaceProjectIds()]] - code - web/core/store/project/project.store.ts
-- [[IProjectPublishStore]] - code - web/core/store/project/project-publish.store.ts
-- [[IProjectRootStore]] - code - web/core/store/project/index.ts
-- [[IProjectStore]] - code - web/core/store/project/project.store.ts
-- [[ProjectOverviewCollapsible]] - code - web/core/store/project/project.store.ts
-- [[ProjectPublishStore]] - code - web/core/store/project/project-publish.store.ts
-- [[ProjectRootStore]] - code - web/core/store/project/index.ts
-- [[ProjectStore]] - code - web/core/store/project/project.store.ts
-- [[Props_144]] - code - web/core/components/project/publish-project/modal.tsx
-- [[PublishProjectModal]] - code - web/core/components/project/publish-project/modal.tsx
-- [[VIEW_OPTIONS]] - code - web/core/components/project/publish-project/modal.tsx
-- [[currentProject]] - code - web/core/store/project/project.store.ts
-- [[defaultValues_13]] - code - web/core/components/project/publish-project/modal.tsx
-- [[index.ts_16]] - code - web/core/store/project/index.ts
-- [[modal.tsx_6]] - code - web/core/components/project/publish-project/modal.tsx
-- [[project-publish.store.ts]] - code - web/core/store/project/project-publish.store.ts
-- [[project.store.ts]] - code - web/core/store/project/project.store.ts
-- [[projectDetails]] - code - web/core/store/project/project.store.ts
-- [[use-project-publish.ts]] - code - web/core/hooks/store/use-project-publish.ts
-- [[useProjectPublish()]] - code - web/core/hooks/store/use-project-publish.ts
+- [[CALENDAR_LAYOUTS]] - code - web/core/constants/calendar.ts
+- [[CalendarDayTile]] - code - web/core/components/issues/issue-layouts/calendar/day-tile.tsx
+- [[CalendarHeader]] - code - web/core/components/issues/issue-layouts/calendar/header.tsx
+- [[CalendarIssueBlock]] - code - web/core/components/issues/issue-layouts/calendar/issue-block.tsx
+- [[CalendarIssueBlockRoot]] - code - web/core/components/issues/issue-layouts/calendar/issue-block-root.tsx
+- [[CalendarIssueBlocks]] - code - web/core/components/issues/issue-layouts/calendar/issue-blocks.tsx
+- [[CalendarMonthsDropdown]] - code - web/core/components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx
+- [[CalendarOptionsDropdown]] - code - web/core/components/issues/issue-layouts/calendar/dropdowns/options-dropdown.tsx
+- [[CalendarWeekDays]] - code - web/core/components/issues/issue-layouts/calendar/week-days.tsx
+- [[CalendarWeekHeader]] - code - web/core/components/issues/issue-layouts/calendar/week-header.tsx
+- [[DAYS_LIST]] - code - web/core/constants/calendar.ts
+- [[ICalendarHeader]] - code - web/core/components/issues/issue-layouts/calendar/header.tsx
+- [[ICalendarHeader_1]] - code - web/core/components/issues/issue-layouts/calendar/dropdowns/options-dropdown.tsx
+- [[ICalendarStore]] - code - web/core/store/issue/issue_calendar_view.store.ts
+- [[IProjectEpics]] - code - web/ce/store/issue/epic/issue.store.ts
+- [[IProjectEpicsFilter]] - code - web/ce/store/issue/epic/filter.store.ts
+- [[ITeamIssues]] - code - web/ce/store/issue/team/issue.store.ts
+- [[ITeamIssuesFilter]] - code - web/ce/store/issue/team/filter.store.ts
+- [[ITeamProjectWorkItems]] - code - web/ce/store/issue/team-project/issue.store.ts
+- [[ITeamProjectWorkItemsFilter]] - code - web/ce/store/issue/team-project/filter.store.ts
+- [[ITeamViewIssues]] - code - web/ce/store/issue/team-views/issue.store.ts
+- [[ITeamViewIssuesFilter]] - code - web/ce/store/issue/team-views/filter.store.ts
+- [[MONTHS_LIST]] - code - web/core/constants/calendar.ts
+- [[ProjectEpics]] - code - web/ce/store/issue/epic/issue.store.ts
+- [[ProjectEpicsFilter]] - code - web/ce/store/issue/epic/filter.store.ts
+- [[Props_294]] - code - web/core/components/issues/issue-layouts/calendar/calendar.tsx
+- [[Props_296]] - code - web/core/components/issues/issue-layouts/calendar/day-tile.tsx
+- [[Props_291]] - code - web/core/components/issues/issue-layouts/calendar/issue-block-root.tsx
+- [[Props_295]] - code - web/core/components/issues/issue-layouts/calendar/issue-blocks.tsx
+- [[Props_292]] - code - web/core/components/issues/issue-layouts/calendar/week-days.tsx
+- [[Props_293]] - code - web/core/components/issues/issue-layouts/calendar/week-header.tsx
+- [[Props_297]] - code - web/core/components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx
+- [[TeamIssues]] - code - web/ce/store/issue/team/issue.store.ts
+- [[TeamIssuesFilter]] - code - web/ce/store/issue/team/filter.store.ts
+- [[TeamProjectWorkItems]] - code - web/ce/store/issue/team-project/issue.store.ts
+- [[TeamProjectWorkItemsFilter]] - code - web/ce/store/issue/team-project/filter.store.ts
+- [[TeamViewIssues]] - code - web/ce/store/issue/team-views/issue.store.ts
+- [[TeamViewIssuesFilter]] - code - web/ce/store/issue/team-views/filter.store.ts
+- [[calendar.ts_2]] - code - web/core/constants/calendar.ts
+- [[calendar.tsx]] - code - web/core/components/issues/issue-layouts/calendar/calendar.tsx
+- [[day-tile.tsx]] - code - web/core/components/issues/issue-layouts/calendar/day-tile.tsx
+- [[filter.store.ts_3]] - code - web/ce/store/issue/epic/filter.store.ts
+- [[filter.store.ts_2]] - code - web/ce/store/issue/team/filter.store.ts
+- [[filter.store.ts_1]] - code - web/ce/store/issue/team-project/filter.store.ts
+- [[filter.store.ts_4]] - code - web/ce/store/issue/team-views/filter.store.ts
+- [[header.tsx_50]] - code - web/core/components/issues/issue-layouts/calendar/header.tsx
+- [[index.ts_353]] - code - web/core/components/issues/issue-layouts/calendar/dropdowns/index.ts
+- [[index.ts_280]] - code - web/core/store/issue/cycle/index.ts
+- [[index.ts_276]] - code - web/core/store/issue/module/index.ts
+- [[index.ts_279]] - code - web/core/store/issue/project/index.ts
+- [[index.ts_274]] - code - web/core/store/issue/project-views/index.ts
+- [[issue-block-root.tsx]] - code - web/core/components/issues/issue-layouts/calendar/issue-block-root.tsx
+- [[issue-blocks.tsx]] - code - web/core/components/issues/issue-layouts/calendar/issue-blocks.tsx
+- [[issue.store.ts_3]] - code - web/ce/store/issue/epic/issue.store.ts
+- [[issue.store.ts_2]] - code - web/ce/store/issue/team/issue.store.ts
+- [[issue.store.ts_1]] - code - web/ce/store/issue/team-project/issue.store.ts
+- [[issue.store.ts_4]] - code - web/ce/store/issue/team-views/issue.store.ts
+- [[months-dropdown.tsx]] - code - web/core/components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx
+- [[options-dropdown.tsx]] - code - web/core/components/issues/issue-layouts/calendar/dropdowns/options-dropdown.tsx
+- [[use-calendar-view.ts]] - code - web/core/hooks/store/use-calendar-view.ts
+- [[useCalendarView()]] - code - web/core/hooks/store/use-calendar-view.ts
+- [[week-days.tsx]] - code - web/core/components/issues/issue-layouts/calendar/week-days.tsx
+- [[week-header.tsx]] - code - web/core/components/issues/issue-layouts/calendar/week-header.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -51,22 +82,20 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 6 edges to [[_COMMUNITY_Project Estimates]]
-- 5 edges to [[_COMMUNITY_Applied Filters UI]]
-- 3 edges to [[_COMMUNITY_Community 52]]
-- 2 edges to [[_COMMUNITY_Git Integrations]]
-- 2 edges to [[_COMMUNITY_Community 58]]
-- 2 edges to [[_COMMUNITY_Community 173]]
-- 2 edges to [[_COMMUNITY_Community 132]]
-- 2 edges to [[_COMMUNITY_Community 89]]
-- 1 edge to [[_COMMUNITY_Community 92]]
-- 1 edge to [[_COMMUNITY_Community 192]]
+- 16 edges to [[_COMMUNITY_Filter UI & Breadcrumbs]]
+- 8 edges to [[_COMMUNITY_Community 75]]
+- 3 edges to [[_COMMUNITY_Bulk Operations & Spreadsheet]]
+- 2 edges to [[_COMMUNITY_Active Cycle Stats]]
+- 2 edges to [[_COMMUNITY_Issue Display Filters]]
+- 2 edges to [[_COMMUNITY_Community 42]]
+- 2 edges to [[_COMMUNITY_Issue Activity Types]]
+- 2 edges to [[_COMMUNITY_Community 45]]
+- 2 edges to [[_COMMUNITY_Community 22]]
+- 2 edges to [[_COMMUNITY_Community 311]]
 
 ## Top bridge nodes
-
-- [[project.store.ts]] - degree 14, connects to 6 communities
-- [[project-publish.store.ts]] - degree 8, connects to 3 communities
-- [[index.ts_16]] - degree 13, connects to 2 communities
-- [[modal.tsx_6]] - degree 8, connects to 2 communities
-- [[use-project-publish.ts]] - degree 6, connects to 2 communities
+- [[issue-block-root.tsx]] - degree 9, connects to 4 communities
+- [[calendar.tsx]] - degree 24, connects to 3 communities
+- [[index.ts_280]] - degree 10, connects to 3 communities
+- [[use-calendar-view.ts]] - degree 9, connects to 3 communities
+- [[day-tile.tsx]] - degree 14, connects to 2 communities

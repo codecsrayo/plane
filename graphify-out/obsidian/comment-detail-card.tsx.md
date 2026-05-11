@@ -1,21 +1,20 @@
 ---
 source_file: "space/components/issues/peek-overview/comment/comment-detail-card.tsx"
 type: "code"
-community: "Issue Peek"
+community: "Community 80"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Peek
+  - community/Community_80
 ---
 
 # comment-detail-card.tsx
 
 ## Connections
-
 - [[CommentCard_1]] - `contains` [EXTRACTED]
 - [[CommentReactions_1]] - `imports` [EXTRACTED]
-- [[LiteTextEditor_1]] - `imports` [EXTRACTED]
+- [[LiteTextEditor]] - `imports` [EXTRACTED]
 - [[Props_574]] - `contains` [EXTRACTED]
 - [[comment-reactions.tsx]] - `imports_from` [EXTRACTED]
 - [[date-time.helper.ts]] - `imports_from` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[useIssueDetails()]] - `imports` [EXTRACTED]
 - [[useUser()_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Peek
+#graphify/code #graphify/EXTRACTED #community/Community_80

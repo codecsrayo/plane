@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/serializers/issue.py"
 type: "rationale"
-community: "Serializer Issue"
+community: "Community 37"
 location: "L369"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Serializer_Issue
+  - community/Community_37
 ---
 
-# Full serializer for work item labels with complete metadata. Provides compr
+# Full serializer for work item labels with complete metadata.      Provides compr
 
 ## Connections
-
 - [[LabelSerializer]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Serializer_Issue
+#graphify/rationale #graphify/EXTRACTED #community/Community_37

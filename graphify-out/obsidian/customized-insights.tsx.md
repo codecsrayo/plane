@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/analytics/work-items/customized-insights.tsx"
 type: "code"
-community: "Select Axis"
+community: "Community 447"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Select_Axis
+  - community/Community_447
 ---
 
 # customized-insights.tsx
 
 ## Connections
-
 - [[AnalyticsSelectParams]] - `imports` [EXTRACTED]
 - [[CustomizedInsights]] - `contains` [EXTRACTED]
 - [[analytics-params.tsx]] - `imports_from` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[priority-chart.tsx]] - `imports_from` [EXTRACTED]
 - [[root.tsx_130]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Select_Axis
+#graphify/code #graphify/EXTRACTED #community/Community_447

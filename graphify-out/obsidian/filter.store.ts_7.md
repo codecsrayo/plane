@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/issue/workspace/filter.store.ts"
 type: "code"
-community: "Filters Params"
+community: "Community 75"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filters_Params
+  - community/Community_75
 ---
 
 # filter.store.ts
 
 ## Connections
-
 - [[IBaseIssueFilterStore]] - `imports` [EXTRACTED]
 - [[IIssueFilterHelperStore]] - `imports` [EXTRACTED]
 - [[IIssueRootStore]] - `imports` [EXTRACTED]
@@ -41,4 +40,4 @@ tags:
 - [[userFilters]] - `contains` [EXTRACTED]
 - [[workspace.service.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filters_Params
+#graphify/code #graphify/EXTRACTED #community/Community_75

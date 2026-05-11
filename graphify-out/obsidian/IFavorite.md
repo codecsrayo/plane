@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/favorite/favorite.ts"
+source_file: "packages/types/src/favorite/favorite.ts"
 type: "code"
-community: "Inbox Issue"
+community: "Community 118"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Inbox_Issue
+  - community/Community_118
 ---
 
 # IFavorite
 
 ## Connections
-
 - [[favorite.ts]] - `contains` [EXTRACTED]
+- [[favorite.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Inbox_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_118

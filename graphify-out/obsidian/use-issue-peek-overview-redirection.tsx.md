@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/use-issue-peek-overview-redirection.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Issue Activity Types"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Issue_Activity_Types
 ---
 
 # use-issue-peek-overview-redirection.tsx
 
 ## Connections
-
 - [[block.tsx_6]] - `imports_from` [EXTRACTED]
 - [[blocks.tsx_1]] - `imports_from` [EXTRACTED]
 - [[issue-block.tsx]] - `imports_from` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[useIssuePeekOverviewRedirection()]] - `contains` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Types

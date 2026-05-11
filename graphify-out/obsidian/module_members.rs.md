@@ -1,19 +1,18 @@
 ---
 source_file: "api_rust/src/entities/module_members.rs"
 type: "code"
-community: "Model Relation"
+community: "Community 941"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Model_Relation
+  - community/Community_941
 ---
 
 # module_members.rs
 
 ## Connections
-
 - [[Model_61]] - `contains` [EXTRACTED]
 - [[Relation_61]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Model_Relation
+#graphify/code #graphify/EXTRACTED #community/Community_941

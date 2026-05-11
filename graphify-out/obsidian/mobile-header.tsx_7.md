@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/components/projects/mobile-header.tsx"
 type: "code"
-community: "Member Members"
+community: "Issue Display Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Members
+  - community/Issue_Display_Filters
 ---
 
 # mobile-header.tsx
 
 ## Connections
-
 - [[ProjectOrderByDropdown()]] - `imports` [EXTRACTED]
 - [[ProjectsListMobileHeader]] - `contains` [EXTRACTED]
 - [[index.ts_355]] - `imports_from` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[useMember()]] - `imports` [EXTRACTED]
 - [[useProjectFilter()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Members
+#graphify/code #graphify/EXTRACTED #community/Issue_Display_Filters

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/attachment/attachment-item-list.tsx"
 type: "code"
-community: "Attachment Issue"
+community: "Issue Activity Types"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Attachment_Issue
+  - community/Issue_Activity_Types
 ---
 
 # attachment-item-list.tsx
 
 ## Connections
-
 - [[IssueAttachmentDeleteModal]] - `imports` [EXTRACTED]
 - [[IssueAttachmentItemList]] - `contains` [EXTRACTED]
 - [[IssueAttachmentsListItem]] - `imports` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[useFileSize()]] - `imports` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Attachment_Issue
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Types

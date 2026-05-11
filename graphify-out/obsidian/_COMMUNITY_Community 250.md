@@ -1,24 +1,39 @@
 ---
 type: community
-cohesion: 0.32
-members: 8
+cohesion: 0.17
+members: 24
 ---
 
 # Community 250
 
-**Cohesion:** 0.32 - loosely connected
-**Members:** 8 nodes
+**Cohesion:** 0.17 - loosely connected
+**Members:** 24 nodes
 
 ## Members
-
-- [[DeleteEstimateModal]] - code - web/core/components/estimates/delete/modal.tsx
-- [[ReadonlyEstimate]] - code - web/core/components/readonly/estimate.tsx
-- [[TDeleteEstimateModal]] - code - web/core/components/estimates/delete/modal.tsx
-- [[TReadonlyEstimateProps]] - code - web/core/components/readonly/estimate.tsx
-- [[estimate.tsx_2]] - code - web/core/components/readonly/estimate.tsx
-- [[modal.tsx_13]] - code - web/core/components/estimates/delete/modal.tsx
-- [[use-estimate.ts]] - code - web/core/hooks/store/estimates/use-estimate.ts
-- [[useEstimate()]] - code - web/core/hooks/store/estimates/use-estimate.ts
+- [[CustomMenuButton]] - code - packages/ui/src/popovers/popover.stories.tsx
+- [[Default_2]] - code - packages/ui/src/popovers/popover-menu.stories.tsx
+- [[Default_1]] - code - packages/ui/src/popovers/popover.stories.tsx
+- [[Popover()]] - code - packages/ui/src/popovers/popover.tsx
+- [[PopoverMenu()]] - code - packages/ui/src/popovers/popover-menu.tsx
+- [[Story_2]] - code - packages/ui/src/popovers/popover-menu.stories.tsx
+- [[Story_1]] - code - packages/ui/src/popovers/popover.stories.tsx
+- [[TPopover]] - code - packages/ui/src/popovers/types.ts
+- [[TPopoverButtonDefaultOptions]] - code - packages/ui/src/popovers/types.ts
+- [[TPopoverDefaultOptions]] - code - packages/ui/src/popovers/types.ts
+- [[TPopoverMenu]] - code - packages/ui/src/popovers/popover-menu.stories.tsx
+- [[TPopoverMenu_1]] - code - packages/ui/src/popovers/types.ts
+- [[meta_2]] - code - packages/ui/src/popovers/popover-menu.stories.tsx
+- [[meta_1]] - code - packages/ui/src/popovers/popover.stories.tsx
+- [[popover-menu.stories.tsx_1]] - code - packages/ui/src/popovers/popover-menu.stories.tsx
+- [[popover-menu.stories.tsx]] - code - ui/src/popovers/popover-menu.stories.tsx
+- [[popover-menu.tsx_1]] - code - packages/ui/src/popovers/popover-menu.tsx
+- [[popover-menu.tsx]] - code - ui/src/popovers/popover-menu.tsx
+- [[popover.stories.tsx_2]] - code - packages/ui/src/popovers/popover.stories.tsx
+- [[popover.stories.tsx]] - code - ui/src/popovers/popover.stories.tsx
+- [[popover.tsx_1]] - code - packages/ui/src/popovers/popover.tsx
+- [[popover.tsx]] - code - ui/src/popovers/popover.tsx
+- [[types.ts_22]] - code - packages/ui/src/popovers/types.ts
+- [[types.ts_1]] - code - ui/src/popovers/types.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -28,17 +43,10 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 4 edges to [[_COMMUNITY_Spreadsheet Column Components]]
-- 4 edges to [[_COMMUNITY_Community 142]]
-- 3 edges to [[_COMMUNITY_Applied Filters UI]]
-- 2 edges to [[_COMMUNITY_Community 168]]
-- 1 edge to [[_COMMUNITY_Community 92]]
+- 4 edges to [[_COMMUNITY_Community 61]]
 
 ## Top bridge nodes
-
-- [[use-estimate.ts]] - degree 8, connects to 5 communities
-- [[modal.tsx_13]] - degree 8, connects to 3 communities
-- [[useEstimate()]] - degree 6, connects to 3 communities
-- [[estimate.tsx_2]] - degree 5, connects to 1 community
-- [[DeleteEstimateModal]] - degree 2, connects to 1 community
+- [[popover-menu.tsx_1]] - degree 7, connects to 1 community
+- [[popover-menu.tsx]] - degree 7, connects to 1 community
+- [[popover.tsx_1]] - degree 6, connects to 1 community
+- [[popover.tsx]] - degree 6, connects to 1 community

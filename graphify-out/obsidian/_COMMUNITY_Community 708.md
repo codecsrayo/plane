@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 4
 ---
 
 # Community 708
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_58]] - code - api_rust/src/entities/labels.rs
+- [[CHARTS_THEME]] - code - packages/constants/src/graph.ts
+- [[CHART_DEFAULT_MARGIN]] - code - packages/constants/src/graph.ts
+- [[graph.ts]] - code - constants/src/graph.ts
+- [[graph.ts_1]] - code - packages/constants/src/graph.ts
 
 ## Live Query (requires Dataview plugin)
 

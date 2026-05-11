@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/plugins/file/root.ts"
 type: "code"
-community: "Assets Node"
+community: "Community 91"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Assets_Node
+  - community/Community_91
 ---
 
 # root.ts
 
 ## Connections
-
 - [[FilePlugins()]] - `contains` [EXTRACTED]
 - [[TArgs_9]] - `contains` [EXTRACTED]
 - [[TrackFileDeletionPlugin()]] - `imports` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[restore.ts]] - `imports_from` [EXTRACTED]
 - [[utility.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Assets_Node
+#graphify/code #graphify/EXTRACTED #community/Community_91

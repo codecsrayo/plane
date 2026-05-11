@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_176]] - code - propel/src/emoji-icon-picker/emoji/index.ts
+- [[next-navigation.d.ts]] - code - web/app/types/next-navigation.d.ts
 
 ## Live Query (requires Dataview plugin)
 

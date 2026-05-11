@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.83
+members: 4
 ---
 
 # Community 678
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.83 - tightly connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_28]] - code - api_rust/src/entities/workspace_home_preferences.rs
+- [[basePath()]] - code - web/e2e/estimates.spec.ts
+- [[estimates.spec.ts]] - code - web/e2e/estimates.spec.ts
+- [[pid()_17]] - code - web/e2e/estimates.spec.ts
+- [[slug()_22]] - code - web/e2e/estimates.spec.ts
 
 ## Live Query (requires Dataview plugin)
 

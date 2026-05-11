@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/workspaces.rs"
 type: "code"
-community: "Returns Sign"
+community: "Rust Auth Services"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Sign
+  - community/Rust_Auth_Services
 ---
 
 # workspaces.rs
 
 ## Connections
-
 - [[create_workspace_duplicate_slug_returns_409()]] - `contains` [EXTRACTED]
 - [[create_workspace_empty_name_returns_400()]] - `contains` [EXTRACTED]
 - [[create_workspace_invalid_slugs_always_400()]] - `contains` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[slug_check_restricted_returns_false()]] - `contains` [EXTRACTED]
 - [[slug_check_taken_returns_false()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Sign
+#graphify/code #graphify/EXTRACTED #community/Rust_Auth_Services

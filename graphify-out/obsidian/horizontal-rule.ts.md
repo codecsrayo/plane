@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/horizontal-rule.ts"
 type: "code"
-community: "Document Custom"
+community: "Community 30"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Document_Custom
+  - community/Community_30
 ---
 
 # horizontal-rule.ts
 
 ## Connections
-
 - [[CORE_EXTENSIONS]] - `imports` [EXTRACTED]
 - [[Commands_3]] - `contains` [EXTRACTED]
 - [[CustomHorizontalRule]] - `contains` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[core-without-props.ts]] - `imports_from` [EXTRACTED]
 - [[extension.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Document_Custom
+#graphify/code #graphify/EXTRACTED #community/Community_30

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/openapi/decorators.py"
 type: "code"
-community: "Decorator Endpoints"
+community: "Community 433"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Decorator_Endpoints
+  - community/Community_433
 ---
 
-# \_merge_schema_options()
+# _merge_schema_options()
 
 ## Connections
-
 - [[Helper function to merge responses and parameters from kwargs into defaults]] - `rationale_for` [EXTRACTED]
 - [[asset_docs()]] - `calls` [EXTRACTED]
 - [[cycle_docs()]] - `calls` [EXTRACTED]
@@ -36,4 +35,4 @@ tags:
 - [[work_item_relation_docs()]] - `calls` [EXTRACTED]
 - [[workspace_docs()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Decorator_Endpoints
+#graphify/code #graphify/EXTRACTED #community/Community_433

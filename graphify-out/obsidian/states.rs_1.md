@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/states.rs"
 type: "code"
-community: "State Project"
+community: "Rust Workspace Helpers"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/State_Project
+  - community/Rust_Workspace_Helpers
 ---
 
 # states.rs
 
 ## Connections
-
 - [[CreateStateRequest]] - `contains` [EXTRACTED]
 - [[GroupedQuery]] - `contains` [EXTRACTED]
 - [[StateResponse]] - `contains` [EXTRACTED]
@@ -33,4 +32,4 @@ tags:
 - [[update_state()]] - `contains` [EXTRACTED]
 - [[validate_group()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/State_Project
+#graphify/code #graphify/EXTRACTED #community/Rust_Workspace_Helpers

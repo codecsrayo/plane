@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/dashboard.service.ts"
 type: "code"
-community: "Project Issue"
+community: "Community 325"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Issue
+  - community/Community_325
 ---
 
 # DashboardService
 
 ## Connections
-
 - [[.constructor()_148]] - `method` [EXTRACTED]
 - [[.getDashboardDetails()]] - `method` [EXTRACTED]
 - [[.getHomeDashboardWidgets()]] - `method` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[dashboard.service.ts_1]] - `contains` [EXTRACTED]
 - [[dashboard.store.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_325

@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/auth/csrf.rs"
 type: "code"
-community: "Password Email"
+community: "Community 21"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Password_Email
+  - community/Community_21
 ---
 
 # csrf.rs
 
 ## Connections
-
 - [[CsrfForm]] - `contains` [EXTRACTED]
 - [[CsrfTokenResponse]] - `contains` [EXTRACTED]
 - [[csrf_tokens_must_match()]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[redirect_target_stays_local()]] - `contains` [EXTRACTED]
 - [[safe_redirect_target()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Password_Email
+#graphify/code #graphify/EXTRACTED #community/Community_21

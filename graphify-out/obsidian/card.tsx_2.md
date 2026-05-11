@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/project/card.tsx"
 type: "code"
-community: "Project Settings"
+community: "Project Filters & Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Project_Filters__Archives
 ---
 
 # card.tsx
 
 ## Connections
-
 - [[ArchiveRestoreProjectModal()]] - `imports` [EXTRACTED]
 - [[CoverImage()]] - `imports` [EXTRACTED]
 - [[DeleteProjectModal]] - `imports` [EXTRACTED]
@@ -34,4 +33,4 @@ tags:
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

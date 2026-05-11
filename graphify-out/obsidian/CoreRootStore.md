@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/root.store.ts"
 type: "code"
-community: "Project Issue"
+community: "Community 20"
 location: "L74"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Issue
+  - community/Community_20
 ---
 
 # CoreRootStore
 
 ## Connections
-
 - [[.constructor()_67]] - `method` [EXTRACTED]
 - [[.resetOnSignOut()]] - `method` [EXTRACTED]
 - [[account.store.ts]] - `imports` [EXTRACTED]
@@ -43,4 +42,4 @@ tags:
 - [[webhook.store.ts]] - `imports` [EXTRACTED]
 - [[workspace-notifications.store.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_20

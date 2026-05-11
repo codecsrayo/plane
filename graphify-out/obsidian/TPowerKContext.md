@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/power-k/core/types.ts"
 type: "code"
-community: "Power Navigation"
+community: "Community 220"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Power_Navigation
+  - community/Community_220
 ---
 
 # TPowerKContext
 
 ## Connections
-
 - [[command.ts]] - `imports` [EXTRACTED]
 - [[command.tsx_1]] - `imports` [EXTRACTED]
 - [[commands-list.tsx]] - `imports` [EXTRACTED]
@@ -37,4 +36,4 @@ tags:
 - [[workspace-settings-menu.tsx]] - `imports` [EXTRACTED]
 - [[wrapper.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Power_Navigation
+#graphify/code #graphify/EXTRACTED #community/Community_220

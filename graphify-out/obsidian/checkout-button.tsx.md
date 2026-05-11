@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/license/modal/card/checkout-button.tsx"
 type: "code"
-community: "Plan Plans"
+community: "Community 116"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Plan_Plans
+  - community/Community_116
 ---
 
 # checkout-button.tsx
 
 ## Connections
-
 - [[DiscountInfo()]] - `imports` [EXTRACTED]
 - [[PlanCheckoutButton]] - `contains` [EXTRACTED]
 - [[Props_513]] - `contains` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[plan-upgrade.tsx]] - `imports_from` [EXTRACTED]
 - [[upgrade-modal.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Plan_Plans
+#graphify/code #graphify/EXTRACTED #community/Community_116

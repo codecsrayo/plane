@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/base-layouts/list/group.tsx"
 type: "code"
-community: "Group Drop"
+community: "Community 255"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group_Drop
+  - community/Community_255
 ---
 
 # group.tsx
 
 ## Connections
-
 - [[BaseListGroup]] - `contains` [EXTRACTED]
 - [[BaseListItem]] - `imports` [EXTRACTED]
 - [[GroupHeader()_1]] - `imports` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[use-group-drop-target.ts]] - `imports_from` [EXTRACTED]
 - [[useGroupDropTarget()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group_Drop
+#graphify/code #graphify/EXTRACTED #community/Community_255

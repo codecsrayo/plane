@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_216]] - code - web/ce/components/de-dupe/duplicate-modal/index.ts
+- [[index.ts_234]] - code - web/ce/components/issues/issue-details/issue-properties-activity/index.ts
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 4
 ---
 
 # Community 656
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_6]] - code - api_rust/src/entities/issue_versions.rs
+- [[TAIHandler]] - code - packages/editor/src/core/types/ai.ts
+- [[TAIMenuProps]] - code - packages/editor/src/core/types/ai.ts
+- [[ai.ts]] - code - editor/src/core/types/ai.ts
+- [[ai.ts_5]] - code - packages/editor/src/core/types/ai.ts
 
 ## Live Query (requires Dataview plugin)
 

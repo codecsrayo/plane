@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/issue/helpers/base-issues.store.ts"
 type: "code"
-community: "Issue Group"
+community: "Community 49"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Group
+  - community/Community_49
 ---
 
 # base-issues.store.ts
 
 ## Connections
-
 - [[CycleService_1]] - `imports` [EXTRACTED]
 - [[EIssueGroupedAction]] - `contains` [EXTRACTED]
 - [[IBaseIssueFilterStore]] - `imports` [EXTRACTED]
@@ -102,4 +101,4 @@ tags:
 - [[use-group-dragndrop.ts]] - `imports_from` [EXTRACTED]
 - [[utils.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Group
+#graphify/code #graphify/EXTRACTED #community/Community_49

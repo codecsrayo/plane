@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/project/integration-card.tsx"
 type: "code"
-community: "Project Workspace"
+community: "Community 64"
 location: "L38"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Workspace
+  - community/Community_64
 ---
 
 # integrationDetails
 
 ## Connections
-
 - [[integration-card.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_64

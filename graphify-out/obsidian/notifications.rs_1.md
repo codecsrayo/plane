@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/notifications.rs"
 type: "code"
-community: "User Github"
+community: "Rust API Handlers"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User_Github
+  - community/Rust_API_Handlers
 ---
 
 # notifications.rs
 
 ## Connections
-
 - [[NotificationFilter_1]] - `contains` [EXTRACTED]
 - [[NotificationResponse]] - `contains` [EXTRACTED]
 - [[UnreadCountResponse]] - `contains` [EXTRACTED]
@@ -35,4 +34,4 @@ tags:
 - [[update_notification()]] - `contains` [EXTRACTED]
 - [[update_user_notification_preferences()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User_Github
+#graphify/code #graphify/EXTRACTED #community/Rust_API_Handlers

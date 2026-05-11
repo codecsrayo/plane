@@ -1,18 +1,17 @@
 ---
 source_file: "space/hooks/store/use-state.ts"
 type: "code"
-community: "Issue Properties"
+community: "Community 137"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Community_137
 ---
 
 # useStates()
 
 ## Connections
-
 - [[default.tsx_4]] - `imports` [EXTRACTED]
 - [[default.tsx_5]] - `imports` [EXTRACTED]
 - [[due-date.tsx_1]] - `imports` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[swimlanes.tsx_1]] - `imports` [EXTRACTED]
 - [[use-state.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Community_137

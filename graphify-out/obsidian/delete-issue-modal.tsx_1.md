@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/inbox/modals/delete-issue-modal.tsx"
 type: "code"
-community: "Issue Inbox"
+community: "Activity & Inbox Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Inbox
+  - community/Activity__Inbox_Filters
 ---
 
 # delete-issue-modal.tsx
 
 ## Connections
-
 - [[DeleteInboxIssueModal]] - `contains` [EXTRACTED]
 - [[Props_454]] - `contains` [EXTRACTED]
 - [[api.service.ts_1]] - `imports_from` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Inbox
+#graphify/code #graphify/EXTRACTED #community/Activity__Inbox_Filters

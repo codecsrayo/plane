@@ -1,18 +1,17 @@
 ---
 source_file: "ui/src/dropdown/common/loader.tsx"
 type: "code"
-community: "Dropdown Options"
+community: "Community 710"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dropdown_Options
+  - community/Community_710
 ---
 
 # loader.tsx
 
 ## Connections
-
 - [[DropdownOptionsLoader()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dropdown_Options
+#graphify/code #graphify/EXTRACTED #community/Community_710

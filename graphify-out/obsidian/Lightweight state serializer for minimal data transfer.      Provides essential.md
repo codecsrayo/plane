@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/serializers/state.py"
 type: "rationale"
-community: "Serializer Meta"
+community: "Community 110"
 location: "L45"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Serializer_Meta
+  - community/Community_110
 ---
 
-# Lightweight state serializer for minimal data transfer. Provides essential
+# Lightweight state serializer for minimal data transfer.      Provides essential
 
 ## Connections
-
 - [[StateLiteSerializer]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Serializer_Meta
+#graphify/rationale #graphify/EXTRACTED #community/Community_110

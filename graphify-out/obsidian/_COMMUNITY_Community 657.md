@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 4
 ---
 
 # Community 657
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_7]] - code - api_rust/src/entities/issue_description_versions.rs
+- [[ISSUE_REACTION_EMOJI_CODES]] - code - packages/constants/src/emoji.ts
+- [[RANDOM_EMOJI_CODES]] - code - packages/constants/src/emoji.ts
+- [[emoji.ts_1]] - code - constants/src/emoji.ts
+- [[emoji.ts_4]] - code - packages/constants/src/emoji.ts
 
 ## Live Query (requires Dataview plugin)
 

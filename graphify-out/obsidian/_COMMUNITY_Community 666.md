@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 4
 ---
 
 # Community 666
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_16]] - code - api_rust/src/entities/modules.rs
+- [[IGitlabRepoInfo]] - code - packages/types/src/importer/gitlab-importer.ts
+- [[IGitlabServiceImportFormData]] - code - packages/types/src/importer/gitlab-importer.ts
+- [[gitlab-importer.ts_1]] - code - packages/types/src/importer/gitlab-importer.ts
+- [[gitlab-importer.ts]] - code - types/src/importer/gitlab-importer.ts
 
 ## Live Query (requires Dataview plugin)
 

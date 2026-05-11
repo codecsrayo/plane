@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/states.rs"
 type: "code"
-community: "State Project"
+community: "Rust Workspace Helpers"
 location: "L546"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/State_Project
+  - community/Rust_Workspace_Helpers
 ---
 
 # intake_state()
 
 ## Connections
-
 - [[.from()_23]] - `calls` [EXTRACTED]
 - [[.json()]] - `calls` [INFERRED]
 - [[.new()]] - `calls` [INFERRED]
@@ -23,4 +22,4 @@ tags:
 - [[states.rs_1]] - `contains` [EXTRACTED]
 - [[workspace_by_slug()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/State_Project
+#graphify/code #graphify/INFERRED #community/Rust_Workspace_Helpers

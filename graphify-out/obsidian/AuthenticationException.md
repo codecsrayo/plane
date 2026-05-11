@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/authentication/adapter/error.py"
 type: "code"
-community: "Endpoint Magic"
+community: "Community 54"
 location: "L77"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Endpoint_Magic
+  - community/Community_54
 ---
 
 # AuthenticationException
 
 ## Connections
-
 - [[.__check_signup()]] - `calls` [EXTRACTED]
 - [[.__get_email()]] - `calls` [INFERRED]
 - [[.__get_email()_1]] - `calls` [INFERRED]
@@ -124,4 +123,4 @@ tags:
 - [[post()_25]] - `calls` [INFERRED]
 - [[post()_27]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Endpoint_Magic
+#graphify/code #graphify/INFERRED #community/Community_54

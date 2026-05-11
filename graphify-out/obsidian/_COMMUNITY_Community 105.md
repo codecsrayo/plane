@@ -1,39 +1,60 @@
 ---
 type: community
-cohesion: 0.15
-members: 23
+cohesion: 0.06
+members: 45
 ---
 
 # Community 105
 
-**Cohesion:** 0.15 - loosely connected
-**Members:** 23 nodes
+**Cohesion:** 0.06 - loosely connected
+**Members:** 45 nodes
 
 ## Members
-
-- [[CreateUpdateProjectViewModal]] - code - web/core/components/views/modal.tsx
-- [[DeleteProjectViewModal]] - code - web/core/components/views/delete-view-modal.tsx
-- [[ProjectViewListItem]] - code - web/core/components/views/view-list-item.tsx
-- [[ProjectViewsList]] - code - web/core/components/views/views-list.tsx
-- [[Props_20]] - code - web/core/components/views/filters/order-by.tsx
-- [[Props_18]] - code - web/core/components/views/quick-actions.tsx
-- [[Props_16]] - code - web/core/components/views/view-list-item-action.tsx
-- [[ViewFiltersSelection]] - code - web/core/components/views/filters/filter-selection.tsx
-- [[ViewListHeader]] - code - web/core/components/views/view-list-header.tsx
-- [[ViewListItemAction]] - code - web/core/components/views/view-list-item-action.tsx
-- [[ViewListLoader()]] - code - web/core/components/ui/loader/view-list-loader.tsx
-- [[ViewOrderByDropdown()]] - code - web/core/components/views/filters/order-by.tsx
-- [[ViewQuickActions]] - code - web/core/components/views/quick-actions.tsx
-- [[delete-view-modal.tsx]] - code - web/core/components/views/delete-view-modal.tsx
-- [[order-by.tsx]] - code - web/core/components/views/filters/order-by.tsx
-- [[quick-actions.tsx]] - code - web/core/components/views/quick-actions.tsx
-- [[use-project-view.ts]] - code - web/core/hooks/store/use-project-view.ts
-- [[useProjectView()]] - code - web/core/hooks/store/use-project-view.ts
-- [[view-list-header.tsx]] - code - web/core/components/views/view-list-header.tsx
-- [[view-list-item-action.tsx]] - code - web/core/components/views/view-list-item-action.tsx
-- [[view-list-item.tsx]] - code - web/core/components/views/view-list-item.tsx
-- [[view-list-loader.tsx]] - code - web/core/components/ui/loader/view-list-loader.tsx
-- [[views-list.tsx]] - code - web/core/components/views/views-list.tsx
+- [[ChangeEmailModal]] - code - web/core/components/core/modals/change-email-modal.tsx
+- [[CoverImage()]] - code - web/core/components/common/cover-image.tsx
+- [[DeactivateAccountModal()]] - code - web/core/components/account/deactivate-account-modal.tsx
+- [[GeneralProfileSettings]] - code - web/core/components/settings/profile/content/pages/general/root.tsx
+- [[GeneralProfileSettingsForm]] - code - web/core/components/settings/profile/content/pages/general/form.tsx
+- [[IProjectDetailsForm]] - code - web/core/components/project/form.tsx
+- [[ImagePickerPopover]] - code - web/core/components/core/image-picker-popover.tsx
+- [[ProductUpdatesChangelog]] - code - web/ce/components/global/product-updates/changelog.tsx
+- [[ProductUpdatesHeader]] - code - web/ce/components/global/product-updates/header.tsx
+- [[ProductUpdatesModal]] - code - web/core/components/global/product-updates/modal.tsx
+- [[ProductUpdatesModalProps]] - code - web/core/components/global/product-updates/modal.tsx
+- [[ProjectCreateHeader()]] - code - web/core/components/project/create/header.tsx
+- [[ProjectDetailsForm()]] - code - web/core/components/project/form.tsx
+- [[ProjectTemplateSelect()]] - code - web/ce/components/projects/create/template-select.tsx
+- [[Props_514]] - code - web/core/components/account/deactivate-account-modal.tsx
+- [[Props_516]] - code - web/core/components/core/image-picker-popover.tsx
+- [[Props_216]] - code - web/core/components/project/create/header.tsx
+- [[Props_187]] - code - web/core/components/settings/profile/content/pages/general/form.tsx
+- [[Props_531]] - code - web/core/components/core/modals/change-email-modal.tsx
+- [[TCoverImageProps]] - code - web/core/components/common/cover-image.tsx
+- [[TModalStep]] - code - web/core/components/core/modals/change-email-modal.tsx
+- [[TProfileSidebar]] - code - web/core/components/profile/sidebar.tsx
+- [[TProjectTemplateSelect]] - code - web/ce/components/projects/create/template-select.tsx
+- [[TTabOption]] - code - web/core/components/core/image-picker-popover.tsx
+- [[TUniqueCodeValuesForm]] - code - web/core/components/core/modals/change-email-modal.tsx
+- [[TUserProfileForm]] - code - web/core/components/settings/profile/content/pages/general/form.tsx
+- [[UserMenuRoot]] - code - web/core/components/workspace/sidebar/user-menu-root.tsx
+- [[authService_5]] - code - web/core/components/core/modals/change-email-modal.tsx
+- [[change-email-modal.tsx]] - code - web/core/components/core/modals/change-email-modal.tsx
+- [[cover-image.tsx]] - code - web/core/components/common/cover-image.tsx
+- [[deactivate-account-modal.tsx]] - code - web/core/components/account/deactivate-account-modal.tsx
+- [[defaultValues_28]] - code - web/core/components/core/modals/change-email-modal.tsx
+- [[fileService_6]] - code - web/core/components/core/image-picker-popover.tsx
+- [[form.tsx_6]] - code - web/core/components/project/form.tsx
+- [[form.tsx_5]] - code - web/core/components/settings/profile/content/pages/general/form.tsx
+- [[header.tsx_38]] - code - web/ce/components/global/product-updates/header.tsx
+- [[header.tsx_49]] - code - web/core/components/project/create/header.tsx
+- [[image-picker-popover.tsx]] - code - web/core/components/core/image-picker-popover.tsx
+- [[index.ts_333]] - code - web/core/components/global/index.ts
+- [[modal.tsx_9]] - code - web/core/components/global/product-updates/modal.tsx
+- [[projectService]] - code - web/core/components/project/form.tsx
+- [[root.tsx_62]] - code - web/core/components/settings/profile/content/pages/general/root.tsx
+- [[sidebar.tsx_3]] - code - web/core/components/profile/sidebar.tsx
+- [[template-select.tsx]] - code - web/ce/components/projects/create/template-select.tsx
+- [[user-menu-root.tsx]] - code - web/core/components/workspace/sidebar/user-menu-root.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -43,27 +64,31 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 5 edges to [[_COMMUNITY_Module Analytics]]
-- 5 edges to [[_COMMUNITY_Empty State Components]]
-- 5 edges to [[_COMMUNITY_Community 117]]
-- 4 edges to [[_COMMUNITY_Member Filters & Description]]
-- 4 edges to [[_COMMUNITY_Community 96]]
-- 3 edges to [[_COMMUNITY_Community 162]]
-- 3 edges to [[_COMMUNITY_Community 42]]
-- 2 edges to [[_COMMUNITY_Layout System]]
-- 2 edges to [[_COMMUNITY_Auth Wrappers]]
-- 2 edges to [[_COMMUNITY_Issue Filters & Context]]
-- 2 edges to [[_COMMUNITY_Community 32]]
-- 2 edges to [[_COMMUNITY_Community 123]]
-- 2 edges to [[_COMMUNITY_Community 163]]
-- 1 edge to [[_COMMUNITY_Community 92]]
-- 1 edge to [[_COMMUNITY_Applied Filters UI]]
+- 8 edges to [[_COMMUNITY_Project Filters & Archives]]
+- 6 edges to [[_COMMUNITY_Community 45]]
+- 5 edges to [[_COMMUNITY_Work Item Detail & Layouts]]
+- 5 edges to [[_COMMUNITY_Community 24]]
+- 5 edges to [[_COMMUNITY_Community 74]]
+- 5 edges to [[_COMMUNITY_Community 64]]
+- 4 edges to [[_COMMUNITY_Community 22]]
+- 4 edges to [[_COMMUNITY_Community 234]]
+- 4 edges to [[_COMMUNITY_Community 98]]
+- 3 edges to [[_COMMUNITY_Community 324]]
+- 2 edges to [[_COMMUNITY_Community 109]]
+- 2 edges to [[_COMMUNITY_Community 40]]
+- 2 edges to [[_COMMUNITY_Module & Cycle Analytics]]
+- 2 edges to [[_COMMUNITY_Community 389]]
+- 2 edges to [[_COMMUNITY_Community 115]]
+- 1 edge to [[_COMMUNITY_Community 410]]
+- 1 edge to [[_COMMUNITY_Community 51]]
+- 1 edge to [[_COMMUNITY_Service Layer]]
+- 1 edge to [[_COMMUNITY_Community 266]]
+- 1 edge to [[_COMMUNITY_Community 106]]
+- 1 edge to [[_COMMUNITY_Community 137]]
 
 ## Top bridge nodes
-
-- [[use-project-view.ts]] - degree 13, connects to 8 communities
-- [[useProjectView()]] - degree 12, connects to 6 communities
-- [[view-list-item-action.tsx]] - degree 16, connects to 4 communities
-- [[quick-actions.tsx]] - degree 11, connects to 3 communities
-- [[view-list-item.tsx]] - degree 10, connects to 3 communities
+- [[sidebar.tsx_3]] - degree 16, connects to 7 communities
+- [[form.tsx_5]] - degree 19, connects to 4 communities
+- [[form.tsx_6]] - degree 16, connects to 4 communities
+- [[image-picker-popover.tsx]] - degree 13, connects to 4 communities
+- [[user-menu-root.tsx]] - degree 11, connects to 4 communities

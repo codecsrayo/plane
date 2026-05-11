@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/instances.rs"
 type: "code"
-community: "User Github"
+community: "Rust API Handlers"
 location: "L470"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/User_Github
+  - community/Rust_API_Handlers
 ---
 
 # update_configurations()
 
 ## Connections
-
 - [[.json()]] - `calls` [INFERRED]
 - [[.new()]] - `calls` [INFERRED]
 - [[.set()]] - `calls` [INFERRED]
@@ -22,4 +21,4 @@ tags:
 - [[now]] - `calls` [INFERRED]
 - [[require_instance_admin()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/User_Github
+#graphify/code #graphify/INFERRED #community/Rust_API_Handlers

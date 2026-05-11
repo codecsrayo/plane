@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/views/sticky.py"
 type: "code"
-community: "Partial Endpoint"
+community: "Community 99"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Partial_Endpoint
+  - community/Community_99
 ---
 
 # sticky.py
 
 ## Connections
-
 - [[StickyViewSet]] - `contains` [EXTRACTED]
 - [[__init__.py_10]] - `imports_from` [EXTRACTED]
 - [[create()_22]] - `contains` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[partial_update()_17]] - `contains` [EXTRACTED]
 - [[retrieve()_13]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Partial_Endpoint
+#graphify/code #graphify/EXTRACTED #community/Community_99

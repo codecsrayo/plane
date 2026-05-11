@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/inbox/modals/create-modal/issue-properties.tsx"
 type: "code"
-community: "Label Dropdown"
+community: "Work Item Detail & Layouts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Dropdown
+  - community/Work_Item_Detail__Layouts
 ---
 
 # issue-properties.tsx
 
 ## Connections
-
 - [[CycleDropdown]] - `imports` [EXTRACTED]
 - [[DateDropdown]] - `imports` [EXTRACTED]
 - [[EstimateDropdown]] - `imports` [EXTRACTED]
@@ -37,4 +36,4 @@ tags:
 - [[use-platform-os.tsx_1]] - `imports_from` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Work_Item_Detail__Layouts

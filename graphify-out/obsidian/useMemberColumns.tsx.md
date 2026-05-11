@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/components/workspace/settings/useMemberColumns.tsx"
 type: "code"
-community: "Member Column"
+community: "Community 35"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Column
+  - community/Community_35
 ---
 
 # useMemberColumns.tsx
 
 ## Connections
-
 - [[AccountTypeColumn]] - `imports` [EXTRACTED]
 - [[IMemberFilters]] - `imports` [EXTRACTED]
 - [[MemberHeaderColumn]] - `imports` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[useMemberColumns()]] - `contains` [EXTRACTED]
 - [[utils.ts_12]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Column
+#graphify/code #graphify/EXTRACTED #community/Community_35

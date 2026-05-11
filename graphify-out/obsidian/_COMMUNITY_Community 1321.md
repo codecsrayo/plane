@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_11]] - code - ui/src/avatar/index.ts
+- [[index.ts_30]] - code - ui/src/collapsible/index.ts
 
 ## Live Query (requires Dataview plugin)
 

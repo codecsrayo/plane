@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/issue/project-views/issue.store.ts"
 type: "code"
-community: "Project Filters"
+community: "Community 104"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Filters
+  - community/Community_104
 ---
 
 # issue.store.ts
 
 ## Connections
-
 - [[IBaseIssuesStore]] - `imports` [EXTRACTED]
 - [[IIssueRootStore]] - `imports` [EXTRACTED]
 - [[IProjectViewIssues]] - `contains` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[root.store.ts_3]] - `imports_from` [EXTRACTED]
 - [[toApiError()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Filters
+#graphify/code #graphify/EXTRACTED #community/Community_104

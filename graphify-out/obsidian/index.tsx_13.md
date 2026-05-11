@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/empty-states/index.tsx"
 type: "code"
-community: "Project Profile"
+community: "Community 22"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Profile
+  - community/Community_22
 ---
 
 # index.tsx
 
 ## Connections
-
 - [[CycleEmptyState]] - `imports` [EXTRACTED]
 - [[GlobalViewEmptyState]] - `imports` [EXTRACTED]
 - [[IssueLayoutEmptyState()]] - `contains` [EXTRACTED]
@@ -36,4 +35,4 @@ tags:
 - [[project-issues.tsx]] - `imports_from` [EXTRACTED]
 - [[project-view.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Profile
+#graphify/code #graphify/EXTRACTED #community/Community_22

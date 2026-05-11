@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/intake/state.ts"
+source_file: "packages/types/src/intake/state.ts"
 type: "code"
-community: "State Intake"
+community: "Community 665"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/State_Intake
+  - community/Community_665
 ---
 
 # IIntakeState
 
 ## Connections
-
 - [[state.ts_2]] - `contains` [EXTRACTED]
+- [[state.ts_7]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/State_Intake
+#graphify/code #graphify/EXTRACTED #community/Community_665

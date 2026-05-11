@@ -1,18 +1,18 @@
 ---
-source_file: "ui/src/auth-form/auth-form.tsx"
+source_file: "packages/ui/src/auth-form/auth-form.tsx"
 type: "code"
-community: "Auth Spinner"
+community: "Community 138"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Spinner
+  - community/Community_138
 ---
 
 # AuthFormProps
 
 ## Connections
-
 - [[auth-form.tsx]] - `contains` [EXTRACTED]
+- [[auth-form.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Spinner
+#graphify/code #graphify/EXTRACTED #community/Community_138

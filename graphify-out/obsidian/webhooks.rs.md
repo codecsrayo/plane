@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/webhooks.rs"
 type: "code"
-community: "Returns Webhook"
+community: "Community 346"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Webhook
+  - community/Community_346
 ---
 
 # webhooks.rs
 
 ## Connections
-
 - [[create_webhook()]] - `contains` [EXTRACTED]
 - [[create_webhook_invalid_url_returns_400()]] - `contains` [EXTRACTED]
 - [[create_webhook_proptest_valid_urls()]] - `contains` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[setup()_34]] - `contains` [EXTRACTED]
 - [[update_webhook_returns_200()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Webhook
+#graphify/code #graphify/EXTRACTED #community/Community_346

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/serializers/estimate.py"
 type: "code"
-community: "Serializer Asset"
+community: "Community 27"
 location: "L35"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Serializer_Asset
+  - community/Community_27
 ---
 
 # EstimateReadSerializer
 
 ## Connections
-
 - [[.list()_20]] - `calls` [INFERRED]
 - [[.retrieve()_13]] - `calls` [INFERRED]
 - [[BaseSerializer]] - `inherits` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[estimate.py_2]] - `contains` [EXTRACTED]
 - [[partial_update()_15]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Serializer_Asset
+#graphify/code #graphify/INFERRED #community/Community_27

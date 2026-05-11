@@ -1,19 +1,18 @@
 ---
 source_file: "api_rust/src/utils/fernet.rs"
 type: "code"
-community: "Password Email"
+community: "Community 321"
 location: "L60"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Password_Email
+  - community/Community_321
 ---
 
 # derive_fernet_key()
 
 ## Connections
-
 - [[fernet.rs]] - `contains` [EXTRACTED]
 - [[fernet_decrypt()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Password_Email
+#graphify/code #graphify/EXTRACTED #community/Community_321

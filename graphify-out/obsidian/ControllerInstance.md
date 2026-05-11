@@ -1,18 +1,18 @@
 ---
-source_file: "decorators/src/controller.ts"
+source_file: "packages/decorators/src/controller.ts"
 type: "code"
-community: "Controller Register"
+community: "Community 516"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Controller_Register
+  - community/Community_516
 ---
 
 # ControllerInstance
 
 ## Connections
-
 - [[controller.ts]] - `contains` [EXTRACTED]
+- [[controller.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Controller_Register
+#graphify/code #graphify/EXTRACTED #community/Community_516

@@ -1,18 +1,18 @@
 ---
-source_file: "editor/src/core/extensions/code/lowlight-plugin.ts"
+source_file: "packages/editor/src/core/extensions/code/lowlight-plugin.ts"
 type: "code"
-community: "Code Lowlight"
+community: "Community 180"
 location: "L39"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Code_Lowlight
+  - community/Community_180
 ---
 
 # getDecorations()
 
 ## Connections
-
 - [[lowlight-plugin.ts]] - `contains` [EXTRACTED]
+- [[lowlight-plugin.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Code_Lowlight
+#graphify/code #graphify/EXTRACTED #community/Community_180

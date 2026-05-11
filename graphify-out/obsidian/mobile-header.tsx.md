@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(projects)/profile/[userId]/mobile-header.tsx"
 type: "code"
-community: "Project Profile"
+community: "Filter UI & Breadcrumbs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Profile
+  - community/Filter_UI__Breadcrumbs
 ---
 
 # mobile-header.tsx
 
 ## Connections
-
 - [[IssueLayoutIcon()]] - `imports` [EXTRACTED]
 - [[ProfileIssuesMobileHeader]] - `contains` [EXTRACTED]
 - [[index.ts_355]] - `imports_from` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[use-issues.ts]] - `imports_from` [EXTRACTED]
 - [[useIssues()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Profile
+#graphify/code #graphify/EXTRACTED #community/Filter_UI__Breadcrumbs

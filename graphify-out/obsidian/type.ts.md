@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/icons/type.ts"
 type: "code"
-community: "Icon Panel"
+community: "Icon Library & Branding"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Icon_Panel
+  - community/Icon_Library__Branding
 ---
 
 # type.ts
 
 ## Connections
-
 - [[ISvgIcons]] - `contains` [EXTRACTED]
 - [[accenture-logo.tsx]] - `imports_from` [EXTRACTED]
 - [[activity-icon.tsx]] - `imports_from` [EXTRACTED]
@@ -167,4 +166,4 @@ tags:
 - [[your-work-icon.tsx]] - `imports_from` [EXTRACTED]
 - [[zerodha-logo.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Icon_Panel
+#graphify/code #graphify/EXTRACTED #community/Icon_Library__Branding

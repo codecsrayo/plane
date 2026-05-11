@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/empty-state/assets/helper.tsx"
 type: "code"
-community: "Stack Vertical"
+community: "Community 472"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Stack_Vertical
+  - community/Community_472
 ---
 
 # helper.tsx
 
 ## Connections
-
 - [[404-error.tsx]] - `imports_from` [EXTRACTED]
 - [[ILLUSTRATION_COLOR_TOKEN_MAP]] - `contains` [EXTRACTED]
 - [[TIllustrationAssetProps]] - `contains` [EXTRACTED]
@@ -57,4 +56,4 @@ tags:
 - [[work-item.tsx_1]] - `imports_from` [EXTRACTED]
 - [[worklog.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Stack_Vertical
+#graphify/code #graphify/EXTRACTED #community/Community_472

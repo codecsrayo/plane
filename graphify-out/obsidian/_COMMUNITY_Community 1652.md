@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_439]] - code - web/core/components/license/modal/card/index.ts
+- [[Uninstall an integration from the workspace.]] - rationale - api/plane/app/views/integration/base.py
 
 ## Live Query (requires Dataview plugin)
 

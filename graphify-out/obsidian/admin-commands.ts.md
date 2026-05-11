@@ -1,18 +1,17 @@
 ---
 source_file: "live/src/types/admin-commands.ts"
 type: "code"
-community: "Close Force"
+community: "Community 241"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Close_Force
+  - community/Community_241
 ---
 
 # admin-commands.ts
 
 ## Connections
-
 - [[AdminCommand]] - `contains` [EXTRACTED]
 - [[AdminCommandData]] - `contains` [EXTRACTED]
 - [[AdminCommandHandler]] - `contains` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[isValidForceCloseReason()]] - `contains` [EXTRACTED]
 - [[redis.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Close_Force
+#graphify/code #graphify/EXTRACTED #community/Community_241

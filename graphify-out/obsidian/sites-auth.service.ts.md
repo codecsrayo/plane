@@ -1,19 +1,18 @@
 ---
 source_file: "services/src/auth/sites-auth.service.ts"
 type: "code"
-community: "Sites Auth"
+community: "Community 83"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sites_Auth
+  - community/Community_83
 ---
 
 # sites-auth.service.ts
 
 ## Connections
-
 - [[SitesAuthService]] - `contains` [EXTRACTED]
 - [[api.service.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sites_Auth
+#graphify/code #graphify/EXTRACTED #community/Community_83

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/pages/navigation-pane/root.tsx"
 type: "code"
-community: "Pane Navigation"
+community: "Community 163"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Pane_Navigation
+  - community/Community_163
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[INavigationPaneExtension]] - `imports` [EXTRACTED]
 - [[PageNavigationPaneRoot]] - `contains` [EXTRACTED]
 - [[PageNavigationPaneTabPanelsRoot()]] - `imports` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[use-query-params.ts]] - `imports_from` [EXTRACTED]
 - [[useQueryParams()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Pane_Navigation
+#graphify/code #graphify/EXTRACTED #community/Community_163

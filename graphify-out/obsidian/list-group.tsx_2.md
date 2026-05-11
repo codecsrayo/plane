@@ -1,18 +1,17 @@
 ---
 source_file: "space/components/issues/issue-layouts/list/list-group.tsx"
 type: "code"
-community: "Group Kanban"
+community: "Bulk Operations & Spreadsheet"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group_Kanban
+  - community/Bulk_Operations__Spreadsheet
 ---
 
 # list-group.tsx
 
 ## Connections
-
 - [[HeaderGroupByCard]] - `imports` [EXTRACTED]
 - [[IssueBlocksList()]] - `imports` [EXTRACTED]
 - [[LIST_LOADER_KEYS]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[use-intersection-observer.tsx]] - `imports_from` [EXTRACTED]
 - [[useIntersectionObserver()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group_Kanban
+#graphify/code #graphify/EXTRACTED #community/Bulk_Operations__Spreadsheet

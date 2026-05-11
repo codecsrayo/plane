@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/auth.service.ts"
 type: "code"
-community: "Auth Values"
+community: "Community 98"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Values
+  - community/Community_98
 ---
 
 # AuthService
 
 ## Connections
-
 - [[.constructor()_141]] - `method` [EXTRACTED]
 - [[.generateUniqueCode()_2]] - `method` [EXTRACTED]
 - [[.requestCSRFToken()_2]] - `method` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[security.tsx]] - `imports` [EXTRACTED]
 - [[unique-code.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Values
+#graphify/code #graphify/EXTRACTED #community/Community_98

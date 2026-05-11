@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_181]] - code - propel/src/calendar/index.ts
+- [[global-view.store.ts]] - code - web/ce/store/global-view.store.ts
 
 ## Live Query (requires Dataview plugin)
 

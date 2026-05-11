@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/use-webhook.ts"
 type: "code"
-community: "Webhook Workspace"
+community: "Community 326"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Webhook_Workspace
+  - community/Community_326
 ---
 
 # useWebhook()
 
 ## Connections
-
 - [[DeleteWebhookModal()]] - `calls` [EXTRACTED]
 - [[WebhookDetailsPage()]] - `calls` [EXTRACTED]
 - [[WebhooksListItem()]] - `calls` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[webhooks-list-item.tsx]] - `imports` [EXTRACTED]
 - [[webhooks-list.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Webhook_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_326

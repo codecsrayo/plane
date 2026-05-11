@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 809
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_146]] - code - web/core/components/inbox/index.ts
+- [[CommentBlock]] - code - web/ce/components/comments/comment-block.tsx
+- [[TCommentBlock]] - code - web/ce/components/comments/comment-block.tsx
+- [[comment-block.tsx]] - code - web/ce/components/comments/comment-block.tsx
 
 ## Live Query (requires Dataview plugin)
 

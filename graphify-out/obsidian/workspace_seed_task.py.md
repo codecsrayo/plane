@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/bgtasks/workspace_seed_task.py"
 type: "code"
-community: "Project Creates"
+community: "Community 204"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Creates
+  - community/Community_204
 ---
 
 # workspace_seed_task.py
 
 ## Connections
-
 - [[create_cycles()_1]] - `contains` [EXTRACTED]
 - [[create_modules()_1]] - `contains` [EXTRACTED]
 - [[create_pages()_1]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[read_seed_file()]] - `contains` [EXTRACTED]
 - [[workspace_seed()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Creates
+#graphify/code #graphify/EXTRACTED #community/Community_204

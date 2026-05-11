@@ -1,18 +1,17 @@
 ---
 source_file: "live/src/extensions/redis.ts"
 type: "code"
-community: "Close Force"
+community: "Community 298"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Close_Force
+  - community/Community_298
 ---
 
 # Redis
 
 ## Connections
-
 - [[.broadcastToDocument()]] - `method` [EXTRACTED]
 - [[.constructor()_190]] - `method` [EXTRACTED]
 - [[.onAdminCommand()]] - `method` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[index.ts_451]] - `imports` [EXTRACTED]
 - [[redis.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Close_Force
+#graphify/code #graphify/EXTRACTED #community/Community_298

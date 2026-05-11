@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/exporters/formatters.py"
 type: "code"
-community: "Formatter Generate"
+community: "Community 187"
 location: "L150"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Formatter_Generate
+  - community/Community_187
 ---
 
 # XLSXFormatter
 
 ## Connections
-
 - [[._create_xlsx_file()]] - `method` [EXTRACTED]
 - [[._generate_table_row()_1]] - `method` [EXTRACTED]
 - [[.format()_3]] - `method` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[Formatter for XLSX (Excel) exports.]] - `rationale_for` [EXTRACTED]
 - [[formatters.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Formatter_Generate
+#graphify/code #graphify/EXTRACTED #community/Community_187

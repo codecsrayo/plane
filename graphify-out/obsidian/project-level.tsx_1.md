@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/work-item-filters/filters-hoc/project-level.tsx"
 type: "code"
-community: "Project Work"
+community: "Community 44"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Work
+  - community/Community_44
 ---
 
 # project-level.tsx
 
 ## Connections
-
 - [[CreateUpdateProjectViewModal]] - `imports` [EXTRACTED]
 - [[ProjectLevelWorkItemFiltersHOC]] - `contains` [EXTRACTED]
 - [[TEnableSaveViewProps]] - `imports` [EXTRACTED]
@@ -47,4 +46,4 @@ tags:
 - [[useProjectView()]] - `imports` [EXTRACTED]
 - [[utils.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Work
+#graphify/code #graphify/EXTRACTED #community/Community_44

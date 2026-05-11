@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/gantt/base-gantt-root.tsx"
 type: "code"
-community: "Gantt Chart"
+community: "Filter UI & Breadcrumbs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Chart
+  - community/Filter_UI__Breadcrumbs
 ---
 
 # base-gantt-root.tsx
 
 ## Connections
-
 - [[BaseGanttRoot]] - `contains` [EXTRACTED]
 - [[GanttChartRoot]] - `imports` [EXTRACTED]
 - [[GanttStoreType]] - `contains` [EXTRACTED]
@@ -38,4 +37,4 @@ tags:
 - [[useIssuesActions()]] - `imports` [EXTRACTED]
 - [[useTimeLineChart()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Chart
+#graphify/code #graphify/EXTRACTED #community/Filter_UI__Breadcrumbs

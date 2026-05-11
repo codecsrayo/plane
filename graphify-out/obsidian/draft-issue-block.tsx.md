@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/workspace-draft/draft-issue-block.tsx"
 type: "code"
-community: "Issue Work"
+community: "Project Filters & Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Work
+  - community/Project_Filters__Archives
 ---
 
 # draft-issue-block.tsx
 
 ## Connections
-
 - [[CreateUpdateIssueModal]] - `imports` [EXTRACTED]
 - [[DraftIssueBlock]] - `contains` [EXTRACTED]
 - [[DraftIssueProperties]] - `imports` [EXTRACTED]
@@ -33,4 +32,4 @@ tags:
 - [[useAppTheme()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Work
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

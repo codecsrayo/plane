@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/project-states/state-item-title.tsx"
 type: "code"
-community: "State Title"
+community: "Work Item Detail & Layouts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/State_Title
+  - community/Work_Item_Detail__Layouts
 ---
 
 # state-item-title.tsx
 
 ## Connections
-
 - [[StateItemTitle]] - `contains` [EXTRACTED]
 - [[TBaseStateItemTitleProps]] - `contains` [EXTRACTED]
 - [[TDisabledStateItemTitleProps]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[use-project-state.ts]] - `imports_from` [EXTRACTED]
 - [[useProjectState()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/State_Title
+#graphify/code #graphify/EXTRACTED #community/Work_Item_Detail__Layouts

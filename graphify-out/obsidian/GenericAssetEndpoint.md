@@ -1,22 +1,21 @@
 ---
 source_file: "api/plane/api/views/asset.py"
 type: "code"
-community: "Endpoint Issue"
+community: "Community 32"
 location: "L403"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_Issue
+  - community/Community_32
 ---
 
 # GenericAssetEndpoint
 
 ## Connections
-
 - [[BaseAPIView]] - `uses` [INFERRED]
 - [[BaseAPIView_1]] - `inherits` [EXTRACTED]
 - [[S3Storage]] - `uses` [INFERRED]
 - [[This endpoint is used to upload generic assets that can be later bound to entiti]] - `rationale_for` [EXTRACTED]
 - [[asset.py_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_32

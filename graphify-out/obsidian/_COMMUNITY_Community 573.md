@@ -1,18 +1,21 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.47
+members: 6
 ---
 
 # Community 573
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.47 - moderately connected
+**Members:** 6 nodes
 
 ## Members
-
-- [[.to()_75]] - code - api_rust/src/entities/gitlab_comment_syncs.rs
-- [[Entity_75]] - code - api_rust/src/entities/gitlab_comment_syncs.rs
+- [[coreRedirectRoutes]] - code - web/app/routes/redirects/core/index.ts
+- [[extendedRedirectRoutes]] - code - web/app/routes/redirects/extended/index.ts
+- [[index.ts_200]] - code - web/app/routes/redirects/core/index.ts
+- [[index.ts_199]] - code - web/app/routes/redirects/extended/index.ts
+- [[index.ts_198]] - code - web/app/routes/redirects/index.ts
+- [[redirectRoutes]] - code - web/app/routes/redirects/index.ts
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/contexts/collaboration-context.tsx"
 type: "code"
-community: "Collaboration Collab"
+community: "Community 337"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Collaboration_Collab
+  - community/Community_337
 ---
 
 # collaboration-context.tsx
 
 ## Connections
-
 - [[CollabContext]] - `contains` [EXTRACTED]
 - [[CollabProviderProps]] - `contains` [EXTRACTED]
 - [[CollaborationProvider()]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[useCollaboration()]] - `contains` [EXTRACTED]
 - [[useYjsSetup()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Collaboration_Collab
+#graphify/code #graphify/EXTRACTED #community/Community_337

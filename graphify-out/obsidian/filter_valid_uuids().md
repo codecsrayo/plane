@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/issue_filters.py"
 type: "code"
-community: "Date Issue"
+community: "Community 186"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Date_Issue
+  - community/Community_186
 ---
 
 # filter_valid_uuids()
 
 ## Connections
-
 - [[filter_assignees()]] - `calls` [EXTRACTED]
 - [[filter_created_by()]] - `calls` [EXTRACTED]
 - [[filter_cycle()]] - `calls` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[filter_subscribed_issues()]] - `calls` [EXTRACTED]
 - [[issue_filters.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Date_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_186

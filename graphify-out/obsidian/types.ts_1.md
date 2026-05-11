@@ -1,18 +1,17 @@
 ---
 source_file: "ui/src/popovers/types.ts"
 type: "code"
-community: "Popover Menu"
+community: "Community 250"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Popover_Menu
+  - community/Community_250
 ---
 
 # types.ts
 
 ## Connections
-
 - [[TPopover]] - `contains` [EXTRACTED]
 - [[TPopoverButtonDefaultOptions]] - `contains` [EXTRACTED]
 - [[TPopoverDefaultOptions]] - `contains` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[popover-menu.tsx]] - `imports_from` [EXTRACTED]
 - [[popover.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Popover_Menu
+#graphify/code #graphify/EXTRACTED #community/Community_250

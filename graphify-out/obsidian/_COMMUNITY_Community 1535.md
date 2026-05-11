@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_184]] - code - propel/src/empty-state/index.ts
+- [[project-inbox.store.ts]] - code - web/ce/store/project-inbox.store.ts
 
 ## Live Query (requires Dataview plugin)
 

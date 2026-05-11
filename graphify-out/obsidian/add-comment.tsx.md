@@ -1,20 +1,19 @@
 ---
 source_file: "space/components/issues/peek-overview/comment/add-comment.tsx"
 type: "code"
-community: "Issue Peek"
+community: "Community 80"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Peek
+  - community/Community_80
 ---
 
 # add-comment.tsx
 
 ## Connections
-
 - [[AddComment]] - `contains` [EXTRACTED]
-- [[LiteTextEditor_1]] - `imports` [EXTRACTED]
+- [[LiteTextEditor]] - `imports` [EXTRACTED]
 - [[Props_573]] - `contains` [EXTRACTED]
 - [[defaultValues_29]] - `contains` [EXTRACTED]
 - [[fileService_9]] - `contains` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[useIssueDetails()]] - `imports` [EXTRACTED]
 - [[useUser()_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Peek
+#graphify/code #graphify/EXTRACTED #community/Community_80

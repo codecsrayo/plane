@@ -1,19 +1,18 @@
 ---
 source_file: "ui/src/control-link/control-link.tsx"
 type: "code"
-community: "Control Link"
+community: "Community 654"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Control_Link
+  - community/Community_654
 ---
 
 # control-link.tsx
 
 ## Connections
-
 - [[ControlLink]] - `contains` [EXTRACTED]
 - [[TControlLink]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Control_Link
+#graphify/code #graphify/EXTRACTED #community/Community_654

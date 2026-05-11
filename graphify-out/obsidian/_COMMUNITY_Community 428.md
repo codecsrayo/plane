@@ -1,19 +1,27 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 0.30
+members: 12
 ---
 
 # Community 428
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 0.30 - loosely connected
+**Members:** 12 nodes
 
 ## Members
-
-- [[Model_109]] - code - api_rust/src/entities/teams.rs
-- [[Relation_109]] - code - api_rust/src/entities/teams.rs
-- [[teams.rs]] - code - api_rust/src/entities/teams.rs
+- [[IssueCreatePayload]] - code - packages/e2e-utils/src/helpers/types.ts
+- [[IssueCreateShape]] - code - packages/e2e-utils/src/helpers/types.ts
+- [[IssueDetailShape]] - code - packages/e2e-utils/src/helpers/types.ts
+- [[PaginatedResponse]] - code - packages/e2e-utils/src/helpers/types.ts
+- [[WebhookActivity]] - code - packages/e2e-utils/src/helpers/types.ts
+- [[WebhookEnvelope]] - code - packages/e2e-utils/src/helpers/types.ts
+- [[WorkspaceMemberShape]] - code - packages/e2e-utils/src/helpers/types.ts
+- [[WorkspaceShape]] - code - packages/e2e-utils/src/helpers/types.ts
+- [[buildCursor()]] - code - packages/e2e-utils/src/helpers/types.ts
+- [[parseCursor()]] - code - packages/e2e-utils/src/helpers/types.ts
+- [[types.ts_8]] - code - e2e-utils/src/helpers/types.ts
+- [[types.ts_29]] - code - packages/e2e-utils/src/helpers/types.ts
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/issues.ts"
 type: "code"
-community: "Issue Entity"
+community: "Community 101"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Entity
+  - community/Community_101
 ---
 
 # issues.ts
 
 ## Connections
-
 - [[GroupByColumnTypes]] - `contains` [EXTRACTED]
 - [[IGroupByColumn]] - `contains` [EXTRACTED]
 - [[IIssueActivity]] - `contains` [EXTRACTED]
@@ -52,4 +51,4 @@ tags:
 - [[view-props.ts]] - `imports_from` [EXTRACTED]
 - [[workspace.ts_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Entity
+#graphify/code #graphify/EXTRACTED #community/Community_101

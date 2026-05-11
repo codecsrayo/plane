@@ -1,17 +1,16 @@
 ---
 source_file: ""
 type: "code"
-community: "Config Apiconfig"
+community: "Community 236"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Config_Apiconfig
+  - community/Community_236
 ---
 
 # AppConfig
 
 ## Connections
-
 - [[AnalyticsConfig]] - `inherits` [EXTRACTED]
 - [[ApiConfig]] - `inherits` [EXTRACTED]
 - [[ApiConfig_1]] - `inherits` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[SpaceConfig]] - `inherits` [EXTRACTED]
 - [[WebConfig]] - `inherits` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Config_Apiconfig
+#graphify/code #graphify/EXTRACTED #community/Community_236

@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 806
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_127]] - code - web/core/components/cycles/archived-cycles/index.ts
+- [[EstimatePointDelete()]] - code - web/ce/components/estimates/points/delete.tsx
+- [[TEstimatePointDelete]] - code - web/ce/components/estimates/points/delete.tsx
+- [[delete.tsx]] - code - web/ce/components/estimates/points/delete.tsx
 
 ## Live Query (requires Dataview plugin)
 

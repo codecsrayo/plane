@@ -1,18 +1,18 @@
 ---
-source_file: "editor/src/core/extensions/trailing-node.ts"
+source_file: "packages/editor/src/core/extensions/trailing-node.ts"
 type: "code"
-community: "Table Node"
+community: "Community 30"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Table_Node
+  - community/Community_30
 ---
 
 # nodeEqualsType()
 
 ## Connections
-
 - [[trailing-node.ts]] - `contains` [EXTRACTED]
+- [[trailing-node.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Table_Node
+#graphify/code #graphify/EXTRACTED #community/Community_30

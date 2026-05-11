@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/project/card-list.tsx"
 type: "code"
-community: "Workspace Issue"
+community: "Project Filters & Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Issue
+  - community/Project_Filters__Archives
 ---
 
 # card-list.tsx
 
 ## Connections
-
 - [[ProjectCard]] - `imports` [EXTRACTED]
 - [[ProjectCardList]] - `contains` [EXTRACTED]
 - [[ProjectsLoader()]] - `imports` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[useProjectFilter()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Issue
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

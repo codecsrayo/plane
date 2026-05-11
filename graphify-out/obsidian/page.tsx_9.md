@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(projects)/browse/[workItem]/page.tsx"
 type: "code"
-community: "Project Settings"
+community: "Issue Activity Types"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Issue_Activity_Types
 ---
 
 # page.tsx
 
 ## Connections
-
 - [[EmptyState()_2]] - `imports` [EXTRACTED]
 - [[IssueDetailsPage]] - `contains` [EXTRACTED]
 - [[PageHead()]] - `imports` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[useWorkItemProperties()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Types

@@ -1,19 +1,19 @@
 ---
-source_file: "web/core/components/editor/lite-text/editor.tsx"
+source_file: "space/components/editor/lite-text-editor.tsx"
 type: "code"
-community: "Document Collaborative"
-location: "L65"
+community: "Community 80"
+location: "L45"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Document_Collaborative
+  - community/Community_80
 ---
 
 # LiteTextEditor
 
 ## Connections
+- [[add-comment.tsx]] - `imports` [EXTRACTED]
+- [[comment-detail-card.tsx]] - `imports` [EXTRACTED]
+- [[lite-text-editor.tsx]] - `contains` [EXTRACTED]
 
-- [[editor.tsx_2]] - `contains` [EXTRACTED]
-- [[editor.tsx_6]] - `contains` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Document_Collaborative
+#graphify/code #graphify/EXTRACTED #community/Community_80

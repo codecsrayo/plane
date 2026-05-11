@@ -1,18 +1,17 @@
 ---
 source_file: "admin/hooks/store/use-theme.tsx"
 type: "code"
-community: "Project Settings"
+community: "Community 43"
 location: "L12"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Project_Settings
+  - community/Community_43
 ---
 
 # useTheme()
 
 ## Connections
-
 - [[AnalyticsEmptyState()]] - `calls` [INFERRED]
 - [[AppProvider()]] - `calls` [INFERRED]
 - [[DiscountInfo()]] - `calls` [INFERRED]
@@ -45,4 +44,4 @@ tags:
 - [[useCoreOAuthConfig()]] - `calls` [INFERRED]
 - [[usePowerKPreferencesCommands()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Project_Settings
+#graphify/code #graphify/INFERRED #community/Community_43

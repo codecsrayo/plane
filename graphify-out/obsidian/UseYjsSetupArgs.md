@@ -1,18 +1,18 @@
 ---
-source_file: "editor/src/core/hooks/use-yjs-setup.ts"
+source_file: "packages/editor/src/core/hooks/use-yjs-setup.ts"
 type: "code"
-community: "Collaboration Collab"
+community: "Community 337"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Collaboration_Collab
+  - community/Community_337
 ---
 
 # UseYjsSetupArgs
 
 ## Connections
-
 - [[use-yjs-setup.ts]] - `contains` [EXTRACTED]
+- [[use-yjs-setup.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Collaboration_Collab
+#graphify/code #graphify/EXTRACTED #community/Community_337

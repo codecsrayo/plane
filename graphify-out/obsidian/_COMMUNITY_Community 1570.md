@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_220]] - code - web/ce/components/gantt-chart/dependency/blockDraggables/index.ts
+- [[index.ts_237]] - code - web/ce/components/cycles/index.ts
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/payment.ts"
+source_file: "packages/types/src/payment.ts"
 type: "code"
-community: "Product Subscription"
+community: "Community 496"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Product_Subscription
+  - community/Community_496
 ---
 
 # TProductSubscriptionType
 
 ## Connections
-
 - [[payment.ts_1]] - `contains` [EXTRACTED]
+- [[payment.ts_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Product_Subscription
+#graphify/code #graphify/EXTRACTED #community/Community_496

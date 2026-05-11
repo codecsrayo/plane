@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.tsx]] - code - ui/src/typography/index.tsx
+- [[index.ts_31]] - code - ui/src/modals/index.ts
 
 ## Live Query (requires Dataview plugin)
 

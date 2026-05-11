@@ -1,18 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.40
+members: 5
 ---
 
 # Community 627
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.40 - moderately connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[CsvIcon()]] - code - web/core/components/icons/attachment/csv-file-icon.tsx
-- [[csv-file-icon.tsx]] - code - web/core/components/icons/attachment/csv-file-icon.tsx
+- [[sync_comment_to_github_task()]] - code - api/plane/bgtasks/sync_task.py
+- [[sync_comment_to_gitlab_task()]] - code - api/plane/bgtasks/sync_task.py
+- [[sync_issue_to_github_task()]] - code - api/plane/bgtasks/sync_task.py
+- [[sync_issue_to_gitlab_task()]] - code - api/plane/bgtasks/sync_task.py
+- [[sync_task.py]] - code - api/plane/bgtasks/sync_task.py
 
 ## Live Query (requires Dataview plugin)
 

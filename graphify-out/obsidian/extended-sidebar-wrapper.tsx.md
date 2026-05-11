@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(projects)/extended-sidebar-wrapper.tsx"
 type: "code"
-community: "Sidebar Navigation"
+community: "Community 144"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Navigation
+  - community/Community_144
 ---
 
 # extended-sidebar-wrapper.tsx
 
 ## Connections
-
 - [[ExtendedSidebarWrapper]] - `contains` [EXTRACTED]
 - [[Props_54]] - `contains` [EXTRACTED]
 - [[extended-project-sidebar.tsx]] - `imports_from` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[use-extended-sidebar-overview-outside-click.tsx]] - `imports_from` [EXTRACTED]
 - [[useAppTheme()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation
+#graphify/code #graphify/EXTRACTED #community/Community_144

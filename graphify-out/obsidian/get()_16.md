@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/analytic/advance.py"
 type: "code"
-community: "Analytics Advance"
+community: "Community 122"
 location: "L105"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Analytics_Advance
+  - community/Community_122
 ---
 
 # get()
 
 ## Connections
-
 - [[.get_overview_data()]] - `calls` [EXTRACTED]
 - [[.get_work_items_stats()_1]] - `calls` [EXTRACTED]
 - [[.initialize_workspace()]] - `calls` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[build_analytics_chart()]] - `calls` [INFERRED]
 - [[response]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Analytics_Advance
+#graphify/code #graphify/EXTRACTED #community/Community_122

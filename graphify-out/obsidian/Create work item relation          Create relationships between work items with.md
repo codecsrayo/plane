@@ -1,14 +1,14 @@
 ---
 source_file: "api/plane/api/views/issue.py"
 type: "rationale"
-community: "Work Relation"
+community: "Community 1700"
 location: "L2410"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Work_Relation
+  - community/Community_1700
 ---
 
-# Create work item relation Create relationships between work items with
+# Create work item relation          Create relationships between work items with
 
-#graphify/rationale #graphify/EXTRACTED #community/Work_Relation
+#graphify/rationale #graphify/EXTRACTED #community/Community_1700

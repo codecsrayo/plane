@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/modules/analytics-sidebar/root.tsx"
 type: "code"
-community: "Cycles Archived"
+community: "Module & Cycle Analytics"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycles_Archived
+  - community/Module__Cycle_Analytics
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[DateRangeDropdown]] - `imports` [EXTRACTED]
 - [[MemberDropdown]] - `imports` [EXTRACTED]
 - [[ModuleAnalyticsSidebar]] - `contains` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[use-module.ts]] - `imports_from` [EXTRACTED]
 - [[useModule()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycles_Archived
+#graphify/code #graphify/EXTRACTED #community/Module__Cycle_Analytics

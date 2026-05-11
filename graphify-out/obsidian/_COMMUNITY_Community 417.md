@@ -1,17 +1,28 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.27
+members: 13
 ---
 
 # Community 417
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.27 - loosely connected
+**Members:** 13 nodes
 
 ## Members
-
-- [[editor.ts_2]] - code - i18n/src/locales/es/editor.ts
+- [[create_invitation_as_admin_returns_2xx()]] - code - api_rust/tests/workspace_invitations.rs
+- [[create_invitation_unauthenticated_returns_401()]] - code - api_rust/tests/workspace_invitations.rs
+- [[delete_invitation_nonexistent_returns_4xx()]] - code - api_rust/tests/workspace_invitations.rs
+- [[delete_invitation_unauthenticated_returns_401()]] - code - api_rust/tests/workspace_invitations.rs
+- [[get_invitation_nonexistent_returns_404_or_403()]] - code - api_rust/tests/workspace_invitations.rs
+- [[join_invitation_with_invalid_token_returns_4xx()]] - code - api_rust/tests/workspace_invitations.rs
+- [[list_invitations_member_returns_200()]] - code - api_rust/tests/workspace_invitations.rs
+- [[list_invitations_unauthenticated_returns_401()]] - code - api_rust/tests/workspace_invitations.rs
+- [[list_user_workspace_invitations_returns_200()]] - code - api_rust/tests/workspace_invitations.rs
+- [[list_user_workspace_invitations_unauthenticated_returns_401()]] - code - api_rust/tests/workspace_invitations.rs
+- [[setup()_15]] - code - api_rust/tests/workspace_invitations.rs
+- [[update_invitation_nonexistent_returns_4xx()]] - code - api_rust/tests/workspace_invitations.rs
+- [[workspace_invitations.rs]] - code - api_rust/tests/workspace_invitations.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -19,3 +30,11 @@ members: 1
 TABLE source_file, type FROM #community/Community_417
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 3 edges to [[_COMMUNITY_Rust Auth Services]]
+
+## Top bridge nodes
+- [[setup()_15]] - degree 11, connects to 1 community
+- [[list_user_workspace_invitations_returns_200()]] - degree 2, connects to 1 community
+- [[list_user_workspace_invitations_unauthenticated_returns_401()]] - degree 2, connects to 1 community

@@ -1,19 +1,19 @@
 ---
-source_file: "utils/src/url.ts"
+source_file: "packages/utils/src/url.ts"
 type: "code"
-community: "Extract Valid"
+community: "Community 351"
 location: "L114"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Extract_Valid
+  - community/Community_351
 ---
 
 # formatURLForDisplay()
 
 ## Connections
-
 - [[extractHostname()]] - `calls` [EXTRACTED]
 - [[url.ts]] - `contains` [EXTRACTED]
+- [[url.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Extract_Valid
+#graphify/code #graphify/EXTRACTED #community/Community_351

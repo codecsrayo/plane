@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/auth/oauth.rs"
 type: "code"
-community: "Session Presigned"
+community: "Community 78"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Session_Presigned
+  - community/Community_78
 ---
 
 # oauth.rs
 
 ## Connections
-
 - [[OAuthCallbackQuery]] - `contains` [EXTRACTED]
 - [[find_or_create_oauth_user()]] - `contains` [EXTRACTED]
 - [[gitea_callback()]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[google_initiate()]] - `contains` [EXTRACTED]
 - [[update_oauth_login_metadata()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Session_Presigned
+#graphify/code #graphify/EXTRACTED #community/Community_78

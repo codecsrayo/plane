@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/cycles.rs"
 type: "code"
-community: "Cycle Request"
+community: "Community 93"
 location: "L162"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Request
+  - community/Community_93
 ---
 
 # UpdateCycleRequest
 
 ## Connections
-
 - [[cycles.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Request
+#graphify/code #graphify/EXTRACTED #community/Community_93

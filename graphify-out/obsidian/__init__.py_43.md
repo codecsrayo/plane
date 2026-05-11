@@ -1,19 +1,18 @@
 ---
 source_file: "api/plane/utils/core/__init__.py"
 type: "code"
-community: "Read Database"
+community: "Community 413"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Read_Database
+  - community/Community_413
 ---
 
-# **init**.py
+# __init__.py
 
 ## Connections
-
 - [[dbrouters.py]] - `imports_from` [EXTRACTED]
 - [[request_scope.py]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Read_Database
+#graphify/code #graphify/EXTRACTED #community/Community_413

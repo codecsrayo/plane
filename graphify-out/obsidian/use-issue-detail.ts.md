@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/use-issue-detail.ts"
 type: "code"
-community: "Issue Activity"
+community: "Issue Activity Types"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Issue_Activity_Types
 ---
 
 # use-issue-detail.ts
 
 ## Connections
-
 - [[StoreContext]] - `imports` [EXTRACTED]
 - [[activity-block.tsx]] - `imports_from` [EXTRACTED]
 - [[activity-comment-root.tsx]] - `imports_from` [EXTRACTED]
@@ -134,4 +133,4 @@ tags:
 - [[work-item-header.tsx]] - `imports_from` [EXTRACTED]
 - [[work-item-level.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Types

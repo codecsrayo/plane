@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_74]] - code - services/src/state/index.ts
+- [[editor.ts_1]] - code - i18n/src/locales/vi-VN/editor.ts
 
 ## Live Query (requires Dataview plugin)
 

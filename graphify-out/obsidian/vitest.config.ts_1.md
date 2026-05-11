@@ -1,14 +1,14 @@
 ---
 source_file: "live/vitest.config.ts"
 type: "code"
-community: "Vitest Config"
+community: "Community 1951"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Vitest_Config
+  - community/Community_1951
 ---
 
 # vitest.config.ts
 
-#graphify/code #graphify/EXTRACTED #community/Vitest_Config
+#graphify/code #graphify/EXTRACTED #community/Community_1951

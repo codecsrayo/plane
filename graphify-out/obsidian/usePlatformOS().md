@@ -1,18 +1,17 @@
 ---
-source_file: "web/core/hooks/use-platform-os.tsx"
+source_file: "packages/ui/src/hooks/use-platform-os.ts"
 type: "code"
-community: "Issue Activity"
+community: "Work Item Detail & Layouts"
 location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Work_Item_Detail__Layouts
 ---
 
 # usePlatformOS()
 
 ## Connections
-
 - [[ActivityBlockComponent()]] - `calls` [EXTRACTED]
 - [[BackgroundButton()]] - `calls` [EXTRACTED]
 - [[BackgroundButton()_1]] - `calls` [EXTRACTED]
@@ -127,14 +126,16 @@ tags:
 - [[root.tsx_90]] - `imports` [EXTRACTED]
 - [[root.tsx_92]] - `imports` [EXTRACTED]
 - [[root.tsx_119]] - `imports` [EXTRACTED]
+- [[root.tsx_142]] - `imports` [EXTRACTED]
 - [[sidebar.tsx_3]] - `imports` [EXTRACTED]
 - [[single-integration-card.tsx]] - `imports` [EXTRACTED]
 - [[title-input.tsx_1]] - `imports` [EXTRACTED]
 - [[use-dropdown.ts]] - `imports` [EXTRACTED]
 - [[use-platform-os.ts]] - `contains` [EXTRACTED]
+- [[use-platform-os.ts_1]] - `contains` [EXTRACTED]
 - [[use-platform-os.tsx_1]] - `contains` [EXTRACTED]
 - [[useDropdown()]] - `calls` [EXTRACTED]
 - [[view-list-item.tsx]] - `imports` [EXTRACTED]
 - [[workspace-wrapper.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Work_Item_Detail__Layouts

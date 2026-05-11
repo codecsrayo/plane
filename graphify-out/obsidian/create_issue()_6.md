@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/issue_attachments.rs"
 type: "code"
-community: "Returns Issue"
+community: "Community 402"
 location: "L46"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Issue
+  - community/Community_402
 ---
 
 # create_issue()
 
 ## Connections
-
 - [[complete_attachment_upload_nonexistent_returns_404()]] - `calls` [EXTRACTED]
 - [[delete_attachment_nonexistent_returns_404()]] - `calls` [EXTRACTED]
 - [[delete_work_item_attachment_nonexistent_returns_404()]] - `calls` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[list_issue_attachments_empty_returns_200()]] - `calls` [EXTRACTED]
 - [[list_work_item_attachments_empty_returns_200()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_402

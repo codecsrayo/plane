@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/auth-screens/not-authorized-view.tsx"
 type: "code"
-community: "Project Settings"
+community: "Community 24"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Community_24
 ---
 
 # not-authorized-view.tsx
 
 ## Connections
-
 - [[NotAuthorizedView]] - `contains` [EXTRACTED]
 - [[Props_493]] - `contains` [EXTRACTED]
 - [[index.tsx_6]] - `imports_from` [EXTRACTED]
@@ -34,4 +33,4 @@ tags:
 - [[page.tsx_53]] - `imports_from` [EXTRACTED]
 - [[page.tsx_54]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Community_24

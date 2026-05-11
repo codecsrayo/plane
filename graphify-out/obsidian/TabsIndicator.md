@@ -1,18 +1,18 @@
 ---
-source_file: "propel/src/tabs/tabs.tsx"
+source_file: "packages/propel/src/tabs/tabs.tsx"
 type: "code"
-community: "Tabs Custom"
+community: "Community 442"
 location: "L127"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Tabs_Custom
+  - community/Community_442
 ---
 
 # TabsIndicator
 
 ## Connections
-
 - [[tabs.tsx_1]] - `contains` [EXTRACTED]
+- [[tabs.tsx_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Tabs_Custom
+#graphify/code #graphify/EXTRACTED #community/Community_442

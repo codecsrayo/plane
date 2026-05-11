@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/dropdowns/estimate.tsx"
 type: "code"
-community: "Label Dropdown"
+community: "Work Item Detail & Layouts"
 location: "L48"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Dropdown
+  - community/Work_Item_Detail__Layouts
 ---
 
 # EstimateDropdown
 
 ## Connections
-
 - [[all-properties.tsx]] - `imports` [EXTRACTED]
 - [[default-properties.tsx]] - `imports` [EXTRACTED]
 - [[draft-issue-properties.tsx]] - `imports` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[properties.tsx_2]] - `imports` [EXTRACTED]
 - [[sidebar.tsx_4]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Work_Item_Detail__Layouts

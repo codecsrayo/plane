@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/entities/django_celery_beat_crontabschedule.rs"
 type: "code"
-community: "Entity"
+community: "Community 1207"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Entity
+  - community/Community_1207
 ---
 
 # Entity
 
 ## Connections
-
 - [[.to()_22]] - `method` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Entity
+#graphify/code #graphify/EXTRACTED #community/Community_1207

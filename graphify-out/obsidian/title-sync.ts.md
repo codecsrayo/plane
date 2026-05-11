@@ -1,18 +1,17 @@
 ---
 source_file: "live/src/extensions/title-sync.ts"
 type: "code"
-community: "Broadcast Context"
+community: "Community 317"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Broadcast_Context
+  - community/Community_317
 ---
 
 # title-sync.ts
 
 ## Connections
-
 - [[AppError]] - `imports` [EXTRACTED]
 - [[HocusPocusServerContext]] - `imports` [EXTRACTED]
 - [[OnLoadDocumentPayloadWithContext]] - `imports` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[index.ts_451]] - `imports_from` [EXTRACTED]
 - [[title-update-manager.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Broadcast_Context
+#graphify/code #graphify/EXTRACTED #community/Community_317

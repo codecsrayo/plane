@@ -1,18 +1,21 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.53
+members: 6
 ---
 
 # Community 566
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.53 - moderately connected
+**Members:** 6 nodes
 
 ## Members
-
-- [[.to()_68]] - code - api_rust/src/entities/issue_sequences.rs
-- [[Entity_68]] - code - api_rust/src/entities/issue_sequences.rs
+- [[EEstimateSystem]] - code - packages/constants/src/estimates.ts
+- [[EEstimateUpdateStages]] - code - packages/constants/src/estimates.ts
+- [[ESTIMATE_SYSTEMS]] - code - packages/constants/src/estimates.ts
+- [[estimateCount]] - code - packages/constants/src/estimates.ts
+- [[estimates.ts]] - code - constants/src/estimates.ts
+- [[estimates.ts_2]] - code - packages/constants/src/estimates.ts
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/utils/classname.tsx"
 type: "code"
-community: "Tabs Custom"
+community: "Community 164"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Tabs_Custom
+  - community/Community_164
 ---
 
 # classname.tsx
 
 ## Connections
-
 - [[CUSTOM_TEXT_COLORS_1]] - `contains` [EXTRACTED]
 - [[avatar.tsx_1]] - `imports_from` [EXTRACTED]
 - [[bar.tsx]] - `imports_from` [EXTRACTED]
@@ -43,4 +42,4 @@ tags:
 - [[tooltip.tsx_2]] - `imports_from` [EXTRACTED]
 - [[twMerge_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Tabs_Custom
+#graphify/code #graphify/EXTRACTED #community/Community_164

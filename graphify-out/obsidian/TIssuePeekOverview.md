@@ -1,18 +1,17 @@
 ---
 source_file: "space/components/issues/peek-overview/layout.tsx"
 type: "code"
-community: "Issue Peek"
+community: "Community 80"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Peek
+  - community/Community_80
 ---
 
 # TIssuePeekOverview
 
 ## Connections
-
 - [[layout.tsx_52]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Peek
+#graphify/code #graphify/EXTRACTED #community/Community_80

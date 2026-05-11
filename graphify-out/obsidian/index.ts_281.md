@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/project/index.ts"
 type: "code"
-community: "Project Issue"
+community: "Community 20"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Issue
+  - community/Community_20
 ---
 
 # index.ts
 
 ## Connections
-
 - [[CoreRootStore]] - `imports` [EXTRACTED]
 - [[IProjectFilterStore]] - `imports` [EXTRACTED]
 - [[IProjectPublishStore]] - `imports` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[project_filter.store.ts]] - `imports_from` [EXTRACTED]
 - [[root.store.ts_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_20

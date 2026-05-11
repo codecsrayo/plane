@@ -1,51 +1,91 @@
 ---
 type: community
-cohesion: 0.07
-members: 35
+cohesion: 0.05
+members: 76
 ---
 
 # Community 52
 
-**Cohesion:** 0.07 - loosely connected
-**Members:** 35 nodes
+**Cohesion:** 0.05 - loosely connected
+**Members:** 76 nodes
 
 ## Members
-
-- [[.constructor()_59]] - code - web/core/store/project/project_filter.store.ts
-- [[.currentWorkspaceAppliedDisplayFilters()]] - code - web/core/store/project/project_filter.store.ts
-- [[.currentWorkspaceDisplayFilters()]] - code - web/core/store/project/project_filter.store.ts
-- [[.currentWorkspaceFilters()]] - code - web/core/store/project/project_filter.store.ts
-- [[BreadcrumbContent]] - code - web/core/components/common/breadcrumb-link.tsx
-- [[BreadcrumbLink]] - code - web/core/components/common/breadcrumb-link.tsx
-- [[DISABLED_ORDERING_OPTIONS]] - code - web/core/components/project/dropdowns/order-by.tsx
-- [[HeaderFilters]] - code - web/core/components/project/filters.tsx
-- [[IProjectFilterStore]] - code - web/core/store/project/project_filter.store.ts
-- [[IconWrapper]] - code - web/core/components/common/breadcrumb-link.tsx
-- [[ItemWrapper]] - code - web/core/components/common/breadcrumb-link.tsx
-- [[LabelWrapper]] - code - web/core/components/common/breadcrumb-link.tsx
-- [[ModuleOrderByDropdown()]] - code - web/core/components/modules/dropdowns/order-by.tsx
-- [[NotificationSidebarHeader]] - code - web/core/components/workspace-notifications/sidebar/header/root.tsx
-- [[ProjectFilterStore]] - code - web/core/store/project/project_filter.store.ts
-- [[ProjectOrderByDropdown()]] - code - web/core/components/project/dropdowns/order-by.tsx
-- [[ProjectSearch]] - code - web/core/components/project/search-projects.tsx
-- [[ProjectsBaseHeader]] - code - web/core/components/project/header.tsx
-- [[Props_294]] - code - web/core/components/common/breadcrumb-link.tsx
-- [[Props_80]] - code - web/core/components/project/dropdowns/order-by.tsx
-- [[Props_137]] - code - web/core/components/project/filters.tsx
-- [[TNotificationSidebarHeader]] - code - web/core/components/workspace-notifications/sidebar/header/root.tsx
-- [[breadcrumb-link.tsx]] - code - web/core/components/common/breadcrumb-link.tsx
-- [[displayFilters_10]] - code - web/core/store/project/project_filter.store.ts
-- [[filters.tsx_1]] - code - web/core/components/project/filters.tsx
-- [[header.tsx_6]] - code - web/core/components/project/header.tsx
-- [[index.ts_80]] - code - web/core/components/project/dropdowns/filters/index.ts
-- [[index.ts_124]] - code - web/core/components/workspace-notifications/sidebar/header/options/index.ts
-- [[order-by.tsx_1]] - code - web/core/components/modules/dropdowns/order-by.tsx
-- [[order-by.tsx_2]] - code - web/core/components/project/dropdowns/order-by.tsx
-- [[project_filter.store.ts]] - code - web/core/store/project/project_filter.store.ts
-- [[root.tsx_48]] - code - web/core/components/workspace-notifications/sidebar/header/root.tsx
-- [[search-projects.tsx]] - code - web/core/components/project/search-projects.tsx
-- [[use-project-filter.ts]] - code - web/core/hooks/store/use-project-filter.ts
-- [[useProjectFilter()]] - code - web/core/hooks/store/use-project-filter.ts
+- [[.email_required()]] - code - api_rust/src/auth/responses.rs
+- [[.instance_not_configured()]] - code - api_rust/src/auth/responses.rs
+- [[.invalid_email()]] - code - api_rust/src/auth/responses.rs
+- [[AiAssistantRequest]] - code - api_rust/src/routes/external.rs
+- [[AiAssistantResponse]] - code - api_rust/src/routes/external.rs
+- [[CredentialAuthForm]] - code - api_rust/src/auth/email_auth.rs
+- [[EmailCheckRequest]] - code - api_rust/src/auth/email_check.rs
+- [[ForgotPasswordRequest]] - code - api_rust/src/auth/forgot_reset_password.rs
+- [[MagicAuthForm]] - code - api_rust/src/auth/magic_auth.rs
+- [[MagicCodeData]] - code - api_rust/src/auth/magic_auth.rs
+- [[MagicGenerateRequest]] - code - api_rust/src/auth/magic_auth.rs
+- [[MagicGenerateResponse]] - code - api_rust/src/auth/magic_auth.rs
+- [[RephraseGrammarRequest]] - code - api_rust/src/routes/external.rs
+- [[RephraseGrammarResponse]] - code - api_rust/src/routes/external.rs
+- [[ResetPasswordForm]] - code - api_rust/src/auth/forgot_reset_password.rs
+- [[ResetTokenData]] - code - api_rust/src/auth/forgot_reset_password.rs
+- [[UnsplashQuery]] - code - api_rust/src/routes/external.rs
+- [[app_default_path()]] - code - api_rust/src/auth/email_auth.rs
+- [[app_success_redirect()]] - code - api_rust/src/auth/magic_auth.rs
+- [[authenticate_existing_user()]] - code - api_rust/src/auth/email_auth.rs
+- [[call_llm()]] - code - api_rust/src/routes/external.rs
+- [[complete_magic_auth()]] - code - api_rust/src/auth/magic_auth.rs
+- [[create_and_authenticate_user()]] - code - api_rust/src/auth/email_auth.rs
+- [[create_magic_user()]] - code - api_rust/src/auth/magic_auth.rs
+- [[decode_uidb64()]] - code - api_rust/src/auth/forgot_reset_password.rs
+- [[email_auth.rs]] - code - api_rust/src/auth/email_auth.rs
+- [[email_check()]] - code - api_rust/src/auth/email_check.rs
+- [[email_check.rs]] - code - api_rust/src/auth/email_check.rs
+- [[email_check_space()]] - code - api_rust/src/auth/email_check.rs
+- [[ensure_email_password_enabled()]] - code - api_rust/src/auth/email_auth.rs
+- [[ensure_instance_ready()]] - code - api_rust/src/auth/email_auth.rs
+- [[ensure_magic_enabled()]] - code - api_rust/src/auth/magic_auth.rs
+- [[ensure_profile_exists()]] - code - api_rust/src/auth/email_auth.rs
+- [[ensure_signup_allowed()]] - code - api_rust/src/auth/email_auth.rs
+- [[external.rs]] - code - api_rust/src/routes/external.rs
+- [[forgot_password()_1]] - code - api_rust/src/auth/forgot_reset_password.rs
+- [[forgot_password_space()]] - code - api_rust/src/auth/forgot_reset_password.rs
+- [[forgot_reset_password.rs]] - code - api_rust/src/auth/forgot_reset_password.rs
+- [[generate_magic_code()]] - code - api_rust/src/auth/magic_auth.rs
+- [[get_config_value()]] - code - api_rust/src/utils/instance_config.rs
+- [[github_webhook()]] - code - api_rust/src/routes/external.rs
+- [[gitlab_webhook()]] - code - api_rust/src/routes/external.rs
+- [[handle_forgot_password()]] - code - api_rust/src/auth/forgot_reset_password.rs
+- [[handle_github_issue_event()]] - code - api_rust/src/routes/external.rs
+- [[handle_reset_password()]] - code - api_rust/src/auth/forgot_reset_password.rs
+- [[hex_encode_bytes()]] - code - api_rust/src/routes/external.rs
+- [[instance_config.rs]] - code - api_rust/src/utils/instance_config.rs
+- [[is_valid_email()_1]] - code - api_rust/src/auth/email_auth.rs
+- [[magic_auth.rs]] - code - api_rust/src/auth/magic_auth.rs
+- [[magic_generate()]] - code - api_rust/src/auth/magic_auth.rs
+- [[magic_generate_space()]] - code - api_rust/src/auth/magic_auth.rs
+- [[magic_sign_in()]] - code - api_rust/src/auth/magic_auth.rs
+- [[magic_sign_in_space()]] - code - api_rust/src/auth/magic_auth.rs
+- [[magic_sign_up()]] - code - api_rust/src/auth/magic_auth.rs
+- [[magic_sign_up_space()]] - code - api_rust/src/auth/magic_auth.rs
+- [[normalize_email()]] - code - api_rust/src/auth/email_auth.rs
+- [[project_ai_assistant()]] - code - api_rust/src/routes/external.rs
+- [[redirect_error()]] - code - api_rust/src/auth/email_auth.rs
+- [[redirect_url()]] - code - api_rust/src/auth/email_auth.rs
+- [[rephrase_grammar()]] - code - api_rust/src/routes/external.rs
+- [[reset_password()]] - code - api_rust/src/auth/forgot_reset_password.rs
+- [[reset_password_space()]] - code - api_rust/src/auth/forgot_reset_password.rs
+- [[run_email_check()]] - code - api_rust/src/auth/email_check.rs
+- [[safe_next_path()]] - code - api_rust/src/auth/email_auth.rs
+- [[send_magic_code_email()]] - code - api_rust/src/auth/magic_auth.rs
+- [[send_reset_email()]] - code - api_rust/src/auth/forgot_reset_password.rs
+- [[sign_in()]] - code - api_rust/src/auth/email_auth.rs
+- [[sign_in_space()]] - code - api_rust/src/auth/email_auth.rs
+- [[sign_up()]] - code - api_rust/src/auth/email_auth.rs
+- [[sign_up_space()]] - code - api_rust/src/auth/email_auth.rs
+- [[success_redirect()]] - code - api_rust/src/auth/email_auth.rs
+- [[unsplash()]] - code - api_rust/src/routes/external.rs
+- [[update_login_metadata()]] - code - api_rust/src/auth/email_auth.rs
+- [[update_magic_login_metadata()]] - code - api_rust/src/auth/magic_auth.rs
+- [[verify_github_signature()]] - code - api_rust/src/routes/external.rs
+- [[workspace_ai_assistant()]] - code - api_rust/src/routes/external.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -55,20 +95,19 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 5 edges to [[_COMMUNITY_Applied Filters UI]]
-- 3 edges to [[_COMMUNITY_Empty State Components]]
-- 3 edges to [[_COMMUNITY_Community 67]]
-- 2 edges to [[_COMMUNITY_Layout System]]
-- 2 edges to [[_COMMUNITY_Member Filters & Description]]
-- 2 edges to [[_COMMUNITY_Project Estimates]]
-- 1 edge to [[_COMMUNITY_Community 92]]
-- 1 edge to [[_COMMUNITY_Community 42]]
+- 20 edges to [[_COMMUNITY_Community 21]]
+- 9 edges to [[_COMMUNITY_Rust API Handlers]]
+- 8 edges to [[_COMMUNITY_Community 78]]
+- 7 edges to [[_COMMUNITY_Community 34]]
+- 6 edges to [[_COMMUNITY_Community 29]]
+- 2 edges to [[_COMMUNITY_Community 157]]
+- 1 edge to [[_COMMUNITY_Rust Issues & Modules API]]
+- 1 edge to [[_COMMUNITY_Community 47]]
+- 1 edge to [[_COMMUNITY_Rust Auth Services]]
 
 ## Top bridge nodes
-
-- [[filters.tsx_1]] - degree 11, connects to 2 communities
-- [[use-project-filter.ts]] - degree 9, connects to 2 communities
-- [[project_filter.store.ts]] - degree 7, connects to 2 communities
-- [[breadcrumb-link.tsx]] - degree 10, connects to 1 community
-- [[header.tsx_6]] - degree 9, connects to 1 community
+- [[create_and_authenticate_user()]] - degree 14, connects to 4 communities
+- [[get_config_value()]] - degree 15, connects to 3 communities
+- [[handle_forgot_password()]] - degree 11, connects to 3 communities
+- [[ensure_profile_exists()]] - degree 7, connects to 3 communities
+- [[create_magic_user()]] - degree 6, connects to 3 communities

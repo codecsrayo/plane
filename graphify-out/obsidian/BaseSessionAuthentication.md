@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/authentication/session.py"
 type: "code"
-community: "Project Endpoint"
+community: "Community 25"
 location: "L8"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Project_Endpoint
+  - community/Community_25
 ---
 
 # BaseSessionAuthentication
 
 ## Connections
-
 - [[.enforce_csrf()]] - `method` [EXTRACTED]
 - [[BaseAPIView]] - `uses` [INFERRED]
 - [[BaseViewSet]] - `uses` [INFERRED]
@@ -20,4 +19,4 @@ tags:
 - [[TimezoneMixin]] - `uses` [INFERRED]
 - [[session.py_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Project_Endpoint
+#graphify/code #graphify/INFERRED #community/Community_25

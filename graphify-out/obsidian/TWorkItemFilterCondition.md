@@ -1,18 +1,18 @@
 ---
-source_file: "shared-state/src/utils/work-item-filters.helper.ts"
+source_file: "packages/shared-state/src/utils/work-item-filters.helper.ts"
 type: "code"
-community: "Expression Work"
+community: "Community 217"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Expression_Work
+  - community/Community_217
 ---
 
 # TWorkItemFilterCondition
 
 ## Connections
-
 - [[work-item-filters.helper.ts]] - `contains` [EXTRACTED]
+- [[work-item-filters.helper.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Expression_Work
+#graphify/code #graphify/EXTRACTED #community/Community_217

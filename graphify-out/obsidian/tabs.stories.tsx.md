@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/tabs/tabs.stories.tsx"
 type: "code"
-community: "Icons Icon"
+community: "Community 243"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Icons_Icon
+  - community/Community_243
 ---
 
 # tabs.stories.tsx
 
 ## Connections
-
 - [[Basic]] - `contains` [EXTRACTED]
 - [[Controlled_1]] - `contains` [EXTRACTED]
 - [[DisabledTab]] - `contains` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[tabOptions]] - `contains` [EXTRACTED]
 - [[tabs.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Icons_Icon
+#graphify/code #graphify/EXTRACTED #community/Community_243

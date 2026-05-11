@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/project/projects.ts"
 type: "code"
-community: "Project State"
+community: "Community 194"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_State
+  - community/Community_194
 ---
 
 # projects.ts
 
 ## Connections
-
 - [[EUserProjectRoles]] - `contains` [EXTRACTED]
 - [[GithubRepositoriesResponse]] - `contains` [EXTRACTED]
 - [[IGithubRepository]] - `contains` [EXTRACTED]
@@ -45,4 +44,4 @@ tags:
 - [[users.ts]] - `imports_from` [EXTRACTED]
 - [[workspace.ts_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_State
+#graphify/code #graphify/EXTRACTED #community/Community_194

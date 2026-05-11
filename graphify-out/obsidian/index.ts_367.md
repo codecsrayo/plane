@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-detail/index.ts"
 type: "code"
-community: "Issue Inbox"
+community: "Work Item Detail & Layouts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Inbox
+  - community/Work_Item_Detail__Layouts
 ---
 
 # index.ts
 
 ## Connections
-
 - [[issue-detail.tsx_1]] - `imports_from` [EXTRACTED]
 - [[issue-properties.tsx]] - `imports_from` [EXTRACTED]
 - [[issue-root.tsx]] - `imports_from` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[title-input.tsx]] - `imports_from` [EXTRACTED]
 - [[view.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Inbox
+#graphify/code #graphify/EXTRACTED #community/Work_Item_Detail__Layouts

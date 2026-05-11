@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/file-upload.service.ts"
 type: "code"
-community: "Issue Project"
+community: "Service Layer"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Project
+  - community/Service_Layer
 ---
 
 # file-upload.service.ts
 
 ## Connections
-
 - [[ApiError]] - `imports` [EXTRACTED]
 - [[FileUploadService_1]] - `contains` [EXTRACTED]
 - [[api.service.ts_1]] - `imports_from` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[issue_comment.service.ts]] - `imports_from` [EXTRACTED]
 - [[project-page.service.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Project
+#graphify/code #graphify/EXTRACTED #community/Service_Layer

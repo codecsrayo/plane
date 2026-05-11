@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/utils/github_app.rs"
 type: "code"
-community: "Installation Access"
+community: "Community 479"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Installation_Access
+  - community/Community_479
 ---
 
 # AppClaims
 
 ## Connections
-
 - [[github_app.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Installation_Access
+#graphify/code #graphify/EXTRACTED #community/Community_479

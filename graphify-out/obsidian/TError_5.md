@@ -1,18 +1,17 @@
 ---
 source_file: "admin/components/instance/setup-form.tsx"
 type: "code"
-community: "Auth Error"
+community: "Community 162"
 location: "L35"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Error
+  - community/Community_162
 ---
 
 # TError
 
 ## Connections
-
 - [[setup-form.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Error
+#graphify/code #graphify/EXTRACTED #community/Community_162

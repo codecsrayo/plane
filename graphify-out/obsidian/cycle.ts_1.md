@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/cycle/cycle.ts"
 type: "code"
-community: "Cycle Distribution"
+community: "Community 291"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Distribution
+  - community/Community_291
 ---
 
 # cycle.ts
 
 ## Connections
-
 - [[CycleDateCheckData]] - `contains` [EXTRACTED]
 - [[CycleIssueResponse]] - `contains` [EXTRACTED]
 - [[ICycle]] - `contains` [EXTRACTED]
@@ -37,4 +36,4 @@ tags:
 - [[issue.ts]] - `imports_from` [EXTRACTED]
 - [[view-props.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Distribution
+#graphify/code #graphify/EXTRACTED #community/Community_291

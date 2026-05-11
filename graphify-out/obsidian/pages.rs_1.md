@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/pages.rs"
 type: "code"
-community: "Request Intake"
+community: "Rust Issues & Modules API"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Request_Intake
+  - community/Rust_Issues__Modules_API
 ---
 
 # pages.rs
 
 ## Connections
-
 - [[CreatePageRequest]] - `contains` [EXTRACTED]
 - [[PageResponse]] - `contains` [EXTRACTED]
 - [[PageVersionResponse]] - `contains` [EXTRACTED]
@@ -44,4 +43,4 @@ tags:
 - [[update_page_access()]] - `contains` [EXTRACTED]
 - [[update_page_description()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Request_Intake
+#graphify/code #graphify/EXTRACTED #community/Rust_Issues__Modules_API

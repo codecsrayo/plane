@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/onboarding/create-workspace.tsx"
 type: "code"
-community: "Workspace Issue"
+community: "Community 45"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Issue
+  - community/Community_45
 ---
 
 # create-workspace.tsx
 
 ## Connections
-
 - [[CreateWorkspace]] - `contains` [EXTRACTED]
 - [[Props_430]] - `contains` [EXTRACTED]
 - [[WorkspaceService_1]] - `imports` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[workspace.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[workspaceService_12]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_45

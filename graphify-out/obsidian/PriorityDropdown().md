@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/dropdowns/priority.tsx"
 type: "code"
-community: "Label Dropdown"
+community: "Work Item Detail & Layouts"
 location: "L321"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Dropdown
+  - community/Work_Item_Detail__Layouts
 ---
 
 # PriorityDropdown()
 
 ## Connections
-
 - [[all-properties.tsx]] - `imports` [EXTRACTED]
 - [[default-properties.tsx]] - `imports` [EXTRACTED]
 - [[draft-issue-properties.tsx]] - `imports` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[sidebar.tsx_4]] - `imports` [EXTRACTED]
 - [[useDropdown()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Work_Item_Detail__Layouts

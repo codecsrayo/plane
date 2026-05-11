@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-detail/parent/root.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Work Item Detail & Layouts"
 location: "L37"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Work_Item_Detail__Layouts
 ---
 
 # IssueParentDetail
 
 ## Connections
-
 - [[root.tsx_76]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Work_Item_Detail__Layouts

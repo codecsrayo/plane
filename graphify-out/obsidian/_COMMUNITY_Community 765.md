@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 765
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[ActiveModel_114]] - code - api_rust/src/entities/project_user_properties.rs
+- [[WorkspaceAccountSettings()]] - code - web/app/routes/redirects/core/workspace-account-settings.tsx
+- [[clientLoader()_3]] - code - web/app/routes/redirects/core/workspace-account-settings.tsx
+- [[workspace-account-settings.tsx]] - code - web/app/routes/redirects/core/workspace-account-settings.tsx
 
 ## Live Query (requires Dataview plugin)
 

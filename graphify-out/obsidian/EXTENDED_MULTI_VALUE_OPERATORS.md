@@ -1,19 +1,20 @@
 ---
-source_file: "types/src/rich-filters/operators/extended.ts"
+source_file: "packages/types/src/rich-filters/operators/extended.ts"
 type: "code"
-community: "Operator Core"
+community: "Community 216"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Operator_Core
+  - community/Community_216
 ---
 
 # EXTENDED_MULTI_VALUE_OPERATORS
 
 ## Connections
-
 - [[extended.ts_5]] - `contains` [EXTRACTED]
+- [[extended.ts_15]] - `contains` [EXTRACTED]
 - [[index.ts_107]] - `imports` [EXTRACTED]
+- [[index.ts_568]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Operator_Core
+#graphify/code #graphify/EXTRACTED #community/Community_216

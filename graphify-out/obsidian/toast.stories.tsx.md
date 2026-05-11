@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/toast/toast.stories.tsx"
 type: "code"
-community: "Toast Static"
+community: "Community 103"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toast_Static
+  - community/Community_103
 ---
 
 # toast.stories.tsx
 
 ## Connections
-
 - [[AllTypes]] - `contains` [EXTRACTED]
 - [[DesignTokens]] - `contains` [EXTRACTED]
 - [[Error_1]] - `contains` [EXTRACTED]
@@ -44,4 +43,4 @@ tags:
 - [[toast.tsx]] - `imports_from` [EXTRACTED]
 - [[updateToast()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toast_Static
+#graphify/code #graphify/EXTRACTED #community/Community_103

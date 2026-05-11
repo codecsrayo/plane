@@ -1,18 +1,18 @@
 ---
-source_file: "utils/src/permission/role.ts"
+source_file: "packages/utils/src/permission/role.ts"
 type: "code"
-community: "Role Highest"
+community: "Community 613"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Role_Highest
+  - community/Community_613
 ---
 
 # getUserRole()
 
 ## Connections
-
 - [[role.ts]] - `contains` [EXTRACTED]
+- [[role.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Role_Highest
+#graphify/code #graphify/EXTRACTED #community/Community_613

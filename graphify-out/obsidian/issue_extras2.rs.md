@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/issue_extras2.rs"
 type: "code"
-community: "Issue Bulk"
+community: "Rust Issues & Modules API"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Bulk
+  - community/Rust_Issues__Modules_API
 ---
 
 # issue_extras2.rs
 
 ## Connections
-
 - [[ArchivedAtResponse]] - `contains` [EXTRACTED]
 - [[BulkArchiveRequest]] - `contains` [EXTRACTED]
 - [[BulkDeleteIssuesRequest]] - `contains` [EXTRACTED]
@@ -46,4 +45,4 @@ tags:
 - [[unarchive_issue()]] - `contains` [EXTRACTED]
 - [[validate_dates()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Bulk
+#graphify/code #graphify/EXTRACTED #community/Rust_Issues__Modules_API

@@ -1,17 +1,28 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.26
+members: 13
 ---
 
 # Community 404
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.26 - loosely connected
+**Members:** 13 nodes
 
 ## Members
-
-- [[index.ts_146]] - code - components/inbox/index.ts
+- [[IMarking]] - code - packages/editor/src/core/types/config.ts
+- [[TDisplayConfig]] - code - packages/editor/src/core/types/config.ts
+- [[TEditorFontSize]] - code - packages/editor/src/core/types/config.ts
+- [[TEditorFontStyle]] - code - packages/editor/src/core/types/config.ts
+- [[TEditorLineSpacing]] - code - packages/editor/src/core/types/config.ts
+- [[TExtendedFileHandler]] - code - packages/editor/src/ce/types/config.ts
+- [[TFileHandler]] - code - packages/editor/src/core/types/config.ts
+- [[TRealtimeConfig]] - code - packages/editor/src/core/types/config.ts
+- [[TUserDetails]] - code - packages/editor/src/core/types/config.ts
+- [[config.ts]] - code - editor/src/ce/types/config.ts
+- [[config.ts_2]] - code - editor/src/core/types/config.ts
+- [[config.ts_6]] - code - packages/editor/src/ce/types/config.ts
+- [[config.ts_8]] - code - packages/editor/src/core/types/config.ts
 
 ## Live Query (requires Dataview plugin)
 

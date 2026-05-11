@@ -1,20 +1,19 @@
 ---
 source_file: "web/core/components/issues/issue-detail-widgets/links/content.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Issue Activity Types"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Issue_Activity_Types
 ---
 
 # IssueLinksCollapsibleContent()
 
 ## Connections
-
 - [[content.tsx_3]] - `contains` [EXTRACTED]
 - [[root.tsx_83]] - `imports` [EXTRACTED]
 - [[useLinkOperations()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Types

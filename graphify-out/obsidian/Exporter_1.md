@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/exporters/exporter.py"
 type: "code"
-community: "Exporter Formatter"
+community: "Community 69"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Exporter_Formatter
+  - community/Community_69
 ---
 
 # Exporter
 
 ## Connections
-
 - [[.__init__()_19]] - `method` [EXTRACTED]
 - [[.export()]] - `method` [EXTRACTED]
 - [[CSVFormatter_1]] - `uses` [INFERRED]
@@ -21,4 +20,4 @@ tags:
 - [[XLSXFormatter_1]] - `uses` [INFERRED]
 - [[exporter.py_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Exporter_Formatter
+#graphify/code #graphify/EXTRACTED #community/Community_69

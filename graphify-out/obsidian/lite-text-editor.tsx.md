@@ -1,20 +1,19 @@
 ---
 source_file: "space/components/editor/lite-text-editor.tsx"
 type: "code"
-community: "Text Flagging"
+community: "Community 149"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Text_Flagging
+  - community/Community_149
 ---
 
 # lite-text-editor.tsx
 
 ## Connections
-
 - [[IssueCommentToolbar()_1]] - `imports` [EXTRACTED]
-- [[LiteTextEditor_1]] - `contains` [EXTRACTED]
+- [[LiteTextEditor]] - `contains` [EXTRACTED]
 - [[LiteTextEditorWrapperProps_1]] - `contains` [EXTRACTED]
 - [[add-comment.tsx]] - `imports_from` [EXTRACTED]
 - [[comment-detail-card.tsx]] - `imports_from` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[useEditorFlagging()]] - `imports` [EXTRACTED]
 - [[useParseEditorContent()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Text_Flagging
+#graphify/code #graphify/EXTRACTED #community/Community_149

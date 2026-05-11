@@ -1,17 +1,22 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.48
+members: 7
 ---
 
 # Community 545
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.48 - moderately connected
+**Members:** 7 nodes
 
 ## Members
-
-- [[index.ts_168]] - code - propel/src/charts/tree-map/index.ts
+- [[AUTH_FLAG_KEYS]] - code - packages/e2e-utils/src/helpers/feature-flags.ts
+- [[CONFIG_VARS]] - code - packages/e2e-utils/src/helpers/feature-flags.ts
+- [[ConfigVar]] - code - packages/e2e-utils/src/helpers/feature-flags.ts
+- [[ENCRYPTED_KEYS]] - code - packages/e2e-utils/src/helpers/feature-flags.ts
+- [[FLAG_GATED_ENDPOINTS]] - code - packages/e2e-utils/src/helpers/feature-flags.ts
+- [[feature-flags.ts]] - code - e2e-utils/src/helpers/feature-flags.ts
+- [[feature-flags.ts_1]] - code - packages/e2e-utils/src/helpers/feature-flags.ts
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/settings/profile/content/pages/preferences/language-and-timezone-list.tsx"
 type: "code"
-community: "Theme Custom"
+community: "Community 106"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Custom
+  - community/Community_106
 ---
 
 # language-and-timezone-list.tsx
 
 ## Connections
-
 - [[ProfileSettingsLanguageAndTimezonePreferencesList]] - `contains` [EXTRACTED]
 - [[SettingsControlItem()]] - `imports` [EXTRACTED]
 - [[StartOfWeekPreference]] - `imports` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[root.tsx_60]] - `imports_from` [EXTRACTED]
 - [[start-of-week-preference.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Custom
+#graphify/code #graphify/EXTRACTED #community/Community_106

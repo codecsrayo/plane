@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/serializers/cycle.py"
 type: "rationale"
-community: "Serializer Issue"
+community: "Community 110"
 location: "L188"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Serializer_Issue
+  - community/Community_110
 ---
 
-# Serializer for transferring work items between cycles. Handles work item mi
+# Serializer for transferring work items between cycles.      Handles work item mi
 
 ## Connections
-
 - [[TransferCycleIssueRequestSerializer]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Serializer_Issue
+#graphify/rationale #graphify/EXTRACTED #community/Community_110

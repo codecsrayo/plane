@@ -1,18 +1,17 @@
 ---
 source_file: "space/components/issues/filters/applied-filters/root.tsx"
 type: "code"
-community: "Issue Applied"
+community: "Community 112"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Applied
+  - community/Community_112
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[AppliedFiltersList]] - `imports` [EXTRACTED]
 - [[IssueAppliedFilters]] - `contains` [EXTRACTED]
 - [[TIssueAppliedFilters]] - `contains` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[use-issue-filter.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueFilter()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Applied
+#graphify/code #graphify/EXTRACTED #community/Community_112

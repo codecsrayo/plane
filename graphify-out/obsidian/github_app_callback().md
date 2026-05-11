@@ -1,21 +1,20 @@
 ---
 source_file: "api_rust/src/routes/integrations/github.rs"
 type: "code"
-community: "User Github"
+community: "Rust API Handlers"
 location: "L105"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User_Github
+  - community/Rust_API_Handlers
 ---
 
 # github_app_callback()
 
 ## Connections
-
 - [[github.rs]] - `contains` [EXTRACTED]
 - [[github_app_callback_inner()]] - `calls` [EXTRACTED]
 - [[github_callback_auth_alias()]] - `calls` [EXTRACTED]
 - [[postmessage_html()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/User_Github
+#graphify/code #graphify/EXTRACTED #community/Rust_API_Handlers

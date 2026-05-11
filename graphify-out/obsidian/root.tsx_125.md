@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/pages/version/root.tsx"
 type: "code"
-community: "Document Version"
+community: "Community 133"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Document_Version
+  - community/Community_133
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[PageVersionsMainContent]] - `imports` [EXTRACTED]
 - [[PageVersionsOverlay]] - `contains` [EXTRACTED]
 - [[Props_489]] - `contains` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[use-query-params.ts]] - `imports_from` [EXTRACTED]
 - [[useQueryParams()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Document_Version
+#graphify/code #graphify/EXTRACTED #community/Community_133

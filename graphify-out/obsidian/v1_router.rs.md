@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/v1_router.rs"
 type: "code"
-community: "Password Email"
+community: "Community 21"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Password_Email
+  - community/Community_21
 ---
 
 # v1_router.rs
 
 ## Connections
-
 - [[ProjectSummaryResponse]] - `contains` [EXTRACTED]
 - [[SummaryQuery]] - `contains` [EXTRACTED]
 - [[compute_project_summary()]] - `contains` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[get_project_summary()_1]] - `contains` [EXTRACTED]
 - [[v1_router()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Password_Email
+#graphify/code #graphify/EXTRACTED #community/Community_21

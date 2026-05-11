@@ -1,18 +1,17 @@
 ---
 source_file: "admin/store/root.store.ts"
 type: "code"
-community: "Instance User"
+community: "Community 156"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Instance_User
+  - community/Community_156
 ---
 
 # root.store.ts
 
 ## Connections
-
 - [[IInstanceStore]] - `imports` [EXTRACTED]
 - [[IThemeStore]] - `imports` [EXTRACTED]
 - [[IUserStore]] - `imports` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[user.store.ts_1]] - `imports_from` [EXTRACTED]
 - [[workspace.store.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Instance_User
+#graphify/code #graphify/EXTRACTED #community/Community_156

@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/users.ts"
+source_file: "packages/types/src/users.ts"
 type: "code"
-community: "User Instance"
+community: "Community 100"
 location: "L59"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User_Instance
+  - community/Community_100
 ---
 
 # IUserAccount
 
 ## Connections
-
 - [[users.ts]] - `contains` [EXTRACTED]
+- [[users.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User_Instance
+#graphify/code #graphify/EXTRACTED #community/Community_100

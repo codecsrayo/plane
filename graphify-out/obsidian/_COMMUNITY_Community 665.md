@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 4
 ---
 
 # Community 665
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_15]] - code - api_rust/src/entities/devices.rs
+- [[IIntakeState]] - code - packages/types/src/intake/state.ts
+- [[TIntakeStateGroups]] - code - packages/types/src/intake/state.ts
+- [[state.ts_7]] - code - packages/types/src/intake/state.ts
+- [[state.ts_2]] - code - types/src/intake/state.ts
 
 ## Live Query (requires Dataview plugin)
 

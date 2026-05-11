@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/input/input.stories.tsx"
 type: "code"
-community: "Subscription Small"
+community: "Community 168"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Subscription_Small
+  - community/Community_168
 ---
 
 # input.stories.tsx
 
 ## Connections
-
 - [[AllModes]] - `contains` [EXTRACTED]
 - [[AllSizes_8]] - `contains` [EXTRACTED]
 - [[AllStates_3]] - `contains` [EXTRACTED]
@@ -36,4 +35,4 @@ tags:
 - [[index.ts_192]] - `imports_from` [EXTRACTED]
 - [[meta_13]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Subscription_Small
+#graphify/code #graphify/EXTRACTED #community/Community_168

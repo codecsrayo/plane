@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/common/cover-image.tsx"
 type: "code"
-community: "Project Profile"
+community: "Community 105"
 location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Profile
+  - community/Community_105
 ---
 
 # CoverImage()
 
 ## Connections
-
 - [[card.tsx_2]] - `imports` [EXTRACTED]
 - [[cover-image.tsx]] - `contains` [EXTRACTED]
 - [[form.tsx_5]] - `imports` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[sidebar.tsx_3]] - `imports` [EXTRACTED]
 - [[user-menu-root.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Profile
+#graphify/code #graphify/EXTRACTED #community/Community_105

@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/projects.rs"
 type: "code"
-community: "Project Response"
+community: "Rust Workspace Helpers"
 location: "L2907"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Project_Response
+  - community/Rust_Workspace_Helpers
 ---
 
 # upsert_project_deploy_board()
 
 ## Connections
-
 - [[.from()_22]] - `calls` [EXTRACTED]
 - [[.json()]] - `calls` [INFERRED]
 - [[.set()]] - `calls` [INFERRED]
@@ -20,4 +19,4 @@ tags:
 - [[projects.rs_1]] - `contains` [EXTRACTED]
 - [[workspace_by_slug()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Project_Response
+#graphify/code #graphify/INFERRED #community/Rust_Workspace_Helpers

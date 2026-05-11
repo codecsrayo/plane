@@ -1,18 +1,18 @@
 ---
-source_file: "utils/src/work-item-filters/configs/filters/cycle.ts"
+source_file: "packages/utils/src/work-item-filters/configs/filters/cycle.ts"
 type: "code"
-community: "Cycle Date"
+community: "Community 39"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Date
+  - community/Community_39
 ---
 
 # TCreateCycleFilterParams
 
 ## Connections
-
 - [[cycle.ts_3]] - `contains` [EXTRACTED]
+- [[cycle.ts_7]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Date
+#graphify/code #graphify/EXTRACTED #community/Community_39

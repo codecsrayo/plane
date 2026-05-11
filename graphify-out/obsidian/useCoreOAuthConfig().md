@@ -1,18 +1,17 @@
 ---
 source_file: "space/hooks/oauth/core.tsx"
 type: "code"
-community: "Workspace Issue"
+community: "Community 58"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Issue
+  - community/Community_58
 ---
 
 # useCoreOAuthConfig()
 
 ## Connections
-
 - [[core.tsx_1]] - `contains` [EXTRACTED]
 - [[core.tsx_4]] - `contains` [EXTRACTED]
 - [[index.ts_270]] - `imports` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[sanitizeNextPath()]] - `calls` [INFERRED]
 - [[useTheme()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_58

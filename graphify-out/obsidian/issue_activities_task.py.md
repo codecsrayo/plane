@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/bgtasks/issue_activities_task.py"
 type: "code"
-community: "Issue Track"
+community: "Community 142"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Track
+  - community/Community_142
 ---
 
 # issue_activities_task.py
 
 ## Connections
-
 - [[create_attachment_activity()]] - `contains` [EXTRACTED]
 - [[create_comment_activity()]] - `contains` [EXTRACTED]
 - [[create_comment_reaction_activity()]] - `contains` [EXTRACTED]
@@ -55,4 +54,4 @@ tags:
 - [[update_issue_activity()]] - `contains` [EXTRACTED]
 - [[update_link_activity()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Track
+#graphify/code #graphify/EXTRACTED #community/Community_142

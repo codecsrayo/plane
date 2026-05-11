@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/instance.store.ts"
 type: "code"
-community: "Instance User"
+community: "Community 486"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Instance_User
+  - community/Community_486
 ---
 
 # instance.store.ts
 
 ## Connections
-
 - [[IInstanceStore]] - `contains` [EXTRACTED]
 - [[InstanceService_1]] - `imports` [EXTRACTED]
 - [[InstanceStore]] - `contains` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[toApiError()]] - `imports` [EXTRACTED]
 - [[use-instance.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Instance_User
+#graphify/code #graphify/EXTRACTED #community/Community_486

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/cycle/base.py"
 type: "code"
-community: "Cycle Endpoint"
+community: "Community 41"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Endpoint
+  - community/Community_41
 ---
 
 # base.py
 
 ## Connections
-
 - [[TODO Soft delete the cycle break the onetoone relationship with cycle issue]] - `rationale_for` [EXTRACTED]
 - [[CycleAnalyticsEndpoint]] - `contains` [EXTRACTED]
 - [[CycleDateCheckEndpoint]] - `contains` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[post()_14]] - `contains` [EXTRACTED]
 - [[retrieve()_9]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Endpoint
+#graphify/code #graphify/EXTRACTED #community/Community_41

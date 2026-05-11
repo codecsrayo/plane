@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/config.rs"
 type: "code"
-community: "Config Only"
+community: "Community 240"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Config_Only
+  - community/Community_240
 ---
 
 # config.rs
 
 ## Connections
-
 - [[Config]] - `contains` [EXTRACTED]
 - [[app_base_includes_path()]] - `contains` [EXTRACTED]
 - [[app_base_url_only_defaults_to_root_slash()]] - `contains` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[config_with()]] - `contains` [EXTRACTED]
 - [[required()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Config_Only
+#graphify/code #graphify/EXTRACTED #community/Community_240

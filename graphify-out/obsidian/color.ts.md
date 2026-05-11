@@ -1,18 +1,17 @@
 ---
 source_file: "utils/src/color.ts"
 type: "code"
-community: "Generate Darken"
+community: "Community 350"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Generate_Darken
+  - community/Community_350
 ---
 
 # color.ts
 
 ## Connections
-
 - [[THsl]] - `contains` [EXTRACTED]
 - [[TRgb]] - `contains` [EXTRACTED]
 - [[darkenColor()]] - `contains` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[toHex()]] - `contains` [EXTRACTED]
 - [[validateColor()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Generate_Darken
+#graphify/code #graphify/EXTRACTED #community/Community_350

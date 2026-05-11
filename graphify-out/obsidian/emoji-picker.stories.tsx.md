@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/emoji-icon-picker/emoji-picker.stories.tsx"
 type: "code"
-community: "Emoji Icon"
+community: "Community 365"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Emoji_Icon
+  - community/Community_365
 ---
 
 # emoji-picker.stories.tsx
 
 ## Connections
-
 - [[CloseOnSelectDisabled]] - `contains` [EXTRACTED]
 - [[CustomIconColor]] - `contains` [EXTRACTED]
 - [[CustomSearchPlaceholder]] - `contains` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[emoji-picker.tsx]] - `imports_from` [EXTRACTED]
 - [[helper.tsx_15]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Emoji_Icon
+#graphify/code #graphify/EXTRACTED #community/Community_365

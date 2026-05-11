@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/calendar/root.tsx"
 type: "code"
-community: "Dates Chevron"
+community: "Community 296"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dates_Chevron
+  - community/Community_296
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[Calendar()]] - `contains` [EXTRACTED]
 - [[CalendarProps]] - `contains` [EXTRACTED]
 - [[ChevronLeftIcon()]] - `imports` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[chevron-left.tsx]] - `imports_from` [EXTRACTED]
 - [[index.ts_191]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dates_Chevron
+#graphify/code #graphify/EXTRACTED #community/Community_296

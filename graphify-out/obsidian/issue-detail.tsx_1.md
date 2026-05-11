@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/peek-overview/issue-detail.tsx"
 type: "code"
-community: "Issue Inbox"
+community: "Activity & Inbox Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Inbox
+  - community/Activity__Inbox_Filters
 ---
 
 # issue-detail.tsx
 
 ## Connections
-
 - [[IssueTitleInput]] - `imports` [EXTRACTED]
 - [[IssueTypeSwitcher]] - `imports` [EXTRACTED]
 - [[PeekOverviewIssueDetails]] - `contains` [EXTRACTED]
@@ -36,4 +35,4 @@ tags:
 - [[view.tsx_2]] - `imports_from` [EXTRACTED]
 - [[workItemVersionService_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Inbox
+#graphify/code #graphify/EXTRACTED #community/Activity__Inbox_Filters

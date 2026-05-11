@@ -1,17 +1,16 @@
 ---
 source_file: ""
 type: "code"
-community: "Project Return"
+community: "Community 89"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Return
+  - community/Community_89
 ---
 
 # Enum
 
 ## Connections
-
 - [[InstanceEdition]] - `inherits` [EXTRACTED]
 - [[ProjectNetwork]] - `inherits` [EXTRACTED]
 - [[ROLE_1]] - `inherits` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[instance.py_3]] - `imports_from` [EXTRACTED]
 - [[project.py_6]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Return
+#graphify/code #graphify/EXTRACTED #community/Community_89

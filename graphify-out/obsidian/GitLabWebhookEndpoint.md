@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/external/sync.py"
 type: "code"
-community: "Handle Webhook"
+community: "Python API Base Classes"
 location: "L383"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Handle_Webhook
+  - community/Python_API_Base_Classes
 ---
 
 # GitLabWebhookEndpoint
 
 ## Connections
-
 - [[.handle_issue()_1]] - `method` [EXTRACTED]
 - [[.handle_merge_request()]] - `method` [EXTRACTED]
 - [[.handle_note()]] - `method` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[BaseAPIView_1]] - `inherits` [EXTRACTED]
 - [[sync.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Handle_Webhook
+#graphify/code #graphify/EXTRACTED #community/Python_API_Base_Classes

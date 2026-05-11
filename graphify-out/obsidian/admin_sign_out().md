@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/auth/god_mode.rs"
 type: "code"
-community: "Password Email"
+community: "Community 21"
 location: "L489"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Password_Email
+  - community/Community_21
 ---
 
 # admin_sign_out()
 
 ## Connections
-
 - [[.new()]] - `calls` [INFERRED]
 - [[.set()]] - `calls` [INFERRED]
 - [[decode_session()]] - `calls` [INFERRED]
@@ -20,4 +19,4 @@ tags:
 - [[is_valid_csrf()]] - `calls` [INFERRED]
 - [[now]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Password_Email
+#graphify/code #graphify/INFERRED #community/Community_21

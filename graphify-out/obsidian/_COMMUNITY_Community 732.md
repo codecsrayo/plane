@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 732
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[ActiveModel_82]] - code - api_rust/src/entities/gitlab_comment_syncs.rs
+- [[resolveGeneralTheme()]] - code - packages/utils/src/theme-legacy.ts
+- [[theme-legacy.ts_1]] - code - packages/utils/src/theme-legacy.ts
+- [[theme-legacy.ts]] - code - utils/src/theme-legacy.ts
 
 ## Live Query (requires Dataview plugin)
 

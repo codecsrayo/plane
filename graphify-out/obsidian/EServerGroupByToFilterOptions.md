@@ -1,18 +1,18 @@
 ---
-source_file: "constants/src/issue/filter.ts"
+source_file: "packages/constants/src/issue/filter.ts"
 type: "code"
-community: "Issue Filters"
+community: "Community 95"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters
+  - community/Community_95
 ---
 
 # EServerGroupByToFilterOptions
 
 ## Connections
-
 - [[filter.ts_1]] - `contains` [EXTRACTED]
+- [[filter.ts_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters
+#graphify/code #graphify/EXTRACTED #community/Community_95

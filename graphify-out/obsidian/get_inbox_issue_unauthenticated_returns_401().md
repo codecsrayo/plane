@@ -1,19 +1,18 @@
 ---
 source_file: "api_rust/tests/integrations_external.rs"
 type: "code"
-community: "Returns Unauthenticated"
+community: "Community 273"
 location: "L352"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Unauthenticated
+  - community/Community_273
 ---
 
 # get_inbox_issue_unauthenticated_returns_401()
 
 ## Connections
-
 - [[.spawn()]] - `calls` [INFERRED]
 - [[integrations_external.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Unauthenticated
+#graphify/code #graphify/EXTRACTED #community/Community_273

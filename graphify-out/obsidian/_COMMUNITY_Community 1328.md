@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_19]] - code - ui/src/oauth/index.ts
+- [[lib.ts]] - code - editor/src/lib.ts
 
 ## Live Query (requires Dataview plugin)
 

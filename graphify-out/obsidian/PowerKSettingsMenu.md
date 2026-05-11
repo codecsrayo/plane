@@ -1,20 +1,19 @@
 ---
 source_file: "web/core/components/power-k/menus/settings.tsx"
 type: "code"
-community: "Menu Power"
+community: "Community 85"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu_Power
+  - community/Community_85
 ---
 
 # PowerKSettingsMenu
 
 ## Connections
-
 - [[project-settings-menu.tsx]] - `imports` [EXTRACTED]
 - [[settings.tsx_1]] - `contains` [EXTRACTED]
 - [[workspace-settings-menu.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Menu_Power
+#graphify/code #graphify/EXTRACTED #community/Community_85

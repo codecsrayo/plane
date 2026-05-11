@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_342]] - code - web/core/components/settings/profile/content/pages/general/index.ts
+- [[index.tsx_15]] - code - web/core/components/readonly/index.tsx
 
 ## Live Query (requires Dataview plugin)
 

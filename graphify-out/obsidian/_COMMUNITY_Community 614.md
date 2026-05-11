@@ -1,18 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.60
+members: 5
 ---
 
 # Community 614
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.60 - moderately connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[ImgIcon()]] - code - web/core/components/icons/attachment/img-file-icon.tsx
-- [[img-file-icon.tsx]] - code - web/core/components/icons/attachment/img-file-icon.tsx
+- [[convertWorkItemDataToSearchResponse()]] - code - packages/utils/src/work-item/modal.ts
+- [[getChangedIssuefields()]] - code - packages/utils/src/work-item/modal.ts
+- [[getUpdateFormDataForReset()]] - code - packages/utils/src/work-item/modal.ts
+- [[modal.ts_3]] - code - packages/utils/src/work-item/modal.ts
+- [[modal.ts_1]] - code - utils/src/work-item/modal.ts
 
 ## Live Query (requires Dataview plugin)
 

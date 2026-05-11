@@ -1,18 +1,17 @@
 ---
 source_file: "ui/src/header/header.tsx"
 type: "code"
-community: "Variant Context"
+community: "Community 177"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Variant_Context
+  - community/Community_177
 ---
 
 # header.tsx
 
 ## Connections
-
 - [[EHeaderVariant]] - `imports` [EXTRACTED]
 - [[Header()]] - `contains` [EXTRACTED]
 - [[HeaderContext]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[index.ts_16]] - `imports_from` [EXTRACTED]
 - [[index.ts_14]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Variant_Context
+#graphify/code #graphify/EXTRACTED #community/Community_177

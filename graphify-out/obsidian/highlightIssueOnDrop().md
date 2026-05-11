@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/utils.tsx"
 type: "code"
-community: "Gantt Chart"
+community: "Bulk Operations & Spreadsheet"
 location: "L338"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Chart
+  - community/Bulk_Operations__Spreadsheet
 ---
 
 # highlightIssueOnDrop()
 
 ## Connections
-
 - [[day-tile.tsx]] - `imports` [EXTRACTED]
 - [[gantt-dnd-HOC.tsx]] - `imports` [EXTRACTED]
 - [[kanban-group.tsx]] - `imports` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[projects-list-item.tsx]] - `imports` [EXTRACTED]
 - [[utils.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Chart
+#graphify/code #graphify/EXTRACTED #community/Bulk_Operations__Spreadsheet

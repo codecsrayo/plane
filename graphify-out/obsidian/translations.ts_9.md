@@ -1,14 +1,14 @@
 ---
 source_file: "i18n/src/locales/zh-CN/translations.ts"
 type: "code"
-community: "Translations"
+community: "Community 1412"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Translations
+  - community/Community_1412
 ---
 
 # translations.ts
 
-#graphify/code #graphify/EXTRACTED #community/Translations
+#graphify/code #graphify/EXTRACTED #community/Community_1412

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/pages/editor/header/root.tsx"
 type: "code"
-community: "Control Move"
+community: "Community 50"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Control_Move
+  - community/Community_50
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[PageEditorHeaderLogoPicker]] - `imports` [EXTRACTED]
 - [[PageEditorHeaderRoot]] - `contains` [EXTRACTED]
 - [[Props_467]] - `contains` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[base-page.ts]] - `imports_from` [EXTRACTED]
 - [[logo-picker.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Control_Move
+#graphify/code #graphify/EXTRACTED #community/Community_50

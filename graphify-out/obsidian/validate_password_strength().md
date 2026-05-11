@@ -1,21 +1,20 @@
 ---
 source_file: "api_rust/src/auth/password_management.rs"
 type: "code"
-community: "Password Email"
+community: "Community 21"
 location: "L163"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Password_Email
+  - community/Community_21
 ---
 
 # validate_password_strength()
 
 ## Connections
-
 - [[.password_too_weak()]] - `calls` [INFERRED]
 - [[change_password()]] - `calls` [EXTRACTED]
 - [[password_management.rs]] - `contains` [EXTRACTED]
 - [[set_password()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Password_Email
+#graphify/code #graphify/EXTRACTED #community/Community_21

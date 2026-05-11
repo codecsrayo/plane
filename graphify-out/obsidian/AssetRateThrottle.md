@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/throttles/asset.py"
 type: "code"
-community: "Asset Endpoint"
+community: "Community 88"
 location: "L8"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Asset_Endpoint
+  - community/Community_88
 ---
 
 # AssetRateThrottle
 
 ## Connections
-
 - [[.get_cache_key()]] - `method` [EXTRACTED]
 - [[AssetCheckEndpoint]] - `uses` [INFERRED]
 - [[AssetRestoreEndpoint]] - `uses` [INFERRED]
@@ -27,4 +26,4 @@ tags:
 - [[WorkspaceFileAssetEndpoint]] - `uses` [INFERRED]
 - [[asset.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Asset_Endpoint
+#graphify/code #graphify/INFERRED #community/Community_88

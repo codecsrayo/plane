@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/badge/badge.stories.tsx"
 type: "code"
-community: "Brand Danger"
+community: "Community 140"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Brand_Danger
+  - community/Community_140
 ---
 
 # badge.stories.tsx
 
 ## Connections
-
 - [[AllSizes_4]] - `contains` [EXTRACTED]
 - [[AllVariants_2]] - `contains` [EXTRACTED]
 - [[Badge]] - `imports` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[WithPrependIcon]] - `contains` [EXTRACTED]
 - [[badge.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Brand_Danger
+#graphify/code #graphify/EXTRACTED #community/Community_140

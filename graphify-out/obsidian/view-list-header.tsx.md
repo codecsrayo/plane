@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/views/view-list-header.tsx"
 type: "code"
-community: "Member Members"
+community: "Issue Display Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Members
+  - community/Issue_Display_Filters
 ---
 
 # view-list-header.tsx
 
 ## Connections
-
 - [[ViewFiltersSelection]] - `imports` [EXTRACTED]
 - [[ViewListHeader]] - `contains` [EXTRACTED]
 - [[ViewOrderByDropdown()]] - `imports` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[useMember()]] - `imports` [EXTRACTED]
 - [[useProjectView()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Members
+#graphify/code #graphify/EXTRACTED #community/Issue_Display_Filters

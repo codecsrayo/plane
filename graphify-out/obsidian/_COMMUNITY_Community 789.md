@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 789
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_75]] - code - web/core/components/settings/profile/content/pages/preferences/index.ts
+- [[GanttAdditionalLayers()]] - code - web/ce/components/gantt-chart/layers/additional-layers.tsx
+- [[Props_60]] - code - web/ce/components/gantt-chart/layers/additional-layers.tsx
+- [[additional-layers.tsx]] - code - web/ce/components/gantt-chart/layers/additional-layers.tsx
 
 ## Live Query (requires Dataview plugin)
 

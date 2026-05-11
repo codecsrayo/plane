@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/issues/base.ts"
+source_file: "packages/types/src/issues/base.ts"
 type: "code"
-community: "Grouped Issues"
+community: "Community 467"
 location: "L34"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Grouped_Issues
+  - community/Community_467
 ---
 
 # TIssuePaginationData
 
 ## Connections
-
 - [[base.ts]] - `contains` [EXTRACTED]
+- [[base.ts_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Grouped_Issues
+#graphify/code #graphify/EXTRACTED #community/Community_467

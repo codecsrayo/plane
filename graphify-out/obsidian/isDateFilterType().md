@@ -1,18 +1,18 @@
 ---
-source_file: "utils/src/rich-filters/types/core.ts"
+source_file: "packages/utils/src/rich-filters/types/core.ts"
 type: "code"
-community: "Group Condition"
+community: "Community 148"
 location: "L69"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group_Condition
+  - community/Community_148
 ---
 
 # isDateFilterType()
 
 ## Connections
-
 - [[core.ts_14]] - `contains` [EXTRACTED]
+- [[core.ts_36]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group_Condition
+#graphify/code #graphify/EXTRACTED #community/Community_148

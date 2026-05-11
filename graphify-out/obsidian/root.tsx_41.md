@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/home/root.tsx"
 type: "code"
-community: "User Greetings"
+community: "Community 389"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User_Greetings
+  - community/Community_389
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[DashboardWidgets]] - `imports` [EXTRACTED]
 - [[TourRoot]] - `imports` [EXTRACTED]
 - [[UserGreetingsView()]] - `imports` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[useHome()]] - `imports` [EXTRACTED]
 - [[user-greetings.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User_Greetings
+#graphify/code #graphify/EXTRACTED #community/Community_389

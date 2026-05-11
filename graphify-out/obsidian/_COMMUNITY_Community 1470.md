@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_96]] - code - types/src/layout/index.ts
+- [[index.ts_126]] - code - utils/src/rich-filters/factories/index.ts
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 787
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_69]] - code - web/core/components/global/product-updates/index.ts
+- [[LeftDependencyDraggable()]] - code - web/ce/components/gantt-chart/dependency/blockDraggables/left-draggable.tsx
+- [[LeftDependencyDraggableProps]] - code - web/ce/components/gantt-chart/dependency/blockDraggables/left-draggable.tsx
+- [[left-draggable.tsx]] - code - web/ce/components/gantt-chart/dependency/blockDraggables/left-draggable.tsx
 
 ## Live Query (requires Dataview plugin)
 

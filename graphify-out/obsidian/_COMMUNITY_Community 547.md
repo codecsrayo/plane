@@ -1,17 +1,22 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.48
+members: 7
 ---
 
 # Community 547
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.48 - moderately connected
+**Members:** 7 nodes
 
 ## Members
-
-- [[index.ts_170]] - code - propel/src/charts/area-chart/index.ts
+- [[ICalendarDate]] - code - packages/types/src/calendar.ts
+- [[ICalendarMonth]] - code - packages/types/src/calendar.ts
+- [[ICalendarPayload]] - code - packages/types/src/calendar.ts
+- [[ICalendarRange]] - code - packages/types/src/calendar.ts
+- [[ICalendarWeek]] - code - packages/types/src/calendar.ts
+- [[calendar.ts_3]] - code - packages/types/src/calendar.ts
+- [[calendar.ts]] - code - types/src/calendar.ts
 
 ## Live Query (requires Dataview plugin)
 

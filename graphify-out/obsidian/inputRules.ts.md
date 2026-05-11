@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/typography/inputRules.ts"
 type: "code"
-community: "Typography Superscript"
+community: "Community 227"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Typography_Superscript
+  - community/Community_227
 ---
 
 # inputRules.ts
 
 ## Connections
-
 - [[TypographyOptions]] - `contains` [EXTRACTED]
 - [[copyright()]] - `contains` [EXTRACTED]
 - [[ellipsis()]] - `contains` [EXTRACTED]
@@ -35,4 +34,4 @@ tags:
 - [[threeQuarters()]] - `contains` [EXTRACTED]
 - [[trademark()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Typography_Superscript
+#graphify/code #graphify/EXTRACTED #community/Community_227

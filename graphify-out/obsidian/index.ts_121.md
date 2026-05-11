@@ -1,18 +1,17 @@
 ---
 source_file: "utils/src/rich-filters/index.ts"
 type: "code"
-community: "Cycle Date"
+community: "Community 39"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Date
+  - community/Community_39
 ---
 
 # index.ts
 
 ## Connections
-
 - [[cycle.ts_3]] - `imports_from` [EXTRACTED]
 - [[date.ts]] - `imports_from` [EXTRACTED]
 - [[label.ts_1]] - `imports_from` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[state.ts_4]] - `imports_from` [EXTRACTED]
 - [[user.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Date
+#graphify/code #graphify/EXTRACTED #community/Community_39

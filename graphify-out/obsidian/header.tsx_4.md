@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(projects)/profile/[userId]/header.tsx"
 type: "code"
-community: "Project Profile"
+community: "Community 84"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Profile
+  - community/Community_84
 ---
 
 # header.tsx
 
 ## Connections
-
 - [[BreadcrumbLink()]] - `imports` [EXTRACTED]
 - [[ProfileIssuesFilter_1]] - `imports` [EXTRACTED]
 - [[TUserProfileHeader]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[use-app-theme.ts]] - `imports_from` [EXTRACTED]
 - [[useAppTheme()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Profile
+#graphify/code #graphify/EXTRACTED #community/Community_84

@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 805
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_120]] - code - web/core/components/workspace-notifications/sidebar/index.ts
+- [[EstimateListItemButtons]] - code - web/ce/components/estimates/estimate-list-item-buttons.tsx
+- [[TEstimateListItem]] - code - web/ce/components/estimates/estimate-list-item-buttons.tsx
+- [[estimate-list-item-buttons.tsx]] - code - web/ce/components/estimates/estimate-list-item-buttons.tsx
 
 ## Live Query (requires Dataview plugin)
 

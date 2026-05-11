@@ -1,18 +1,17 @@
 ---
 source_file: "admin/helpers/config.ts"
 type: "code"
-community: "Config Authentication"
+community: "Community 203"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Config_Authentication
+  - community/Community_203
 ---
 
 # toBool()
 
 ## Connections
-
 - [[authentication.ts]] - `imports` [EXTRACTED]
 - [[canDisableAuthMethod()]] - `calls` [EXTRACTED]
 - [[config.ts_5]] - `contains` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[page.tsx_73]] - `imports` [EXTRACTED]
 - [[page.tsx_75]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Config_Authentication
+#graphify/code #graphify/EXTRACTED #community/Community_203

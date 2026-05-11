@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/settings/redis.py"
 type: "code"
-community: "Test Magic"
+community: "Community 131"
 location: "L10"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Test_Magic
+  - community/Community_131
 ---
 
 # redis_instance()
 
 ## Connections
-
 - [[.initiate()]] - `calls` [INFERRED]
 - [[.set_user_data()_2]] - `calls` [INFERRED]
 - [[acquire_lock()]] - `calls` [INFERRED]
@@ -28,4 +27,4 @@ tags:
 - [[test_magic_sign_up_with_next_path()]] - `calls` [INFERRED]
 - [[test_max_generate_attempt()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Test_Magic
+#graphify/code #graphify/INFERRED #community/Community_131

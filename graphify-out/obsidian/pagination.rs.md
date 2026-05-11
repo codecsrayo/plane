@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/utils/pagination.rs"
 type: "code"
-community: "Project Response"
+community: "Community 214"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Response
+  - community/Community_214
 ---
 
 # pagination.rs
 
 ## Connections
-
 - [[Cursor_1]] - `contains` [EXTRACTED]
 - [[build_response()]] - `contains` [EXTRACTED]
 - [[default_when_empty()]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[response_shape()]] - `contains` [EXTRACTED]
 - [[response_shape_last_page()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Response
+#graphify/code #graphify/EXTRACTED #community/Community_214

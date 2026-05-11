@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/auth/permissions.rs"
 type: "code"
-community: "Request Intake"
+community: "Rust Issues & Modules API"
 location: "L29"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Request_Intake
+  - community/Rust_Issues__Modules_API
 ---
 
 # require_role()
 
 ## Connections
-
 - [[add_comment_reaction()]] - `calls` [INFERRED]
 - [[add_favorite_view()]] - `calls` [INFERRED]
 - [[add_issue_reaction()]] - `calls` [INFERRED]
@@ -141,4 +140,4 @@ tags:
 - [[update_page()]] - `calls` [INFERRED]
 - [[update_page_description()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Request_Intake
+#graphify/code #graphify/INFERRED #community/Rust_Issues__Modules_API

@@ -1,19 +1,18 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/empty-states/global-view.tsx"
 type: "code"
-community: "Project Profile"
+community: "Community 22"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Profile
+  - community/Community_22
 ---
 
 # GlobalViewEmptyState
 
 ## Connections
-
 - [[global-view.tsx]] - `contains` [EXTRACTED]
 - [[index.tsx_13]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Profile
+#graphify/code #graphify/EXTRACTED #community/Community_22

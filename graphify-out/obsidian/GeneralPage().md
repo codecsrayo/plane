@@ -1,18 +1,17 @@
 ---
 source_file: "admin/app/(all)/(dashboard)/general/page.tsx"
 type: "code"
-community: "Config Image"
+community: "Community 191"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Config_Image
+  - community/Community_191
 ---
 
 # GeneralPage()
 
 ## Connections
-
 - [[page.tsx_70]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Config_Image
+#graphify/code #graphify/EXTRACTED #community/Community_191

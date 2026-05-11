@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/cycle/cycle.ts"
+source_file: "packages/types/src/cycle/cycle.ts"
 type: "code"
-community: "Cycle Distribution"
+community: "Community 291"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Distribution
+  - community/Community_291
 ---
 
 # TCycleAssigneesDistribution
 
 ## Connections
-
 - [[cycle.ts_1]] - `contains` [EXTRACTED]
+- [[cycle.ts_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Distribution
+#graphify/code #graphify/EXTRACTED #community/Community_291

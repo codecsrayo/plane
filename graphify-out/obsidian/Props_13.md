@@ -1,18 +1,18 @@
 ---
-source_file: "ui/src/modals/alert-modal.tsx"
+source_file: "packages/ui/src/modals/alert-modal.tsx"
 type: "code"
-community: "Variant Alert"
+community: "Community 364"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Variant_Alert
+  - community/Community_364
 ---
 
 # Props
 
 ## Connections
-
 - [[alert-modal.tsx]] - `contains` [EXTRACTED]
+- [[alert-modal.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Variant_Alert
+#graphify/code #graphify/EXTRACTED #community/Community_364

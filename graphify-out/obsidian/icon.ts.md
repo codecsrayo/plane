@@ -1,18 +1,17 @@
 ---
 source_file: "constants/src/icon.ts"
 type: "code"
-community: "Icon Size"
+community: "Community 716"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Icon_Size
+  - community/Community_716
 ---
 
 # icon.ts
 
 ## Connections
-
 - [[EIconSize]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Icon_Size
+#graphify/code #graphify/EXTRACTED #community/Community_716

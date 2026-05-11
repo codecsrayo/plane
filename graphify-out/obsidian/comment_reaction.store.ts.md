@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/issue/issue-details/comment_reaction.store.ts"
 type: "code"
-community: "Issue Reaction"
+community: "Issue Store & Filters Logic"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Reaction
+  - community/Issue_Store__Filters_Logic
 ---
 
 # comment_reaction.store.ts
 
 ## Connections
-
 - [[IIssueCommentReactionStore]] - `contains` [EXTRACTED]
 - [[IIssueCommentReactionStoreActions]] - `contains` [EXTRACTED]
 - [[IIssueDetail]] - `imports` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[root.store.ts_4]] - `imports_from` [EXTRACTED]
 - [[toApiError()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Reaction
+#graphify/code #graphify/EXTRACTED #community/Issue_Store__Filters_Logic

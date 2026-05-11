@@ -1,19 +1,20 @@
 ---
-source_file: "editor/src/core/extensions/callout/types.ts"
+source_file: "packages/editor/src/core/extensions/callout/types.ts"
 type: "code"
-community: "Callout Custom"
+community: "Community 82"
 location: "L39"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Callout_Custom
+  - community/Community_82
 ---
 
 # CustomCalloutExtensionStorage
 
 ## Connections
-
 - [[extension.tsx_2]] - `imports` [EXTRACTED]
+- [[extension.tsx_8]] - `imports` [EXTRACTED]
 - [[types.ts_3]] - `contains` [EXTRACTED]
+- [[types.ts_24]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Callout_Custom
+#graphify/code #graphify/EXTRACTED #community/Community_82

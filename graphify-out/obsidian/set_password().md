@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/auth/password_management.rs"
 type: "code"
-community: "Password Email"
+community: "Community 21"
 location: "L108"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Password_Email
+  - community/Community_21
 ---
 
 # set_password()
 
 ## Connections
-
 - [[.invalid_password()]] - `calls` [INFERRED]
 - [[.json()]] - `calls` [INFERRED]
 - [[.password_already_set()]] - `calls` [INFERRED]
@@ -22,4 +21,4 @@ tags:
 - [[validate_csrf_header()]] - `calls` [EXTRACTED]
 - [[validate_password_strength()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Password_Email
+#graphify/code #graphify/INFERRED #community/Community_21

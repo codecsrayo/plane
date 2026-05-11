@@ -1,18 +1,18 @@
 ---
-source_file: "constants/src/dashboard.ts"
+source_file: "packages/constants/src/dashboard.ts"
 type: "code"
-community: "Duration Options"
+community: "Community 511"
 location: "L82"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Duration_Options
+  - community/Community_511
 ---
 
 # UNFILTERED_ISSUES_TABS_LIST
 
 ## Connections
-
 - [[dashboard.ts]] - `contains` [EXTRACTED]
+- [[dashboard.ts_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Duration_Options
+#graphify/code #graphify/EXTRACTED #community/Community_511

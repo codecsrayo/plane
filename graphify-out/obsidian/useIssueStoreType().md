@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/use-issue-layout-store.ts"
 type: "code"
-community: "Issue Project"
+community: "Filter UI & Breadcrumbs"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Project
+  - community/Filter_UI__Breadcrumbs
 ---
 
 # useIssueStoreType()
 
 ## Connections
-
 - [[all-properties.tsx]] - `imports` [EXTRACTED]
 - [[base-calendar-root.tsx]] - `imports` [EXTRACTED]
 - [[base-gantt-root.tsx]] - `imports` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[use-issue-layout-store.ts]] - `contains` [EXTRACTED]
 - [[useIssuesStore()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Project
+#graphify/code #graphify/EXTRACTED #community/Filter_UI__Breadcrumbs

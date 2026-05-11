@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/tests/unit/utils/test_url.py"
 type: "code"
-community: "Test Contains"
+community: "Community 170"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Test_Contains
+  - community/Community_170
 ---
 
 # TestContainsURL
 
 ## Connections
-
 - [[.test_contains_url_case_insensitive()]] - `method` [EXTRACTED]
 - [[.test_contains_url_edge_cases()]] - `method` [EXTRACTED]
 - [[.test_contains_url_edge_cases_with_length_limits()]] - `method` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[Test the contains_url function]] - `rationale_for` [EXTRACTED]
 - [[test_url.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Test_Contains
+#graphify/code #graphify/EXTRACTED #community/Community_170

@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/invitations/page.tsx"
 type: "code"
-community: "Project Settings"
+community: "Community 46"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Community_46
 ---
 
 # page.tsx
 
 ## Connections
-
 - [[AuthenticationWrapper]] - `imports` [EXTRACTED]
 - [[EmptyState()_2]] - `imports` [EXTRACTED]
 - [[UserInvitationsPage()]] - `contains` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[workspace.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[workspaceService_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Community_46

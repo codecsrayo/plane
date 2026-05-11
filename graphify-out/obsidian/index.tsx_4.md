@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/error/index.tsx"
 type: "code"
-community: "Error Provider"
+community: "Community 43"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Error_Provider
+  - community/Community_43
 ---
 
 # index.tsx
 
 ## Connections
-
 - [[CustomErrorComponent()]] - `contains` [EXTRACTED]
 - [[DevErrorComponent()]] - `imports` [EXTRACTED]
 - [[ProdErrorComponent()]] - `imports` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[use-app-router.tsx]] - `imports_from` [EXTRACTED]
 - [[useAppRouter()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Error_Provider
+#graphify/code #graphify/EXTRACTED #community/Community_43

@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/layout/gantt.ts"
+source_file: "packages/types/src/layout/gantt.ts"
 type: "code"
-community: "Gantt Chart"
+community: "Community 466"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Chart
+  - community/Community_466
 ---
 
 # IGanttBlock
 
 ## Connections
-
 - [[gantt.ts]] - `contains` [EXTRACTED]
+- [[gantt.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Chart
+#graphify/code #graphify/EXTRACTED #community/Community_466

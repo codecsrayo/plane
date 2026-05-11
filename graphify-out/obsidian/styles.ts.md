@@ -1,18 +1,17 @@
 ---
 source_file: "live/src/lib/pdf/styles.ts"
 type: "code"
-community: "Colors Render"
+community: "Community 55"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Colors_Render
+  - community/Community_55
 ---
 
 # styles.ts
 
 ## Connections
-
 - [[BACKGROUND_COLORS]] - `imports` [EXTRACTED]
 - [[BORDER_COLORS]] - `imports` [EXTRACTED]
 - [[BRAND_COLORS]] - `imports` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[pdfStyles]] - `contains` [EXTRACTED]
 - [[plane-pdf-exporter.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Colors_Render
+#graphify/code #graphify/EXTRACTED #community/Community_55

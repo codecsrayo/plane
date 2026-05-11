@@ -1,18 +1,17 @@
 ---
 source_file: "codemods/function-declaration.ts"
 type: "code"
-community: "Extract Function"
+community: "Community 278"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Extract_Function
+  - community/Community_278
 ---
 
 # function-declaration.ts
 
 ## Connections
-
 - [[COMPONENT_TYPE_NAMES]] - `contains` [EXTRACTED]
 - [[addComments()]] - `contains` [EXTRACTED]
 - [[containsJsx()]] - `contains` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[toFunctionExpression()]] - `contains` [EXTRACTED]
 - [[transform()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Extract_Function
+#graphify/code #graphify/EXTRACTED #community/Community_278

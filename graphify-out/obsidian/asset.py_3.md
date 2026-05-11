@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/views/asset.py"
 type: "code"
-community: "Endpoint Issue"
+community: "Community 32"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_Issue
+  - community/Community_32
 ---
 
 # asset.py
 
 ## Connections
-
 - [[GenericAssetEndpoint]] - `contains` [EXTRACTED]
 - [[UserAssetEndpoint]] - `contains` [EXTRACTED]
 - [[UserServerAssetEndpoint]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[patch()_12]] - `contains` [EXTRACTED]
 - [[post()_16]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_32

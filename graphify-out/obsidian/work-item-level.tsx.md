@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/components/command-palette/modals/work-item-level.tsx"
 type: "code"
-community: "Issue Work"
+community: "Project Filters & Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Work
+  - community/Project_Filters__Archives
 ---
 
 # work-item-level.tsx
 
 ## Connections
-
 - [[BulkDeleteIssuesModal]] - `imports` [EXTRACTED]
 - [[CreateUpdateIssueModal]] - `imports` [EXTRACTED]
 - [[DeleteIssueModal]] - `imports` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 - [[useIssuesActions()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Work
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

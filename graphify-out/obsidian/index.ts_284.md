@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/issue/index.ts"
 type: "code"
-community: "Issue Reaction"
+community: "Issue Store & Filters Logic"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Reaction
+  - community/Issue_Store__Filters_Logic
 ---
 
 # index.ts
 
 ## Connections
-
 - [[activity.store.ts]] - `imports_from` [EXTRACTED]
 - [[attachment.store.ts]] - `imports_from` [EXTRACTED]
 - [[base-issues.store.ts]] - `imports_from` [EXTRACTED]
@@ -33,4 +32,4 @@ tags:
 - [[relation.store.ts]] - `imports_from` [EXTRACTED]
 - [[sub_issues.store.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Reaction
+#graphify/code #graphify/EXTRACTED #community/Issue_Store__Filters_Logic

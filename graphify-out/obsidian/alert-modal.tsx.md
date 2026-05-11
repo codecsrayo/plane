@@ -1,18 +1,17 @@
 ---
 source_file: "ui/src/modals/alert-modal.tsx"
 type: "code"
-community: "Variant Alert"
+community: "Community 364"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Variant_Alert
+  - community/Community_364
 ---
 
 # alert-modal.tsx
 
 ## Connections
-
 - [[AlertModalCore()]] - `contains` [EXTRACTED]
 - [[BUTTON_VARIANTS]] - `contains` [EXTRACTED]
 - [[EModalPosition]] - `imports` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[index.ts_14]] - `imports_from` [EXTRACTED]
 - [[modal-core.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Variant_Alert
+#graphify/code #graphify/EXTRACTED #community/Community_364

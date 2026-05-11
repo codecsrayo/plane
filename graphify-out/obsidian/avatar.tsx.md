@@ -1,18 +1,17 @@
 ---
 source_file: "ui/src/avatar/avatar.tsx"
 type: "code"
-community: "Avatar Fallback"
+community: "Community 127"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Avatar_Fallback
+  - community/Community_127
 ---
 
 # avatar.tsx
 
 ## Connections
-
 - [[Avatar()]] - `contains` [EXTRACTED]
 - [[Props_5]] - `contains` [EXTRACTED]
 - [[TAvatarSize]] - `imports` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[index.ts_14]] - `imports_from` [EXTRACTED]
 - [[isAValidNumber()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Avatar_Fallback
+#graphify/code #graphify/EXTRACTED #community/Community_127

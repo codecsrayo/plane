@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/issue_extras.rs"
 type: "code"
-community: "Returns Issue"
+community: "Community 207"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Issue
+  - community/Community_207
 ---
 
 # issue_extras.rs
 
 ## Connections
-
 - [[add_comment_reaction_returns_201()]] - `contains` [EXTRACTED]
 - [[add_issue_reaction_returns_201()]] - `contains` [EXTRACTED]
 - [[assign_sub_issue_returns_200()]] - `contains` [EXTRACTED]
@@ -41,4 +40,4 @@ tags:
 - [[update_comment_returns_200()]] - `contains` [EXTRACTED]
 - [[update_issue_link_returns_200()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_207

@@ -1,18 +1,17 @@
 ---
 source_file: "space/components/issues/issue-layouts/list/base-list-root.tsx"
 type: "code"
-community: "Issue Applied"
+community: "Community 112"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Applied
+  - community/Community_112
 ---
 
 # base-list-root.tsx
 
 ## Connections
-
 - [[IssueLayoutHOC]] - `imports` [EXTRACTED]
 - [[IssuesListLayoutRoot]] - `contains` [EXTRACTED]
 - [[List_1]] - `imports` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[use-issue.ts]] - `imports_from` [EXTRACTED]
 - [[useIssue()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Applied
+#graphify/code #graphify/EXTRACTED #community/Community_112

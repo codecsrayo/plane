@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/users_extended.rs"
 type: "code"
-community: "Returns Graph"
+community: "Community 416"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Graph
+  - community/Community_416
 ---
 
 # seed_profile()
 
 ## Connections
-
 - [[.new()]] - `calls` [INFERRED]
 - [[.set()]] - `calls` [INFERRED]
 - [[get_profile_returns_200()]] - `calls` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[update_tour_completed_returns_200()]] - `calls` [EXTRACTED]
 - [[users_extended.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Graph
+#graphify/code #graphify/EXTRACTED #community/Community_416

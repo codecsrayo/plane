@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_12]] - code - ui/src/header/index.ts
+- [[tsdown.config.ts_1]] - code - hooks/tsdown.config.ts
 
 ## Live Query (requires Dataview plugin)
 

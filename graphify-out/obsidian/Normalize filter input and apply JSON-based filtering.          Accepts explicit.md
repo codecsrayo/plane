@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/filters/filter_backend.py"
 type: "rationale"
-community: "Test Validate"
+community: "Community 123"
 location: "L32"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Test_Validate
+  - community/Community_123
 ---
 
-# Normalize filter input and apply JSON-based filtering. Accepts explicit
+# Normalize filter input and apply JSON-based filtering.          Accepts explicit
 
 ## Connections
-
 - [[.filter_queryset()_1]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Test_Validate
+#graphify/rationale #graphify/EXTRACTED #community/Community_123

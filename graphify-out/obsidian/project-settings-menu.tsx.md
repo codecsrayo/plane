@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/power-k/ui/pages/open-entity/project-settings-menu.tsx"
 type: "code"
-community: "Menu Power"
+community: "Community 85"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu_Power
+  - community/Community_85
 ---
 
 # project-settings-menu.tsx
 
 ## Connections
-
 - [[PROJECT_SETTINGS_ICONS]] - `imports` [EXTRACTED]
 - [[PowerKOpenProjectSettingsMenu]] - `contains` [EXTRACTED]
 - [[PowerKSettingsMenu]] - `imports` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[settings.tsx_1]] - `imports_from` [EXTRACTED]
 - [[types.ts_16]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Menu_Power
+#graphify/code #graphify/EXTRACTED #community/Community_85

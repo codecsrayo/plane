@@ -1,18 +1,18 @@
 ---
-source_file: "ui/src/progress/progress-bar.tsx"
+source_file: "packages/ui/src/progress/progress-bar.tsx"
 type: "code"
-community: "Progress Calculate"
+community: "Community 597"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Progress_Calculate
+  - community/Community_597
 ---
 
 # ProgressBar()
 
 ## Connections
-
 - [[progress-bar.tsx]] - `contains` [EXTRACTED]
+- [[progress-bar.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Progress_Calculate
+#graphify/code #graphify/EXTRACTED #community/Community_597

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/space/views/intake.py"
 type: "code"
-community: "Partial Endpoint"
+community: "Python API Base Classes"
 location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Partial_Endpoint
+  - community/Python_API_Base_Classes
 ---
 
 # IntakeIssuePublicViewSet
 
 ## Connections
-
 - [[.create()_38]] - `method` [EXTRACTED]
 - [[.destroy()_22]] - `method` [EXTRACTED]
 - [[.get_queryset()_83]] - `method` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[SourceType]] - `uses` [INFERRED]
 - [[intake.py_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Partial_Endpoint
+#graphify/code #graphify/EXTRACTED #community/Python_API_Base_Classes

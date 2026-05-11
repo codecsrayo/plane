@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/models/integration/__init__.py"
 type: "code"
-community: "Issue Sync"
+community: "Community 26"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Sync
+  - community/Community_26
 ---
 
-# **init**.py
+# __init__.py
 
 ## Connections
-
 - [[base.py_26]] - `imports_from` [EXTRACTED]
 - [[github.py_1]] - `imports_from` [EXTRACTED]
 - [[github_pr_state.py]] - `imports_from` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[slack.py]] - `imports_from` [EXTRACTED]
 - [[user_github_connection.py]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Sync
+#graphify/code #graphify/EXTRACTED #community/Community_26

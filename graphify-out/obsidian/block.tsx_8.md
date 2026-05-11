@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/pages/list/block.tsx"
 type: "code"
-community: "Project Work"
+community: "Community 22"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Work
+  - community/Community_22
 ---
 
 # block.tsx
 
 ## Connections
-
 - [[BlockItemAction]] - `imports` [EXTRACTED]
 - [[PageListBlock]] - `contains` [EXTRACTED]
 - [[TPageListBlock]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[use-platform-os.tsx_1]] - `imports_from` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Work
+#graphify/code #graphify/EXTRACTED #community/Community_22

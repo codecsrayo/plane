@@ -1,18 +1,17 @@
 ---
 source_file: "utils/src/rich-filters/operations/traversal/core.ts"
 type: "code"
-community: "Find Conditions"
+community: "Community 374"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Find_Conditions
+  - community/Community_374
 ---
 
 # core.ts
 
 ## Connections
-
 - [[TreeTraversalMode]] - `contains` [EXTRACTED]
 - [[TreeVisitorFn]] - `contains` [EXTRACTED]
 - [[core.ts_14]] - `imports_from` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[shared.ts_6]] - `imports_from` [EXTRACTED]
 - [[traverseExpressionTree()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Find_Conditions
+#graphify/code #graphify/EXTRACTED #community/Community_374

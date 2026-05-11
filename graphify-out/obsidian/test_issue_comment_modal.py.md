@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/tests/unit/models/test_issue_comment_modal.py"
 type: "code"
-community: "Test Issue"
+community: "Community 359"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Test_Issue
+  - community/Community_359
 ---
 
 # test_issue_comment_modal.py
 
 ## Connections
-
 - [[TestIssueCommentModel]] - `contains` [EXTRACTED]
 - [[issue()_1]] - `contains` [EXTRACTED]
 - [[project()_3]] - `contains` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[test_issue_comment_update_updates_description()]] - `contains` [EXTRACTED]
 - [[workspace()_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Test_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_359

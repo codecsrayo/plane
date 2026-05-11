@@ -1,19 +1,19 @@
 ---
-source_file: "propel/src/input/input.stories.tsx"
+source_file: "packages/propel/src/input/input.stories.tsx"
 type: "code"
-community: "Subscription Small"
+community: "Community 168"
 location: "L132"
 tags:
   - graphify/code
-  - graphify/INFERRED
-  - community/Subscription_Small
+  - graphify/EXTRACTED
+  - community/Community_168
 ---
 
 # Number
 
 ## Connections
-
 - [[getSubscriptionPriceDetails()]] - `calls` [INFERRED]
 - [[input.stories.tsx]] - `contains` [EXTRACTED]
+- [[input.stories.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Subscription_Small
+#graphify/code #graphify/EXTRACTED #community/Community_168

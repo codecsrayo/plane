@@ -1,24 +1,40 @@
 ---
 type: community
-cohesion: 0.25
-members: 8
+cohesion: 0.08
+members: 25
 ---
 
 # Community 239
 
-**Cohesion:** 0.25 - loosely connected
-**Members:** 8 nodes
+**Cohesion:** 0.08 - loosely connected
+**Members:** 25 nodes
 
 ## Members
-
-- [[.bulkAddMembersToProject()]] - code - web/core/services/project/project-member.service.ts
-- [[.constructor()_121]] - code - web/core/services/project/project-member.service.ts
-- [[.deleteProjectMember()]] - code - web/core/services/project/project-member.service.ts
-- [[.fetchProjectMembers()]] - code - web/core/services/project/project-member.service.ts
-- [[.getProjectMember()]] - code - web/core/services/project/project-member.service.ts
-- [[.projectMemberMe()]] - code - web/core/services/project/project-member.service.ts
-- [[.updateProjectMember()]] - code - web/core/services/project/project-member.service.ts
-- [[ProjectMemberService]] - code - web/core/services/project/project-member.service.ts
+- [[Test cases for ApiTokenEndpoint]] - rationale - api/plane/tests/contract/app/test_api_token.py
+- [[TestApiTokenEndpoint]] - code - api/plane/tests/contract/app/test_api_token.py
+- [[test_all_endpoints_require_authentication()]] - code - api/plane/tests/contract/app/test_api_token.py
+- [[test_api_token.py]] - code - api/plane/tests/contract/app/test_api_token.py
+- [[test_create_api_token_for_bot_user()]] - code - api/plane/tests/contract/app/test_api_token.py
+- [[test_create_api_token_minimal_data()]] - code - api/plane/tests/contract/app/test_api_token.py
+- [[test_create_api_token_success()]] - code - api/plane/tests/contract/app/test_api_token.py
+- [[test_create_api_token_unauthenticated()]] - code - api/plane/tests/contract/app/test_api_token.py
+- [[test_create_api_token_with_expiry()]] - code - api/plane/tests/contract/app/test_api_token.py
+- [[test_delete_api_token_success()]] - code - api/plane/tests/contract/app/test_api_token.py
+- [[test_delete_nonexistent_api_token()]] - code - api/plane/tests/contract/app/test_api_token.py
+- [[test_delete_other_users_api_token()]] - code - api/plane/tests/contract/app/test_api_token.py
+- [[test_delete_service_api_token_forbidden()]] - code - api/plane/tests/contract/app/test_api_token.py
+- [[test_get_all_api_tokens()]] - code - api/plane/tests/contract/app/test_api_token.py
+- [[test_get_empty_api_tokens_list()]] - code - api/plane/tests/contract/app/test_api_token.py
+- [[test_get_nonexistent_api_token()]] - code - api/plane/tests/contract/app/test_api_token.py
+- [[test_get_other_users_api_token()]] - code - api/plane/tests/contract/app/test_api_token.py
+- [[test_get_specific_api_token()]] - code - api/plane/tests/contract/app/test_api_token.py
+- [[test_patch_api_token_partial_update()]] - code - api/plane/tests/contract/app/test_api_token.py
+- [[test_patch_api_token_success()]] - code - api/plane/tests/contract/app/test_api_token.py
+- [[test_patch_cannot_modify_service_token()]] - code - api/plane/tests/contract/app/test_api_token.py
+- [[test_patch_cannot_modify_token()]] - code - api/plane/tests/contract/app/test_api_token.py
+- [[test_patch_cannot_modify_user_type()]] - code - api/plane/tests/contract/app/test_api_token.py
+- [[test_patch_nonexistent_api_token()]] - code - api/plane/tests/contract/app/test_api_token.py
+- [[test_patch_other_users_api_token()]] - code - api/plane/tests/contract/app/test_api_token.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -26,11 +42,3 @@ members: 8
 TABLE source_file, type FROM #community/Community_239
 SORT file.name ASC
 ```
-
-## Connections to other communities
-
-- 1 edge to [[_COMMUNITY_Git Integrations]]
-
-## Top bridge nodes
-
-- [[ProjectMemberService]] - degree 8, connects to 1 community

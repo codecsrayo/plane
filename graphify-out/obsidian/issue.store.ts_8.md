@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/issue/workspace/issue.store.ts"
 type: "code"
-community: "Filters Params"
+community: "Community 75"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filters_Params
+  - community/Community_75
 ---
 
 # issue.store.ts
 
 ## Connections
-
 - [[IBaseIssuesStore]] - `imports` [EXTRACTED]
 - [[IIssueRootStore]] - `imports` [EXTRACTED]
 - [[IWorkspaceIssues]] - `contains` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[toApiError()]] - `imports` [EXTRACTED]
 - [[workspace.service.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filters_Params
+#graphify/code #graphify/EXTRACTED #community/Community_75

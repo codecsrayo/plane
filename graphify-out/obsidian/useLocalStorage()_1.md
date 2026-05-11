@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/use-local-storage.tsx"
 type: "code"
-community: "Project Settings"
+community: "Active Cycle Stats"
 location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Active_Cycle_Stats
 ---
 
 # useLocalStorage()
 
 ## Connections
-
 - [[CycleCreateUpdateModal()]] - `calls` [EXTRACTED]
 - [[CycleDetailPage()]] - `calls` [EXTRACTED]
 - [[HeaderColumn()]] - `calls` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[usePageFilters()]] - `calls` [EXTRACTED]
 - [[usePageOperations()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats

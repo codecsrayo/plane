@@ -1,18 +1,18 @@
 ---
-source_file: "editor/src/core/extensions/placeholder.ts"
+source_file: "packages/editor/src/core/extensions/placeholder.ts"
 type: "code"
-community: "Unique Core"
+community: "Community 86"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Unique_Core
+  - community/Community_86
 ---
 
 # TArgs
 
 ## Connections
-
 - [[placeholder.ts]] - `contains` [EXTRACTED]
+- [[placeholder.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Unique_Core
+#graphify/code #graphify/EXTRACTED #community/Community_86

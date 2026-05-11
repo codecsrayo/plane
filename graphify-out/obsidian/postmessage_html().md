@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/utils/oauth_popup.rs"
 type: "code"
-community: "Session Presigned"
+community: "Community 78"
 location: "L43"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Session_Presigned
+  - community/Community_78
 ---
 
 # postmessage_html()
 
 ## Connections
-
 - [[.to_string()]] - `calls` [INFERRED]
 - [[gitea_callback()]] - `calls` [INFERRED]
 - [[github_app_callback()]] - `calls` [INFERRED]
@@ -21,4 +20,4 @@ tags:
 - [[google_callback()]] - `calls` [INFERRED]
 - [[oauth_popup.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Session_Presigned
+#graphify/code #graphify/INFERRED #community/Community_78

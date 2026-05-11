@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/issues.rs"
 type: "code"
-community: "Issue Issues"
+community: "Community 79"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Issues
+  - community/Community_79
 ---
 
 # issues.rs
 
 ## Connections
-
 - [[CreateIssueRequest]] - `contains` [EXTRACTED]
 - [[IssueCreateResponse]] - `contains` [EXTRACTED]
 - [[IssueDetailQuery]] - `contains` [EXTRACTED]
@@ -36,4 +35,4 @@ tags:
 - [[sync_labels()]] - `contains` [EXTRACTED]
 - [[update_issue()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Issues
+#graphify/code #graphify/EXTRACTED #community/Community_79

@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.50
+members: 4
 ---
 
 # Community 705
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.50 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_55]] - code - api_rust/src/entities/api_tokens.rs
+- [[.down()_1]] - code - api_rust/migration/src/migrations/m20260410_000001_baseline.rs
+- [[.up()_1]] - code - api_rust/migration/src/migrations/m20260410_000001_baseline.rs
+- [[Migration_132]] - code - api_rust/migration/src/migrations/m20260410_000001_baseline.rs
+- [[m20260410_000001_baseline.rs]] - code - api_rust/migration/src/migrations/m20260410_000001_baseline.rs
 
 ## Live Query (requires Dataview plugin)
 

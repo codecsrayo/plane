@@ -1,18 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.40
+members: 5
 ---
 
 # Community 631
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.40 - moderately connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[WebhookSettingsLoader()]] - code - web/core/components/ui/loader/settings/web-hook.tsx
-- [[web-hook.tsx]] - code - web/core/components/ui/loader/settings/web-hook.tsx
+- [[Test the LabelSerializer]] - rationale - api/plane/tests/unit/serializers/test_label.py
+- [[TestLabelSerializer]] - code - api/plane/tests/unit/serializers/test_label.py
+- [[test_label.py]] - code - api/plane/tests/unit/serializers/test_label.py
+- [[test_label_serializer_create_duplicate_name()]] - code - api/plane/tests/unit/serializers/test_label.py
+- [[test_label_serializer_create_valid_data()]] - code - api/plane/tests/unit/serializers/test_label.py
 
 ## Live Query (requires Dataview plugin)
 

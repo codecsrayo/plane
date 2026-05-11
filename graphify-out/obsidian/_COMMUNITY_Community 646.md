@@ -1,17 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.40
+members: 5
 ---
 
 # Community 646
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.40 - moderately connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[mod.rs_2]] - code - api_rust/src/routes/integrations/mod.rs
+- [[.down()]] - code - api_rust/migration/src/migrations/m20240101_000007_seed_data.rs
+- [[.name()]] - code - api_rust/migration/src/migrations/m20240101_000007_seed_data.rs
+- [[.up()]] - code - api_rust/migration/src/migrations/m20240101_000007_seed_data.rs
+- [[Migration_131]] - code - api_rust/migration/src/migrations/m20240101_000007_seed_data.rs
+- [[m20240101_000007_seed_data.rs]] - code - api_rust/migration/src/migrations/m20240101_000007_seed_data.rs
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,19 +1,18 @@
 ---
 source_file: "live/src/start.ts"
 type: "code"
-community: "Start Server"
+community: "Community 435"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Start_Server
+  - community/Community_435
 ---
 
 # startServer()
 
 ## Connections
-
 - [[error]] - `calls` [EXTRACTED]
 - [[start.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Start_Server
+#graphify/code #graphify/EXTRACTED #community/Community_435

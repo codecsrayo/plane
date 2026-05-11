@@ -1,18 +1,17 @@
 ---
 source_file: "constants/src/auth/index.ts"
 type: "code"
-community: "Auth Error"
+community: "Community 294"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Error
+  - community/Community_294
 ---
 
 # index.ts
 
 ## Connections
-
 - [[CORE_LOGIN_MEDIUM_LABELS]] - `imports` [EXTRACTED]
 - [[EAdminAuthErrorCodes]] - `contains` [EXTRACTED]
 - [[EAuthErrorCodes]] - `contains` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[core.ts]] - `imports_from` [EXTRACTED]
 - [[extended.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Error
+#graphify/code #graphify/EXTRACTED #community/Community_294

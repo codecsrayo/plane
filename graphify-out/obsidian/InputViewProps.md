@@ -1,18 +1,18 @@
 ---
-source_file: "editor/src/core/components/links/link-edit-view.tsx"
+source_file: "packages/editor/src/core/components/links/link-edit-view.tsx"
 type: "code"
-community: "Link Options"
+community: "Community 113"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Link_Options
+  - community/Community_113
 ---
 
 # InputViewProps
 
 ## Connections
-
 - [[link-edit-view.tsx]] - `contains` [EXTRACTED]
+- [[link-edit-view.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Link_Options
+#graphify/code #graphify/EXTRACTED #community/Community_113

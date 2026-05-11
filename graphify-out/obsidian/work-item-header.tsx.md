@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(projects)/browse/[workItem]/work-item-header.tsx"
 type: "code"
-community: "Project Settings"
+community: "Issue Activity Types"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Issue_Activity_Types
 ---
 
 # work-item-header.tsx
 
 ## Connections
-
 - [[BreadcrumbLink()]] - `imports` [EXTRACTED]
 - [[CommonProjectBreadcrumbs()]] - `imports` [EXTRACTED]
 - [[IssueDetailQuickActions]] - `imports` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Types

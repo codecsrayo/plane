@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/filters/index.ts"
 type: "code"
-community: "Member Members"
+community: "Issue Display Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Members
+  - community/Issue_Display_Filters
 ---
 
 # index.ts
 
 ## Connections
-
 - [[access.tsx_1]] - `imports_from` [EXTRACTED]
 - [[archived-issues-header.tsx]] - `imports_from` [EXTRACTED]
 - [[assignee.tsx]] - `imports_from` [EXTRACTED]
@@ -81,4 +80,4 @@ tags:
 - [[target-date.tsx]] - `imports_from` [EXTRACTED]
 - [[view-list-header.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Members
+#graphify/code #graphify/EXTRACTED #community/Issue_Display_Filters

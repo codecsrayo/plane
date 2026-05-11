@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/badge/helper.tsx"
 type: "code"
-community: "Badge Styling"
+community: "Community 140"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Badge_Styling
+  - community/Community_140
 ---
 
 # helper.tsx
 
 ## Connections
-
 - [[BadgeProps_1]] - `contains` [EXTRACTED]
 - [[TBadgeSize]] - `contains` [EXTRACTED]
 - [[TBadgeVariant]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[getBadgeIconStyling()]] - `contains` [EXTRACTED]
 - [[getBadgeStyling()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Badge_Styling
+#graphify/code #graphify/EXTRACTED #community/Community_140

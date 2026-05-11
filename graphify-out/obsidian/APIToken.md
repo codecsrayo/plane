@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/models/api.py"
 type: "code"
-community: "Endpoint User"
+community: "Community 25"
 location: "L23"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Endpoint_User
+  - community/Community_25
 ---
 
 # APIToken
 
 ## Connections
-
 - [[.__str__()_36]] - `method` [EXTRACTED]
 - [[BaseAPIView]] - `uses` [INFERRED]
 - [[BaseModel]] - `inherits` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[TimezoneMixin]] - `uses` [INFERRED]
 - [[api.py_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Endpoint_User
+#graphify/code #graphify/INFERRED #community/Community_25

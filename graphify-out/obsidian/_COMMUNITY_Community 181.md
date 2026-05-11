@@ -1,30 +1,45 @@
 ---
 type: community
-cohesion: 0.19
-members: 14
+cohesion: 0.15
+members: 30
 ---
 
 # Community 181
 
-**Cohesion:** 0.19 - loosely connected
-**Members:** 14 nodes
+**Cohesion:** 0.15 - loosely connected
+**Members:** 30 nodes
 
 ## Members
-
-- [[build_s3_client()]] - code - api_rust/src/utils/s3.rs
-- [[build_s3_presign_client()]] - code - api_rust/src/utils/s3.rs
-- [[copy_object()]] - code - api_rust/src/utils/s3.rs
-- [[download_project_asset()]] - code - api_rust/src/routes/assets.rs
-- [[download_workspace_asset()]] - code - api_rust/src/routes/assets.rs
-- [[duplicate_workspace_asset()]] - code - api_rust/src/routes/assets.rs
-- [[get_project_asset()]] - code - api_rust/src/routes/assets.rs
-- [[origin_rejects_malformed()]] - code - api_rust/src/utils/s3.rs
-- [[origin_strips_path_and_keeps_port()]] - code - api_rust/src/utils/s3.rs
-- [[parse_web_url_origin()]] - code - api_rust/src/utils/s3.rs
-- [[presigned_get_download_url()]] - code - api_rust/src/routes/assets.rs
-- [[presigned_get_url()]] - code - api_rust/src/utils/s3.rs
-- [[presigned_put_url()]] - code - api_rust/src/utils/s3.rs
-- [[s3.rs]] - code - api_rust/src/utils/s3.rs
+- [[calculateTotalFilters()]] - code - packages/utils/src/filter.ts
+- [[collator]] - code - packages/utils/src/module.ts
+- [[filter.ts_6]] - code - packages/utils/src/filter.ts
+- [[filter.ts_2]] - code - utils/src/filter.ts
+- [[filterPagesByPageType()]] - code - packages/utils/src/page.ts
+- [[getDate()]] - code - packages/utils/src/datetime.ts
+- [[getPageName()]] - code - packages/utils/src/page.ts
+- [[getPublishViewLink()]] - code - packages/utils/src/project-views.ts
+- [[getValidatedViewFilters()]] - code - packages/utils/src/project-views.ts
+- [[getViewName()]] - code - packages/utils/src/project-views.ts
+- [[module.ts_4]] - code - packages/utils/src/module.ts
+- [[module.ts_1]] - code - utils/src/module.ts
+- [[naturalSort()]] - code - packages/utils/src/module.ts
+- [[orderJoinedProjects()]] - code - packages/utils/src/project.ts
+- [[orderModules()]] - code - packages/utils/src/module.ts
+- [[orderPages()]] - code - packages/utils/src/page.ts
+- [[orderProjects()]] - code - packages/utils/src/project.ts
+- [[orderViews()]] - code - packages/utils/src/project-views.ts
+- [[page.ts_3]] - code - packages/utils/src/page.ts
+- [[page.ts_1]] - code - utils/src/page.ts
+- [[project-views.ts_1]] - code - packages/utils/src/project-views.ts
+- [[project-views.ts]] - code - utils/src/project-views.ts
+- [[project.ts_6]] - code - packages/utils/src/project.ts
+- [[project.ts_2]] - code - utils/src/project.ts
+- [[projectIdentifierSanitizer()]] - code - packages/utils/src/project.ts
+- [[satisfiesDateFilter()]] - code - packages/utils/src/filter.ts
+- [[shouldFilterModule()]] - code - packages/utils/src/module.ts
+- [[shouldFilterPage()]] - code - packages/utils/src/page.ts
+- [[shouldFilterProject()]] - code - packages/utils/src/project.ts
+- [[shouldFilterView()]] - code - packages/utils/src/project-views.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -34,16 +49,15 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 5 edges to [[_COMMUNITY_Community 51]]
-- 4 edges to [[_COMMUNITY_Auth Rust API]]
-- 2 edges to [[_COMMUNITY_Community 135]]
-- 1 edge to [[_COMMUNITY_Community 115]]
+- 17 edges to [[_COMMUNITY_Community 231]]
+- 8 edges to [[_COMMUNITY_Community 429]]
+- 3 edges to [[_COMMUNITY_Community 469]]
+- 3 edges to [[_COMMUNITY_Community 323]]
+- 1 edge to [[_COMMUNITY_Community 497]]
 
 ## Top bridge nodes
-
-- [[build_s3_client()]] - degree 7, connects to 3 communities
-- [[build_s3_presign_client()]] - degree 8, connects to 2 communities
-- [[download_project_asset()]] - degree 3, connects to 1 community
-- [[download_workspace_asset()]] - degree 3, connects to 1 community
-- [[duplicate_workspace_asset()]] - degree 3, connects to 1 community
+- [[getDate()]] - degree 29, connects to 5 communities
+- [[filter.ts_6]] - degree 9, connects to 2 communities
+- [[filter.ts_2]] - degree 9, connects to 2 communities
+- [[satisfiesDateFilter()]] - degree 13, connects to 1 community
+- [[project-views.ts_1]] - degree 9, connects to 1 community

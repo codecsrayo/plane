@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/project/project-publish.store.ts"
 type: "code"
-community: "Project Issue"
+community: "Community 20"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Issue
+  - community/Community_20
 ---
 
 # project-publish.store.ts
 
 ## Connections
-
 - [[IProjectPublishStore]] - `contains` [EXTRACTED]
 - [[ProjectPublishStore]] - `contains` [EXTRACTED]
 - [[ProjectRootStore]] - `imports` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[toApiError()]] - `imports` [EXTRACTED]
 - [[use-project-publish.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_20

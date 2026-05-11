@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/issue/base.py"
 type: "code"
-community: "Endpoint User"
+community: "Community 57"
 location: "L195"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_User
+  - community/Community_57
 ---
 
 # IssueViewSet
 
 ## Connections
-
 - [[.apply_annotations()_2]] - `method` [EXTRACTED]
 - [[.get_queryset()_16]] - `method` [EXTRACTED]
 - [[.get_serializer_class()_5]] - `method` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[SubGroupedOffsetPaginator]] - `uses` [INFERRED]
 - [[base.py_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_User
+#graphify/code #graphify/EXTRACTED #community/Community_57

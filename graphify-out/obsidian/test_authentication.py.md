@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/tests/contract/app/test_authentication.py"
 type: "code"
-community: "Test Magic"
+community: "Community 131"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Test_Magic
+  - community/Community_131
 ---
 
 # test_authentication.py
 
 ## Connections
-
 - [[TestMagicLinkGenerate]] - `contains` [EXTRACTED]
 - [[TestMagicSignIn]] - `contains` [EXTRACTED]
 - [[TestMagicSignUp]] - `contains` [EXTRACTED]
@@ -36,4 +35,4 @@ tags:
 - [[test_user_login()]] - `contains` [EXTRACTED]
 - [[test_without_data()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Test_Magic
+#graphify/code #graphify/EXTRACTED #community/Community_131

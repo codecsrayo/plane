@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/placeholder.ts"
 type: "code"
-community: "Unique Core"
+community: "Community 86"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Unique_Core
+  - community/Community_86
 ---
 
 # placeholder.ts
 
 ## Connections
-
 - [[CORE_EXTENSIONS]] - `imports` [EXTRACTED]
 - [[CustomPlaceholderExtension()]] - `contains` [EXTRACTED]
 - [[TArgs_3]] - `contains` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[extensions.ts_3]] - `imports_from` [EXTRACTED]
 - [[index.ts_46]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Unique_Core
+#graphify/code #graphify/EXTRACTED #community/Community_86

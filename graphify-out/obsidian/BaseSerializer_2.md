@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/space/serializer/base.py"
 type: "code"
-community: "Serializer Issue"
+community: "Community 97"
 location: "L8"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Serializer_Issue
+  - community/Community_97
 ---
 
 # BaseSerializer
 
 ## Connections
-
 - [[APIActivityLogSerializer]] - `uses` [INFERRED]
 - [[APITokenReadSerializer]] - `uses` [INFERRED]
 - [[APITokenSerializer]] - `uses` [INFERRED]
@@ -228,4 +227,4 @@ tags:
 - [[WorkspaceUserPropertiesSerializer]] - `uses` [INFERRED]
 - [[base.py_33]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Serializer_Issue
+#graphify/code #graphify/INFERRED #community/Community_97

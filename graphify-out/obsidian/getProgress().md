@@ -1,18 +1,18 @@
 ---
-source_file: "utils/src/math.ts"
+source_file: "packages/utils/src/math.ts"
 type: "code"
-community: "Math"
+community: "Community 729"
 location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Math
+  - community/Community_729
 ---
 
 # getProgress()
 
 ## Connections
-
 - [[math.ts]] - `contains` [EXTRACTED]
+- [[math.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Math
+#graphify/code #graphify/EXTRACTED #community/Community_729

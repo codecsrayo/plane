@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/table/plugins/insert-handlers/utils.ts"
 type: "code"
-community: "Insert Table"
+community: "Community 150"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Insert_Table
+  - community/Community_150
 ---
 
 # utils.ts
 
 ## Connections
-
 - [[TableInfo_1]] - `contains` [EXTRACTED]
 - [[createColumnInsertButton()]] - `contains` [EXTRACTED]
 - [[createRowInsertButton()]] - `contains` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[removeLastColumn()]] - `contains` [EXTRACTED]
 - [[removeLastRow()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Insert_Table
+#graphify/code #graphify/EXTRACTED #community/Community_150

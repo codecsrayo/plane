@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/table/plugins/insert-handlers/plugin.ts"
 type: "code"
-community: "Insert Table"
+community: "Community 150"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Insert_Table
+  - community/Community_150
 ---
 
 # plugin.ts
 
 ## Connections
-
 - [[TABLE_INSERT_PLUGIN_KEY]] - `contains` [EXTRACTED]
 - [[TableInfo_1]] - `imports` [EXTRACTED]
 - [[TableInsertPlugin()]] - `contains` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[table.ts]] - `imports_from` [EXTRACTED]
 - [[utils.ts_5]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Insert_Table
+#graphify/code #graphify/EXTRACTED #community/Community_150

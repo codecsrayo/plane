@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/dropdowns/estimate.tsx"
 type: "code"
-community: "Label Dropdown"
+community: "Work Item Detail & Layouts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Dropdown
+  - community/Work_Item_Detail__Layouts
 ---
 
 # estimate.tsx
 
 ## Connections
-
 - [[BUTTON_VARIANTS_WITH_TEXT]] - `imports` [EXTRACTED]
 - [[DropdownButton()_1]] - `imports` [EXTRACTED]
 - [[DropdownOptions]] - `contains` [EXTRACTED]
@@ -33,4 +32,4 @@ tags:
 - [[useDropdown()]] - `imports` [EXTRACTED]
 - [[useEstimate()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Work_Item_Detail__Layouts

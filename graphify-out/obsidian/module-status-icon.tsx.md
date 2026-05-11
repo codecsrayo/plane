@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/icons/module/module-status-icon.tsx"
 type: "code"
-community: "Status Backlog"
+community: "Community 251"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Status_Backlog
+  - community/Community_251
 ---
 
 # module-status-icon.tsx
 
 ## Connections
-
 - [[ModuleBacklogIcon()]] - `imports` [EXTRACTED]
 - [[ModuleCancelledIcon()]] - `imports` [EXTRACTED]
 - [[ModuleCompletedIcon()]] - `imports` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[paused.tsx]] - `imports_from` [EXTRACTED]
 - [[planned.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Status_Backlog
+#graphify/code #graphify/EXTRACTED #community/Community_251

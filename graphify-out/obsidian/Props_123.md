@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/gantt-chart/chart/header.tsx"
 type: "code"
-community: "Gantt Chart"
+community: "Community 23"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Chart
+  - community/Community_23
 ---
 
 # Props
 
 ## Connections
-
 - [[header.tsx_43]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Chart
+#graphify/code #graphify/EXTRACTED #community/Community_23

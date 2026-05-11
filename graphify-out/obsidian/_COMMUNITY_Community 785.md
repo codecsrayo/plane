@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 785
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_66]] - code - web/core/components/modules/links/index.ts
+- [[DeDupeIssueButtonLabel()]] - code - web/ce/components/de-dupe/issue-block/button-label.tsx
+- [[TDeDupeIssueButtonLabelProps]] - code - web/ce/components/de-dupe/issue-block/button-label.tsx
+- [[button-label.tsx]] - code - web/ce/components/de-dupe/issue-block/button-label.tsx
 
 ## Live Query (requires Dataview plugin)
 

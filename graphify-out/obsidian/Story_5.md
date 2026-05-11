@@ -1,18 +1,18 @@
 ---
-source_file: "ui/src/sortable/sortable.stories.tsx"
+source_file: "packages/ui/src/sortable/sortable.stories.tsx"
 type: "code"
-community: "Story Meta"
+community: "Community 303"
 location: "L36"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Story_Meta
+  - community/Community_303
 ---
 
 # Story
 
 ## Connections
-
 - [[sortable.stories.tsx]] - `contains` [EXTRACTED]
+- [[sortable.stories.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Story_Meta
+#graphify/code #graphify/EXTRACTED #community/Community_303

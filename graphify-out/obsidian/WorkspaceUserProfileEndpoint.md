@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/workspace/user.py"
 type: "code"
-community: "Endpoint User"
+community: "Community 57"
 location: "L280"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Endpoint_User
+  - community/Community_57
 ---
 
 # WorkspaceUserProfileEndpoint
 
 ## Connections
-
 - [[.get()_11]] - `method` [EXTRACTED]
 - [[BaseAPIView]] - `uses` [INFERRED]
 - [[BaseAPIView_1]] - `inherits` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[SubGroupedOffsetPaginator]] - `uses` [INFERRED]
 - [[user.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Endpoint_User
+#graphify/code #graphify/INFERRED #community/Community_57

@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_440]] - code - web/core/components/account/auth-forms/index.ts
+- [[Install an integration for a given provider (github, gitlab, slack) using]] - rationale - api/plane/app/views/integration/base.py
 
 ## Live Query (requires Dataview plugin)
 

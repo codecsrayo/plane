@@ -1,22 +1,21 @@
 ---
 source_file: "api_rust/src/routes/api_tokens.rs"
 type: "code"
-community: "Issue Request"
+community: "Community 420"
 location: "L163"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Issue_Request
+  - community/Community_420
 ---
 
 # create_api_token()
 
 ## Connections
-
 - [[.json()]] - `calls` [INFERRED]
 - [[.set()]] - `calls` [INFERRED]
 - [[api_tokens.rs_1]] - `contains` [EXTRACTED]
 - [[now]] - `calls` [INFERRED]
 - [[rand_token()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Issue_Request
+#graphify/code #graphify/INFERRED #community/Community_420

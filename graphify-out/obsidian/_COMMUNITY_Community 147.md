@@ -1,33 +1,52 @@
 ---
 type: community
-cohesion: 0.12
-members: 17
+cohesion: 0.11
+members: 37
 ---
 
 # Community 147
 
-**Cohesion:** 0.12 - loosely connected
-**Members:** 17 nodes
+**Cohesion:** 0.11 - loosely connected
+**Members:** 37 nodes
 
 ## Members
-
-- [[.constructor()_91]] - code - web/core/services/dashboard.service.ts
-- [[.constructor()_8]] - code - web/core/store/dashboard.store.ts
-- [[.getDashboardDetails()]] - code - web/core/services/dashboard.service.ts
-- [[.getHomeDashboardWidgets()]] - code - web/core/services/dashboard.service.ts
-- [[.getWidgetStats()]] - code - web/core/services/dashboard.service.ts
-- [[.homeDashboardWidgets()]] - code - web/core/store/dashboard.store.ts
-- [[.updateDashboardWidget()]] - code - web/core/services/dashboard.service.ts
-- [[DashboardService]] - code - web/core/services/dashboard.service.ts
-- [[DashboardStore]] - code - web/core/store/dashboard.store.ts
-- [[IDashboardStore]] - code - web/core/store/dashboard.store.ts
-- [[dashboard.store.ts]] - code - web/core/store/dashboard.store.ts
-- [[originalWidget]] - code - web/core/store/dashboard.store.ts
-- [[updatedWidget]] - code - web/core/store/dashboard.store.ts
-- [[use-dashboard.ts]] - code - web/core/hooks/store/use-dashboard.ts
-- [[useDashboard()]] - code - web/core/hooks/store/use-dashboard.ts
-- [[widgetDetails]] - code - web/core/store/dashboard.store.ts
-- [[widgetIndex]] - code - web/core/store/dashboard.store.ts
+- [[BreadcrumbBlock()]] - code - packages/ui/src/breadcrumbs/breadcrumbs.stories.tsx
+- [[BreadcrumbIcon()]] - code - packages/ui/src/breadcrumbs/breadcrumbs.tsx
+- [[BreadcrumbIconProps]] - code - packages/ui/src/breadcrumbs/breadcrumbs.tsx
+- [[BreadcrumbItem()]] - code - packages/ui/src/breadcrumbs/breadcrumbs.tsx
+- [[BreadcrumbItemLoader()]] - code - packages/ui/src/breadcrumbs/breadcrumbs.tsx
+- [[BreadcrumbItemProps]] - code - packages/ui/src/breadcrumbs/breadcrumbs.tsx
+- [[BreadcrumbItemWrapper()]] - code - packages/ui/src/breadcrumbs/breadcrumbs.tsx
+- [[BreadcrumbItemWrapperProps]] - code - packages/ui/src/breadcrumbs/breadcrumbs.tsx
+- [[BreadcrumbLabel()]] - code - packages/ui/src/breadcrumbs/breadcrumbs.tsx
+- [[BreadcrumbLabelProps]] - code - packages/ui/src/breadcrumbs/breadcrumbs.tsx
+- [[BreadcrumbNavigationDropdown()]] - code - packages/ui/src/breadcrumbs/navigation-dropdown.tsx
+- [[BreadcrumbNavigationSearchDropdown()]] - code - packages/ui/src/breadcrumbs/navigation-search-dropdown.tsx
+- [[BreadcrumbSeparator()]] - code - packages/ui/src/breadcrumbs/breadcrumbs.tsx
+- [[BreadcrumbSeparatorProps]] - code - packages/ui/src/breadcrumbs/breadcrumbs.tsx
+- [[Breadcrumbs()]] - code - packages/ui/src/breadcrumbs/breadcrumbs.tsx
+- [[BreadcrumbsProps]] - code - packages/ui/src/breadcrumbs/breadcrumbs.tsx
+- [[Default_4]] - code - packages/ui/src/breadcrumbs/breadcrumbs.stories.tsx
+- [[SingleItem]] - code - packages/ui/src/breadcrumbs/breadcrumbs.stories.tsx
+- [[Story_4]] - code - packages/ui/src/breadcrumbs/breadcrumbs.stories.tsx
+- [[TBreadcrumbBlockProps]] - code - packages/ui/src/breadcrumbs/breadcrumbs.stories.tsx
+- [[TBreadcrumbNavigationDropdownProps]] - code - packages/ui/src/breadcrumbs/navigation-dropdown.tsx
+- [[TBreadcrumbNavigationSearchDropdownProps]] - code - packages/ui/src/breadcrumbs/navigation-search-dropdown.tsx
+- [[WithCustomComponent]] - code - packages/ui/src/breadcrumbs/breadcrumbs.stories.tsx
+- [[WithLoading]] - code - packages/ui/src/breadcrumbs/breadcrumbs.stories.tsx
+- [[WithNavigationDropdown]] - code - packages/ui/src/breadcrumbs/breadcrumbs.stories.tsx
+- [[WithNavigationDropdownAndIcons]] - code - packages/ui/src/breadcrumbs/breadcrumbs.stories.tsx
+- [[breadcrumbs.stories.tsx_1]] - code - packages/ui/src/breadcrumbs/breadcrumbs.stories.tsx
+- [[breadcrumbs.stories.tsx]] - code - ui/src/breadcrumbs/breadcrumbs.stories.tsx
+- [[breadcrumbs.tsx_1]] - code - packages/ui/src/breadcrumbs/breadcrumbs.tsx
+- [[breadcrumbs.tsx]] - code - ui/src/breadcrumbs/breadcrumbs.tsx
+- [[index.ts_470]] - code - packages/ui/src/dropdowns/index.ts
+- [[index.ts_9]] - code - ui/src/dropdowns/index.ts
+- [[meta_4]] - code - packages/ui/src/breadcrumbs/breadcrumbs.stories.tsx
+- [[navigation-dropdown.tsx_1]] - code - packages/ui/src/breadcrumbs/navigation-dropdown.tsx
+- [[navigation-dropdown.tsx]] - code - ui/src/breadcrumbs/navigation-dropdown.tsx
+- [[navigation-search-dropdown.tsx_1]] - code - packages/ui/src/breadcrumbs/navigation-search-dropdown.tsx
+- [[navigation-search-dropdown.tsx]] - code - ui/src/breadcrumbs/navigation-search-dropdown.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -37,17 +56,11 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 4 edges to [[_COMMUNITY_Project Estimates]]
-- 3 edges to [[_COMMUNITY_Git Integrations]]
-- 1 edge to [[_COMMUNITY_Community 92]]
-- 1 edge to [[_COMMUNITY_Applied Filters UI]]
-- 1 edge to [[_COMMUNITY_Community 58]]
+- 6 edges to [[_COMMUNITY_Community 61]]
 
 ## Top bridge nodes
-
-- [[dashboard.store.ts]] - degree 13, connects to 3 communities
-- [[use-dashboard.ts]] - degree 5, connects to 2 communities
-- [[DashboardService]] - degree 7, connects to 1 community
-- [[DashboardStore]] - degree 4, connects to 1 community
-- [[IDashboardStore]] - degree 3, connects to 1 community
+- [[breadcrumbs.tsx_1]] - degree 17, connects to 1 community
+- [[breadcrumbs.tsx]] - degree 17, connects to 1 community
+- [[navigation-dropdown.tsx_1]] - degree 7, connects to 1 community
+- [[navigation-dropdown.tsx]] - degree 7, connects to 1 community
+- [[navigation-search-dropdown.tsx_1]] - degree 6, connects to 1 community

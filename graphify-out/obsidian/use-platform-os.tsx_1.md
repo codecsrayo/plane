@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/use-platform-os.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Work Item Detail & Layouts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Work_Item_Detail__Layouts
 ---
 
 # use-platform-os.tsx
 
 ## Connections
-
 - [[activity-block.tsx]] - `imports_from` [EXTRACTED]
 - [[activity-block.tsx_1]] - `imports_from` [EXTRACTED]
 - [[activity.tsx_2]] - `imports_from` [EXTRACTED]
@@ -107,4 +106,4 @@ tags:
 - [[view-list-item.tsx]] - `imports_from` [EXTRACTED]
 - [[workspace-wrapper.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Work_Item_Detail__Layouts

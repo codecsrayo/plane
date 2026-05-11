@@ -1,18 +1,17 @@
 ---
-source_file: "shared-state/src/store/rich-filters/filter.ts"
+source_file: "packages/shared-state/src/store/rich-filters/filter.ts"
 type: "code"
-community: "Expression Work"
+community: "Community 217"
 location: "L140"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Expression_Work
+  - community/Community_217
 ---
 
 # FilterInstance
 
 ## Connections
-
 - [[._notifyExpressionChange()]] - `method` [EXTRACTED]
 - [[._resetInitialFilterExpression()]] - `method` [EXTRACTED]
 - [[.allConditions()]] - `method` [EXTRACTED]
@@ -28,7 +27,10 @@ tags:
 - [[.saveViewOptions()]] - `method` [EXTRACTED]
 - [[.updateViewOptions()]] - `method` [EXTRACTED]
 - [[filter.store.ts]] - `imports` [EXTRACTED]
+- [[filter.store.ts_13]] - `imports` [EXTRACTED]
 - [[filter.ts_3]] - `contains` [EXTRACTED]
+- [[filter.ts_7]] - `contains` [EXTRACTED]
 - [[rich-filter.helper.ts]] - `imports` [EXTRACTED]
+- [[rich-filter.helper.ts_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Expression_Work
+#graphify/code #graphify/EXTRACTED #community/Community_217

@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/issues/issue_reaction.ts"
 type: "code"
-community: "Issue Public"
+community: "Community 178"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Public
+  - community/Community_178
 ---
 
 # issue_reaction.ts
 
 ## Connections
-
 - [[IIssuePublicReaction]] - `contains` [EXTRACTED]
 - [[IPublicVote]] - `contains` [EXTRACTED]
 - [[IUserLite]] - `imports` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[issue.ts]] - `imports_from` [EXTRACTED]
 - [[users.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Public
+#graphify/code #graphify/EXTRACTED #community/Community_178

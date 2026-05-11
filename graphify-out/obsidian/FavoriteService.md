@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/favorite/favorite.service.ts"
 type: "code"
-community: "Issue Project"
+community: "Service Layer"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Project
+  - community/Service_Layer
 ---
 
 # FavoriteService
 
 ## Connections
-
 - [[.addFavorite()]] - `method` [EXTRACTED]
 - [[.constructor()_155]] - `method` [EXTRACTED]
 - [[.deleteFavorite()]] - `method` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[.updateFavorite()]] - `method` [EXTRACTED]
 - [[favorite.service.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Project
+#graphify/code #graphify/EXTRACTED #community/Service_Layer

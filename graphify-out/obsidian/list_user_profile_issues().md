@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/user_profile_issues.rs"
 type: "code"
-community: "Issue Issues"
+community: "Community 79"
 location: "L201"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Issue_Issues
+  - community/Community_79
 ---
 
 # list_user_profile_issues()
 
 ## Connections
-
 - [[.json()]] - `calls` [INFERRED]
 - [[.new()]] - `calls` [INFERRED]
 - [[.to_filter_params()_2]] - `calls` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[user_profile_issues.rs]] - `contains` [EXTRACTED]
 - [[workspace_by_slug()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Issue_Issues
+#graphify/code #graphify/INFERRED #community/Community_79

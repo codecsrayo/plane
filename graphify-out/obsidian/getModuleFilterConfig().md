@@ -1,18 +1,18 @@
 ---
-source_file: "utils/src/work-item-filters/configs/filters/module.ts"
+source_file: "packages/utils/src/work-item-filters/configs/filters/module.ts"
 type: "code"
-community: "Multi Select"
+community: "Community 39"
 location: "L51"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Multi_Select
+  - community/Community_39
 ---
 
 # getModuleFilterConfig()
 
 ## Connections
-
 - [[module.ts_2]] - `contains` [EXTRACTED]
+- [[module.ts_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Multi_Select
+#graphify/code #graphify/EXTRACTED #community/Community_39

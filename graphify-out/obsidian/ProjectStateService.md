@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/project/project-state.service.ts"
 type: "code"
-community: "State Project"
+community: "Community 224"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/State_Project
+  - community/Community_224
 ---
 
 # ProjectStateService
 
 ## Connections
-
 - [[.constructor()_175]] - `method` [EXTRACTED]
 - [[.createState()]] - `method` [EXTRACTED]
 - [[.deleteState()]] - `method` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[project-state.service.ts]] - `contains` [EXTRACTED]
 - [[state.store.ts_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/State_Project
+#graphify/code #graphify/EXTRACTED #community/Community_224

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/dropdowns/priority.tsx"
 type: "code"
-community: "Label Dropdown"
+community: "Work Item Detail & Layouts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Dropdown
+  - community/Work_Item_Detail__Layouts
 ---
 
 # priority.tsx
 
 ## Connections
-
 - [[BACKGROUND_BUTTON_VARIANTS]] - `imports` [EXTRACTED]
 - [[BORDER_BUTTON_VARIANTS]] - `imports` [EXTRACTED]
 - [[BUTTON_VARIANTS_WITHOUT_TEXT]] - `imports` [EXTRACTED]
@@ -38,4 +37,4 @@ tags:
 - [[useDropdown()]] - `imports` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Work_Item_Detail__Layouts

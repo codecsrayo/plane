@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/components/issues/issue-detail-widgets/collapsibles.tsx"
 type: "code"
-community: "Work Additional"
+community: "Community 219"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Work_Additional
+  - community/Community_219
 ---
 
 # TWorkItemAdditionalWidgetCollapsiblesProps
 
 ## Connections
-
 - [[collapsibles.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Work_Additional
+#graphify/code #graphify/EXTRACTED #community/Community_219

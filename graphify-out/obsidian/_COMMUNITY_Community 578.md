@@ -1,18 +1,21 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.40
+members: 6
 ---
 
 # Community 578
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.40 - moderately connected
+**Members:** 6 nodes
 
 ## Members
-
-- [[.to()_80]] - code - api_rust/src/entities/instance_admins.rs
-- [[Entity_80]] - code - api_rust/src/entities/instance_admins.rs
+- [[Get the owner ID of the issue]] - rationale - api/plane/bgtasks/issue_description_version_sync.py
+- [[Task to create IssueDescriptionVersion records for existing Issues in batches]] - rationale - api/plane/bgtasks/issue_description_version_sync.py
+- [[get_owner_id()]] - code - api/plane/bgtasks/issue_description_version_sync.py
+- [[issue_description_version_sync.py]] - code - api/plane/bgtasks/issue_description_version_sync.py
+- [[schedule_issue_description_version()]] - code - api/plane/bgtasks/issue_description_version_sync.py
+- [[sync_issue_description_version()]] - code - api/plane/bgtasks/issue_description_version_sync.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -20,3 +23,10 @@ members: 2
 TABLE source_file, type FROM #community/Community_578
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Community 26]]
+- 1 edge to [[_COMMUNITY_Community 48]]
+
+## Top bridge nodes
+- [[sync_issue_description_version()]] - degree 5, connects to 2 communities

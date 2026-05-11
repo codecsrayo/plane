@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/core/modals/workspace-image-upload-modal.tsx"
 type: "code"
-community: "Workspace Issue"
+community: "Community 65"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Issue
+  - community/Community_65
 ---
 
 # workspace-image-upload-modal.tsx
 
 ## Connections
-
 - [[FileService_1]] - `imports` [EXTRACTED]
 - [[Props_532]] - `contains` [EXTRACTED]
 - [[WorkspaceImageUploadModal]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 - [[workspace-details.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_65

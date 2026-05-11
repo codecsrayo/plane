@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/workspace/sidebar/favorites/favorites-menu.tsx"
 type: "code"
-community: "Favorite Folder"
+community: "Community 311"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Favorite_Folder
+  - community/Community_311
 ---
 
 # favorites-menu.tsx
 
 ## Connections
-
 - [[Adapter_1]] - `imports_from` [EXTRACTED]
 - [[FavoriteFolder()]] - `imports` [EXTRACTED]
 - [[NewFavoriteFolder]] - `imports` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[use-local-storage.tsx_1]] - `imports_from` [EXTRACTED]
 - [[useFavorite()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Favorite_Folder
+#graphify/code #graphify/EXTRACTED #community/Community_311

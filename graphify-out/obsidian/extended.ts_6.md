@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/rich-filters/derived/extended.ts"
 type: "code"
-community: "Operators Supported"
+community: "Community 230"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Operators_Supported
+  - community/Community_230
 ---
 
 # extended.ts
 
 ## Connections
-
 - [[TExtendedAllAvailableDateFilterOperatorsForDisplay]] - `contains` [EXTRACTED]
 - [[TExtendedAllAvailableSelectFilterOperatorsForDisplay]] - `contains` [EXTRACTED]
 - [[TExtendedSupportedDateFilterOperators]] - `contains` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[expression.ts]] - `imports_from` [EXTRACTED]
 - [[index.ts_109]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Operators_Supported
+#graphify/code #graphify/EXTRACTED #community/Community_230

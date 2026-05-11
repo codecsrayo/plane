@@ -1,18 +1,21 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.47
+members: 6
 ---
 
 # Community 590
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.47 - moderately connected
+**Members:** 6 nodes
 
 ## Members
-
-- [[.to()_92]] - code - api_rust/src/entities/project_webhooks.rs
-- [[Entity_92]] - code - api_rust/src/entities/project_webhooks.rs
+- [[Get a random color in hex format]] - rationale - api/plane/utils/color.py
+- [[color.py]] - code - api/plane/utils/color.py
+- [[color.rs]] - code - api_rust/src/utils/color.rs
+- [[get_random_color()]] - code - api_rust/src/utils/color.rs
+- [[produces_different_values()]] - code - api_rust/src/utils/color.rs
+- [[produces_valid_hex_color()]] - code - api_rust/src/utils/color.rs
 
 ## Live Query (requires Dataview plugin)
 

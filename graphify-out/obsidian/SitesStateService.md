@@ -1,20 +1,20 @@
 ---
-source_file: "services/src/state/sites-state.service.ts"
+source_file: "packages/services/src/state/sites-state.service.ts"
 type: "code"
-community: "Sites Cycle"
+community: "Community 599"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sites_Cycle
+  - community/Community_599
 ---
 
 # SitesStateService
 
 ## Connections
-
 - [[.constructor()_28]] - `method` [EXTRACTED]
 - [[.list()_13]] - `method` [EXTRACTED]
 - [[sites-state.service.ts]] - `contains` [EXTRACTED]
+- [[sites-state.service.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sites_Cycle
+#graphify/code #graphify/EXTRACTED #community/Community_599

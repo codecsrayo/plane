@@ -1,19 +1,20 @@
 ---
-source_file: "propel/src/accordion/accordion.tsx"
+source_file: "packages/propel/src/accordion/accordion.tsx"
 type: "code"
-community: "Accordion Trigger"
+community: "Community 304"
 location: "L89"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Accordion_Trigger
+  - community/Community_304
 ---
 
 # Accordion
 
 ## Connections
-
 - [[accordion.stories.tsx]] - `imports` [EXTRACTED]
+- [[accordion.stories.tsx_1]] - `imports` [EXTRACTED]
 - [[accordion.tsx]] - `contains` [EXTRACTED]
+- [[accordion.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Accordion_Trigger
+#graphify/code #graphify/EXTRACTED #community/Community_304

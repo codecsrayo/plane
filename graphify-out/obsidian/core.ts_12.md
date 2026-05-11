@@ -1,18 +1,17 @@
 ---
 source_file: "utils/src/rich-filters/operations/transformation/core.ts"
 type: "code"
-community: "Group Transform"
+community: "Community 148"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group_Transform
+  - community/Community_148
 ---
 
 # core.ts
 
 ## Connections
-
 - [[TTreeTransformFn]] - `contains` [EXTRACTED]
 - [[TTreeTransformResult]] - `contains` [EXTRACTED]
 - [[comparison.ts]] - `imports_from` [EXTRACTED]
@@ -33,4 +32,4 @@ tags:
 - [[transformGroupWithChildren()]] - `contains` [EXTRACTED]
 - [[unwrapGroupIfNeeded()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group_Transform
+#graphify/code #graphify/EXTRACTED #community/Community_148

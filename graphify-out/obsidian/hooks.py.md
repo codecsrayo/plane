@@ -1,20 +1,19 @@
 ---
 source_file: "api/plane/utils/openapi/hooks.py"
 type: "code"
-community: "Generate Hooks"
+community: "Community 639"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Generate_Hooks
+  - community/Community_639
 ---
 
 # hooks.py
 
 ## Connections
-
 - [[__init__.py_37]] - `imports_from` [EXTRACTED]
 - [[generate_operation_summary()]] - `contains` [EXTRACTED]
 - [[preprocess_filter_api_v1_paths()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Generate_Hooks
+#graphify/code #graphify/EXTRACTED #community/Community_639

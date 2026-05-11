@@ -1,17 +1,16 @@
 ---
 source_file: ""
 type: "code"
-community: "Endpoint User"
+community: "Community 57"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_User
+  - community/Community_57
 ---
 
 # BaseAPIView
 
 ## Connections
-
 - [[AccountEndpoint]] - `inherits` [EXTRACTED]
 - [[AdvanceAnalyticsBaseView]] - `inherits` [EXTRACTED]
 - [[AnalyticsEndpoint]] - `inherits` [EXTRACTED]
@@ -187,4 +186,4 @@ tags:
 - [[WorkspaceUserProfileStatsEndpoint]] - `inherits` [EXTRACTED]
 - [[WorkspaceUserPropertiesEndpoint]] - `inherits` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_User
+#graphify/code #graphify/EXTRACTED #community/Community_57

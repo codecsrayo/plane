@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 712
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[ActiveModel_62]] - code - api_rust/src/entities/project_members.rs
+- [[TEmbedItem]] - code - packages/editor/src/core/types/embed.ts
+- [[embed.ts]] - code - editor/src/core/types/embed.ts
+- [[embed.ts_1]] - code - packages/editor/src/core/types/embed.ts
 
 ## Live Query (requires Dataview plugin)
 

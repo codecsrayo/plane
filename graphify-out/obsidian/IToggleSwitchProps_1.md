@@ -1,18 +1,18 @@
 ---
-source_file: "propel/src/switch/root.tsx"
+source_file: "packages/propel/src/switch/root.tsx"
 type: "code"
-community: "Checked Disabled"
+community: "Community 253"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Checked_Disabled
+  - community/Community_253
 ---
 
 # IToggleSwitchProps
 
 ## Connections
-
 - [[root.tsx_7]] - `contains` [EXTRACTED]
+- [[root.tsx_149]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Checked_Disabled
+#graphify/code #graphify/EXTRACTED #community/Community_253

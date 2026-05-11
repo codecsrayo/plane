@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_161]] - code - propel/src/table/index.ts
+- [[index.ts_180]] - code - propel/src/command/index.ts
 
 ## Live Query (requires Dataview plugin)
 

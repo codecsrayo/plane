@@ -1,17 +1,16 @@
 ---
 source_file: ""
 type: "code"
-community: "Serializer Project"
+community: "Community 68"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Serializer_Project
+  - community/Community_68
 ---
 
 # BaseSerializer
 
 ## Connections
-
 - [[APIActivityLogSerializer]] - `inherits` [EXTRACTED]
 - [[APITokenReadSerializer]] - `inherits` [EXTRACTED]
 - [[APITokenSerializer]] - `inherits` [EXTRACTED]
@@ -159,4 +158,4 @@ tags:
 - [[WorkspaceUserPreferenceSerializer]] - `inherits` [EXTRACTED]
 - [[WorkspaceUserPropertiesSerializer]] - `inherits` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Serializer_Project
+#graphify/code #graphify/EXTRACTED #community/Community_68

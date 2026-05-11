@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/exporter/prev-exports.tsx"
 type: "code"
-community: "Rowdata Single"
+community: "Community 115"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Rowdata_Single
+  - community/Community_115
 ---
 
 # prev-exports.tsx
 
 ## Connections
-
 - [[EXPORT_SERVICES_LIST()]] - `imports` [EXTRACTED]
 - [[ImportExportSettingsLoader()]] - `imports` [EXTRACTED]
 - [[PrevExports]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[index.ts_286]] - `imports_from` [EXTRACTED]
 - [[useExportColumns()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Rowdata_Single
+#graphify/code #graphify/EXTRACTED #community/Community_115

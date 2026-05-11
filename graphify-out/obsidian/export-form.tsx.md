@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/exporter/export-form.tsx"
 type: "code"
-community: "Project Settings"
+community: "Community 115"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Community_115
 ---
 
 # export-form.tsx
 
 ## Connections
-
 - [[ExportForm]] - `contains` [EXTRACTED]
 - [[FormData_1]] - `contains` [EXTRACTED]
 - [[ProjectExportService]] - `imports` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Community_115

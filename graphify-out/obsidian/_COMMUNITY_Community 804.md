@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 804
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_119]] - code - web/core/components/workspace-notifications/index.ts
+- [[CreateUpdateEpicModal()]] - code - web/ce/components/epics/epic-modal/modal.tsx
+- [[EpicModalProps]] - code - web/ce/components/epics/epic-modal/modal.tsx
+- [[modal.tsx_3]] - code - web/ce/components/epics/epic-modal/modal.tsx
 
 ## Live Query (requires Dataview plugin)
 

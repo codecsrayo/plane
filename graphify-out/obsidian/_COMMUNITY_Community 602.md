@@ -1,18 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.60
+members: 5
 ---
 
 # Community 602
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.60 - moderately connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[.to()_104]] - code - api_rust/src/entities/user_recent_visits.rs
-- [[Entity_104]] - code - api_rust/src/entities/user_recent_visits.rs
+- [[I_THEME_OPTION]] - code - packages/constants/src/themes.ts
+- [[THEMES]] - code - packages/constants/src/themes.ts
+- [[THEME_OPTIONS]] - code - packages/constants/src/themes.ts
+- [[themes.ts]] - code - constants/src/themes.ts
+- [[themes.ts_1]] - code - packages/constants/src/themes.ts
 
 ## Live Query (requires Dataview plugin)
 

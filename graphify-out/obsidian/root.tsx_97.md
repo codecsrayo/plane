@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/cycles/applied-filters/root.tsx"
 type: "code"
-community: "Filters Applied"
+community: "Community 169"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filters_Applied
+  - community/Community_169
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[AppliedDateFilters]] - `imports` [EXTRACTED]
 - [[AppliedStatusFilters]] - `imports` [EXTRACTED]
 - [[CycleAppliedFiltersList]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[index.ts_265]] - `imports_from` [EXTRACTED]
 - [[status.tsx_4]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filters_Applied
+#graphify/code #graphify/EXTRACTED #community/Community_169

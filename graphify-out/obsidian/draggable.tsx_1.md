@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/gantt-chart/helpers/draggable.tsx"
 type: "code"
-community: "Gantt Chart"
+community: "Community 23"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Chart
+  - community/Community_23
 ---
 
 # draggable.tsx
 
 ## Connections
-
 - [[ChartDraggable]] - `contains` [EXTRACTED]
 - [[LeftResizable]] - `imports` [EXTRACTED]
 - [[Props_126]] - `contains` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[left-resizable.tsx]] - `imports_from` [EXTRACTED]
 - [[right-resizable.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Chart
+#graphify/code #graphify/EXTRACTED #community/Community_23

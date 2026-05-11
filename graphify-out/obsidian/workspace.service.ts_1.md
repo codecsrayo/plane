@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/workspace.service.ts"
 type: "code"
-community: "Workspace Issue"
+community: "Community 46"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Issue
+  - community/Community_46
 ---
 
 # workspace.service.ts
 
 ## Connections
-
 - [[ApiError]] - `imports` [EXTRACTED]
 - [[WorkspaceService_1]] - `contains` [EXTRACTED]
 - [[api.service.ts_1]] - `imports_from` [EXTRACTED]
@@ -44,4 +43,4 @@ tags:
 - [[work-item-selection-page.tsx]] - `imports_from` [EXTRACTED]
 - [[workspace-member.store.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_46

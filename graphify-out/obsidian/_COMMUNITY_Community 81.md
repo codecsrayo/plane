@@ -1,43 +1,69 @@
 ---
 type: community
-cohesion: 0.10
-members: 27
+cohesion: 0.11
+members: 54
 ---
 
 # Community 81
 
-**Cohesion:** 0.10 - loosely connected
-**Members:** 27 nodes
+**Cohesion:** 0.11 - loosely connected
+**Members:** 54 nodes
 
 ## Members
-
-- [[DeleteLabelModal]] - code - web/core/components/labels/delete-label-modal.tsx
-- [[IIssueLabelSelect]] - code - web/core/components/issues/issue-detail/label/select/label-select.tsx
-- [[IIssuePropertyLabels]] - code - web/core/components/issues/issue-layouts/properties/labels.tsx
-- [[ILabelDropdownProps]] - code - web/core/components/issues/issue-layouts/properties/label-dropdown.tsx
-- [[IssuePropertyLabels]] - code - web/core/components/issues/issue-layouts/properties/labels.tsx
-- [[LabelDropdown()]] - code - web/core/components/issues/issue-layouts/properties/label-dropdown.tsx
-- [[LabelItem]] - code - web/core/components/issues/issue-layouts/properties/labels.tsx
-- [[LabelItemProps]] - code - web/core/components/issues/issue-layouts/properties/labels.tsx
-- [[LabelSummary()]] - code - web/core/components/issues/issue-layouts/properties/labels.tsx
-- [[LabelSummaryProps]] - code - web/core/components/issues/issue-layouts/properties/labels.tsx
-- [[NoLabel]] - code - web/core/components/issues/issue-layouts/properties/labels.tsx
-- [[NoLabelProps]] - code - web/core/components/issues/issue-layouts/properties/labels.tsx
-- [[Props_65]] - code - web/core/components/labels/delete-label-modal.tsx
-- [[ReadonlyLabels]] - code - web/core/components/readonly/labels.tsx
-- [[TReadonlyLabelsProps]] - code - web/core/components/readonly/labels.tsx
-- [[TUseDropdownKeyDown]] - code - web/core/hooks/use-dropdown-key-down.tsx
-- [[delete-label-modal.tsx]] - code - web/core/components/labels/delete-label-modal.tsx
-- [[extractApiErrorMessage()]] - code - web/core/services/api.service.ts
-- [[label-dropdown.tsx]] - code - web/core/components/issues/issue-layouts/properties/label-dropdown.tsx
-- [[label-select.tsx]] - code - web/core/components/issues/issue-detail/label/select/label-select.tsx
-- [[labels.tsx]] - code - web/core/components/issues/issue-layouts/properties/labels.tsx
-- [[labels.tsx_4]] - code - web/core/components/readonly/labels.tsx
-- [[preventPropagation()]] - code - web/core/components/issues/issue-layouts/properties/label-dropdown.tsx
-- [[use-dropdown-key-down.tsx]] - code - web/core/hooks/use-dropdown-key-down.tsx
-- [[use-label.ts]] - code - web/core/hooks/store/use-label.ts
-- [[useDropdownKeyDown()]] - code - web/core/hooks/use-dropdown-key-down.tsx
-- [[useLabel()]] - code - web/core/hooks/store/use-label.ts
+- [[DEFAULT_COLORS]] - code - packages/propel/src/emoji-icon-picker/helper.tsx
+- [[EmojiIconPickerTypes]] - code - packages/propel/src/emoji-icon-picker/helper.tsx
+- [[EmojiReactionPickerProps]] - code - packages/propel/src/emoji-reaction/emoji-reaction-picker.tsx
+- [[EmojiRoot()]] - code - packages/propel/src/emoji-icon-picker/emoji/emoji.tsx
+- [[EmojiRootProps]] - code - packages/propel/src/emoji-icon-picker/emoji/emoji.tsx
+- [[ITooltipProps_1]] - code - packages/propel/src/tooltip/root.tsx
+- [[IconRoot()]] - code - packages/propel/src/emoji-icon-picker/icon/icon-root.tsx
+- [[IconRootProps]] - code - packages/propel/src/emoji-icon-picker/icon/icon-root.tsx
+- [[MATERIAL_ICONS_LIST_1]] - code - packages/propel/src/emoji-icon-picker/material-icons.tsx
+- [[MaterialIconList()]] - code - packages/propel/src/emoji-icon-picker/icon/material-root.tsx
+- [[MaterialIconListProps]] - code - packages/propel/src/emoji-icon-picker/icon/material-root.tsx
+- [[PLACEMENT_MAP]] - code - packages/propel/src/utils/placement.ts
+- [[Popover]] - code - packages/propel/src/popover/root.tsx
+- [[PopoverContent]] - code - packages/propel/src/popover/root.tsx
+- [[PopoverContentProps]] - code - packages/propel/src/popover/root.tsx
+- [[PopoverPortal]] - code - packages/propel/src/popover/root.tsx
+- [[PopoverPositioner]] - code - packages/propel/src/popover/root.tsx
+- [[PopoverTrigger]] - code - packages/propel/src/popover/root.tsx
+- [[TAlign]] - code - packages/propel/src/utils/placement.ts
+- [[TCustomEmojiPicker]] - code - packages/propel/src/emoji-icon-picker/helper.tsx
+- [[TEmojiIconPickerTypes]] - code - packages/propel/src/emoji-icon-picker/helper.tsx
+- [[TIconsListProps]] - code - packages/propel/src/emoji-icon-picker/helper.tsx
+- [[TPlacement]] - code - packages/propel/src/utils/placement.ts
+- [[TSide]] - code - packages/propel/src/utils/placement.ts
+- [[Tooltip()_1]] - code - packages/propel/src/tooltip/root.tsx
+- [[adjustColorForContrast()]] - code - packages/propel/src/emoji-icon-picker/helper.tsx
+- [[convertPlacementToSideAndAlign()]] - code - packages/propel/src/utils/placement.ts
+- [[decimalToEmojiEnhanced()]] - code - packages/propel/src/emoji-icon-picker/helper.tsx
+- [[emoji-picker.tsx_1]] - code - packages/propel/src/emoji-icon-picker/emoji-picker.tsx
+- [[emoji-picker.tsx]] - code - propel/src/emoji-icon-picker/emoji-picker.tsx
+- [[emoji-reaction-picker.tsx_1]] - code - packages/propel/src/emoji-reaction/emoji-reaction-picker.tsx
+- [[emoji-reaction-picker.tsx]] - code - propel/src/emoji-reaction/emoji-reaction-picker.tsx
+- [[emoji.tsx_1]] - code - packages/propel/src/emoji-icon-picker/emoji/emoji.tsx
+- [[emoji.tsx]] - code - propel/src/emoji-icon-picker/emoji/emoji.tsx
+- [[emojiToDecimalEnhanced()]] - code - packages/propel/src/emoji-icon-picker/helper.tsx
+- [[emojiToString()]] - code - packages/propel/src/emoji-icon-picker/helper.tsx
+- [[ensureRefCompatibleChild()]] - code - packages/propel/src/tooltip/root.tsx
+- [[helper.tsx_47]] - code - packages/propel/src/emoji-icon-picker/helper.tsx
+- [[helper.tsx_15]] - code - propel/src/emoji-icon-picker/helper.tsx
+- [[icon-root.tsx_1]] - code - packages/propel/src/emoji-icon-picker/icon/icon-root.tsx
+- [[icon-root.tsx]] - code - propel/src/emoji-icon-picker/icon/icon-root.tsx
+- [[index.ts_644]] - code - packages/propel/src/popover/index.ts
+- [[index.ts_183]] - code - propel/src/popover/index.ts
+- [[material-icons.tsx_1]] - code - packages/propel/src/emoji-icon-picker/material-icons.tsx
+- [[material-icons.tsx]] - code - propel/src/emoji-icon-picker/material-icons.tsx
+- [[material-root.tsx_1]] - code - packages/propel/src/emoji-icon-picker/icon/material-root.tsx
+- [[material-root.tsx]] - code - propel/src/emoji-icon-picker/icon/material-root.tsx
+- [[placement.ts_1]] - code - packages/propel/src/utils/placement.ts
+- [[placement.ts]] - code - propel/src/utils/placement.ts
+- [[root.tsx_160]] - code - packages/propel/src/popover/root.tsx
+- [[root.tsx_161]] - code - packages/propel/src/tooltip/root.tsx
+- [[root.tsx_18]] - code - propel/src/popover/root.tsx
+- [[root.tsx_19]] - code - propel/src/tooltip/root.tsx
+- [[toHex()_2]] - code - packages/propel/src/emoji-icon-picker/helper.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -47,38 +73,19 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 11 edges to [[_COMMUNITY_Spreadsheet Column Components]]
-- 9 edges to [[_COMMUNITY_Layout System]]
-- 6 edges to [[_COMMUNITY_Community 140]]
-- 5 edges to [[_COMMUNITY_Auth Wrappers]]
-- 4 edges to [[_COMMUNITY_Community 233]]
-- 4 edges to [[_COMMUNITY_Community 162]]
-- 3 edges to [[_COMMUNITY_Community 36]]
-- 3 edges to [[_COMMUNITY_Community 76]]
-- 3 edges to [[_COMMUNITY_Issue Activity Tracking]]
-- 2 edges to [[_COMMUNITY_Community 102]]
-- 2 edges to [[_COMMUNITY_Applied Filters UI]]
-- 2 edges to [[_COMMUNITY_Project Estimates]]
-- 2 edges to [[_COMMUNITY_Community 204]]
-- 2 edges to [[_COMMUNITY_Community 61]]
-- 2 edges to [[_COMMUNITY_Module Analytics]]
-- 2 edges to [[_COMMUNITY_Community 164]]
-- 2 edges to [[_COMMUNITY_Community 98]]
-- 2 edges to [[_COMMUNITY_Community 70]]
-- 2 edges to [[_COMMUNITY_Empty State Components]]
-- 2 edges to [[_COMMUNITY_Community 41]]
-- 2 edges to [[_COMMUNITY_Git Integrations]]
-- 1 edge to [[_COMMUNITY_Community 92]]
-- 1 edge to [[_COMMUNITY_Community 75]]
-- 1 edge to [[_COMMUNITY_Community 44]]
-- 1 edge to [[_COMMUNITY_Community 178]]
-- 1 edge to [[_COMMUNITY_Community 255]]
+- 12 edges to [[_COMMUNITY_Community 164]]
+- 11 edges to [[_COMMUNITY_Community 422]]
+- 10 edges to [[_COMMUNITY_Community 365]]
+- 4 edges to [[_COMMUNITY_Community 292]]
+- 4 edges to [[_COMMUNITY_Community 119]]
+- 4 edges to [[_COMMUNITY_Community 367]]
+- 4 edges to [[_COMMUNITY_Community 193]]
+- 4 edges to [[_COMMUNITY_Community 277]]
+- 2 edges to [[_COMMUNITY_Community 276]]
 
 ## Top bridge nodes
-
-- [[use-label.ts]] - degree 29, connects to 17 communities
-- [[useLabel()]] - degree 29, connects to 14 communities
-- [[extractApiErrorMessage()]] - degree 8, connects to 7 communities
-- [[label-select.tsx]] - degree 8, connects to 3 communities
-- [[useDropdownKeyDown()]] - degree 7, connects to 3 communities
+- [[icon-root.tsx_1]] - degree 13, connects to 3 communities
+- [[icon-root.tsx]] - degree 13, connects to 3 communities
+- [[helper.tsx_47]] - degree 22, connects to 2 communities
+- [[helper.tsx_15]] - degree 22, connects to 2 communities
+- [[emoji-picker.tsx_1]] - degree 15, connects to 2 communities

@@ -1,17 +1,18 @@
 ---
 source_file: "packages/logger/README.md"
 type: "document"
-community: "Winston Logger"
+community: "Community 668"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Winston_Logger
+  - community/Community_668
 ---
 
 # @plane/logger Package
 
 ## Connections
+- [[Winston Logger]] - `references` [EXTRACTED]
+- [[logger (general logger)]] - `references` [EXTRACTED]
+- [[requestLogger (middleware)]] - `references` [EXTRACTED]
 
-- [[Winston Logger Library]] - `references` [EXTRACTED]
-
-#graphify/document #graphify/EXTRACTED #community/Winston_Logger
+#graphify/document #graphify/EXTRACTED #community/Community_668

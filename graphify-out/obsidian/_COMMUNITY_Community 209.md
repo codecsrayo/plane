@@ -1,27 +1,42 @@
 ---
 type: community
-cohesion: 0.24
-members: 11
+cohesion: 0.17
+members: 27
 ---
 
 # Community 209
 
-**Cohesion:** 0.24 - loosely connected
-**Members:** 11 nodes
+**Cohesion:** 0.17 - loosely connected
+**Members:** 27 nodes
 
 ## Members
-
-- [[AppliedFilters]] - code - web/core/components/workspace-notifications/sidebar/filters/applied-filter.tsx
-- [[NotificationEmptyState]] - code - web/core/components/workspace-notifications/sidebar/empty-state.tsx
-- [[NotificationsLoader()_1]] - code - web/core/components/workspace-notifications/sidebar/loader.tsx
-- [[NotificationsSidebarRoot]] - code - web/core/components/workspace-notifications/sidebar/root.tsx
-- [[TAppliedFilters]] - code - web/core/components/workspace-notifications/sidebar/filters/applied-filter.tsx
-- [[TNotificationEmptyStateProps]] - code - web/core/components/workspace-notifications/sidebar/empty-state.tsx
-- [[applied-filter.tsx]] - code - web/core/components/workspace-notifications/sidebar/filters/applied-filter.tsx
-- [[empty-state.tsx_4]] - code - web/core/components/workspace-notifications/sidebar/empty-state.tsx
-- [[index.ts_123]] - code - web/core/components/workspace-notifications/sidebar/header/index.ts
-- [[loader.tsx_6]] - code - web/core/components/workspace-notifications/sidebar/loader.tsx
-- [[root.tsx_45]] - code - web/core/components/workspace-notifications/sidebar/root.tsx
+- [[addSpaceIfCamelCase()]] - code - packages/utils/src/string.ts
+- [[capitalizeFirstLetter()]] - code - packages/utils/src/string.ts
+- [[checkEmailValidity()]] - code - packages/utils/src/string.ts
+- [[checkURLValidity()]] - code - packages/utils/src/string.ts
+- [[copyTextToClipboard()]] - code - packages/utils/src/string.ts
+- [[copyUrlToClipboard()]] - code - packages/utils/src/string.ts
+- [[createSimilarString()]] - code - packages/utils/src/string.ts
+- [[ensureUrlHasProtocol()]] - code - packages/utils/src/string.ts
+- [[fallbackCopyTextToClipboard()]] - code - packages/utils/src/string.ts
+- [[getFirstCharacters()]] - code - packages/utils/src/string.ts
+- [[getNumberCount()]] - code - packages/utils/src/string.ts
+- [[isCommentEmpty()]] - code - packages/utils/src/string.ts
+- [[isEmptyHtmlString()]] - code - packages/utils/src/string.ts
+- [[isJSONContentEmpty()]] - code - packages/utils/src/string.ts
+- [[isStringCommentEmpty()]] - code - packages/utils/src/string.ts
+- [[joinUrlPath()]] - code - packages/utils/src/string.ts
+- [[joinWithConjunction()]] - code - packages/utils/src/string.ts
+- [[notification.ts_4]] - code - packages/utils/src/notification.ts
+- [[notification.ts_1]] - code - utils/src/notification.ts
+- [[replaceUnderscoreIfSnakeCase()]] - code - packages/utils/src/string.ts
+- [[sanitizeCommentForNotification()]] - code - packages/utils/src/notification.ts
+- [[sanitizeHTML()]] - code - packages/utils/src/string.ts
+- [[string.ts_1]] - code - packages/utils/src/string.ts
+- [[string.ts]] - code - utils/src/string.ts
+- [[stripAndTruncateHTML()]] - code - packages/utils/src/string.ts
+- [[substringMatch()]] - code - packages/utils/src/string.ts
+- [[truncateText()]] - code - packages/utils/src/string.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -29,13 +44,3 @@ members: 11
 TABLE source_file, type FROM #community/Community_209
 SORT file.name ASC
 ```
-
-## Connections to other communities
-
-- 4 edges to [[_COMMUNITY_Community 198]]
-- 2 edges to [[_COMMUNITY_Authentication UI]]
-
-## Top bridge nodes
-
-- [[root.tsx_45]] - degree 13, connects to 2 communities
-- [[applied-filter.tsx]] - degree 4, connects to 1 community

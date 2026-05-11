@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 823
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_175]] - code - web/core/components/account/auth-forms/index.ts
+- [[AddLink()]] - code - web/core/components/home/widgets/links/action.tsx
+- [[TProps_3]] - code - web/core/components/home/widgets/links/action.tsx
+- [[action.tsx]] - code - web/core/components/home/widgets/links/action.tsx
 
 ## Live Query (requires Dataview plugin)
 

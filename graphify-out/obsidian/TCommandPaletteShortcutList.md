@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/command-palette.ts"
+source_file: "packages/types/src/command-palette.ts"
 type: "code"
-community: "Command Palette"
+community: "Community 607"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Command_Palette
+  - community/Community_607
 ---
 
 # TCommandPaletteShortcutList
 
 ## Connections
-
 - [[command-palette.ts]] - `contains` [EXTRACTED]
+- [[command-palette.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Command_Palette
+#graphify/code #graphify/EXTRACTED #community/Community_607

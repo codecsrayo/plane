@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 780
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_60]] - code - web/core/components/modules/gantt-chart/index.ts
+- [[WorkspaceInvitationsLayout()]] - code - web/app/(all)/workspace-invitations/layout.tsx
+- [[layout.tsx_42]] - code - web/app/(all)/workspace-invitations/layout.tsx
+- [[meta()_11]] - code - web/app/(all)/workspace-invitations/layout.tsx
 
 ## Live Query (requires Dataview plugin)
 

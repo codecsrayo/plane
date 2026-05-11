@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/custom-list-keymap/list-keymap.ts"
 type: "code"
-community: "Next Prev"
+community: "Community 293"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Next_Prev
+  - community/Community_293
 ---
 
 # list-keymap.ts
 
 ## Connections
-
 - [[CORE_EXTENSIONS]] - `imports` [EXTRACTED]
 - [[ListKeymap()]] - `contains` [EXTRACTED]
 - [[ListKeymapOptions]] - `contains` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[handleDelete()]] - `imports` [EXTRACTED]
 - [[list-helpers.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Next_Prev
+#graphify/code #graphify/EXTRACTED #community/Community_293

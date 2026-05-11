@@ -1,19 +1,18 @@
 ---
 source_file: "web/core/components/chart/utils.ts"
 type: "code"
-community: "Table Chart"
+community: "Community 377"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Table_Chart
+  - community/Community_377
 ---
 
 # getDateGroupingName()
 
 ## Connections
-
 - [[renderFormattedDate()_1]] - `calls` [INFERRED]
 - [[utils.ts_14]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Table_Chart
+#graphify/code #graphify/EXTRACTED #community/Community_377

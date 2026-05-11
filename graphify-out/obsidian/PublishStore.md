@@ -1,18 +1,17 @@
 ---
 source_file: "space/store/publish/publish.store.ts"
 type: "code"
-community: "Publish Cycle"
+community: "Community 225"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Publish_Cycle
+  - community/Community_225
 ---
 
 # PublishStore
 
 ## Connections
-
 - [[.canComment()]] - `method` [EXTRACTED]
 - [[.canReact()]] - `method` [EXTRACTED]
 - [[.canVote()]] - `method` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[root.tsx_139]] - `imports` [EXTRACTED]
 - [[use-publish.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Publish_Cycle
+#graphify/code #graphify/EXTRACTED #community/Community_225

@@ -1,18 +1,17 @@
 ---
 source_file: "utils/src/work-item/base.ts"
 type: "code"
-community: "Issue Handle"
+community: "Community 323"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Handle
+  - community/Community_323
 ---
 
 # base.ts
 
 ## Connections
-
 - [[THandleIssuesMutation]] - `contains` [EXTRACTED]
 - [[array.ts]] - `imports_from` [EXTRACTED]
 - [[createIssuePayload()]] - `contains` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[orderArrayBy()]] - `imports` [EXTRACTED]
 - [[shouldHighlightIssueDueDate()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Handle
+#graphify/code #graphify/EXTRACTED #community/Community_323

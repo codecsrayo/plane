@@ -1,59 +1,100 @@
 ---
-source_file: "propel/src/empty-state/assets/helper.tsx"
+source_file: "packages/propel/src/empty-state/assets/helper.tsx"
 type: "code"
-community: "Stack Vertical"
+community: "Community 353"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Stack_Vertical
+  - community/Community_353
 ---
 
 # TIllustrationAssetProps
 
 ## Connections
-
 - [[404-error.tsx]] - `imports` [EXTRACTED]
+- [[404-error.tsx_1]] - `imports` [EXTRACTED]
 - [[archived-cycle.tsx]] - `imports` [EXTRACTED]
+- [[archived-cycle.tsx_1]] - `imports` [EXTRACTED]
 - [[archived-module.tsx]] - `imports` [EXTRACTED]
+- [[archived-module.tsx_1]] - `imports` [EXTRACTED]
 - [[archived-work-item.tsx]] - `imports` [EXTRACTED]
+- [[archived-work-item.tsx_1]] - `imports` [EXTRACTED]
 - [[changelog.tsx]] - `imports` [EXTRACTED]
+- [[changelog.tsx_2]] - `imports` [EXTRACTED]
 - [[customer.tsx]] - `imports` [EXTRACTED]
 - [[customer.tsx_1]] - `imports` [EXTRACTED]
+- [[customer.tsx_2]] - `imports` [EXTRACTED]
+- [[customer.tsx_3]] - `imports` [EXTRACTED]
 - [[cycle.tsx]] - `imports` [EXTRACTED]
+- [[cycle.tsx_7]] - `imports` [EXTRACTED]
 - [[dashboard.tsx]] - `imports` [EXTRACTED]
+- [[dashboard.tsx_1]] - `imports` [EXTRACTED]
 - [[draft.tsx]] - `imports` [EXTRACTED]
+- [[draft.tsx_1]] - `imports` [EXTRACTED]
 - [[epic.tsx]] - `imports` [EXTRACTED]
 - [[epic.tsx_1]] - `imports` [EXTRACTED]
+- [[epic.tsx_2]] - `imports` [EXTRACTED]
+- [[epic.tsx_3]] - `imports` [EXTRACTED]
 - [[estimate.tsx]] - `imports` [EXTRACTED]
+- [[estimate.tsx_4]] - `imports` [EXTRACTED]
 - [[export.tsx]] - `imports` [EXTRACTED]
+- [[export.tsx_1]] - `imports` [EXTRACTED]
 - [[helper.tsx_16]] - `contains` [EXTRACTED]
+- [[helper.tsx_48]] - `contains` [EXTRACTED]
 - [[inbox.tsx]] - `imports` [EXTRACTED]
+- [[inbox.tsx_3]] - `imports` [EXTRACTED]
 - [[initiative.tsx]] - `imports` [EXTRACTED]
+- [[initiative.tsx_1]] - `imports` [EXTRACTED]
 - [[intake.tsx_1]] - `imports` [EXTRACTED]
+- [[intake.tsx_3]] - `imports` [EXTRACTED]
 - [[invalid-link.tsx]] - `imports` [EXTRACTED]
+- [[invalid-link.tsx_1]] - `imports` [EXTRACTED]
 - [[label.tsx]] - `imports` [EXTRACTED]
+- [[label.tsx_7]] - `imports` [EXTRACTED]
 - [[link.tsx]] - `imports` [EXTRACTED]
+- [[link.tsx_4]] - `imports` [EXTRACTED]
 - [[members.tsx]] - `imports` [EXTRACTED]
+- [[members.tsx_10]] - `imports` [EXTRACTED]
 - [[module.tsx]] - `imports` [EXTRACTED]
+- [[module.tsx_6]] - `imports` [EXTRACTED]
 - [[no-access.tsx]] - `imports` [EXTRACTED]
+- [[no-access.tsx_1]] - `imports` [EXTRACTED]
 - [[note.tsx]] - `imports` [EXTRACTED]
+- [[note.tsx_1]] - `imports` [EXTRACTED]
 - [[page.tsx]] - `imports` [EXTRACTED]
+- [[page.tsx_83]] - `imports` [EXTRACTED]
 - [[priority.tsx]] - `imports` [EXTRACTED]
+- [[priority.tsx_11]] - `imports` [EXTRACTED]
 - [[project.tsx]] - `imports` [EXTRACTED]
 - [[project.tsx_1]] - `imports` [EXTRACTED]
+- [[project.tsx_7]] - `imports` [EXTRACTED]
+- [[project.tsx_8]] - `imports` [EXTRACTED]
 - [[search.tsx]] - `imports` [EXTRACTED]
+- [[search.tsx_2]] - `imports` [EXTRACTED]
 - [[server-error.tsx]] - `imports` [EXTRACTED]
+- [[server-error.tsx_1]] - `imports` [EXTRACTED]
 - [[settings.tsx]] - `imports` [EXTRACTED]
+- [[settings.tsx_2]] - `imports` [EXTRACTED]
 - [[state.tsx]] - `imports` [EXTRACTED]
+- [[state.tsx_10]] - `imports` [EXTRACTED]
 - [[teamspace.tsx]] - `imports` [EXTRACTED]
+- [[teamspace.tsx_1]] - `imports` [EXTRACTED]
 - [[template.tsx]] - `imports` [EXTRACTED]
+- [[template.tsx_1]] - `imports` [EXTRACTED]
 - [[unknown.tsx]] - `imports` [EXTRACTED]
+- [[unknown.tsx_1]] - `imports` [EXTRACTED]
 - [[update.tsx]] - `imports` [EXTRACTED]
+- [[update.tsx_3]] - `imports` [EXTRACTED]
 - [[view.tsx]] - `imports` [EXTRACTED]
+- [[view.tsx_4]] - `imports` [EXTRACTED]
 - [[webhook.tsx]] - `imports` [EXTRACTED]
+- [[webhook.tsx_1]] - `imports` [EXTRACTED]
 - [[work-item.tsx]] - `imports` [EXTRACTED]
 - [[work-item.tsx_1]] - `imports` [EXTRACTED]
+- [[work-item.tsx_2]] - `imports` [EXTRACTED]
+- [[work-item.tsx_3]] - `imports` [EXTRACTED]
 - [[worklog.tsx]] - `imports` [EXTRACTED]
+- [[worklog.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Stack_Vertical
+#graphify/code #graphify/EXTRACTED #community/Community_353

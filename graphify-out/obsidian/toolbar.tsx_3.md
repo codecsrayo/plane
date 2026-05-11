@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/pages/editor/toolbar/toolbar.tsx"
 type: "code"
-community: "Toolbar Items"
+community: "Community 111"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toolbar_Items
+  - community/Community_111
 ---
 
 # toolbar.tsx
 
 ## Connections
-
 - [[ColorDropdown]] - `imports` [EXTRACTED]
 - [[PageToolbar()]] - `contains` [EXTRACTED]
 - [[Props_465]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[color-dropdown.tsx]] - `imports_from` [EXTRACTED]
 - [[editor.ts_20]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toolbar_Items
+#graphify/code #graphify/EXTRACTED #community/Community_111

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/module-column.tsx"
 type: "code"
-community: "Label Dropdown"
+community: "Work Item Detail & Layouts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Dropdown
+  - community/Work_Item_Detail__Layouts
 ---
 
 # module-column.tsx
 
 ## Connections
-
 - [[ModuleDropdown]] - `imports` [EXTRACTED]
 - [[Props_287]] - `contains` [EXTRACTED]
 - [[SpreadsheetModuleColumn]] - `contains` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[use-issue-layout-store.ts]] - `imports_from` [EXTRACTED]
 - [[useIssuesStore()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Work_Item_Detail__Layouts

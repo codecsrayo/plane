@@ -1,18 +1,17 @@
 ---
 source_file: "ui/src/tables/table.stories.tsx"
 type: "code"
-community: "Table Meta"
+community: "Community 384"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Table_Meta
+  - community/Community_384
 ---
 
 # table.stories.tsx
 
 ## Connections
-
 - [[Default]] - `contains` [EXTRACTED]
 - [[Story]] - `contains` [EXTRACTED]
 - [[TTableData]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[tableColumns]] - `contains` [EXTRACTED]
 - [[tableData]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Table_Meta
+#graphify/code #graphify/EXTRACTED #community/Community_384

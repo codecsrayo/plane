@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/state/base.py"
 type: "code"
-community: "Partial Endpoint"
+community: "Python API Base Classes"
 location: "L138"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Partial_Endpoint
+  - community/Python_API_Base_Classes
 ---
 
 # get()
 
 ## Connections
-
 - [[.get_queryset()_43]] - `calls` [EXTRACTED]
 - [[base.py_17]] - `contains` [EXTRACTED]
 - [[destroy()_17]] - `calls` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[partial_update()_13]] - `calls` [EXTRACTED]
 - [[response]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Partial_Endpoint
+#graphify/code #graphify/EXTRACTED #community/Python_API_Base_Classes

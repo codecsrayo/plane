@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/constants/editor.ts"
 type: "code"
-community: "Toolbar Items"
+community: "Community 111"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toolbar_Items
+  - community/Community_111
 ---
 
 # editor.ts
 
 ## Connections
-
 - [[BASIC_MARK_ITEMS_1]] - `contains` [EXTRACTED]
 - [[COMPLEX_ITEMS_1]] - `contains` [EXTRACTED]
 - [[EDITOR_FONT_STYLES]] - `contains` [EXTRACTED]
@@ -36,4 +35,4 @@ tags:
 - [[toolbar.tsx_2]] - `imports_from` [EXTRACTED]
 - [[toolbar.tsx_3]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toolbar_Items
+#graphify/code #graphify/EXTRACTED #community/Community_111

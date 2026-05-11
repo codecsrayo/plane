@@ -1,28 +1,44 @@
 ---
 type: community
-cohesion: 0.21
-members: 12
+cohesion: 0.16
+members: 29
 ---
 
 # Community 195
 
-**Cohesion:** 0.21 - loosely connected
-**Members:** 12 nodes
+**Cohesion:** 0.16 - loosely connected
+**Members:** 29 nodes
 
 ## Members
-
-- [[.from_request_parts()_2]] - code - api_rust/src/auth/api_key.rs
-- [[ApiKeyContext]] - code - api_rust/src/auth/api_key.rs
-- [[ApiKeyUser]] - code - api_rust/src/auth/api_key.rs
-- [[RateLimitState]] - code - api_rust/src/auth/rate_limit.rs
-- [[api_key.rs]] - code - api_rust/src/auth/api_key.rs
-- [[apply_rate_limit()]] - code - api_rust/src/auth/rate_limit.rs
-- [[apply_rate_limit_rejects_after_limit()]] - code - api_rust/src/auth/rate_limit.rs
-- [[bucket_key()]] - code - api_rust/src/auth/rate_limit.rs
-- [[bucket_key_is_stable_and_hides_raw_token()]] - code - api_rust/src/auth/rate_limit.rs
-- [[rate_limit.rs]] - code - api_rust/src/auth/rate_limit.rs
-- [[rate_limit_headers_middleware()]] - code - api_rust/src/auth/rate_limit.rs
-- [[rate_limit_state()]] - code - api_rust/src/auth/api_key.rs
+- [[Banner]] - code - packages/propel/src/banner/banner.tsx
+- [[BannerProps]] - code - packages/propel/src/banner/banner.tsx
+- [[BannerVariant]] - code - packages/propel/src/banner/banner.tsx
+- [[CloseButton()]] - code - packages/propel/src/banner/banner.stories.tsx
+- [[Error_2]] - code - packages/propel/src/banner/banner.stories.tsx
+- [[ErrorIcon()]] - code - packages/propel/src/banner/banner.stories.tsx
+- [[IBannerStyling]] - code - packages/propel/src/banner/helper.tsx
+- [[Info_2]] - code - packages/propel/src/banner/banner.stories.tsx
+- [[InfoIcon()_1]] - code - packages/propel/src/banner/banner.stories.tsx
+- [[Interactive_1]] - code - packages/propel/src/banner/banner.stories.tsx
+- [[Story_20]] - code - packages/propel/src/banner/banner.stories.tsx
+- [[Success_3]] - code - packages/propel/src/banner/banner.stories.tsx
+- [[SuccessIcon()]] - code - packages/propel/src/banner/banner.stories.tsx
+- [[TBannerVariant]] - code - packages/propel/src/banner/helper.tsx
+- [[Warning_3]] - code - packages/propel/src/banner/banner.stories.tsx
+- [[WarningIcon()]] - code - packages/propel/src/banner/banner.stories.tsx
+- [[banner.stories.tsx_1]] - code - packages/propel/src/banner/banner.stories.tsx
+- [[banner.stories.tsx]] - code - propel/src/banner/banner.stories.tsx
+- [[banner.tsx_2]] - code - packages/propel/src/banner/banner.tsx
+- [[banner.tsx]] - code - propel/src/banner/banner.tsx
+- [[bannerSizeStyling]] - code - packages/propel/src/banner/helper.tsx
+- [[bannerStyling]] - code - packages/propel/src/banner/helper.tsx
+- [[getBannerActionStyling()]] - code - packages/propel/src/banner/helper.tsx
+- [[getBannerDismissIconStyling()]] - code - packages/propel/src/banner/helper.tsx
+- [[getBannerDismissStyling()]] - code - packages/propel/src/banner/helper.tsx
+- [[getBannerStyling()]] - code - packages/propel/src/banner/helper.tsx
+- [[getBannerTitleStyling()]] - code - packages/propel/src/banner/helper.tsx
+- [[helper.tsx_45]] - code - packages/propel/src/banner/helper.tsx
+- [[helper.tsx_13]] - code - propel/src/banner/helper.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -32,9 +48,8 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 1 edge to [[_COMMUNITY_Auth Rust API]]
+- 2 edges to [[_COMMUNITY_Community 292]]
 
 ## Top bridge nodes
-
-- [[bucket_key()]] - degree 4, connects to 1 community
+- [[banner.tsx_2]] - degree 12, connects to 1 community
+- [[banner.tsx]] - degree 12, connects to 1 community

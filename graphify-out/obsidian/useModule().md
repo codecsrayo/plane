@@ -1,18 +1,17 @@
 ---
 source_file: "space/hooks/store/use-module.ts"
 type: "code"
-community: "Cycles Archived"
+community: "Module & Cycle Analytics"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycles_Archived
+  - community/Module__Cycle_Analytics
 ---
 
 # useModule()
 
 ## Connections
-
 - [[base.tsx_8]] - `imports` [EXTRACTED]
 - [[blocks.tsx]] - `imports` [EXTRACTED]
 - [[button-content.tsx]] - `imports` [EXTRACTED]
@@ -56,4 +55,4 @@ tags:
 - [[use-workspace-issue-properties.ts]] - `imports` [EXTRACTED]
 - [[view.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycles_Archived
+#graphify/code #graphify/EXTRACTED #community/Module__Cycle_Analytics

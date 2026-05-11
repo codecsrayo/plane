@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/user/settings.store.ts"
 type: "code"
-community: "User Profile"
+community: "Community 51"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User_Profile
+  - community/Community_51
 ---
 
 # settings.store.ts
 
 ## Connections
-
 - [[IUserSettingsStore]] - `contains` [EXTRACTED]
 - [[TError_1]] - `contains` [EXTRACTED]
 - [[UserService_1]] - `imports` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[user-user-settings.ts]] - `imports_from` [EXTRACTED]
 - [[user.service.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User_Profile
+#graphify/code #graphify/EXTRACTED #community/Community_51

@@ -1,18 +1,17 @@
 ---
 source_file: "constants/src/issue/common.ts"
 type: "code"
-community: "Issue Filters"
+community: "Community 95"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters
+  - community/Community_95
 ---
 
 # common.ts
 
 ## Connections
-
 - [[DRAG_ALLOWED_GROUPS]] - `contains` [EXTRACTED]
 - [[EIssueCommentAccessSpecifier]] - `contains` [EXTRACTED]
 - [[EIssueGroupBYServerToProperty]] - `contains` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[TIssuePriorities]] - `contains` [EXTRACTED]
 - [[filter.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters
+#graphify/code #graphify/EXTRACTED #community/Community_95

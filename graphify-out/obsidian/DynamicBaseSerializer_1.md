@@ -1,17 +1,16 @@
 ---
 source_file: ""
 type: "code"
-community: "Serializer Project"
+community: "Community 68"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Serializer_Project
+  - community/Community_68
 ---
 
 # DynamicBaseSerializer
 
 ## Connections
-
 - [[IssueAttachmentLiteSerializer]] - `inherits` [EXTRACTED]
 - [[IssueIntakeSerializer]] - `inherits` [EXTRACTED]
 - [[IssueLiteSerializer]] - `inherits` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[WorkspaceMemberAdminSerializer]] - `inherits` [EXTRACTED]
 - [[WorkspaceSerializer]] - `inherits` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Serializer_Project
+#graphify/code #graphify/EXTRACTED #community/Community_68

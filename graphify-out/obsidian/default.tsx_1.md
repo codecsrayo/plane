@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/list/default.tsx"
 type: "code"
-community: "Group Kanban"
+community: "Bulk Operations & Spreadsheet"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group_Kanban
+  - community/Bulk_Operations__Spreadsheet
 ---
 
 # default.tsx
 
 ## Connections
-
 - [[GroupDropLocation]] - `imports` [EXTRACTED]
 - [[IList]] - `contains` [EXTRACTED]
 - [[List_1]] - `contains` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[useIssueStoreType()]] - `imports` [EXTRACTED]
 - [[utils.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group_Kanban
+#graphify/code #graphify/EXTRACTED #community/Bulk_Operations__Spreadsheet

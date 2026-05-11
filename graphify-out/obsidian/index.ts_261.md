@@ -1,14 +1,14 @@
 ---
 source_file: "web/ce/components/license/modal/index.ts"
 type: "code"
-community: "Community 1610"
+community: "Community 1592"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_1610
+  - community/Community_1592
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_1610
+#graphify/code #graphify/EXTRACTED #community/Community_1592

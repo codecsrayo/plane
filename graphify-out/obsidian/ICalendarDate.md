@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/calendar.ts"
+source_file: "packages/types/src/calendar.ts"
 type: "code"
-community: "Calendar Date"
+community: "Community 547"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Date
+  - community/Community_547
 ---
 
 # ICalendarDate
 
 ## Connections
-
 - [[calendar.ts]] - `contains` [EXTRACTED]
+- [[calendar.ts_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Date
+#graphify/code #graphify/EXTRACTED #community/Community_547

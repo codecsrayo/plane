@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/workspace-draft-issues/base.ts"
 type: "code"
-community: "Issue Entity"
+community: "Community 101"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Entity
+  - community/Community_101
 ---
 
 # base.ts
 
 ## Connections
-
 - [[TIssuePriorities_1]] - `imports` [EXTRACTED]
 - [[TWorkspaceDraftIssue]] - `contains` [EXTRACTED]
 - [[TWorkspaceDraftIssueLoader]] - `contains` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[TWorkspaceDraftQueryParams]] - `contains` [EXTRACTED]
 - [[issues.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Entity
+#graphify/code #graphify/EXTRACTED #community/Community_101

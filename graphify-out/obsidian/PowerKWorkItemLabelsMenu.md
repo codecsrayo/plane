@@ -1,19 +1,18 @@
 ---
 source_file: "web/core/components/power-k/ui/pages/context-based/work-item/labels-menu.tsx"
 type: "code"
-community: "Member Members"
+community: "Community 210"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Members
+  - community/Community_210
 ---
 
 # PowerKWorkItemLabelsMenu
 
 ## Connections
-
 - [[labels-menu.tsx]] - `contains` [EXTRACTED]
 - [[root.tsx_101]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Members
+#graphify/code #graphify/EXTRACTED #community/Community_210

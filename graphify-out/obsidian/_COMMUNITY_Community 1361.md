@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_61]] - code - services/src/index.ts
+- [[stickies.ts]] - code - constants/src/stickies.ts
 
 ## Live Query (requires Dataview plugin)
 

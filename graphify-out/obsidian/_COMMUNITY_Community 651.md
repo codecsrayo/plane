@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 4
 ---
 
 # Community 651
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[mod.rs_5]] - code - api_rust/src/entities/mod.rs
+- [[ComboDropDown]] - code - packages/ui/src/dropdowns/combo-box.tsx
+- [[Props_3]] - code - packages/ui/src/dropdowns/combo-box.tsx
+- [[combo-box.tsx_1]] - code - packages/ui/src/dropdowns/combo-box.tsx
+- [[combo-box.tsx]] - code - ui/src/dropdowns/combo-box.tsx
 
 ## Live Query (requires Dataview plugin)
 

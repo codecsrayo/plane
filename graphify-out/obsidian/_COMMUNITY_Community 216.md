@@ -1,27 +1,41 @@
 ---
 type: community
-cohesion: 0.18
-members: 11
+cohesion: 0.21
+members: 26
 ---
 
 # Community 216
 
-**Cohesion:** 0.18 - loosely connected
-**Members:** 11 nodes
+**Cohesion:** 0.21 - loosely connected
+**Members:** 26 nodes
 
 ## Members
-
-- [[.constructor()_50]] - code - web/core/store/issue/issue-details/attachment.store.ts
-- [[.issueAttachments()]] - code - web/core/store/issue/issue-details/attachment.store.ts
-- [[IIssueAttachmentStore]] - code - web/core/store/issue/issue-details/attachment.store.ts
-- [[IIssueAttachmentStoreActions]] - code - web/core/store/issue/issue-details/attachment.store.ts
-- [[IssueAttachmentStore]] - code - web/core/store/issue/issue-details/attachment.store.ts
-- [[attachment.store.ts]] - code - web/core/store/issue/issue-details/attachment.store.ts
-- [[attachments]] - code - web/core/store/issue/issue-details/attachment.store.ts
-- [[attachmentsUploadStatus]] - code - web/core/store/issue/issue-details/attachment.store.ts
-- [[newAttachmentIds]] - code - web/core/store/issue/issue-details/attachment.store.ts
-- [[progressPercentage_1]] - code - web/core/store/issue/issue-details/attachment.store.ts
-- [[tempId_1]] - code - web/core/store/issue/issue-details/attachment.store.ts
+- [[CORE_COLLECTION_OPERATOR]] - code - packages/types/src/rich-filters/operators/core.ts
+- [[CORE_COMPARISON_OPERATOR]] - code - packages/types/src/rich-filters/operators/core.ts
+- [[CORE_EQUALITY_OPERATOR]] - code - packages/types/src/rich-filters/operators/core.ts
+- [[CORE_LOGICAL_OPERATOR]] - code - packages/types/src/rich-filters/operators/core.ts
+- [[CORE_MULTI_VALUE_OPERATORS]] - code - packages/types/src/rich-filters/operators/core.ts
+- [[CORE_OPERATORS]] - code - packages/types/src/rich-filters/operators/core.ts
+- [[EXTENDED_COLLECTION_OPERATOR]] - code - packages/types/src/rich-filters/operators/extended.ts
+- [[EXTENDED_COMPARISON_OPERATOR]] - code - packages/types/src/rich-filters/operators/extended.ts
+- [[EXTENDED_EQUALITY_OPERATOR]] - code - packages/types/src/rich-filters/operators/extended.ts
+- [[EXTENDED_LOGICAL_OPERATOR]] - code - packages/types/src/rich-filters/operators/extended.ts
+- [[EXTENDED_MULTI_VALUE_OPERATORS]] - code - packages/types/src/rich-filters/operators/extended.ts
+- [[EXTENDED_OPERATORS]] - code - packages/types/src/rich-filters/operators/extended.ts
+- [[LOGICAL_OPERATOR]] - code - packages/types/src/rich-filters/operators/index.ts
+- [[MULTI_VALUE_OPERATORS]] - code - packages/types/src/rich-filters/operators/index.ts
+- [[TCollectionOperator]] - code - packages/types/src/rich-filters/operators/index.ts
+- [[TComparisonOperator]] - code - packages/types/src/rich-filters/operators/index.ts
+- [[TCoreSupportedOperators]] - code - packages/types/src/rich-filters/operators/core.ts
+- [[TEqualityOperator]] - code - packages/types/src/rich-filters/operators/index.ts
+- [[TExtendedSupportedOperators]] - code - packages/types/src/rich-filters/operators/extended.ts
+- [[TLogicalOperator]] - code - packages/types/src/rich-filters/operators/index.ts
+- [[core.ts_29]] - code - packages/types/src/rich-filters/operators/core.ts
+- [[core.ts_7]] - code - types/src/rich-filters/operators/core.ts
+- [[extended.ts_15]] - code - packages/types/src/rich-filters/operators/extended.ts
+- [[extended.ts_5]] - code - types/src/rich-filters/operators/extended.ts
+- [[index.ts_568]] - code - packages/types/src/rich-filters/operators/index.ts
+- [[index.ts_107]] - code - types/src/rich-filters/operators/index.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -31,19 +45,11 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 5 edges to [[_COMMUNITY_Community 72]]
-- 4 edges to [[_COMMUNITY_Community 31]]
-- 1 edge to [[_COMMUNITY_Community 141]]
-- 1 edge to [[_COMMUNITY_Calendar UI]]
-- 1 edge to [[_COMMUNITY_Community 138]]
-- 1 edge to [[_COMMUNITY_Community 192]]
-- 1 edge to [[_COMMUNITY_Git Integrations]]
-- 1 edge to [[_COMMUNITY_Community 58]]
+- 10 edges to [[_COMMUNITY_Community 229]]
+- 8 edges to [[_COMMUNITY_Community 190]]
+- 4 edges to [[_COMMUNITY_Community 228]]
 
 ## Top bridge nodes
-
-- [[attachment.store.ts]] - degree 20, connects to 8 communities
-- [[IssueAttachmentStore]] - degree 4, connects to 1 community
-- [[IIssueAttachmentStore]] - degree 2, connects to 1 community
-- [[IIssueAttachmentStoreActions]] - degree 2, connects to 1 community
+- [[index.ts_568]] - degree 30, connects to 3 communities
+- [[index.ts_107]] - degree 30, connects to 3 communities
+- [[LOGICAL_OPERATOR]] - degree 4, connects to 1 community

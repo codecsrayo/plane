@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/power-k/config/account-commands.ts"
 type: "code"
-community: "Project Settings"
+community: "Community 220"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Community_220
 ---
 
 # account-commands.ts
 
 ## Connections
-
 - [[TPowerKCommandConfig]] - `imports` [EXTRACTED]
 - [[commands.ts_3]] - `imports_from` [EXTRACTED]
 - [[index.ts_265]] - `imports_from` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[useAppRouter()]] - `imports` [EXTRACTED]
 - [[usePowerKAccountCommands()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Community_220

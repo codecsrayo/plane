@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/mentions/extension-config.ts"
 type: "code"
-community: "Mention Extension"
+community: "Community 90"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Mention_Extension
+  - community/Community_90
 ---
 
 # extension-config.ts
 
 ## Connections
-
 - [[CustomMentionExtensionConfig]] - `contains` [EXTRACTED]
 - [[EMentionComponentAttributeNames]] - `imports` [EXTRACTED]
 - [[TMentionComponentAttributes]] - `imports` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[mention-node-view.tsx]] - `imports_from` [EXTRACTED]
 - [[types.ts_5]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Mention_Extension
+#graphify/code #graphify/EXTRACTED #community/Community_90

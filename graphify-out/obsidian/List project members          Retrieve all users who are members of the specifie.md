@@ -1,14 +1,14 @@
 ---
 source_file: "api/plane/api/views/member.py"
 type: "rationale"
-community: "Members Project"
+community: "Community 1709"
 location: "L122"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Members_Project
+  - community/Community_1709
 ---
 
-# List project members Retrieve all users who are members of the specifie
+# List project members          Retrieve all users who are members of the specifie
 
-#graphify/rationale #graphify/EXTRACTED #community/Members_Project
+#graphify/rationale #graphify/EXTRACTED #community/Community_1709

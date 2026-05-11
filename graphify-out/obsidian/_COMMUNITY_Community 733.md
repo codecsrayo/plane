@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 733
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[ActiveModel_83]] - code - api_rust/src/entities/project_issue_types.rs
+- [[orderWorkspacesList()]] - code - packages/utils/src/workspace.ts
+- [[workspace.ts_9]] - code - packages/utils/src/workspace.ts
+- [[workspace.ts_4]] - code - utils/src/workspace.ts
 
 ## Live Query (requires Dataview plugin)
 

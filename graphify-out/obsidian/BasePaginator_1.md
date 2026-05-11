@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/paginator.py"
 type: "code"
-community: "Endpoint User"
+community: "Community 53"
 location: "L635"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Endpoint_User
+  - community/Community_53
 ---
 
 # BasePaginator
 
 ## Connections
-
 - [[.get_per_page()]] - `method` [EXTRACTED]
 - [[.paginate()]] - `method` [EXTRACTED]
 - [[AccountEndpoint]] - `uses` [INFERRED]
@@ -32,4 +31,4 @@ tags:
 - [[UserSessionEndpoint]] - `uses` [INFERRED]
 - [[paginator.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Endpoint_User
+#graphify/code #graphify/INFERRED #community/Community_53

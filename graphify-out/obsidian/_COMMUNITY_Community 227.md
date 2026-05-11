@@ -1,26 +1,40 @@
 ---
 type: community
-cohesion: 0.22
-members: 10
+cohesion: 0.28
+members: 25
 ---
 
 # Community 227
 
-**Cohesion:** 0.22 - loosely connected
-**Members:** 10 nodes
+**Cohesion:** 0.28 - loosely connected
+**Members:** 25 nodes
 
 ## Members
-
-- [[DefaultSettingItem()]] - code - web/core/components/project/project-settings-member-defaults.tsx
-- [[MemberSelect]] - code - web/core/components/project/member-select.tsx
-- [[PROJECT_DETAILS()]] - code - web/core/constants/fetch-keys.ts
-- [[ProjectSettingsMemberDefaults]] - code - web/core/components/project/project-settings-member-defaults.tsx
-- [[Props_139]] - code - web/core/components/project/member-select.tsx
-- [[TDefaultSettingItemProps]] - code - web/core/components/project/project-settings-member-defaults.tsx
-- [[TProjectSettingsMemberDefaultsProps]] - code - web/core/components/project/project-settings-member-defaults.tsx
-- [[defaultValues_9]] - code - web/core/components/project/project-settings-member-defaults.tsx
-- [[member-select.tsx]] - code - web/core/components/project/member-select.tsx
-- [[project-settings-member-defaults.tsx]] - code - web/core/components/project/project-settings-member-defaults.tsx
+- [[CustomTypographyExtension]] - code - packages/editor/src/core/extensions/typography/index.ts
+- [[TypographyOptions]] - code - packages/editor/src/core/extensions/typography/inputRules.ts
+- [[copyright()]] - code - packages/editor/src/core/extensions/typography/inputRules.ts
+- [[ellipsis()]] - code - packages/editor/src/core/extensions/typography/inputRules.ts
+- [[emDash()]] - code - packages/editor/src/core/extensions/typography/inputRules.ts
+- [[impliesArrowRight()]] - code - packages/editor/src/core/extensions/typography/inputRules.ts
+- [[index.ts_53]] - code - editor/src/core/extensions/typography/index.ts
+- [[index.ts_514]] - code - packages/editor/src/core/extensions/typography/index.ts
+- [[inputRules.ts]] - code - editor/src/core/extensions/typography/inputRules.ts
+- [[inputRules.ts_1]] - code - packages/editor/src/core/extensions/typography/inputRules.ts
+- [[laquo()]] - code - packages/editor/src/core/extensions/typography/inputRules.ts
+- [[leftArrow()]] - code - packages/editor/src/core/extensions/typography/inputRules.ts
+- [[multiplication()]] - code - packages/editor/src/core/extensions/typography/inputRules.ts
+- [[notEqual()]] - code - packages/editor/src/core/extensions/typography/inputRules.ts
+- [[oneHalf()]] - code - packages/editor/src/core/extensions/typography/inputRules.ts
+- [[oneQuarter()]] - code - packages/editor/src/core/extensions/typography/inputRules.ts
+- [[plusMinus()]] - code - packages/editor/src/core/extensions/typography/inputRules.ts
+- [[raquo()]] - code - packages/editor/src/core/extensions/typography/inputRules.ts
+- [[registeredTrademark()]] - code - packages/editor/src/core/extensions/typography/inputRules.ts
+- [[rightArrow()]] - code - packages/editor/src/core/extensions/typography/inputRules.ts
+- [[servicemark()]] - code - packages/editor/src/core/extensions/typography/inputRules.ts
+- [[superscriptThree()]] - code - packages/editor/src/core/extensions/typography/inputRules.ts
+- [[superscriptTwo()]] - code - packages/editor/src/core/extensions/typography/inputRules.ts
+- [[threeQuarters()]] - code - packages/editor/src/core/extensions/typography/inputRules.ts
+- [[trademark()]] - code - packages/editor/src/core/extensions/typography/inputRules.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -30,14 +44,8 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 3 edges to [[_COMMUNITY_Auth Wrappers]]
-- 2 edges to [[_COMMUNITY_Applied Filters UI]]
-- 2 edges to [[_COMMUNITY_Member Filters & Description]]
-- 1 edge to [[_COMMUNITY_Empty State Components]]
+- 4 edges to [[_COMMUNITY_Community 30]]
 
 ## Top bridge nodes
-
-- [[project-settings-member-defaults.tsx]] - degree 12, connects to 3 communities
-- [[member-select.tsx]] - degree 5, connects to 1 community
-- [[PROJECT_DETAILS()]] - degree 3, connects to 1 community
+- [[index.ts_53]] - degree 24, connects to 1 community
+- [[index.ts_514]] - degree 24, connects to 1 community

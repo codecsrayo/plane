@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/portal/portal.stories.tsx"
 type: "code"
-community: "Portal Positions"
+community: "Community 436"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Portal_Positions
+  - community/Community_436
 ---
 
 # portal.stories.tsx
 
 ## Connections
-
 - [[BasicPortal]] - `contains` [EXTRACTED]
 - [[Button]] - `imports` [EXTRACTED]
 - [[Default_34]] - `contains` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[index.ts_197]] - `imports_from` [EXTRACTED]
 - [[render()_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Portal_Positions
+#graphify/code #graphify/EXTRACTED #community/Community_436

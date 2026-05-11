@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/estimates/use-estimate.ts"
 type: "code"
-community: "Label Dropdown"
+community: "Community 42"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Dropdown
+  - community/Community_42
 ---
 
 # use-estimate.ts
 
 ## Connections
-
 - [[IEstimate_1]] - `imports` [EXTRACTED]
 - [[StoreContext]] - `imports` [EXTRACTED]
 - [[create.tsx_2]] - `imports_from` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[store-context.tsx]] - `imports_from` [EXTRACTED]
 - [[useEstimate()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Community_42

@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 4
 ---
 
 # Community 660
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_10]] - code - api_rust/src/entities/gitlab_issue_syncs.rs
+- [[ILanguageOption]] - code - packages/i18n/src/types/language.ts
+- [[TLanguage]] - code - packages/i18n/src/types/language.ts
+- [[language.ts_1]] - code - i18n/src/types/language.ts
+- [[language.ts_3]] - code - packages/i18n/src/types/language.ts
 
 ## Live Query (requires Dataview plugin)
 

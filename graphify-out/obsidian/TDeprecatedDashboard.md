@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/dashboard.ts"
+source_file: "packages/types/src/dashboard.ts"
 type: "code"
-community: "Widget Issue"
+community: "Community 139"
 location: "L170"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Widget_Issue
+  - community/Community_139
 ---
 
 # TDeprecatedDashboard
 
 ## Connections
-
 - [[dashboard.ts_1]] - `contains` [EXTRACTED]
+- [[dashboard.ts_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Widget_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_139

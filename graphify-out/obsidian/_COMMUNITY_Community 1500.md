@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_137]] - code - decorators/src/index.ts
+- [[index.ts_162]] - code - propel/src/tab-navigation/index.ts
 
 ## Live Query (requires Dataview plugin)
 

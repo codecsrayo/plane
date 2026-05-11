@@ -1,18 +1,17 @@
 ---
 source_file: "utils/src/rich-filters/operations/manipulation/core.ts"
 type: "code"
-community: "Group Transform"
+community: "Community 148"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group_Transform
+  - community/Community_148
 ---
 
 # core.ts
 
 ## Connections
-
 - [[addAndCondition()]] - `contains` [EXTRACTED]
 - [[core.ts_12]] - `imports_from` [EXTRACTED]
 - [[core.ts_16]] - `imports_from` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[unwrapGroupIfNeeded()]] - `contains` [EXTRACTED]
 - [[updateNodeInExpression()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group_Transform
+#graphify/code #graphify/EXTRACTED #community/Community_148

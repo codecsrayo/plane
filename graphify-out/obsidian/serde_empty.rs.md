@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/utils/serde_empty.rs"
 type: "code"
-community: "Uuid Empty"
+community: "Community 274"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Uuid_Empty
+  - community/Community_274
 ---
 
 # serde_empty.rs
 
 ## Connections
-
 - [[ListDto]] - `contains` [EXTRACTED]
 - [[TestDto]] - `contains` [EXTRACTED]
 - [[deserialize_empty_as_none_date()]] - `contains` [EXTRACTED]
@@ -35,4 +34,4 @@ tags:
 - [[valid_date_parses()]] - `contains` [EXTRACTED]
 - [[valid_uuid_round_trips()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Uuid_Empty
+#graphify/code #graphify/EXTRACTED #community/Community_274

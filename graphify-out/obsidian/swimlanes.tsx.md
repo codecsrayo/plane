@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/kanban/swimlanes.tsx"
 type: "code"
-community: "Group Kanban"
+community: "Bulk Operations & Spreadsheet"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group_Kanban
+  - community/Bulk_Operations__Spreadsheet
 ---
 
 # swimlanes.tsx
 
 ## Connections
-
 - [[GroupDropLocation]] - `imports` [EXTRACTED]
 - [[HeaderGroupByCard]] - `imports` [EXTRACTED]
 - [[HeaderSubGroupByCard]] - `imports` [EXTRACTED]
@@ -34,4 +33,4 @@ tags:
 - [[utils.tsx_2]] - `imports_from` [EXTRACTED]
 - [[visibilitySubGroupByGroupCount()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group_Kanban
+#graphify/code #graphify/EXTRACTED #community/Bulk_Operations__Spreadsheet

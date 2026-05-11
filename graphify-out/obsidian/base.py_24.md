@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/serializers/base.py"
 type: "code"
-community: "Serializer Asset"
+community: "Community 110"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Serializer_Asset
+  - community/Community_110
 ---
 
 # base.py
 
 ## Connections
-
 - [[BaseSerializer_1]] - `contains` [EXTRACTED]
 - [[asset.py_5]] - `imports_from` [EXTRACTED]
 - [[cycle.py_5]] - `imports_from` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[user.py_5]] - `imports_from` [EXTRACTED]
 - [[workspace.py_3]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Serializer_Asset
+#graphify/code #graphify/EXTRACTED #community/Community_110

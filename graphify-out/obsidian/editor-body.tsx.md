@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/pages/editor/editor-body.tsx"
 type: "code"
-community: "Content Body"
+community: "Community 213"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Content_Body
+  - community/Community_213
 ---
 
 # editor-body.tsx
 
 ## Connections
-
 - [[PageContentLoader()]] - `imports` [EXTRACTED]
 - [[PageEditorBody]] - `contains` [EXTRACTED]
 - [[Props_461]] - `contains` [EXTRACTED]
@@ -40,4 +39,4 @@ tags:
 - [[useRealtimePageEvents()]] - `imports` [EXTRACTED]
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Content_Body
+#graphify/code #graphify/EXTRACTED #community/Community_213

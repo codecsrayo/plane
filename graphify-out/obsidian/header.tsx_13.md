@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(list)/header.tsx"
 type: "code"
-community: "Project Profile"
+community: "Module & Cycle Analytics"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Profile
+  - community/Module__Cycle_Analytics
 ---
 
 # header.tsx
 
 ## Connections
-
 - [[BreadcrumbLink()]] - `imports` [EXTRACTED]
 - [[CommonProjectBreadcrumbs()]] - `imports` [EXTRACTED]
 - [[CyclesListHeader]] - `contains` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[useCommandPalette()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Profile
+#graphify/code #graphify/EXTRACTED #community/Module__Cycle_Analytics

@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/assets_v2_project.rs"
 type: "code"
-community: "Returns Asset"
+community: "Community 242"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Asset
+  - community/Community_242
 ---
 
 # setup()
 
 ## Connections
-
 - [[.spawn()]] - `calls` [INFERRED]
 - [[assets_v2_project.rs]] - `contains` [EXTRACTED]
 - [[bulk_project_assets_v2_authenticated_empty_list()]] - `calls` [EXTRACTED]
@@ -38,4 +37,4 @@ tags:
 - [[restore_workspace_asset_nonexistent_returns_404()]] - `calls` [EXTRACTED]
 - [[restore_workspace_asset_unauthenticated_returns_401()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Asset
+#graphify/code #graphify/EXTRACTED #community/Community_242

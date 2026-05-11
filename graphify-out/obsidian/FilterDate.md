@@ -1,19 +1,18 @@
 ---
 source_file: "web/core/components/inbox/inbox-filter/filters/date.tsx"
 type: "code"
-community: "Date Start"
+community: "Issue Display Filters"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Date_Start
+  - community/Issue_Display_Filters
 ---
 
 # FilterDate
 
 ## Connections
-
 - [[date.tsx_7]] - `contains` [EXTRACTED]
 - [[filter-selection.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Date_Start
+#graphify/code #graphify/EXTRACTED #community/Issue_Display_Filters

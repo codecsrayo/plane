@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/project/settings/control-section.tsx"
 type: "code"
-community: "Project Settings"
+community: "Project Filters & Archives"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Project_Filters__Archives
 ---
 
 # Props
 
 ## Connections
-
 - [[control-section.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

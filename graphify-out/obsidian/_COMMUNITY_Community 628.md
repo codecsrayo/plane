@@ -1,18 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.40
+members: 5
 ---
 
 # Community 628
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.40 - moderately connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[TuneIcon()]] - code - web/core/components/icons/attachment/tune-icon.tsx
-- [[tune-icon.tsx]] - code - web/core/components/icons/attachment/tune-icon.tsx
+- [[Import issues from a GitHub repository into a Plane project]] - rationale - api/plane/bgtasks/importer_task.py
+- [[Import issues from a GitLab project into a Plane project]] - rationale - api/plane/bgtasks/importer_task.py
+- [[github_importer_task()]] - code - api/plane/bgtasks/importer_task.py
+- [[gitlab_importer_task()]] - code - api/plane/bgtasks/importer_task.py
+- [[importer_task.py]] - code - api/plane/bgtasks/importer_task.py
 
 ## Live Query (requires Dataview plugin)
 

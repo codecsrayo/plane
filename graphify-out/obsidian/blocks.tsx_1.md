@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/gantt/blocks.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Filter UI & Breadcrumbs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Filter_UI__Breadcrumbs
 ---
 
 # blocks.tsx
 
 ## Connections
-
 - [[GanttStoreType]] - `imports` [EXTRACTED]
 - [[IssueGanttBlock]] - `contains` [EXTRACTED]
 - [[IssueGanttSidebarBlock]] - `contains` [EXTRACTED]
@@ -39,4 +38,4 @@ tags:
 - [[useProjectState()]] - `imports` [EXTRACTED]
 - [[utils.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Filter_UI__Breadcrumbs

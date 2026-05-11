@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/api.service.ts"
 type: "code"
-community: "Label Dropdown"
+community: "Activity & Inbox Filters"
 location: "L84"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Dropdown
+  - community/Activity__Inbox_Filters
 ---
 
 # extractApiErrorMessage()
 
 ## Connections
-
 - [[api.service.ts_1]] - `contains` [EXTRACTED]
 - [[delete-issue-modal.tsx_1]] - `imports` [EXTRACTED]
 - [[delete-label-modal.tsx]] - `imports` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[root.tsx_75]] - `imports` [EXTRACTED]
 - [[use-links.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Activity__Inbox_Filters

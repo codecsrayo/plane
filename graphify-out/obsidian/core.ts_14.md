@@ -1,18 +1,17 @@
 ---
 source_file: "utils/src/rich-filters/types/core.ts"
 type: "code"
-community: "Group Condition"
+community: "Community 148"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group_Condition
+  - community/Community_148
 ---
 
 # core.ts
 
 ## Connections
-
 - [[comparison.ts]] - `imports_from` [EXTRACTED]
 - [[core.ts_11]] - `imports_from` [EXTRACTED]
 - [[core.ts_12]] - `imports_from` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[isGroupNode()]] - `contains` [EXTRACTED]
 - [[shared.ts_6]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group_Condition
+#graphify/code #graphify/EXTRACTED #community/Community_148

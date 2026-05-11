@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/auth_sign_in_up_out.rs"
 type: "code"
-community: "Returns Sign"
+community: "Rust Auth Services"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Sign
+  - community/Rust_Auth_Services
 ---
 
 # auth_sign_in_up_out.rs
 
 ## Connections
-
 - [[location_has_error()]] - `contains` [EXTRACTED]
 - [[sign_in_invalid_email_redirects_with_error()]] - `contains` [EXTRACTED]
 - [[sign_in_missing_credentials_redirects_with_error()]] - `contains` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[sign_up_without_email_redirects_with_error()]] - `contains` [EXTRACTED]
 - [[sign_up_without_password_redirects_with_error()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Sign
+#graphify/code #graphify/EXTRACTED #community/Rust_Auth_Services

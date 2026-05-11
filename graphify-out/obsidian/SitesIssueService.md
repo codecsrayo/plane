@@ -1,18 +1,17 @@
 ---
-source_file: "services/src/issue/sites-issue.service.ts"
+source_file: "packages/services/src/issue/sites-issue.service.ts"
 type: "code"
-community: "Sites Issue"
+community: "Community 322"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sites_Issue
+  - community/Community_322
 ---
 
 # SitesIssueService
 
 ## Connections
-
 - [[.addComment()]] - `method` [EXTRACTED]
 - [[.addCommentReaction()]] - `method` [EXTRACTED]
 - [[.addReaction()]] - `method` [EXTRACTED]
@@ -29,5 +28,6 @@ tags:
 - [[.retrieve()_3]] - `method` [EXTRACTED]
 - [[.updateComment()]] - `method` [EXTRACTED]
 - [[sites-issue.service.ts]] - `contains` [EXTRACTED]
+- [[sites-issue.service.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sites_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_322

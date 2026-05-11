@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/helpers/scroll-to-node.ts"
 type: "code"
-community: "Document Collaborative"
+community: "Editor Extensions"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Document_Collaborative
+  - community/Editor_Extensions
 ---
 
 # scroll-to-node.ts
 
 ## Connections
-
 - [[editor-ref.ts]] - `imports_from` [EXTRACTED]
 - [[findNthH1()]] - `contains` [EXTRACTED]
 - [[index.ts_46]] - `imports_from` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[scrollToNode()]] - `contains` [EXTRACTED]
 - [[scrollToNodeViaDOMCoordinates()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Document_Collaborative
+#graphify/code #graphify/EXTRACTED #community/Editor_Extensions

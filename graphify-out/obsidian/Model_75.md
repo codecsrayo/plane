@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/entities/issue_sequences.rs"
 type: "code"
-community: "Model Relation"
+community: "Community 955"
 location: "L8"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Model_Relation
+  - community/Community_955
 ---
 
 # Model
 
 ## Connections
-
 - [[issue_sequences.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Model_Relation
+#graphify/code #graphify/EXTRACTED #community/Community_955

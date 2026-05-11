@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/core/activity.tsx"
 type: "code"
-community: "Activity User"
+community: "Community 44"
 location: "L138"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Activity_User
+  - community/Community_44
 ---
 
 # getInboxUserActivityMessage()
 
 ## Connections
-
 - [[activity.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Activity_User
+#graphify/code #graphify/EXTRACTED #community/Community_44

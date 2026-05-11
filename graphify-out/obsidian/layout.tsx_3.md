@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/layout.tsx"
 type: "code"
-community: "Workspace Issue"
+community: "Community 70"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Issue
+  - community/Community_70
 ---
 
 # layout.tsx
 
 ## Connections
-
 - [[AuthenticationWrapper]] - `imports` [EXTRACTED]
 - [[GlobalModals]] - `imports` [EXTRACTED]
 - [[WorkspaceAuthWrapper]] - `imports` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[authentication-wrapper.tsx]] - `imports_from` [EXTRACTED]
 - [[workspace-wrapper.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_70

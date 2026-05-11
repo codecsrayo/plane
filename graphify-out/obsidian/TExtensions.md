@@ -1,18 +1,18 @@
 ---
-source_file: "editor/src/core/types/extensions.ts"
+source_file: "packages/editor/src/core/types/extensions.ts"
 type: "code"
-community: "Extensions Textensions"
+community: "Community 713"
 location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Extensions_Textensions
+  - community/Community_713
 ---
 
 # TExtensions
 
 ## Connections
-
 - [[extensions.ts_2]] - `contains` [EXTRACTED]
+- [[extensions.ts_7]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Extensions_Textensions
+#graphify/code #graphify/EXTRACTED #community/Community_713

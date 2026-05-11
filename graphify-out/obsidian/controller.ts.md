@@ -1,18 +1,17 @@
 ---
 source_file: "decorators/src/controller.ts"
 type: "code"
-community: "Controller Register"
+community: "Community 516"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Controller_Register
+  - community/Community_516
 ---
 
 # controller.ts
 
 ## Connections
-
 - [[ControllerConstructor]] - `contains` [EXTRACTED]
 - [[ControllerInstance]] - `contains` [EXTRACTED]
 - [[HttpMethod]] - `contains` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[registerRestController()]] - `contains` [EXTRACTED]
 - [[registerWebSocketController()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Controller_Register
+#graphify/code #graphify/EXTRACTED #community/Community_516

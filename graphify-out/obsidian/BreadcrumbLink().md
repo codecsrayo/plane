@@ -1,18 +1,17 @@
 ---
 source_file: "admin/components/common/breadcrumb-link.tsx"
 type: "code"
-community: "Settings Project"
+community: "Community 84"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Settings_Project
+  - community/Community_84
 ---
 
 # BreadcrumbLink()
 
 ## Connections
-
 - [[breadcrumb-link.tsx]] - `contains` [EXTRACTED]
 - [[breadcrumb-link.tsx_1]] - `contains` [EXTRACTED]
 - [[header.tsx_1]] - `imports` [EXTRACTED]
@@ -57,4 +56,4 @@ tags:
 - [[root.tsx_89]] - `imports` [EXTRACTED]
 - [[work-item-header.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Settings_Project
+#graphify/code #graphify/EXTRACTED #community/Community_84

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/issue_filters.py"
 type: "rationale"
-community: "Date Issue"
+community: "Community 186"
 location: "L56"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Date_Issue
+  - community/Community_186
 ---
 
 # Handle all date filters
 
 ## Connections
-
 - [[date_filter()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Date_Issue
+#graphify/rationale #graphify/EXTRACTED #community/Community_186

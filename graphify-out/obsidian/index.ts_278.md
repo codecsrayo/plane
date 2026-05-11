@@ -1,19 +1,18 @@
 ---
 source_file: "web/core/store/issue/profile/index.ts"
 type: "code"
-community: "Calendar Issue"
+community: "Community 75"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Issue
+  - community/Community_75
 ---
 
 # index.ts
 
 ## Connections
-
 - [[root.store.ts_3]] - `imports_from` [EXTRACTED]
 - [[use-issues.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_75

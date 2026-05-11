@@ -1,18 +1,17 @@
 ---
 source_file: "space/components/issues/issue-layouts/list/default.tsx"
 type: "code"
-community: "Group Kanban"
+community: "Community 112"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group_Kanban
+  - community/Community_112
 ---
 
 # default.tsx
 
 ## Connections
-
 - [[IList]] - `contains` [EXTRACTED]
 - [[List_1]] - `contains` [EXTRACTED]
 - [[ListGroup]] - `imports` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[useStates()]] - `imports` [EXTRACTED]
 - [[utils.tsx_3]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group_Kanban
+#graphify/code #graphify/EXTRACTED #community/Community_112

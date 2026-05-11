@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_116]] - code - utils/src/editor/markdown-parser/index.ts
+- [[index.ts_133]] - code - shared-state/src/store/work-item-filters/index.ts
 
 ## Live Query (requires Dataview plugin)
 

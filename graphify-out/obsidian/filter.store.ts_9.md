@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/issue/workspace-draft/filter.store.ts"
 type: "code"
-community: "Filters Issue"
+community: "Community 33"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filters_Issue
+  - community/Community_33
 ---
 
 # filter.store.ts
 
 ## Connections
-
 - [[IBaseIssueFilterStore]] - `imports` [EXTRACTED]
 - [[IIssueRootStore]] - `imports` [EXTRACTED]
 - [[IWorkspaceDraftIssuesFilter]] - `contains` [EXTRACTED]
@@ -33,4 +32,4 @@ tags:
 - [[updatedDisplayFilters_4]] - `contains` [EXTRACTED]
 - [[updatedDisplayProperties_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filters_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_33

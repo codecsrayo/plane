@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/table/core.tsx"
 type: "code"
-community: "Table Caption"
+community: "Community 252"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Table_Caption
+  - community/Community_252
 ---
 
 # core.tsx
 
 ## Connections
-
 - [[Table_1]] - `contains` [EXTRACTED]
 - [[TableBody]] - `contains` [EXTRACTED]
 - [[TableCaption]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[cn()_1]] - `imports` [EXTRACTED]
 - [[table.stories.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Table_Caption
+#graphify/code #graphify/EXTRACTED #community/Community_252

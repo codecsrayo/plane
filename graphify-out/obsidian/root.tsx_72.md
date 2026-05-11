@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-detail/issue-activity/root.tsx"
 type: "code"
-community: "Workspace Issue"
+community: "Community 42"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Issue
+  - community/Community_42
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[ActivityFilterRoot()]] - `imports` [EXTRACTED]
 - [[ActivitySortRoot]] - `imports` [EXTRACTED]
 - [[CommentCreate]] - `imports` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[useWorkItemCommentOperations()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_42

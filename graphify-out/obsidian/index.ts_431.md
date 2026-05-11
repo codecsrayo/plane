@@ -1,14 +1,14 @@
 ---
 source_file: "web/core/components/base-layouts/gantt/index.ts"
 type: "code"
-community: "Community 1649"
+community: "Community 1631"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_1649
+  - community/Community_1631
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_1649
+#graphify/code #graphify/EXTRACTED #community/Community_1631

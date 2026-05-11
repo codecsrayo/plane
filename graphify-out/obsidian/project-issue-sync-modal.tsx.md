@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/integration/github/project-issue-sync-modal.tsx"
 type: "code"
-community: "Project Workspace"
+community: "Community 64"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Workspace
+  - community/Community_64
 ---
 
 # project-issue-sync-modal.tsx
 
 ## Connections
-
 - [[GithubProjectIssueSyncModal]] - `contains` [EXTRACTED]
 - [[INITIAL_STATE]] - `contains` [EXTRACTED]
 - [[IntegrationError]] - `contains` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[useProjectState()]] - `imports` [EXTRACTED]
 - [[utils.ts_15]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_64

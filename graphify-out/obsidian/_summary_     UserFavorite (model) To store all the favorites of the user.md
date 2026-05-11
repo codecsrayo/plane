@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/models/favorite.py"
 type: "rationale"
-community: "Meta User"
+community: "Community 66"
 location: "L15"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Meta_User
+  - community/Community_66
 ---
 
-# _summary_ UserFavorite (model): To store all the favorites of the user
+# _summary_     UserFavorite (model): To store all the favorites of the user
 
 ## Connections
-
 - [[UserFavorite]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Meta_User
+#graphify/rationale #graphify/EXTRACTED #community/Community_66

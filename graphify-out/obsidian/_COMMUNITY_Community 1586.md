@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_235]] - code - web/ce/components/app-rail/index.ts
+- [[index.ts_254]] - code - web/ce/components/instance/index.ts
 
 ## Live Query (requires Dataview plugin)
 

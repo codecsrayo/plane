@@ -1,18 +1,17 @@
 ---
 source_file: "space/types/cycle.d.ts"
 type: "code"
-community: "Cycle Public"
+community: "Community 1179"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Public
+  - community/Community_1179
 ---
 
 # cycle.d.ts
 
 ## Connections
-
 - [[TPublicCycle_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Public
+#graphify/code #graphify/EXTRACTED #community/Community_1179

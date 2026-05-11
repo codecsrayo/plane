@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/notifications/workspace-notifications.store.ts"
 type: "code"
-community: "Notification Option"
+community: "Community 160"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Notification_Option
+  - community/Community_160
 ---
 
 # workspace-notifications.store.ts
 
 ## Connections
-
 - [[ApiError]] - `imports` [EXTRACTED]
 - [[CoreRootStore]] - `imports` [EXTRACTED]
 - [[INotification]] - `imports` [EXTRACTED]
@@ -33,4 +32,4 @@ tags:
 - [[workspaceNotificationIds]] - `contains` [EXTRACTED]
 - [[workspaceNotifications]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Notification_Option
+#graphify/code #graphify/EXTRACTED #community/Community_160

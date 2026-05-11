@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/use-window-size.tsx"
 type: "code"
-community: "Member Members"
+community: "Issue Display Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Members
+  - community/Issue_Display_Filters
 ---
 
 # use-window-size.tsx
 
 ## Connections
-
 - [[calendar.tsx]] - `imports_from` [EXTRACTED]
 - [[layout.tsx_7]] - `imports_from` [EXTRACTED]
 - [[main-content.tsx_1]] - `imports_from` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[sidebar-wrapper.tsx]] - `imports_from` [EXTRACTED]
 - [[useSize()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Members
+#graphify/code #graphify/EXTRACTED #community/Issue_Display_Filters

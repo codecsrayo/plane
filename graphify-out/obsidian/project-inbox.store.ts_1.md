@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/inbox/project-inbox.store.ts"
 type: "code"
-community: "Project Issue"
+community: "Community 20"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Issue
+  - community/Community_20
 ---
 
 # project-inbox.store.ts
 
 ## Connections
-
 - [[CoreRootStore]] - `imports` [EXTRACTED]
 - [[IInboxIssueStore]] - `imports` [EXTRACTED]
 - [[IProjectInboxStore]] - `contains` [EXTRACTED]
@@ -33,4 +32,4 @@ tags:
 - [[sorting]] - `contains` [EXTRACTED]
 - [[toApiError()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_20

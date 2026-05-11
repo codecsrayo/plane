@@ -1,31 +1,45 @@
 ---
 type: community
-cohesion: 0.15
-members: 15
+cohesion: 0.14
+members: 30
 ---
 
 # Community 179
 
-**Cohesion:** 0.15 - loosely connected
-**Members:** 15 nodes
+**Cohesion:** 0.14 - loosely connected
+**Members:** 30 nodes
 
 ## Members
-
-- [[.constructor()_87]] - code - web/core/services/ai.service.ts
-- [[.createGptTask()]] - code - web/core/services/ai.service.ts
-- [[.performEditorTask()]] - code - web/core/services/ai.service.ts
-- [[AIService]] - code - web/core/services/ai.service.ts
-- [[AI_EDITOR_TASKS]] - code - web/core/constants/ai.ts
-- [[FormData_2]] - code - web/core/components/core/modals/gpt-assistant-popover.tsx
-- [[GptAssistantPopover()]] - code - web/core/components/core/modals/gpt-assistant-popover.tsx
-- [[LOADING_TEXTS]] - code - web/core/constants/ai.ts
-- [[Props_455]] - code - web/core/components/core/modals/gpt-assistant-popover.tsx
-- [[TTaskPayload]] - code - web/core/services/ai.service.ts
-- [[ai.service.ts]] - code - web/core/services/ai.service.ts
-- [[ai.ts]] - code - web/core/constants/ai.ts
-- [[aiService_1]] - code - web/core/components/core/modals/gpt-assistant-popover.tsx
-- [[gpt-assistant-popover.tsx]] - code - web/core/components/core/modals/gpt-assistant-popover.tsx
-- [[index.ts_53]] - code - web/core/components/editor/rich-text/index.ts
+- [[CoreEditorRefApi]] - code - packages/editor/src/core/types/editor.ts
+- [[EditorEvents]] - code - packages/editor/src/core/types/editor.ts
+- [[EditorRefApi]] - code - packages/editor/src/core/types/editor.ts
+- [[EditorTitleRefApi]] - code - packages/editor/src/core/types/editor.ts
+- [[ICollaborativeDocumentEditorProps]] - code - packages/editor/src/core/types/editor.ts
+- [[ICollaborativeDocumentEditorPropsExtended]] - code - packages/editor/src/ce/types/editor-extended.ts
+- [[IDocumentEditorProps]] - code - packages/editor/src/core/types/editor.ts
+- [[IEditorExtensionOptions]] - code - packages/editor/src/ce/types/editor-extended.ts
+- [[IEditorProps]] - code - packages/editor/src/core/types/editor.ts
+- [[IEditorPropsExtended]] - code - packages/editor/src/ce/types/editor-extended.ts
+- [[ILiteTextEditorProps]] - code - packages/editor/src/core/types/editor.ts
+- [[IRichTextEditorProps]] - code - packages/editor/src/core/types/editor.ts
+- [[NodeViewProps]] - code - packages/editor/src/core/types/editor.ts
+- [[TCollaborativeEditorHookProps]] - code - packages/editor/src/core/types/hook.ts
+- [[TCommandExtraProps]] - code - packages/editor/src/core/types/editor.ts
+- [[TCommandWithProps]] - code - packages/editor/src/core/types/editor.ts
+- [[TCommandWithPropsWithItemKey]] - code - packages/editor/src/core/types/editor.ts
+- [[TCoreHookProps]] - code - packages/editor/src/core/types/hook.ts
+- [[TDocumentInfo]] - code - packages/editor/src/core/types/editor.ts
+- [[TEditorCommands]] - code - packages/editor/src/core/types/editor.ts
+- [[TEditorHookProps]] - code - packages/editor/src/core/types/hook.ts
+- [[TExtendedCommandExtraProps]] - code - packages/editor/src/ce/types/editor-extended.ts
+- [[TExtendedEditorCommands]] - code - packages/editor/src/ce/types/editor-extended.ts
+- [[TExtendedEditorRefApi]] - code - packages/editor/src/ce/types/editor-extended.ts
+- [[editor-extended.ts]] - code - editor/src/ce/types/editor-extended.ts
+- [[editor-extended.ts_1]] - code - packages/editor/src/ce/types/editor-extended.ts
+- [[editor.ts]] - code - editor/src/core/types/editor.ts
+- [[editor.ts_21]] - code - packages/editor/src/core/types/editor.ts
+- [[hook.ts]] - code - editor/src/core/types/hook.ts
+- [[hook.ts_1]] - code - packages/editor/src/core/types/hook.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -35,17 +49,12 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 5 edges to [[_COMMUNITY_Authentication UI]]
-- 3 edges to [[_COMMUNITY_Community 70]]
-- 2 edges to [[_COMMUNITY_Git Integrations]]
-- 1 edge to [[_COMMUNITY_Community 246]]
-- 1 edge to [[_COMMUNITY_Member Filters & Description]]
+- 10 edges to [[_COMMUNITY_Editor Extensions]]
+- 6 edges to [[_COMMUNITY_Community 82]]
 
 ## Top bridge nodes
-
-- [[index.ts_53]] - degree 7, connects to 4 communities
-- [[ai.service.ts]] - degree 8, connects to 2 communities
-- [[gpt-assistant-popover.tsx]] - degree 8, connects to 1 community
-- [[AIService]] - degree 6, connects to 1 community
-- [[GptAssistantPopover()]] - degree 2, connects to 1 community
+- [[editor.ts]] - degree 23, connects to 2 communities
+- [[editor.ts_21]] - degree 23, connects to 2 communities
+- [[ICollaborativeDocumentEditorProps]] - degree 6, connects to 1 community
+- [[EditorTitleRefApi]] - degree 4, connects to 1 community
+- [[TCommandExtraProps]] - degree 4, connects to 1 community

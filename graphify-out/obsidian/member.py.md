@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/workspace/member.py"
 type: "code"
-community: "Member Workspace"
+community: "Community 395"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Workspace
+  - community/Community_395
 ---
 
 # member.py
 
 ## Connections
-
 - [[WorkSpaceMemberViewSet]] - `contains` [EXTRACTED]
 - [[WorkspaceMemberUserEndpoint]] - `contains` [EXTRACTED]
 - [[WorkspaceMemberUserViewsEndpoint]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[partial_update()_4]] - `contains` [EXTRACTED]
 - [[retrieve()_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_395

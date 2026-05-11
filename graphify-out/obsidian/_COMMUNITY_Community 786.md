@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 786
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_67]] - code - web/core/components/modules/applied-filters/index.ts
+- [[Props_59]] - code - web/ce/components/gantt-chart/dependency/dependency-paths.tsx
+- [[TimelineDependencyPaths()]] - code - web/ce/components/gantt-chart/dependency/dependency-paths.tsx
+- [[dependency-paths.tsx]] - code - web/ce/components/gantt-chart/dependency/dependency-paths.tsx
 
 ## Live Query (requires Dataview plugin)
 

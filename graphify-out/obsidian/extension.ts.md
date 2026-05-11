@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/constants/extension.ts"
 type: "code"
-community: "Table Node"
+community: "Community 30"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Table_Node
+  - community/Community_30
 ---
 
 # extension.ts
 
 ## Connections
-
 - [[BLOCK_NODE_TYPES]] - `contains` [EXTRACTED]
 - [[CORE_EXTENSIONS]] - `contains` [EXTRACTED]
 - [[asset.ts_1]] - `imports_from` [EXTRACTED]
@@ -66,4 +65,4 @@ tags:
 - [[utility.ts_1]] - `imports_from` [EXTRACTED]
 - [[utils.ts_8]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Table_Node
+#graphify/code #graphify/EXTRACTED #community/Community_30

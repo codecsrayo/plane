@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/workspace.ts"
+source_file: "packages/types/src/workspace.ts"
 type: "code"
-community: "Workspace Search"
+community: "Community 62"
 location: "L171"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Search
+  - community/Community_62
 ---
 
 # IProductUpdateResponse
 
 ## Connections
-
 - [[workspace.ts_2]] - `contains` [EXTRACTED]
+- [[workspace.ts_7]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Search
+#graphify/code #graphify/EXTRACTED #community/Community_62

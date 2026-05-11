@@ -1,18 +1,17 @@
 ---
 source_file: "space/components/issues/peek-overview/full-screen-peek-view.tsx"
 type: "code"
-community: "Issue Peek"
+community: "Community 80"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Peek
+  - community/Community_80
 ---
 
 # full-screen-peek-view.tsx
 
 ## Connections
-
 - [[FullScreenPeekView]] - `contains` [EXTRACTED]
 - [[PeekOverviewHeader]] - `imports` [EXTRACTED]
 - [[PeekOverviewIssueActivity]] - `imports` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[issue-properties.tsx_2]] - `imports_from` [EXTRACTED]
 - [[layout.tsx_52]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Peek
+#graphify/code #graphify/EXTRACTED #community/Community_80

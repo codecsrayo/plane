@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/utils/serde_empty.rs"
 type: "code"
-community: "Uuid Empty"
+community: "Community 274"
 location: "L168"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Uuid_Empty
+  - community/Community_274
 ---
 
 # valid_uuid_round_trips()
 
 ## Connections
-
 - [[serde_empty.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Uuid_Empty
+#graphify/code #graphify/EXTRACTED #community/Community_274

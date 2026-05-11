@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/core-without-props.ts"
 type: "code"
-community: "Document Custom"
+community: "Community 90"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Document_Custom
+  - community/Community_90
 ---
 
 # core-without-props.ts
 
 ## Connections
-
 - [[CoreEditorAdditionalExtensionsWithoutProps]] - `imports` [EXTRACTED]
 - [[CoreEditorExtensionsWithoutProps]] - `contains` [EXTRACTED]
 - [[CustomCalloutExtensionConfig]] - `imports` [EXTRACTED]
@@ -45,4 +44,4 @@ tags:
 - [[without-props.tsx]] - `imports_from` [EXTRACTED]
 - [[yjs-utils.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Document_Custom
+#graphify/code #graphify/EXTRACTED #community/Community_90

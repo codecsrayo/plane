@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/components/menus/menu-items.ts"
 type: "code"
-community: "Toggle Menu"
+community: "Community 31"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toggle_Menu
+  - community/Community_31
 ---
 
 # menu-items.ts
 
 ## Connections
-
 - [[BackgroundColorItem()]] - `contains` [EXTRACTED]
 - [[BoldItem()]] - `contains` [EXTRACTED]
 - [[BulletListItem()]] - `contains` [EXTRACTED]
@@ -67,4 +66,4 @@ tags:
 - [[toggleUnderline()]] - `imports` [EXTRACTED]
 - [[unsetLinkEditor()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toggle_Menu
+#graphify/code #graphify/EXTRACTED #community/Community_31

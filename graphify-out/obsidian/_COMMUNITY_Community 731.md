@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 731
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[ActiveModel_81]] - code - api_rust/src/entities/workspace_themes.rs
+- [[estimates.ts_3]] - code - packages/utils/src/estimates.ts
+- [[estimates.ts_1]] - code - utils/src/estimates.ts
+- [[isEstimatePointValuesRepeated()]] - code - packages/utils/src/estimates.ts
 
 ## Live Query (requires Dataview plugin)
 

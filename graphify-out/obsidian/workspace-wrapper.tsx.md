@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/layouts/auth-layout/workspace-wrapper.tsx"
 type: "code"
-community: "Project Workspace"
+community: "Community 36"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Workspace
+  - community/Community_36
 ---
 
 # workspace-wrapper.tsx
 
 ## Connections
-
 - [[IWorkspaceAuthWrapper]] - `contains` [EXTRACTED]
 - [[LogoSpinner()]] - `imports` [EXTRACTED]
 - [[WORKSPACE_FAVORITE()]] - `imports` [EXTRACTED]
@@ -41,4 +40,4 @@ tags:
 - [[useProjectState()]] - `imports` [EXTRACTED]
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_36

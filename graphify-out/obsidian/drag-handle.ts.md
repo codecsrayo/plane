@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/plugins/drag-handle.ts"
 type: "code"
-community: "Handle Node"
+community: "Community 199"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Handle_Node
+  - community/Community_199
 ---
 
 # drag-handle.ts
 
 ## Connections
-
 - [[CORE_EXTENSIONS]] - `imports` [EXTRACTED]
 - [[DragHandlePlugin()]] - `contains` [EXTRACTED]
 - [[ai-handle.ts]] - `imports_from` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[scrollParentCache]] - `contains` [EXTRACTED]
 - [[side-menu.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Handle_Node
+#graphify/code #graphify/EXTRACTED #community/Community_199

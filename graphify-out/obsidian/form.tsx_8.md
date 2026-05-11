@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-modal/form.tsx"
 type: "code"
-community: "Issue Work"
+community: "Project Filters & Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Work
+  - community/Project_Filters__Archives
 ---
 
 # form.tsx
 
 ## Connections
-
 - [[DeDupeButtonRoot()]] - `imports` [EXTRACTED]
 - [[IssueFormProps]] - `contains` [EXTRACTED]
 - [[IssueFormRoot]] - `contains` [EXTRACTED]
@@ -35,4 +34,4 @@ tags:
 - [[useProjectIssueProperties()]] - `imports` [EXTRACTED]
 - [[useProjectState()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Work
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

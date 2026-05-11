@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/utils/content_validator.rs"
 type: "code"
-community: "Test Binary"
+community: "Community 157"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Test_Binary
+  - community/Community_157
 ---
 
 # content_validator.rs
 
 ## Connections
-
 - [[builder()]] - `contains` [EXTRACTED]
 - [[data_attributes_preserved()]] - `contains` [EXTRACTED]
 - [[empty_binary_is_valid()]] - `contains` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[tiny_binary_rejected()]] - `contains` [EXTRACTED]
 - [[validate_binary_data()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Test_Binary
+#graphify/code #graphify/EXTRACTED #community/Community_157

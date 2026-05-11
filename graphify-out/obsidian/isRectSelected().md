@@ -1,21 +1,21 @@
 ---
-source_file: "editor/src/core/extensions/table/table/utilities/helpers.ts"
+source_file: "packages/editor/src/core/extensions/table/table/utilities/helpers.ts"
 type: "code"
-community: "Drag Table"
+community: "Community 38"
 location: "L127"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Drag_Table
+  - community/Community_38
 ---
 
 # isRectSelected()
 
 ## Connections
-
 - [[getSelectedRect()]] - `calls` [EXTRACTED]
 - [[helpers.ts]] - `contains` [EXTRACTED]
+- [[helpers.ts_3]] - `contains` [EXTRACTED]
 - [[isColumnSelected()]] - `calls` [EXTRACTED]
 - [[isRowSelected()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Drag_Table
+#graphify/code #graphify/EXTRACTED #community/Community_38

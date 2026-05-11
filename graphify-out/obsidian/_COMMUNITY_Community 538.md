@@ -1,17 +1,22 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.48
+members: 7
 ---
 
 # Community 538
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.48 - moderately connected
+**Members:** 7 nodes
 
 ## Members
-
-- [[index.ts_161]] - code - propel/src/table/index.ts
+- [[EPastDurationFilters]] - code - packages/constants/src/intake.ts
+- [[INBOX_ISSUE_ORDER_BY_OPTIONS]] - code - packages/constants/src/intake.ts
+- [[INBOX_ISSUE_SORT_BY_OPTIONS]] - code - packages/constants/src/intake.ts
+- [[INBOX_STATUS]] - code - packages/constants/src/intake.ts
+- [[PAST_DURATION_FILTER_OPTIONS]] - code - packages/constants/src/intake.ts
+- [[intake.ts]] - code - constants/src/intake.ts
+- [[intake.ts_2]] - code - packages/constants/src/intake.ts
 
 ## Live Query (requires Dataview plugin)
 

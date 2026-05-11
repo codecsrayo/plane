@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/auth/github/user-callback/page.tsx"
 type: "code"
-community: "Callback Installation"
+community: "Community 280"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Callback_Installation
+  - community/Community_280
 ---
 
 # page.tsx
 
 ## Connections
-
 - [[GithubUserCallbackPage()]] - `contains` [EXTRACTED]
 - [[OAuthCallbackPage()]] - `imports` [EXTRACTED]
 - [[TOAuthCallbackStatus]] - `imports` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[oauth-callback-page.tsx]] - `imports_from` [EXTRACTED]
 - [[service]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Callback_Installation
+#graphify/code #graphify/EXTRACTED #community/Community_280

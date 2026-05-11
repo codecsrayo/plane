@@ -1,17 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.70
+members: 5
 ---
 
 # Community 649
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.70 - tightly connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[ActiveModel]] - code - api_rust/src/entities/project_member_invites.rs
+- [[Afroamericana Cooperativa Client Logo]] - image - apps/home/public/assets/clients/afroamericana.png
+- [[Comfamigos Client Logo]] - image - apps/home/public/assets/clients/comfamigos.png
+- [[Cootrafa Client Logo (SVG)]] - image - apps/home/public/assets/clients/cootrafa.svg
+- [[Icontec Client Logo]] - image - apps/home/public/assets/clients/icontec.png
+- [[Trayectoria Component (Client Showcase)]] - code - apps/home/src/components/Trayectoria.astro
 
 ## Live Query (requires Dataview plugin)
 

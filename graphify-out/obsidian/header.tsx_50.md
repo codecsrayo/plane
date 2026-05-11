@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/calendar/header.tsx"
 type: "code"
-community: "Calendar Issue"
+community: "Community 67"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Issue
+  - community/Community_67
 ---
 
 # header.tsx
 
 ## Connections
-
 - [[CalendarHeader]] - `contains` [EXTRACTED]
 - [[ICalendarHeader]] - `contains` [EXTRACTED]
 - [[calendar.tsx]] - `imports_from` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[use-calendar-view.ts]] - `imports_from` [EXTRACTED]
 - [[useCalendarView()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_67

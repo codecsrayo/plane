@@ -1,14 +1,14 @@
 ---
 source_file: "propel/src/combobox/index.ts"
 type: "code"
-community: "Community 1512"
+community: "Community 1495"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_1512
+  - community/Community_1495
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_1512
+#graphify/code #graphify/EXTRACTED #community/Community_1495

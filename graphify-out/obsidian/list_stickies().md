@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/workspace_extras.rs"
 type: "code"
-community: "Project Response"
+community: "Community 214"
 location: "L1030"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Project_Response
+  - community/Community_214
 ---
 
 # list_stickies()
 
 ## Connections
-
 - [[.json()]] - `calls` [INFERRED]
 - [[build_response()]] - `calls` [INFERRED]
 - [[parse_cursor_or_default()]] - `calls` [INFERRED]
@@ -20,4 +19,4 @@ tags:
 - [[workspace_by_slug()]] - `calls` [INFERRED]
 - [[workspace_extras.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Project_Response
+#graphify/code #graphify/INFERRED #community/Community_214

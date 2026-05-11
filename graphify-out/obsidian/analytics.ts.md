@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/analytics.ts"
 type: "code"
-community: "Chart Analytics"
+community: "Community 135"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Chart_Analytics
+  - community/Community_135
 ---
 
 # analytics.ts
 
 ## Connections
-
 - [[AnalyticsTab]] - `contains` [EXTRACTED]
 - [[AnalyticsTableDataMap]] - `contains` [EXTRACTED]
 - [[ChartXAxisProperty]] - `contains` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[WorkItemInsightColumns]] - `contains` [EXTRACTED]
 - [[index.ts_99]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Chart_Analytics
+#graphify/code #graphify/EXTRACTED #community/Community_135

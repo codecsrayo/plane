@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/models/base.py"
 type: "code"
-community: "Meta User"
+community: "Python Workflow Services"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Meta_User
+  - community/Python_Workflow_Services
 ---
 
 # base.py
 
 ## Connections
-
 - [[BaseModel_1]] - `contains` [EXTRACTED]
 - [[Meta_29]] - `contains` [EXTRACTED]
 - [[__init__.py_30]] - `imports_from` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[sticky.py_4]] - `imports_from` [EXTRACTED]
 - [[workspace.py_4]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Meta_User
+#graphify/code #graphify/EXTRACTED #community/Python_Workflow_Services

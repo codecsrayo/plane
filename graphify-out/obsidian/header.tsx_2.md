@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(projects)/stickies/header.tsx"
 type: "code"
-community: "Stickies Sticky"
+community: "Community 357"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Stickies_Sticky
+  - community/Community_357
 ---
 
 # header.tsx
 
 ## Connections
-
 - [[BreadcrumbLink()]] - `imports` [EXTRACTED]
 - [[StickySearch]] - `imports` [EXTRACTED]
 - [[WorkspaceStickyHeader]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[useSticky()]] - `imports` [EXTRACTED]
 - [[useStickyOperations()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Stickies_Sticky
+#graphify/code #graphify/EXTRACTED #community/Community_357

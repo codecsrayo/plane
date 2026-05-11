@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/models/asset.py"
 type: "code"
-community: "Meta User"
+community: "Python Workflow Services"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Meta_User
+  - community/Python_Workflow_Services
 ---
 
 # asset.py
 
 ## Connections
-
 - [[EntityTypeContext]] - `contains` [EXTRACTED]
 - [[FileAsset]] - `contains` [EXTRACTED]
 - [[Meta_26]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[file_size()]] - `contains` [EXTRACTED]
 - [[get_upload_path()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Meta_User
+#graphify/code #graphify/EXTRACTED #community/Python_Workflow_Services

@@ -1,18 +1,17 @@
 ---
 source_file: "space/lib/store-provider.tsx"
 type: "code"
-community: "Publish Cycle"
+community: "Community 72"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Publish_Cycle
+  - community/Community_72
 ---
 
 # store-provider.tsx
 
 ## Connections
-
 - [[RootStore]] - `imports` [EXTRACTED]
 - [[StoreContext_2]] - `contains` [EXTRACTED]
 - [[StoreProvider()_2]] - `contains` [EXTRACTED]
@@ -35,4 +34,4 @@ tags:
 - [[use-user-profile.ts]] - `imports_from` [EXTRACTED]
 - [[use-user.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Publish_Cycle
+#graphify/code #graphify/EXTRACTED #community/Community_72

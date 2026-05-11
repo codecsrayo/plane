@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/ui/loader/layouts/spreadsheet-layout-loader.tsx"
 type: "code"
-community: "Loader Calendar"
+community: "Community 23"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Loader_Calendar
+  - community/Community_23
 ---
 
 # spreadsheet-layout-loader.tsx
 
 ## Connections
-
 - [[SpreadsheetIssueRowLoader()]] - `contains` [EXTRACTED]
 - [[SpreadsheetLayoutLoader()]] - `contains` [EXTRACTED]
 - [[getRandomLength()]] - `imports` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[utils.tsx_1]] - `imports_from` [EXTRACTED]
 - [[workspace-root.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Loader_Calendar
+#graphify/code #graphify/EXTRACTED #community/Community_23

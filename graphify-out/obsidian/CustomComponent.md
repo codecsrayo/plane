@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/ui/markdown-to-component.tsx"
 type: "code"
-community: "Custom Heading"
+community: "Community 446"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Custom_Heading
+  - community/Community_446
 ---
 
 # CustomComponent
 
 ## Connections
-
 - [[markdown-to-component.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Custom_Heading
+#graphify/code #graphify/EXTRACTED #community/Community_446

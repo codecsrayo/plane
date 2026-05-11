@@ -1,18 +1,17 @@
 ---
 source_file: "ui/src/header/helper.tsx"
 type: "code"
-community: "Variant Context"
+community: "Community 177"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Variant_Context
+  - community/Community_177
 ---
 
 # helper.tsx
 
 ## Connections
-
 - [[EHeaderVariant]] - `contains` [EXTRACTED]
 - [[IHeaderProperties]] - `contains` [EXTRACTED]
 - [[THeaderVariant]] - `contains` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[headerStyle]] - `contains` [EXTRACTED]
 - [[minHeights]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Variant_Context
+#graphify/code #graphify/EXTRACTED #community/Community_177

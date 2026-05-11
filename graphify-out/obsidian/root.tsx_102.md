@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/power-k/ui/pages/preferences/root.tsx"
 type: "code"
-community: "Menu Power"
+community: "Community 124"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu_Power
+  - community/Community_124
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[PowerKAccountPreferencesPages]] - `contains` [EXTRACTED]
 - [[PowerKPreferencesLanguagesMenu]] - `imports` [EXTRACTED]
 - [[PowerKPreferencesStartOfWeekMenu()]] - `imports` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[timezone-menu.tsx]] - `imports_from` [EXTRACTED]
 - [[types.ts_16]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Menu_Power
+#graphify/code #graphify/EXTRACTED #community/Community_124

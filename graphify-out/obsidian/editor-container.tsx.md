@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/components/editors/editor-container.tsx"
 type: "code"
-community: "Link Options"
+community: "Editor Extensions"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Link_Options
+  - community/Editor_Extensions
 ---
 
 # editor-container.tsx
 
 ## Connections
-
 - [[CORE_EXTENSIONS]] - `imports` [EXTRACTED]
 - [[DEFAULT_DISPLAY_CONFIG]] - `imports` [EXTRACTED]
 - [[EditorContainer()]] - `contains` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[index.ts_46]] - `imports_from` [EXTRACTED]
 - [[nodeHighlightPluginKey]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Link_Options
+#graphify/code #graphify/EXTRACTED #community/Editor_Extensions

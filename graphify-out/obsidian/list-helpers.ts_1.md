@@ -1,0 +1,33 @@
+---
+source_file: "packages/editor/src/core/extensions/custom-list-keymap/list-helpers.ts"
+type: "code"
+community: "Community 293"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Community_293
+---
+
+# list-helpers.ts
+
+## Connections
+- [[CORE_EXTENSIONS]] - `imports` [EXTRACTED]
+- [[extension.ts_3]] - `imports_from` [EXTRACTED]
+- [[findListItemPos()]] - `contains` [EXTRACTED]
+- [[getNextListDepth()]] - `contains` [EXTRACTED]
+- [[getPrevListDepth()]] - `contains` [EXTRACTED]
+- [[handleBackspace()]] - `contains` [EXTRACTED]
+- [[handleDelete()]] - `contains` [EXTRACTED]
+- [[hasListBefore()]] - `contains` [EXTRACTED]
+- [[hasListItemBefore()]] - `contains` [EXTRACTED]
+- [[isCurrentParagraphASibling()]] - `contains` [EXTRACTED]
+- [[isCursorInSubList()]] - `contains` [EXTRACTED]
+- [[list-keymap.ts_1]] - `imports_from` [EXTRACTED]
+- [[listItemHasSubList()]] - `contains` [EXTRACTED]
+- [[nextListIsDeeper()]] - `contains` [EXTRACTED]
+- [[nextListIsHigher()]] - `contains` [EXTRACTED]
+- [[nextListIsSibling()]] - `contains` [EXTRACTED]
+- [[prevListIsHigher()]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Community_293

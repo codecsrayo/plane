@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/settings/workspace/sidebar/root.tsx"
 type: "code"
-community: "Sidebar Settings"
+community: "Community 166"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Settings
+  - community/Community_166
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[Props_118]] - `contains` [EXTRACTED]
 - [[WorkspaceSettingsSidebarHeader]] - `imports` [EXTRACTED]
 - [[WorkspaceSettingsSidebarItemCategories]] - `imports` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[header.tsx_45]] - `imports_from` [EXTRACTED]
 - [[item-categories.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Settings
+#graphify/code #graphify/EXTRACTED #community/Community_166

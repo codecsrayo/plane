@@ -1,14 +1,14 @@
 ---
 source_file: "ui/src/breadcrumbs/index.ts"
 type: "code"
-community: "Community 1325"
+community: "Community 1308"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_1325
+  - community/Community_1308
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_1325
+#graphify/code #graphify/EXTRACTED #community/Community_1308

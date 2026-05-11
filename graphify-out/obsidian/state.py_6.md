@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/models/state.py"
 type: "code"
-community: "Issue Sync"
+community: "Community 26"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Sync
+  - community/Community_26
 ---
 
 # state.py
 
 ## Connections
-
 - [[Meta_50]] - `contains` [EXTRACTED]
 - [[State]] - `contains` [EXTRACTED]
 - [[StateGroup]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[issue.py_7]] - `imports_from` [EXTRACTED]
 - [[project.py_6]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Sync
+#graphify/code #graphify/EXTRACTED #community/Community_26

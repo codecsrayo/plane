@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/use-global-view.ts"
 type: "code"
-community: "Project Work"
+community: "Community 22"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Work
+  - community/Community_22
 ---
 
 # use-global-view.ts
 
 ## Connections
-
 - [[StoreContext]] - `imports` [EXTRACTED]
 - [[all-issue-layout-root.tsx]] - `imports_from` [EXTRACTED]
 - [[delete-view-modal.tsx_1]] - `imports_from` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[views-list.tsx_1]] - `imports_from` [EXTRACTED]
 - [[workspace-level.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Work
+#graphify/code #graphify/EXTRACTED #community/Community_22

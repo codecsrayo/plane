@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 4
 ---
 
 # Community 707
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_57]] - code - api_rust/src/entities/user_github_connections.rs
+- [[DEFAULT_SWR_CONFIG]] - code - packages/constants/src/swr.ts
+- [[WEB_SWR_CONFIG]] - code - packages/constants/src/swr.ts
+- [[swr.ts]] - code - constants/src/swr.ts
+- [[swr.ts_1]] - code - packages/constants/src/swr.ts
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,17 +1,16 @@
 ---
 source_file: ""
 type: "code"
-community: "Permission Project"
+community: "Community 96"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Permission_Project
+  - community/Community_96
 ---
 
 # BasePermission
 
 ## Connections
-
 - [[InstanceAdminPermission]] - `inherits` [EXTRACTED]
 - [[ProjectAdminPermission]] - `inherits` [EXTRACTED]
 - [[ProjectBasePermission]] - `inherits` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[WorkspaceUserPermission]] - `inherits` [EXTRACTED]
 - [[WorkspaceViewerPermission]] - `inherits` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Permission_Project
+#graphify/code #graphify/EXTRACTED #community/Community_96

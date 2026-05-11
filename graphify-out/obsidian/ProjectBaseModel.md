@@ -1,17 +1,16 @@
 ---
 source_file: ""
 type: "code"
-community: "Issue Sync"
+community: "Community 26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Sync
+  - community/Community_26
 ---
 
 # ProjectBaseModel
 
 ## Connections
-
 - [[CommentReaction]] - `inherits` [EXTRACTED]
 - [[Cycle]] - `inherits` [EXTRACTED]
 - [[CycleIssue]] - `inherits` [EXTRACTED]
@@ -55,4 +54,4 @@ tags:
 - [[SlackProjectSync]] - `inherits` [EXTRACTED]
 - [[State]] - `inherits` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Sync
+#graphify/code #graphify/EXTRACTED #community/Community_26

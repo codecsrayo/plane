@@ -1,19 +1,20 @@
 ---
-source_file: "types/src/base-layouts/gantt/extended.ts"
+source_file: "packages/types/src/base-layouts/gantt/extended.ts"
 type: "code"
-community: "Layouts Gantt"
+community: "Community 102"
 location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Layouts_Gantt
+  - community/Community_102
 ---
 
 # EXTENDED_GANTT_TIMELINE_TYPE
 
 ## Connections
-
 - [[extended.ts_3]] - `contains` [EXTRACTED]
+- [[extended.ts_13]] - `contains` [EXTRACTED]
 - [[index.ts_104]] - `imports` [EXTRACTED]
+- [[index.ts_565]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Layouts_Gantt
+#graphify/code #graphify/EXTRACTED #community/Community_102

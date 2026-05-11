@@ -1,29 +1,44 @@
 ---
 type: community
 cohesion: 0.15
-members: 13
+members: 29
 ---
 
 # Community 192
 
 **Cohesion:** 0.15 - loosely connected
-**Members:** 13 nodes
+**Members:** 29 nodes
 
 ## Members
-
-- [[.constructor()_52]] - code - web/core/store/issue/issue-details/link.store.ts
-- [[.issueLinks()]] - code - web/core/store/issue/issue-details/link.store.ts
-- [[IIssueLinkStore]] - code - web/core/store/issue/issue-details/link.store.ts
-- [[IIssueLinkStoreActions]] - code - web/core/store/issue/issue-details/link.store.ts
-- [[IMultipleSelectStore]] - code - web/core/store/multiple_select.store.ts
-- [[IssueLinkStore]] - code - web/core/store/issue/issue-details/link.store.ts
-- [[currentSelection]] - code - web/core/store/multiple_select.store.ts
-- [[index.ts_19]] - code - web/core/services/issue/index.ts
-- [[initialData]] - code - web/core/store/issue/issue-details/link.store.ts
-- [[link.store.ts_1]] - code - web/core/store/issue/issue-details/link.store.ts
-- [[linkIndex_1]] - code - web/core/store/issue/issue-details/link.store.ts
-- [[multiple_select.store.ts]] - code - web/core/store/multiple_select.store.ts
-- [[newEntities]] - code - web/core/store/multiple_select.store.ts
+- [[._awaitComplete()]] - code - web/public/workbox-9f2f79cf.js
+- [[._ensureResponseSafeToCache()]] - code - web/public/workbox-9f2f79cf.js
+- [[._getNetworkPromise()]] - code - web/public/workbox-9f2f79cf.js
+- [[._getResponse()]] - code - web/public/workbox-9f2f79cf.js
+- [[._getTimeoutPromise()]] - code - web/public/workbox-9f2f79cf.js
+- [[._handle()]] - code - web/public/workbox-9f2f79cf.js
+- [[._handle()_1]] - code - web/public/workbox-9f2f79cf.js
+- [[.cacheMatch()]] - code - web/public/workbox-9f2f79cf.js
+- [[.cachePut()]] - code - web/public/workbox-9f2f79cf.js
+- [[.constructor()_56]] - code - web/public/workbox-9f2f79cf.js
+- [[.constructor()_54]] - code - web/public/workbox-9f2f79cf.js
+- [[.constructor()_53]] - code - web/public/workbox-9f2f79cf.js
+- [[.destroy()_8]] - code - web/public/workbox-9f2f79cf.js
+- [[.doneWaiting()]] - code - web/public/workbox-9f2f79cf.js
+- [[.fetch()]] - code - web/public/workbox-9f2f79cf.js
+- [[.fetchAndCachePut()]] - code - web/public/workbox-9f2f79cf.js
+- [[.getCacheKey()_1]] - code - web/public/workbox-9f2f79cf.js
+- [[.handle()]] - code - web/public/workbox-9f2f79cf.js
+- [[.handleAll()]] - code - web/public/workbox-9f2f79cf.js
+- [[.hasCallback()]] - code - web/public/workbox-9f2f79cf.js
+- [[.iterateCallbacks()]] - code - web/public/workbox-9f2f79cf.js
+- [[.runCallbacks()]] - code - web/public/workbox-9f2f79cf.js
+- [[.waitUntil()]] - code - web/public/workbox-9f2f79cf.js
+- [[NetworkFirst]] - code - web/public/workbox-9f2f79cf.js
+- [[NetworkOnly]] - code - web/public/workbox-9f2f79cf.js
+- [[Strategy]] - code - web/public/workbox-9f2f79cf.js
+- [[StrategyHandler]] - code - web/public/workbox-9f2f79cf.js
+- [[timeout()]] - code - web/public/workbox-9f2f79cf.js
+- [[toRequest()]] - code - web/public/workbox-9f2f79cf.js
 
 ## Live Query (requires Dataview plugin)
 
@@ -33,28 +48,12 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 7 edges to [[_COMMUNITY_Community 72]]
-- 4 edges to [[_COMMUNITY_Project Estimates]]
-- 2 edges to [[_COMMUNITY_Active Cycle Stats]]
-- 2 edges to [[_COMMUNITY_Empty States & Inbox]]
-- 1 edge to [[_COMMUNITY_Community 111]]
-- 1 edge to [[_COMMUNITY_Community 92]]
-- 1 edge to [[_COMMUNITY_Issue State Management]]
-- 1 edge to [[_COMMUNITY_Community 166]]
-- 1 edge to [[_COMMUNITY_Community 214]]
-- 1 edge to [[_COMMUNITY_Community 216]]
-- 1 edge to [[_COMMUNITY_Community 184]]
-- 1 edge to [[_COMMUNITY_Git Integrations]]
-- 1 edge to [[_COMMUNITY_Community 58]]
-- 1 edge to [[_COMMUNITY_Community 215]]
-- 1 edge to [[_COMMUNITY_Community 67]]
-- 1 edge to [[_COMMUNITY_Community 86]]
+- 13 edges to [[_COMMUNITY_Community 108]]
+- 3 edges to [[_COMMUNITY_Community 123]]
 
 ## Top bridge nodes
-
-- [[index.ts_19]] - degree 17, connects to 13 communities
-- [[link.store.ts_1]] - degree 10, connects to 3 communities
-- [[multiple_select.store.ts]] - degree 8, connects to 2 communities
-- [[IssueLinkStore]] - degree 4, connects to 1 community
-- [[IIssueLinkStore]] - degree 2, connects to 1 community
+- [[StrategyHandler]] - degree 14, connects to 1 community
+- [[.cachePut()]] - degree 11, connects to 1 community
+- [[.fetch()]] - degree 8, connects to 1 community
+- [[Strategy]] - degree 6, connects to 1 community
+- [[._getResponse()]] - degree 6, connects to 1 community

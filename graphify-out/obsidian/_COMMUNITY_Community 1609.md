@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_259]] - code - web/ce/components/comments/index.ts
+- [[index.ts_327]] - code - web/core/components/modules/sidebar-select/index.ts
 
 ## Live Query (requires Dataview plugin)
 

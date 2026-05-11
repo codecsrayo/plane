@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/users.rs"
 type: "code"
-community: "Project Response"
+community: "Community 214"
 location: "L1342"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Project_Response
+  - community/Community_214
 ---
 
 # get_my_activities()
 
 ## Connections
-
 - [[.json()]] - `calls` [INFERRED]
 - [[.new()]] - `calls` [INFERRED]
 - [[build_response()]] - `calls` [INFERRED]
@@ -20,4 +19,4 @@ tags:
 - [[resolve_per_page()]] - `calls` [INFERRED]
 - [[users.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Project_Response
+#graphify/code #graphify/INFERRED #community/Community_214

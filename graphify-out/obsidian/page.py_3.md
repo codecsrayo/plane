@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/models/page.py"
 type: "code"
-community: "Meta User"
+community: "Python Workflow Services"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Meta_User
+  - community/Python_Workflow_Services
 ---
 
 # page.py
 
 ## Connections
-
 - [[Meta_36]] - `contains` [EXTRACTED]
 - [[Page]] - `contains` [EXTRACTED]
 - [[PageLabel]] - `contains` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[base.py_25]] - `imports_from` [EXTRACTED]
 - [[get_view_props()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Meta_User
+#graphify/code #graphify/EXTRACTED #community/Python_Workflow_Services

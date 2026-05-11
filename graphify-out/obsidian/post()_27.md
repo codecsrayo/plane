@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/license/api/views/admin.py"
 type: "code"
-community: "Endpoint Sign"
+community: "Community 54"
 location: "L49"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Endpoint_Sign
+  - community/Community_54
 ---
 
 # post()
 
 ## Connections
-
 - [[.get()_62]] - `calls` [EXTRACTED]
 - [[.validate_email()]] - `calls` [INFERRED]
 - [[AuthenticationException]] - `calls` [INFERRED]
@@ -22,4 +21,4 @@ tags:
 - [[response]] - `calls` [INFERRED]
 - [[user_login()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Endpoint_Sign
+#graphify/code #graphify/INFERRED #community/Community_54

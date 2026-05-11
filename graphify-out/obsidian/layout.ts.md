@@ -1,18 +1,17 @@
 ---
 source_file: "constants/src/issue/layout.ts"
 type: "code"
-community: "Issue Filters"
+community: "Community 95"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters
+  - community/Community_95
 ---
 
 # layout.ts
 
 ## Connections
-
 - [[ISSUE_LAYOUTS]] - `contains` [EXTRACTED]
 - [[ISSUE_LAYOUT_MAP]] - `contains` [EXTRACTED]
 - [[SITES_ISSUE_LAYOUTS]] - `contains` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[TIssueLayoutMap]] - `contains` [EXTRACTED]
 - [[filter.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters
+#graphify/code #graphify/EXTRACTED #community/Community_95

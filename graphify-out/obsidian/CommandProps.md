@@ -1,18 +1,18 @@
 ---
-source_file: "editor/src/core/types/slash-commands-suggestion.ts"
+source_file: "packages/editor/src/core/types/slash-commands-suggestion.ts"
 type: "code"
-community: "Document Collaborative"
+community: "Editor Extensions"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Document_Collaborative
+  - community/Editor_Extensions
 ---
 
 # CommandProps
 
 ## Connections
-
 - [[slash-commands-suggestion.ts]] - `contains` [EXTRACTED]
+- [[slash-commands-suggestion.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Document_Collaborative
+#graphify/code #graphify/EXTRACTED #community/Editor_Extensions

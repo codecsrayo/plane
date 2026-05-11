@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/modules/form.tsx"
 type: "code"
-community: "Label Dropdown"
+community: "Module & Cycle Analytics"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Dropdown
+  - community/Module__Cycle_Analytics
 ---
 
 # form.tsx
 
 ## Connections
-
 - [[DateRangeDropdown]] - `imports` [EXTRACTED]
 - [[MemberDropdown]] - `imports` [EXTRACTED]
 - [[ModuleForm()]] - `contains` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[useUser()]] - `imports` [EXTRACTED]
 - [[user-user.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Module__Cycle_Analytics

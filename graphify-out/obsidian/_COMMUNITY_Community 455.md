@@ -1,19 +1,26 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 0.18
+members: 11
 ---
 
 # Community 455
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 0.18 - loosely connected
+**Members:** 11 nodes
 
 ## Members
-
-- [[ProfileStats()]] - code - web/core/components/profile/overview/stats.tsx
-- [[Props_100]] - code - web/core/components/profile/overview/stats.tsx
-- [[stats.tsx]] - code - web/core/components/profile/overview/stats.tsx
+- [[._get_new_session_key()]] - code - api/plane/db/models/session.py
+- [[.create_model_instance()]] - code - api/plane/db/models/session.py
+- [[AbstractBaseSession]] - code
+- [[DBSessionStore]] - code
+- [[Meta_37]] - code - api/plane/db/models/session.py
+- [[Return a new session key that is not present in the current backend.         Ove]] - rationale - api/plane/db/models/session.py
+- [[Session]] - code - api/plane/db/models/session.py
+- [[SessionStore]] - code - api/plane/db/models/session.py
+- [[get_model_class()]] - code - api/plane/db/models/session.py
+- [[get_session_store_class()]] - code - api/plane/db/models/session.py
+- [[session.py]] - code - api/plane/db/models/session.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -21,3 +28,11 @@ members: 3
 TABLE source_file, type FROM #community/Community_455
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Community 123]]
+- 1 edge to [[_COMMUNITY_Python Workflow Services]]
+
+## Top bridge nodes
+- [[session.py]] - degree 6, connects to 1 community
+- [[.create_model_instance()]] - degree 2, connects to 1 community

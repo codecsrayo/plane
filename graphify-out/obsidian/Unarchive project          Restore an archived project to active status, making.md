@@ -1,14 +1,14 @@
 ---
 source_file: "api/plane/api/views/project.py"
 type: "rationale"
-community: "Project Unarchive"
+community: "Community 1707"
 location: "L548"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Project_Unarchive
+  - community/Community_1707
 ---
 
-# Unarchive project Restore an archived project to active status, making
+# Unarchive project          Restore an archived project to active status, making
 
-#graphify/rationale #graphify/EXTRACTED #community/Project_Unarchive
+#graphify/rationale #graphify/EXTRACTED #community/Community_1707

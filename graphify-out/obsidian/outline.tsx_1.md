@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/pages/navigation-pane/tab-panels/outline.tsx"
 type: "code"
-community: "Navigation Pane"
+community: "Community 163"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Navigation_Pane
+  - community/Community_163
 ---
 
 # outline.tsx
 
 ## Connections
-
 - [[PageNavigationPaneOutlineTabEmptyState()]] - `imports` [EXTRACTED]
 - [[PageNavigationPaneOutlineTabPanel()]] - `contains` [EXTRACTED]
 - [[Props_476]] - `contains` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[index.ts_417]] - `imports_from` [EXTRACTED]
 - [[root.tsx_122]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Navigation_Pane
+#graphify/code #graphify/EXTRACTED #community/Community_163

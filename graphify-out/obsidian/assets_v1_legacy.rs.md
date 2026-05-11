@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/assets_v1_legacy.rs"
 type: "code"
-community: "Returns Asset"
+community: "Community 332"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Asset
+  - community/Community_332
 ---
 
 # assets_v1_legacy.rs
 
 ## Connections
-
 - [[delete_user_asset_nonexistent_returns_404()]] - `contains` [EXTRACTED]
 - [[delete_user_asset_unauthenticated_returns_401()]] - `contains` [EXTRACTED]
 - [[delete_workspace_asset_nonexistent_returns_404()]] - `contains` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[post_workspace_asset_unauthenticated_returns_401()]] - `contains` [EXTRACTED]
 - [[setup()_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Asset
+#graphify/code #graphify/EXTRACTED #community/Community_332

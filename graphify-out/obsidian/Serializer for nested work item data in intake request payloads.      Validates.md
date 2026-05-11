@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/serializers/intake.py"
 type: "rationale"
-community: "Serializer Asset"
+community: "Community 171"
 location: "L161"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Serializer_Asset
+  - community/Community_171
 ---
 
-# Serializer for nested work item data in intake request payloads. Validates
+# Serializer for nested work item data in intake request payloads.      Validates
 
 ## Connections
-
 - [[IssueDataSerializer]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Serializer_Asset
+#graphify/rationale #graphify/EXTRACTED #community/Community_171

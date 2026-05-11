@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/views/intake.py"
 type: "code"
-community: "Intake Endpoint"
+community: "Community 176"
 location: "L106"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Intake_Endpoint
+  - community/Community_176
 ---
 
 # get()
 
 ## Connections
-
 - [[.get_queryset()_66]] - `calls` [EXTRACTED]
 - [[.get_queryset()_67]] - `calls` [EXTRACTED]
 - [[delete()_15]] - `calls` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[post()_22]] - `calls` [EXTRACTED]
 - [[response]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Intake_Endpoint
+#graphify/code #graphify/EXTRACTED #community/Community_176

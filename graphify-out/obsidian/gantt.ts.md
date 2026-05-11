@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/layout/gantt.ts"
 type: "code"
-community: "Gantt Chart"
+community: "Community 466"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Chart
+  - community/Community_466
 ---
 
 # gantt.ts
 
 ## Connections
-
 - [[ChartDataType]] - `contains` [EXTRACTED]
 - [[ChartDataTypeData]] - `contains` [EXTRACTED]
 - [[EGanttBlockType]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[TGanttViews]] - `contains` [EXTRACTED]
 - [[WeekMonthDataType]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Chart
+#graphify/code #graphify/EXTRACTED #community/Community_466

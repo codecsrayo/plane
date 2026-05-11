@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.50
+members: 4
 ---
 
 # Community 670
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.50 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_20]] - code - api_rust/src/entities/comment_reactions.rs
+- [[TIssueEmbedHookProps]] - code - web/ce/hooks/use-issue-embed.tsx
+- [[use-issue-embed.tsx]] - code - web/ce/hooks/use-issue-embed.tsx
+- [[useIssueEmbed()]] - code - web/ce/hooks/use-issue-embed.tsx
+- [[widgetCallback()]] - code - web/ce/hooks/use-issue-embed.tsx
 
 ## Live Query (requires Dataview plugin)
 

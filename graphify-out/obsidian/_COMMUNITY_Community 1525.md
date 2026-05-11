@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_170]] - code - propel/src/charts/area-chart/index.ts
+- [[use-font-face-observer.d.ts]] - code - web/use-font-face-observer.d.ts
 
 ## Live Query (requires Dataview plugin)
 

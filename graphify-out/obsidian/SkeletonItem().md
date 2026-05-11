@@ -1,18 +1,18 @@
 ---
-source_file: "propel/src/skeleton/root.tsx"
+source_file: "packages/propel/src/skeleton/root.tsx"
 type: "code"
-community: "Tabs Custom"
+community: "Community 164"
 location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Tabs_Custom
+  - community/Community_164
 ---
 
 # SkeletonItem()
 
 ## Connections
-
 - [[root.tsx_17]] - `contains` [EXTRACTED]
+- [[root.tsx_159]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Tabs_Custom
+#graphify/code #graphify/EXTRACTED #community/Community_164

@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/types/embed.ts"
 type: "code"
-community: "Embed Tembeditem"
+community: "Community 712"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Embed_Tembeditem
+  - community/Community_712
 ---
 
 # embed.ts
 
 ## Connections
-
 - [[TEmbedItem]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Embed_Tembeditem
+#graphify/code #graphify/EXTRACTED #community/Community_712

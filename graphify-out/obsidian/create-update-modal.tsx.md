@@ -1,20 +1,19 @@
 ---
 source_file: "web/core/components/modules/links/create-update-modal.tsx"
 type: "code"
-community: "Link Values"
+community: "Community 681"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Link_Values
+  - community/Community_681
 ---
 
 # create-update-modal.tsx
 
 ## Connections
-
 - [[CreateUpdateModuleLinkModal()]] - `contains` [EXTRACTED]
 - [[Props_162]] - `contains` [EXTRACTED]
 - [[defaultValues_7]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Link_Values
+#graphify/code #graphify/EXTRACTED #community/Community_681

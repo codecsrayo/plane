@@ -1,29 +1,44 @@
 ---
 type: community
-cohesion: 0.21
-members: 13
+cohesion: 0.17
+members: 29
 ---
 
 # Community 190
 
-**Cohesion:** 0.21 - loosely connected
-**Members:** 13 nodes
+**Cohesion:** 0.17 - loosely connected
+**Members:** 29 nodes
 
 ## Members
-
-- [[ActivityBlockComponent()]] - code - web/core/components/common/activity/activity-block.tsx
-- [[ActivityIconMap]] - code - web/core/components/common/activity/helper.tsx
-- [[ActivityItem]] - code - web/core/components/common/activity/activity-item.tsx
-- [[TActivityBlockComponent]] - code - web/core/components/common/activity/activity-block.tsx
-- [[TActivityItem]] - code - web/core/components/common/activity/activity-item.tsx
-- [[TUser]] - code - web/core/components/common/activity/user.tsx
-- [[User]] - code - web/core/components/common/activity/user.tsx
-- [[activity-block.tsx_1]] - code - web/core/components/common/activity/activity-block.tsx
-- [[activity-item.tsx]] - code - web/core/components/common/activity/activity-item.tsx
-- [[helper.tsx_8]] - code - web/core/components/common/activity/helper.tsx
-- [[iconsMap]] - code - web/core/components/common/activity/helper.tsx
-- [[messages()]] - code - web/core/components/common/activity/helper.tsx
-- [[user.tsx_1]] - code - web/core/components/common/activity/user.tsx
+- [[CompleteOrEmpty]] - code - packages/types/src/utils.ts
+- [[FILTER_NODE_TYPE]] - code - packages/types/src/rich-filters/expression.ts
+- [[IFilterAdapter]] - code - packages/types/src/rich-filters/adapter.ts
+- [[MakeOptional]] - code - packages/types/src/utils.ts
+- [[PartialDeep]] - code - packages/types/src/utils.ts
+- [[SingleOrArray]] - code - packages/types/src/utils.ts
+- [[TAllAvailableOperatorsForDisplay]] - code - packages/types/src/rich-filters/operators/index.ts
+- [[TBaseFilterNode]] - code - packages/types/src/rich-filters/expression.ts
+- [[TBuildFilterExpressionParams]] - code - packages/types/src/rich-filters/builder.ts
+- [[TExternalFilter]] - code - packages/types/src/rich-filters/adapter.ts
+- [[TFilterAndGroupNode]] - code - packages/types/src/rich-filters/expression.ts
+- [[TFilterAndGroupPayload]] - code - packages/types/src/rich-filters/expression.ts
+- [[TFilterConditionForBuild]] - code - packages/types/src/rich-filters/builder.ts
+- [[TFilterConditionNode]] - code - packages/types/src/rich-filters/expression.ts
+- [[TFilterConditionNodeForDisplay]] - code - packages/types/src/rich-filters/expression.ts
+- [[TFilterConditionPayload]] - code - packages/types/src/rich-filters/expression.ts
+- [[TFilterExpression]] - code - packages/types/src/rich-filters/expression.ts
+- [[TFilterGroupNode]] - code - packages/types/src/rich-filters/expression.ts
+- [[TFilterGroupPayload]] - code - packages/types/src/rich-filters/expression.ts
+- [[TFilterNodeType]] - code - packages/types/src/rich-filters/expression.ts
+- [[TFilterProperty]] - code - packages/types/src/rich-filters/expression.ts
+- [[adapter.ts_3]] - code - packages/types/src/rich-filters/adapter.ts
+- [[adapter.ts]] - code - types/src/rich-filters/adapter.ts
+- [[builder.ts_1]] - code - packages/types/src/rich-filters/builder.ts
+- [[builder.ts]] - code - types/src/rich-filters/builder.ts
+- [[expression.ts_1]] - code - packages/types/src/rich-filters/expression.ts
+- [[expression.ts]] - code - types/src/rich-filters/expression.ts
+- [[utils.ts_29]] - code - packages/types/src/utils.ts
+- [[utils.ts_10]] - code - types/src/utils.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -33,15 +48,15 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 3 edges to [[_COMMUNITY_Layout System]]
-- 2 edges to [[_COMMUNITY_Authentication UI]]
-- 2 edges to [[_COMMUNITY_Member Filters & Description]]
-- 2 edges to [[_COMMUNITY_Community 92]]
+- 14 edges to [[_COMMUNITY_Community 228]]
+- 8 edges to [[_COMMUNITY_Community 216]]
+- 6 edges to [[_COMMUNITY_Community 229]]
+- 6 edges to [[_COMMUNITY_Community 230]]
+- 4 edges to [[_COMMUNITY_Community 71]]
 
 ## Top bridge nodes
-
-- [[user.tsx_1]] - degree 7, connects to 2 communities
-- [[activity-block.tsx_1]] - degree 7, connects to 1 community
-- [[helper.tsx_8]] - degree 6, connects to 1 community
-- [[ActivityBlockComponent()]] - degree 3, connects to 1 community
+- [[expression.ts_1]] - degree 30, connects to 4 communities
+- [[expression.ts]] - degree 30, connects to 4 communities
+- [[builder.ts_1]] - degree 12, connects to 2 communities
+- [[builder.ts]] - degree 12, connects to 2 communities
+- [[TFilterProperty]] - degree 8, connects to 1 community

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/power-k/ui/pages/context-based/root.tsx"
 type: "code"
-community: "Power Chat"
+community: "Community 376"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Power_Chat
+  - community/Community_376
 ---
 
 # ContextBasedActionsProps
 
 ## Connections
-
 - [[root.tsx_99]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Power_Chat
+#graphify/code #graphify/EXTRACTED #community/Community_376

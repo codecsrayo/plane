@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/modules/modal.tsx"
 type: "code"
-community: "Cycles Archived"
+community: "Module & Cycle Analytics"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycles_Archived
+  - community/Module__Cycle_Analytics
 ---
 
 # modal.tsx
 
 ## Connections
-
 - [[CreateUpdateModuleModal]] - `contains` [EXTRACTED]
 - [[Props_145]] - `contains` [EXTRACTED]
 - [[defaultValues_5]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycles_Archived
+#graphify/code #graphify/EXTRACTED #community/Module__Cycle_Analytics

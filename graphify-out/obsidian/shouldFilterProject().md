@@ -1,18 +1,18 @@
 ---
-source_file: "utils/src/project.ts"
+source_file: "packages/utils/src/project.ts"
 type: "code"
-community: "Order Should"
+community: "Community 181"
 location: "L61"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Order_Should
+  - community/Community_181
 ---
 
 # shouldFilterProject()
 
 ## Connections
-
 - [[project.ts_2]] - `contains` [EXTRACTED]
+- [[project.ts_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Order_Should
+#graphify/code #graphify/EXTRACTED #community/Community_181

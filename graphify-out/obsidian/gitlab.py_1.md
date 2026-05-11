@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/models/integration/gitlab.py"
 type: "code"
-community: "Issue Sync"
+community: "Community 26"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Sync
+  - community/Community_26
 ---
 
 # gitlab.py
 
 ## Connections
-
 - [[GitlabCommentSync]] - `contains` [EXTRACTED]
 - [[GitlabIssueSync]] - `contains` [EXTRACTED]
 - [[GitlabRepository]] - `contains` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[Meta_56]] - `contains` [EXTRACTED]
 - [[__init__.py_31]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Sync
+#graphify/code #graphify/EXTRACTED #community/Community_26

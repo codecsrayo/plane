@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_359]] - code - web/core/components/issues/issue-layouts/filters/header/filters/index.ts
+- [[entry.client.tsx_1]] - code - admin/app/entry.client.tsx
 
 ## Live Query (requires Dataview plugin)
 

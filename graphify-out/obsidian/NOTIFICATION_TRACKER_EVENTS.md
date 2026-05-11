@@ -1,18 +1,18 @@
 ---
-source_file: "constants/src/event-tracker/core.ts"
+source_file: "packages/constants/src/event-tracker/core.ts"
 type: "code"
-community: "Tracker Elements"
+community: "Community 134"
 location: "L353"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Tracker_Elements
+  - community/Community_134
 ---
 
 # NOTIFICATION_TRACKER_EVENTS
 
 ## Connections
-
 - [[core.ts_1]] - `contains` [EXTRACTED]
+- [[core.ts_23]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Tracker_Elements
+#graphify/code #graphify/EXTRACTED #community/Community_134

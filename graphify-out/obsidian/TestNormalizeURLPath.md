@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/tests/unit/utils/test_url.py"
 type: "code"
-community: "Test Path"
+community: "Community 269"
 location: "L200"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Test_Path
+  - community/Community_269
 ---
 
 # TestNormalizeURLPath
 
 ## Connections
-
 - [[.test_normalize_url_path_edge_cases()]] - `method` [EXTRACTED]
 - [[.test_normalize_url_path_with_complex_path()]] - `method` [EXTRACTED]
 - [[.test_normalize_url_path_with_different_schemes()]] - `method` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[Test the normalize_url_path function]] - `rationale_for` [EXTRACTED]
 - [[test_url.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Test_Path
+#graphify/code #graphify/EXTRACTED #community/Community_269

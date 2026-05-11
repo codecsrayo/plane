@@ -1,14 +1,14 @@
 ---
 source_file: "api/plane/api/views/issue.py"
 type: "rationale"
-community: "Issue Activities"
+community: "Community 1691"
 location: "L1683"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Issue_Activities
+  - community/Community_1691
 ---
 
-# List issue activities Retrieve chronological activity logs for an issue
+# List issue activities          Retrieve chronological activity logs for an issue
 
-#graphify/rationale #graphify/EXTRACTED #community/Issue_Activities
+#graphify/rationale #graphify/EXTRACTED #community/Community_1691

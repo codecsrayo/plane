@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/routes/redirects/core/workspace-account-settings.tsx"
 type: "code"
-community: "Workspace Account"
+community: "Community 765"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Account
+  - community/Community_765
 ---
 
 # clientLoader()
 
 ## Connections
-
 - [[workspace-account-settings.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Account
+#graphify/code #graphify/EXTRACTED #community/Community_765

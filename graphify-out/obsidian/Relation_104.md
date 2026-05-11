@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/entities/workspaces.rs"
 type: "code"
-community: "Model Relation"
+community: "Community 984"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Model_Relation
+  - community/Community_984
 ---
 
 # Relation
 
 ## Connections
-
 - [[workspaces.rs_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Model_Relation
+#graphify/code #graphify/EXTRACTED #community/Community_984

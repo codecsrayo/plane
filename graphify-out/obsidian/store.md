@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/lib/store-context.tsx"
 type: "code"
-community: "Group Kanban"
+community: "Community 42"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group_Kanban
+  - community/Community_42
 ---
 
 # store
 
 ## Connections
-
 - [[base-command-palette.store.ts]] - `imports` [EXTRACTED]
 - [[base-issues-utils.ts]] - `imports` [EXTRACTED]
 - [[helper.ts_6]] - `imports` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[utils.tsx]] - `imports` [EXTRACTED]
 - [[utils.tsx_2]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group_Kanban
+#graphify/code #graphify/EXTRACTED #community/Community_42

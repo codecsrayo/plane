@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_255]] - code - web/ce/components/command-palette/index.ts
+- [[index.ts_314]] - code - web/core/components/project-states/create-update/index.ts
 
 ## Live Query (requires Dataview plugin)
 

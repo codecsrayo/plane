@@ -1,22 +1,21 @@
 ---
 source_file: "web/core/components/power-k/ui/pages/open-entity/shared.ts"
 type: "code"
-community: "Menu Power"
+community: "Community 85"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu_Power
+  - community/Community_85
 ---
 
 # shared.ts
 
 ## Connections
-
 - [[TPowerKContext]] - `imports` [EXTRACTED]
 - [[TPowerKOpenEntityActionsProps]] - `contains` [EXTRACTED]
 - [[TPowerKPageType]] - `imports` [EXTRACTED]
 - [[root.tsx_103]] - `imports_from` [EXTRACTED]
 - [[types.ts_16]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Menu_Power
+#graphify/code #graphify/EXTRACTED #community/Community_85

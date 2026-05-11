@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_1]] - code - ui/src/spinners/index.ts
+- [[index.ts_20]] - code - ui/src/tooltip/index.ts
 
 ## Live Query (requires Dataview plugin)
 

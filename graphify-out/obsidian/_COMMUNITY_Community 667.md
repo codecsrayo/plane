@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 4
 ---
 
 # Community 667
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_17]] - code - api_rust/src/entities/django_celery_beat_solarschedule.rs
+- [[core.ts_40]] - code - packages/utils/src/rich-filters/values/core.ts
+- [[core.ts_18]] - code - utils/src/rich-filters/values/core.ts
+- [[getFilterValueLength()]] - code - packages/utils/src/rich-filters/values/core.ts
+- [[toFilterArray()]] - code - packages/utils/src/rich-filters/values/core.ts
 
 ## Live Query (requires Dataview plugin)
 

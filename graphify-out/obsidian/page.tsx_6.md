@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/auth/slack/callback/page.tsx"
 type: "code"
-community: "Callback Installation"
+community: "Community 280"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Callback_Installation
+  - community/Community_280
 ---
 
 # page.tsx
 
 ## Connections
-
 - [[AppInstallationService]] - `imports` [EXTRACTED]
 - [[OAuthCallbackPage()]] - `imports` [EXTRACTED]
 - [[SlackIntegrationCallbackPage()]] - `contains` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[app_installation.service.ts]] - `imports_from` [EXTRACTED]
 - [[oauth-callback-page.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Callback_Installation
+#graphify/code #graphify/EXTRACTED #community/Community_280

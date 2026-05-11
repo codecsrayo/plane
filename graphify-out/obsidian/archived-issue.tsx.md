@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/quick-action-dropdowns/archived-issue.tsx"
 type: "code"
-community: "Issue Work"
+community: "Project Filters & Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Work
+  - community/Project_Filters__Archives
 ---
 
 # archived-issue.tsx
 
 ## Connections
-
 - [[ArchivedIssueQuickActions]] - `contains` [EXTRACTED]
 - [[DeleteIssueModal]] - `imports` [EXTRACTED]
 - [[MenuItemFactoryProps]] - `imports` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[useArchivedIssueMenuItems()]] - `imports` [EXTRACTED]
 - [[useIssues()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Work
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

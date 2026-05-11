@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/workspace-draft/root.tsx"
 type: "code"
-community: "Project Profile"
+community: "Project Filters & Archives"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Profile
+  - community/Project_Filters__Archives
 ---
 
 # TWorkspaceDraftIssuesRoot
 
 ## Connections
-
 - [[root.tsx_70]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Profile
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

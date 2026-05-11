@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/types/projects/projects.ts"
 type: "code"
-community: "Project Partial"
+community: "Community 811"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Partial
+  - community/Community_811
 ---
 
 # TPartialProject
 
 ## Connections
-
 - [[projects.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Partial
+#graphify/code #graphify/EXTRACTED #community/Community_811

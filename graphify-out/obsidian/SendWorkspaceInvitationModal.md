@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/components/workspace/members/invite-modal.tsx"
 type: "code"
-community: "Invitation Workspace"
+community: "Community 312"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Invitation_Workspace
+  - community/Community_312
 ---
 
 # SendWorkspaceInvitationModal
 
 ## Connections
-
 - [[invite-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Invitation_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_312

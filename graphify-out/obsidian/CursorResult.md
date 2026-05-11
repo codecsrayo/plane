@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/paginator.py"
 type: "code"
-community: "Endpoint User"
+community: "Community 53"
 location: "L61"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_User
+  - community/Community_53
 ---
 
 # CursorResult
 
 ## Connections
-
 - [[.__getitem__()]] - `method` [EXTRACTED]
 - [[.__init__()_12]] - `method` [EXTRACTED]
 - [[.__iter__()]] - `method` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[Sequence]] - `inherits` [EXTRACTED]
 - [[paginator.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_User
+#graphify/code #graphify/EXTRACTED #community/Community_53

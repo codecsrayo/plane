@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_64]] - code - services/src/user/index.ts
+- [[spreadsheet.ts]] - code - constants/src/spreadsheet.ts
 
 ## Live Query (requires Dataview plugin)
 

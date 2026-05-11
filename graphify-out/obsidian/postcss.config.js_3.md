@@ -1,14 +1,14 @@
 ---
 source_file: "propel/postcss.config.js"
 type: "code"
-community: "Postcss Config"
+community: "Community 1485"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Postcss_Config
+  - community/Community_1485
 ---
 
 # postcss.config.js
 
-#graphify/code #graphify/EXTRACTED #community/Postcss_Config
+#graphify/code #graphify/EXTRACTED #community/Community_1485

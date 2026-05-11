@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_152]] - code - propel/src/spinners/index.ts
+- [[index.ts_170]] - code - propel/src/charts/area-chart/index.ts
 
 ## Live Query (requires Dataview plugin)
 

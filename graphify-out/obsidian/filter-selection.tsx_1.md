@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/inbox/inbox-filter/filters/filter-selection.tsx"
 type: "code"
-community: "Member Members"
+community: "Issue Display Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Members
+  - community/Issue_Display_Filters
 ---
 
 # filter-selection.tsx
 
 ## Connections
-
 - [[FilterDate]] - `imports` [EXTRACTED]
 - [[FilterLabels()]] - `imports` [EXTRACTED]
 - [[FilterMember]] - `imports` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[useLabel()]] - `imports` [EXTRACTED]
 - [[useMember()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Members
+#graphify/code #graphify/EXTRACTED #community/Issue_Display_Filters

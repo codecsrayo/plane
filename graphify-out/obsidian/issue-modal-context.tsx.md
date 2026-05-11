@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-modal/context/issue-modal-context.tsx"
 type: "code"
-community: "Issue Context"
+community: "Community 474"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Context
+  - community/Community_474
 ---
 
 # issue-modal-context.tsx
 
 ## Connections
-
 - [[IssueModalContext]] - `contains` [EXTRACTED]
 - [[TActiveAdditionalPropertiesProps]] - `contains` [EXTRACTED]
 - [[TCreateSubWorkItemProps]] - `contains` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[TIssueModalContext]] - `contains` [EXTRACTED]
 - [[TPropertyValuesValidationProps]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Context
+#graphify/code #graphify/EXTRACTED #community/Community_474

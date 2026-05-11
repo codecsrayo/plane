@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 795
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_91]] - code - web/core/components/issues/issue-layouts/filters/header/index.ts
+- [[CopyMenuHelperProps]] - code - web/ce/components/issues/issue-layouts/quick-action-dropdowns/copy-menu-helper.tsx
+- [[copy-menu-helper.tsx]] - code - web/ce/components/issues/issue-layouts/quick-action-dropdowns/copy-menu-helper.tsx
+- [[createCopyMenuWithDuplication()]] - code - web/ce/components/issues/issue-layouts/quick-action-dropdowns/copy-menu-helper.tsx
 
 ## Live Query (requires Dataview plugin)
 

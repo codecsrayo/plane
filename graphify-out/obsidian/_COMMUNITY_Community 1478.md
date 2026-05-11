@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_114]] - code - utils/src/permission/index.ts
+- [[index.ts_132]] - code - shared-state/src/store/index.ts
 
 ## Live Query (requires Dataview plugin)
 

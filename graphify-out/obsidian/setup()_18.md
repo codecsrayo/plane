@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/work_items_extras.rs"
 type: "code"
-community: "Returns Legacy"
+community: "Community 271"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Legacy
+  - community/Community_271
 ---
 
 # setup()
 
 ## Connections
-
 - [[.spawn()]] - `calls` [INFERRED]
 - [[create_issue_link_legacy_creates_and_list_reflects()]] - `calls` [EXTRACTED]
 - [[delete_issue_link_legacy_nonexistent_returns_404()]] - `calls` [EXTRACTED]
@@ -35,4 +34,4 @@ tags:
 - [[work_items_search_authenticated_returns_200()]] - `calls` [EXTRACTED]
 - [[work_items_search_unauthenticated_returns_401()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Legacy
+#graphify/code #graphify/EXTRACTED #community/Community_271

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/authentication/utils/redirection_path.py"
 type: "code"
-community: "Path Redirection"
+community: "Community 54"
 location: "L8"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Path_Redirection
+  - community/Community_54
 ---
 
 # get_redirection_path()
 
 ## Connections
-
 - [[.get()_44]] - `calls` [INFERRED]
 - [[.get()_46]] - `calls` [INFERRED]
 - [[.get()_48]] - `calls` [INFERRED]
@@ -23,4 +22,4 @@ tags:
 - [[.post()_26]] - `calls` [INFERRED]
 - [[redirection_path.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Path_Redirection
+#graphify/code #graphify/INFERRED #community/Community_54

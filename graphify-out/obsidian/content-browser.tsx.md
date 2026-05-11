@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/pages/editor/summary/content-browser.tsx"
 type: "code"
-community: "Outline Content"
+community: "Community 521"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Outline_Content
+  - community/Community_521
 ---
 
 # content-browser.tsx
 
 ## Connections
-
 - [[OutlineHeading1()]] - `imports` [EXTRACTED]
 - [[OutlineHeading2()]] - `imports` [EXTRACTED]
 - [[OutlineHeading3()]] - `imports` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[THeadingComponentProps]] - `imports` [EXTRACTED]
 - [[heading-components.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Outline_Content
+#graphify/code #graphify/EXTRACTED #community/Community_521

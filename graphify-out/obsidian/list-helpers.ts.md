@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/custom-list-keymap/list-helpers.ts"
 type: "code"
-community: "Next Prev"
+community: "Community 293"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Next_Prev
+  - community/Community_293
 ---
 
 # list-helpers.ts
 
 ## Connections
-
 - [[CORE_EXTENSIONS]] - `imports` [EXTRACTED]
 - [[extension.ts]] - `imports_from` [EXTRACTED]
 - [[findListItemPos()]] - `contains` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[nextListIsSibling()]] - `contains` [EXTRACTED]
 - [[prevListIsHigher()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Next_Prev
+#graphify/code #graphify/EXTRACTED #community/Community_293

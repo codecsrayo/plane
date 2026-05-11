@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/badge/badge.tsx"
 type: "code"
-community: "Badge Styling"
+community: "Community 140"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Badge_Styling
+  - community/Community_140
 ---
 
 # badge.tsx
 
 ## Connections
-
 - [[Badge]] - `contains` [EXTRACTED]
 - [[BadgeProps_1]] - `imports` [EXTRACTED]
 - [[badge.stories.tsx]] - `imports_from` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[helper.tsx_12]] - `imports_from` [EXTRACTED]
 - [[index.ts_191]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Badge_Styling
+#graphify/code #graphify/EXTRACTED #community/Community_140

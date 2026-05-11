@@ -1,18 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.60
+members: 5
 ---
 
 # Community 608
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.60 - moderately connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[LockedComponent()]] - code - web/core/components/icons/locked-component.tsx
-- [[locked-component.tsx]] - code - web/core/components/icons/locked-component.tsx
+- [[TDescriptionVersion]] - code - packages/types/src/description_version.ts
+- [[TDescriptionVersionDetails]] - code - packages/types/src/description_version.ts
+- [[TDescriptionVersionsListResponse]] - code - packages/types/src/description_version.ts
+- [[description_version.ts_1]] - code - packages/types/src/description_version.ts
+- [[description_version.ts]] - code - types/src/description_version.ts
 
 ## Live Query (requires Dataview plugin)
 

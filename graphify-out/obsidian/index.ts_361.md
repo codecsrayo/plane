@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/quick-action-dropdowns/index.ts"
 type: "code"
-community: "Issue Project"
+community: "Filter UI & Breadcrumbs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Project
+  - community/Filter_UI__Breadcrumbs
 ---
 
 # index.ts
 
 ## Connections
-
 - [[archived-issue-root.tsx]] - `imports_from` [EXTRACTED]
 - [[cycle-root.tsx]] - `imports_from` [EXTRACTED]
 - [[cycle-root.tsx_1]] - `imports_from` [EXTRACTED]
@@ -36,4 +35,4 @@ tags:
 - [[project-view-root.tsx_3]] - `imports_from` [EXTRACTED]
 - [[workspace-root.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Project
+#graphify/code #graphify/EXTRACTED #community/Filter_UI__Breadcrumbs

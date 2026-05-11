@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(detail)/[cycleId]/page.tsx"
 type: "code"
-community: "Project Settings"
+community: "Active Cycle Stats"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Active_Cycle_Stats
 ---
 
 # page.tsx
 
 ## Connections
-
 - [[CycleDetailPage()]] - `contains` [EXTRACTED]
 - [[CycleLayoutRoot]] - `imports` [EXTRACTED]
 - [[EmptyState()_2]] - `imports` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[useCycle()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats

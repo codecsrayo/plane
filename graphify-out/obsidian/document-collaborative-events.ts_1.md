@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/types/document-collaborative-events.ts"
 type: "code"
-community: "Payload Document"
+community: "Community 159"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Payload_Document
+  - community/Community_159
 ---
 
 # document-collaborative-events.ts
 
 ## Connections
-
 - [[ApiServerPayload]] - `contains` [EXTRACTED]
 - [[BaseActionPayload]] - `contains` [EXTRACTED]
 - [[BroadcastPayloadUnion]] - `contains` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[document-collaborative-events.ts]] - `imports_from` [EXTRACTED]
 - [[get-document-server-event.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Payload_Document
+#graphify/code #graphify/EXTRACTED #community/Community_159

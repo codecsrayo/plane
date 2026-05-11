@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/authentication/adapter/oauth.py"
 type: "code"
-community: "User Oauth"
+community: "Community 396"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User_Oauth
+  - community/Community_396
 ---
 
 # OauthAdapter
 
 ## Connections
-
 - [[.__init__()_28]] - `method` [EXTRACTED]
 - [[.authenticate()_2]] - `method` [EXTRACTED]
 - [[.authentication_error_code()]] - `method` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[GoogleOAuthProvider]] - `uses` [INFERRED]
 - [[oauth.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User_Oauth
+#graphify/code #graphify/EXTRACTED #community/Community_396

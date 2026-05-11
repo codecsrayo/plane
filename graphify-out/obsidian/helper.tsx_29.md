@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-detail-widgets/links/helper.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Issue Activity Types"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Issue_Activity_Types
 ---
 
 # helper.tsx
 
 ## Connections
-
 - [[api.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[content.tsx_3]] - `imports_from` [EXTRACTED]
 - [[extractApiErrorMessage()]] - `imports` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 - [[useLinkOperations()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Types

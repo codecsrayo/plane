@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 776
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_43]] - code - web/core/components/gantt-chart/chart/index.ts
+- [[ResetPasswordLayout()]] - code - web/app/(all)/accounts/reset-password/layout.tsx
+- [[layout.tsx_38]] - code - web/app/(all)/accounts/reset-password/layout.tsx
+- [[meta()_7]] - code - web/app/(all)/accounts/reset-password/layout.tsx
 
 ## Live Query (requires Dataview plugin)
 

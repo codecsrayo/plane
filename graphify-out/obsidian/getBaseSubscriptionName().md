@@ -1,19 +1,19 @@
 ---
-source_file: "utils/src/subscription.ts"
+source_file: "packages/utils/src/subscription.ts"
 type: "code"
-community: "Subscription Small"
+community: "Community 168"
 location: "L53"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Subscription_Small
+  - community/Community_168
 ---
 
 # getBaseSubscriptionName()
 
 ## Connections
-
 - [[getSubscriptionName()]] - `calls` [EXTRACTED]
 - [[subscription.ts_1]] - `contains` [EXTRACTED]
+- [[subscription.ts_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Subscription_Small
+#graphify/code #graphify/EXTRACTED #community/Community_168

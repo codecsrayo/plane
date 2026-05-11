@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/portal/index.ts"
 type: "code"
-community: "Portal Positions"
+community: "Community 436"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Portal_Positions
+  - community/Community_436
 ---
 
 # index.ts
 
 ## Connections
-
 - [[portal.stories.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Portal_Positions
+#graphify/code #graphify/EXTRACTED #community/Community_436

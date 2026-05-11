@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/search/issue.py"
 type: "code"
-community: "Issues Search"
+community: "Community 56"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issues_Search
+  - community/Community_56
 ---
 
 # IssueSearchEndpoint
 
 ## Connections
-
 - [[.exclude_issues_in_cycles()]] - `method` [EXTRACTED]
 - [[.exclude_issues_in_module()]] - `method` [EXTRACTED]
 - [[.filter_issues_by_project()]] - `method` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[BaseAPIView_1]] - `inherits` [EXTRACTED]
 - [[issue.py_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issues_Search
+#graphify/code #graphify/EXTRACTED #community/Community_56

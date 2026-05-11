@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/ui/loader/layouts/list-layout-loader.tsx"
 type: "code"
-community: "Loader Calendar"
+community: "Community 23"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Loader_Calendar
+  - community/Community_23
 ---
 
 # list-layout-loader.tsx
 
 ## Connections
-
 - [[ListLayoutLoader()]] - `contains` [EXTRACTED]
 - [[ListLoaderItemRow]] - `contains` [EXTRACTED]
 - [[ListSection()]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[loader.tsx_6]] - `imports_from` [EXTRACTED]
 - [[utils.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Loader_Calendar
+#graphify/code #graphify/EXTRACTED #community/Community_23

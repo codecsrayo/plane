@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/settings/mongo.py"
 type: "rationale"
-community: "Mongo Connection"
+community: "Community 502"
 location: "L23"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Mongo_Connection
+  - community/Community_502
 ---
 
-# A singleton class that manages MongoDB connections. This class ensures only
+# A singleton class that manages MongoDB connections.      This class ensures only
 
 ## Connections
-
 - [[MongoConnection]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Mongo_Connection
+#graphify/rationale #graphify/EXTRACTED #community/Community_502

@@ -1,19 +1,18 @@
 ---
 source_file: "web/core/components/workspace/views/default-view-list-item.tsx"
 type: "code"
-community: "Project Work"
+community: "Community 65"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Work
+  - community/Community_65
 ---
 
 # GlobalDefaultViewListItem
 
 ## Connections
-
 - [[default-view-list-item.tsx]] - `contains` [EXTRACTED]
 - [[page.tsx_32]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Work
+#graphify/code #graphify/EXTRACTED #community/Community_65

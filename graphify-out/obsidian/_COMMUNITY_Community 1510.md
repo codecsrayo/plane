@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_154]] - code - propel/src/switch/index.ts
+- [[index.ts_172]] - code - propel/src/charts/radar-chart/index.ts
 
 ## Live Query (requires Dataview plugin)
 

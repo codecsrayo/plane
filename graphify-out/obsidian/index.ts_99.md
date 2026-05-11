@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/charts/index.ts"
 type: "code"
-community: "Chart Analytics"
+community: "Community 135"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Chart_Analytics
+  - community/Community_135
 ---
 
 # index.ts
 
 ## Connections
-
 - [[TAreaChartProps]] - `contains` [EXTRACTED]
 - [[TAreaItem]] - `contains` [EXTRACTED]
 - [[TAxisChartProps]] - `contains` [EXTRACTED]
@@ -38,4 +37,4 @@ tags:
 - [[TreeMapItem]] - `contains` [EXTRACTED]
 - [[analytics.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Chart_Analytics
+#graphify/code #graphify/EXTRACTED #community/Community_135

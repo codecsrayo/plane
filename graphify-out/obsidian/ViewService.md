@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/view.service.ts"
 type: "code"
-community: "Project Filters"
+community: "Community 104"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Filters
+  - community/Community_104
 ---
 
 # ViewService
 
 ## Connections
-
 - [[.addViewToFavorites()]] - `method` [EXTRACTED]
 - [[.constructor()_135]] - `method` [EXTRACTED]
 - [[.createView()_1]] - `method` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[project-view.store.ts_1]] - `imports` [EXTRACTED]
 - [[view.service.ts_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Filters
+#graphify/code #graphify/EXTRACTED #community/Community_104

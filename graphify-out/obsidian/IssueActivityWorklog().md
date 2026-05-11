@@ -1,19 +1,18 @@
 ---
 source_file: "web/ce/components/issues/worklog/activity/root.tsx"
 type: "code"
-community: "Activity Issue"
+community: "Issue Activity Types"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Activity_Issue
+  - community/Issue_Activity_Types
 ---
 
 # IssueActivityWorklog()
 
 ## Connections
-
 - [[activity-comment-root.tsx]] - `imports` [EXTRACTED]
 - [[root.tsx_27]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Activity_Issue
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Types

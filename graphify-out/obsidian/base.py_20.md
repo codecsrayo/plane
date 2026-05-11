@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/estimate/base.py"
 type: "code"
-community: "Partial Endpoint"
+community: "Community 27"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Partial_Endpoint
+  - community/Community_27
 ---
 
 # base.py
 
 ## Connections
-
 - [[BulkEstimatePointEndpoint]] - `contains` [EXTRACTED]
 - [[EstimatePointEndpoint]] - `contains` [EXTRACTED]
 - [[ProjectEstimatePointEndpoint]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[get()_28]] - `contains` [EXTRACTED]
 - [[partial_update()_15]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Partial_Endpoint
+#graphify/code #graphify/EXTRACTED #community/Community_27

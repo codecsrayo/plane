@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-detail-widgets/attachments/root.tsx"
 type: "code"
-community: "Attachment Issue"
+community: "Issue Activity Types"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Attachment_Issue
+  - community/Issue_Activity_Types
 ---
 
 # Props
 
 ## Connections
-
 - [[root.tsx_79]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Attachment_Issue
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Types

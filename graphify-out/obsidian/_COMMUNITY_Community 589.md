@@ -1,18 +1,21 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.40
+members: 6
 ---
 
 # Community 589
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.40 - moderately connected
+**Members:** 6 nodes
 
 ## Members
-
-- [[.to()_91]] - code - api_rust/src/entities/stickies.rs
-- [[Entity_91]] - code - api_rust/src/entities/stickies.rs
+- [[exports]] - code - web/public/sw.js
+- [[registry]] - code - web/public/sw.js
+- [[require()]] - code - web/public/sw.js
+- [[singleRequire()]] - code - web/public/sw.js
+- [[specialDeps]] - code - web/public/sw.js
+- [[sw.js]] - code - web/public/sw.js
 
 ## Live Query (requires Dataview plugin)
 
@@ -20,3 +23,9 @@ members: 2
 TABLE source_file, type FROM #community/Community_589
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Community 21]]
+
+## Top bridge nodes
+- [[registry]] - degree 2, connects to 1 community

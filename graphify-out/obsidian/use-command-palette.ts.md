@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/use-command-palette.ts"
 type: "code"
-community: "Project Profile"
+community: "Community 22"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Profile
+  - community/Community_22
 ---
 
 # use-command-palette.ts
 
 ## Connections
-
 - [[StoreContext]] - `imports` [EXTRACTED]
 - [[action-bar.tsx]] - `imports_from` [EXTRACTED]
 - [[card-list.tsx]] - `imports_from` [EXTRACTED]
@@ -50,4 +49,4 @@ tags:
 - [[work-item-level.tsx]] - `imports_from` [EXTRACTED]
 - [[workspace-level.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Profile
+#graphify/code #graphify/EXTRACTED #community/Community_22

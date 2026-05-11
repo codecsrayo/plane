@@ -1,18 +1,18 @@
 ---
-source_file: "constants/src/views.ts"
+source_file: "packages/constants/src/views.ts"
 type: "code"
-community: "Options Views"
+community: "Community 605"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Options_Views
+  - community/Community_605
 ---
 
 # VIEW_SORT_BY_OPTIONS
 
 ## Connections
-
 - [[views.ts]] - `contains` [EXTRACTED]
+- [[views.ts_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Options_Views
+#graphify/code #graphify/EXTRACTED #community/Community_605

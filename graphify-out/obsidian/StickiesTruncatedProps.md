@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/stickies/layout/stickies-truncated.tsx"
 type: "code"
-community: "Stickies Sticky"
+community: "Community 357"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Stickies_Sticky
+  - community/Community_357
 ---
 
 # StickiesTruncatedProps
 
 ## Connections
-
 - [[stickies-truncated.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Stickies_Sticky
+#graphify/code #graphify/EXTRACTED #community/Community_357

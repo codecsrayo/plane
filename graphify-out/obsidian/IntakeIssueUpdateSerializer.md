@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/serializers/intake.py"
 type: "code"
-community: "Serializer Asset"
+community: "Community 171"
 location: "L83"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Serializer_Asset
+  - community/Community_171
 ---
 
 # IntakeIssueUpdateSerializer
 
 ## Connections
-
 - [[.update()_31]] - `method` [EXTRACTED]
 - [[.validate()_16]] - `method` [EXTRACTED]
 - [[BaseSerializer]] - `inherits` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[intake.py_4]] - `contains` [EXTRACTED]
 - [[patch()_18]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Serializer_Asset
+#graphify/code #graphify/EXTRACTED #community/Community_171

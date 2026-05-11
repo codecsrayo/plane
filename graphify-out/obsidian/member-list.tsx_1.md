@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/project/dropdowns/filters/member-list.tsx"
 type: "code"
-community: "Member Members"
+community: "Community 45"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Members
+  - community/Community_45
 ---
 
 # member-list.tsx
 
 ## Connections
-
 - [[IRoleOption]] - `contains` [EXTRACTED]
 - [[MemberListFilters]] - `contains` [EXTRACTED]
 - [[MemberListFiltersDropdown]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[member-list.tsx]] - `imports_from` [EXTRACTED]
 - [[page.tsx_51]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Members
+#graphify/code #graphify/EXTRACTED #community/Community_45

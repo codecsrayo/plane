@@ -1,17 +1,16 @@
 ---
 source_file: ""
 type: "code"
-community: "Issue Apply"
+community: "Community 41"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Issue_Apply
+  - community/Community_41
 ---
 
 # Func
 
 ## Connections
-
 - [[.apply_annotations()]] - `calls` [INFERRED]
 - [[.apply_annotations()_1]] - `calls` [INFERRED]
 - [[.apply_annotations()_3]] - `calls` [INFERRED]
@@ -52,4 +51,4 @@ tags:
 - [[retrieve()_9]] - `calls` [INFERRED]
 - [[update_issue_activity()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Issue_Apply
+#graphify/code #graphify/INFERRED #community/Community_41

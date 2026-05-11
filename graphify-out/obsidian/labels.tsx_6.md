@@ -1,18 +1,17 @@
 ---
 source_file: "space/components/issues/filters/labels.tsx"
 type: "code"
-community: "Priority State"
+community: "Issue Display Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Priority_State
+  - community/Issue_Display_Filters
 ---
 
 # labels.tsx
 
 ## Connections
-
 - [[FilterHeader()]] - `imports` [EXTRACTED]
 - [[FilterLabels()]] - `contains` [EXTRACTED]
 - [[FilterOption()]] - `imports` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[filter-header.tsx_1]] - `imports_from` [EXTRACTED]
 - [[filter-option.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Priority_State
+#graphify/code #graphify/EXTRACTED #community/Issue_Display_Filters

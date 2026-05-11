@@ -1,18 +1,17 @@
 ---
 source_file: "admin/lib/logger.ts"
 type: "code"
-community: "Config Image"
+community: "Community 313"
 location: "L56"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Config_Image
+  - community/Community_313
 ---
 
 # logger
 
 ## Connections
-
 - [[email-config-form.tsx]] - `imports` [EXTRACTED]
 - [[form.tsx_12]] - `imports` [EXTRACTED]
 - [[form.tsx_14]] - `imports` [EXTRACTED]
@@ -33,4 +32,4 @@ tags:
 - [[theme.store.ts_1]] - `imports` [EXTRACTED]
 - [[workspace.store.ts_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Config_Image
+#graphify/code #graphify/EXTRACTED #community/Community_313

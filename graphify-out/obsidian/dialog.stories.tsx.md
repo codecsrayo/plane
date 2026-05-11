@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/dialog/dialog.stories.tsx"
 type: "code"
-community: "Dialog Width"
+community: "Community 182"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dialog_Width
+  - community/Community_182
 ---
 
 # dialog.stories.tsx
 
 ## Connections
-
 - [[AllWidths]] - `contains` [EXTRACTED]
 - [[CloseIcon()]] - `imports` [EXTRACTED]
 - [[ConfirmationDialog]] - `contains` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[render()_2]] - `contains` [EXTRACTED]
 - [[root.tsx_8]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dialog_Width
+#graphify/code #graphify/EXTRACTED #community/Community_182

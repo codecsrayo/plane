@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/mentions/mentions-list-dropdown.tsx"
 type: "code"
-community: "Emoji Command"
+community: "Community 31"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Emoji_Command
+  - community/Community_31
 ---
 
 # mentions-list-dropdown.tsx
 
 ## Connections
-
 - [[DROPDOWN_NAVIGATION_KEYS]] - `imports` [EXTRACTED]
 - [[MentionsListDropdown]] - `contains` [EXTRACTED]
 - [[MentionsListDropdownProps]] - `contains` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[tippy.ts]] - `imports_from` [EXTRACTED]
 - [[utils.ts_8]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Emoji_Command
+#graphify/code #graphify/EXTRACTED #community/Community_31

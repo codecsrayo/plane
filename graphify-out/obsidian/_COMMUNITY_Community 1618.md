@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_304]] - code - web/core/components/gantt-chart/sidebar/index.ts
+- [[index.ts_343]] - code - web/core/components/settings/profile/content/pages/notifications/index.ts
 
 ## Live Query (requires Dataview plugin)
 

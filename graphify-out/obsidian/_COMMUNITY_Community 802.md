@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 802
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_100]] - code - web/core/components/issues/workspace-draft/index.ts
+- [[CycleAdditionalActions]] - code - web/ce/components/cycles/additional-actions.tsx
+- [[Props_69]] - code - web/ce/components/cycles/additional-actions.tsx
+- [[additional-actions.tsx]] - code - web/ce/components/cycles/additional-actions.tsx
 
 ## Live Query (requires Dataview plugin)
 

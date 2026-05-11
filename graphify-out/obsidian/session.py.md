@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/models/session.py"
 type: "code"
-community: "Session Model"
+community: "Community 455"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Session_Model
+  - community/Community_455
 ---
 
 # session.py
 
 ## Connections
-
 - [[Meta_37]] - `contains` [EXTRACTED]
 - [[Session]] - `contains` [EXTRACTED]
 - [[SessionStore]] - `contains` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[get_model_class()]] - `contains` [EXTRACTED]
 - [[get_session_store_class()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Session_Model
+#graphify/code #graphify/EXTRACTED #community/Community_455

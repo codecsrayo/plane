@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/authentication/views/app/magic.py"
 type: "code"
-community: "Endpoint Magic"
+community: "Community 153"
 location: "L132"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Endpoint_Magic
+  - community/Community_153
 ---
 
 # MagicSignUpEndpoint
 
 ## Connections
-
 - [[.post()_24]] - `method` [EXTRACTED]
 - [[AuthenticationException]] - `uses` [INFERRED]
 - [[AuthenticationThrottle]] - `uses` [INFERRED]
@@ -20,4 +19,4 @@ tags:
 - [[View]] - `inherits` [EXTRACTED]
 - [[magic.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Endpoint_Magic
+#graphify/code #graphify/INFERRED #community/Community_153

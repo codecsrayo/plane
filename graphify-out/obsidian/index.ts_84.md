@@ -1,18 +1,17 @@
 ---
 source_file: "constants/src/rich-filters/operator-labels/index.ts"
 type: "code"
-community: "Operator Labels"
+community: "Community 387"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Operator_Labels
+  - community/Community_387
 ---
 
 # index.ts
 
 ## Connections
-
 - [[CORE_DATE_OPERATOR_LABELS_MAP]] - `imports` [EXTRACTED]
 - [[CORE_OPERATOR_LABELS_MAP]] - `imports` [EXTRACTED]
 - [[DATE_OPERATOR_LABELS_MAP]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[core.ts_2]] - `imports_from` [EXTRACTED]
 - [[extended.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Operator_Labels
+#graphify/code #graphify/EXTRACTED #community/Community_387

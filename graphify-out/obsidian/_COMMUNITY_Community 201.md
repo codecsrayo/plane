@@ -1,28 +1,43 @@
 ---
 type: community
-cohesion: 0.17
-members: 12
+cohesion: 0.12
+members: 28
 ---
 
 # Community 201
 
-**Cohesion:** 0.17 - loosely connected
-**Members:** 12 nodes
+**Cohesion:** 0.12 - loosely connected
+**Members:** 28 nodes
 
 ## Members
-
-- [[CONTENT_VARIETY]] - code - web/core/components/pages/modals/export-page-modal.tsx
-- [[EXPORT_FORMATS]] - code - web/core/components/pages/modals/export-page-modal.tsx
-- [[PAGE_FORMATS]] - code - web/core/components/pages/modals/export-page-modal.tsx
-- [[Props_416]] - code - web/core/components/pages/modals/export-page-modal.tsx
-- [[TContentVariety]] - code - web/core/components/pages/modals/export-page-modal.tsx
-- [[TExportFormats]] - code - web/core/components/pages/modals/export-page-modal.tsx
-- [[TFormValues]] - code - web/core/components/pages/modals/export-page-modal.tsx
-- [[TPageFormats]] - code - web/core/components/pages/modals/export-page-modal.tsx
-- [[defaultValues_25]] - code - web/core/components/pages/modals/export-page-modal.tsx
-- [[export-page-modal.tsx]] - code - web/core/components/pages/modals/export-page-modal.tsx
-- [[index.ts_52]] - code - web/core/components/editor/pdf/index.ts
-- [[initiateDownload()]] - code - web/core/components/pages/modals/export-page-modal.tsx
+- [[CreateUpdateLabelInline]] - code - web/core/components/labels/create-update-label-inline.tsx
+- [[ICustomMenuItem]] - code - web/core/components/labels/label-block/label-item-block.tsx
+- [[ILabelItemBlock]] - code - web/core/components/labels/label-block/label-item-block.tsx
+- [[ILabelName]] - code - web/core/components/labels/label-block/label-name.tsx
+- [[LabelDndHOC]] - code - web/core/components/labels/label-drag-n-drop-HOC.tsx
+- [[LabelDragPreview()]] - code - web/core/components/labels/label-drag-n-drop-HOC.tsx
+- [[LabelDragPreviewProps]] - code - web/core/components/labels/label-drag-n-drop-HOC.tsx
+- [[LabelItemBlock()]] - code - web/core/components/labels/label-block/label-item-block.tsx
+- [[LabelName()]] - code - web/core/components/labels/label-block/label-name.tsx
+- [[ProjectSettingLabelGroup]] - code - web/core/components/labels/project-setting-label-group.tsx
+- [[ProjectSettingLabelItem()]] - code - web/core/components/labels/project-setting-label-item.tsx
+- [[Props_140]] - code - web/core/components/labels/label-drag-n-drop-HOC.tsx
+- [[Props_139]] - code - web/core/components/labels/project-setting-label-group.tsx
+- [[Props_138]] - code - web/core/components/labels/project-setting-label-item.tsx
+- [[TCreateUpdateLabelInlineProps]] - code - web/core/components/labels/create-update-label-inline.tsx
+- [[TLabelOperationsCallbacks]] - code - web/core/components/labels/create-update-label-inline.tsx
+- [[TargetData_3]] - code - web/core/components/labels/label-utils.ts
+- [[create-update-label-inline.tsx]] - code - web/core/components/labels/create-update-label-inline.tsx
+- [[defaultValues_3]] - code - web/core/components/labels/create-update-label-inline.tsx
+- [[errorCodes]] - code - web/core/components/labels/create-update-label-inline.tsx
+- [[getCanDrop()_2]] - code - web/core/components/labels/label-utils.ts
+- [[getInstructionFromPayload()_3]] - code - web/core/components/labels/label-utils.ts
+- [[label-drag-n-drop-HOC.tsx]] - code - web/core/components/labels/label-drag-n-drop-HOC.tsx
+- [[label-item-block.tsx]] - code - web/core/components/labels/label-block/label-item-block.tsx
+- [[label-name.tsx]] - code - web/core/components/labels/label-block/label-name.tsx
+- [[label-utils.ts]] - code - web/core/components/labels/label-utils.ts
+- [[project-setting-label-group.tsx]] - code - web/core/components/labels/project-setting-label-group.tsx
+- [[project-setting-label-item.tsx]] - code - web/core/components/labels/project-setting-label-item.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -32,10 +47,10 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 2 edges to [[_COMMUNITY_Member Filters & Description]]
-- 2 edges to [[_COMMUNITY_Community 54]]
+- 2 edges to [[_COMMUNITY_Community 44]]
+- 1 edge to [[_COMMUNITY_Community 45]]
+- 1 edge to [[_COMMUNITY_Community 311]]
 
 ## Top bridge nodes
-
-- [[export-page-modal.tsx]] - degree 15, connects to 2 communities
+- [[label-drag-n-drop-HOC.tsx]] - degree 14, connects to 2 communities
+- [[project-setting-label-item.tsx]] - degree 13, connects to 1 community

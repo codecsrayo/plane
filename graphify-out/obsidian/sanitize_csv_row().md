@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/csv_utils.py"
 type: "code"
-community: "Exporter Formatter"
+community: "Community 69"
 location: "L24"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Exporter_Formatter
+  - community/Community_69
 ---
 
 # sanitize_csv_row()
 
 ## Connections
-
 - [[._create_csv_file()]] - `calls` [INFERRED]
 - [[.encode()_1]] - `calls` [INFERRED]
 - [[.generate_csv_from_rows()]] - `calls` [INFERRED]
@@ -21,4 +20,4 @@ tags:
 - [[generate_csv_from_rows()]] - `calls` [INFERRED]
 - [[sanitize_csv_value()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Exporter_Formatter
+#graphify/code #graphify/INFERRED #community/Community_69

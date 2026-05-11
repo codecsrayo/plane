@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/quick-add/root.tsx"
 type: "code"
-community: "Issue Quick"
+community: "Community 247"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Quick
+  - community/Community_247
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[CreateIssueToastActionItems]] - `imports` [EXTRACTED]
 - [[QuickAddIssueRoot]] - `contains` [EXTRACTED]
 - [[TQuickAddIssueButton]] - `contains` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[spreadsheet.tsx]] - `imports_from` [EXTRACTED]
 - [[spreadsheet.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Quick
+#graphify/code #graphify/EXTRACTED #community/Community_247

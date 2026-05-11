@@ -1,41 +1,66 @@
 ---
 type: community
-cohesion: 0.09
-members: 25
+cohesion: 0.07
+members: 51
 ---
 
 # Community 88
 
-**Cohesion:** 0.09 - loosely connected
-**Members:** 25 nodes
+**Cohesion:** 0.07 - loosely connected
+**Members:** 51 nodes
 
 ## Members
-
-- [[.appliedFilters()_1]] - code - web/core/store/issue/project-views/filter.store.ts
-- [[.constructor()_32]] - code - web/core/store/issue/project-views/filter.store.ts
-- [[.constructor()_31]] - code - web/core/store/issue/project-views/issue.store.ts
-- [[.getAppliedFilters()_1]] - code - web/core/store/issue/project-views/filter.store.ts
-- [[.getIssueFilters()_1]] - code - web/core/store/issue/project-views/filter.store.ts
-- [[.issueFilters()_1]] - code - web/core/store/issue/project-views/filter.store.ts
-- [[IBaseIssuesStore]] - code - web/core/store/issue/helpers/base-issues.store.ts
-- [[IProjectViewIssues]] - code - web/core/store/issue/project-views/issue.store.ts
-- [[IProjectViewIssuesFilter]] - code - web/core/store/issue/project-views/filter.store.ts
-- [[ProjectViewIssues]] - code - web/core/store/issue/project-views/issue.store.ts
-- [[ProjectViewIssuesFilter]] - code - web/core/store/issue/project-views/filter.store.ts
-- [[_filters_1]] - code - web/core/store/issue/project-views/filter.store.ts
-- [[cursorObject_1]] - code - web/core/store/issue/project-views/issue.store.ts
-- [[displayFilters_4]] - code - web/core/store/issue/project-views/filter.store.ts
-- [[displayProperties_1]] - code - web/core/store/issue/project-views/filter.store.ts
-- [[filter.store.ts_1]] - code - web/core/store/issue/project-views/filter.store.ts
-- [[filterParams_1]] - code - web/core/store/issue/project-views/filter.store.ts
-- [[issue.store.ts_2]] - code - web/core/store/issue/project-views/issue.store.ts
-- [[kanbanFilters_1]] - code - web/core/store/issue/project-views/filter.store.ts
-- [[paginationParams_1]] - code - web/core/store/issue/project-views/filter.store.ts
-- [[params_1]] - code - web/core/store/issue/project-views/issue.store.ts
-- [[updatedDisplayFilters_1]] - code - web/core/store/issue/project-views/filter.store.ts
-- [[updatedDisplayProperties_1]] - code - web/core/store/issue/project-views/filter.store.ts
-- [[updatedKanbanFilters_1]] - code - web/core/store/issue/project-views/filter.store.ts
-- [[viewDetails]] - code - web/core/store/issue/project-views/filter.store.ts
+- [[.asset_delete()]] - code - api/plane/app/views/asset/v2.py
+- [[.asset_delete()_1]] - code - api/plane/app/views/asset/v2.py
+- [[.delete()_3]] - code - api/plane/app/views/asset/v2.py
+- [[.delete()_4]] - code - api/plane/app/views/asset/v2.py
+- [[.entity_asset_delete()]] - code - api/plane/app/views/asset/v2.py
+- [[.entity_asset_delete()_1]] - code - api/plane/app/views/asset/v2.py
+- [[.entity_asset_save()]] - code - api/plane/app/views/asset/v2.py
+- [[.entity_asset_save()_1]] - code - api/plane/app/views/asset/v2.py
+- [[.get()_27]] - code - api/plane/app/views/asset/v2.py
+- [[.get()_26]] - code - api/plane/app/views/asset/v2.py
+- [[.get_cache_key()]] - code - api/plane/throttles/asset.py
+- [[.get_entity_id_field()_2]] - code - api/plane/app/views/asset/v2.py
+- [[.get_entity_id_field()_1]] - code - api/plane/app/views/asset/v2.py
+- [[.get_entity_id_field()]] - code - api/plane/app/views/asset/v2.py
+- [[.patch()_6]] - code - api/plane/app/views/asset/v2.py
+- [[.patch()_7]] - code - api/plane/app/views/asset/v2.py
+- [[.post()_8]] - code - api/plane/app/views/asset/v2.py
+- [[.post()_9]] - code - api/plane/app/views/asset/v2.py
+- [[.save_project_cover()]] - code - api/plane/app/views/asset/v2.py
+- [[AssetCheckEndpoint]] - code - api/plane/app/views/asset/v2.py
+- [[AssetRateThrottle]] - code - api/plane/throttles/asset.py
+- [[AssetRestoreEndpoint]] - code - api/plane/app/views/asset/v2.py
+- [[DuplicateAssetEndpoint]] - code - api/plane/app/views/asset/v2.py
+- [[Endpoint to check if an asset exists.]] - rationale - api/plane/app/views/asset/v2.py
+- [[Endpoint to generate a download link for an asset with content-disposition=attac]] - rationale - api/plane/app/views/asset/v2.py
+- [[Endpoint to generate a download link for an asset with content-disposition=attac_1]] - rationale - api/plane/app/views/asset/v2.py
+- [[Endpoint to restore a deleted assets.]] - rationale - api/plane/app/views/asset/v2.py
+- [[Generate a cache key with the given params]] - rationale - api/plane/utils/cache.py
+- [[ProjectAssetDownloadEndpoint]] - code - api/plane/app/views/asset/v2.py
+- [[ProjectAssetEndpoint]] - code - api/plane/app/views/asset/v2.py
+- [[ProjectBulkAssetEndpoint]] - code - api/plane/app/views/asset/v2.py
+- [[StaticFileAssetEndpoint]] - code - api/plane/app/views/asset/v2.py
+- [[This endpoint is used to get the signed URL for a static asset.]] - rationale - api/plane/app/views/asset/v2.py
+- [[This endpoint is used to upload cover imageslogos etc for workspace, projects a]] - rationale - api/plane/app/views/asset/v2.py
+- [[This endpoint is used to upload cover imageslogos etc for workspace, projects a_1]] - rationale - api/plane/app/views/asset/v2.py
+- [[This endpoint is used to upload user profile images.]] - rationale - api/plane/app/views/asset/v2.py
+- [[UserAssetsV2Endpoint]] - code - api/plane/app/views/asset/v2.py
+- [[WorkspaceAssetDownloadEndpoint]] - code - api/plane/app/views/asset/v2.py
+- [[WorkspaceFileAssetEndpoint]] - code - api/plane/app/views/asset/v2.py
+- [[asset.py]] - code - api/plane/throttles/asset.py
+- [[cache.py]] - code - api/plane/utils/cache.py
+- [[cache_response()]] - code - api/plane/utils/cache.py
+- [[decorator to create cache per user]] - rationale - api/plane/utils/cache.py
+- [[delete()_6]] - code - api/plane/app/views/asset/v2.py
+- [[generate_cache_key()]] - code - api/plane/utils/cache.py
+- [[get()_19]] - code - api/plane/app/views/asset/v2.py
+- [[invalidate_cache()]] - code - api/plane/utils/cache.py
+- [[invalidate_cache_directly()]] - code - api/plane/utils/cache.py
+- [[patch()_9]] - code - api/plane/app/views/asset/v2.py
+- [[post()_11]] - code - api/plane/app/views/asset/v2.py
+- [[v2.py]] - code - api/plane/app/views/asset/v2.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -45,23 +70,17 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 3 edges to [[_COMMUNITY_Community 138]]
-- 3 edges to [[_COMMUNITY_Git Integrations]]
-- 2 edges to [[_COMMUNITY_Calendar UI]]
-- 2 edges to [[_COMMUNITY_Issue State Management]]
-- 2 edges to [[_COMMUNITY_Community 58]]
-- 2 edges to [[_COMMUNITY_Community 118]]
-- 1 edge to [[_COMMUNITY_Community 221]]
-- 1 edge to [[_COMMUNITY_Community 87]]
-- 1 edge to [[_COMMUNITY_Community 149]]
-- 1 edge to [[_COMMUNITY_Community 84]]
-- 1 edge to [[_COMMUNITY_Community 93]]
-- 1 edge to [[_COMMUNITY_Community 103]]
-- 1 edge to [[_COMMUNITY_Community 71]]
+- 16 edges to [[_COMMUNITY_Community 32]]
+- 12 edges to [[_COMMUNITY_Python API Base Classes]]
+- 12 edges to [[_COMMUNITY_Community 25]]
+- 10 edges to [[_COMMUNITY_Community 57]]
+- 1 edge to [[_COMMUNITY_Community 56]]
+- 1 edge to [[_COMMUNITY_Community 449]]
+- 1 edge to [[_COMMUNITY_Python Workflow Services]]
 
 ## Top bridge nodes
-
-- [[filter.store.ts_1]] - degree 22, connects to 8 communities
-- [[IBaseIssuesStore]] - degree 8, connects to 7 communities
-- [[issue.store.ts_2]] - degree 12, connects to 5 communities
+- [[WorkspaceFileAssetEndpoint]] - degree 14, connects to 3 communities
+- [[UserAssetsV2Endpoint]] - degree 12, connects to 3 communities
+- [[ProjectAssetEndpoint]] - degree 7, connects to 3 communities
+- [[StaticFileAssetEndpoint]] - degree 7, connects to 3 communities
+- [[AssetCheckEndpoint]] - degree 6, connects to 3 communities

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/inbox/content/issue-properties.tsx"
 type: "code"
-community: "Label Dropdown"
+community: "Work Item Detail & Layouts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Dropdown
+  - community/Work_Item_Detail__Layouts
 ---
 
 # issue-properties.tsx
 
 ## Connections
-
 - [[DateDropdown]] - `imports` [EXTRACTED]
 - [[InboxIssueContentProperties]] - `contains` [EXTRACTED]
 - [[IntakeStateDropdown]] - `imports` [EXTRACTED]
@@ -33,4 +32,4 @@ tags:
 - [[useAppRouter()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Work_Item_Detail__Layouts

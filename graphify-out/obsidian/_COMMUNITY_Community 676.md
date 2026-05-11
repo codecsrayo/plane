@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 4
 ---
 
 # Community 676
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_26]] - code - api_rust/src/entities/django_content_type.rs
+- [[base()_1]] - code - web/e2e/workspace-extras.spec.ts
+- [[pid()_13]] - code - web/e2e/workspace-extras.spec.ts
+- [[slug()_17]] - code - web/e2e/workspace-extras.spec.ts
+- [[workspace-extras.spec.ts]] - code - web/e2e/workspace-extras.spec.ts
 
 ## Live Query (requires Dataview plugin)
 

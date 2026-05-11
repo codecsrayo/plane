@@ -1,21 +1,20 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/utils.tsx"
 type: "code"
-community: "Group Kanban"
+community: "Bulk Operations & Spreadsheet"
 location: "L357"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group_Kanban
+  - community/Bulk_Operations__Spreadsheet
 ---
 
 # getSourceFromDropPayload()
 
 ## Connections
-
 - [[base-kanban-root.tsx]] - `imports` [EXTRACTED]
 - [[kanban-group.tsx]] - `imports` [EXTRACTED]
 - [[list-group.tsx]] - `imports` [EXTRACTED]
 - [[utils.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group_Kanban
+#graphify/code #graphify/EXTRACTED #community/Bulk_Operations__Spreadsheet

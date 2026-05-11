@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/components/command-palette/power-k/pages/context-based/root.tsx"
 type: "code"
-community: "Context Power"
+community: "Community 121"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Context_Power
+  - community/Community_121
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[CONTEXT_ENTITY_MAP_EXTENDED]] - `contains` [EXTRACTED]
 - [[PowerKContextBasedActionsExtended()]] - `contains` [EXTRACTED]
 - [[TContextEntityMap]] - `imports` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[types.ts_16]] - `imports_from` [EXTRACTED]
 - [[usePowerKContextBasedExtendedActions()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Context_Power
+#graphify/code #graphify/EXTRACTED #community/Community_121

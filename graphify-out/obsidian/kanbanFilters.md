@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/issue/archived/filter.store.ts"
 type: "code"
-community: "Filters Archived"
+community: "Community 254"
 location: "L149"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filters_Archived
+  - community/Community_254
 ---
 
 # kanbanFilters
 
 ## Connections
-
 - [[filter.store.ts_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filters_Archived
+#graphify/code #graphify/EXTRACTED #community/Community_254

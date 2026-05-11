@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/view-props.ts"
 type: "code"
-community: "Issue Identifier"
+community: "Community 71"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Identifier
+  - community/Community_71
 ---
 
 # view-props.ts
 
 ## Connections
-
 - [[CompleteOrEmpty]] - `imports` [EXTRACTED]
 - [[IIssueDisplayFilterOptions]] - `contains` [EXTRACTED]
 - [[IIssueDisplayProperties]] - `contains` [EXTRACTED]
@@ -58,4 +57,4 @@ tags:
 - [[workspace-views.ts]] - `imports_from` [EXTRACTED]
 - [[workspace.ts_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Identifier
+#graphify/code #graphify/EXTRACTED #community/Community_71

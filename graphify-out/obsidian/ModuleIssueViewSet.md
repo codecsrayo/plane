@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/module/issue.py"
 type: "code"
-community: "Issue Apply"
+community: "Community 41"
 location: "L45"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Apply
+  - community/Community_41
 ---
 
 # ModuleIssueViewSet
 
 ## Connections
-
 - [[.apply_annotations()_1]] - `method` [EXTRACTED]
 - [[.get_queryset()_11]] - `method` [EXTRACTED]
 - [[BaseViewSet_1]] - `inherits` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[SubGroupedOffsetPaginator]] - `uses` [INFERRED]
 - [[issue.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Apply
+#graphify/code #graphify/EXTRACTED #community/Community_41

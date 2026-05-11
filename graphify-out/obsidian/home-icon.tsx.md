@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/icons/workspace/home-icon.tsx"
 type: "code"
-community: "Icons Icon"
+community: "Community 243"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Icons_Icon
+  - community/Community_243
 ---
 
 # home-icon.tsx
 
 ## Connections
-
 - [[HomeIcon()]] - `contains` [EXTRACTED]
 - [[ISvgIcons]] - `imports` [EXTRACTED]
 - [[IconWrapper()]] - `imports` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[tabs.stories.tsx]] - `imports_from` [EXTRACTED]
 - [[type.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Icons_Icon
+#graphify/code #graphify/EXTRACTED #community/Community_243

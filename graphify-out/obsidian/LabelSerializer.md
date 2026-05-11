@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/serializers/issue.py"
 type: "code"
-community: "Serializer Issue"
+community: "Community 37"
 location: "L368"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Serializer_Issue
+  - community/Community_37
 ---
 
 # LabelSerializer
 
 ## Connections
-
 - [[.to_representation()_9]] - `calls` [EXTRACTED]
 - [[.validate_name()_1]] - `method` [EXTRACTED]
 - [[BaseSerializer]] - `inherits` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[issue.py_4]] - `contains` [EXTRACTED]
 - [[issue.py_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Serializer_Issue
+#graphify/code #graphify/INFERRED #community/Community_37

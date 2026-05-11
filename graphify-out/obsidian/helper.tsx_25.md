@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx"
 type: "code"
-community: "Issue Work"
+community: "Project Filters & Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Work
+  - community/Project_Filters__Archives
 ---
 
 # helper.tsx
 
 ## Connections
-
 - [[MenuItemFactoryProps]] - `contains` [EXTRACTED]
 - [[all-issue.tsx]] - `imports_from` [EXTRACTED]
 - [[archived-issue.tsx]] - `imports_from` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[useProjectIssueMenuItems()]] - `contains` [EXTRACTED]
 - [[useWorkItemDetailMenuItems()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Work
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

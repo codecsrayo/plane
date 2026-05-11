@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_244]] - code - web/ce/components/pages/index.ts
+- [[pane-extensions.ts]] - code - web/ce/types/pages/pane-extensions.ts
 
 ## Live Query (requires Dataview plugin)
 

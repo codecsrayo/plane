@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/member/index.ts"
 type: "code"
-community: "Member Workspace"
+community: "Community 35"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Workspace
+  - community/Community_35
 ---
 
 # index.ts
 
 ## Connections
-
 - [[IMemberRootStore]] - `contains` [EXTRACTED]
 - [[IWorkspaceMemberStore]] - `imports` [EXTRACTED]
 - [[MemberRootStore]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[use-member.ts]] - `imports_from` [EXTRACTED]
 - [[workspace-member.store.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_35

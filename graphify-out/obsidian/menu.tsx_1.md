@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/components/pages/editor/ai/menu.tsx"
 type: "code"
-community: "Aiservice Menu"
+community: "Community 202"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Aiservice_Menu
+  - community/Community_202
 ---
 
 # menu.tsx
 
 ## Connections
-
 - [[AIService_1]] - `imports` [EXTRACTED]
 - [[AI_EDITOR_TASKS_1]] - `imports` [EXTRACTED]
 - [[AskPiMenu()]] - `imports` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[ask-pi-menu.tsx]] - `imports_from` [EXTRACTED]
 - [[index.ts_318]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Aiservice_Menu
+#graphify/code #graphify/EXTRACTED #community/Community_202

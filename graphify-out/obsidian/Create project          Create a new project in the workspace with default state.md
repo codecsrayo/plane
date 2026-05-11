@@ -1,14 +1,14 @@
 ---
 source_file: "api/plane/api/views/project.py"
 type: "rationale"
-community: "Project Workspace"
+community: "Community 1702"
 location: "L215"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Project_Workspace
+  - community/Community_1702
 ---
 
-# Create project Create a new project in the workspace with default state
+# Create project          Create a new project in the workspace with default state
 
-#graphify/rationale #graphify/EXTRACTED #community/Project_Workspace
+#graphify/rationale #graphify/EXTRACTED #community/Community_1702

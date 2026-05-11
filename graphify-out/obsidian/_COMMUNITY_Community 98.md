@@ -1,40 +1,61 @@
 ---
 type: community
-cohesion: 0.17
-members: 24
+cohesion: 0.06
+members: 46
 ---
 
 # Community 98
 
-**Cohesion:** 0.17 - loosely connected
-**Members:** 24 nodes
+**Cohesion:** 0.06 - loosely connected
+**Members:** 46 nodes
 
 ## Members
-
-- [[ICON_PROPERTIES]] - code - web/core/components/inbox/inbox-status-icon.tsx
-- [[InboxIssueAppliedFiltersDate]] - code - web/core/components/inbox/inbox-filter/applied-filters/date.tsx
-- [[InboxIssueAppliedFiltersLabel]] - code - web/core/components/inbox/inbox-filter/applied-filters/label.tsx
-- [[InboxIssueAppliedFiltersMember]] - code - web/core/components/inbox/inbox-filter/applied-filters/member.tsx
-- [[InboxIssueAppliedFiltersPriority]] - code - web/core/components/inbox/inbox-filter/applied-filters/priority.tsx
-- [[InboxIssueAppliedFiltersState]] - code - web/core/components/inbox/inbox-filter/applied-filters/state.tsx
-- [[InboxIssueAppliedFiltersStatus]] - code - web/core/components/inbox/inbox-filter/applied-filters/status.tsx
-- [[InboxStatusIcon()]] - code - web/core/components/inbox/inbox-status-icon.tsx
-- [[LabelIcons()_1]] - code - web/core/components/inbox/inbox-filter/applied-filters/label.tsx
-- [[Props_372]] - code - web/core/components/inbox/inbox-issue-status.tsx
-- [[TInboxIssueAppliedFiltersDateProps]] - code - web/core/components/inbox/inbox-filter/applied-filters/date.tsx
-- [[TInboxIssueAppliedFiltersMemberProps]] - code - web/core/components/inbox/inbox-filter/applied-filters/member.tsx
-- [[date.tsx_8]] - code - web/core/components/inbox/inbox-filter/applied-filters/date.tsx
-- [[inbox-issue-status.tsx]] - code - web/core/components/inbox/inbox-issue-status.tsx
-- [[inbox-status-icon.tsx]] - code - web/core/components/inbox/inbox-status-icon.tsx
-- [[label.tsx_3]] - code - web/core/components/inbox/inbox-filter/applied-filters/label.tsx
-- [[member.tsx]] - code - web/core/components/inbox/inbox-filter/applied-filters/member.tsx
-- [[priority.tsx_5]] - code - web/core/components/inbox/inbox-filter/applied-filters/priority.tsx
-- [[root.tsx_73]] - code - web/core/components/inbox/inbox-filter/applied-filters/root.tsx
-- [[state.tsx_4]] - code - web/core/components/inbox/inbox-filter/applied-filters/state.tsx
-- [[status.tsx_6]] - code - web/core/components/inbox/inbox-filter/applied-filters/status.tsx
-- [[status.tsx_5]] - code - web/core/components/inbox/inbox-filter/filters/status.tsx
-- [[use-project-inbox.ts]] - code - web/core/hooks/store/use-project-inbox.ts
-- [[useProjectInbox()]] - code - web/core/hooks/store/use-project-inbox.ts
+- [[.constructor()_141]] - code - web/core/services/auth.service.ts
+- [[.generateUniqueCode()_2]] - code - web/core/services/auth.service.ts
+- [[.requestCSRFToken()_2]] - code - web/core/services/auth.service.ts
+- [[.sendResetPasswordLink()_1]] - code - web/core/services/auth.service.ts
+- [[.setPassword()_1]] - code - web/core/services/auth.service.ts
+- [[.signOut()_1]] - code - web/core/services/auth.service.ts
+- [[AuthService_1]] - code - web/core/services/auth.service.ts
+- [[EProfileSetupSteps]] - code - web/core/components/onboarding/profile-setup.tsx
+- [[FormValues]] - code - web/core/components/settings/profile/content/pages/security.tsx
+- [[MarketingConsent()]] - code - web/core/components/onboarding/steps/profile/consent.tsx
+- [[ProfileSetup]] - code - web/core/components/onboarding/profile-setup.tsx
+- [[ProfileSetupStep]] - code - web/core/components/onboarding/steps/profile/root.tsx
+- [[Props_528]] - code - web/core/components/core/modals/user-image-upload-modal.tsx
+- [[Props_436]] - code - web/core/components/onboarding/profile-setup.tsx
+- [[Props_443]] - code - web/core/components/onboarding/steps/profile/consent.tsx
+- [[Props_444]] - code - web/core/components/onboarding/steps/profile/root.tsx
+- [[Props_441]] - code - web/core/components/onboarding/steps/role/root.tsx
+- [[Props_445]] - code - web/core/components/onboarding/steps/usecase/root.tsx
+- [[ROLES_1]] - code - web/core/components/onboarding/steps/role/root.tsx
+- [[RoleSetupStep]] - code - web/core/components/onboarding/steps/role/root.tsx
+- [[SecurityProfileSettings]] - code - web/core/components/settings/profile/content/pages/security.tsx
+- [[TProfileSetupFormValues]] - code - web/core/components/onboarding/profile-setup.tsx
+- [[TProfileSetupFormValues_1]] - code - web/core/components/onboarding/steps/profile/root.tsx
+- [[USER_DOMAIN]] - code - web/core/components/onboarding/profile-setup.tsx
+- [[USER_ROLE]] - code - web/core/components/onboarding/profile-setup.tsx
+- [[UseCaseSetupStep]] - code - web/core/components/onboarding/steps/usecase/root.tsx
+- [[UserImageUploadModal]] - code - web/core/components/core/modals/user-image-upload-modal.tsx
+- [[auth.service.ts_1]] - code - web/core/services/auth.service.ts
+- [[authService_1]] - code - web/core/components/onboarding/profile-setup.tsx
+- [[authService]] - code - web/core/components/settings/profile/content/pages/security.tsx
+- [[authService_2]] - code - web/core/components/onboarding/steps/profile/root.tsx
+- [[consent.tsx]] - code - web/core/components/onboarding/steps/profile/consent.tsx
+- [[defaultShowPassword]] - code - web/core/components/settings/profile/content/pages/security.tsx
+- [[defaultValues_21]] - code - web/core/components/onboarding/profile-setup.tsx
+- [[defaultValues_8]] - code - web/core/components/settings/profile/content/pages/security.tsx
+- [[defaultValues_23]] - code - web/core/components/onboarding/steps/profile/root.tsx
+- [[defaultValues_22]] - code - web/core/components/onboarding/steps/role/root.tsx
+- [[defaultValues_24]] - code - web/core/components/onboarding/steps/usecase/root.tsx
+- [[fileService_7]] - code - web/core/components/core/modals/user-image-upload-modal.tsx
+- [[index.ts_410]] - code - web/core/components/onboarding/steps/common/index.ts
+- [[profile-setup.tsx]] - code - web/core/components/onboarding/profile-setup.tsx
+- [[root.tsx_109]] - code - web/core/components/onboarding/steps/profile/root.tsx
+- [[root.tsx_107]] - code - web/core/components/onboarding/steps/role/root.tsx
+- [[root.tsx_110]] - code - web/core/components/onboarding/steps/usecase/root.tsx
+- [[security.tsx]] - code - web/core/components/settings/profile/content/pages/security.tsx
+- [[user-image-upload-modal.tsx]] - code - web/core/components/core/modals/user-image-upload-modal.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -44,29 +65,21 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 9 edges to [[_COMMUNITY_Community 164]]
-- 6 edges to [[_COMMUNITY_Applied Filters UI]]
-- 6 edges to [[_COMMUNITY_Community 134]]
-- 4 edges to [[_COMMUNITY_Module Analytics]]
-- 4 edges to [[_COMMUNITY_Empty States & Inbox]]
-- 2 edges to [[_COMMUNITY_Community 140]]
-- 2 edges to [[_COMMUNITY_Community 256]]
-- 2 edges to [[_COMMUNITY_Community 309]]
-- 2 edges to [[_COMMUNITY_Community 141]]
-- 2 edges to [[_COMMUNITY_Community 169]]
-- 2 edges to [[_COMMUNITY_Community 81]]
-- 2 edges to [[_COMMUNITY_Member Filters & Description]]
-- 2 edges to [[_COMMUNITY_Community 36]]
-- 2 edges to [[_COMMUNITY_Community 311]]
-- 1 edge to [[_COMMUNITY_Community 92]]
-- 1 edge to [[_COMMUNITY_Community 86]]
-- 1 edge to [[_COMMUNITY_Community 42]]
+- 5 edges to [[_COMMUNITY_Community 45]]
+- 4 edges to [[_COMMUNITY_Community 58]]
+- 4 edges to [[_COMMUNITY_Community 105]]
+- 3 edges to [[_COMMUNITY_Service Layer]]
+- 3 edges to [[_COMMUNITY_Community 46]]
+- 2 edges to [[_COMMUNITY_Community 64]]
+- 2 edges to [[_COMMUNITY_Community 51]]
+- 2 edges to [[_COMMUNITY_Community 106]]
+- 1 edge to [[_COMMUNITY_Community 59]]
+- 1 edge to [[_COMMUNITY_Community 435]]
+- 1 edge to [[_COMMUNITY_Community 266]]
 
 ## Top bridge nodes
-
-- [[use-project-inbox.ts]] - degree 26, connects to 11 communities
-- [[useProjectInbox()]] - degree 24, connects to 10 communities
-- [[inbox-issue-status.tsx]] - degree 10, connects to 3 communities
-- [[status.tsx_5]] - degree 8, connects to 3 communities
-- [[root.tsx_73]] - degree 16, connects to 1 community
+- [[auth.service.ts_1]] - degree 11, connects to 5 communities
+- [[AuthService_1]] - degree 14, connects to 3 communities
+- [[user-image-upload-modal.tsx]] - degree 8, connects to 3 communities
+- [[root.tsx_109]] - degree 17, connects to 2 communities
+- [[security.tsx]] - degree 10, connects to 2 communities

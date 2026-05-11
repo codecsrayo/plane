@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/issue/helpers/base-issues-utils.ts"
 type: "code"
-community: "Issue Group"
+community: "Community 49"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Group
+  - community/Community_49
 ---
 
 # base-issues-utils.ts
 
 ## Connections
-
 - [[EIssueGroupedAction]] - `imports` [EXTRACTED]
 - [[ISSUE_GROUP_BY_KEY]] - `imports` [EXTRACTED]
 - [[base-issue.store.ts]] - `imports_from` [EXTRACTED]
@@ -33,4 +32,4 @@ tags:
 - [[sub_issues_filter.store.ts]] - `imports_from` [EXTRACTED]
 - [[updateSubWorkItemFilters()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Group
+#graphify/code #graphify/EXTRACTED #community/Community_49

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/serializers/module.py"
 type: "rationale"
-community: "Serializer Member"
+community: "Community 185"
 location: "L275"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Serializer_Member
+  - community/Community_185
 ---
 
-# Serializer for bulk work item assignment to modules. Validates work item ID
+# Serializer for bulk work item assignment to modules.      Validates work item ID
 
 ## Connections
-
 - [[ModuleIssueRequestSerializer]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Serializer_Member
+#graphify/rationale #graphify/EXTRACTED #community/Community_185

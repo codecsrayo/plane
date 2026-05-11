@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_210]] - code - web/ce/store/cycle/index.ts
+- [[index.ts_228]] - code - web/ce/components/issues/issue-modal/index.ts
 
 ## Live Query (requires Dataview plugin)
 

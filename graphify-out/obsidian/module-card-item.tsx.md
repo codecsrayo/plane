@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/modules/module-card-item.tsx"
 type: "code"
-community: "Cycles Archived"
+community: "Module & Cycle Analytics"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycles_Archived
+  - community/Module__Cycle_Analytics
 ---
 
 # module-card-item.tsx
 
 ## Connections
-
 - [[ButtonAvatars]] - `imports` [EXTRACTED]
 - [[DateRangeDropdown]] - `imports` [EXTRACTED]
 - [[ModuleCardItem]] - `contains` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[useModule()]] - `imports` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycles_Archived
+#graphify/code #graphify/EXTRACTED #community/Module__Cycle_Analytics

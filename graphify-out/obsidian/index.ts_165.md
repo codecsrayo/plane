@@ -1,14 +1,14 @@
 ---
 source_file: "propel/src/accordion/index.ts"
 type: "code"
-community: "Community 1520"
+community: "Community 1503"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_1520
+  - community/Community_1503
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_1520
+#graphify/code #graphify/EXTRACTED #community/Community_1503

@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/helpers/editor-ref.ts"
 type: "code"
-community: "Document Collaborative"
+community: "Editor Extensions"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Document_Collaborative
+  - community/Editor_Extensions
 ---
 
 # editor-ref.ts
 
 ## Connections
-
 - [[CORE_EDITOR_META]] - `imports` [EXTRACTED]
 - [[CORE_EXTENSIONS]] - `imports` [EXTRACTED]
 - [[TArgs_6]] - `contains` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[use-editor.ts]] - `imports_from` [EXTRACTED]
 - [[use-title-editor.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Document_Collaborative
+#graphify/code #graphify/EXTRACTED #community/Editor_Extensions

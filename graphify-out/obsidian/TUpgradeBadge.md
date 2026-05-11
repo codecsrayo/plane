@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/components/workspace/upgrade-badge.tsx"
 type: "code"
-community: "Sidebar Navigation"
+community: "Community 161"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Navigation
+  - community/Community_161
 ---
 
 # TUpgradeBadge
 
 ## Connections
-
 - [[upgrade-badge.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation
+#graphify/code #graphify/EXTRACTED #community/Community_161

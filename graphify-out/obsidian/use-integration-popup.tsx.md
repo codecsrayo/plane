@@ -1,22 +1,21 @@
 ---
 source_file: "web/core/hooks/use-integration-popup.tsx"
 type: "code"
-community: "Project Workspace"
+community: "Community 64"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Workspace
+  - community/Community_64
 ---
 
 # use-integration-popup.tsx
 
 ## Connections
-
 - [[WORKSPACE_INTEGRATIONS()]] - `imports` [EXTRACTED]
 - [[fetch-keys.ts]] - `imports_from` [EXTRACTED]
 - [[select-channel.tsx]] - `imports_from` [EXTRACTED]
 - [[single-integration-card.tsx]] - `imports_from` [EXTRACTED]
 - [[useIntegrationPopup()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_64

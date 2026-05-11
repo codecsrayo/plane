@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/components/breadcrumbs/project-feature.tsx"
 type: "code"
-community: "Sidebar Navigation"
+community: "Project Filters & Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Navigation
+  - community/Project_Filters__Archives
 ---
 
 # project-feature.tsx
 
 ## Connections
-
 - [[BreadcrumbLink()]] - `imports` [EXTRACTED]
 - [[ProjectFeatureBreadcrumb]] - `contains` [EXTRACTED]
 - [[TNavigationItem]] - `imports` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

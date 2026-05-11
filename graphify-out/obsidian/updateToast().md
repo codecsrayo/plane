@@ -1,19 +1,20 @@
 ---
-source_file: "propel/src/toast/toast.tsx"
+source_file: "packages/propel/src/toast/toast.tsx"
 type: "code"
-community: "Toast Static"
+community: "Community 103"
 location: "L273"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toast_Static
+  - community/Community_103
 ---
 
 # updateToast()
 
 ## Connections
-
 - [[toast.stories.tsx]] - `imports` [EXTRACTED]
+- [[toast.stories.tsx_1]] - `imports` [EXTRACTED]
 - [[toast.tsx]] - `contains` [EXTRACTED]
+- [[toast.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toast_Static
+#graphify/code #graphify/EXTRACTED #community/Community_103

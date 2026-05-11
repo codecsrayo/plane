@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/module.service.ts"
 type: "code"
-community: "Modules Archived"
+community: "Community 114"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Modules_Archived
+  - community/Community_114
 ---
 
 # ModuleService
 
 ## Connections
-
 - [[.addIssuesToModule()_2]] - `method` [EXTRACTED]
 - [[.addModuleToFavorites()_2]] - `method` [EXTRACTED]
 - [[.addModulesToIssue()_2]] - `method` [EXTRACTED]
@@ -35,4 +34,4 @@ tags:
 - [[module.service.ts_1]] - `contains` [EXTRACTED]
 - [[module.store.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Modules_Archived
+#graphify/code #graphify/EXTRACTED #community/Community_114

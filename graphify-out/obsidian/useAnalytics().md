@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/use-analytics.ts"
 type: "code"
-community: "Webhook Workspace"
+community: "Community 341"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Webhook_Workspace
+  - community/Community_341
 ---
 
 # useAnalytics()
 
 ## Connections
-
 - [[active-projects.tsx]] - `imports` [EXTRACTED]
 - [[analytics-filter-actions.tsx]] - `imports` [EXTRACTED]
 - [[content.tsx_5]] - `imports` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[use-analytics.ts]] - `contains` [EXTRACTED]
 - [[workitems-insight-table.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Webhook_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_341

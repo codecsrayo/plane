@@ -1,18 +1,18 @@
 ---
-source_file: "editor/src/core/components/editors/document/loader.tsx"
+source_file: "packages/editor/src/core/components/editors/document/loader.tsx"
 type: "code"
-community: "Document Content"
+community: "Community 655"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Document_Content
+  - community/Community_655
 ---
 
 # DocumentContentLoader()
 
 ## Connections
-
 - [[loader.tsx_2]] - `contains` [EXTRACTED]
+- [[loader.tsx_14]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Document_Content
+#graphify/code #graphify/EXTRACTED #community/Community_655

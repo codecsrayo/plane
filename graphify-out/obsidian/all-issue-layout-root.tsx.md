@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/roots/all-issue-layout-root.tsx"
 type: "code"
-community: "Issue Project"
+community: "Filter UI & Breadcrumbs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Project
+  - community/Filter_UI__Breadcrumbs
 ---
 
 # all-issue-layout-root.tsx
 
 ## Connections
-
 - [[AllIssueLayoutRoot]] - `contains` [EXTRACTED]
 - [[IssuesStoreContext]] - `imports` [EXTRACTED]
 - [[Props_326]] - `contains` [EXTRACTED]
@@ -34,4 +33,4 @@ tags:
 - [[useWorkspaceIssueProperties()]] - `imports` [EXTRACTED]
 - [[workspace-level.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Project
+#graphify/code #graphify/EXTRACTED #community/Filter_UI__Breadcrumbs

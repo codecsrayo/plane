@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/core/modals/existing-issues-list-modal.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Community 22"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Community_22
 ---
 
 # existing-issues-list-modal.tsx
 
 ## Connections
-
 - [[ExistingIssuesListModal()]] - `contains` [EXTRACTED]
 - [[IssueIdentifier]] - `imports` [EXTRACTED]
 - [[IssueSearchModalEmptyState()]] - `imports` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[use-platform-os.tsx_1]] - `imports_from` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Community_22

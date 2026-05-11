@@ -1,18 +1,17 @@
 ---
 source_file: "admin/components/common/page-wrapper.tsx"
 type: "code"
-community: "Instance Authentication"
+community: "Community 191"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Instance_Authentication
+  - community/Community_191
 ---
 
 # page-wrapper.tsx
 
 ## Connections
-
 - [[PageWrapper()]] - `contains` [EXTRACTED]
 - [[TPageWrapperProps]] - `contains` [EXTRACTED]
 - [[page.tsx_67]] - `imports_from` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[page.tsx_77]] - `imports_from` [EXTRACTED]
 - [[page.tsx_78]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Instance_Authentication
+#graphify/code #graphify/EXTRACTED #community/Community_191

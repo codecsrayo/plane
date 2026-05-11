@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 782
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_62]] - code - web/core/components/modules/sidebar-select/index.ts
+- [[VIEW_ACCESS_ICONS]] - code - web/helpers/views.helper.ts
+- [[VIEW_ACCESS_SPECIFIERS_1]] - code - web/helpers/views.helper.ts
+- [[views.helper.ts]] - code - web/helpers/views.helper.ts
 
 ## Live Query (requires Dataview plugin)
 

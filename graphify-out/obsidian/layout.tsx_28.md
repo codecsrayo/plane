@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(projects)/analytics/[tabId]/layout.tsx"
 type: "code"
-community: "Workspace Analytics"
+community: "Community 40"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Analytics
+  - community/Community_40
 ---
 
 # layout.tsx
 
 ## Connections
-
 - [[AppHeader]] - `imports` [EXTRACTED]
 - [[ContentWrapper()]] - `imports` [EXTRACTED]
 - [[WorkspaceAnalyticsHeader]] - `imports` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[content-wrapper.tsx_3]] - `imports_from` [EXTRACTED]
 - [[header.tsx_18]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Analytics
+#graphify/code #graphify/EXTRACTED #community/Community_40

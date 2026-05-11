@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/lib/app-rail/context.tsx"
 type: "code"
-community: "Rail Visibility"
+community: "Community 74"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Rail_Visibility
+  - community/Community_74
 ---
 
 # context.tsx
 
 ## Connections
-
 - [[AppRailVisibilityContext]] - `contains` [EXTRACTED]
 - [[IAppRailVisibilityContext]] - `imports` [EXTRACTED]
 - [[app-rail-root.tsx]] - `imports_from` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[types.ts_14]] - `imports_from` [EXTRACTED]
 - [[useAppRailVisibility()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Rail_Visibility
+#graphify/code #graphify/EXTRACTED #community/Community_74

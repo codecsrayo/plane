@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/issues_extras2.rs"
 type: "code"
-community: "Returns Issue"
+community: "Community 300"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Issue
+  - community/Community_300
 ---
 
 # setup()
 
 ## Connections
-
 - [[.spawn()]] - `calls` [INFERRED]
 - [[archive_issue_returns_200_or_204()]] - `calls` [EXTRACTED]
 - [[archive_nonexistent_issue_returns_404()]] - `calls` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[list_issue_activities_unauthenticated_returns_401()]] - `calls` [EXTRACTED]
 - [[unarchive_issue_returns_200_or_204()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_300

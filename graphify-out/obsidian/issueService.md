@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/issues/(detail)/header.tsx"
 type: "code"
-community: "Project Settings"
+community: "Issue Activity Types"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Issue_Activity_Types
 ---
 
 # issueService
 
 ## Connections
-
 - [[header.tsx_10]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Types

@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 796
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_92]] - code - web/core/components/issues/issue-layouts/filters/header/display-filters/index.ts
+- [[IssueWorklogProperty()]] - code - web/ce/components/issues/worklog/property/root.tsx
+- [[TIssueWorklogProperty]] - code - web/ce/components/issues/worklog/property/root.tsx
+- [[root.tsx_28]] - code - web/ce/components/issues/worklog/property/root.tsx
 
 ## Live Query (requires Dataview plugin)
 

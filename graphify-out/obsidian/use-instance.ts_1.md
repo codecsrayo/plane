@@ -1,18 +1,17 @@
 ---
 source_file: "space/hooks/store/use-instance.ts"
 type: "code"
-community: "Instance User"
+community: "Community 72"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Instance_User
+  - community/Community_72
 ---
 
 # use-instance.ts
 
 ## Connections
-
 - [[IInstanceStore]] - `imports` [EXTRACTED]
 - [[StoreContext_2]] - `imports` [EXTRACTED]
 - [[auth-root.tsx_1]] - `imports_from` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[store-provider.tsx]] - `imports_from` [EXTRACTED]
 - [[useInstance()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Instance_User
+#graphify/code #graphify/EXTRACTED #community/Community_72

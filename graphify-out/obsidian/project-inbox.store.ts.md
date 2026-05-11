@@ -1,14 +1,14 @@
 ---
 source_file: "web/ce/store/project-inbox.store.ts"
 type: "code"
-community: "Project Inbox"
+community: "Community 1535"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Inbox
+  - community/Community_1535
 ---
 
 # project-inbox.store.ts
 
-#graphify/code #graphify/EXTRACTED #community/Project_Inbox
+#graphify/code #graphify/EXTRACTED #community/Community_1535

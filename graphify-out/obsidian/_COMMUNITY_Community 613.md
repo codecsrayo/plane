@@ -1,18 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.60
+members: 5
 ---
 
 # Community 613
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.60 - moderately connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[RarIcon()]] - code - web/core/components/icons/attachment/rar-file-icon.tsx
-- [[rar-file-icon.tsx]] - code - web/core/components/icons/attachment/rar-file-icon.tsx
+- [[TSupportedRole]] - code - packages/utils/src/permission/role.ts
+- [[getHighestRole()]] - code - packages/utils/src/permission/role.ts
+- [[getUserRole()]] - code - packages/utils/src/permission/role.ts
+- [[role.ts_1]] - code - packages/utils/src/permission/role.ts
+- [[role.ts]] - code - utils/src/permission/role.ts
 
 ## Live Query (requires Dataview plugin)
 

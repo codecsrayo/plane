@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[mod.rs_6]] - code - api_rust/src/entities/mod.rs
+- [[ActiveModel_19]] - code - api_rust/src/entities/analytic_views.rs
 
 ## Live Query (requires Dataview plugin)
 

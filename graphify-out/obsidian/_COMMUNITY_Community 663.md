@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 4
 ---
 
 # Community 663
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_13]] - code - api_rust/src/entities/changelogs.rs
+- [[TTimezoneObject]] - code - packages/types/src/timezone.ts
+- [[TTimezones]] - code - packages/types/src/timezone.ts
+- [[timezone.ts_1]] - code - packages/types/src/timezone.ts
+- [[timezone.ts]] - code - types/src/timezone.ts
 
 ## Live Query (requires Dataview plugin)
 

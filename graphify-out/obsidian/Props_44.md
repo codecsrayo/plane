@@ -1,19 +1,19 @@
 ---
-source_file: "web/core/components/pages/editor/toolbar/root.tsx"
+source_file: "packages/editor/src/core/extensions/custom-image/components/toolbar/root.tsx"
 type: "code"
-community: "Formats Values"
-location: "L22"
+community: "Community 28"
+location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Formats_Values
+  - community/Community_28
 ---
 
 # Props
 
 ## Connections
-
 - [[root.tsx_5]] - `contains` [EXTRACTED]
 - [[root.tsx_116]] - `contains` [EXTRACTED]
+- [[root.tsx_147]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Formats_Values
+#graphify/code #graphify/EXTRACTED #community/Community_28

@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/components/issues/issue-details/issue-identifier.tsx"
 type: "code"
-community: "Issue Work"
+community: "Project Filters & Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Work
+  - community/Project_Filters__Archives
 ---
 
 # issue-identifier.tsx
 
 ## Connections
-
 - [[IdentifierText()]] - `imports` [EXTRACTED]
 - [[IssueIdentifier]] - `contains` [EXTRACTED]
 - [[IssueTypeIdentifier]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Work
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

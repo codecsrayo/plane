@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/use-home.ts"
 type: "code"
-community: "Link Links"
+community: "Community 281"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Link_Links
+  - community/Community_281
 ---
 
 # use-home.ts
 
 ## Connections
-
 - [[IHomeStore]] - `imports` [EXTRACTED]
 - [[StoreContext]] - `imports` [EXTRACTED]
 - [[header.tsx_1]] - `imports_from` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[widget-item.tsx]] - `imports_from` [EXTRACTED]
 - [[widget-list.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Link_Links
+#graphify/code #graphify/EXTRACTED #community/Community_281

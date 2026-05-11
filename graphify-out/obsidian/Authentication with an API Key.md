@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/middleware/api_authentication.py"
 type: "rationale"
-community: "Project Endpoint"
+community: "Community 25"
 location: "L18"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Project_Endpoint
+  - community/Community_25
 ---
 
 # Authentication with an API Key
 
 ## Connections
-
 - [[APIKeyAuthentication]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Project_Endpoint
+#graphify/rationale #graphify/EXTRACTED #community/Community_25

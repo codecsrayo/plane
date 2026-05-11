@@ -1,18 +1,17 @@
 ---
 source_file: ""
 type: "code"
-community: "Endpoint User"
+community: "Community 53"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_User
+  - community/Community_53
 ---
 
 # Exception
 
 ## Connections
-
 - [[AuthenticationException]] - `inherits` [EXTRACTED]
 - [[BadPaginationError]] - `inherits` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_User
+#graphify/code #graphify/EXTRACTED #community/Community_53

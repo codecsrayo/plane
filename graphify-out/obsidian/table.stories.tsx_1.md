@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/table/table.stories.tsx"
 type: "code"
-community: "Table Caption"
+community: "Community 252"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Table_Caption
+  - community/Community_252
 ---
 
 # table.stories.tsx
 
 ## Connections
-
 - [[CustomStyling]] - `contains` [EXTRACTED]
 - [[Default_16]] - `contains` [EXTRACTED]
 - [[EmptyState]] - `contains` [EXTRACTED]
@@ -34,4 +33,4 @@ tags:
 - [[WithFooter]] - `contains` [EXTRACTED]
 - [[core.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Table_Caption
+#graphify/code #graphify/EXTRACTED #community/Community_252

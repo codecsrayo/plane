@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/integration/single-integration-card.tsx"
 type: "code"
-community: "Project Workspace"
+community: "Community 64"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Workspace
+  - community/Community_64
 ---
 
 # single-integration-card.tsx
 
 ## Connections
-
 - [[Props_227]] - `contains` [EXTRACTED]
 - [[SingleIntegrationCard]] - `contains` [EXTRACTED]
 - [[TIntegrationProvider]] - `imports` [EXTRACTED]
@@ -33,4 +32,4 @@ tags:
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 - [[utils.ts_15]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_64

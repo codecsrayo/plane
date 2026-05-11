@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/integration/slack/select-channel.tsx"
 type: "code"
-community: "Project Workspace"
+community: "Community 64"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Workspace
+  - community/Community_64
 ---
 
 # select-channel.tsx
 
 ## Connections
-
 - [[AppInstallationService]] - `imports` [EXTRACTED]
 - [[Props_236]] - `contains` [EXTRACTED]
 - [[SLACK_CHANNEL_INFO()]] - `imports` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[use-integration-popup.tsx]] - `imports_from` [EXTRACTED]
 - [[useInstance()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_64

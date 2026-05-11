@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/space/views/base.py"
 type: "code"
-community: "Project Endpoint"
+community: "Community 25"
 location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Endpoint
+  - community/Community_25
 ---
 
 # TimezoneMixin
 
 ## Connections
-
 - [[.initial()]] - `method` [EXTRACTED]
 - [[APIKeyAuthentication]] - `uses` [INFERRED]
 - [[APIToken]] - `uses` [INFERRED]
@@ -31,4 +30,4 @@ tags:
 - [[base.py_30]] - `contains` [EXTRACTED]
 - [[base.py_32]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Endpoint
+#graphify/code #graphify/EXTRACTED #community/Community_25

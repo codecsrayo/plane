@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/issues/issue_attachment.ts"
 type: "code"
-community: "Issue Attachment"
+community: "Community 386"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Attachment
+  - community/Community_386
 ---
 
 # issue_attachment.ts
 
 ## Connections
-
 - [[TFileSignedURLResponse]] - `imports` [EXTRACTED]
 - [[TIssueAttachment]] - `contains` [EXTRACTED]
 - [[TIssueAttachmentIdMap]] - `contains` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[file.ts_2]] - `imports_from` [EXTRACTED]
 - [[issue.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Attachment
+#graphify/code #graphify/EXTRACTED #community/Community_386

@@ -1,18 +1,17 @@
 ---
 source_file: "admin/app/(all)/(dashboard)/ai/page.tsx"
 type: "code"
-community: "Instance Authentication"
+community: "Community 551"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Instance_Authentication
+  - community/Community_551
 ---
 
 # page.tsx
 
 ## Connections
-
 - [[InstanceAIForm()]] - `imports` [EXTRACTED]
 - [[InstanceAIPage]] - `contains` [EXTRACTED]
 - [[PageWrapper()]] - `imports` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[meta()_24]] - `contains` [EXTRACTED]
 - [[page-wrapper.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Instance_Authentication
+#graphify/code #graphify/EXTRACTED #community/Community_551

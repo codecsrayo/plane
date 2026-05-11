@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-detail/issue-activity/activity/actions/label.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Issue Activity Types"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Issue_Activity_Types
 ---
 
 # label.tsx
 
 ## Connections
-
 - [[IssueLabelActivity]] - `contains` [EXTRACTED]
 - [[TIssueLabelActivity]] - `contains` [EXTRACTED]
 - [[index.ts_369]] - `imports_from` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 - [[useLabel()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Types

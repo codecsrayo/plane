@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/estimates/root.tsx"
 type: "code"
-community: "Label Dropdown"
+community: "Community 115"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Dropdown
+  - community/Community_115
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[CreateEstimateModal]] - `imports` [EXTRACTED]
 - [[DeleteEstimateModal]] - `imports` [EXTRACTED]
 - [[EstimateDisableSwitch]] - `imports` [EXTRACTED]
@@ -33,4 +32,4 @@ tags:
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Community_115

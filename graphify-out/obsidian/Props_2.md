@@ -1,18 +1,18 @@
 ---
-source_file: "ui/src/drop-indicator.tsx"
+source_file: "packages/ui/src/drop-indicator.tsx"
 type: "code"
-community: "Story Meta"
+community: "Community 303"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Story_Meta
+  - community/Community_303
 ---
 
 # Props
 
 ## Connections
-
 - [[drop-indicator.tsx]] - `contains` [EXTRACTED]
+- [[drop-indicator.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Story_Meta
+#graphify/code #graphify/EXTRACTED #community/Community_303

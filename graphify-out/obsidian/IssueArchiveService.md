@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/issue/issue_archive.service.ts"
 type: "code"
-community: "Issue Project"
+community: "Service Layer"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Project
+  - community/Service_Layer
 ---
 
 # IssueArchiveService
 
 ## Connections
-
 - [[.archiveIssue()]] - `method` [EXTRACTED]
 - [[.constructor()_164]] - `method` [EXTRACTED]
 - [[.getArchivedIssues()]] - `method` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[.retrieveArchivedIssue()]] - `method` [EXTRACTED]
 - [[issue_archive.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Project
+#graphify/code #graphify/EXTRACTED #community/Service_Layer

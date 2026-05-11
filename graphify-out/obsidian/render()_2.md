@@ -1,18 +1,18 @@
 ---
-source_file: "propel/src/dialog/dialog.stories.tsx"
+source_file: "packages/propel/src/dialog/dialog.stories.tsx"
 type: "code"
-community: "Dialog Width"
+community: "Community 182"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dialog_Width
+  - community/Community_182
 ---
 
 # render()
 
 ## Connections
-
 - [[dialog.stories.tsx]] - `contains` [EXTRACTED]
+- [[dialog.stories.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dialog_Width
+#graphify/code #graphify/EXTRACTED #community/Community_182

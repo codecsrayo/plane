@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.83
+members: 4
 ---
 
 # Community 668
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.83 - tightly connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_18]] - code - api_rust/src/entities/github_repositories.rs
+- [[@planelogger Package]] - document - packages/logger/README.md
+- [[Winston Logger]] - document - packages/logger/README.md
+- [[logger (general logger)]] - document - packages/logger/README.md
+- [[requestLogger (middleware)]] - document - packages/logger/README.md
 
 ## Live Query (requires Dataview plugin)
 

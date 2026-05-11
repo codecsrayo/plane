@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/lib/store-context.tsx"
 type: "code"
-community: "Webhook Workspace"
+community: "Community 42"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Webhook_Workspace
+  - community/Community_42
 ---
 
 # store-context.tsx
 
 ## Connections
-
 - [[StoreContext]] - `contains` [EXTRACTED]
 - [[StoreProvider()]] - `contains` [EXTRACTED]
 - [[base-command-palette.store.ts]] - `imports_from` [EXTRACTED]
@@ -75,4 +74,4 @@ tags:
 - [[utils.tsx]] - `imports_from` [EXTRACTED]
 - [[utils.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Webhook_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_42

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/app_installation.service.ts"
 type: "code"
-community: "Callback Installation"
+community: "Community 280"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Callback_Installation
+  - community/Community_280
 ---
 
 # AppInstallationService
 
 ## Connections
-
 - [[.addInstallationApp()]] - `method` [EXTRACTED]
 - [[.addSlackChannel()]] - `method` [EXTRACTED]
 - [[.constructor()_145]] - `method` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[page.tsx_6]] - `imports` [EXTRACTED]
 - [[select-channel.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Callback_Installation
+#graphify/code #graphify/EXTRACTED #community/Community_280

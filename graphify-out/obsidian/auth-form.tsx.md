@@ -1,18 +1,17 @@
 ---
 source_file: "ui/src/auth-form/auth-form.tsx"
 type: "code"
-community: "Auth Spinner"
+community: "Community 138"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Spinner
+  - community/Community_138
 ---
 
 # auth-form.tsx
 
 ## Connections
-
 - [[AuthForm()]] - `contains` [EXTRACTED]
 - [[AuthFormData]] - `contains` [EXTRACTED]
 - [[AuthFormProps]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[circular-spinner.tsx]] - `imports_from` [EXTRACTED]
 - [[index.ts_14]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Spinner
+#graphify/code #graphify/EXTRACTED #community/Community_138

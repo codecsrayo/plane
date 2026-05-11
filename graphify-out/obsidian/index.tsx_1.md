@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/code/index.tsx"
 type: "code"
-community: "Code Lowlight"
+community: "Community 180"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Code_Lowlight
+  - community/Community_180
 ---
 
 # index.tsx
 
 ## Connections
-
 - [[CodeBlockComponent()]] - `imports` [EXTRACTED]
 - [[CodeBlockLowlight]] - `imports` [EXTRACTED]
 - [[CustomCodeBlockExtension]] - `contains` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[code-block-node-view.tsx]] - `imports_from` [EXTRACTED]
 - [[lowlight]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Code_Lowlight
+#graphify/code #graphify/EXTRACTED #community/Community_180

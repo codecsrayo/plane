@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/models/description.py"
 type: "code"
-community: "Meta User"
+community: "Community 66"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Meta_User
+  - community/Community_66
 ---
 
 # description.py
 
 ## Connections
-
 - [[Description_1]] - `contains` [EXTRACTED]
 - [[DescriptionVersion]] - `contains` [EXTRACTED]
 - [[Meta_54]] - `contains` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[issue.py_7]] - `imports_from` [EXTRACTED]
 - [[workspace.py_4]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Meta_User
+#graphify/code #graphify/EXTRACTED #community/Community_66

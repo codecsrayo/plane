@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/serializers/project.py"
 type: "code"
-community: "Project Endpoint"
+community: "Community 212"
 location: "L158"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Endpoint
+  - community/Community_212
 ---
 
 # ProjectUpdateSerializer
 
 ## Connections
-
 - [[.update()_29]] - `method` [EXTRACTED]
 - [[BaseSerializer_2]] - `uses` [INFERRED]
 - [[ProjectCreateSerializer]] - `inherits` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[patch()_15]] - `calls` [INFERRED]
 - [[project.py_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Endpoint
+#graphify/code #graphify/EXTRACTED #community/Community_212

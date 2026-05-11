@@ -1,61 +1,116 @@
 ---
 type: community
-cohesion: 0.07
-members: 45
+cohesion: 0.03
+members: 101
 ---
 
 # Community 32
 
-**Cohesion:** 0.07 - loosely connected
-**Members:** 45 nodes
+**Cohesion:** 0.03 - loosely connected
+**Members:** 101 nodes
 
 ## Members
-
-- [[PowerKMenuBuilder()]] - code - web/core/components/power-k/menus/builder.tsx
-- [[PowerKMenuEmptyState()]] - code - web/core/components/power-k/menus/empty-state.tsx
-- [[PowerKModalPagesList]] - code - web/core/components/power-k/ui/pages/root.tsx
-- [[PowerKOpenEntityPages()]] - code - web/core/components/power-k/ui/pages/open-entity/root.tsx
-- [[PowerKOpenProjectMenu]] - code - web/core/components/power-k/ui/pages/open-entity/projects-menu.tsx
-- [[PowerKOpenProjectModulesMenu]] - code - web/core/components/power-k/ui/pages/open-entity/project-modules-menu.tsx
-- [[PowerKOpenProjectSettingsMenu]] - code - web/core/components/power-k/ui/pages/open-entity/project-settings-menu.tsx
-- [[PowerKOpenProjectViewsMenu]] - code - web/core/components/power-k/ui/pages/open-entity/project-views-menu.tsx
-- [[PowerKOpenWorkspaceMenu]] - code - web/core/components/power-k/ui/pages/open-entity/workspaces-menu.tsx
-- [[PowerKOpenWorkspaceSettingsMenu]] - code - web/core/components/power-k/ui/pages/open-entity/workspace-settings-menu.tsx
-- [[PowerKProjectsMenu()]] - code - web/core/components/power-k/menus/projects.tsx
-- [[PowerKSettingsMenu]] - code - web/core/components/power-k/menus/settings.tsx
-- [[PowerKViewsMenu]] - code - web/core/components/power-k/menus/views.tsx
-- [[PowerKWorkspacesMenu()]] - code - web/core/components/power-k/menus/workspaces.tsx
-- [[Props_348]] - code - web/core/components/power-k/menus/builder.tsx
-- [[Props_350]] - code - web/core/components/power-k/menus/empty-state.tsx
-- [[Props_347]] - code - web/core/components/power-k/menus/projects.tsx
-- [[Props_345]] - code - web/core/components/power-k/menus/settings.tsx
-- [[Props_352]] - code - web/core/components/power-k/menus/views.tsx
-- [[Props_351]] - code - web/core/components/power-k/menus/workspaces.tsx
-- [[Props_331]] - code - web/core/components/power-k/ui/pages/open-entity/project-modules-menu.tsx
-- [[Props_330]] - code - web/core/components/power-k/ui/pages/open-entity/project-settings-menu.tsx
-- [[Props_329]] - code - web/core/components/power-k/ui/pages/open-entity/project-views-menu.tsx
-- [[Props_332]] - code - web/core/components/power-k/ui/pages/open-entity/projects-menu.tsx
-- [[Props_328]] - code - web/core/components/power-k/ui/pages/open-entity/workspace-settings-menu.tsx
-- [[Props_334]] - code - web/core/components/power-k/ui/pages/open-entity/workspaces-menu.tsx
-- [[Props_312]] - code - web/core/components/power-k/ui/pages/root.tsx
-- [[TPowerKOpenEntityActionsProps]] - code - web/core/components/power-k/ui/pages/open-entity/shared.ts
-- [[TSettingItem]] - code - web/core/components/power-k/menus/settings.tsx
-- [[builder.tsx]] - code - web/core/components/power-k/menus/builder.tsx
-- [[empty-state.tsx_6]] - code - web/core/components/power-k/menus/empty-state.tsx
-- [[index.ts_137]] - code - web/core/components/power-k/ui/pages/preferences/index.ts
-- [[project-modules-menu.tsx]] - code - web/core/components/power-k/ui/pages/open-entity/project-modules-menu.tsx
-- [[project-settings-menu.tsx]] - code - web/core/components/power-k/ui/pages/open-entity/project-settings-menu.tsx
-- [[project-views-menu.tsx]] - code - web/core/components/power-k/ui/pages/open-entity/project-views-menu.tsx
-- [[projects-menu.tsx]] - code - web/core/components/power-k/ui/pages/open-entity/projects-menu.tsx
-- [[projects.tsx]] - code - web/core/components/power-k/menus/projects.tsx
-- [[root.tsx_62]] - code - web/core/components/power-k/ui/pages/open-entity/root.tsx
-- [[root.tsx_57]] - code - web/core/components/power-k/ui/pages/root.tsx
-- [[settings.tsx]] - code - web/core/components/power-k/menus/settings.tsx
-- [[shared.ts]] - code - web/core/components/power-k/ui/pages/open-entity/shared.ts
-- [[views.tsx]] - code - web/core/components/power-k/menus/views.tsx
-- [[workspace-settings-menu.tsx]] - code - web/core/components/power-k/ui/pages/open-entity/workspace-settings-menu.tsx
-- [[workspaces-menu.tsx]] - code - web/core/components/power-k/ui/pages/open-entity/workspaces-menu.tsx
-- [[workspaces.tsx]] - code - web/core/components/power-k/menus/workspaces.tsx
+- [[.__init__()_4]] - code - api/plane/settings/storage.py
+- [[._get_content_disposition()]] - code - api/plane/settings/storage.py
+- [[.asset_delete()_2]] - code - api/plane/api/views/asset.py
+- [[.asset_delete()_3]] - code - api/plane/api/views/asset.py
+- [[.delete()_12]] - code - api/plane/space/views/asset.py
+- [[.entity_asset_delete()_2]] - code - api/plane/api/views/asset.py
+- [[.entity_asset_delete()_3]] - code - api/plane/api/views/asset.py
+- [[.generate_presigned_post()]] - code - api/plane/settings/storage.py
+- [[.generate_presigned_url()]] - code - api/plane/settings/storage.py
+- [[.get()_63]] - code - api/plane/space/views/asset.py
+- [[.get_permissions()_3]] - code - api/plane/space/views/asset.py
+- [[.get_queryset()_54]] - code - api/plane/api/views/issue.py
+- [[.get_queryset()_53]] - code - api/plane/api/views/issue.py
+- [[.get_queryset()_49]] - code - api/plane/api/views/issue.py
+- [[.get_queryset()_52]] - code - api/plane/api/views/issue.py
+- [[.get_queryset()_51]] - code - api/plane/api/views/issue.py
+- [[.get_queryset()_48]] - code - api/plane/api/views/issue.py
+- [[.get_queryset()_50]] - code - api/plane/api/views/issue.py
+- [[.get_queryset()_47]] - code - api/plane/api/views/issue.py
+- [[.patch()_8]] - code - api/plane/space/views/asset.py
+- [[.post()_40]] - code - api/plane/space/views/asset.py
+- [[.post()_39]] - code - api/plane/space/views/asset.py
+- [[.post()_41]] - code - api/plane/space/views/asset.py
+- [[.url()]] - code - api/plane/settings/storage.py
+- [[AssetRestoreEndpoint_1]] - code - api/plane/space/views/asset.py
+- [[Endpoint to bulk update assets.]] - rationale - api/plane/space/views/asset.py
+- [[Endpoint to restore a deleted assets._1]] - rationale - api/plane/space/views/asset.py
+- [[Endpoint to search across multiple fields in the issues]] - rationale - api/plane/api/views/issue.py
+- [[EntityAssetEndpoint]] - code - api/plane/space/views/asset.py
+- [[EntityBulkAssetEndpoint]] - code - api/plane/space/views/asset.py
+- [[Generate a presigned URL to share an S3 object]] - rationale - api/plane/settings/storage.py
+- [[Generate a presigned URL to upload an S3 object]] - rationale - api/plane/settings/storage.py
+- [[GenericAssetEndpoint]] - code - api/plane/api/views/asset.py
+- [[Helper method to generate Content-Disposition header value]] - rationale - api/plane/settings/storage.py
+- [[Issue Activity Detail Endpoint]] - rationale - api/plane/api/views/issue.py
+- [[Issue Attachment Detail Endpoint]] - rationale - api/plane/api/views/issue.py
+- [[Issue Attachment List and Create Endpoint]] - rationale - api/plane/api/views/issue.py
+- [[Issue Comment List and Create Endpoint]] - rationale - api/plane/api/views/issue.py
+- [[Issue Detail Endpoint]] - rationale - api/plane/api/views/issue.py
+- [[Issue Link Detail Endpoint]] - rationale - api/plane/api/views/issue.py
+- [[Issue Relation List and Create Endpoint]] - rationale - api/plane/api/views/issue.py
+- [[IssueActivityDetailAPIEndpoint]] - code - api/plane/api/views/issue.py
+- [[IssueActivityListAPIEndpoint]] - code - api/plane/api/views/issue.py
+- [[IssueAttachmentDetailAPIEndpoint]] - code - api/plane/api/views/issue.py
+- [[IssueAttachmentEndpoint]] - code - api/plane/app/views/issue/attachment.py
+- [[IssueAttachmentListCreateAPIEndpoint]] - code - api/plane/api/views/issue.py
+- [[IssueAttachmentV2Endpoint]] - code - api/plane/app/views/issue/attachment.py
+- [[IssueCommentDetailAPIEndpoint]] - code - api/plane/api/views/issue.py
+- [[IssueCommentListCreateAPIEndpoint]] - code - api/plane/api/views/issue.py
+- [[IssueDetailAPIEndpoint]] - code - api/plane/api/views/issue.py
+- [[IssueLinkDetailAPIEndpoint]] - code - api/plane/api/views/issue.py
+- [[IssueLinkListCreateAPIEndpoint]] - code - api/plane/api/views/issue.py
+- [[IssueListCreateAPIEndpoint]] - code - api/plane/api/views/issue.py
+- [[IssueRelationListCreateAPIEndpoint]] - code - api/plane/api/views/issue.py
+- [[IssueSearchEndpoint_1]] - code - api/plane/api/views/issue.py
+- [[Label Detail Endpoint]] - rationale - api/plane/api/views/issue.py
+- [[Label List and Create Endpoint]] - rationale - api/plane/api/views/issue.py
+- [[LabelDetailAPIEndpoint]] - code - api/plane/api/views/issue.py
+- [[LabelListCreateAPIEndpoint]] - code - api/plane/api/views/issue.py
+- [[S3Boto3Storage]] - code
+- [[S3Storage]] - code - api/plane/settings/storage.py
+- [[Test the configurable signed URL expiration in S3Storage]] - rationale - api/plane/tests/unit/settings/test_storage.py
+- [[TestS3StorageSignedURLExpiration]] - code - api/plane/tests/unit/settings/test_storage.py
+- [[This endpoint is used to upload generic assets that can be later bound to entiti]] - rationale - api/plane/api/views/asset.py
+- [[This endpoint is used to upload user profile images._2]] - rationale - api/plane/api/views/asset.py
+- [[This endpoint is used to upload user profile images._1]] - rationale - api/plane/api/views/asset.py
+- [[This viewset provides `list` and `create` on issue level]] - rationale - api/plane/api/views/issue.py
+- [[This viewset provides `retrieveByIssueId` on workspace level]] - rationale - api/plane/api/views/issue.py
+- [[UserAssetEndpoint]] - code - api/plane/api/views/asset.py
+- [[UserServerAssetEndpoint]] - code - api/plane/api/views/asset.py
+- [[Work Item Comment Detail Endpoint]] - rationale - api/plane/api/views/issue.py
+- [[Work Item Link List and Create Endpoint]] - rationale - api/plane/api/views/issue.py
+- [[WorkspaceIssueAPIEndpoint]] - code - api/plane/api/views/issue.py
+- [[asset.py_3]] - code - api/plane/api/views/asset.py
+- [[asset.py_7]] - code - api/plane/space/views/asset.py
+- [[attachment.py]] - code - api/plane/app/views/issue/attachment.py
+- [[delete()_3]] - code - api/plane/app/views/issue/attachment.py
+- [[delete()_9]] - code - api/plane/api/views/asset.py
+- [[delete()_10]] - code - api/plane/api/views/issue.py
+- [[get()_9]] - code - api/plane/app/views/issue/attachment.py
+- [[get()_29]] - code - api/plane/api/views/asset.py
+- [[get()_30]] - code - api/plane/api/views/issue.py
+- [[issue.py_5]] - code - api/plane/api/views/issue.py
+- [[patch()_6]] - code - api/plane/app/views/issue/attachment.py
+- [[patch()_12]] - code - api/plane/api/views/asset.py
+- [[patch()_13]] - code - api/plane/api/views/issue.py
+- [[post()_4]] - code - api/plane/app/views/issue/attachment.py
+- [[post()_16]] - code - api/plane/api/views/asset.py
+- [[project_identifier()]] - code - api/plane/api/views/issue.py
+- [[put()_2]] - code - api/plane/api/views/issue.py
+- [[storage.py]] - code - api/plane/settings/storage.py
+- [[test_custom_expiration_multiple_values()]] - code - api/plane/tests/unit/settings/test_storage.py
+- [[test_custom_expiration_with_env_variable()]] - code - api/plane/tests/unit/settings/test_storage.py
+- [[test_default_expiration_without_env_variable()]] - code - api/plane/tests/unit/settings/test_storage.py
+- [[test_explicit_expiration_overrides_default()]] - code - api/plane/tests/unit/settings/test_storage.py
+- [[test_generate_presigned_post_uses_custom_expiration()]] - code - api/plane/tests/unit/settings/test_storage.py
+- [[test_generate_presigned_post_uses_default_expiration()]] - code - api/plane/tests/unit/settings/test_storage.py
+- [[test_generate_presigned_url_uses_custom_expiration()]] - code - api/plane/tests/unit/settings/test_storage.py
+- [[test_generate_presigned_url_uses_default_expiration()]] - code - api/plane/tests/unit/settings/test_storage.py
+- [[test_storage.py]] - code - api/plane/tests/unit/settings/test_storage.py
+- [[user_has_issue_permission()]] - code - api/plane/api/views/issue.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -65,23 +120,21 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 10 edges to [[_COMMUNITY_Community 61]]
-- 8 edges to [[_COMMUNITY_Community 99]]
-- 7 edges to [[_COMMUNITY_Community 45]]
-- 4 edges to [[_COMMUNITY_Authentication UI]]
-- 4 edges to [[_COMMUNITY_Community 68]]
-- 2 edges to [[_COMMUNITY_Module Analytics]]
-- 2 edges to [[_COMMUNITY_Applied Filters UI]]
-- 2 edges to [[_COMMUNITY_Community 105]]
-- 2 edges to [[_COMMUNITY_Empty State Components]]
-- 2 edges to [[_COMMUNITY_Community 80]]
-- 2 edges to [[_COMMUNITY_Community 56]]
+- 24 edges to [[_COMMUNITY_Community 25]]
+- 22 edges to [[_COMMUNITY_Community 57]]
+- 18 edges to [[_COMMUNITY_Python API Base Classes]]
+- 16 edges to [[_COMMUNITY_Community 88]]
+- 8 edges to [[_COMMUNITY_Community 48]]
+- 6 edges to [[_COMMUNITY_Community 41]]
+- 6 edges to [[_COMMUNITY_Community 37]]
+- 3 edges to [[_COMMUNITY_Community 141]]
+- 2 edges to [[_COMMUNITY_Community 99]]
+- 1 edge to [[_COMMUNITY_Community 56]]
+- 1 edge to [[_COMMUNITY_Community 34]]
 
 ## Top bridge nodes
-
-- [[project-settings-menu.tsx]] - degree 10, connects to 4 communities
-- [[workspace-settings-menu.tsx]] - degree 10, connects to 4 communities
-- [[project-modules-menu.tsx]] - degree 9, connects to 4 communities
-- [[root.tsx_57]] - degree 11, connects to 3 communities
-- [[project-views-menu.tsx]] - degree 9, connects to 3 communities
+- [[S3Storage]] - degree 72, connects to 4 communities
+- [[get()_30]] - degree 19, connects to 4 communities
+- [[issue.py_5]] - degree 24, connects to 3 communities
+- [[EntityAssetEndpoint]] - degree 9, connects to 2 communities
+- [[get()_29]] - degree 9, connects to 2 communities

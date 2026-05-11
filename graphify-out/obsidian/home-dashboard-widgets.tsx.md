@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/home/home-dashboard-widgets.tsx"
 type: "code"
-community: "Widget Home"
+community: "Community 265"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Widget_Home
+  - community/Community_265
 ---
 
 # home-dashboard-widgets.tsx
 
 ## Connections
-
 - [[DashboardWidgets]] - `contains` [EXTRACTED]
 - [[HOME_WIDGETS_LIST]] - `contains` [EXTRACTED]
 - [[HomePageHeader()]] - `imports` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[widget-item.tsx]] - `imports_from` [EXTRACTED]
 - [[widget.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Widget_Home
+#graphify/code #graphify/EXTRACTED #community/Community_265

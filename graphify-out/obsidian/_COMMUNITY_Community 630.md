@@ -1,18 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.40
+members: 5
 ---
 
 # Community 630
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.40 - moderately connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[NotificationsLoader()]] - code - web/core/components/ui/loader/notification-loader.tsx
-- [[notification-loader.tsx]] - code - web/core/components/ui/loader/notification-loader.tsx
+- [[Test the Workspace model]] - rationale - api/plane/tests/unit/models/test_workspace_model.py
+- [[TestWorkspaceModel]] - code - api/plane/tests/unit/models/test_workspace_model.py
+- [[test_workspace_creation()]] - code - api/plane/tests/unit/models/test_workspace_model.py
+- [[test_workspace_member_creation()]] - code - api/plane/tests/unit/models/test_workspace_model.py
+- [[test_workspace_model.py]] - code - api/plane/tests/unit/models/test_workspace_model.py
 
 ## Live Query (requires Dataview plugin)
 

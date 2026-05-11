@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/views/filters/filter-selection.tsx"
 type: "code"
-community: "Member Members"
+community: "Issue Display Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Members
+  - community/Issue_Display_Filters
 ---
 
 # filter-selection.tsx
 
 ## Connections
-
 - [[FilterByAccess()]] - `imports` [EXTRACTED]
 - [[FilterCreatedBy]] - `imports` [EXTRACTED]
 - [[FilterCreatedDate]] - `imports` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[mobile-header.tsx_1]] - `imports_from` [EXTRACTED]
 - [[view-list-header.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Members
+#graphify/code #graphify/EXTRACTED #community/Issue_Display_Filters

@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/plugins/drop.ts"
 type: "code"
-community: "Document Collaborative"
+community: "Community 28"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Document_Collaborative
+  - community/Community_28
 ---
 
 # drop.ts
 
 ## Connections
-
 - [[ACCEPTED_ATTACHMENT_MIME_TYPES]] - `imports` [EXTRACTED]
 - [[ACCEPTED_IMAGE_MIME_TYPES]] - `imports` [EXTRACTED]
 - [[DropHandlerPlugin()]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[use-file-upload.ts]] - `imports_from` [EXTRACTED]
 - [[utility.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Document_Collaborative
+#graphify/code #graphify/EXTRACTED #community/Community_28

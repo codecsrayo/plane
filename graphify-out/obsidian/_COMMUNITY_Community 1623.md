@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_314]] - code - web/core/components/project-states/create-update/index.ts
+- [[index.ts_360]] - code - web/core/components/issues/issue-layouts/filters/applied-filters/index.ts
 
 ## Live Query (requires Dataview plugin)
 

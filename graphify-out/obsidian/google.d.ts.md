@@ -1,18 +1,17 @@
 ---
 source_file: "web/google.d.ts"
 type: "code"
-community: "Endpoint User"
+community: "Community 53"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_User
+  - community/Community_53
 ---
 
 # google.d.ts
 
 ## Connections
-
 - [[Credential]] - `contains` [EXTRACTED]
 - [[CredentialResponse]] - `contains` [EXTRACTED]
 - [[Google]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[RevocationResponse]] - `contains` [EXTRACTED]
 - [[Window]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_User
+#graphify/code #graphify/EXTRACTED #community/Community_53

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/space/views/asset.py"
 type: "code"
-community: "Endpoint Issue"
+community: "Community 32"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_Issue
+  - community/Community_32
 ---
 
 # EntityAssetEndpoint
 
 ## Connections
-
 - [[.delete()_12]] - `method` [EXTRACTED]
 - [[.get()_63]] - `method` [EXTRACTED]
 - [[.get_permissions()_3]] - `method` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[S3Storage]] - `uses` [INFERRED]
 - [[asset.py_7]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_32

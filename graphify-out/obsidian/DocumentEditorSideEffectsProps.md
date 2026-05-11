@@ -1,18 +1,18 @@
 ---
-source_file: "editor/src/ce/components/document-editor-side-effects.ts"
+source_file: "packages/editor/src/ce/components/document-editor-side-effects.ts"
 type: "code"
-community: "Document Collaborative"
+community: "Editor Extensions"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Document_Collaborative
+  - community/Editor_Extensions
 ---
 
 # DocumentEditorSideEffectsProps
 
 ## Connections
-
 - [[document-editor-side-effects.ts]] - `contains` [EXTRACTED]
+- [[document-editor-side-effects.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Document_Collaborative
+#graphify/code #graphify/EXTRACTED #community/Editor_Extensions

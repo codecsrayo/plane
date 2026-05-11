@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/use-power-k.ts"
 type: "code"
-community: "Power Shortcuts"
+community: "Community 130"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Power_Shortcuts
+  - community/Community_130
 ---
 
 # usePowerK()
 
 ## Connections
-
 - [[PowerKModalDefaultPage()]] - `calls` [EXTRACTED]
 - [[PowerKModalSearchMenu()]] - `calls` [EXTRACTED]
 - [[ShortcutsModal()]] - `calls` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[usePowerKMiscellaneousCommands()]] - `calls` [EXTRACTED]
 - [[wrapper.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Power_Shortcuts
+#graphify/code #graphify/EXTRACTED #community/Community_130

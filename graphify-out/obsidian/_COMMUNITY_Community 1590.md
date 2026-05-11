@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_239]] - code - web/ce/components/cycles/end-cycle/index.ts
+- [[index.ts_258]] - code - web/ce/components/command-palette/power-k/pages/context-based/index.ts
 
 ## Live Query (requires Dataview plugin)
 

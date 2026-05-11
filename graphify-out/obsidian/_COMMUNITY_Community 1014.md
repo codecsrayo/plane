@@ -10,9 +10,8 @@ members: 2
 **Members:** 2 nodes
 
 ## Members
-
-- [[@planeeditor Package]] - document - packages/editor/Readme.md
-- [[useEditor Hook]] - document - packages/editor/Readme.md
+- [[MaintenanceMessage()]] - code - web/ce/components/instance/maintenance-message.tsx
+- [[maintenance-message.tsx]] - code - web/ce/components/instance/maintenance-message.tsx
 
 ## Live Query (requires Dataview plugin)
 

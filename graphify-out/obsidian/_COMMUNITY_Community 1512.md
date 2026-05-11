@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_156]] - code - propel/src/combobox/index.ts
+- [[index.ts_176]] - code - propel/src/emoji-icon-picker/emoji/index.ts
 
 ## Live Query (requires Dataview plugin)
 

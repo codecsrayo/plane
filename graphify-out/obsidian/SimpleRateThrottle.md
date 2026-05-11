@@ -1,19 +1,18 @@
 ---
 source_file: ""
 type: "code"
-community: "Project Endpoint"
+community: "Community 25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Endpoint
+  - community/Community_25
 ---
 
 # SimpleRateThrottle
 
 ## Connections
-
 - [[ApiKeyRateThrottle]] - `inherits` [EXTRACTED]
 - [[AssetRateThrottle]] - `inherits` [EXTRACTED]
 - [[ServiceTokenRateThrottle]] - `inherits` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Endpoint
+#graphify/code #graphify/EXTRACTED #community/Community_25

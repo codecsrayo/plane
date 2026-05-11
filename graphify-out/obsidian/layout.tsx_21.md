@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(list)/layout.tsx"
 type: "code"
-community: "Project Issues"
+community: "Module & Cycle Analytics"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Issues
+  - community/Module__Cycle_Analytics
 ---
 
 # layout.tsx
 
 ## Connections
-
 - [[AppHeader]] - `imports` [EXTRACTED]
 - [[ContentWrapper()]] - `imports` [EXTRACTED]
 - [[CyclesListHeader]] - `imports` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[header.tsx_13]] - `imports_from` [EXTRACTED]
 - [[mobile-header.tsx_6]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Issues
+#graphify/code #graphify/EXTRACTED #community/Module__Cycle_Analytics

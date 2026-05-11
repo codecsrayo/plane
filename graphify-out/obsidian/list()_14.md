@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/cycle/base.py"
 type: "code"
-community: "Cycle Endpoint"
+community: "Community 41"
 location: "L184"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Endpoint
+  - community/Community_41
 ---
 
 # list()
 
 ## Connections
-
 - [[.get_queryset()_36]] - `calls` [EXTRACTED]
 - [[base.py_14]] - `contains` [EXTRACTED]
 - [[destroy()_14]] - `calls` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[response]] - `calls` [INFERRED]
 - [[user_timezone_converter()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Endpoint
+#graphify/code #graphify/EXTRACTED #community/Community_41

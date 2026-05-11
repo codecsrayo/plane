@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_72]] - code - services/src/dashboard/index.ts
+- [[index.ts_85]] - code - i18n/src/index.ts
 
 ## Live Query (requires Dataview plugin)
 

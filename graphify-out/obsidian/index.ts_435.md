@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/analytics/overview/index.ts"
 type: "code"
-community: "Analytics Tabs"
+community: "Community 65"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Analytics_Tabs
+  - community/Community_65
 ---
 
 # index.ts
 
 ## Connections
-
 - [[tabs.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Analytics_Tabs
+#graphify/code #graphify/EXTRACTED #community/Community_65

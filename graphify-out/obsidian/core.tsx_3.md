@@ -1,18 +1,17 @@
 ---
 source_file: "admin/providers/core.tsx"
 type: "code"
-community: "Error Provider"
+community: "Community 401"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Error_Provider
+  - community/Community_401
 ---
 
 # core.tsx
 
 ## Connections
-
 - [[CoreProviders()]] - `contains` [EXTRACTED]
 - [[DEFAULT_SWR_CONFIG_1]] - `contains` [EXTRACTED]
 - [[InstanceProvider]] - `imports` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[toast.tsx_1]] - `imports_from` [EXTRACTED]
 - [[user.provider.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Error_Provider
+#graphify/code #graphify/EXTRACTED #community/Community_401

@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/auth/forgot_reset_password.rs"
 type: "code"
-community: "Password Email"
+community: "Community 52"
 location: "L163"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Password_Email
+  - community/Community_52
 ---
 
 # handle_forgot_password()
 
 ## Connections
-
 - [[.instance_not_configured()]] - `calls` [INFERRED]
 - [[.invalid_email()]] - `calls` [INFERRED]
 - [[.json()]] - `calls` [INFERRED]
@@ -25,4 +24,4 @@ tags:
 - [[get_config_value()]] - `calls` [INFERRED]
 - [[send_reset_email()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Password_Email
+#graphify/code #graphify/INFERRED #community/Community_52

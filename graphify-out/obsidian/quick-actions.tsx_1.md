@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/workspace/sidebar/quick-actions.tsx"
 type: "code"
-community: "Project Profile"
+community: "Project Filters & Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Profile
+  - community/Project_Filters__Archives
 ---
 
 # quick-actions.tsx
 
 ## Connections
-
 - [[CreateUpdateIssueModal]] - `imports` [EXTRACTED]
 - [[SidebarAddButton()]] - `imports` [EXTRACTED]
 - [[SidebarQuickActions]] - `contains` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[useCommandPalette()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Profile
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

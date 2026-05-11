@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/integrations_external.rs"
 type: "code"
-community: "Returns Unauthenticated"
+community: "Community 273"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Unauthenticated
+  - community/Community_273
 ---
 
 # setup()
 
 ## Connections
-
 - [[.spawn()]] - `calls` [INFERRED]
 - [[ai_assistant_unauthenticated_returns_401()]] - `calls` [EXTRACTED]
 - [[ai_assistant_without_api_key_returns_4xx()]] - `calls` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[list_workspace_integrations_member_returns_200()]] - `calls` [EXTRACTED]
 - [[list_workspace_integrations_unauthenticated_returns_401()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Unauthenticated
+#graphify/code #graphify/EXTRACTED #community/Community_273

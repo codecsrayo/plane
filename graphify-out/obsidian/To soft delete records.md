@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/mixins.py"
 type: "rationale"
-community: "User Meta"
+community: "Community 107"
 location: "L62"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/User_Meta
+  - community/Community_107
 ---
 
 # To soft delete records
 
 ## Connections
-
 - [[SoftDeleteModel]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/User_Meta
+#graphify/rationale #graphify/EXTRACTED #community/Community_107

@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/instance/base.ts"
 type: "code"
-community: "User Instance"
+community: "Community 100"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User_Instance
+  - community/Community_100
 ---
 
 # base.ts
 
 ## Connections
-
 - [[IFormattedInstanceConfiguration]] - `contains` [EXTRACTED]
 - [[IInstance]] - `contains` [EXTRACTED]
 - [[IInstanceAdmin]] - `contains` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[index.ts_102]] - `imports_from` [EXTRACTED]
 - [[users.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User_Instance
+#graphify/code #graphify/EXTRACTED #community/Community_100

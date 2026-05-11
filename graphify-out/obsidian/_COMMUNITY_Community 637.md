@@ -1,18 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.40
+members: 5
 ---
 
 # Community 637
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.40 - moderately connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[MemberDropdownProps]] - code - web/core/components/dropdowns/member/types.d.ts
-- [[types.d.ts_2]] - code - web/core/components/dropdowns/member/types.d.ts
+- [[0053_auto_20240102_1315.py]] - code - api/plane/db/migrations/0053_auto_20240102_1315.py
+- [[Migration_86]] - code - api/plane/db/migrations/0053_auto_20240102_1315.py
+- [[issue_view()]] - code - api/plane/db/migrations/0053_auto_20240102_1315.py
+- [[project_user_properties()]] - code - api/plane/db/migrations/0053_auto_20240102_1315.py
+- [[workspace_user_properties()]] - code - api/plane/db/migrations/0053_auto_20240102_1315.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -20,3 +22,9 @@ members: 2
 TABLE source_file, type FROM #community/Community_637
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Python Workflow Services]]
+
+## Top bridge nodes
+- [[workspace_user_properties()]] - degree 2, connects to 1 community

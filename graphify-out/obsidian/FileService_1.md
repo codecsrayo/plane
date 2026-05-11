@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/file.service.ts"
 type: "code"
-community: "Cover Image"
+community: "Community 266"
 location: "L53"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cover_Image
+  - community/Community_266
 ---
 
 # FileService
 
 ## Connections
-
 - [[.cancelUpload()_3]] - `method` [EXTRACTED]
 - [[.checkIfAssetExists()]] - `method` [EXTRACTED]
 - [[.constructor()_147]] - `method` [EXTRACTED]
@@ -45,4 +44,4 @@ tags:
 - [[user-image-upload-modal.tsx]] - `imports` [EXTRACTED]
 - [[workspace-image-upload-modal.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cover_Image
+#graphify/code #graphify/EXTRACTED #community/Community_266

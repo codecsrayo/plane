@@ -1,18 +1,17 @@
 ---
 source_file: "live/src/services/user.service.ts"
 type: "code"
-community: "User Profile"
+community: "Community 51"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User_Profile
+  - community/Community_51
 ---
 
 # UserService
 
 ## Connections
-
 - [[.changePassword()]] - `method` [EXTRACTED]
 - [[.checkEmail()]] - `method` [EXTRACTED]
 - [[.constructor()_137]] - `method` [EXTRACTED]
@@ -60,4 +59,4 @@ tags:
 - [[user.service.ts_2]] - `contains` [EXTRACTED]
 - [[workspace-activity-list.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User_Profile
+#graphify/code #graphify/EXTRACTED #community/Community_51

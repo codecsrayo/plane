@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/issue/issue-details/sub_issues_filter.store.ts"
 type: "code"
-community: "Issue Group"
+community: "Issue Store & Filters Logic"
 location: "L107"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Group
+  - community/Issue_Store__Filters_Logic
 ---
 
 # subIssueFilters
 
 ## Connections
-
 - [[sub_issues_filter.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Group
+#graphify/code #graphify/EXTRACTED #community/Issue_Store__Filters_Logic

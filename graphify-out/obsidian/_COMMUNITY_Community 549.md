@@ -1,17 +1,22 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.48
+members: 7
 ---
 
 # Community 549
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.48 - moderately connected
+**Members:** 7 nodes
 
 ## Members
-
-- [[index.ts_172]] - code - propel/src/charts/radar-chart/index.ts
+- [[config.ts_4]] - code - logger/src/config.ts
+- [[config.ts_10]] - code - packages/logger/src/config.ts
+- [[logger]] - code - packages/logger/src/config.ts
+- [[loggerConfig]] - code - packages/logger/src/config.ts
+- [[loggerMiddleware]] - code - packages/logger/src/middleware.ts
+- [[middleware.ts]] - code - logger/src/middleware.ts
+- [[middleware.ts_1]] - code - packages/logger/src/middleware.ts
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,18 +1,17 @@
 ---
 source_file: "web/helpers/authentication.helper.tsx"
 type: "code"
-community: "Auth Error"
+community: "Community 58"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Error
+  - community/Community_58
 ---
 
 # authentication.helper.tsx
 
 ## Connections
-
 - [[ALLOWED_GLOBAL_NEXT_PATHS]] - `contains` [EXTRACTED]
 - [[EAuthModes_1]] - `contains` [EXTRACTED]
 - [[EAuthSteps_1]] - `contains` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[passwordErrors]] - `contains` [EXTRACTED]
 - [[sanitizeNextPath()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Error
+#graphify/code #graphify/EXTRACTED #community/Community_58

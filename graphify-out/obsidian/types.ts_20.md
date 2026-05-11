@@ -1,18 +1,17 @@
 ---
 source_file: "live/src/lib/pdf/types.ts"
 type: "code"
-community: "Colors Render"
+community: "Community 55"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Colors_Render
+  - community/Community_55
 ---
 
 # types.ts
 
 ## Connections
-
 - [[KeyGenerator]] - `contains` [EXTRACTED]
 - [[MarkRendererRegistry]] - `contains` [EXTRACTED]
 - [[NodeRendererRegistry]] - `contains` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[node-renderers.tsx]] - `imports_from` [EXTRACTED]
 - [[plane-pdf-exporter.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Colors_Render
+#graphify/code #graphify/EXTRACTED #community/Community_55

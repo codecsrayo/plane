@@ -1,19 +1,18 @@
 ---
 source_file: "web/core/components/base-layouts/list/group-header.tsx"
 type: "code"
-community: "Group Drop"
+community: "Community 255"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group_Drop
+  - community/Community_255
 ---
 
 # GroupHeader()
 
 ## Connections
-
 - [[group-header.tsx_1]] - `contains` [EXTRACTED]
 - [[group.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group_Drop
+#graphify/code #graphify/EXTRACTED #community/Community_255

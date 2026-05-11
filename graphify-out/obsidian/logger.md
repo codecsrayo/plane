@@ -1,18 +1,18 @@
 ---
-source_file: "logger/src/config.ts"
+source_file: "packages/logger/src/config.ts"
 type: "code"
-community: "Logger Config"
+community: "Community 549"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Logger_Config
+  - community/Community_549
 ---
 
 # logger
 
 ## Connections
-
 - [[config.ts_4]] - `contains` [EXTRACTED]
+- [[config.ts_10]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Logger_Config
+#graphify/code #graphify/EXTRACTED #community/Community_549

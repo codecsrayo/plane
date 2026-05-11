@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/utils/url.rs"
 type: "code"
-community: "Detects Accepts"
+community: "Community 399"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Detects_Accepts
+  - community/Community_399
 ---
 
 # url.rs
 
 ## Connections
-
 - [[accepts_full_https()]] - `contains` [EXTRACTED]
 - [[accepts_localhost_and_ipv4()]] - `contains` [EXTRACTED]
 - [[allows_normal_names()]] - `contains` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[rejects_garbage()]] - `contains` [EXTRACTED]
 - [[url_pattern()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Detects_Accepts
+#graphify/code #graphify/EXTRACTED #community/Community_399

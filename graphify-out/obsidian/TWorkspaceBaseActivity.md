@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/activity.ts"
+source_file: "packages/types/src/activity.ts"
 type: "code"
-community: "Activity Tbaseactivity"
+community: "Community 568"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Activity_Tbaseactivity
+  - community/Community_568
 ---
 
 # TWorkspaceBaseActivity
 
 ## Connections
-
 - [[activity.ts]] - `contains` [EXTRACTED]
+- [[activity.ts_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Activity_Tbaseactivity
+#graphify/code #graphify/EXTRACTED #community/Community_568

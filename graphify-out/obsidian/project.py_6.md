@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/models/project.py"
 type: "code"
-community: "Project Return"
+community: "Community 89"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Return
+  - community/Community_89
 ---
 
 # project.py
 
 ## Connections
-
 - [[TODO Remove workspace relation later]] - `rationale_for` [EXTRACTED]
 - [[Enum]] - `imports_from` [EXTRACTED]
 - [[Meta_42]] - `contains` [EXTRACTED]
@@ -42,4 +41,4 @@ tags:
 - [[module.py_6]] - `imports_from` [EXTRACTED]
 - [[state.py_6]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Return
+#graphify/code #graphify/EXTRACTED #community/Community_89

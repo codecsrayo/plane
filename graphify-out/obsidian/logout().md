@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/auth/logout.rs"
 type: "code"
-community: "Password Email"
+community: "Community 53"
 location: "L29"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Password_Email
+  - community/Community_53
 ---
 
 # logout()
 
 ## Connections
-
 - [[.deactivate()]] - `calls` [INFERRED]
 - [[.post()_18]] - `calls` [INFERRED]
 - [[.post()_27]] - `calls` [INFERRED]
@@ -21,4 +20,4 @@ tags:
 - [[logout.rs]] - `contains` [EXTRACTED]
 - [[perform_logout()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Password_Email
+#graphify/code #graphify/INFERRED #community/Community_53

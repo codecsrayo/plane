@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/instances.rs"
 type: "code"
-community: "User Github"
+community: "Rust API Handlers"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User_Github
+  - community/Rust_API_Handlers
 ---
 
 # instances.rs
 
 ## Connections
-
 - [[ConfigVar_1]] - `contains` [EXTRACTED]
 - [[CreateAdminRequest]] - `contains` [EXTRACTED]
 - [[TestEmailRequest]] - `contains` [EXTRACTED]
@@ -40,4 +39,4 @@ tags:
 - [[signup_screen_visited()]] - `contains` [EXTRACTED]
 - [[update_configurations()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User_Github
+#graphify/code #graphify/EXTRACTED #community/Rust_API_Handlers

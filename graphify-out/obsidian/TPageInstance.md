@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/pages/base-page.ts"
 type: "code"
-community: "Control Move"
+community: "Community 50"
 location: "L77"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Control_Move
+  - community/Community_50
 ---
 
 # TPageInstance
 
 ## Connections
-
 - [[actions.tsx_1]] - `imports` [EXTRACTED]
 - [[actions.tsx_2]] - `imports` [EXTRACTED]
 - [[actors-info.tsx]] - `imports` [EXTRACTED]
@@ -54,4 +53,4 @@ tags:
 - [[use-realtime-page-events.tsx]] - `imports` [EXTRACTED]
 - [[version-history.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Control_Move
+#graphify/code #graphify/EXTRACTED #community/Community_50

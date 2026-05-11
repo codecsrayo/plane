@@ -1,18 +1,17 @@
 ---
 source_file: "decorators/src/rest.ts"
 type: "code"
-community: "Rest Method"
+community: "Community 441"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Rest_Method
+  - community/Community_441
 ---
 
 # rest.ts
 
 ## Connections
-
 - [[Controller()]] - `contains` [EXTRACTED]
 - [[Delete]] - `contains` [EXTRACTED]
 - [[Get]] - `contains` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[RestMethod]] - `contains` [EXTRACTED]
 - [[createHttpMethodDecorator()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Rest_Method
+#graphify/code #graphify/EXTRACTED #community/Community_441

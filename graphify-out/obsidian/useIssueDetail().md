@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/use-issue-detail.ts"
 type: "code"
-community: "Issue Activity"
+community: "Issue Activity Types"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Issue_Activity_Types
 ---
 
 # useIssueDetail()
 
 ## Connections
-
 - [[ArchivedIssueDetailsPage()]] - `calls` [EXTRACTED]
 - [[IssueActivityBlockComponent()]] - `calls` [EXTRACTED]
 - [[IssueCreatorDisplay()]] - `calls` [EXTRACTED]
@@ -148,4 +147,4 @@ tags:
 - [[work-item-header.tsx]] - `imports` [EXTRACTED]
 - [[work-item-level.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Types

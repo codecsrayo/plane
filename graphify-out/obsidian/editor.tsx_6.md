@@ -1,20 +1,19 @@
 ---
 source_file: "web/core/components/editor/lite-text/editor.tsx"
 type: "code"
-community: "Toolbar Items"
+community: "Community 111"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toolbar_Items
+  - community/Community_111
 ---
 
 # editor.tsx
 
 ## Connections
-
 - [[IssueCommentToolbar()]] - `imports` [EXTRACTED]
-- [[LiteTextEditor]] - `contains` [EXTRACTED]
+- [[LiteTextEditor()]] - `contains` [EXTRACTED]
 - [[LiteTextEditorWrapperProps]] - `contains` [EXTRACTED]
 - [[LiteToolbar()]] - `imports` [EXTRACTED]
 - [[WorkspaceService_1]] - `imports` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[workspace.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[workspaceService_8]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toolbar_Items
+#graphify/code #graphify/EXTRACTED #community/Community_111

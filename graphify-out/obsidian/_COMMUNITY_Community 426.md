@@ -1,19 +1,27 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 0.30
+members: 12
 ---
 
 # Community 426
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 0.30 - loosely connected
+**Members:** 12 nodes
 
 ## Members
-
-- [[Model_107]] - code - api_rust/src/entities/github_repository_syncs.rs
-- [[Relation_107]] - code - api_rust/src/entities/github_repository_syncs.rs
-- [[github_repository_syncs.rs]] - code - api_rust/src/entities/github_repository_syncs.rs
+- [[CREATE_LABEL_TAB_INDICES]] - code - packages/constants/src/tab-indices.ts
+- [[ETabIndices]] - code - packages/constants/src/tab-indices.ts
+- [[INTAKE_ISSUE_CREATE_FORM_TAB_INDICES]] - code - packages/constants/src/tab-indices.ts
+- [[ISSUE_FORM_TAB_INDICES]] - code - packages/constants/src/tab-indices.ts
+- [[PROJECT_CREATE_TAB_INDICES]] - code - packages/constants/src/tab-indices.ts
+- [[PROJECT_CYCLE_TAB_INDICES]] - code - packages/constants/src/tab-indices.ts
+- [[PROJECT_MODULE_TAB_INDICES]] - code - packages/constants/src/tab-indices.ts
+- [[PROJECT_PAGE_TAB_INDICES]] - code - packages/constants/src/tab-indices.ts
+- [[PROJECT_VIEW_TAB_INDICES]] - code - packages/constants/src/tab-indices.ts
+- [[TAB_INDEX_MAP]] - code - packages/constants/src/tab-indices.ts
+- [[tab-indices.ts]] - code - constants/src/tab-indices.ts
+- [[tab-indices.ts_2]] - code - packages/constants/src/tab-indices.ts
 
 ## Live Query (requires Dataview plugin)
 

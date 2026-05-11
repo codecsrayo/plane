@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/auth/responses.rs"
 type: "code"
-community: "Password Email"
+community: "Community 21"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Password_Email
+  - community/Community_21
 ---
 
 # AuthError
 
 ## Connections
-
 - [[.email_required()]] - `method` [EXTRACTED]
 - [[.expired_password_token()]] - `method` [EXTRACTED]
 - [[.incorrect_old_password()]] - `method` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[.user_does_not_exist()]] - `method` [EXTRACTED]
 - [[responses.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Password_Email
+#graphify/code #graphify/EXTRACTED #community/Community_21

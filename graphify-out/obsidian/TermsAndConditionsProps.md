@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/account/terms-and-conditions.tsx"
 type: "code"
-community: "Auth Terms"
+community: "Community 58"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Terms
+  - community/Community_58
 ---
 
 # TermsAndConditionsProps
 
 ## Connections
-
 - [[terms-and-conditions.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Terms
+#graphify/code #graphify/EXTRACTED #community/Community_58

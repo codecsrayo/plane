@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/external/base.py"
 type: "code"
-community: "Provider Endpoint"
+community: "Community 25"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Provider_Endpoint
+  - community/Community_25
 ---
 
 # base.py
 
 ## Connections
-
 - [[AnthropicProvider]] - `contains` [EXTRACTED]
 - [[GPTIntegrationEndpoint]] - `contains` [EXTRACTED]
 - [[GeminiProvider]] - `contains` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[get_llm_response()]] - `contains` [EXTRACTED]
 - [[post()_9]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Provider_Endpoint
+#graphify/code #graphify/EXTRACTED #community/Community_25

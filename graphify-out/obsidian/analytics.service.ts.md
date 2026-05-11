@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/analytics.service.ts"
 type: "code"
-community: "Analytics Insight"
+community: "Community 391"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Analytics_Insight
+  - community/Community_391
 ---
 
 # analytics.service.ts
 
 ## Connections
-
 - [[AnalyticsService]] - `contains` [EXTRACTED]
 - [[api.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[created-vs-resolved.tsx]] - `imports_from` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[total-insights.tsx]] - `imports_from` [EXTRACTED]
 - [[workitems-insight-table.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Analytics_Insight
+#graphify/code #graphify/EXTRACTED #community/Community_391

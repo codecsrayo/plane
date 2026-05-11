@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/components/projects/settings/intake/header.tsx"
 type: "code"
-community: "Issue Inbox"
+community: "Community 84"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Inbox
+  - community/Community_84
 ---
 
 # header.tsx
 
 ## Connections
-
 - [[BreadcrumbLink()]] - `imports` [EXTRACTED]
 - [[CommonProjectBreadcrumbs()]] - `imports` [EXTRACTED]
 - [[ProjectInboxHeader]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[useProjectInbox()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Inbox
+#graphify/code #graphify/EXTRACTED #community/Community_84

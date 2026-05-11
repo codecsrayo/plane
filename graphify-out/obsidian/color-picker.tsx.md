@@ -1,19 +1,18 @@
 ---
 source_file: "ui/src/color-picker/color-picker.tsx"
 type: "code"
-community: "Color Picker"
+community: "Community 650"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Color_Picker
+  - community/Community_650
 ---
 
 # color-picker.tsx
 
 ## Connections
-
 - [[ColorPicker()]] - `contains` [EXTRACTED]
 - [[ColorPickerProps]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Color_Picker
+#graphify/code #graphify/EXTRACTED #community/Community_650

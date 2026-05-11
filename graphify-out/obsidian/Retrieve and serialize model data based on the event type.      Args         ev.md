@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/bgtasks/webhook_task.py"
 type: "rationale"
-community: "Webhook Model"
+community: "Community 450"
 location: "L144"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Webhook_Model
+  - community/Community_450
 ---
 
-# Retrieve and serialize model data based on the event type. Args: ev
+# Retrieve and serialize model data based on the event type.      Args:         ev
 
 ## Connections
-
 - [[get_model_data()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Webhook_Model
+#graphify/rationale #graphify/EXTRACTED #community/Community_450

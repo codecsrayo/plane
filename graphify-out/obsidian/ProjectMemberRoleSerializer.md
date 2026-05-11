@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/serializers/project.py"
 type: "code"
-community: "Serializer Project"
+community: "Community 68"
 location: "L185"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Serializer_Project
+  - community/Community_68
 ---
 
 # ProjectMemberRoleSerializer
 
 ## Connections
-
 - [[.get()_6]] - `calls` [INFERRED]
 - [[BaseSerializer_2]] - `uses` [INFERRED]
 - [[DynamicBaseSerializer_1]] - `inherits` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[project.py_2]] - `contains` [EXTRACTED]
 - [[retrieve()_8]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Serializer_Project
+#graphify/code #graphify/INFERRED #community/Community_68

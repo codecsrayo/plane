@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/power-k/ui/pages/context-based/work-item/estimates-menu.tsx"
 type: "code"
-community: "Menu Power"
+community: "Community 210"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu_Power
+  - community/Community_210
 ---
 
 # Props
 
 ## Connections
-
 - [[estimates-menu.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Menu_Power
+#graphify/code #graphify/EXTRACTED #community/Community_210

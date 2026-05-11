@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/issue_filters.py"
 type: "code"
-community: "Date Issue"
+community: "Community 186"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Date_Issue
+  - community/Community_186
 ---
 
 # issue_filters.py
 
 ## Connections
-
 - [[date_filter()]] - `contains` [EXTRACTED]
 - [[filter_assignees()]] - `contains` [EXTRACTED]
 - [[filter_completed_at()]] - `contains` [EXTRACTED]
@@ -43,4 +42,4 @@ tags:
 - [[issue_filters()]] - `contains` [EXTRACTED]
 - [[string_date_filter()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Date_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_186

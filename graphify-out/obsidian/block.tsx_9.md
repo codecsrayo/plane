@@ -1,18 +1,17 @@
 ---
 source_file: "space/components/issues/issue-layouts/kanban/block.tsx"
 type: "code"
-community: "Issue Peek"
+community: "Community 167"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Peek
+  - community/Community_167
 ---
 
 # block.tsx
 
 ## Connections
-
 - [[BlockReactions]] - `imports` [EXTRACTED]
 - [[IssueBlockProps]] - `contains` [EXTRACTED]
 - [[IssueDetailsBlockProps]] - `contains` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[utils.tsx_3]] - `imports_from` [EXTRACTED]
 - [[with-display-properties-HOC.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Peek
+#graphify/code #graphify/EXTRACTED #community/Community_167

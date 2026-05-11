@@ -1,18 +1,18 @@
 ---
-source_file: "propel/src/utils/classname.tsx"
+source_file: "packages/propel/src/utils/classname.tsx"
 type: "code"
-community: "Tabs Custom"
+community: "Community 164"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Tabs_Custom
+  - community/Community_164
 ---
 
 # isCustomTypography()
 
 ## Connections
-
 - [[classname.tsx_1]] - `contains` [EXTRACTED]
+- [[classname.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Tabs_Custom
+#graphify/code #graphify/EXTRACTED #community/Community_164

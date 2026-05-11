@@ -1,31 +1,47 @@
 ---
 type: community
-cohesion: 0.21
-members: 15
+cohesion: 0.09
+members: 32
 ---
 
 # Community 172
 
-**Cohesion:** 0.21 - loosely connected
-**Members:** 15 nodes
+**Cohesion:** 0.09 - loosely connected
+**Members:** 32 nodes
 
 ## Members
-
-- [[DeleteWebhookModal()]] - code - web/core/components/web-hooks/delete-webhook-modal.tsx
-- [[IDeleteWebhook]] - code - web/core/components/web-hooks/delete-webhook-modal.tsx
-- [[IWebhookListItem]] - code - web/core/components/web-hooks/webhooks-list-item.tsx
-- [[Props_164]] - code - web/core/components/web-hooks/form/form.tsx
-- [[WebhookForm]] - code - web/core/components/web-hooks/form/form.tsx
-- [[WebhooksList]] - code - web/core/components/web-hooks/webhooks-list.tsx
-- [[WebhooksListItem()]] - code - web/core/components/web-hooks/webhooks-list-item.tsx
-- [[delete-webhook-modal.tsx]] - code - web/core/components/web-hooks/delete-webhook-modal.tsx
-- [[form.tsx_7]] - code - web/core/components/web-hooks/form/form.tsx
-- [[index.ts_82]] - code - web/core/components/web-hooks/index.ts
-- [[initialWebhookPayload]] - code - web/core/components/web-hooks/form/form.tsx
-- [[use-webhook.ts]] - code - web/core/hooks/store/use-webhook.ts
-- [[useWebhook()]] - code - web/core/hooks/store/use-webhook.ts
-- [[webhooks-list-item.tsx]] - code - web/core/components/web-hooks/webhooks-list-item.tsx
-- [[webhooks-list.tsx]] - code - web/core/components/web-hooks/webhooks-list.tsx
+- [[.constructor()_186]] - code - live/src/controllers/collaboration.controller.ts
+- [[.constructor()_184]] - code - live/src/hocuspocus.ts
+- [[.convertDocument()]] - code - live/src/controllers/document.controller.ts
+- [[.getInstance()]] - code - live/src/hocuspocus.ts
+- [[.getServer()]] - code - live/src/hocuspocus.ts
+- [[.handleConnection()]] - code - live/src/controllers/collaboration.controller.ts
+- [[.healthCheck()]] - code - live/src/controllers/health.controller.ts
+- [[.initialize()_1]] - code - live/src/hocuspocus.ts
+- [[.resetInstance()]] - code - live/src/hocuspocus.ts
+- [[CONTROLLERS]] - code - live/src/controllers/index.ts
+- [[CollaborationController]] - code - live/src/controllers/collaboration.controller.ts
+- [[DocumentController]] - code - live/src/controllers/document.controller.ts
+- [[HealthController]] - code - live/src/controllers/health.controller.ts
+- [[HocusPocusServerManager]] - code - live/src/hocuspocus.ts
+- [[TConvertDocumentRequestBody]] - code - live/src/types/index.ts
+- [[auth-middleware.ts]] - code - live/src/lib/auth-middleware.ts
+- [[collaboration.controller.ts]] - code - live/src/controllers/collaboration.controller.ts
+- [[convertDocumentSchema]] - code - live/src/controllers/document.controller.ts
+- [[document.controller.ts]] - code - live/src/controllers/document.controller.ts
+- [[env]] - code - live/src/env.ts
+- [[env.ts_1]] - code - live/src/env.ts
+- [[envSchema]] - code - live/src/env.ts
+- [[getExtensions()]] - code - live/src/extensions/index.ts
+- [[health.controller.ts]] - code - live/src/controllers/health.controller.ts
+- [[hocuspocus.ts]] - code - live/src/hocuspocus.ts
+- [[index.ts_447]] - code - live/src/controllers/index.ts
+- [[onStateless()]] - code - live/src/lib/stateless.ts
+- [[redis.ts]] - code - live/src/redis.ts
+- [[requireSecretKey()]] - code - live/src/lib/auth-middleware.ts
+- [[server.ts]] - code - live/src/server.ts
+- [[stateless.ts]] - code - live/src/lib/stateless.ts
+- [[validateEnv()]] - code - live/src/env.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -35,14 +51,18 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 3 edges to [[_COMMUNITY_Account & Sub-Issues]]
-- 2 edges to [[_COMMUNITY_Community 112]]
-- 1 edge to [[_COMMUNITY_Community 92]]
-- 1 edge to [[_COMMUNITY_Applied Filters UI]]
+- 4 edges to [[_COMMUNITY_Community 317]]
+- 2 edges to [[_COMMUNITY_Community 434]]
+- 2 edges to [[_COMMUNITY_Community 435]]
+- 2 edges to [[_COMMUNITY_Service Layer]]
+- 2 edges to [[_COMMUNITY_Community 298]]
+- 1 edge to [[_COMMUNITY_Community 241]]
+- 1 edge to [[_COMMUNITY_Community 155]]
+- 1 edge to [[_COMMUNITY_Community 702]]
 
 ## Top bridge nodes
-
-- [[use-webhook.ts]] - degree 9, connects to 3 communities
-- [[delete-webhook-modal.tsx]] - degree 6, connects to 1 community
-- [[DeleteWebhookModal()]] - degree 3, connects to 1 community
+- [[index.ts_447]] - degree 10, connects to 2 communities
+- [[hocuspocus.ts]] - degree 10, connects to 2 communities
+- [[server.ts]] - degree 10, connects to 2 communities
+- [[redis.ts]] - degree 5, connects to 2 communities
+- [[env.ts_1]] - degree 9, connects to 1 community

@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_3]] - code - ui/src/color-picker/index.ts
+- [[index.ts_22]] - code - ui/src/content-wrapper/index.ts
 
 ## Live Query (requires Dataview plugin)
 

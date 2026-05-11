@@ -1,14 +1,14 @@
 ---
 source_file: "constants/src/spreadsheet.ts"
 type: "code"
-community: "Spreadsheet"
+community: "Community 1364"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet
+  - community/Community_1364
 ---
 
 # spreadsheet.ts
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet
+#graphify/code #graphify/EXTRACTED #community/Community_1364

@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 750
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[ActiveModel_100]] - code - api_rust/src/entities/stickies.rs
+- [[StateHorizontalStackIllustration()]] - code - packages/propel/src/empty-state/assets/horizontal-stack/state.tsx
+- [[state.tsx_10]] - code - packages/propel/src/empty-state/assets/horizontal-stack/state.tsx
+- [[state.tsx]] - code - propel/src/empty-state/assets/horizontal-stack/state.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -19,3 +20,13 @@ members: 1
 TABLE source_file, type FROM #community/Community_750
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 2 edges to [[_COMMUNITY_Community 354]]
+- 2 edges to [[_COMMUNITY_Community 353]]
+- 1 edge to [[_COMMUNITY_Community 472]]
+- 1 edge to [[_COMMUNITY_Community 471]]
+
+## Top bridge nodes
+- [[state.tsx_10]] - degree 4, connects to 3 communities
+- [[state.tsx]] - degree 4, connects to 3 communities

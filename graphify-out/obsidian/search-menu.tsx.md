@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/power-k/ui/modal/search-menu.tsx"
 type: "code"
-community: "Power Shortcuts"
+community: "Community 130"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Power_Shortcuts
+  - community/Community_130
 ---
 
 # search-menu.tsx
 
 ## Connections
-
 - [[PowerKModalNoSearchResultsCommand()]] - `imports` [EXTRACTED]
 - [[PowerKModalSearchMenu()]] - `contains` [EXTRACTED]
 - [[PowerKModalSearchResults]] - `imports` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[workspace.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[workspaceService_11]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Power_Shortcuts
+#graphify/code #graphify/EXTRACTED #community/Community_130

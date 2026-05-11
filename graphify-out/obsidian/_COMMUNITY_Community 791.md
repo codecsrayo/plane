@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 791
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_77]] - code - web/core/components/settings/profile/content/pages/general/index.ts
+- [[Props_61]] - code - web/ce/components/workflow/workflow-disabled-message.tsx
+- [[WorkFlowDisabledMessage()]] - code - web/ce/components/workflow/workflow-disabled-message.tsx
+- [[workflow-disabled-message.tsx]] - code - web/ce/components/workflow/workflow-disabled-message.tsx
 
 ## Live Query (requires Dataview plugin)
 

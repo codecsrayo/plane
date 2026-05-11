@@ -1,26 +1,41 @@
 ---
 type: community
-cohesion: 0.31
-members: 10
+cohesion: 0.15
+members: 26
 ---
 
 # Community 218
 
-**Cohesion:** 0.31 - loosely connected
-**Members:** 10 nodes
+**Cohesion:** 0.15 - loosely connected
+**Members:** 26 nodes
 
 ## Members
-
-- [[TimezoneEntry]] - code - api_rust/src/routes/timezones.rs
-- [[TimezonesResponse]] - code - api_rust/src/routes/timezones.rs
-- [[bogota_entry_has_expected_offset()]] - code - api_rust/src/routes/timezones.rs
-- [[build_timezone_list()]] - code - api_rust/src/routes/timezones.rs
-- [[duplicated_india_entries_all_present()]] - code - api_rust/src/routes/timezones.rs
-- [[format_offset_hhmm()]] - code - api_rust/src/routes/timezones.rs
-- [[format_offset_positive_zero_and_negative()]] - code - api_rust/src/routes/timezones.rs
-- [[list_sorted_by_offset_then_label()]] - code - api_rust/src/routes/timezones.rs
-- [[list_timezones()]] - code - api_rust/src/routes/timezones.rs
-- [[timezones.rs]] - code - api_rust/src/routes/timezones.rs
+- [[BothDirections]] - code - packages/propel/src/scrollarea/scrollarea.stories.tsx
+- [[ChatMessages]] - code - packages/propel/src/scrollarea/scrollarea.stories.tsx
+- [[CodeBlock_1]] - code - packages/propel/src/scrollarea/scrollarea.stories.tsx
+- [[DataTable]] - code - packages/propel/src/scrollarea/scrollarea.stories.tsx
+- [[Default_21]] - code - packages/propel/src/scrollarea/scrollarea.stories.tsx
+- [[HorizontalScroll]] - code - packages/propel/src/scrollarea/scrollarea.stories.tsx
+- [[ListExample]] - code - packages/propel/src/scrollarea/scrollarea.stories.tsx
+- [[ScrollArea()_1]] - code - packages/propel/src/scrollarea/scrollarea.tsx
+- [[ScrollAreaOrientation]] - code - packages/propel/src/scrollarea/scrollarea.tsx
+- [[ScrollAreaProps]] - code - packages/propel/src/scrollarea/scrollarea.tsx
+- [[ScrollAreaScrollType]] - code - packages/propel/src/scrollarea/scrollarea.tsx
+- [[ScrollAreaSize]] - code - packages/propel/src/scrollarea/scrollarea.tsx
+- [[ScrollBar]] - code - packages/propel/src/scrollarea/scrollarea.tsx
+- [[ScrollBarProps]] - code - packages/propel/src/scrollarea/scrollarea.tsx
+- [[ScrollTypeAlways]] - code - packages/propel/src/scrollarea/scrollarea.stories.tsx
+- [[ScrollTypeHover]] - code - packages/propel/src/scrollarea/scrollarea.stories.tsx
+- [[ScrollTypeScroll]] - code - packages/propel/src/scrollarea/scrollarea.stories.tsx
+- [[Sizes]] - code - packages/propel/src/scrollarea/scrollarea.stories.tsx
+- [[Story_24]] - code - packages/propel/src/scrollarea/scrollarea.stories.tsx
+- [[horizontalSizeStyles]] - code - packages/propel/src/scrollarea/scrollarea.tsx
+- [[scrollarea.stories.tsx_1]] - code - packages/propel/src/scrollarea/scrollarea.stories.tsx
+- [[scrollarea.stories.tsx]] - code - propel/src/scrollarea/scrollarea.stories.tsx
+- [[scrollarea.tsx_1]] - code - packages/propel/src/scrollarea/scrollarea.tsx
+- [[scrollarea.tsx]] - code - propel/src/scrollarea/scrollarea.tsx
+- [[thumbSizeStyles_1]] - code - packages/propel/src/scrollarea/scrollarea.tsx
+- [[verticalSizeStyles]] - code - packages/propel/src/scrollarea/scrollarea.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -28,3 +43,10 @@ members: 10
 TABLE source_file, type FROM #community/Community_218
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 4 edges to [[_COMMUNITY_Community 164]]
+
+## Top bridge nodes
+- [[scrollarea.tsx_1]] - degree 13, connects to 1 community
+- [[scrollarea.tsx]] - degree 13, connects to 1 community

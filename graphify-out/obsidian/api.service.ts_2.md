@@ -1,18 +1,17 @@
 ---
 source_file: "live/src/services/api.service.ts"
 type: "code"
-community: "Issue Project"
+community: "Service Layer"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Project
+  - community/Service_Layer
 ---
 
 # api.service.ts
 
 ## Connections
-
 - [[AppError]] - `imports` [EXTRACTED]
 - [[constructor()_11]] - `contains` [EXTRACTED]
 - [[core.service.ts]] - `imports_from` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[setupInterceptors()]] - `contains` [EXTRACTED]
 - [[user.service.ts_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Project
+#graphify/code #graphify/EXTRACTED #community/Service_Layer

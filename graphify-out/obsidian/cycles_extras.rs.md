@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/cycles_extras.rs"
 type: "code"
-community: "Returns Cycle"
+community: "Community 285"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Cycle
+  - community/Community_285
 ---
 
 # cycles_extras.rs
 
 ## Connections
-
 - [[add_favorite_cycle_returns_201()]] - `contains` [EXTRACTED]
 - [[create_cycle()_2]] - `contains` [EXTRACTED]
 - [[create_cycle_with_dates()]] - `contains` [EXTRACTED]
@@ -34,4 +33,4 @@ tags:
 - [[unarchive_cycle_returns_204()]] - `contains` [EXTRACTED]
 - [[update_cycle_user_properties_returns_200()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Cycle
+#graphify/code #graphify/EXTRACTED #community/Community_285

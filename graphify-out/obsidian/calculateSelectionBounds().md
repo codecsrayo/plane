@@ -1,19 +1,19 @@
 ---
-source_file: "editor/src/core/extensions/table/table/utilities/delete-key-shortcut.ts"
+source_file: "packages/editor/src/core/extensions/table/table/utilities/delete-key-shortcut.ts"
 type: "code"
-community: "Cell Multiple"
+community: "Community 150"
 location: "L135"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cell_Multiple
+  - community/Community_150
 ---
 
 # calculateSelectionBounds()
 
 ## Connections
-
 - [[delete-key-shortcut.ts]] - `contains` [EXTRACTED]
+- [[delete-key-shortcut.ts_1]] - `contains` [EXTRACTED]
 - [[handleDeleteKeyOnTable()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cell_Multiple
+#graphify/code #graphify/EXTRACTED #community/Community_150

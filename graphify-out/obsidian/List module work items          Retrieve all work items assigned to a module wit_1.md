@@ -1,14 +1,14 @@
 ---
 source_file: "api/plane/api/views/module.py"
 type: "rationale"
-community: "Work Items"
+community: "Community 1718"
 location: "L801"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Work_Items
+  - community/Community_1718
 ---
 
-# List module work items Retrieve all work items assigned to a module wit
+# List module work items          Retrieve all work items assigned to a module wit
 
-#graphify/rationale #graphify/EXTRACTED #community/Work_Items
+#graphify/rationale #graphify/EXTRACTED #community/Community_1718

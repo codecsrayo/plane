@@ -1,18 +1,17 @@
 ---
 source_file: "utils/src/rich-filters/operations/comparison.ts"
 type: "code"
-community: "Group Condition"
+community: "Community 373"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group_Condition
+  - community/Community_373
 ---
 
 # comparison.ts
 
 ## Connections
-
 - [[core.ts_14]] - `imports_from` [EXTRACTED]
 - [[core.ts_15]] - `imports_from` [EXTRACTED]
 - [[core.ts_12]] - `imports_from` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[shared.ts_6]] - `imports_from` [EXTRACTED]
 - [[transformExpressionTree()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group_Condition
+#graphify/code #graphify/EXTRACTED #community/Community_373

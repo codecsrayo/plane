@@ -1,19 +1,18 @@
 ---
 source_file: "api_rust/tests/project_summary.rs"
 type: "code"
-community: "Project Summary"
+community: "Community 588"
 location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Summary
+  - community/Community_588
 ---
 
 # get_project_summary_unauthenticated_returns_401()
 
 ## Connections
-
 - [[project_summary.rs]] - `contains` [EXTRACTED]
 - [[setup()_31]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Summary
+#graphify/code #graphify/EXTRACTED #community/Community_588

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/porters/exporter.py"
 type: "rationale"
-community: "Exporter Formatter"
+community: "Community 69"
 location: "L51"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Exporter_Formatter
+  - community/Community_69
 ---
 
 # Create formatter instance with appropriate options.
 
 ## Connections
-
 - [[._create_formatter()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Exporter_Formatter
+#graphify/rationale #graphify/EXTRACTED #community/Community_69

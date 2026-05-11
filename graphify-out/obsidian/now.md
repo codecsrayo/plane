@@ -1,18 +1,17 @@
 ---
 source_file: "web/e2e/cycles.spec.ts"
 type: "code"
-community: "Issue Request"
+community: "Community 29"
 location: "L30"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Issue_Request
+  - community/Community_29
 ---
 
 # now
 
 ## Connections
-
 - [[.add_workspace_member()]] - `calls` [INFERRED]
 - [[.create_test_project()]] - `calls` [INFERRED]
 - [[.create_test_user()]] - `calls` [INFERRED]
@@ -261,4 +260,4 @@ tags:
 - [[update_workspace_view()]] - `calls` [INFERRED]
 - [[update_workspace_views()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Issue_Request
+#graphify/code #graphify/INFERRED #community/Community_29

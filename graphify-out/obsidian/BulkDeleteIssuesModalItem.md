@@ -1,19 +1,18 @@
 ---
 source_file: "web/core/components/core/modals/bulk-delete-issues-modal-item.tsx"
 type: "code"
-community: "Cycle Active"
+community: "Project Filters & Archives"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Active
+  - community/Project_Filters__Archives
 ---
 
 # BulkDeleteIssuesModalItem
 
 ## Connections
-
 - [[bulk-delete-issues-modal-item.tsx]] - `contains` [EXTRACTED]
 - [[bulk-delete-issues-modal.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Active
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

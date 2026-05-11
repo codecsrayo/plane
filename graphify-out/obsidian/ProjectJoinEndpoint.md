@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/project/invite.py"
 type: "code"
-community: "Endpoint User"
+community: "Community 27"
 location: "L183"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_User
+  - community/Community_27
 ---
 
 # ProjectJoinEndpoint
 
 ## Connections
-
 - [[.get()_30]] - `method` [EXTRACTED]
 - [[.post()_13]] - `method` [EXTRACTED]
 - [[BaseAPIView]] - `uses` [INFERRED]
@@ -21,4 +20,4 @@ tags:
 - [[ProjectNetwork]] - `uses` [INFERRED]
 - [[invite.py_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_User
+#graphify/code #graphify/EXTRACTED #community/Community_27

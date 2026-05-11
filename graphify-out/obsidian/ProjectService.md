@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/project/project.service.ts"
 type: "code"
-community: "Project User"
+community: "Community 356"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_User
+  - community/Community_356
 ---
 
 # ProjectService
 
 ## Connections
-
 - [[.addProjectToFavorites()]] - `method` [EXTRACTED]
 - [[.checkProjectIdentifierAvailability()]] - `method` [EXTRACTED]
 - [[.constructor()_176]] - `method` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[.updateProjectUserProperties()]] - `method` [EXTRACTED]
 - [[project.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_User
+#graphify/code #graphify/EXTRACTED #community/Community_356

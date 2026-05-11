@@ -1,18 +1,17 @@
 ---
 source_file: "admin/app/(all)/(dashboard)/general/form.tsx"
 type: "code"
-community: "Config Image"
+community: "Community 313"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Config_Image
+  - community/Community_313
 ---
 
 # form.tsx
 
 ## Connections
-
 - [[ControllerInput()]] - `imports` [EXTRACTED]
 - [[GeneralConfigurationForm]] - `contains` [EXTRACTED]
 - [[IGeneralConfigurationForm]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[logger.ts]] - `imports_from` [EXTRACTED]
 - [[page.tsx_70]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Config_Image
+#graphify/code #graphify/EXTRACTED #community/Community_313

@@ -1,18 +1,18 @@
 ---
-source_file: "constants/src/themes.ts"
+source_file: "packages/constants/src/themes.ts"
 type: "code"
-community: "Themes Theme"
+community: "Community 602"
 location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Themes_Theme
+  - community/Community_602
 ---
 
 # THEMES
 
 ## Connections
-
 - [[themes.ts]] - `contains` [EXTRACTED]
+- [[themes.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Themes_Theme
+#graphify/code #graphify/EXTRACTED #community/Community_602

@@ -1,18 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.60
+members: 5
 ---
 
 # Community 598
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.60 - moderately connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[.to()_100]] - code - api_rust/src/entities/teams.rs
-- [[Entity_100]] - code - api_rust/src/entities/teams.rs
+- [[TEmbedConfig]] - code - packages/editor/src/ce/types/issue-embed.ts
+- [[TIssueEmbedConfig]] - code - packages/editor/src/ce/types/issue-embed.ts
+- [[TReadOnlyEmbedConfig]] - code - packages/editor/src/ce/types/issue-embed.ts
+- [[issue-embed.ts]] - code - editor/src/ce/types/issue-embed.ts
+- [[issue-embed.ts_1]] - code - packages/editor/src/ce/types/issue-embed.ts
 
 ## Live Query (requires Dataview plugin)
 

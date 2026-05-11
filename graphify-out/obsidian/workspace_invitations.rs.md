@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/workspace_invitations.rs"
 type: "code"
-community: "Returns Invitation"
+community: "Community 417"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Invitation
+  - community/Community_417
 ---
 
 # workspace_invitations.rs
 
 ## Connections
-
 - [[create_invitation_as_admin_returns_2xx()]] - `contains` [EXTRACTED]
 - [[create_invitation_unauthenticated_returns_401()]] - `contains` [EXTRACTED]
 - [[delete_invitation_nonexistent_returns_4xx()]] - `contains` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[setup()_15]] - `contains` [EXTRACTED]
 - [[update_invitation_nonexistent_returns_4xx()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Invitation
+#graphify/code #graphify/EXTRACTED #community/Community_417

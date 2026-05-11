@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/auth/oauth.rs"
 type: "code"
-community: "Session Presigned"
+community: "Community 78"
 location: "L325"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Session_Presigned
+  - community/Community_78
 ---
 
 # google_callback()
 
 ## Connections
-
 - [[.new()]] - `calls` [INFERRED]
 - [[find_or_create_oauth_user()]] - `calls` [EXTRACTED]
 - [[get_instance_config()]] - `calls` [INFERRED]
@@ -20,4 +19,4 @@ tags:
 - [[oauth.rs]] - `contains` [EXTRACTED]
 - [[postmessage_html()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Session_Presigned
+#graphify/code #graphify/INFERRED #community/Community_78

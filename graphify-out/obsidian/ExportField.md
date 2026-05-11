@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/exporters/schemas/base.py"
 type: "code"
-community: "Field Format"
+community: "Community 63"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Field_Format
+  - community/Community_63
 ---
 
 # ExportField
 
 ## Connections
-
 - [[._format_value()]] - `method` [EXTRACTED]
 - [[._resolve_dotted_path()]] - `method` [EXTRACTED]
 - [[.get_value()]] - `method` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[StringField]] - `inherits` [EXTRACTED]
 - [[base.py_28]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Field_Format
+#graphify/code #graphify/EXTRACTED #community/Community_63

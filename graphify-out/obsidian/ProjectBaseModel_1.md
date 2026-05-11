@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/models/project.py"
 type: "code"
-community: "Issue Sync"
+community: "Community 26"
 location: "L180"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Issue_Sync
+  - community/Community_26
 ---
 
 # ProjectBaseModel
 
 ## Connections
-
 - [[.save()_11]] - `method` [EXTRACTED]
 - [[AuditModel]] - `uses` [INFERRED]
 - [[BaseModel]] - `inherits` [EXTRACTED]
@@ -86,4 +85,4 @@ tags:
 - [[TriageStateManager]] - `uses` [INFERRED]
 - [[project.py_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Issue_Sync
+#graphify/code #graphify/INFERRED #community/Community_26

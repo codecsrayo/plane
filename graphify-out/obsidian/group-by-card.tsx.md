@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/kanban/headers/group-by-card.tsx"
 type: "code"
-community: "Issue Work"
+community: "Filter UI & Breadcrumbs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Work
+  - community/Filter_UI__Breadcrumbs
 ---
 
 # group-by-card.tsx
 
 ## Connections
-
 - [[CreateUpdateIssueModal]] - `imports` [EXTRACTED]
 - [[ExistingIssuesListModal()]] - `imports` [EXTRACTED]
 - [[HeaderGroupByCard]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[use-issue-layout-store.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueStoreType()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Work
+#graphify/code #graphify/EXTRACTED #community/Filter_UI__Breadcrumbs

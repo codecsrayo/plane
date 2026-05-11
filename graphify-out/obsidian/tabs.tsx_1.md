@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/tabs/tabs.tsx"
 type: "code"
-community: "Tabs Custom"
+community: "Community 442"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Tabs_Custom
+  - community/Community_442
 ---
 
 # tabs.tsx
 
 ## Connections
-
 - [[TabsCompound]] - `contains` [EXTRACTED]
 - [[TabsContent]] - `contains` [EXTRACTED]
 - [[TabsContext]] - `contains` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[cn()_1]] - `imports` [EXTRACTED]
 - [[tabs.stories.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Tabs_Custom
+#graphify/code #graphify/EXTRACTED #community/Community_442

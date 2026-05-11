@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/common/empty-state.tsx"
 type: "code"
-community: "Project Settings"
+community: "Work Item Detail & Layouts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Work_Item_Detail__Layouts
 ---
 
 # empty-state.tsx
 
 ## Connections
-
 - [[EmptyState()_2]] - `contains` [EXTRACTED]
 - [[Props_368]] - `contains` [EXTRACTED]
 - [[error.tsx]] - `imports_from` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[page.tsx_58]] - `imports_from` [EXTRACTED]
 - [[root.tsx_71]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Work_Item_Detail__Layouts

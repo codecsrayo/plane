@@ -1,19 +1,18 @@
 ---
 source_file: "api_rust/tests/intake.rs"
 type: "code"
-community: "Returns Intake"
+community: "Community 284"
 location: "L173"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Intake
+  - community/Community_284
 ---
 
 # list_intake_issues_unauthenticated_returns_401()
 
 ## Connections
-
 - [[intake.rs]] - `contains` [EXTRACTED]
 - [[setup()_20]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Intake
+#graphify/code #graphify/EXTRACTED #community/Community_284

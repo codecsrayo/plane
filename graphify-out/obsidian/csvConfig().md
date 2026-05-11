@@ -1,19 +1,18 @@
 ---
 source_file: "web/core/components/analytics/export.ts"
 type: "code"
-community: "Insight Table"
+community: "Community 377"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Insight_Table
+  - community/Community_377
 ---
 
 # csvConfig()
 
 ## Connections
-
 - [[export.ts]] - `contains` [EXTRACTED]
 - [[exportCSV()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Insight_Table
+#graphify/code #graphify/EXTRACTED #community/Community_377

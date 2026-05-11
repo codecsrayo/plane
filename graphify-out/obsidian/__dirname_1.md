@@ -1,18 +1,17 @@
 ---
 source_file: "web/playwright.config.ts"
 type: "code"
-community: "Dirname Playwright"
+community: "Community 998"
 location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dirname_Playwright
+  - community/Community_998
 ---
 
-# \_\_dirname
+# __dirname
 
 ## Connections
-
 - [[playwright.config.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dirname_Playwright
+#graphify/code #graphify/EXTRACTED #community/Community_998

@@ -1,14 +1,14 @@
 ---
 source_file: "api_rust/src/entities/django_migrations.rs"
 type: "code"
-community: "Active Model"
+community: "Community 2006"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Model
+  - community/Community_2006
 ---
 
 # ActiveModel
 
-#graphify/code #graphify/EXTRACTED #community/Active_Model
+#graphify/code #graphify/EXTRACTED #community/Community_2006

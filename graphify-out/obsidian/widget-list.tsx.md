@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/home/widgets/manage/widget-list.tsx"
 type: "code"
-community: "Widget Home"
+community: "Community 265"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Widget_Home
+  - community/Community_265
 ---
 
 # widget-list.tsx
 
 ## Connections
-
 - [[TargetData]] - `imports` [EXTRACTED]
 - [[WidgetItem]] - `imports` [EXTRACTED]
 - [[WidgetList]] - `contains` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[widget-item.tsx]] - `imports_from` [EXTRACTED]
 - [[widget.helpers.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Widget_Home
+#graphify/code #graphify/EXTRACTED #community/Community_265

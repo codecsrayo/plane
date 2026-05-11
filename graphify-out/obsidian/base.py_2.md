@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/user/base.py"
 type: "code"
-community: "Endpoint User"
+community: "Community 53"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_User
+  - community/Community_53
 ---
 
 # base.py
 
 ## Connections
-
 - [[AccountEndpoint]] - `contains` [EXTRACTED]
 - [[ProfileEndpoint]] - `contains` [EXTRACTED]
 - [[UpdateUserOnBoardedEndpoint]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[retrieve()_3]] - `contains` [EXTRACTED]
 - [[retrieve_user_settings()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_User
+#graphify/code #graphify/EXTRACTED #community/Community_53

@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.83
+members: 4
 ---
 
 # Community 675
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.83 - tightly connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_25]] - code - api_rust/src/entities/workspace_user_preferences.rs
+- [[modules.spec.ts]] - code - web/e2e/modules.spec.ts
+- [[modulesBase()]] - code - web/e2e/modules.spec.ts
+- [[pid()_11]] - code - web/e2e/modules.spec.ts
+- [[slug()_14]] - code - web/e2e/modules.spec.ts
 
 ## Live Query (requires Dataview plugin)
 

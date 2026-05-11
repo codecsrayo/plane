@@ -1,40 +1,64 @@
 ---
 type: community
-cohesion: 0.10
-members: 24
+cohesion: 0.09
+members: 49
 ---
 
 # Community 92
 
-**Cohesion:** 0.10 - loosely connected
-**Members:** 24 nodes
+**Cohesion:** 0.09 - loosely connected
+**Members:** 49 nodes
 
 ## Members
-
-- [[.constructor()_24]] - code - web/core/store/issue/issue.store.ts
-- [[IBaseCommandPaletteStore]] - code - web/core/store/base-command-palette.store.ts
-- [[IIssueStore]] - code - web/core/store/issue/issue.store.ts
-- [[IssueStore]] - code - web/core/store/issue/issue.store.ts
-- [[ModalData]] - code - web/core/store/base-command-palette.store.ts
-- [[StoreProvider()]] - code - web/core/lib/store-context.tsx
-- [[base-command-palette.store.ts]] - code - web/core/store/base-command-palette.store.ts
-- [[constructor()]] - code - web/core/store/base-command-palette.store.ts
-- [[filteredIssues]] - code - web/core/store/issue/issue.store.ts
-- [[getCoreModalsState()]] - code - web/core/store/base-command-palette.store.ts
-- [[helper.ts_2]] - code - web/core/components/power-k/actions/helper.ts
-- [[index.ts_12]] - code - web/core/store/issue/workspace-draft/index.ts
-- [[initializeStore()]] - code - web/core/lib/store-context.tsx
-- [[issue.store.ts]] - code - web/core/store/issue/issue.store.ts
-- [[openProjectAndScrollToSidebar()]] - code - web/core/components/power-k/actions/helper.ts
-- [[projectIdentifier]] - code - web/core/store/issue/issue.store.ts
-- [[rootStore]] - code - web/core/lib/store-context.tsx
-- [[store]] - code - web/core/lib/store-context.tsx
-- [[store-context.tsx]] - code - web/core/lib/store-context.tsx
-- [[updatedSettings]] - code - web/core/store/base-command-palette.store.ts
-- [[use-workspace-draft-issue-filters.ts]] - code - web/core/hooks/store/workspace-draft/use-workspace-draft-issue-filters.ts
-- [[use-workspace-draft-issue.ts]] - code - web/core/hooks/store/workspace-draft/use-workspace-draft-issue.ts
-- [[useWorkspaceDraftIssueFilters()]] - code - web/core/hooks/store/workspace-draft/use-workspace-draft-issue-filters.ts
-- [[useWorkspaceDraftIssues()]] - code - web/core/hooks/store/workspace-draft/use-workspace-draft-issue.ts
+- [[CYCLE_GROUP_COLORS]] - code - packages/propel/src/icons/cycle/helper.tsx
+- [[CYCLE_GROUP_I18N_LABELS]] - code - packages/propel/src/icons/cycle/helper.tsx
+- [[CircleDotFullIcon()]] - code - packages/propel/src/icons/cycle/circle-dot-full-icon.tsx
+- [[CycleGroupIcon()]] - code - packages/propel/src/icons/cycle/cycle-group-icon.tsx
+- [[CycleIcon()]] - code - packages/propel/src/icons/project/cycle-icon.tsx
+- [[Default_17]] - code - packages/propel/src/tab-navigation/tab-navigation.stories.tsx
+- [[ICycleGroupIcon]] - code - packages/propel/src/icons/cycle/helper.tsx
+- [[IntakeIcon()]] - code - packages/propel/src/icons/project/intake-icon.tsx
+- [[ModuleIcon()]] - code - packages/propel/src/icons/project/module-icon.tsx
+- [[OverviewIcon()]] - code - packages/propel/src/icons/overview-icon.tsx
+- [[PageIcon()]] - code - packages/propel/src/icons/project/page-icon.tsx
+- [[Story_18]] - code - packages/propel/src/tab-navigation/tab-navigation.stories.tsx
+- [[TCycleGroups_1]] - code - packages/propel/src/icons/cycle/helper.tsx
+- [[TTabNavigationItemProps]] - code - packages/propel/src/tab-navigation/tab-navigation-types.ts
+- [[TTabNavigationListProps]] - code - packages/propel/src/tab-navigation/tab-navigation-types.ts
+- [[TabNavigationItem()]] - code - packages/propel/src/tab-navigation/tab-navigation-item.tsx
+- [[TabNavigationList()]] - code - packages/propel/src/tab-navigation/tab-navigation-list.tsx
+- [[ViewsIcon()]] - code - packages/propel/src/icons/project/view-icon.tsx
+- [[WorkItemsIcon()]] - code - packages/propel/src/icons/project/work-items-icon.tsx
+- [[circle-dot-full-icon.tsx_1]] - code - packages/propel/src/icons/cycle/circle-dot-full-icon.tsx
+- [[circle-dot-full-icon.tsx]] - code - propel/src/icons/cycle/circle-dot-full-icon.tsx
+- [[cycle-group-icon.tsx_1]] - code - packages/propel/src/icons/cycle/cycle-group-icon.tsx
+- [[cycle-group-icon.tsx]] - code - propel/src/icons/cycle/cycle-group-icon.tsx
+- [[cycle-icon.tsx_1]] - code - packages/propel/src/icons/project/cycle-icon.tsx
+- [[cycle-icon.tsx]] - code - propel/src/icons/project/cycle-icon.tsx
+- [[helper.tsx_41]] - code - packages/propel/src/icons/cycle/helper.tsx
+- [[helper.tsx_9]] - code - propel/src/icons/cycle/helper.tsx
+- [[iconComponents]] - code - packages/propel/src/icons/cycle/cycle-group-icon.tsx
+- [[intake-icon.tsx_1]] - code - packages/propel/src/icons/project/intake-icon.tsx
+- [[intake-icon.tsx]] - code - propel/src/icons/project/intake-icon.tsx
+- [[meta_8]] - code - packages/propel/src/tab-navigation/tab-navigation.stories.tsx
+- [[module-icon.tsx_1]] - code - packages/propel/src/icons/project/module-icon.tsx
+- [[module-icon.tsx]] - code - propel/src/icons/project/module-icon.tsx
+- [[overview-icon.tsx_1]] - code - packages/propel/src/icons/overview-icon.tsx
+- [[overview-icon.tsx]] - code - propel/src/icons/overview-icon.tsx
+- [[page-icon.tsx_1]] - code - packages/propel/src/icons/project/page-icon.tsx
+- [[page-icon.tsx]] - code - propel/src/icons/project/page-icon.tsx
+- [[tab-navigation-item.tsx_1]] - code - packages/propel/src/tab-navigation/tab-navigation-item.tsx
+- [[tab-navigation-item.tsx]] - code - propel/src/tab-navigation/tab-navigation-item.tsx
+- [[tab-navigation-list.tsx_1]] - code - packages/propel/src/tab-navigation/tab-navigation-list.tsx
+- [[tab-navigation-list.tsx]] - code - propel/src/tab-navigation/tab-navigation-list.tsx
+- [[tab-navigation-types.ts_1]] - code - packages/propel/src/tab-navigation/tab-navigation-types.ts
+- [[tab-navigation-types.ts]] - code - propel/src/tab-navigation/tab-navigation-types.ts
+- [[tab-navigation.stories.tsx_1]] - code - packages/propel/src/tab-navigation/tab-navigation.stories.tsx
+- [[tab-navigation.stories.tsx]] - code - propel/src/tab-navigation/tab-navigation.stories.tsx
+- [[view-icon.tsx_1]] - code - packages/propel/src/icons/project/view-icon.tsx
+- [[view-icon.tsx]] - code - propel/src/icons/project/view-icon.tsx
+- [[work-items-icon.tsx_1]] - code - packages/propel/src/icons/project/work-items-icon.tsx
+- [[work-items-icon.tsx]] - code - propel/src/icons/project/work-items-icon.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -44,54 +68,14 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 5 edges to [[_COMMUNITY_Applied Filters UI]]
-- 5 edges to [[_COMMUNITY_Calendar UI]]
-- 3 edges to [[_COMMUNITY_Community 37]]
-- 2 edges to [[_COMMUNITY_Authentication UI]]
-- 2 edges to [[_COMMUNITY_Module Analytics]]
-- 2 edges to [[_COMMUNITY_Issue Filters & Context]]
-- 2 edges to [[_COMMUNITY_Issue State Management]]
-- 2 edges to [[_COMMUNITY_Group & Drag UI]]
-- 2 edges to [[_COMMUNITY_Community 190]]
-- 1 edge to [[_COMMUNITY_Community 90]]
-- 1 edge to [[_COMMUNITY_Community 104]]
-- 1 edge to [[_COMMUNITY_Community 193]]
-- 1 edge to [[_COMMUNITY_Community 173]]
-- 1 edge to [[_COMMUNITY_Community 62]]
-- 1 edge to [[_COMMUNITY_Community 52]]
-- 1 edge to [[_COMMUNITY_Community 98]]
-- 1 edge to [[_COMMUNITY_Community 81]]
-- 1 edge to [[_COMMUNITY_Cycle Services & Filters]]
-- 1 edge to [[_COMMUNITY_Empty State Components]]
-- 1 edge to [[_COMMUNITY_Community 141]]
-- 1 edge to [[_COMMUNITY_Active Cycle Stats]]
-- 1 edge to [[_COMMUNITY_Community 63]]
-- 1 edge to [[_COMMUNITY_Community 97]]
-- 1 edge to [[_COMMUNITY_Issue Activity Tracking]]
-- 1 edge to [[_COMMUNITY_Community 105]]
-- 1 edge to [[_COMMUNITY_Community 128]]
-- 1 edge to [[_COMMUNITY_Community 96]]
-- 1 edge to [[_COMMUNITY_Community 75]]
-- 1 edge to [[_COMMUNITY_Member Filters & Description]]
-- 1 edge to [[_COMMUNITY_Community 67]]
-- 1 edge to [[_COMMUNITY_Community 172]]
-- 1 edge to [[_COMMUNITY_Community 36]]
-- 1 edge to [[_COMMUNITY_Community 80]]
-- 1 edge to [[_COMMUNITY_Community 147]]
-- 1 edge to [[_COMMUNITY_Community 41]]
-- 1 edge to [[_COMMUNITY_Community 159]]
-- 1 edge to [[_COMMUNITY_Community 139]]
-- 1 edge to [[_COMMUNITY_Community 168]]
-- 1 edge to [[_COMMUNITY_Community 250]]
-- 1 edge to [[_COMMUNITY_Project Estimates]]
-- 1 edge to [[_COMMUNITY_Community 117]]
-- 1 edge to [[_COMMUNITY_Community 192]]
+- 32 edges to [[_COMMUNITY_Icon Library & Branding]]
+- 24 edges to [[_COMMUNITY_SVG Icon Components]]
+- 4 edges to [[_COMMUNITY_Community 244]]
+- 4 edges to [[_COMMUNITY_Community 292]]
 
 ## Top bridge nodes
-
-- [[store-context.tsx]] - degree 56, connects to 41 communities
-- [[store]] - degree 6, connects to 3 communities
-- [[issue.store.ts]] - degree 8, connects to 2 communities
-- [[index.ts_12]] - degree 4, connects to 2 communities
-- [[use-workspace-draft-issue-filters.ts]] - degree 4, connects to 1 community
+- [[cycle-icon.tsx_1]] - degree 8, connects to 3 communities
+- [[cycle-icon.tsx]] - degree 8, connects to 3 communities
+- [[intake-icon.tsx_1]] - degree 6, connects to 2 communities
+- [[module-icon.tsx_1]] - degree 6, connects to 2 communities
+- [[page-icon.tsx_1]] - degree 6, connects to 2 communities

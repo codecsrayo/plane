@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/management/commands/create_dummy_data.py"
 type: "code"
-community: "Command Issue"
+community: "Community 222"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Command_Issue
+  - community/Community_222
 ---
 
 # create_dummy_data.py
 
 ## Connections
-
 - [[Command_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Command_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_222

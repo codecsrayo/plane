@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/mixins.py"
 type: "code"
-community: "User Meta"
+community: "Community 107"
 location: "L16"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/User_Meta
+  - community/Community_107
 ---
 
 # TimeAuditModel
 
 ## Connections
-
 - [[Account]] - `uses` [INFERRED]
 - [[AuditModel]] - `inherits` [EXTRACTED]
 - [[BotTypeEnum]] - `uses` [INFERRED]
@@ -23,4 +22,4 @@ tags:
 - [[User_2]] - `uses` [INFERRED]
 - [[mixins.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/User_Meta
+#graphify/code #graphify/INFERRED #community/Community_107

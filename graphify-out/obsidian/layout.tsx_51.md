@@ -1,18 +1,17 @@
 ---
 source_file: "space/app/issues/[anchor]/layout.tsx"
 type: "code"
-community: "Issue Applied"
+community: "Community 112"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Applied
+  - community/Community_112
 ---
 
 # layout.tsx
 
 ## Connections
-
 - [[IssueMetadata]] - `contains` [EXTRACTED]
 - [[IssuesLayout()]] - `contains` [EXTRACTED]
 - [[LogoSpinner()]] - `imports` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[use-issue-filter.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueFilter()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Applied
+#graphify/code #graphify/EXTRACTED #community/Community_112

@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/components/gantt-chart/blocks/block-row-list.tsx"
 type: "code"
-community: "Gantt Chart"
+community: "Community 23"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Chart
+  - community/Community_23
 ---
 
 # block-row-list.tsx
 
 ## Connections
-
 - [[BlockRow]] - `imports` [EXTRACTED]
 - [[GanttChartBlocksProps]] - `contains` [EXTRACTED]
 - [[GanttChartRowList()]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[render-if-visible-HOC.tsx]] - `imports_from` [EXTRACTED]
 - [[use-multiple-select.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Chart
+#graphify/code #graphify/EXTRACTED #community/Community_23

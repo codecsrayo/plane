@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/command/command.tsx"
 type: "code"
-community: "Command Story"
+community: "Community 308"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Command_Story
+  - community/Community_308
 ---
 
 # command.tsx
 
 ## Connections
-
 - [[Command_1]] - `contains` [EXTRACTED]
 - [[CommandComponent()]] - `contains` [EXTRACTED]
 - [[CommandEmpty()]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[command.stories.tsx]] - `imports_from` [EXTRACTED]
 - [[index.ts_138]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Command_Story
+#graphify/code #graphify/EXTRACTED #community/Community_308

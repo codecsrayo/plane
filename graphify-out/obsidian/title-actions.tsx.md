@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-detail-widgets/sub-issues/title-actions.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Issue Activity Types"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Issue_Activity_Types
 ---
 
 # title-actions.tsx
 
 ## Connections
-
 - [[SubIssueDisplayFilters]] - `imports` [EXTRACTED]
 - [[SubIssueFilters]] - `imports` [EXTRACTED]
 - [[SubIssuesActionButton]] - `imports` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[useMember()]] - `imports` [EXTRACTED]
 - [[useProjectState()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Types

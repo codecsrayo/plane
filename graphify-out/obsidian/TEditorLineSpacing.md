@@ -1,18 +1,18 @@
 ---
-source_file: "editor/src/core/types/config.ts"
+source_file: "packages/editor/src/core/types/config.ts"
 type: "code"
-community: "Config Font"
+community: "Community 404"
 location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Config_Font
+  - community/Community_404
 ---
 
 # TEditorLineSpacing
 
 ## Connections
-
 - [[config.ts_2]] - `contains` [EXTRACTED]
+- [[config.ts_8]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Config_Font
+#graphify/code #graphify/EXTRACTED #community/Community_404

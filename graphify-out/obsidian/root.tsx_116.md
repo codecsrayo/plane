@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/pages/editor/toolbar/root.tsx"
 type: "code"
-community: "Formats Values"
+community: "Community 50"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Formats_Values
+  - community/Community_50
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[PageCollaboratorsList()]] - `imports` [EXTRACTED]
 - [[PageEditorToolbarRoot]] - `contains` [EXTRACTED]
 - [[Props_44]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[use-page-filters.ts]] - `imports_from` [EXTRACTED]
 - [[usePageFilters()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Formats_Values
+#graphify/code #graphify/EXTRACTED #community/Community_50

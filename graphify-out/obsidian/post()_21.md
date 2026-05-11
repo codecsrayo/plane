@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/views/module.py"
 type: "code"
-community: "Endpoint Issue"
+community: "Community 315"
 location: "L192"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_Issue
+  - community/Community_315
 ---
 
 # post()
 
 ## Connections
-
 - [[.get_queryset()_65]] - `calls` [EXTRACTED]
 - [[ModuleCreateSerializer]] - `calls` [INFERRED]
 - [[ModuleIssue]] - `calls` [INFERRED]
@@ -21,4 +20,4 @@ tags:
 - [[module.py_3]] - `contains` [EXTRACTED]
 - [[response]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_315

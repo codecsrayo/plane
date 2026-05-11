@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/gantt-chart/views/helpers.ts"
 type: "code"
-community: "Time Month"
+community: "Community 60"
 location: "L55"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Time_Month
+  - community/Community_60
 ---
 
 # getNumberOfDaysBetweenTwoDates()
 
 ## Connections
-
 - [[generateMonthChart()]] - `calls` [EXTRACTED]
 - [[generateQuarterChart()]] - `calls` [EXTRACTED]
 - [[generateWeekChart()]] - `calls` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[quarter-view.ts]] - `imports` [EXTRACTED]
 - [[week-view.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Time_Month
+#graphify/code #graphify/EXTRACTED #community/Community_60

@@ -1,27 +1,41 @@
 ---
 type: community
-cohesion: 0.24
-members: 11
+cohesion: 0.10
+members: 26
 ---
 
 # Community 217
 
-**Cohesion:** 0.24 - loosely connected
-**Members:** 11 nodes
+**Cohesion:** 0.10 - loosely connected
+**Members:** 26 nodes
 
 ## Members
-
-- [[AnalyticsSelectParams]] - code - web/core/components/analytics/select/analytics-params.tsx
-- [[CustomizedInsights]] - code - web/core/components/analytics/work-items/customized-insights.tsx
-- [[Props_431]] - code - web/core/components/analytics/select/analytics-params.tsx
-- [[Props_430]] - code - web/core/components/analytics/select/select-x-axis.tsx
-- [[Props_427]] - code - web/core/components/analytics/select/select-y-axis.tsx
-- [[SelectXAxis()]] - code - web/core/components/analytics/select/select-x-axis.tsx
-- [[SelectYAxis]] - code - web/core/components/analytics/select/select-y-axis.tsx
-- [[analytics-params.tsx]] - code - web/core/components/analytics/select/analytics-params.tsx
-- [[customized-insights.tsx]] - code - web/core/components/analytics/work-items/customized-insights.tsx
-- [[select-x-axis.tsx]] - code - web/core/components/analytics/select/select-x-axis.tsx
-- [[select-y-axis.tsx]] - code - web/core/components/analytics/select/select-y-axis.tsx
+- [[._notifyExpressionChange()]] - code - packages/shared-state/src/store/rich-filters/filter.ts
+- [[._resetInitialFilterExpression()]] - code - packages/shared-state/src/store/rich-filters/filter.ts
+- [[.allConditions()]] - code - packages/shared-state/src/store/rich-filters/filter.ts
+- [[.allConditionsForDisplay()]] - code - packages/shared-state/src/store/rich-filters/filter.ts
+- [[.canClearFilters()]] - code - packages/shared-state/src/store/rich-filters/filter.ts
+- [[.canSaveView()]] - code - packages/shared-state/src/store/rich-filters/filter.ts
+- [[.canUpdateView()]] - code - packages/shared-state/src/store/rich-filters/filter.ts
+- [[.clearFilterOptions()]] - code - packages/shared-state/src/store/rich-filters/filter.ts
+- [[.constructor()_37]] - code - packages/shared-state/src/store/rich-filters/filter.ts
+- [[.hasActiveFilters()]] - code - packages/shared-state/src/store/rich-filters/filter.ts
+- [[.hasChanges()]] - code - packages/shared-state/src/store/rich-filters/filter.ts
+- [[.isVisible()]] - code - packages/shared-state/src/store/rich-filters/filter.ts
+- [[.saveViewOptions()]] - code - packages/shared-state/src/store/rich-filters/filter.ts
+- [[.updateViewOptions()]] - code - packages/shared-state/src/store/rich-filters/filter.ts
+- [[FilterInstance]] - code - packages/shared-state/src/store/rich-filters/filter.ts
+- [[TOperatorForPayload]] - code - packages/utils/src/rich-filters/operators/shared.ts
+- [[TWorkItemFilterCondition]] - code - packages/shared-state/src/utils/work-item-filters.helper.ts
+- [[buildTempFilterExpressionFromConditions()]] - code - packages/shared-state/src/utils/rich-filter.helper.ts
+- [[buildWorkItemFilterExpressionFromConditions()]] - code - packages/shared-state/src/utils/work-item-filters.helper.ts
+- [[getOperatorForPayload()]] - code - packages/utils/src/rich-filters/operators/shared.ts
+- [[rich-filter.helper.ts_1]] - code - packages/shared-state/src/utils/rich-filter.helper.ts
+- [[rich-filter.helper.ts]] - code - shared-state/src/utils/rich-filter.helper.ts
+- [[shared.ts_19]] - code - packages/utils/src/rich-filters/operators/shared.ts
+- [[shared.ts_3]] - code - utils/src/rich-filters/operators/shared.ts
+- [[work-item-filters.helper.ts_1]] - code - packages/shared-state/src/utils/work-item-filters.helper.ts
+- [[work-item-filters.helper.ts]] - code - shared-state/src/utils/work-item-filters.helper.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -31,14 +45,15 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 1 edge to [[_COMMUNITY_Spreadsheet Column Components]]
-- 1 edge to [[_COMMUNITY_Community 186]]
-- 1 edge to [[_COMMUNITY_Community 205]]
-- 1 edge to [[_COMMUNITY_Community 185]]
-- 1 edge to [[_COMMUNITY_Community 193]]
+- 4 edges to [[_COMMUNITY_Community 372]]
+- 4 edges to [[_COMMUNITY_Community 295]]
+- 2 edges to [[_COMMUNITY_Community 374]]
+- 2 edges to [[_COMMUNITY_Community 264]]
+- 1 edge to [[_COMMUNITY_Community 373]]
 
 ## Top bridge nodes
-
-- [[customized-insights.tsx]] - degree 7, connects to 4 communities
-- [[select-y-axis.tsx]] - degree 4, connects to 1 community
+- [[FilterInstance]] - degree 20, connects to 2 communities
+- [[work-item-filters.helper.ts_1]] - degree 6, connects to 1 community
+- [[work-item-filters.helper.ts]] - degree 6, connects to 1 community
+- [[rich-filter.helper.ts_1]] - degree 4, connects to 1 community
+- [[rich-filter.helper.ts]] - degree 4, connects to 1 community

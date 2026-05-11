@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/use-editor-asset.ts"
 type: "code"
-community: "Workspace Issue"
+community: "Community 42"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Issue
+  - community/Community_42
 ---
 
 # useEditorAsset()
 
 ## Connections
-
 - [[PageDetailsPage()]] - `calls` [EXTRACTED]
 - [[description-editor.tsx]] - `imports` [EXTRACTED]
 - [[helper.tsx_26]] - `imports` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[useEditorConfig()]] - `calls` [EXTRACTED]
 - [[useWorkItemCommentOperations()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_42

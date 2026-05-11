@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/external.rs"
 type: "code"
-community: "Magic Sign"
+community: "Community 52"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Magic_Sign
+  - community/Community_52
 ---
 
 # external.rs
 
 ## Connections
-
 - [[AiAssistantRequest]] - `contains` [EXTRACTED]
 - [[AiAssistantResponse]] - `contains` [EXTRACTED]
 - [[RephraseGrammarRequest]] - `contains` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[verify_github_signature()]] - `contains` [EXTRACTED]
 - [[workspace_ai_assistant()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Magic_Sign
+#graphify/code #graphify/EXTRACTED #community/Community_52

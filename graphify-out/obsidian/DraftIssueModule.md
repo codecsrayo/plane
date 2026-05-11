@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/models/draft.py"
 type: "code"
-community: "Meta User"
+community: "Community 66"
 location: "L179"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Meta_User
+  - community/Community_66
 ---
 
 # DraftIssueModule
 
 ## Connections
-
 - [[.__str__()_49]] - `method` [EXTRACTED]
 - [[.create()_24]] - `calls` [INFERRED]
 - [[.update()_21]] - `calls` [INFERRED]
@@ -21,4 +20,4 @@ tags:
 - [[draft.py_2]] - `contains` [EXTRACTED]
 - [[migrate_draft_issues()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Meta_User
+#graphify/code #graphify/INFERRED #community/Community_66

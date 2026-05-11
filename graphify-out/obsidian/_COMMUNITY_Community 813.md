@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 813
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_162]] - code - web/core/components/estimates/index.ts
+- [[log]] - code - web/e2e/webhooks.spec.ts
+- [[slug()_9]] - code - web/e2e/webhooks.spec.ts
+- [[webhooks.spec.ts]] - code - web/e2e/webhooks.spec.ts
 
 ## Live Query (requires Dataview plugin)
 

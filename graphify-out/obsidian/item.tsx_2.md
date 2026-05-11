@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/workspace-notifications/sidebar/notification-card/item.tsx"
 type: "code"
-community: "Notification Content"
+community: "Community 500"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Notification_Content
+  - community/Community_500
 ---
 
 # item.tsx
 
 ## Connections
-
 - [[NotificationContent()]] - `imports` [EXTRACTED]
 - [[NotificationItem]] - `contains` [EXTRACTED]
 - [[TNotificationItem]] - `contains` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[useNotification()]] - `imports` [EXTRACTED]
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Notification_Content
+#graphify/code #graphify/EXTRACTED #community/Community_500

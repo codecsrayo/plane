@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/issues.rs"
 type: "code"
-community: "Returns Issue"
+community: "Community 287"
 location: "L41"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Issue
+  - community/Community_287
 ---
 
 # create_issue()
 
 ## Connections
-
 - [[bulk_delete_issues_returns_200()]] - `calls` [EXTRACTED]
 - [[create_comment_empty_html_returns_400()]] - `calls` [EXTRACTED]
 - [[create_comment_success_returns_201()]] - `calls` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[list_subscribers_returns_200()]] - `calls` [EXTRACTED]
 - [[update_issue_returns_200()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_287

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/tests/contract/app/test_workspace_app.py"
 type: "code"
-community: "Test Workspace"
+community: "Community 580"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Test_Workspace
+  - community/Community_580
 ---
 
 # test_create_workspace_valid_data()
 
 ## Connections
-
 - [[test_workspace_app.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Test_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_580

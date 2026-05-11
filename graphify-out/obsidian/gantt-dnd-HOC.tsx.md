@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/gantt-chart/sidebar/gantt-dnd-HOC.tsx"
 type: "code"
-community: "Gantt Chart"
+community: "Community 23"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Chart
+  - community/Community_23
 ---
 
 # gantt-dnd-HOC.tsx
 
 ## Connections
-
 - [[Adapter_1]] - `imports_from` [EXTRACTED]
 - [[GanttDnDHOC]] - `contains` [EXTRACTED]
 - [[Props_117]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[sidebar.tsx_5]] - `imports_from` [EXTRACTED]
 - [[utils.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Chart
+#graphify/code #graphify/EXTRACTED #community/Community_23

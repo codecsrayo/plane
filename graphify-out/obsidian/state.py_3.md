@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/views/state.py"
 type: "code"
-community: "Endpoint State"
+community: "Community 99"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_State
+  - community/Community_99
 ---
 
 # state.py
 
 ## Connections
-
 - [[StateDetailAPIEndpoint]] - `contains` [EXTRACTED]
 - [[StateListCreateAPIEndpoint]] - `contains` [EXTRACTED]
 - [[__init__.py_10]] - `imports_from` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[patch()_19]] - `contains` [EXTRACTED]
 - [[post()_23]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_State
+#graphify/code #graphify/EXTRACTED #community/Community_99

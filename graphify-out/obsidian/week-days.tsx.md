@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/calendar/week-days.tsx"
 type: "code"
-community: "Calendar Issue"
+community: "Community 67"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Issue
+  - community/Community_67
 ---
 
 # week-days.tsx
 
 ## Connections
-
 - [[CalendarDayTile]] - `imports` [EXTRACTED]
 - [[CalendarWeekDays]] - `contains` [EXTRACTED]
 - [[Props_292]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[index.ts_279]] - `imports_from` [EXTRACTED]
 - [[index.ts_280]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_67

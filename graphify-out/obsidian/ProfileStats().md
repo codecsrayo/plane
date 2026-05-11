@@ -1,19 +1,18 @@
 ---
 source_file: "web/core/components/profile/overview/stats.tsx"
 type: "code"
-community: "Profile Priority"
+community: "Community 36"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Profile_Priority
+  - community/Community_36
 ---
 
 # ProfileStats()
 
 ## Connections
-
 - [[page.tsx_10]] - `imports` [EXTRACTED]
 - [[stats.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Profile_Priority
+#graphify/code #graphify/EXTRACTED #community/Community_36

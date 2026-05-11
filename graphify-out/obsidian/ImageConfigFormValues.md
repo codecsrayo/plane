@@ -1,18 +1,17 @@
 ---
 source_file: "admin/app/(all)/(dashboard)/image/form.tsx"
 type: "code"
-community: "Config Image"
+community: "Community 552"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Config_Image
+  - community/Community_552
 ---
 
 # ImageConfigFormValues
 
 ## Connections
-
 - [[form.tsx_18]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Config_Image
+#graphify/code #graphify/EXTRACTED #community/Community_552

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-detail/parent/siblings.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Work Item Detail & Layouts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Work_Item_Detail__Layouts
 ---
 
 # siblings.tsx
 
 ## Connections
-
 - [[IssueParentSiblingItem]] - `imports` [EXTRACTED]
 - [[IssueParentSiblings]] - `contains` [EXTRACTED]
 - [[TIssueParentSiblings]] - `contains` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Work_Item_Detail__Layouts

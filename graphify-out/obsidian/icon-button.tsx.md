@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/icon-button/icon-button.tsx"
 type: "code"
-community: "Icon Button"
+community: "Community 196"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Icon_Button
+  - community/Community_196
 ---
 
 # icon-button.tsx
 
 ## Connections
-
 - [[IconButton]] - `contains` [EXTRACTED]
 - [[IconButtonProps]] - `imports` [EXTRACTED]
 - [[helper.tsx_14]] - `imports_from` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[iconButtonVariants]] - `imports` [EXTRACTED]
 - [[index.ts_191]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Icon_Button
+#graphify/code #graphify/EXTRACTED #community/Community_196

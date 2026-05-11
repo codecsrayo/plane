@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_438]] - code - web/core/components/license/modal/index.ts
+- [[Install an integration in the workspace.]] - rationale - api/plane/app/views/integration/base.py
 
 ## Live Query (requires Dataview plugin)
 

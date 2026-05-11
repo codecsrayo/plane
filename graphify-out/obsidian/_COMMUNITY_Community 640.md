@@ -1,18 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.40
+members: 5
 ---
 
 # Community 640
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.40 - moderately connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[PageAccessIcon()]] - code - web/core/components/common/page-access-icon.tsx
-- [[page-access-icon.tsx]] - code - web/core/components/common/page-access-icon.tsx
+- [[Soft delete related objects for a given model instance]] - rationale - api/plane/bgtasks/deletion_task.py
+- [[deletion_task.py]] - code - api/plane/bgtasks/deletion_task.py
+- [[hard_delete()]] - code - api/plane/bgtasks/deletion_task.py
+- [[restore_related_objects()]] - code - api/plane/bgtasks/deletion_task.py
+- [[soft_delete_related_objects()]] - code - api/plane/bgtasks/deletion_task.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -20,3 +22,9 @@ members: 2
 TABLE source_file, type FROM #community/Community_640
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Community 123]]
+
+## Top bridge nodes
+- [[soft_delete_related_objects()]] - degree 3, connects to 1 community

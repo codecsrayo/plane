@@ -1,21 +1,20 @@
 ---
 source_file: "space/components/issues/issue-layouts/utils.tsx"
 type: "code"
-community: "Group Kanban"
+community: "Bulk Operations & Spreadsheet"
 location: "L162"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group_Kanban
+  - community/Bulk_Operations__Spreadsheet
 ---
 
 # getAssigneeColumns()
 
 ## Connections
-
 - [[getGroupByColumns()]] - `calls` [EXTRACTED]
 - [[getScopeMemberIds()]] - `calls` [INFERRED]
 - [[utils.tsx_2]] - `contains` [EXTRACTED]
 - [[utils.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group_Kanban
+#graphify/code #graphify/EXTRACTED #community/Bulk_Operations__Spreadsheet

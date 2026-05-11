@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/components/issues/quick-add/root.tsx"
 type: "code"
-community: "Issue Inbox"
+community: "Project Filters & Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Inbox
+  - community/Project_Filters__Archives
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[QuickAddIssueFormRoot]] - `contains` [EXTRACTED]
 - [[TQuickAddIssueFormRoot]] - `contains` [EXTRACTED]
 - [[index.ts_362]] - `imports_from` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Inbox
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

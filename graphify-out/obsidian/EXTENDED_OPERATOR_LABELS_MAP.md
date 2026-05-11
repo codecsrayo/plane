@@ -1,19 +1,20 @@
 ---
-source_file: "constants/src/rich-filters/operator-labels/extended.ts"
+source_file: "packages/constants/src/rich-filters/operator-labels/extended.ts"
 type: "code"
-community: "Operator Labels"
+community: "Community 387"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Operator_Labels
+  - community/Community_387
 ---
 
 # EXTENDED_OPERATOR_LABELS_MAP
 
 ## Connections
-
 - [[extended.ts_1]] - `contains` [EXTRACTED]
+- [[extended.ts_11]] - `contains` [EXTRACTED]
 - [[index.ts_84]] - `imports` [EXTRACTED]
+- [[index.ts_545]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Operator_Labels
+#graphify/code #graphify/EXTRACTED #community/Community_387

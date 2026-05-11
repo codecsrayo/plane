@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/models/workspace.py"
 type: "code"
-community: "Meta User"
+community: "Community 66"
 location: "L185"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Meta_User
+  - community/Community_66
 ---
 
 # WorkspaceBaseModel
 
 ## Connections
-
 - [[.save()_4]] - `method` [EXTRACTED]
 - [[BaseModel]] - `inherits` [EXTRACTED]
 - [[BaseModel_1]] - `uses` [INFERRED]
@@ -39,4 +38,4 @@ tags:
 - [[WorkspaceUserLink]] - `inherits` [EXTRACTED]
 - [[workspace.py_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Meta_User
+#graphify/code #graphify/INFERRED #community/Community_66

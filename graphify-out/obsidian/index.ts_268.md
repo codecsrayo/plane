@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/estimates/index.ts"
 type: "code"
-community: "Label Dropdown"
+community: "Work Item Detail & Layouts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Dropdown
+  - community/Work_Item_Detail__Layouts
 ---
 
 # index.ts
 
 ## Connections
-
 - [[all-properties.tsx]] - `imports_from` [EXTRACTED]
 - [[commands.ts]] - `imports_from` [EXTRACTED]
 - [[default-properties.tsx]] - `imports_from` [EXTRACTED]
@@ -36,4 +35,4 @@ tags:
 - [[use-project-issue-properties.ts]] - `imports_from` [EXTRACTED]
 - [[use-workspace-issue-properties.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Work_Item_Detail__Layouts

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/order_queryset.py"
 type: "code"
-community: "Issue Apply"
+community: "Community 41"
 location: "L12"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Issue_Apply
+  - community/Community_41
 ---
 
 # order_issue_queryset()
 
 ## Connections
-
 - [[.get()_9]] - `calls` [INFERRED]
 - [[.get()_65]] - `calls` [INFERRED]
 - [[get()_10]] - `calls` [INFERRED]
@@ -24,4 +23,4 @@ tags:
 - [[list()_16]] - `calls` [INFERRED]
 - [[order_queryset.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Issue_Apply
+#graphify/code #graphify/INFERRED #community/Community_41

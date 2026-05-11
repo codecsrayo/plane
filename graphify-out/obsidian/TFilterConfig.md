@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/rich-filters/config/filter-config.ts"
+source_file: "packages/types/src/rich-filters/config/filter-config.ts"
 type: "code"
-community: "Operator Configs"
+community: "Community 229"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Operator_Configs
+  - community/Community_229
 ---
 
 # TFilterConfig
 
 ## Connections
-
 - [[filter-config.ts]] - `contains` [EXTRACTED]
+- [[filter-config.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Operator_Configs
+#graphify/code #graphify/EXTRACTED #community/Community_229

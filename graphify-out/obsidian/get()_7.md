@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/user/base.py"
 type: "code"
-community: "Endpoint User"
+community: "Community 53"
 location: "L414"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_User
+  - community/Community_53
 ---
 
 # get()
 
 ## Connections
-
 - [[.deactivate()]] - `calls` [EXTRACTED]
 - [[.delete()_1]] - `calls` [EXTRACTED]
 - [[.generate_email_verification_code()]] - `calls` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[base.py_2]] - `contains` [EXTRACTED]
 - [[response]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_User
+#graphify/code #graphify/EXTRACTED #community/Community_53

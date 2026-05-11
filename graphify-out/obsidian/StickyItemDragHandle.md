@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/stickies/sticky/sticky-item-drag-handle.tsx"
 type: "code"
-community: "Sticky Drag"
+community: "Community 827"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sticky_Drag
+  - community/Community_827
 ---
 
 # StickyItemDragHandle
 
 ## Connections
-
 - [[sticky-item-drag-handle.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sticky_Drag
+#graphify/code #graphify/EXTRACTED #community/Community_827

@@ -1,19 +1,18 @@
 ---
 source_file: "utils/src/rich-filters/values/core.ts"
 type: "code"
-community: "Core Value"
+community: "Community 667"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Core_Value
+  - community/Community_667
 ---
 
 # core.ts
 
 ## Connections
-
 - [[getFilterValueLength()]] - `contains` [EXTRACTED]
 - [[toFilterArray()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Core_Value
+#graphify/code #graphify/EXTRACTED #community/Community_667

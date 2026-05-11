@@ -1,34 +1,54 @@
 ---
 type: community
-cohesion: 0.18
-members: 18
+cohesion: 0.10
+members: 39
 ---
 
 # Community 139
 
-**Cohesion:** 0.18 - loosely connected
-**Members:** 18 nodes
+**Cohesion:** 0.10 - loosely connected
+**Members:** 39 nodes
 
 ## Members
-
-- [[INotification]] - code - web/core/store/notifications/notification.ts
-- [[NotificationItemArchiveOption]] - code - web/core/components/workspace-notifications/sidebar/notification-card/options/archive.tsx
-- [[NotificationItemOptionButton()]] - code - web/core/components/workspace-notifications/sidebar/notification-card/options/button.tsx
-- [[NotificationItemReadOption]] - code - web/core/components/workspace-notifications/sidebar/notification-card/options/read.tsx
-- [[NotificationOption]] - code - web/core/components/workspace-notifications/sidebar/notification-card/options/root.tsx
-- [[TNotificationItemArchiveOption]] - code - web/core/components/workspace-notifications/sidebar/notification-card/options/archive.tsx
-- [[TNotificationItemOptionButton]] - code - web/core/components/workspace-notifications/sidebar/notification-card/options/button.tsx
-- [[TNotificationItemReadOption]] - code - web/core/components/workspace-notifications/sidebar/notification-card/options/read.tsx
-- [[TNotificationOption]] - code - web/core/components/workspace-notifications/sidebar/notification-card/options/root.tsx
-- [[archive.tsx]] - code - web/core/components/workspace-notifications/sidebar/notification-card/options/archive.tsx
-- [[button.tsx]] - code - web/core/components/workspace-notifications/sidebar/notification-card/options/button.tsx
-- [[index.ts_122]] - code - web/core/components/workspace-notifications/sidebar/notification-card/options/snooze/index.ts
-- [[notification.ts]] - code - web/core/store/notifications/notification.ts
-- [[payload]] - code - web/core/store/notifications/notification.ts
-- [[read.tsx]] - code - web/core/components/workspace-notifications/sidebar/notification-card/options/read.tsx
-- [[root.tsx_46]] - code - web/core/components/workspace-notifications/sidebar/notification-card/options/root.tsx
-- [[use-notification.ts]] - code - web/core/hooks/store/notifications/use-notification.ts
-- [[useNotification()]] - code - web/core/hooks/store/notifications/use-notification.ts
+- [[IIssueActivity]] - code - packages/types/src/issues.ts
+- [[TAssignedIssuesWidgetFilters]] - code - packages/types/src/dashboard.ts
+- [[TAssignedIssuesWidgetResponse]] - code - packages/types/src/dashboard.ts
+- [[TCreatedIssuesWidgetFilters]] - code - packages/types/src/dashboard.ts
+- [[TCreatedIssuesWidgetResponse]] - code - packages/types/src/dashboard.ts
+- [[TDeprecatedDashboard]] - code - packages/types/src/dashboard.ts
+- [[THomeDashboardResponse]] - code - packages/types/src/dashboard.ts
+- [[TIssue]] - code - packages/types/src/issues/issue.ts
+- [[TIssueRelation]] - code - packages/types/src/issues/issue_relation.ts
+- [[TIssueRelationIdMap]] - code - packages/types/src/issues/issue_relation.ts
+- [[TIssueRelationMap]] - code - packages/types/src/issues/issue_relation.ts
+- [[TIssueRelationTypes]] - code - packages/types/src/issues/issue_relation.ts
+- [[TIssueSubIssues]] - code - packages/types/src/issues/issue_sub_issues.ts
+- [[TIssueSubIssuesIdMap]] - code - packages/types/src/issues/issue_sub_issues.ts
+- [[TIssueSubIssuesStateDistributionMap]] - code - packages/types/src/issues/issue_sub_issues.ts
+- [[TIssuesByPriorityWidgetFilters]] - code - packages/types/src/dashboard.ts
+- [[TIssuesByPriorityWidgetResponse]] - code - packages/types/src/dashboard.ts
+- [[TIssuesByStateGroupsWidgetFilters]] - code - packages/types/src/dashboard.ts
+- [[TIssuesByStateGroupsWidgetResponse]] - code - packages/types/src/dashboard.ts
+- [[TIssuesListTypes]] - code - packages/types/src/dashboard.ts
+- [[TOverviewStatsWidgetResponse]] - code - packages/types/src/dashboard.ts
+- [[TRecentActivityWidgetResponse]] - code - packages/types/src/dashboard.ts
+- [[TRecentCollaboratorsWidgetResponse]] - code - packages/types/src/dashboard.ts
+- [[TRecentProjectsWidgetResponse]] - code - packages/types/src/dashboard.ts
+- [[TSubIssueOperations]] - code - packages/types/src/issues/issue_sub_issues.ts
+- [[TSubIssueResponse]] - code - packages/types/src/issues/issue_sub_issues.ts
+- [[TSubIssuesStateDistribution]] - code - packages/types/src/issues/issue_sub_issues.ts
+- [[TWidget]] - code - packages/types/src/dashboard.ts
+- [[TWidgetFiltersFormData]] - code - packages/types/src/dashboard.ts
+- [[TWidgetIssue]] - code - packages/types/src/dashboard.ts
+- [[TWidgetKeys]] - code - packages/types/src/dashboard.ts
+- [[TWidgetStatsRequestParams]] - code - packages/types/src/dashboard.ts
+- [[TWidgetStatsResponse]] - code - packages/types/src/dashboard.ts
+- [[dashboard.ts_3]] - code - packages/types/src/dashboard.ts
+- [[dashboard.ts_1]] - code - types/src/dashboard.ts
+- [[issue_relation.ts_1]] - code - packages/types/src/issues/issue_relation.ts
+- [[issue_relation.ts]] - code - types/src/issues/issue_relation.ts
+- [[issue_sub_issues.ts_1]] - code - packages/types/src/issues/issue_sub_issues.ts
+- [[issue_sub_issues.ts]] - code - types/src/issues/issue_sub_issues.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -38,21 +58,18 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 3 edges to [[_COMMUNITY_Layout System]]
-- 3 edges to [[_COMMUNITY_Community 159]]
-- 2 edges to [[_COMMUNITY_Community 197]]
-- 2 edges to [[_COMMUNITY_Project Estimates]]
-- 2 edges to [[_COMMUNITY_Community 58]]
-- 2 edges to [[_COMMUNITY_Community 243]]
-- 1 edge to [[_COMMUNITY_Community 92]]
-- 1 edge to [[_COMMUNITY_Applied Filters UI]]
-- 1 edge to [[_COMMUNITY_Git Integrations]]
+- 10 edges to [[_COMMUNITY_Community 101]]
+- 10 edges to [[_COMMUNITY_Community 178]]
+- 4 edges to [[_COMMUNITY_Community 158]]
+- 4 edges to [[_COMMUNITY_Community 194]]
+- 2 edges to [[_COMMUNITY_Community 262]]
+- 2 edges to [[_COMMUNITY_Community 62]]
+- 2 edges to [[_COMMUNITY_Community 71]]
+- 2 edges to [[_COMMUNITY_Community 291]]
 
 ## Top bridge nodes
-
-- [[notification.ts]] - degree 13, connects to 5 communities
-- [[use-notification.ts]] - degree 7, connects to 3 communities
-- [[INotification]] - degree 6, connects to 2 communities
-- [[button.tsx]] - degree 6, connects to 1 community
-- [[NotificationItemOptionButton()]] - degree 4, connects to 1 community
+- [[TIssue]] - degree 20, connects to 6 communities
+- [[dashboard.ts_3]] - degree 32, connects to 4 communities
+- [[dashboard.ts_1]] - degree 32, connects to 4 communities
+- [[issue_sub_issues.ts_1]] - degree 8, connects to 1 community
+- [[issue_sub_issues.ts]] - degree 8, connects to 1 community

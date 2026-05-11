@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_207]] - code - web/ce/store/issue/epic/index.ts
+- [[index.ts_226]] - code - web/ce/components/issues/issue-layouts/empty-states/index.ts
 
 ## Live Query (requires Dataview plugin)
 

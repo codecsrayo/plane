@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/estimates/estimate-point.ts"
 type: "code"
-community: "Estimate Project"
+community: "Community 59"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Estimate_Project
+  - community/Community_59
 ---
 
 # estimate-point.ts
 
 ## Connections
-
 - [[CoreRootStore]] - `imports` [EXTRACTED]
 - [[EstimatePoint]] - `contains` [EXTRACTED]
 - [[IEstimatePoint_1]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[toApiError()]] - `imports` [EXTRACTED]
 - [[use-estimate-point.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Estimate_Project
+#graphify/code #graphify/EXTRACTED #community/Community_59

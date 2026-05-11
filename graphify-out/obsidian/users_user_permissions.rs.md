@@ -1,19 +1,18 @@
 ---
 source_file: "api_rust/src/entities/users_user_permissions.rs"
 type: "code"
-community: "Model Relation"
+community: "Community 956"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Model_Relation
+  - community/Community_956
 ---
 
 # users_user_permissions.rs
 
 ## Connections
-
 - [[Model_76]] - `contains` [EXTRACTED]
 - [[Relation_76]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Model_Relation
+#graphify/code #graphify/EXTRACTED #community/Community_956

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/dropdowns/member/member-options.tsx"
 type: "code"
-community: "Member Members"
+community: "Work Item Detail & Layouts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Members
+  - community/Work_Item_Detail__Layouts
 ---
 
 # member-options.tsx
 
 ## Connections
-
 - [[MemberOptions]] - `contains` [EXTRACTED]
 - [[Props_201]] - `contains` [EXTRACTED]
 - [[base.tsx_6]] - `imports_from` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[useMember()]] - `imports` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Members
+#graphify/code #graphify/EXTRACTED #community/Work_Item_Detail__Layouts

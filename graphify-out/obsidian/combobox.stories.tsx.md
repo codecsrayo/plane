@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/combobox/combobox.stories.tsx"
 type: "code"
-community: "Toolbar Combobox"
+community: "Community 226"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toolbar_Combobox
+  - community/Community_226
 ---
 
 # combobox.stories.tsx
 
 ## Connections
-
 - [[Combobox]] - `imports` [EXTRACTED]
 - [[CustomEmptyMessage]] - `contains` [EXTRACTED]
 - [[CustomMaxHeight]] - `contains` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[index.ts_138]] - `imports_from` [EXTRACTED]
 - [[render()_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toolbar_Combobox
+#graphify/code #graphify/EXTRACTED #community/Community_226

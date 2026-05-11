@@ -1,17 +1,22 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.48
+members: 7
 ---
 
 # Community 543
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.48 - moderately connected
+**Members:** 7 nodes
 
 ## Members
-
-- [[index.ts_166]] - code - propel/src/charts/scatter-chart/index.ts
+- [[GROUPED_PROFILE_SETTINGS]] - code - packages/constants/src/settings/profile.ts
+- [[PROFILE_SETTINGS]] - code - packages/constants/src/settings/profile.ts
+- [[PROFILE_SETTINGS_CATEGORIES]] - code - packages/constants/src/settings/profile.ts
+- [[PROFILE_SETTINGS_CATEGORY]] - code - packages/constants/src/settings/profile.ts
+- [[PROFILE_SETTINGS_TABS]] - code - packages/constants/src/settings/profile.ts
+- [[profile.ts_1]] - code - constants/src/settings/profile.ts
+- [[profile.ts_4]] - code - packages/constants/src/settings/profile.ts
 
 ## Live Query (requires Dataview plugin)
 

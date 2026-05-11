@@ -1,57 +1,108 @@
 ---
 type: community
-cohesion: 0.07
-members: 41
+cohesion: 0.03
+members: 93
 ---
 
 # Community 36
 
-**Cohesion:** 0.07 - loosely connected
-**Members:** 41 nodes
+**Cohesion:** 0.03 - loosely connected
+**Members:** 93 nodes
 
 ## Members
-
-- [[AutoCloseAutomation]] - code - web/core/components/automation/auto-close-automation.tsx
-- [[BlockProps_1]] - code - web/core/components/home/widgets/recents/issue.tsx
-- [[GITHUB_PR_STATES]] - code - web/core/components/integration/github/pr-state-mapping-modal.tsx
-- [[GithubPRStateMappingModal]] - code - web/core/components/integration/github/pr-state-mapping-modal.tsx
-- [[IssueParentDetail]] - code - web/core/components/issues/issue-detail/parent/root.tsx
-- [[ProjectStateRoot]] - code - web/core/components/project-states/root.tsx
-- [[Props_174]] - code - web/core/components/automation/auto-close-automation.tsx
-- [[Props_157]] - code - web/core/components/integration/github/pr-state-mapping-modal.tsx
-- [[Props_184]] - code - web/core/components/issues/preview-card/date.tsx
-- [[Props_185]] - code - web/core/components/issues/preview-card/root.tsx
-- [[ReadonlyState]] - code - web/core/components/readonly/state.tsx
-- [[StateDeleteModal]] - code - web/core/components/project-states/state-delete-modal.tsx
-- [[StateItemTitle]] - code - web/core/components/project-states/state-item-title.tsx
-- [[StateMappingRow]] - code - web/core/components/integration/github/pr-state-mapping-modal.tsx
-- [[TBaseStateItemTitleProps]] - code - web/core/components/project-states/state-item-title.tsx
-- [[TDisabledStateItemTitleProps]] - code - web/core/components/project-states/state-item-title.tsx
-- [[TEnabledStateItemTitleProps]] - code - web/core/components/project-states/state-item-title.tsx
-- [[TIssueParentDetail]] - code - web/core/components/issues/issue-detail/parent/root.tsx
-- [[TProjectState]] - code - web/core/components/project-states/root.tsx
-- [[TReadonlyStateProps]] - code - web/core/components/readonly/state.tsx
-- [[TStateDeleteModal]] - code - web/core/components/project-states/state-delete-modal.tsx
-- [[TStateItemTitleProps]] - code - web/core/components/project-states/state-item-title.tsx
-- [[WorkItemPreviewCard]] - code - web/core/components/issues/preview-card/root.tsx
-- [[WorkItemPreviewCardDate()]] - code - web/core/components/issues/preview-card/date.tsx
-- [[auto-close-automation.tsx]] - code - web/core/components/automation/auto-close-automation.tsx
-- [[date.tsx_3]] - code - web/core/components/issues/preview-card/date.tsx
-- [[form.tsx_8]] - code - web/core/components/issues/issue-modal/form.tsx
-- [[index.ts_110]] - code - web/core/components/issues/issue-modal/components/index.ts
-- [[index.ts_48]] - code - web/core/components/project-states/options/index.ts
-- [[issue.tsx]] - code - web/core/components/home/widgets/recents/issue.tsx
-- [[pr-state-mapping-modal.tsx]] - code - web/core/components/integration/github/pr-state-mapping-modal.tsx
-- [[root.tsx_35]] - code - web/core/components/issues/issue-detail/parent/root.tsx
-- [[root.tsx_27]] - code - web/core/components/issues/preview-card/root.tsx
-- [[root.tsx_8]] - code - web/core/components/project-states/root.tsx
-- [[state-delete-modal.tsx]] - code - web/core/components/project-states/state-delete-modal.tsx
-- [[state-item-title.tsx]] - code - web/core/components/project-states/state-item-title.tsx
-- [[state.tsx_5]] - code - web/core/components/readonly/state.tsx
-- [[use-project-issue-properties.ts]] - code - web/core/hooks/use-project-issue-properties.ts
-- [[use-project-state.ts]] - code - web/core/hooks/store/use-project-state.ts
-- [[useProjectIssueProperties()]] - code - web/core/hooks/use-project-issue-properties.ts
-- [[useProjectState()]] - code - web/core/hooks/store/use-project-state.ts
+- [[APPLICATIONS_LIST()]] - code - web/core/constants/fetch-keys.ts
+- [[APPLICATION_BY_CLIENT_ID()]] - code - web/core/constants/fetch-keys.ts
+- [[APPLICATION_CATEGORIES_LIST()]] - code - web/core/constants/fetch-keys.ts
+- [[APPLICATION_DETAILS()]] - code - web/core/constants/fetch-keys.ts
+- [[ActivityIcon()_1]] - code - web/core/components/core/activity.tsx
+- [[ActivityList]] - code - web/core/components/profile/activity/activity-list.tsx
+- [[ActivityMessage()]] - code - web/core/components/core/activity.tsx
+- [[ActivitySettingsLoader()]] - code - web/core/components/ui/loader/settings/activity.tsx
+- [[DefaultSettingItem()]] - code - web/core/components/project/project-settings-member-defaults.tsx
+- [[DownloadActivityButton()]] - code - web/core/components/profile/activity/download-button.tsx
+- [[EPICS_PROPERTIES_AND_OPTIONS()]] - code - web/core/constants/fetch-keys.ts
+- [[GITHUB_REPOSITORY_INFO()]] - code - web/core/constants/fetch-keys.ts
+- [[IMPORTER_SERVICES_LIST()]] - code - web/core/constants/fetch-keys.ts
+- [[IProjectAuthWrapper]] - code - web/core/layouts/auth-layout/project-wrapper.tsx
+- [[IWorkspaceAuthWrapper]] - code - web/core/layouts/auth-layout/workspace-wrapper.tsx
+- [[IssueLink()_1]] - code - web/core/components/core/activity.tsx
+- [[JIRA_IMPORTER_DETAIL()]] - code - web/core/constants/fetch-keys.ts
+- [[PROJECT_ALL_CYCLES()]] - code - web/core/constants/fetch-keys.ts
+- [[PROJECT_DETAILS()]] - code - web/core/constants/fetch-keys.ts
+- [[PROJECT_ESTIMATES()]] - code - web/core/constants/fetch-keys.ts
+- [[PROJECT_INTAKE_STATE()]] - code - web/core/constants/fetch-keys.ts
+- [[PROJECT_LABELS()]] - code - web/core/constants/fetch-keys.ts
+- [[PROJECT_MEMBERS()]] - code - web/core/constants/fetch-keys.ts
+- [[PROJECT_MEMBER_PREFERENCES()]] - code - web/core/constants/fetch-keys.ts
+- [[PROJECT_ME_INFORMATION()]] - code - web/core/constants/fetch-keys.ts
+- [[PROJECT_MILESTONES()]] - code - web/core/constants/fetch-keys.ts
+- [[PROJECT_MODULES()]] - code - web/core/constants/fetch-keys.ts
+- [[PROJECT_STATES()]] - code - web/core/constants/fetch-keys.ts
+- [[PROJECT_VIEWS()]] - code - web/core/constants/fetch-keys.ts
+- [[PROJECT_WORKFLOWS()]] - code - web/core/constants/fetch-keys.ts
+- [[ProfileActivity]] - code - web/core/components/profile/overview/activity.tsx
+- [[ProfileActivityListPage]] - code - web/core/components/profile/activity/profile-activity-list.tsx
+- [[ProfileActivityPage()]] - code - web/app/(all)/[workspaceSlug]/(projects)/profile/[userId]/activity/page.tsx
+- [[ProfileOverviewPage()]] - code - web/app/(all)/[workspaceSlug]/(projects)/profile/[userId]/page.tsx
+- [[ProfilePriorityDistribution()]] - code - web/core/components/profile/overview/priority-distribution.tsx
+- [[ProfileStateDistribution()]] - code - web/core/components/profile/overview/state-distribution.tsx
+- [[ProfileStats()]] - code - web/core/components/profile/overview/stats.tsx
+- [[ProfileWorkload()]] - code - web/core/components/profile/overview/workload.tsx
+- [[ProjectAccessRestriction]] - code - web/core/components/auth-screens/project/project-access-restriction.tsx
+- [[ProjectSettingsMemberDefaults]] - code - web/core/components/project/project-settings-member-defaults.tsx
+- [[Props_172]] - code - web/core/components/settings/profile/content/pages/activity/activity-list.tsx
+- [[Props_171]] - code - web/core/components/profile/activity/profile-activity-list.tsx
+- [[Props_173]] - code - web/core/components/profile/activity/workspace-activity-list.tsx
+- [[Props_174]] - code - web/core/components/profile/overview/priority-distribution.tsx
+- [[Props_177]] - code - web/core/components/profile/overview/state-distribution.tsx
+- [[Props_175]] - code - web/core/components/profile/overview/stats.tsx
+- [[Props_176]] - code - web/core/components/profile/overview/workload.tsx
+- [[TDefaultSettingItemProps]] - code - web/core/components/project/project-settings-member-defaults.tsx
+- [[TProjectSettingsMemberDefaultsProps]] - code - web/core/components/project/project-settings-member-defaults.tsx
+- [[TProps_14]] - code - web/core/components/auth-screens/project/project-access-restriction.tsx
+- [[USER_ACTIVITY()]] - code - web/core/constants/fetch-keys.ts
+- [[USER_PROFILE_ACTIVITY()]] - code - web/core/constants/fetch-keys.ts
+- [[USER_PROFILE_DATA()]] - code - web/core/constants/fetch-keys.ts
+- [[WORKSPACE_ACTIVE_CYCLES_LIST()]] - code - web/core/constants/fetch-keys.ts
+- [[WORKSPACE_FAVORITE()]] - code - web/core/constants/fetch-keys.ts
+- [[WORKSPACE_MEMBERS()]] - code - web/core/constants/fetch-keys.ts
+- [[WORKSPACE_MEMBER_ACTIVITY()]] - code - web/core/constants/fetch-keys.ts
+- [[WORKSPACE_MEMBER_ME_INFORMATION()]] - code - web/core/constants/fetch-keys.ts
+- [[WORKSPACE_PARTIAL_PROJECTS()]] - code - web/core/constants/fetch-keys.ts
+- [[WORKSPACE_PROJECTS_ROLES_INFORMATION()]] - code - web/core/constants/fetch-keys.ts
+- [[WORKSPACE_PROJECT_NAVIGATION_PREFERENCES()]] - code - web/core/constants/fetch-keys.ts
+- [[WORKSPACE_SIDEBAR_PREFERENCES()]] - code - web/core/constants/fetch-keys.ts
+- [[WORKSPACE_STATES()]] - code - web/core/constants/fetch-keys.ts
+- [[WORKSPACE_WORKFLOW_STATES()]] - code - web/core/constants/fetch-keys.ts
+- [[WORK_ITEM_TYPES_PROPERTIES_AND_OPTIONS()]] - code - web/core/constants/fetch-keys.ts
+- [[WorkspaceActivityListPage()]] - code - web/core/components/profile/activity/workspace-activity-list.tsx
+- [[activity-list.tsx]] - code - web/core/components/profile/activity/activity-list.tsx
+- [[activity-list.tsx_1]] - code - web/core/components/settings/profile/content/pages/activity/activity-list.tsx
+- [[activity.tsx_1]] - code - web/core/components/profile/overview/activity.tsx
+- [[activity.tsx]] - code - web/core/components/ui/loader/settings/activity.tsx
+- [[defaultValues_9]] - code - web/core/components/project/project-settings-member-defaults.tsx
+- [[download-button.tsx]] - code - web/core/components/profile/activity/download-button.tsx
+- [[fetch-keys.ts]] - code - web/core/constants/fetch-keys.ts
+- [[index.ts_318]] - code - web/core/components/editor/rich-text/index.ts
+- [[page.tsx_12]] - code - web/app/(all)/[workspaceSlug]/(projects)/profile/[userId]/activity/page.tsx
+- [[page.tsx_10]] - code - web/app/(all)/[workspaceSlug]/(projects)/profile/[userId]/page.tsx
+- [[priority-distribution.tsx]] - code - web/core/components/profile/overview/priority-distribution.tsx
+- [[priorityColors]] - code - web/core/components/profile/overview/priority-distribution.tsx
+- [[profile-activity-list.tsx]] - code - web/core/components/profile/activity/profile-activity-list.tsx
+- [[project-access-restriction.tsx]] - code - web/core/components/auth-screens/project/project-access-restriction.tsx
+- [[project-settings-member-defaults.tsx]] - code - web/core/components/project/project-settings-member-defaults.tsx
+- [[project-wrapper.tsx]] - code - web/core/layouts/auth-layout/project-wrapper.tsx
+- [[state-distribution.tsx]] - code - web/core/components/profile/overview/state-distribution.tsx
+- [[stats.tsx]] - code - web/core/components/profile/overview/stats.tsx
+- [[userService_6]] - code - web/core/components/settings/profile/content/pages/activity/activity-list.tsx
+- [[userService_2]] - code - web/core/components/profile/activity/download-button.tsx
+- [[userService_3]] - code - web/core/components/profile/activity/profile-activity-list.tsx
+- [[userService_4]] - code - web/core/components/profile/activity/workspace-activity-list.tsx
+- [[userService_5]] - code - web/core/components/profile/overview/activity.tsx
+- [[userService_1]] - code - web/app/(all)/[workspaceSlug]/(projects)/profile/[userId]/page.tsx
+- [[workload.tsx]] - code - web/core/components/profile/overview/workload.tsx
+- [[workspace-activity-list.tsx]] - code - web/core/components/profile/activity/workspace-activity-list.tsx
+- [[workspace-wrapper.tsx]] - code - web/core/layouts/auth-layout/workspace-wrapper.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -61,45 +112,35 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 20 edges to [[_COMMUNITY_Spreadsheet Column Components]]
-- 13 edges to [[_COMMUNITY_Applied Filters UI]]
-- 10 edges to [[_COMMUNITY_Community 55]]
-- 5 edges to [[_COMMUNITY_Cycle Services & Filters]]
-- 5 edges to [[_COMMUNITY_Issue Activity Tracking]]
-- 5 edges to [[_COMMUNITY_Community 41]]
-- 4 edges to [[_COMMUNITY_Layout System]]
-- 4 edges to [[_COMMUNITY_Auth Wrappers]]
-- 3 edges to [[_COMMUNITY_Community 81]]
-- 3 edges to [[_COMMUNITY_Member Filters & Description]]
-- 3 edges to [[_COMMUNITY_Module Analytics]]
-- 3 edges to [[_COMMUNITY_Community 39]]
-- 3 edges to [[_COMMUNITY_Community 151]]
-- 2 edges to [[_COMMUNITY_Community 101]]
-- 2 edges to [[_COMMUNITY_Group & Drag UI]]
-- 2 edges to [[_COMMUNITY_Active Cycle Stats]]
-- 2 edges to [[_COMMUNITY_Community 38]]
-- 2 edges to [[_COMMUNITY_Community 125]]
-- 2 edges to [[_COMMUNITY_Community 122]]
-- 2 edges to [[_COMMUNITY_Community 61]]
-- 2 edges to [[_COMMUNITY_Community 98]]
-- 2 edges to [[_COMMUNITY_Community 205]]
-- 2 edges to [[_COMMUNITY_Community 162]]
-- 2 edges to [[_COMMUNITY_Empty State Components]]
-- 2 edges to [[_COMMUNITY_Community 183]]
-- 2 edges to [[_COMMUNITY_Community 276]]
-- 1 edge to [[_COMMUNITY_Project Estimates]]
-- 1 edge to [[_COMMUNITY_Issue Filters & Context]]
-- 1 edge to [[_COMMUNITY_Community 92]]
-- 1 edge to [[_COMMUNITY_Community 155]]
-- 1 edge to [[_COMMUNITY_Community 123]]
-- 1 edge to [[_COMMUNITY_Community 133]]
-- 1 edge to [[_COMMUNITY_Empty States & Inbox]]
+- 14 edges to [[_COMMUNITY_Community 51]]
+- 14 edges to [[_COMMUNITY_Community 44]]
+- 8 edges to [[_COMMUNITY_Work Item Detail & Layouts]]
+- 7 edges to [[_COMMUNITY_Community 24]]
+- 7 edges to [[_COMMUNITY_Community 45]]
+- 7 edges to [[_COMMUNITY_Community 64]]
+- 6 edges to [[_COMMUNITY_Project Filters & Archives]]
+- 6 edges to [[_COMMUNITY_Issue Display Filters]]
+- 5 edges to [[_COMMUNITY_Community 70]]
+- 5 edges to [[_COMMUNITY_Active Cycle Stats]]
+- 4 edges to [[_COMMUNITY_Community 202]]
+- 4 edges to [[_COMMUNITY_Community 23]]
+- 4 edges to [[_COMMUNITY_Community 65]]
+- 3 edges to [[_COMMUNITY_Issue Activity Types]]
+- 3 edges to [[_COMMUNITY_Community 115]]
+- 2 edges to [[_COMMUNITY_Community 40]]
+- 2 edges to [[_COMMUNITY_Community 340]]
+- 2 edges to [[_COMMUNITY_Community 46]]
+- 2 edges to [[_COMMUNITY_Module & Cycle Analytics]]
+- 2 edges to [[_COMMUNITY_Filter UI & Breadcrumbs]]
+- 2 edges to [[_COMMUNITY_Community 311]]
+- 2 edges to [[_COMMUNITY_Community 43]]
+- 2 edges to [[_COMMUNITY_Community 106]]
+- 1 edge to [[_COMMUNITY_Community 234]]
+- 1 edge to [[_COMMUNITY_Community 408]]
 
 ## Top bridge nodes
-
-- [[use-project-state.ts]] - degree 40, connects to 16 communities
-- [[useProjectState()]] - degree 39, connects to 14 communities
-- [[root.tsx_35]] - degree 15, connects to 8 communities
-- [[form.tsx_8]] - degree 18, connects to 6 communities
-- [[use-project-issue-properties.ts]] - degree 13, connects to 5 communities
+- [[project-wrapper.tsx]] - degree 37, connects to 12 communities
+- [[fetch-keys.ts]] - degree 70, connects to 8 communities
+- [[workspace-wrapper.tsx]] - degree 27, connects to 8 communities
+- [[project-settings-member-defaults.tsx]] - degree 13, connects to 4 communities
+- [[activity-list.tsx_1]] - degree 16, connects to 3 communities

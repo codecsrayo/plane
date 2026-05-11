@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/auth.ts"
+source_file: "packages/types/src/auth.ts"
 type: "code"
-community: "Email Check"
+community: "Community 495"
 location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Email_Check
+  - community/Community_495
 ---
 
 # TEmailCheckTypes
 
 ## Connections
-
 - [[auth.ts]] - `contains` [EXTRACTED]
+- [[auth.ts_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Email_Check
+#graphify/code #graphify/EXTRACTED #community/Community_495

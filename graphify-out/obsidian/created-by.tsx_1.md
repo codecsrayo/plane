@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/common/filters/created-by.tsx"
 type: "code"
-community: "Member Members"
+community: "Issue Display Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Members
+  - community/Issue_Display_Filters
 ---
 
 # created-by.tsx
 
 ## Connections
-
 - [[FilterCreatedBy]] - `contains` [EXTRACTED]
 - [[Props_314]] - `contains` [EXTRACTED]
 - [[filter-selection.tsx]] - `imports_from` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[use-member.ts]] - `imports_from` [EXTRACTED]
 - [[useMember()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Members
+#graphify/code #graphify/EXTRACTED #community/Issue_Display_Filters

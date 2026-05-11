@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/workspace_integrations_advanced.rs"
 type: "code"
-community: "Returns State"
+community: "Community 286"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_State
+  - community/Community_286
 ---
 
 # setup()
 
 ## Connections
-
 - [[.spawn()]] - `calls` [INFERRED]
 - [[create_pr_state_mapping_nonexistent_wi_returns_error()]] - `calls` [EXTRACTED]
 - [[create_pr_state_mapping_unauthenticated_returns_401()]] - `calls` [EXTRACTED]
@@ -33,4 +32,4 @@ tags:
 - [[list_pr_state_mappings_unauthenticated_returns_401()]] - `calls` [EXTRACTED]
 - [[workspace_integrations_advanced.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_State
+#graphify/code #graphify/EXTRACTED #community/Community_286

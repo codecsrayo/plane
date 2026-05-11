@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/inbox/sidebar/root.tsx"
 type: "code"
-community: "Issue Inbox"
+community: "Activity & Inbox Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Inbox
+  - community/Activity__Inbox_Filters
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[IInboxSidebarProps]] - `contains` [EXTRACTED]
 - [[InboxIssueAppliedFilters]] - `imports` [EXTRACTED]
 - [[InboxIssueList]] - `imports` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[useProjectInbox()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Inbox
+#graphify/code #graphify/EXTRACTED #community/Activity__Inbox_Filters

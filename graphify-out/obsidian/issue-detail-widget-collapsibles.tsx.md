@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-detail-widgets/issue-detail-widget-collapsibles.tsx"
 type: "code"
-community: "Issue Widget"
+community: "Community 219"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Widget
+  - community/Community_219
 ---
 
 # issue-detail-widget-collapsibles.tsx
 
 ## Connections
-
 - [[IssueDetailWidgetCollapsibles]] - `contains` [EXTRACTED]
 - [[Props_337]] - `contains` [EXTRACTED]
 - [[WorkItemAdditionalWidgetCollapsibles()]] - `imports` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Widget
+#graphify/code #graphify/EXTRACTED #community/Community_219

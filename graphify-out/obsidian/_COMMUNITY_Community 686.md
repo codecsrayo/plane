@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.50
+members: 4
 ---
 
 # Community 686
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.50 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_36]] - code - api_rust/src/entities/sessions.rs
+- [[TestGithubUserConnectionEndpoint]] - code - api/plane/tests/contract/app/test_github_user_connection.py
+- [[test_connect_github_account_requires_code()]] - code - api/plane/tests/contract/app/test_github_user_connection.py
+- [[test_connect_github_account_success()]] - code - api/plane/tests/contract/app/test_github_user_connection.py
+- [[test_github_user_connection.py]] - code - api/plane/tests/contract/app/test_github_user_connection.py
 
 ## Live Query (requires Dataview plugin)
 

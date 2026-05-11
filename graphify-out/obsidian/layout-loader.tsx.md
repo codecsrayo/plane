@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/base-layouts/loaders/layout-loader.tsx"
 type: "code"
-community: "Loader Calendar"
+community: "Community 23"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Loader_Calendar
+  - community/Community_23
 ---
 
 # layout-loader.tsx
 
 ## Connections
-
 - [[GenericLayoutLoader()]] - `contains` [EXTRACTED]
 - [[GenericLayoutLoaderProps]] - `contains` [EXTRACTED]
 - [[KanbanLayoutLoader()]] - `imports` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[kanban-layout-loader.tsx]] - `imports_from` [EXTRACTED]
 - [[list-layout-loader.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Loader_Calendar
+#graphify/code #graphify/EXTRACTED #community/Community_23

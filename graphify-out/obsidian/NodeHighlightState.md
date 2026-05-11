@@ -1,18 +1,18 @@
 ---
-source_file: "editor/src/core/plugins/highlight.ts"
+source_file: "packages/editor/src/core/plugins/highlight.ts"
 type: "code"
-community: "Link Options"
+community: "Editor Extensions"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Link_Options
+  - community/Editor_Extensions
 ---
 
 # NodeHighlightState
 
 ## Connections
-
 - [[highlight.ts]] - `contains` [EXTRACTED]
+- [[highlight.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Link_Options
+#graphify/code #graphify/EXTRACTED #community/Editor_Extensions

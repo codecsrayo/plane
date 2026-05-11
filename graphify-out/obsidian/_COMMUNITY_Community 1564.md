@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_214]] - code - web/ce/components/workspace/billing/index.ts
+- [[index.ts_232]] - code - web/ce/components/issues/quick-add/index.ts
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/project/leave-project-modal.tsx"
 type: "code"
-community: "Project Profile"
+community: "Community 73"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Profile
+  - community/Community_73
 ---
 
 # leave-project-modal.tsx
 
 ## Connections
-
 - [[FormData]] - `contains` [EXTRACTED]
 - [[ILeaveProjectModal]] - `contains` [EXTRACTED]
 - [[LeaveProjectModal]] - `contains` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[use-app-router.tsx]] - `imports_from` [EXTRACTED]
 - [[useAppRouter()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Profile
+#graphify/code #graphify/EXTRACTED #community/Community_73

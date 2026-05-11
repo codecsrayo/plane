@@ -1,22 +1,21 @@
 ---
 source_file: "web/app/error/prod.tsx"
 type: "code"
-community: "Error Provider"
+community: "Community 43"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Error_Provider
+  - community/Community_43
 ---
 
 # prod.tsx
 
 ## Connections
-
 - [[ProdErrorComponent()]] - `contains` [EXTRACTED]
 - [[ProdErrorComponentProps]] - `contains` [EXTRACTED]
 - [[index.tsx_4]] - `imports_from` [EXTRACTED]
 - [[index.tsx_6]] - `imports_from` [EXTRACTED]
 - [[linkMap]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Error_Provider
+#graphify/code #graphify/EXTRACTED #community/Community_43

@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_236]] - code - web/ce/components/workspace-notifications/index.ts
+- [[index.ts_255]] - code - web/ce/components/command-palette/index.ts
 
 ## Live Query (requires Dataview plugin)
 

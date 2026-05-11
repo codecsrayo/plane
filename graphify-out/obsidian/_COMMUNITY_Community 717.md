@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 717
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[ActiveModel_67]] - code - api_rust/src/entities/project_pages.rs
+- [[CYCLE_STATUS]] - code - packages/constants/src/cycle.ts
+- [[cycle.ts]] - code - constants/src/cycle.ts
+- [[cycle.ts_4]] - code - packages/constants/src/cycle.ts
 
 ## Live Query (requires Dataview plugin)
 

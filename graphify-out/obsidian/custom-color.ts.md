@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/custom-color.ts"
 type: "code"
-community: "Document Custom"
+community: "Community 82"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Document_Custom
+  - community/Community_82
 ---
 
 # custom-color.ts
 
 ## Connections
-
 - [[COLORS_LIST]] - `imports` [EXTRACTED]
 - [[CORE_EXTENSIONS]] - `imports` [EXTRACTED]
 - [[Commands_2]] - `contains` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[core-without-props.ts]] - `imports_from` [EXTRACTED]
 - [[extension.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Document_Custom
+#graphify/code #graphify/EXTRACTED #community/Community_82

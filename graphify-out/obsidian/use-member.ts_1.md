@@ -1,18 +1,17 @@
 ---
 source_file: "space/hooks/store/use-member.ts"
 type: "code"
-community: "Publish Cycle"
+community: "Community 72"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Publish_Cycle
+  - community/Community_72
 ---
 
 # use-member.ts
 
 ## Connections
-
 - [[IIssueMemberStore]] - `imports` [EXTRACTED]
 - [[StoreContext_2]] - `imports` [EXTRACTED]
 - [[default.tsx_4]] - `imports_from` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[useMember()]] - `contains` [EXTRACTED]
 - [[user.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Publish_Cycle
+#graphify/code #graphify/EXTRACTED #community/Community_72

@@ -1,21 +1,20 @@
 ---
 source_file: "api/plane/api/serializers/workspace.py"
 type: "code"
-community: "Serializer Project"
+community: "Community 68"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Serializer_Project
+  - community/Community_68
 ---
 
 # workspace.py
 
 ## Connections
-
 - [[Meta_4]] - `contains` [EXTRACTED]
 - [[WorkspaceLiteSerializer]] - `contains` [EXTRACTED]
 - [[__init__.py_13]] - `imports_from` [EXTRACTED]
 - [[base.py_24]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Serializer_Project
+#graphify/code #graphify/EXTRACTED #community/Community_68

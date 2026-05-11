@@ -1,19 +1,20 @@
 ---
-source_file: "propel/src/tab-navigation/tab-navigation-item.tsx"
+source_file: "packages/propel/src/tab-navigation/tab-navigation-item.tsx"
 type: "code"
-community: "Navigation Input"
+community: "Community 92"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Navigation_Input
+  - community/Community_92
 ---
 
 # TabNavigationItem()
 
 ## Connections
-
 - [[tab-navigation-item.tsx]] - `contains` [EXTRACTED]
+- [[tab-navigation-item.tsx_1]] - `contains` [EXTRACTED]
 - [[tab-navigation.stories.tsx]] - `imports` [EXTRACTED]
+- [[tab-navigation.stories.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Navigation_Input
+#graphify/code #graphify/EXTRACTED #community/Community_92

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/views/asset.py"
 type: "code"
-community: "Endpoint Issue"
+community: "Community 32"
 location: "L48"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_Issue
+  - community/Community_32
 ---
 
 # UserAssetEndpoint
 
 ## Connections
-
 - [[.asset_delete()_2]] - `method` [EXTRACTED]
 - [[.entity_asset_delete()_2]] - `method` [EXTRACTED]
 - [[BaseAPIView]] - `uses` [INFERRED]
@@ -21,4 +20,4 @@ tags:
 - [[This endpoint is used to upload user profile images._1]] - `rationale_for` [EXTRACTED]
 - [[asset.py_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_32

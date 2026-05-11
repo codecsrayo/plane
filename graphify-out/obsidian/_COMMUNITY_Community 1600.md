@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_250]] - code - web/ce/components/estimates/index.ts
+- [[index.ts_304]] - code - web/core/components/gantt-chart/sidebar/index.ts
 
 ## Live Query (requires Dataview plugin)
 

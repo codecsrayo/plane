@@ -1,19 +1,18 @@
 ---
 source_file: "api_rust/tests/auth_spaces.rs"
 type: "code"
-community: "Space Sign"
+community: "Rust Auth Services"
 location: "L79"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Space_Sign
+  - community/Rust_Auth_Services
 ---
 
 # space_sign_in_unknown_user_redirects_with_error()
 
 ## Connections
-
 - [[.spawn()]] - `calls` [INFERRED]
 - [[auth_spaces.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Space_Sign
+#graphify/code #graphify/EXTRACTED #community/Rust_Auth_Services

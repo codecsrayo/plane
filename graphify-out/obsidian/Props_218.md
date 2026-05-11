@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/project/create/common-attributes.tsx"
 type: "code"
-community: "Project Common"
+community: "Community 324"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Common
+  - community/Community_324
 ---
 
 # Props
 
 ## Connections
-
 - [[common-attributes.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Common
+#graphify/code #graphify/EXTRACTED #community/Community_324

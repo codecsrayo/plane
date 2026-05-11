@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/use-parse-editor-content.ts"
 type: "code"
-community: "Member Members"
+community: "Community 149"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Members
+  - community/Community_149
 ---
 
 # use-parse-editor-content.ts
 
 ## Connections
-
 - [[TArgs_14]] - `contains` [EXTRACTED]
 - [[editor-body.tsx]] - `imports_from` [EXTRACTED]
 - [[editor.tsx_3]] - `imports_from` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[useMember()]] - `imports` [EXTRACTED]
 - [[useParseEditorContent()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Members
+#graphify/code #graphify/EXTRACTED #community/Community_149

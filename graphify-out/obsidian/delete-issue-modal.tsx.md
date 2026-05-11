@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/delete-issue-modal.tsx"
 type: "code"
-community: "Issue Work"
+community: "Project Filters & Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Work
+  - community/Project_Filters__Archives
 ---
 
 # delete-issue-modal.tsx
 
 ## Connections
-
 - [[DeleteIssueModal]] - `contains` [EXTRACTED]
 - [[Props_256]] - `contains` [EXTRACTED]
 - [[all-issue.tsx]] - `imports_from` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[work-item-level.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Work
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

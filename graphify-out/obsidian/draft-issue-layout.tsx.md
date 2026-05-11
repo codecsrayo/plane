@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-modal/draft-issue-layout.tsx"
 type: "code"
-community: "Issue Work"
+community: "Project Filters & Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Work
+  - community/Project_Filters__Archives
 ---
 
 # draft-issue-layout.tsx
 
 ## Connections
-
 - [[ConfirmIssueDiscard()]] - `imports` [EXTRACTED]
 - [[DraftIssueLayout]] - `contains` [EXTRACTED]
 - [[DraftIssueProps]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[use-issue-modal.tsx]] - `imports_from` [EXTRACTED]
 - [[useIssueModal()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Work
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

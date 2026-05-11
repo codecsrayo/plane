@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/workspace/sidebar/user-menu-root.tsx"
 type: "code"
-community: "Project Profile"
+community: "Community 105"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Profile
+  - community/Community_105
 ---
 
 # user-menu-root.tsx
 
 ## Connections
-
 - [[AppSidebarItem]] - `imports` [EXTRACTED]
 - [[CoverImage()]] - `imports` [EXTRACTED]
 - [[UserMenuRoot]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[useAppTheme()]] - `imports` [EXTRACTED]
 - [[useCommandPalette()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Profile
+#graphify/code #graphify/EXTRACTED #community/Community_105

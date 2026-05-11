@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/user/index.ts"
 type: "code"
-community: "Project Profile"
+community: "Community 45"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Profile
+  - community/Community_45
 ---
 
 # index.ts
 
 ## Connections
-
 - [[ConfirmWorkspaceMemberRemove.tsx]] - `imports_from` [EXTRACTED]
 - [[_sidebar.tsx]] - `imports_from` [EXTRACTED]
 - [[account-commands.ts]] - `imports_from` [EXTRACTED]
@@ -245,4 +244,4 @@ tags:
 - [[workspace-settings-menu.tsx]] - `imports_from` [EXTRACTED]
 - [[workspace-wrapper.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Profile
+#graphify/code #graphify/EXTRACTED #community/Community_45

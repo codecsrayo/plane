@@ -1,18 +1,18 @@
 ---
-source_file: "editor/src/core/constants/common.ts"
+source_file: "packages/editor/src/core/constants/common.ts"
 type: "code"
-community: "Items Extended"
+community: "Community 82"
 location: "L60"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Items_Extended
+  - community/Community_82
 ---
 
 # TEXT_ALIGNMENT_ITEMS
 
 ## Connections
-
 - [[common.ts]] - `contains` [EXTRACTED]
+- [[common.ts_9]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Items_Extended
+#graphify/code #graphify/EXTRACTED #community/Community_82

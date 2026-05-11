@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/modules/(list)/layout.tsx"
 type: "code"
-community: "Project Issues"
+community: "Community 40"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Issues
+  - community/Community_40
 ---
 
 # ProjectModulesListLayout()
 
 ## Connections
-
 - [[layout.tsx_14]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Issues
+#graphify/code #graphify/EXTRACTED #community/Community_40

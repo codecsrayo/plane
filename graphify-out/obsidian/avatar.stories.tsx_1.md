@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/avatar/avatar.stories.tsx"
 type: "code"
-community: "Avatar Fallback"
+community: "Community 127"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Avatar_Fallback
+  - community/Community_127
 ---
 
 # avatar.stories.tsx
 
 ## Connections
-
 - [[AllShapes]] - `contains` [EXTRACTED]
 - [[AllSizes_5]] - `contains` [EXTRACTED]
 - [[Avatar()]] - `imports` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[WithName]] - `contains` [EXTRACTED]
 - [[avatar.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Avatar_Fallback
+#graphify/code #graphify/EXTRACTED #community/Community_127

@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/reaction.ts"
 type: "code"
-community: "User Instance"
+community: "Community 100"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User_Instance
+  - community/Community_100
 ---
 
 # reaction.ts
 
 ## Connections
-
 - [[IIssueReaction]] - `contains` [EXTRACTED]
 - [[IUserLite]] - `imports` [EXTRACTED]
 - [[IssueCommentReaction]] - `contains` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[IssueReactionForm]] - `contains` [EXTRACTED]
 - [[users.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User_Instance
+#graphify/code #graphify/EXTRACTED #community/Community_100

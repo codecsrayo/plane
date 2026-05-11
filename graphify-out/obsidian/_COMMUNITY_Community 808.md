@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 808
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_138]] - code - web/core/components/onboarding/index.ts
+- [[TUpdateEstimateModal]] - code - web/ce/components/estimates/update/modal.tsx
+- [[UpdateEstimateModal]] - code - web/ce/components/estimates/update/modal.tsx
+- [[modal.tsx_4]] - code - web/ce/components/estimates/update/modal.tsx
 
 ## Live Query (requires Dataview plugin)
 

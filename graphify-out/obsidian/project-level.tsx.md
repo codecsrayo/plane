@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/components/command-palette/modals/project-level.tsx"
 type: "code"
-community: "Project Work"
+community: "Community 22"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Work
+  - community/Community_22
 ---
 
 # project-level.tsx
 
 ## Connections
-
 - [[CreatePageModal()]] - `imports` [EXTRACTED]
 - [[CreateUpdateProjectViewModal]] - `imports` [EXTRACTED]
 - [[CycleCreateUpdateModal()]] - `imports` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[use-command-palette.ts]] - `imports_from` [EXTRACTED]
 - [[useCommandPalette()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Work
+#graphify/code #graphify/EXTRACTED #community/Community_22

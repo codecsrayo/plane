@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(projects)/_sidebar.tsx"
 type: "code"
-community: "Sidebar Resizable"
+community: "Community 144"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Resizable
+  - community/Community_144
 ---
 
-# \_sidebar.tsx
+# _sidebar.tsx
 
 ## Connections
-
 - [[AppSidebar]] - `imports` [EXTRACTED]
 - [[ExtendedAppSidebar]] - `imports` [EXTRACTED]
 - [[ProjectAppSidebar]] - `contains` [EXTRACTED]
@@ -38,4 +37,4 @@ tags:
 - [[useAppTheme()]] - `imports` [EXTRACTED]
 - [[useFavorite()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Resizable
+#graphify/code #graphify/EXTRACTED #community/Community_144

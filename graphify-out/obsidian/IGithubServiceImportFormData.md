@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/importer/github-importer.ts"
+source_file: "packages/types/src/importer/github-importer.ts"
 type: "code"
-community: "Github Repo"
+community: "Community 612"
 location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Github_Repo
+  - community/Community_612
 ---
 
 # IGithubServiceImportFormData
 
 ## Connections
-
 - [[github-importer.ts]] - `contains` [EXTRACTED]
+- [[github-importer.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Github_Repo
+#graphify/code #graphify/EXTRACTED #community/Community_612

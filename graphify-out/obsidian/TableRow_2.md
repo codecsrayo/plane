@@ -1,18 +1,18 @@
 ---
-source_file: "editor/src/core/extensions/table/plugins/drag-handles/row/utils.ts"
+source_file: "packages/editor/src/core/extensions/table/plugins/drag-handles/row/utils.ts"
 type: "code"
-community: "Drag Table"
+community: "Community 38"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Drag_Table
+  - community/Community_38
 ---
 
 # TableRow
 
 ## Connections
-
 - [[utils.ts_4]] - `contains` [EXTRACTED]
+- [[utils.ts_23]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Drag_Table
+#graphify/code #graphify/EXTRACTED #community/Community_38

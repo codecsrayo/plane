@@ -1,17 +1,22 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.48
+members: 7
 ---
 
 # Community 548
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.48 - moderately connected
+**Members:** 7 nodes
 
 ## Members
-
-- [[index.ts_171]] - code - propel/src/charts/line-chart/index.ts
+- [[TProjectAppliedDisplayFilterKeys]] - code - packages/types/src/project/project_filters.ts
+- [[TProjectDisplayFilters]] - code - packages/types/src/project/project_filters.ts
+- [[TProjectFilters]] - code - packages/types/src/project/project_filters.ts
+- [[TProjectOrderByOptions]] - code - packages/types/src/project/project_filters.ts
+- [[TProjectStoredFilters]] - code - packages/types/src/project/project_filters.ts
+- [[project_filters.ts_1]] - code - packages/types/src/project/project_filters.ts
+- [[project_filters.ts]] - code - types/src/project/project_filters.ts
 
 ## Live Query (requires Dataview plugin)
 

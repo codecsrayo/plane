@@ -1,17 +1,16 @@
 ---
 source_file: ""
 type: "code"
-community: "Group Drop"
+community: "Community 311"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group_Drop
+  - community/Community_311
 ---
 
 # Adapter
 
 ## Connections
-
 - [[OauthAdapter]] - `inherits` [EXTRACTED]
 - [[base-kanban-root.tsx]] - `imports_from` [EXTRACTED]
 - [[block-root.tsx]] - `imports_from` [EXTRACTED]
@@ -36,4 +35,4 @@ tags:
 - [[use-group-drop-target.ts]] - `imports_from` [EXTRACTED]
 - [[widget-item.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group_Drop
+#graphify/code #graphify/EXTRACTED #community/Community_311

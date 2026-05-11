@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/models/webhook.py"
 type: "code"
-community: "Webhook Meta"
+community: "Community 482"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Webhook_Meta
+  - community/Community_482
 ---
 
 # webhook.py
 
 ## Connections
-
 - [[Meta_45]] - `contains` [EXTRACTED]
 - [[ProjectWebhook]] - `contains` [EXTRACTED]
 - [[Webhook]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[validate_domain()]] - `contains` [EXTRACTED]
 - [[validate_schema()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Webhook_Meta
+#graphify/code #graphify/EXTRACTED #community/Community_482

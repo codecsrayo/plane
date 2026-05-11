@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/notification/base.py"
 type: "code"
-community: "Partial Endpoint"
+community: "Community 342"
 location: "L291"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Partial_Endpoint
+  - community/Community_342
 ---
 
 # UserNotificationPreferenceEndpoint
 
 ## Connections
-
 - [[.get()_25]] - `method` [EXTRACTED]
 - [[.patch()_5]] - `method` [EXTRACTED]
 - [[BaseAPIView]] - `uses` [INFERRED]
@@ -21,4 +20,4 @@ tags:
 - [[BaseViewSet]] - `uses` [INFERRED]
 - [[base.py_8]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Partial_Endpoint
+#graphify/code #graphify/EXTRACTED #community/Community_342

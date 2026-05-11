@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/types/editor.ts"
 type: "code"
-community: "Items Extended"
+community: "Community 179"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Items_Extended
+  - community/Community_179
 ---
 
 # editor.ts
 
 ## Connections
-
 - [[CoreEditorRefApi]] - `contains` [EXTRACTED]
 - [[EditorEvents]] - `contains` [EXTRACTED]
 - [[EditorRefApi]] - `contains` [EXTRACTED]
@@ -37,4 +36,4 @@ tags:
 - [[index.ts_47]] - `imports_from` [EXTRACTED]
 - [[use-title-editor.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Items_Extended
+#graphify/code #graphify/EXTRACTED #community/Community_179

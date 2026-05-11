@@ -1,21 +1,20 @@
 ---
 source_file: "api/plane/license/api/views/admin.py"
 type: "code"
-community: "Endpoint Sign"
+community: "Community 54"
 location: "L89"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Endpoint_Sign
+  - community/Community_54
 ---
 
 # InstanceAdminSignUpEndpoint
 
 ## Connections
-
 - [[AuthenticationException]] - `uses` [INFERRED]
 - [[BaseAPIView]] - `uses` [INFERRED]
 - [[View]] - `inherits` [EXTRACTED]
 - [[admin.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Endpoint_Sign
+#graphify/code #graphify/INFERRED #community/Community_54

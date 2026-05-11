@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/components/menus/bubble-menu/link-selector.tsx"
 type: "code"
-community: "Toggle Menu"
+community: "Community 30"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toggle_Menu
+  - community/Community_30
 ---
 
 # link-selector.tsx
 
 ## Connections
-
 - [[BubbleMenuLinkSelector()]] - `contains` [EXTRACTED]
 - [[CORE_EXTENSIONS]] - `imports` [EXTRACTED]
 - [[FloatingMenuRoot()]] - `imports` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[use-floating-menu.ts]] - `imports_from` [EXTRACTED]
 - [[useFloatingMenu()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toggle_Menu
+#graphify/code #graphify/EXTRACTED #community/Community_30

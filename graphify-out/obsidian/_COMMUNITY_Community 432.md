@@ -1,19 +1,27 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 0.17
+members: 12
 ---
 
 # Community 432
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 0.17 - loosely connected
+**Members:** 12 nodes
 
 ## Members
-
-- [[Model_113]] - code - api_rust/src/entities/user_recent_visits.rs
-- [[Relation_113]] - code - api_rust/src/entities/user_recent_visits.rs
-- [[user_recent_visits.rs]] - code - api_rust/src/entities/user_recent_visits.rs
+- [[Factory for creating Project instances]] - rationale - api/plane/tests/factories.py
+- [[Factory for creating ProjectMember instances]] - rationale - api/plane/tests/factories.py
+- [[Factory for creating User instances]] - rationale - api/plane/tests/factories.py
+- [[Factory for creating Workspace instances]] - rationale - api/plane/tests/factories.py
+- [[Factory for creating WorkspaceMember instances]] - rationale - api/plane/tests/factories.py
+- [[Meta_24]] - code - api/plane/tests/factories.py
+- [[ProjectFactory]] - code - api/plane/tests/factories.py
+- [[ProjectMemberFactory]] - code - api/plane/tests/factories.py
+- [[UserFactory]] - code - api/plane/tests/factories.py
+- [[WorkspaceFactory]] - code - api/plane/tests/factories.py
+- [[WorkspaceMemberFactory]] - code - api/plane/tests/factories.py
+- [[factories.py]] - code - api/plane/tests/factories.py
 
 ## Live Query (requires Dataview plugin)
 

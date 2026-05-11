@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/cycle.service.ts"
 type: "code"
-community: "Cycle Cycles"
+community: "Active Cycle Stats"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Cycles
+  - community/Active_Cycle_Stats
 ---
 
 # CycleService
 
 ## Connections
-
 - [[.addCycleToFavorites()]] - `method` [EXTRACTED]
 - [[.constructor()_151]] - `method` [EXTRACTED]
 - [[.createCycle()]] - `method` [EXTRACTED]
@@ -35,4 +34,4 @@ tags:
 - [[modal.tsx_14]] - `imports` [EXTRACTED]
 - [[sidebar-header.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Cycles
+#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats

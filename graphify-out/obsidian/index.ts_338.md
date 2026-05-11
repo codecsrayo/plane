@@ -1,19 +1,18 @@
 ---
 source_file: "web/core/components/settings/profile/content/index.ts"
 type: "code"
-community: "Workspace Issue"
+community: "Community 24"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Issue
+  - community/Community_24
 ---
 
 # index.ts
 
 ## Connections
-
 - [[modal.tsx_10]] - `imports_from` [EXTRACTED]
 - [[page.tsx_56]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_24

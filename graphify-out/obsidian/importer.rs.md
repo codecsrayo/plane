@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/importer.rs"
 type: "code"
-community: "User Github"
+community: "Community 29"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User_Github
+  - community/Community_29
 ---
 
 # importer.rs
 
 ## Connections
-
 - [[CreateGithubImportRequest]] - `contains` [EXTRACTED]
 - [[CreateGitlabImportRequest]] - `contains` [EXTRACTED]
 - [[GithubReposQuery]] - `contains` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[list_gitlab_import_repositories()]] - `contains` [EXTRACTED]
 - [[list_gitlab_importers()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User_Github
+#graphify/code #graphify/EXTRACTED #community/Community_29

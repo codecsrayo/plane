@@ -1,14 +1,14 @@
 ---
 source_file: "api/plane/api/views/module.py"
 type: "rationale"
-community: "Retrieve Details"
+community: "Community 1714"
 location: "L469"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Retrieve_Details
+  - community/Community_1714
 ---
 
-# Retrieve module Retrieve details of a specific module.
+# Retrieve module          Retrieve details of a specific module.
 
-#graphify/rationale #graphify/EXTRACTED #community/Retrieve_Details
+#graphify/rationale #graphify/EXTRACTED #community/Community_1714

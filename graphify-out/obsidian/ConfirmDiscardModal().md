@@ -1,18 +1,17 @@
 ---
 source_file: "admin/components/common/confirm-discard-modal.tsx"
 type: "code"
-community: "Controller Values"
+community: "Community 125"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Controller_Values
+  - community/Community_125
 ---
 
 # ConfirmDiscardModal()
 
 ## Connections
-
 - [[confirm-discard-modal.tsx]] - `contains` [EXTRACTED]
 - [[form.tsx_13]] - `imports` [EXTRACTED]
 - [[form.tsx_14]] - `imports` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[form.tsx_16]] - `imports` [EXTRACTED]
 - [[form.tsx_17]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Controller_Values
+#graphify/code #graphify/EXTRACTED #community/Community_125

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/bgtasks/analytic_plot_export.py"
 type: "code"
-community: "Generate Analytic"
+community: "Community 268"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Generate_Analytic
+  - community/Community_268
 ---
 
 # analytic_plot_export.py
 
 ## Connections
-
 - [[analytic_export_task()]] - `contains` [EXTRACTED]
 - [[export_analytics_to_csv_email()]] - `contains` [EXTRACTED]
 - [[generate_csv_from_rows()]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[get_state_details()]] - `contains` [EXTRACTED]
 - [[send_export_email()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Generate_Analytic
+#graphify/code #graphify/EXTRACTED #community/Community_268

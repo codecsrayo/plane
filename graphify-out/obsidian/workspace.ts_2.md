@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/workspace.ts"
 type: "code"
-community: "Workspace Search"
+community: "Community 62"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Search
+  - community/Community_62
 ---
 
 # workspace.ts
 
 ## Connections
-
 - [[ECreateOrJoinWorkspaceViews]] - `contains` [EXTRACTED]
 - [[EOnboardingSteps]] - `contains` [EXTRACTED]
 - [[EUserWorkspaceRoles]] - `contains` [EXTRACTED]
@@ -58,4 +57,4 @@ tags:
 - [[users.ts]] - `imports_from` [EXTRACTED]
 - [[view-props.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Search
+#graphify/code #graphify/EXTRACTED #community/Community_62

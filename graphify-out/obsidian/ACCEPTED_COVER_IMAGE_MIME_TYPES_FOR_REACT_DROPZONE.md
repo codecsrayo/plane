@@ -1,18 +1,18 @@
 ---
-source_file: "constants/src/file.ts"
+source_file: "packages/constants/src/file.ts"
 type: "code"
-community: "Accepted Image"
+community: "Community 604"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Accepted_Image
+  - community/Community_604
 ---
 
 # ACCEPTED_COVER_IMAGE_MIME_TYPES_FOR_REACT_DROPZONE
 
 ## Connections
-
 - [[file.ts_1]] - `contains` [EXTRACTED]
+- [[file.ts_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Accepted_Image
+#graphify/code #graphify/EXTRACTED #community/Community_604

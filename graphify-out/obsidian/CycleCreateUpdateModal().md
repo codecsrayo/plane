@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/cycles/modal.tsx"
 type: "code"
-community: "Project Settings"
+community: "Active Cycle Stats"
 location: "L37"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Active_Cycle_Stats
 ---
 
 # CycleCreateUpdateModal()
 
 ## Connections
-
 - [[modal.tsx_14]] - `contains` [EXTRACTED]
 - [[page.tsx_26]] - `imports` [EXTRACTED]
 - [[project-level.tsx]] - `imports` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[usePlatformOS()]] - `calls` [EXTRACTED]
 - [[useProject()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats

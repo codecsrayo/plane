@@ -1,18 +1,17 @@
 ---
 source_file: "space/components/issues/navbar/layout-selection.tsx"
 type: "code"
-community: "Issue Peek"
+community: "Community 225"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Peek
+  - community/Community_225
 ---
 
 # layout-selection.tsx
 
 ## Connections
-
 - [[IssueLayoutIcon()_1]] - `imports` [EXTRACTED]
 - [[IssuesLayoutSelection]] - `contains` [EXTRACTED]
 - [[Props_576]] - `contains` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[use-issue-filter.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueFilter()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Peek
+#graphify/code #graphify/EXTRACTED #community/Community_225

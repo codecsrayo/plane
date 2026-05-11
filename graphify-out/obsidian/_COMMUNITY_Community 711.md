@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 711
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[ActiveModel_61]] - code - api_rust/src/entities/module_members.rs
+- [[use-platform-os.tsx]] - code - hooks/src/use-platform-os.tsx
+- [[use-platform-os.tsx_2]] - code - packages/hooks/src/use-platform-os.tsx
+- [[usePlatformOS()_1]] - code - packages/hooks/src/use-platform-os.tsx
 
 ## Live Query (requires Dataview plugin)
 

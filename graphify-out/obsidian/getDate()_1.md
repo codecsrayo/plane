@@ -1,18 +1,17 @@
 ---
 source_file: "space/helpers/date-time.helper.ts"
 type: "code"
-community: "Issue Properties"
+community: "Community 137"
 location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Community_137
 ---
 
 # getDate()
 
 ## Connections
-
 - [[DateFilterModal()]] - `calls` [INFERRED]
 - [[all-properties.tsx_1]] - `imports` [EXTRACTED]
 - [[checkExpiry()]] - `calls` [INFERRED]
@@ -23,4 +22,4 @@ tags:
 - [[renderFormattedDate()_1]] - `calls` [EXTRACTED]
 - [[shouldHighlightIssueDueDate()_1]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Community_137

@@ -1,28 +1,43 @@
 ---
 type: community
-cohesion: 0.23
-members: 12
+cohesion: 0.13
+members: 28
 ---
 
 # Community 200
 
-**Cohesion:** 0.23 - loosely connected
-**Members:** 12 nodes
+**Cohesion:** 0.13 - loosely connected
+**Members:** 28 nodes
 
 ## Members
-
-- [[AppRailVisibilityContext]] - code - web/core/lib/app-rail/context.tsx
-- [[AppRailVisibilityProvider]] - code - web/core/lib/app-rail/provider.tsx
-- [[AppRailVisibilityProviderProps]] - code - web/core/lib/app-rail/provider.tsx
-- [[IAppRailVisibilityContext]] - code - web/core/lib/app-rail/types.ts
-- [[context.tsx]] - code - web/core/lib/app-rail/context.tsx
-- [[getValueFromLocalStorage()]] - code - web/core/hooks/use-local-storage.tsx
-- [[provider.tsx]] - code - web/core/lib/app-rail/provider.tsx
-- [[setValueIntoLocalStorage()]] - code - web/core/hooks/use-local-storage.tsx
-- [[types.ts]] - code - web/core/lib/app-rail/types.ts
-- [[use-local-storage.tsx]] - code - web/core/hooks/use-local-storage.tsx
-- [[useAppRailPreferences()]] - code - web/core/hooks/use-navigation-preferences.ts
-- [[useLocalStorage()]] - code - web/core/hooks/use-local-storage.tsx
+- [[ChevronDownIcon()]] - code - packages/propel/src/icons/arrows/chevron-down.tsx
+- [[Collapsible]] - code - packages/propel/src/collapsible/collapsible.tsx
+- [[CollapsibleContext]] - code - packages/propel/src/collapsible/collapsible.tsx
+- [[CollapsibleContextType]] - code - packages/propel/src/collapsible/collapsible.tsx
+- [[Content()]] - code - packages/propel/src/collapsible/collapsible.tsx
+- [[ContentProps]] - code - packages/propel/src/collapsible/collapsible.tsx
+- [[Controlled_2]] - code - packages/propel/src/collapsible/collapsible.stories.tsx
+- [[CustomStyling_2]] - code - packages/propel/src/collapsible/collapsible.stories.tsx
+- [[Default_32]] - code - packages/propel/src/collapsible/collapsible.stories.tsx
+- [[DefaultOpen]] - code - packages/propel/src/collapsible/collapsible.stories.tsx
+- [[MultipleCollapsibles]] - code - packages/propel/src/collapsible/collapsible.stories.tsx
+- [[NestedContent]] - code - packages/propel/src/collapsible/collapsible.stories.tsx
+- [[Root()]] - code - packages/propel/src/collapsible/collapsible.tsx
+- [[RootProps]] - code - packages/propel/src/collapsible/collapsible.tsx
+- [[Story_41]] - code - packages/propel/src/collapsible/collapsible.stories.tsx
+- [[TCollapsibleProps]] - code - packages/ui/src/collapsible/collapsible.tsx
+- [[Trigger()]] - code - packages/propel/src/collapsible/collapsible.tsx
+- [[TriggerProps]] - code - packages/propel/src/collapsible/collapsible.tsx
+- [[chevron-down.tsx_1]] - code - packages/propel/src/icons/arrows/chevron-down.tsx
+- [[chevron-down.tsx]] - code - propel/src/icons/arrows/chevron-down.tsx
+- [[collapsible.stories.tsx_1]] - code - packages/propel/src/collapsible/collapsible.stories.tsx
+- [[collapsible.stories.tsx]] - code - propel/src/collapsible/collapsible.stories.tsx
+- [[collapsible.tsx_3]] - code - packages/propel/src/collapsible/collapsible.tsx
+- [[collapsible.tsx_2]] - code - packages/ui/src/collapsible/collapsible.tsx
+- [[collapsible.tsx_1]] - code - propel/src/collapsible/collapsible.tsx
+- [[collapsible.tsx]] - code - ui/src/collapsible/collapsible.tsx
+- [[render()_3]] - code - packages/propel/src/collapsible/collapsible.stories.tsx
+- [[useCollapsible()]] - code - packages/propel/src/collapsible/collapsible.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -32,23 +47,9 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 3 edges to [[_COMMUNITY_Community 94]]
-- 2 edges to [[_COMMUNITY_Community 95]]
-- 2 edges to [[_COMMUNITY_Page Actions]]
-- 2 edges to [[_COMMUNITY_Community 54]]
-- 2 edges to [[_COMMUNITY_Community 63]]
-- 2 edges to [[_COMMUNITY_Cycle Analytics]]
-- 2 edges to [[_COMMUNITY_Community 62]]
-- 2 edges to [[_COMMUNITY_Cycle Services & Filters]]
-- 1 edge to [[_COMMUNITY_Empty State Components]]
-- 1 edge to [[_COMMUNITY_Community 244]]
-- 1 edge to [[_COMMUNITY_Community 128]]
-- 1 edge to [[_COMMUNITY_Active Cycle Stats]]
+- 4 edges to [[_COMMUNITY_Icon Library & Branding]]
+- 4 edges to [[_COMMUNITY_SVG Icon Components]]
 
 ## Top bridge nodes
-
-- [[use-local-storage.tsx]] - degree 17, connects to 11 communities
-- [[useLocalStorage()]] - degree 6, connects to 4 communities
-- [[useAppRailPreferences()]] - degree 3, connects to 2 communities
-- [[context.tsx]] - degree 6, connects to 1 community
+- [[chevron-down.tsx_1]] - degree 6, connects to 2 communities
+- [[chevron-down.tsx]] - degree 6, connects to 2 communities

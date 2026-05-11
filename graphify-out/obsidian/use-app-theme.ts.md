@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/use-app-theme.ts"
 type: "code"
-community: "Sidebar Navigation"
+community: "Community 234"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Navigation
+  - community/Community_234
 ---
 
 # use-app-theme.ts
 
 ## Connections
-
 - [[IThemeStore]] - `imports` [EXTRACTED]
 - [[StoreContext]] - `imports` [EXTRACTED]
 - [[_sidebar.tsx]] - `imports_from` [EXTRACTED]
@@ -48,4 +47,4 @@ tags:
 - [[workspace-menu-item.tsx]] - `imports_from` [EXTRACTED]
 - [[workspace-menu-root.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation
+#graphify/code #graphify/EXTRACTED #community/Community_234

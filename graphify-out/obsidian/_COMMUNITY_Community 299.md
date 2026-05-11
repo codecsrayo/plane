@@ -1,20 +1,35 @@
 ---
 type: community
-cohesion: 0.50
-members: 4
+cohesion: 0.10
+members: 20
 ---
 
 # Community 299
 
-**Cohesion:** 0.50 - moderately connected
-**Members:** 4 nodes
+**Cohesion:** 0.10 - loosely connected
+**Members:** 20 nodes
 
 ## Members
-
-- [[.constructor()_101]] - code - web/core/services/issue/work_item_version.service.ts
-- [[.listDescriptionVersions()]] - code - web/core/services/issue/work_item_version.service.ts
-- [[.retrieveDescriptionVersion()]] - code - web/core/services/issue/work_item_version.service.ts
-- [[WorkItemVersionService]] - code - web/core/services/issue/work_item_version.service.ts
+- [[.addToFavorites()_1]] - code - web/core/services/page/project-page.service.ts
+- [[.archive()_2]] - code - web/core/services/page/project-page.service.ts
+- [[.constructor()_167]] - code - live/src/services/page/project-page.service.ts
+- [[.create()_7]] - code - web/core/services/page/project-page.service.ts
+- [[.duplicate()]] - code - web/core/services/page/project-page.service.ts
+- [[.fetchAll()]] - code - web/core/services/page/project-page.service.ts
+- [[.fetchArchived()]] - code - web/core/services/page/project-page.service.ts
+- [[.fetchById()]] - code - web/core/services/page/project-page.service.ts
+- [[.fetchDescriptionBinary()]] - code - web/core/services/page/project-page.service.ts
+- [[.fetchFavorites()]] - code - web/core/services/page/project-page.service.ts
+- [[.lock()]] - code - web/core/services/page/project-page.service.ts
+- [[.move()]] - code - web/core/services/page/project-page.service.ts
+- [[.remove()_1]] - code - web/core/services/page/project-page.service.ts
+- [[.removeFromFavorites()_1]] - code - web/core/services/page/project-page.service.ts
+- [[.restore()_1]] - code - web/core/services/page/project-page.service.ts
+- [[.unlock()]] - code - web/core/services/page/project-page.service.ts
+- [[.update()_13]] - code - web/core/services/page/project-page.service.ts
+- [[.updateAccess()]] - code - web/core/services/page/project-page.service.ts
+- [[.updateDescription()]] - code - web/core/services/page/project-page.service.ts
+- [[ProjectPageService]] - code - live/src/services/page/project-page.service.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -24,9 +39,8 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 1 edge to [[_COMMUNITY_Git Integrations]]
+- 2 edges to [[_COMMUNITY_Community 317]]
+- 1 edge to [[_COMMUNITY_Service Layer]]
 
 ## Top bridge nodes
-
-- [[WorkItemVersionService]] - degree 4, connects to 1 community
+- [[ProjectPageService]] - degree 22, connects to 2 communities

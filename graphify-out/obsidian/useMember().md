@@ -1,18 +1,17 @@
 ---
 source_file: "space/hooks/store/use-member.ts"
 type: "code"
-community: "Member Members"
+community: "Issue Display Filters"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Members
+  - community/Issue_Display_Filters
 ---
 
 # useMember()
 
 ## Connections
-
 - [[actors-info.tsx]] - `imports` [EXTRACTED]
 - [[assignee.tsx]] - `imports` [EXTRACTED]
 - [[attachment-detail.tsx]] - `imports` [EXTRACTED]
@@ -106,4 +105,4 @@ tags:
 - [[workspace-level.tsx_1]] - `imports` [EXTRACTED]
 - [[workspace-wrapper.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Members
+#graphify/code #graphify/EXTRACTED #community/Issue_Display_Filters

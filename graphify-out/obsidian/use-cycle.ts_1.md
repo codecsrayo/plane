@@ -1,18 +1,17 @@
 ---
 source_file: "space/hooks/store/use-cycle.ts"
 type: "code"
-community: "Publish Cycle"
+community: "Community 72"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Publish_Cycle
+  - community/Community_72
 ---
 
 # use-cycle.ts
 
 ## Connections
-
 - [[ICycleStore]] - `imports` [EXTRACTED]
 - [[StoreContext_2]] - `imports` [EXTRACTED]
 - [[cycle.store.ts_1]] - `imports_from` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[swimlanes.tsx_1]] - `imports_from` [EXTRACTED]
 - [[useCycle()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Publish_Cycle
+#graphify/code #graphify/EXTRACTED #community/Community_72

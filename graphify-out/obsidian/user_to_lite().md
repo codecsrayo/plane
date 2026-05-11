@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/workspaces.rs"
 type: "code"
-community: "Issue Request"
+community: "Community 29"
 location: "L318"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Issue_Request
+  - community/Community_29
 ---
 
 # user_to_lite()
 
 ## Connections
-
 - [[add_comment_reaction()]] - `calls` [INFERRED]
 - [[add_issue_reaction()]] - `calls` [INFERRED]
 - [[get_comment()]] - `calls` [INFERRED]
@@ -26,4 +25,4 @@ tags:
 - [[list_members()]] - `calls` [EXTRACTED]
 - [[workspaces.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Issue_Request
+#graphify/code #graphify/INFERRED #community/Community_29

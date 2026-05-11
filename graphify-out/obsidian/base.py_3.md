@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/module/base.py"
 type: "code"
-community: "Cycle Endpoint"
+community: "Community 314"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Endpoint
+  - community/Community_314
 ---
 
 # base.py
 
 ## Connections
-
 - [[ModuleFavoriteViewSet]] - `contains` [EXTRACTED]
 - [[ModuleLinkViewSet]] - `contains` [EXTRACTED]
 - [[ModuleUserPropertiesEndpoint]] - `contains` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[patch()_5]] - `contains` [EXTRACTED]
 - [[retrieve()_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Endpoint
+#graphify/code #graphify/EXTRACTED #community/Community_314

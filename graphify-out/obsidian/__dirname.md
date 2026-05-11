@@ -1,18 +1,18 @@
 ---
-source_file: "e2e-utils/src/setup/base-config.ts"
+source_file: "packages/e2e-utils/src/setup/base-config.ts"
 type: "code"
-community: "Config Dirname"
+community: "Community 662"
 location: "L5"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Config_Dirname
+  - community/Community_662
 ---
 
-# \_\_dirname
+# __dirname
 
 ## Connections
-
 - [[base-config.ts]] - `contains` [EXTRACTED]
+- [[base-config.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Config_Dirname
+#graphify/code #graphify/EXTRACTED #community/Community_662

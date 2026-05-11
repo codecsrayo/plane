@@ -1,18 +1,18 @@
 ---
-source_file: "propel/src/empty-state/assets-showcase.stories.tsx"
+source_file: "packages/propel/src/empty-state/assets-showcase.stories.tsx"
 type: "code"
-community: "Assets Stack"
+community: "Community 261"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Assets_Stack
+  - community/Community_261
 ---
 
 # meta
 
 ## Connections
-
 - [[assets-showcase.stories.tsx]] - `contains` [EXTRACTED]
+- [[assets-showcase.stories.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Assets_Stack
+#graphify/code #graphify/EXTRACTED #community/Community_261

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/project/create/header.tsx"
 type: "code"
-community: "Project Profile"
+community: "Community 105"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Profile
+  - community/Community_105
 ---
 
 # header.tsx
 
 ## Connections
-
 - [[CoverImage()]] - `imports` [EXTRACTED]
 - [[ImagePickerPopover]] - `imports` [EXTRACTED]
 - [[ProjectCreateHeader()]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[image-picker-popover.tsx]] - `imports_from` [EXTRACTED]
 - [[root.tsx_26]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Profile
+#graphify/code #graphify/EXTRACTED #community/Community_105

@@ -1,18 +1,17 @@
 ---
 source_file: "utils/src/editor/markdown-parser/root.ts"
 type: "code"
-community: "Custom Components"
+community: "Community 263"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Custom_Components
+  - community/Community_263
 ---
 
 # root.ts
 
 ## Connections
-
 - [[TArgs_10]] - `contains` [EXTRACTED]
 - [[TCustomComponentsMetaData]] - `imports` [EXTRACTED]
 - [[addSpacesToCheckboxes()]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[sanitizeHTML()_1]] - `contains` [EXTRACTED]
 - [[types.ts_9]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Custom_Components
+#graphify/code #graphify/EXTRACTED #community/Community_263

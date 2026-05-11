@@ -1,18 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.50
+members: 5
 ---
 
 # Community 624
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.50 - moderately connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[SettingIcon()]] - code - web/core/components/icons/attachment/setting-icon.tsx
-- [[setting-icon.tsx]] - code - web/core/components/icons/attachment/setting-icon.tsx
+- [[PROFILE_SETTINGS_PAGES_MAP]] - code - web/core/components/settings/profile/content/pages/index.ts
+- [[ProfileSettingsContent]] - code - web/core/components/settings/profile/content/root.tsx
+- [[Props_186]] - code - web/core/components/settings/profile/content/root.tsx
+- [[index.ts_339]] - code - web/core/components/settings/profile/content/pages/index.ts
+- [[root.tsx_59]] - code - web/core/components/settings/profile/content/root.tsx
 
 ## Live Query (requires Dataview plugin)
 

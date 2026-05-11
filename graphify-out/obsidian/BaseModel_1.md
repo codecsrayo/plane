@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/models/base.py"
 type: "code"
-community: "Meta User"
+community: "Python Workflow Services"
 location: "L17"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Meta_User
+  - community/Python_Workflow_Services
 ---
 
 # BaseModel
 
 ## Connections
-
 - [[.__str__()_3]] - `method` [EXTRACTED]
 - [[.save()_2]] - `method` [EXTRACTED]
 - [[APIActivityLog]] - `uses` [INFERRED]
@@ -79,4 +78,4 @@ tags:
 - [[WorkspaceUserProperties]] - `uses` [INFERRED]
 - [[base.py_25]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Meta_User
+#graphify/code #graphify/INFERRED #community/Python_Workflow_Services

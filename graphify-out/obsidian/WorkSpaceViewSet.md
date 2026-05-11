@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/workspace/base.py"
 type: "code"
-community: "Endpoint User"
+community: "Community 211"
 location: "L55"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_User
+  - community/Community_211
 ---
 
 # WorkSpaceViewSet
 
 ## Connections
-
 - [[.create()_9]] - `method` [EXTRACTED]
 - [[.get_queryset()_1]] - `method` [EXTRACTED]
 - [[.remove_last_workspace_ids_from_user_settings()]] - `method` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[BaseViewSet_1]] - `inherits` [EXTRACTED]
 - [[base.py_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_User
+#graphify/code #graphify/EXTRACTED #community/Community_211

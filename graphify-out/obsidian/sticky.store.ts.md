@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/sticky/sticky.store.ts"
 type: "code"
-community: "Sticky Stickies"
+community: "Community 355"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sticky_Stickies
+  - community/Community_355
 ---
 
 # sticky.store.ts
 
 ## Connections
-
 - [[IStickyStore]] - `contains` [EXTRACTED]
 - [[StickyService]] - `imports` [EXTRACTED]
 - [[StickyStore]] - `contains` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[toApiError()]] - `imports` [EXTRACTED]
 - [[use-stickies.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sticky_Stickies
+#graphify/code #graphify/EXTRACTED #community/Community_355

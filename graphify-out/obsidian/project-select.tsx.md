@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-modal/components/project-select.tsx"
 type: "code"
-community: "Label Dropdown"
+community: "Module & Cycle Analytics"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Dropdown
+  - community/Module__Cycle_Analytics
 ---
 
 # project-select.tsx
 
 ## Connections
-
 - [[IssueProjectSelect]] - `contains` [EXTRACTED]
 - [[ProjectDropdown]] - `imports` [EXTRACTED]
 - [[TIssueProjectSelectProps]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[useIssueModal()]] - `imports` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Module__Cycle_Analytics

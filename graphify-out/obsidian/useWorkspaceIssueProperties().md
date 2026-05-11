@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/use-workspace-issue-properties.ts"
 type: "code"
-community: "Project Workspace"
+community: "Community 44"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Workspace
+  - community/Community_44
 ---
 
 # useWorkspaceIssueProperties()
 
 ## Connections
-
 - [[WORKSPACE_CYCLES()]] - `calls` [EXTRACTED]
 - [[WORKSPACE_ESTIMATES()]] - `calls` [EXTRACTED]
 - [[WORKSPACE_LABELS()]] - `calls` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[useWorkspaceIssuePropertiesExtended()]] - `calls` [EXTRACTED]
 - [[workspace-root.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_44

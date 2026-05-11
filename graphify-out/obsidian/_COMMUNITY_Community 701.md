@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.50
+members: 4
 ---
 
 # Community 701
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.50 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_51]] - code - api_rust/src/entities/auth_group.rs
+- [[Mixin to control read replica usage in DRF views.     Set use_read_replica = Tru]] - rationale - api/plane/utils/core/mixins/view.py
+- [[ReadReplicaControlMixin_1]] - code - api/plane/utils/core/mixins/view.py
+- [[__init__.py_44]] - code - api/plane/utils/core/mixins/__init__.py
+- [[view.py_2]] - code - api/plane/utils/core/mixins/view.py
 
 ## Live Query (requires Dataview plugin)
 

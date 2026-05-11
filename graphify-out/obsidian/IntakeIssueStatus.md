@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/models/intake.py"
 type: "code"
-community: "Project Endpoint"
+community: "Community 27"
 location: "L42"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Project_Endpoint
+  - community/Community_27
 ---
 
 # IntakeIssueStatus
 
 ## Connections
-
 - [[DeployBoardViewSet]] - `uses` [INFERRED]
 - [[ProjectArchiveUnarchiveEndpoint]] - `uses` [INFERRED]
 - [[ProjectBaseModel_1]] - `uses` [INFERRED]
@@ -22,4 +21,4 @@ tags:
 - [[ProjectViewSet]] - `uses` [INFERRED]
 - [[intake.py_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Project_Endpoint
+#graphify/code #graphify/INFERRED #community/Community_27

@@ -1,19 +1,20 @@
 ---
-source_file: "propel/src/card/helper.tsx"
+source_file: "packages/propel/src/card/helper.tsx"
 type: "code"
-community: "Card Direction"
+community: "Community 279"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Card_Direction
+  - community/Community_279
 ---
 
 # containerStyle
 
 ## Connections
-
 - [[helper.tsx_1]] - `contains` [EXTRACTED]
 - [[helper.tsx_11]] - `contains` [EXTRACTED]
+- [[helper.tsx_33]] - `contains` [EXTRACTED]
+- [[helper.tsx_43]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Card_Direction
+#graphify/code #graphify/EXTRACTED #community/Community_279

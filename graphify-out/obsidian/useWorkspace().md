@@ -1,18 +1,17 @@
 ---
 source_file: "admin/hooks/store/use-workspace.tsx"
 type: "code"
-community: "Workspace Issue"
+community: "Community 65"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Issue
+  - community/Community_65
 ---
 
 # useWorkspace()
 
 ## Connections
-
 - [[activity-list.tsx]] - `imports` [EXTRACTED]
 - [[ask-pi-menu.tsx]] - `imports` [EXTRACTED]
 - [[authentication-wrapper.tsx]] - `imports` [EXTRACTED]
@@ -71,4 +70,4 @@ tags:
 - [[workspace-wrapper.tsx]] - `imports` [EXTRACTED]
 - [[workspaces-menu.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_65

@@ -1,14 +1,14 @@
 ---
 source_file: "editor/src/core/extensions/slash-commands/index.ts"
 type: "code"
-community: "Community 1357"
+community: "Community 1340"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_1357
+  - community/Community_1340
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_1357
+#graphify/code #graphify/EXTRACTED #community/Community_1340

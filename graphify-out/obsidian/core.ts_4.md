@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/page/core.ts"
 type: "code"
-community: "Filters Sort"
+community: "Community 118"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filters_Sort
+  - community/Community_118
 ---
 
 # core.ts
 
 ## Connections
-
 - [[EPageAccess_1]] - `imports` [EXTRACTED]
 - [[TDocumentPayload]] - `contains` [EXTRACTED]
 - [[TLogoProps]] - `imports` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[enums.ts]] - `imports_from` [EXTRACTED]
 - [[extended.ts_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filters_Sort
+#graphify/code #graphify/EXTRACTED #community/Community_118

@@ -1,19 +1,18 @@
 ---
 source_file: "web/core/components/pages/version/editor.tsx"
 type: "code"
-community: "Document Version"
+community: "Community 133"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Document_Version
+  - community/Community_133
 ---
 
 # editor.tsx
 
 ## Connections
-
-- [[DocumentEditor]] - `imports` [EXTRACTED]
+- [[DocumentEditor()]] - `imports` [EXTRACTED]
 - [[PagesVersionEditor]] - `contains` [EXTRACTED]
 - [[TVersionEditorProps]] - `contains` [EXTRACTED]
 - [[editor.tsx_5]] - `imports_from` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[usePageFilters()]] - `imports` [EXTRACTED]
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Document_Version
+#graphify/code #graphify/EXTRACTED #community/Community_133

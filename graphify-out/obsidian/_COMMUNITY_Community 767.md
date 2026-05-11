@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 767
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_25]] - code - web/core/lib/app-rail/index.ts
+- [[Register()]] - code - web/app/routes/redirects/core/register.tsx
+- [[clientLoader()_5]] - code - web/app/routes/redirects/core/register.tsx
+- [[register.tsx]] - code - web/app/routes/redirects/core/register.tsx
 
 ## Live Query (requires Dataview plugin)
 

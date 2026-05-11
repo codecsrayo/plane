@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/space/views/__init__.py"
 type: "code"
-community: "Project Endpoint"
+community: "Community 25"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Endpoint
+  - community/Community_25
 ---
 
-# **init**.py
+# __init__.py
 
 ## Connections
-
 - [[asset.py_7]] - `imports_from` [EXTRACTED]
 - [[cycle.py_7]] - `imports_from` [EXTRACTED]
 - [[intake.py_6]] - `imports_from` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[project.py_8]] - `imports_from` [EXTRACTED]
 - [[state.py_7]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Endpoint
+#graphify/code #graphify/EXTRACTED #community/Community_25

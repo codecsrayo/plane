@@ -1,17 +1,16 @@
 ---
 source_file: ""
 type: "code"
-community: "Session Test"
+community: "Community 398"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Session_Test
+  - community/Community_398
 ---
 
 # MiddlewareMixin
 
 ## Connections
-
 - [[SessionMiddleware]] - `inherits` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Session_Test
+#graphify/code #graphify/EXTRACTED #community/Community_398

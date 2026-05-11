@@ -1,0 +1,22 @@
+---
+type: community
+cohesion: 0.67
+members: 3
+---
+
+# Community 974
+
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
+
+## Members
+- [[Model_94]] - code - api_rust/src/entities/draft_issues.rs
+- [[Relation_94]] - code - api_rust/src/entities/draft_issues.rs
+- [[draft_issues.rs]] - code - api_rust/src/entities/draft_issues.rs
+
+## Live Query (requires Dataview plugin)
+
+```dataview
+TABLE source_file, type FROM #community/Community_974
+SORT file.name ASC
+```

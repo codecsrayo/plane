@@ -1,19 +1,20 @@
 ---
-source_file: "types/src/issues/issue_link.ts"
+source_file: "packages/types/src/issues/issue_link.ts"
 type: "code"
-community: "Issue Public"
+community: "Community 178"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Public
+  - community/Community_178
 ---
 
 # TIssueLink
 
 ## Connections
-
 - [[issue.ts]] - `imports` [EXTRACTED]
+- [[issue.ts_1]] - `imports` [EXTRACTED]
 - [[issue_link.ts]] - `contains` [EXTRACTED]
+- [[issue_link.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Public
+#graphify/code #graphify/EXTRACTED #community/Community_178

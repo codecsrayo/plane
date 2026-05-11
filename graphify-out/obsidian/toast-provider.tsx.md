@@ -1,19 +1,18 @@
 ---
 source_file: "space/lib/toast-provider.tsx"
 type: "code"
-community: "Error Provider"
+community: "Community 43"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Error_Provider
+  - community/Community_43
 ---
 
 # toast-provider.tsx
 
 ## Connections
-
 - [[ToastProvider()]] - `contains` [EXTRACTED]
 - [[providers.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Error_Provider
+#graphify/code #graphify/EXTRACTED #community/Community_43

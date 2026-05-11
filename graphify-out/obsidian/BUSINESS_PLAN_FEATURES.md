@@ -1,18 +1,18 @@
 ---
-source_file: "constants/src/subscription.ts"
+source_file: "packages/constants/src/subscription.ts"
 type: "code"
-community: "Plan Features"
+community: "Community 539"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Plan_Features
+  - community/Community_539
 ---
 
 # BUSINESS_PLAN_FEATURES
 
 ## Connections
-
 - [[subscription.ts]] - `contains` [EXTRACTED]
+- [[subscription.ts_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Plan_Features
+#graphify/code #graphify/EXTRACTED #community/Community_539

@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/workspace_themes.rs"
 type: "code"
-community: "Workspace Returns"
+community: "Community 529"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Returns
+  - community/Community_529
 ---
 
 # setup()
 
 ## Connections
-
 - [[.spawn()]] - `calls` [INFERRED]
 - [[create_workspace_theme_returns_2xx()]] - `calls` [EXTRACTED]
 - [[create_workspace_theme_unauthenticated_returns_401()]] - `calls` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[workspace_themes.rs]] - `contains` [EXTRACTED]
 - [[workspace_themes_crud()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Returns
+#graphify/code #graphify/EXTRACTED #community/Community_529

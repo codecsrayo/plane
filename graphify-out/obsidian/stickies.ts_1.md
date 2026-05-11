@@ -1,20 +1,19 @@
 ---
 source_file: "types/src/stickies.ts"
 type: "code"
-community: "Inbox Issue"
+community: "Community 118"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Inbox_Issue
+  - community/Community_118
 ---
 
 # stickies.ts
 
 ## Connections
-
 - [[TLogoProps]] - `imports` [EXTRACTED]
 - [[TSticky]] - `contains` [EXTRACTED]
 - [[common.ts_4]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Inbox_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_118

@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 4
 ---
 
 # Community 684
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_34]] - code - api_rust/src/entities/page_logs.rs
+- [[AppliedLabelsFilters()]] - code - space/components/issues/filters/applied-filters/label.tsx
+- [[Props_324]] - code - space/components/issues/filters/applied-filters/label.tsx
+- [[label.tsx_6]] - code - space/components/issues/filters/applied-filters/label.tsx
+- [[label.tsx_2]] - code - web/core/components/issues/issue-layouts/filters/applied-filters/label.tsx
 
 ## Live Query (requires Dataview plugin)
 

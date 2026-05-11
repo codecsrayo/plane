@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/user.service.ts"
 type: "code"
-community: "User Profile"
+community: "Community 51"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User_Profile
+  - community/Community_51
 ---
 
 # user.service.ts
 
 ## Connections
-
 - [[ApiError]] - `imports` [EXTRACTED]
 - [[UserService_1]] - `contains` [EXTRACTED]
 - [[account.store.ts]] - `imports_from` [EXTRACTED]
@@ -34,4 +33,4 @@ tags:
 - [[settings.store.ts]] - `imports_from` [EXTRACTED]
 - [[workspace-activity-list.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User_Profile
+#graphify/code #graphify/EXTRACTED #community/Community_51

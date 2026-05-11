@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/stickies/widget.tsx"
 type: "code"
-community: "Stickies Sticky"
+community: "Community 357"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Stickies_Sticky
+  - community/Community_357
 ---
 
 # widget.tsx
 
 ## Connections
-
 - [[StickiesTruncated]] - `imports` [EXTRACTED]
 - [[StickiesWidget]] - `contains` [EXTRACTED]
 - [[StickySearch]] - `imports` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[useSticky()]] - `imports` [EXTRACTED]
 - [[useStickyOperations()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Stickies_Sticky
+#graphify/code #graphify/EXTRACTED #community/Community_357

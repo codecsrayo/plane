@@ -1,21 +1,20 @@
 ---
 source_file: "live/src/types/index.ts"
 type: "code"
-community: "Broadcast Context"
+community: "Community 317"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Broadcast_Context
+  - community/Community_317
 ---
 
 # TDocumentTypes
 
 ## Connections
-
 - [[auth.ts_3]] - `imports` [EXTRACTED]
 - [[handler.ts]] - `imports` [EXTRACTED]
 - [[index.ts_450]] - `contains` [EXTRACTED]
 - [[pdf-export.service.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Broadcast_Context
+#graphify/code #graphify/EXTRACTED #community/Community_317

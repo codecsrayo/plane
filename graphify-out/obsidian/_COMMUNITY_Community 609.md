@@ -1,18 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.60
+members: 5
 ---
 
 # Community 609
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.60 - moderately connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[CssIcon()]] - code - web/core/components/icons/attachment/css-file-icon.tsx
-- [[css-file-icon.tsx]] - code - web/core/components/icons/attachment/css-file-icon.tsx
+- [[Content]] - code - packages/types/src/editor/editor-content.ts
+- [[HTMLContent]] - code - packages/types/src/editor/editor-content.ts
+- [[JSONContent]] - code - packages/types/src/editor/editor-content.ts
+- [[editor-content.ts_1]] - code - packages/types/src/editor/editor-content.ts
+- [[editor-content.ts]] - code - types/src/editor/editor-content.ts
 
 ## Live Query (requires Dataview plugin)
 

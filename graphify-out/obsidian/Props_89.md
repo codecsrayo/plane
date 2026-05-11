@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/home/widgets/loaders/loader.tsx"
 type: "code"
-community: "Widget Quick"
+community: "Community 519"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Widget_Quick
+  - community/Community_519
 ---
 
 # Props
 
 ## Connections
-
 - [[loader.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Widget_Quick
+#graphify/code #graphify/EXTRACTED #community/Community_519

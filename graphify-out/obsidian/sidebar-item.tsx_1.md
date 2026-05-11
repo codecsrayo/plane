@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/sidebar/sidebar-item.tsx"
 type: "code"
-community: "Sidebar Rail"
+community: "Community 74"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Rail
+  - community/Community_74
 ---
 
 # sidebar-item.tsx
 
 ## Connections
-
 - [[AppSidebarButtonItem]] - `contains` [EXTRACTED]
 - [[AppSidebarButtonItemProps]] - `contains` [EXTRACTED]
 - [[AppSidebarItem]] - `contains` [EXTRACTED]
@@ -35,4 +34,4 @@ tags:
 - [[user-menu-root.tsx]] - `imports_from` [EXTRACTED]
 - [[workspace-menu-root.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Rail
+#graphify/code #graphify/EXTRACTED #community/Community_74

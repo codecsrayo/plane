@@ -1,18 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.40
+members: 5
 ---
 
 # Community 620
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.40 - moderately connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[PdfIcon()]] - code - web/core/components/icons/attachment/pdf-file-icon.tsx
-- [[pdf-file-icon.tsx]] - code - web/core/components/icons/attachment/pdf-file-icon.tsx
+- [[IssueTypeSelect()]] - code - web/ce/components/issues/issue-modal/issue-type-select.tsx
+- [[TIssueFields]] - code - web/ce/components/issues/issue-modal/issue-type-select.tsx
+- [[TIssueTypeDropdownVariant]] - code - web/ce/components/issues/issue-modal/issue-type-select.tsx
+- [[TIssueTypeSelectProps]] - code - web/ce/components/issues/issue-modal/issue-type-select.tsx
+- [[issue-type-select.tsx]] - code - web/ce/components/issues/issue-modal/issue-type-select.tsx
 
 ## Live Query (requires Dataview plugin)
 

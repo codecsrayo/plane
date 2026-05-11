@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/bgtasks/email_notification_task.py"
 type: "code"
-community: "Email Process"
+community: "Community 131"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Email_Process
+  - community/Community_131
 ---
 
 # email_notification_task.py
 
 ## Connections
-
 - [[acquire_lock()]] - `contains` [EXTRACTED]
 - [[create_payload()]] - `contains` [EXTRACTED]
 - [[process_html_content()]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[send_email_notification()]] - `contains` [EXTRACTED]
 - [[stack_email_notification()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Email_Process
+#graphify/code #graphify/EXTRACTED #community/Community_131

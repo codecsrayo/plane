@@ -1,0 +1,311 @@
+---
+type: community
+cohesion: 0.01
+members: 250
+---
+
+# Issue Activity Types
+
+**Cohesion:** 0.01 - loosely connected
+**Members:** 250 nodes
+
+## Members
+- [[ArchivedIssueDetailsPage()]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/issues/(detail)/[archivedIssueId]/page.tsx
+- [[AttachmentsCollapsible]] - code - web/core/components/issues/issue-detail-widgets/attachments/root.tsx
+- [[ISSUE_DETAILS()]] - code - web/core/constants/fetch-keys.ts
+- [[IssueActivityBlockComponent()]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/helpers/activity-block.tsx
+- [[IssueActivityCommentRoot]] - code - web/core/components/issues/issue-detail/issue-activity/activity-comment-root.tsx
+- [[IssueActivityItem]] - code - web/core/components/issues/issue-detail/issue-activity/activity/activity-list.tsx
+- [[IssueActivityLoader()]] - code - web/core/components/issues/issue-detail/issue-activity/loader.tsx
+- [[IssueActivityWorklog()]] - code - web/ce/components/issues/worklog/activity/root.tsx
+- [[IssueArchivedAtActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/archived-at.tsx
+- [[IssueAssigneeActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/assignee.tsx
+- [[IssueAttachmentActionButton]] - code - web/core/components/issues/issue-detail-widgets/attachments/quick-action-button.tsx
+- [[IssueAttachmentActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/attachment.tsx
+- [[IssueAttachmentDeleteModal]] - code - web/core/components/issues/attachment/delete-attachment-modal.tsx
+- [[IssueAttachmentItemList]] - code - web/core/components/issues/attachment/attachment-item-list.tsx
+- [[IssueAttachmentRoot]] - code - web/core/components/issues/attachment/root.tsx
+- [[IssueAttachmentUpload]] - code - web/core/components/issues/attachment/attachment-upload.tsx
+- [[IssueAttachmentsCollapsibleContent]] - code - web/core/components/issues/issue-detail-widgets/attachments/content.tsx
+- [[IssueAttachmentsCollapsibleTitle]] - code - web/core/components/issues/issue-detail-widgets/attachments/title.tsx
+- [[IssueAttachmentsDetail]] - code - web/core/components/issues/attachment/attachment-detail.tsx
+- [[IssueAttachmentsList]] - code - web/core/components/issues/attachment/attachments-list.tsx
+- [[IssueAttachmentsListItem]] - code - web/core/components/issues/attachment/attachment-list-item.tsx
+- [[IssueAttachmentsUploadDetails]] - code - web/core/components/issues/attachment/attachment-upload-details.tsx
+- [[IssueAttachmentsUploadItem]] - code - web/core/components/issues/attachment/attachment-list-upload-item.tsx
+- [[IssueCreatorDisplay()]] - code - web/ce/components/issues/issue-details/issue-creator.tsx
+- [[IssueCycleActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/cycle.tsx
+- [[IssueDefaultActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/default.tsx
+- [[IssueDescriptionActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/description.tsx
+- [[IssueDetailQuickActions]] - code - web/core/components/issues/issue-detail/issue-detail-quick-actions.tsx
+- [[IssueDetailsPage]] - code - web/app/(all)/[workspaceSlug]/(projects)/browse/[workItem]/page.tsx
+- [[IssueEstimateActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/estimate.tsx
+- [[IssueInboxActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/inbox.tsx
+- [[IssueLabelActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/label.tsx
+- [[IssueLink()]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/helpers/issue-link.tsx
+- [[IssueLinkActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/link.tsx
+- [[IssueLinkCreateUpdateModal]] - code - web/core/components/issues/issue-detail/links/create-update-link-modal.tsx
+- [[IssueLinkDetail()]] - code - web/core/components/issues/issue-detail/links/link-detail.tsx
+- [[IssueLinkItem]] - code - web/core/components/issues/issue-detail/links/link-item.tsx
+- [[IssueLinkList]] - code - web/core/components/issues/issue-detail/links/links.tsx
+- [[IssueLinkRoot()]] - code - web/core/components/issues/issue-detail/links/root.tsx
+- [[IssueLinksActionButton]] - code - web/core/components/issues/issue-detail-widgets/links/quick-action-button.tsx
+- [[IssueLinksCollapsibleContent()]] - code - web/core/components/issues/issue-detail-widgets/links/content.tsx
+- [[IssueLinksCollapsibleTitle]] - code - web/core/components/issues/issue-detail-widgets/links/title.tsx
+- [[IssueModuleActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/module.tsx
+- [[IssueNameActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/name.tsx
+- [[IssueParentActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/parent.tsx
+- [[IssuePriorityActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/priority.tsx
+- [[IssueRelationActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/relation.tsx
+- [[IssueStartDateActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/start_date.tsx
+- [[IssueStateActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/state.tsx
+- [[IssueSubscription]] - code - web/core/components/issues/issue-detail/subscription.tsx
+- [[IssueTargetDateActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/target_date.tsx
+- [[IssueUser()]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/helpers/issue-user.tsx
+- [[LinkList]] - code - web/core/components/issues/issue-detail/links/link-list.tsx
+- [[LinksCollapsible]] - code - web/core/components/issues/issue-detail-widgets/links/root.tsx
+- [[Props_334]] - code - web/core/components/issues/attachment/attachment-list-upload-item.tsx
+- [[Props_336]] - code - web/core/components/issues/attachment/attachment-upload-details.tsx
+- [[Props_335]] - code - web/core/components/issues/attachment/attachment-upload.tsx
+- [[Props_333]] - code - web/core/components/issues/attachment/delete-attachment-modal.tsx
+- [[Props_343]] - code - web/core/components/issues/issue-detail-widgets/attachments/content.tsx
+- [[Props_342]] - code - web/core/components/issues/issue-detail-widgets/attachments/quick-action-button.tsx
+- [[Props_345]] - code - web/core/components/issues/issue-detail-widgets/attachments/root.tsx
+- [[Props_344]] - code - web/core/components/issues/issue-detail-widgets/attachments/title.tsx
+- [[Props_455]] - code - web/core/components/empty-state/section-empty-state-root.tsx
+- [[Props_332]] - code - web/core/components/issues/issue-detail/issue-detail-quick-actions.tsx
+- [[Props_338]] - code - web/core/components/issues/issue-detail-widgets/issue-detail-widget-modals.tsx
+- [[Props_354]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/issues-list/list-item.tsx
+- [[Props_356]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/issues-list/root.tsx
+- [[Props_358]] - code - web/core/components/issues/issue-detail-widgets/links/content.tsx
+- [[Props_357]] - code - web/core/components/issues/issue-detail-widgets/links/quick-action-button.tsx
+- [[Props_360]] - code - web/core/components/issues/issue-detail-widgets/links/root.tsx
+- [[Props_359]] - code - web/core/components/issues/issue-detail-widgets/links/title.tsx
+- [[Props_347]] - code - web/core/components/issues/issue-detail-widgets/relations/content.tsx
+- [[Props_362]] - code - web/core/components/issues/relations/issue-list-item.tsx
+- [[Props_363]] - code - web/core/components/issues/relations/issue-list.tsx
+- [[Props_346]] - code - web/core/components/issues/issue-detail-widgets/relations/quick-action-button.tsx
+- [[Props_349]] - code - web/core/components/issues/issue-detail-widgets/relations/root.tsx
+- [[Props_348]] - code - web/core/components/issues/issue-detail-widgets/relations/title.tsx
+- [[Props_351]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/content.tsx
+- [[Props_350]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/quick-action-button.tsx
+- [[Props_353]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/root.tsx
+- [[Props_352]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/title.tsx
+- [[RelationActionButton]] - code - web/core/components/issues/issue-detail-widgets/relations/quick-action-button.tsx
+- [[RelationIssueList]] - code - web/core/components/issues/relations/issue-list.tsx
+- [[RelationIssueListItem]] - code - web/core/components/issues/relations/issue-list-item.tsx
+- [[RelationIssueProperty]] - code - web/core/components/issues/relations/properties.tsx
+- [[RelationsCollapsible]] - code - web/core/components/issues/issue-detail-widgets/relations/root.tsx
+- [[RelationsCollapsibleContent]] - code - web/core/components/issues/issue-detail-widgets/relations/content.tsx
+- [[RelationsCollapsibleTitle]] - code - web/core/components/issues/issue-detail-widgets/relations/title.tsx
+- [[SectionEmptyState()]] - code - web/core/components/empty-state/section-empty-state-root.tsx
+- [[SubIssuesActionButton]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/quick-action-button.tsx
+- [[SubIssuesCollapsible]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/root.tsx
+- [[SubIssuesCollapsibleContent]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/content.tsx
+- [[SubIssuesCollapsibleTitle]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/title.tsx
+- [[SubIssuesListGroup]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/issues-list/list-group.tsx
+- [[SubIssuesListItem]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/issues-list/list-item.tsx
+- [[SubIssuesListItemProperties]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/issues-list/properties.tsx
+- [[SubIssuesListRoot]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/issues-list/root.tsx
+- [[SubWorkItemTitleActions]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/title-actions.tsx
+- [[TAttachmentHelpers]] - code - web/core/components/issues/issue-detail-widgets/attachments/helper.tsx
+- [[TAttachmentOperations]] - code - web/core/components/issues/issue-detail-widgets/attachments/helper.tsx
+- [[TAttachmentOperationsModal]] - code - web/core/components/issues/attachment/attachment-upload.tsx
+- [[TAttachmentOperationsRemoveModal_1]] - code - web/core/components/issues/attachment/attachment-detail.tsx
+- [[TAttachmentOperationsRemoveModal]] - code - web/core/components/issues/attachment/delete-attachment-modal.tsx
+- [[TAttachmentSnapshot]] - code - web/core/components/issues/issue-detail-widgets/attachments/helper.tsx
+- [[TAttachmentUploadStatus]] - code - web/core/store/issue/issue-details/attachment.store.ts
+- [[TIssueActivityBlockComponent]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/helpers/activity-block.tsx
+- [[TIssueActivityCommentRoot]] - code - web/core/components/issues/issue-detail/issue-activity/activity-comment-root.tsx
+- [[TIssueActivityItem]] - code - web/core/components/issues/issue-detail/issue-activity/activity/activity-list.tsx
+- [[TIssueActivityWorklog]] - code - web/ce/components/issues/worklog/activity/root.tsx
+- [[TIssueArchivedAtActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/archived-at.tsx
+- [[TIssueAssigneeActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/assignee.tsx
+- [[TIssueAttachmentActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/attachment.tsx
+- [[TIssueAttachmentItemList]] - code - web/core/components/issues/attachment/attachment-item-list.tsx
+- [[TIssueAttachmentRoot]] - code - web/core/components/issues/attachment/root.tsx
+- [[TIssueAttachmentsDetail]] - code - web/core/components/issues/attachment/attachment-detail.tsx
+- [[TIssueAttachmentsList]] - code - web/core/components/issues/attachment/attachments-list.tsx
+- [[TIssueAttachmentsListItem]] - code - web/core/components/issues/attachment/attachment-list-item.tsx
+- [[TIssueCrudState_1]] - code - web/core/components/issues/issue-detail-widgets/relations/content.tsx
+- [[TIssueCrudState_2]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/content.tsx
+- [[TIssueCycleActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/cycle.tsx
+- [[TIssueDefaultActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/default.tsx
+- [[TIssueDescriptionActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/description.tsx
+- [[TIssueEstimateActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/estimate.tsx
+- [[TIssueInboxActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/inbox.tsx
+- [[TIssueLabelActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/label.tsx
+- [[TIssueLink_1]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/helpers/issue-link.tsx
+- [[TIssueLinkActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/link.tsx
+- [[TIssueLinkCreateEditModal]] - code - web/core/components/issues/issue-detail/links/create-update-link-modal.tsx
+- [[TIssueLinkCreateFormFieldOptions]] - code - web/core/components/issues/issue-detail/links/create-update-link-modal.tsx
+- [[TIssueLinkDetail]] - code - web/core/components/issues/issue-detail/links/link-detail.tsx
+- [[TIssueLinkItem]] - code - web/core/components/issues/issue-detail/links/link-item.tsx
+- [[TIssueLinkList]] - code - web/core/components/issues/issue-detail/links/links.tsx
+- [[TIssueLinkRoot]] - code - web/core/components/issues/issue-detail/links/root.tsx
+- [[TIssueModuleActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/module.tsx
+- [[TIssueNameActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/name.tsx
+- [[TIssueParentActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/parent.tsx
+- [[TIssuePriorityActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/priority.tsx
+- [[TIssueRelationActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/relation.tsx
+- [[TIssueStartDateActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/start_date.tsx
+- [[TIssueStateActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/state.tsx
+- [[TIssueSubscription]] - code - web/core/components/issues/issue-detail/subscription.tsx
+- [[TIssueTargetDateActivity]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/target_date.tsx
+- [[TIssueUser_1]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/helpers/issue-user.tsx
+- [[TIssueUser]] - code - web/ce/components/issues/issue-details/issue-creator.tsx
+- [[TLinkList]] - code - web/core/components/issues/issue-detail/links/link-list.tsx
+- [[TLinkOperations_1]] - code - web/core/components/issues/issue-detail/links/root.tsx
+- [[TLinkOperationsModal_1]] - code - web/core/components/issues/issue-detail/links/create-update-link-modal.tsx
+- [[TLinkOperationsModal_2]] - code - web/core/components/issues/issue-detail/links/link-list.tsx
+- [[TLinkOperationsModal]] - code - web/core/components/issues/issue-detail/links/links.tsx
+- [[TNotificationPreview]] - code - web/ce/hooks/use-notification-preview.tsx
+- [[TPeekIssue]] - code - web/core/store/issue/issue-details/root.store.ts
+- [[TRelationIssueOperations]] - code - web/core/components/issues/issue-detail-widgets/relations/helper.tsx
+- [[TRelationObject]] - code - web/core/components/issues/issue-detail-widgets/relations/content.tsx
+- [[TSubIssuesListGroupProps]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/issues-list/list-group.tsx
+- [[TSubWorkItemTitleActionsProps]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/title-actions.tsx
+- [[TWorkItemAdditionalWidgetModalsProps]] - code - web/ce/components/issues/issue-detail-widgets/modals.tsx
+- [[WorkItemAdditionalWidgetModals()]] - code - web/ce/components/issues/issue-detail-widgets/modals.tsx
+- [[activity-block.tsx]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/helpers/activity-block.tsx
+- [[activity-comment-root.tsx]] - code - web/core/components/issues/issue-detail/issue-activity/activity-comment-root.tsx
+- [[activity-list.tsx_2]] - code - web/core/components/issues/issue-detail/issue-activity/activity/activity-list.tsx
+- [[archived-at.tsx]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/archived-at.tsx
+- [[assignee.tsx_1]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/assignee.tsx
+- [[attachment-detail.tsx]] - code - web/core/components/issues/attachment/attachment-detail.tsx
+- [[attachment-item-list.tsx]] - code - web/core/components/issues/attachment/attachment-item-list.tsx
+- [[attachment-list-item.tsx]] - code - web/core/components/issues/attachment/attachment-list-item.tsx
+- [[attachment-list-upload-item.tsx]] - code - web/core/components/issues/attachment/attachment-list-upload-item.tsx
+- [[attachment-upload-details.tsx]] - code - web/core/components/issues/attachment/attachment-upload-details.tsx
+- [[attachment-upload.tsx]] - code - web/core/components/issues/attachment/attachment-upload.tsx
+- [[attachment.tsx]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/attachment.tsx
+- [[attachments-list.tsx]] - code - web/core/components/issues/attachment/attachments-list.tsx
+- [[content.tsx]] - code - web/core/components/issues/issue-detail-widgets/attachments/content.tsx
+- [[content.tsx_3]] - code - web/core/components/issues/issue-detail-widgets/links/content.tsx
+- [[content.tsx_1]] - code - web/core/components/issues/issue-detail-widgets/relations/content.tsx
+- [[content.tsx_2]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/content.tsx
+- [[create-update-link-modal.tsx_1]] - code - web/core/components/issues/issue-detail/links/create-update-link-modal.tsx
+- [[cycle.tsx_4]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/cycle.tsx
+- [[default.tsx_2]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/default.tsx
+- [[defaultValues]] - code - web/core/components/issues/issue-detail/links/create-update-link-modal.tsx
+- [[delete-attachment-modal.tsx]] - code - web/core/components/issues/attachment/delete-attachment-modal.tsx
+- [[description.tsx]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/description.tsx
+- [[estimate.tsx_2]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/estimate.tsx
+- [[header.tsx_10]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/issues/(detail)/header.tsx
+- [[helper.ts_5]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/helper.ts
+- [[helper.tsx_27]] - code - web/core/components/issues/issue-detail-widgets/attachments/helper.tsx
+- [[helper.tsx_29]] - code - web/core/components/issues/issue-detail-widgets/links/helper.tsx
+- [[helper.tsx_28]] - code - web/core/components/issues/issue-detail-widgets/relations/helper.tsx
+- [[inbox.tsx_2]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/inbox.tsx
+- [[index.ts_291]] - code - web/core/components/icons/index.ts
+- [[index.ts_369]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/index.ts
+- [[index.ts_372]] - code - web/core/components/issues/issue-detail/links/index.ts
+- [[issue-creator.tsx]] - code - web/ce/components/issues/issue-details/issue-creator.tsx
+- [[issue-detail-quick-actions.tsx]] - code - web/core/components/issues/issue-detail/issue-detail-quick-actions.tsx
+- [[issue-detail-widget-modals.tsx]] - code - web/core/components/issues/issue-detail-widgets/issue-detail-widget-modals.tsx
+- [[issue-link.tsx]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/helpers/issue-link.tsx
+- [[issue-list-item.tsx]] - code - web/core/components/issues/relations/issue-list-item.tsx
+- [[issue-list.tsx]] - code - web/core/components/issues/relations/issue-list.tsx
+- [[issue-user.tsx]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/helpers/issue-user.tsx
+- [[issueService]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/issues/(detail)/header.tsx
+- [[label.tsx_3]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/label.tsx
+- [[link-detail.tsx_1]] - code - web/core/components/issues/issue-detail/links/link-detail.tsx
+- [[link-item.tsx]] - code - web/core/components/issues/issue-detail/links/link-item.tsx
+- [[link-list.tsx]] - code - web/core/components/issues/issue-detail/links/link-list.tsx
+- [[link.tsx_2]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/link.tsx
+- [[links.tsx_2]] - code - web/core/components/issues/issue-detail/links/links.tsx
+- [[list-group.tsx_1]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/issues-list/list-group.tsx
+- [[list-item.tsx_1]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/issues-list/list-item.tsx
+- [[loader.tsx_7]] - code - web/core/components/issues/issue-detail/issue-activity/loader.tsx
+- [[modals.tsx]] - code - web/ce/components/issues/issue-detail-widgets/modals.tsx
+- [[module.tsx_4]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/module.tsx
+- [[name.tsx]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/name.tsx
+- [[page.tsx_9]] - code - web/app/(all)/[workspaceSlug]/(projects)/browse/[workItem]/page.tsx
+- [[page.tsx_20]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/issues/(detail)/[archivedIssueId]/page.tsx
+- [[parent.tsx]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/parent.tsx
+- [[priority.tsx_4]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/priority.tsx
+- [[quick-action-button.tsx]] - code - web/core/components/issues/issue-detail-widgets/attachments/quick-action-button.tsx
+- [[quick-action-button.tsx_3]] - code - web/core/components/issues/issue-detail-widgets/links/quick-action-button.tsx
+- [[quick-action-button.tsx_1]] - code - web/core/components/issues/issue-detail-widgets/relations/quick-action-button.tsx
+- [[quick-action-button.tsx_2]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/quick-action-button.tsx
+- [[relation.tsx]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/relation.tsx
+- [[root.tsx_27]] - code - web/ce/components/issues/worklog/activity/root.tsx
+- [[root.tsx_77]] - code - web/core/components/issues/attachment/root.tsx
+- [[root.tsx_75]] - code - web/core/components/issues/issue-detail/links/root.tsx
+- [[root.tsx_79]] - code - web/core/components/issues/issue-detail-widgets/attachments/root.tsx
+- [[root.tsx_83]] - code - web/core/components/issues/issue-detail-widgets/links/root.tsx
+- [[root.tsx_80]] - code - web/core/components/issues/issue-detail-widgets/relations/root.tsx
+- [[root.tsx_82]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/issues-list/root.tsx
+- [[root.tsx_81]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/root.tsx
+- [[section-empty-state-root.tsx]] - code - web/core/components/empty-state/section-empty-state-root.tsx
+- [[start_date.tsx]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/start_date.tsx
+- [[state.tsx_3]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/state.tsx
+- [[subscription.tsx]] - code - web/core/components/issues/issue-detail/subscription.tsx
+- [[target_date.tsx]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/target_date.tsx
+- [[title-actions.tsx]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/title-actions.tsx
+- [[title.tsx]] - code - web/core/components/issues/issue-detail-widgets/attachments/title.tsx
+- [[title.tsx_3]] - code - web/core/components/issues/issue-detail-widgets/links/title.tsx
+- [[title.tsx_1]] - code - web/core/components/issues/issue-detail-widgets/relations/title.tsx
+- [[title.tsx_2]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/title.tsx
+- [[use-issue-detail.ts]] - code - web/core/hooks/store/use-issue-detail.ts
+- [[use-issue-peek-overview-redirection.tsx]] - code - web/core/hooks/use-issue-peek-overview-redirection.tsx
+- [[use-issue-properties.tsx]] - code - web/ce/hooks/use-issue-properties.tsx
+- [[use-notification-preview.tsx]] - code - web/ce/hooks/use-notification-preview.tsx
+- [[useAttachmentOperations()]] - code - web/core/components/issues/issue-detail-widgets/attachments/helper.tsx
+- [[useIssueDetail()]] - code - web/core/hooks/store/use-issue-detail.ts
+- [[useIssuePeekOverviewRedirection()]] - code - web/core/hooks/use-issue-peek-overview-redirection.tsx
+- [[useLinkOperations()]] - code - web/core/components/issues/issue-detail-widgets/links/helper.tsx
+- [[useNotificationPreview()]] - code - web/ce/hooks/use-notification-preview.tsx
+- [[useRelationOperations()]] - code - web/core/components/issues/issue-detail-widgets/relations/helper.tsx
+- [[useSubIssueOperations()]] - code - web/core/components/issues/issue-detail-widgets/sub-issues/helper.ts
+- [[useWorkItemProperties()]] - code - web/ce/hooks/use-issue-properties.tsx
+- [[work-item-header.tsx]] - code - web/app/(all)/[workspaceSlug]/(projects)/browse/[workItem]/work-item-header.tsx
+
+## Live Query (requires Dataview plugin)
+
+```dataview
+TABLE source_file, type FROM #community/Issue_Activity_Types
+SORT file.name ASC
+```
+
+## Connections to other communities
+- 60 edges to [[_COMMUNITY_Work Item Detail & Layouts]]
+- 42 edges to [[_COMMUNITY_Project Filters & Archives]]
+- 22 edges to [[_COMMUNITY_Filter UI & Breadcrumbs]]
+- 22 edges to [[_COMMUNITY_Bulk Operations & Spreadsheet]]
+- 16 edges to [[_COMMUNITY_Activity & Inbox Filters]]
+- 12 edges to [[_COMMUNITY_Community 42]]
+- 12 edges to [[_COMMUNITY_Issue Display Filters]]
+- 7 edges to [[_COMMUNITY_Community 24]]
+- 7 edges to [[_COMMUNITY_Issue Store & Filters Logic]]
+- 6 edges to [[_COMMUNITY_Community 234]]
+- 6 edges to [[_COMMUNITY_Community 22]]
+- 4 edges to [[_COMMUNITY_Community 84]]
+- 4 edges to [[_COMMUNITY_Community 44]]
+- 4 edges to [[_COMMUNITY_Community 23]]
+- 4 edges to [[_COMMUNITY_Community 219]]
+- 4 edges to [[_COMMUNITY_Community 130]]
+- 3 edges to [[_COMMUNITY_Module & Cycle Analytics]]
+- 3 edges to [[_COMMUNITY_Community 36]]
+- 3 edges to [[_COMMUNITY_Community 376]]
+- 3 edges to [[_COMMUNITY_Community 281]]
+- 2 edges to [[_COMMUNITY_Community 40]]
+- 2 edges to [[_COMMUNITY_Community 67]]
+- 2 edges to [[_COMMUNITY_Community 500]]
+- 2 edges to [[_COMMUNITY_Active Cycle Stats]]
+- 2 edges to [[_COMMUNITY_Community 210]]
+- 2 edges to [[_COMMUNITY_Community 73]]
+- 2 edges to [[_COMMUNITY_Community 45]]
+- 2 edges to [[_COMMUNITY_Service Layer]]
+- 2 edges to [[_COMMUNITY_Community 409]]
+- 1 edge to [[_COMMUNITY_Community 340]]
+- 1 edge to [[_COMMUNITY_Community 65]]
+- 1 edge to [[_COMMUNITY_Community 20]]
+- 1 edge to [[_COMMUNITY_Community 137]]
+
+## Top bridge nodes
+- [[useIssueDetail()]] - degree 134, connects to 19 communities
+- [[use-issue-detail.ts]] - degree 120, connects to 19 communities
+- [[page.tsx_9]] - degree 17, connects to 7 communities
+- [[issue-detail-quick-actions.tsx]] - degree 18, connects to 6 communities
+- [[work-item-header.tsx]] - degree 13, connects to 6 communities

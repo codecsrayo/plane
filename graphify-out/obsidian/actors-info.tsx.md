@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/pages/navigation-pane/tab-panels/info/actors-info.tsx"
 type: "code"
-community: "Pane Navigation"
+community: "Community 163"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Pane_Navigation
+  - community/Community_163
 ---
 
 # actors-info.tsx
 
 ## Connections
-
 - [[PageNavigationPaneInfoTabActorsInfo]] - `contains` [EXTRACTED]
 - [[Props_480]] - `contains` [EXTRACTED]
 - [[TPageInstance]] - `imports` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[use-member.ts]] - `imports_from` [EXTRACTED]
 - [[useMember()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Pane_Navigation
+#graphify/code #graphify/EXTRACTED #community/Community_163

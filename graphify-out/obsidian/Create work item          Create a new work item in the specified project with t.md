@@ -1,14 +1,14 @@
 ---
 source_file: "api/plane/api/views/issue.py"
 type: "rationale"
-community: "Work Specified"
+community: "Community 1671"
 location: "L426"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Work_Specified
+  - community/Community_1671
 ---
 
-# Create work item Create a new work item in the specified project with t
+# Create work item          Create a new work item in the specified project with t
 
-#graphify/rationale #graphify/EXTRACTED #community/Work_Specified
+#graphify/rationale #graphify/EXTRACTED #community/Community_1671

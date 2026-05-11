@@ -1,19 +1,18 @@
 ---
 source_file: "api/plane/api/views/member.py"
 type: "code"
-community: "Endpoint State"
+community: "Community 99"
 location: "L152"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Endpoint_State
+  - community/Community_99
 ---
 
 # post()
 
 ## Connections
-
 - [[member.py_2]] - `contains` [EXTRACTED]
 - [[response]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Endpoint_State
+#graphify/code #graphify/INFERRED #community/Community_99

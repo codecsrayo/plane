@@ -1,18 +1,17 @@
 ---
 source_file: "space/components/account/auth-forms/unique-code.tsx"
 type: "code"
-community: "Unique Code"
+community: "Community 58"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Unique_Code
+  - community/Community_58
 ---
 
 # unique-code.tsx
 
 ## Connections
-
 - [[AuthUniqueCodeForm()]] - `contains` [EXTRACTED]
 - [[EAuthModes_2]] - `imports` [EXTRACTED]
 - [[TAuthUniqueCodeForm]] - `contains` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[defaultValues_26]] - `contains` [EXTRACTED]
 - [[use-timer.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Unique_Code
+#graphify/code #graphify/EXTRACTED #community/Community_58

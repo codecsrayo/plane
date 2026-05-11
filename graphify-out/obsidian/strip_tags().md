@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/utils/html_processor.py"
 type: "code"
-community: "Command Stripper"
+community: "Community 270"
 location: "L28"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Command_Stripper
+  - community/Community_270
 ---
 
 # strip_tags()
 
 ## Connections
-
 - [[.get_data()]] - `calls` [EXTRACTED]
 - [[.handle()_1]] - `calls` [INFERRED]
 - [[.save()_5]] - `calls` [INFERRED]
@@ -27,4 +26,4 @@ tags:
 - [[generate_plain_text_from_html()]] - `calls` [INFERRED]
 - [[html_processor.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Command_Stripper
+#graphify/code #graphify/INFERRED #community/Community_270

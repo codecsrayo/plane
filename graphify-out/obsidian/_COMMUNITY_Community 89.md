@@ -1,41 +1,66 @@
 ---
 type: community
-cohesion: 0.12
-members: 25
+cohesion: 0.05
+members: 51
 ---
 
 # Community 89
 
-**Cohesion:** 0.12 - loosely connected
-**Members:** 25 nodes
+**Cohesion:** 0.05 - loosely connected
+**Members:** 51 nodes
 
 ## Members
-
-- [[ProjectActionsMenu()]] - code - web/core/components/navigation/project-actions-menu.tsx
-- [[ProjectHeader]] - code - web/core/components/navigation/project-header.tsx
-- [[Props_437]] - code - web/core/components/navigation/project-actions-menu.tsx
-- [[Props_438]] - code - web/core/components/navigation/tab-navigation-overflow-menu.tsx
-- [[TNavigationItem_1]] - code - web/core/components/navigation/tab-navigation-root.tsx
-- [[TResponsiveTabLayout]] - code - web/core/components/navigation/use-responsive-tab-layout.ts
-- [[TTabNavigationRootProps]] - code - web/core/components/navigation/tab-navigation-root.tsx
-- [[TTabNavigationVisibleItemProps]] - code - web/core/components/navigation/tab-navigation-visible-item.tsx
-- [[TTabPreferences]] - code - web/core/components/navigation/tab-navigation-utils.ts
-- [[TabNavigationOverflowMenu()]] - code - web/core/components/navigation/tab-navigation-overflow-menu.tsx
-- [[TabNavigationRoot]] - code - web/core/components/navigation/tab-navigation-root.tsx
-- [[TabNavigationVisibleItem()]] - code - web/core/components/navigation/tab-navigation-visible-item.tsx
-- [[UseActiveTabProps]] - code - web/core/components/navigation/use-active-tab.ts
-- [[UseProjectActionsProps]] - code - web/core/components/navigation/use-project-actions.ts
-- [[UseResponsiveTabLayoutProps]] - code - web/core/components/navigation/use-responsive-tab-layout.ts
-- [[project-actions-menu.tsx]] - code - web/core/components/navigation/project-actions-menu.tsx
-- [[tab-navigation-overflow-menu.tsx]] - code - web/core/components/navigation/tab-navigation-overflow-menu.tsx
-- [[tab-navigation-root.tsx]] - code - web/core/components/navigation/tab-navigation-root.tsx
-- [[tab-navigation-visible-item.tsx]] - code - web/core/components/navigation/tab-navigation-visible-item.tsx
-- [[use-active-tab.ts]] - code - web/core/components/navigation/use-active-tab.ts
-- [[use-project-actions.ts]] - code - web/core/components/navigation/use-project-actions.ts
-- [[use-responsive-tab-layout.ts]] - code - web/core/components/navigation/use-responsive-tab-layout.ts
-- [[useActiveTab()]] - code - web/core/components/navigation/use-active-tab.ts
-- [[useProjectActions()]] - code - web/core/components/navigation/use-project-actions.ts
-- [[useResponsiveTabLayout()]] - code - web/core/components/navigation/use-responsive-tab-layout.ts
+- [[TODO Remove workspace relation later]] - rationale - api/plane/db/models/project.py
+- [[.__init__()_10]] - code - api/plane/db/models/project.py
+- [[.__str__()_76]] - code - api/plane/db/models/integration/base.py
+- [[.__str__()_77]] - code - api/plane/db/models/integration/base.py
+- [[.__str__()_2]] - code - api/plane/db/models/importer.py
+- [[.__str__()_41]] - code - api/plane/db/models/project.py
+- [[.__str__()_44]] - code - api/plane/db/models/project.py
+- [[.__str__()_43]] - code - api/plane/db/models/project.py
+- [[.__str__()_42]] - code - api/plane/db/models/project.py
+- [[.__str__()_45]] - code - api/plane/db/models/project.py
+- [[.save()_10]] - code - api/plane/db/models/project.py
+- [[.save()_11]] - code - api/plane/db/models/project.py
+- [[.save()_12]] - code - api/plane/db/models/project.py
+- [[AuditModel_1]] - code
+- [[AuditModel]] - code - api/plane/db/mixins.py
+- [[Enum]] - code
+- [[Importer]] - code - api/plane/db/models/importer.py
+- [[Integration]] - code - api/plane/db/models/integration/base.py
+- [[Meta_58]] - code - api/plane/db/models/integration/base.py
+- [[Meta_28]] - code - api/plane/db/models/importer.py
+- [[Meta_42]] - code - api/plane/db/models/project.py
+- [[Project]] - code - api/plane/db/models/project.py
+- [[ProjectDeployBoard]] - code - api/plane/db/models/project.py
+- [[ProjectIdentifier]] - code - api/plane/db/models/project.py
+- [[ProjectMember]] - code - api/plane/db/models/project.py
+- [[ProjectMemberInvite]] - code - api/plane/db/models/project.py
+- [[ProjectNetwork]] - code - api/plane/db/models/project.py
+- [[ProjectPublicMember]] - code - api/plane/db/models/project.py
+- [[ProjectUserProperty]] - code - api/plane/db/models/project.py
+- [[ROLE_2]] - code - api/plane/db/models/project.py
+- [[Return members of the project]] - rationale - api/plane/db/models/project.py
+- [[Return name of the integration and workspace]] - rationale - api/plane/db/models/integration/base.py
+- [[Return name of the project]] - rationale - api/plane/db/models/project.py
+- [[Return name of the service]] - rationale - api/plane/db/models/importer.py
+- [[Return project and anchor]] - rationale - api/plane/db/models/project.py
+- [[Return properties status of the project]] - rationale - api/plane/db/models/project.py
+- [[Return provider of the integration]] - rationale - api/plane/db/models/integration/base.py
+- [[To path when the record was created and last modified_2]] - rationale - api/plane/db/mixins.py
+- [[WorkspaceIntegration]] - code - api/plane/db/models/integration/base.py
+- [[allow_permission()]] - code - api/plane/utils/permissions/base.py
+- [[base.py_21]] - code - api/plane/app/permissions/base.py
+- [[base.py_26]] - code - api/plane/db/models/integration/base.py
+- [[base.py_27]] - code - api/plane/utils/permissions/base.py
+- [[choices()]] - code - api/plane/db/models/project.py
+- [[cover_image_url()]] - code - api/plane/db/models/project.py
+- [[get_anchor()_1]] - code - api/plane/db/models/project.py
+- [[get_default_preferences()]] - code - api/plane/db/models/project.py
+- [[get_default_props()_1]] - code - api/plane/db/models/project.py
+- [[get_default_views()]] - code - api/plane/db/models/project.py
+- [[importer.py_2]] - code - api/plane/db/models/importer.py
+- [[project.py_6]] - code - api/plane/db/models/project.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -45,18 +70,21 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 9 edges to [[_COMMUNITY_Community 132]]
-- 2 edges to [[_COMMUNITY_Issue Activity Tracking]]
-- 2 edges to [[_COMMUNITY_Applied Filters UI]]
-- 2 edges to [[_COMMUNITY_Community 67]]
-- 2 edges to [[_COMMUNITY_Account & Sub-Issues]]
-- 1 edge to [[_COMMUNITY_Empty State Components]]
+- 21 edges to [[_COMMUNITY_Python Workflow Services]]
+- 14 edges to [[_COMMUNITY_Community 26]]
+- 6 edges to [[_COMMUNITY_Community 96]]
+- 5 edges to [[_COMMUNITY_Community 27]]
+- 4 edges to [[_COMMUNITY_Python API Base Classes]]
+- 4 edges to [[_COMMUNITY_Community 107]]
+- 1 edge to [[_COMMUNITY_Community 378]]
+- 1 edge to [[_COMMUNITY_Community 204]]
+- 1 edge to [[_COMMUNITY_Community 504]]
+- 1 edge to [[_COMMUNITY_Community 184]]
+- 1 edge to [[_COMMUNITY_Community 453]]
 
 ## Top bridge nodes
-
-- [[tab-navigation-root.tsx]] - degree 29, connects to 6 communities
-- [[tab-navigation-overflow-menu.tsx]] - degree 6, connects to 1 community
-- [[tab-navigation-visible-item.tsx]] - degree 6, connects to 1 community
-- [[TTabPreferences]] - degree 4, connects to 1 community
-- [[ProjectHeader]] - degree 2, connects to 1 community
+- [[project.py_6]] - degree 28, connects to 5 communities
+- [[ProjectUserProperty]] - degree 8, connects to 5 communities
+- [[AuditModel]] - degree 21, connects to 3 communities
+- [[ROLE_2]] - degree 9, connects to 3 communities
+- [[ProjectMemberInvite]] - degree 6, connects to 3 communities

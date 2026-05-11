@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 779
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_59]] - code - web/core/components/modules/analytics-sidebar/index.ts
+- [[OnboardingLayout()]] - code - web/app/(all)/onboarding/layout.tsx
+- [[layout.tsx_41]] - code - web/app/(all)/onboarding/layout.tsx
+- [[meta()_10]] - code - web/app/(all)/onboarding/layout.tsx
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/serializers/importer.py"
 type: "code"
-community: "Serializer Meta"
+community: "Community 77"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Serializer_Meta
+  - community/Community_77
 ---
 
 # importer.py
 
 ## Connections
-
 - [[ImporterSerializer]] - `contains` [EXTRACTED]
 - [[Meta_1]] - `contains` [EXTRACTED]
 - [[__init__.py_8]] - `imports_from` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[user.py_2]] - `imports_from` [EXTRACTED]
 - [[workspace.py_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Serializer_Meta
+#graphify/code #graphify/EXTRACTED #community/Community_77

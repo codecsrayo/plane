@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/integrations/[provider]/page.tsx"
 type: "code"
-community: "Project Workspace"
+community: "Community 64"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Workspace
+  - community/Community_64
 ---
 
 # page.tsx
 
 ## Connections
-
 - [[ConnectedAccountDetails()]] - `imports` [EXTRACTED]
 - [[GithubPRStateMapping]] - `imports` [EXTRACTED]
 - [[GithubPRStateMappingModal]] - `imports` [EXTRACTED]
@@ -44,4 +43,4 @@ tags:
 - [[useInstance()]] - `imports` [EXTRACTED]
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_64

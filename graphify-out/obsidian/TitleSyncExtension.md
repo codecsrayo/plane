@@ -1,18 +1,17 @@
 ---
 source_file: "live/src/extensions/title-sync.ts"
 type: "code"
-community: "Logger Title"
+community: "Community 298"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Logger_Title
+  - community/Community_298
 ---
 
 # TitleSyncExtension
 
 ## Connections
-
 - [[.afterLoadDocument()]] - `method` [EXTRACTED]
 - [[.afterUnloadDocument()]] - `method` [EXTRACTED]
 - [[.beforeUnloadDocument()]] - `method` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[index.ts_451]] - `imports` [EXTRACTED]
 - [[title-sync.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Logger_Title
+#graphify/code #graphify/EXTRACTED #community/Community_298

@@ -1,14 +1,14 @@
 ---
 source_file: "api/plane/api/views/asset.py"
 type: "rationale"
-community: "Asset Generic"
+community: "Community 1668"
 location: "L597"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Asset_Generic
+  - community/Community_1668
 ---
 
-# Update generic asset after upload completion. Update the asset status a
+# Update generic asset after upload completion.          Update the asset status a
 
-#graphify/rationale #graphify/EXTRACTED #community/Asset_Generic
+#graphify/rationale #graphify/EXTRACTED #community/Community_1668

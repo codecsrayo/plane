@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/icons/attachment/default-file-icon.tsx"
 type: "code"
-community: "Icon"
+community: "Community 1040"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Icon
+  - community/Community_1040
 ---
 
 # DefaultIcon()
 
 ## Connections
-
 - [[default-file-icon.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Icon
+#graphify/code #graphify/EXTRACTED #community/Community_1040

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/models/notification.py"
 type: "code"
-community: "Meta User"
+community: "Python Workflow Services"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Meta_User
+  - community/Python_Workflow_Services
 ---
 
 # notification.py
 
 ## Connections
-
 - [[EmailNotificationLog]] - `contains` [EXTRACTED]
 - [[Meta_44]] - `contains` [EXTRACTED]
 - [[Notification_1]] - `contains` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[base.py_25]] - `imports_from` [EXTRACTED]
 - [[get_default_preference()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Meta_User
+#graphify/code #graphify/EXTRACTED #community/Python_Workflow_Services

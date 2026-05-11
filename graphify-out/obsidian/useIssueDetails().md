@@ -1,18 +1,17 @@
 ---
 source_file: "space/hooks/store/use-issue-details.tsx"
 type: "code"
-community: "Issue Peek"
+community: "Community 80"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Peek
+  - community/Community_80
 ---
 
 # useIssueDetails()
 
 ## Connections
-
 - [[add-comment.tsx]] - `imports` [EXTRACTED]
 - [[block.tsx_9]] - `imports` [EXTRACTED]
 - [[block.tsx_10]] - `imports` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[root.tsx_138]] - `imports` [EXTRACTED]
 - [[use-issue-details.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Peek
+#graphify/code #graphify/EXTRACTED #community/Community_80

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/authentication/provider/credentials/magic_code.py"
 type: "code"
-community: "Endpoint Magic"
+community: "Community 54"
 location: "L22"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Endpoint_Magic
+  - community/Community_54
 ---
 
 # MagicCodeProvider
 
 ## Connections
-
 - [[.__init__()_30]] - `method` [EXTRACTED]
 - [[.initiate()]] - `method` [EXTRACTED]
 - [[.post()_22]] - `calls` [INFERRED]
@@ -32,4 +31,4 @@ tags:
 - [[MagicSignUpSpaceEndpoint]] - `uses` [INFERRED]
 - [[magic_code.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Endpoint_Magic
+#graphify/code #graphify/INFERRED #community/Community_54

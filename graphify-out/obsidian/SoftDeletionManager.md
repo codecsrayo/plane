@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/mixins.py"
 type: "code"
-community: "Issue Sync"
+community: "Community 26"
 location: "L56"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Issue_Sync
+  - community/Community_26
 ---
 
 # SoftDeletionManager
 
 ## Connections
-
 - [[.get_queryset()_75]] - `method` [EXTRACTED]
 - [[CommentReaction]] - `uses` [INFERRED]
 - [[Issue]] - `uses` [INFERRED]
@@ -41,4 +40,4 @@ tags:
 - [[TriageStateManager]] - `uses` [INFERRED]
 - [[mixins.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Issue_Sync
+#graphify/code #graphify/INFERRED #community/Community_26

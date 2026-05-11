@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/use-dashboard.ts"
 type: "code"
-community: "Project Issue"
+community: "Community 325"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Issue
+  - community/Community_325
 ---
 
 # useDashboard()
 
 ## Connections
-
 - [[use-dashboard.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_325

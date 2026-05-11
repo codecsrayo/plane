@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/views/invite.py"
 type: "code"
-community: "Endpoint State"
+community: "Community 99"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_State
+  - community/Community_99
 ---
 
 # WorkspaceInvitationsViewset
 
 ## Connections
-
 - [[.get_object()_1]] - `method` [EXTRACTED]
 - [[.get_queryset()_46]] - `method` [EXTRACTED]
 - [[BaseViewSet]] - `uses` [INFERRED]
@@ -20,4 +19,4 @@ tags:
 - [[Endpoint for creating, listing and deleting workspace invites.]] - `rationale_for` [EXTRACTED]
 - [[invite.py_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_State
+#graphify/code #graphify/EXTRACTED #community/Community_99

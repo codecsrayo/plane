@@ -1,18 +1,17 @@
 ---
 source_file: "live/src/services/pdf-export/pdf-export.service.ts"
 type: "code"
-community: "Error Effect"
+community: "Community 155"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Error_Effect
+  - community/Community_155
 ---
 
 # pdf-export.service.ts
 
 ## Connections
-
 - [[MetadataResult]] - `imports` [EXTRACTED]
 - [[PageContent]] - `imports` [EXTRACTED]
 - [[PdfContentFetchError]] - `imports` [EXTRACTED]
@@ -36,4 +35,4 @@ tags:
 - [[types.ts_19]] - `imports_from` [EXTRACTED]
 - [[withTimeoutAndRetry()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Error_Effect
+#graphify/code #graphify/EXTRACTED #community/Community_155

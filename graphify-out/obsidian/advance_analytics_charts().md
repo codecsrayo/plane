@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/analytics.rs"
 type: "code"
-community: "Analytics Advance"
+community: "Community 94"
 location: "L1491"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Analytics_Advance
+  - community/Community_94
 ---
 
 # advance_analytics_charts()
 
 ## Connections
-
 - [[.json()]] - `calls` [INFERRED]
 - [[.new()]] - `calls` [INFERRED]
 - [[analytics.rs]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[now]] - `calls` [INFERRED]
 - [[project_ids_filter()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Analytics_Advance
+#graphify/code #graphify/EXTRACTED #community/Community_94

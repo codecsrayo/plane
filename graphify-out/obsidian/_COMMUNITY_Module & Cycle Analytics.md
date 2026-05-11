@@ -1,0 +1,221 @@
+---
+type: community
+cohesion: 0.02
+members: 148
+---
+
+# Module & Cycle Analytics
+
+**Cohesion:** 0.02 - loosely connected
+**Members:** 148 nodes
+
+## Members
+- [[.constructor()_63]] - code - web/core/store/cycle_filter.store.ts
+- [[.currentProjectArchivedFilters()]] - code - web/core/store/cycle_filter.store.ts
+- [[.currentProjectDisplayFilters()]] - code - web/core/store/cycle_filter.store.ts
+- [[.currentProjectFilters()]] - code - web/core/store/cycle_filter.store.ts
+- [[AppliedModuleFilters]] - code - web/core/components/issues/issue-layouts/filters/applied-filters/module.tsx
+- [[ArchiveModuleModal()]] - code - web/core/components/modules/archived-modules/modal.tsx
+- [[ArchivedCycleLayoutRoot]] - code - web/core/components/cycles/archived-cycles/root.tsx
+- [[ArchivedCyclesHeader]] - code - web/core/components/cycles/archived-cycles/header.tsx
+- [[ArchivedCyclesView]] - code - web/core/components/cycles/archived-cycles/view.tsx
+- [[ArchivedModuleLayoutRoot]] - code - web/core/components/modules/archived-modules/root.tsx
+- [[ArchivedModulesHeader]] - code - web/core/components/modules/archived-modules/header.tsx
+- [[ArchivedModulesView]] - code - web/core/components/modules/archived-modules/view.tsx
+- [[CYCLE_VIEW_LAYOUTS]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(list)/mobile-header.tsx
+- [[CreateUpdateModuleModal]] - code - web/core/components/modules/modal.tsx
+- [[CycleFilterStore]] - code - web/core/store/cycle_filter.store.ts
+- [[CycleForm()]] - code - web/core/components/cycles/form.tsx
+- [[CycleModuleBoardLayoutLoader()]] - code - web/core/components/ui/loader/cycle-module-board-loader.tsx
+- [[CycleModuleListLayoutLoader()]] - code - web/core/components/ui/loader/cycle-module-list-loader.tsx
+- [[CyclesListHeader]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(list)/header.tsx
+- [[CyclesListMobileHeader]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(list)/mobile-header.tsx
+- [[CyclesView]] - code - web/core/components/cycles/cycles-view.tsx
+- [[CyclesViewHeader]] - code - web/core/components/cycles/cycles-view-header.tsx
+- [[DateRangeDropdown]] - code - web/core/components/dropdowns/date-range.tsx
+- [[DeleteModuleModal]] - code - web/core/components/modules/delete-module-modal.tsx
+- [[FilterModule]] - code - web/core/components/issues/issue-layouts/filters/header/filters/module.tsx
+- [[IArchivedCyclesView]] - code - web/core/components/cycles/archived-cycles/view.tsx
+- [[IArchivedModulesView]] - code - web/core/components/modules/archived-modules/view.tsx
+- [[ICycleFilterStore]] - code - web/core/store/cycle_filter.store.ts
+- [[ICyclesView]] - code - web/core/components/cycles/cycles-view.tsx
+- [[IListItemProps]] - code - web/core/components/core/list/list-item.tsx
+- [[IUserStore_1]] - code - web/core/store/user/index.ts
+- [[IssueModalProvider]] - code - web/ce/components/issues/issue-modal/provider.tsx
+- [[IssueProjectSelect]] - code - web/core/components/issues/issue-modal/components/project-select.tsx
+- [[ListItem()]] - code - web/core/components/core/list/list-item.tsx
+- [[MergedDateDisplay]] - code - web/core/components/dropdowns/merged-date.tsx
+- [[ModuleAnalyticsProgress]] - code - web/core/components/modules/analytics-sidebar/issue-progress.tsx
+- [[ModuleAnalyticsSidebar]] - code - web/core/components/modules/analytics-sidebar/root.tsx
+- [[ModuleButtonContentProps]] - code - web/core/components/dropdowns/module/button-content.tsx
+- [[ModuleCardItem]] - code - web/core/components/modules/module-card-item.tsx
+- [[ModuleForm()]] - code - web/core/components/modules/form.tsx
+- [[ModuleGanttBlock]] - code - web/core/components/modules/gantt-chart/blocks.tsx
+- [[ModuleGanttSidebarBlock]] - code - web/core/components/modules/gantt-chart/blocks.tsx
+- [[ModuleIssuesPage()]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/modules/(detail)/[moduleId]/page.tsx
+- [[ModuleLinksList]] - code - web/core/components/modules/links/list.tsx
+- [[ModuleListItem]] - code - web/core/components/modules/module-list-item.tsx
+- [[ModuleListItemAction]] - code - web/core/components/modules/module-list-item-action.tsx
+- [[ModulePeekOverview]] - code - web/core/components/modules/module-peek-overview.tsx
+- [[ModuleQuickActions]] - code - web/core/components/modules/quick-actions.tsx
+- [[ModuleStatusDropdown]] - code - web/core/components/modules/module-status-dropdown.tsx
+- [[ModulesListGanttChartView]] - code - web/core/components/modules/gantt-chart/modules-list-layout.tsx
+- [[ModulesListView]] - code - web/core/components/modules/modules-list-view.tsx
+- [[ProfileSettingsPage()]] - code - web/app/(all)/settings/profile/[profileTabId]/page.tsx
+- [[ProjectArchivedCyclesPage()]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/cycles/page.tsx
+- [[ProjectCyclesListLayout()]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(list)/layout.tsx
+- [[ProjectCyclesPage()]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(list)/page.tsx
+- [[ProjectDropdown]] - code - web/core/components/dropdowns/project/dropdown.tsx
+- [[ProjectDropdownBase]] - code - web/core/components/dropdowns/project/base.tsx
+- [[Props_323]] - code - web/core/components/issues/issue-layouts/filters/applied-filters/module.tsx
+- [[Props_154]] - code - web/core/components/modules/archived-modules/modal.tsx
+- [[Props_374]] - code - web/core/components/cycles/cycles-view-header.tsx
+- [[Props_373]] - code - web/core/components/cycles/form.tsx
+- [[Props_195]] - code - web/core/components/dropdowns/date-range.tsx
+- [[Props_193]] - code - web/core/components/dropdowns/merged-date.tsx
+- [[Props_313]] - code - web/core/components/issues/issue-layouts/filters/header/filters/module.tsx
+- [[Props_151]] - code - web/core/components/modules/gantt-chart/blocks.tsx
+- [[Props_164]] - code - web/core/components/modules/links/list.tsx
+- [[Props_149]] - code - web/core/components/modules/delete-module-modal.tsx
+- [[Props_142]] - code - web/core/components/modules/form.tsx
+- [[Props_145]] - code - web/core/components/modules/modal.tsx
+- [[Props_147]] - code - web/core/components/modules/module-card-item.tsx
+- [[Props_144]] - code - web/core/components/modules/module-list-item-action.tsx
+- [[Props_148]] - code - web/core/components/modules/module-list-item.tsx
+- [[Props_146]] - code - web/core/components/modules/module-peek-overview.tsx
+- [[Props_143]] - code - web/core/components/modules/module-status-dropdown.tsx
+- [[Props_150]] - code - web/core/components/modules/quick-actions.tsx
+- [[Props_199]] - code - web/core/components/dropdowns/project/dropdown.tsx
+- [[ReadonlyModule]] - code - web/core/components/readonly/module.tsx
+- [[TIssueModalProviderProps]] - code - web/ce/components/issues/issue-modal/provider.tsx
+- [[TIssueProjectSelectProps]] - code - web/core/components/issues/issue-modal/components/project-select.tsx
+- [[TModuleAnalyticsProgress]] - code - web/core/components/modules/analytics-sidebar/issue-progress.tsx
+- [[TReadonlyModuleProps]] - code - web/core/components/readonly/module.tsx
+- [[UserInvitationsPage()]] - code - web/app/(all)/invitations/page.tsx
+- [[WorkspaceInvitationPage()]] - code - web/app/(all)/workspace-invitations/page.tsx
+- [[blocks.tsx]] - code - web/core/components/modules/gantt-chart/blocks.tsx
+- [[button-content.tsx]] - code - web/core/components/dropdowns/module/button-content.tsx
+- [[cycle-module-board-loader.tsx]] - code - web/core/components/ui/loader/cycle-module-board-loader.tsx
+- [[cycle-module-list-loader.tsx]] - code - web/core/components/ui/loader/cycle-module-list-loader.tsx
+- [[cycle_filter.store.ts]] - code - web/core/store/cycle_filter.store.ts
+- [[cycles-view-header.tsx]] - code - web/core/components/cycles/cycles-view-header.tsx
+- [[cycles-view.tsx]] - code - web/core/components/cycles/cycles-view.tsx
+- [[date-range.tsx]] - code - web/core/components/dropdowns/date-range.tsx
+- [[defaultValues_6]] - code - web/core/components/modules/analytics-sidebar/root.tsx
+- [[defaultValues_18]] - code - web/core/components/cycles/form.tsx
+- [[defaultValues_4]] - code - web/core/components/modules/form.tsx
+- [[defaultValues_5]] - code - web/core/components/modules/modal.tsx
+- [[delete-module-modal.tsx]] - code - web/core/components/modules/delete-module-modal.tsx
+- [[displayFilters_1]] - code - web/core/store/cycle_filter.store.ts
+- [[dropdown.tsx_4]] - code - web/core/components/dropdowns/project/dropdown.tsx
+- [[form.tsx_10]] - code - web/core/components/cycles/form.tsx
+- [[form.tsx_4]] - code - web/core/components/modules/form.tsx
+- [[header.tsx_13]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(list)/header.tsx
+- [[header.tsx_52]] - code - web/core/components/cycles/archived-cycles/header.tsx
+- [[header.tsx_44]] - code - web/core/components/modules/archived-modules/header.tsx
+- [[index.ts_335]] - code - web/core/components/archives/index.ts
+- [[index.ts_397]] - code - web/core/components/cycles/applied-filters/index.ts
+- [[index.ts_392]] - code - web/core/components/cycles/archived-cycles/index.ts
+- [[index.ts_394]] - code - web/core/components/cycles/list/index.ts
+- [[index.ts_374]] - code - web/core/components/issues/issue-modal/context/index.ts
+- [[index.ts_323]] - code - web/core/components/modules/index.ts
+- [[issue-progress.tsx]] - code - web/core/components/modules/analytics-sidebar/issue-progress.tsx
+- [[layout.tsx_21]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(list)/layout.tsx
+- [[list-item.tsx_2]] - code - web/core/components/core/list/list-item.tsx
+- [[list.tsx]] - code - web/core/components/modules/links/list.tsx
+- [[merged-date.tsx]] - code - web/core/components/dropdowns/merged-date.tsx
+- [[mobile-header.tsx_6]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(list)/mobile-header.tsx
+- [[mobile-header.tsx_3]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/modules/(list)/mobile-header.tsx
+- [[modal.tsx_8]] - code - web/core/components/modules/archived-modules/modal.tsx
+- [[modal.tsx_7]] - code - web/core/components/modules/modal.tsx
+- [[module-card-item.tsx]] - code - web/core/components/modules/module-card-item.tsx
+- [[module-list-item-action.tsx]] - code - web/core/components/modules/module-list-item-action.tsx
+- [[module-list-item.tsx]] - code - web/core/components/modules/module-list-item.tsx
+- [[module-peek-overview.tsx]] - code - web/core/components/modules/module-peek-overview.tsx
+- [[module-status-dropdown.tsx]] - code - web/core/components/modules/module-status-dropdown.tsx
+- [[module.tsx_3]] - code - web/core/components/issues/issue-layouts/filters/applied-filters/module.tsx
+- [[module.tsx_2]] - code - web/core/components/issues/issue-layouts/filters/header/filters/module.tsx
+- [[module.tsx_5]] - code - web/core/components/readonly/module.tsx
+- [[moduleBurnDownChartOptions]] - code - web/core/components/modules/analytics-sidebar/issue-progress.tsx
+- [[modules-list-layout.tsx]] - code - web/core/components/modules/gantt-chart/modules-list-layout.tsx
+- [[modules-list-view.tsx]] - code - web/core/components/modules/modules-list-view.tsx
+- [[page.tsx_22]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/cycles/page.tsx
+- [[page.tsx_17]] - code - web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/modules/(detail)/[moduleId]/page.tsx
+- [[project-select.tsx]] - code - web/core/components/issues/issue-modal/components/project-select.tsx
+- [[provider.tsx_2]] - code - web/ce/components/issues/issue-modal/provider.tsx
+- [[quick-actions.tsx_2]] - code - web/core/components/modules/quick-actions.tsx
+- [[root.tsx_93]] - code - web/core/components/cycles/archived-cycles/root.tsx
+- [[root.tsx_53]] - code - web/core/components/modules/analytics-sidebar/root.tsx
+- [[root.tsx_54]] - code - web/core/components/modules/archived-modules/root.tsx
+- [[use-cycle-filter.ts]] - code - web/core/hooks/store/use-cycle-filter.ts
+- [[use-module-filter.ts]] - code - web/core/hooks/store/use-module-filter.ts
+- [[use-module.ts]] - code - web/core/hooks/store/use-module.ts
+- [[useAppRouter()]] - code - web/core/hooks/use-app-router.tsx
+- [[useCycleFilter()]] - code - web/core/hooks/store/use-cycle-filter.ts
+- [[useModule()]] - code - space/hooks/store/use-module.ts
+- [[useModuleFilter()]] - code - web/core/hooks/store/use-module-filter.ts
+- [[useUser()]] - code - web/core/hooks/store/user/user-user.ts
+- [[user-user.ts]] - code - web/core/hooks/store/user/user-user.ts
+- [[view.tsx_3]] - code - web/core/components/cycles/archived-cycles/view.tsx
+- [[view.tsx_1]] - code - web/core/components/modules/archived-modules/view.tsx
+
+## Live Query (requires Dataview plugin)
+
+```dataview
+TABLE source_file, type FROM #community/Module__Cycle_Analytics
+SORT file.name ASC
+```
+
+## Connections to other communities
+- 41 edges to [[_COMMUNITY_Work Item Detail & Layouts]]
+- 38 edges to [[_COMMUNITY_Community 24]]
+- 37 edges to [[_COMMUNITY_Project Filters & Archives]]
+- 29 edges to [[_COMMUNITY_Active Cycle Stats]]
+- 18 edges to [[_COMMUNITY_Filter UI & Breadcrumbs]]
+- 17 edges to [[_COMMUNITY_Community 22]]
+- 13 edges to [[_COMMUNITY_Community 42]]
+- 13 edges to [[_COMMUNITY_Issue Display Filters]]
+- 11 edges to [[_COMMUNITY_Community 45]]
+- 10 edges to [[_COMMUNITY_Community 40]]
+- 8 edges to [[_COMMUNITY_Community 44]]
+- 7 edges to [[_COMMUNITY_Community 20]]
+- 7 edges to [[_COMMUNITY_Community 23]]
+- 6 edges to [[_COMMUNITY_Activity & Inbox Filters]]
+- 5 edges to [[_COMMUNITY_Community 43]]
+- 5 edges to [[_COMMUNITY_Community 70]]
+- 4 edges to [[_COMMUNITY_Bulk Operations & Spreadsheet]]
+- 4 edges to [[_COMMUNITY_Community 85]]
+- 3 edges to [[_COMMUNITY_Issue Activity Types]]
+- 3 edges to [[_COMMUNITY_Community 133]]
+- 2 edges to [[_COMMUNITY_Community 84]]
+- 2 edges to [[_COMMUNITY_Community 46]]
+- 2 edges to [[_COMMUNITY_Community 213]]
+- 2 edges to [[_COMMUNITY_Community 166]]
+- 2 edges to [[_COMMUNITY_Community 73]]
+- 2 edges to [[_COMMUNITY_Community 326]]
+- 2 edges to [[_COMMUNITY_Community 130]]
+- 2 edges to [[_COMMUNITY_Community 220]]
+- 2 edges to [[_COMMUNITY_Community 105]]
+- 2 edges to [[_COMMUNITY_Community 114]]
+- 2 edges to [[_COMMUNITY_Community 36]]
+- 2 edges to [[_COMMUNITY_Community 376]]
+- 2 edges to [[_COMMUNITY_Community 124]]
+- 2 edges to [[_COMMUNITY_Community 121]]
+- 2 edges to [[_COMMUNITY_Community 51]]
+- 2 edges to [[_COMMUNITY_Community 35]]
+- 2 edges to [[_COMMUNITY_Community 117]]
+- 1 edge to [[_COMMUNITY_Community 65]]
+- 1 edge to [[_COMMUNITY_Community 476]]
+- 1 edge to [[_COMMUNITY_Community 456]]
+- 1 edge to [[_COMMUNITY_Community 58]]
+- 1 edge to [[_COMMUNITY_Community 72]]
+- 1 edge to [[_COMMUNITY_Community 112]]
+- 1 edge to [[_COMMUNITY_Community 167]]
+- 1 edge to [[_COMMUNITY_Community 169]]
+
+## Top bridge nodes
+- [[useAppRouter()]] - degree 113, connects to 27 communities
+- [[useModule()]] - degree 42, connects to 14 communities
+- [[use-module.ts]] - degree 41, connects to 11 communities
+- [[index.ts_323]] - degree 25, connects to 8 communities
+- [[header.tsx_13]] - degree 14, connects to 6 communities

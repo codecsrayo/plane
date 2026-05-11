@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/space/serializer/issue.py"
 type: "code"
-community: "Serializer Issue"
+community: "Community 97"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Serializer_Issue
+  - community/Community_97
 ---
 
 # issue.py
 
 ## Connections
-
 - [[CommentReactionLiteSerializer]] - `contains` [EXTRACTED]
 - [[CommentReactionSerializer_1]] - `contains` [EXTRACTED]
 - [[IssueAttachmentSerializer_1]] - `contains` [EXTRACTED]
@@ -43,4 +42,4 @@ tags:
 - [[user.py_8]] - `imports_from` [EXTRACTED]
 - [[workspace.py_8]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Serializer_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_97

@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_7]] - code - ui/src/popovers/index.ts
+- [[index.ts_26]] - code - ui/src/auth-form/index.ts
 
 ## Live Query (requires Dataview plugin)
 

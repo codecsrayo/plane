@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/services/integrations/index.ts"
 type: "code"
-community: "Project Workspace"
+community: "Community 64"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Workspace
+  - community/Community_64
 ---
 
 # index.ts
 
 ## Connections
-
 - [[integration-card.tsx]] - `imports_from` [EXTRACTED]
 - [[page.tsx_4]] - `imports_from` [EXTRACTED]
 - [[page.tsx_52]] - `imports_from` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[project-issue-sync.tsx]] - `imports_from` [EXTRACTED]
 - [[single-integration-card.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_64

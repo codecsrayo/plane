@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/management/commands/update_bucket.py"
 type: "code"
-community: "Bucket Command"
+community: "Community 554"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Bucket_Command
+  - community/Community_554
 ---
 
 # Command
 
 ## Connections
-
 - [[.check_s3_permissions()]] - `method` [EXTRACTED]
 - [[.generate_bucket_policy()]] - `method` [EXTRACTED]
 - [[.get_s3_client()]] - `method` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[BaseCommand]] - `inherits` [EXTRACTED]
 - [[update_bucket.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Bucket_Command
+#graphify/code #graphify/EXTRACTED #community/Community_554

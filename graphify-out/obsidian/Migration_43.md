@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/migrations/0062_cycle_archived_at_module_archived_at_and_more.py"
 type: "code"
-community: "Archived Migration"
+community: "Community 1093"
 location: "L6"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Archived_Migration
+  - community/Community_1093
 ---
 
 # Migration
 
 ## Connections
-
 - [[0062_cycle_archived_at_module_archived_at_and_more.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Archived_Migration
+#graphify/code #graphify/EXTRACTED #community/Community_1093

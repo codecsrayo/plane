@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/icons/state/unstarted-group-icon.tsx"
 type: "code"
-community: "Group Icon"
+community: "Community 120"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group_Icon
+  - community/Community_120
 ---
 
 # unstarted-group-icon.tsx
 
 ## Connections
-
 - [[DashedCircle()]] - `imports` [EXTRACTED]
 - [[ISvgIcons]] - `imports` [EXTRACTED]
 - [[ProgressCircle()]] - `imports` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[state-group-icon.tsx]] - `imports_from` [EXTRACTED]
 - [[type.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group_Icon
+#graphify/code #graphify/EXTRACTED #community/Community_120

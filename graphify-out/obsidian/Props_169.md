@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/profile/time.tsx"
 type: "code"
-community: "User Greetings"
+community: "Community 389"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User_Greetings
+  - community/Community_389
 ---
 
 # Props
 
 ## Connections
-
 - [[time.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User_Greetings
+#graphify/code #graphify/EXTRACTED #community/Community_389

@@ -1,37 +1,58 @@
 ---
 type: community
-cohesion: 0.20
-members: 21
+cohesion: 0.05
+members: 43
 ---
 
 # Community 114
 
-**Cohesion:** 0.20 - loosely connected
-**Members:** 21 nodes
+**Cohesion:** 0.05 - loosely connected
+**Members:** 43 nodes
 
 ## Members
-
-- [[.from()_23]] - code - api_rust/src/routes/states.rs
-- [[CreateStateRequest]] - code - api_rust/src/routes/states.rs
-- [[GroupedQuery]] - code - api_rust/src/routes/states.rs
-- [[StateResponse]] - code - api_rust/src/routes/states.rs
-- [[UpdateStateRequest]] - code - api_rust/src/routes/states.rs
-- [[WorkspaceProjectPath]] - code - api_rust/src/routes/states.rs
-- [[WorkspaceProjectStatePath]] - code - api_rust/src/routes/states.rs
-- [[create_state()]] - code - api_rust/src/routes/states.rs
-- [[delete_state()]] - code - api_rust/src/routes/states.rs
-- [[get_state()]] - code - api_rust/src/routes/states.rs
-- [[intake_state()]] - code - api_rust/src/routes/states.rs
-- [[list_states()]] - code - api_rust/src/routes/states.rs
-- [[mark_default()]] - code - api_rust/src/routes/states.rs
-- [[normalize_sequence_by_group()]] - code - api_rust/src/routes/states.rs
-- [[project_member_for_user()_2]] - code - api_rust/src/routes/states.rs
-- [[require_admin()]] - code - api_rust/src/routes/states.rs
-- [[require_project_member()]] - code - api_rust/src/routes/states.rs
-- [[slugify()]] - code - api_rust/src/routes/states.rs
-- [[states.rs]] - code - api_rust/src/routes/states.rs
-- [[update_state()]] - code - api_rust/src/routes/states.rs
-- [[validate_group()]] - code - api_rust/src/routes/states.rs
+- [[.addIssuesToModule()_2]] - code - web/core/services/module.service.ts
+- [[.addModuleToFavorites()_2]] - code - web/core/services/module.service.ts
+- [[.addModulesToIssue()_2]] - code - web/core/services/module.service.ts
+- [[.archiveModule()]] - code - web/core/services/module_archive.service.ts
+- [[.constructor()_153]] - code - web/core/services/module_archive.service.ts
+- [[.constructor()_154]] - code - web/core/services/module.service.ts
+- [[.constructor()_61]] - code - web/core/store/module.store.ts
+- [[.createModule()]] - code - web/core/services/module.service.ts
+- [[.createModuleLink()_1]] - code - web/core/services/module.service.ts
+- [[.deleteModule()]] - code - web/core/services/module.service.ts
+- [[.deleteModuleLink()_1]] - code - web/core/services/module.service.ts
+- [[.getArchivedModuleDetails()]] - code - web/core/services/module_archive.service.ts
+- [[.getArchivedModules()]] - code - web/core/services/module_archive.service.ts
+- [[.getModuleDetails()]] - code - web/core/services/module.service.ts
+- [[.getModuleIssues()_1]] - code - web/core/services/module.service.ts
+- [[.getModules()]] - code - web/core/services/module.service.ts
+- [[.getWorkspaceModules()]] - code - web/core/services/module.service.ts
+- [[.patchModule()]] - code - web/core/services/module.service.ts
+- [[.projectArchivedModuleIds()]] - code - web/core/store/module.store.ts
+- [[.projectModuleIds()]] - code - web/core/store/module.store.ts
+- [[.removeIssuesFromModuleBulk()_2]] - code - web/core/services/module.service.ts
+- [[.removeModuleFromFavorites()_2]] - code - web/core/services/module.service.ts
+- [[.removeModulesFromIssueBulk()_2]] - code - web/core/services/module.service.ts
+- [[.restoreModule()]] - code - web/core/services/module_archive.service.ts
+- [[.updateModule()]] - code - web/core/services/module.service.ts
+- [[.updateModuleLink()_1]] - code - web/core/services/module.service.ts
+- [[IModuleStore]] - code - web/core/store/module.store.ts
+- [[ModuleArchiveService]] - code - web/core/services/module_archive.service.ts
+- [[ModuleService_1]] - code - web/core/services/module.service.ts
+- [[ModulesStore]] - code - web/core/store/module.store.ts
+- [[displayFilters]] - code - web/core/store/module.store.ts
+- [[filters]] - code - web/core/store/module.store.ts
+- [[linkModules]] - code - web/core/store/module.store.ts
+- [[module.service.ts_1]] - code - web/core/services/module.service.ts
+- [[module.store.ts]] - code - web/core/store/module.store.ts
+- [[moduleDetails]] - code - web/core/store/module.store.ts
+- [[moduleIds]] - code - web/core/store/module.store.ts
+- [[module_archive.service.ts]] - code - web/core/services/module_archive.service.ts
+- [[modules]] - code - web/core/store/module.store.ts
+- [[originalModuleDetails]] - code - web/core/store/module.store.ts
+- [[projectModuleIds]] - code - web/core/store/module.store.ts
+- [[projectModules]] - code - web/core/store/module.store.ts
+- [[uniqueProjectIds]] - code - web/core/store/module.store.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -41,14 +62,16 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 7 edges to [[_COMMUNITY_Workspace & Issues Rust API]]
-- 3 edges to [[_COMMUNITY_Auth Rust API]]
+- 5 edges to [[_COMMUNITY_Service Layer]]
+- 4 edges to [[_COMMUNITY_Community 20]]
+- 2 edges to [[_COMMUNITY_Module & Cycle Analytics]]
+- 2 edges to [[_COMMUNITY_Community 49]]
+- 1 edge to [[_COMMUNITY_Project Filters & Archives]]
+- 1 edge to [[_COMMUNITY_Community 59]]
 
 ## Top bridge nodes
-
-- [[intake_state()]] - degree 6, connects to 2 communities
-- [[list_states()]] - degree 6, connects to 2 communities
-- [[create_state()]] - degree 7, connects to 1 community
-- [[update_state()]] - degree 7, connects to 1 community
-- [[get_state()]] - degree 5, connects to 1 community
+- [[module.store.ts]] - degree 22, connects to 5 communities
+- [[module.service.ts_1]] - degree 5, connects to 2 communities
+- [[IModuleStore]] - degree 3, connects to 2 communities
+- [[ModuleService_1]] - degree 21, connects to 1 community
+- [[ModulesStore]] - degree 5, connects to 1 community

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-detail-widgets/relations/content.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Issue Activity Types"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Issue_Activity_Types
 ---
 
 # content.tsx
 
 ## Connections
-
 - [[CreateUpdateIssueModal]] - `imports` [EXTRACTED]
 - [[DeleteIssueModal]] - `imports` [EXTRACTED]
 - [[Props_347]] - `contains` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 - [[useRelationOperations()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Types

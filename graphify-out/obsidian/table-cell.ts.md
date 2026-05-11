@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/table/table-cell.ts"
 type: "code"
-community: "Table Node"
+community: "Community 30"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Table_Node
+  - community/Community_30
 ---
 
 # table-cell.ts
 
 ## Connections
-
 - [[CORE_EXTENSIONS]] - `imports` [EXTRACTED]
 - [[TableCell]] - `contains` [EXTRACTED]
 - [[TableCellOptions]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[isCellSelection()]] - `imports` [EXTRACTED]
 - [[plugin.ts_3]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Table_Node
+#graphify/code #graphify/EXTRACTED #community/Community_30

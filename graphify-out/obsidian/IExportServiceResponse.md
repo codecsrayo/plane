@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/importer/index.ts"
+source_file: "packages/types/src/importer/index.ts"
 type: "code"
-community: "User Instance"
+community: "Community 62"
 location: "L56"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User_Instance
+  - community/Community_62
 ---
 
 # IExportServiceResponse
 
 ## Connections
-
 - [[index.ts_112]] - `contains` [EXTRACTED]
+- [[index.ts_573]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User_Instance
+#graphify/code #graphify/EXTRACTED #community/Community_62

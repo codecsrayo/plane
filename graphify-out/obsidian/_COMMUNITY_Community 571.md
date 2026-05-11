@@ -1,18 +1,21 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.67
+members: 6
 ---
 
 # Community 571
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 6 nodes
 
 ## Members
-
-- [[.to()_73]] - code - api_rust/src/entities/module_user_properties.rs
-- [[Entity_73]] - code - api_rust/src/entities/module_user_properties.rs
+- [[attachment.ts_1]] - code - packages/utils/src/attachment.ts
+- [[attachment.ts]] - code - utils/src/attachment.ts
+- [[convertBytesToSize()]] - code - packages/utils/src/attachment.ts
+- [[generateFileName()]] - code - packages/utils/src/attachment.ts
+- [[getFileExtension()]] - code - packages/utils/src/attachment.ts
+- [[getFileName()]] - code - packages/utils/src/attachment.ts
 
 ## Live Query (requires Dataview plugin)
 

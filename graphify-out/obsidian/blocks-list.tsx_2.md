@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-layouts/list/blocks-list.tsx"
 type: "code"
-community: "Select Multiple"
+community: "Bulk Operations & Spreadsheet"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Select_Multiple
+  - community/Bulk_Operations__Spreadsheet
 ---
 
 # blocks-list.tsx
 
 ## Connections
-
 - [[IssueBlockRoot]] - `imports` [EXTRACTED]
 - [[IssueBlocksList()]] - `contains` [EXTRACTED]
 - [[Props_266]] - `contains` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[list-group.tsx]] - `imports_from` [EXTRACTED]
 - [[use-multiple-select.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Select_Multiple
+#graphify/code #graphify/EXTRACTED #community/Bulk_Operations__Spreadsheet

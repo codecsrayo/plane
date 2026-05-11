@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/use-project-state.ts"
 type: "code"
-community: "Issue Work"
+community: "Work Item Detail & Layouts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Work
+  - community/Work_Item_Detail__Layouts
 ---
 
 # use-project-state.ts
 
 ## Connections
-
 - [[StoreContext]] - `imports` [EXTRACTED]
 - [[all-issue.tsx]] - `imports_from` [EXTRACTED]
 - [[all-properties.tsx]] - `imports_from` [EXTRACTED]
@@ -56,4 +55,4 @@ tags:
 - [[useProjectState()]] - `contains` [EXTRACTED]
 - [[workspace-wrapper.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Work
+#graphify/code #graphify/EXTRACTED #community/Work_Item_Detail__Layouts

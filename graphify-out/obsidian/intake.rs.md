@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/intake.rs"
 type: "code"
-community: "Returns Intake"
+community: "Community 284"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Intake
+  - community/Community_284
 ---
 
 # intake.rs
 
 ## Connections
-
 - [[create_inbox_issue_alias_returns_201()]] - `contains` [EXTRACTED]
 - [[create_intake()]] - `contains` [EXTRACTED]
 - [[create_intake_empty_name_returns_400()]] - `contains` [EXTRACTED]
@@ -34,4 +33,4 @@ tags:
 - [[update_intake_issue_returns_200()]] - `contains` [EXTRACTED]
 - [[update_intake_returns_200()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Intake
+#graphify/code #graphify/EXTRACTED #community/Community_284

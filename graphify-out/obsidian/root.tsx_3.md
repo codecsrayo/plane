@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/components/menus/bubble-menu/root.tsx"
 type: "code"
-community: "Toggle Menu"
+community: "Community 198"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toggle_Menu
+  - community/Community_198
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[BubbleMenuLinkSelector()]] - `imports` [EXTRACTED]
 - [[COLORS_LIST]] - `imports` [EXTRACTED]
 - [[CORE_EXTENSIONS]] - `imports` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[isCellSelection()]] - `imports` [EXTRACTED]
 - [[link-selector.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toggle_Menu
+#graphify/code #graphify/EXTRACTED #community/Community_198

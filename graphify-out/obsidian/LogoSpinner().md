@@ -1,18 +1,17 @@
 ---
 source_file: "space/components/common/logo-spinner.tsx"
 type: "code"
-community: "Workspace Issue"
+community: "Community 43"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Issue
+  - community/Community_43
 ---
 
 # LogoSpinner()
 
 ## Connections
-
 - [[auth-header.tsx]] - `imports` [EXTRACTED]
 - [[authentication-wrapper.tsx]] - `imports` [EXTRACTED]
 - [[create-or-join-workspaces.tsx]] - `imports` [EXTRACTED]
@@ -40,4 +39,4 @@ tags:
 - [[useTheme()]] - `calls` [INFERRED]
 - [[workspace-wrapper.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_43

@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 728
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[ActiveModel_78]] - code - api_rust/src/entities/slack_project_syncs.rs
+- [[getTabIndex()]] - code - packages/utils/src/tab-indices.ts
+- [[tab-indices.ts_3]] - code - packages/utils/src/tab-indices.ts
+- [[tab-indices.ts_1]] - code - utils/src/tab-indices.ts
 
 ## Live Query (requires Dataview plugin)
 

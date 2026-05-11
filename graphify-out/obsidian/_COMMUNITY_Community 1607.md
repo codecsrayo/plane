@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_257]] - code - web/ce/components/command-palette/actions/work-item-actions/index.ts
+- [[index.ts_325]] - code - web/core/components/modules/gantt-chart/index.ts
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,17 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.40
+members: 5
 ---
 
 # Community 647
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.40 - moderately connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[mod.rs_3]] - code - api_rust/src/jobs/mod.rs
+- [[getRandomIconName()]] - code - packages/ui/src/utils/icons.ts
+- [[icons.ts_4]] - code - packages/ui/src/utils/icons.ts
+- [[icons.ts_1]] - code - ui/src/utils/icons.ts
+- [[index.ts_461]] - code - packages/ui/src/index.ts
+- [[index.ts]] - code - ui/src/index.ts
 
 ## Live Query (requires Dataview plugin)
 

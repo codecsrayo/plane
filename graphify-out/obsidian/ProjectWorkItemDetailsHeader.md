@@ -1,19 +1,18 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(projects)/browse/[workItem]/header.tsx"
 type: "code"
-community: "Project Issues"
+community: "Community 40"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Issues
+  - community/Community_40
 ---
 
 # ProjectWorkItemDetailsHeader
 
 ## Connections
-
 - [[header.tsx_3]] - `contains` [EXTRACTED]
 - [[layout.tsx_6]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Issues
+#graphify/code #graphify/EXTRACTED #community/Community_40

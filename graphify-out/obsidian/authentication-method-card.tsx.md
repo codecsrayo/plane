@@ -1,18 +1,17 @@
 ---
 source_file: "admin/components/authentication/authentication-method-card.tsx"
 type: "code"
-community: "Instance Authentication"
+community: "Community 191"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Instance_Authentication
+  - community/Community_191
 ---
 
 # authentication-method-card.tsx
 
 ## Connections
-
 - [[AuthenticationMethodCard()]] - `contains` [EXTRACTED]
 - [[Props_552]] - `contains` [EXTRACTED]
 - [[page.tsx_72]] - `imports_from` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[page.tsx_75]] - `imports_from` [EXTRACTED]
 - [[page.tsx_76]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Instance_Authentication
+#graphify/code #graphify/EXTRACTED #community/Community_191

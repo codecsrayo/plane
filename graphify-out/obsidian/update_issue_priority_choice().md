@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/db/migrations/0043_alter_analyticview_created_by_and_more.py"
 type: "code"
-community: "Issue Migration"
+community: "Community 699"
 location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Migration
+  - community/Community_699
 ---
 
 # update_issue_priority_choice()
 
 ## Connections
-
 - [[0043_alter_analyticview_created_by_and_more.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Migration
+#graphify/code #graphify/EXTRACTED #community/Community_699

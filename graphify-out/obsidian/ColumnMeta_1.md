@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/analytics/work-items/priority-chart.tsx"
 type: "code"
-community: "Table Chart"
+community: "Community 377"
 location: "L35"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Table_Chart
+  - community/Community_377
 ---
 
 # ColumnMeta
 
 ## Connections
-
 - [[priority-chart.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Table_Chart
+#graphify/code #graphify/EXTRACTED #community/Community_377

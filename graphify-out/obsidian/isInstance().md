@@ -1,18 +1,17 @@
 ---
 source_file: "web/public/workbox-9f2f79cf.js"
 type: "code"
-community: "Test Validate"
+community: "Community 123"
 location: "L411"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Test_Validate
+  - community/Community_123
 ---
 
 # isInstance()
 
 ## Connections
-
 - [[.__get_email()]] - `calls` [INFERRED]
 - [[.__init__()_13]] - `calls` [INFERRED]
 - [[.__new__()_1]] - `calls` [INFERRED]
@@ -68,4 +67,4 @@ tags:
 - [[webhook_activity()]] - `calls` [INFERRED]
 - [[workbox-9f2f79cf.js]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Test_Validate
+#graphify/code #graphify/INFERRED #community/Community_123

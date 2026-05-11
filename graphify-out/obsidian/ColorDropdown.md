@@ -1,19 +1,18 @@
 ---
 source_file: "web/core/components/pages/editor/toolbar/color-dropdown.tsx"
 type: "code"
-community: "Toolbar Items"
+community: "Community 111"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toolbar_Items
+  - community/Community_111
 ---
 
 # ColorDropdown
 
 ## Connections
-
 - [[color-dropdown.tsx]] - `contains` [EXTRACTED]
 - [[toolbar.tsx_3]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toolbar_Items
+#graphify/code #graphify/EXTRACTED #community/Community_111

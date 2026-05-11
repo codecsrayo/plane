@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/table/table/utilities/delete-key-shortcut.ts"
 type: "code"
-community: "Cell Multiple"
+community: "Community 150"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cell_Multiple
+  - community/Community_150
 ---
 
 # delete-key-shortcut.ts
 
 ## Connections
-
 - [[CORE_EXTENSIONS]] - `imports` [EXTRACTED]
 - [[CellCoord]] - `contains` [EXTRACTED]
 - [[TableInfo]] - `contains` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[setCursorAtPosition()]] - `contains` [EXTRACTED]
 - [[table.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cell_Multiple
+#graphify/code #graphify/EXTRACTED #community/Community_150

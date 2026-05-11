@@ -1,18 +1,18 @@
 ---
-source_file: "logger/src/middleware.ts"
+source_file: "packages/logger/src/middleware.ts"
 type: "code"
-community: "Logger Config"
+community: "Community 549"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Logger_Config
+  - community/Community_549
 ---
 
 # loggerMiddleware
 
 ## Connections
-
 - [[middleware.ts]] - `contains` [EXTRACTED]
+- [[middleware.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Logger_Config
+#graphify/code #graphify/EXTRACTED #community/Community_549

@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/workspace/user.py"
 type: "code"
-community: "Endpoint User"
+community: "Community 57"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_User
+  - community/Community_57
 ---
 
 # user.py
 
 ## Connections
-
 - [[UserActivityGraphEndpoint]] - `contains` [EXTRACTED]
 - [[UserIssueCompletedGraphEndpoint]] - `contains` [EXTRACTED]
 - [[UserLastProjectWithWorkspaceEndpoint]] - `contains` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[WorkspaceUserPropertiesEndpoint]] - `contains` [EXTRACTED]
 - [[__init__.py_3]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_User
+#graphify/code #graphify/EXTRACTED #community/Community_57

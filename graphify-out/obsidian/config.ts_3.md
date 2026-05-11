@@ -1,18 +1,17 @@
 ---
 source_file: "shared-state/src/store/rich-filters/config.ts"
 type: "code"
-community: "Config Operator"
+community: "Community 232"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Config_Operator
+  - community/Community_232
 ---
 
 # config.ts
 
 ## Connections
-
 - [[FilterConfig]] - `contains` [EXTRACTED]
 - [[IFilterConfig]] - `contains` [EXTRACTED]
 - [[TOperatorOptionForDisplay]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[operatorConfig]] - `contains` [EXTRACTED]
 - [[operatorOptions]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Config_Operator
+#graphify/code #graphify/EXTRACTED #community/Community_232

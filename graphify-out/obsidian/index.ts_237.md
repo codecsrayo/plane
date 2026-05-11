@@ -1,14 +1,14 @@
 ---
 source_file: "web/ce/components/cycles/index.ts"
 type: "code"
-community: "Community 1588"
+community: "Community 1570"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_1588
+  - community/Community_1570
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_1588
+#graphify/code #graphify/EXTRACTED #community/Community_1570

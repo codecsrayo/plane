@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/banner/banner.tsx"
 type: "code"
-community: "Banner Styling"
+community: "Community 195"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Banner_Styling
+  - community/Community_195
 ---
 
 # banner.tsx
 
 ## Connections
-
 - [[Banner]] - `contains` [EXTRACTED]
 - [[BannerProps]] - `contains` [EXTRACTED]
 - [[BannerVariant]] - `contains` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[helper.tsx_13]] - `imports_from` [EXTRACTED]
 - [[index.ts_191]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Banner_Styling
+#graphify/code #graphify/EXTRACTED #community/Community_195

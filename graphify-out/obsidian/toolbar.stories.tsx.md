@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/toolbar/toolbar.stories.tsx"
 type: "code"
-community: "Toolbar Combobox"
+community: "Community 276"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toolbar_Combobox
+  - community/Community_276
 ---
 
 # toolbar.stories.tsx
 
 ## Connections
-
 - [[CommentToolbar]] - `contains` [EXTRACTED]
 - [[Default_8]] - `contains` [EXTRACTED]
 - [[ListLayoutIcon()]] - `imports` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[list-icon.tsx]] - `imports_from` [EXTRACTED]
 - [[toolbar.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toolbar_Combobox
+#graphify/code #graphify/EXTRACTED #community/Community_276

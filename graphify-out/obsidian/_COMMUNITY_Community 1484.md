@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_122]] - code - utils/src/rich-filters/operators/index.ts
+- [[tsdown.config.ts_11]] - code - propel/tsdown.config.ts
 
 ## Live Query (requires Dataview plugin)
 

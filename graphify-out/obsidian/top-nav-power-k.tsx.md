@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/navigation/top-nav-power-k.tsx"
 type: "code"
-community: "Power Shortcuts"
+community: "Community 130"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Power_Shortcuts
+  - community/Community_130
 ---
 
 # top-nav-power-k.tsx
 
 ## Connections
-
 - [[PowerKModalFooter]] - `imports` [EXTRACTED]
 - [[ProjectsAppPowerKCommandsList()]] - `imports` [EXTRACTED]
 - [[TPowerKCommandConfig]] - `imports` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 - [[usePowerK()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Power_Shortcuts
+#graphify/code #graphify/EXTRACTED #community/Community_130

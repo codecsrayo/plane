@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/views/project.py"
 type: "code"
-community: "Project Endpoint"
+community: "Community 328"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Endpoint
+  - community/Community_328
 ---
 
 # project.py
 
 ## Connections
-
 - [[ProjectArchiveUnarchiveAPIEndpoint]] - `contains` [EXTRACTED]
 - [[ProjectDetailAPIEndpoint]] - `contains` [EXTRACTED]
 - [[ProjectListCreateAPIEndpoint]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[patch()_15]] - `contains` [EXTRACTED]
 - [[post()_19]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Endpoint
+#graphify/code #graphify/EXTRACTED #community/Community_328

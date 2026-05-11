@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-detail/relation-select.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Community 22"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Community_22
 ---
 
 # relation-select.tsx
 
 ## Connections
-
 - [[ExistingIssuesListModal()]] - `imports` [EXTRACTED]
 - [[IssueRelationSelect]] - `contains` [EXTRACTED]
 - [[TIssueRelationSelect]] - `contains` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Community_22

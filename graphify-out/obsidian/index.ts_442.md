@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/core/list/index.ts"
 type: "code"
-community: "Project Work"
+community: "Community 22"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Work
+  - community/Community_22
 ---
 
 # index.ts
 
 ## Connections
-
 - [[block.tsx_8]] - `imports_from` [EXTRACTED]
 - [[cycles-list-item.tsx]] - `imports_from` [EXTRACTED]
 - [[issue.tsx]] - `imports_from` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[view-list-item.tsx]] - `imports_from` [EXTRACTED]
 - [[views-list.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Work
+#graphify/code #graphify/EXTRACTED #community/Community_22

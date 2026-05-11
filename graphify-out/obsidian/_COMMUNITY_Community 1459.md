@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[editor.ts_18]] - code - i18n/src/locales/sk/editor.ts
+- [[tsdown.config.ts_7]] - code - utils/tsdown.config.ts
 
 ## Live Query (requires Dataview plugin)
 

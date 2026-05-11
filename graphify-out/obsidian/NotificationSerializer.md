@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/serializers/notification.py"
 type: "code"
-community: "Partial Endpoint"
+community: "Community 342"
 location: "L14"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Partial_Endpoint
+  - community/Community_342
 ---
 
 # NotificationSerializer
 
 ## Connections
-
 - [[BaseSerializer]] - `inherits` [EXTRACTED]
 - [[BaseSerializer_2]] - `uses` [INFERRED]
 - [[UserLiteSerializer_1]] - `uses` [INFERRED]
@@ -24,4 +23,4 @@ tags:
 - [[partial_update()_9]] - `calls` [INFERRED]
 - [[unarchive()_1]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Partial_Endpoint
+#graphify/code #graphify/INFERRED #community/Community_342

@@ -1,21 +1,20 @@
 ---
 source_file: "propel/src/icons/state/completed-group-icon.tsx"
 type: "code"
-community: "Group Icon"
+community: "Community 120"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group_Icon
+  - community/Community_120
 ---
 
 # completed-group-icon.tsx
 
 ## Connections
-
 - [[CompletedGroupIcon()]] - `contains` [EXTRACTED]
 - [[ISvgIcons]] - `imports` [EXTRACTED]
 - [[state-group-icon.tsx]] - `imports_from` [EXTRACTED]
 - [[type.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group_Icon
+#graphify/code #graphify/EXTRACTED #community/Community_120

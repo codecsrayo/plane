@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/common.ts"
 type: "code"
-community: "Inbox Issue"
+community: "Community 118"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Inbox_Issue
+  - community/Community_118
 ---
 
 # common.ts
 
 ## Connections
-
 - [[ICustomSearchSelectOption]] - `contains` [EXTRACTED]
 - [[TFetchStatus]] - `contains` [EXTRACTED]
 - [[TLogoProps]] - `contains` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[views.ts_1]] - `imports_from` [EXTRACTED]
 - [[workspace.ts_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Inbox_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_118

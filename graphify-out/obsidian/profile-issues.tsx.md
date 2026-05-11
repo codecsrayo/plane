@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/profile/profile-issues.tsx"
 type: "code"
-community: "Issue Project"
+community: "Filter UI & Breadcrumbs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Project
+  - community/Filter_UI__Breadcrumbs
 ---
 
 # profile-issues.tsx
 
 ## Connections
-
 - [[IssuesStoreContext]] - `imports` [EXTRACTED]
 - [[ProfileIssuesKanBanLayout]] - `imports` [EXTRACTED]
 - [[ProfileIssuesListLayout]] - `imports` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[useIssues()]] - `imports` [EXTRACTED]
 - [[workspace-level.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Project
+#graphify/code #graphify/EXTRACTED #community/Filter_UI__Breadcrumbs

@@ -1,18 +1,23 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.32
+members: 8
 ---
 
 # Community 519
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.32 - loosely connected
+**Members:** 8 nodes
 
 ## Members
-
-- [[.to()_21]] - code - api_rust/src/entities/issue_mentions.rs
-- [[Entity_21]] - code - api_rust/src/entities/issue_mentions.rs
+- [[EWidgetKeys]] - code - web/core/components/home/widgets/loaders/loader.tsx
+- [[Props_89]] - code - web/core/components/home/widgets/loaders/loader.tsx
+- [[QuickLinksWidgetLoader()]] - code - web/core/components/home/widgets/loaders/quick-links.tsx
+- [[RecentActivityWidgetLoader()]] - code - web/core/components/home/widgets/loaders/recent-activity.tsx
+- [[WidgetLoader()]] - code - web/core/components/home/widgets/loaders/loader.tsx
+- [[loader.tsx_3]] - code - web/core/components/home/widgets/loaders/loader.tsx
+- [[quick-links.tsx]] - code - web/core/components/home/widgets/loaders/quick-links.tsx
+- [[recent-activity.tsx]] - code - web/core/components/home/widgets/loaders/recent-activity.tsx
 
 ## Live Query (requires Dataview plugin)
 

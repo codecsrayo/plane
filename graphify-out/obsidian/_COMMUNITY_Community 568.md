@@ -1,18 +1,21 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.53
+members: 6
 ---
 
 # Community 568
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.53 - moderately connected
+**Members:** 6 nodes
 
 ## Members
-
-- [[.to()_70]] - code - api_rust/src/entities/descriptions.rs
-- [[Entity_70]] - code - api_rust/src/entities/descriptions.rs
+- [[TBaseActivity]] - code - packages/types/src/activity.ts
+- [[TBaseActivityVerbs]] - code - packages/types/src/activity.ts
+- [[TProjectBaseActivity]] - code - packages/types/src/activity.ts
+- [[TWorkspaceBaseActivity]] - code - packages/types/src/activity.ts
+- [[activity.ts_2]] - code - packages/types/src/activity.ts
+- [[activity.ts]] - code - types/src/activity.ts
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/auth/permissions.rs"
 type: "code"
-community: "Workspace Webhook"
+community: "Community 126"
 location: "L10"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Workspace_Webhook
+  - community/Community_126
 ---
 
 # require_workspace_admin()
 
 ## Connections
-
 - [[create_analytic_view()]] - `calls` [INFERRED]
 - [[create_github_repo_sync()]] - `calls` [INFERRED]
 - [[create_pr_state_mapping()]] - `calls` [INFERRED]
@@ -41,4 +40,4 @@ tags:
 - [[update_webhook()]] - `calls` [INFERRED]
 - [[update_workspace_integration()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Workspace_Webhook
+#graphify/code #graphify/INFERRED #community/Community_126

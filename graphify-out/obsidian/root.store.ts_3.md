@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/issue/root.store.ts"
 type: "code"
-community: "Calendar Issue"
+community: "Community 75"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Issue
+  - community/Community_75
 ---
 
 # root.store.ts
 
 ## Connections
-
 - [[CalendarStore]] - `imports` [EXTRACTED]
 - [[ICalendarStore]] - `imports` [EXTRACTED]
 - [[IIssueKanBanViewStore]] - `imports` [EXTRACTED]
@@ -56,4 +55,4 @@ tags:
 - [[root.store.ts_4]] - `imports_from` [EXTRACTED]
 - [[workspace-member.store.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_75

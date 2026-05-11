@@ -1,18 +1,18 @@
 ---
-source_file: "utils/src/page.ts"
+source_file: "packages/utils/src/page.ts"
 type: "code"
-community: "Order Should"
+community: "Community 181"
 location: "L94"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Order_Should
+  - community/Community_181
 ---
 
 # getPageName()
 
 ## Connections
-
 - [[page.ts_1]] - `contains` [EXTRACTED]
+- [[page.ts_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Order_Should
+#graphify/code #graphify/EXTRACTED #community/Community_181

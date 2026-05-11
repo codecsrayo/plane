@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/base-layouts/gantt/index.ts"
 type: "code"
-community: "Layouts Gantt"
+community: "Community 102"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Layouts_Gantt
+  - community/Community_102
 ---
 
 # index.ts
 
 ## Connections
-
 - [[CORE_GANTT_TIMELINE_TYPE]] - `imports` [EXTRACTED]
 - [[EXTENDED_GANTT_TIMELINE_TYPE]] - `imports` [EXTRACTED]
 - [[GANTT_TIMELINE_TYPE]] - `contains` [EXTRACTED]
@@ -31,4 +30,4 @@ tags:
 - [[core.ts_5]] - `imports_from` [EXTRACTED]
 - [[extended.ts_3]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Layouts_Gantt
+#graphify/code #graphify/EXTRACTED #community/Community_102

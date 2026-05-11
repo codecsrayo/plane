@@ -1,19 +1,18 @@
 ---
 source_file: "web/core/components/core/sidebar/sidebar-menu-hamburger-toggle.tsx"
 type: "code"
-community: "Sidebar Navigation"
+community: "Community 234"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Navigation
+  - community/Community_234
 ---
 
 # SidebarHamburgerToggle
 
 ## Connections
-
 - [[profile-setting-content-wrapper.tsx]] - `imports` [EXTRACTED]
 - [[sidebar-menu-hamburger-toggle.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation
+#graphify/code #graphify/EXTRACTED #community/Community_234

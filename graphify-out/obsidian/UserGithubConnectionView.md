@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/integration/base.py"
 type: "code"
-community: "Endpoint User"
+community: "Community 27"
 location: "L407"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_User
+  - community/Community_27
 ---
 
 # UserGithubConnectionView
 
 ## Connections
-
 - [[.post()_14]] - `method` [EXTRACTED]
 - [[BaseAPIView]] - `uses` [INFERRED]
 - [[BaseAPIView_1]] - `inherits` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[Exchange a GitHub OAuth code for a personal user token and persist the     authe]] - `rationale_for` [EXTRACTED]
 - [[base.py_12]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_User
+#graphify/code #graphify/EXTRACTED #community/Community_27

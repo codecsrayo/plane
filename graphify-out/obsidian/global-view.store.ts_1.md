@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/global-view.store.ts"
 type: "code"
-community: "Project Issue"
+community: "Community 20"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Issue
+  - community/Community_20
 ---
 
 # global-view.store.ts
 
 ## Connections
-
 - [[CoreRootStore]] - `imports` [EXTRACTED]
 - [[GlobalViewStore]] - `contains` [EXTRACTED]
 - [[IGlobalViewStore]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[toApiError()]] - `imports` [EXTRACTED]
 - [[workspace.service.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_20

@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/workspace/sidebar/projects-list.tsx"
 type: "code"
-community: "Project Profile"
+community: "Community 144"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Profile
+  - community/Community_144
 ---
 
 # projects-list.tsx
 
 ## Connections
-
 - [[CreateProjectModal()]] - `imports` [EXTRACTED]
 - [[SidebarNavItem()]] - `imports` [EXTRACTED]
 - [[SidebarProjectsList]] - `contains` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[useProjectNavigationPreferences()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Profile
+#graphify/code #graphify/EXTRACTED #community/Community_144

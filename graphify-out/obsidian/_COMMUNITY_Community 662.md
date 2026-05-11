@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 4
 ---
 
 # Community 662
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_12]] - code - api_rust/src/entities/email_notification_logs.rs
+- [[__dirname]] - code - packages/e2e-utils/src/setup/base-config.ts
+- [[base-config.ts]] - code - e2e-utils/src/setup/base-config.ts
+- [[base-config.ts_1]] - code - packages/e2e-utils/src/setup/base-config.ts
+- [[createBaseConfig()]] - code - packages/e2e-utils/src/setup/base-config.ts
 
 ## Live Query (requires Dataview plugin)
 

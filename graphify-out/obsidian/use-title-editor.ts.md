@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/hooks/use-title-editor.ts"
 type: "code"
-community: "Document Collaborative"
+community: "Editor Extensions"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Document_Collaborative
+  - community/Editor_Extensions
 ---
 
 # use-title-editor.ts
 
 ## Connections
-
 - [[CORE_EDITOR_META]] - `imports` [EXTRACTED]
 - [[EditorTitleRefApi]] - `imports` [EXTRACTED]
 - [[ICollaborativeDocumentEditorProps]] - `imports` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[use-collaborative-editor.ts]] - `imports_from` [EXTRACTED]
 - [[useTitleEditor()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Document_Collaborative
+#graphify/code #graphify/EXTRACTED #community/Editor_Extensions

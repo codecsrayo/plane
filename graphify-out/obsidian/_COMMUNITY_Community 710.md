@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 710
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[ActiveModel_60]] - code - api_rust/src/entities/device_sessions.rs
+- [[DropdownOptionsLoader()]] - code - packages/ui/src/dropdown/common/loader.tsx
+- [[loader.tsx_13]] - code - packages/ui/src/dropdown/common/loader.tsx
+- [[loader.tsx_1]] - code - ui/src/dropdown/common/loader.tsx
 
 ## Live Query (requires Dataview plugin)
 

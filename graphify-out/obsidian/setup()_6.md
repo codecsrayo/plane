@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/assets_v1_legacy.rs"
 type: "code"
-community: "Returns Asset"
+community: "Community 332"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Asset
+  - community/Community_332
 ---
 
 # setup()
 
 ## Connections
-
 - [[.spawn()]] - `calls` [INFERRED]
 - [[assets_v1_legacy.rs]] - `contains` [EXTRACTED]
 - [[delete_user_asset_nonexistent_returns_404()]] - `calls` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[post_workspace_asset_authenticated_initiates_upload()]] - `calls` [EXTRACTED]
 - [[post_workspace_asset_unauthenticated_returns_401()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Asset
+#graphify/code #graphify/EXTRACTED #community/Community_332

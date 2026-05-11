@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.83
+members: 4
 ---
 
 # Community 674
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.83 - tightly connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_24]] - code - api_rust/src/entities/django_celery_beat_crontabschedule.rs
+- [[issuePath()]] - code - web/e2e/issues-extras.spec.ts
+- [[issues-extras.spec.ts]] - code - web/e2e/issues-extras.spec.ts
+- [[pid()_10]] - code - web/e2e/issues-extras.spec.ts
+- [[slug()_13]] - code - web/e2e/issues-extras.spec.ts
 
 ## Live Query (requires Dataview plugin)
 

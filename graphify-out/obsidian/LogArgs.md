@@ -1,18 +1,17 @@
 ---
 source_file: "admin/lib/logger.ts"
 type: "code"
-community: "Config Image"
+community: "Community 313"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Config_Image
+  - community/Community_313
 ---
 
 # LogArgs
 
 ## Connections
-
 - [[logger.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Config_Image
+#graphify/code #graphify/EXTRACTED #community/Community_313

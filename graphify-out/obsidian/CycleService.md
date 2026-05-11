@@ -1,18 +1,17 @@
 ---
-source_file: "services/src/cycle/cycle.service.ts"
+source_file: "packages/services/src/cycle/cycle.service.ts"
 type: "code"
-community: "Cycle Cycleservice"
+community: "Community 405"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Cycleservice
+  - community/Community_405
 ---
 
 # CycleService
 
 ## Connections
-
 - [[.constructor()_24]] - `method` [EXTRACTED]
 - [[.create()_6]] - `method` [EXTRACTED]
 - [[.destroy()_7]] - `method` [EXTRACTED]
@@ -24,5 +23,6 @@ tags:
 - [[.validateDates()]] - `method` [EXTRACTED]
 - [[.workspaceActiveCycles()]] - `method` [EXTRACTED]
 - [[cycle.service.ts]] - `contains` [EXTRACTED]
+- [[cycle.service.ts_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Cycleservice
+#graphify/code #graphify/EXTRACTED #community/Community_405

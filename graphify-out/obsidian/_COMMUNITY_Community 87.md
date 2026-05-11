@@ -1,41 +1,66 @@
 ---
 type: community
-cohesion: 0.09
-members: 25
+cohesion: 0.13
+members: 51
 ---
 
 # Community 87
 
-**Cohesion:** 0.09 - loosely connected
-**Members:** 25 nodes
+**Cohesion:** 0.13 - loosely connected
+**Members:** 51 nodes
 
 ## Members
-
-- [[.constructor()_7]] - code - web/core/store/module_filter.store.ts
-- [[.currentProjectArchivedFilters()_1]] - code - web/core/store/module_filter.store.ts
-- [[.currentProjectDisplayFilters()_1]] - code - web/core/store/module_filter.store.ts
-- [[.currentProjectFilters()_1]] - code - web/core/store/module_filter.store.ts
-- [[IIssueFilterHelperStore]] - code - web/core/store/issue/helpers/issue-filter-helper.store.ts
-- [[ILocalStoreIssueFilters]] - code - web/core/store/issue/helpers/issue-filter-helper.store.ts
-- [[IModuleFilterStore]] - code - web/core/store/module_filter.store.ts
-- [[ModuleFilterStore]] - code - web/core/store/module_filter.store.ts
-- [[NON_SERVER_DISPLAY_FILTERS]] - code - web/core/store/issue/helpers/issue-filter-helper.store.ts
-- [[_filters_8]] - code - web/core/store/issue/helpers/issue-filter-helper.store.ts
-- [[_key]] - code - web/core/store/issue/helpers/issue-filter-helper.store.ts
-- [[computedDisplayFilters]] - code - web/core/store/issue/helpers/issue-filter-helper.store.ts
-- [[computedFilters]] - code - web/core/store/issue/helpers/issue-filter-helper.store.ts
-- [[currentFilterIndex]] - code - web/core/store/issue/helpers/issue-filter-helper.store.ts
-- [[displayFilterKeys]] - code - web/core/store/issue/helpers/issue-filter-helper.store.ts
-- [[displayFilters_2]] - code - web/core/store/module_filter.store.ts
-- [[displayFiltersData]] - code - web/core/store/module_filter.store.ts
-- [[filtersData]] - code - web/core/store/module_filter.store.ts
-- [[issue-filter-helper.store.ts]] - code - web/core/store/issue/helpers/issue-filter-helper.store.ts
-- [[issueFiltersParams]] - code - web/core/store/issue/helpers/issue-filter-helper.store.ts
-- [[local-storage.ts]] - code - web/core/lib/local-storage.ts
-- [[module_filter.store.ts]] - code - web/core/store/module_filter.store.ts
-- [[parsed]] - code - web/core/store/module_filter.store.ts
-- [[storage]] - code - web/core/lib/local-storage.ts
-- [[storageFilters]] - code - web/core/store/issue/helpers/issue-filter-helper.store.ts
+- [[ALPHA_MAPPING]] - code - packages/utils/src/theme/constants.ts
+- [[BASELINE_LIGHTNESS_MAP]] - code - packages/utils/src/theme/constants.ts
+- [[ColorMode]] - code - packages/utils/src/theme/constants.ts
+- [[ColorPalette]] - code - packages/utils/src/theme/palette-generator.ts
+- [[DarknessDetectionMethod]] - code - packages/utils/src/theme/theme-application.ts
+- [[EDITOR_COLORS_DARK]] - code - packages/utils/src/theme/constants.ts
+- [[EDITOR_COLORS_LIGHT]] - code - packages/utils/src/theme/constants.ts
+- [[OKLCH]] - code - packages/utils/src/theme/color-conversion.ts
+- [[PaletteOptions]] - code - packages/utils/src/theme/palette-generator.ts
+- [[RGB]] - code - packages/utils/src/theme/color-conversion.ts
+- [[SHADE_STOPS]] - code - packages/utils/src/theme/constants.ts
+- [[SaturationCurve]] - code - packages/utils/src/theme/constants.ts
+- [[ShadeStop]] - code - packages/utils/src/theme/palette-generator.ts
+- [[adjustLightnessForDarkMode()]] - code - packages/utils/src/theme/color-validation.ts
+- [[applyCustomTheme()]] - code - packages/utils/src/theme/theme-application.ts
+- [[calculateDynamicValueStop()]] - code - packages/utils/src/theme/palette-generator.ts
+- [[clearCustomTheme()]] - code - packages/utils/src/theme/theme-application.ts
+- [[color-conversion.ts_1]] - code - packages/utils/src/theme/color-conversion.ts
+- [[color-conversion.ts]] - code - utils/src/theme/color-conversion.ts
+- [[color-validation.ts_1]] - code - packages/utils/src/theme/color-validation.ts
+- [[color-validation.ts]] - code - utils/src/theme/color-validation.ts
+- [[constants.ts_9]] - code - packages/utils/src/theme/constants.ts
+- [[constants.ts_1]] - code - utils/src/theme/constants.ts
+- [[generateColorPalette()]] - code - packages/utils/src/theme/palette-generator.ts
+- [[generateThemePalettes()]] - code - packages/utils/src/theme/palette-generator.ts
+- [[getBrandMapping()]] - code - packages/utils/src/theme/theme-inversion.ts
+- [[getNeutralMapping()]] - code - packages/utils/src/theme/theme-inversion.ts
+- [[getOnColorTextColors()]] - code - packages/utils/src/theme/theme-application.ts
+- [[getPerceptualBrightness()]] - code - packages/utils/src/theme/color-conversion.ts
+- [[getRelativeLuminance()]] - code - packages/utils/src/theme/color-conversion.ts
+- [[hexToHSL()]] - code - packages/utils/src/theme/color-conversion.ts
+- [[hexToOKLCH()]] - code - packages/utils/src/theme/color-conversion.ts
+- [[hexToOKLCHString()]] - code - packages/utils/src/theme/color-conversion.ts
+- [[hexToRgb()_1]] - code - packages/utils/src/theme/color-conversion.ts
+- [[invertPalette()]] - code - packages/utils/src/theme/theme-inversion.ts
+- [[isColorDark()]] - code - packages/utils/src/theme/theme-application.ts
+- [[isGrayscale()]] - code - packages/utils/src/theme/color-conversion.ts
+- [[isValidShadeStop()]] - code - packages/utils/src/theme/palette-generator.ts
+- [[normalizeHexColor()]] - code - packages/utils/src/theme/color-validation.ts
+- [[oklchToCSS()]] - code - packages/utils/src/theme/color-conversion.ts
+- [[palette-generator.ts_1]] - code - packages/utils/src/theme/palette-generator.ts
+- [[palette-generator.ts]] - code - utils/src/theme/palette-generator.ts
+- [[parseOKLCH()]] - code - packages/utils/src/theme/color-conversion.ts
+- [[rgbToHex()_1]] - code - packages/utils/src/theme/color-conversion.ts
+- [[theme-application.ts_1]] - code - packages/utils/src/theme/theme-application.ts
+- [[theme-application.ts]] - code - utils/src/theme/theme-application.ts
+- [[theme-inversion.ts_1]] - code - packages/utils/src/theme/theme-inversion.ts
+- [[theme-inversion.ts]] - code - utils/src/theme/theme-inversion.ts
+- [[toHex()_1]] - code - packages/utils/src/theme/color-conversion.ts
+- [[validateAndAdjustOKLCH()]] - code - packages/utils/src/theme/color-validation.ts
+- [[validateHexColor()]] - code - packages/utils/src/theme/color-validation.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -43,25 +68,3 @@ members: 25
 TABLE source_file, type FROM #community/Community_87
 SORT file.name ASC
 ```
-
-## Connections to other communities
-
-- 4 edges to [[_COMMUNITY_Project Estimates]]
-- 3 edges to [[_COMMUNITY_Community 71]]
-- 2 edges to [[_COMMUNITY_Module Analytics]]
-- 2 edges to [[_COMMUNITY_Community 84]]
-- 2 edges to [[_COMMUNITY_Community 149]]
-- 2 edges to [[_COMMUNITY_Community 118]]
-- 1 edge to [[_COMMUNITY_Community 138]]
-- 1 edge to [[_COMMUNITY_Community 88]]
-- 1 edge to [[_COMMUNITY_Community 93]]
-- 1 edge to [[_COMMUNITY_Community 103]]
-- 1 edge to [[_COMMUNITY_Issue State Management]]
-
-## Top bridge nodes
-
-- [[issue-filter-helper.store.ts]] - degree 24, connects to 9 communities
-- [[module_filter.store.ts]] - degree 11, connects to 2 communities
-- [[IModuleFilterStore]] - degree 3, connects to 2 communities
-- [[ModuleFilterStore]] - degree 6, connects to 1 community
-- [[storage]] - degree 4, connects to 1 community

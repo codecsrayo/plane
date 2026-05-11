@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/power-k/config/navigation/commands.ts"
 type: "code"
-community: "Power Navigation"
+community: "Community 220"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Power_Navigation
+  - community/Community_220
 ---
 
 # commands.ts
 
 ## Connections
-
 - [[TPowerKCommandConfig]] - `imports` [EXTRACTED]
 - [[TPowerKContext]] - `imports` [EXTRACTED]
 - [[TPowerKNavigationCommandKeys]] - `contains` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[usePowerKNavigationCommandsRecord()]] - `contains` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Power_Navigation
+#graphify/code #graphify/EXTRACTED #community/Community_220

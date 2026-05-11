@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/workspace_view_issues.rs"
 type: "code"
-community: "Issue Issues"
+community: "Community 79"
 location: "L176"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Issue_Issues
+  - community/Community_79
 ---
 
 # list_workspace_view_issues()
 
 ## Connections
-
 - [[.json()]] - `calls` [INFERRED]
 - [[.new()]] - `calls` [INFERRED]
 - [[.to_filter_params()]] - `calls` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[parse_cursor()]] - `calls` [INFERRED]
 - [[workspace_view_issues.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Issue_Issues
+#graphify/code #graphify/INFERRED #community/Community_79

@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/icons/state/state-group-icon.tsx"
 type: "code"
-community: "Group Icon"
+community: "Community 120"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group_Icon
+  - community/Community_120
 ---
 
 # state-group-icon.tsx
 
 ## Connections
-
 - [[BacklogGroupIcon()]] - `imports` [EXTRACTED]
 - [[CancelledGroupIcon()]] - `imports` [EXTRACTED]
 - [[CompletedGroupIcon()]] - `imports` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[started-group-icon.tsx]] - `imports_from` [EXTRACTED]
 - [[unstarted-group-icon.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group_Icon
+#graphify/code #graphify/EXTRACTED #community/Community_120

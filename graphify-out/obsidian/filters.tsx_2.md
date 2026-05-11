@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/filters.tsx"
 type: "code"
-community: "Project Profile"
+community: "Filter UI & Breadcrumbs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Profile
+  - community/Filter_UI__Breadcrumbs
 ---
 
 # filters.tsx
 
 ## Connections
-
 - [[HeaderFilters_1]] - `contains` [EXTRACTED]
 - [[LAYOUTS]] - `contains` [EXTRACTED]
 - [[Props_255]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[use-issues.ts]] - `imports_from` [EXTRACTED]
 - [[useIssues()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Profile
+#graphify/code #graphify/EXTRACTED #community/Filter_UI__Breadcrumbs

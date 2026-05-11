@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/components/issues/issue-modal/modal-additional-properties.tsx"
 type: "code"
-community: "Issue Work"
+community: "Project Filters & Archives"
 location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Work
+  - community/Project_Filters__Archives
 ---
 
 # TWorkItemModalAdditionalPropertiesProps
 
 ## Connections
-
 - [[modal-additional-properties.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Work
+#graphify/code #graphify/EXTRACTED #community/Project_Filters__Archives

@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_431]] - code - web/core/components/base-layouts/gantt/index.ts
+- [[script.js]] - code - api/plane/static/js/script.js
 
 ## Live Query (requires Dataview plugin)
 

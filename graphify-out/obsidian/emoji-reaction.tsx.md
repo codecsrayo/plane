@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/emoji-reaction/emoji-reaction.tsx"
 type: "code"
-community: "Reaction Emoji"
+community: "Community 119"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Reaction_Emoji
+  - community/Community_119
 ---
 
 # emoji-reaction.tsx
 
 ## Connections
-
 - [[EmojiReaction]] - `contains` [EXTRACTED]
 - [[EmojiReactionButton]] - `contains` [EXTRACTED]
 - [[EmojiReactionButtonProps]] - `contains` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[index.ts_193]] - `imports_from` [EXTRACTED]
 - [[index.ts_191]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Reaction_Emoji
+#graphify/code #graphify/EXTRACTED #community/Community_119

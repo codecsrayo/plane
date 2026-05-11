@@ -1,18 +1,18 @@
 ---
-source_file: "editor/src/core/helpers/get-document-server-event.ts"
+source_file: "packages/editor/src/core/helpers/get-document-server-event.ts"
 type: "code"
-community: "Payload Document"
+community: "Community 159"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Payload_Document
+  - community/Community_159
 ---
 
 # getServerEventName()
 
 ## Connections
-
 - [[get-document-server-event.ts]] - `contains` [EXTRACTED]
+- [[get-document-server-event.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Payload_Document
+#graphify/code #graphify/EXTRACTED #community/Community_159

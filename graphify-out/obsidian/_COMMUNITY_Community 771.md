@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 771
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_36]] - code - web/core/components/workspace/billing/comparison/index.ts
+- [[SignIn()]] - code - web/app/routes/redirects/core/sign-in.tsx
+- [[clientLoader()_9]] - code - web/app/routes/redirects/core/sign-in.tsx
+- [[sign-in.tsx]] - code - web/app/routes/redirects/core/sign-in.tsx
 
 ## Live Query (requires Dataview plugin)
 

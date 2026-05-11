@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/home/widgets/index.ts"
 type: "code"
-community: "Widget Home"
+community: "Community 265"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Widget_Home
+  - community/Community_265
 ---
 
 # index.ts
 
 ## Connections
-
 - [[home-dashboard-widgets.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Widget_Home
+#graphify/code #graphify/EXTRACTED #community/Community_265

@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/workspaces.rs"
 type: "code"
-community: "Workspace User"
+community: "Community 47"
 location: "L774"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Workspace_User
+  - community/Community_47
 ---
 
 # delete_workspace()
 
 ## Connections
-
 - [[.new()]] - `calls` [INFERRED]
 - [[.set()]] - `calls` [INFERRED]
 - [[now]] - `calls` [INFERRED]
@@ -20,4 +19,4 @@ tags:
 - [[workspace_by_slug()]] - `calls` [INFERRED]
 - [[workspaces.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Workspace_User
+#graphify/code #graphify/INFERRED #community/Community_47

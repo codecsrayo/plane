@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/authentication/rate_limit.py"
 type: "code"
-community: "Endpoint User"
+community: "Community 53"
 location: "L31"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Endpoint_User
+  - community/Community_53
 ---
 
 # EmailVerificationThrottle
 
 ## Connections
-
 - [[.get_throttles()]] - `calls` [INFERRED]
 - [[.throttle_failure_view()_1]] - `method` [EXTRACTED]
 - [[AccountEndpoint]] - `uses` [INFERRED]
@@ -27,4 +26,4 @@ tags:
 - [[UserSessionEndpoint]] - `uses` [INFERRED]
 - [[rate_limit.py_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Endpoint_User
+#graphify/code #graphify/INFERRED #community/Community_53

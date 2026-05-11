@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/urls/__init__.py"
 type: "code"
-community: "Analytic Asset"
+community: "Community 258"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Analytic_Asset
+  - community/Community_258
 ---
 
-# **init**.py
+# __init__.py
 
 ## Connections
-
 - [[analytic.py]] - `imports_from` [EXTRACTED]
 - [[api.py_1]] - `imports_from` [EXTRACTED]
 - [[asset.py_1]] - `imports_from` [EXTRACTED]
@@ -36,4 +35,4 @@ tags:
 - [[webhook.py]] - `imports_from` [EXTRACTED]
 - [[workspace.py_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Analytic_Asset
+#graphify/code #graphify/EXTRACTED #community/Community_258

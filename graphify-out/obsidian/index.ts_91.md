@@ -1,18 +1,17 @@
 ---
 source_file: "e2e-utils/src/fixtures/index.ts"
 type: "code"
-community: "Global Test"
+community: "Community 174"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Global_Test
+  - community/Community_174
 ---
 
 # index.ts
 
 ## Connections
-
 - [[Env]] - `imports` [EXTRACTED]
 - [[PlaneFixtures]] - `contains` [EXTRACTED]
 - [[api.ts]] - `imports_from` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[slug()]] - `contains` [EXTRACTED]
 - [[test]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Global_Test
+#graphify/code #graphify/EXTRACTED #community/Community_174

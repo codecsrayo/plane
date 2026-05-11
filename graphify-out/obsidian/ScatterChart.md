@@ -1,18 +1,18 @@
 ---
-source_file: "propel/src/charts/scatter-chart/root.tsx"
+source_file: "packages/propel/src/charts/scatter-chart/root.tsx"
 type: "code"
-community: "Custom Chart"
+community: "Community 128"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Custom_Chart
+  - community/Community_128
 ---
 
 # ScatterChart
 
 ## Connections
-
 - [[root.tsx_9]] - `contains` [EXTRACTED]
+- [[root.tsx_151]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Custom_Chart
+#graphify/code #graphify/EXTRACTED #community/Community_128

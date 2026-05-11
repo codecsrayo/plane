@@ -1,19 +1,26 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 0.20
+members: 11
 ---
 
 # Community 444
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 0.20 - loosely connected
+**Members:** 11 nodes
 
 ## Members
-
-- [[FavoriteItemQuickAction]] - code - web/core/components/workspace/sidebar/favorites/favorite-items/common/favorite-item-quick-action.tsx
-- [[Props_32]] - code - web/core/components/workspace/sidebar/favorites/favorite-items/common/favorite-item-quick-action.tsx
-- [[favorite-item-quick-action.tsx]] - code - web/core/components/workspace/sidebar/favorites/favorite-items/common/favorite-item-quick-action.tsx
+- [[.constructor()_40]] - code - web/ce/store/command-palette.store.ts
+- [[.isAnyModalOpen()]] - code - web/ce/store/command-palette.store.ts
+- [[CommandPaletteStore]] - code - web/ce/store/command-palette.store.ts
+- [[IBaseCommandPaletteStore]] - code - web/core/store/base-command-palette.store.ts
+- [[ICommandPaletteStore]] - code - web/ce/store/command-palette.store.ts
+- [[ModalData]] - code - web/core/store/base-command-palette.store.ts
+- [[base-command-palette.store.ts]] - code - web/core/store/base-command-palette.store.ts
+- [[command-palette.store.ts]] - code - web/ce/store/command-palette.store.ts
+- [[constructor()_3]] - code - web/core/store/base-command-palette.store.ts
+- [[getCoreModalsState()]] - code - web/core/store/base-command-palette.store.ts
+- [[updatedSettings]] - code - web/core/store/base-command-palette.store.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -21,3 +28,9 @@ members: 3
 TABLE source_file, type FROM #community/Community_444
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 2 edges to [[_COMMUNITY_Community 42]]
+
+## Top bridge nodes
+- [[base-command-palette.store.ts]] - degree 8, connects to 1 community

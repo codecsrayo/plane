@@ -1,20 +1,19 @@
 ---
 source_file: "web/core/hooks/store/user/user-user-settings.ts"
 type: "code"
-community: "Workspace Issue"
+community: "Community 46"
 location: "L13"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Workspace_Issue
+  - community/Community_46
 ---
 
 # useUserSettings()
 
 ## Connections
-
 - [[Invitations()]] - `calls` [INFERRED]
 - [[WorkspaceJoinInvitesStep()]] - `calls` [INFERRED]
 - [[user-user-settings.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Workspace_Issue
+#graphify/code #graphify/INFERRED #community/Community_46

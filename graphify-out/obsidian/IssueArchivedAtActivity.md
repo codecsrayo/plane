@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/issues/issue-detail/issue-activity/activity/actions/archived-at.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Issue Activity Types"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Issue_Activity_Types
 ---
 
 # IssueArchivedAtActivity
 
 ## Connections
-
 - [[archived-at.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Types

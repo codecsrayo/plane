@@ -1,19 +1,18 @@
 ---
 source_file: "web/ce/components/gantt-chart/layers/additional-layers.tsx"
 type: "code"
-community: "Additional Gantt"
+community: "Community 789"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Additional_Gantt
+  - community/Community_789
 ---
 
 # additional-layers.tsx
 
 ## Connections
-
 - [[GanttAdditionalLayers()]] - `contains` [EXTRACTED]
 - [[Props_60]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Additional_Gantt
+#graphify/code #graphify/EXTRACTED #community/Community_789

@@ -1,19 +1,20 @@
 ---
-source_file: "shared-state/src/store/rich-filters/filter-helpers.ts"
+source_file: "packages/shared-state/src/store/rich-filters/filter-helpers.ts"
 type: "code"
-community: "Instance Condition"
+community: "Community 295"
 location: "L39"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Instance_Condition
+  - community/Community_295
 ---
 
 # IFilterInstanceHelper
 
 ## Connections
-
 - [[filter-helpers.ts]] - `contains` [EXTRACTED]
+- [[filter-helpers.ts_1]] - `contains` [EXTRACTED]
 - [[filter.ts_3]] - `imports` [EXTRACTED]
+- [[filter.ts_7]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Instance_Condition
+#graphify/code #graphify/EXTRACTED #community/Community_295

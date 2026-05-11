@@ -1,20 +1,19 @@
 ---
 source_file: "web/e2e/states.spec.ts"
 type: "code"
-community: "States Spec"
+community: "Community 673"
 location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/States_Spec
+  - community/Community_673
 ---
 
 # path()
 
 ## Connections
-
 - [[pid()_9]] - `calls` [EXTRACTED]
 - [[slug()_12]] - `calls` [EXTRACTED]
 - [[states.spec.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/States_Spec
+#graphify/code #graphify/EXTRACTED #community/Community_673

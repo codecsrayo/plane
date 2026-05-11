@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/root.store.ts"
 type: "code"
-community: "Project Issue"
+community: "Community 20"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Issue
+  - community/Community_20
 ---
 
 # root.store.ts
 
 ## Connections
-
 - [[CoreRootStore]] - `contains` [EXTRACTED]
 - [[CycleFilterStore]] - `imports` [EXTRACTED]
 - [[CycleStore]] - `imports` [EXTRACTED]
@@ -97,4 +96,4 @@ tags:
 - [[webhook.store.ts]] - `imports_from` [EXTRACTED]
 - [[workspace-notifications.store.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_20

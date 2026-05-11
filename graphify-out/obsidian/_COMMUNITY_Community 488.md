@@ -1,19 +1,25 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 0.36
+members: 10
 ---
 
 # Community 488
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 0.36 - loosely connected
+**Members:** 10 nodes
 
 ## Members
-
-- [[PageSyncingBadge()]] - code - web/core/components/pages/header/syncing-badge.tsx
-- [[Props_411]] - code - web/core/components/pages/header/syncing-badge.tsx
-- [[syncing-badge.tsx]] - code - web/core/components/pages/header/syncing-badge.tsx
+- [[ImageFullScreenActionRoot()]] - code - packages/editor/src/core/extensions/custom-image/components/toolbar/full-screen/root.tsx
+- [[ImageFullScreenModal()]] - code - packages/editor/src/core/extensions/custom-image/components/toolbar/full-screen/modal.tsx
+- [[ImageFullScreenModalWithoutPortal()]] - code - packages/editor/src/core/extensions/custom-image/components/toolbar/full-screen/modal.tsx
+- [[Props_46]] - code - packages/editor/src/core/extensions/custom-image/components/toolbar/full-screen/modal.tsx
+- [[Props_47]] - code - packages/editor/src/core/extensions/custom-image/components/toolbar/full-screen/root.tsx
+- [[ZOOM_STEPS]] - code - packages/editor/src/core/extensions/custom-image/components/toolbar/full-screen/modal.tsx
+- [[modal.tsx]] - code - editor/src/core/extensions/custom-image/components/toolbar/full-screen/modal.tsx
+- [[modal.tsx_20]] - code - packages/editor/src/core/extensions/custom-image/components/toolbar/full-screen/modal.tsx
+- [[root.tsx_6]] - code - editor/src/core/extensions/custom-image/components/toolbar/full-screen/root.tsx
+- [[root.tsx_148]] - code - packages/editor/src/core/extensions/custom-image/components/toolbar/full-screen/root.tsx
 
 ## Live Query (requires Dataview plugin)
 

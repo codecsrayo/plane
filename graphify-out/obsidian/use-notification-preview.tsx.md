@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/hooks/use-notification-preview.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Issue Activity Types"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Issue_Activity_Types
 ---
 
 # use-notification-preview.tsx
 
 ## Connections
-
 - [[TNotificationPreview]] - `contains` [EXTRACTED]
 - [[TPeekIssue]] - `imports` [EXTRACTED]
 - [[index.ts_382]] - `imports_from` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 - [[useNotificationPreview()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Types

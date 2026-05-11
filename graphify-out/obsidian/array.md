@@ -1,22 +1,21 @@
 ---
 source_file: "web/core/store/issue/helpers/base-issues.store.ts"
 type: "code"
-community: "Analytics Advance"
+community: "Community 94"
 location: "L1767"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Analytics_Advance
+  - community/Community_94
 ---
 
 # array
 
 ## Connections
-
 - [[advance_analytics_charts()]] - `calls` [INFERRED]
 - [[base-issues.store.ts]] - `contains` [EXTRACTED]
 - [[entity_search()]] - `calls` [INFERRED]
 - [[list_issues_by_ids()]] - `calls` [INFERRED]
 - [[project_advance_analytics_stats()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Analytics_Advance
+#graphify/code #graphify/INFERRED #community/Community_94

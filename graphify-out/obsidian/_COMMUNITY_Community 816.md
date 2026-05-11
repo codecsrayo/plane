@@ -1,17 +1,18 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 3
 ---
 
 # Community 816
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
 
 ## Members
-
-- [[index.ts_167]] - code - web/core/components/comments/index.ts
+- [[getMyUserId()]] - code - web/e2e/workspace-profile.spec.ts
+- [[slug()_16]] - code - web/e2e/workspace-profile.spec.ts
+- [[workspace-profile.spec.ts]] - code - web/e2e/workspace-profile.spec.ts
 
 ## Live Query (requires Dataview plugin)
 

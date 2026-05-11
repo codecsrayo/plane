@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/entities/issue_votes.rs"
 type: "code"
-community: "Model Relation"
+community: "Community 943"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Model_Relation
+  - community/Community_943
 ---
 
 # Relation
 
 ## Connections
-
 - [[issue_votes.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Model_Relation
+#graphify/code #graphify/EXTRACTED #community/Community_943

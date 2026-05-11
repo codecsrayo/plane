@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/navigation/tab-navigation-utils.ts"
 type: "code"
-community: "Project Navigation"
+community: "Community 73"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Navigation
+  - community/Community_73
 ---
 
 # tab-navigation-utils.ts
 
 ## Connections
-
 - [[TTabPreferences]] - `contains` [EXTRACTED]
 - [[getDefaultTabUrl()]] - `contains` [EXTRACTED]
 - [[getTabPreferences()]] - `contains` [EXTRACTED]
@@ -26,4 +25,4 @@ tags:
 - [[tab-navigation-visible-item.tsx]] - `imports_from` [EXTRACTED]
 - [[use-tab-preferences.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Navigation
+#graphify/code #graphify/EXTRACTED #community/Community_73

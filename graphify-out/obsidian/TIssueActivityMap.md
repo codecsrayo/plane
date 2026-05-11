@@ -1,18 +1,18 @@
 ---
-source_file: "types/src/issues/activity/issue_activity.ts"
+source_file: "packages/types/src/issues/activity/issue_activity.ts"
 type: "code"
-community: "Issue Activity"
+community: "Community 189"
 location: "L50"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Community_189
 ---
 
 # TIssueActivityMap
 
 ## Connections
-
 - [[issue_activity.ts]] - `contains` [EXTRACTED]
+- [[issue_activity.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Community_189

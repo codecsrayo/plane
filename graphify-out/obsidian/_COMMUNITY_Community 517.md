@@ -1,17 +1,23 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.32
+members: 8
 ---
 
 # Community 517
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.32 - loosely connected
+**Members:** 8 nodes
 
 ## Members
-
-- [[index.ts_132]] - code - shared-state/src/store/index.ts
+- [[core.ts_19]] - code - web/app/routes/core.ts
+- [[extended.ts_8]] - code - web/app/routes/extended.ts
+- [[extendedRoutes]] - code - web/app/routes/extended.ts
+- [[helper.ts_1]] - code - web/app/routes/helper.ts
+- [[mergeRoutes()]] - code - web/app/routes/helper.ts
+- [[mergedRoutes]] - code - web/app/routes.ts
+- [[routes]] - code - web/app/routes.ts
+- [[routes.ts]] - code - web/app/routes.ts
 
 ## Live Query (requires Dataview plugin)
 

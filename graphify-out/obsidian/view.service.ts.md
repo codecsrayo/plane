@@ -1,19 +1,18 @@
 ---
 source_file: "services/src/workspace/view.service.ts"
 type: "code"
-community: "Workspace Workspaceviewservice"
+community: "Community 465"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Workspaceviewservice
+  - community/Community_465
 ---
 
 # view.service.ts
 
 ## Connections
-
 - [[WorkspaceViewService]] - `contains` [EXTRACTED]
 - [[api.service.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Workspaceviewservice
+#graphify/code #graphify/EXTRACTED #community/Community_465

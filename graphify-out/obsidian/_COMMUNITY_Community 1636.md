@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_343]] - code - web/core/components/settings/profile/content/pages/notifications/index.ts
+- [[index.ts_440]] - code - web/core/components/account/auth-forms/index.ts
 
 ## Live Query (requires Dataview plugin)
 

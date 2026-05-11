@@ -1,22 +1,21 @@
 ---
 source_file: "admin/components/instance/failure.tsx"
 type: "code"
-community: "Auth Error"
+community: "Community 162"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Error
+  - community/Community_162
 ---
 
 # failure.tsx
 
 ## Connections
-
 - [[AuthHeader()_1]] - `imports` [EXTRACTED]
 - [[InstanceFailureView]] - `contains` [EXTRACTED]
 - [[auth-header.tsx_1]] - `imports_from` [EXTRACTED]
 - [[handleRetry()]] - `contains` [EXTRACTED]
 - [[page.tsx_79]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Error
+#graphify/code #graphify/EXTRACTED #community/Community_162

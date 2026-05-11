@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/home/widgets/loaders/home-loader.tsx"
 type: "code"
-community: "Home Loader"
+community: "Community 1045"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Home_Loader
+  - community/Community_1045
 ---
 
 # HomeLoader()
 
 ## Connections
-
 - [[home-loader.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Home_Loader
+#graphify/code #graphify/EXTRACTED #community/Community_1045

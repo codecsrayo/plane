@@ -1,19 +1,18 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(detail)/header.tsx"
 type: "code"
-community: "Project Issues"
+community: "Community 40"
 location: "L53"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Issues
+  - community/Community_40
 ---
 
 # CycleIssuesHeader
 
 ## Connections
-
 - [[header.tsx_12]] - `contains` [EXTRACTED]
 - [[layout.tsx_20]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Issues
+#graphify/code #graphify/EXTRACTED #community/Community_40

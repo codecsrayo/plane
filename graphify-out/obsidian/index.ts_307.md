@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/gantt-chart/views/index.ts"
 type: "code"
-community: "Gantt Chart"
+community: "Community 23"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Chart
+  - community/Community_23
 ---
 
 # index.ts
 
 ## Connections
-
 - [[base-timeline.store.ts]] - `imports_from` [EXTRACTED]
 - [[issue_gantt_view.store.ts]] - `imports_from` [EXTRACTED]
 - [[main-content.tsx]] - `imports_from` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[root.tsx_48]] - `imports_from` [EXTRACTED]
 - [[week.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Chart
+#graphify/code #graphify/EXTRACTED #community/Community_23

@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(projects)/profile/[userId]/[profileViewId]/page.tsx"
 type: "code"
-community: "Issue Project"
+community: "Community 24"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Project
+  - community/Community_24
 ---
 
 # ProfilePageHeader
 
 ## Connections
-
 - [[page.tsx_11]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Project
+#graphify/code #graphify/EXTRACTED #community/Community_24

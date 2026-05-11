@@ -1,40 +1,64 @@
 ---
 type: community
-cohesion: 0.11
-members: 24
+cohesion: 0.06
+members: 49
 ---
 
 # Community 94
 
-**Cohesion:** 0.11 - loosely connected
-**Members:** 24 nodes
+**Cohesion:** 0.06 - loosely connected
+**Members:** 49 nodes
 
 ## Members
-
-- [[AppRailRoot]] - code - web/core/components/navigation/app-rail-root.tsx
-- [[AppSidebarButtonItem]] - code - web/core/components/sidebar/sidebar-item.tsx
-- [[AppSidebarButtonItemProps]] - code - web/core/components/sidebar/sidebar-item.tsx
-- [[AppSidebarItem]] - code - web/core/components/sidebar/sidebar-item.tsx
-- [[AppSidebarItemBase]] - code - web/core/components/sidebar/sidebar-item.tsx
-- [[AppSidebarItemComponent]] - code - web/core/components/sidebar/sidebar-item.tsx
-- [[AppSidebarItemData]] - code - web/core/components/sidebar/sidebar-item.tsx
-- [[AppSidebarItemIcon()]] - code - web/core/components/sidebar/sidebar-item.tsx
-- [[AppSidebarItemIconProps]] - code - web/core/components/sidebar/sidebar-item.tsx
-- [[AppSidebarItemLabel()]] - code - web/core/components/sidebar/sidebar-item.tsx
-- [[AppSidebarItemLabelProps]] - code - web/core/components/sidebar/sidebar-item.tsx
-- [[AppSidebarItemProps]] - code - web/core/components/sidebar/sidebar-item.tsx
-- [[AppSidebarItemsRoot]] - code - web/core/components/navigation/items-root.tsx
-- [[AppSidebarLinkItem]] - code - web/core/components/sidebar/sidebar-item.tsx
-- [[AppSidebarLinkItemProps]] - code - web/core/components/sidebar/sidebar-item.tsx
-- [[Component()]] - code - web/core/components/navigation/items-root.tsx
-- [[Props_436]] - code - web/core/components/navigation/items-root.tsx
-- [[UserMenuRoot]] - code - web/core/components/workspace/sidebar/user-menu-root.tsx
-- [[app-rail-root.tsx]] - code - web/core/components/navigation/app-rail-root.tsx
-- [[items-root.tsx]] - code - web/core/components/navigation/items-root.tsx
-- [[sidebar-item.tsx]] - code - web/core/components/sidebar/sidebar-item.tsx
-- [[styles]] - code - web/core/components/sidebar/sidebar-item.tsx
-- [[useAppRailVisibility()]] - code - web/core/lib/app-rail/context.tsx
-- [[user-menu-root.tsx]] - code - web/core/components/workspace/sidebar/user-menu-root.tsx
+- [[AdvanceAnalyticsChartQuery]] - code - api_rust/src/routes/analytics.rs
+- [[AdvanceAnalyticsQuery]] - code - api_rust/src/routes/analytics.rs
+- [[AdvanceAnalyticsStatsQuery]] - code - api_rust/src/routes/analytics.rs
+- [[AnalyticViewResponse]] - code - api_rust/src/routes/analytics.rs
+- [[AnalyticsQuery]] - code - api_rust/src/routes/analytics.rs
+- [[CreateAnalyticViewRequest]] - code - api_rust/src/routes/analytics.rs
+- [[EntitySearchQuery]] - code - api_rust/src/routes/search.rs
+- [[EntitySearchResponse]] - code - api_rust/src/routes/search.rs
+- [[ExportAnalyticsRequest]] - code - api_rust/src/routes/analytics.rs
+- [[GlobalSearchResponse]] - code - api_rust/src/routes/search.rs
+- [[MonthCount]] - code - api_rust/src/routes/analytics.rs
+- [[ProjectAdvanceAnalyticsChartQuery]] - code - api_rust/src/routes/analytics.rs
+- [[ProjectAdvanceAnalyticsQuery]] - code - api_rust/src/routes/analytics.rs
+- [[ProjectAdvanceAnalyticsStatsQuery]] - code - api_rust/src/routes/analytics.rs
+- [[ProjectStatsQuery]] - code - api_rust/src/routes/analytics.rs
+- [[SearchQuery]] - code - api_rust/src/routes/search.rs
+- [[SearchResult]] - code - api_rust/src/routes/search.rs
+- [[StateGroupCount]] - code - api_rust/src/routes/analytics.rs
+- [[UpdateAnalyticViewRequest]] - code - api_rust/src/routes/analytics.rs
+- [[UserMentionResult]] - code - api_rust/src/routes/search.rs
+- [[advance_analytics()]] - code - api_rust/src/routes/analytics.rs
+- [[advance_analytics_charts()]] - code - api_rust/src/routes/analytics.rs
+- [[advance_analytics_stats()]] - code - api_rust/src/routes/analytics.rs
+- [[analytic_view_to_response()]] - code - api_rust/src/routes/analytics.rs
+- [[analytics.rs]] - code - api_rust/src/routes/analytics.rs
+- [[analytics_date_clause()]] - code - api_rust/src/routes/analytics.rs
+- [[array]] - code - web/core/store/issue/helpers/base-issues.store.ts
+- [[axis_to_sql_col()]] - code - api_rust/src/routes/analytics.rs
+- [[base_issue_filter()]] - code - api_rust/src/routes/analytics.rs
+- [[chart_period_range()]] - code - api_rust/src/routes/analytics.rs
+- [[create_analytic_view()]] - code - api_rust/src/routes/analytics.rs
+- [[default_analytics()]] - code - api_rust/src/routes/analytics.rs
+- [[delete_analytic_view()]] - code - api_rust/src/routes/analytics.rs
+- [[entity_search()]] - code - api_rust/src/routes/search.rs
+- [[export_analytics()]] - code - api_rust/src/routes/analytics.rs
+- [[fetch_user_mentions()]] - code - api_rust/src/routes/search.rs
+- [[get_analytic_view()]] - code - api_rust/src/routes/analytics.rs
+- [[get_saved_analytic_view()]] - code - api_rust/src/routes/analytics.rs
+- [[global_search()]] - code - api_rust/src/routes/search.rs
+- [[list_analytic_views()]] - code - api_rust/src/routes/analytics.rs
+- [[project_advance_analytics()]] - code - api_rust/src/routes/analytics.rs
+- [[project_advance_analytics_charts()]] - code - api_rust/src/routes/analytics.rs
+- [[project_advance_analytics_stats()]] - code - api_rust/src/routes/analytics.rs
+- [[project_ids_filter()]] - code - api_rust/src/routes/analytics.rs
+- [[project_stats()]] - code - api_rust/src/routes/analytics.rs
+- [[search.rs]] - code - api_rust/src/routes/search.rs
+- [[search_issues()_1]] - code - api_rust/src/routes/search.rs
+- [[update_analytic_view()]] - code - api_rust/src/routes/analytics.rs
+- [[workspace_analytics()]] - code - api_rust/src/routes/analytics.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -44,19 +68,18 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 3 edges to [[_COMMUNITY_Community 200]]
-- 3 edges to [[_COMMUNITY_Empty State Components]]
-- 2 edges to [[_COMMUNITY_Community 63]]
-- 2 edges to [[_COMMUNITY_Authentication UI]]
-- 2 edges to [[_COMMUNITY_Community 80]]
-- 2 edges to [[_COMMUNITY_Community 102]]
-- 1 edge to [[_COMMUNITY_Community 95]]
+- 18 edges to [[_COMMUNITY_Rust API Handlers]]
+- 11 edges to [[_COMMUNITY_Community 21]]
+- 9 edges to [[_COMMUNITY_Community 29]]
+- 5 edges to [[_COMMUNITY_Community 126]]
+- 3 edges to [[_COMMUNITY_Community 34]]
+- 1 edge to [[_COMMUNITY_Community 49]]
+- 1 edge to [[_COMMUNITY_Community 79]]
+- 1 edge to [[_COMMUNITY_Rust Issues & Modules API]]
 
 ## Top bridge nodes
-
-- [[user-menu-root.tsx]] - degree 10, connects to 3 communities
-- [[sidebar-item.tsx]] - degree 19, connects to 2 communities
-- [[app-rail-root.tsx]] - degree 9, connects to 2 communities
-- [[AppSidebarItem]] - degree 6, connects to 2 communities
-- [[useAppRailVisibility()]] - degree 2, connects to 1 community
+- [[create_analytic_view()]] - degree 6, connects to 4 communities
+- [[update_analytic_view()]] - degree 6, connects to 4 communities
+- [[advance_analytics_charts()]] - degree 10, connects to 3 communities
+- [[project_advance_analytics_charts()]] - degree 8, connects to 3 communities
+- [[entity_search()]] - degree 6, connects to 3 communities

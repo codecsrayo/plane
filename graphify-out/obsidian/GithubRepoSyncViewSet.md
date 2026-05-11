@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/integration/base.py"
 type: "code"
-community: "Endpoint User"
+community: "Community 27"
 location: "L514"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_User
+  - community/Community_27
 ---
 
 # GithubRepoSyncViewSet
 
 ## Connections
-
 - [[._register_github_webhook()]] - `method` [EXTRACTED]
 - [[.get_queryset()_33]] - `method` [EXTRACTED]
 - [[BaseAPIView]] - `uses` [INFERRED]
@@ -21,4 +20,4 @@ tags:
 - [[Viewset to manage GithubRepositorySync records for a workspace's GitHub integrat]] - `rationale_for` [EXTRACTED]
 - [[base.py_12]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_User
+#graphify/code #graphify/EXTRACTED #community/Community_27

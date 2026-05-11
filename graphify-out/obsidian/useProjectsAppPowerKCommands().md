@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/power-k/config/commands.ts"
 type: "code"
-community: "Power Chat"
+community: "Community 220"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Power_Chat
+  - community/Community_220
 ---
 
 # useProjectsAppPowerKCommands()
 
 ## Connections
-
 - [[commands.ts_3]] - `contains` [EXTRACTED]
 - [[projects-app-provider.tsx]] - `imports` [EXTRACTED]
 - [[usePowerKAccountCommands()]] - `calls` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[usePowerKNavigationCommands()]] - `calls` [EXTRACTED]
 - [[usePowerKPreferencesCommands()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Power_Chat
+#graphify/code #graphify/EXTRACTED #community/Community_220

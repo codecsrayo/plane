@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/routes/issues.rs"
 type: "code"
-community: "Issue Issues"
+community: "Community 79"
 location: "L1483"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Issue_Issues
+  - community/Community_79
 ---
 
 # list_issues_v2()
 
 ## Connections
-
 - [[.json()]] - `calls` [INFERRED]
 - [[collect_state_ids()]] - `calls` [INFERRED]
 - [[empty_paginated_response()]] - `calls` [INFERRED]
@@ -23,4 +22,4 @@ tags:
 - [[parse_cursor()]] - `calls` [INFERRED]
 - [[require_role()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Issue_Issues
+#graphify/code #graphify/INFERRED #community/Community_79

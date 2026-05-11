@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.50
+members: 4
 ---
 
 # Community 680
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.50 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_30]] - code - api_rust/src/entities/workspace_user_properties.rs
+- [[PopoverButton()]] - code - web/core/components/project-states/create-update/form.tsx
+- [[StateForm()]] - code - web/core/components/project-states/create-update/form.tsx
+- [[TStateForm]] - code - web/core/components/project-states/create-update/form.tsx
+- [[form.tsx_3]] - code - web/core/components/project-states/create-update/form.tsx
 
 ## Live Query (requires Dataview plugin)
 

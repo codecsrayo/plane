@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/license/utils/instance_value.py"
 type: "code"
-community: "Email Task"
+community: "Community 48"
 location: "L42"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Email_Task
+  - community/Community_48
 ---
 
 # get_email_configuration()
 
 ## Connections
-
 - [[.handle()_1]] - `calls` [INFERRED]
 - [[.post()_36]] - `calls` [INFERRED]
 - [[forgot_password()]] - `calls` [INFERRED]
@@ -30,4 +29,4 @@ tags:
 - [[user_deactivation_email()]] - `calls` [INFERRED]
 - [[workspace_invitation()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Email_Task
+#graphify/code #graphify/INFERRED #community/Community_48

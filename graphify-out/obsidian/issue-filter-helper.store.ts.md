@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/issue/helpers/issue-filter-helper.store.ts"
 type: "code"
-community: "Filters Issue"
+community: "Community 33"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filters_Issue
+  - community/Community_33
 ---
 
 # issue-filter-helper.store.ts
 
 ## Connections
-
 - [[IBaseIssueFilterStore]] - `contains` [EXTRACTED]
 - [[IIssueFilterHelperStore]] - `contains` [EXTRACTED]
 - [[ILocalStoreIssueFilters]] - `contains` [EXTRACTED]
@@ -39,4 +38,4 @@ tags:
 - [[storage]] - `imports` [EXTRACTED]
 - [[storageFilters]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filters_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_33

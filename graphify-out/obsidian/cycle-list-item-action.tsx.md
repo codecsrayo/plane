@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/cycles/list/cycle-list-item-action.tsx"
 type: "code"
-community: "Cycle Active"
+community: "Active Cycle Stats"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Active
+  - community/Active_Cycle_Stats
 ---
 
 # cycle-list-item-action.tsx
 
 ## Connections
-
 - [[ButtonAvatars]] - `imports` [EXTRACTED]
 - [[CycleListItemAction]] - `contains` [EXTRACTED]
 - [[CycleQuickActions]] - `imports` [EXTRACTED]
@@ -39,4 +38,4 @@ tags:
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 - [[useTimeZoneConverter()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Active
+#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats

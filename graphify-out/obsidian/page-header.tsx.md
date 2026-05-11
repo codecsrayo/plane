@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/settings/page-header.tsx"
 type: "code"
-community: "Settings Project"
+community: "Community 84"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Settings_Project
+  - community/Community_84
 ---
 
 # page-header.tsx
 
 ## Connections
-
 - [[Props_182]] - `contains` [EXTRACTED]
 - [[SettingsPageHeader()]] - `contains` [EXTRACTED]
 - [[header.tsx_20]] - `imports_from` [EXTRACTED]
@@ -33,4 +32,4 @@ tags:
 - [[header.tsx_35]] - `imports_from` [EXTRACTED]
 - [[header.tsx_36]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Settings_Project
+#graphify/code #graphify/EXTRACTED #community/Community_84

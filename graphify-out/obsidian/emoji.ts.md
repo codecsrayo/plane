@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/emoji/emoji.ts"
 type: "code"
-community: "Emoji Command"
+community: "Community 86"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Emoji_Command
+  - community/Community_86
 ---
 
 # emoji.ts
 
 ## Connections
-
 - [[Emoji]] - `contains` [EXTRACTED]
 - [[EmojiItem]] - `contains` [EXTRACTED]
 - [[EmojiOptions]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[find-suggestion-match.ts]] - `imports_from` [EXTRACTED]
 - [[suggestion.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Emoji_Command
+#graphify/code #graphify/EXTRACTED #community/Community_86

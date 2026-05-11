@@ -1,18 +1,17 @@
 ---
 source_file: "admin/store/instance.store.ts"
 type: "code"
-community: "Instance User"
+community: "Community 313"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Instance_User
+  - community/Community_313
 ---
 
 # instance.store.ts
 
 ## Connections
-
 - [[IInstanceStore]] - `contains` [EXTRACTED]
 - [[InstanceStore]] - `contains` [EXTRACTED]
 - [[RootStore]] - `imports` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[updatedItem]] - `contains` [EXTRACTED]
 - [[use-instance.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Instance_User
+#graphify/code #graphify/EXTRACTED #community/Community_313

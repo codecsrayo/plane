@@ -1,46 +1,76 @@
 ---
 type: community
-cohesion: 0.11
-members: 30
+cohesion: 0.05
+members: 61
 ---
 
 # Community 70
 
-**Cohesion:** 0.11 - loosely connected
-**Members:** 30 nodes
+**Cohesion:** 0.05 - loosely connected
+**Members:** 61 nodes
 
 ## Members
-
-- [[ActivityIcon()]] - code - web/core/components/core/activity.tsx
-- [[ActivityList]] - code - web/core/components/profile/activity/activity-list.tsx
-- [[ActivityMessage()]] - code - web/core/components/core/activity.tsx
-- [[ActivityMessageProps]] - code - web/core/components/core/activity.tsx
-- [[ActivitySettingsLoader()]] - code - web/core/components/ui/loader/settings/activity.tsx
-- [[IssueLink()_1]] - code - web/core/components/core/activity.tsx
-- [[LabelPill]] - code - web/core/components/core/activity.tsx
-- [[ProfileActivity]] - code - web/core/components/profile/overview/activity.tsx
-- [[ProfileActivityListPage]] - code - web/core/components/profile/activity/profile-activity-list.tsx
-- [[Props_97]] - code - web/core/components/settings/profile/content/pages/activity/activity-list.tsx
-- [[Props_96]] - code - web/core/components/profile/activity/profile-activity-list.tsx
-- [[Props_98]] - code - web/core/components/profile/activity/workspace-activity-list.tsx
-- [[USER_ACTIVITY()]] - code - web/core/constants/fetch-keys.ts
-- [[USER_PROFILE_ACTIVITY()]] - code - web/core/constants/fetch-keys.ts
-- [[UserLink()]] - code - web/core/components/core/activity.tsx
-- [[WorkspaceActivityListPage()]] - code - web/core/components/profile/activity/workspace-activity-list.tsx
-- [[activity-list.tsx]] - code - web/core/components/profile/activity/activity-list.tsx
-- [[activity-list.tsx_1]] - code - web/core/components/settings/profile/content/pages/activity/activity-list.tsx
-- [[activity.tsx_2]] - code - web/core/components/core/activity.tsx
-- [[activity.tsx_1]] - code - web/core/components/profile/overview/activity.tsx
-- [[activity.tsx]] - code - web/core/components/ui/loader/settings/activity.tsx
-- [[activityDetails]] - code - web/core/components/core/activity.tsx
-- [[getInboxUserActivityMessage()]] - code - web/core/components/core/activity.tsx
-- [[inboxActivityMessage]] - code - web/core/components/core/activity.tsx
-- [[profile-activity-list.tsx]] - code - web/core/components/profile/activity/profile-activity-list.tsx
-- [[userService_4]] - code - web/core/components/settings/profile/content/pages/activity/activity-list.tsx
-- [[userService_1]] - code - web/core/components/profile/activity/profile-activity-list.tsx
-- [[userService_2]] - code - web/core/components/profile/activity/workspace-activity-list.tsx
-- [[userService_3]] - code - web/core/components/profile/overview/activity.tsx
-- [[workspace-activity-list.tsx]] - code - web/core/components/profile/activity/workspace-activity-list.tsx
+- [[AuthBase()]] - code - web/core/components/auth-screens/auth-base.tsx
+- [[AuthBaseProps]] - code - web/core/components/auth-screens/auth-base.tsx
+- [[AuthFooter()]] - code - web/core/components/auth-screens/footer.tsx
+- [[AuthHeader]] - code - web/core/components/auth-screens/header.tsx
+- [[AuthHeaderBase()]] - code - web/core/components/auth-screens/header.tsx
+- [[AuthHeaderProps]] - code - web/core/components/auth-screens/header.tsx
+- [[AuthRoot]] - code - space/components/account/auth-forms/auth-root.tsx
+- [[AuthenticationWrapper]] - code - web/core/lib/wrappers/authentication-wrapper.tsx
+- [[BRAND_LOGOS]] - code - web/core/components/auth-screens/footer.tsx
+- [[CreateWorkspaceForm]] - code - web/core/components/workspace/create-workspace-form.tsx
+- [[CreateWorkspacePage]] - code - web/app/(all)/create-workspace/page.tsx
+- [[DefaultLayout()]] - code - web/core/layouts/default-layout/index.tsx
+- [[EmptySpace()]] - code - web/core/components/ui/empty-space.tsx
+- [[EmptySpaceItem()]] - code - web/core/components/ui/empty-space.tsx
+- [[EmptySpaceItemProps]] - code - web/core/components/ui/empty-space.tsx
+- [[EmptySpaceProps]] - code - web/core/components/ui/empty-space.tsx
+- [[ForgotPasswordPage()]] - code - web/app/(all)/accounts/forgot-password/page.tsx
+- [[GlobalModals]] - code - web/ce/components/common/modal/global.tsx
+- [[InstanceNotReady()]] - code - web/core/components/instance/not-ready-view.tsx
+- [[MaintenanceView()]] - code - web/core/components/instance/maintenance-view.tsx
+- [[NotAWorkspaceMember()]] - code - web/core/components/auth-screens/workspace/not-a-member.tsx
+- [[OnboardingPage()]] - code - web/app/(all)/onboarding/page.tsx
+- [[ProfileSettingsModal]] - code - web/ce/components/common/modal/global.tsx
+- [[Props_80]] - code - web/core/layouts/default-layout/index.tsx
+- [[Props_102]] - code - web/core/components/workspace/create-workspace-form.tsx
+- [[ResetPasswordPage()]] - code - web/app/(all)/accounts/reset-password/page.tsx
+- [[SetPasswordPage()]] - code - web/app/(all)/accounts/set-password/page.tsx
+- [[SignUpPage()]] - code - web/app/(all)/sign-up/page.tsx
+- [[TAuthHeaderBase]] - code - web/core/components/auth-screens/header.tsx
+- [[TAuthenticationWrapper]] - code - web/core/lib/wrappers/authentication-wrapper.tsx
+- [[TGlobalModalsProps]] - code - web/ce/components/common/modal/global.tsx
+- [[TPageType]] - code - web/core/lib/wrappers/authentication-wrapper.tsx
+- [[TRedirectConfig]] - code - web/core/lib/wrappers/authentication-wrapper.tsx
+- [[WORKSPACE_INVITATION()]] - code - web/core/constants/fetch-keys.ts
+- [[WorkspaceAuthWrapper]] - code - web/core/layouts/auth-layout/workspace-wrapper.tsx
+- [[WorkspaceLayout()]] - code - web/app/(all)/[workspaceSlug]/layout.tsx
+- [[auth-base.tsx]] - code - web/core/components/auth-screens/auth-base.tsx
+- [[authContentMap]] - code - web/core/components/auth-screens/header.tsx
+- [[authentication-wrapper.tsx]] - code - web/core/lib/wrappers/authentication-wrapper.tsx
+- [[create-workspace-form.tsx]] - code - web/core/components/workspace/create-workspace-form.tsx
+- [[empty-space.tsx]] - code - web/core/components/ui/empty-space.tsx
+- [[footer.tsx_2]] - code - web/core/components/auth-screens/footer.tsx
+- [[global.tsx]] - code - web/ce/components/common/modal/global.tsx
+- [[header.tsx_56]] - code - web/core/components/auth-screens/header.tsx
+- [[index.ts_403]] - code - web/core/components/onboarding/index.ts
+- [[index.tsx_6]] - code - web/core/layouts/default-layout/index.tsx
+- [[layout.tsx_3]] - code - web/app/(all)/[workspaceSlug]/layout.tsx
+- [[maintenance-view.tsx]] - code - web/core/components/instance/maintenance-view.tsx
+- [[not-a-member.tsx]] - code - web/core/components/auth-screens/workspace/not-a-member.tsx
+- [[not-ready-view.tsx]] - code - web/core/components/instance/not-ready-view.tsx
+- [[page.tsx_60]] - code - web/app/(all)/accounts/forgot-password/page.tsx
+- [[page.tsx_59]] - code - web/app/(all)/accounts/reset-password/page.tsx
+- [[page.tsx_61]] - code - web/app/(all)/accounts/set-password/page.tsx
+- [[page.tsx_64]] - code - web/app/(all)/create-workspace/page.tsx
+- [[page.tsx_62]] - code - web/app/(all)/onboarding/page.tsx
+- [[page.tsx_57]] - code - web/app/(all)/sign-up/page.tsx
+- [[page.tsx_63]] - code - web/app/(all)/workspace-invitations/page.tsx
+- [[page.tsx_1]] - code - web/app/(home)/page.tsx
+- [[workspaceService_2]] - code - web/app/(all)/onboarding/page.tsx
+- [[workspaceService_6]] - code - web/core/components/workspace/create-workspace-form.tsx
+- [[workspaceService_3]] - code - web/app/(all)/workspace-invitations/page.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -50,22 +80,22 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 6 edges to [[_COMMUNITY_Community 37]]
-- 6 edges to [[_COMMUNITY_Auth Wrappers]]
-- 4 edges to [[_COMMUNITY_Community 65]]
-- 3 edges to [[_COMMUNITY_Layout System]]
-- 3 edges to [[_COMMUNITY_Empty State Components]]
-- 3 edges to [[_COMMUNITY_Community 179]]
-- 2 edges to [[_COMMUNITY_Authentication UI]]
-- 2 edges to [[_COMMUNITY_Community 81]]
-- 2 edges to [[_COMMUNITY_Community 48]]
-- 2 edges to [[_COMMUNITY_Community 191]]
+- 8 edges to [[_COMMUNITY_Community 43]]
+- 8 edges to [[_COMMUNITY_Community 46]]
+- 7 edges to [[_COMMUNITY_Community 24]]
+- 6 edges to [[_COMMUNITY_Community 65]]
+- 5 edges to [[_COMMUNITY_Community 36]]
+- 5 edges to [[_COMMUNITY_Module & Cycle Analytics]]
+- 4 edges to [[_COMMUNITY_Community 45]]
+- 4 edges to [[_COMMUNITY_Community 64]]
+- 3 edges to [[_COMMUNITY_Community 58]]
+- 2 edges to [[_COMMUNITY_Community 130]]
+- 1 edge to [[_COMMUNITY_Community 162]]
+- 1 edge to [[_COMMUNITY_Community 74]]
 
 ## Top bridge nodes
-
-- [[activity-list.tsx_1]] - degree 16, connects to 5 communities
-- [[profile-activity-list.tsx]] - degree 14, connects to 5 communities
-- [[activity.tsx_1]] - degree 10, connects to 4 communities
-- [[activity-list.tsx]] - degree 13, connects to 3 communities
-- [[workspace-activity-list.tsx]] - degree 9, connects to 3 communities
+- [[authentication-wrapper.tsx]] - degree 22, connects to 7 communities
+- [[page.tsx_63]] - degree 16, connects to 6 communities
+- [[page.tsx_62]] - degree 13, connects to 5 communities
+- [[page.tsx_64]] - degree 10, connects to 4 communities
+- [[create-workspace-form.tsx]] - degree 10, connects to 4 communities

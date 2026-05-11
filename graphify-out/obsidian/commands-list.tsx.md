@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/power-k/ui/modal/commands-list.tsx"
 type: "code"
-community: "Power Shortcuts"
+community: "Community 130"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Power_Shortcuts
+  - community/Community_130
 ---
 
 # commands-list.tsx
 
 ## Connections
-
 - [[PowerKModalSearchMenu()]] - `imports` [EXTRACTED]
 - [[ProjectsAppPowerKCommandsList()]] - `contains` [EXTRACTED]
 - [[TPowerKCommandConfig]] - `imports` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[types.ts_16]] - `imports_from` [EXTRACTED]
 - [[wrapper.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Power_Shortcuts
+#graphify/code #graphify/EXTRACTED #community/Community_130

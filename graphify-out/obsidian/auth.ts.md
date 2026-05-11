@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/auth.ts"
 type: "code"
-community: "Email Check"
+community: "Community 495"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Email_Check
+  - community/Community_495
 ---
 
 # auth.ts
 
 ## Connections
-
 - [[ICsrfTokenData]] - `contains` [EXTRACTED]
 - [[IEmailCheckData]] - `contains` [EXTRACTED]
 - [[IEmailCheckResponse]] - `contains` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[IPasswordSignInData]] - `contains` [EXTRACTED]
 - [[TEmailCheckTypes]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Email_Check
+#graphify/code #graphify/EXTRACTED #community/Community_495

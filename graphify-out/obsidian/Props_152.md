@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/modules/select/status.tsx"
 type: "code"
-community: "Status"
+community: "Community 828"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Status
+  - community/Community_828
 ---
 
 # Props
 
 ## Connections
-
 - [[status.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Status
+#graphify/code #graphify/EXTRACTED #community/Community_828

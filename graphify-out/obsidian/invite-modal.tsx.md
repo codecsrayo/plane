@@ -1,18 +1,17 @@
 ---
 source_file: "web/ce/components/workspace/members/invite-modal.tsx"
 type: "code"
-community: "Invitation Workspace"
+community: "Community 312"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Invitation_Workspace
+  - community/Community_312
 ---
 
 # invite-modal.tsx
 
 ## Connections
-
 - [[InvitationFields]] - `imports` [EXTRACTED]
 - [[InvitationForm]] - `imports` [EXTRACTED]
 - [[InvitationModalActions]] - `imports` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[use-workspace-invitation.tsx]] - `imports_from` [EXTRACTED]
 - [[useWorkspaceInvitationActions()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Invitation_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_312

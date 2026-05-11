@@ -1,18 +1,17 @@
 ---
 source_file: "space/hooks/store/use-issue-filter.ts"
 type: "code"
-community: "Issue Peek"
+community: "Community 112"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Peek
+  - community/Community_112
 ---
 
 # useIssueFilter()
 
 ## Connections
-
 - [[IssuesLayout()]] - `calls` [EXTRACTED]
 - [[controls.tsx]] - `imports` [EXTRACTED]
 - [[layout-selection.tsx_1]] - `imports` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[root.tsx_141]] - `imports` [EXTRACTED]
 - [[use-issue-filter.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Peek
+#graphify/code #graphify/EXTRACTED #community/Community_112

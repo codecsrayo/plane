@@ -1,17 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.50
+members: 5
 ---
 
 # Community 645
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.50 - moderately connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[mod.rs]] - code - api_rust/src/auth/mod.rs
+- [[.from_request_parts()_5]] - code - api_rust/src/auth/extractors.rs
+- [[.from_request_parts()_4]] - code - api_rust/src/auth/extractors.rs
+- [[ProjectMemberGuard]] - code - api_rust/src/auth/extractors.rs
+- [[WorkspaceMemberGuard]] - code - api_rust/src/auth/extractors.rs
+- [[extractors.rs]] - code - api_rust/src/auth/extractors.rs
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,28 +1,43 @@
 ---
 type: community
-cohesion: 0.24
-members: 12
+cohesion: 0.10
+members: 28
 ---
 
 # Community 202
 
-**Cohesion:** 0.24 - loosely connected
-**Members:** 12 nodes
+**Cohesion:** 0.10 - loosely connected
+**Members:** 28 nodes
 
 ## Members
-
-- [[POWER_K_MODAL_PAGE_DETAILS]] - code - web/core/components/power-k/ui/modal/constants.ts
-- [[PowerKModalContextIndicator()]] - code - web/core/components/power-k/ui/modal/context-indicator.tsx
-- [[PowerKModalHeader()]] - code - web/core/components/power-k/ui/modal/header.tsx
-- [[Props_337]] - code - web/core/components/power-k/ui/modal/context-indicator.tsx
-- [[TArgs_4]] - code - web/core/components/power-k/hooks/use-context-indicator.ts
-- [[TPowerKContextType]] - code - web/core/components/power-k/core/types.ts
-- [[TPowerKModalPageDetails]] - code - web/core/components/power-k/ui/modal/constants.ts
-- [[constants.ts_2]] - code - web/core/components/power-k/ui/modal/constants.ts
-- [[context-indicator.tsx]] - code - web/core/components/power-k/ui/modal/context-indicator.tsx
-- [[header.tsx_11]] - code - web/core/components/power-k/ui/modal/header.tsx
-- [[use-context-indicator.ts]] - code - web/core/components/power-k/hooks/use-context-indicator.ts
-- [[useContextIndicator()]] - code - web/core/components/power-k/hooks/use-context-indicator.ts
+- [[.constructor()_144]] - code - web/core/services/ai.service.ts
+- [[.createGptTask()]] - code - web/core/services/ai.service.ts
+- [[.performEditorTask()]] - code - web/core/services/ai.service.ts
+- [[AIService_1]] - code - web/core/services/ai.service.ts
+- [[AI_EDITOR_TASKS_1]] - code - web/core/constants/ai.ts
+- [[AskPiMenu()]] - code - web/ce/components/pages/editor/ai/ask-pi-menu.tsx
+- [[EditorAIMenu()]] - code - web/ce/components/pages/editor/ai/menu.tsx
+- [[FormData_2]] - code - web/core/components/core/modals/gpt-assistant-popover.tsx
+- [[GptAssistantPopover()]] - code - web/core/components/core/modals/gpt-assistant-popover.tsx
+- [[IssueDescriptionEditor]] - code - web/core/components/issues/issue-modal/components/description-editor.tsx
+- [[LOADING_TEXTS]] - code - web/core/constants/ai.ts
+- [[MENU_ITEMS]] - code - web/ce/components/pages/editor/ai/menu.tsx
+- [[Props_74]] - code - web/ce/components/pages/editor/ai/ask-pi-menu.tsx
+- [[Props_73]] - code - web/ce/components/pages/editor/ai/menu.tsx
+- [[Props_529]] - code - web/core/components/core/modals/gpt-assistant-popover.tsx
+- [[TIssueDescriptionEditorProps]] - code - web/core/components/issues/issue-modal/components/description-editor.tsx
+- [[TONES_LIST]] - code - web/ce/components/pages/editor/ai/menu.tsx
+- [[TTaskPayload_1]] - code - web/core/services/ai.service.ts
+- [[ai.service.ts_1]] - code - web/core/services/ai.service.ts
+- [[ai.ts_4]] - code - web/core/constants/ai.ts
+- [[aiService]] - code - web/ce/components/pages/editor/ai/menu.tsx
+- [[aiService_1]] - code - web/core/components/issues/issue-modal/components/description-editor.tsx
+- [[aiService_2]] - code - web/core/components/core/modals/gpt-assistant-popover.tsx
+- [[ask-pi-menu.tsx]] - code - web/ce/components/pages/editor/ai/ask-pi-menu.tsx
+- [[description-editor.tsx]] - code - web/core/components/issues/issue-modal/components/description-editor.tsx
+- [[gpt-assistant-popover.tsx]] - code - web/core/components/core/modals/gpt-assistant-popover.tsx
+- [[menu.tsx_1]] - code - web/ce/components/pages/editor/ai/menu.tsx
+- [[workspaceService_9]] - code - web/core/components/issues/issue-modal/components/description-editor.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -32,20 +47,18 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 6 edges to [[_COMMUNITY_Community 45]]
-- 5 edges to [[_COMMUNITY_Community 99]]
-- 3 edges to [[_COMMUNITY_Module Analytics]]
-- 3 edges to [[_COMMUNITY_Cycle Services & Filters]]
-- 3 edges to [[_COMMUNITY_Community 167]]
-- 1 edge to [[_COMMUNITY_Community 83]]
-- 1 edge to [[_COMMUNITY_Community 193]]
-- 1 edge to [[_COMMUNITY_Community 80]]
+- 4 edges to [[_COMMUNITY_Community 36]]
+- 4 edges to [[_COMMUNITY_Community 65]]
+- 2 edges to [[_COMMUNITY_Work Item Detail & Layouts]]
+- 2 edges to [[_COMMUNITY_Community 64]]
+- 2 edges to [[_COMMUNITY_Community 42]]
+- 2 edges to [[_COMMUNITY_Service Layer]]
+- 2 edges to [[_COMMUNITY_Community 46]]
+- 1 edge to [[_COMMUNITY_Activity & Inbox Filters]]
 
 ## Top bridge nodes
-
-- [[TPowerKContextType]] - degree 7, connects to 4 communities
-- [[header.tsx_11]] - degree 10, connects to 3 communities
-- [[use-context-indicator.ts]] - degree 9, connects to 3 communities
-- [[context-indicator.tsx]] - degree 9, connects to 2 communities
-- [[useContextIndicator()]] - degree 5, connects to 2 communities
+- [[description-editor.tsx]] - degree 20, connects to 7 communities
+- [[ask-pi-menu.tsx]] - degree 6, connects to 2 communities
+- [[menu.tsx_1]] - degree 14, connects to 1 community
+- [[ai.service.ts_1]] - degree 9, connects to 1 community
+- [[gpt-assistant-popover.tsx]] - degree 8, connects to 1 community

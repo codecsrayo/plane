@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/work-item-filters/use-work-item-filters.ts"
 type: "code"
-community: "Project Workspace"
+community: "Community 22"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Workspace
+  - community/Community_22
 ---
 
 # useWorkItemFilters()
 
 ## Connections
-
 - [[base.tsx_9]] - `imports` [EXTRACTED]
 - [[filters-toggle.tsx]] - `imports` [EXTRACTED]
 - [[issue-progress.tsx]] - `imports` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[useCyclesDetails()]] - `calls` [EXTRACTED]
 - [[useWorkItemFilterInstance()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_22

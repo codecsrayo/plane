@@ -1,18 +1,17 @@
 ---
 source_file: "types/src/utils.ts"
 type: "code"
-community: "Node Condition"
+community: "Community 190"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Node_Condition
+  - community/Community_190
 ---
 
 # utils.ts
 
 ## Connections
-
 - [[CompleteOrEmpty]] - `contains` [EXTRACTED]
 - [[MakeOptional]] - `contains` [EXTRACTED]
 - [[PartialDeep]] - `contains` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[expression.ts]] - `imports_from` [EXTRACTED]
 - [[view-props.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Node_Condition
+#graphify/code #graphify/EXTRACTED #community/Community_190

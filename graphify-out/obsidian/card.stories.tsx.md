@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/card/card.stories.tsx"
 type: "code"
-community: "Card Direction"
+community: "Community 352"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Card_Direction
+  - community/Community_352
 ---
 
 # card.stories.tsx
 
 ## Connections
-
 - [[AllDirections]] - `contains` [EXTRACTED]
 - [[AllSpacings]] - `contains` [EXTRACTED]
 - [[AllVariants_1]] - `contains` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[WithoutShadow]] - `contains` [EXTRACTED]
 - [[card.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Card_Direction
+#graphify/code #graphify/EXTRACTED #community/Community_352

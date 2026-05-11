@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/utils/content_validator.rs"
 type: "code"
-community: "Test Binary"
+community: "Community 157"
 location: "L89"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Test_Binary
+  - community/Community_157
 ---
 
 # builder()
 
 ## Connections
-
 - [[.new()]] - `calls` [INFERRED]
 - [[.post_form_location()]] - `calls` [INFERRED]
 - [[.request()]] - `calls` [INFERRED]
@@ -27,4 +26,4 @@ tags:
 - [[send_reset_email()]] - `calls` [INFERRED]
 - [[send_smtp_email()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Test_Binary
+#graphify/code #graphify/INFERRED #community/Community_157

@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_219]] - code - web/ce/components/gantt-chart/dependency/index.ts
+- [[index.ts_236]] - code - web/ce/components/workspace-notifications/index.ts
 
 ## Live Query (requires Dataview plugin)
 

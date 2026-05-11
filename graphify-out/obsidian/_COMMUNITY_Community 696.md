@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.50
+members: 4
 ---
 
 # Community 696
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.50 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_46]] - code - api_rust/src/entities/user_notification_preferences.rs
+- [[0045_issueactivity_epoch_workspacemember_issue_props_and_more.py]] - code - api/plane/db/migrations/0045_issueactivity_epoch_workspacemember_issue_props_and_more.py
+- [[Migration_103]] - code - api/plane/db/migrations/0045_issueactivity_epoch_workspacemember_issue_props_and_more.py
+- [[update_issue_activity_blocked()]] - code - api/plane/db/migrations/0045_issueactivity_epoch_workspacemember_issue_props_and_more.py
+- [[update_issue_activity_priority()]] - code - api/plane/db/migrations/0045_issueactivity_epoch_workspacemember_issue_props_and_more.py
 
 ## Live Query (requires Dataview plugin)
 

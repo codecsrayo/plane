@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/src/auth/email_auth.rs"
 type: "code"
-community: "Magic Sign"
+community: "Community 52"
 location: "L718"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Magic_Sign
+  - community/Community_52
 ---
 
 # ensure_profile_exists()
 
 ## Connections
-
 - [[.new()]] - `calls` [INFERRED]
 - [[.set()]] - `calls` [INFERRED]
 - [[authenticate_existing_user()]] - `calls` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[email_auth.rs]] - `contains` [EXTRACTED]
 - [[now]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Magic_Sign
+#graphify/code #graphify/INFERRED #community/Community_52

@@ -1,17 +1,32 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.23
+members: 17
 ---
 
 # Community 345
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.23 - loosely connected
+**Members:** 17 nodes
 
 ## Members
-
-- [[index.ts_12]] - code - ui/src/header/index.ts
+- [[draft_issues_crud()]] - code - api_rust/tests/workspace_extras.rs
+- [[favorites_crud()]] - code - api_rust/tests/workspace_extras.rs
+- [[get_home_preferences_returns_200()]] - code - api_rust/tests/workspace_extras.rs
+- [[get_recent_visits_returns_200()]] - code - api_rust/tests/workspace_extras.rs
+- [[get_sidebar_preferences_returns_200()]] - code - api_rust/tests/workspace_extras.rs
+- [[get_workspace_member_me_returns_200()]] - code - api_rust/tests/workspace_extras.rs
+- [[get_workspace_user_properties_returns_200()]] - code - api_rust/tests/workspace_extras.rs
+- [[list_workspace_cycles_returns_200()]] - code - api_rust/tests/workspace_extras.rs
+- [[list_workspace_estimates_returns_200()]] - code - api_rust/tests/workspace_extras.rs
+- [[list_workspace_labels_returns_200()]] - code - api_rust/tests/workspace_extras.rs
+- [[list_workspace_modules_returns_200()]] - code - api_rust/tests/workspace_extras.rs
+- [[list_workspace_states_returns_200()]] - code - api_rust/tests/workspace_extras.rs
+- [[quick_links_crud()]] - code - api_rust/tests/workspace_extras.rs
+- [[setup()_24]] - code - api_rust/tests/workspace_extras.rs
+- [[stickies_crud()]] - code - api_rust/tests/workspace_extras.rs
+- [[update_workspace_user_properties_returns_200()]] - code - api_rust/tests/workspace_extras.rs
+- [[workspace_extras.rs]] - code - api_rust/tests/workspace_extras.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -19,3 +34,9 @@ members: 1
 TABLE source_file, type FROM #community/Community_345
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Rust Auth Services]]
+
+## Top bridge nodes
+- [[setup()_24]] - degree 17, connects to 1 community

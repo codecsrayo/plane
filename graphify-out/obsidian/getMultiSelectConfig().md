@@ -1,19 +1,19 @@
 ---
-source_file: "utils/src/rich-filters/factories/configs/core.ts"
+source_file: "packages/utils/src/rich-filters/factories/configs/core.ts"
 type: "code"
-community: "State Multi"
+community: "Community 39"
 location: "L77"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/State_Multi
+  - community/Community_39
 ---
 
 # getMultiSelectConfig()
 
 ## Connections
-
 - [[core.ts_17]] - `contains` [EXTRACTED]
+- [[core.ts_39]] - `contains` [EXTRACTED]
 - [[createFilterFieldConfig()]] - `calls` [EXTRACTED]
 - [[getCycleMultiSelectConfig()]] - `calls` [INFERRED]
 - [[getLabelMultiSelectConfig()]] - `calls` [INFERRED]
@@ -25,5 +25,6 @@ tags:
 - [[getStateGroupMultiSelectConfig()]] - `calls` [INFERRED]
 - [[getStateMultiSelectConfig()]] - `calls` [INFERRED]
 - [[shared.ts_9]] - `imports` [EXTRACTED]
+- [[shared.ts_25]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/State_Multi
+#graphify/code #graphify/INFERRED #community/Community_39

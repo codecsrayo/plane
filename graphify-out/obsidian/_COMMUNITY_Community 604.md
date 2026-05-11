@@ -1,18 +1,20 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+cohesion: 0.60
+members: 5
 ---
 
 # Community 604
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Cohesion:** 0.60 - moderately connected
+**Members:** 5 nodes
 
 ## Members
-
-- [[.to()_106]] - code - api_rust/src/entities/pages.rs
-- [[Entity_106]] - code - api_rust/src/entities/pages.rs
+- [[ACCEPTED_AVATAR_IMAGE_MIME_TYPES_FOR_REACT_DROPZONE]] - code - packages/constants/src/file.ts
+- [[ACCEPTED_COVER_IMAGE_MIME_TYPES_FOR_REACT_DROPZONE]] - code - packages/constants/src/file.ts
+- [[DANGEROUS_EXTENSIONS]] - code - packages/constants/src/file.ts
+- [[file.ts_1]] - code - constants/src/file.ts
+- [[file.ts_5]] - code - packages/constants/src/file.ts
 
 ## Live Query (requires Dataview plugin)
 

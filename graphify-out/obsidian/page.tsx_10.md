@@ -1,18 +1,17 @@
 ---
 source_file: "web/app/(all)/[workspaceSlug]/(projects)/profile/[userId]/page.tsx"
 type: "code"
-community: "Profile Priority"
+community: "Community 36"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Profile_Priority
+  - community/Community_36
 ---
 
 # page.tsx
 
 ## Connections
-
 - [[PageHead()]] - `imports` [EXTRACTED]
 - [[ProfileActivity]] - `imports` [EXTRACTED]
 - [[ProfileOverviewPage()]] - `contains` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[userService_1]] - `contains` [EXTRACTED]
 - [[workload.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Profile_Priority
+#graphify/code #graphify/EXTRACTED #community/Community_36

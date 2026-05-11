@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/api/views/module.py"
 type: "code"
-community: "Endpoint Issue"
+community: "Community 315"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_Issue
+  - community/Community_315
 ---
 
 # module.py
 
 ## Connections
-
 - [[ModuleArchiveUnarchiveAPIEndpoint]] - `contains` [EXTRACTED]
 - [[ModuleDetailAPIEndpoint]] - `contains` [EXTRACTED]
 - [[ModuleIssueDetailAPIEndpoint]] - `contains` [EXTRACTED]
@@ -25,4 +24,4 @@ tags:
 - [[patch()_17]] - `contains` [EXTRACTED]
 - [[post()_21]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_315

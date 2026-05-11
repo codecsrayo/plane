@@ -1,18 +1,17 @@
 ---
 source_file: "space/components/issues/issue-layouts/list/headers/group-by-card.tsx"
 type: "code"
-community: "Group Kanban"
+community: "Bulk Operations & Spreadsheet"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group_Kanban
+  - community/Bulk_Operations__Spreadsheet
 ---
 
 # HeaderGroupByCard
 
 ## Connections
-
 - [[default.tsx]] - `imports` [EXTRACTED]
 - [[default.tsx_4]] - `imports` [EXTRACTED]
 - [[group-by-card.tsx]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[swimlanes.tsx]] - `imports` [EXTRACTED]
 - [[swimlanes.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group_Kanban
+#graphify/code #graphify/EXTRACTED #community/Bulk_Operations__Spreadsheet

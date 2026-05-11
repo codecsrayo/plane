@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/accordion/accordion.stories.tsx"
 type: "code"
-community: "Accordion Trigger"
+community: "Community 304"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Accordion_Trigger
+  - community/Community_304
 ---
 
 # accordion.stories.tsx
 
 ## Connections
-
 - [[Accordion]] - `imports` [EXTRACTED]
 - [[AllowMultiple]] - `contains` [EXTRACTED]
 - [[AsChildTrigger]] - `contains` [EXTRACTED]
@@ -23,4 +22,4 @@ tags:
 - [[WithDisabledItem]] - `contains` [EXTRACTED]
 - [[accordion.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Accordion_Trigger
+#graphify/code #graphify/EXTRACTED #community/Community_304

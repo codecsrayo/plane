@@ -1,18 +1,17 @@
 ---
-source_file: "services/src/instance/instance.service.ts"
+source_file: "packages/services/src/instance/instance.service.ts"
 type: "code"
-community: "Instance Instanceservice"
+community: "Community 425"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Instance_Instanceservice
+  - community/Community_425
 ---
 
 # InstanceService
 
 ## Connections
-
 - [[.admins()]] - `method` [EXTRACTED]
 - [[.changelog()]] - `method` [EXTRACTED]
 - [[.configurations()]] - `method` [EXTRACTED]
@@ -23,5 +22,6 @@ tags:
 - [[.update()_12]] - `method` [EXTRACTED]
 - [[.updateConfigurations()]] - `method` [EXTRACTED]
 - [[instance.service.ts]] - `contains` [EXTRACTED]
+- [[instance.service.ts_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Instance_Instanceservice
+#graphify/code #graphify/EXTRACTED #community/Community_425

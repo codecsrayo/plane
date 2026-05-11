@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/views/view-list-item.tsx"
 type: "code"
-community: "Project Work"
+community: "Community 22"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Work
+  - community/Community_22
 ---
 
 # view-list-item.tsx
 
 ## Connections
-
 - [[ProjectViewListItem]] - `contains` [EXTRACTED]
 - [[Props_92]] - `contains` [EXTRACTED]
 - [[ViewListItemAction]] - `imports` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[view-list-item-action.tsx]] - `imports_from` [EXTRACTED]
 - [[views-list.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Work
+#graphify/code #graphify/EXTRACTED #community/Community_22

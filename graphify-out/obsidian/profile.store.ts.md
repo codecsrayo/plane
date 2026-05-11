@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/user/profile.store.ts"
 type: "code"
-community: "User Profile"
+community: "Community 51"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User_Profile
+  - community/Community_51
 ---
 
 # profile.store.ts
 
 ## Connections
-
 - [[CoreRootStore]] - `imports` [EXTRACTED]
 - [[IUserProfileStore]] - `contains` [EXTRACTED]
 - [[ProfileStore]] - `contains` [EXTRACTED]
@@ -29,4 +28,4 @@ tags:
 - [[user.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[userKey_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User_Profile
+#graphify/code #graphify/EXTRACTED #community/Community_51

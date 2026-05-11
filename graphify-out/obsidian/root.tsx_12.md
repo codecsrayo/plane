@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/charts/bar-chart/root.tsx"
 type: "code"
-community: "Custom Chart"
+community: "Community 128"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Custom_Chart
+  - community/Community_128
 ---
 
 # root.tsx
 
 ## Connections
-
 - [[BarChart]] - `contains` [EXTRACTED]
 - [[CustomTooltip]] - `imports` [EXTRACTED]
 - [[CustomXAxisTick]] - `imports` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[tick.tsx]] - `imports_from` [EXTRACTED]
 - [[tooltip.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Custom_Chart
+#graphify/code #graphify/EXTRACTED #community/Community_128

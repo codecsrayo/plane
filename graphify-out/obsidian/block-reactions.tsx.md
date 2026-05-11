@@ -1,18 +1,17 @@
 ---
 source_file: "space/components/issues/issue-layouts/kanban/block-reactions.tsx"
 type: "code"
-community: "Issue Peek"
+community: "Community 80"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Peek
+  - community/Community_80
 ---
 
 # block-reactions.tsx
 
 ## Connections
-
 - [[BlockReactions]] - `contains` [EXTRACTED]
 - [[IssueEmojiReactions]] - `imports` [EXTRACTED]
 - [[IssueVotes]] - `imports` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[issue-emoji-reactions.tsx]] - `imports_from` [EXTRACTED]
 - [[issue-vote-reactions.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Peek
+#graphify/code #graphify/EXTRACTED #community/Community_80

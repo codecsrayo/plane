@@ -1,17 +1,16 @@
 ---
 source_file: ""
 type: "code"
-community: "Issue Return"
+community: "Community 283"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Return
+  - community/Community_283
 ---
 
 # IssueSerializer
 
 ## Connections
-
 - [[IssueExportSerializer]] - `inherits` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Return
+#graphify/code #graphify/EXTRACTED #community/Community_283

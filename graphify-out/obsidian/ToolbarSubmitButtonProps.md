@@ -1,18 +1,18 @@
 ---
-source_file: "propel/src/toolbar/toolbar.tsx"
+source_file: "packages/propel/src/toolbar/toolbar.tsx"
 type: "code"
-community: "Toolbar Combobox"
+community: "Community 276"
 location: "L37"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toolbar_Combobox
+  - community/Community_276
 ---
 
 # ToolbarSubmitButtonProps
 
 ## Connections
-
 - [[toolbar.tsx]] - `contains` [EXTRACTED]
+- [[toolbar.tsx_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toolbar_Combobox
+#graphify/code #graphify/EXTRACTED #community/Community_276

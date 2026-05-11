@@ -1,18 +1,17 @@
 ---
-source_file: "space/store/user.store.ts"
+source_file: "packages/shared-state/src/store/user.store.ts"
 type: "code"
-community: "Instance User"
-location: "L42"
+community: "Community 156"
+location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Instance_User
+  - community/Community_156
 ---
 
 # UserStore
 
 ## Connections
-
 - [[.constructor()_33]] - `method` [EXTRACTED]
 - [[.currentActor()]] - `method` [EXTRACTED]
 - [[root.store.ts_5]] - `imports` [EXTRACTED]
@@ -20,5 +19,6 @@ tags:
 - [[user.store.ts]] - `contains` [EXTRACTED]
 - [[user.store.ts_1]] - `contains` [EXTRACTED]
 - [[user.store.ts_2]] - `contains` [EXTRACTED]
+- [[user.store.ts_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Instance_User
+#graphify/code #graphify/EXTRACTED #community/Community_156

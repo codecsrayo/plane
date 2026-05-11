@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/inbox/inbox-filter/applied-filters/state.tsx"
 type: "code"
-community: "Issue Inbox"
+community: "Activity & Inbox Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Inbox
+  - community/Activity__Inbox_Filters
 ---
 
 # state.tsx
 
 ## Connections
-
 - [[InboxIssueAppliedFiltersState]] - `contains` [EXTRACTED]
 - [[root.tsx_114]] - `imports_from` [EXTRACTED]
 - [[use-project-inbox.ts]] - `imports_from` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[useProjectInbox()]] - `imports` [EXTRACTED]
 - [[useProjectState()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Inbox
+#graphify/code #graphify/EXTRACTED #community/Activity__Inbox_Filters

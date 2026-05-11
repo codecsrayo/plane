@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/use-project-view.ts"
 type: "code"
-community: "Project Work"
+community: "Filter UI & Breadcrumbs"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Work
+  - community/Filter_UI__Breadcrumbs
 ---
 
 # useProjectView()
 
 ## Connections
-
 - [[ProjectViewIssuesPage()]] - `calls` [EXTRACTED]
 - [[ProjectViewsPage()]] - `calls` [EXTRACTED]
 - [[delete-view-modal.tsx]] - `imports` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[view-list-item-action.tsx]] - `imports` [EXTRACTED]
 - [[views-list.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Work
+#graphify/code #graphify/EXTRACTED #community/Filter_UI__Breadcrumbs

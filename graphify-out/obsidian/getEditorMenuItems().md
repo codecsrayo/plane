@@ -1,18 +1,17 @@
 ---
-source_file: "editor/src/core/components/menus/menu-items.ts"
+source_file: "packages/editor/src/core/components/menus/menu-items.ts"
 type: "code"
-community: "Toggle Menu"
+community: "Community 31"
 location: "L258"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toggle_Menu
+  - community/Community_31
 ---
 
 # getEditorMenuItems()
 
 ## Connections
-
 - [[BackgroundColorItem()]] - `calls` [EXTRACTED]
 - [[BoldItem()]] - `calls` [EXTRACTED]
 - [[BulletListItem()]] - `calls` [EXTRACTED]
@@ -37,5 +36,6 @@ tags:
 - [[TodoListItem()]] - `calls` [EXTRACTED]
 - [[UnderLineItem()]] - `calls` [EXTRACTED]
 - [[menu-items.ts]] - `contains` [EXTRACTED]
+- [[menu-items.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toggle_Menu
+#graphify/code #graphify/EXTRACTED #community/Community_31

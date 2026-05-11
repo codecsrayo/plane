@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/app/views/page/base.py"
 type: "code"
-community: "Partial Endpoint"
+community: "Python API Base Classes"
 location: "L75"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Partial_Endpoint
+  - community/Python_API_Base_Classes
 ---
 
 # PageViewSet
 
 ## Connections
-
 - [[.access()]] - `method` [EXTRACTED]
 - [[.archive()_3]] - `method` [EXTRACTED]
 - [[.create()_15]] - `method` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[BaseViewSet_1]] - `inherits` [EXTRACTED]
 - [[base.py_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Partial_Endpoint
+#graphify/code #graphify/EXTRACTED #community/Python_API_Base_Classes

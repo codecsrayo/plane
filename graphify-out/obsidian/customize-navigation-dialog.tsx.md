@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/navigation/customize-navigation-dialog.tsx"
 type: "code"
-community: "Sidebar Navigation"
+community: "Community 246"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Navigation
+  - community/Community_246
 ---
 
 # customize-navigation-dialog.tsx
 
 ## Connections
-
 - [[CustomizeNavigationDialog]] - `contains` [EXTRACTED]
 - [[PERSONAL_ITEMS]] - `contains` [EXTRACTED]
 - [[TCustomizeNavigationDialogProps]] - `contains` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[useProjectNavigationPreferences()]] - `imports` [EXTRACTED]
 - [[useWorkspaceNavigationPreferences()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation
+#graphify/code #graphify/EXTRACTED #community/Community_246

@@ -1,14 +1,14 @@
 ---
 source_file: "api_rust/src/entities/draft_issues.rs"
 type: "code"
-community: "Active Model"
+community: "Community 2058"
 location: "L185"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Model
+  - community/Community_2058
 ---
 
 # ActiveModel
 
-#graphify/code #graphify/EXTRACTED #community/Active_Model
+#graphify/code #graphify/EXTRACTED #community/Community_2058

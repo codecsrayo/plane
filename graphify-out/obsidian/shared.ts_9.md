@@ -1,18 +1,17 @@
 ---
 source_file: "utils/src/rich-filters/factories/configs/properties/shared.ts"
 type: "code"
-community: "Params Date"
+community: "Community 39"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Params_Date
+  - community/Community_39
 ---
 
 # shared.ts
 
 ## Connections
-
 - [[IFilterIconConfig]] - `imports` [EXTRACTED]
 - [[TCreateDateFilterParams]] - `imports` [EXTRACTED]
 - [[TCreateFilterConfigParams]] - `imports` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[member-picker.ts]] - `imports_from` [EXTRACTED]
 - [[shared.ts_8]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Params_Date
+#graphify/code #graphify/EXTRACTED #community/Community_39

@@ -1,18 +1,17 @@
 ---
 source_file: "space/types/auth.ts"
 type: "code"
-community: "Auth Titles"
+community: "Community 58"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Titles
+  - community/Community_58
 ---
 
 # auth.ts
 
 ## Connections
-
 - [[EAuthModes_2]] - `contains` [EXTRACTED]
 - [[EAuthSteps_2]] - `contains` [EXTRACTED]
 - [[ICsrfTokenData_1]] - `contains` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[auth-root.tsx_1]] - `imports_from` [EXTRACTED]
 - [[unique-code.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Titles
+#graphify/code #graphify/EXTRACTED #community/Community_58

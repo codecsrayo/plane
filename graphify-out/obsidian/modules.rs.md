@@ -1,18 +1,17 @@
 ---
 source_file: "api_rust/tests/modules.rs"
 type: "code"
-community: "Returns Modules"
+community: "Community 318"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Returns_Modules
+  - community/Community_318
 ---
 
 # modules.rs
 
 ## Connections
-
 - [[add_issue_to_module_and_remove()]] - `contains` [EXTRACTED]
 - [[archive_module_and_list_archived()]] - `contains` [EXTRACTED]
 - [[create_issue()_4]] - `contains` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[setup()_10]] - `contains` [EXTRACTED]
 - [[update_module_returns_200()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Returns_Modules
+#graphify/code #graphify/EXTRACTED #community/Community_318

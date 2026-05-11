@@ -1,18 +1,17 @@
 ---
 source_file: "space/components/issues/navbar/user-avatar.tsx"
 type: "code"
-community: "Issue Peek"
+community: "Community 223"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Peek
+  - community/Community_223
 ---
 
 # authService
 
 ## Connections
-
 - [[user-avatar.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Peek
+#graphify/code #graphify/EXTRACTED #community/Community_223

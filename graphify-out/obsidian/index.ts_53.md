@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/extensions/typography/index.ts"
 type: "code"
-community: "Typography Superscript"
+community: "Community 227"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Typography_Superscript
+  - community/Community_227
 ---
 
 # index.ts
 
 ## Connections
-
 - [[CORE_EXTENSIONS]] - `imports` [EXTRACTED]
 - [[CustomTypographyExtension]] - `contains` [EXTRACTED]
 - [[TypographyOptions]] - `imports` [EXTRACTED]
@@ -38,4 +37,4 @@ tags:
 - [[threeQuarters()]] - `imports` [EXTRACTED]
 - [[trademark()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Typography_Superscript
+#graphify/code #graphify/EXTRACTED #community/Community_227

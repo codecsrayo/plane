@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/labels/label-drag-n-drop-HOC.tsx"
 type: "code"
-community: "Label Drag"
+community: "Community 201"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Drag
+  - community/Community_201
 ---
 
 # label-drag-n-drop-HOC.tsx
 
 ## Connections
-
 - [[Adapter_1]] - `imports_from` [EXTRACTED]
 - [[LabelDndHOC]] - `contains` [EXTRACTED]
 - [[LabelDragPreview()]] - `contains` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[project-setting-label-group.tsx]] - `imports_from` [EXTRACTED]
 - [[project-setting-label-item.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Drag
+#graphify/code #graphify/EXTRACTED #community/Community_201

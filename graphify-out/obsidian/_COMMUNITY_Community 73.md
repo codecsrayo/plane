@@ -1,44 +1,73 @@
 ---
 type: community
-cohesion: 0.11
-members: 28
+cohesion: 0.06
+members: 58
 ---
 
 # Community 73
 
-**Cohesion:** 0.11 - loosely connected
-**Members:** 28 nodes
+**Cohesion:** 0.06 - loosely connected
+**Members:** 58 nodes
 
 ## Members
-
-- [[AdminSignInForm]] - code - api_rust/src/auth/god_mode.rs
-- [[AdminSignUpForm]] - code - api_rust/src/auth/god_mode.rs
-- [[CsrfForm]] - code - api_rust/src/auth/csrf.rs
-- [[CsrfTokenResponse]] - code - api_rust/src/auth/csrf.rs
-- [[LogoutTarget]] - code - api_rust/src/auth/logout.rs
-- [[admin_error()]] - code - api_rust/src/auth/god_mode.rs
-- [[admin_sign_in()]] - code - api_rust/src/auth/god_mode.rs
-- [[admin_sign_out()]] - code - api_rust/src/auth/god_mode.rs
-- [[admin_sign_up()]] - code - api_rust/src/auth/god_mode.rs
-- [[admin_success()]] - code - api_rust/src/auth/god_mode.rs
-- [[csrf.rs]] - code - api_rust/src/auth/csrf.rs
-- [[csrf_tokens_must_match()]] - code - api_rust/src/auth/csrf.rs
-- [[extract_client_ip()_1]] - code - api_rust/src/auth/logout.rs
-- [[extract_client_ip_prefers_forwarded_header()]] - code - api_rust/src/auth/logout.rs
-- [[get_csrf_token()]] - code - api_rust/src/auth/csrf.rs
-- [[god_mode.rs]] - code - api_rust/src/auth/god_mode.rs
-- [[is_password_strong()]] - code - api_rust/src/auth/god_mode.rs
-- [[is_valid_csrf()]] - code - api_rust/src/auth/csrf.rs
-- [[is_valid_csrf_header()]] - code - api_rust/src/auth/csrf.rs
-- [[is_valid_email()]] - code - api_rust/src/auth/god_mode.rs
-- [[logout()]] - code - api_rust/src/auth/logout.rs
-- [[logout.rs]] - code - api_rust/src/auth/logout.rs
-- [[logout_space()]] - code - api_rust/src/auth/logout.rs
-- [[perform_logout()]] - code - api_rust/src/auth/logout.rs
-- [[redirect_target_stays_local()]] - code - api_rust/src/auth/csrf.rs
-- [[safe_redirect_target()]] - code - api_rust/src/auth/csrf.rs
-- [[space_redirect_joins_safe_path()]] - code - api_rust/src/auth/logout.rs
-- [[space_redirect_url()]] - code - api_rust/src/auth/logout.rs
+- [[.getProjectUserProperties()]] - code - web/core/services/project/project.service.ts
+- [[EMPTY_HIDDEN_TABS]] - code - web/core/components/navigation/use-tab-preferences.ts
+- [[FormData]] - code - web/core/components/project/leave-project-modal.tsx
+- [[ILeaveProjectModal]] - code - web/core/components/project/leave-project-modal.tsx
+- [[LeaveProjectModal]] - code - web/core/components/project/leave-project-modal.tsx
+- [[ProjectActionsMenu()]] - code - web/core/components/navigation/project-actions-menu.tsx
+- [[ProjectHeader]] - code - web/core/components/navigation/project-header.tsx
+- [[ProjectHeaderButton()]] - code - web/core/components/navigation/project-header-button.tsx
+- [[Props_511]] - code - web/core/components/navigation/project-actions-menu.tsx
+- [[Props_512]] - code - web/core/components/navigation/tab-navigation-overflow-menu.tsx
+- [[Props_219]] - code - web/core/components/project/publish-project/modal.tsx
+- [[Props_104]] - code - web/core/components/workspace/sidebar/projects-list-item.tsx
+- [[PublishProjectModal]] - code - web/core/components/project/publish-project/modal.tsx
+- [[TNavigationItem_1]] - code - web/core/components/navigation/tab-navigation-root.tsx
+- [[TProjectHeaderButtonProps]] - code - web/core/components/navigation/project-header-button.tsx
+- [[TProjectHeaderProps]] - code - web/core/components/navigation/project-header.tsx
+- [[TResponsiveTabLayout]] - code - web/core/components/navigation/use-responsive-tab-layout.ts
+- [[TTabNavigationRootProps]] - code - web/core/components/navigation/tab-navigation-root.tsx
+- [[TTabNavigationVisibleItemProps]] - code - web/core/components/navigation/tab-navigation-visible-item.tsx
+- [[TTabPreferences]] - code - web/core/components/navigation/tab-navigation-utils.ts
+- [[TTabPreferencesHook]] - code - web/core/components/navigation/use-tab-preferences.ts
+- [[TabNavigationOverflowMenu()]] - code - web/core/components/navigation/tab-navigation-overflow-menu.tsx
+- [[TabNavigationRoot]] - code - web/core/components/navigation/tab-navigation-root.tsx
+- [[TabNavigationVisibleItem()]] - code - web/core/components/navigation/tab-navigation-visible-item.tsx
+- [[UseActiveTabProps]] - code - web/core/components/navigation/use-active-tab.ts
+- [[UseNavigationItemsProps]] - code - web/ce/components/navigations/use-navigation-items.ts
+- [[UseProjectActionsProps]] - code - web/core/components/navigation/use-project-actions.ts
+- [[UseResponsiveTabLayoutProps]] - code - web/core/components/navigation/use-responsive-tab-layout.ts
+- [[VIEW_OPTIONS]] - code - web/core/components/project/publish-project/modal.tsx
+- [[defaultValues_11]] - code - web/core/components/project/leave-project-modal.tsx
+- [[defaultValues_13]] - code - web/core/components/project/publish-project/modal.tsx
+- [[getDefaultTabUrl()]] - code - web/core/components/navigation/tab-navigation-utils.ts
+- [[getTabPreferences()]] - code - web/core/components/navigation/tab-navigation-utils.ts
+- [[getTabUrl()]] - code - web/core/components/navigation/tab-navigation-utils.ts
+- [[getValidatedDefaultTab()]] - code - web/core/components/navigation/tab-navigation-utils.ts
+- [[leave-project-modal.tsx]] - code - web/core/components/project/leave-project-modal.tsx
+- [[modal.tsx_11]] - code - web/core/components/project/publish-project/modal.tsx
+- [[project-actions-menu.tsx]] - code - web/core/components/navigation/project-actions-menu.tsx
+- [[project-header-button.tsx]] - code - web/core/components/navigation/project-header-button.tsx
+- [[project-header.tsx]] - code - web/core/components/navigation/project-header.tsx
+- [[projects-list-item.tsx]] - code - web/core/components/workspace/sidebar/projects-list-item.tsx
+- [[saveTabPreferences()]] - code - web/core/components/navigation/tab-navigation-utils.ts
+- [[tab-navigation-overflow-menu.tsx]] - code - web/core/components/navigation/tab-navigation-overflow-menu.tsx
+- [[tab-navigation-root.tsx]] - code - web/core/components/navigation/tab-navigation-root.tsx
+- [[tab-navigation-utils.ts]] - code - web/core/components/navigation/tab-navigation-utils.ts
+- [[tab-navigation-visible-item.tsx]] - code - web/core/components/navigation/tab-navigation-visible-item.tsx
+- [[use-active-tab.ts]] - code - web/core/components/navigation/use-active-tab.ts
+- [[use-navigation-items.ts]] - code - web/ce/components/navigations/use-navigation-items.ts
+- [[use-project-actions.ts]] - code - web/core/components/navigation/use-project-actions.ts
+- [[use-project-publish.ts]] - code - web/core/hooks/store/use-project-publish.ts
+- [[use-responsive-tab-layout.ts]] - code - web/core/components/navigation/use-responsive-tab-layout.ts
+- [[use-tab-preferences.ts]] - code - web/core/components/navigation/use-tab-preferences.ts
+- [[useActiveTab()]] - code - web/core/components/navigation/use-active-tab.ts
+- [[useNavigationItems()]] - code - web/ce/components/navigations/use-navigation-items.ts
+- [[useProjectActions()]] - code - web/core/components/navigation/use-project-actions.ts
+- [[useProjectPublish()]] - code - web/core/hooks/store/use-project-publish.ts
+- [[useResponsiveTabLayout()]] - code - web/core/components/navigation/use-responsive-tab-layout.ts
+- [[useTabPreferences()]] - code - web/core/components/navigation/use-tab-preferences.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -48,16 +77,27 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 7 edges to [[_COMMUNITY_Auth Rust API]]
-- 2 edges to [[_COMMUNITY_Community 187]]
-- 2 edges to [[_COMMUNITY_Community 43]]
-- 1 edge to [[_COMMUNITY_Community 50]]
+- 6 edges to [[_COMMUNITY_Project Filters & Archives]]
+- 5 edges to [[_COMMUNITY_Community 234]]
+- 5 edges to [[_COMMUNITY_Community 45]]
+- 3 edges to [[_COMMUNITY_Community 144]]
+- 2 edges to [[_COMMUNITY_Work Item Detail & Layouts]]
+- 2 edges to [[_COMMUNITY_Community 24]]
+- 2 edges to [[_COMMUNITY_Module & Cycle Analytics]]
+- 2 edges to [[_COMMUNITY_Community 22]]
+- 2 edges to [[_COMMUNITY_Issue Activity Types]]
+- 2 edges to [[_COMMUNITY_Issue Display Filters]]
+- 2 edges to [[_COMMUNITY_Community 42]]
+- 2 edges to [[_COMMUNITY_Community 20]]
+- 2 edges to [[_COMMUNITY_Bulk Operations & Spreadsheet]]
+- 2 edges to [[_COMMUNITY_Filter UI & Breadcrumbs]]
+- 1 edge to [[_COMMUNITY_Community 246]]
+- 1 edge to [[_COMMUNITY_Community 356]]
+- 1 edge to [[_COMMUNITY_Community 311]]
 
 ## Top bridge nodes
-
-- [[admin_sign_up()]] - degree 8, connects to 3 communities
-- [[admin_sign_out()]] - degree 4, connects to 2 communities
-- [[perform_logout()]] - degree 8, connects to 1 community
-- [[is_valid_csrf()]] - degree 5, connects to 1 community
-- [[admin_sign_in()]] - degree 5, connects to 1 community
+- [[projects-list-item.tsx]] - degree 26, connects to 9 communities
+- [[project-header.tsx]] - degree 16, connects to 5 communities
+- [[tab-navigation-root.tsx]] - degree 31, connects to 4 communities
+- [[leave-project-modal.tsx]] - degree 9, connects to 3 communities
+- [[use-tab-preferences.ts]] - degree 11, connects to 2 communities

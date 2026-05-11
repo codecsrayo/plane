@@ -1,18 +1,17 @@
 ---
 source_file: ""
 type: "code"
-community: "Endpoint Sign"
+community: "Community 54"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_Sign
+  - community/Community_54
 ---
 
 # CredentialAdapter
 
 ## Connections
-
 - [[EmailProvider]] - `inherits` [EXTRACTED]
 - [[MagicCodeProvider]] - `inherits` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_Sign
+#graphify/code #graphify/EXTRACTED #community/Community_54

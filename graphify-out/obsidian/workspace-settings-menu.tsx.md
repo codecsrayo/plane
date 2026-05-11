@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/power-k/ui/pages/open-entity/workspace-settings-menu.tsx"
 type: "code"
-community: "Menu Power"
+community: "Community 85"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu_Power
+  - community/Community_85
 ---
 
 # workspace-settings-menu.tsx
 
 ## Connections
-
 - [[PowerKOpenWorkspaceSettingsMenu]] - `contains` [EXTRACTED]
 - [[PowerKSettingsMenu]] - `imports` [EXTRACTED]
 - [[Props_403]] - `contains` [EXTRACTED]
@@ -24,4 +23,4 @@ tags:
 - [[settings.tsx_1]] - `imports_from` [EXTRACTED]
 - [[types.ts_16]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Menu_Power
+#graphify/code #graphify/EXTRACTED #community/Community_85

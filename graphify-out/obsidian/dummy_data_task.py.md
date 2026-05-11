@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/bgtasks/dummy_data_task.py"
 type: "code"
-community: "Issue Dummy"
+community: "Community 184"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Dummy
+  - community/Community_184
 ---
 
 # dummy_data_task.py
 
 ## Connections
-
 - [[create_cycle_issues()]] - `contains` [EXTRACTED]
 - [[create_cycles()]] - `contains` [EXTRACTED]
 - [[create_dummy_data()]] - `contains` [EXTRACTED]
@@ -30,4 +29,4 @@ tags:
 - [[create_project_members()]] - `contains` [EXTRACTED]
 - [[create_states()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Dummy
+#graphify/code #graphify/EXTRACTED #community/Community_184

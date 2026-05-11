@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/hooks/store/use-project-state.ts"
 type: "code"
-community: "Issue Work"
+community: "Work Item Detail & Layouts"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Work
+  - community/Work_Item_Detail__Layouts
 ---
 
 # useProjectState()
 
 ## Connections
-
 - [[all-issue.tsx]] - `imports` [EXTRACTED]
 - [[all-properties.tsx]] - `imports` [EXTRACTED]
 - [[auto-close-automation.tsx]] - `imports` [EXTRACTED]
@@ -56,4 +55,4 @@ tags:
 - [[useWorkItemFiltersConfig()]] - `calls` [EXTRACTED]
 - [[workspace-wrapper.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Work
+#graphify/code #graphify/EXTRACTED #community/Work_Item_Detail__Layouts

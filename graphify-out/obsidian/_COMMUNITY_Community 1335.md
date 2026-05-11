@@ -10,8 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-
-- [[index.ts_26]] - code - ui/src/auth-form/index.ts
+- [[index.ts_42]] - code - editor/src/core/components/editors/rich-text/index.ts
 
 ## Live Query (requires Dataview plugin)
 

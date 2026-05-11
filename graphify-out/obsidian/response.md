@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/store/issue/workspace-draft/issue.store.ts"
 type: "code"
-community: "Partial Endpoint"
+community: "Python API Base Classes"
 location: "L384"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Partial_Endpoint
+  - community/Python_API_Base_Classes
 ---
 
 # response
 
 ## Connections
-
 - [[._validate_new_email()]] - `calls` [INFERRED]
 - [[.access()]] - `calls` [INFERRED]
 - [[.archive()_3]] - `calls` [INFERRED]
@@ -398,4 +397,4 @@ tags:
 - [[unarchive()]] - `calls` [INFERRED]
 - [[unarchive()_1]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Partial_Endpoint
+#graphify/code #graphify/INFERRED #community/Python_API_Base_Classes

@@ -1,18 +1,17 @@
 ---
 source_file: "utils/src/string.ts"
 type: "code"
-community: "Comment Copy"
+community: "Community 209"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Comment_Copy
+  - community/Community_209
 ---
 
 # string.ts
 
 ## Connections
-
 - [[addSpaceIfCamelCase()]] - `contains` [EXTRACTED]
 - [[capitalizeFirstLetter()]] - `contains` [EXTRACTED]
 - [[checkEmailValidity()]] - `contains` [EXTRACTED]
@@ -37,4 +36,4 @@ tags:
 - [[substringMatch()]] - `contains` [EXTRACTED]
 - [[truncateText()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Comment_Copy
+#graphify/code #graphify/EXTRACTED #community/Community_209

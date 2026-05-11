@@ -1,17 +1,19 @@
 ---
 type: community
-cohesion: 1.00
-members: 1
+cohesion: 0.67
+members: 4
 ---
 
 # Community 664
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 1 nodes
+**Cohesion:** 0.67 - moderately connected
+**Members:** 4 nodes
 
 ## Members
-
-- [[ActiveModel_14]] - code - api_rust/src/entities/users_groups.rs
+- [[TEpicAnalytics]] - code - packages/types/src/epics.ts
+- [[TEpicAnalyticsGroup]] - code - packages/types/src/epics.ts
+- [[epics.ts_1]] - code - packages/types/src/epics.ts
+- [[epics.ts]] - code - types/src/epics.ts
 
 ## Live Query (requires Dataview plugin)
 

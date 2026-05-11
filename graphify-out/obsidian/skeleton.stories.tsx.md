@@ -1,18 +1,17 @@
 ---
 source_file: "propel/src/skeleton/skeleton.stories.tsx"
 type: "code"
-community: "Avatar Card"
+community: "Community 348"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Avatar_Card
+  - community/Community_348
 ---
 
 # skeleton.stories.tsx
 
 ## Connections
-
 - [[Avatar]] - `contains` [EXTRACTED]
 - [[AvatarGroup_1]] - `contains` [EXTRACTED]
 - [[Button_1]] - `contains` [EXTRACTED]
@@ -28,4 +27,4 @@ tags:
 - [[Text]] - `contains` [EXTRACTED]
 - [[index.ts_182]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Avatar_Card
+#graphify/code #graphify/EXTRACTED #community/Community_348

@@ -1,18 +1,17 @@
 ---
 source_file: "editor/src/core/components/editors/editor-wrapper.tsx"
 type: "code"
-community: "Document Collaborative"
+community: "Editor Extensions"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Document_Collaborative
+  - community/Editor_Extensions
 ---
 
 # editor-wrapper.tsx
 
 ## Connections
-
 - [[DEFAULT_DISPLAY_CONFIG]] - `imports` [EXTRACTED]
 - [[EditorContentWrapper()]] - `imports` [EXTRACTED]
 - [[EditorWrapper()]] - `contains` [EXTRACTED]
@@ -27,4 +26,4 @@ tags:
 - [[use-editor.ts]] - `imports_from` [EXTRACTED]
 - [[useEditor()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Document_Collaborative
+#graphify/code #graphify/EXTRACTED #community/Editor_Extensions

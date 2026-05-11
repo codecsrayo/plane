@@ -1,53 +1,99 @@
 ---
 type: community
-cohesion: 0.07
-members: 37
+cohesion: 0.04
+members: 84
 ---
 
 # Community 44
 
-**Cohesion:** 0.07 - loosely connected
-**Members:** 37 nodes
+**Cohesion:** 0.04 - loosely connected
+**Members:** 84 nodes
 
 ## Members
-
-- [[ConfirmProjectMemberRemove]] - code - web/core/components/project/confirm-project-member-remove.tsx
-- [[ConfirmWorkspaceMemberRemove]] - code - web/core/components/workspace/confirm-workspace-member-remove.tsx
-- [[ConfirmWorkspaceMemberRemove_1]] - code - web/core/components/workspace/ConfirmWorkspaceMemberRemove.tsx
-- [[ConfirmWorkspaceMemberRemove.tsx]] - code - web/core/components/workspace/ConfirmWorkspaceMemberRemove.tsx
-- [[FormValues_1]] - code - web/core/components/project/send-project-invitation-modal.tsx
-- [[IProjectMemberDetails]] - code - web/core/store/member/project/base-project-member.store.ts
-- [[IRoleOption]] - code - web/core/components/project/dropdowns/filters/member-list.tsx
-- [[MemberListFilters]] - code - web/core/components/project/dropdowns/filters/member-list.tsx
-- [[MemberListFiltersDropdown]] - code - web/core/components/project/dropdowns/filters/member-list.tsx
-- [[MembersSettingsLoader()]] - code - web/core/components/ui/loader/settings/members.tsx
-- [[PROJECT_ROLE_OPTIONS]] - code - web/core/components/project/dropdowns/filters/member-list.tsx
-- [[ProjectMemberList]] - code - web/core/components/project/member-list.tsx
-- [[ProjectMemberListItem]] - code - web/core/components/project/member-list-item.tsx
-- [[Props_149]] - code - web/core/components/project/dropdowns/filters/member-list.tsx
-- [[Props_129]] - code - web/core/components/project/confirm-project-member-remove.tsx
-- [[Props_136]] - code - web/core/components/project/member-list-item.tsx
-- [[Props_130]] - code - web/core/components/project/send-project-invitation-modal.tsx
-- [[Props_40]] - code - web/core/components/workspace/settings/invitations-list-item.tsx
-- [[Props_24]] - code - web/core/components/workspace/confirm-workspace-member-remove.tsx
-- [[RoleFilterGroup]] - code - web/core/components/project/dropdowns/filters/member-list.tsx
-- [[SendProjectInvitationModal]] - code - web/core/components/project/send-project-invitation-modal.tsx
-- [[TProjectMemberListProps]] - code - web/core/components/project/member-list.tsx
-- [[WORKSPACE_ROLE_OPTIONS]] - code - web/core/components/project/dropdowns/filters/member-list.tsx
-- [[WorkspaceInvitationsListItem]] - code - web/core/components/workspace/settings/invitations-list-item.tsx
-- [[WorkspaceMembersList]] - code - web/core/components/workspace/settings/members-list.tsx
-- [[WorkspaceMembersListItem]] - code - web/core/components/workspace/settings/members-list-item.tsx
-- [[confirm-project-member-remove.tsx]] - code - web/core/components/project/confirm-project-member-remove.tsx
-- [[confirm-workspace-member-remove.tsx]] - code - web/core/components/workspace/confirm-workspace-member-remove.tsx
-- [[defaultValues_10]] - code - web/core/components/project/send-project-invitation-modal.tsx
-- [[invitations-list-item.tsx]] - code - web/core/components/workspace/settings/invitations-list-item.tsx
-- [[member]] - code - web/core/components/project/send-project-invitation-modal.tsx
-- [[member-list-item.tsx]] - code - web/core/components/project/member-list-item.tsx
-- [[member-list.tsx_1]] - code - web/core/components/project/dropdowns/filters/member-list.tsx
-- [[member-list.tsx]] - code - web/core/components/project/member-list.tsx
-- [[members-list.tsx]] - code - web/core/components/workspace/settings/members-list.tsx
-- [[members.tsx]] - code - web/core/components/ui/loader/settings/members.tsx
-- [[send-project-invitation-modal.tsx]] - code - web/core/components/project/send-project-invitation-modal.tsx
+- [[ActivityMessageProps]] - code - web/core/components/core/activity.tsx
+- [[DeleteLabelModal]] - code - web/core/components/labels/delete-label-modal.tsx
+- [[IIssueLabelSelect]] - code - web/core/components/issues/issue-detail/label/select/label-select.tsx
+- [[IIssuePropertyLabels]] - code - web/core/components/issues/issue-layouts/properties/labels.tsx
+- [[ILabelCreate]] - code - web/core/components/issues/issue-detail/label/create-label.tsx
+- [[ILabelDropdownProps]] - code - web/core/components/issues/issue-layouts/properties/label-dropdown.tsx
+- [[IssueLabel]] - code - web/core/components/issues/issue-detail/label/root.tsx
+- [[IssueLabelSelect_1]] - code - web/core/components/issues/issue-detail/label/select/label-select.tsx
+- [[IssueLabelSelectRoot()]] - code - web/core/components/issues/issue-detail/label/select/root.tsx
+- [[IssuePropertyLabels]] - code - web/core/components/issues/issue-layouts/properties/labels.tsx
+- [[LabelCreate()]] - code - web/core/components/issues/issue-detail/label/create-label.tsx
+- [[LabelDropdown()]] - code - web/core/components/issues/issue-layouts/properties/label-dropdown.tsx
+- [[LabelItem]] - code - web/core/components/issues/issue-layouts/properties/labels.tsx
+- [[LabelItemProps]] - code - web/core/components/issues/issue-layouts/properties/labels.tsx
+- [[LabelList]] - code - web/core/components/issues/issue-detail/label/label-list.tsx
+- [[LabelListItem]] - code - web/core/components/issues/issue-detail/label/label-list-item.tsx
+- [[LabelPill]] - code - web/core/components/core/activity.tsx
+- [[LabelSummary()]] - code - web/core/components/issues/issue-layouts/properties/labels.tsx
+- [[LabelSummaryProps]] - code - web/core/components/issues/issue-layouts/properties/labels.tsx
+- [[NoLabel]] - code - web/core/components/issues/issue-layouts/properties/labels.tsx
+- [[NoLabelProps]] - code - web/core/components/issues/issue-layouts/properties/labels.tsx
+- [[Props_141]] - code - web/core/components/labels/delete-label-modal.tsx
+- [[ReadonlyLabels]] - code - web/core/components/readonly/labels.tsx
+- [[TAdditionalWorkItemFiltersProps]] - code - web/core/components/work-item-filters/filters-hoc/base.tsx
+- [[TEnableSaveViewProps]] - code - web/core/components/work-item-filters/filters-hoc/shared.ts
+- [[TEnableUpdateViewProps]] - code - web/core/components/work-item-filters/filters-hoc/shared.ts
+- [[TFiltersOperatorConfigs]] - code - web/ce/hooks/rich-filters/use-filters-operator-configs.ts
+- [[TIssueLabel]] - code - web/core/components/issues/issue-detail/label/root.tsx
+- [[TIssueLabelSelectRoot]] - code - web/core/components/issues/issue-detail/label/select/root.tsx
+- [[TLabelList]] - code - web/core/components/issues/issue-detail/label/label-list.tsx
+- [[TLabelListItem]] - code - web/core/components/issues/issue-detail/label/label-list-item.tsx
+- [[TLabelOperations]] - code - web/core/components/issues/issue-detail/label/root.tsx
+- [[TProjectLevelWorkItemFiltersHOCProps]] - code - web/core/components/work-item-filters/filters-hoc/project-level.tsx
+- [[TReadonlyLabelsProps]] - code - web/core/components/readonly/labels.tsx
+- [[TSharedWorkItemFiltersHOCProps]] - code - web/core/components/work-item-filters/filters-hoc/shared.ts
+- [[TSharedWorkItemFiltersProps]] - code - web/core/components/work-item-filters/filters-hoc/shared.ts
+- [[TUseFiltersOperatorConfigsProps]] - code - web/ce/hooks/rich-filters/use-filters-operator-configs.ts
+- [[TUseWorkItemFiltersConfigProps]] - code - web/ce/hooks/work-item-filters/use-work-item-filters-config.tsx
+- [[TWorkItemFilterProps]] - code - web/core/components/work-item-filters/filters-hoc/base.tsx
+- [[TWorkItemFiltersConfig]] - code - web/ce/hooks/work-item-filters/use-work-item-filters-config.tsx
+- [[TWorkItemFiltersEntityProps]] - code - web/ce/hooks/work-item-filters/use-work-item-filters-config.tsx
+- [[TWorkItemFiltersHOCProps]] - code - web/core/components/work-item-filters/filters-hoc/base.tsx
+- [[TWorkspaceLevelWorkItemFiltersHOCProps]] - code - web/core/components/work-item-filters/filters-hoc/workspace-level.tsx
+- [[UserLink()]] - code - web/core/components/core/activity.tsx
+- [[WORKSPACE_CYCLES()]] - code - web/core/constants/fetch-keys.ts
+- [[WORKSPACE_ESTIMATES()]] - code - web/core/constants/fetch-keys.ts
+- [[WORKSPACE_LABELS()]] - code - web/core/constants/fetch-keys.ts
+- [[WORKSPACE_MODULES()]] - code - web/core/constants/fetch-keys.ts
+- [[WorkItemFilterRoot]] - code - web/core/components/work-item-filters/filters-hoc/base.tsx
+- [[WorkItemFiltersHOC]] - code - web/core/components/work-item-filters/filters-hoc/base.tsx
+- [[activity.tsx_2]] - code - web/core/components/core/activity.tsx
+- [[activityDetails]] - code - web/core/components/core/activity.tsx
+- [[base.tsx_9]] - code - web/core/components/work-item-filters/filters-hoc/base.tsx
+- [[create-label.tsx]] - code - web/core/components/issues/issue-detail/label/create-label.tsx
+- [[defaultValues_15]] - code - web/core/components/issues/issue-detail/label/create-label.tsx
+- [[delete-label-modal.tsx]] - code - web/core/components/labels/delete-label-modal.tsx
+- [[getInboxUserActivityMessage()]] - code - web/core/components/core/activity.tsx
+- [[inboxActivityMessage]] - code - web/core/components/core/activity.tsx
+- [[label-dropdown.tsx]] - code - web/core/components/issues/issue-layouts/properties/label-dropdown.tsx
+- [[label-list-item.tsx]] - code - web/core/components/issues/issue-detail/label/label-list-item.tsx
+- [[label-list.tsx]] - code - web/core/components/issues/issue-detail/label/label-list.tsx
+- [[label-select.tsx]] - code - web/core/components/issues/issue-detail/label/select/label-select.tsx
+- [[labels.tsx]] - code - web/core/components/issues/issue-layouts/properties/labels.tsx
+- [[labels.tsx_4]] - code - web/core/components/readonly/labels.tsx
+- [[preventPropagation()]] - code - web/core/components/issues/issue-layouts/properties/label-dropdown.tsx
+- [[project-level.tsx_1]] - code - web/core/components/work-item-filters/filters-hoc/project-level.tsx
+- [[removeNillKeys()]] - code - space/components/issues/issue-layouts/utils.tsx
+- [[root.tsx_73]] - code - web/core/components/issues/issue-detail/label/root.tsx
+- [[root.tsx_74]] - code - web/core/components/issues/issue-detail/label/select/root.tsx
+- [[shared.ts_13]] - code - web/core/components/work-item-filters/filters-hoc/shared.ts
+- [[use-filters-operator-configs.ts]] - code - web/ce/hooks/rich-filters/use-filters-operator-configs.ts
+- [[use-label.ts]] - code - web/core/hooks/store/use-label.ts
+- [[use-project-issue-properties.ts]] - code - web/core/hooks/use-project-issue-properties.ts
+- [[use-work-item-filters-config.tsx]] - code - web/ce/hooks/work-item-filters/use-work-item-filters-config.tsx
+- [[use-workspace-issue-properties-extended.tsx]] - code - web/ce/hooks/use-workspace-issue-properties-extended.tsx
+- [[use-workspace-issue-properties.ts]] - code - web/core/hooks/use-workspace-issue-properties.ts
+- [[useFiltersOperatorConfigs()]] - code - web/ce/hooks/rich-filters/use-filters-operator-configs.ts
+- [[useLabel()]] - code - space/hooks/store/use-label.ts
+- [[useProjectEstimates()]] - code - web/core/hooks/store/estimates/use-project-estimate.ts
+- [[useProjectIssueProperties()]] - code - web/core/hooks/use-project-issue-properties.ts
+- [[useWorkItemFiltersConfig()]] - code - web/ce/hooks/work-item-filters/use-work-item-filters-config.tsx
+- [[useWorkspaceIssueProperties()]] - code - web/core/hooks/use-workspace-issue-properties.ts
+- [[useWorkspaceIssuePropertiesExtended()]] - code - web/ce/hooks/use-workspace-issue-properties-extended.tsx
+- [[workspace-level.tsx_1]] - code - web/core/components/work-item-filters/filters-hoc/workspace-level.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -57,21 +103,36 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-
-- 10 edges to [[_COMMUNITY_Member Filters & Description]]
-- 7 edges to [[_COMMUNITY_Empty State Components]]
-- 6 edges to [[_COMMUNITY_Account & Sub-Issues]]
-- 2 edges to [[_COMMUNITY_Applied Filters UI]]
-- 2 edges to [[_COMMUNITY_Community 173]]
-- 2 edges to [[_COMMUNITY_Community 198]]
-- 1 edge to [[_COMMUNITY_Git Integrations]]
-- 1 edge to [[_COMMUNITY_Community 81]]
-- 1 edge to [[_COMMUNITY_Community 42]]
+- 32 edges to [[_COMMUNITY_Work Item Detail & Layouts]]
+- 16 edges to [[_COMMUNITY_Filter UI & Breadcrumbs]]
+- 14 edges to [[_COMMUNITY_Community 36]]
+- 11 edges to [[_COMMUNITY_Project Filters & Archives]]
+- 10 edges to [[_COMMUNITY_Issue Display Filters]]
+- 9 edges to [[_COMMUNITY_Active Cycle Stats]]
+- 8 edges to [[_COMMUNITY_Module & Cycle Analytics]]
+- 8 edges to [[_COMMUNITY_Community 22]]
+- 7 edges to [[_COMMUNITY_Activity & Inbox Filters]]
+- 6 edges to [[_COMMUNITY_Bulk Operations & Spreadsheet]]
+- 4 edges to [[_COMMUNITY_Issue Activity Types]]
+- 4 edges to [[_COMMUNITY_Community 45]]
+- 3 edges to [[_COMMUNITY_Community 109]]
+- 3 edges to [[_COMMUNITY_Community 24]]
+- 2 edges to [[_COMMUNITY_Community 65]]
+- 2 edges to [[_COMMUNITY_Community 42]]
+- 2 edges to [[_COMMUNITY_Community 20]]
+- 2 edges to [[_COMMUNITY_Community 201]]
+- 2 edges to [[_COMMUNITY_Community 210]]
+- 2 edges to [[_COMMUNITY_Service Layer]]
+- 1 edge to [[_COMMUNITY_Community 72]]
+- 1 edge to [[_COMMUNITY_Community 137]]
+- 1 edge to [[_COMMUNITY_Community 112]]
+- 1 edge to [[_COMMUNITY_Community 167]]
+- 1 edge to [[_COMMUNITY_Community 59]]
+- 1 edge to [[_COMMUNITY_Community 376]]
 
 ## Top bridge nodes
-
-- [[member-list-item.tsx]] - degree 14, connects to 6 communities
-- [[members-list.tsx]] - degree 11, connects to 3 communities
-- [[member-list.tsx]] - degree 13, connects to 2 communities
-- [[send-project-invitation-modal.tsx]] - degree 9, connects to 2 communities
-- [[invitations-list-item.tsx]] - degree 8, connects to 2 communities
+- [[useLabel()]] - degree 32, connects to 13 communities
+- [[use-label.ts]] - degree 30, connects to 10 communities
+- [[project-level.tsx_1]] - degree 33, connects to 9 communities
+- [[use-workspace-issue-properties.ts]] - degree 18, connects to 7 communities
+- [[workspace-level.tsx_1]] - degree 24, connects to 6 communities

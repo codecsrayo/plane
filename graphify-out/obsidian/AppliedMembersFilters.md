@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/common/applied-filters/members.tsx"
 type: "code"
-community: "Member Members"
+community: "Issue Display Filters"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Members
+  - community/Issue_Display_Filters
 ---
 
 # AppliedMembersFilters
 
 ## Connections
-
 - [[members.tsx_3]] - `contains` [EXTRACTED]
 - [[members.tsx_5]] - `contains` [EXTRACTED]
 - [[members.tsx_6]] - `contains` [EXTRACTED]
@@ -21,4 +20,4 @@ tags:
 - [[root.tsx_67]] - `imports` [EXTRACTED]
 - [[root.tsx_120]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Members
+#graphify/code #graphify/EXTRACTED #community/Issue_Display_Filters

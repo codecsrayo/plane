@@ -1,18 +1,17 @@
 ---
 source_file: "api/plane/license/management/commands/configure_instance.py"
 type: "code"
-community: "Command Issue"
+community: "Community 222"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Command_Issue
+  - community/Community_222
 ---
 
 # configure_instance.py
 
 ## Connections
-
 - [[Command_18]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Command_Issue
+#graphify/code #graphify/EXTRACTED #community/Community_222

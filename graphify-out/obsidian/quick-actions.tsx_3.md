@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/cycles/quick-actions.tsx"
 type: "code"
-community: "Cycle Active"
+community: "Active Cycle Stats"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Active
+  - community/Active_Cycle_Stats
 ---
 
 # quick-actions.tsx
 
 ## Connections
-
 - [[ArchiveCycleModal()]] - `imports` [EXTRACTED]
 - [[CycleCreateUpdateModal()]] - `imports` [EXTRACTED]
 - [[CycleDeleteModal]] - `imports` [EXTRACTED]
@@ -32,4 +31,4 @@ tags:
 - [[useCycle()]] - `imports` [EXTRACTED]
 - [[useCycleMenuItems()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Active
+#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats

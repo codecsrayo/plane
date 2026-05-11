@@ -1,19 +1,18 @@
 ---
 source_file: "web/core/components/home/widgets/empty-states/stickies.tsx"
 type: "code"
-community: "Stickies Sticky"
+community: "Community 297"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Stickies_Sticky
+  - community/Community_297
 ---
 
 # stickies.tsx
 
 ## Connections
-
 - [[StickiesEmptyState()]] - `contains` [EXTRACTED]
 - [[stickies-list.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Stickies_Sticky
+#graphify/code #graphify/EXTRACTED #community/Community_297

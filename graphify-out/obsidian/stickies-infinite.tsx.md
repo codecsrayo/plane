@@ -1,18 +1,17 @@
 ---
 source_file: "web/core/components/stickies/layout/stickies-infinite.tsx"
 type: "code"
-community: "Stickies Sticky"
+community: "Community 297"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Stickies_Sticky
+  - community/Community_297
 ---
 
 # stickies-infinite.tsx
 
 ## Connections
-
 - [[StickiesInfinite]] - `contains` [EXTRACTED]
 - [[StickiesLayout()]] - `imports` [EXTRACTED]
 - [[page.tsx_8]] - `imports_from` [EXTRACTED]
@@ -22,4 +21,4 @@ tags:
 - [[useIntersectionObserver()]] - `imports` [EXTRACTED]
 - [[useSticky()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Stickies_Sticky
+#graphify/code #graphify/EXTRACTED #community/Community_297
