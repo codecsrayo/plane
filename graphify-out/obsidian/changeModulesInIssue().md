@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/helpers/base-issues.store.ts"
+source_file: "store/issue/helpers/base-issues.store.ts"
 type: "code"
-community: "Issue State Management"
+community: "Issue Store Ops"
 location: "L1084"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_State_Management
+  - community/Issue_Store_Ops
 ---
 
 # changeModulesInIssue()
@@ -19,4 +19,4 @@ tags:
 - [[issueQuickAdd()]] - `calls` [EXTRACTED]
 - [[toApiError()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_State_Management
+#graphify/code #graphify/EXTRACTED #community/Issue_Store_Ops

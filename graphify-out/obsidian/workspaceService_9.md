@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/onboarding/invitations.tsx"
+source_file: "components/onboarding/invitations.tsx"
 type: "code"
-community: "Authentication UI"
+community: "Workspace Invites"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Authentication_UI
+  - community/Workspace_Invites
 ---
 
 # workspaceService
@@ -15,4 +15,4 @@ tags:
 
 - [[invitations.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Authentication_UI
+#graphify/code #graphify/EXTRACTED #community/Workspace_Invites

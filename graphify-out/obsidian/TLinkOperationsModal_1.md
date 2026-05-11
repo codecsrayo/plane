@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail/links/create-update-link-modal.tsx"
+source_file: "components/issues/issue-detail/links/create-update-link-modal.tsx"
 type: "code"
-community: "Community 75"
+community: "Issue Activity"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_75
+  - community/Issue_Activity
 ---
 
 # TLinkOperationsModal
@@ -18,4 +18,4 @@ tags:
 - [[link-detail.tsx_1]] - `imports` [EXTRACTED]
 - [[link-item.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_75
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

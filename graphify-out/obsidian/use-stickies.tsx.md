@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-stickies.tsx"
+source_file: "hooks/use-stickies.tsx"
 type: "code"
-community: "Community 104"
+community: "Stickies Truncated"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_104
+  - community/Stickies_Truncated
 ---
 
 # use-stickies.tsx
@@ -28,4 +28,4 @@ tags:
 - [[useSticky()]] - `contains` [EXTRACTED]
 - [[widget.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_104
+#graphify/code #graphify/EXTRACTED #community/Stickies_Truncated

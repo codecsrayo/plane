@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/use-analytics.ts"
+source_file: "hooks/store/use-analytics.ts"
 type: "code"
-community: "Community 193"
+community: "Active Projects"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_193
+  - community/Active_Projects
 ---
 
 # useAnalytics()
@@ -24,4 +24,4 @@ tags:
 - [[use-analytics.ts]] - `contains` [EXTRACTED]
 - [[workitems-insight-table.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_193
+#graphify/code #graphify/EXTRACTED #community/Active_Projects

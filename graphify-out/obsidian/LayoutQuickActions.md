@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/layout-quick-actions.tsx"
+source_file: "components/issues/layout-quick-actions.tsx"
 type: "code"
-community: "Community 163"
+community: "Menu Quick"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_163
+  - community/Menu_Quick
 ---
 
 # LayoutQuickActions
@@ -15,4 +15,4 @@ tags:
 
 - [[layout-quick-actions.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_163
+#graphify/code #graphify/EXTRACTED #community/Menu_Quick

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail-widgets/relations/index.ts"
+source_file: "components/issues/issue-detail-widgets/relations/index.ts"
 type: "code"
-community: "Community 154"
+community: "Issue Widget"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_154
+  - community/Issue_Widget
 ---
 
 # index.ts
@@ -18,4 +18,4 @@ tags:
 - [[relation-select.tsx]] - `imports_from` [EXTRACTED]
 - [[relation.store.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_154
+#graphify/code #graphify/EXTRACTED #community/Issue_Widget

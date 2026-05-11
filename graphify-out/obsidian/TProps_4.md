@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/editor/sticky-editor/color-palette.tsx"
+source_file: "components/editor/sticky-editor/color-palette.tsx"
 type: "code"
-community: "Community 104"
+community: "Sticky Tprops"
 location: "L56"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_104
+  - community/Sticky_Tprops
 ---
 
 # TProps
@@ -15,4 +15,4 @@ tags:
 
 - [[color-palette.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_104
+#graphify/code #graphify/EXTRACTED #community/Sticky_Tprops

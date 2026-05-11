@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/favorite.store.ts"
+source_file: "store/favorite.store.ts"
 type: "code"
-community: "Community 206"
+community: "Project Root Store"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_206
+  - community/Project_Root_Store
 ---
 
 # favorite.store.ts
@@ -26,4 +26,4 @@ tags:
 - [[toApiError()]] - `imports` [EXTRACTED]
 - [[use-favorite.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_206
+#graphify/code #graphify/EXTRACTED #community/Project_Root_Store

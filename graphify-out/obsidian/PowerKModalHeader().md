@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/ui/modal/header.tsx"
+source_file: "components/power-k/ui/modal/header.tsx"
 type: "code"
-community: "Community 202"
+community: "Power Search"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_202
+  - community/Power_Search
 ---
 
 # PowerKModalHeader()
@@ -16,4 +16,4 @@ tags:
 - [[header.tsx_11]] - `contains` [EXTRACTED]
 - [[wrapper.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_202
+#graphify/code #graphify/EXTRACTED #community/Power_Search

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/settings/workspace/sidebar/root.tsx"
+source_file: "components/settings/workspace/sidebar/root.tsx"
 type: "code"
-community: "Community 68"
+community: "Sidebar Nav"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_68
+  - community/Sidebar_Nav
 ---
 
 # WorkspaceSettingsSidebarRoot()
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_16]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_68
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Nav

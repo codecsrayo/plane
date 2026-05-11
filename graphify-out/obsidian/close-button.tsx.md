@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/rich-filters/filter-item/close-button.tsx"
+source_file: "components/rich-filters/filter-item/close-button.tsx"
 type: "code"
-community: "Filter Components"
+community: "Filter Controls"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Components
+  - community/Filter_Controls
 ---
 
 # close-button.tsx
@@ -18,4 +18,4 @@ tags:
 - [[invalid.tsx]] - `imports_from` [EXTRACTED]
 - [[root.tsx_91]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Components
+#graphify/code #graphify/EXTRACTED #community/Filter_Controls

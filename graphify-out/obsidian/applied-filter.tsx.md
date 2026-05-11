@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace-notifications/sidebar/filters/applied-filter.tsx"
+source_file: "components/workspace-notifications/sidebar/filters/applied-filter.tsx"
 type: "code"
-community: "Community 209"
+community: "Notification Option"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_209
+  - community/Notification_Option
 ---
 
 # applied-filter.tsx
@@ -18,4 +18,4 @@ tags:
 - [[index.ts_2]] - `imports_from` [EXTRACTED]
 - [[root.tsx_45]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_209
+#graphify/code #graphify/EXTRACTED #community/Notification_Option

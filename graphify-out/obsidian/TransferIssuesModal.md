@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/cycles/transfer-issues-modal.tsx"
+source_file: "components/cycles/transfer-issues-modal.tsx"
 type: "code"
-community: "Cycle Services & Filters"
+community: "Cycle Transfers"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Services__Filters
+  - community/Cycle_Transfers
 ---
 
 # TransferIssuesModal
@@ -17,4 +17,4 @@ tags:
 - [[cycle-list-item-action.tsx]] - `imports` [EXTRACTED]
 - [[transfer-issues-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Services\_\_Filters
+#graphify/code #graphify/EXTRACTED #community/Cycle_Transfers

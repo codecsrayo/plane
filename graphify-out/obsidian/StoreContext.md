@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/lib/store-context.tsx"
+source_file: "lib/store-context.tsx"
 type: "code"
-community: "Applied Filters UI"
+community: "Workspace Draft"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters_UI
+  - community/Workspace_Draft
 ---
 
 # StoreContext
@@ -60,4 +60,4 @@ tags:
 - [[user-user-settings.ts]] - `imports` [EXTRACTED]
 - [[user-user.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters_UI
+#graphify/code #graphify/EXTRACTED #community/Workspace_Draft

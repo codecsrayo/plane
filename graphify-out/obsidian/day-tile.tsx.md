@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/calendar/day-tile.tsx"
+source_file: "components/issues/issue-layouts/calendar/day-tile.tsx"
 type: "code"
-community: "Calendar UI"
+community: "Calendar Views"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_UI
+  - community/Calendar_Views
 ---
 
 # day-tile.tsx
@@ -27,4 +27,4 @@ tags:
 - [[utils.tsx_1]] - `imports_from` [EXTRACTED]
 - [[week-days.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_UI
+#graphify/code #graphify/EXTRACTED #community/Calendar_Views

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/issue/issue_activity.service.ts"
+source_file: "services/issue/issue_activity.service.ts"
 type: "code"
-community: "Git Integrations"
+community: "API Services"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Git_Integrations
+  - community/API_Services
 ---
 
 # IssueActivityService
@@ -17,4 +17,4 @@ tags:
 - [[.getIssueActivities()_1]] - `method` [EXTRACTED]
 - [[issue_activity.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Git_Integrations
+#graphify/code #graphify/EXTRACTED #community/API_Services

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/issue-details/reaction.store.ts"
+source_file: "store/issue/issue-details/reaction.store.ts"
 type: "code"
-community: "Community 215"
+community: "Reaction Reactions"
 location: "L90"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_215
+  - community/Reaction_Reactions
 ---
 
 # currentReaction
@@ -15,4 +15,4 @@ tags:
 
 - [[reaction.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_215
+#graphify/code #graphify/EXTRACTED #community/Reaction_Reactions

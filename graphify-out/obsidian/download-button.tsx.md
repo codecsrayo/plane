@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/profile/activity/download-button.tsx"
+source_file: "components/profile/activity/download-button.tsx"
 type: "code"
-community: "Community 65"
+community: "User Profile"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_65
+  - community/User_Profile
 ---
 
 # download-button.tsx
@@ -18,4 +18,4 @@ tags:
 - [[user.service.ts]] - `imports_from` [EXTRACTED]
 - [[userService]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_65
+#graphify/code #graphify/EXTRACTED #community/User_Profile

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/web-hooks/utils.ts"
+source_file: "components/web-hooks/utils.ts"
 type: "code"
-community: "Community 247"
+community: "Webhook Generated"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_247
+  - community/Webhook_Generated
 ---
 
 # getCurrentHookAsCSV()
@@ -16,4 +16,4 @@ tags:
 - [[create-webhook-modal.tsx]] - `imports` [EXTRACTED]
 - [[utils.ts_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_247
+#graphify/code #graphify/EXTRACTED #community/Webhook_Generated

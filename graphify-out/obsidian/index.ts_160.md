@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/header/index.ts"
+source_file: "components/pages/header/index.ts"
 type: "code"
-community: "Community 237"
+community: "Pages Main"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_237
+  - community/Pages_Main
 ---
 
 # index.ts
@@ -15,4 +15,4 @@ tags:
 
 - [[pages-list-view.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_237
+#graphify/code #graphify/EXTRACTED #community/Pages_Main

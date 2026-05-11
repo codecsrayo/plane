@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/estimate-column.tsx"
+source_file: "components/issues/issue-layouts/spreadsheet/columns/estimate-column.tsx"
 type: "code"
-community: "Spreadsheet Column Components"
+community: "Column Spreadsheet"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Column_Components
+  - community/Column_Spreadsheet
 ---
 
 # estimate-column.tsx
@@ -20,4 +20,4 @@ tags:
 - [[estimate.tsx]] - `imports_from` [EXTRACTED]
 - [[types.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Column_Components
+#graphify/code #graphify/EXTRACTED #community/Column_Spreadsheet

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/license/modal/card/plan-upgrade.tsx"
+source_file: "components/license/modal/card/plan-upgrade.tsx"
 type: "code"
-community: "Community 194"
+community: "Plan Discount"
 location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_194
+  - community/Plan_Discount
 ---
 
 # PlanUpgradeCard
@@ -15,4 +15,4 @@ tags:
 
 - [[plan-upgrade.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_194
+#graphify/code #graphify/EXTRACTED #community/Plan_Discount

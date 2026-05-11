@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project/settings/features-list.tsx"
+source_file: "components/project/settings/features-list.tsx"
 type: "code"
-community: "Community 204"
+community: "Project Settings"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_204
+  - community/Project_Settings
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[features-list.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_204
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

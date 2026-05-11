@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/types.ts"
+source_file: "components/issues/issue-layouts/spreadsheet/columns/types.ts"
 type: "code"
-community: "Spreadsheet Column Components"
+community: "Column Spreadsheet"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Column_Components
+  - community/Column_Spreadsheet
 ---
 
 # types.ts
@@ -23,4 +23,4 @@ tags:
 - [[start-date-column.tsx]] - `imports_from` [EXTRACTED]
 - [[state-column.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Column_Components
+#graphify/code #graphify/EXTRACTED #community/Column_Spreadsheet

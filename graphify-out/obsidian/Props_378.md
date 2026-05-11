@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/inbox/modals/decline-issue-modal.tsx"
+source_file: "components/inbox/modals/decline-issue-modal.tsx"
 type: "code"
-community: "Applied Filters UI"
+community: "Project Archives"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters_UI
+  - community/Project_Archives
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[decline-issue-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters_UI
+#graphify/code #graphify/EXTRACTED #community/Project_Archives

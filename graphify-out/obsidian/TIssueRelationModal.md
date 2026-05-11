@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/issue-details/root.store.ts"
+source_file: "store/issue/issue-details/root.store.ts"
 type: "code"
-community: "Community 72"
+community: "Comment Reactions"
 location: "L55"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_72
+  - community/Comment_Reactions
 ---
 
 # TIssueRelationModal
@@ -15,4 +15,4 @@ tags:
 
 - [[root.store.ts_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_72
+#graphify/code #graphify/EXTRACTED #community/Comment_Reactions

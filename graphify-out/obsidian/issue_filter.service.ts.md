@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/issue_filter.service.ts"
+source_file: "services/issue_filter.service.ts"
 type: "code"
-community: "Git Integrations"
+community: "Issue Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Git_Integrations
+  - community/Issue_Filters
 ---
 
 # issue_filter.service.ts
@@ -22,4 +22,4 @@ tags:
 - [[filter.store.ts_5]] - `imports_from` [EXTRACTED]
 - [[filter.store.ts_7]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Git_Integrations
+#graphify/code #graphify/EXTRACTED #community/Issue_Filters

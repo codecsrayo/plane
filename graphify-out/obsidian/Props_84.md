@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/list/filters/root.tsx"
+source_file: "components/pages/list/filters/root.tsx"
 type: "code"
-community: "Community 42"
+community: "Lead Members"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_42
+  - community/Lead_Members
 ---
 
 # Props
@@ -18,4 +18,4 @@ tags:
 - [[root.tsx_55]] - `contains` [EXTRACTED]
 - [[root.tsx_78]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_42
+#graphify/code #graphify/EXTRACTED #community/Lead_Members

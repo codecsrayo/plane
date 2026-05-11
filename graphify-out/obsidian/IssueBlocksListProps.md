@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/kanban/blocks-list.tsx"
+source_file: "components/issues/issue-layouts/kanban/blocks-list.tsx"
 type: "code"
-community: "Community 62"
+community: "Kanban Groups"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_62
+  - community/Kanban_Groups
 ---
 
 # IssueBlocksListProps
@@ -15,4 +15,4 @@ tags:
 
 - [[blocks-list.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_62
+#graphify/code #graphify/EXTRACTED #community/Kanban_Groups

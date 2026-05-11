@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-timeline-chart.ts"
+source_file: "hooks/use-timeline-chart.ts"
 type: "code"
-community: "Community 38"
+community: "Gantt Sidebar"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_38
+  - community/Gantt_Sidebar
 ---
 
 # useTimeLineChart()
@@ -19,4 +19,4 @@ tags:
 - [[sidebar.tsx_1]] - `imports` [EXTRACTED]
 - [[use-timeline-chart.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_38
+#graphify/code #graphify/EXTRACTED #community/Gantt_Sidebar

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/modules/gantt-chart/blocks.tsx"
+source_file: "components/modules/gantt-chart/blocks.tsx"
 type: "code"
-community: "Account & Sub-Issues"
+community: "Spreadsheet Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Account__Sub-Issues
+  - community/Spreadsheet_Filters
 ---
 
 # blocks.tsx
@@ -26,4 +26,4 @@ tags:
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 - [[utils.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Account\_\_Sub-Issues
+#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Filters

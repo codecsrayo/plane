@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/list/list-group.tsx"
+source_file: "components/issues/issue-layouts/list/list-group.tsx"
 type: "code"
-community: "Active Cycle Stats"
+community: "Kanban Groups"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Cycle_Stats
+  - community/Kanban_Groups
 ---
 
 # list-group.tsx
@@ -40,4 +40,4 @@ tags:
 - [[useProjectState()]] - `imports` [EXTRACTED]
 - [[utils.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats
+#graphify/code #graphify/EXTRACTED #community/Kanban_Groups

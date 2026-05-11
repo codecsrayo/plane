@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/constants/fetch-keys.ts"
+source_file: "constants/fetch-keys.ts"
 type: "code"
-community: "Community 117"
+community: "Cycle Details"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_117
+  - community/Cycle_Details
 ---
 
 # paramsToKey()
@@ -16,4 +16,4 @@ tags:
 - [[CYCLE_ISSUES_WITH_PARAMS()]] - `calls` [EXTRACTED]
 - [[fetch-keys.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_117
+#graphify/code #graphify/EXTRACTED #community/Cycle_Details

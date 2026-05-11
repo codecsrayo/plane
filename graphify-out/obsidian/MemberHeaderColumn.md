@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project/member-header-column.tsx"
+source_file: "components/project/member-header-column.tsx"
 type: "code"
-community: "Community 231"
+community: "Member Sort"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_231
+  - community/Member_Sort
 ---
 
 # MemberHeaderColumn
@@ -15,4 +15,4 @@ tags:
 
 - [[member-header-column.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_231
+#graphify/code #graphify/EXTRACTED #community/Member_Sort

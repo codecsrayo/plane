@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-keypress.tsx"
+source_file: "hooks/use-keypress.tsx"
 type: "code"
-community: "Community 169"
+community: "Inbox Issue"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_169
+  - community/Inbox_Issue
 ---
 
 # useKeypress()
@@ -19,4 +19,4 @@ tags:
 - [[InboxIssueCreateModalRoot()]] - `calls` [EXTRACTED]
 - [[use-keypress.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_169
+#graphify/code #graphify/EXTRACTED #community/Inbox_Issue

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/modules/sidebar-select/select-status.tsx"
+source_file: "components/modules/sidebar-select/select-status.tsx"
 type: "code"
-community: "Community 451"
+community: "Status Select"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_451
+  - community/Status_Select
 ---
 
 # select-status.tsx
@@ -16,4 +16,4 @@ tags:
 - [[Props_78]] - `contains` [EXTRACTED]
 - [[SidebarStatusSelect()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_451
+#graphify/code #graphify/EXTRACTED #community/Status_Select

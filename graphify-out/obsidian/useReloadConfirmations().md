@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-reload-confirmation.tsx"
+source_file: "hooks/use-reload-confirmation.tsx"
 type: "code"
-community: "Active Cycle Stats"
+community: "Multi Select Actions"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Cycle_Stats
+  - community/Multi_Select_Actions
 ---
 
 # useReloadConfirmations()
@@ -16,4 +16,4 @@ tags:
 - [[use-reload-confirmation.tsx]] - `contains` [EXTRACTED]
 - [[useMultipleSelect()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats
+#graphify/code #graphify/EXTRACTED #community/Multi_Select_Actions

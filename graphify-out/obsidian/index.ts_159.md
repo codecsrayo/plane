@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/dropdowns/index.ts"
+source_file: "components/pages/dropdowns/index.ts"
 type: "code"
-community: "Community 54"
+community: "Action Pages"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_54
+  - community/Action_Pages
 ---
 
 # index.ts
@@ -16,4 +16,4 @@ tags:
 - [[block-item-action.tsx]] - `imports_from` [EXTRACTED]
 - [[options-dropdown.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_54
+#graphify/code #graphify/EXTRACTED #community/Action_Pages

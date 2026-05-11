@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/use-project-filter.ts"
+source_file: "hooks/store/use-project-filter.ts"
 type: "code"
-community: "Community 52"
+community: "Auth UI"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_52
+  - community/Auth_UI
 ---
 
 # useProjectFilter()
@@ -19,4 +19,4 @@ tags:
 - [[search-projects.tsx]] - `imports` [EXTRACTED]
 - [[use-project-filter.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_52
+#graphify/code #graphify/EXTRACTED #community/Auth_UI

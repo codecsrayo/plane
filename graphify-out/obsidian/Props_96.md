@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/profile/activity/profile-activity-list.tsx"
+source_file: "components/profile/activity/profile-activity-list.tsx"
 type: "code"
-community: "Community 70"
+community: "Activity List"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_70
+  - community/Activity_List
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[profile-activity-list.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_70
+#graphify/code #graphify/EXTRACTED #community/Activity_List

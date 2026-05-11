@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/parent-issues-list-modal.tsx"
+source_file: "components/issues/parent-issues-list-modal.tsx"
 type: "code"
-community: "Spreadsheet Column Components"
+community: "Issue Layouts"
 location: "L45"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Column_Components
+  - community/Issue_Layouts
 ---
 
 # ParentIssuesListModal()
@@ -20,4 +20,4 @@ tags:
 - [[useDebounce()]] - `calls` [EXTRACTED]
 - [[usePlatformOS()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Column_Components
+#graphify/code #graphify/EXTRACTED #community/Issue_Layouts

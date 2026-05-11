@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/editor/summary/content-browser.tsx"
+source_file: "components/pages/editor/summary/content-browser.tsx"
 type: "code"
-community: "Community 248"
+community: "Outline Content"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_248
+  - community/Outline_Content
 ---
 
 # PageContentBrowser()
@@ -15,4 +15,4 @@ tags:
 
 - [[content-browser.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_248
+#graphify/code #graphify/EXTRACTED #community/Outline_Content

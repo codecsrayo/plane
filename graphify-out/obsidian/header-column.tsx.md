@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/header-column.tsx"
+source_file: "components/issues/issue-layouts/spreadsheet/columns/header-column.tsx"
 type: "code"
-community: "Community 62"
+community: "Spreadsheet Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_62
+  - community/Spreadsheet_Filters
 ---
 
 # header-column.tsx
@@ -20,4 +20,4 @@ tags:
 - [[use-local-storage.tsx]] - `imports_from` [EXTRACTED]
 - [[utils.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_62
+#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Filters

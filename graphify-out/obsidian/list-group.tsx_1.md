@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail-widgets/sub-issues/issues-list/list-group.tsx"
+source_file: "components/issues/issue-detail-widgets/sub-issues/issues-list/list-group.tsx"
 type: "code"
-community: "Community 177"
+community: "List Group Layout"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_177
+  - community/List_Group_Layout
 ---
 
 # list-group.tsx
@@ -19,4 +19,4 @@ tags:
 - [[list-item.tsx_1]] - `imports_from` [EXTRACTED]
 - [[root.tsx_41]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_177
+#graphify/code #graphify/EXTRACTED #community/List_Group_Layout

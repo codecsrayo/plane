@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail/index.ts"
+source_file: "components/issues/issue-detail/index.ts"
 type: "code"
-community: "Spreadsheet Column Components"
+community: "Peek Overview"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Column_Components
+  - community/Peek_Overview
 ---
 
 # index.ts
@@ -21,4 +21,4 @@ tags:
 - [[title-input.tsx]] - `imports_from` [EXTRACTED]
 - [[view.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Column_Components
+#graphify/code #graphify/EXTRACTED #community/Peek_Overview

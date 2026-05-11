@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-page-filters.ts"
+source_file: "hooks/use-page-filters.ts"
 type: "code"
-community: "Community 54"
+community: "Page Editor"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_54
+  - community/Page_Editor
 ---
 
 # TPagesPersonalizationConfig
@@ -15,4 +15,4 @@ tags:
 
 - [[use-page-filters.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_54
+#graphify/code #graphify/EXTRACTED #community/Page_Editor

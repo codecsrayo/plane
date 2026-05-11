@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/ui/loader/layouts/list-layout-loader.tsx"
+source_file: "components/ui/loader/layouts/list-layout-loader.tsx"
 type: "code"
-community: "Community 48"
+community: "Loader Kanban"
 location: "L94"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_48
+  - community/Loader_Kanban
 ---
 
 # ListLayoutLoader()
@@ -17,4 +17,4 @@ tags:
 - [[layout-loader.tsx]] - `imports` [EXTRACTED]
 - [[list-layout-loader.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_48
+#graphify/code #graphify/EXTRACTED #community/Loader_Kanban

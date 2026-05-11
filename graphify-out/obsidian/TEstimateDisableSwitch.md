@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/estimates/estimate-disable-switch.tsx"
+source_file: "components/estimates/estimate-disable-switch.tsx"
 type: "code"
-community: "Applied Filters UI"
+community: "Estimate Disable"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters_UI
+  - community/Estimate_Disable
 ---
 
 # TEstimateDisableSwitch
@@ -15,4 +15,4 @@ tags:
 
 - [[estimate-disable-switch.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters_UI
+#graphify/code #graphify/EXTRACTED #community/Estimate_Disable

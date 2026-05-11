@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-modal/components/project-select.tsx"
+source_file: "components/issues/issue-modal/components/project-select.tsx"
 type: "code"
-community: "Cycle Services & Filters"
+community: "Module Forms"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Services__Filters
+  - community/Module_Forms
 ---
 
 # project-select.tsx
@@ -22,4 +22,4 @@ tags:
 - [[useIssueModal()]] - `imports` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Services\_\_Filters
+#graphify/code #graphify/EXTRACTED #community/Module_Forms

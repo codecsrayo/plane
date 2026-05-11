@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/modules/dropdowns/filters/target-date.tsx"
+source_file: "components/modules/dropdowns/filters/target-date.tsx"
 type: "code"
-community: "Community 85"
+community: "Date Start"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_85
+  - community/Date_Start
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[target-date.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_85
+#graphify/code #graphify/EXTRACTED #community/Date_Start

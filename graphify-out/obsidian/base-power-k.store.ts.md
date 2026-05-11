@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/base-power-k.store.ts"
+source_file: "store/base-power-k.store.ts"
 type: "code"
-community: "Community 83"
+community: "Shortcut Registry"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_83
+  - community/Shortcut_Registry
 ---
 
 # base-power-k.store.ts
@@ -23,4 +23,4 @@ tags:
 - [[registry.ts]] - `imports_from` [EXTRACTED]
 - [[types.ts_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_83
+#graphify/code #graphify/EXTRACTED #community/Shortcut_Registry

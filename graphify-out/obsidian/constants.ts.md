@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/gantt-chart/constants.ts"
+source_file: "components/gantt-chart/constants.ts"
 type: "code"
-community: "Community 90"
+community: "Gantt Chart"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_90
+  - community/Gantt_Chart
 ---
 
 # constants.ts
@@ -32,4 +32,4 @@ tags:
 - [[use-gantt-resizable.ts]] - `imports_from` [EXTRACTED]
 - [[week.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_90
+#graphify/code #graphify/EXTRACTED #community/Gantt_Chart

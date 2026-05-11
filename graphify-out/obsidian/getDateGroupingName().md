@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/chart/utils.ts"
+source_file: "components/chart/utils.ts"
 type: "code"
-community: "Community 205"
+community: "Chart Generate"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_205
+  - community/Chart_Generate
 ---
 
 # getDateGroupingName()
@@ -15,4 +15,4 @@ tags:
 
 - [[utils.ts_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_205
+#graphify/code #graphify/EXTRACTED #community/Chart_Generate

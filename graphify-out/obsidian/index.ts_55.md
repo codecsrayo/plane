@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/editor/lite-text/index.ts"
+source_file: "components/editor/lite-text/index.ts"
 type: "code"
-community: "Community 222"
+community: "Comment Card"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_222
+  - community/Comment_Card
 ---
 
 # index.ts
@@ -18,4 +18,4 @@ tags:
 - [[display.tsx]] - `imports_from` [EXTRACTED]
 - [[edit-form.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_222
+#graphify/code #graphify/EXTRACTED #community/Comment_Card

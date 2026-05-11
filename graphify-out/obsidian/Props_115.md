@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/settings/project/content/feature-control-item.tsx"
+source_file: "components/settings/project/content/feature-control-item.tsx"
 type: "code"
-community: "Community 142"
+community: "Project Settings"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_142
+  - community/Project_Settings
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[feature-control-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_142
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

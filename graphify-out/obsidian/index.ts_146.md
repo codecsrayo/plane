@@ -1,14 +1,14 @@
 ---
-source_file: "web/core/components/inbox/index.ts"
+source_file: "components/inbox/index.ts"
 type: "code"
-community: "Community 809"
+community: "Community 404"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_809
+  - community/Community_404
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_809
+#graphify/code #graphify/EXTRACTED #community/Community_404

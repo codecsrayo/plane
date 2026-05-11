@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/use-instance.ts"
+source_file: "hooks/store/use-instance.ts"
 type: "code"
-community: "Authentication UI"
+community: "Chat Support"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Authentication_UI
+  - community/Chat_Support
 ---
 
 # useInstance()
@@ -34,4 +34,4 @@ tags:
 - [[usePowerKCreationCommandsRecord()]] - `calls` [EXTRACTED]
 - [[workspace-menu-root.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Authentication_UI
+#graphify/code #graphify/EXTRACTED #community/Chat_Support

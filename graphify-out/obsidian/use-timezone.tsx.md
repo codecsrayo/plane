@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-timezone.tsx"
+source_file: "hooks/use-timezone.tsx"
 type: "code"
-community: "Community 259"
+community: "Workspace Timezone"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_259
+  - community/Workspace_Timezone
 ---
 
 # use-timezone.tsx
@@ -20,4 +20,4 @@ tags:
 - [[timezone.service.ts]] - `imports_from` [EXTRACTED]
 - [[useTimezone()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_259
+#graphify/code #graphify/EXTRACTED #community/Workspace_Timezone

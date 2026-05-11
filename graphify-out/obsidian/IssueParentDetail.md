@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail/parent/root.tsx"
+source_file: "components/issues/issue-detail/parent/root.tsx"
 type: "code"
-community: "Community 36"
+community: "Issue Parent"
 location: "L37"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_36
+  - community/Issue_Parent
 ---
 
 # IssueParentDetail
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_35]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_36
+#graphify/code #graphify/EXTRACTED #community/Issue_Parent

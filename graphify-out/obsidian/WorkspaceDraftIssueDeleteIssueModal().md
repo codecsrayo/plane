@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/workspace-draft/delete-modal.tsx"
+source_file: "components/issues/workspace-draft/delete-modal.tsx"
 type: "code"
-community: "Community 41"
+community: "Issue Identifiers"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_41
+  - community/Issue_Identifiers
 ---
 
 # WorkspaceDraftIssueDeleteIssueModal()
@@ -19,4 +19,4 @@ tags:
 - [[useUser()]] - `calls` [INFERRED]
 - [[useUserPermissions()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_41
+#graphify/code #graphify/EXTRACTED #community/Issue_Identifiers

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/settings/workspace/sidebar/root.tsx"
+source_file: "components/settings/workspace/sidebar/root.tsx"
 type: "code"
-community: "Community 68"
+community: "Sidebar Nav"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_68
+  - community/Sidebar_Nav
 ---
 
 # root.tsx
@@ -20,4 +20,4 @@ tags:
 - [[header.tsx_3]] - `imports_from` [EXTRACTED]
 - [[item-categories.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_68
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Nav

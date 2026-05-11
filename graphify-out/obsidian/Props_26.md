@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/logo.tsx"
+source_file: "components/workspace/logo.tsx"
 type: "code"
-community: "Authentication UI"
+community: "Workspace Invites"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Authentication_UI
+  - community/Workspace_Invites
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[logo.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Authentication_UI
+#graphify/code #graphify/EXTRACTED #community/Workspace_Invites

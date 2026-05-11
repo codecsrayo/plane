@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/stickies/sticky/root.tsx"
+source_file: "components/stickies/sticky/root.tsx"
 type: "code"
-community: "Community 211"
+community: "Sticky Tprops"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_211
+  - community/Sticky_Tprops
 ---
 
 # root.tsx
@@ -27,4 +27,4 @@ tags:
 - [[useSticky()]] - `imports` [EXTRACTED]
 - [[useStickyOperations()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_211
+#graphify/code #graphify/EXTRACTED #community/Sticky_Tprops

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/lib/polyfills/index.ts"
+source_file: "lib/polyfills/index.ts"
 type: "code"
-community: "Community 607"
+community: "Start"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_607
+  - community/Start
 ---
 
 # index.ts
@@ -15,4 +15,4 @@ tags:
 
 - [[start]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_607
+#graphify/code #graphify/EXTRACTED #community/Start

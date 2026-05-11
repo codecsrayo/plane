@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/lib/wrappers/store-wrapper.tsx"
+source_file: "lib/wrappers/store-wrapper.tsx"
 type: "code"
-community: "Community 63"
+community: "Theme Wrapper"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_63
+  - community/Theme_Wrapper
 ---
 
 # StoreWrapper()
@@ -18,4 +18,4 @@ tags:
 - [[useRouterParams()]] - `calls` [EXTRACTED]
 - [[useUserProfile()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_63
+#graphify/code #graphify/EXTRACTED #community/Theme_Wrapper

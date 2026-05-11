@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/gantt-chart/chart/main-content.tsx"
+source_file: "components/gantt-chart/chart/main-content.tsx"
 type: "code"
-community: "Community 234"
+community: "Gantt Chart"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_234
+  - community/Gantt_Chart
 ---
 
 # main-content.tsx
@@ -24,4 +24,4 @@ tags:
 - [[use-timeline-chart.ts]] - `imports_from` [EXTRACTED]
 - [[useTimeLineChartStore()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_234
+#graphify/code #graphify/EXTRACTED #community/Gantt_Chart

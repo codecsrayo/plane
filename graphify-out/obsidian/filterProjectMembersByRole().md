@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/member/utils.ts"
+source_file: "store/member/utils.ts"
 type: "code"
-community: "Community 230"
+community: "Member Sort"
 location: "L63"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_230
+  - community/Member_Sort
 ---
 
 # filterProjectMembersByRole()
@@ -16,4 +16,4 @@ tags:
 - [[sortProjectMembers()]] - `calls` [EXTRACTED]
 - [[utils.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_230
+#graphify/code #graphify/EXTRACTED #community/Member_Sort

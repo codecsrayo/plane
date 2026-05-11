@@ -1,5 +1,5 @@
 ---
-source_file: "web/core/components/readonly/module.tsx"
+source_file: "components/readonly/module.tsx"
 type: "code"
 community: "Module Analytics"
 location: "L27"

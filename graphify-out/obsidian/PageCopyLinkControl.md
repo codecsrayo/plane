@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/header/copy-link-control.tsx"
+source_file: "components/pages/header/copy-link-control.tsx"
 type: "code"
-community: "Page Actions"
+community: "Collaborative Copy"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Page_Actions
+  - community/Collaborative_Copy
 ---
 
 # PageCopyLinkControl
@@ -16,4 +16,4 @@ tags:
 - [[actions.tsx_2]] - `imports` [EXTRACTED]
 - [[copy-link-control.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Page_Actions
+#graphify/code #graphify/EXTRACTED #community/Collaborative_Copy

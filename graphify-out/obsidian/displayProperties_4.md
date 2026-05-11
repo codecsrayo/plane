@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/profile/filter.store.ts"
+source_file: "store/issue/profile/filter.store.ts"
 type: "code"
-community: "Community 118"
+community: "Filters Display"
 location: "L146"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_118
+  - community/Filters_Display
 ---
 
 # displayProperties
@@ -15,4 +15,4 @@ tags:
 
 - [[filter.store.ts_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_118
+#graphify/code #graphify/EXTRACTED #community/Filters_Display

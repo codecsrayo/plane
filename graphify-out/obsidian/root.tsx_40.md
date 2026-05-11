@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail-widgets/sub-issues/root.tsx"
+source_file: "components/issues/issue-detail-widgets/sub-issues/root.tsx"
 type: "code"
-community: "Community 122"
+community: "Title Issues"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_122
+  - community/Title_Issues
 ---
 
 # root.tsx
@@ -22,4 +22,4 @@ tags:
 - [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_122
+#graphify/code #graphify/EXTRACTED #community/Title_Issues

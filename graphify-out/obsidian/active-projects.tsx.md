@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/analytics/overview/active-projects.tsx"
+source_file: "components/analytics/overview/active-projects.tsx"
 type: "code"
-community: "Community 193"
+community: "Active Projects"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_193
+  - community/Active_Projects
 ---
 
 # active-projects.tsx
@@ -22,4 +22,4 @@ tags:
 - [[useAnalytics()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_193
+#graphify/code #graphify/EXTRACTED #community/Active_Projects

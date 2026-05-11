@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/settings/mobile/nav.tsx"
+source_file: "components/settings/mobile/nav.tsx"
 type: "code"
-community: "Empty State Components"
+community: "Member Settings"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_State_Components
+  - community/Member_Settings
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[nav.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_State_Components
+#graphify/code #graphify/EXTRACTED #community/Member_Settings

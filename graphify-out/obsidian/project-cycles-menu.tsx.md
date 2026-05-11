@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/ui/pages/open-entity/project-cycles-menu.tsx"
+source_file: "components/power-k/ui/pages/open-entity/project-cycles-menu.tsx"
 type: "code"
-community: "Community 61"
+community: "File Icons Nav"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_61
+  - community/File_Icons_Nav
 ---
 
 # project-cycles-menu.tsx
@@ -23,4 +23,4 @@ tags:
 - [[use-cycle.ts]] - `imports_from` [EXTRACTED]
 - [[useCycle()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_61
+#graphify/code #graphify/EXTRACTED #community/File_Icons_Nav

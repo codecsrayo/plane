@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/timeline/issues-timeline.store.ts"
+source_file: "store/timeline/issues-timeline.store.ts"
 type: "code"
-community: "Community 303"
+community: "Issues Time"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_303
+  - community/Issues_Time
 ---
 
 # issues-timeline.store.ts
@@ -16,4 +16,4 @@ tags:
 - [[IIssuesTimeLineStore]] - `contains` [EXTRACTED]
 - [[IssuesTimeLineStore]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_303
+#graphify/code #graphify/EXTRACTED #community/Issues_Time

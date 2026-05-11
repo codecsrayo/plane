@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/dropdowns/project/base.tsx"
+source_file: "components/dropdowns/project/base.tsx"
 type: "code"
-community: "Cycle Services & Filters"
+community: "Module Forms"
 location: "L57"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Services__Filters
+  - community/Module_Forms
 ---
 
 # ProjectDropdownBase
@@ -16,4 +16,4 @@ tags:
 - [[base.tsx_3]] - `contains` [EXTRACTED]
 - [[dropdown.tsx_2]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Services\_\_Filters
+#graphify/code #graphify/EXTRACTED #community/Module_Forms

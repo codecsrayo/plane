@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/module/issue.store.ts"
+source_file: "store/issue/module/issue.store.ts"
 type: "code"
-community: "Community 93"
+community: "Filters Display"
 location: "L187"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_93
+  - community/Filters_Display
 ---
 
 # cursorObject
@@ -15,4 +15,4 @@ tags:
 
 - [[issue.store.ts_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_93
+#graphify/code #graphify/EXTRACTED #community/Filters_Display

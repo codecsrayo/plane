@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/issue/issue.service.ts"
+source_file: "services/issue/issue.service.ts"
 type: "code"
-community: "Git Integrations"
+community: "Comment Reactions"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Git_Integrations
+  - community/Comment_Reactions
 ---
 
 # issue.service.ts
@@ -18,4 +18,4 @@ tags:
 - [[api.service.ts]] - `imports_from` [EXTRACTED]
 - [[subscription.store.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Git_Integrations
+#graphify/code #graphify/EXTRACTED #community/Comment_Reactions

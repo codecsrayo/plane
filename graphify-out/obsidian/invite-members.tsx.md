@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/onboarding/invite-members.tsx"
+source_file: "components/onboarding/invite-members.tsx"
 type: "code"
-community: "Community 113"
+community: "Invite Onboarding"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_113
+  - community/Invite_Onboarding
 ---
 
 # invite-members.tsx
@@ -26,4 +26,4 @@ tags:
 - [[workspace.service.ts]] - `imports_from` [EXTRACTED]
 - [[workspaceService_10]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_113
+#graphify/code #graphify/EXTRACTED #community/Invite_Onboarding

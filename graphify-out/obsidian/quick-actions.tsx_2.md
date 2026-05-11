@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/modules/quick-actions.tsx"
+source_file: "components/modules/quick-actions.tsx"
 type: "code"
-community: "Module Analytics"
+community: "Menu Quick"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Menu_Quick
 ---
 
 # quick-actions.tsx
@@ -24,4 +24,4 @@ tags:
 - [[useModule()]] - `imports` [EXTRACTED]
 - [[useModuleMenuItems()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Menu_Quick

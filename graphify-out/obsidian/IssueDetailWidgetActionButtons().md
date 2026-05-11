@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail-widgets/action-buttons.tsx"
+source_file: "components/issues/issue-detail-widgets/action-buttons.tsx"
 type: "code"
-community: "Community 154"
+community: "Issue Widget"
 location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_154
+  - community/Issue_Widget
 ---
 
 # IssueDetailWidgetActionButtons()
@@ -16,4 +16,4 @@ tags:
 - [[action-buttons.tsx]] - `contains` [EXTRACTED]
 - [[root.tsx_37]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_154
+#graphify/code #graphify/EXTRACTED #community/Issue_Widget

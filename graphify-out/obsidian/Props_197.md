@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-header.tsx"
+source_file: "components/issues/issue-layouts/spreadsheet/spreadsheet-header.tsx"
 type: "code"
-community: "Active Cycle Stats"
+community: "Spreadsheet Table"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Cycle_Stats
+  - community/Spreadsheet_Table
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[spreadsheet-header.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats
+#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Table

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/estimates/points/index.ts"
+source_file: "components/estimates/points/index.ts"
 type: "code"
-community: "Community 225"
+community: "Estimate Stage"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_225
+  - community/Estimate_Stage
 ---
 
 # index.ts
@@ -15,4 +15,4 @@ tags:
 
 - [[modal.tsx_12]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_225
+#graphify/code #graphify/EXTRACTED #community/Estimate_Stage

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/issue-details/reaction.store.ts"
+source_file: "store/issue/issue-details/reaction.store.ts"
 type: "code"
-community: "Community 215"
+community: "Reaction Reactions"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_215
+  - community/Reaction_Reactions
 ---
 
 # reaction.store.ts
@@ -26,4 +26,4 @@ tags:
 - [[reactions_1]] - `contains` [EXTRACTED]
 - [[root.store.ts_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_215
+#graphify/code #graphify/EXTRACTED #community/Reaction_Reactions

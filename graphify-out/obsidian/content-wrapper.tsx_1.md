@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/content-wrapper.tsx"
+source_file: "components/core/content-wrapper.tsx"
 type: "code"
-community: "Community 494"
+community: "Content Wrapper"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_494
+  - community/Content_Wrapper
 ---
 
 # content-wrapper.tsx
@@ -16,4 +16,4 @@ tags:
 - [[ContentWrapper()]] - `contains` [EXTRACTED]
 - [[ContentWrapperProps]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_494
+#graphify/code #graphify/EXTRACTED #community/Content_Wrapper

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/sidebar/progress-chart.tsx"
+source_file: "components/core/sidebar/progress-chart.tsx"
 type: "code"
-community: "Cycle Analytics"
+community: "Cycle Productivity"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Analytics
+  - community/Cycle_Productivity
 ---
 
 # ProgressChart()
@@ -15,4 +15,4 @@ tags:
 
 - [[progress-chart.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Analytics
+#graphify/code #graphify/EXTRACTED #community/Cycle_Productivity

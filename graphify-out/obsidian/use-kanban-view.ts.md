@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/use-kanban-view.ts"
+source_file: "hooks/store/use-kanban-view.ts"
 type: "code"
-community: "Community 62"
+community: "Spreadsheet Columns"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_62
+  - community/Spreadsheet_Columns
 ---
 
 # use-kanban-view.ts
@@ -22,4 +22,4 @@ tags:
 - [[store-context.tsx]] - `imports_from` [EXTRACTED]
 - [[useKanbanView()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_62
+#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Columns

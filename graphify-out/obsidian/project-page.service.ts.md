@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/page/project-page.service.ts"
+source_file: "services/page/project-page.service.ts"
 type: "code"
-community: "Git Integrations"
+community: "API Services"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Git_Integrations
+  - community/API_Services
 ---
 
 # project-page.service.ts
@@ -20,4 +20,4 @@ tags:
 - [[file-upload.service.ts]] - `imports_from` [EXTRACTED]
 - [[toApiError()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Git_Integrations
+#graphify/code #graphify/EXTRACTED #community/API_Services

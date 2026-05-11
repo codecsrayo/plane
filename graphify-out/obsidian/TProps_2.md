@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/sidebar/dropdown-item.tsx"
+source_file: "components/workspace/sidebar/dropdown-item.tsx"
 type: "code"
-community: "Authentication UI"
+community: "Workspace Invites"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Authentication_UI
+  - community/Workspace_Invites
 ---
 
 # TProps
@@ -15,4 +15,4 @@ tags:
 
 - [[dropdown-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Authentication_UI
+#graphify/code #graphify/EXTRACTED #community/Workspace_Invites

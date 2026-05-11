@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/comments/card/root.tsx"
+source_file: "components/comments/card/root.tsx"
 type: "code"
-community: "Community 79"
+community: "Comment Card"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_79
+  - community/Comment_Card
 ---
 
 # root.tsx
@@ -20,4 +20,4 @@ tags:
 - [[comments.tsx]] - `imports_from` [EXTRACTED]
 - [[quick-actions.tsx_4]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_79
+#graphify/code #graphify/EXTRACTED #community/Comment_Card

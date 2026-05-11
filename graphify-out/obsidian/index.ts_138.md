@@ -1,14 +1,14 @@
 ---
-source_file: "web/core/components/onboarding/index.ts"
+source_file: "components/onboarding/index.ts"
 type: "code"
-community: "Community 808"
+community: "Community 403"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_808
+  - community/Community_403
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_808
+#graphify/code #graphify/EXTRACTED #community/Community_403

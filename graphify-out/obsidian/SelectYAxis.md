@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/analytics/select/select-y-axis.tsx"
+source_file: "components/analytics/select/select-y-axis.tsx"
 type: "code"
-community: "Community 217"
+community: "Select Axis"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_217
+  - community/Select_Axis
 ---
 
 # SelectYAxis
@@ -16,4 +16,4 @@ tags:
 - [[analytics-params.tsx]] - `imports` [EXTRACTED]
 - [[select-y-axis.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_217
+#graphify/code #graphify/EXTRACTED #community/Select_Axis

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/list/applied-filters/index.ts"
+source_file: "components/pages/list/applied-filters/index.ts"
 type: "code"
-community: "Community 165"
+community: "Order Search"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_165
+  - community/Order_Search
 ---
 
 # index.ts
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_83]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_165
+#graphify/code #graphify/EXTRACTED #community/Order_Search

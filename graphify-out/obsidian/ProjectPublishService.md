@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/project/project-publish.service.ts"
+source_file: "services/project/project-publish.service.ts"
 type: "code"
-community: "Community 267"
+community: "Publish Project"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_267
+  - community/Publish_Project
 ---
 
 # ProjectPublishService
@@ -20,4 +20,4 @@ tags:
 - [[.updatePublishSettings()]] - `method` [EXTRACTED]
 - [[project-publish.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_267
+#graphify/code #graphify/EXTRACTED #community/Publish_Project

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/dropdowns/intake-state/dropdown.tsx"
+source_file: "components/dropdowns/intake-state/dropdown.tsx"
 type: "code"
-community: "Spreadsheet Column Components"
+community: "Issue Properties"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Column_Components
+  - community/Issue_Properties
 ---
 
 # IntakeStateDropdown
@@ -17,4 +17,4 @@ tags:
 - [[issue-properties.tsx]] - `imports` [EXTRACTED]
 - [[issue-properties.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Column_Components
+#graphify/code #graphify/EXTRACTED #community/Issue_Properties

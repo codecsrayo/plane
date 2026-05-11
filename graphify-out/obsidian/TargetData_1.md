@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/sidebar/favorites/favorites.helpers.ts"
+source_file: "components/workspace/sidebar/favorites/favorites.helpers.ts"
 type: "code"
-community: "Community 128"
+community: "Favorite Favorites"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_128
+  - community/Favorite_Favorites
 ---
 
 # TargetData
@@ -16,4 +16,4 @@ tags:
 - [[favorites-menu.tsx]] - `imports` [EXTRACTED]
 - [[favorites.helpers.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_128
+#graphify/code #graphify/EXTRACTED #community/Favorite_Favorites

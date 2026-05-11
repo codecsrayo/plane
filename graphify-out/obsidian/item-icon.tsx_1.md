@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/settings/project/sidebar/item-icon.tsx"
+source_file: "components/settings/project/sidebar/item-icon.tsx"
 type: "code"
-community: "Community 68"
+community: "File Icons Nav"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_68
+  - community/File_Icons_Nav
 ---
 
 # item-icon.tsx
@@ -18,4 +18,4 @@ tags:
 - [[item-categories.tsx_2]] - `imports_from` [EXTRACTED]
 - [[project-settings-menu.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_68
+#graphify/code #graphify/EXTRACTED #community/File_Icons_Nav

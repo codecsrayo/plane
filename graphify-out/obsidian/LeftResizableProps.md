@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/gantt-chart/helpers/blockResizables/left-resizable.tsx"
+source_file: "components/gantt-chart/helpers/blockResizables/left-resizable.tsx"
 type: "code"
-community: "Community 235"
+community: "Resizable Left"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_235
+  - community/Resizable_Left
 ---
 
 # LeftResizableProps
@@ -15,4 +15,4 @@ tags:
 
 - [[left-resizable.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_235
+#graphify/code #graphify/EXTRACTED #community/Resizable_Left

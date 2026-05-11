@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/home/widgets/manage/widget-item.tsx"
+source_file: "components/home/widgets/manage/widget-item.tsx"
 type: "code"
-community: "Community 119"
+community: "Dashboard Widgets"
 location: "L34"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_119
+  - community/Dashboard_Widgets
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[widget-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_119
+#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets

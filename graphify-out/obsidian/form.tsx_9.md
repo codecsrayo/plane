@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/api-token/modal/form.tsx"
+source_file: "components/api-token/modal/form.tsx"
 type: "code"
-community: "Community 258"
+community: "Expiry Token"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_258
+  - community/Expiry_Token
 ---
 
 # form.tsx
@@ -22,4 +22,4 @@ tags:
 - [[getExpiryDate()]] - `contains` [EXTRACTED]
 - [[getFormattedDate()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_258
+#graphify/code #graphify/EXTRACTED #community/Expiry_Token

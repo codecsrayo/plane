@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/modules/index.ts"
+source_file: "components/modules/index.ts"
 type: "code"
-community: "Module Analytics"
+community: "Modules Archived"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Modules_Archived
 ---
 
 # index.ts
@@ -32,4 +32,4 @@ tags:
 - [[root.tsx_15]] - `imports_from` [EXTRACTED]
 - [[view.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Modules_Archived

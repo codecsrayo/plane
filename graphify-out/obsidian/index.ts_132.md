@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/cycles/applied-filters/index.ts"
+source_file: "components/cycles/applied-filters/index.ts"
 type: "code"
-community: "Community 97"
+community: "Archived Cycles"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_97
+  - community/Archived_Cycles
 ---
 
 # index.ts
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_52]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_97
+#graphify/code #graphify/EXTRACTED #community/Archived_Cycles

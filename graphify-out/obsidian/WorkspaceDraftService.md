@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/issue/workspace_draft.service.ts"
+source_file: "services/issue/workspace_draft.service.ts"
 type: "code"
-community: "Community 253"
+community: "Issue Draft"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_253
+  - community/Issue_Draft
 ---
 
 # WorkspaceDraftService
@@ -22,4 +22,4 @@ tags:
 - [[.updateIssue()]] - `method` [EXTRACTED]
 - [[workspace_draft.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_253
+#graphify/code #graphify/EXTRACTED #community/Issue_Draft

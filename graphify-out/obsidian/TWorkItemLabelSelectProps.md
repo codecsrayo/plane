@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/select/dropdown.tsx"
+source_file: "components/issues/select/dropdown.tsx"
 type: "code"
-community: "Community 233"
+community: "Issue Layouts"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_233
+  - community/Issue_Layouts
 ---
 
 # TWorkItemLabelSelectProps
@@ -15,4 +15,4 @@ tags:
 
 - [[dropdown.tsx_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_233
+#graphify/code #graphify/EXTRACTED #community/Issue_Layouts

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/ui/pages/context-based/work-item/states-menu.tsx"
+source_file: "components/power-k/ui/pages/context-based/work-item/states-menu.tsx"
 type: "code"
-community: "Community 61"
+community: "Menu Power"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_61
+  - community/Menu_Power
 ---
 
 # PowerKProjectStatesMenu
@@ -16,4 +16,4 @@ tags:
 - [[root.tsx_60]] - `imports` [EXTRACTED]
 - [[states-menu.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_61
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

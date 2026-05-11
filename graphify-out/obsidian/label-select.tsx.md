@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail/label/select/label-select.tsx"
+source_file: "components/issues/issue-detail/label/select/label-select.tsx"
 type: "code"
-community: "Community 81"
+community: "Label Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_81
+  - community/Label_Issue
 ---
 
 # label-select.tsx
@@ -22,4 +22,4 @@ tags:
 - [[useLabel()]] - `imports` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_81
+#graphify/code #graphify/EXTRACTED #community/Label_Issue

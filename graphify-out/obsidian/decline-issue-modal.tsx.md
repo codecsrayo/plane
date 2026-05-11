@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/inbox/modals/decline-issue-modal.tsx"
+source_file: "components/inbox/modals/decline-issue-modal.tsx"
 type: "code"
-community: "Applied Filters UI"
+community: "Project Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters_UI
+  - community/Project_Archives
 ---
 
 # decline-issue-modal.tsx
@@ -19,4 +19,4 @@ tags:
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters_UI
+#graphify/code #graphify/EXTRACTED #community/Project_Archives

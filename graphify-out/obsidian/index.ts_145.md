@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/onboarding/steps/common/index.ts"
+source_file: "components/onboarding/steps/common/index.ts"
 type: "code"
-community: "Authentication UI"
+community: "Values Setup"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Authentication_UI
+  - community/Values_Setup
 ---
 
 # index.ts
@@ -20,4 +20,4 @@ tags:
 - [[root.tsx_68]] - `imports_from` [EXTRACTED]
 - [[root.tsx_69]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Authentication_UI
+#graphify/code #graphify/EXTRACTED #community/Values_Setup

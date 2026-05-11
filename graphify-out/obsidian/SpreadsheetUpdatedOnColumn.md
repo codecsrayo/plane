@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/updated-on-column.tsx"
+source_file: "components/issues/issue-layouts/spreadsheet/columns/updated-on-column.tsx"
 type: "code"
-community: "Community 472"
+community: "Updated Column"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_472
+  - community/Updated_Column
 ---
 
 # SpreadsheetUpdatedOnColumn
@@ -15,4 +15,4 @@ tags:
 
 - [[updated-on-column.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_472
+#graphify/code #graphify/EXTRACTED #community/Updated_Column

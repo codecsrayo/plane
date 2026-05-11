@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/sticky.service.ts"
+source_file: "services/sticky.service.ts"
 type: "code"
-community: "Community 158"
+community: "Sticky Stickies"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_158
+  - community/Sticky_Stickies
 ---
 
 # sticky.service.ts
@@ -17,4 +17,4 @@ tags:
 - [[api.service.ts]] - `imports_from` [EXTRACTED]
 - [[sticky.store.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_158
+#graphify/code #graphify/EXTRACTED #community/Sticky_Stickies

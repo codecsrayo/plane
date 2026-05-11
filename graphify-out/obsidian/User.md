@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/common/activity/user.tsx"
+source_file: "components/common/activity/user.tsx"
 type: "code"
-community: "Community 190"
+community: "Activity User"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_190
+  - community/Activity_User
 ---
 
 # User
@@ -16,4 +16,4 @@ tags:
 - [[activity-block.tsx_1]] - `imports` [EXTRACTED]
 - [[user.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_190
+#graphify/code #graphify/EXTRACTED #community/Activity_User

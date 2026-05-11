@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/stickies/sticky/use-operations.tsx"
+source_file: "components/stickies/sticky/use-operations.tsx"
 type: "code"
-community: "Community 211"
+community: "Sticky Tprops"
 location: "L35"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_211
+  - community/Sticky_Tprops
 ---
 
 # getRandomStickyColor()
@@ -16,4 +16,4 @@ tags:
 - [[root.tsx_11]] - `imports` [EXTRACTED]
 - [[use-operations.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_211
+#graphify/code #graphify/EXTRACTED #community/Sticky_Tprops

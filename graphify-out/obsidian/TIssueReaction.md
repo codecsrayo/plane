@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail/reactions/issue.tsx"
+source_file: "components/issues/issue-detail/reactions/issue.tsx"
 type: "code"
-community: "Member Filters & Description"
+community: "Issue Filters"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Filters__Description
+  - community/Issue_Filters
 ---
 
 # TIssueReaction
@@ -15,4 +15,4 @@ tags:
 
 - [[issue.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Filters\_\_Description
+#graphify/code #graphify/EXTRACTED #community/Issue_Filters

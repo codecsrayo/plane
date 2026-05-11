@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/quick-add/root.tsx"
+source_file: "components/issues/issue-layouts/quick-add/root.tsx"
 type: "code"
-community: "Community 82"
+community: "Issue Quick"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_82
+  - community/Issue_Quick
 ---
 
 # root.tsx
@@ -30,4 +30,4 @@ tags:
 - [[spreadsheet.tsx]] - `imports_from` [EXTRACTED]
 - [[spreadsheet.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_82
+#graphify/code #graphify/EXTRACTED #community/Issue_Quick

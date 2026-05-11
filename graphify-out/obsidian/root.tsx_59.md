@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/ui/pages/context-based/module/root.tsx"
+source_file: "components/power-k/ui/pages/context-based/module/root.tsx"
 type: "code"
-community: "Community 56"
+community: "Member Commands"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_56
+  - community/Member_Commands
 ---
 
 # root.tsx
@@ -26,4 +26,4 @@ tags:
 - [[useMember()]] - `imports` [EXTRACTED]
 - [[useModule()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_56
+#graphify/code #graphify/EXTRACTED #community/Member_Commands

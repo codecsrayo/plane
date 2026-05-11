@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-header.tsx"
+source_file: "components/issues/issue-layouts/spreadsheet/spreadsheet-header.tsx"
 type: "code"
-community: "Active Cycle Stats"
+community: "Spreadsheet Table"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Cycle_Stats
+  - community/Spreadsheet_Table
 ---
 
 # spreadsheet-header.tsx
@@ -22,4 +22,4 @@ tags:
 - [[spreadsheet-table.tsx]] - `imports_from` [EXTRACTED]
 - [[use-multiple-select.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats
+#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Table

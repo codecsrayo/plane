@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/sidebar/user-menu-root.tsx"
+source_file: "components/workspace/sidebar/user-menu-root.tsx"
 type: "code"
-community: "Community 94"
+community: "Image Upload"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_94
+  - community/Image_Upload
 ---
 
 # user-menu-root.tsx
@@ -24,4 +24,4 @@ tags:
 - [[useAppTheme()]] - `imports` [EXTRACTED]
 - [[useCommandPalette()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_94
+#graphify/code #graphify/EXTRACTED #community/Image_Upload

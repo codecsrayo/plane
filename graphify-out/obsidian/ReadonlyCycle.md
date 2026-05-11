@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/readonly/cycle.tsx"
+source_file: "components/readonly/cycle.tsx"
 type: "code"
-community: "Cycle Services & Filters"
+community: "Cycle Transfers"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Services__Filters
+  - community/Cycle_Transfers
 ---
 
 # ReadonlyCycle
@@ -15,4 +15,4 @@ tags:
 
 - [[cycle.tsx_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Services\_\_Filters
+#graphify/code #graphify/EXTRACTED #community/Cycle_Transfers

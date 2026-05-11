@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/sidebar/project-navigation.tsx"
+source_file: "components/workspace/sidebar/project-navigation.tsx"
 type: "code"
-community: "Community 63"
+community: "Sidebar Menu"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_63
+  - community/Sidebar_Menu
 ---
 
 # project-navigation.tsx
@@ -26,4 +26,4 @@ tags:
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_63
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Menu

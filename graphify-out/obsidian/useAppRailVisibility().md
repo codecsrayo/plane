@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/lib/app-rail/context.tsx"
+source_file: "lib/app-rail/context.tsx"
 type: "code"
-community: "Community 94"
+community: "Rail Visibility"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_94
+  - community/Rail_Visibility
 ---
 
 # useAppRailVisibility()
@@ -16,4 +16,4 @@ tags:
 - [[app-rail-root.tsx]] - `imports` [EXTRACTED]
 - [[context.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_94
+#graphify/code #graphify/EXTRACTED #community/Rail_Visibility

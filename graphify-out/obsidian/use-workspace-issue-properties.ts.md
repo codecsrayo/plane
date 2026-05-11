@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-workspace-issue-properties.ts"
+source_file: "hooks/use-workspace-issue-properties.ts"
 type: "code"
-community: "Auth Wrappers"
+community: "Label Workspace"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Wrappers
+  - community/Label_Workspace
 ---
 
 # use-workspace-issue-properties.ts
@@ -31,4 +31,4 @@ tags:
 - [[useWorkspaceIssueProperties()]] - `contains` [EXTRACTED]
 - [[workspace-root.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Wrappers
+#graphify/code #graphify/EXTRACTED #community/Label_Workspace

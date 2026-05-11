@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/gantt-chart/data/index.ts"
+source_file: "components/gantt-chart/data/index.ts"
 type: "code"
-community: "Community 153"
+community: "Gantt Current"
 location: "L75"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_153
+  - community/Gantt_Current
 ---
 
 # VIEWS_LIST
@@ -16,4 +16,4 @@ tags:
 - [[header.tsx_1]] - `imports` [EXTRACTED]
 - [[index.ts_46]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_153
+#graphify/code #graphify/EXTRACTED #community/Gantt_Current

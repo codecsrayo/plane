@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/estimates/index.ts"
+source_file: "hooks/store/estimates/index.ts"
 type: "code"
-community: "Spreadsheet Column Components"
+community: "Issue Properties"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Column_Components
+  - community/Issue_Properties
 ---
 
 # index.ts
@@ -36,4 +36,4 @@ tags:
 - [[use-project-issue-properties.ts]] - `imports_from` [EXTRACTED]
 - [[use-workspace-issue-properties.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Column_Components
+#graphify/code #graphify/EXTRACTED #community/Issue_Properties

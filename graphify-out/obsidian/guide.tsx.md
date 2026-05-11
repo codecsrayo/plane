@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/exporter/guide.tsx"
+source_file: "components/exporter/guide.tsx"
 type: "code"
-community: "Community 100"
+community: "Guide Prev"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_100
+  - community/Guide_Prev
 ---
 
 # guide.tsx
@@ -21,4 +21,4 @@ tags:
 - [[fetch-keys.ts]] - `imports_from` [EXTRACTED]
 - [[prev-exports.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_100
+#graphify/code #graphify/EXTRACTED #community/Guide_Prev

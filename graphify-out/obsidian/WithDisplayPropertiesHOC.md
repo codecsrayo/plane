@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/properties/with-display-properties-HOC.tsx"
+source_file: "components/issues/issue-layouts/properties/with-display-properties-HOC.tsx"
 type: "code"
-community: "Community 62"
+community: "List Group Layout"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_62
+  - community/List_Group_Layout
 ---
 
 # WithDisplayPropertiesHOC
@@ -22,4 +22,4 @@ tags:
 - [[spreadsheet-header-column.tsx]] - `imports` [EXTRACTED]
 - [[with-display-properties-HOC.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_62
+#graphify/code #graphify/EXTRACTED #community/List_Group_Layout

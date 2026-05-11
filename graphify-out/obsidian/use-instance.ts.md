@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/use-instance.ts"
+source_file: "hooks/store/use-instance.ts"
 type: "code"
-community: "Authentication UI"
+community: "Chat Support"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Authentication_UI
+  - community/Chat_Support
 ---
 
 # use-instance.ts
@@ -35,4 +35,4 @@ tags:
 - [[useInstance()]] - `contains` [EXTRACTED]
 - [[workspace-menu-root.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Authentication_UI
+#graphify/code #graphify/EXTRACTED #community/Chat_Support

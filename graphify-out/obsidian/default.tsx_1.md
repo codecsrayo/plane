@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/list/default.tsx"
+source_file: "components/issues/issue-layouts/list/default.tsx"
 type: "code"
-community: "Group & Drag UI"
+community: "Spreadsheet Columns"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group__Drag_UI
+  - community/Spreadsheet_Columns
 ---
 
 # default.tsx
@@ -27,4 +27,4 @@ tags:
 - [[useIssueStoreType()]] - `imports` [EXTRACTED]
 - [[utils.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group\_\_Drag_UI
+#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Columns

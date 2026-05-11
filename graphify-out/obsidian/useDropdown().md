@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-dropdown.ts"
+source_file: "hooks/use-dropdown.ts"
 type: "code"
-community: "Spreadsheet Column Components"
+community: "Issue Properties"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Column_Components
+  - community/Issue_Properties
 ---
 
 # useDropdown()
@@ -28,4 +28,4 @@ tags:
 - [[useDropdownKeyDown()]] - `calls` [EXTRACTED]
 - [[usePlatformOS()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Column_Components
+#graphify/code #graphify/EXTRACTED #community/Issue_Properties

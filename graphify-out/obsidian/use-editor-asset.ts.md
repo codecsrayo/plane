@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/use-editor-asset.ts"
+source_file: "hooks/store/use-editor-asset.ts"
 type: "code"
-community: "Community 141"
+community: "Editor Asset"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_141
+  - community/Editor_Asset
 ---
 
 # use-editor-asset.ts
@@ -24,4 +24,4 @@ tags:
 - [[use-editor-config.ts]] - `imports_from` [EXTRACTED]
 - [[useEditorAsset()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_141
+#graphify/code #graphify/EXTRACTED #community/Editor_Asset

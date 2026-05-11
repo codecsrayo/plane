@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/issue/workspace_draft.service.ts"
+source_file: "services/issue/workspace_draft.service.ts"
 type: "code"
-community: "Git Integrations"
+community: "Issue Draft"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Git_Integrations
+  - community/Issue_Draft
 ---
 
 # workspace_draft.service.ts
@@ -18,4 +18,4 @@ tags:
 - [[api.service.ts]] - `imports_from` [EXTRACTED]
 - [[issue.store.ts_5]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Git_Integrations
+#graphify/code #graphify/EXTRACTED #community/Issue_Draft

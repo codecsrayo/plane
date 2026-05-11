@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/dropdowns/date.tsx"
+source_file: "components/dropdowns/date.tsx"
 type: "code"
-community: "Spreadsheet Column Components"
+community: "Issue Properties"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Column_Components
+  - community/Issue_Properties
 ---
 
 # date.tsx
@@ -36,4 +36,4 @@ tags:
 - [[use-dropdown.ts]] - `imports_from` [EXTRACTED]
 - [[useDropdown()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Column_Components
+#graphify/code #graphify/EXTRACTED #community/Issue_Properties

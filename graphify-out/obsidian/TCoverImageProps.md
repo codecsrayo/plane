@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/common/cover-image.tsx"
+source_file: "components/common/cover-image.tsx"
 type: "code"
-community: "Community 102"
+community: "Image Upload"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_102
+  - community/Image_Upload
 ---
 
 # TCoverImageProps
@@ -15,4 +15,4 @@ tags:
 
 - [[cover-image.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_102
+#graphify/code #graphify/EXTRACTED #community/Image_Upload

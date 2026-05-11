@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/labels/label-utils.ts"
+source_file: "components/labels/label-utils.ts"
 type: "code"
-community: "Community 76"
+community: "Label Manager"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_76
+  - community/Label_Manager
 ---
 
 # TargetData
@@ -16,4 +16,4 @@ tags:
 - [[label-drag-n-drop-HOC.tsx]] - `imports` [EXTRACTED]
 - [[label-utils.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_76
+#graphify/code #graphify/EXTRACTED #community/Label_Manager

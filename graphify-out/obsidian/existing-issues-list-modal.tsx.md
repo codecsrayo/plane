@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/modals/existing-issues-list-modal.tsx"
+source_file: "components/core/modals/existing-issues-list-modal.tsx"
 type: "code"
-community: "Empty State Components"
+community: "Spreadsheet Columns"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_State_Components
+  - community/Spreadsheet_Columns
 ---
 
 # existing-issues-list-modal.tsx
@@ -30,4 +30,4 @@ tags:
 - [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_State_Components
+#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Columns

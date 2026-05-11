@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/navigation-pane/types/extensions.ts"
+source_file: "components/pages/navigation-pane/types/extensions.ts"
 type: "code"
-community: "Community 54"
+community: "Navigation Pane"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_54
+  - community/Navigation_Pane
 ---
 
 # extensions.ts
@@ -20,4 +20,4 @@ tags:
 - [[base-page.ts]] - `imports_from` [EXTRACTED]
 - [[root.tsx_80]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_54
+#graphify/code #graphify/EXTRACTED #community/Navigation_Pane

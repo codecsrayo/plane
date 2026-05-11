@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/home/widgets/loaders/home-loader.tsx"
+source_file: "components/home/widgets/loaders/home-loader.tsx"
 type: "code"
-community: "Community 633"
+community: "Home Loader"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_633
+  - community/Home_Loader
 ---
 
 # home-loader.tsx
@@ -15,4 +15,4 @@ tags:
 
 - [[HomeLoader()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_633
+#graphify/code #graphify/EXTRACTED #community/Home_Loader

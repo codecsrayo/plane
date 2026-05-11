@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/module.service.ts"
+source_file: "services/module.service.ts"
 type: "code"
-community: "Git Integrations"
+community: "Archived Modules"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Git_Integrations
+  - community/Archived_Modules
 ---
 
 # module.service.ts
@@ -19,4 +19,4 @@ tags:
 - [[base-issues.store.ts]] - `imports_from` [EXTRACTED]
 - [[module.store.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Git_Integrations
+#graphify/code #graphify/EXTRACTED #community/Archived_Modules

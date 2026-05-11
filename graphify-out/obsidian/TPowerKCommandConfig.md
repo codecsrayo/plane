@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/core/types.ts"
+source_file: "components/power-k/core/types.ts"
 type: "code"
-community: "Community 45"
+community: "Command Palette"
 location: "L73"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_45
+  - community/Command_Palette
 ---
 
 # TPowerKCommandConfig
@@ -40,4 +40,4 @@ tags:
 - [[types.ts_2]] - `contains` [EXTRACTED]
 - [[wrapper.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_45
+#graphify/code #graphify/EXTRACTED #community/Command_Palette

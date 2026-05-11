@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/profile/overview/workload.tsx"
+source_file: "components/profile/overview/workload.tsx"
 type: "code"
-community: "Community 456"
+community: "Workload Profile"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_456
+  - community/Workload_Profile
 ---
 
 # workload.tsx
@@ -16,4 +16,4 @@ tags:
 - [[ProfileWorkload()]] - `contains` [EXTRACTED]
 - [[Props_101]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_456
+#graphify/code #graphify/EXTRACTED #community/Workload_Profile

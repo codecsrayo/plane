@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/integration/utils.ts"
+source_file: "components/integration/utils.ts"
 type: "code"
-community: "Community 101"
+community: "Integration Sync"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_101
+  - community/Integration_Sync
 ---
 
 # utils.ts
@@ -22,4 +22,4 @@ tags:
 - [[project-issue-sync-modal.tsx]] - `imports_from` [EXTRACTED]
 - [[single-integration-card.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_101
+#graphify/code #graphify/EXTRACTED #community/Integration_Sync

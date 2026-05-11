@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/navigation/project-header-button.tsx"
+source_file: "components/navigation/project-header-button.tsx"
 type: "code"
-community: "Account & Sub-Issues"
+community: "Switcher Project"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Account__Sub-Issues
+  - community/Switcher_Project
 ---
 
 # ProjectHeaderButton()
@@ -16,4 +16,4 @@ tags:
 - [[project-header-button.tsx]] - `contains` [EXTRACTED]
 - [[project-header.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Account\_\_Sub-Issues
+#graphify/code #graphify/EXTRACTED #community/Switcher_Project

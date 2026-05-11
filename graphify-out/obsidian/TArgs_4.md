@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/hooks/use-context-indicator.ts"
+source_file: "components/power-k/hooks/use-context-indicator.ts"
 type: "code"
-community: "Community 202"
+community: "Context Power"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_202
+  - community/Context_Power
 ---
 
 # TArgs
@@ -15,4 +15,4 @@ tags:
 
 - [[use-context-indicator.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_202
+#graphify/code #graphify/EXTRACTED #community/Context_Power

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-favorite-item-details.tsx"
+source_file: "hooks/use-favorite-item-details.tsx"
 type: "code"
-community: "Module Analytics"
+community: "Favorite Generate"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Favorite_Generate
 ---
 
 # useFavoriteItemDetails()
@@ -22,4 +22,4 @@ tags:
 - [[useProject()]] - `calls` [EXTRACTED]
 - [[useProjectView()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Favorite_Generate

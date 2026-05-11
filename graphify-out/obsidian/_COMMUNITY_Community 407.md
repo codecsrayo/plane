@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 407
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[Model_88]] - code - api_rust/src/entities/instance_admins.rs
-- [[Relation_88]] - code - api_rust/src/entities/instance_admins.rs
-- [[instance_admins.rs]] - code - api_rust/src/entities/instance_admins.rs
+- [[index.ts_158]] - code - components/pages/navigation-pane/types/index.ts
 
 ## Live Query (requires Dataview plugin)
 

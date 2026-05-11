@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/inbox/root.tsx"
+source_file: "components/inbox/root.tsx"
 type: "code"
-community: "Community 134"
+community: "Inbox Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_134
+  - community/Inbox_Filters
 ---
 
 # root.tsx
@@ -22,4 +22,4 @@ tags:
 - [[use-project-inbox.ts]] - `imports_from` [EXTRACTED]
 - [[useProjectInbox()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_134
+#graphify/code #graphify/EXTRACTED #community/Inbox_Filters

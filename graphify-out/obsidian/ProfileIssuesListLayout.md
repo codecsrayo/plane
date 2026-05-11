@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/list/roots/profile-issues-root.tsx"
+source_file: "components/issues/issue-layouts/list/roots/profile-issues-root.tsx"
 type: "code"
-community: "Issue Filters & Context"
+community: "Issue Layout Roots"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters__Context
+  - community/Issue_Layout_Roots
 ---
 
 # ProfileIssuesListLayout
@@ -16,4 +16,4 @@ tags:
 - [[profile-issues-root.tsx_1]] - `contains` [EXTRACTED]
 - [[profile-issues.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters\_\_Context
+#graphify/code #graphify/EXTRACTED #community/Issue_Layout_Roots

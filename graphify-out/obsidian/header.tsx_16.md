@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/account/auth-forms/common/header.tsx"
+source_file: "components/account/auth-forms/common/header.tsx"
 type: "code"
-community: "Community 643"
+community: "Auth"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_643
+  - community/Auth
 ---
 
 # header.tsx
@@ -15,4 +15,4 @@ tags:
 
 - [[AuthFormHeader()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_643
+#graphify/code #graphify/EXTRACTED #community/Auth

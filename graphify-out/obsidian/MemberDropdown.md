@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/dropdowns/member/dropdown.tsx"
+source_file: "components/dropdowns/member/dropdown.tsx"
 type: "code"
-community: "Spreadsheet Column Components"
+community: "Issue Properties"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Column_Components
+  - community/Issue_Properties
 ---
 
 # MemberDropdown
@@ -29,4 +29,4 @@ tags:
 - [[root.tsx_12]] - `imports` [EXTRACTED]
 - [[sidebar.tsx_3]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Column_Components
+#graphify/code #graphify/EXTRACTED #community/Issue_Properties

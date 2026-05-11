@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/stickies/modal/search.tsx"
+source_file: "components/stickies/modal/search.tsx"
 type: "code"
-community: "Community 104"
+community: "Stickies Truncated"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_104
+  - community/Stickies_Truncated
 ---
 
 # search.tsx
@@ -19,4 +19,4 @@ tags:
 - [[useSticky()]] - `imports` [EXTRACTED]
 - [[widget.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_104
+#graphify/code #graphify/EXTRACTED #community/Stickies_Truncated

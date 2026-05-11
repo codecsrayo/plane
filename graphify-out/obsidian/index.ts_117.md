@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/peek-overview/index.ts"
+source_file: "components/issues/peek-overview/index.ts"
 type: "code"
-community: "Issue Filters & Context"
+community: "Issue Layout Roots"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters__Context
+  - community/Issue_Layout_Roots
 ---
 
 # index.ts
@@ -22,4 +22,4 @@ tags:
 - [[project-view-layout-root.tsx]] - `imports_from` [EXTRACTED]
 - [[root.tsx_30]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters\_\_Context
+#graphify/code #graphify/EXTRACTED #community/Issue_Layout_Roots

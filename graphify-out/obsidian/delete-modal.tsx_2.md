@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/cycles/delete-modal.tsx"
+source_file: "components/cycles/delete-modal.tsx"
 type: "code"
-community: "Cycle Services & Filters"
+community: "Cycle Cycles"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Services__Filters
+  - community/Cycle_Cycles
 ---
 
 # delete-modal.tsx
@@ -21,4 +21,4 @@ tags:
 - [[useAppRouter()]] - `imports` [EXTRACTED]
 - [[useCycle()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Services\_\_Filters
+#graphify/code #graphify/EXTRACTED #community/Cycle_Cycles

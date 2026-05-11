@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/dropdowns/member/member-options.tsx"
+source_file: "components/dropdowns/member/member-options.tsx"
 type: "code"
-community: "Layout System"
+community: "Issue Layouts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Layout_System
+  - community/Issue_Layouts
 ---
 
 # member-options.tsx
@@ -22,4 +22,4 @@ tags:
 - [[useMember()]] - `imports` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Layout_System
+#graphify/code #graphify/EXTRACTED #community/Issue_Layouts

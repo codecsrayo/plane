@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/workspace-draft/index.ts"
+source_file: "hooks/store/workspace-draft/index.ts"
 type: "code"
-community: "Community 155"
+community: "Issue Identifiers"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_155
+  - community/Issue_Identifiers
 ---
 
 # index.ts
@@ -19,4 +19,4 @@ tags:
 - [[form.tsx_8]] - `imports_from` [EXTRACTED]
 - [[root.tsx_29]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_155
+#graphify/code #graphify/EXTRACTED #community/Issue_Identifiers

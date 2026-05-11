@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/web-hooks/form/event-types.tsx"
+source_file: "components/web-hooks/form/event-types.tsx"
 type: "code"
-community: "Community 316"
+community: "Event Types"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_316
+  - community/Event_Types
 ---
 
 # event-types.tsx
@@ -17,4 +17,4 @@ tags:
 - [[WEBHOOK_EVENT_TYPES]] - `contains` [EXTRACTED]
 - [[WebhookOptions()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_316
+#graphify/code #graphify/EXTRACTED #community/Event_Types

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace-notifications/sidebar/notification-card/options/index.ts"
+source_file: "components/workspace-notifications/sidebar/notification-card/options/index.ts"
 type: "code"
-community: "Community 197"
+community: "Notification Option"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_197
+  - community/Notification_Option
 ---
 
 # index.ts
@@ -15,4 +15,4 @@ tags:
 
 - [[item.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_197
+#graphify/code #graphify/EXTRACTED #community/Notification_Option

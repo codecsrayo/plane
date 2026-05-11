@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/modules/analytics-sidebar/root.tsx"
+source_file: "components/modules/analytics-sidebar/root.tsx"
 type: "code"
-community: "Module Analytics"
+community: "Module Forms"
 location: "L55"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Module_Forms
 ---
 
 # ModuleAnalyticsSidebar
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_12]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Module_Forms

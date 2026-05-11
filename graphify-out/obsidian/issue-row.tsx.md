@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/spreadsheet/issue-row.tsx"
+source_file: "components/issues/issue-layouts/spreadsheet/issue-row.tsx"
 type: "code"
-community: "Active Cycle Stats"
+community: "List Group Layout"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Cycle_Stats
+  - community/List_Group_Layout
 ---
 
 # issue-row.tsx
@@ -36,4 +36,4 @@ tags:
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[utils.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats
+#graphify/code #graphify/EXTRACTED #community/List_Group_Layout

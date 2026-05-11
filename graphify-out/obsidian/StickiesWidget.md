@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/stickies/widget.tsx"
+source_file: "components/stickies/widget.tsx"
 type: "code"
-community: "Community 119"
+community: "Dashboard Widgets"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_119
+  - community/Dashboard_Widgets
 ---
 
 # StickiesWidget
@@ -16,4 +16,4 @@ tags:
 - [[home-dashboard-widgets.tsx]] - `imports` [EXTRACTED]
 - [[widget.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_119
+#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets

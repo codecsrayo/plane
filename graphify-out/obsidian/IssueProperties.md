@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/properties/all-properties.tsx"
+source_file: "components/issues/issue-layouts/properties/all-properties.tsx"
 type: "code"
-community: "Community 62"
+community: "List Group Layout"
 location: "L65"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_62
+  - community/List_Group_Layout
 ---
 
 # IssueProperties
@@ -16,4 +16,4 @@ tags:
 - [[all-properties.tsx]] - `contains` [EXTRACTED]
 - [[block.tsx_3]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_62
+#graphify/code #graphify/EXTRACTED #community/List_Group_Layout

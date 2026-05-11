@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/attachment/attachment-list-item.tsx"
+source_file: "components/issues/attachment/attachment-list-item.tsx"
 type: "code"
-community: "Module Analytics"
+community: "Module Forms"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Module_Forms
 ---
 
 # attachment-list-item.tsx
@@ -26,4 +26,4 @@ tags:
 - [[useMember()]] - `imports` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Module_Forms

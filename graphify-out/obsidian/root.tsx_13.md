@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/modules/archived-modules/root.tsx"
+source_file: "components/modules/archived-modules/root.tsx"
 type: "code"
-community: "Module Analytics"
+community: "Modules Archived"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Modules_Archived
 ---
 
 # root.tsx
@@ -22,4 +22,4 @@ tags:
 - [[useModule()]] - `imports` [EXTRACTED]
 - [[useModuleFilter()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Modules_Archived

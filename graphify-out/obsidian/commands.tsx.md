@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/ui/pages/context-based/module/commands.tsx"
+source_file: "components/power-k/ui/pages/context-based/module/commands.tsx"
 type: "code"
-community: "Community 45"
+community: "Module Analytics"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_45
+  - community/Module_Analytics
 ---
 
 # commands.tsx
@@ -21,4 +21,4 @@ tags:
 - [[useModule()]] - `imports` [EXTRACTED]
 - [[usePowerKModuleContextBasedActions()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_45
+#graphify/code #graphify/EXTRACTED #community/Module_Analytics

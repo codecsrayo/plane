@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/automation/index.ts"
+source_file: "components/automation/index.ts"
 type: "code"
-community: "Community 151"
+community: "Start Week"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_151
+  - community/Start_Week
 ---
 
 # index.ts
@@ -16,4 +16,4 @@ tags:
 - [[auto-archive-automation.tsx]] - `imports_from` [EXTRACTED]
 - [[auto-close-automation.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_151
+#graphify/code #graphify/EXTRACTED #community/Start_Week

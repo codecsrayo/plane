@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/gantt-chart/chart/views/quarter.tsx"
+source_file: "components/gantt-chart/chart/views/quarter.tsx"
 type: "code"
-community: "Community 90"
+community: "Gantt Chart"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_90
+  - community/Gantt_Chart
 ---
 
 # QuarterChartView
@@ -15,4 +15,4 @@ tags:
 
 - [[quarter.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_90
+#graphify/code #graphify/EXTRACTED #community/Gantt_Chart

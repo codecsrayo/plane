@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/project/index.ts"
+source_file: "services/project/index.ts"
 type: "code"
-community: "Applied Filters UI"
+community: "Data Export"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters_UI
+  - community/Data_Export
 ---
 
 # index.ts
@@ -26,4 +26,4 @@ tags:
 - [[project.store.ts]] - `imports_from` [EXTRACTED]
 - [[select-duplicate.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters_UI
+#graphify/code #graphify/EXTRACTED #community/Data_Export

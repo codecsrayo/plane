@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-table-keyboard-navigation.tsx"
+source_file: "hooks/use-table-keyboard-navigation.tsx"
 type: "code"
-community: "Active Cycle Stats"
+community: "Spreadsheet Table"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Cycle_Stats
+  - community/Spreadsheet_Table
 ---
 
 # use-table-keyboard-navigation.tsx
@@ -18,4 +18,4 @@ tags:
 - [[spreadsheet-table.tsx]] - `imports_from` [EXTRACTED]
 - [[useTableKeyboardNavigation()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats
+#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Table

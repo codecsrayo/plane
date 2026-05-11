@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/inbox/modals/select-duplicate.tsx"
+source_file: "components/inbox/modals/select-duplicate.tsx"
 type: "code"
-community: "Applied Filters UI"
+community: "Select Duplicate"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters_UI
+  - community/Select_Duplicate
 ---
 
 # select-duplicate.tsx
@@ -24,4 +24,4 @@ tags:
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters_UI
+#graphify/code #graphify/EXTRACTED #community/Select_Duplicate

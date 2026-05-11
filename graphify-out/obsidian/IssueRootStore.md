@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/root.store.ts"
+source_file: "store/issue/root.store.ts"
 type: "code"
-community: "Community 62"
+community: "Calendar Store"
 location: "L122"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_62
+  - community/Calendar_Store
 ---
 
 # IssueRootStore
@@ -18,4 +18,4 @@ tags:
 - [[root.store.ts]] - `imports` [EXTRACTED]
 - [[root.store.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_62
+#graphify/code #graphify/EXTRACTED #community/Calendar_Store

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/icons/attachment/tune-icon.tsx"
+source_file: "components/icons/attachment/tune-icon.tsx"
 type: "code"
-community: "Community 628"
+community: "Tune Icon"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_628
+  - community/Tune_Icon
 ---
 
 # tune-icon.tsx
@@ -15,4 +15,4 @@ tags:
 
 - [[TuneIcon()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_628
+#graphify/code #graphify/EXTRACTED #community/Tune_Icon

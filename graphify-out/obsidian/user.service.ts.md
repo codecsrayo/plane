@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/user.service.ts"
+source_file: "services/user.service.ts"
 type: "code"
-community: "Community 37"
+community: "User Profile"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_37
+  - community/User_Profile
 ---
 
 # user.service.ts
@@ -32,4 +32,4 @@ tags:
 - [[settings.store.ts]] - `imports_from` [EXTRACTED]
 - [[workspace-activity-list.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_37
+#graphify/code #graphify/EXTRACTED #community/User_Profile

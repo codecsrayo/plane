@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/onboarding/steps/role/index.ts"
+source_file: "components/onboarding/steps/role/index.ts"
 type: "code"
-community: "Community 203"
+community: "Step Onboarding"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_203
+  - community/Step_Onboarding
 ---
 
 # index.ts
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_64]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_203
+#graphify/code #graphify/EXTRACTED #community/Step_Onboarding

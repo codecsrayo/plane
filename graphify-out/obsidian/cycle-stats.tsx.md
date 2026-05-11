@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/cycles/active-cycle/cycle-stats.tsx"
+source_file: "components/cycles/active-cycle/cycle-stats.tsx"
 type: "code"
-community: "Active Cycle Stats"
+community: "Issue Activity"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Cycle_Stats
+  - community/Issue_Activity
 ---
 
 # cycle-stats.tsx
@@ -31,4 +31,4 @@ tags:
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 - [[useIssues()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

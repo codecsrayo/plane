@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/auth-screens/footer.tsx"
+source_file: "components/auth-screens/footer.tsx"
 type: "code"
-community: "Community 46"
+community: "Auth UI"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_46
+  - community/Auth_UI
 ---
 
 # footer.tsx
@@ -17,4 +17,4 @@ tags:
 - [[BRAND_LOGOS]] - `contains` [EXTRACTED]
 - [[auth-base.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_46
+#graphify/code #graphify/EXTRACTED #community/Auth_UI

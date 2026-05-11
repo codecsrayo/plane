@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-view.tsx"
+source_file: "components/issues/issue-layouts/spreadsheet/spreadsheet-view.tsx"
 type: "code"
-community: "Community 48"
+community: "Issue Layout HOC"
 location: "L45"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_48
+  - community/Issue_Layout_HOC
 ---
 
 # SpreadsheetView
@@ -17,4 +17,4 @@ tags:
 - [[spreadsheet-view.tsx]] - `contains` [EXTRACTED]
 - [[workspace-root.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_48
+#graphify/code #graphify/EXTRACTED #community/Issue_Layout_HOC

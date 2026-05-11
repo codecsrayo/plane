@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/theme.store.ts"
+source_file: "store/theme.store.ts"
 type: "code"
-community: "Project Estimates"
+community: "Theme Wrapper"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Estimates
+  - community/Theme_Wrapper
 ---
 
 # theme.store.ts
@@ -18,4 +18,4 @@ tags:
 - [[root.store.ts]] - `imports_from` [EXTRACTED]
 - [[use-app-theme.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Estimates
+#graphify/code #graphify/EXTRACTED #community/Theme_Wrapper

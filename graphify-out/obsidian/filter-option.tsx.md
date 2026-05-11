@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/filters/header/helpers/filter-option.tsx"
+source_file: "components/issues/issue-layouts/filters/header/helpers/filter-option.tsx"
 type: "code"
-community: "Community 474"
+community: "Option"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_474
+  - community/Option
 ---
 
 # filter-option.tsx
@@ -16,4 +16,4 @@ tags:
 - [[FilterOption()]] - `contains` [EXTRACTED]
 - [[Props_232]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_474
+#graphify/code #graphify/EXTRACTED #community/Option

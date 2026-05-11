@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/cycles/transfer-issues.tsx"
+source_file: "components/cycles/transfer-issues.tsx"
 type: "code"
-community: "Issue Filters & Context"
+community: "Cycle Transfers"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters__Context
+  - community/Cycle_Transfers
 ---
 
 # transfer-issues.tsx
@@ -17,4 +17,4 @@ tags:
 - [[TransferIssues()]] - `contains` [EXTRACTED]
 - [[cycle-layout-root.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters\_\_Context
+#graphify/code #graphify/EXTRACTED #community/Cycle_Transfers

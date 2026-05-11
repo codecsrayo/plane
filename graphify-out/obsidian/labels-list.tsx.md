@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/ui/labels-list.tsx"
+source_file: "components/ui/labels-list.tsx"
 type: "code"
-community: "Community 233"
+community: "Issue Layouts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_233
+  - community/Issue_Layouts
 ---
 
 # labels-list.tsx
@@ -19,4 +19,4 @@ tags:
 - [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_233
+#graphify/code #graphify/EXTRACTED #community/Issue_Layouts

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-modal/components/index.ts"
+source_file: "components/issues/issue-modal/components/index.ts"
 type: "code"
-community: "Community 36"
+community: "Issue Identifiers"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_36
+  - community/Issue_Identifiers
 ---
 
 # index.ts
@@ -15,4 +15,4 @@ tags:
 
 - [[form.tsx_8]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_36
+#graphify/code #graphify/EXTRACTED #community/Issue_Identifiers

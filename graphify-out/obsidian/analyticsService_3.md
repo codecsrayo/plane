@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/analytics/work-items/created-vs-resolved.tsx"
+source_file: "components/analytics/work-items/created-vs-resolved.tsx"
 type: "code"
-community: "Community 186"
+community: "Analytics Project"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_186
+  - community/Analytics_Project
 ---
 
 # analyticsService
@@ -15,4 +15,4 @@ tags:
 
 - [[created-vs-resolved.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_186
+#graphify/code #graphify/EXTRACTED #community/Analytics_Project

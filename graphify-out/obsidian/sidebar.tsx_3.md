@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail/sidebar.tsx"
+source_file: "components/issues/issue-detail/sidebar.tsx"
 type: "code"
-community: "Spreadsheet Column Components"
+community: "Issue Properties"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Column_Components
+  - community/Issue_Properties
 ---
 
 # sidebar.tsx
@@ -46,4 +46,4 @@ tags:
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[useProjectState()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Column_Components
+#graphify/code #graphify/EXTRACTED #community/Issue_Properties

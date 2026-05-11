@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/ui/labels-list.tsx"
+source_file: "components/ui/labels-list.tsx"
 type: "code"
-community: "Community 233"
+community: "Issue Layouts"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_233
+  - community/Issue_Layouts
 ---
 
 # IssueLabelsListProps
@@ -15,4 +15,4 @@ tags:
 
 - [[labels-list.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_233
+#graphify/code #graphify/EXTRACTED #community/Issue_Layouts

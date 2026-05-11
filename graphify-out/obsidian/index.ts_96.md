@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/quick-action-dropdowns/index.ts"
+source_file: "components/issues/issue-layouts/quick-action-dropdowns/index.ts"
 type: "code"
-community: "Issue Filters & Context"
+community: "Cycle Transfers"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters__Context
+  - community/Cycle_Transfers
 ---
 
 # index.ts
@@ -36,4 +36,4 @@ tags:
 - [[project-view-root.tsx_3]] - `imports_from` [EXTRACTED]
 - [[workspace-root.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters\_\_Context
+#graphify/code #graphify/EXTRACTED #community/Cycle_Transfers

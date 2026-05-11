@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/home/widgets/manage/index.tsx"
+source_file: "components/home/widgets/manage/index.tsx"
 type: "code"
-community: "Community 119"
+community: "Dashboard Widgets"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_119
+  - community/Dashboard_Widgets
 ---
 
 # TProps
@@ -15,4 +15,4 @@ tags:
 
 - [[index.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_119
+#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets

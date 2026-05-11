@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/user/index.ts"
+source_file: "hooks/store/user/index.ts"
 type: "code"
-community: "Empty State Components"
+community: "Member Settings"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_State_Components
+  - community/Member_Settings
 ---
 
 # index.ts
@@ -193,4 +193,4 @@ tags:
 - [[workspace-settings-menu.tsx]] - `imports_from` [EXTRACTED]
 - [[workspace-wrapper.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_State_Components
+#graphify/code #graphify/EXTRACTED #community/Member_Settings

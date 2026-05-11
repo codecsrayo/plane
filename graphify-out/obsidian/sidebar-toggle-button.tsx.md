@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/sidebar/sidebar-toggle-button.tsx"
+source_file: "components/sidebar/sidebar-toggle-button.tsx"
 type: "code"
-community: "Community 272"
+community: "Sidebar Navigation"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_272
+  - community/Sidebar_Navigation
 ---
 
 # sidebar-toggle-button.tsx
@@ -18,4 +18,4 @@ tags:
 - [[use-app-theme.ts]] - `imports_from` [EXTRACTED]
 - [[useAppTheme()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_272
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation

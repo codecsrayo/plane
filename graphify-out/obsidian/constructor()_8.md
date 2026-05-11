@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/api.service.ts"
+source_file: "services/api.service.ts"
 type: "code"
-community: "Git Integrations"
+community: "API Services"
 location: "L125"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Git_Integrations
+  - community/API_Services
 ---
 
 # constructor()
@@ -16,4 +16,4 @@ tags:
 - [[api.service.ts]] - `contains` [EXTRACTED]
 - [[setupInterceptors()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Git_Integrations
+#graphify/code #graphify/EXTRACTED #community/API_Services

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/multiple-select/index.ts"
+source_file: "components/core/multiple-select/index.ts"
 type: "code"
-community: "Active Cycle Stats"
+community: "Multi Select Actions"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Cycle_Stats
+  - community/Multi_Select_Actions
 ---
 
 # index.ts
@@ -23,4 +23,4 @@ tags:
 - [[spreadsheet-header.tsx]] - `imports_from` [EXTRACTED]
 - [[spreadsheet-view.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats
+#graphify/code #graphify/EXTRACTED #community/Multi_Select_Actions

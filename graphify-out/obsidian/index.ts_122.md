@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace-notifications/sidebar/notification-card/options/snooze/index.ts"
+source_file: "components/workspace-notifications/sidebar/notification-card/options/snooze/index.ts"
 type: "code"
-community: "Community 139"
+community: "Notification Option"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_139
+  - community/Notification_Option
 ---
 
 # index.ts
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_46]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_139
+#graphify/code #graphify/EXTRACTED #community/Notification_Option

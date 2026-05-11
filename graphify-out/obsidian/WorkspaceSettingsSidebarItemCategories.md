@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/settings/workspace/sidebar/item-categories.tsx"
+source_file: "components/settings/workspace/sidebar/item-categories.tsx"
 type: "code"
-community: "Community 68"
+community: "Sidebar Nav"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_68
+  - community/Sidebar_Nav
 ---
 
 # WorkspaceSettingsSidebarItemCategories
@@ -16,4 +16,4 @@ tags:
 - [[item-categories.tsx]] - `contains` [EXTRACTED]
 - [[root.tsx_16]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_68
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Nav

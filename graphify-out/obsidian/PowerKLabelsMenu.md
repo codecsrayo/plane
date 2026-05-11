@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/menus/labels.tsx"
+source_file: "components/power-k/menus/labels.tsx"
 type: "code"
-community: "Community 61"
+community: "Menu Power"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_61
+  - community/Menu_Power
 ---
 
 # PowerKLabelsMenu
@@ -16,4 +16,4 @@ tags:
 - [[labels-menu.tsx]] - `imports` [EXTRACTED]
 - [[labels.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_61
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

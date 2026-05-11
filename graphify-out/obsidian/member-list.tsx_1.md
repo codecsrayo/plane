@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project/dropdowns/filters/member-list.tsx"
+source_file: "components/project/dropdowns/filters/member-list.tsx"
 type: "code"
-community: "Community 44"
+community: "Member Project"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_44
+  - community/Member_Project
 ---
 
 # member-list.tsx
@@ -23,4 +23,4 @@ tags:
 - [[index.ts_90]] - `imports_from` [EXTRACTED]
 - [[member-list.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_44
+#graphify/code #graphify/EXTRACTED #community/Member_Project

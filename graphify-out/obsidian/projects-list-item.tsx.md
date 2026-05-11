@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/sidebar/projects-list-item.tsx"
+source_file: "components/workspace/sidebar/projects-list-item.tsx"
 type: "code"
-community: "Community 132"
+community: "Project Projects"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_132
+  - community/Project_Projects
 ---
 
 # projects-list-item.tsx
@@ -38,4 +38,4 @@ tags:
 - [[useTabPreferences()]] - `imports` [EXTRACTED]
 - [[utils.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_132
+#graphify/code #graphify/EXTRACTED #community/Project_Projects

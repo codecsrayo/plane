@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/relations/properties.tsx"
+source_file: "components/issues/relations/properties.tsx"
 type: "code"
-community: "Layout System"
+community: "Issue Activity"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Layout_System
+  - community/Issue_Activity
 ---
 
 # RelationIssueProperty
@@ -16,4 +16,4 @@ tags:
 - [[issue-list-item.tsx]] - `imports` [EXTRACTED]
 - [[properties.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Layout_System
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/ui/loader/utils.tsx"
+source_file: "components/ui/loader/utils.tsx"
 type: "code"
-community: "Community 48"
+community: "Loader Kanban"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_48
+  - community/Loader_Kanban
 ---
 
 # getRandomLength()
@@ -21,4 +21,4 @@ tags:
 - [[spreadsheet-layout-loader.tsx]] - `imports` [EXTRACTED]
 - [[utils.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_48
+#graphify/code #graphify/EXTRACTED #community/Loader_Kanban

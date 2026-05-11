@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/profile/issue.store.ts"
+source_file: "store/issue/profile/issue.store.ts"
 type: "code"
-community: "Community 118"
+community: "Profile Issues"
 location: "L180"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_118
+  - community/Profile_Issues
 ---
 
 # cursorObject
@@ -15,4 +15,4 @@ tags:
 
 - [[issue.store.ts_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_118
+#graphify/code #graphify/EXTRACTED #community/Profile_Issues

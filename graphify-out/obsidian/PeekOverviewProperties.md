@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/peek-overview/properties.tsx"
+source_file: "components/issues/peek-overview/properties.tsx"
 type: "code"
-community: "Empty States & Inbox"
+community: "Peek Overview"
 location: "L57"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_States__Inbox
+  - community/Peek_Overview
 ---
 
 # PeekOverviewProperties
@@ -17,4 +17,4 @@ tags:
 - [[properties.tsx_2]] - `contains` [EXTRACTED]
 - [[view.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_States\_\_Inbox
+#graphify/code #graphify/EXTRACTED #community/Peek_Overview

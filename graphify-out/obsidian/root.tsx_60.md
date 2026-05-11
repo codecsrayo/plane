@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/ui/pages/context-based/work-item/root.tsx"
+source_file: "components/power-k/ui/pages/context-based/work-item/root.tsx"
 type: "code"
-community: "Community 61"
+community: "Menu Power"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_61
+  - community/Menu_Power
 ---
 
 # root.tsx
@@ -36,4 +36,4 @@ tags:
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 - [[useMember()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_61
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

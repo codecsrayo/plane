@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/use-workspace.ts"
+source_file: "hooks/store/use-workspace.ts"
 type: "code"
-community: "Authentication UI"
+community: "Workspace Invites"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Authentication_UI
+  - community/Workspace_Invites
 ---
 
 # use-workspace.ts
@@ -55,4 +55,4 @@ tags:
 - [[workspace-wrapper.tsx]] - `imports_from` [EXTRACTED]
 - [[workspaces-menu.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Authentication_UI
+#graphify/code #graphify/EXTRACTED #community/Workspace_Invites

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/account/auth-forms/form-root.tsx"
+source_file: "components/account/auth-forms/form-root.tsx"
 type: "code"
-community: "Authentication UI"
+community: "Auth Forms"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Authentication_UI
+  - community/Auth_Forms
 ---
 
 # TAuthFormRoot
@@ -15,4 +15,4 @@ tags:
 
 - [[form-root.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Authentication_UI
+#graphify/code #graphify/EXTRACTED #community/Auth_Forms

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/empty-state/section-empty-state-root.tsx"
+source_file: "components/empty-state/section-empty-state-root.tsx"
 type: "code"
-community: "Group & Drag UI"
+community: "List Group Layout"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group__Drag_UI
+  - community/List_Group_Layout
 ---
 
 # section-empty-state-root.tsx
@@ -17,4 +17,4 @@ tags:
 - [[SectionEmptyState()]] - `contains` [EXTRACTED]
 - [[root.tsx_41]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group\_\_Drag_UI
+#graphify/code #graphify/EXTRACTED #community/List_Group_Layout

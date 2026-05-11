@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/select/base.tsx"
+source_file: "components/issues/select/base.tsx"
 type: "code"
-community: "Community 233"
+community: "Issue Layouts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_233
+  - community/Issue_Layouts
 ---
 
 # base.tsx
@@ -23,4 +23,4 @@ tags:
 - [[useDropdownKeyDown()]] - `imports` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_233
+#graphify/code #graphify/EXTRACTED #community/Issue_Layouts

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-page-operations.ts"
+source_file: "hooks/use-page-operations.ts"
 type: "code"
-community: "Page Actions"
+community: "Collaborative Copy"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Page_Actions
+  - community/Collaborative_Copy
 ---
 
 # use-page-operations.ts
@@ -26,4 +26,4 @@ tags:
 - [[useCollaborativePageActions()]] - `imports` [EXTRACTED]
 - [[usePageOperations()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Page_Actions
+#graphify/code #graphify/EXTRACTED #community/Collaborative_Copy

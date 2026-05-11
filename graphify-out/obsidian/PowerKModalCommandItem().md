@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/ui/modal/command-item.tsx"
+source_file: "components/power-k/ui/modal/command-item.tsx"
 type: "code"
-community: "Community 56"
+community: "Member Commands"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_56
+  - community/Member_Commands
 ---
 
 # PowerKModalCommandItem()
@@ -26,4 +26,4 @@ tags:
 - [[themes-menu.tsx]] - `imports` [EXTRACTED]
 - [[timezone-menu.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_56
+#graphify/code #graphify/EXTRACTED #community/Member_Commands

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/instance.store.ts"
+source_file: "store/instance.store.ts"
 type: "code"
-community: "Project Estimates"
+community: "Chat Support"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Estimates
+  - community/Chat_Support
 ---
 
 # TError
@@ -15,4 +15,4 @@ tags:
 
 - [[instance.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Estimates
+#graphify/code #graphify/EXTRACTED #community/Chat_Support

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/ui/integration-and-import-export-banner.tsx"
+source_file: "components/ui/integration-and-import-export-banner.tsx"
 type: "code"
-community: "Community 439"
+community: "Integration Banner"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_439
+  - community/Integration_Banner
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[integration-and-import-export-banner.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_439
+#graphify/code #graphify/EXTRACTED #community/Integration_Banner

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/dashboard.service.ts"
+source_file: "services/dashboard.service.ts"
 type: "code"
-community: "Git Integrations"
+community: "Dashboard Widget"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Git_Integrations
+  - community/Dashboard_Widget
 ---
 
 # dashboard.service.ts
@@ -18,4 +18,4 @@ tags:
 - [[api.service.ts]] - `imports_from` [EXTRACTED]
 - [[dashboard.store.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Git_Integrations
+#graphify/code #graphify/EXTRACTED #community/Dashboard_Widget

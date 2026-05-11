@@ -1,14 +1,14 @@
 ---
-source_file: "web/core/components/modules/sidebar-select/index.ts"
+source_file: "components/modules/sidebar-select/index.ts"
 type: "code"
-community: "Community 782"
+community: "Community 377"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_782
+  - community/Community_377
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_782
+#graphify/code #graphify/EXTRACTED #community/Community_377

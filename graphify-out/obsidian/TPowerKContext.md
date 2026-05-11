@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/core/types.ts"
+source_file: "components/power-k/core/types.ts"
 type: "code"
-community: "Community 99"
+community: "Power Search"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_99
+  - community/Power_Search
 ---
 
 # TPowerKContext
@@ -36,4 +36,4 @@ tags:
 - [[workspace-settings-menu.tsx]] - `imports` [EXTRACTED]
 - [[wrapper.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_99
+#graphify/code #graphify/EXTRACTED #community/Power_Search

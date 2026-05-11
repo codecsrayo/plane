@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail/issue-activity/activity-filter.tsx"
+source_file: "components/issues/issue-detail/issue-activity/activity-filter.tsx"
 type: "code"
-community: "Community 479"
+community: "Activity Activityfilter"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_479
+  - community/Activity_Activityfilter
 ---
 
 # activity-filter.tsx
@@ -16,4 +16,4 @@ tags:
 - [[ActivityFilter]] - `contains` [EXTRACTED]
 - [[TActivityFilter]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_479
+#graphify/code #graphify/EXTRACTED #community/Activity_Activityfilter

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/cycles/analytics-sidebar/root.tsx"
+source_file: "components/cycles/analytics-sidebar/root.tsx"
 type: "code"
-community: "Cycle Analytics"
+community: "Cycle Progress"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Analytics
+  - community/Cycle_Progress
 ---
 
 # Props
@@ -16,4 +16,4 @@ tags:
 - [[root.tsx_12]] - `contains` [EXTRACTED]
 - [[root.tsx_53]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Analytics
+#graphify/code #graphify/EXTRACTED #community/Cycle_Progress

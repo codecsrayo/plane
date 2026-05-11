@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/home/user-greetings.tsx"
+source_file: "components/home/user-greetings.tsx"
 type: "code"
-community: "Community 212"
+community: "Dashboard Widgets"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_212
+  - community/Dashboard_Widgets
 ---
 
 # UserGreetingsView()
@@ -17,4 +17,4 @@ tags:
 - [[useCurrentTime()]] - `calls` [EXTRACTED]
 - [[user-greetings.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_212
+#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets

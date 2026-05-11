@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/inbox/modals/create-modal/create-root.tsx"
+source_file: "components/inbox/modals/create-modal/create-root.tsx"
 type: "code"
-community: "Community 169"
+community: "Issue Inbox"
 location: "L37"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_169
+  - community/Issue_Inbox
 ---
 
 # fileService
@@ -15,4 +15,4 @@ tags:
 
 - [[create-root.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_169
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

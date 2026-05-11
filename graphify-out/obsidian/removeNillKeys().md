@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/utils.tsx"
+source_file: "components/issues/issue-layouts/utils.tsx"
 type: "code"
-community: "Community 162"
+community: "Work Filters"
 location: "L598"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_162
+  - community/Work_Filters
 ---
 
 # removeNillKeys()
@@ -17,4 +17,4 @@ tags:
 - [[utils.tsx_1]] - `contains` [EXTRACTED]
 - [[workspace-level.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_162
+#graphify/code #graphify/EXTRACTED #community/Work_Filters

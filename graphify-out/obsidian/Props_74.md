@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/modules/quick-actions.tsx"
+source_file: "components/modules/quick-actions.tsx"
 type: "code"
-community: "Module Analytics"
+community: "Menu Quick"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Menu_Quick
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[quick-actions.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Menu_Quick

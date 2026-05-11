@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 418
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[Model_99]] - code - api_rust/src/entities/github_comment_syncs.rs
-- [[Relation_99]] - code - api_rust/src/entities/github_comment_syncs.rs
-- [[github_comment_syncs.rs]] - code - api_rust/src/entities/github_comment_syncs.rs
+- [[index.ts_175]] - code - components/account/auth-forms/index.ts
 
 ## Live Query (requires Dataview plugin)
 

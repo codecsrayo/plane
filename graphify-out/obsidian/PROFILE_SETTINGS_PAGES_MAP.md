@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/settings/profile/content/pages/index.ts"
+source_file: "components/settings/profile/content/pages/index.ts"
 type: "code"
-community: "Community 291"
+community: "Profile Settings"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_291
+  - community/Profile_Settings
 ---
 
 # PROFILE_SETTINGS_PAGES_MAP
@@ -16,4 +16,4 @@ tags:
 - [[index.ts_74]] - `contains` [EXTRACTED]
 - [[root.tsx_18]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_291
+#graphify/code #graphify/EXTRACTED #community/Profile_Settings

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/work-item-filters/filters-hoc/project-level.tsx"
+source_file: "components/work-item-filters/filters-hoc/project-level.tsx"
 type: "code"
-community: "Issue Filters & Context"
+community: "Issue Layout Roots"
 location: "L37"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters__Context
+  - community/Issue_Layout_Roots
 ---
 
 # ProjectLevelWorkItemFiltersHOC
@@ -21,4 +21,4 @@ tags:
 - [[project-level.tsx]] - `contains` [EXTRACTED]
 - [[project-view-layout-root.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters\_\_Context
+#graphify/code #graphify/EXTRACTED #community/Issue_Layout_Roots

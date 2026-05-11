@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/auth-screens/auth-base.tsx"
+source_file: "components/auth-screens/auth-base.tsx"
 type: "code"
-community: "Community 46"
+community: "Auth UI"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_46
+  - community/Auth_UI
 ---
 
 # auth-base.tsx
@@ -22,4 +22,4 @@ tags:
 - [[footer.tsx_2]] - `imports_from` [EXTRACTED]
 - [[header.tsx_14]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_46
+#graphify/code #graphify/EXTRACTED #community/Auth_UI

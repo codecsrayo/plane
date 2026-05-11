@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/menus/workspaces.tsx"
+source_file: "components/power-k/menus/workspaces.tsx"
 type: "code"
-community: "Community 32"
+community: "Workspace Invites"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_32
+  - community/Workspace_Invites
 ---
 
 # PowerKWorkspacesMenu()
@@ -16,4 +16,4 @@ tags:
 - [[workspaces-menu.tsx]] - `imports` [EXTRACTED]
 - [[workspaces.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_32
+#graphify/code #graphify/EXTRACTED #community/Workspace_Invites

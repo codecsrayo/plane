@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/navigation-pane/tabs-list.tsx"
+source_file: "components/pages/navigation-pane/tabs-list.tsx"
 type: "code"
-community: "Community 54"
+community: "Navigation Pane"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_54
+  - community/Navigation_Pane
 ---
 
 # PageNavigationPaneTabsList()
@@ -16,4 +16,4 @@ tags:
 - [[root.tsx_80]] - `imports` [EXTRACTED]
 - [[tabs-list.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_54
+#graphify/code #graphify/EXTRACTED #community/Navigation_Pane

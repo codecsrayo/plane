@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-dropdown-key-down.tsx"
+source_file: "hooks/use-dropdown-key-down.tsx"
 type: "code"
-community: "Community 81"
+community: "Issue Properties"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_81
+  - community/Issue_Properties
 ---
 
 # use-dropdown-key-down.tsx
@@ -20,4 +20,4 @@ tags:
 - [[use-dropdown.ts]] - `imports_from` [EXTRACTED]
 - [[useDropdownKeyDown()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_81
+#graphify/code #graphify/EXTRACTED #community/Issue_Properties

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/filters/date-filter-select.tsx"
+source_file: "components/core/filters/date-filter-select.tsx"
 type: "code"
-community: "Community 85"
+community: "Date Start"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_85
+  - community/Date_Start
 ---
 
 # date-filter-select.tsx
@@ -19,4 +19,4 @@ tags:
 - [[date-filter-modal.tsx]] - `imports_from` [EXTRACTED]
 - [[dueDateRange]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_85
+#graphify/code #graphify/EXTRACTED #community/Date_Start

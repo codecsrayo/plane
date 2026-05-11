@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/issue/issue_relation.service.ts"
+source_file: "services/issue/issue_relation.service.ts"
 type: "code"
-community: "Community 284"
+community: "API Services"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_284
+  - community/API_Services
 ---
 
 # IssueRelationService
@@ -19,4 +19,4 @@ tags:
 - [[.listIssueRelations()]] - `method` [EXTRACTED]
 - [[issue_relation.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_284
+#graphify/code #graphify/EXTRACTED #community/API_Services

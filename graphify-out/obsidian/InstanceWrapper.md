@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/lib/wrappers/instance-wrapper.tsx"
+source_file: "lib/wrappers/instance-wrapper.tsx"
 type: "code"
-community: "Authentication UI"
+community: "Wrapper Workspace"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Authentication_UI
+  - community/Wrapper_Workspace
 ---
 
 # InstanceWrapper
@@ -15,4 +15,4 @@ tags:
 
 - [[instance-wrapper.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Authentication_UI
+#graphify/code #graphify/EXTRACTED #community/Wrapper_Workspace

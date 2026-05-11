@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/issue-layout-HOC.tsx"
+source_file: "components/issues/issue-layouts/issue-layout-HOC.tsx"
 type: "code"
-community: "Community 48"
+community: "Gantt Chart"
 location: "L45"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_48
+  - community/Gantt_Chart
 ---
 
 # IssueLayoutHOC
@@ -21,4 +21,4 @@ tags:
 - [[issue-layout-HOC.tsx]] - `contains` [EXTRACTED]
 - [[workspace-root.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_48
+#graphify/code #graphify/EXTRACTED #community/Gantt_Chart

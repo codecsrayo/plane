@@ -1,14 +1,14 @@
 ---
-source_file: "web/core/components/issues/workspace-draft/index.ts"
+source_file: "components/issues/workspace-draft/index.ts"
 type: "code"
-community: "Community 802"
+community: "Community 397"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_802
+  - community/Community_397
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_802
+#graphify/code #graphify/EXTRACTED #community/Community_397

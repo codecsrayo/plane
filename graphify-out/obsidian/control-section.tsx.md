@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project/settings/control-section.tsx"
+source_file: "components/project/settings/control-section.tsx"
 type: "code"
-community: "Applied Filters UI"
+community: "Account Settings"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters_UI
+  - community/Account_Settings
 ---
 
 # control-section.tsx
@@ -24,4 +24,4 @@ tags:
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters_UI
+#graphify/code #graphify/EXTRACTED #community/Account_Settings

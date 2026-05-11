@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/sidebar/user-menu.tsx"
+source_file: "components/workspace/sidebar/user-menu.tsx"
 type: "code"
-community: "Community 63"
+community: "Sidebar Menu"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_63
+  - community/Sidebar_Menu
 ---
 
 # SidebarUserMenu
@@ -15,4 +15,4 @@ tags:
 
 - [[user-menu.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_63
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Menu

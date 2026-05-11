@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/filters/applied-filters/priority.tsx"
+source_file: "components/issues/issue-layouts/filters/applied-filters/priority.tsx"
 type: "code"
-community: "Community 477"
+community: "Priority Applied"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_477
+  - community/Priority_Applied
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[priority.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_477
+#graphify/code #graphify/EXTRACTED #community/Priority_Applied

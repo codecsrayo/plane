@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/editor/sticky-editor/editor.tsx"
+source_file: "components/editor/sticky-editor/editor.tsx"
 type: "code"
-community: "Editor Styles"
+community: "Issue Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Styles
+  - community/Issue_Filters
 ---
 
 # editor.tsx
@@ -22,4 +22,4 @@ tags:
 - [[use-parse-editor-content.ts]] - `imports_from` [EXTRACTED]
 - [[useParseEditorContent()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Styles
+#graphify/code #graphify/EXTRACTED #community/Issue_Filters

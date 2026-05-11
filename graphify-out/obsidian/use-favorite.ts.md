@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/use-favorite.ts"
+source_file: "hooks/store/use-favorite.ts"
 type: "code"
-community: "Community 128"
+community: "Favorite Folder"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_128
+  - community/Favorite_Folder
 ---
 
 # use-favorite.ts
@@ -23,4 +23,4 @@ tags:
 - [[useFavorite()]] - `contains` [EXTRACTED]
 - [[workspace-wrapper.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_128
+#graphify/code #graphify/EXTRACTED #community/Favorite_Folder

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/global-shortcuts.tsx"
+source_file: "components/power-k/global-shortcuts.tsx"
 type: "code"
-community: "Community 80"
+community: "Command Palette"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_80
+  - community/Command_Palette
 ---
 
 # global-shortcuts.tsx
@@ -28,4 +28,4 @@ tags:
 - [[use-power-k.ts]] - `imports_from` [EXTRACTED]
 - [[usePowerK()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_80
+#graphify/code #graphify/EXTRACTED #community/Command_Palette

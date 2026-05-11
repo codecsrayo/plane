@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail/issue-activity/helper.tsx"
+source_file: "components/issues/issue-detail/issue-activity/helper.tsx"
 type: "code"
-community: "Member Filters & Description"
+community: "Project Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Filters__Description
+  - community/Project_Archives
 ---
 
 # helper.tsx
@@ -25,4 +25,4 @@ tags:
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[useWorkItemCommentOperations()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Filters\_\_Description
+#graphify/code #graphify/EXTRACTED #community/Project_Archives

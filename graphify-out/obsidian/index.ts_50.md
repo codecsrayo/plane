@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/editor/sticky-editor/index.ts"
+source_file: "components/editor/sticky-editor/index.ts"
 type: "code"
-community: "Community 211"
+community: "Workspace Invites"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_211
+  - community/Workspace_Invites
 ---
 
 # index.ts
@@ -15,4 +15,4 @@ tags:
 
 - [[inputs.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_211
+#graphify/code #graphify/EXTRACTED #community/Workspace_Invites

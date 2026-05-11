@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/ui/renderer/shortcut.tsx"
+source_file: "components/power-k/ui/renderer/shortcut.tsx"
 type: "code"
-community: "Community 167"
+community: "Context Power"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_167
+  - community/Context_Power
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[shortcut.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_167
+#graphify/code #graphify/EXTRACTED #community/Context_Power

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/issue/issue_attachment.service.ts"
+source_file: "services/issue/issue_attachment.service.ts"
 type: "code"
-community: "Community 266"
+community: "Issue Attachment"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_266
+  - community/Issue_Attachment
 ---
 
 # IssueAttachmentService
@@ -20,4 +20,4 @@ tags:
 - [[.uploadIssueAttachment()]] - `method` [EXTRACTED]
 - [[issue_attachment.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_266
+#graphify/code #graphify/EXTRACTED #community/Issue_Attachment

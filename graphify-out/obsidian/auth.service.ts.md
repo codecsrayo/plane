@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/auth.service.ts"
+source_file: "services/auth.service.ts"
 type: "code"
-community: "Git Integrations"
+community: "Auth Forms"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Git_Integrations
+  - community/Auth_Forms
 ---
 
 # auth.service.ts
@@ -25,4 +25,4 @@ tags:
 - [[toApiError()]] - `imports` [EXTRACTED]
 - [[unique-code.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Git_Integrations
+#graphify/code #graphify/EXTRACTED #community/Auth_Forms

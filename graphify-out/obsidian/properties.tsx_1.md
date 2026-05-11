@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/relations/properties.tsx"
+source_file: "components/issues/relations/properties.tsx"
 type: "code"
-community: "Spreadsheet Column Components"
+community: "Issue Activity"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Column_Components
+  - community/Issue_Activity
 ---
 
 # properties.tsx
@@ -27,4 +27,4 @@ tags:
 - [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Column_Components
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

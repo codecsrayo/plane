@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/settings/page-header.tsx"
+source_file: "components/settings/page-header.tsx"
 type: "code"
-community: "Community 458"
+community: "Settings"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_458
+  - community/Settings
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[page-header.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_458
+#graphify/code #graphify/EXTRACTED #community/Settings

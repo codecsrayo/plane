@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/empty-state/simple-empty-state-root.tsx"
+source_file: "components/empty-state/simple-empty-state-root.tsx"
 type: "code"
-community: "Community 127"
+community: "Progress Empty"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_127
+  - community/Progress_Empty
 ---
 
 # simple-empty-state-root.tsx
@@ -28,4 +28,4 @@ tags:
 - [[sizeConfig]] - `contains` [EXTRACTED]
 - [[stickies-list.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_127
+#graphify/code #graphify/EXTRACTED #community/Progress_Empty

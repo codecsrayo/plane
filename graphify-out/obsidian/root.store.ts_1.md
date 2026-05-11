@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/root.store.ts"
+source_file: "store/issue/root.store.ts"
 type: "code"
-community: "Calendar UI"
+community: "Calendar Store"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_UI
+  - community/Calendar_Store
 ---
 
 # root.store.ts
@@ -55,4 +55,4 @@ tags:
 - [[root.store.ts_2]] - `imports_from` [EXTRACTED]
 - [[workspace-member.store.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_UI
+#graphify/code #graphify/EXTRACTED #community/Calendar_Store

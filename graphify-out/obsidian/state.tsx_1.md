@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/filters/applied-filters/state.tsx"
+source_file: "components/issues/issue-layouts/filters/applied-filters/state.tsx"
 type: "code"
-community: "Community 476"
+community: "State Applied"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_476
+  - community/State_Applied
 ---
 
 # state.tsx
@@ -16,4 +16,4 @@ tags:
 - [[AppliedStateFilters]] - `contains` [EXTRACTED]
 - [[Props_245]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_476
+#graphify/code #graphify/EXTRACTED #community/State_Applied

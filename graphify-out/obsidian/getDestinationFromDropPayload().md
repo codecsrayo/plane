@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/utils.tsx"
+source_file: "components/issues/issue-layouts/utils.tsx"
 type: "code"
-community: "Group & Drag UI"
+community: "Kanban Groups"
 location: "L389"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group__Drag_UI
+  - community/Kanban_Groups
 ---
 
 # getDestinationFromDropPayload()
@@ -17,4 +17,4 @@ tags:
 - [[list-group.tsx]] - `imports` [EXTRACTED]
 - [[utils.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group\_\_Drag_UI
+#graphify/code #graphify/EXTRACTED #community/Kanban_Groups

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/filters/applied-filters/cycle.tsx"
+source_file: "components/issues/issue-layouts/filters/applied-filters/cycle.tsx"
 type: "code"
-community: "Cycle Services & Filters"
+community: "Cycle Transfers"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Services__Filters
+  - community/Cycle_Transfers
 ---
 
 # cycle.tsx
@@ -18,4 +18,4 @@ tags:
 - [[use-cycle.ts]] - `imports_from` [EXTRACTED]
 - [[useCycle()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Services\_\_Filters
+#graphify/code #graphify/EXTRACTED #community/Cycle_Transfers

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/settings/profile/content/pages/security.tsx"
+source_file: "components/settings/profile/content/pages/security.tsx"
 type: "code"
-community: "Community 182"
+community: "Profile Settings"
 location: "L47"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_182
+  - community/Profile_Settings
 ---
 
 # SecurityProfileSettings
@@ -15,4 +15,4 @@ tags:
 
 - [[security.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_182
+#graphify/code #graphify/EXTRACTED #community/Profile_Settings

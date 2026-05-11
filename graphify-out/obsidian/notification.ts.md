@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/notifications/notification.ts"
+source_file: "store/notifications/notification.ts"
 type: "code"
-community: "Community 139"
+community: "Notification Option"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_139
+  - community/Notification_Option
 ---
 
 # notification.ts
@@ -27,4 +27,4 @@ tags:
 - [[workspace-notification.service.ts]] - `imports_from` [EXTRACTED]
 - [[workspace-notifications.store.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_139
+#graphify/code #graphify/EXTRACTED #community/Notification_Option

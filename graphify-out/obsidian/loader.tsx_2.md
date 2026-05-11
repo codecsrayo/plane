@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/editor/rich-text/description-input/loader.tsx"
+source_file: "components/editor/rich-text/description-input/loader.tsx"
 type: "code"
-community: "Community 246"
+community: "Description Input"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_246
+  - community/Description_Input
 ---
 
 # loader.tsx
@@ -18,4 +18,4 @@ tags:
 - [[issue-root.tsx]] - `imports_from` [EXTRACTED]
 - [[root.tsx_10]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_246
+#graphify/code #graphify/EXTRACTED #community/Description_Input

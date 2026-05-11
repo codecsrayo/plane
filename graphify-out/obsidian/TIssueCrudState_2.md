@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail-widgets/sub-issues/content.tsx"
+source_file: "components/issues/issue-detail-widgets/sub-issues/content.tsx"
 type: "code"
-community: "Community 177"
+community: "Project Archives"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_177
+  - community/Project_Archives
 ---
 
 # TIssueCrudState
@@ -15,4 +15,4 @@ tags:
 
 - [[content.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_177
+#graphify/code #graphify/EXTRACTED #community/Project_Archives

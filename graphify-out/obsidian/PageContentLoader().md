@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/loaders/page-content-loader.tsx"
+source_file: "components/pages/loaders/page-content-loader.tsx"
 type: "code"
-community: "Community 78"
+community: "Issue Filters"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_78
+  - community/Issue_Filters
 ---
 
 # PageContentLoader()
@@ -16,4 +16,4 @@ tags:
 - [[editor-body.tsx]] - `imports` [EXTRACTED]
 - [[page-content-loader.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_78
+#graphify/code #graphify/EXTRACTED #community/Issue_Filters

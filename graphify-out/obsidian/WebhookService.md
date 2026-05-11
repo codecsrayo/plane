@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/webhook.service.ts"
+source_file: "services/webhook.service.ts"
 type: "code"
-community: "Community 112"
+community: "Webhook Webhookservice"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_112
+  - community/Webhook_Webhookservice
 ---
 
 # WebhookService
@@ -23,4 +23,4 @@ tags:
 - [[webhook.service.ts]] - `contains` [EXTRACTED]
 - [[webhook.store.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_112
+#graphify/code #graphify/EXTRACTED #community/Webhook_Webhookservice

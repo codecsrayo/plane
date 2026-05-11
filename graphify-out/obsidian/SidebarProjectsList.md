@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/sidebar/projects-list.tsx"
+source_file: "components/workspace/sidebar/projects-list.tsx"
 type: "code"
-community: "Community 63"
+community: "Project Projects"
 location: "L38"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_63
+  - community/Project_Projects
 ---
 
 # SidebarProjectsList
@@ -15,4 +15,4 @@ tags:
 
 - [[projects-list.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_63
+#graphify/code #graphify/EXTRACTED #community/Project_Projects

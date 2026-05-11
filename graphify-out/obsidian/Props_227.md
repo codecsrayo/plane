@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/filters/header/display-filters/group-by.tsx"
+source_file: "components/issues/issue-layouts/filters/header/display-filters/group-by.tsx"
 type: "code"
-community: "Community 42"
+community: "Filter Selection UI"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_42
+  - community/Filter_Selection_UI
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[group-by.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_42
+#graphify/code #graphify/EXTRACTED #community/Filter_Selection_UI

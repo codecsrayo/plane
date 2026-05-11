@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail/issue-activity/activity/actions/label.tsx"
+source_file: "components/issues/issue-detail/issue-activity/activity/actions/label.tsx"
 type: "code"
-community: "Issue Activity Tracking"
+community: "Label Workspace"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity_Tracking
+  - community/Label_Workspace
 ---
 
 # label.tsx
@@ -21,4 +21,4 @@ tags:
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 - [[useLabel()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Tracking
+#graphify/code #graphify/EXTRACTED #community/Label_Workspace

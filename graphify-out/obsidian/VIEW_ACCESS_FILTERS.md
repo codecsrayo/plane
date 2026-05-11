@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/views/applied-filters/root.tsx"
+source_file: "components/views/applied-filters/root.tsx"
 type: "code"
-community: "Community 64"
+community: "Applied Filters"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_64
+  - community/Applied_Filters
 ---
 
 # VIEW_ACCESS_FILTERS
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_64
+#graphify/code #graphify/EXTRACTED #community/Applied_Filters

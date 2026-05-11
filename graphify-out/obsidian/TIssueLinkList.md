@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail/links/links.tsx"
+source_file: "components/issues/issue-detail/links/links.tsx"
 type: "code"
-community: "Issue Activity Tracking"
+community: "Issue Activity"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity_Tracking
+  - community/Issue_Activity
 ---
 
 # TIssueLinkList
@@ -15,4 +15,4 @@ tags:
 
 - [[links.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Tracking
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

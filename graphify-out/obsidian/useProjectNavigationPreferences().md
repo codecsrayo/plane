@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-navigation-preferences.ts"
+source_file: "hooks/use-navigation-preferences.ts"
 type: "code"
-community: "Community 95"
+community: "Project Projects"
 location: "L112"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_95
+  - community/Project_Projects
 ---
 
 # useProjectNavigationPreferences()
@@ -19,4 +19,4 @@ tags:
 - [[use-navigation-preferences.ts]] - `contains` [EXTRACTED]
 - [[useWorkspace()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_95
+#graphify/code #graphify/EXTRACTED #community/Project_Projects

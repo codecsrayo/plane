@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/notifications/index.ts"
+source_file: "hooks/store/notifications/index.ts"
 type: "code"
-community: "Community 198"
+community: "Notification Option"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_198
+  - community/Notification_Option
 ---
 
 # index.ts
@@ -22,4 +22,4 @@ tags:
 - [[root.tsx_49]] - `imports_from` [EXTRACTED]
 - [[root.tsx_50]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_198
+#graphify/code #graphify/EXTRACTED #community/Notification_Option

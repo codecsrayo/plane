@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project/create/header.tsx"
+source_file: "components/project/create/header.tsx"
 type: "code"
-community: "Community 102"
+community: "Image Upload"
 location: "L34"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_102
+  - community/Image_Upload
 ---
 
 # ProjectCreateHeader()
@@ -15,4 +15,4 @@ tags:
 
 - [[header.tsx_7]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_102
+#graphify/code #graphify/EXTRACTED #community/Image_Upload

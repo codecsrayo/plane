@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/version/main-content.tsx"
+source_file: "components/pages/version/main-content.tsx"
 type: "code"
-community: "Community 54"
+community: "Page Editor"
 location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_54
+  - community/Page_Editor
 ---
 
 # PageVersionsMainContent
@@ -16,4 +16,4 @@ tags:
 - [[main-content.tsx_2]] - `contains` [EXTRACTED]
 - [[root.tsx_84]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_54
+#graphify/code #graphify/EXTRACTED #community/Page_Editor

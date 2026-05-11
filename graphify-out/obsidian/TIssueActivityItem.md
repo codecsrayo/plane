@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail/issue-activity/activity/activity-list.tsx"
+source_file: "components/issues/issue-detail/issue-activity/activity/activity-list.tsx"
 type: "code"
-community: "Community 79"
+community: "Activity Issue"
 location: "L37"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_79
+  - community/Activity_Issue
 ---
 
 # TIssueActivityItem
@@ -15,4 +15,4 @@ tags:
 
 - [[activity-list.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_79
+#graphify/code #graphify/EXTRACTED #community/Activity_Issue

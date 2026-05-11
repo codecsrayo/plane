@@ -1,14 +1,14 @@
 ---
-source_file: "web/core/components/gantt-chart/sidebar/index.ts"
+source_file: "components/gantt-chart/sidebar/index.ts"
 type: "code"
-community: "Community 773"
+community: "Community 368"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_773
+  - community/Community_368
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_773
+#graphify/code #graphify/EXTRACTED #community/Community_368

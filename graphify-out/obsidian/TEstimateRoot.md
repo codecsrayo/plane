@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/estimates/root.tsx"
+source_file: "components/estimates/root.tsx"
 type: "code"
-community: "Community 142"
+community: "Estimate Disable"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_142
+  - community/Estimate_Disable
 ---
 
 # TEstimateRoot
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_85]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_142
+#graphify/code #graphify/EXTRACTED #community/Estimate_Disable

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project/archive-restore-modal.tsx"
+source_file: "components/project/archive-restore-modal.tsx"
 type: "code"
-community: "Applied Filters UI"
+community: "Account Settings"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters_UI
+  - community/Account_Settings
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[archive-restore-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters_UI
+#graphify/code #graphify/EXTRACTED #community/Account_Settings

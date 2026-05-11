@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project-states/state-item.tsx"
+source_file: "components/project-states/state-item.tsx"
 type: "code"
-community: "Community 133"
+community: "State Group"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_133
+  - community/State_Group
 ---
 
 # TStateItem
@@ -15,4 +15,4 @@ tags:
 
 - [[state-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_133
+#graphify/code #graphify/EXTRACTED #community/State_Group

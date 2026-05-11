@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/readonly/state.tsx"
+source_file: "components/readonly/state.tsx"
 type: "code"
-community: "Community 36"
+community: "Calendar Blocks"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_36
+  - community/Calendar_Blocks
 ---
 
 # state.tsx
@@ -18,4 +18,4 @@ tags:
 - [[use-project-state.ts]] - `imports_from` [EXTRACTED]
 - [[useProjectState()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_36
+#graphify/code #graphify/EXTRACTED #community/Calendar_Blocks

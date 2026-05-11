@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace-notifications/sidebar/notification-card/options/root.tsx"
+source_file: "components/workspace-notifications/sidebar/notification-card/options/root.tsx"
 type: "code"
-community: "Community 139"
+community: "Notification Option"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_139
+  - community/Notification_Option
 ---
 
 # NotificationOption
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_46]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_139
+#graphify/code #graphify/EXTRACTED #community/Notification_Option

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail/links/links.tsx"
+source_file: "components/issues/issue-detail/links/links.tsx"
 type: "code"
-community: "Issue Activity Tracking"
+community: "Issue Activity"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity_Tracking
+  - community/Issue_Activity
 ---
 
 # TLinkOperationsModal
@@ -16,4 +16,4 @@ tags:
 - [[links.tsx_1]] - `contains` [EXTRACTED]
 - [[links.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Tracking
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

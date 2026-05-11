@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-modal/context/index.ts"
+source_file: "components/issues/issue-modal/context/index.ts"
 type: "code"
-community: "Cycle Services & Filters"
+community: "Issue Identifiers"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Services__Filters
+  - community/Issue_Identifiers
 ---
 
 # index.ts
@@ -15,4 +15,4 @@ tags:
 
 - [[use-issue-modal.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Services\_\_Filters
+#graphify/code #graphify/EXTRACTED #community/Issue_Identifiers

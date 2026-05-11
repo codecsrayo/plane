@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/stickies/layout/sticky-dnd-wrapper.tsx"
+source_file: "components/stickies/layout/sticky-dnd-wrapper.tsx"
 type: "code"
-community: "Community 152"
+community: "Stickies Sticky"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_152
+  - community/Stickies_Sticky
 ---
 
 # sticky-dnd-wrapper.tsx
@@ -20,4 +20,4 @@ tags:
 - [[stickies-list.tsx]] - `imports_from` [EXTRACTED]
 - [[sticky.helpers.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_152
+#graphify/code #graphify/EXTRACTED #community/Stickies_Sticky

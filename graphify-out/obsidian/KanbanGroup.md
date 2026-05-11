@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/kanban/kanban-group.tsx"
+source_file: "components/issues/issue-layouts/kanban/kanban-group.tsx"
 type: "code"
-community: "Group & Drag UI"
+community: "Kanban Groups"
 location: "L75"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group__Drag_UI
+  - community/Kanban_Groups
 ---
 
 # KanbanGroup
@@ -16,4 +16,4 @@ tags:
 - [[default.tsx]] - `imports` [EXTRACTED]
 - [[kanban-group.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group\_\_Drag_UI
+#graphify/code #graphify/EXTRACTED #community/Kanban_Groups

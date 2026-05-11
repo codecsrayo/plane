@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/cycles/list/cycle-list-project-group-header.tsx"
+source_file: "components/cycles/list/cycle-list-project-group-header.tsx"
 type: "code"
-community: "Applied Filters UI"
+community: "Project Archives"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters_UI
+  - community/Project_Archives
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[cycle-list-project-group-header.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters_UI
+#graphify/code #graphify/EXTRACTED #community/Project_Archives

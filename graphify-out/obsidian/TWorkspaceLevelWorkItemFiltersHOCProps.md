@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/work-item-filters/filters-hoc/workspace-level.tsx"
+source_file: "components/work-item-filters/filters-hoc/workspace-level.tsx"
 type: "code"
-community: "Community 162"
+community: "Work Filters"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_162
+  - community/Work_Filters
 ---
 
 # TWorkspaceLevelWorkItemFiltersHOCProps
@@ -15,4 +15,4 @@ tags:
 
 - [[workspace-level.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_162
+#graphify/code #graphify/EXTRACTED #community/Work_Filters

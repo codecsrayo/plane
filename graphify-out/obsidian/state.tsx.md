@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/filters/header/filters/state.tsx"
+source_file: "components/issues/issue-layouts/filters/header/filters/state.tsx"
 type: "code"
-community: "Community 309"
+community: "Inbox Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_309
+  - community/Inbox_Filters
 ---
 
 # state.tsx
@@ -17,4 +17,4 @@ tags:
 - [[Props_235]] - `contains` [EXTRACTED]
 - [[index.ts_90]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_309
+#graphify/code #graphify/EXTRACTED #community/Inbox_Filters

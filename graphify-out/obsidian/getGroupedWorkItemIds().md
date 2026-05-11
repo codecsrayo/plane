@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/helpers/base-issues-utils.ts"
+source_file: "store/issue/helpers/base-issues-utils.ts"
 type: "code"
-community: "Issue State Management"
+community: "Issue Group"
 location: "L317"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_State_Management
+  - community/Issue_Group
 ---
 
 # getGroupedWorkItemIds()
@@ -18,4 +18,4 @@ tags:
 - [[groupBy()]] - `calls` [EXTRACTED]
 - [[sub_issues_filter.store.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_State_Management
+#graphify/code #graphify/EXTRACTED #community/Issue_Group

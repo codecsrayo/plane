@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/use-module-filter.ts"
+source_file: "hooks/store/use-module-filter.ts"
 type: "code"
-community: "Module Analytics"
+community: "Modules Archived"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Modules_Archived
 ---
 
 # use-module-filter.ts
@@ -25,4 +25,4 @@ tags:
 - [[useModuleFilter()]] - `contains` [EXTRACTED]
 - [[view.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Modules_Archived

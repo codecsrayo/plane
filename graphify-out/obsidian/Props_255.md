@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail/sidebar.tsx"
+source_file: "components/issues/issue-detail/sidebar.tsx"
 type: "code"
-community: "Spreadsheet Column Components"
+community: "Issue Properties"
 location: "L51"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Column_Components
+  - community/Issue_Properties
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[sidebar.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Column_Components
+#graphify/code #graphify/EXTRACTED #community/Issue_Properties

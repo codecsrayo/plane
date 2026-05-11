@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/billing/comparison/base.tsx"
+source_file: "components/workspace/billing/comparison/base.tsx"
 type: "code"
-community: "Community 131"
+community: "Plans Plan"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_131
+  - community/Plans_Plan
 ---
 
 # TPlansComparisonBaseProps
@@ -15,4 +15,4 @@ tags:
 
 - [[base.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_131
+#graphify/code #graphify/EXTRACTED #community/Plans_Plan

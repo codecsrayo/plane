@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/kanban/swimlanes.tsx"
+source_file: "components/issues/issue-layouts/kanban/swimlanes.tsx"
 type: "code"
-community: "Group & Drag UI"
+community: "Spreadsheet Columns"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group__Drag_UI
+  - community/Spreadsheet_Columns
 ---
 
 # swimlanes.tsx
@@ -34,4 +34,4 @@ tags:
 - [[utils.tsx_1]] - `imports_from` [EXTRACTED]
 - [[visibilitySubGroupByGroupCount()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group\_\_Drag_UI
+#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Columns

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/modals/user-image-upload-modal.tsx"
+source_file: "components/core/modals/user-image-upload-modal.tsx"
 type: "code"
-community: "Community 69"
+community: "Image Upload"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_69
+  - community/Image_Upload
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[user-image-upload-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_69
+#graphify/code #graphify/EXTRACTED #community/Image_Upload

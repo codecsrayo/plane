@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/profile/overview/priority-distribution.tsx"
+source_file: "components/profile/overview/priority-distribution.tsx"
 type: "code"
-community: "Community 313"
+community: "Priority Distribution"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_313
+  - community/Priority_Distribution
 ---
 
 # priority-distribution.tsx
@@ -17,4 +17,4 @@ tags:
 - [[Props_99]] - `contains` [EXTRACTED]
 - [[priorityColors]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_313
+#graphify/code #graphify/EXTRACTED #community/Priority_Distribution

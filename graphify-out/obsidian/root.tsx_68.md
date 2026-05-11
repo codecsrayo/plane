@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/onboarding/steps/profile/root.tsx"
+source_file: "components/onboarding/steps/profile/root.tsx"
 type: "code"
-community: "Community 69"
+community: "Values Setup"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_69
+  - community/Values_Setup
 ---
 
 # root.tsx
@@ -31,4 +31,4 @@ tags:
 - [[useInstance()]] - `imports` [EXTRACTED]
 - [[user-image-upload-modal.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_69
+#graphify/code #graphify/EXTRACTED #community/Values_Setup

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/project/project-member.service.ts"
+source_file: "services/project/project-member.service.ts"
 type: "code"
-community: "Community 239"
+community: "Project Member"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_239
+  - community/Project_Member
 ---
 
 # ProjectMemberService
@@ -22,4 +22,4 @@ tags:
 - [[.updateProjectMember()]] - `method` [EXTRACTED]
 - [[project-member.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_239
+#graphify/code #graphify/EXTRACTED #community/Project_Member

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/stickies/modal/stickies.tsx"
+source_file: "components/stickies/modal/stickies.tsx"
 type: "code"
-community: "Community 104"
+community: "Stickies Truncated"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_104
+  - community/Stickies_Truncated
 ---
 
 # TProps
@@ -15,4 +15,4 @@ tags:
 
 - [[stickies.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_104
+#graphify/code #graphify/EXTRACTED #community/Stickies_Truncated

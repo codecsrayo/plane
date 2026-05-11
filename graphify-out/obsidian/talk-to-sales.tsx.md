@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/license/modal/card/talk-to-sales.tsx"
+source_file: "components/license/modal/card/talk-to-sales.tsx"
 type: "code"
-community: "Community 260"
+community: "Card Paid"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_260
+  - community/Card_Paid
 ---
 
 # talk-to-sales.tsx
@@ -19,4 +19,4 @@ tags:
 - [[base-paid-plan-card.tsx]] - `imports_from` [EXTRACTED]
 - [[renderPriceContent()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_260
+#graphify/code #graphify/EXTRACTED #community/Card_Paid

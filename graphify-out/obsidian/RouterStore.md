@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/router.store.ts"
+source_file: "store/router.store.ts"
 type: "code"
-community: "Community 161"
+community: "Router Routerstore"
 location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_161
+  - community/Router_Routerstore
 ---
 
 # RouterStore
@@ -31,4 +31,4 @@ tags:
 - [[root.store.ts]] - `imports` [EXTRACTED]
 - [[router.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_161
+#graphify/code #graphify/EXTRACTED #community/Router_Routerstore

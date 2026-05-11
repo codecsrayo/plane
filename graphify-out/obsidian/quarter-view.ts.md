@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/gantt-chart/views/quarter-view.ts"
+source_file: "components/gantt-chart/views/quarter-view.ts"
 type: "code"
-community: "Community 59"
+community: "Calendar Helpers"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_59
+  - community/Calendar_Helpers
 ---
 
 # quarter-view.ts
@@ -26,4 +26,4 @@ tags:
 - [[quarterView]] - `contains` [EXTRACTED]
 - [[quarters]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_59
+#graphify/code #graphify/EXTRACTED #community/Calendar_Helpers

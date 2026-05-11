@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail-widgets/root.tsx"
+source_file: "components/issues/issue-detail-widgets/root.tsx"
 type: "code"
-community: "Community 154"
+community: "Issue Widget"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_154
+  - community/Issue_Widget
 ---
 
 # root.tsx
@@ -22,4 +22,4 @@ tags:
 - [[issue-detail-widget-collapsibles.tsx]] - `imports_from` [EXTRACTED]
 - [[issue-detail-widget-modals.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_154
+#graphify/code #graphify/EXTRACTED #community/Issue_Widget

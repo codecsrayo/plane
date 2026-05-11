@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/labels/project-setting-label-list.tsx"
+source_file: "components/labels/project-setting-label-list.tsx"
 type: "code"
-community: "Community 204"
+community: "Project Settings"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_204
+  - community/Project_Settings
 ---
 
 # ProjectSettingsLabelList
@@ -15,4 +15,4 @@ tags:
 
 - [[project-setting-label-list.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_204
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

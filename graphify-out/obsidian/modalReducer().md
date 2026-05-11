@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/integration/github/project-issue-sync-modal.tsx"
+source_file: "components/integration/github/project-issue-sync-modal.tsx"
 type: "code"
-community: "Community 101"
+community: "Integration Sync"
 location: "L68"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_101
+  - community/Integration_Sync
 ---
 
 # modalReducer()
@@ -15,4 +15,4 @@ tags:
 
 - [[project-issue-sync-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_101
+#graphify/code #graphify/EXTRACTED #community/Integration_Sync

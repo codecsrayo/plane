@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/integrations/index.ts"
+source_file: "services/integrations/index.ts"
 type: "code"
-community: "Community 39"
+community: "Github Integration"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_39
+  - community/Github_Integration
 ---
 
 # index.ts
@@ -21,4 +21,4 @@ tags:
 - [[project-issue-sync.tsx]] - `imports_from` [EXTRACTED]
 - [[single-integration-card.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_39
+#graphify/code #graphify/EXTRACTED #community/Github_Integration

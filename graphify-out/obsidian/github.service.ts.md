@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/integrations/github.service.ts"
+source_file: "services/integrations/github.service.ts"
 type: "code"
-community: "Git Integrations"
+community: "Github Integration"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Git_Integrations
+  - community/Github_Integration
 ---
 
 # github.service.ts
@@ -18,4 +18,4 @@ tags:
 - [[api.service.ts]] - `imports_from` [EXTRACTED]
 - [[select-repository.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Git_Integrations
+#graphify/code #graphify/EXTRACTED #community/Github_Integration

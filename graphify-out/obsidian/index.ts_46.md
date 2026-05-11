@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/gantt-chart/data/index.ts"
+source_file: "components/gantt-chart/data/index.ts"
 type: "code"
-community: "Community 153"
+community: "Gantt Current"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_153
+  - community/Gantt_Current
 ---
 
 # index.ts
@@ -30,4 +30,4 @@ tags:
 - [[week-view.ts]] - `imports_from` [EXTRACTED]
 - [[weeks_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_153
+#graphify/code #graphify/EXTRACTED #community/Gantt_Current

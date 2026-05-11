@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/views/view-list-header.tsx"
+source_file: "components/views/view-list-header.tsx"
 type: "code"
-community: "Community 105"
+community: "Created Selection"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_105
+  - community/Created_Selection
 ---
 
 # ViewListHeader
@@ -15,4 +15,4 @@ tags:
 
 - [[view-list-header.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_105
+#graphify/code #graphify/EXTRACTED #community/Created_Selection

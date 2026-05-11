@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/link-column.tsx"
+source_file: "components/issues/issue-layouts/spreadsheet/columns/link-column.tsx"
 type: "code"
-community: "Community 471"
+community: "Link Column"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_471
+  - community/Link_Column
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[link-column.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_471
+#graphify/code #graphify/EXTRACTED #community/Link_Column

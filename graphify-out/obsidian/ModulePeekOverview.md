@@ -1,5 +1,5 @@
 ---
-source_file: "web/core/components/modules/module-peek-overview.tsx"
+source_file: "components/modules/module-peek-overview.tsx"
 type: "code"
 community: "Module Analytics"
 location: "L23"

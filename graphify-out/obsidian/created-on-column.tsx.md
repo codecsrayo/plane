@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/created-on-column.tsx"
+source_file: "components/issues/issue-layouts/spreadsheet/columns/created-on-column.tsx"
 type: "code"
-community: "Community 469"
+community: "Created Column"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_469
+  - community/Created_Column
 ---
 
 # created-on-column.tsx
@@ -16,4 +16,4 @@ tags:
 - [[Props_199]] - `contains` [EXTRACTED]
 - [[SpreadsheetCreatedOnColumn]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_469
+#graphify/code #graphify/EXTRACTED #community/Created_Column

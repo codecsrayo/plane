@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/editor/lite-text/editor.tsx"
+source_file: "components/editor/lite-text/editor.tsx"
 type: "code"
-community: "Editor Styles"
+community: "Toolbar Lite"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Styles
+  - community/Toolbar_Lite
 ---
 
 # isMutableRefObject()
@@ -15,4 +15,4 @@ tags:
 
 - [[editor.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Styles
+#graphify/code #graphify/EXTRACTED #community/Toolbar_Lite

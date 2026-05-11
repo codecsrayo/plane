@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/web-hooks/empty-state.tsx"
+source_file: "components/web-hooks/empty-state.tsx"
 type: "code"
-community: "Community 463"
+community: "Empty State"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_463
+  - community/Empty_State
 ---
 
 # WebhooksEmptyState()
@@ -15,4 +15,4 @@ tags:
 
 - [[empty-state.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_463
+#graphify/code #graphify/EXTRACTED #community/Empty_State

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/list/order-by.tsx"
+source_file: "components/pages/list/order-by.tsx"
 type: "code"
-community: "Community 165"
+community: "Order Search"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_165
+  - community/Order_Search
 ---
 
 # order-by.tsx
@@ -18,4 +18,4 @@ tags:
 - [[Props_397]] - `contains` [EXTRACTED]
 - [[root.tsx_83]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_165
+#graphify/code #graphify/EXTRACTED #community/Order_Search

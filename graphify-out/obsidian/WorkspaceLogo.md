@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/logo.tsx"
+source_file: "components/workspace/logo.tsx"
 type: "code"
-community: "Authentication UI"
+community: "Workspace Invites"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Authentication_UI
+  - community/Workspace_Invites
 ---
 
 # WorkspaceLogo
@@ -22,4 +22,4 @@ tags:
 - [[workspace-options.tsx]] - `imports` [EXTRACTED]
 - [[workspaces.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Authentication_UI
+#graphify/code #graphify/EXTRACTED #community/Workspace_Invites

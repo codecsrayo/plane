@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/labels/label-block/label-name.tsx"
+source_file: "components/labels/label-block/label-name.tsx"
 type: "code"
-community: "Community 76"
+community: "Label Manager"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_76
+  - community/Label_Manager
 ---
 
 # label-name.tsx
@@ -18,4 +18,4 @@ tags:
 - [[label-drag-n-drop-HOC.tsx]] - `imports_from` [EXTRACTED]
 - [[label-item-block.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_76
+#graphify/code #graphify/EXTRACTED #community/Label_Manager

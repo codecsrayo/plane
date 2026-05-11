@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/analytics/select/duration.tsx"
+source_file: "components/analytics/select/duration.tsx"
 type: "code"
-community: "Community 490"
+community: "Duration"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_490
+  - community/Duration
 ---
 
 # duration.tsx
@@ -16,4 +16,4 @@ tags:
 - [[DurationDropdown()]] - `contains` [EXTRACTED]
 - [[Props_428]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_490
+#graphify/code #graphify/EXTRACTED #community/Duration

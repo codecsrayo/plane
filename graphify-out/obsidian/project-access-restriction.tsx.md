@@ -1,5 +1,5 @@
 ---
-source_file: "web/core/components/auth-screens/project/project-access-restriction.tsx"
+source_file: "components/auth-screens/project/project-access-restriction.tsx"
 type: "code"
 community: "Auth Wrappers"
 location: "L1"

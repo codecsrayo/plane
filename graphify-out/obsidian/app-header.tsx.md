@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/app-header.tsx"
+source_file: "components/core/app-header.tsx"
 type: "code"
-community: "Community 278"
+community: "Content Wrapper"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_278
+  - community/Content_Wrapper
 ---
 
 # app-header.tsx
@@ -17,4 +17,4 @@ tags:
 - [[AppHeaderProps]] - `contains` [EXTRACTED]
 - [[content-wrapper.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_278
+#graphify/code #graphify/EXTRACTED #community/Content_Wrapper

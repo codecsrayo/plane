@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/spreadsheet/roots/workspace-root.tsx"
+source_file: "components/issues/issue-layouts/spreadsheet/roots/workspace-root.tsx"
 type: "code"
-community: "Community 48"
+community: "Issue Layout HOC"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_48
+  - community/Issue_Layout_HOC
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[workspace-root.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_48
+#graphify/code #graphify/EXTRACTED #community/Issue_Layout_HOC

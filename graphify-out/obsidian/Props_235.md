@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/inbox/inbox-filter/filters/state.tsx"
+source_file: "components/inbox/inbox-filter/filters/state.tsx"
 type: "code"
-community: "Community 309"
+community: "Inbox Filters"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_309
+  - community/Inbox_Filters
 ---
 
 # Props
@@ -16,4 +16,4 @@ tags:
 - [[state.tsx]] - `contains` [EXTRACTED]
 - [[state.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_309
+#graphify/code #graphify/EXTRACTED #community/Inbox_Filters

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/use-project-publish.ts"
+source_file: "hooks/store/use-project-publish.ts"
 type: "code"
-community: "Community 67"
+community: "Project Root Store"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_67
+  - community/Project_Root_Store
 ---
 
 # use-project-publish.ts
@@ -20,4 +20,4 @@ tags:
 - [[store-context.tsx]] - `imports_from` [EXTRACTED]
 - [[useProjectPublish()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_67
+#graphify/code #graphify/EXTRACTED #community/Project_Root_Store

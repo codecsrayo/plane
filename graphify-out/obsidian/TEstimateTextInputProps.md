@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/estimates/inputs/text-input.tsx"
+source_file: "components/estimates/inputs/text-input.tsx"
 type: "code"
-community: "Community 251"
+community: "Input Estimate"
 location: "L8"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_251
+  - community/Input_Estimate
 ---
 
 # TEstimateTextInputProps
@@ -15,4 +15,4 @@ tags:
 
 - [[text-input.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_251
+#graphify/code #graphify/EXTRACTED #community/Input_Estimate

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/comments/card/edit-form.tsx"
+source_file: "components/comments/card/edit-form.tsx"
 type: "code"
-community: "Community 222"
+community: "Comment Card"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_222
+  - community/Comment_Card
 ---
 
 # edit-form.tsx
@@ -18,4 +18,4 @@ tags:
 - [[display.tsx]] - `imports_from` [EXTRACTED]
 - [[index.ts_55]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_222
+#graphify/code #graphify/EXTRACTED #community/Comment_Card

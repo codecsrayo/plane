@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/onboarding/steps/common/header.tsx"
+source_file: "components/onboarding/steps/common/header.tsx"
 type: "code"
-community: "Community 486"
+community: "Common Onboarding"
 location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_486
+  - community/Common_Onboarding
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[header.tsx_13]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_486
+#graphify/code #graphify/EXTRACTED #community/Common_Onboarding

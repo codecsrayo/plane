@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/onboarding/profile-setup.tsx"
+source_file: "components/onboarding/profile-setup.tsx"
 type: "code"
-community: "Community 69"
+community: "Image Upload"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_69
+  - community/Image_Upload
 ---
 
 # profile-setup.tsx
@@ -27,4 +27,4 @@ tags:
 - [[index.ts]] - `imports_from` [EXTRACTED]
 - [[user-image-upload-modal.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_69
+#graphify/code #graphify/EXTRACTED #community/Image_Upload

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/sidebar/favorites/favorites-menu.tsx"
+source_file: "components/workspace/sidebar/favorites/favorites-menu.tsx"
 type: "code"
-community: "Community 128"
+community: "Favorite Folder"
 location: "L40"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_128
+  - community/Favorite_Folder
 ---
 
 # SidebarFavoritesMenu
@@ -15,4 +15,4 @@ tags:
 
 - [[favorites-menu.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_128
+#graphify/code #graphify/EXTRACTED #community/Favorite_Folder

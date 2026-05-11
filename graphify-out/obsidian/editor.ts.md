@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/constants/editor.ts"
+source_file: "constants/editor.ts"
 type: "code"
-community: "Editor Styles"
+community: "Editor Items"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Styles
+  - community/Editor_Items
 ---
 
 # editor.ts
@@ -36,4 +36,4 @@ tags:
 - [[toolbar.tsx_1]] - `imports_from` [EXTRACTED]
 - [[toolbar.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Styles
+#graphify/code #graphify/EXTRACTED #community/Editor_Items

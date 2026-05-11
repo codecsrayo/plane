@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace-notifications/root.tsx"
+source_file: "components/workspace-notifications/root.tsx"
 type: "code"
-community: "Authentication UI"
+community: "Wrapper Workspace"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Authentication_UI
+  - community/Wrapper_Workspace
 ---
 
 # root.tsx
@@ -25,4 +25,4 @@ tags:
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 - [[useWorkspaceIssueProperties()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Authentication_UI
+#graphify/code #graphify/EXTRACTED #community/Wrapper_Workspace

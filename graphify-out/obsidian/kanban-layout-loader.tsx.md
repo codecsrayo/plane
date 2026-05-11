@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/ui/loader/layouts/kanban-layout-loader.tsx"
+source_file: "components/ui/loader/layouts/kanban-layout-loader.tsx"
 type: "code"
-community: "Community 48"
+community: "Loader Kanban"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_48
+  - community/Loader_Kanban
 ---
 
 # kanban-layout-loader.tsx
@@ -21,4 +21,4 @@ tags:
 - [[kanban-group.tsx]] - `imports_from` [EXTRACTED]
 - [[layout-loader.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_48
+#graphify/code #graphify/EXTRACTED #community/Loader_Kanban

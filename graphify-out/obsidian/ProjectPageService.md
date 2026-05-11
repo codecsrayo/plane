@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/page/project-page.service.ts"
+source_file: "services/page/project-page.service.ts"
 type: "code"
-community: "Community 126"
+community: "Project Projectpageservice"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_126
+  - community/Project_Projectpageservice
 ---
 
 # ProjectPageService
@@ -34,4 +34,4 @@ tags:
 - [[.updateDescription()]] - `method` [EXTRACTED]
 - [[project-page.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_126
+#graphify/code #graphify/EXTRACTED #community/Project_Projectpageservice

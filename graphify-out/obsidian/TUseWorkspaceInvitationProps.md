@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-workspace-invitation.tsx"
+source_file: "hooks/use-workspace-invitation.tsx"
 type: "code"
-community: "Community 219"
+community: "Invitation Workspace"
 location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_219
+  - community/Invitation_Workspace
 ---
 
 # TUseWorkspaceInvitationProps
@@ -15,4 +15,4 @@ tags:
 
 - [[use-workspace-invitation.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_219
+#graphify/code #graphify/EXTRACTED #community/Invitation_Workspace

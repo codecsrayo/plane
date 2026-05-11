@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail/module-select.tsx"
+source_file: "components/issues/issue-detail/module-select.tsx"
 type: "code"
-community: "Spreadsheet Column Components"
+community: "Issue Properties"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Column_Components
+  - community/Issue_Properties
 ---
 
 # TIssueModuleSelect
@@ -15,4 +15,4 @@ tags:
 
 - [[module-select.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Column_Components
+#graphify/code #graphify/EXTRACTED #community/Issue_Properties

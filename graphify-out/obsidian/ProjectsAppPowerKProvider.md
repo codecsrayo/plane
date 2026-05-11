@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/projects-app-provider.tsx"
+source_file: "components/power-k/projects-app-provider.tsx"
 type: "code"
-community: "Community 99"
+community: "Command Palette"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_99
+  - community/Command_Palette
 ---
 
 # ProjectsAppPowerKProvider
@@ -15,4 +15,4 @@ tags:
 
 - [[projects-app-provider.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_99
+#graphify/code #graphify/EXTRACTED #community/Command_Palette

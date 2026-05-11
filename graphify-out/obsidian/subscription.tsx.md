@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail/subscription.tsx"
+source_file: "components/issues/issue-detail/subscription.tsx"
 type: "code"
-community: "Empty States & Inbox"
+community: "Project Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_States__Inbox
+  - community/Project_Archives
 ---
 
 # subscription.tsx
@@ -21,4 +21,4 @@ tags:
 - [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_States\_\_Inbox
+#graphify/code #graphify/EXTRACTED #community/Project_Archives

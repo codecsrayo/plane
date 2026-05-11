@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-project-issue-properties.ts"
+source_file: "hooks/use-project-issue-properties.ts"
 type: "code"
-community: "Community 36"
+community: "Calendar Blocks"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_36
+  - community/Calendar_Blocks
 ---
 
 # useProjectIssueProperties()
@@ -22,4 +22,4 @@ tags:
 - [[useProjectEstimates()]] - `calls` [INFERRED]
 - [[useProjectState()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_36
+#graphify/code #graphify/EXTRACTED #community/Calendar_Blocks

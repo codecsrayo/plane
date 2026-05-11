@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/member/utils.ts"
+source_file: "store/member/utils.ts"
 type: "code"
-community: "Community 230"
+community: "Member Sort"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_230
+  - community/Member_Sort
 ---
 
 # utils.ts
@@ -26,4 +26,4 @@ tags:
 - [[sortWorkspaceMembers()]] - `contains` [EXTRACTED]
 - [[workspace-member-filters.store.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_230
+#graphify/code #graphify/EXTRACTED #community/Member_Sort

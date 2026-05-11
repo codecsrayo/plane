@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/project/project-export.service.ts"
+source_file: "services/project/project-export.service.ts"
 type: "code"
-community: "Git Integrations"
+community: "Project Settings"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Git_Integrations
+  - community/Project_Settings
 ---
 
 # project-export.service.ts
@@ -18,4 +18,4 @@ tags:
 - [[api.service.ts]] - `imports_from` [EXTRACTED]
 - [[export-form.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Git_Integrations
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

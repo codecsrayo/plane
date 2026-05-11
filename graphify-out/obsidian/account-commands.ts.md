@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/config/account-commands.ts"
+source_file: "components/power-k/config/account-commands.ts"
 type: "code"
-community: "Account & Sub-Issues"
+community: "Command Palette"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Account__Sub-Issues
+  - community/Command_Palette
 ---
 
 # account-commands.ts
@@ -21,4 +21,4 @@ tags:
 - [[useAppRouter()]] - `imports` [EXTRACTED]
 - [[usePowerKAccountCommands()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Account\_\_Sub-Issues
+#graphify/code #graphify/EXTRACTED #community/Command_Palette

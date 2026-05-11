@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/inbox/modals/create-modal/issue-title.tsx"
+source_file: "components/inbox/modals/create-modal/issue-title.tsx"
 type: "code"
-community: "Community 169"
+community: "Issue Inbox"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_169
+  - community/Issue_Inbox
 ---
 
 # TInboxIssueTitle
@@ -15,4 +15,4 @@ tags:
 
 - [[issue-title.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_169
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/work-item-filters/filters-hoc/base.tsx"
+source_file: "components/work-item-filters/filters-hoc/base.tsx"
 type: "code"
-community: "Community 162"
+community: "Work Filters"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_162
+  - community/Work_Filters
 ---
 
 # WorkItemFiltersHOC
@@ -17,4 +17,4 @@ tags:
 - [[project-level.tsx]] - `imports` [EXTRACTED]
 - [[workspace-level.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_162
+#graphify/code #graphify/EXTRACTED #community/Work_Filters

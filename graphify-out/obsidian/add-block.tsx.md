@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/gantt-chart/helpers/add-block.tsx"
+source_file: "components/gantt-chart/helpers/add-block.tsx"
 type: "code"
-community: "Community 90"
+community: "Gantt Chart"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_90
+  - community/Gantt_Chart
 ---
 
 # add-block.tsx
@@ -20,4 +20,4 @@ tags:
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 - [[useTimeLineChartStore()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_90
+#graphify/code #graphify/EXTRACTED #community/Gantt_Chart

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/api.service.ts"
+source_file: "services/api.service.ts"
 type: "code"
-community: "Community 81"
+community: "Label Workspace"
 location: "L84"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_81
+  - community/Label_Workspace
 ---
 
 # extractApiErrorMessage()
@@ -22,4 +22,4 @@ tags:
 - [[root.tsx_34]] - `imports` [EXTRACTED]
 - [[use-links.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_81
+#graphify/code #graphify/EXTRACTED #community/Label_Workspace

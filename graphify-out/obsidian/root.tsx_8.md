@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project-states/root.tsx"
+source_file: "components/project-states/root.tsx"
 type: "code"
-community: "Community 36"
+community: "State Group"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_36
+  - community/State_Group
 ---
 
 # root.tsx
@@ -20,4 +20,4 @@ tags:
 - [[use-project-state.ts]] - `imports_from` [EXTRACTED]
 - [[useProjectState()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_36
+#graphify/code #graphify/EXTRACTED #community/State_Group

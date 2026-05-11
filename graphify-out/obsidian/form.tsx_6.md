@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project/form.tsx"
+source_file: "components/project/form.tsx"
 type: "code"
-community: "Community 102"
+community: "Issue Layouts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_102
+  - community/Issue_Layouts
 ---
 
 # form.tsx
@@ -29,4 +29,4 @@ tags:
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_102
+#graphify/code #graphify/EXTRACTED #community/Issue_Layouts

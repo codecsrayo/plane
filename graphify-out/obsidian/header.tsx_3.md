@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/settings/workspace/sidebar/header.tsx"
+source_file: "components/settings/workspace/sidebar/header.tsx"
 type: "code"
-community: "Authentication UI"
+community: "Sidebar Nav"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Authentication_UI
+  - community/Sidebar_Nav
 ---
 
 # header.tsx
@@ -23,4 +23,4 @@ tags:
 - [[useAppRouter()]] - `imports` [EXTRACTED]
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Authentication_UI
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Nav

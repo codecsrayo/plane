@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-navigation-preferences.ts"
+source_file: "hooks/use-navigation-preferences.ts"
 type: "code"
-community: "Community 200"
+community: "Rail Visibility"
 location: "L279"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_200
+  - community/Rail_Visibility
 ---
 
 # useAppRailPreferences()
@@ -17,4 +17,4 @@ tags:
 - [[use-navigation-preferences.ts]] - `contains` [EXTRACTED]
 - [[useLocalStorage()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_200
+#graphify/code #graphify/EXTRACTED #community/Rail_Visibility

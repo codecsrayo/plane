@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/roots/cycle-layout-root.tsx"
+source_file: "components/issues/issue-layouts/roots/cycle-layout-root.tsx"
 type: "code"
-community: "Issue Filters & Context"
+community: "Cycle Transfers"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters__Context
+  - community/Cycle_Transfers
 ---
 
 # cycle-layout-root.tsx
@@ -40,4 +40,4 @@ tags:
 - [[useCycle()]] - `imports` [EXTRACTED]
 - [[useIssues()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters\_\_Context
+#graphify/code #graphify/EXTRACTED #community/Cycle_Transfers

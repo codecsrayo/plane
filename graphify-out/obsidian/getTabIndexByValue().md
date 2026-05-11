@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/cycles/active-cycle/cycle-stats.tsx"
+source_file: "components/cycles/active-cycle/cycle-stats.tsx"
 type: "code"
-community: "Active Cycle Stats"
+community: "Issue Activity"
 location: "L55"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Cycle_Stats
+  - community/Issue_Activity
 ---
 
 # getTabIndexByValue()
@@ -15,4 +15,4 @@ tags:
 
 - [[cycle-stats.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

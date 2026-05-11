@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 365
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[Model_46]] - code - api_rust/src/entities/user_notification_preferences.rs
-- [[Relation_46]] - code - api_rust/src/entities/user_notification_preferences.rs
-- [[user_notification_preferences.rs]] - code - api_rust/src/entities/user_notification_preferences.rs
+- [[index.ts_35]] - code - components/workspace/sidebar/help-section/index.ts
 
 ## Live Query (requires Dataview plugin)
 

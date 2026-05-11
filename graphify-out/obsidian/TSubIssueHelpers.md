@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/issue-details/sub_issues.store.ts"
+source_file: "store/issue/issue-details/sub_issues.store.ts"
 type: "code"
-community: "Community 184"
+community: "Issue Work"
 location: "L49"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_184
+  - community/Issue_Work
 ---
 
 # TSubIssueHelpers
@@ -15,4 +15,4 @@ tags:
 
 - [[sub_issues.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_184
+#graphify/code #graphify/EXTRACTED #community/Issue_Work

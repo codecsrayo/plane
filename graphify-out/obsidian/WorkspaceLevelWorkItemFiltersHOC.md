@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/work-item-filters/filters-hoc/workspace-level.tsx"
+source_file: "components/work-item-filters/filters-hoc/workspace-level.tsx"
 type: "code"
-community: "Issue Filters & Context"
+community: "Issue Layout Roots"
 location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters__Context
+  - community/Issue_Layout_Roots
 ---
 
 # WorkspaceLevelWorkItemFiltersHOC
@@ -18,4 +18,4 @@ tags:
 - [[profile-issues.tsx]] - `imports` [EXTRACTED]
 - [[workspace-level.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters\_\_Context
+#graphify/code #graphify/EXTRACTED #community/Issue_Layout_Roots

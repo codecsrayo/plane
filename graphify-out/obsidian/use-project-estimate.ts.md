@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/estimates/use-project-estimate.ts"
+source_file: "hooks/store/estimates/use-project-estimate.ts"
 type: "code"
-community: "Project Estimates"
+community: "Estimate Project"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Estimates
+  - community/Estimate_Project
 ---
 
 # use-project-estimate.ts
@@ -19,4 +19,4 @@ tags:
 - [[store-context.tsx]] - `imports_from` [EXTRACTED]
 - [[useProjectEstimates()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Estimates
+#graphify/code #graphify/EXTRACTED #community/Estimate_Project

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/project/project-archive.service.ts"
+source_file: "services/project/project-archive.service.ts"
 type: "code"
-community: "Community 301"
+community: "API Services"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_301
+  - community/API_Services
 ---
 
 # ProjectArchiveService
@@ -18,4 +18,4 @@ tags:
 - [[.restoreProject()]] - `method` [EXTRACTED]
 - [[project-archive.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_301
+#graphify/code #graphify/EXTRACTED #community/API_Services

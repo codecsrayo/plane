@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-realtime-page-events.tsx"
+source_file: "hooks/use-realtime-page-events.tsx"
 type: "code"
-community: "Community 78"
+community: "Editor Body"
 location: "L43"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_78
+  - community/Editor_Body
 ---
 
 # useRealtimePageEvents()
@@ -18,4 +18,4 @@ tags:
 - [[useAppRouter()]] - `calls` [EXTRACTED]
 - [[useUser()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_78
+#graphify/code #graphify/EXTRACTED #community/Editor_Body

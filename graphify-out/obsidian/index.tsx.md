@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/layouts/default-layout/index.tsx"
+source_file: "layouts/default-layout/index.tsx"
 type: "code"
-community: "Community 199"
+community: "Authorized Maintenance"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_199
+  - community/Authorized_Maintenance
 ---
 
 # index.tsx
@@ -20,4 +20,4 @@ tags:
 - [[not-authorized-view.tsx]] - `imports_from` [EXTRACTED]
 - [[not-ready-view.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_199
+#graphify/code #graphify/EXTRACTED #community/Authorized_Maintenance

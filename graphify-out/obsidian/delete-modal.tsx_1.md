@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/workspace-draft/delete-modal.tsx"
+source_file: "components/issues/workspace-draft/delete-modal.tsx"
 type: "code"
-community: "Community 41"
+community: "Issue Identifiers"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_41
+  - community/Issue_Identifiers
 ---
 
 # delete-modal.tsx
@@ -22,4 +22,4 @@ tags:
 - [[use-issues.ts]] - `imports_from` [EXTRACTED]
 - [[useIssues()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_41
+#graphify/code #graphify/EXTRACTED #community/Issue_Identifiers

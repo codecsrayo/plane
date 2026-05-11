@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/settings/project/sidebar/root.tsx"
+source_file: "components/settings/project/sidebar/root.tsx"
 type: "code"
-community: "Community 68"
+community: "Multi Select Actions"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_68
+  - community/Multi_Select_Actions
 ---
 
 # Props
@@ -18,4 +18,4 @@ tags:
 - [[root.tsx_17]] - `contains` [EXTRACTED]
 - [[root.tsx_23]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_68
+#graphify/code #graphify/EXTRACTED #community/Multi_Select_Actions

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/common/applied-filters/members.tsx"
+source_file: "components/common/applied-filters/members.tsx"
 type: "code"
-community: "Member Filters & Description"
+community: "Issue Filters"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Filters__Description
+  - community/Issue_Filters
 ---
 
 # Props
@@ -18,4 +18,4 @@ tags:
 - [[members.tsx_5]] - `contains` [EXTRACTED]
 - [[members.tsx_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Filters\_\_Description
+#graphify/code #graphify/EXTRACTED #community/Issue_Filters

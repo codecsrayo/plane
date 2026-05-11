@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/rich-filters/filters-toggle.tsx"
+source_file: "components/rich-filters/filters-toggle.tsx"
 type: "code"
-community: "Filter Components"
+community: "Filter Controls"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Components
+  - community/Filter_Controls
 ---
 
 # filters-toggle.tsx
@@ -19,4 +19,4 @@ tags:
 - [[button.tsx_1]] - `imports_from` [EXTRACTED]
 - [[filters-toggle.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Components
+#graphify/code #graphify/EXTRACTED #community/Filter_Controls

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/workspace-notification.service.ts"
+source_file: "services/workspace-notification.service.ts"
 type: "code"
-community: "Community 58"
+community: "Estimate Points"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_58
+  - community/Estimate_Points
 ---
 
 # workspace-notification.service.ts
@@ -19,4 +19,4 @@ tags:
 - [[toApiError()]] - `imports` [EXTRACTED]
 - [[workspace-notifications.store.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_58
+#graphify/code #graphify/EXTRACTED #community/Estimate_Points

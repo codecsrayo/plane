@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/base-power-k.store.ts"
+source_file: "store/base-power-k.store.ts"
 type: "code"
-community: "Community 83"
+community: "Shortcut Registry"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_83
+  - community/Shortcut_Registry
 ---
 
 # ModalData
@@ -15,4 +15,4 @@ tags:
 
 - [[base-power-k.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_83
+#graphify/code #graphify/EXTRACTED #community/Shortcut_Registry

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/config/account-commands.ts"
+source_file: "components/power-k/config/account-commands.ts"
 type: "code"
-community: "Community 45"
+community: "Command Palette"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_45
+  - community/Command_Palette
 ---
 
 # usePowerKAccountCommands()
@@ -19,4 +19,4 @@ tags:
 - [[useProjectsAppPowerKCommands()]] - `calls` [EXTRACTED]
 - [[useUser()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_45
+#graphify/code #graphify/EXTRACTED #community/Command_Palette

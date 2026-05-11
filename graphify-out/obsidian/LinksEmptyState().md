@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/home/widgets/empty-states/links.tsx"
+source_file: "components/home/widgets/empty-states/links.tsx"
 type: "code"
-community: "Community 75"
+community: "Dashboard Widgets"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_75
+  - community/Dashboard_Widgets
 ---
 
 # LinksEmptyState()
@@ -16,4 +16,4 @@ tags:
 - [[links.tsx]] - `contains` [EXTRACTED]
 - [[links.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_75
+#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets

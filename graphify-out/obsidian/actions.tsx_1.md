@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/dropdowns/actions.tsx"
+source_file: "components/pages/dropdowns/actions.tsx"
 type: "code"
-community: "Page Actions"
+community: "Collaborative Copy"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Page_Actions
+  - community/Collaborative_Copy
 ---
 
 # actions.tsx
@@ -23,4 +23,4 @@ tags:
 - [[use-page-operations.ts]] - `imports_from` [EXTRACTED]
 - [[usePageOperations()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Page_Actions
+#graphify/code #graphify/EXTRACTED #community/Collaborative_Copy

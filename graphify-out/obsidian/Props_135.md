@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project/project-feature-update.tsx"
+source_file: "components/project/project-feature-update.tsx"
 type: "code"
-community: "Community 249"
+community: "Project Feature"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_249
+  - community/Project_Feature
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[project-feature-update.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_249
+#graphify/code #graphify/EXTRACTED #community/Project_Feature

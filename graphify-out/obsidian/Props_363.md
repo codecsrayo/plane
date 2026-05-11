@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/onboarding/steps/workspace/join-invites.tsx"
+source_file: "components/onboarding/steps/workspace/join-invites.tsx"
 type: "code"
-community: "Authentication UI"
+community: "Workspace Invites"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Authentication_UI
+  - community/Workspace_Invites
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[join-invites.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Authentication_UI
+#graphify/code #graphify/EXTRACTED #community/Workspace_Invites

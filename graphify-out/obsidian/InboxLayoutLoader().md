@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/ui/loader/layouts/project-inbox/inbox-layout-loader.tsx"
+source_file: "components/ui/loader/layouts/project-inbox/inbox-layout-loader.tsx"
 type: "code"
-community: "Community 134"
+community: "Inbox Filters"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_134
+  - community/Inbox_Filters
 ---
 
 # InboxLayoutLoader()
@@ -16,4 +16,4 @@ tags:
 - [[inbox-layout-loader.tsx]] - `contains` [EXTRACTED]
 - [[root.tsx_70]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_134
+#graphify/code #graphify/EXTRACTED #community/Inbox_Filters

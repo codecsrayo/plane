@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/icons/attachment/rar-file-icon.tsx"
+source_file: "components/icons/attachment/rar-file-icon.tsx"
 type: "code"
-community: "Community 613"
+community: "Icon"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_613
+  - community/Icon
 ---
 
 # rar-file-icon.tsx
@@ -15,4 +15,4 @@ tags:
 
 - [[RarIcon()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_613
+#graphify/code #graphify/EXTRACTED #community/Icon

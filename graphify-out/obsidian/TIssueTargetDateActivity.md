@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail/issue-activity/activity/actions/target_date.tsx"
+source_file: "components/issues/issue-detail/issue-activity/activity/actions/target_date.tsx"
 type: "code"
-community: "Issue Activity Tracking"
+community: "Issue Activity"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity_Tracking
+  - community/Issue_Activity
 ---
 
 # TIssueTargetDateActivity
@@ -15,4 +15,4 @@ tags:
 
 - [[target_date.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Tracking
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

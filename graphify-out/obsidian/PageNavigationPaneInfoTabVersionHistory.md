@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/navigation-pane/tab-panels/info/version-history.tsx"
+source_file: "components/pages/navigation-pane/tab-panels/info/version-history.tsx"
 type: "code"
-community: "Community 77"
+community: "Info Navigation"
 location: "L77"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_77
+  - community/Info_Navigation
 ---
 
 # PageNavigationPaneInfoTabVersionHistory
@@ -16,4 +16,4 @@ tags:
 - [[root.tsx_82]] - `imports` [EXTRACTED]
 - [[version-history.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_77
+#graphify/code #graphify/EXTRACTED #community/Info_Navigation

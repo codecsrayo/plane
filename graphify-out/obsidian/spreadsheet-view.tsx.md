@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-view.tsx"
+source_file: "components/issues/issue-layouts/spreadsheet/spreadsheet-view.tsx"
 type: "code"
-community: "Active Cycle Stats"
+community: "Issue Layout HOC"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Cycle_Stats
+  - community/Issue_Layout_HOC
 ---
 
 # spreadsheet-view.tsx
@@ -24,4 +24,4 @@ tags:
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[workspace-root.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats
+#graphify/code #graphify/EXTRACTED #community/Issue_Layout_HOC

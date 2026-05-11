@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 364
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[Model_45]] - code - api_rust/src/entities/project_identifiers.rs
-- [[Relation_45]] - code - api_rust/src/entities/project_identifiers.rs
-- [[project_identifiers.rs]] - code - api_rust/src/entities/project_identifiers.rs
+- [[index.tsx_3]] - code - components/views/applied-filters/index.tsx
 
 ## Live Query (requires Dataview plugin)
 

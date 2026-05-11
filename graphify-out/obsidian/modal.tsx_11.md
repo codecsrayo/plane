@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/inbox/modals/create-modal/modal.tsx"
+source_file: "components/inbox/modals/create-modal/modal.tsx"
 type: "code"
-community: "Community 169"
+community: "Issue Inbox"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_169
+  - community/Issue_Inbox
 ---
 
 # modal.tsx
@@ -19,4 +19,4 @@ tags:
 - [[create-root.tsx]] - `imports_from` [EXTRACTED]
 - [[use-keypress.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_169
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

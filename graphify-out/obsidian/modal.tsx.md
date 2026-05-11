@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/views/modal.tsx"
+source_file: "components/views/modal.tsx"
 type: "code"
-community: "Community 117"
+community: "Project Quick"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_117
+  - community/Project_Quick
 ---
 
 # modal.tsx
@@ -30,4 +30,4 @@ tags:
 - [[useWorkItemFilters()]] - `imports` [EXTRACTED]
 - [[view-list-item-action.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_117
+#graphify/code #graphify/EXTRACTED #community/Project_Quick

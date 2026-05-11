@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-parse-editor-content.ts"
+source_file: "hooks/use-parse-editor-content.ts"
 type: "code"
-community: "Member Filters & Description"
+community: "Issue Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Filters__Description
+  - community/Issue_Filters
 ---
 
 # use-parse-editor-content.ts
@@ -24,4 +24,4 @@ tags:
 - [[useMember()]] - `imports` [EXTRACTED]
 - [[useParseEditorContent()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Filters\_\_Description
+#graphify/code #graphify/EXTRACTED #community/Issue_Filters

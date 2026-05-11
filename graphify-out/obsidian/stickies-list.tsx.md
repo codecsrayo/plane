@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/stickies/layout/stickies-list.tsx"
+source_file: "components/stickies/layout/stickies-list.tsx"
 type: "code"
-community: "Community 152"
+community: "Stickies Sticky"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_152
+  - community/Stickies_Sticky
 ---
 
 # stickies-list.tsx
@@ -38,4 +38,4 @@ tags:
 - [[useSticky()]] - `imports` [EXTRACTED]
 - [[useStickyOperations()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_152
+#graphify/code #graphify/EXTRACTED #community/Stickies_Sticky

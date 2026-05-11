@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/home/widgets/loaders/index.ts"
+source_file: "components/home/widgets/loaders/index.ts"
 type: "code"
-community: "Community 75"
+community: "Dashboard Widgets"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_75
+  - community/Dashboard_Widgets
 ---
 
 # index.ts
@@ -16,4 +16,4 @@ tags:
 - [[index.tsx_2]] - `imports_from` [EXTRACTED]
 - [[links.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_75
+#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets

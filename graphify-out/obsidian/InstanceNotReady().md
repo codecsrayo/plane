@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/instance/not-ready-view.tsx"
+source_file: "components/instance/not-ready-view.tsx"
 type: "code"
-community: "Community 199"
+community: "Authorized Maintenance"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_199
+  - community/Authorized_Maintenance
 ---
 
 # InstanceNotReady()
@@ -15,4 +15,4 @@ tags:
 
 - [[not-ready-view.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_199
+#graphify/code #graphify/EXTRACTED #community/Authorized_Maintenance

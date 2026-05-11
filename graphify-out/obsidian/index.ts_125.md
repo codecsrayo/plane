@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace-notifications/sidebar/header/options/menu-option/index.ts"
+source_file: "components/workspace-notifications/sidebar/header/options/menu-option/index.ts"
 type: "code"
-community: "Community 198"
+community: "Issue Layouts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_198
+  - community/Issue_Layouts
 ---
 
 # index.ts
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_49]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_198
+#graphify/code #graphify/EXTRACTED #community/Issue_Layouts

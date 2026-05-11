@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/menus/labels.tsx"
+source_file: "components/power-k/menus/labels.tsx"
 type: "code"
-community: "Community 61"
+community: "File Icons Nav"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_61
+  - community/File_Icons_Nav
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[labels.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_61
+#graphify/code #graphify/EXTRACTED #community/File_Icons_Nav

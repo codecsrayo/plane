@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/views/helper.tsx"
+source_file: "components/views/helper.tsx"
 type: "code"
-community: "Issue Filters & Context"
+community: "Issue Layout Roots"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters__Context
+  - community/Issue_Layout_Roots
 ---
 
 # WorkspaceActiveLayout()
@@ -16,4 +16,4 @@ tags:
 - [[all-issue-layout-root.tsx]] - `imports` [EXTRACTED]
 - [[helper.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters\_\_Context
+#graphify/code #graphify/EXTRACTED #community/Issue_Layout_Roots

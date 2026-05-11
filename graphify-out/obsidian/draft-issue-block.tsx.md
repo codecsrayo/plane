@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/workspace-draft/draft-issue-block.tsx"
+source_file: "components/issues/workspace-draft/draft-issue-block.tsx"
 type: "code"
-community: "Community 155"
+community: "Issue Identifiers"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_155
+  - community/Issue_Identifiers
 ---
 
 # draft-issue-block.tsx
@@ -32,4 +32,4 @@ tags:
 - [[useAppTheme()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_155
+#graphify/code #graphify/EXTRACTED #community/Issue_Identifiers

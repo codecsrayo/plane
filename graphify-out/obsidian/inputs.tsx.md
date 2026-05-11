@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/stickies/sticky/inputs.tsx"
+source_file: "components/stickies/sticky/inputs.tsx"
 type: "code"
-community: "Community 211"
+community: "Workspace Invites"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_211
+  - community/Workspace_Invites
 ---
 
 # inputs.tsx
@@ -20,4 +20,4 @@ tags:
 - [[use-workspace.ts]] - `imports_from` [EXTRACTED]
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_211
+#graphify/code #graphify/EXTRACTED #community/Workspace_Invites

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/helpers/base-issues-utils.ts"
+source_file: "store/issue/helpers/base-issues-utils.ts"
 type: "code"
-community: "Issue State Management"
+community: "Issue Store Ops"
 location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_State_Management
+  - community/Issue_Store_Ops
 ---
 
 # getGroupKey()
@@ -21,4 +21,4 @@ tags:
 - [[setPaginationData()]] - `calls` [EXTRACTED]
 - [[updateGroupedIssueIds()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_State_Management
+#graphify/code #graphify/EXTRACTED #community/Issue_Store_Ops

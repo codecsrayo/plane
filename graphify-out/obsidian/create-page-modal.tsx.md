@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/modals/create-page-modal.tsx"
+source_file: "components/pages/modals/create-page-modal.tsx"
 type: "code"
-community: "Account & Sub-Issues"
+community: "Access Field"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Account__Sub-Issues
+  - community/Access_Field
 ---
 
 # create-page-modal.tsx
@@ -20,4 +20,4 @@ tags:
 - [[use-app-router.tsx]] - `imports_from` [EXTRACTED]
 - [[useAppRouter()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Account\_\_Sub-Issues
+#graphify/code #graphify/EXTRACTED #community/Access_Field

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/lib/store-context.tsx"
+source_file: "lib/store-context.tsx"
 type: "code"
-community: "Community 92"
+community: "Comment Reactions"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_92
+  - community/Comment_Reactions
 ---
 
 # rootStore
@@ -16,4 +16,4 @@ tags:
 - [[issue.store.ts]] - `imports` [EXTRACTED]
 - [[store-context.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_92
+#graphify/code #graphify/EXTRACTED #community/Comment_Reactions

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace-notifications/sidebar/notification-card/content.tsx"
+source_file: "components/workspace-notifications/sidebar/notification-card/content.tsx"
 type: "code"
-community: "Community 197"
+community: "Notification Content"
 location: "L120"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_197
+  - community/Notification_Content
 ---
 
 # getNotificationContentDetails()
@@ -16,4 +16,4 @@ tags:
 - [[NotificationContent()]] - `calls` [EXTRACTED]
 - [[content.tsx_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_197
+#graphify/code #graphify/EXTRACTED #community/Notification_Content

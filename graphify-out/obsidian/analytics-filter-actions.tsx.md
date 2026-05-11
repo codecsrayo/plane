@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/analytics/analytics-filter-actions.tsx"
+source_file: "components/analytics/analytics-filter-actions.tsx"
 type: "code"
-community: "Community 293"
+community: "Analytics Project"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_293
+  - community/Analytics_Project
 ---
 
 # analytics-filter-actions.tsx
@@ -21,4 +21,4 @@ tags:
 - [[useAnalytics()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_293
+#graphify/code #graphify/EXTRACTED #community/Analytics_Project

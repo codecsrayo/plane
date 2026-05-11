@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/ui/loader/projects-loader.tsx"
+source_file: "components/ui/loader/projects-loader.tsx"
 type: "code"
-community: "Applied Filters UI"
+community: "Auth UI"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters_UI
+  - community/Auth_UI
 ---
 
 # ProjectsLoader()
@@ -16,4 +16,4 @@ tags:
 - [[card-list.tsx]] - `imports` [EXTRACTED]
 - [[projects-loader.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters_UI
+#graphify/code #graphify/EXTRACTED #community/Auth_UI

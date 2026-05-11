@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/estimates/inputs/root.tsx"
+source_file: "components/estimates/inputs/root.tsx"
 type: "code"
-community: "Community 251"
+community: "Input Estimate"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_251
+  - community/Input_Estimate
 ---
 
 # root.tsx
@@ -22,4 +22,4 @@ tags:
 - [[text-input.tsx]] - `imports_from` [EXTRACTED]
 - [[update.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_251
+#graphify/code #graphify/EXTRACTED #community/Input_Estimate

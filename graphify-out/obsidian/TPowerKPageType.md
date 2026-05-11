@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/core/types.ts"
+source_file: "components/power-k/core/types.ts"
 type: "code"
-community: "Community 99"
+community: "Power Search"
 location: "L35"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_99
+  - community/Power_Search
 ---
 
 # TPowerKPageType
@@ -26,4 +26,4 @@ tags:
 - [[shared.ts]] - `imports` [EXTRACTED]
 - [[types.ts_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_99
+#graphify/code #graphify/EXTRACTED #community/Power_Search

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/inbox/index.ts"
+source_file: "services/inbox/index.ts"
 type: "code"
-community: "Community 86"
+community: "Inbox Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_86
+  - community/Inbox_Issue
 ---
 
 # index.ts
@@ -17,4 +17,4 @@ tags:
 - [[issue-root.tsx]] - `imports_from` [EXTRACTED]
 - [[project-inbox.store.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_86
+#graphify/code #graphify/EXTRACTED #community/Inbox_Issue

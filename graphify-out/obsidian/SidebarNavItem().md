@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/sidebar/sidebar-navigation.tsx"
+source_file: "components/sidebar/sidebar-navigation.tsx"
 type: "code"
-community: "Community 63"
+community: "Sidebar Menu"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_63
+  - community/Sidebar_Menu
 ---
 
 # SidebarNavItem()
@@ -21,4 +21,4 @@ tags:
 - [[user-menu-item.tsx]] - `imports` [EXTRACTED]
 - [[workspace-menu-item.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_63
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Menu

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail/links/create-update-link-modal.tsx"
+source_file: "components/issues/issue-detail/links/create-update-link-modal.tsx"
 type: "code"
-community: "Issue Activity Tracking"
+community: "Issue Activity"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity_Tracking
+  - community/Issue_Activity
 ---
 
 # create-update-link-modal.tsx
@@ -26,4 +26,4 @@ tags:
 - [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Tracking
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

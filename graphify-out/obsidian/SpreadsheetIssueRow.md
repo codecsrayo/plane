@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/spreadsheet/issue-row.tsx"
+source_file: "components/issues/issue-layouts/spreadsheet/issue-row.tsx"
 type: "code"
-community: "Active Cycle Stats"
+community: "Spreadsheet Table"
 location: "L59"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Cycle_Stats
+  - community/Spreadsheet_Table
 ---
 
 # SpreadsheetIssueRow
@@ -16,4 +16,4 @@ tags:
 - [[issue-row.tsx]] - `contains` [EXTRACTED]
 - [[spreadsheet-table.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats
+#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Table

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/views/form.tsx"
+source_file: "components/views/form.tsx"
 type: "code"
-community: "Community 117"
+community: "Issue Layout Roots"
 location: "L56"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_117
+  - community/Issue_Layout_Roots
 ---
 
 # ProjectViewForm
@@ -16,4 +16,4 @@ tags:
 - [[form.tsx]] - `contains` [EXTRACTED]
 - [[modal.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_117
+#graphify/code #graphify/EXTRACTED #community/Issue_Layout_Roots

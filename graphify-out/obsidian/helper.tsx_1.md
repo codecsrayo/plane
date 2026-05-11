@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/sidebar/favorites/favorite-items/common/helper.tsx"
+source_file: "components/workspace/sidebar/favorites/favorite-items/common/helper.tsx"
 type: "code"
-community: "Community 271"
+community: "Favorite Generate"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_271
+  - community/Favorite_Generate
 ---
 
 # helper.tsx
@@ -19,4 +19,4 @@ tags:
 - [[getFavoriteItemIcon()]] - `contains` [EXTRACTED]
 - [[sidebar-favorites.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_271
+#graphify/code #graphify/EXTRACTED #community/Favorite_Generate

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/ui/pages/open-entity/project-modules-menu.tsx"
+source_file: "components/power-k/ui/pages/open-entity/project-modules-menu.tsx"
 type: "code"
-community: "Community 32"
+community: "File Icons Nav"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_32
+  - community/File_Icons_Nav
 ---
 
 # project-modules-menu.tsx
@@ -23,4 +23,4 @@ tags:
 - [[use-module.ts]] - `imports_from` [EXTRACTED]
 - [[useModule()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_32
+#graphify/code #graphify/EXTRACTED #community/File_Icons_Nav

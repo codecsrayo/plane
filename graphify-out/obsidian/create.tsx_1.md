@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/onboarding/steps/workspace/create.tsx"
+source_file: "components/onboarding/steps/workspace/create.tsx"
 type: "code"
-community: "Authentication UI"
+community: "Chat Support"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Authentication_UI
+  - community/Chat_Support
 ---
 
 # create.tsx
@@ -25,4 +25,4 @@ tags:
 - [[workspace.service.ts]] - `imports_from` [EXTRACTED]
 - [[workspaceService_12]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Authentication_UI
+#graphify/code #graphify/EXTRACTED #community/Chat_Support

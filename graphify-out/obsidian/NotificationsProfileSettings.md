@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/settings/profile/content/pages/notifications/root.tsx"
+source_file: "components/settings/profile/content/pages/notifications/root.tsx"
 type: "code"
-community: "Community 232"
+community: "Email Settings"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_232
+  - community/Email_Settings
 ---
 
 # NotificationsProfileSettings
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_22]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_232
+#graphify/code #graphify/EXTRACTED #community/Email_Settings

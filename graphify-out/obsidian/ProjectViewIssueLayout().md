@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/roots/project-view-layout-root.tsx"
+source_file: "components/issues/issue-layouts/roots/project-view-layout-root.tsx"
 type: "code"
-community: "Issue Filters & Context"
+community: "Calendar Chart"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters__Context
+  - community/Calendar_Chart
 ---
 
 # ProjectViewIssueLayout()
@@ -15,4 +15,4 @@ tags:
 
 - [[project-view-layout-root.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters\_\_Context
+#graphify/code #graphify/EXTRACTED #community/Calendar_Chart

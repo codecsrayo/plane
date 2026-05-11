@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/list/block.tsx"
+source_file: "components/pages/list/block.tsx"
 type: "code"
-community: "Community 123"
+community: "Action Pages"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_123
+  - community/Action_Pages
 ---
 
 # block.tsx
@@ -22,4 +22,4 @@ tags:
 - [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_123
+#graphify/code #graphify/EXTRACTED #community/Action_Pages

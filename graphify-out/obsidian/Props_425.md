@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/analytics/analytics-section-wrapper.tsx"
+source_file: "components/analytics/analytics-section-wrapper.tsx"
 type: "code"
-community: "Community 186"
+community: "Analytics Project"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_186
+  - community/Analytics_Project
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[analytics-section-wrapper.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_186
+#graphify/code #graphify/EXTRACTED #community/Analytics_Project

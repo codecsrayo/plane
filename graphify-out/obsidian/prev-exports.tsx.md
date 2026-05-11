@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/exporter/prev-exports.tsx"
+source_file: "components/exporter/prev-exports.tsx"
 type: "code"
-community: "Community 100"
+community: "Guide Prev"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_100
+  - community/Guide_Prev
 ---
 
 # prev-exports.tsx
@@ -25,4 +25,4 @@ tags:
 - [[index.ts_21]] - `imports_from` [EXTRACTED]
 - [[useExportColumns()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_100
+#graphify/code #graphify/EXTRACTED #community/Guide_Prev

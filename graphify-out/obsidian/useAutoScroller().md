@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-auto-scroller.tsx"
+source_file: "hooks/use-auto-scroller.tsx"
 type: "code"
-community: "Community 234"
+community: "Gantt Chart"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_234
+  - community/Gantt_Chart
 ---
 
 # useAutoScroller()
@@ -16,4 +16,4 @@ tags:
 - [[timeline-drag-helper.tsx]] - `imports` [EXTRACTED]
 - [[use-auto-scroller.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_234
+#graphify/code #graphify/EXTRACTED #community/Gantt_Chart

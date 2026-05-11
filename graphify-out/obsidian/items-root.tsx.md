@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/navigation/items-root.tsx"
+source_file: "components/navigation/items-root.tsx"
 type: "code"
-community: "Community 94"
+community: "Sidebar Rail"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_94
+  - community/Sidebar_Rail
 ---
 
 # items-root.tsx
@@ -21,4 +21,4 @@ tags:
 - [[app-rail-root.tsx]] - `imports_from` [EXTRACTED]
 - [[sidebar-item.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_94
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Rail

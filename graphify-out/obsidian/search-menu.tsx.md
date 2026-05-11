@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/ui/modal/search-menu.tsx"
+source_file: "components/power-k/ui/modal/search-menu.tsx"
 type: "code"
-community: "Community 99"
+community: "Power Search"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_99
+  - community/Power_Search
 ---
 
 # search-menu.tsx
@@ -28,4 +28,4 @@ tags:
 - [[workspace.service.ts]] - `imports_from` [EXTRACTED]
 - [[workspaceService_7]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_99
+#graphify/code #graphify/EXTRACTED #community/Power_Search

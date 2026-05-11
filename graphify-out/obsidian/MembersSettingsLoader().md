@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/ui/loader/settings/members.tsx"
+source_file: "components/ui/loader/settings/members.tsx"
 type: "code"
-community: "Community 44"
+community: "Member Settings"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_44
+  - community/Member_Settings
 ---
 
 # MembersSettingsLoader()
@@ -17,4 +17,4 @@ tags:
 - [[members-list.tsx]] - `imports` [EXTRACTED]
 - [[members.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_44
+#graphify/code #graphify/EXTRACTED #community/Member_Settings

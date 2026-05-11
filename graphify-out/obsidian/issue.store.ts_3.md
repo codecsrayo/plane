@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/workspace/issue.store.ts"
+source_file: "store/issue/workspace/issue.store.ts"
 type: "code"
-community: "Community 84"
+community: "Filters Params"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_84
+  - community/Filters_Params
 ---
 
 # issue.store.ts
@@ -28,4 +28,4 @@ tags:
 - [[toApiError()]] - `imports` [EXTRACTED]
 - [[workspace.service.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_84
+#graphify/code #graphify/EXTRACTED #community/Filters_Params

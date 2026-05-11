@@ -1,5 +1,5 @@
 ---
-source_file: "web/core/components/modules/analytics-sidebar/issue-progress.tsx"
+source_file: "components/modules/analytics-sidebar/issue-progress.tsx"
 type: "code"
 community: "Module Analytics"
 location: "L1"

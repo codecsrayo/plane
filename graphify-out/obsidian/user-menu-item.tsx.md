@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/sidebar/user-menu-item.tsx"
+source_file: "components/workspace/sidebar/user-menu-item.tsx"
 type: "code"
-community: "Community 63"
+community: "Sidebar Menu"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_63
+  - community/Sidebar_Menu
 ---
 
 # user-menu-item.tsx
@@ -24,4 +24,4 @@ tags:
 - [[useAppTheme()]] - `imports` [EXTRACTED]
 - [[user-menu.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_63
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Menu

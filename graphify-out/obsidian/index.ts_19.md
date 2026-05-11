@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/issue/index.ts"
+source_file: "services/issue/index.ts"
 type: "code"
-community: "Community 192"
+community: "Comment Reactions"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_192
+  - community/Comment_Reactions
 ---
 
 # index.ts
@@ -31,4 +31,4 @@ tags:
 - [[relation.store.ts]] - `imports_from` [EXTRACTED]
 - [[sub_issues.store.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_192
+#graphify/code #graphify/EXTRACTED #community/Comment_Reactions

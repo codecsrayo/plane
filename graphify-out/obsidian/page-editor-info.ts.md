@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/pages/page-editor-info.ts"
+source_file: "store/pages/page-editor-info.ts"
 type: "code"
-community: "Page Actions"
+community: "Logo Editor"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Page_Actions
+  - community/Logo_Editor
 ---
 
 # page-editor-info.ts
@@ -17,4 +17,4 @@ tags:
 - [[TPageEditorInstance]] - `contains` [EXTRACTED]
 - [[base-page.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Page_Actions
+#graphify/code #graphify/EXTRACTED #community/Logo_Editor

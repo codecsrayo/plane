@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/settings/members-list-item.tsx"
+source_file: "components/workspace/settings/members-list-item.tsx"
 type: "code"
-community: "Account & Sub-Issues"
+community: "Member Settings"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Account__Sub-Issues
+  - community/Member_Settings
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[members-list-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Account\_\_Sub-Issues
+#graphify/code #graphify/EXTRACTED #community/Member_Settings

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/ui/loader/layouts/gantt-layout-loader.tsx"
+source_file: "components/ui/loader/layouts/gantt-layout-loader.tsx"
 type: "code"
-community: "Community 48"
+community: "Gantt Sidebar"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_48
+  - community/Gantt_Sidebar
 ---
 
 # gantt-layout-loader.tsx
@@ -23,4 +23,4 @@ tags:
 - [[sidebar.tsx_4]] - `imports_from` [EXTRACTED]
 - [[utils.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_48
+#graphify/code #graphify/EXTRACTED #community/Gantt_Sidebar

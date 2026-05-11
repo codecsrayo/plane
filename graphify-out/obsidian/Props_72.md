@@ -1,5 +1,5 @@
 ---
-source_file: "web/core/components/modules/module-list-item.tsx"
+source_file: "components/modules/module-list-item.tsx"
 type: "code"
 community: "Module Analytics"
 location: "L25"

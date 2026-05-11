@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/base-layouts/hooks/use-group-drop-target.ts"
+source_file: "components/base-layouts/hooks/use-group-drop-target.ts"
 type: "code"
-community: "Community 106"
+community: "Group Drop"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_106
+  - community/Group_Drop
 ---
 
 # useGroupDropTarget()
@@ -17,4 +17,4 @@ tags:
 - [[group.tsx_1]] - `imports` [EXTRACTED]
 - [[use-group-drop-target.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_106
+#graphify/code #graphify/EXTRACTED #community/Group_Drop

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/empty-state/detailed-empty-state-root.tsx"
+source_file: "components/empty-state/detailed-empty-state-root.tsx"
 type: "code"
-community: "Community 191"
+community: "Empty State"
 location: "L36"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_191
+  - community/Empty_State
 ---
 
 # sizeClasses
@@ -15,4 +15,4 @@ tags:
 
 - [[detailed-empty-state-root.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_191
+#graphify/code #graphify/EXTRACTED #community/Empty_State

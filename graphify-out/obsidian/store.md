@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/lib/store-context.tsx"
+source_file: "lib/store-context.tsx"
 type: "code"
-community: "Community 92"
+community: "Workspace Draft"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_92
+  - community/Workspace_Draft
 ---
 
 # store
@@ -20,4 +20,4 @@ tags:
 - [[store-context.tsx]] - `contains` [EXTRACTED]
 - [[utils.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_92
+#graphify/code #graphify/EXTRACTED #community/Workspace_Draft

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/invite-modal/fields.tsx"
+source_file: "components/workspace/invite-modal/fields.tsx"
 type: "code"
-community: "Community 219"
+community: "Invitation Workspace"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_219
+  - community/Invitation_Workspace
 ---
 
 # TInvitationFieldsProps
@@ -15,4 +15,4 @@ tags:
 
 - [[fields.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_219
+#graphify/code #graphify/EXTRACTED #community/Invitation_Workspace

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/dropdowns/buttons.tsx"
+source_file: "components/dropdowns/buttons.tsx"
 type: "code"
-community: "Layout System"
+community: "Issue Properties"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Layout_System
+  - community/Issue_Properties
 ---
 
 # buttons.tsx
@@ -34,4 +34,4 @@ tags:
 - [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Layout_System
+#graphify/code #graphify/EXTRACTED #community/Issue_Properties

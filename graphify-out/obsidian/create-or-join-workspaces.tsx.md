@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/onboarding/create-or-join-workspaces.tsx"
+source_file: "components/onboarding/create-or-join-workspaces.tsx"
 type: "code"
-community: "Authentication UI"
+community: "Wrapper Workspace"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Authentication_UI
+  - community/Wrapper_Workspace
 ---
 
 # create-or-join-workspaces.tsx
@@ -28,4 +28,4 @@ tags:
 - [[use-instance.ts]] - `imports_from` [EXTRACTED]
 - [[useInstance()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Authentication_UI
+#graphify/code #graphify/EXTRACTED #community/Wrapper_Workspace

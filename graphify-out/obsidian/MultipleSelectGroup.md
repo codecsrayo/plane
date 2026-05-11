@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/multiple-select/select-group.tsx"
+source_file: "components/core/multiple-select/select-group.tsx"
 type: "code"
-community: "Active Cycle Stats"
+community: "Multi Select Actions"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Cycle_Stats
+  - community/Multi_Select_Actions
 ---
 
 # MultipleSelectGroup
@@ -15,4 +15,4 @@ tags:
 
 - [[select-group.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats
+#graphify/code #graphify/EXTRACTED #community/Multi_Select_Actions

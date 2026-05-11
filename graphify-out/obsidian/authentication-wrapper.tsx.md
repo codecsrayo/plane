@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/lib/wrappers/authentication-wrapper.tsx"
+source_file: "lib/wrappers/authentication-wrapper.tsx"
 type: "code"
-community: "Authentication UI"
+community: "Wrapper Workspace"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Authentication_UI
+  - community/Wrapper_Workspace
 ---
 
 # authentication-wrapper.tsx
@@ -25,4 +25,4 @@ tags:
 - [[useAppRouter()]] - `imports` [EXTRACTED]
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Authentication_UI
+#graphify/code #graphify/EXTRACTED #community/Wrapper_Workspace

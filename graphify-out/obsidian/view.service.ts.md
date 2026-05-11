@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/view.service.ts"
+source_file: "services/view.service.ts"
 type: "code"
-community: "Git Integrations"
+community: "Project Views"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Git_Integrations
+  - community/Project_Views
 ---
 
 # view.service.ts
@@ -19,4 +19,4 @@ tags:
 - [[filter.store.ts_1]] - `imports_from` [EXTRACTED]
 - [[project-view.store.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Git_Integrations
+#graphify/code #graphify/EXTRACTED #community/Project_Views

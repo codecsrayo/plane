@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/navigation-pane/root.tsx"
+source_file: "components/pages/navigation-pane/root.tsx"
 type: "code"
-community: "Community 54"
+community: "Navigation Pane"
 location: "L34"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_54
+  - community/Navigation_Pane
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_80]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_54
+#graphify/code #graphify/EXTRACTED #community/Navigation_Pane

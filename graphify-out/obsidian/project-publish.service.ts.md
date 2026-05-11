@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/project/project-publish.service.ts"
+source_file: "services/project/project-publish.service.ts"
 type: "code"
-community: "Git Integrations"
+community: "Publish Project"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Git_Integrations
+  - community/Publish_Project
 ---
 
 # project-publish.service.ts
@@ -17,4 +17,4 @@ tags:
 - [[ProjectPublishService]] - `contains` [EXTRACTED]
 - [[api.service.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Git_Integrations
+#graphify/code #graphify/EXTRACTED #community/Publish_Project

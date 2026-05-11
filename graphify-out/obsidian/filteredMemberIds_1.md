@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/member/project/base-project-member.store.ts"
+source_file: "store/member/project/base-project-member.store.ts"
 type: "code"
-community: "Community 173"
+community: "Member Project"
 location: "L262"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_173
+  - community/Member_Project
 ---
 
 # filteredMemberIds
@@ -15,4 +15,4 @@ tags:
 
 - [[base-project-member.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_173
+#graphify/code #graphify/EXTRACTED #community/Member_Project

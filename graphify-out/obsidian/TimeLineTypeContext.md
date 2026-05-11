@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/gantt-chart/contexts/index.tsx"
+source_file: "components/gantt-chart/contexts/index.tsx"
 type: "code"
-community: "Community 176"
+community: "Gantt Chart"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_176
+  - community/Gantt_Chart
 ---
 
 # TimeLineTypeContext
@@ -18,4 +18,4 @@ tags:
 - [[layout.tsx_4]] - `imports` [EXTRACTED]
 - [[modules-list-layout.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_176
+#graphify/code #graphify/EXTRACTED #community/Gantt_Chart

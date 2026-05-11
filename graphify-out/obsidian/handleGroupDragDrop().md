@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/utils.tsx"
+source_file: "components/issues/issue-layouts/utils.tsx"
 type: "code"
-community: "Group & Drag UI"
+community: "Spreadsheet Filters"
 location: "L509"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group__Drag_UI
+  - community/Spreadsheet_Filters
 ---
 
 # handleGroupDragDrop()
@@ -20,4 +20,4 @@ tags:
 - [[use-group-dragndrop.ts]] - `imports` [EXTRACTED]
 - [[utils.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group\_\_Drag_UI
+#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Filters

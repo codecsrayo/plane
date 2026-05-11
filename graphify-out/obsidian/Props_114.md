@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/settings/project/sidebar/header.tsx"
+source_file: "components/settings/project/sidebar/header.tsx"
 type: "code"
-community: "Authentication UI"
+community: "Sidebar Nav"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Authentication_UI
+  - community/Sidebar_Nav
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[header.tsx_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Authentication_UI
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Nav

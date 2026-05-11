@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/ui/modal/search-results-map.tsx"
+source_file: "components/power-k/ui/modal/search-results-map.tsx"
 type: "code"
-community: "Community 56"
+community: "Search Results"
 location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_56
+  - community/Search_Results
 ---
 
 # POWER_K_SEARCH_RESULTS_GROUPS_MAP
@@ -16,4 +16,4 @@ tags:
 - [[search-results-map.tsx]] - `contains` [EXTRACTED]
 - [[search-results.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_56
+#graphify/code #graphify/EXTRACTED #community/Search_Results

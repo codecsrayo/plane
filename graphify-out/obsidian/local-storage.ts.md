@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/lib/local-storage.ts"
+source_file: "lib/local-storage.ts"
 type: "code"
-community: "Community 87"
+community: "Storage Display"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_87
+  - community/Storage_Display
 ---
 
 # local-storage.ts
@@ -18,4 +18,4 @@ tags:
 - [[module_filter.store.ts]] - `imports_from` [EXTRACTED]
 - [[storage]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_87
+#graphify/code #graphify/EXTRACTED #community/Storage_Display

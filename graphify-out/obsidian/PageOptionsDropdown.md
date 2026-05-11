@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/editor/toolbar/options-dropdown.tsx"
+source_file: "components/pages/editor/toolbar/options-dropdown.tsx"
 type: "code"
-community: "Community 54"
+community: "Page Editor"
 location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_54
+  - community/Page_Editor
 ---
 
 # PageOptionsDropdown
@@ -15,4 +15,4 @@ tags:
 
 - [[options-dropdown.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_54
+#graphify/code #graphify/EXTRACTED #community/Page_Editor

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace-notifications/sidebar/header/options/root.tsx"
+source_file: "components/workspace-notifications/sidebar/header/options/root.tsx"
 type: "code"
-community: "Community 198"
+community: "Issue Layouts"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_198
+  - community/Issue_Layouts
 ---
 
 # NotificationSidebarHeaderOptions
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_49]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_198
+#graphify/code #graphify/EXTRACTED #community/Issue_Layouts

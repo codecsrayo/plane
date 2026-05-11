@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/theme/color-inputs.tsx"
+source_file: "components/core/theme/color-inputs.tsx"
 type: "code"
-community: "Community 174"
+community: "Theme Custom"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_174
+  - community/Theme_Custom
 ---
 
 # color-inputs.tsx
@@ -18,4 +18,4 @@ tags:
 - [[custom-theme-selector.tsx]] - `imports_from` [EXTRACTED]
 - [[handleValueChange()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_174
+#graphify/code #graphify/EXTRACTED #community/Theme_Custom

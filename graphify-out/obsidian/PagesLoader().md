@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/ui/loader/pages-loader.tsx"
+source_file: "components/ui/loader/pages-loader.tsx"
 type: "code"
-community: "Community 629"
+community: "Pages Loader"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_629
+  - community/Pages_Loader
 ---
 
 # PagesLoader()
@@ -15,4 +15,4 @@ tags:
 
 - [[pages-loader.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_629
+#graphify/code #graphify/EXTRACTED #community/Pages_Loader

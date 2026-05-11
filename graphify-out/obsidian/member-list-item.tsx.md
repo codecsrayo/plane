@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project/member-list-item.tsx"
+source_file: "components/project/member-list-item.tsx"
 type: "code"
-community: "Community 44"
+community: "Member Project"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_44
+  - community/Member_Project
 ---
 
 # member-list-item.tsx
@@ -28,4 +28,4 @@ tags:
 - [[useAppRouter()]] - `imports` [EXTRACTED]
 - [[useMember()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_44
+#graphify/code #graphify/EXTRACTED #community/Member_Project

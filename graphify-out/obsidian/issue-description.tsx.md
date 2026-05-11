@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/inbox/modals/create-modal/issue-description.tsx"
+source_file: "components/inbox/modals/create-modal/issue-description.tsx"
 type: "code"
-community: "Community 141"
+community: "Inbox Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_141
+  - community/Inbox_Filters
 ---
 
 # issue-description.tsx
@@ -28,4 +28,4 @@ tags:
 - [[workspace.service.ts]] - `imports_from` [EXTRACTED]
 - [[workspaceService_14]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_141
+#graphify/code #graphify/EXTRACTED #community/Inbox_Filters

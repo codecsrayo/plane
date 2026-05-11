@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/estimates/root.tsx"
+source_file: "components/estimates/root.tsx"
 type: "code"
-community: "Community 142"
+community: "Estimate Disable"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_142
+  - community/Estimate_Disable
 ---
 
 # root.tsx
@@ -33,4 +33,4 @@ tags:
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_142
+#graphify/code #graphify/EXTRACTED #community/Estimate_Disable

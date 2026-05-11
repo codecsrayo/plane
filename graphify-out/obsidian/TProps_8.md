@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/stickies/sticky/use-operations.tsx"
+source_file: "components/stickies/sticky/use-operations.tsx"
 type: "code"
-community: "Community 104"
+community: "Sticky Tprops"
 location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_104
+  - community/Sticky_Tprops
 ---
 
 # TProps
@@ -15,4 +15,4 @@ tags:
 
 - [[use-operations.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_104
+#graphify/code #graphify/EXTRACTED #community/Sticky_Tprops

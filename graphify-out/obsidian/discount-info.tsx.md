@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/license/modal/card/discount-info.tsx"
+source_file: "components/license/modal/card/discount-info.tsx"
 type: "code"
-community: "Community 194"
+community: "Plan Discount"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_194
+  - community/Plan_Discount
 ---
 
 # discount-info.tsx
@@ -19,4 +19,4 @@ tags:
 - [[checkout-button.tsx]] - `imports_from` [EXTRACTED]
 - [[getActualPrice()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_194
+#graphify/code #graphify/EXTRACTED #community/Plan_Discount

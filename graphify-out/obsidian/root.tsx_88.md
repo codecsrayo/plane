@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/analytics/insight-table/root.tsx"
+source_file: "components/analytics/insight-table/root.tsx"
 type: "code"
-community: "Community 226"
+community: "Table Insight"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_226
+  - community/Table_Insight
 ---
 
 # root.tsx
@@ -20,4 +20,4 @@ tags:
 - [[data-table.tsx]] - `imports_from` [EXTRACTED]
 - [[loader.tsx_7]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_226
+#graphify/code #graphify/EXTRACTED #community/Table_Insight

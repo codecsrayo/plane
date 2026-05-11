@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/dropdowns/module/button-content.tsx"
+source_file: "components/dropdowns/module/button-content.tsx"
 type: "code"
-community: "Layout System"
+community: "Issue Layouts"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Layout_System
+  - community/Issue_Layouts
 ---
 
 # ModuleButtonContent()
@@ -18,4 +18,4 @@ tags:
 - [[useModule()]] - `calls` [EXTRACTED]
 - [[usePlatformOS()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Layout_System
+#graphify/code #graphify/EXTRACTED #community/Issue_Layouts

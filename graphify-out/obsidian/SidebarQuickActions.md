@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/sidebar/quick-actions.tsx"
+source_file: "components/workspace/sidebar/quick-actions.tsx"
 type: "code"
-community: "Empty State Components"
+community: "Project Archives"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_State_Components
+  - community/Project_Archives
 ---
 
 # SidebarQuickActions
@@ -15,4 +15,4 @@ tags:
 
 - [[quick-actions.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_State_Components
+#graphify/code #graphify/EXTRACTED #community/Project_Archives

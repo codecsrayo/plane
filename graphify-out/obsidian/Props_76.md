@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/modules/gantt-chart/blocks.tsx"
+source_file: "components/modules/gantt-chart/blocks.tsx"
 type: "code"
-community: "Account & Sub-Issues"
+community: "Spreadsheet Filters"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Account__Sub-Issues
+  - community/Spreadsheet_Filters
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[blocks.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Account\_\_Sub-Issues
+#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Filters

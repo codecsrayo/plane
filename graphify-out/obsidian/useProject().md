@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/use-project.ts"
+source_file: "hooks/store/use-project.ts"
 type: "code"
-community: "Applied Filters UI"
+community: "Project Archives"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters_UI
+  - community/Project_Archives
 ---
 
 # useProject()
@@ -137,4 +137,4 @@ tags:
 - [[workspace-level.tsx]] - `imports` [EXTRACTED]
 - [[workspace-wrapper.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters_UI
+#graphify/code #graphify/EXTRACTED #community/Project_Archives

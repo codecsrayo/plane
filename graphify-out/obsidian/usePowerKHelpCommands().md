@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/config/help-commands.ts"
+source_file: "components/power-k/config/help-commands.ts"
 type: "code"
-community: "Community 80"
+community: "Command Palette"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_80
+  - community/Command_Palette
 ---
 
 # usePowerKHelpCommands()
@@ -19,4 +19,4 @@ tags:
 - [[usePowerK()]] - `calls` [EXTRACTED]
 - [[useProjectsAppPowerKCommands()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_80
+#graphify/code #graphify/EXTRACTED #community/Command_Palette

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/onboarding/steps/team/root.tsx"
+source_file: "components/onboarding/steps/team/root.tsx"
 type: "code"
-community: "Community 236"
+community: "Workspace Workspaceservice"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_236
+  - community/Workspace_Workspaceservice
 ---
 
 # root.tsx
@@ -27,4 +27,4 @@ tags:
 - [[workspace.service.ts]] - `imports_from` [EXTRACTED]
 - [[workspaceService_13]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_236
+#graphify/code #graphify/EXTRACTED #community/Workspace_Workspaceservice

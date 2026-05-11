@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/common/quick-actions-helper.tsx"
+source_file: "components/common/quick-actions-helper.tsx"
 type: "code"
-community: "Community 163"
+community: "Menu Quick"
 location: "L67"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_163
+  - community/Menu_Quick
 ---
 
 # useCycleMenuItems()
@@ -17,4 +17,4 @@ tags:
 - [[quick-actions.tsx_3]] - `imports` [EXTRACTED]
 - [[useQuickActionsFactory()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_163
+#graphify/code #graphify/EXTRACTED #community/Menu_Quick

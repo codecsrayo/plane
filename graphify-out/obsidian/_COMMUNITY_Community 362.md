@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 362
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[Model_43]] - code - api_rust/src/entities/issue_labels.rs
-- [[Relation_43]] - code - api_rust/src/entities/issue_labels.rs
-- [[issue_labels.rs]] - code - api_rust/src/entities/issue_labels.rs
+- [[index.ts_25]] - code - lib/app-rail/index.ts
 
 ## Live Query (requires Dataview plugin)
 

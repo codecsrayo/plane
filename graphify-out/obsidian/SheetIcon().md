@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/icons/attachment/sheet-file-icon.tsx"
+source_file: "components/icons/attachment/sheet-file-icon.tsx"
 type: "code"
-community: "Community 611"
+community: "Sheet Icon"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_611
+  - community/Sheet_Icon
 ---
 
 # SheetIcon()
@@ -15,4 +15,4 @@ tags:
 
 - [[sheet-file-icon.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_611
+#graphify/code #graphify/EXTRACTED #community/Sheet_Icon

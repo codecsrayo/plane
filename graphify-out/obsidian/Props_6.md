@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/ui/profile-empty-state.tsx"
+source_file: "components/ui/profile-empty-state.tsx"
 type: "code"
-community: "Community 438"
+community: "Profile Empty"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_438
+  - community/Profile_Empty
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[profile-empty-state.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_438
+#graphify/code #graphify/EXTRACTED #community/Profile_Empty

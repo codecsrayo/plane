@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/use-multiple-select-store.ts"
+source_file: "hooks/store/use-multiple-select-store.ts"
 type: "code"
-community: "Active Cycle Stats"
+community: "Multi Select Actions"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Cycle_Stats
+  - community/Multi_Select_Actions
 ---
 
 # useMultipleSelectStore()
@@ -17,4 +17,4 @@ tags:
 - [[use-multiple-select.ts]] - `imports` [EXTRACTED]
 - [[useMultipleSelect()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats
+#graphify/code #graphify/EXTRACTED #community/Multi_Select_Actions

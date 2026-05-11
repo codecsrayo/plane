@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/api-token/empty-state.tsx"
+source_file: "components/api-token/empty-state.tsx"
 type: "code"
-community: "Community 484"
+community: "Empty Token"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_484
+  - community/Empty_Token
 ---
 
 # empty-state.tsx
@@ -16,4 +16,4 @@ tags:
 - [[ApiTokenEmptyState()]] - `contains` [EXTRACTED]
 - [[Props_295]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_484
+#graphify/code #graphify/EXTRACTED #community/Empty_Token

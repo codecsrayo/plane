@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/user/user-user-settings.ts"
+source_file: "hooks/store/user/user-user-settings.ts"
 type: "code"
-community: "Community 37"
+community: "User Profile"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_37
+  - community/User_Profile
 ---
 
 # user-user-settings.ts
@@ -19,4 +19,4 @@ tags:
 - [[store-context.tsx]] - `imports_from` [EXTRACTED]
 - [[useUserSettings()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_37
+#graphify/code #graphify/EXTRACTED #community/User_Profile

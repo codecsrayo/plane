@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/integration/single-integration-card.tsx"
+source_file: "components/integration/single-integration-card.tsx"
 type: "code"
-community: "Community 101"
+community: "Integration Sync"
 location: "L47"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_101
+  - community/Integration_Sync
 ---
 
 # integrationDetails
@@ -15,4 +15,4 @@ tags:
 
 - [[single-integration-card.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_101
+#graphify/code #graphify/EXTRACTED #community/Integration_Sync

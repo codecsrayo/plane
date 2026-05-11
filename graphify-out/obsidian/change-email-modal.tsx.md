@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/modals/change-email-modal.tsx"
+source_file: "components/core/modals/change-email-modal.tsx"
 type: "code"
-community: "Community 110"
+community: "Auth Forms"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_110
+  - community/Auth_Forms
 ---
 
 # change-email-modal.tsx
@@ -25,4 +25,4 @@ tags:
 - [[index.ts]] - `imports_from` [EXTRACTED]
 - [[user.service.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_110
+#graphify/code #graphify/EXTRACTED #community/Auth_Forms

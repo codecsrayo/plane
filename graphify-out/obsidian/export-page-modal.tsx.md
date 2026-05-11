@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/modals/export-page-modal.tsx"
+source_file: "components/pages/modals/export-page-modal.tsx"
 type: "code"
-community: "Community 201"
+community: "Formats Content"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_201
+  - community/Formats_Content
 ---
 
 # export-page-modal.tsx
@@ -29,4 +29,4 @@ tags:
 - [[use-parse-editor-content.ts]] - `imports_from` [EXTRACTED]
 - [[useParseEditorContent()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_201
+#graphify/code #graphify/EXTRACTED #community/Formats_Content

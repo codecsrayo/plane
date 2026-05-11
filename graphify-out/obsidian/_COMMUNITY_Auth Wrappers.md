@@ -1,68 +1,62 @@
 ---
 type: community
 cohesion: 0.06
-members: 52
+members: 46
 ---
 
 # Auth Wrappers
 
 **Cohesion:** 0.06 - loosely connected
-**Members:** 52 nodes
+**Members:** 46 nodes
 
 ## Members
 
-- [[APPLICATIONS_LIST()]] - code - web/core/constants/fetch-keys.ts
-- [[APPLICATION_BY_CLIENT_ID()]] - code - web/core/constants/fetch-keys.ts
-- [[APPLICATION_CATEGORIES_LIST()]] - code - web/core/constants/fetch-keys.ts
-- [[APPLICATION_DETAILS()]] - code - web/core/constants/fetch-keys.ts
-- [[EPICS_PROPERTIES_AND_OPTIONS()]] - code - web/core/constants/fetch-keys.ts
-- [[GITHUB_REPOSITORY_INFO()]] - code - web/core/constants/fetch-keys.ts
-- [[IMPORTER_SERVICES_LIST()]] - code - web/core/constants/fetch-keys.ts
-- [[IProjectAuthWrapper]] - code - web/core/layouts/auth-layout/project-wrapper.tsx
-- [[ISSUE_DETAILS()]] - code - web/core/constants/fetch-keys.ts
-- [[IWorkspaceAuthWrapper]] - code - web/core/layouts/auth-layout/workspace-wrapper.tsx
-- [[JIRA_IMPORTER_DETAIL()]] - code - web/core/constants/fetch-keys.ts
-- [[PROJECT_ALL_CYCLES()]] - code - web/core/constants/fetch-keys.ts
-- [[PROJECT_ESTIMATES()]] - code - web/core/constants/fetch-keys.ts
-- [[PROJECT_INTAKE_STATE()]] - code - web/core/constants/fetch-keys.ts
-- [[PROJECT_LABELS()]] - code - web/core/constants/fetch-keys.ts
-- [[PROJECT_MEMBERS()]] - code - web/core/constants/fetch-keys.ts
-- [[PROJECT_MEMBER_PREFERENCES()]] - code - web/core/constants/fetch-keys.ts
-- [[PROJECT_ME_INFORMATION()]] - code - web/core/constants/fetch-keys.ts
-- [[PROJECT_MILESTONES()]] - code - web/core/constants/fetch-keys.ts
-- [[PROJECT_MODULES()]] - code - web/core/constants/fetch-keys.ts
-- [[PROJECT_STATES()]] - code - web/core/constants/fetch-keys.ts
-- [[PROJECT_VIEWS()]] - code - web/core/constants/fetch-keys.ts
-- [[PROJECT_WORKFLOWS()]] - code - web/core/constants/fetch-keys.ts
-- [[ProjectAccessRestriction]] - code - web/core/components/auth-screens/project/project-access-restriction.tsx
-- [[ProjectAuthWrapper]] - code - web/core/layouts/auth-layout/project-wrapper.tsx
-- [[TProps_12]] - code - web/core/components/auth-screens/project/project-access-restriction.tsx
-- [[USER_PROFILE_DATA()]] - code - web/core/constants/fetch-keys.ts
-- [[USER_PROFILE_PROJECT_SEGREGATION()]] - code - web/core/constants/fetch-keys.ts
-- [[WORKSPACE_ACTIVE_CYCLES_LIST()]] - code - web/core/constants/fetch-keys.ts
-- [[WORKSPACE_CYCLES()]] - code - web/core/constants/fetch-keys.ts
-- [[WORKSPACE_ESTIMATES()]] - code - web/core/constants/fetch-keys.ts
-- [[WORKSPACE_FAVORITE()]] - code - web/core/constants/fetch-keys.ts
-- [[WORKSPACE_INVITATION()]] - code - web/core/constants/fetch-keys.ts
-- [[WORKSPACE_LABELS()]] - code - web/core/constants/fetch-keys.ts
-- [[WORKSPACE_MEMBERS()]] - code - web/core/constants/fetch-keys.ts
-- [[WORKSPACE_MEMBER_ACTIVITY()]] - code - web/core/constants/fetch-keys.ts
-- [[WORKSPACE_MEMBER_ME_INFORMATION()]] - code - web/core/constants/fetch-keys.ts
-- [[WORKSPACE_MODULES()]] - code - web/core/constants/fetch-keys.ts
-- [[WORKSPACE_PARTIAL_PROJECTS()]] - code - web/core/constants/fetch-keys.ts
-- [[WORKSPACE_PROJECTS_ROLES_INFORMATION()]] - code - web/core/constants/fetch-keys.ts
-- [[WORKSPACE_PROJECT_NAVIGATION_PREFERENCES()]] - code - web/core/constants/fetch-keys.ts
-- [[WORKSPACE_SIDEBAR_PREFERENCES()]] - code - web/core/constants/fetch-keys.ts
-- [[WORKSPACE_STATES()]] - code - web/core/constants/fetch-keys.ts
-- [[WORKSPACE_WORKFLOW_STATES()]] - code - web/core/constants/fetch-keys.ts
-- [[WORK_ITEM_TYPES_PROPERTIES_AND_OPTIONS()]] - code - web/core/constants/fetch-keys.ts
-- [[WorkspaceAuthWrapper]] - code - web/core/layouts/auth-layout/workspace-wrapper.tsx
-- [[fetch-keys.ts]] - code - web/core/constants/fetch-keys.ts
-- [[project-access-restriction.tsx]] - code - web/core/components/auth-screens/project/project-access-restriction.tsx
-- [[project-wrapper.tsx]] - code - web/core/layouts/auth-layout/project-wrapper.tsx
-- [[use-workspace-issue-properties.ts]] - code - web/core/hooks/use-workspace-issue-properties.ts
-- [[useWorkspaceIssueProperties()]] - code - web/core/hooks/use-workspace-issue-properties.ts
-- [[workspace-wrapper.tsx]] - code - web/core/layouts/auth-layout/workspace-wrapper.tsx
+- [[APPLICATIONS_LIST()]] - code - constants/fetch-keys.ts
+- [[APPLICATION_BY_CLIENT_ID()]] - code - constants/fetch-keys.ts
+- [[APPLICATION_CATEGORIES_LIST()]] - code - constants/fetch-keys.ts
+- [[APPLICATION_DETAILS()]] - code - constants/fetch-keys.ts
+- [[EPICS_PROPERTIES_AND_OPTIONS()]] - code - constants/fetch-keys.ts
+- [[GITHUB_REPOSITORY_INFO()]] - code - constants/fetch-keys.ts
+- [[IMPORTER_SERVICES_LIST()]] - code - constants/fetch-keys.ts
+- [[IProjectAuthWrapper]] - code - layouts/auth-layout/project-wrapper.tsx
+- [[ISSUE_DETAILS()]] - code - constants/fetch-keys.ts
+- [[IWorkspaceAuthWrapper]] - code - layouts/auth-layout/workspace-wrapper.tsx
+- [[JIRA_IMPORTER_DETAIL()]] - code - constants/fetch-keys.ts
+- [[PROJECT_ALL_CYCLES()]] - code - constants/fetch-keys.ts
+- [[PROJECT_ESTIMATES()]] - code - constants/fetch-keys.ts
+- [[PROJECT_INTAKE_STATE()]] - code - constants/fetch-keys.ts
+- [[PROJECT_LABELS()]] - code - constants/fetch-keys.ts
+- [[PROJECT_MEMBERS()]] - code - constants/fetch-keys.ts
+- [[PROJECT_MEMBER_PREFERENCES()]] - code - constants/fetch-keys.ts
+- [[PROJECT_ME_INFORMATION()]] - code - constants/fetch-keys.ts
+- [[PROJECT_MILESTONES()]] - code - constants/fetch-keys.ts
+- [[PROJECT_MODULES()]] - code - constants/fetch-keys.ts
+- [[PROJECT_STATES()]] - code - constants/fetch-keys.ts
+- [[PROJECT_VIEWS()]] - code - constants/fetch-keys.ts
+- [[PROJECT_WORKFLOWS()]] - code - constants/fetch-keys.ts
+- [[ProjectAccessRestriction]] - code - components/auth-screens/project/project-access-restriction.tsx
+- [[ProjectAuthWrapper]] - code - layouts/auth-layout/project-wrapper.tsx
+- [[TProps_12]] - code - components/auth-screens/project/project-access-restriction.tsx
+- [[USER_PROFILE_DATA()]] - code - constants/fetch-keys.ts
+- [[USER_PROFILE_PROJECT_SEGREGATION()]] - code - constants/fetch-keys.ts
+- [[WORKSPACE_ACTIVE_CYCLES_LIST()]] - code - constants/fetch-keys.ts
+- [[WORKSPACE_FAVORITE()]] - code - constants/fetch-keys.ts
+- [[WORKSPACE_INVITATION()]] - code - constants/fetch-keys.ts
+- [[WORKSPACE_MEMBERS()]] - code - constants/fetch-keys.ts
+- [[WORKSPACE_MEMBER_ACTIVITY()]] - code - constants/fetch-keys.ts
+- [[WORKSPACE_MEMBER_ME_INFORMATION()]] - code - constants/fetch-keys.ts
+- [[WORKSPACE_PARTIAL_PROJECTS()]] - code - constants/fetch-keys.ts
+- [[WORKSPACE_PROJECTS_ROLES_INFORMATION()]] - code - constants/fetch-keys.ts
+- [[WORKSPACE_PROJECT_NAVIGATION_PREFERENCES()]] - code - constants/fetch-keys.ts
+- [[WORKSPACE_SIDEBAR_PREFERENCES()]] - code - constants/fetch-keys.ts
+- [[WORKSPACE_STATES()]] - code - constants/fetch-keys.ts
+- [[WORKSPACE_WORKFLOW_STATES()]] - code - constants/fetch-keys.ts
+- [[WORK_ITEM_TYPES_PROPERTIES_AND_OPTIONS()]] - code - constants/fetch-keys.ts
+- [[WorkspaceAuthWrapper]] - code - layouts/auth-layout/workspace-wrapper.tsx
+- [[fetch-keys.ts]] - code - constants/fetch-keys.ts
+- [[project-access-restriction.tsx]] - code - components/auth-screens/project/project-access-restriction.tsx
+- [[project-wrapper.tsx]] - code - layouts/auth-layout/project-wrapper.tsx
+- [[workspace-wrapper.tsx]] - code - layouts/auth-layout/workspace-wrapper.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -73,35 +67,30 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 6 edges to [[_COMMUNITY_Authentication UI]]
-- 6 edges to [[_COMMUNITY_Community 70]]
-- 5 edges to [[_COMMUNITY_Cycle Services & Filters]]
-- 5 edges to [[_COMMUNITY_Community 81]]
-- 5 edges to [[_COMMUNITY_Module Analytics]]
-- 4 edges to [[_COMMUNITY_Applied Filters UI]]
-- 4 edges to [[_COMMUNITY_Member Filters & Description]]
-- 4 edges to [[_COMMUNITY_Community 36]]
-- 3 edges to [[_COMMUNITY_Community 101]]
-- 3 edges to [[_COMMUNITY_Community 117]]
-- 3 edges to [[_COMMUNITY_Community 100]]
-- 3 edges to [[_COMMUNITY_Community 227]]
-- 2 edges to [[_COMMUNITY_Layout System]]
-- 2 edges to [[_COMMUNITY_Spreadsheet Column Components]]
-- 2 edges to [[_COMMUNITY_Community 48]]
-- 2 edges to [[_COMMUNITY_Issue Filters & Context]]
-- 2 edges to [[_COMMUNITY_Community 155]]
-- 2 edges to [[_COMMUNITY_Community 105]]
-- 2 edges to [[_COMMUNITY_Community 128]]
-- 2 edges to [[_COMMUNITY_Empty State Components]]
-- 2 edges to [[_COMMUNITY_Community 39]]
-- 1 edge to [[_COMMUNITY_Community 90]]
-- 1 edge to [[_COMMUNITY_Community 38]]
-- 1 edge to [[_COMMUNITY_Project Estimates]]
+- 7 edges to [[_COMMUNITY_Label Workspace]]
+- 6 edges to [[_COMMUNITY_Activity List]]
+- 4 edges to [[_COMMUNITY_Project Archives]]
+- 4 edges to [[_COMMUNITY_Issue Filters]]
+- 4 edges to [[_COMMUNITY_Calendar Blocks]]
+- 3 edges to [[_COMMUNITY_Integration Sync]]
+- 3 edges to [[_COMMUNITY_Cycle Details]]
+- 3 edges to [[_COMMUNITY_Guide Prev]]
+- 3 edges to [[_COMMUNITY_Member Project]]
+- 2 edges to [[_COMMUNITY_Issue Layouts]]
+- 2 edges to [[_COMMUNITY_Workspace Invites]]
+- 2 edges to [[_COMMUNITY_Module Analytics]]
+- 2 edges to [[_COMMUNITY_Cycle Transfers]]
+- 2 edges to [[_COMMUNITY_Project Quick]]
+- 2 edges to [[_COMMUNITY_Favorite Folder]]
+- 2 edges to [[_COMMUNITY_Member Settings]]
+- 2 edges to [[_COMMUNITY_Channel Slack]]
+- 2 edges to [[_COMMUNITY_Wrapper Workspace]]
+- 1 edge to [[_COMMUNITY_Gantt Chart]]
+- 1 edge to [[_COMMUNITY_Gantt Sidebar]]
+- 1 edge to [[_COMMUNITY_Issue Properties]]
 
 ## Top bridge nodes
 
 - [[project-wrapper.tsx]] - degree 34, connects to 12 communities
-- [[use-workspace-issue-properties.ts]] - degree 17, connects to 8 communities
-- [[useWorkspaceIssueProperties()]] - degree 13, connects to 8 communities
-- [[workspace-wrapper.tsx]] - degree 26, connects to 7 communities
-- [[fetch-keys.ts]] - degree 62, connects to 6 communities
+- [[workspace-wrapper.tsx]] - degree 26, connects to 8 communities
+- [[fetch-keys.ts]] - degree 62, connects to 7 communities

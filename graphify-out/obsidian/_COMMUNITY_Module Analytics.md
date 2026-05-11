@@ -1,85 +1,52 @@
 ---
 type: community
-cohesion: 0.05
-members: 69
+cohesion: 0.08
+members: 36
 ---
 
 # Module Analytics
 
-**Cohesion:** 0.05 - loosely connected
-**Members:** 69 nodes
+**Cohesion:** 0.08 - loosely connected
+**Members:** 36 nodes
 
 ## Members
 
-- [[AppliedModuleFilters]] - code - web/core/components/issues/issue-layouts/filters/applied-filters/module.tsx
-- [[ArchiveModuleModal()]] - code - web/core/components/modules/archived-modules/modal.tsx
-- [[ArchivedModuleLayoutRoot]] - code - web/core/components/modules/archived-modules/root.tsx
-- [[ArchivedModulesHeader]] - code - web/core/components/modules/archived-modules/header.tsx
-- [[ArchivedModulesView]] - code - web/core/components/modules/archived-modules/view.tsx
-- [[AvatarProps]] - code - web/core/components/dropdowns/member/avatar.tsx
-- [[ButtonAvatars]] - code - web/core/components/dropdowns/member/avatar.tsx
-- [[CreateUpdateModuleModal]] - code - web/core/components/modules/modal.tsx
-- [[CycleModuleBoardLayoutLoader()]] - code - web/core/components/ui/loader/cycle-module-board-loader.tsx
-- [[IArchivedModulesView]] - code - web/core/components/modules/archived-modules/view.tsx
-- [[InboxIssueListItemProps]] - code - web/core/components/inbox/sidebar/inbox-list-item.tsx
-- [[InboxIssueStatus]] - code - web/core/components/inbox/inbox-issue-status.tsx
-- [[ModuleAnalyticsProgress]] - code - web/core/components/modules/analytics-sidebar/issue-progress.tsx
-- [[ModuleAnalyticsSidebar]] - code - web/core/components/modules/analytics-sidebar/root.tsx
-- [[ModuleCardItem]] - code - web/core/components/modules/module-card-item.tsx
-- [[ModuleLinksList]] - code - web/core/components/modules/links/list.tsx
-- [[ModuleListItem]] - code - web/core/components/modules/module-list-item.tsx
-- [[ModuleListItemAction]] - code - web/core/components/modules/module-list-item-action.tsx
-- [[ModulePeekOverview]] - code - web/core/components/modules/module-peek-overview.tsx
-- [[ModuleQuickActions]] - code - web/core/components/modules/quick-actions.tsx
-- [[ModuleStatusDropdown]] - code - web/core/components/modules/module-status-dropdown.tsx
-- [[ModulesListGanttChartView]] - code - web/core/components/modules/gantt-chart/modules-list-layout.tsx
-- [[ModulesListView]] - code - web/core/components/modules/modules-list-view.tsx
-- [[Props_248]] - code - web/core/components/issues/issue-layouts/filters/applied-filters/module.tsx
-- [[Props_79]] - code - web/core/components/modules/archived-modules/modal.tsx
-- [[Props_89]] - code - web/core/components/modules/links/list.tsx
-- [[Props_69]] - code - web/core/components/modules/modal.tsx
-- [[Props_71]] - code - web/core/components/modules/module-card-item.tsx
-- [[Props_68]] - code - web/core/components/modules/module-list-item-action.tsx
-- [[Props_72]] - code - web/core/components/modules/module-list-item.tsx
-- [[Props_70]] - code - web/core/components/modules/module-peek-overview.tsx
-- [[Props_67]] - code - web/core/components/modules/module-status-dropdown.tsx
-- [[Props_74]] - code - web/core/components/modules/quick-actions.tsx
-- [[ReadonlyModule]] - code - web/core/components/readonly/module.tsx
-- [[TIssueAttachmentsListItem]] - code - web/core/components/issues/attachment/attachment-list-item.tsx
-- [[TModuleAnalyticsProgress]] - code - web/core/components/modules/analytics-sidebar/issue-progress.tsx
-- [[TReadonlyModuleProps]] - code - web/core/components/readonly/module.tsx
-- [[attachment-list-item.tsx]] - code - web/core/components/issues/attachment/attachment-list-item.tsx
-- [[avatar.tsx]] - code - web/core/components/dropdowns/member/avatar.tsx
-- [[cycle-module-board-loader.tsx]] - code - web/core/components/ui/loader/cycle-module-board-loader.tsx
-- [[defaultValues_6]] - code - web/core/components/modules/analytics-sidebar/root.tsx
-- [[defaultValues_5]] - code - web/core/components/modules/modal.tsx
-- [[header.tsx_2]] - code - web/core/components/modules/archived-modules/header.tsx
-- [[inbox-list-item.tsx]] - code - web/core/components/inbox/sidebar/inbox-list-item.tsx
-- [[index.ts_58]] - code - web/core/components/modules/index.ts
-- [[issue-progress.tsx]] - code - web/core/components/modules/analytics-sidebar/issue-progress.tsx
-- [[list.tsx]] - code - web/core/components/modules/links/list.tsx
-- [[modal.tsx_3]] - code - web/core/components/modules/archived-modules/modal.tsx
-- [[modal.tsx_2]] - code - web/core/components/modules/modal.tsx
-- [[module-card-item.tsx]] - code - web/core/components/modules/module-card-item.tsx
-- [[module-list-item-action.tsx]] - code - web/core/components/modules/module-list-item-action.tsx
-- [[module-list-item.tsx]] - code - web/core/components/modules/module-list-item.tsx
-- [[module-peek-overview.tsx]] - code - web/core/components/modules/module-peek-overview.tsx
-- [[module-status-dropdown.tsx]] - code - web/core/components/modules/module-status-dropdown.tsx
-- [[module.tsx_2]] - code - web/core/components/issues/issue-layouts/filters/applied-filters/module.tsx
-- [[module.tsx_4]] - code - web/core/components/readonly/module.tsx
-- [[moduleBurnDownChartOptions]] - code - web/core/components/modules/analytics-sidebar/issue-progress.tsx
-- [[modules-list-layout.tsx]] - code - web/core/components/modules/gantt-chart/modules-list-layout.tsx
-- [[modules-list-view.tsx]] - code - web/core/components/modules/modules-list-view.tsx
-- [[quick-actions.tsx_2]] - code - web/core/components/modules/quick-actions.tsx
-- [[root.tsx_12]] - code - web/core/components/modules/analytics-sidebar/root.tsx
-- [[root.tsx_13]] - code - web/core/components/modules/archived-modules/root.tsx
-- [[use-favorite-item-details.tsx]] - code - web/core/hooks/use-favorite-item-details.tsx
-- [[use-module-filter.ts]] - code - web/core/hooks/store/use-module-filter.ts
-- [[use-module.ts]] - code - web/core/hooks/store/use-module.ts
-- [[useFavoriteItemDetails()]] - code - web/core/hooks/use-favorite-item-details.tsx
-- [[useModule()]] - code - web/core/hooks/store/use-module.ts
-- [[useModuleFilter()]] - code - web/core/hooks/store/use-module-filter.ts
-- [[view.tsx]] - code - web/core/components/modules/archived-modules/view.tsx
+- [[AppliedModuleFilters]] - code - components/issues/issue-layouts/filters/applied-filters/module.tsx
+- [[ArchiveModuleModal()]] - code - components/modules/archived-modules/modal.tsx
+- [[CreateUpdateModuleModal]] - code - components/modules/modal.tsx
+- [[DeleteModuleModal]] - code - components/modules/delete-module-modal.tsx
+- [[FilterModule]] - code - components/issues/issue-layouts/filters/header/filters/module.tsx
+- [[ModuleAnalyticsProgress]] - code - components/modules/analytics-sidebar/issue-progress.tsx
+- [[ModuleLinksList]] - code - components/modules/links/list.tsx
+- [[ModuleListItem]] - code - components/modules/module-list-item.tsx
+- [[ModulePeekOverview]] - code - components/modules/module-peek-overview.tsx
+- [[Props_248]] - code - components/issues/issue-layouts/filters/applied-filters/module.tsx
+- [[Props_79]] - code - components/modules/archived-modules/modal.tsx
+- [[Props_238]] - code - components/issues/issue-layouts/filters/header/filters/module.tsx
+- [[Props_89]] - code - components/modules/links/list.tsx
+- [[Props_73]] - code - components/modules/delete-module-modal.tsx
+- [[Props_69]] - code - components/modules/modal.tsx
+- [[Props_72]] - code - components/modules/module-list-item.tsx
+- [[Props_70]] - code - components/modules/module-peek-overview.tsx
+- [[ReadonlyModule]] - code - components/readonly/module.tsx
+- [[TModuleAnalyticsProgress]] - code - components/modules/analytics-sidebar/issue-progress.tsx
+- [[TReadonlyModuleProps]] - code - components/readonly/module.tsx
+- [[commands.tsx]] - code - components/power-k/ui/pages/context-based/module/commands.tsx
+- [[defaultValues_5]] - code - components/modules/modal.tsx
+- [[delete-module-modal.tsx]] - code - components/modules/delete-module-modal.tsx
+- [[issue-progress.tsx]] - code - components/modules/analytics-sidebar/issue-progress.tsx
+- [[list.tsx]] - code - components/modules/links/list.tsx
+- [[modal.tsx_3]] - code - components/modules/archived-modules/modal.tsx
+- [[modal.tsx_2]] - code - components/modules/modal.tsx
+- [[module-list-item.tsx]] - code - components/modules/module-list-item.tsx
+- [[module-peek-overview.tsx]] - code - components/modules/module-peek-overview.tsx
+- [[module.tsx_2]] - code - components/issues/issue-layouts/filters/applied-filters/module.tsx
+- [[module.tsx_1]] - code - components/issues/issue-layouts/filters/header/filters/module.tsx
+- [[module.tsx_4]] - code - components/readonly/module.tsx
+- [[moduleBurnDownChartOptions]] - code - components/modules/analytics-sidebar/issue-progress.tsx
+- [[use-module.ts]] - code - hooks/store/use-module.ts
+- [[useModule()]] - code - hooks/store/use-module.ts
+- [[usePowerKModuleContextBasedActions()]] - code - components/power-k/ui/pages/context-based/module/commands.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -90,50 +57,41 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 15 edges to [[_COMMUNITY_Layout System]]
-- 15 edges to [[_COMMUNITY_Account & Sub-Issues]]
-- 14 edges to [[_COMMUNITY_Member Filters & Description]]
-- 12 edges to [[_COMMUNITY_Cycle Services & Filters]]
-- 12 edges to [[_COMMUNITY_Spreadsheet Column Components]]
-- 11 edges to [[_COMMUNITY_Applied Filters UI]]
-- 7 edges to [[_COMMUNITY_Empty State Components]]
-- 7 edges to [[_COMMUNITY_Community 97]]
-- 5 edges to [[_COMMUNITY_Community 105]]
-- 5 edges to [[_COMMUNITY_Auth Wrappers]]
-- 4 edges to [[_COMMUNITY_Community 42]]
-- 4 edges to [[_COMMUNITY_Community 98]]
-- 3 edges to [[_COMMUNITY_Community 128]]
-- 3 edges to [[_COMMUNITY_Community 36]]
-- 3 edges to [[_COMMUNITY_Community 45]]
-- 3 edges to [[_COMMUNITY_Community 202]]
-- 3 edges to [[_COMMUNITY_Community 31]]
-- 2 edges to [[_COMMUNITY_Community 271]]
-- 2 edges to [[_COMMUNITY_Community 92]]
-- 2 edges to [[_COMMUNITY_Community 35]]
-- 2 edges to [[_COMMUNITY_Community 41]]
-- 2 edges to [[_COMMUNITY_Community 56]]
-- 2 edges to [[_COMMUNITY_Community 61]]
-- 2 edges to [[_COMMUNITY_Community 32]]
-- 2 edges to [[_COMMUNITY_Community 162]]
-- 2 edges to [[_COMMUNITY_Community 81]]
-- 2 edges to [[_COMMUNITY_Issue Activity Tracking]]
-- 2 edges to [[_COMMUNITY_Community 87]]
-- 2 edges to [[_COMMUNITY_Community 117]]
-- 2 edges to [[_COMMUNITY_Community 48]]
-- 2 edges to [[_COMMUNITY_Community 176]]
-- 2 edges to [[_COMMUNITY_Community 123]]
-- 2 edges to [[_COMMUNITY_Community 163]]
-- 2 edges to [[_COMMUNITY_Cycle Analytics]]
-- 2 edges to [[_COMMUNITY_Community 134]]
-- 1 edge to [[_COMMUNITY_Community 169]]
-- 1 edge to [[_COMMUNITY_Community 234]]
-- 1 edge to [[_COMMUNITY_Community 90]]
-- 1 edge to [[_COMMUNITY_Community 64]]
+- 13 edges to [[_COMMUNITY_Modules Archived]]
+- 9 edges to [[_COMMUNITY_Account Settings]]
+- 7 edges to [[_COMMUNITY_Issue Layouts]]
+- 5 edges to [[_COMMUNITY_Module Forms]]
+- 4 edges to [[_COMMUNITY_Context Power]]
+- 3 edges to [[_COMMUNITY_Calendar Blocks]]
+- 3 edges to [[_COMMUNITY_Label Workspace]]
+- 3 edges to [[_COMMUNITY_Issue Properties]]
+- 3 edges to [[_COMMUNITY_Context Based]]
+- 2 edges to [[_COMMUNITY_Favorite Favorites]]
+- 2 edges to [[_COMMUNITY_Workspace Draft]]
+- 2 edges to [[_COMMUNITY_Archived Modules]]
+- 2 edges to [[_COMMUNITY_Auth Wrappers]]
+- 2 edges to [[_COMMUNITY_Action Status]]
+- 2 edges to [[_COMMUNITY_Menu Quick]]
+- 2 edges to [[_COMMUNITY_Spreadsheet Filters]]
+- 2 edges to [[_COMMUNITY_Issue Identifiers]]
+- 2 edges to [[_COMMUNITY_Member Commands]]
+- 2 edges to [[_COMMUNITY_Menu Power]]
+- 2 edges to [[_COMMUNITY_File Icons Nav]]
+- 2 edges to [[_COMMUNITY_Work Filters]]
+- 2 edges to [[_COMMUNITY_Project Archives]]
+- 2 edges to [[_COMMUNITY_Cycle Details]]
+- 1 edge to [[_COMMUNITY_Favorite Generate]]
+- 1 edge to [[_COMMUNITY_Issue Inbox]]
+- 1 edge to [[_COMMUNITY_Member Settings]]
+- 1 edge to [[_COMMUNITY_Action Pages]]
+- 1 edge to [[_COMMUNITY_Cycle Productivity]]
+- 1 edge to [[_COMMUNITY_Filter Selection UI]]
+- 1 edge to [[_COMMUNITY_Command Palette]]
 
 ## Top bridge nodes
 
-- [[use-module.ts]] - degree 37, connects to 16 communities
-- [[useModule()]] - degree 40, connects to 13 communities
-- [[module-card-item.tsx]] - degree 18, connects to 5 communities
-- [[inbox-list-item.tsx]] - degree 15, connects to 5 communities
-- [[useFavoriteItemDetails()]] - degree 8, connects to 5 communities
+- [[use-module.ts]] - degree 37, connects to 19 communities
+- [[useModule()]] - degree 40, connects to 18 communities
+- [[modal.tsx_2]] - degree 11, connects to 4 communities
+- [[issue-progress.tsx]] - degree 10, connects to 4 communities
+- [[module-list-item.tsx]] - degree 10, connects to 4 communities

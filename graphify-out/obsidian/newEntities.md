@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/multiple_select.store.ts"
+source_file: "store/multiple_select.store.ts"
 type: "code"
-community: "Community 192"
+community: "Multi Select Actions"
 location: "L170"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_192
+  - community/Multi_Select_Actions
 ---
 
 # newEntities
@@ -15,4 +15,4 @@ tags:
 
 - [[multiple_select.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_192
+#graphify/code #graphify/EXTRACTED #community/Multi_Select_Actions

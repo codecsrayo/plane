@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/modules/delete-module-modal.tsx"
+source_file: "components/modules/delete-module-modal.tsx"
 type: "code"
-community: "Account & Sub-Issues"
+community: "Module Analytics"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Account__Sub-Issues
+  - community/Module_Analytics
 ---
 
 # delete-module-modal.tsx
@@ -20,4 +20,4 @@ tags:
 - [[useAppRouter()]] - `imports` [EXTRACTED]
 - [[useModule()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Account\_\_Sub-Issues
+#graphify/code #graphify/EXTRACTED #community/Module_Analytics

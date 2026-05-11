@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/utils.tsx"
+source_file: "components/issues/issue-layouts/utils.tsx"
 type: "code"
-community: "Community 38"
+community: "Spreadsheet Filters"
 location: "L687"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_38
+  - community/Spreadsheet_Filters
 ---
 
 # getBlockViewDetails()
@@ -17,4 +17,4 @@ tags:
 - [[blocks.tsx_1]] - `imports` [EXTRACTED]
 - [[utils.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_38
+#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Filters

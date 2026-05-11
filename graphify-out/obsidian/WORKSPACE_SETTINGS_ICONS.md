@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/settings/workspace/sidebar/item-icon.tsx"
+source_file: "components/settings/workspace/sidebar/item-icon.tsx"
 type: "code"
-community: "Community 68"
+community: "Sidebar Nav"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_68
+  - community/Sidebar_Nav
 ---
 
 # WORKSPACE_SETTINGS_ICONS
@@ -17,4 +17,4 @@ tags:
 - [[item-icon.tsx]] - `contains` [EXTRACTED]
 - [[workspace-settings-menu.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_68
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Nav

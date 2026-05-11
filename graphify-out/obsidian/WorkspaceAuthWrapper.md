@@ -1,5 +1,5 @@
 ---
-source_file: "web/core/layouts/auth-layout/workspace-wrapper.tsx"
+source_file: "layouts/auth-layout/workspace-wrapper.tsx"
 type: "code"
 community: "Auth Wrappers"
 location: "L49"

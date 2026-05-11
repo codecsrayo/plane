@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/peek-overview/view.tsx"
+source_file: "components/issues/peek-overview/view.tsx"
 type: "code"
-community: "Empty States & Inbox"
+community: "Peek Overview"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_States__Inbox
+  - community/Peek_Overview
 ---
 
 # view.tsx
@@ -35,4 +35,4 @@ tags:
 - [[use-peek-overview-outside-click.tsx]] - `imports_from` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_States\_\_Inbox
+#graphify/code #graphify/EXTRACTED #community/Peek_Overview

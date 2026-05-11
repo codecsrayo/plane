@@ -1,14 +1,14 @@
 ---
-source_file: "web/core/components/project-states/create-update/index.ts"
+source_file: "components/project-states/create-update/index.ts"
 type: "code"
-community: "Community 778"
+community: "Community 373"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_778
+  - community/Community_373
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_778
+#graphify/code #graphify/EXTRACTED #community/Community_373

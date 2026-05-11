@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/ui/loader/settings/import-and-export.tsx"
+source_file: "components/ui/loader/settings/import-and-export.tsx"
 type: "code"
-community: "Community 100"
+community: "Guide Prev"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_100
+  - community/Guide_Prev
 ---
 
 # import-and-export.tsx
@@ -16,4 +16,4 @@ tags:
 - [[ImportExportSettingsLoader()]] - `contains` [EXTRACTED]
 - [[prev-exports.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_100
+#graphify/code #graphify/EXTRACTED #community/Guide_Prev

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/rich-filters/filter-value-input/date/single.tsx"
+source_file: "components/rich-filters/filter-value-input/date/single.tsx"
 type: "code"
-community: "Filter Components"
+community: "Filter Controls"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Components
+  - community/Filter_Controls
 ---
 
 # SingleDateFilterValueInput
@@ -16,4 +16,4 @@ tags:
 - [[root.tsx_92]] - `imports` [EXTRACTED]
 - [[single.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Components
+#graphify/code #graphify/EXTRACTED #community/Filter_Controls

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/settings/profile/sidebar/item-categories.tsx"
+source_file: "components/settings/profile/sidebar/item-categories.tsx"
 type: "code"
-community: "Community 68"
+community: "Sidebar Nav"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_68
+  - community/Sidebar_Nav
 ---
 
 # item-categories.tsx
@@ -22,4 +22,4 @@ tags:
 - [[root.tsx_17]] - `imports_from` [EXTRACTED]
 - [[workspace-options.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_68
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Nav

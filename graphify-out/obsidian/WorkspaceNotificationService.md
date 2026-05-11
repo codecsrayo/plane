@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/workspace-notification.service.ts"
+source_file: "services/workspace-notification.service.ts"
 type: "code"
-community: "Community 58"
+community: "Estimate Points"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_58
+  - community/Estimate_Points
 ---
 
 # WorkspaceNotificationService
@@ -24,4 +24,4 @@ tags:
 - [[.updateNotificationById()]] - `method` [EXTRACTED]
 - [[workspace-notification.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_58
+#graphify/code #graphify/EXTRACTED #community/Estimate_Points

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/navigation/project-header.tsx"
+source_file: "components/navigation/project-header.tsx"
 type: "code"
-community: "Community 89"
+community: "Project Tab Nav"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_89
+  - community/Project_Tab_Nav
 ---
 
 # ProjectHeader
@@ -16,4 +16,4 @@ tags:
 - [[project-header.tsx]] - `contains` [EXTRACTED]
 - [[tab-navigation-root.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_89
+#graphify/code #graphify/EXTRACTED #community/Project_Tab_Nav

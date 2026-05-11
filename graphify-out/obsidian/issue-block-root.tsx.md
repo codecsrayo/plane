@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/calendar/issue-block-root.tsx"
+source_file: "components/issues/issue-layouts/calendar/issue-block-root.tsx"
 type: "code"
-community: "Community 125"
+community: "Calendar Blocks"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_125
+  - community/Calendar_Blocks
 ---
 
 # issue-block-root.tsx
@@ -22,4 +22,4 @@ tags:
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 - [[utils.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_125
+#graphify/code #graphify/EXTRACTED #community/Calendar_Blocks

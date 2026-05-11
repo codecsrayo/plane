@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/editor/rich-text/description-input/root.tsx"
+source_file: "components/editor/rich-text/description-input/root.tsx"
 type: "code"
-community: "Community 246"
+community: "Description Input"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_246
+  - community/Description_Input
 ---
 
 # workspaceService
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_10]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_246
+#graphify/code #graphify/EXTRACTED #community/Description_Input

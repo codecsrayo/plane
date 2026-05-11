@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/analytics/empty-state.tsx"
+source_file: "components/analytics/empty-state.tsx"
 type: "code"
-community: "Community 489"
+community: "Empty Analytics"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_489
+  - community/Empty_Analytics
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[empty-state.tsx_7]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_489
+#graphify/code #graphify/EXTRACTED #community/Empty_Analytics

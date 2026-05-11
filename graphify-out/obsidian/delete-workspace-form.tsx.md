@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/delete-workspace-form.tsx"
+source_file: "components/workspace/delete-workspace-form.tsx"
 type: "code"
-community: "Account & Sub-Issues"
+community: "Workspace Invites"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Account__Sub-Issues
+  - community/Workspace_Invites
 ---
 
 # delete-workspace-form.tsx
@@ -22,4 +22,4 @@ tags:
 - [[useAppRouter()]] - `imports` [EXTRACTED]
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Account\_\_Sub-Issues
+#graphify/code #graphify/EXTRACTED #community/Workspace_Invites

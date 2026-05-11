@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/settings/profile/content/pages/activity/activity-list.tsx"
+source_file: "components/settings/profile/content/pages/activity/activity-list.tsx"
 type: "code"
-community: "Community 70"
+community: "Activity List"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_70
+  - community/Activity_List
 ---
 
 # activity-list.tsx
@@ -30,4 +30,4 @@ tags:
 - [[user.service.ts]] - `imports_from` [EXTRACTED]
 - [[userService_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_70
+#graphify/code #graphify/EXTRACTED #community/Activity_List

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/peek-overview/root.tsx"
+source_file: "components/issues/peek-overview/root.tsx"
 type: "code"
-community: "Community 38"
+community: "Peek Overview"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_38
+  - community/Peek_Overview
 ---
 
 # IssuePeekOverview
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_43]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_38
+#graphify/code #graphify/EXTRACTED #community/Peek_Overview

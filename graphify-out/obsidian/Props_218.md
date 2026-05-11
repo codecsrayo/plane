@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/calendar/week-header.tsx"
+source_file: "components/issues/issue-layouts/calendar/week-header.tsx"
 type: "code"
-community: "Calendar UI"
+community: "Calendar Views"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_UI
+  - community/Calendar_Views
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[week-header.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_UI
+#graphify/code #graphify/EXTRACTED #community/Calendar_Views

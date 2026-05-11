@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/types/navigation-preferences.ts"
+source_file: "types/navigation-preferences.ts"
 type: "code"
-community: "Community 95"
+community: "Navigation Preferences"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_95
+  - community/Navigation_Preferences
 ---
 
 # navigation-preferences.ts
@@ -32,4 +32,4 @@ tags:
 - [[customize-navigation-dialog.tsx]] - `imports_from` [EXTRACTED]
 - [[use-navigation-preferences.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_95
+#graphify/code #graphify/EXTRACTED #community/Navigation_Preferences

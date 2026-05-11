@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/settings/members-list-item.tsx"
+source_file: "components/workspace/settings/members-list-item.tsx"
 type: "code"
-community: "Account & Sub-Issues"
+community: "Member Settings"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Account__Sub-Issues
+  - community/Member_Settings
 ---
 
 # members-list-item.tsx
@@ -30,4 +30,4 @@ tags:
 - [[useMember()]] - `imports` [EXTRACTED]
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Account\_\_Sub-Issues
+#graphify/code #graphify/EXTRACTED #community/Member_Settings

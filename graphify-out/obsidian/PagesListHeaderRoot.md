@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/header/root.tsx"
+source_file: "components/pages/header/root.tsx"
 type: "code"
-community: "Community 165"
+community: "Order Search"
 location: "L36"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_165
+  - community/Order_Search
 ---
 
 # PagesListHeaderRoot
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_83]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_165
+#graphify/code #graphify/EXTRACTED #community/Order_Search

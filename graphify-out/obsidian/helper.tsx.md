@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/views/helper.tsx"
+source_file: "components/views/helper.tsx"
 type: "code"
-community: "Community 48"
+community: "Issue Layout Roots"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_48
+  - community/Issue_Layout_Roots
 ---
 
 # helper.tsx
@@ -19,4 +19,4 @@ tags:
 - [[all-issue-layout-root.tsx]] - `imports_from` [EXTRACTED]
 - [[workspace-root.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_48
+#graphify/code #graphify/EXTRACTED #community/Issue_Layout_Roots

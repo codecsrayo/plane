@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/common/activity/activity-block.tsx"
+source_file: "components/common/activity/activity-block.tsx"
 type: "code"
-community: "Community 190"
+community: "Activity User"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_190
+  - community/Activity_User
 ---
 
 # activity-block.tsx
@@ -21,4 +21,4 @@ tags:
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 - [[user.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_190
+#graphify/code #graphify/EXTRACTED #community/Activity_User

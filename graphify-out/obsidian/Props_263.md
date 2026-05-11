@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail-widgets/issue-detail-widget-modals.tsx"
+source_file: "components/issues/issue-detail-widgets/issue-detail-widget-modals.tsx"
 type: "code"
-community: "Community 177"
+community: "Issue Activity"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_177
+  - community/Issue_Activity
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[issue-detail-widget-modals.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_177
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project-states/options/mark-as-default.tsx"
+source_file: "components/project-states/options/mark-as-default.tsx"
 type: "code"
-community: "Community 448"
+community: "State Marks"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_448
+  - community/State_Marks
 ---
 
 # mark-as-default.tsx
@@ -16,4 +16,4 @@ tags:
 - [[StateMarksAsDefault]] - `contains` [EXTRACTED]
 - [[TStateMarksAsDefault]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_448
+#graphify/code #graphify/EXTRACTED #community/State_Marks

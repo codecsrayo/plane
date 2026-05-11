@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/list/headers/group-by-card.tsx"
+source_file: "components/issues/issue-layouts/list/headers/group-by-card.tsx"
 type: "code"
-community: "Active Cycle Stats"
+community: "Spreadsheet Columns"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Cycle_Stats
+  - community/Spreadsheet_Columns
 ---
 
 # group-by-card.tsx
@@ -26,4 +26,4 @@ tags:
 - [[use-multiple-select.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueStoreType()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats
+#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Columns

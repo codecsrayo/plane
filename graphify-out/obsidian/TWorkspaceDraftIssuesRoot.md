@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/workspace-draft/root.tsx"
+source_file: "components/issues/workspace-draft/root.tsx"
 type: "code"
-community: "Community 155"
+community: "Issue Identifiers"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_155
+  - community/Issue_Identifiers
 ---
 
 # TWorkspaceDraftIssuesRoot
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_29]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_155
+#graphify/code #graphify/EXTRACTED #community/Issue_Identifiers

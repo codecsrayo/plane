@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/work-item-filters/use-work-item-filter-instance.ts"
+source_file: "hooks/store/work-item-filters/use-work-item-filter-instance.ts"
 type: "code"
-community: "Empty State Components"
+community: "Cycle Details"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_State_Components
+  - community/Cycle_Details
 ---
 
 # useWorkItemFilterInstance()
@@ -20,4 +20,4 @@ tags:
 - [[use-work-item-filter-instance.ts]] - `contains` [EXTRACTED]
 - [[useWorkItemFilters()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_State_Components
+#graphify/code #graphify/EXTRACTED #community/Cycle_Details

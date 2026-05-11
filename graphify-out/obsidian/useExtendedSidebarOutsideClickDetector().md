@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-extended-sidebar-overview-outside-click.tsx"
+source_file: "hooks/use-extended-sidebar-overview-outside-click.tsx"
 type: "code"
-community: "Community 605"
+community: "Extended Sidebar"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_605
+  - community/Extended_Sidebar
 ---
 
 # useExtendedSidebarOutsideClickDetector()
@@ -15,4 +15,4 @@ tags:
 
 - [[use-extended-sidebar-overview-outside-click.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_605
+#graphify/code #graphify/EXTRACTED #community/Extended_Sidebar

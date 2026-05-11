@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/settings/sidebar/item.tsx"
+source_file: "components/settings/sidebar/item.tsx"
 type: "code"
-community: "Community 68"
+community: "Sidebar Nav"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_68
+  - community/Sidebar_Nav
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_68
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Nav

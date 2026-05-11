@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/common/filters/created-by.tsx"
+source_file: "components/common/filters/created-by.tsx"
 type: "code"
-community: "Community 42"
+community: "Created Selection"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_42
+  - community/Created_Selection
 ---
 
 # Props
@@ -16,4 +16,4 @@ tags:
 - [[created-by.tsx]] - `contains` [EXTRACTED]
 - [[created-by.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_42
+#graphify/code #graphify/EXTRACTED #community/Created_Selection

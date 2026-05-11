@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/filters/header/display-filters/display-filters-selection.tsx"
+source_file: "components/issues/issue-layouts/filters/header/display-filters/display-filters-selection.tsx"
 type: "code"
-community: "Community 274"
+community: "Filter Selection UI"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_274
+  - community/Filter_Selection_UI
 ---
 
 # display-filters-selection.tsx
@@ -17,4 +17,4 @@ tags:
 - [[Props_225]] - `contains` [EXTRACTED]
 - [[index.ts_90]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_274
+#graphify/code #graphify/EXTRACTED #community/Filter_Selection_UI

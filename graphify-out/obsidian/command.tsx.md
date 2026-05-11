@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/ui/renderer/command.tsx"
+source_file: "components/power-k/ui/renderer/command.tsx"
 type: "code"
-community: "Community 167"
+community: "Context Power"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_167
+  - community/Context_Power
 ---
 
 # command.tsx
@@ -28,4 +28,4 @@ tags:
 - [[shared.ts_1]] - `imports_from` [EXTRACTED]
 - [[types.ts_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_167
+#graphify/code #graphify/EXTRACTED #community/Context_Power

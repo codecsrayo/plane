@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/calendar/quick-add-issue-actions.tsx"
+source_file: "components/issues/issue-layouts/calendar/quick-add-issue-actions.tsx"
 type: "code"
-community: "Calendar UI"
+community: "Calendar Views"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_UI
+  - community/Calendar_Views
 ---
 
 # quick-add-issue-actions.tsx
@@ -22,4 +22,4 @@ tags:
 - [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_UI
+#graphify/code #graphify/EXTRACTED #community/Calendar_Views

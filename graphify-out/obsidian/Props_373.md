@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/inbox/inbox-filter/filters/date.tsx"
+source_file: "components/inbox/inbox-filter/filters/date.tsx"
 type: "code"
-community: "Community 164"
+community: "Filter Selection UI"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_164
+  - community/Filter_Selection_UI
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[date.tsx_7]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_164
+#graphify/code #graphify/EXTRACTED #community/Filter_Selection_UI

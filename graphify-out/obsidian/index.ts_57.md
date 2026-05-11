@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/labels/index.ts"
+source_file: "components/labels/index.ts"
 type: "code"
-community: "Community 204"
+community: "Project Settings"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_204
+  - community/Project_Settings
 ---
 
 # index.ts
@@ -15,4 +15,4 @@ tags:
 
 - [[project-setting-label-list.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_204
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

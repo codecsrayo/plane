@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/properties/label-dropdown.tsx"
+source_file: "components/issues/issue-layouts/properties/label-dropdown.tsx"
 type: "code"
-community: "Community 81"
+community: "Issue Layouts"
 location: "L54"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_81
+  - community/Issue_Layouts
 ---
 
 # LabelDropdown()
@@ -21,4 +21,4 @@ tags:
 - [[usePlatformOS()]] - `calls` [EXTRACTED]
 - [[useUserPermissions()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_81
+#graphify/code #graphify/EXTRACTED #community/Issue_Layouts

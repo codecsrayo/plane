@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/editor/lite-text/toolbar.tsx"
+source_file: "components/editor/lite-text/toolbar.tsx"
 type: "code"
-community: "Editor Styles"
+community: "Toolbar Lite"
 location: "L60"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Styles
+  - community/Toolbar_Lite
 ---
 
 # IssueCommentToolbar()
@@ -16,4 +16,4 @@ tags:
 - [[editor.tsx_3]] - `imports` [EXTRACTED]
 - [[toolbar.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Styles
+#graphify/code #graphify/EXTRACTED #community/Toolbar_Lite

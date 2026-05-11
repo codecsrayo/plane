@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/module-column.tsx"
+source_file: "components/issues/issue-layouts/spreadsheet/columns/module-column.tsx"
 type: "code"
-community: "Community 38"
+community: "Spreadsheet Columns"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_38
+  - community/Spreadsheet_Columns
 ---
 
 # module-column.tsx
@@ -20,4 +20,4 @@ tags:
 - [[use-issue-layout-store.ts]] - `imports_from` [EXTRACTED]
 - [[useIssuesStore()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_38
+#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Columns

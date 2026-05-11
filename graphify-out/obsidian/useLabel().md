@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/use-label.ts"
+source_file: "hooks/store/use-label.ts"
 type: "code"
-community: "Community 81"
+community: "Label Workspace"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_81
+  - community/Label_Workspace
 ---
 
 # useLabel()
@@ -43,4 +43,4 @@ tags:
 - [[useWorkspaceIssueProperties()]] - `calls` [EXTRACTED]
 - [[workspace-level.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_81
+#graphify/code #graphify/EXTRACTED #community/Label_Workspace

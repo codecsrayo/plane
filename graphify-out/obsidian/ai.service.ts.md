@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/ai.service.ts"
+source_file: "services/ai.service.ts"
 type: "code"
-community: "Community 179"
+community: "Editor Aiservice"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_179
+  - community/Editor_Aiservice
 ---
 
 # ai.service.ts
@@ -22,4 +22,4 @@ tags:
 - [[description-editor.tsx]] - `imports_from` [EXTRACTED]
 - [[gpt-assistant-popover.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_179
+#graphify/code #graphify/EXTRACTED #community/Editor_Aiservice

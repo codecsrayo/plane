@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/menus/projects.tsx"
+source_file: "components/power-k/menus/projects.tsx"
 type: "code"
-community: "Community 32"
+community: "File Icons Nav"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_32
+  - community/File_Icons_Nav
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[projects.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_32
+#graphify/code #graphify/EXTRACTED #community/File_Icons_Nav

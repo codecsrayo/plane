@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/navigation-pane/tab-panels/info/document-info.tsx"
+source_file: "components/pages/navigation-pane/tab-panels/info/document-info.tsx"
 type: "code"
-community: "Community 77"
+community: "Info Navigation"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_77
+  - community/Info_Navigation
 ---
 
 # PageNavigationPaneInfoTabDocumentInfo
@@ -16,4 +16,4 @@ tags:
 - [[document-info.tsx]] - `contains` [EXTRACTED]
 - [[root.tsx_82]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_77
+#graphify/code #graphify/EXTRACTED #community/Info_Navigation

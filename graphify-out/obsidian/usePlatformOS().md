@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-platform-os.tsx"
+source_file: "hooks/use-platform-os.tsx"
 type: "code"
-community: "Layout System"
+community: "Issue Layouts"
 location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Layout_System
+  - community/Issue_Layouts
 ---
 
 # usePlatformOS()
@@ -130,4 +130,4 @@ tags:
 - [[view-list-item.tsx]] - `imports` [EXTRACTED]
 - [[workspace-wrapper.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Layout_System
+#graphify/code #graphify/EXTRACTED #community/Issue_Layouts

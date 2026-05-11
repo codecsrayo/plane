@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail-widgets/issue-detail-widget-modals.tsx"
+source_file: "components/issues/issue-detail-widgets/issue-detail-widget-modals.tsx"
 type: "code"
-community: "Community 154"
+community: "Issue Widget"
 location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_154
+  - community/Issue_Widget
 ---
 
 # IssueDetailWidgetModals
@@ -16,4 +16,4 @@ tags:
 - [[issue-detail-widget-modals.tsx]] - `contains` [EXTRACTED]
 - [[root.tsx_37]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_154
+#graphify/code #graphify/EXTRACTED #community/Issue_Widget

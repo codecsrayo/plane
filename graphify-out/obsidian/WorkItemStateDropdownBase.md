@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/dropdowns/intake-state/base.tsx"
+source_file: "components/dropdowns/intake-state/base.tsx"
 type: "code"
-community: "Spreadsheet Column Components"
+community: "Issue Properties"
 location: "L47"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Column_Components
+  - community/Issue_Properties
 ---
 
 # WorkItemStateDropdownBase
@@ -16,4 +16,4 @@ tags:
 - [[base.tsx_2]] - `contains` [EXTRACTED]
 - [[dropdown.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Column_Components
+#graphify/code #graphify/EXTRACTED #community/Issue_Properties

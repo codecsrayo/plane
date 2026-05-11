@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/icons/attachment/js-file-icon.tsx"
+source_file: "components/icons/attachment/js-file-icon.tsx"
 type: "code"
-community: "Community 619"
+community: "Java Script"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_619
+  - community/Java_Script
 ---
 
 # JavaScriptIcon()
@@ -15,4 +15,4 @@ tags:
 
 - [[js-file-icon.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_619
+#graphify/code #graphify/EXTRACTED #community/Java_Script

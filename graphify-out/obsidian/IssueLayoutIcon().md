@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/layout-icon.tsx"
+source_file: "components/issues/issue-layouts/layout-icon.tsx"
 type: "code"
-community: "Community 223"
+community: "Selection Mobile"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_223
+  - community/Selection_Mobile
 ---
 
 # IssueLayoutIcon()
@@ -18,4 +18,4 @@ tags:
 - [[layout.tsx_1]] - `imports` [EXTRACTED]
 - [[mobile-layout-selection.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_223
+#graphify/code #graphify/EXTRACTED #community/Selection_Mobile

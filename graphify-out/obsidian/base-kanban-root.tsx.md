@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/kanban/base-kanban-root.tsx"
+source_file: "components/issues/issue-layouts/kanban/base-kanban-root.tsx"
 type: "code"
-community: "Issue Filters & Context"
+community: "Spreadsheet Columns"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters__Context
+  - community/Spreadsheet_Columns
 ---
 
 # base-kanban-root.tsx
@@ -45,4 +45,4 @@ tags:
 - [[useKanbanView()]] - `imports` [EXTRACTED]
 - [[utils.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters\_\_Context
+#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Columns

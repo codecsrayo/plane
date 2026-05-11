@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/analytics/select/project.tsx"
+source_file: "components/analytics/select/project.tsx"
 type: "code"
-community: "Community 293"
+community: "Analytics Project"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_293
+  - community/Analytics_Project
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[project.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_293
+#graphify/code #graphify/EXTRACTED #community/Analytics_Project

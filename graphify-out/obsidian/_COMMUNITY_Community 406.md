@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 406
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[Model_87]] - code - api_rust/src/entities/gitlab_repositories.rs
-- [[Relation_87]] - code - api_rust/src/entities/gitlab_repositories.rs
-- [[gitlab_repositories.rs]] - code - api_rust/src/entities/gitlab_repositories.rs
+- [[index.ts_154]] - code - components/pages/list/index.ts
 
 ## Live Query (requires Dataview plugin)
 

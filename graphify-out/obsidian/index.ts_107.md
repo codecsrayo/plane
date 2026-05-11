@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail/links/index.ts"
+source_file: "components/issues/issue-detail/links/index.ts"
 type: "code"
-community: "Community 178"
+community: "Issue Activity"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_178
+  - community/Issue_Activity
 ---
 
 # index.ts
@@ -16,4 +16,4 @@ tags:
 - [[content.tsx_3]] - `imports_from` [EXTRACTED]
 - [[helper.tsx_7]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_178
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

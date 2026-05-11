@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/ui/modal/command-item-shortcut-badge.tsx"
+source_file: "components/power-k/ui/modal/command-item-shortcut-badge.tsx"
 type: "code"
-community: "Community 167"
+community: "Context Power"
 location: "L98"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_167
+  - community/Context_Power
 ---
 
 # formatKeySequenceForDisplay()
@@ -15,4 +15,4 @@ tags:
 
 - [[command-item-shortcut-badge.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_167
+#graphify/code #graphify/EXTRACTED #community/Context_Power

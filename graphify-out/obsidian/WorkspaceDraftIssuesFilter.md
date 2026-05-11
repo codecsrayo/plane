@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/workspace-draft/filter.store.ts"
+source_file: "store/issue/workspace-draft/filter.store.ts"
 type: "code"
-community: "Community 149"
+community: "Workspace Draft"
 location: "L55"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_149
+  - community/Workspace_Draft
 ---
 
 # WorkspaceDraftIssuesFilter
@@ -20,4 +20,4 @@ tags:
 - [[.issueFilters()_4]] - `method` [EXTRACTED]
 - [[filter.store.ts_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_149
+#graphify/code #graphify/EXTRACTED #community/Workspace_Draft

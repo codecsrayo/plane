@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/constants/plans.tsx"
+source_file: "constants/plans.tsx"
 type: "code"
-community: "Community 131"
+community: "Plans Plan"
 location: "L1257"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_131
+  - community/Plans_Plan
 ---
 
 # PLANE_PLANS
@@ -16,4 +16,4 @@ tags:
 - [[base.tsx]] - `imports` [EXTRACTED]
 - [[plans.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_131
+#graphify/code #graphify/EXTRACTED #community/Plans_Plan

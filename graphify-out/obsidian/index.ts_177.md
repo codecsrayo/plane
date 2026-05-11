@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/list/index.ts"
+source_file: "components/core/list/index.ts"
 type: "code"
-community: "Community 123"
+community: "Action Pages"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_123
+  - community/Action_Pages
 ---
 
 # index.ts
@@ -25,4 +25,4 @@ tags:
 - [[view-list-item.tsx]] - `imports_from` [EXTRACTED]
 - [[views-list.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_123
+#graphify/code #graphify/EXTRACTED #community/Action_Pages

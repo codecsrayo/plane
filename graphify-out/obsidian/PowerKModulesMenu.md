@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/menus/modules.tsx"
+source_file: "components/power-k/menus/modules.tsx"
 type: "code"
-community: "Community 61"
+community: "Menu Power"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_61
+  - community/Menu_Power
 ---
 
 # PowerKModulesMenu
@@ -17,4 +17,4 @@ tags:
 - [[modules.tsx]] - `contains` [EXTRACTED]
 - [[project-modules-menu.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_61
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

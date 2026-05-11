@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/navigation/tab-navigation-overflow-menu.tsx"
+source_file: "components/navigation/tab-navigation-overflow-menu.tsx"
 type: "code"
-community: "Community 89"
+community: "Project Tab Nav"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_89
+  - community/Project_Tab_Nav
 ---
 
 # tab-navigation-overflow-menu.tsx
@@ -20,4 +20,4 @@ tags:
 - [[tab-navigation-root.tsx]] - `imports_from` [EXTRACTED]
 - [[tab-navigation-utils.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_89
+#graphify/code #graphify/EXTRACTED #community/Project_Tab_Nav

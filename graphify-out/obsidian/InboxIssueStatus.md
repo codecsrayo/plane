@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/inbox/inbox-issue-status.tsx"
+source_file: "components/inbox/inbox-issue-status.tsx"
 type: "code"
-community: "Module Analytics"
+community: "Issue Inbox"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Issue_Inbox
 ---
 
 # InboxIssueStatus
@@ -18,4 +18,4 @@ tags:
 - [[inbox-issue-status.tsx]] - `contains` [EXTRACTED]
 - [[inbox-list-item.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

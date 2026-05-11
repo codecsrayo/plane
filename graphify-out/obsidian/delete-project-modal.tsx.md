@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project/delete-project-modal.tsx"
+source_file: "components/project/delete-project-modal.tsx"
 type: "code"
-community: "Applied Filters UI"
+community: "Account Settings"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters_UI
+  - community/Account_Settings
 ---
 
 # delete-project-modal.tsx
@@ -22,4 +22,4 @@ tags:
 - [[useAppRouter()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters_UI
+#graphify/code #graphify/EXTRACTED #community/Account_Settings

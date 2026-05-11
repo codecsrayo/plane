@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/favorite/favorite.service.ts"
+source_file: "services/favorite/favorite.service.ts"
 type: "code"
-community: "Git Integrations"
+community: "Favorite Favoriteservice"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Git_Integrations
+  - community/Favorite_Favoriteservice
 ---
 
 # favorite.service.ts
@@ -17,4 +17,4 @@ tags:
 - [[FavoriteService]] - `contains` [EXTRACTED]
 - [[api.service.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Git_Integrations
+#graphify/code #graphify/EXTRACTED #community/Favorite_Favoriteservice

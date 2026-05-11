@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-update-status.tsx"
+source_file: "components/issues/issue-update-status.tsx"
 type: "code"
-community: "Empty States & Inbox"
+community: "Issue Inbox"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_States__Inbox
+  - community/Issue_Inbox
 ---
 
 # NameDescriptionUpdateStatus
@@ -19,4 +19,4 @@ tags:
 - [[issue-update-status.tsx]] - `contains` [EXTRACTED]
 - [[main-content.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_States\_\_Inbox
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

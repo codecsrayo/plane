@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/confirm-workspace-member-remove.tsx"
+source_file: "components/workspace/confirm-workspace-member-remove.tsx"
 type: "code"
-community: "Community 44"
+community: "Member Settings"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_44
+  - community/Member_Settings
 ---
 
 # confirm-workspace-member-remove.tsx
@@ -20,4 +20,4 @@ tags:
 - [[invitations-list-item.tsx]] - `imports_from` [EXTRACTED]
 - [[members-list-item.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_44
+#graphify/code #graphify/EXTRACTED #community/Member_Settings

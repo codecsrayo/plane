@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/ui/renderer/shortcut.tsx"
+source_file: "components/power-k/ui/renderer/shortcut.tsx"
 type: "code"
-community: "Community 80"
+community: "Command Palette"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_80
+  - community/Command_Palette
 ---
 
 # ShortcutRenderer()
@@ -16,4 +16,4 @@ tags:
 - [[shortcut.tsx]] - `contains` [EXTRACTED]
 - [[shortcuts-root.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_80
+#graphify/code #graphify/EXTRACTED #community/Command_Palette

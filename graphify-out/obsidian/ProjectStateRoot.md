@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project-states/root.tsx"
+source_file: "components/project-states/root.tsx"
 type: "code"
-community: "Community 36"
+community: "State Group"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_36
+  - community/State_Group
 ---
 
 # ProjectStateRoot
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_8]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_36
+#graphify/code #graphify/EXTRACTED #community/State_Group

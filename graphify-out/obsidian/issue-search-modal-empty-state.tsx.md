@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/modals/issue-search-modal-empty-state.tsx"
+source_file: "components/core/modals/issue-search-modal-empty-state.tsx"
 type: "code"
-community: "Layout System"
+community: "Spreadsheet Columns"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Layout_System
+  - community/Spreadsheet_Columns
 ---
 
 # issue-search-modal-empty-state.tsx
@@ -21,4 +21,4 @@ tags:
 - [[parent-issues-list-modal.tsx]] - `imports_from` [EXTRACTED]
 - [[simple-empty-state-root.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Layout_System
+#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Columns

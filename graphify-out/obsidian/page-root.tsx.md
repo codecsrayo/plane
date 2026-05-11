@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/editor/page-root.tsx"
+source_file: "components/pages/editor/page-root.tsx"
 type: "code"
-community: "Community 78"
+community: "Editor Body"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_78
+  - community/Editor_Body
 ---
 
 # page-root.tsx
@@ -40,4 +40,4 @@ tags:
 - [[usePageFallback()]] - `imports` [EXTRACTED]
 - [[version-history.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_78
+#graphify/code #graphify/EXTRACTED #community/Editor_Body

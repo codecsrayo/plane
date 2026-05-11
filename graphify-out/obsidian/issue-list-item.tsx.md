@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/relations/issue-list-item.tsx"
+source_file: "components/issues/relations/issue-list-item.tsx"
 type: "code"
-community: "Layout System"
+community: "Issue Activity"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Layout_System
+  - community/Issue_Activity
 ---
 
 # issue-list-item.tsx
@@ -28,4 +28,4 @@ tags:
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[useRelationOperations()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Layout_System
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

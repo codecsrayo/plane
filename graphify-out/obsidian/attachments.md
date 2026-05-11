@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/issue-details/attachment.store.ts"
+source_file: "store/issue/issue-details/attachment.store.ts"
 type: "code"
-community: "Community 216"
+community: "Attachment Attachments"
 location: "L116"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_216
+  - community/Attachment_Attachments
 ---
 
 # attachments
@@ -15,4 +15,4 @@ tags:
 
 - [[attachment.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_216
+#graphify/code #graphify/EXTRACTED #community/Attachment_Attachments

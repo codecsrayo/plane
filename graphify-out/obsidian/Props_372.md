@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/inbox/inbox-issue-status.tsx"
+source_file: "components/inbox/inbox-issue-status.tsx"
 type: "code"
-community: "Community 98"
+community: "Issue Inbox"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_98
+  - community/Issue_Inbox
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[inbox-issue-status.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_98
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

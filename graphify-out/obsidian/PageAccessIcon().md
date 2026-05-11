@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/common/page-access-icon.tsx"
+source_file: "components/common/page-access-icon.tsx"
 type: "code"
-community: "Community 640"
+community: "Access Icon"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_640
+  - community/Access_Icon
 ---
 
 # PageAccessIcon()
@@ -15,4 +15,4 @@ tags:
 
 - [[page-access-icon.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_640
+#graphify/code #graphify/EXTRACTED #community/Access_Icon

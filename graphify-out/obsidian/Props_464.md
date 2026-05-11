@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/theme/theme-switch.tsx"
+source_file: "components/core/theme/theme-switch.tsx"
 type: "code"
-community: "Community 151"
+community: "Theme Custom"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_151
+  - community/Theme_Custom
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[theme-switch.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_151
+#graphify/code #graphify/EXTRACTED #community/Theme_Custom

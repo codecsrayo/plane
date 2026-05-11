@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/issue/issue_comment.service.ts"
+source_file: "services/issue/issue_comment.service.ts"
 type: "code"
-community: "Community 264"
+community: "API Services"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_264
+  - community/API_Services
 ---
 
 # IssueCommentService
@@ -20,4 +20,4 @@ tags:
 - [[.patchIssueComment()]] - `method` [EXTRACTED]
 - [[issue_comment.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_264
+#graphify/code #graphify/EXTRACTED #community/API_Services

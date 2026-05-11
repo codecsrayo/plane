@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail-widgets/sub-issues/title-actions.tsx"
+source_file: "components/issues/issue-detail-widgets/sub-issues/title-actions.tsx"
 type: "code"
-community: "Community 122"
+community: "Title Issues"
 location: "L36"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_122
+  - community/Title_Issues
 ---
 
 # SubWorkItemTitleActions
@@ -16,4 +16,4 @@ tags:
 - [[title-actions.tsx]] - `contains` [EXTRACTED]
 - [[title.tsx_2]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_122
+#graphify/code #graphify/EXTRACTED #community/Title_Issues

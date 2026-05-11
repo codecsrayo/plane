@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-modal/components/parent-tag.tsx"
+source_file: "components/issues/issue-modal/components/parent-tag.tsx"
 type: "code"
-community: "Layout System"
+community: "Issue Layouts"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Layout_System
+  - community/Issue_Layouts
 ---
 
 # TIssueParentTagProps
@@ -15,4 +15,4 @@ tags:
 
 - [[parent-tag.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Layout_System
+#graphify/code #graphify/EXTRACTED #community/Issue_Layouts

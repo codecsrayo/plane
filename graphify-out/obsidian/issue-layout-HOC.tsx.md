@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/issue-layout-HOC.tsx"
+source_file: "components/issues/issue-layouts/issue-layout-HOC.tsx"
 type: "code"
-community: "Community 48"
+community: "Issue Layout HOC"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_48
+  - community/Issue_Layout_HOC
 ---
 
 # issue-layout-HOC.tsx
@@ -39,4 +39,4 @@ tags:
 - [[useIssues()]] - `imports` [EXTRACTED]
 - [[workspace-root.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_48
+#graphify/code #graphify/EXTRACTED #community/Issue_Layout_HOC

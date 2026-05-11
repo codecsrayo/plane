@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/gantt-chart/blocks/block-row.tsx"
+source_file: "components/gantt-chart/blocks/block-row.tsx"
 type: "code"
-community: "Community 90"
+community: "Gantt Chart"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_90
+  - community/Gantt_Chart
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[block-row.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_90
+#graphify/code #graphify/EXTRACTED #community/Gantt_Chart

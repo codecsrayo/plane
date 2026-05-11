@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/common/switcher-label.tsx"
+source_file: "components/common/switcher-label.tsx"
 type: "code"
-community: "Account & Sub-Issues"
+community: "Switcher Project"
 location: "L47"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Account__Sub-Issues
+  - community/Switcher_Project
 ---
 
 # SwitcherLabel()
@@ -16,4 +16,4 @@ tags:
 - [[project-header.tsx]] - `imports` [EXTRACTED]
 - [[switcher-label.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Account\_\_Sub-Issues
+#graphify/code #graphify/EXTRACTED #community/Switcher_Project

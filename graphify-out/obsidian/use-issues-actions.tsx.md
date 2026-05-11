@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-issues-actions.tsx"
+source_file: "hooks/use-issues-actions.tsx"
 type: "code"
-community: "Community 41"
+community: "Issue Layout HOC"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_41
+  - community/Issue_Layout_HOC
 ---
 
 # use-issues-actions.tsx
@@ -35,4 +35,4 @@ tags:
 - [[useWorkspaceDraftIssueActions()]] - `contains` [EXTRACTED]
 - [[workspace-root.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_41
+#graphify/code #graphify/EXTRACTED #community/Issue_Layout_HOC

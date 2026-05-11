@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/use-issue-detail.ts"
+source_file: "hooks/store/use-issue-detail.ts"
 type: "code"
-community: "Issue Activity Tracking"
+community: "Issue Activity"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity_Tracking
+  - community/Issue_Activity
 ---
 
 # useIssueDetail()
@@ -134,4 +134,4 @@ tags:
 - [[useWorkItemCommentOperations()]] - `calls` [EXTRACTED]
 - [[view.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Tracking
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

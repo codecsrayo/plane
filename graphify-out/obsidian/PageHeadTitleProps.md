@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/page-title.tsx"
+source_file: "components/core/page-title.tsx"
 type: "code"
-community: "Community 102"
+community: "Auth UI"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_102
+  - community/Auth_UI
 ---
 
 # PageHeadTitleProps
@@ -15,4 +15,4 @@ tags:
 
 - [[page-title.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_102
+#graphify/code #graphify/EXTRACTED #community/Auth_UI

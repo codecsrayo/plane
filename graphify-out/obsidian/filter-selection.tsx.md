@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/views/filters/filter-selection.tsx"
+source_file: "components/views/filters/filter-selection.tsx"
 type: "code"
-community: "Community 42"
+community: "Created Selection"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_42
+  - community/Created_Selection
 ---
 
 # filter-selection.tsx
@@ -22,4 +22,4 @@ tags:
 - [[index.ts_90]] - `imports_from` [EXTRACTED]
 - [[view-list-header.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_42
+#graphify/code #graphify/EXTRACTED #community/Created_Selection

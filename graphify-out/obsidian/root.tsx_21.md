@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/settings/profile/content/pages/general/root.tsx"
+source_file: "components/settings/profile/content/pages/general/root.tsx"
 type: "code"
-community: "Community 102"
+community: "Auth UI"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_102
+  - community/Auth_UI
 ---
 
 # root.tsx
@@ -20,4 +20,4 @@ tags:
 - [[index.ts]] - `imports_from` [EXTRACTED]
 - [[page-title.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_102
+#graphify/code #graphify/EXTRACTED #community/Auth_UI

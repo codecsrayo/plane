@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/rich-filters/filter-item/root.tsx"
+source_file: "components/rich-filters/filter-item/root.tsx"
 type: "code"
-community: "Filter Components"
+community: "Filter Controls"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Components
+  - community/Filter_Controls
 ---
 
 # root.tsx
@@ -30,4 +30,4 @@ tags:
 - [[root.tsx_92]] - `imports_from` [EXTRACTED]
 - [[shared.ts_3]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Components
+#graphify/code #graphify/EXTRACTED #community/Filter_Controls

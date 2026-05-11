@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/pages/base-page.ts"
+source_file: "store/pages/base-page.ts"
 type: "code"
-community: "Page Actions"
+community: "Logo Editor"
 location: "L64"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Page_Actions
+  - community/Logo_Editor
 ---
 
 # TBasePageServices
@@ -15,4 +15,4 @@ tags:
 
 - [[base-page.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Page_Actions
+#graphify/code #graphify/EXTRACTED #community/Logo_Editor

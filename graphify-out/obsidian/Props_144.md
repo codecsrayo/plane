@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project/publish-project/modal.tsx"
+source_file: "components/project/publish-project/modal.tsx"
 type: "code"
-community: "Community 67"
+community: "Project Projects"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_67
+  - community/Project_Projects
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[modal.tsx_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_67
+#graphify/code #graphify/EXTRACTED #community/Project_Projects

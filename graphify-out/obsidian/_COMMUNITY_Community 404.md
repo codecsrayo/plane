@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 404
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[Model_85]] - code - api_rust/src/entities/page_labels.rs
-- [[Relation_85]] - code - api_rust/src/entities/page_labels.rs
-- [[page_labels.rs]] - code - api_rust/src/entities/page_labels.rs
+- [[index.ts_146]] - code - components/inbox/index.ts
 
 ## Live Query (requires Dataview plugin)
 

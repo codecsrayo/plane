@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 405
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[Model_86]] - code - api_rust/src/entities/django_celery_beat_periodictasks.rs
-- [[Relation_86]] - code - api_rust/src/entities/django_celery_beat_periodictasks.rs
-- [[django_celery_beat_periodictasks.rs]] - code - api_rust/src/entities/django_celery_beat_periodictasks.rs
+- [[index.ts_150]] - code - components/inbox/modals/create-modal/index.ts
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/rich-filters/filter-value-input/select/shared.tsx"
+source_file: "components/rich-filters/filter-value-input/select/shared.tsx"
 type: "code"
-community: "Filter Components"
+community: "Filter Controls"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Components
+  - community/Filter_Controls
 ---
 
 # shared.tsx
@@ -21,4 +21,4 @@ tags:
 - [[shared.ts_3]] - `imports_from` [EXTRACTED]
 - [[single.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Components
+#graphify/code #graphify/EXTRACTED #community/Filter_Controls

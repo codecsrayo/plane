@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/analytics/work-items/modal/index.tsx"
+source_file: "components/analytics/work-items/modal/index.tsx"
 type: "code"
-community: "Community 193"
+community: "Filter Controls"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_193
+  - community/Filter_Controls
 ---
 
 # WorkItemsModal
@@ -16,4 +16,4 @@ tags:
 - [[filters.tsx_2]] - `imports` [EXTRACTED]
 - [[index.tsx_8]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_193
+#graphify/code #graphify/EXTRACTED #community/Filter_Controls

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/inbox/intake-work_item_version.service.ts"
+source_file: "services/inbox/intake-work_item_version.service.ts"
 type: "code"
-community: "Community 300"
+community: "API Services"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_300
+  - community/API_Services
 ---
 
 # IntakeWorkItemVersionService
@@ -18,4 +18,4 @@ tags:
 - [[.retrieveDescriptionVersion()_1]] - `method` [EXTRACTED]
 - [[intake-work_item_version.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_300
+#graphify/code #graphify/EXTRACTED #community/API_Services

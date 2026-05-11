@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/sidebar/favorites/favorites.helpers.ts"
+source_file: "components/workspace/sidebar/favorites/favorites.helpers.ts"
 type: "code"
-community: "Community 128"
+community: "Favorite Favorites"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_128
+  - community/Favorite_Favorites
 ---
 
 # getInstructionFromPayload()
@@ -18,4 +18,4 @@ tags:
 - [[favorites.helpers.ts]] - `contains` [EXTRACTED]
 - [[root.tsx_3]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_128
+#graphify/code #graphify/EXTRACTED #community/Favorite_Favorites

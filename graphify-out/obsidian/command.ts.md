@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/config/creation/command.ts"
+source_file: "components/power-k/config/creation/command.ts"
 type: "code"
-community: "Authentication UI"
+community: "Command Palette"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Authentication_UI
+  - community/Command_Palette
 ---
 
 # command.ts
@@ -27,4 +27,4 @@ tags:
 - [[usePowerKCreationCommandsRecord()]] - `contains` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Authentication_UI
+#graphify/code #graphify/EXTRACTED #community/Command_Palette

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/auth-screens/not-authorized-view.tsx"
+source_file: "components/auth-screens/not-authorized-view.tsx"
 type: "code"
-community: "Community 199"
+community: "Authorized Maintenance"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_199
+  - community/Authorized_Maintenance
 ---
 
 # not-authorized-view.tsx
@@ -17,4 +17,4 @@ tags:
 - [[Props_419]] - `contains` [EXTRACTED]
 - [[index.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_199
+#graphify/code #graphify/EXTRACTED #community/Authorized_Maintenance

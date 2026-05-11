@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-app-router.tsx"
+source_file: "hooks/use-app-router.tsx"
 type: "code"
-community: "Account & Sub-Issues"
+community: "Account Settings"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Account__Sub-Issues
+  - community/Account_Settings
 ---
 
 # useAppRouter()
@@ -81,4 +81,4 @@ tags:
 - [[usePowerKAccountCommands()]] - `calls` [EXTRACTED]
 - [[useRealtimePageEvents()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Account\_\_Sub-Issues
+#graphify/code #graphify/EXTRACTED #community/Account_Settings

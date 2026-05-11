@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/multiple_select.store.ts"
+source_file: "store/multiple_select.store.ts"
 type: "code"
-community: "Community 192"
+community: "Multi Select Actions"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_192
+  - community/Multi_Select_Actions
 ---
 
 # multiple_select.store.ts
@@ -22,4 +22,4 @@ tags:
 - [[root.store.ts]] - `imports_from` [EXTRACTED]
 - [[use-multiple-select.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_192
+#graphify/code #graphify/EXTRACTED #community/Multi_Select_Actions

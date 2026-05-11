@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project/integration-card.tsx"
+source_file: "components/project/integration-card.tsx"
 type: "code"
-community: "Community 39"
+community: "Github Integration"
 location: "L49"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_39
+  - community/Github_Integration
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[integration-card.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_39
+#graphify/code #graphify/EXTRACTED #community/Github_Integration

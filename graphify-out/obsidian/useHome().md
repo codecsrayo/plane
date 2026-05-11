@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/use-home.ts"
+source_file: "hooks/store/use-home.ts"
 type: "code"
-community: "Community 75"
+community: "Dashboard Widgets"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_75
+  - community/Dashboard_Widgets
 ---
 
 # useHome()
@@ -24,4 +24,4 @@ tags:
 - [[widget-item.tsx]] - `imports` [EXTRACTED]
 - [[widget-list.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_75
+#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets

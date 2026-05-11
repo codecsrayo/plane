@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/ui/modal/constants.ts"
+source_file: "components/power-k/ui/modal/constants.ts"
 type: "code"
-community: "Community 202"
+community: "Power Search"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_202
+  - community/Power_Search
 ---
 
 # constants.ts
@@ -19,4 +19,4 @@ tags:
 - [[header.tsx_11]] - `imports_from` [EXTRACTED]
 - [[types.ts_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_202
+#graphify/code #graphify/EXTRACTED #community/Power_Search

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/cycles/dropdowns/filters/root.tsx"
+source_file: "components/cycles/dropdowns/filters/root.tsx"
 type: "code"
-community: "Community 85"
+community: "Date Start"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_85
+  - community/Date_Start
 ---
 
 # root.tsx
@@ -22,4 +22,4 @@ tags:
 - [[start-date.tsx_2]] - `imports_from` [EXTRACTED]
 - [[status.tsx_3]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_85
+#graphify/code #graphify/EXTRACTED #community/Date_Start

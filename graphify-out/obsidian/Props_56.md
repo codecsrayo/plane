@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/editor/pdf/document.tsx"
+source_file: "components/editor/pdf/document.tsx"
 type: "code"
-community: "Editor Styles"
+community: "Editor Items"
 location: "L47"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Styles
+  - community/Editor_Items
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[document.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Styles
+#graphify/code #graphify/EXTRACTED #community/Editor_Items

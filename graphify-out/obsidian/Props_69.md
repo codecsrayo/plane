@@ -1,5 +1,5 @@
 ---
-source_file: "web/core/components/modules/modal.tsx"
+source_file: "components/modules/modal.tsx"
 type: "code"
 community: "Module Analytics"
 location: "L22"

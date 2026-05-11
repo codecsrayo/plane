@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/member/workspace/workspace-member-filters.store.ts"
+source_file: "store/member/workspace/workspace-member-filters.store.ts"
 type: "code"
-community: "Community 270"
+community: "Workspace Member"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_270
+  - community/Workspace_Member
 ---
 
 # workspace-member-filters.store.ts
@@ -22,4 +22,4 @@ tags:
 - [[utils.ts]] - `imports_from` [EXTRACTED]
 - [[workspace-member.store.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_270
+#graphify/code #graphify/EXTRACTED #community/Workspace_Member

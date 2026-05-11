@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/view.service.ts"
+source_file: "services/view.service.ts"
 type: "code"
-community: "Community 221"
+community: "Project Views"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_221
+  - community/Project_Views
 ---
 
 # ViewService
@@ -26,4 +26,4 @@ tags:
 - [[project-view.store.ts]] - `imports` [EXTRACTED]
 - [[view.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_221
+#graphify/code #graphify/EXTRACTED #community/Project_Views

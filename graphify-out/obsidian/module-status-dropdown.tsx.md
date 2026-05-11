@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/modules/module-status-dropdown.tsx"
+source_file: "components/modules/module-status-dropdown.tsx"
 type: "code"
-community: "Module Analytics"
+community: "Action Status"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Action_Status
 ---
 
 # module-status-dropdown.tsx
@@ -18,4 +18,4 @@ tags:
 - [[module-card-item.tsx]] - `imports_from` [EXTRACTED]
 - [[module-list-item-action.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Action_Status

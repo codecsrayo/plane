@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/issue/issue_label.service.ts"
+source_file: "services/issue/issue_label.service.ts"
 type: "code"
-community: "Git Integrations"
+community: "Issue Label"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Git_Integrations
+  - community/Issue_Label
 ---
 
 # issue_label.service.ts
@@ -17,4 +17,4 @@ tags:
 - [[IssueLabelService]] - `contains` [EXTRACTED]
 - [[api.service.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Git_Integrations
+#graphify/code #graphify/EXTRACTED #community/Issue_Label

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/issue-details/issue.store.ts"
+source_file: "store/issue/issue-details/issue.store.ts"
 type: "code"
-community: "Community 72"
+community: "Comment Reactions"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_72
+  - community/Comment_Reactions
 ---
 
 # issue.store.ts
@@ -22,4 +22,4 @@ tags:
 - [[query]] - `contains` [EXTRACTED]
 - [[root.store.ts_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_72
+#graphify/code #graphify/EXTRACTED #community/Comment_Reactions

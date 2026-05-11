@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/global/product-updates/fallback.tsx"
+source_file: "components/global/product-updates/fallback.tsx"
 type: "code"
-community: "Community 454"
+community: "Fallback Product"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_454
+  - community/Fallback_Product
 ---
 
 # fallback.tsx
@@ -16,4 +16,4 @@ tags:
 - [[ProductUpdatesFallback()]] - `contains` [EXTRACTED]
 - [[TProductUpdatesFallbackProps]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_454
+#graphify/code #graphify/EXTRACTED #community/Fallback_Product

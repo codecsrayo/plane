@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/navigation/top-nav-power-k.tsx"
+source_file: "components/navigation/top-nav-power-k.tsx"
 type: "code"
-community: "Community 99"
+community: "Power Search"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_99
+  - community/Power_Search
 ---
 
 # TopNavPowerK
@@ -15,4 +15,4 @@ tags:
 
 - [[top-nav-power-k.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_99
+#graphify/code #graphify/EXTRACTED #community/Power_Search

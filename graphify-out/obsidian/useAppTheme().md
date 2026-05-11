@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/use-app-theme.ts"
+source_file: "hooks/store/use-app-theme.ts"
 type: "code"
-community: "Community 63"
+community: "Theme Wrapper"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_63
+  - community/Theme_Wrapper
 ---
 
 # useAppTheme()
@@ -36,4 +36,4 @@ tags:
 - [[workspace-menu-item.tsx]] - `imports` [EXTRACTED]
 - [[workspace-menu-root.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_63
+#graphify/code #graphify/EXTRACTED #community/Theme_Wrapper

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/settings/profile/sidebar/workspace-options.tsx"
+source_file: "components/settings/profile/sidebar/workspace-options.tsx"
 type: "code"
-community: "Community 68"
+community: "Sidebar Nav"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_68
+  - community/Sidebar_Nav
 ---
 
 # ProfileSettingsSidebarWorkspaceOptions
@@ -16,4 +16,4 @@ tags:
 - [[item-categories.tsx_1]] - `imports` [EXTRACTED]
 - [[workspace-options.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_68
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Nav

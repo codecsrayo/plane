@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/analytics/insight-table/index.ts"
+source_file: "components/analytics/insight-table/index.ts"
 type: "code"
-community: "Community 252"
+community: "Insight Table"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_252
+  - community/Insight_Table
 ---
 
 # index.ts
@@ -15,4 +15,4 @@ tags:
 
 - [[workitems-insight-table.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_252
+#graphify/code #graphify/EXTRACTED #community/Insight_Table

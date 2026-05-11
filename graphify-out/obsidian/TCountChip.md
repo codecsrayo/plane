@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/common/count-chip.tsx"
+source_file: "components/common/count-chip.tsx"
 type: "code"
-community: "Community 198"
+community: "Notification Option"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_198
+  - community/Notification_Option
 ---
 
 # TCountChip
@@ -15,4 +15,4 @@ tags:
 
 - [[count-chip.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_198
+#graphify/code #graphify/EXTRACTED #community/Notification_Option

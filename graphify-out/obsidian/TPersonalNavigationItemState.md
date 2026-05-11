@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/types/navigation-preferences.ts"
+source_file: "types/navigation-preferences.ts"
 type: "code"
-community: "Community 95"
+community: "Navigation Preferences"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_95
+  - community/Navigation_Preferences
 ---
 
 # TPersonalNavigationItemState
@@ -15,4 +15,4 @@ tags:
 
 - [[navigation-preferences.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_95
+#graphify/code #graphify/EXTRACTED #community/Navigation_Preferences

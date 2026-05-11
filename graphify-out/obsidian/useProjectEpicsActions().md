@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-issues-actions.tsx"
+source_file: "hooks/use-issues-actions.tsx"
 type: "code"
-community: "Community 41"
+community: "Issue Layout HOC"
 location: "L164"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_41
+  - community/Issue_Layout_HOC
 ---
 
 # useProjectEpicsActions()
@@ -17,4 +17,4 @@ tags:
 - [[useIssues()]] - `calls` [EXTRACTED]
 - [[useIssuesActions()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_41
+#graphify/code #graphify/EXTRACTED #community/Issue_Layout_HOC

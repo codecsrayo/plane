@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/filters/header/layout-selection.tsx"
+source_file: "components/issues/issue-layouts/filters/header/layout-selection.tsx"
 type: "code"
-community: "Community 223"
+community: "Selection Mobile"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_223
+  - community/Selection_Mobile
 ---
 
 # layout-selection.tsx
@@ -20,4 +20,4 @@ tags:
 - [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_223
+#graphify/code #graphify/EXTRACTED #community/Selection_Mobile

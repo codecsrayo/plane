@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/integration/slack/select-channel.tsx"
+source_file: "components/integration/slack/select-channel.tsx"
 type: "code"
-community: "Community 39"
+community: "Channel Slack"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_39
+  - community/Channel_Slack
 ---
 
 # select-channel.tsx
@@ -25,4 +25,4 @@ tags:
 - [[use-integration-popup.tsx]] - `imports_from` [EXTRACTED]
 - [[useInstance()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_39
+#graphify/code #graphify/EXTRACTED #community/Channel_Slack

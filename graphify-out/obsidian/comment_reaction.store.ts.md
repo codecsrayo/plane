@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/issue-details/comment_reaction.store.ts"
+source_file: "store/issue/issue-details/comment_reaction.store.ts"
 type: "code"
-community: "Community 214"
+community: "Comment Reactions"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_214
+  - community/Comment_Reactions
 ---
 
 # comment_reaction.store.ts
@@ -28,4 +28,4 @@ tags:
 - [[root.store.ts_2]] - `imports_from` [EXTRACTED]
 - [[toApiError()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_214
+#graphify/code #graphify/EXTRACTED #community/Comment_Reactions

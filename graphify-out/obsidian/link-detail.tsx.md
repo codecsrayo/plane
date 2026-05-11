@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/home/widgets/links/link-detail.tsx"
+source_file: "components/home/widgets/links/link-detail.tsx"
 type: "code"
-community: "Community 75"
+community: "Dashboard Widgets"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_75
+  - community/Dashboard_Widgets
 ---
 
 # link-detail.tsx
@@ -21,4 +21,4 @@ tags:
 - [[use-links.tsx]] - `imports_from` [EXTRACTED]
 - [[useHome()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_75
+#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets

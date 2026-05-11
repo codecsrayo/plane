@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/onboarding/create-workspace.tsx"
+source_file: "components/onboarding/create-workspace.tsx"
 type: "code"
-community: "Authentication UI"
+community: "Wrapper Workspace"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Authentication_UI
+  - community/Wrapper_Workspace
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[create-workspace.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Authentication_UI
+#graphify/code #graphify/EXTRACTED #community/Wrapper_Workspace

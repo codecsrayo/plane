@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/readonly/priority.tsx"
+source_file: "components/readonly/priority.tsx"
 type: "code"
-community: "Community 492"
+community: "Priority Readonly"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_492
+  - community/Priority_Readonly
 ---
 
 # TReadonlyPriorityProps
@@ -15,4 +15,4 @@ tags:
 
 - [[priority.tsx_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_492
+#graphify/code #graphify/EXTRACTED #community/Priority_Readonly

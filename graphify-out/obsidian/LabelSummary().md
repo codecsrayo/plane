@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/properties/labels.tsx"
+source_file: "components/issues/issue-layouts/properties/labels.tsx"
 type: "code"
-community: "Community 81"
+community: "Issue Layouts"
 location: "L86"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_81
+  - community/Issue_Layouts
 ---
 
 # LabelSummary()
@@ -15,4 +15,4 @@ tags:
 
 - [[labels.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_81
+#graphify/code #graphify/EXTRACTED #community/Issue_Layouts

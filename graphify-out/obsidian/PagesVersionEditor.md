@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/version/editor.tsx"
+source_file: "components/pages/version/editor.tsx"
 type: "code"
-community: "Community 78"
+community: "Editor Body"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_78
+  - community/Editor_Body
 ---
 
 # PagesVersionEditor
@@ -16,4 +16,4 @@ tags:
 - [[editor.tsx_4]] - `contains` [EXTRACTED]
 - [[page-root.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_78
+#graphify/code #graphify/EXTRACTED #community/Editor_Body

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/lib/wrappers/store-wrapper.tsx"
+source_file: "lib/wrappers/store-wrapper.tsx"
 type: "code"
-community: "Community 63"
+community: "Theme Wrapper"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_63
+  - community/Theme_Wrapper
 ---
 
 # TStoreWrapper
@@ -15,4 +15,4 @@ tags:
 
 - [[store-wrapper.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_63
+#graphify/code #graphify/EXTRACTED #community/Theme_Wrapper

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/ui/modal/search-results.tsx"
+source_file: "components/power-k/ui/modal/search-results.tsx"
 type: "code"
-community: "Community 56"
+community: "Search Results"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_56
+  - community/Search_Results
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[search-results.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_56
+#graphify/code #graphify/EXTRACTED #community/Search_Results

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/ui/pages/context-based/module/status-menu.tsx"
+source_file: "components/power-k/ui/pages/context-based/module/status-menu.tsx"
 type: "code"
-community: "Community 56"
+community: "Member Commands"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_56
+  - community/Member_Commands
 ---
 
 # status-menu.tsx
@@ -19,4 +19,4 @@ tags:
 - [[command-item.tsx]] - `imports_from` [EXTRACTED]
 - [[root.tsx_59]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_56
+#graphify/code #graphify/EXTRACTED #community/Member_Commands

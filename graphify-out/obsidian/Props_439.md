@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/license/modal/card/checkout-button.tsx"
+source_file: "components/license/modal/card/checkout-button.tsx"
 type: "code"
-community: "Community 194"
+community: "Plan Discount"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_194
+  - community/Plan_Discount
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[checkout-button.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_194
+#graphify/code #graphify/EXTRACTED #community/Plan_Discount

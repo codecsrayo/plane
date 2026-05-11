@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/ui/pages/context-based/cycle/commands.ts"
+source_file: "components/power-k/ui/pages/context-based/cycle/commands.ts"
 type: "code"
-community: "Community 45"
+community: "Cycle Transfers"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_45
+  - community/Cycle_Transfers
 ---
 
 # usePowerKCycleContextBasedActions()
@@ -19,4 +19,4 @@ tags:
 - [[usePowerKContextBasedActions()]] - `calls` [EXTRACTED]
 - [[useUser()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_45
+#graphify/code #graphify/EXTRACTED #community/Cycle_Transfers

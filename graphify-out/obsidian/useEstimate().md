@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/estimates/use-estimate.ts"
+source_file: "hooks/store/estimates/use-estimate.ts"
 type: "code"
-community: "Community 250"
+community: "Estimate Disable"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_250
+  - community/Estimate_Disable
 ---
 
 # useEstimate()
@@ -20,4 +20,4 @@ tags:
 - [[modal.tsx_13]] - `imports` [EXTRACTED]
 - [[use-estimate.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_250
+#graphify/code #graphify/EXTRACTED #community/Estimate_Disable

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project/dropdowns/order-by.tsx"
+source_file: "components/project/dropdowns/order-by.tsx"
 type: "code"
-community: "Community 52"
+community: "Auth UI"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_52
+  - community/Auth_UI
 ---
 
 # ProjectOrderByDropdown()
@@ -16,4 +16,4 @@ tags:
 - [[filters.tsx_1]] - `imports` [EXTRACTED]
 - [[order-by.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_52
+#graphify/code #graphify/EXTRACTED #community/Auth_UI

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/issue_kanban_view.store.ts"
+source_file: "store/issue/issue_kanban_view.store.ts"
 type: "code"
-community: "Community 62"
+community: "Calendar Store"
 location: "L34"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_62
+  - community/Calendar_Store
 ---
 
 # IssueKanBanViewStore
@@ -19,4 +19,4 @@ tags:
 - [[issue_kanban_view.store.ts]] - `contains` [EXTRACTED]
 - [[root.store.ts_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_62
+#graphify/code #graphify/EXTRACTED #community/Calendar_Store

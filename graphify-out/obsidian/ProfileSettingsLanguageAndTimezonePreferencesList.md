@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/settings/profile/content/pages/preferences/language-and-timezone-list.tsx"
+source_file: "components/settings/profile/content/pages/preferences/language-and-timezone-list.tsx"
 type: "code"
-community: "Community 182"
+community: "Profile Settings"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_182
+  - community/Profile_Settings
 ---
 
 # ProfileSettingsLanguageAndTimezonePreferencesList
@@ -16,4 +16,4 @@ tags:
 - [[language-and-timezone-list.tsx]] - `contains` [EXTRACTED]
 - [[root.tsx_19]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_182
+#graphify/code #graphify/EXTRACTED #community/Profile_Settings

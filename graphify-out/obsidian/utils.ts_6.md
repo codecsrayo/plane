@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/analytics/work-items/utils.ts"
+source_file: "components/analytics/work-items/utils.ts"
 type: "code"
-community: "Community 205"
+community: "Chart Generate"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_205
+  - community/Chart_Generate
 ---
 
 # utils.ts
@@ -17,4 +17,4 @@ tags:
 - [[generateBarColor()]] - `contains` [EXTRACTED]
 - [[priority-chart.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_205
+#graphify/code #graphify/EXTRACTED #community/Chart_Generate

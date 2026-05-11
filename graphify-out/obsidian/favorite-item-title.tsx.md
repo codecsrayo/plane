@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/sidebar/favorites/favorite-items/common/favorite-item-title.tsx"
+source_file: "components/workspace/sidebar/favorites/favorite-items/common/favorite-item-title.tsx"
 type: "code"
-community: "Community 63"
+community: "Theme Wrapper"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_63
+  - community/Theme_Wrapper
 ---
 
 # favorite-item-title.tsx
@@ -20,4 +20,4 @@ tags:
 - [[useAppTheme()]] - `imports` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_63
+#graphify/code #graphify/EXTRACTED #community/Theme_Wrapper

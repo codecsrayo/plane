@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/list/block-item-action.tsx"
+source_file: "components/pages/list/block-item-action.tsx"
 type: "code"
-community: "Page Actions"
+community: "Action Pages"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Page_Actions
+  - community/Action_Pages
 ---
 
 # block-item-action.tsx
@@ -24,4 +24,4 @@ tags:
 - [[useMember()]] - `imports` [EXTRACTED]
 - [[usePageOperations()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Page_Actions
+#graphify/code #graphify/EXTRACTED #community/Action_Pages

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail-widgets/sub-issues/quick-action-button.tsx"
+source_file: "components/issues/issue-detail-widgets/sub-issues/quick-action-button.tsx"
 type: "code"
-community: "Community 122"
+community: "Title Issues"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_122
+  - community/Title_Issues
 ---
 
 # SubIssuesActionButton
@@ -16,4 +16,4 @@ tags:
 - [[quick-action-button.tsx_2]] - `contains` [EXTRACTED]
 - [[title-actions.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_122
+#graphify/code #graphify/EXTRACTED #community/Title_Issues

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/inbox/sidebar/index.ts"
+source_file: "components/inbox/sidebar/index.ts"
 type: "code"
-community: "Community 134"
+community: "Inbox Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_134
+  - community/Inbox_Filters
 ---
 
 # index.ts
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_70]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_134
+#graphify/code #graphify/EXTRACTED #community/Inbox_Filters

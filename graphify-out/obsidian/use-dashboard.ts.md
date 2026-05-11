@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/use-dashboard.ts"
+source_file: "hooks/store/use-dashboard.ts"
 type: "code"
-community: "Community 147"
+community: "Dashboard Widget"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_147
+  - community/Dashboard_Widget
 ---
 
 # use-dashboard.ts
@@ -19,4 +19,4 @@ tags:
 - [[store-context.tsx]] - `imports_from` [EXTRACTED]
 - [[useDashboard()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_147
+#graphify/code #graphify/EXTRACTED #community/Dashboard_Widget

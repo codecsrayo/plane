@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/kanban/headers/sub-group-by-card.tsx"
+source_file: "components/issues/issue-layouts/kanban/headers/sub-group-by-card.tsx"
 type: "code"
-community: "Group & Drag UI"
+community: "Spreadsheet Columns"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group__Drag_UI
+  - community/Spreadsheet_Columns
 ---
 
 # sub-group-by-card.tsx
@@ -17,4 +17,4 @@ tags:
 - [[IHeaderSubGroupByCard]] - `contains` [EXTRACTED]
 - [[swimlanes.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group\_\_Drag_UI
+#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Columns

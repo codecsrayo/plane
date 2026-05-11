@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail/issue-activity/activity-comment-root.tsx"
+source_file: "components/issues/issue-detail/issue-activity/activity-comment-root.tsx"
 type: "code"
-community: "Community 79"
+community: "Activity Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_79
+  - community/Activity_Issue
 ---
 
 # activity-comment-root.tsx
@@ -25,4 +25,4 @@ tags:
 - [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_79
+#graphify/code #graphify/EXTRACTED #community/Activity_Issue

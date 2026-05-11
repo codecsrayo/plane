@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/cycle/filter.store.ts"
+source_file: "store/issue/cycle/filter.store.ts"
 type: "code"
-community: "Community 71"
+community: "Filters Cycle"
 location: "L220"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_71
+  - community/Filters_Cycle
 ---
 
 # updatedDisplayFilters
@@ -15,4 +15,4 @@ tags:
 
 - [[filter.store.ts_7]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_71
+#graphify/code #graphify/EXTRACTED #community/Filters_Cycle

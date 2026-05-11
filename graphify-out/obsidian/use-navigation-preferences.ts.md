@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-navigation-preferences.ts"
+source_file: "hooks/use-navigation-preferences.ts"
 type: "code"
-community: "Community 95"
+community: "Navigation Preferences"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_95
+  - community/Navigation_Preferences
 ---
 
 # use-navigation-preferences.ts
@@ -40,4 +40,4 @@ tags:
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 - [[useWorkspaceNavigationPreferences()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_95
+#graphify/code #graphify/EXTRACTED #community/Navigation_Preferences

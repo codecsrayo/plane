@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/dropdowns/module/module-options.tsx"
+source_file: "components/dropdowns/module/module-options.tsx"
 type: "code"
-community: "Layout System"
+community: "Issue Layouts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Layout_System
+  - community/Issue_Layouts
 ---
 
 # module-options.tsx
@@ -20,4 +20,4 @@ tags:
 - [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Layout_System
+#graphify/code #graphify/EXTRACTED #community/Issue_Layouts

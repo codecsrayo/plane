@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail-widgets/sub-issues/root.tsx"
+source_file: "components/issues/issue-detail-widgets/sub-issues/root.tsx"
 type: "code"
-community: "Community 122"
+community: "Title Issues"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_122
+  - community/Title_Issues
 ---
 
 # SubIssuesCollapsible
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_40]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_122
+#graphify/code #graphify/EXTRACTED #community/Title_Issues

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/ui/loader/layouts/members-layout-loader.tsx"
+source_file: "components/ui/loader/layouts/members-layout-loader.tsx"
 type: "code"
-community: "Account & Sub-Issues"
+community: "Member Settings"
 location: "L8"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Account__Sub-Issues
+  - community/Member_Settings
 ---
 
 # MembersLayoutLoader()
@@ -16,4 +16,4 @@ tags:
 - [[members-layout-loader.tsx]] - `contains` [EXTRACTED]
 - [[members-list-item.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Account\_\_Sub-Issues
+#graphify/code #graphify/EXTRACTED #community/Member_Settings

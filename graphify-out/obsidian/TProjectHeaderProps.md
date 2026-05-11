@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/navigation/project-header.tsx"
+source_file: "components/navigation/project-header.tsx"
 type: "code"
-community: "Account & Sub-Issues"
+community: "Switcher Project"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Account__Sub-Issues
+  - community/Switcher_Project
 ---
 
 # TProjectHeaderProps
@@ -15,4 +15,4 @@ tags:
 
 - [[project-header.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Account\_\_Sub-Issues
+#graphify/code #graphify/EXTRACTED #community/Switcher_Project

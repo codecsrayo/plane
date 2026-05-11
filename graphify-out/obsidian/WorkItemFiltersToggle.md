@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/work-item-filters/filters-toggle.tsx"
+source_file: "components/work-item-filters/filters-toggle.tsx"
 type: "code"
-community: "Community 117"
+community: "Filter Controls"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_117
+  - community/Filter_Controls
 ---
 
 # WorkItemFiltersToggle
@@ -18,4 +18,4 @@ tags:
 - [[filters.tsx_2]] - `imports` [EXTRACTED]
 - [[profile-issues-filter.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_117
+#graphify/code #graphify/EXTRACTED #community/Filter_Controls

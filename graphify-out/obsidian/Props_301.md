@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/cycles/cycle-peek-overview.tsx"
+source_file: "components/cycles/cycle-peek-overview.tsx"
 type: "code"
-community: "Community 123"
+community: "Cycle Cycles"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_123
+  - community/Cycle_Cycles
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[cycle-peek-overview.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_123
+#graphify/code #graphify/EXTRACTED #community/Cycle_Cycles

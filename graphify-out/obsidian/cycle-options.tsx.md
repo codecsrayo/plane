@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/dropdowns/cycle/cycle-options.tsx"
+source_file: "components/dropdowns/cycle/cycle-options.tsx"
 type: "code"
-community: "Cycle Services & Filters"
+community: "Issue Layouts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Services__Filters
+  - community/Issue_Layouts
 ---
 
 # cycle-options.tsx
@@ -22,4 +22,4 @@ tags:
 - [[useCycle()]] - `imports` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Services\_\_Filters
+#graphify/code #graphify/EXTRACTED #community/Issue_Layouts

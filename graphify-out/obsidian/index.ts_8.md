@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/archived/index.ts"
+source_file: "store/issue/archived/index.ts"
 type: "code"
-community: "Issue Filters & Context"
+community: "Calendar Store"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters__Context
+  - community/Calendar_Store
 ---
 
 # index.ts
@@ -16,4 +16,4 @@ tags:
 - [[root.store.ts_1]] - `imports_from` [EXTRACTED]
 - [[use-issues.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters\_\_Context
+#graphify/code #graphify/EXTRACTED #community/Calendar_Store

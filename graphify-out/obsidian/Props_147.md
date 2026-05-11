@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project/settings/control-section.tsx"
+source_file: "components/project/settings/control-section.tsx"
 type: "code"
-community: "Applied Filters UI"
+community: "Account Settings"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters_UI
+  - community/Account_Settings
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[control-section.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters_UI
+#graphify/code #graphify/EXTRACTED #community/Account_Settings

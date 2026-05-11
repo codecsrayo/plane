@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail/label/index.ts"
+source_file: "components/issues/issue-detail/label/index.ts"
 type: "code"
-community: "Spreadsheet Column Components"
+community: "Issue Properties"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Column_Components
+  - community/Issue_Properties
 ---
 
 # index.ts
@@ -18,4 +18,4 @@ tags:
 - [[root.tsx_32]] - `imports_from` [EXTRACTED]
 - [[sidebar.tsx_3]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Column_Components
+#graphify/code #graphify/EXTRACTED #community/Issue_Properties

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/inbox/content/inbox-issue-header.tsx"
+source_file: "components/inbox/content/inbox-issue-header.tsx"
 type: "code"
-community: "Applied Filters UI"
+community: "Issue Inbox"
 location: "L48"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters_UI
+  - community/Issue_Inbox
 ---
 
 # TInboxIssueActionsHeader
@@ -15,4 +15,4 @@ tags:
 
 - [[inbox-issue-header.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters_UI
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

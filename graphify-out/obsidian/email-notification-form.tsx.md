@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/settings/profile/content/pages/notifications/email-notification-form.tsx"
+source_file: "components/settings/profile/content/pages/notifications/email-notification-form.tsx"
 type: "code"
-community: "Community 232"
+community: "Email Settings"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_232
+  - community/Email_Settings
 ---
 
 # email-notification-form.tsx
@@ -22,4 +22,4 @@ tags:
 - [[user.service.ts]] - `imports_from` [EXTRACTED]
 - [[userService_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_232
+#graphify/code #graphify/EXTRACTED #community/Email_Settings

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/stickies/sticky/inputs.tsx"
+source_file: "components/stickies/sticky/inputs.tsx"
 type: "code"
-community: "Community 211"
+community: "Workspace Invites"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_211
+  - community/Workspace_Invites
 ---
 
 # TProps
@@ -15,4 +15,4 @@ tags:
 
 - [[inputs.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_211
+#graphify/code #graphify/EXTRACTED #community/Workspace_Invites

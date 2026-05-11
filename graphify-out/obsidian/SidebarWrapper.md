@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/sidebar/sidebar-wrapper.tsx"
+source_file: "components/sidebar/sidebar-wrapper.tsx"
 type: "code"
-community: "Community 272"
+community: "Sidebar Navigation"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_272
+  - community/Sidebar_Navigation
 ---
 
 # SidebarWrapper
@@ -15,4 +15,4 @@ tags:
 
 - [[sidebar-wrapper.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_272
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation

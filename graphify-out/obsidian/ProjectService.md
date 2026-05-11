@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/project/project.service.ts"
+source_file: "services/project/project.service.ts"
 type: "code"
-community: "Community 175"
+community: "Project User"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_175
+  - community/Project_User
 ---
 
 # ProjectService
@@ -30,4 +30,4 @@ tags:
 - [[.updateProjectUserProperties()]] - `method` [EXTRACTED]
 - [[project.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_175
+#graphify/code #graphify/EXTRACTED #community/Project_User

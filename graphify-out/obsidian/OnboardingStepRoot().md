@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/onboarding/steps/root.tsx"
+source_file: "components/onboarding/steps/root.tsx"
 type: "code"
-community: "Community 203"
+community: "Step Onboarding"
 location: "L41"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_203
+  - community/Step_Onboarding
 ---
 
 # OnboardingStepRoot()
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_64]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_203
+#graphify/code #graphify/EXTRACTED #community/Step_Onboarding

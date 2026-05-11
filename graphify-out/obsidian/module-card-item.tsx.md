@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/modules/module-card-item.tsx"
+source_file: "components/modules/module-card-item.tsx"
 type: "code"
-community: "Module Analytics"
+community: "Module Forms"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Module_Forms
 ---
 
 # module-card-item.tsx
@@ -32,4 +32,4 @@ tags:
 - [[useModule()]] - `imports` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Module_Forms

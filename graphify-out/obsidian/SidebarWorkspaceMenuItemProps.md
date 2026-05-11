@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/sidebar/workspace-menu-item.tsx"
+source_file: "components/workspace/sidebar/workspace-menu-item.tsx"
 type: "code"
-community: "Community 244"
+community: "Workspace Menu"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_244
+  - community/Workspace_Menu
 ---
 
 # SidebarWorkspaceMenuItemProps
@@ -15,4 +15,4 @@ tags:
 
 - [[workspace-menu-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_244
+#graphify/code #graphify/EXTRACTED #community/Workspace_Menu

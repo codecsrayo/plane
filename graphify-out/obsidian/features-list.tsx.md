@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project/settings/features-list.tsx"
+source_file: "components/project/settings/features-list.tsx"
 type: "code"
-community: "Community 204"
+community: "Project Settings"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_204
+  - community/Project_Settings
 ---
 
 # features-list.tsx
@@ -25,4 +25,4 @@ tags:
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_204
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

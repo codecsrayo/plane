@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 397
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[Model_78]] - code - api_rust/src/entities/slack_project_syncs.rs
-- [[Relation_78]] - code - api_rust/src/entities/slack_project_syncs.rs
-- [[slack_project_syncs.rs]] - code - api_rust/src/entities/slack_project_syncs.rs
+- [[index.ts_100]] - code - components/issues/workspace-draft/index.ts
 
 ## Live Query (requires Dataview plugin)
 

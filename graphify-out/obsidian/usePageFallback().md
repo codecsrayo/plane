@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-page-fallback.ts"
+source_file: "hooks/use-page-fallback.ts"
 type: "code"
-community: "Community 78"
+community: "Editor Body"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_78
+  - community/Editor_Body
 ---
 
 # usePageFallback()
@@ -17,4 +17,4 @@ tags:
 - [[use-page-fallback.ts]] - `contains` [EXTRACTED]
 - [[useAutoSave()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_78
+#graphify/code #graphify/EXTRACTED #community/Editor_Body

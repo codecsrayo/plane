@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/analytics/insight-table/root.tsx"
+source_file: "components/analytics/insight-table/root.tsx"
 type: "code"
-community: "Community 226"
+community: "Table Insight"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_226
+  - community/Table_Insight
 ---
 
 # InsightTable()
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_88]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_226
+#graphify/code #graphify/EXTRACTED #community/Table_Insight

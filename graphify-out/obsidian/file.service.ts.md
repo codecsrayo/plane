@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/file.service.ts"
+source_file: "services/file.service.ts"
 type: "code"
-community: "Git Integrations"
+community: "API Services"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Git_Integrations
+  - community/API_Services
 ---
 
 # file.service.ts
@@ -31,4 +31,4 @@ tags:
 - [[user-image-upload-modal.tsx]] - `imports_from` [EXTRACTED]
 - [[workspace-image-upload-modal.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Git_Integrations
+#graphify/code #graphify/EXTRACTED #community/API_Services

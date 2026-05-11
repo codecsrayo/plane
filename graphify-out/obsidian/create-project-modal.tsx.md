@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project/create-project-modal.tsx"
+source_file: "components/project/create-project-modal.tsx"
 type: "code"
-community: "Community 249"
+community: "Project Feature"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_249
+  - community/Project_Feature
 ---
 
 # create-project-modal.tsx
@@ -24,4 +24,4 @@ tags:
 - [[projects-list.tsx]] - `imports_from` [EXTRACTED]
 - [[use-keypress.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_249
+#graphify/code #graphify/EXTRACTED #community/Project_Feature

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/analytics/export.ts"
+source_file: "components/analytics/export.ts"
 type: "code"
-community: "Community 252"
+community: "Insight Table"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_252
+  - community/Insight_Table
 ---
 
 # export.ts
@@ -18,4 +18,4 @@ tags:
 - [[priority-chart.tsx]] - `imports_from` [EXTRACTED]
 - [[workitems-insight-table.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_252
+#graphify/code #graphify/EXTRACTED #community/Insight_Table

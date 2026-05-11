@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/core/types.ts"
+source_file: "components/power-k/core/types.ts"
 type: "code"
-community: "Community 45"
+community: "Context Power"
 location: "L120"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_45
+  - community/Context_Power
 ---
 
 # TCommandPaletteState
@@ -15,4 +15,4 @@ tags:
 
 - [[types.ts_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_45
+#graphify/code #graphify/EXTRACTED #community/Context_Power

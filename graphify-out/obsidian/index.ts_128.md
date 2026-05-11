@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/cycles/analytics-sidebar/index.ts"
+source_file: "components/cycles/analytics-sidebar/index.ts"
 type: "code"
-community: "Community 123"
+community: "Cycle Cycles"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_123
+  - community/Cycle_Cycles
 ---
 
 # index.ts
@@ -15,4 +15,4 @@ tags:
 
 - [[cycle-peek-overview.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_123
+#graphify/code #graphify/EXTRACTED #community/Cycle_Cycles

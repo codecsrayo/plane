@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/peek-overview/loader.tsx"
+source_file: "components/issues/peek-overview/loader.tsx"
 type: "code"
-community: "Layout System"
+community: "Peek Overview"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Layout_System
+  - community/Peek_Overview
 ---
 
 # IssuePeekOverviewLoader()
@@ -17,4 +17,4 @@ tags:
 - [[usePlatformOS()]] - `calls` [EXTRACTED]
 - [[view.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Layout_System
+#graphify/code #graphify/EXTRACTED #community/Peek_Overview

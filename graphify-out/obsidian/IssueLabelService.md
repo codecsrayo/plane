@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/issue/issue_label.service.ts"
+source_file: "services/issue/issue_label.service.ts"
 type: "code"
-community: "Community 255"
+community: "Issue Label"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_255
+  - community/Issue_Label
 ---
 
 # IssueLabelService
@@ -21,4 +21,4 @@ tags:
 - [[.patchIssueLabel()]] - `method` [EXTRACTED]
 - [[issue_label.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_255
+#graphify/code #graphify/EXTRACTED #community/Issue_Label

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/notifications/notification.ts"
+source_file: "store/notifications/notification.ts"
 type: "code"
-community: "Community 139"
+community: "Notification Option"
 location: "L197"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_139
+  - community/Notification_Option
 ---
 
 # payload
@@ -15,4 +15,4 @@ tags:
 
 - [[notification.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_139
+#graphify/code #graphify/EXTRACTED #community/Notification_Option

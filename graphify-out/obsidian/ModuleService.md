@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/module.service.ts"
+source_file: "services/module.service.ts"
 type: "code"
-community: "Community 35"
+community: "Archived Modules"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_35
+  - community/Archived_Modules
 ---
 
 # ModuleService
@@ -35,4 +35,4 @@ tags:
 - [[module.service.ts]] - `contains` [EXTRACTED]
 - [[module.store.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_35
+#graphify/code #graphify/EXTRACTED #community/Archived_Modules

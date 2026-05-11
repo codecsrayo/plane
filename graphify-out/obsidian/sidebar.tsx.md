@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/gantt-chart/sidebar/modules/sidebar.tsx"
+source_file: "components/gantt-chart/sidebar/modules/sidebar.tsx"
 type: "code"
-community: "Community 38"
+community: "Gantt Sidebar"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_38
+  - community/Gantt_Sidebar
 ---
 
 # sidebar.tsx
@@ -24,4 +24,4 @@ tags:
 - [[useTimeLineChart()]] - `imports` [EXTRACTED]
 - [[utils.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_38
+#graphify/code #graphify/EXTRACTED #community/Gantt_Sidebar

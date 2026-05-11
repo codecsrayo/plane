@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/user/user-user.ts"
+source_file: "hooks/store/user/user-user.ts"
 type: "code"
-community: "Community 45"
+community: "Module Forms"
 location: "L13"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_45
+  - community/Module_Forms
 ---
 
 # useUser()
@@ -34,4 +34,4 @@ tags:
 - [[useWorkItemCommentOperations()]] - `calls` [INFERRED]
 - [[user-user.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_45
+#graphify/code #graphify/INFERRED #community/Module_Forms

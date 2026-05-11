@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/labels/project-setting-label-item.tsx"
+source_file: "components/labels/project-setting-label-item.tsx"
 type: "code"
-community: "Community 76"
+community: "Label Manager"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_76
+  - community/Label_Manager
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[project-setting-label-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_76
+#graphify/code #graphify/EXTRACTED #community/Label_Manager

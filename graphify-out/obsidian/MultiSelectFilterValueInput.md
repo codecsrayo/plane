@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/rich-filters/filter-value-input/select/multi.tsx"
+source_file: "components/rich-filters/filter-value-input/select/multi.tsx"
 type: "code"
-community: "Filter Components"
+community: "Filter Controls"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Components
+  - community/Filter_Controls
 ---
 
 # MultiSelectFilterValueInput
@@ -16,4 +16,4 @@ tags:
 - [[multi.tsx]] - `contains` [EXTRACTED]
 - [[root.tsx_92]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Components
+#graphify/code #graphify/EXTRACTED #community/Filter_Controls

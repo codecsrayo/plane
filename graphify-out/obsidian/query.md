@@ -1,19 +1,18 @@
 ---
-source_file: "web/core/store/issue/issue-details/issue.store.ts"
+source_file: "store/issue/issue-details/issue.store.ts"
 type: "code"
-community: "Community 107"
+community: "Comment Reactions"
 location: "L88"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_107
+  - community/Comment_Reactions
 ---
 
 # query
 
 ## Connections
 
-- [[github_callback_auth_alias()]] - `calls` [INFERRED]
 - [[issue.store.ts_9]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_107
+#graphify/code #graphify/EXTRACTED #community/Comment_Reactions

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-local-storage.tsx"
+source_file: "hooks/use-local-storage.tsx"
 type: "code"
-community: "Community 200"
+community: "Rail Visibility"
 location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_200
+  - community/Rail_Visibility
 ---
 
 # useLocalStorage()
@@ -20,4 +20,4 @@ tags:
 - [[usePageFilters()]] - `calls` [EXTRACTED]
 - [[usePageOperations()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_200
+#graphify/code #graphify/EXTRACTED #community/Rail_Visibility

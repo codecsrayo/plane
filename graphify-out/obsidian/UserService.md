@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/user.service.ts"
+source_file: "services/user.service.ts"
 type: "code"
-community: "Community 65"
+community: "User Service"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_65
+  - community/User_Service
 ---
 
 # UserService
@@ -56,4 +56,4 @@ tags:
 - [[user.service.ts]] - `contains` [EXTRACTED]
 - [[workspace-activity-list.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_65
+#graphify/code #graphify/EXTRACTED #community/User_Service

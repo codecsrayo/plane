@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/modules/select/status.tsx"
+source_file: "components/modules/select/status.tsx"
 type: "code"
-community: "Community 450"
+community: "Status"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_450
+  - community/Status
 ---
 
 # ModuleStatusSelect()
@@ -15,4 +15,4 @@ tags:
 
 - [[status.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_450
+#graphify/code #graphify/EXTRACTED #community/Status

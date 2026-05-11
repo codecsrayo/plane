@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/workspace-draft/issue.store.ts"
+source_file: "store/issue/workspace-draft/issue.store.ts"
 type: "code"
-community: "Community 220"
+community: "Issue Draft"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_220
+  - community/Issue_Draft
 ---
 
 # issue.store.ts
@@ -29,4 +29,4 @@ tags:
 - [[toApiError()]] - `imports` [EXTRACTED]
 - [[workspace_draft.service.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_220
+#graphify/code #graphify/EXTRACTED #community/Issue_Draft

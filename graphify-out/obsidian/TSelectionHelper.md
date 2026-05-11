@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-multiple-select.ts"
+source_file: "hooks/use-multiple-select.ts"
 type: "code"
-community: "Active Cycle Stats"
+community: "Multi Select Actions"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Cycle_Stats
+  - community/Multi_Select_Actions
 ---
 
 # TSelectionHelper
@@ -30,4 +30,4 @@ tags:
 - [[spreadsheet-table.tsx]] - `imports` [EXTRACTED]
 - [[use-multiple-select.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats
+#graphify/code #graphify/EXTRACTED #community/Multi_Select_Actions

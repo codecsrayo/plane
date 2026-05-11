@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/profile/overview/stats.tsx"
+source_file: "components/profile/overview/stats.tsx"
 type: "code"
-community: "Community 455"
+community: "Stats Profile"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_455
+  - community/Stats_Profile
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[stats.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_455
+#graphify/code #graphify/EXTRACTED #community/Stats_Profile

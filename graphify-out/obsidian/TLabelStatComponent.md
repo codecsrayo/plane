@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/sidebar/progress-stats/label.tsx"
+source_file: "components/core/sidebar/progress-stats/label.tsx"
 type: "code"
-community: "Cycle Analytics"
+community: "Progress Stats"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Analytics
+  - community/Progress_Stats
 ---
 
 # TLabelStatComponent
@@ -15,4 +15,4 @@ tags:
 
 - [[label.tsx_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Analytics
+#graphify/code #graphify/EXTRACTED #community/Progress_Stats

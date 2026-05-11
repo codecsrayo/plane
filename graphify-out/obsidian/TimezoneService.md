@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/timezone.service.ts"
+source_file: "services/timezone.service.ts"
 type: "code"
-community: "Git Integrations"
+community: "API Services"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Git_Integrations
+  - community/API_Services
 ---
 
 # TimezoneService
@@ -17,4 +17,4 @@ tags:
 - [[.fetch()]] - `method` [EXTRACTED]
 - [[timezone.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Git_Integrations
+#graphify/code #graphify/EXTRACTED #community/API_Services

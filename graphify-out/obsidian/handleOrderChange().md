@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/gantt-chart/sidebar/utils.ts"
+source_file: "components/gantt-chart/sidebar/utils.ts"
 type: "code"
-community: "Community 38"
+community: "Gantt Sidebar"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_38
+  - community/Gantt_Sidebar
 ---
 
 # handleOrderChange()
@@ -18,4 +18,4 @@ tags:
 - [[sidebar.tsx_4]] - `imports` [EXTRACTED]
 - [[utils.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_38
+#graphify/code #graphify/EXTRACTED #community/Gantt_Sidebar

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/views/filters/order-by.tsx"
+source_file: "components/views/filters/order-by.tsx"
 type: "code"
-community: "Community 105"
+community: "Created Selection"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_105
+  - community/Created_Selection
 ---
 
 # ViewOrderByDropdown()
@@ -16,4 +16,4 @@ tags:
 - [[order-by.tsx]] - `contains` [EXTRACTED]
 - [[view-list-header.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_105
+#graphify/code #graphify/EXTRACTED #community/Created_Selection

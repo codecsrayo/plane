@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/views/delete-view-modal.tsx"
+source_file: "components/workspace/views/delete-view-modal.tsx"
 type: "code"
-community: "Community 96"
+community: "Project Quick"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_96
+  - community/Project_Quick
 ---
 
 # Props
@@ -16,4 +16,4 @@ tags:
 - [[delete-view-modal.tsx]] - `contains` [EXTRACTED]
 - [[delete-view-modal.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_96
+#graphify/code #graphify/EXTRACTED #community/Project_Quick

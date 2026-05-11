@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/constants/fetch-keys.ts"
+source_file: "constants/fetch-keys.ts"
 type: "code"
-community: "Auth Wrappers"
+community: "Label Workspace"
 location: "L65"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Wrappers
+  - community/Label_Workspace
 ---
 
 # WORKSPACE_CYCLES()
@@ -17,4 +17,4 @@ tags:
 - [[use-workspace-issue-properties.ts]] - `imports` [EXTRACTED]
 - [[useWorkspaceIssueProperties()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Wrappers
+#graphify/code #graphify/EXTRACTED #community/Label_Workspace

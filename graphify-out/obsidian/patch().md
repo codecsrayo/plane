@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/api.service.ts"
+source_file: "services/api.service.ts"
 type: "code"
-community: "Community 144"
+community: "API Services"
 location: "L178"
 tags:
   - graphify/code
-  - graphify/INFERRED
-  - community/Community_144
+  - graphify/EXTRACTED
+  - community/API_Services
 ---
 
 # patch()
@@ -14,7 +14,5 @@ tags:
 ## Connections
 
 - [[api.service.ts]] - `contains` [EXTRACTED]
-- [[build_router()]] - `calls` [INFERRED]
-- [[v1_router()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_144
+#graphify/code #graphify/EXTRACTED #community/API_Services

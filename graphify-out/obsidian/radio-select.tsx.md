@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/estimates/radio-select.tsx"
+source_file: "components/estimates/radio-select.tsx"
 type: "code"
-community: "Community 225"
+community: "Estimate Stage"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_225
+  - community/Estimate_Stage
 ---
 
 # radio-select.tsx
@@ -17,4 +17,4 @@ tags:
 - [[RadioInputProps]] - `contains` [EXTRACTED]
 - [[stage-one.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_225
+#graphify/code #graphify/EXTRACTED #community/Estimate_Stage

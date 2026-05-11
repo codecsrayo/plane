@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-modal/modal.tsx"
+source_file: "components/issues/issue-modal/modal.tsx"
 type: "code"
-community: "Community 55"
+community: "Project Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_55
+  - community/Project_Archives
 ---
 
 # modal.tsx
@@ -32,4 +32,4 @@ tags:
 - [[project-issue.tsx]] - `imports_from` [EXTRACTED]
 - [[quick-actions.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_55
+#graphify/code #graphify/EXTRACTED #community/Project_Archives

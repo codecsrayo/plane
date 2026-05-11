@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project/create/common-attributes.tsx"
+source_file: "components/project/create/common-attributes.tsx"
 type: "code"
-community: "Community 462"
+community: "Common Attributes"
 location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_462
+  - community/Common_Attributes
 ---
 
 # ProjectCommonAttributes()
@@ -15,4 +15,4 @@ tags:
 
 - [[common-attributes.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_462
+#graphify/code #graphify/EXTRACTED #community/Common_Attributes

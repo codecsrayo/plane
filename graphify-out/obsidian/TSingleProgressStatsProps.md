@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/sidebar/single-progress-stats.tsx"
+source_file: "components/core/sidebar/single-progress-stats.tsx"
 type: "code"
-community: "Cycle Analytics"
+community: "Progress Stats"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Analytics
+  - community/Progress_Stats
 ---
 
 # TSingleProgressStatsProps
@@ -15,4 +15,4 @@ tags:
 
 - [[single-progress-stats.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Analytics
+#graphify/code #graphify/EXTRACTED #community/Progress_Stats

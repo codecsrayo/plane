@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/estimates/points/create.tsx"
+source_file: "components/estimates/points/create.tsx"
 type: "code"
-community: "Community 168"
+community: "Estimate Point"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_168
+  - community/Estimate_Point
 ---
 
 # TEstimatePointCreate
@@ -15,4 +15,4 @@ tags:
 
 - [[create.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_168
+#graphify/code #graphify/EXTRACTED #community/Estimate_Point

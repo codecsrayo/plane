@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/theme/download-config-button.tsx"
+source_file: "components/core/theme/download-config-button.tsx"
 type: "code"
-community: "Community 174"
+community: "Theme Custom"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_174
+  - community/Theme_Custom
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[download-config-button.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_174
+#graphify/code #graphify/EXTRACTED #community/Theme_Custom

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/editor/index.ts"
+source_file: "hooks/editor/index.ts"
 type: "code"
-community: "Editor Styles"
+community: "Issue Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Styles
+  - community/Issue_Filters
 ---
 
 # index.ts
@@ -19,4 +19,4 @@ tags:
 - [[editor.tsx_2]] - `imports_from` [EXTRACTED]
 - [[editor.tsx_3]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Styles
+#graphify/code #graphify/EXTRACTED #community/Issue_Filters

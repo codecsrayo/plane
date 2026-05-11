@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/kanban/headers/group-by-card.tsx"
+source_file: "components/issues/issue-layouts/kanban/headers/group-by-card.tsx"
 type: "code"
-community: "Community 38"
+community: "Spreadsheet Columns"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_38
+  - community/Spreadsheet_Columns
 ---
 
 # group-by-card.tsx
@@ -24,4 +24,4 @@ tags:
 - [[use-issue-layout-store.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueStoreType()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_38
+#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Columns

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/use-inbox-issues.ts"
+source_file: "hooks/store/use-inbox-issues.ts"
 type: "code"
-community: "Applied Filters UI"
+community: "Inbox Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters_UI
+  - community/Inbox_Issue
 ---
 
 # use-inbox-issues.ts
@@ -19,4 +19,4 @@ tags:
 - [[store-context.tsx]] - `imports_from` [EXTRACTED]
 - [[useInboxIssues()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters_UI
+#graphify/code #graphify/EXTRACTED #community/Inbox_Issue

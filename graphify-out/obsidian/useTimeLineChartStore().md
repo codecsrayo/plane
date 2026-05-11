@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-timeline-chart.ts"
+source_file: "hooks/use-timeline-chart.ts"
 type: "code"
-community: "Community 90"
+community: "Gantt Chart"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_90
+  - community/Gantt_Chart
 ---
 
 # useTimeLineChartStore()
@@ -34,4 +34,4 @@ tags:
 - [[useTimeLineType()]] - `calls` [EXTRACTED]
 - [[week.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_90
+#graphify/code #graphify/EXTRACTED #community/Gantt_Chart

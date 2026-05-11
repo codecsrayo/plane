@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/workspace/home.ts"
+source_file: "store/workspace/home.ts"
 type: "code"
-community: "Community 213"
+community: "Link Home"
 location: "L120"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_213
+  - community/Link_Home
 ---
 
 # sortOrderBeforeUpdate
@@ -15,4 +15,4 @@ tags:
 
 - [[home.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_213
+#graphify/code #graphify/EXTRACTED #community/Link_Home

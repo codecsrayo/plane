@@ -1,14 +1,14 @@
 ---
-source_file: "web/core/components/pages/list/index.ts"
+source_file: "components/pages/list/index.ts"
 type: "code"
-community: "Community 811"
+community: "Community 406"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_811
+  - community/Community_406
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_811
+#graphify/code #graphify/EXTRACTED #community/Community_406

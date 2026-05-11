@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/workspace/index.ts"
+source_file: "store/workspace/index.ts"
 type: "code"
-community: "Community 112"
+community: "Workspace Invites"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_112
+  - community/Workspace_Invites
 ---
 
 # index.ts
@@ -34,4 +34,4 @@ tags:
 - [[workspace.service.ts]] - `imports_from` [EXTRACTED]
 - [[workspacesCreatedByCurrentUser()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_112
+#graphify/code #graphify/EXTRACTED #community/Workspace_Invites

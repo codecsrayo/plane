@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/version/editor.tsx"
+source_file: "components/pages/version/editor.tsx"
 type: "code"
-community: "Community 54"
+community: "Page Editor"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_54
+  - community/Page_Editor
 ---
 
 # editor.tsx
@@ -25,4 +25,4 @@ tags:
 - [[usePageFilters()]] - `imports` [EXTRACTED]
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_54
+#graphify/code #graphify/EXTRACTED #community/Page_Editor

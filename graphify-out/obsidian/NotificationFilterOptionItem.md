@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace-notifications/sidebar/filters/menu/menu-option-item.tsx"
+source_file: "components/workspace-notifications/sidebar/filters/menu/menu-option-item.tsx"
 type: "code"
-community: "Community 304"
+community: "Issue Layouts"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_304
+  - community/Issue_Layouts
 ---
 
 # NotificationFilterOptionItem
@@ -16,4 +16,4 @@ tags:
 - [[menu-option-item.tsx]] - `contains` [EXTRACTED]
 - [[root.tsx_51]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_304
+#graphify/code #graphify/EXTRACTED #community/Issue_Layouts

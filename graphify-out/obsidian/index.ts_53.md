@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/editor/rich-text/index.ts"
+source_file: "components/editor/rich-text/index.ts"
 type: "code"
-community: "Community 179"
+community: "Activity List"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_179
+  - community/Activity_List
 ---
 
 # index.ts
@@ -21,4 +21,4 @@ tags:
 - [[profile-activity-list.tsx]] - `imports_from` [EXTRACTED]
 - [[root.tsx_10]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_179
+#graphify/code #graphify/EXTRACTED #community/Activity_List

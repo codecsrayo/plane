@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/navigation-pane/tab-panels/info/actors-info.tsx"
+source_file: "components/pages/navigation-pane/tab-panels/info/actors-info.tsx"
 type: "code"
-community: "Community 77"
+community: "Info Navigation"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_77
+  - community/Info_Navigation
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[actors-info.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_77
+#graphify/code #graphify/EXTRACTED #community/Info_Navigation

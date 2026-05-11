@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/work-item-filters/filters-row.tsx"
+source_file: "components/work-item-filters/filters-row.tsx"
 type: "code"
-community: "Issue Filters & Context"
+community: "Issue Layout Roots"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters__Context
+  - community/Issue_Layout_Roots
 ---
 
 # WorkItemFiltersRow
@@ -24,4 +24,4 @@ tags:
 - [[project-layout-root.tsx]] - `imports` [EXTRACTED]
 - [[project-view-layout-root.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters\_\_Context
+#graphify/code #graphify/EXTRACTED #community/Issue_Layout_Roots

@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 395
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[Model_76]] - code - api_rust/src/entities/users_user_permissions.rs
-- [[Relation_76]] - code - api_rust/src/entities/users_user_permissions.rs
-- [[users_user_permissions.rs]] - code - api_rust/src/entities/users_user_permissions.rs
+- [[index.ts_98]] - code - components/issues/issue-layouts/quick-add/button/index.ts
 
 ## Live Query (requires Dataview plugin)
 

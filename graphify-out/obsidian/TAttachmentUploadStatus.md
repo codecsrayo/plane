@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/issue-details/attachment.store.ts"
+source_file: "store/issue/issue-details/attachment.store.ts"
 type: "code"
-community: "Community 31"
+community: "Issue Attachments"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_31
+  - community/Issue_Attachments
 ---
 
 # TAttachmentUploadStatus
@@ -19,4 +19,4 @@ tags:
 - [[attachment.store.ts]] - `contains` [EXTRACTED]
 - [[helper.tsx_5]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_31
+#graphify/code #graphify/EXTRACTED #community/Issue_Attachments

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/issue-details/link.store.ts"
+source_file: "store/issue/issue-details/link.store.ts"
 type: "code"
-community: "Community 192"
+community: "Comment Reactions"
 location: "L159"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_192
+  - community/Comment_Reactions
 ---
 
 # linkIndex
@@ -15,4 +15,4 @@ tags:
 
 - [[link.store.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_192
+#graphify/code #graphify/EXTRACTED #community/Comment_Reactions

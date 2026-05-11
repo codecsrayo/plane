@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/header/root.tsx"
+source_file: "components/pages/header/root.tsx"
 type: "code"
-community: "Community 165"
+community: "Badge Editor"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_165
+  - community/Badge_Editor
 ---
 
 # Props
@@ -16,4 +16,4 @@ tags:
 - [[root.tsx_76]] - `contains` [EXTRACTED]
 - [[root.tsx_83]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_165
+#graphify/code #graphify/EXTRACTED #community/Badge_Editor

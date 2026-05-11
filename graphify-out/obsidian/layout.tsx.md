@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/settings/layout.tsx"
+source_file: "components/settings/layout.tsx"
 type: "code"
-community: "Community 636"
+community: "Settings Content"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_636
+  - community/Settings_Content
 ---
 
 # layout.tsx
@@ -15,4 +15,4 @@ tags:
 
 - [[SettingsContentLayout]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_636
+#graphify/code #graphify/EXTRACTED #community/Settings_Content

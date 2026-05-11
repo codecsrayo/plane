@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/project/project-export.service.ts"
+source_file: "services/project/project-export.service.ts"
 type: "code"
-community: "Community 100"
+community: "Project Settings"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_100
+  - community/Project_Settings
 ---
 
 # ProjectExportService
@@ -18,4 +18,4 @@ tags:
 - [[export-form.tsx]] - `imports` [EXTRACTED]
 - [[project-export.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_100
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

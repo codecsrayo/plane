@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/peek-overview/root.tsx"
+source_file: "components/issues/peek-overview/root.tsx"
 type: "code"
-community: "Community 38"
+community: "Peek Overview"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_38
+  - community/Peek_Overview
 ---
 
 # root.tsx
@@ -25,4 +25,4 @@ tags:
 - [[useIssues()]] - `imports` [EXTRACTED]
 - [[view.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_38
+#graphify/code #graphify/EXTRACTED #community/Peek_Overview

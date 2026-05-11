@@ -1,14 +1,14 @@
 ---
-source_file: "web/core/components/modules/dropdowns/filters/index.ts"
+source_file: "components/modules/dropdowns/filters/index.ts"
 type: "code"
-community: "Community 784"
+community: "Community 379"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_784
+  - community/Community_379
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_784
+#graphify/code #graphify/EXTRACTED #community/Community_379

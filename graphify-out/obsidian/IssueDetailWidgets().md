@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail-widgets/root.tsx"
+source_file: "components/issues/issue-detail-widgets/root.tsx"
 type: "code"
-community: "Community 154"
+community: "Issue Widget"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_154
+  - community/Issue_Widget
 ---
 
 # IssueDetailWidgets()
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_37]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_154
+#graphify/code #graphify/EXTRACTED #community/Issue_Widget

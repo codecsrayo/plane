@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/header/favorite-control.tsx"
+source_file: "components/pages/header/favorite-control.tsx"
 type: "code"
-community: "Page Actions"
+community: "Badge Editor"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Page_Actions
+  - community/Badge_Editor
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[favorite-control.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Page_Actions
+#graphify/code #graphify/EXTRACTED #community/Badge_Editor

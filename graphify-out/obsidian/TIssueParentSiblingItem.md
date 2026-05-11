@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail/parent/sibling-item.tsx"
+source_file: "components/issues/issue-detail/parent/sibling-item.tsx"
 type: "code"
-community: "Community 276"
+community: "Issue Parent"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_276
+  - community/Issue_Parent
 ---
 
 # TIssueParentSiblingItem
@@ -15,4 +15,4 @@ tags:
 
 - [[sibling-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_276
+#graphify/code #graphify/EXTRACTED #community/Issue_Parent

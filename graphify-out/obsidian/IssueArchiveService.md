@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/issue/issue_archive.service.ts"
+source_file: "services/issue/issue_archive.service.ts"
 type: "code"
-community: "Community 265"
+community: "Issue Archive"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_265
+  - community/Issue_Archive
 ---
 
 # IssueArchiveService
@@ -20,4 +20,4 @@ tags:
 - [[.retrieveArchivedIssue()]] - `method` [EXTRACTED]
 - [[issue_archive.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_265
+#graphify/code #graphify/EXTRACTED #community/Issue_Archive

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/editor/rich-text/description-input/loader.tsx"
+source_file: "components/editor/rich-text/description-input/loader.tsx"
 type: "code"
-community: "Community 246"
+community: "Description Input"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_246
+  - community/Description_Input
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[loader.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_246
+#graphify/code #graphify/EXTRACTED #community/Description_Input

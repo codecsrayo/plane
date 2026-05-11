@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-expandable-search.ts"
+source_file: "hooks/use-expandable-search.ts"
 type: "code"
-community: "Community 99"
+community: "Power Search"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_99
+  - community/Power_Search
 ---
 
 # UseExpandableSearchOptions
@@ -15,4 +15,4 @@ tags:
 
 - [[use-expandable-search.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_99
+#graphify/code #graphify/EXTRACTED #community/Power_Search

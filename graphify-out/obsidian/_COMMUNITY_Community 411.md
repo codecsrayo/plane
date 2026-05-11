@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 411
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[Model_92]] - code - api_rust/src/entities/issue_subscribers.rs
-- [[Relation_92]] - code - api_rust/src/entities/issue_subscribers.rs
-- [[issue_subscribers.rs]] - code - api_rust/src/entities/issue_subscribers.rs
+- [[index.ts_167]] - code - components/comments/index.ts
 
 ## Live Query (requires Dataview plugin)
 

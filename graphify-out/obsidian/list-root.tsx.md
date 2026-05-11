@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/list/list-root.tsx"
+source_file: "components/core/list/list-root.tsx"
 type: "code"
-community: "Community 495"
+community: "Container Ilistcontainer"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_495
+  - community/Container_Ilistcontainer
 ---
 
 # list-root.tsx
@@ -16,4 +16,4 @@ tags:
 - [[IListContainer]] - `contains` [EXTRACTED]
 - [[ListLayout()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_495
+#graphify/code #graphify/EXTRACTED #community/Container_Ilistcontainer

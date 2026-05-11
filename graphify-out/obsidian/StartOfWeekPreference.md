@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/profile/start-of-week-preference.tsx"
+source_file: "components/profile/start-of-week-preference.tsx"
 type: "code"
-community: "Community 151"
+community: "Start Week"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_151
+  - community/Start_Week
 ---
 
 # StartOfWeekPreference
@@ -16,4 +16,4 @@ tags:
 - [[language-and-timezone-list.tsx]] - `imports` [EXTRACTED]
 - [[start-of-week-preference.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_151
+#graphify/code #graphify/EXTRACTED #community/Start_Week

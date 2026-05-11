@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/editor/editor-body.tsx"
+source_file: "components/pages/editor/editor-body.tsx"
 type: "code"
-community: "Community 78"
+community: "Issue Filters"
 location: "L58"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_78
+  - community/Issue_Filters
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[editor-body.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_78
+#graphify/code #graphify/EXTRACTED #community/Issue_Filters

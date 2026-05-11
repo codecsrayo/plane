@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/member/workspace/workspace-member.store.ts"
+source_file: "store/member/workspace/workspace-member.store.ts"
 type: "code"
-community: "Community 150"
+community: "Member Workspace"
 location: "L263"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_150
+  - community/Member_Workspace
 ---
 
 # originalProjectMemberData
@@ -15,4 +15,4 @@ tags:
 
 - [[workspace-member.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_150
+#graphify/code #graphify/EXTRACTED #community/Member_Workspace

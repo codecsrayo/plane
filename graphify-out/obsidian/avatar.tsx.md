@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/dropdowns/member/avatar.tsx"
+source_file: "components/dropdowns/member/avatar.tsx"
 type: "code"
-community: "Module Analytics"
+community: "Module Forms"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Module_Forms
 ---
 
 # avatar.tsx
@@ -28,4 +28,4 @@ tags:
 - [[useMember()]] - `imports` [EXTRACTED]
 - [[view-list-item-action.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Module_Forms

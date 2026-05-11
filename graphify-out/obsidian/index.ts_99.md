@@ -1,14 +1,14 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/quick-add/form/index.ts"
+source_file: "components/issues/issue-layouts/quick-add/form/index.ts"
 type: "code"
-community: "Community 801"
+community: "Community 396"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_801
+  - community/Community_396
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_801
+#graphify/code #graphify/EXTRACTED #community/Community_396

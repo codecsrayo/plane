@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/context/use-issue-modal.tsx"
+source_file: "hooks/context/use-issue-modal.tsx"
 type: "code"
-community: "Cycle Services & Filters"
+community: "Issue Identifiers"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Services__Filters
+  - community/Issue_Identifiers
 ---
 
 # useIssueModal()
@@ -19,4 +19,4 @@ tags:
 - [[project-select.tsx]] - `imports` [EXTRACTED]
 - [[use-issue-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Services\_\_Filters
+#graphify/code #graphify/EXTRACTED #community/Issue_Identifiers

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/automation/auto-archive-automation.tsx"
+source_file: "components/automation/auto-archive-automation.tsx"
 type: "code"
-community: "Community 151"
+community: "Start Week"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_151
+  - community/Start_Week
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[auto-archive-automation.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_151
+#graphify/code #graphify/EXTRACTED #community/Start_Week

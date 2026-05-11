@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/rich-filters/filter-value-input/select/selected-options-display.tsx"
+source_file: "components/rich-filters/filter-value-input/select/selected-options-display.tsx"
 type: "code"
-community: "Filter Components"
+community: "Filter Controls"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Components
+  - community/Filter_Controls
 ---
 
 # TSelectedOptionsDisplayProps
@@ -15,4 +15,4 @@ tags:
 
 - [[selected-options-display.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Components
+#graphify/code #graphify/EXTRACTED #community/Filter_Controls

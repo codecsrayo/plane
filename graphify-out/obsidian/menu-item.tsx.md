@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace-notifications/sidebar/header/options/menu-option/menu-item.tsx"
+source_file: "components/workspace-notifications/sidebar/header/options/menu-option/menu-item.tsx"
 type: "code"
-community: "Community 286"
+community: "Notification Option"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_286
+  - community/Notification_Option
 ---
 
 # menu-item.tsx
@@ -17,4 +17,4 @@ tags:
 - [[TPopoverMenuOptions]] - `imports` [EXTRACTED]
 - [[root.tsx_50]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_286
+#graphify/code #graphify/EXTRACTED #community/Notification_Option

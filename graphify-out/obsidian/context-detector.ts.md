@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/core/context-detector.ts"
+source_file: "components/power-k/core/context-detector.ts"
 type: "code"
-community: "Community 80"
+community: "Command Palette"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_80
+  - community/Command_Palette
 ---
 
 # context-detector.ts
@@ -18,4 +18,4 @@ tags:
 - [[global-shortcuts.tsx]] - `imports_from` [EXTRACTED]
 - [[types.ts_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_80
+#graphify/code #graphify/EXTRACTED #community/Command_Palette

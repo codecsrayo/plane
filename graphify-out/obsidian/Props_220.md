@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/calendar/issue-blocks.tsx"
+source_file: "components/issues/issue-layouts/calendar/issue-blocks.tsx"
 type: "code"
-community: "Calendar UI"
+community: "Calendar Views"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_UI
+  - community/Calendar_Views
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[issue-blocks.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_UI
+#graphify/code #graphify/EXTRACTED #community/Calendar_Views

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/filters.tsx"
+source_file: "components/issues/filters.tsx"
 type: "code"
-community: "Community 117"
+community: "Filter Controls"
 location: "L37"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_117
+  - community/Filter_Controls
 ---
 
 # LAYOUTS
@@ -15,4 +15,4 @@ tags:
 
 - [[filters.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_117
+#graphify/code #graphify/EXTRACTED #community/Filter_Controls

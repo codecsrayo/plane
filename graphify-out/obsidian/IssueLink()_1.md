@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/activity.tsx"
+source_file: "components/core/activity.tsx"
 type: "code"
-community: "Community 70"
+community: "Activity List"
 location: "L44"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_70
+  - community/Activity_List
 ---
 
 # IssueLink()
@@ -18,4 +18,4 @@ tags:
 - [[activity.tsx_2]] - `contains` [EXTRACTED]
 - [[usePlatformOS()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_70
+#graphify/code #graphify/EXTRACTED #community/Activity_List

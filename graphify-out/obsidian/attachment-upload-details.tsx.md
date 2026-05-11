@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/attachment/attachment-upload-details.tsx"
+source_file: "components/issues/attachment/attachment-upload-details.tsx"
 type: "code"
-community: "Community 31"
+community: "Issue Attachments"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_31
+  - community/Issue_Attachments
 ---
 
 # attachment-upload-details.tsx
@@ -22,4 +22,4 @@ tags:
 - [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_31
+#graphify/code #graphify/EXTRACTED #community/Issue_Attachments

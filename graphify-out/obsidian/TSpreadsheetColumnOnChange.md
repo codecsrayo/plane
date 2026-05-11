@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/types.ts"
+source_file: "components/issues/issue-layouts/spreadsheet/columns/types.ts"
 type: "code"
-community: "Spreadsheet Column Components"
+community: "Column Spreadsheet"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Column_Components
+  - community/Column_Spreadsheet
 ---
 
 # TSpreadsheetColumnOnChange
@@ -22,4 +22,4 @@ tags:
 - [[state-column.tsx]] - `imports` [EXTRACTED]
 - [[types.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Column_Components
+#graphify/code #graphify/EXTRACTED #community/Column_Spreadsheet

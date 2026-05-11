@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-intersection-observer.ts"
+source_file: "hooks/use-intersection-observer.ts"
 type: "code"
-community: "Active Cycle Stats"
+community: "Kanban Groups"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Cycle_Stats
+  - community/Kanban_Groups
 ---
 
 # useIntersectionObserver()
@@ -23,4 +23,4 @@ tags:
 - [[stickies-infinite.tsx]] - `imports` [EXTRACTED]
 - [[use-intersection-observer.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats
+#graphify/code #graphify/EXTRACTED #community/Kanban_Groups

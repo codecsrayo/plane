@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/calendar/dropdowns/options-dropdown.tsx"
+source_file: "components/issues/issue-layouts/calendar/dropdowns/options-dropdown.tsx"
 type: "code"
-community: "Calendar UI"
+community: "Calendar Views"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_UI
+  - community/Calendar_Views
 ---
 
 # options-dropdown.tsx
@@ -25,4 +25,4 @@ tags:
 - [[use-window-size.tsx]] - `imports_from` [EXTRACTED]
 - [[useCalendarView()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_UI
+#graphify/code #graphify/EXTRACTED #community/Calendar_Views

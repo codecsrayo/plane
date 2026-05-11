@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/settings/profile/sidebar/index.ts"
+source_file: "components/settings/profile/sidebar/index.ts"
 type: "code"
-community: "Empty State Components"
+community: "Cycle Details"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_State_Components
+  - community/Cycle_Details
 ---
 
 # index.ts
@@ -15,4 +15,4 @@ tags:
 
 - [[modal.tsx_5]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_State_Components
+#graphify/code #graphify/EXTRACTED #community/Cycle_Details

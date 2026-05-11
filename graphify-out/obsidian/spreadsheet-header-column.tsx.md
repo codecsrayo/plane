@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-header-column.tsx"
+source_file: "components/issues/issue-layouts/spreadsheet/spreadsheet-header-column.tsx"
 type: "code"
-community: "Community 62"
+community: "Spreadsheet Table"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_62
+  - community/Spreadsheet_Table
 ---
 
 # spreadsheet-header-column.tsx
@@ -21,4 +21,4 @@ tags:
 - [[spreadsheet-header.tsx]] - `imports_from` [EXTRACTED]
 - [[with-display-properties-HOC.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_62
+#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Table

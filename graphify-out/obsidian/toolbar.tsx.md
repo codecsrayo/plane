@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/editor/sticky-editor/toolbar.tsx"
+source_file: "components/editor/sticky-editor/toolbar.tsx"
 type: "code"
-community: "Editor Styles"
+community: "Toolbar Lite"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Styles
+  - community/Toolbar_Lite
 ---
 
 # toolbar.tsx
@@ -22,4 +22,4 @@ tags:
 - [[editor.ts]] - `imports_from` [EXTRACTED]
 - [[editor.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Styles
+#graphify/code #graphify/EXTRACTED #community/Toolbar_Lite

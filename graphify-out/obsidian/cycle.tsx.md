@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/empty-states/cycle.tsx"
+source_file: "components/issues/issue-layouts/empty-states/cycle.tsx"
 type: "code"
-community: "Empty State Components"
+community: "Cycle Details"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_State_Components
+  - community/Cycle_Details
 ---
 
 # cycle.tsx
@@ -27,4 +27,4 @@ tags:
 - [[useIssues()]] - `imports` [EXTRACTED]
 - [[useWorkItemFilterInstance()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_State_Components
+#graphify/code #graphify/EXTRACTED #community/Cycle_Details

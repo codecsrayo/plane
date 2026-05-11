@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/views/header.tsx"
+source_file: "components/workspace/views/header.tsx"
 type: "code"
-community: "Community 96"
+community: "Global Quick"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_96
+  - community/Global_Quick
 ---
 
 # header.tsx
@@ -26,4 +26,4 @@ tags:
 - [[use-global-view.ts]] - `imports_from` [EXTRACTED]
 - [[useGlobalView()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_96
+#graphify/code #graphify/EXTRACTED #community/Global_Quick

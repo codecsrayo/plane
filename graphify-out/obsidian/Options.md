@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/cycles/analytics-sidebar/issue-progress.tsx"
+source_file: "components/cycles/analytics-sidebar/issue-progress.tsx"
 type: "code"
-community: "Cycle Analytics"
+community: "Cycle Progress"
 location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Analytics
+  - community/Cycle_Progress
 ---
 
 # Options
@@ -15,4 +15,4 @@ tags:
 
 - [[issue-progress.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Analytics
+#graphify/code #graphify/EXTRACTED #community/Cycle_Progress

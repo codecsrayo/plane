@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/icons/attachment/pdf-file-icon.tsx"
+source_file: "components/icons/attachment/pdf-file-icon.tsx"
 type: "code"
-community: "Community 620"
+community: "Icon"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_620
+  - community/Icon
 ---
 
 # PdfIcon()
@@ -15,4 +15,4 @@ tags:
 
 - [[pdf-file-icon.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_620
+#graphify/code #graphify/EXTRACTED #community/Icon

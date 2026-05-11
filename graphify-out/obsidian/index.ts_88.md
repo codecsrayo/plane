@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/calendar/dropdowns/index.ts"
+source_file: "components/issues/issue-layouts/calendar/dropdowns/index.ts"
 type: "code"
-community: "Calendar UI"
+community: "Calendar Views"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_UI
+  - community/Calendar_Views
 ---
 
 # index.ts
@@ -15,4 +15,4 @@ tags:
 
 - [[header.tsx_8]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_UI
+#graphify/code #graphify/EXTRACTED #community/Calendar_Views

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/home/widgets/recents/project.tsx"
+source_file: "components/home/widgets/recents/project.tsx"
 type: "code"
-community: "Spreadsheet Column Components"
+community: "Issue Properties"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Column_Components
+  - community/Issue_Properties
 ---
 
 # project.tsx
@@ -20,4 +20,4 @@ tags:
 - [[index.ts_177]] - `imports_from` [EXTRACTED]
 - [[index.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Column_Components
+#graphify/code #graphify/EXTRACTED #community/Issue_Properties

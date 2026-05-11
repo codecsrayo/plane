@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/config/navigation/root.ts"
+source_file: "components/power-k/config/navigation/root.ts"
 type: "code"
-community: "Community 45"
+community: "Navigation Power"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_45
+  - community/Navigation_Power
 ---
 
 # usePowerKNavigationCommands()
@@ -18,4 +18,4 @@ tags:
 - [[usePowerKNavigationCommandsRecord()]] - `calls` [EXTRACTED]
 - [[useProjectsAppPowerKCommands()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_45
+#graphify/code #graphify/EXTRACTED #community/Navigation_Power

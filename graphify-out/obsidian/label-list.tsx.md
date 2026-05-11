@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail/label/label-list.tsx"
+source_file: "components/issues/issue-detail/label/label-list.tsx"
 type: "code"
-community: "Community 140"
+community: "Label Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_140
+  - community/Label_Issue
 ---
 
 # label-list.tsx
@@ -20,4 +20,4 @@ tags:
 - [[label-list-item.tsx]] - `imports_from` [EXTRACTED]
 - [[root.tsx_32]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_140
+#graphify/code #graphify/EXTRACTED #community/Label_Issue

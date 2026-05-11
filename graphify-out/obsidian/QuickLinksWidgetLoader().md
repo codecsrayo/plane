@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/home/widgets/loaders/quick-links.tsx"
+source_file: "components/home/widgets/loaders/quick-links.tsx"
 type: "code"
-community: "Community 245"
+community: "Widget Quick"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_245
+  - community/Widget_Quick
 ---
 
 # QuickLinksWidgetLoader()
@@ -16,4 +16,4 @@ tags:
 - [[loader.tsx]] - `imports` [EXTRACTED]
 - [[quick-links.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_245
+#graphify/code #graphify/EXTRACTED #community/Widget_Quick

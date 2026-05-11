@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/core/shortcut-handler.ts"
+source_file: "components/power-k/core/shortcut-handler.ts"
 type: "code"
-community: "Community 83"
+community: "Shortcut Registry"
 location: "L47"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_83
+  - community/Shortcut_Registry
 ---
 
 # ShortcutHandler
@@ -25,4 +25,4 @@ tags:
 - [[global-shortcuts.tsx]] - `imports` [EXTRACTED]
 - [[shortcut-handler.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_83
+#graphify/code #graphify/EXTRACTED #community/Shortcut_Registry

@@ -1,14 +1,14 @@
 ---
-source_file: "web/core/components/workspace-notifications/index.ts"
+source_file: "components/workspace-notifications/index.ts"
 type: "code"
-community: "Community 804"
+community: "Community 399"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_804
+  - community/Community_399
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_804
+#graphify/code #graphify/EXTRACTED #community/Community_399

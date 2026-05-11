@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project/applied-filters/index.ts"
+source_file: "components/project/applied-filters/index.ts"
 type: "code"
-community: "Applied Filters UI"
+community: "Auth UI"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters_UI
+  - community/Auth_UI
 ---
 
 # index.ts
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_24]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters_UI
+#graphify/code #graphify/EXTRACTED #community/Auth_UI

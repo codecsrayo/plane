@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail-widgets/sub-issues/display-filters.tsx"
+source_file: "components/issues/issue-detail-widgets/sub-issues/display-filters.tsx"
 type: "code"
-community: "Community 122"
+community: "Spreadsheet Filters"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_122
+  - community/Spreadsheet_Filters
 ---
 
 # TSubIssueDisplayFiltersProps
@@ -15,4 +15,4 @@ tags:
 
 - [[display-filters.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_122
+#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Filters

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/sidebar/workspace-menu-header.tsx"
+source_file: "components/workspace/sidebar/workspace-menu-header.tsx"
 type: "code"
-community: "Community 244"
+community: "Workspace Menu"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_244
+  - community/Workspace_Menu
 ---
 
 # workspace-menu-header.tsx
@@ -18,4 +18,4 @@ tags:
 - [[index.ts]] - `imports_from` [EXTRACTED]
 - [[workspace-menu.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_244
+#graphify/code #graphify/EXTRACTED #community/Workspace_Menu

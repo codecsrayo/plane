@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/state-column.tsx"
+source_file: "components/issues/issue-layouts/spreadsheet/columns/state-column.tsx"
 type: "code"
-community: "Spreadsheet Column Components"
+community: "Column Spreadsheet"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Column_Components
+  - community/Column_Spreadsheet
 ---
 
 # SpreadsheetStateColumn
@@ -15,4 +15,4 @@ tags:
 
 - [[state-column.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Column_Components
+#graphify/code #graphify/EXTRACTED #community/Column_Spreadsheet

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/quick-add/button/kanban.tsx"
+source_file: "components/issues/issue-layouts/quick-add/button/kanban.tsx"
 type: "code"
-community: "Community 82"
+community: "Issue Quick"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_82
+  - community/Issue_Quick
 ---
 
 # KanbanQuickAddIssueButton
@@ -15,4 +15,4 @@ tags:
 
 - [[kanban.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_82
+#graphify/code #graphify/EXTRACTED #community/Issue_Quick

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/onboarding/steps/usecase/root.tsx"
+source_file: "components/onboarding/steps/usecase/root.tsx"
 type: "code"
-community: "Community 69"
+community: "Values Setup"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_69
+  - community/Values_Setup
 ---
 
 # defaultValues
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_69]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_69
+#graphify/code #graphify/EXTRACTED #community/Values_Setup

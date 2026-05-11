@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/constants/ai.ts"
+source_file: "constants/ai.ts"
 type: "code"
-community: "Community 179"
+community: "Editor Aiservice"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_179
+  - community/Editor_Aiservice
 ---
 
 # LOADING_TEXTS
@@ -15,4 +15,4 @@ tags:
 
 - [[ai.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_179
+#graphify/code #graphify/EXTRACTED #community/Editor_Aiservice

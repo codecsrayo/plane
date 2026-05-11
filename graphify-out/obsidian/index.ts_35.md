@@ -1,14 +1,14 @@
 ---
-source_file: "web/core/components/workspace/sidebar/help-section/index.ts"
+source_file: "components/workspace/sidebar/help-section/index.ts"
 type: "code"
-community: "Community 770"
+community: "Community 365"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_770
+  - community/Community_365
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_770
+#graphify/code #graphify/EXTRACTED #community/Community_365

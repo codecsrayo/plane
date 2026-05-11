@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/home/widgets/recents/filters.tsx"
+source_file: "components/home/widgets/recents/filters.tsx"
 type: "code"
-community: "Community 183"
+community: "Dashboard Widgets"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_183
+  - community/Dashboard_Widgets
 ---
 
 # filters.tsx
@@ -17,4 +17,4 @@ tags:
 - [[TFiltersDropdown]] - `contains` [EXTRACTED]
 - [[index.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_183
+#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets

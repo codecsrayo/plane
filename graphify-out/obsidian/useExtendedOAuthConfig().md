@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/oauth/extended.tsx"
+source_file: "hooks/oauth/extended.tsx"
 type: "code"
-community: "Community 46"
+community: "Chat Support"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_46
+  - community/Chat_Support
 ---
 
 # useExtendedOAuthConfig()
@@ -17,4 +17,4 @@ tags:
 - [[index.ts_5]] - `imports` [EXTRACTED]
 - [[useOAuthConfig()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_46
+#graphify/code #graphify/EXTRACTED #community/Chat_Support

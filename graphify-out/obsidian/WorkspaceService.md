@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/workspace.service.ts"
+source_file: "services/workspace.service.ts"
 type: "code"
-community: "Community 33"
+community: "Workspace Services"
 location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_33
+  - community/Workspace_Services
 ---
 
 # WorkspaceService
@@ -81,4 +81,4 @@ tags:
 - [[workspace-member.store.ts]] - `imports` [EXTRACTED]
 - [[workspace.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_33
+#graphify/code #graphify/EXTRACTED #community/Workspace_Services

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project/create/project-create-buttons.tsx"
+source_file: "components/project/create/project-create-buttons.tsx"
 type: "code"
-community: "Community 461"
+community: "Project Buttons"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_461
+  - community/Project_Buttons
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[project-create-buttons.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_461
+#graphify/code #graphify/EXTRACTED #community/Project_Buttons

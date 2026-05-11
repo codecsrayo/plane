@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/title-input.tsx"
+source_file: "components/issues/title-input.tsx"
 type: "code"
-community: "Empty States & Inbox"
+community: "Issue Content"
 location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_States__Inbox
+  - community/Issue_Content
 ---
 
 # IssueTitleInput
@@ -18,4 +18,4 @@ tags:
 - [[main-content.tsx_1]] - `imports` [EXTRACTED]
 - [[title-input.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_States\_\_Inbox
+#graphify/code #graphify/EXTRACTED #community/Issue_Content

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/pages/base-page.ts"
+source_file: "store/pages/base-page.ts"
 type: "code"
-community: "Page Actions"
+community: "Badge Editor"
 location: "L77"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Page_Actions
+  - community/Badge_Editor
 ---
 
 # TPageInstance
@@ -43,4 +43,4 @@ tags:
 - [[use-realtime-page-events.tsx]] - `imports` [EXTRACTED]
 - [[version-history.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Page_Actions
+#graphify/code #graphify/EXTRACTED #community/Badge_Editor

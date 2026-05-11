@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project/project-network-icon.tsx"
+source_file: "components/project/project-network-icon.tsx"
 type: "code"
-community: "Community 273"
+community: "Lead Members"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_273
+  - community/Lead_Members
 ---
 
 # ProjectNetworkIcon()
@@ -17,4 +17,4 @@ tags:
 - [[form.tsx_6]] - `imports` [EXTRACTED]
 - [[project-network-icon.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_273
+#graphify/code #graphify/EXTRACTED #community/Lead_Members

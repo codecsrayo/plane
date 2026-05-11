@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/user/user-user-settings.ts"
+source_file: "hooks/store/user/user-user-settings.ts"
 type: "code"
-community: "Authentication UI"
+community: "Workspace Invites"
 location: "L13"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Authentication_UI
+  - community/Workspace_Invites
 ---
 
 # useUserSettings()
@@ -17,4 +17,4 @@ tags:
 - [[WorkspaceJoinInvitesStep()]] - `calls` [INFERRED]
 - [[user-user-settings.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Authentication_UI
+#graphify/code #graphify/INFERRED #community/Workspace_Invites

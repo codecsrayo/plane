@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail-widgets/relations/content.tsx"
+source_file: "components/issues/issue-detail-widgets/relations/content.tsx"
 type: "code"
-community: "Community 121"
+community: "Issue Activity"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_121
+  - community/Issue_Activity
 ---
 
 # content.tsx
@@ -29,4 +29,4 @@ tags:
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 - [[useRelationOperations()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_121
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

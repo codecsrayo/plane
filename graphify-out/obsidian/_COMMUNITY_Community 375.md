@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 375
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[Model_56]] - code - api_rust/src/entities/issue_activities.rs
-- [[Relation_56]] - code - api_rust/src/entities/issue_activities.rs
-- [[issue_activities.rs]] - code - api_rust/src/entities/issue_activities.rs
+- [[index.ts_60]] - code - components/modules/gantt-chart/index.ts
 
 ## Live Query (requires Dataview plugin)
 

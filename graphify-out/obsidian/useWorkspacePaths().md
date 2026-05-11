@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-workspace-paths.ts"
+source_file: "hooks/use-workspace-paths.ts"
 type: "code"
-community: "Community 606"
+community: "Workspace Paths"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_606
+  - community/Workspace_Paths
 ---
 
 # useWorkspacePaths()
@@ -15,4 +15,4 @@ tags:
 
 - [[use-workspace-paths.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_606
+#graphify/code #graphify/EXTRACTED #community/Workspace_Paths

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-issue-layout-store.ts"
+source_file: "hooks/use-issue-layout-store.ts"
 type: "code"
-community: "Issue Filters & Context"
+community: "Issue Layout Roots"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters__Context
+  - community/Issue_Layout_Roots
 ---
 
 # IssuesStoreContext
@@ -22,4 +22,4 @@ tags:
 - [[project-view-layout-root.tsx]] - `imports` [EXTRACTED]
 - [[use-issue-layout-store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters\_\_Context
+#graphify/code #graphify/EXTRACTED #community/Issue_Layout_Roots

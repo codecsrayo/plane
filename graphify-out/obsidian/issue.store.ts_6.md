@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/profile/issue.store.ts"
+source_file: "store/issue/profile/issue.store.ts"
 type: "code"
-community: "Community 118"
+community: "Profile Issues"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_118
+  - community/Profile_Issues
 ---
 
 # issue.store.ts
@@ -28,4 +28,4 @@ tags:
 - [[toApiError()]] - `imports` [EXTRACTED]
 - [[user.service.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_118
+#graphify/code #graphify/EXTRACTED #community/Profile_Issues

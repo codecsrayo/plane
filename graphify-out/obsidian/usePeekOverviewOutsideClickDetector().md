@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-peek-overview-outside-click.tsx"
+source_file: "hooks/use-peek-overview-outside-click.tsx"
 type: "code"
-community: "Empty States & Inbox"
+community: "Peek Overview"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_States__Inbox
+  - community/Peek_Overview
 ---
 
 # usePeekOverviewOutsideClickDetector()
@@ -15,4 +15,4 @@ tags:
 
 - [[use-peek-overview-outside-click.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_States\_\_Inbox
+#graphify/code #graphify/EXTRACTED #community/Peek_Overview

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace-notifications/sidebar/notification-card/options/snooze/root.tsx"
+source_file: "components/workspace-notifications/sidebar/notification-card/options/snooze/root.tsx"
 type: "code"
-community: "Community 243"
+community: "Notification Snooze"
 location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_243
+  - community/Notification_Snooze
 ---
 
 # NotificationItemSnoozeOption
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_47]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_243
+#graphify/code #graphify/EXTRACTED #community/Notification_Snooze

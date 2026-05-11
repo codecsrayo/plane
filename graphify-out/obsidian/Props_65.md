@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/labels/delete-label-modal.tsx"
+source_file: "components/labels/delete-label-modal.tsx"
 type: "code"
-community: "Community 81"
+community: "Label Workspace"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_81
+  - community/Label_Workspace
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[delete-label-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_81
+#graphify/code #graphify/EXTRACTED #community/Label_Workspace

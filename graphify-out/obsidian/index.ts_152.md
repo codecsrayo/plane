@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/editor/summary/index.ts"
+source_file: "components/pages/editor/summary/index.ts"
 type: "code"
-community: "Community 77"
+community: "Navigation Pane"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_77
+  - community/Navigation_Pane
 ---
 
 # index.ts
@@ -16,4 +16,4 @@ tags:
 - [[editor-body.tsx]] - `imports_from` [EXTRACTED]
 - [[outline.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_77
+#graphify/code #graphify/EXTRACTED #community/Navigation_Pane

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/ui/modal/context-indicator.tsx"
+source_file: "components/power-k/ui/modal/context-indicator.tsx"
 type: "code"
-community: "Community 202"
+community: "Context Power"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_202
+  - community/Context_Power
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[context-indicator.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_202
+#graphify/code #graphify/EXTRACTED #community/Context_Power

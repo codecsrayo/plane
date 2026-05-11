@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/analytics/work-items/customized-insights.tsx"
+source_file: "components/analytics/work-items/customized-insights.tsx"
 type: "code"
-community: "Community 217"
+community: "Select Axis"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_217
+  - community/Select_Axis
 ---
 
 # customized-insights.tsx
@@ -21,4 +21,4 @@ tags:
 - [[priority-chart.tsx]] - `imports_from` [EXTRACTED]
 - [[root.tsx_89]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_217
+#graphify/code #graphify/EXTRACTED #community/Select_Axis

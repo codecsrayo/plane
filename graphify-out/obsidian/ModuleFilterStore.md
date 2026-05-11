@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/module_filter.store.ts"
+source_file: "store/module_filter.store.ts"
 type: "code"
-community: "Community 87"
+community: "Storage Display"
 location: "L43"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_87
+  - community/Storage_Display
 ---
 
 # ModuleFilterStore
@@ -20,4 +20,4 @@ tags:
 - [[module_filter.store.ts]] - `contains` [EXTRACTED]
 - [[root.store.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_87
+#graphify/code #graphify/EXTRACTED #community/Storage_Display

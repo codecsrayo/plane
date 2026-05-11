@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-issue-layout-store.ts"
+source_file: "hooks/use-issue-layout-store.ts"
 type: "code"
-community: "Community 38"
+community: "Spreadsheet Columns"
 location: "L45"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_38
+  - community/Spreadsheet_Columns
 ---
 
 # useIssuesStore()
@@ -24,4 +24,4 @@ tags:
 - [[useIssueStoreType()]] - `calls` [EXTRACTED]
 - [[useIssues()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_38
+#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Columns

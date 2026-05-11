@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/editor/header/index.ts"
+source_file: "components/pages/editor/header/index.ts"
 type: "code"
-community: "Community 78"
+community: "Issue Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_78
+  - community/Issue_Filters
 ---
 
 # index.ts
@@ -15,4 +15,4 @@ tags:
 
 - [[editor-body.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_78
+#graphify/code #graphify/EXTRACTED #community/Issue_Filters

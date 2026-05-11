@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/member/project/base-project-member.store.ts"
+source_file: "store/member/project/base-project-member.store.ts"
 type: "code"
-community: "Community 230"
+community: "Member Sort"
 location: "L142"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_230
+  - community/Member_Sort
 ---
 
 # projectMemberIds()
@@ -16,4 +16,4 @@ tags:
 - [[base-project-member.store.ts]] - `contains` [EXTRACTED]
 - [[sortProjectMembers()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_230
+#graphify/code #graphify/EXTRACTED #community/Member_Sort

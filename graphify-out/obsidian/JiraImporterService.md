@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/integrations/jira.service.ts"
+source_file: "services/integrations/jira.service.ts"
 type: "code"
-community: "Community 298"
+community: "API Services"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_298
+  - community/API_Services
 ---
 
 # JiraImporterService
@@ -18,4 +18,4 @@ tags:
 - [[.getJiraProjectInfo()]] - `method` [EXTRACTED]
 - [[jira.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_298
+#graphify/code #graphify/EXTRACTED #community/API_Services

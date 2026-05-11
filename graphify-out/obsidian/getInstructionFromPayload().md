@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/home/widgets/manage/widget.helpers.ts"
+source_file: "components/home/widgets/manage/widget.helpers.ts"
 type: "code"
-community: "Community 119"
+community: "Dashboard Widgets"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_119
+  - community/Dashboard_Widgets
 ---
 
 # getInstructionFromPayload()
@@ -17,4 +17,4 @@ tags:
 - [[widget-list.tsx]] - `imports` [EXTRACTED]
 - [[widget.helpers.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_119
+#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets

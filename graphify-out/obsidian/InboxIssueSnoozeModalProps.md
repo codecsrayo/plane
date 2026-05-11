@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/inbox/modals/snooze-issue-modal.tsx"
+source_file: "components/inbox/modals/snooze-issue-modal.tsx"
 type: "code"
-community: "Applied Filters UI"
+community: "Issue Inbox"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters_UI
+  - community/Issue_Inbox
 ---
 
 # InboxIssueSnoozeModalProps
@@ -15,4 +15,4 @@ tags:
 
 - [[snooze-issue-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters_UI
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

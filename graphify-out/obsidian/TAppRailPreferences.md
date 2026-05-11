@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/types/navigation-preferences.ts"
+source_file: "types/navigation-preferences.ts"
 type: "code"
-community: "Community 95"
+community: "Navigation Preferences"
 location: "L75"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_95
+  - community/Navigation_Preferences
 ---
 
 # TAppRailPreferences
@@ -16,4 +16,4 @@ tags:
 - [[navigation-preferences.ts]] - `contains` [EXTRACTED]
 - [[use-navigation-preferences.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_95
+#graphify/code #graphify/EXTRACTED #community/Navigation_Preferences

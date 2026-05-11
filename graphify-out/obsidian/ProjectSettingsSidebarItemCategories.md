@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/settings/project/sidebar/item-categories.tsx"
+source_file: "components/settings/project/sidebar/item-categories.tsx"
 type: "code"
-community: "Community 68"
+community: "Sidebar Nav"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_68
+  - community/Sidebar_Nav
 ---
 
 # ProjectSettingsSidebarItemCategories
@@ -16,4 +16,4 @@ tags:
 - [[item-categories.tsx_2]] - `contains` [EXTRACTED]
 - [[root.tsx_23]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_68
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Nav

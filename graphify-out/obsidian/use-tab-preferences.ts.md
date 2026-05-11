@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/navigation/use-tab-preferences.ts"
+source_file: "components/navigation/use-tab-preferences.ts"
 type: "code"
-community: "Community 132"
+community: "Switcher Project"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_132
+  - community/Switcher_Project
 ---
 
 # use-tab-preferences.ts
@@ -25,4 +25,4 @@ tags:
 - [[useMember()]] - `imports` [EXTRACTED]
 - [[useTabPreferences()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_132
+#graphify/code #graphify/EXTRACTED #community/Switcher_Project

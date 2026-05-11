@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/views/default-view-quick-action.tsx"
+source_file: "components/workspace/views/default-view-quick-action.tsx"
 type: "code"
-community: "Community 96"
+community: "Global Quick"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_96
+  - community/Global_Quick
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[default-view-quick-action.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_96
+#graphify/code #graphify/EXTRACTED #community/Global_Quick

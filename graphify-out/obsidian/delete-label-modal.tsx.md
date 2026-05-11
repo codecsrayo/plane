@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/labels/delete-label-modal.tsx"
+source_file: "components/labels/delete-label-modal.tsx"
 type: "code"
-community: "Community 81"
+community: "Label Workspace"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_81
+  - community/Label_Workspace
 ---
 
 # delete-label-modal.tsx
@@ -20,4 +20,4 @@ tags:
 - [[use-label.ts]] - `imports_from` [EXTRACTED]
 - [[useLabel()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_81
+#graphify/code #graphify/EXTRACTED #community/Label_Workspace

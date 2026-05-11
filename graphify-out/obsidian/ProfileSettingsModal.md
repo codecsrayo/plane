@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/settings/profile/modal.tsx"
+source_file: "components/settings/profile/modal.tsx"
 type: "code"
-community: "Empty State Components"
+community: "Cycle Details"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_State_Components
+  - community/Cycle_Details
 ---
 
 # ProfileSettingsModal
@@ -15,4 +15,4 @@ tags:
 
 - [[modal.tsx_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_State_Components
+#graphify/code #graphify/EXTRACTED #community/Cycle_Details

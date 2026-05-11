@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/issue/issue_archive.service.ts"
+source_file: "services/issue/issue_archive.service.ts"
 type: "code"
-community: "Git Integrations"
+community: "Issue Archive"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Git_Integrations
+  - community/Issue_Archive
 ---
 
 # issue_archive.service.ts
@@ -17,4 +17,4 @@ tags:
 - [[IssueArchiveService]] - `contains` [EXTRACTED]
 - [[api.service.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Git_Integrations
+#graphify/code #graphify/EXTRACTED #community/Issue_Archive

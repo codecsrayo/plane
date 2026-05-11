@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/integration/github/pr-state-mapping.tsx"
+source_file: "components/integration/github/pr-state-mapping.tsx"
 type: "code"
-community: "Community 39"
+community: "Calendar Blocks"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_39
+  - community/Calendar_Blocks
 ---
 
 # pr-state-mapping.tsx
@@ -24,4 +24,4 @@ tags:
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[useProjectState()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_39
+#graphify/code #graphify/EXTRACTED #community/Calendar_Blocks

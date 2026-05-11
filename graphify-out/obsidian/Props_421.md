@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/base-layouts/gantt/sidebar.tsx"
+source_file: "components/base-layouts/gantt/sidebar.tsx"
 type: "code"
-community: "Community 176"
+community: "Gantt Sidebar"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_176
+  - community/Gantt_Sidebar
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[sidebar.tsx_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_176
+#graphify/code #graphify/EXTRACTED #community/Gantt_Sidebar

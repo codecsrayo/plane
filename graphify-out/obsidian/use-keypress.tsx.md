@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-keypress.tsx"
+source_file: "hooks/use-keypress.tsx"
 type: "code"
-community: "Community 169"
+community: "Issue Inbox"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_169
+  - community/Issue_Inbox
 ---
 
 # use-keypress.tsx
@@ -24,4 +24,4 @@ tags:
 - [[useKeypress()]] - `contains` [EXTRACTED]
 - [[view.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_169
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

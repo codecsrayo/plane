@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/header/offline-badge.tsx"
+source_file: "components/pages/header/offline-badge.tsx"
 type: "code"
-community: "Page Actions"
+community: "Badge Editor"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Page_Actions
+  - community/Badge_Editor
 ---
 
 # offline-badge.tsx
@@ -20,4 +20,4 @@ tags:
 - [[base-page.ts]] - `imports_from` [EXTRACTED]
 - [[use-online-status.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Page_Actions
+#graphify/code #graphify/EXTRACTED #community/Badge_Editor

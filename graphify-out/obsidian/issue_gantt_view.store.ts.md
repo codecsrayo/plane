@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/issue_gantt_view.store.ts"
+source_file: "store/issue/issue_gantt_view.store.ts"
 type: "code"
-community: "Community 153"
+community: "Gantt Current"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_153
+  - community/Gantt_Current
 ---
 
 # issue_gantt_view.store.ts
@@ -21,4 +21,4 @@ tags:
 - [[index.ts_42]] - `imports_from` [EXTRACTED]
 - [[newCurrentViewData]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_153
+#graphify/code #graphify/EXTRACTED #community/Gantt_Current

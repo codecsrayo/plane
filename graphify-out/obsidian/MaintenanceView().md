@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/instance/maintenance-view.tsx"
+source_file: "components/instance/maintenance-view.tsx"
 type: "code"
-community: "Community 199"
+community: "Authorized Maintenance"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_199
+  - community/Authorized_Maintenance
 ---
 
 # MaintenanceView()
@@ -15,4 +15,4 @@ tags:
 
 - [[maintenance-view.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_199
+#graphify/code #graphify/EXTRACTED #community/Authorized_Maintenance

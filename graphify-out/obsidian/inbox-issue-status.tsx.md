@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/inbox/inbox-issue-status.tsx"
+source_file: "components/inbox/inbox-issue-status.tsx"
 type: "code"
-community: "Community 98"
+community: "Issue Inbox"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_98
+  - community/Issue_Inbox
 ---
 
 # inbox-issue-status.tsx
@@ -24,4 +24,4 @@ tags:
 - [[inbox-list-item.tsx]] - `imports_from` [EXTRACTED]
 - [[inbox-status-icon.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_98
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/views/form.tsx"
+source_file: "components/workspace/views/form.tsx"
 type: "code"
-community: "Issue Filters & Context"
+community: "Issue Layout Roots"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters__Context
+  - community/Issue_Layout_Roots
 ---
 
 # Props
@@ -16,4 +16,4 @@ tags:
 - [[form.tsx]] - `contains` [EXTRACTED]
 - [[form.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters\_\_Context
+#graphify/code #graphify/EXTRACTED #community/Issue_Layout_Roots

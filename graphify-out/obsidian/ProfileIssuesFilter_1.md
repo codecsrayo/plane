@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/profile/profile-issues-filter.tsx"
+source_file: "components/profile/profile-issues-filter.tsx"
 type: "code"
-community: "Community 117"
+community: "Filter Controls"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_117
+  - community/Filter_Controls
 ---
 
 # ProfileIssuesFilter
@@ -15,4 +15,4 @@ tags:
 
 - [[profile-issues-filter.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_117
+#graphify/code #graphify/EXTRACTED #community/Filter_Controls

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/workspace/home.ts"
+source_file: "store/workspace/home.ts"
 type: "code"
-community: "Community 213"
+community: "Link Home"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_213
+  - community/Link_Home
 ---
 
 # home.ts
@@ -28,4 +28,4 @@ tags:
 - [[use-home.ts]] - `imports_from` [EXTRACTED]
 - [[workspace.service.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_213
+#graphify/code #graphify/EXTRACTED #community/Link_Home

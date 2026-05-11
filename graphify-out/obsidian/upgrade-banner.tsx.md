@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/bulk-operations/upgrade-banner.tsx"
+source_file: "components/issues/bulk-operations/upgrade-banner.tsx"
 type: "code"
-community: "Community 481"
+community: "Upgrade Bulk"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_481
+  - community/Upgrade_Bulk
 ---
 
 # upgrade-banner.tsx
@@ -16,4 +16,4 @@ tags:
 - [[BulkOperationsUpgradeBanner()]] - `contains` [EXTRACTED]
 - [[Props_290]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_481
+#graphify/code #graphify/EXTRACTED #community/Upgrade_Bulk

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/common/layout/sidebar/property-list-item.tsx"
+source_file: "components/common/layout/sidebar/property-list-item.tsx"
 type: "code"
-community: "Spreadsheet Column Components"
+community: "Issue Properties"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Column_Components
+  - community/Issue_Properties
 ---
 
 # TSidebarPropertyListItemProps
@@ -15,4 +15,4 @@ tags:
 
 - [[property-list-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Column_Components
+#graphify/code #graphify/EXTRACTED #community/Issue_Properties

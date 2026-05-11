@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/editor/lite-text/lite-toolbar.tsx"
+source_file: "components/editor/lite-text/lite-toolbar.tsx"
 type: "code"
-community: "Editor Styles"
+community: "Toolbar Lite"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Styles
+  - community/Toolbar_Lite
 ---
 
 # lite-toolbar.tsx
@@ -20,4 +20,4 @@ tags:
 - [[editor.ts]] - `imports_from` [EXTRACTED]
 - [[editor.tsx_3]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Styles
+#graphify/code #graphify/EXTRACTED #community/Toolbar_Lite

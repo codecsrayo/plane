@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project/dropdowns/filters/root.tsx"
+source_file: "components/project/dropdowns/filters/root.tsx"
 type: "code"
-community: "Community 42"
+community: "Lead Members"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_42
+  - community/Lead_Members
 ---
 
 # root.tsx
@@ -25,4 +25,4 @@ tags:
 - [[lead.tsx_1]] - `imports_from` [EXTRACTED]
 - [[members.tsx_3]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_42
+#graphify/code #graphify/EXTRACTED #community/Lead_Members

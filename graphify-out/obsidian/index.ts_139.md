@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/onboarding/steps/index.ts"
+source_file: "components/onboarding/steps/index.ts"
 type: "code"
-community: "Community 113"
+community: "Invite Onboarding"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_113
+  - community/Invite_Onboarding
 ---
 
 # index.ts
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_63]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_113
+#graphify/code #graphify/EXTRACTED #community/Invite_Onboarding

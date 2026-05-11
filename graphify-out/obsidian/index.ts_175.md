@@ -1,14 +1,14 @@
 ---
-source_file: "web/core/components/account/auth-forms/index.ts"
+source_file: "components/account/auth-forms/index.ts"
 type: "code"
-community: "Community 823"
+community: "Community 418"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_823
+  - community/Community_418
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_823
+#graphify/code #graphify/EXTRACTED #community/Community_418

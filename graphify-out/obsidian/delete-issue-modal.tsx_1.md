@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/inbox/modals/delete-issue-modal.tsx"
+source_file: "components/inbox/modals/delete-issue-modal.tsx"
 type: "code"
-community: "Applied Filters UI"
+community: "Issue Inbox"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters_UI
+  - community/Issue_Inbox
 ---
 
 # delete-issue-modal.tsx
@@ -21,4 +21,4 @@ tags:
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters_UI
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

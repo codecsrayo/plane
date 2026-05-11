@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/project/project-state.service.ts"
+source_file: "services/project/project-state.service.ts"
 type: "code"
-community: "Community 146"
+community: "State Project"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_146
+  - community/State_Project
 ---
 
 # ProjectStateService
@@ -26,4 +26,4 @@ tags:
 - [[project-state.service.ts]] - `contains` [EXTRACTED]
 - [[state.store.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_146
+#graphify/code #graphify/EXTRACTED #community/State_Project

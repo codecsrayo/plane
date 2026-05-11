@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/exporter/column.tsx"
+source_file: "components/exporter/column.tsx"
 type: "code"
-community: "Community 100"
+community: "Guide Prev"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_100
+  - community/Guide_Prev
 ---
 
 # RowData
@@ -15,4 +15,4 @@ tags:
 
 - [[column.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_100
+#graphify/code #graphify/EXTRACTED #community/Guide_Prev

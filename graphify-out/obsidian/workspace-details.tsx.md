@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/settings/workspace-details.tsx"
+source_file: "components/workspace/settings/workspace-details.tsx"
 type: "code"
-community: "Authentication UI"
+community: "Workspace Timezone"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Authentication_UI
+  - community/Workspace_Timezone
 ---
 
 # workspace-details.tsx
@@ -23,4 +23,4 @@ tags:
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 - [[workspace-image-upload-modal.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Authentication_UI
+#graphify/code #graphify/EXTRACTED #community/Workspace_Timezone

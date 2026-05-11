@@ -1,5 +1,5 @@
 ---
-source_file: "web/core/hooks/store/use-module.ts"
+source_file: "hooks/store/use-module.ts"
 type: "code"
 community: "Module Analytics"
 location: "L13"

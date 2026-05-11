@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/attachment/delete-attachment-modal.tsx"
+source_file: "components/issues/attachment/delete-attachment-modal.tsx"
 type: "code"
-community: "Community 31"
+community: "Issue Attachments"
 location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_31
+  - community/Issue_Attachments
 ---
 
 # IssueAttachmentDeleteModal
@@ -17,4 +17,4 @@ tags:
 - [[attachment-item-list.tsx]] - `imports` [EXTRACTED]
 - [[delete-attachment-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_31
+#graphify/code #graphify/EXTRACTED #community/Issue_Attachments

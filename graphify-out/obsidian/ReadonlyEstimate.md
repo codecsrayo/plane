@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/readonly/estimate.tsx"
+source_file: "components/readonly/estimate.tsx"
 type: "code"
-community: "Community 250"
+community: "Estimate Disable"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_250
+  - community/Estimate_Disable
 ---
 
 # ReadonlyEstimate
@@ -15,4 +15,4 @@ tags:
 
 - [[estimate.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_250
+#graphify/code #graphify/EXTRACTED #community/Estimate_Disable

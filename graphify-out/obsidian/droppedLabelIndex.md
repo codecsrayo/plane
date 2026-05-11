@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/label.store.ts"
+source_file: "store/label.store.ts"
 type: "code"
-community: "Project Estimates"
+community: "Project Root Store"
 location: "L266"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Estimates
+  - community/Project_Root_Store
 ---
 
 # droppedLabelIndex
@@ -15,4 +15,4 @@ tags:
 
 - [[label.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Estimates
+#graphify/code #graphify/EXTRACTED #community/Project_Root_Store

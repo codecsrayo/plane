@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project/form-loader.tsx"
+source_file: "components/project/form-loader.tsx"
 type: "code"
-community: "Community 638"
+community: "Loader Project"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_638
+  - community/Loader_Project
 ---
 
 # form-loader.tsx
@@ -15,4 +15,4 @@ tags:
 
 - [[ProjectDetailsFormLoader()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_638
+#graphify/code #graphify/EXTRACTED #community/Loader_Project

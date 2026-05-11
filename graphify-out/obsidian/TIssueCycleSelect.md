@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail/cycle-select.tsx"
+source_file: "components/issues/issue-detail/cycle-select.tsx"
 type: "code"
-community: "Spreadsheet Column Components"
+community: "Issue Properties"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Column_Components
+  - community/Issue_Properties
 ---
 
 # TIssueCycleSelect
@@ -15,4 +15,4 @@ tags:
 
 - [[cycle-select.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Column_Components
+#graphify/code #graphify/EXTRACTED #community/Issue_Properties

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace-notifications/notification-app-sidebar-option.tsx"
+source_file: "components/workspace-notifications/notification-app-sidebar-option.tsx"
 type: "code"
-community: "Community 198"
+community: "Notification Option"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_198
+  - community/Notification_Option
 ---
 
 # notification-app-sidebar-option.tsx
@@ -20,4 +20,4 @@ tags:
 - [[index.ts_2]] - `imports_from` [EXTRACTED]
 - [[user-menu-item.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_198
+#graphify/code #graphify/EXTRACTED #community/Notification_Option

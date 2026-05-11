@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/instance.service.ts"
+source_file: "services/instance.service.ts"
 type: "code"
-community: "Project Estimates"
+community: "Chat Support"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Estimates
+  - community/Chat_Support
 ---
 
 # instance.service.ts
@@ -18,4 +18,4 @@ tags:
 - [[instance.store.ts]] - `imports_from` [EXTRACTED]
 - [[toApiError()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Estimates
+#graphify/code #graphify/EXTRACTED #community/Chat_Support

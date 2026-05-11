@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/settings/invitations-list-item.tsx"
+source_file: "components/workspace/settings/invitations-list-item.tsx"
 type: "code"
-community: "Community 44"
+community: "Member Settings"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_44
+  - community/Member_Settings
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[invitations-list-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_44
+#graphify/code #graphify/EXTRACTED #community/Member_Settings

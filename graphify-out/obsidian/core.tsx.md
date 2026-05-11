@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/oauth/core.tsx"
+source_file: "hooks/oauth/core.tsx"
 type: "code"
-community: "Authentication UI"
+community: "Chat Support"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Authentication_UI
+  - community/Chat_Support
 ---
 
 # core.tsx
@@ -20,4 +20,4 @@ tags:
 - [[useInstance()]] - `imports` [EXTRACTED]
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Authentication_UI
+#graphify/code #graphify/EXTRACTED #community/Chat_Support

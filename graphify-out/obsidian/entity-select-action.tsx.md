@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/multiple-select/entity-select-action.tsx"
+source_file: "components/core/multiple-select/entity-select-action.tsx"
 type: "code"
-community: "Active Cycle Stats"
+community: "Multi Select Actions"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Cycle_Stats
+  - community/Multi_Select_Actions
 ---
 
 # entity-select-action.tsx
@@ -18,4 +18,4 @@ tags:
 - [[TSelectionHelper]] - `imports` [EXTRACTED]
 - [[use-multiple-select.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats
+#graphify/code #graphify/EXTRACTED #community/Multi_Select_Actions

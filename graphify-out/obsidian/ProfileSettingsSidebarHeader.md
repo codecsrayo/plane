@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/settings/profile/sidebar/header.tsx"
+source_file: "components/settings/profile/sidebar/header.tsx"
 type: "code"
-community: "Community 68"
+community: "Sidebar Nav"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_68
+  - community/Sidebar_Nav
 ---
 
 # ProfileSettingsSidebarHeader
@@ -16,4 +16,4 @@ tags:
 - [[header.tsx_4]] - `contains` [EXTRACTED]
 - [[root.tsx_17]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_68
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Nav

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project/project-feature-update.tsx"
+source_file: "components/project/project-feature-update.tsx"
 type: "code"
-community: "Community 249"
+community: "Project Feature"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_249
+  - community/Project_Feature
 ---
 
 # project-feature-update.tsx
@@ -20,4 +20,4 @@ tags:
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_249
+#graphify/code #graphify/EXTRACTED #community/Project_Feature

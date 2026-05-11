@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/gantt-chart/views/helpers.ts"
+source_file: "components/gantt-chart/views/helpers.ts"
 type: "code"
-community: "Community 59"
+community: "Calendar Helpers"
 location: "L55"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_59
+  - community/Calendar_Helpers
 ---
 
 # getNumberOfDaysBetweenTwoDates()
@@ -22,4 +22,4 @@ tags:
 - [[quarter-view.ts]] - `imports` [EXTRACTED]
 - [[week-view.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_59
+#graphify/code #graphify/EXTRACTED #community/Calendar_Helpers

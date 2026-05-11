@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/description-versions/modal.tsx"
+source_file: "components/core/description-versions/modal.tsx"
 type: "code"
-community: "Member Filters & Description"
+community: "Description Dropdown"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Filters__Description
+  - community/Description_Dropdown
 ---
 
 # modal.tsx
@@ -22,4 +22,4 @@ tags:
 - [[useMember()]] - `imports` [EXTRACTED]
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Filters\_\_Description
+#graphify/code #graphify/EXTRACTED #community/Description_Dropdown

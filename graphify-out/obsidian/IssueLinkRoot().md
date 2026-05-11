@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail/links/root.tsx"
+source_file: "components/issues/issue-detail/links/root.tsx"
 type: "code"
-community: "Issue Activity Tracking"
+community: "Issue Activity"
 location: "L34"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity_Tracking
+  - community/Issue_Activity
 ---
 
 # IssueLinkRoot()
@@ -16,4 +16,4 @@ tags:
 - [[root.tsx_34]] - `contains` [EXTRACTED]
 - [[useIssueDetail()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Tracking
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

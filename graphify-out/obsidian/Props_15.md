@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/views/view-list-item.tsx"
+source_file: "components/workspace/views/view-list-item.tsx"
 type: "code"
-community: "Community 96"
+community: "Project Quick"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_96
+  - community/Project_Quick
 ---
 
 # Props
@@ -16,4 +16,4 @@ tags:
 - [[view-list-item.tsx]] - `contains` [EXTRACTED]
 - [[view-list-item.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_96
+#graphify/code #graphify/EXTRACTED #community/Project_Quick

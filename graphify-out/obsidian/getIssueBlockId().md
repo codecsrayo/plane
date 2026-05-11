@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/utils.tsx"
+source_file: "components/issues/issue-layouts/utils.tsx"
 type: "code"
-community: "Active Cycle Stats"
+community: "Kanban Groups"
 location: "L496"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Cycle_Stats
+  - community/Kanban_Groups
 ---
 
 # getIssueBlockId()
@@ -19,4 +19,4 @@ tags:
 - [[list-group.tsx]] - `imports` [EXTRACTED]
 - [[utils.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats
+#graphify/code #graphify/EXTRACTED #community/Kanban_Groups

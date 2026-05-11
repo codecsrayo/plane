@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/common/logo-spinner.tsx"
+source_file: "components/common/logo-spinner.tsx"
 type: "code"
-community: "Authentication UI"
+community: "Wrapper Workspace"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Authentication_UI
+  - community/Wrapper_Workspace
 ---
 
 # LogoSpinner()
@@ -21,4 +21,4 @@ tags:
 - [[root.tsx_44]] - `imports` [EXTRACTED]
 - [[workspace-wrapper.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Authentication_UI
+#graphify/code #graphify/EXTRACTED #community/Wrapper_Workspace

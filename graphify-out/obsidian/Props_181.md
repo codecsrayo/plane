@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/delete-issue-modal.tsx"
+source_file: "components/issues/delete-issue-modal.tsx"
 type: "code"
-community: "Community 55"
+community: "Project Archives"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_55
+  - community/Project_Archives
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[delete-issue-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_55
+#graphify/code #graphify/EXTRACTED #community/Project_Archives

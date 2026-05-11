@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/dropdowns/module/base.tsx"
+source_file: "components/dropdowns/module/base.tsx"
 type: "code"
-community: "Layout System"
+community: "Issue Properties"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Layout_System
+  - community/Issue_Properties
 ---
 
 # TModuleDropdownBaseProps
@@ -15,4 +15,4 @@ tags:
 
 - [[base.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Layout_System
+#graphify/code #graphify/EXTRACTED #community/Issue_Properties

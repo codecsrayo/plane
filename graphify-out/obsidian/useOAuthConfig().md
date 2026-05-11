@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/oauth/index.ts"
+source_file: "hooks/oauth/index.ts"
 type: "code"
-community: "Community 46"
+community: "Chat Support"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_46
+  - community/Chat_Support
 ---
 
 # useOAuthConfig()
@@ -18,4 +18,4 @@ tags:
 - [[useCoreOAuthConfig()]] - `calls` [EXTRACTED]
 - [[useExtendedOAuthConfig()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_46
+#graphify/code #graphify/EXTRACTED #community/Chat_Support

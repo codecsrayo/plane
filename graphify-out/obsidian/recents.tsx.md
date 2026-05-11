@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/home/widgets/empty-states/recents.tsx"
+source_file: "components/home/widgets/empty-states/recents.tsx"
 type: "code"
-community: "Community 441"
+community: "Recents Display"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_441
+  - community/Recents_Display
 ---
 
 # recents.tsx
@@ -16,4 +16,4 @@ tags:
 - [[RecentsEmptyState()]] - `contains` [EXTRACTED]
 - [[getDisplayContent()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_441
+#graphify/code #graphify/EXTRACTED #community/Recents_Display

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-modal/context/issue-modal-context.tsx"
+source_file: "components/issues/issue-modal/context/issue-modal-context.tsx"
 type: "code"
-community: "Community 224"
+community: "Issue Context"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_224
+  - community/Issue_Context
 ---
 
 # TCreateUpdatePropertyValuesProps
@@ -15,4 +15,4 @@ tags:
 
 - [[issue-modal-context.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_224
+#graphify/code #graphify/EXTRACTED #community/Issue_Context

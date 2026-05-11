@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/use-member.ts"
+source_file: "hooks/store/use-member.ts"
 type: "code"
-community: "Member Filters & Description"
+community: "Issue Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Filters__Description
+  - community/Issue_Filters
 ---
 
 # use-member.ts
@@ -96,4 +96,4 @@ tags:
 - [[workspace-level.tsx]] - `imports_from` [EXTRACTED]
 - [[workspace-wrapper.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Filters\_\_Description
+#graphify/code #graphify/EXTRACTED #community/Issue_Filters

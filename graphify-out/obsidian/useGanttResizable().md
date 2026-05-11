@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/gantt-chart/helpers/blockResizables/use-gantt-resizable.ts"
+source_file: "components/gantt-chart/helpers/blockResizables/use-gantt-resizable.ts"
 type: "code"
-community: "Community 90"
+community: "Gantt Chart"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_90
+  - community/Gantt_Chart
 ---
 
 # useGanttResizable()
@@ -17,4 +17,4 @@ tags:
 - [[use-gantt-resizable.ts]] - `contains` [EXTRACTED]
 - [[useTimeLineChartStore()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_90
+#graphify/code #graphify/EXTRACTED #community/Gantt_Chart

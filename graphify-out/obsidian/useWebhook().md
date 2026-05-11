@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/use-webhook.ts"
+source_file: "hooks/store/use-webhook.ts"
 type: "code"
-community: "Community 172"
+community: "Webhook Webhooks"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_172
+  - community/Webhook_Webhooks
 ---
 
 # useWebhook()
@@ -21,4 +21,4 @@ tags:
 - [[webhooks-list-item.tsx]] - `imports` [EXTRACTED]
 - [[webhooks-list.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_172
+#graphify/code #graphify/EXTRACTED #community/Webhook_Webhooks

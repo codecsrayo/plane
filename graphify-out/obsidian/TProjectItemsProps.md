@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/sidebar/project-navigation.tsx"
+source_file: "components/workspace/sidebar/project-navigation.tsx"
 type: "code"
-community: "Community 63"
+community: "Sidebar Menu"
 location: "L35"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_63
+  - community/Sidebar_Menu
 ---
 
 # TProjectItemsProps
@@ -15,4 +15,4 @@ tags:
 
 - [[project-navigation.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_63
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Menu

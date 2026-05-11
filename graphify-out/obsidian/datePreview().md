@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/gantt-chart/data/index.ts"
+source_file: "components/gantt-chart/data/index.ts"
 type: "code"
-community: "Community 153"
+community: "Gantt Current"
 location: "L65"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_153
+  - community/Gantt_Current
 ---
 
 # datePreview()
@@ -17,4 +17,4 @@ tags:
 - [[index.ts_46]] - `contains` [EXTRACTED]
 - [[timePreview()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_153
+#graphify/code #graphify/EXTRACTED #community/Gantt_Current

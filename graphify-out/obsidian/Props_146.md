@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project/settings/helper.tsx"
+source_file: "components/project/settings/helper.tsx"
 type: "code"
-community: "Community 204"
+community: "Project Settings"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_204
+  - community/Project_Settings
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[helper.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_204
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

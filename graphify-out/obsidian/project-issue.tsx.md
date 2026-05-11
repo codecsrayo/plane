@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/quick-action-dropdowns/project-issue.tsx"
+source_file: "components/issues/issue-layouts/quick-action-dropdowns/project-issue.tsx"
 type: "code"
-community: "Community 55"
+community: "Project Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_55
+  - community/Project_Archives
 ---
 
 # project-issue.tsx
@@ -31,4 +31,4 @@ tags:
 - [[useProjectIssueMenuItems()]] - `imports` [EXTRACTED]
 - [[useProjectState()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_55
+#graphify/code #graphify/EXTRACTED #community/Project_Archives

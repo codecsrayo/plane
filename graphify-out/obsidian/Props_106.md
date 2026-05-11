@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/settings/heading.tsx"
+source_file: "components/settings/heading.tsx"
 type: "code"
-community: "Community 204"
+community: "Project Settings"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_204
+  - community/Project_Settings
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[heading.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_204
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

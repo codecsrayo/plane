@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project/header.tsx"
+source_file: "components/project/header.tsx"
 type: "code"
-community: "Community 52"
+community: "Auth UI"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_52
+  - community/Auth_UI
 ---
 
 # ProjectsBaseHeader
@@ -15,4 +15,4 @@ tags:
 
 - [[header.tsx_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_52
+#graphify/code #graphify/EXTRACTED #community/Auth_UI

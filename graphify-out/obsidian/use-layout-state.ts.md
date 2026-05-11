@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/base-layouts/hooks/use-layout-state.ts"
+source_file: "components/base-layouts/hooks/use-layout-state.ts"
 type: "code"
-community: "Community 106"
+community: "Group Drop"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_106
+  - community/Group_Drop
 ---
 
 # use-layout-state.ts
@@ -18,4 +18,4 @@ tags:
 - [[layout.tsx_3]] - `imports_from` [EXTRACTED]
 - [[useLayoutState()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_106
+#graphify/code #graphify/EXTRACTED #community/Group_Drop

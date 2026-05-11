@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/pages/project-page.store.ts"
+source_file: "store/pages/project-page.store.ts"
 type: "code"
-community: "Community 49"
+community: "Page Permissions"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_49
+  - community/Page_Permissions
 ---
 
 # TError
@@ -15,4 +15,4 @@ tags:
 
 - [[project-page.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_49
+#graphify/code #graphify/EXTRACTED #community/Page_Permissions

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/settings/profile/content/root.tsx"
+source_file: "components/settings/profile/content/root.tsx"
 type: "code"
-community: "Community 291"
+community: "Profile Settings"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_291
+  - community/Profile_Settings
 ---
 
 # ProfileSettingsContent
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_18]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_291
+#graphify/code #graphify/EXTRACTED #community/Profile_Settings

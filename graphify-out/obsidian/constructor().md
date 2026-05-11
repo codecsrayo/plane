@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/base-command-palette.store.ts"
+source_file: "store/base-command-palette.store.ts"
 type: "code"
-community: "Community 92"
+community: "Workspace Draft"
 location: "L74"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_92
+  - community/Workspace_Draft
 ---
 
 # constructor()
@@ -15,4 +15,4 @@ tags:
 
 - [[base-command-palette.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_92
+#graphify/code #graphify/EXTRACTED #community/Workspace_Draft

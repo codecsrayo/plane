@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/web-hooks/create-webhook-modal.tsx"
+source_file: "components/web-hooks/create-webhook-modal.tsx"
 type: "code"
-community: "Community 247"
+community: "Webhook Generated"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_247
+  - community/Webhook_Generated
 ---
 
 # create-webhook-modal.tsx
@@ -22,4 +22,4 @@ tags:
 - [[use-keypress.tsx]] - `imports_from` [EXTRACTED]
 - [[utils.ts_4]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_247
+#graphify/code #graphify/EXTRACTED #community/Webhook_Generated

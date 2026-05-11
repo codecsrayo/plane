@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/editor/header/root.tsx"
+source_file: "components/pages/editor/header/root.tsx"
 type: "code"
-community: "Page Actions"
+community: "Badge Editor"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Page_Actions
+  - community/Badge_Editor
 ---
 
 # root.tsx
@@ -20,4 +20,4 @@ tags:
 - [[base-page.ts]] - `imports_from` [EXTRACTED]
 - [[logo-picker.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Page_Actions
+#graphify/code #graphify/EXTRACTED #community/Badge_Editor

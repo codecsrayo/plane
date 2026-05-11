@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/use-issues.ts"
+source_file: "hooks/store/use-issues.ts"
 type: "code"
-community: "Community 41"
+community: "Issue Layout HOC"
 location: "L88"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_41
+  - community/Issue_Layout_HOC
 ---
 
 # useIssues()
@@ -82,4 +82,4 @@ tags:
 - [[useWorkspaceDraftIssueActions()]] - `calls` [EXTRACTED]
 - [[workspace-root.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_41
+#graphify/code #graphify/EXTRACTED #community/Issue_Layout_HOC

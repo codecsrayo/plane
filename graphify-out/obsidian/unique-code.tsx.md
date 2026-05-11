@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/account/auth-forms/unique-code.tsx"
+source_file: "components/account/auth-forms/unique-code.tsx"
 type: "code"
-community: "Community 110"
+community: "Auth Forms"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_110
+  - community/Auth_Forms
 ---
 
 # unique-code.tsx
@@ -23,4 +23,4 @@ tags:
 - [[form-root.tsx]] - `imports_from` [EXTRACTED]
 - [[use-timer.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_110
+#graphify/code #graphify/EXTRACTED #community/Auth_Forms

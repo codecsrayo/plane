@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-modal/components/default-properties.tsx"
+source_file: "components/issues/issue-modal/components/default-properties.tsx"
 type: "code"
-community: "Spreadsheet Column Components"
+community: "Issue Properties"
 location: "L52"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Column_Components
+  - community/Issue_Properties
 ---
 
 # IssueDefaultProperties
@@ -15,4 +15,4 @@ tags:
 
 - [[default-properties.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Column_Components
+#graphify/code #graphify/EXTRACTED #community/Issue_Properties

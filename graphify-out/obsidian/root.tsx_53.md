@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/cycles/analytics-sidebar/root.tsx"
+source_file: "components/cycles/analytics-sidebar/root.tsx"
 type: "code"
-community: "Cycle Analytics"
+community: "Cycle Progress"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Analytics
+  - community/Cycle_Progress
 ---
 
 # root.tsx
@@ -23,4 +23,4 @@ tags:
 - [[sidebar-header.tsx]] - `imports_from` [EXTRACTED]
 - [[use-cycles-details.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Analytics
+#graphify/code #graphify/EXTRACTED #community/Cycle_Progress

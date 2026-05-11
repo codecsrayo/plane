@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/list/block-root.tsx"
+source_file: "components/issues/issue-layouts/list/block-root.tsx"
 type: "code"
-community: "Active Cycle Stats"
+community: "Kanban Groups"
 location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Cycle_Stats
+  - community/Kanban_Groups
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[block-root.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats
+#graphify/code #graphify/EXTRACTED #community/Kanban_Groups

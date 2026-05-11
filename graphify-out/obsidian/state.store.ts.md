@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/state.store.ts"
+source_file: "store/state.store.ts"
 type: "code"
-community: "Community 146"
+community: "State Project"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_146
+  - community/State_Project
 ---
 
 # state.store.ts
@@ -24,4 +24,4 @@ tags:
 - [[stateIndex]] - `contains` [EXTRACTED]
 - [[toApiError()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_146
+#graphify/code #graphify/EXTRACTED #community/State_Project

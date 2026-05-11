@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/work-item-filters/filters-hoc/shared.ts"
+source_file: "components/work-item-filters/filters-hoc/shared.ts"
 type: "code"
-community: "Community 162"
+community: "Work Filters"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_162
+  - community/Work_Filters
 ---
 
 # TSharedWorkItemFiltersProps
@@ -16,4 +16,4 @@ tags:
 - [[base.tsx_8]] - `imports` [EXTRACTED]
 - [[shared.ts_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_162
+#graphify/code #graphify/EXTRACTED #community/Work_Filters

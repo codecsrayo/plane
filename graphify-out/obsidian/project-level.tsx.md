@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/work-item-filters/filters-hoc/project-level.tsx"
+source_file: "components/work-item-filters/filters-hoc/project-level.tsx"
 type: "code"
-community: "Community 162"
+community: "Work Filters"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_162
+  - community/Work_Filters
 ---
 
 # project-level.tsx
@@ -47,4 +47,4 @@ tags:
 - [[useProjectView()]] - `imports` [EXTRACTED]
 - [[utils.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_162
+#graphify/code #graphify/EXTRACTED #community/Work_Filters

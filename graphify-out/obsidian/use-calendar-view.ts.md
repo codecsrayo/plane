@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/use-calendar-view.ts"
+source_file: "hooks/store/use-calendar-view.ts"
 type: "code"
-community: "Calendar UI"
+community: "Calendar Views"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_UI
+  - community/Calendar_Views
 ---
 
 # use-calendar-view.ts
@@ -23,4 +23,4 @@ tags:
 - [[store-context.tsx]] - `imports_from` [EXTRACTED]
 - [[useCalendarView()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_UI
+#graphify/code #graphify/EXTRACTED #community/Calendar_Views

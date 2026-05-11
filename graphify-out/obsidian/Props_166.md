@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/web-hooks/form/input.tsx"
+source_file: "components/web-hooks/form/input.tsx"
 type: "code"
-community: "Community 464"
+community: "Input Webhook"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_464
+  - community/Input_Webhook
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[input.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_464
+#graphify/code #graphify/EXTRACTED #community/Input_Webhook

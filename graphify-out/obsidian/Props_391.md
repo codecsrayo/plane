@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/editor/toolbar/toolbar.tsx"
+source_file: "components/pages/editor/toolbar/toolbar.tsx"
 type: "code"
-community: "Editor Styles"
+community: "Toolbar Color"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Styles
+  - community/Toolbar_Color
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[toolbar.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Styles
+#graphify/code #graphify/EXTRACTED #community/Toolbar_Color

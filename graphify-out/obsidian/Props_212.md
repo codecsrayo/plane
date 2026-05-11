@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/module-column.tsx"
+source_file: "components/issues/issue-layouts/spreadsheet/columns/module-column.tsx"
 type: "code"
-community: "Community 38"
+community: "Spreadsheet Columns"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_38
+  - community/Spreadsheet_Columns
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[module-column.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_38
+#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Columns

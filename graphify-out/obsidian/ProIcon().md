@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/common/pro-icon.tsx"
+source_file: "components/common/pro-icon.tsx"
 type: "code"
-community: "Community 483"
+community: "Icon Tproicon"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_483
+  - community/Icon_Tproicon
 ---
 
 # ProIcon()
@@ -15,4 +15,4 @@ tags:
 
 - [[pro-icon.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_483
+#graphify/code #graphify/EXTRACTED #community/Icon_Tproicon

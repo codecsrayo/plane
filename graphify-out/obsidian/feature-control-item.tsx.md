@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/settings/project/content/feature-control-item.tsx"
+source_file: "components/settings/project/content/feature-control-item.tsx"
 type: "code"
-community: "Community 142"
+community: "Project Settings"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_142
+  - community/Project_Settings
 ---
 
 # feature-control-item.tsx
@@ -20,4 +20,4 @@ tags:
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_142
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

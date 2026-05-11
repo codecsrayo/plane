@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/issue/issue.service.ts"
+source_file: "services/issue/issue.service.ts"
 type: "code"
-community: "Community 60"
+community: "Issue Service API"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_60
+  - community/Issue_Service_API
 ---
 
 # IssueService
@@ -48,4 +48,4 @@ tags:
 - [[issue.service.ts]] - `contains` [EXTRACTED]
 - [[subscription.store.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_60
+#graphify/code #graphify/EXTRACTED #community/Issue_Service_API

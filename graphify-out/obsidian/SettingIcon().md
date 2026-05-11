@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/icons/attachment/setting-icon.tsx"
+source_file: "components/icons/attachment/setting-icon.tsx"
 type: "code"
-community: "Community 624"
+community: "Setting Icon"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_624
+  - community/Setting_Icon
 ---
 
 # SettingIcon()
@@ -15,4 +15,4 @@ tags:
 
 - [[setting-icon.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_624
+#graphify/code #graphify/EXTRACTED #community/Setting_Icon

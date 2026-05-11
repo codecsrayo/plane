@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/inbox/content/inbox-issue-header.tsx"
+source_file: "components/inbox/content/inbox-issue-header.tsx"
 type: "code"
-community: "Applied Filters UI"
+community: "Issue Inbox"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters_UI
+  - community/Issue_Inbox
 ---
 
 # inbox-issue-header.tsx
@@ -42,4 +42,4 @@ tags:
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[useProjectInbox()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters_UI
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

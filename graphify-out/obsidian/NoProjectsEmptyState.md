@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/home/widgets/empty-states/no-projects.tsx"
+source_file: "components/home/widgets/empty-states/no-projects.tsx"
 type: "code"
-community: "Empty State Components"
+community: "Project Archives"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_State_Components
+  - community/Project_Archives
 ---
 
 # NoProjectsEmptyState
@@ -15,4 +15,4 @@ tags:
 
 - [[no-projects.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_State_Components
+#graphify/code #graphify/EXTRACTED #community/Project_Archives

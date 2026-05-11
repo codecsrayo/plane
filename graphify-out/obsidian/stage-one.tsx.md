@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/estimates/create/stage-one.tsx"
+source_file: "components/estimates/create/stage-one.tsx"
 type: "code"
-community: "Community 225"
+community: "Estimate Stage"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_225
+  - community/Estimate_Stage
 ---
 
 # stage-one.tsx
@@ -19,4 +19,4 @@ tags:
 - [[modal.tsx_12]] - `imports_from` [EXTRACTED]
 - [[radio-select.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_225
+#graphify/code #graphify/EXTRACTED #community/Estimate_Stage

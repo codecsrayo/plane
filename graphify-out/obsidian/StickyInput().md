@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/stickies/sticky/inputs.tsx"
+source_file: "components/stickies/sticky/inputs.tsx"
 type: "code"
-community: "Community 211"
+community: "Workspace Invites"
 location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_211
+  - community/Workspace_Invites
 ---
 
 # StickyInput()
@@ -17,4 +17,4 @@ tags:
 - [[root.tsx_11]] - `imports` [EXTRACTED]
 - [[useWorkspace()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_211
+#graphify/code #graphify/EXTRACTED #community/Workspace_Invites

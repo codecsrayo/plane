@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/list/filters/root.tsx"
+source_file: "components/pages/list/filters/root.tsx"
 type: "code"
-community: "Community 42"
+community: "Created Selection"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_42
+  - community/Created_Selection
 ---
 
 # root.tsx
@@ -23,4 +23,4 @@ tags:
 - [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_42
+#graphify/code #graphify/EXTRACTED #community/Created_Selection

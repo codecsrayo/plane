@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/modules/module-layout-icon.tsx"
+source_file: "components/modules/module-layout-icon.tsx"
 type: "code"
-community: "Layout System"
+community: "Icon Ilayouticon"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Layout_System
+  - community/Icon_Ilayouticon
 ---
 
 # ModuleLayoutIcon()
@@ -16,4 +16,4 @@ tags:
 - [[module-layout-icon.tsx]] - `contains` [EXTRACTED]
 - [[module-view-header.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Layout_System
+#graphify/code #graphify/EXTRACTED #community/Icon_Ilayouticon

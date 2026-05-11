@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/comments/comment-create.tsx"
+source_file: "components/comments/comment-create.tsx"
 type: "code"
-community: "Community 79"
+community: "Comment Card"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_79
+  - community/Comment_Card
 ---
 
 # comment-create.tsx
@@ -24,4 +24,4 @@ tags:
 - [[use-workspace.ts]] - `imports_from` [EXTRACTED]
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_79
+#graphify/code #graphify/EXTRACTED #community/Comment_Card

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/utils.tsx"
+source_file: "components/issues/issue-layouts/utils.tsx"
 type: "code"
-community: "Community 62"
+community: "Spreadsheet Filters"
 location: "L721"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_62
+  - community/Spreadsheet_Filters
 ---
 
 # SpreadSheetPropertyIcon()
@@ -16,4 +16,4 @@ tags:
 - [[header-column.tsx]] - `imports` [EXTRACTED]
 - [[utils.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_62
+#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Filters

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/list/list-item.tsx"
+source_file: "components/core/list/list-item.tsx"
 type: "code"
-community: "Account & Sub-Issues"
+community: "Account Settings"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Account__Sub-Issues
+  - community/Account_Settings
 ---
 
 # list-item.tsx
@@ -18,4 +18,4 @@ tags:
 - [[use-app-router.tsx]] - `imports_from` [EXTRACTED]
 - [[useAppRouter()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Account\_\_Sub-Issues
+#graphify/code #graphify/EXTRACTED #community/Account_Settings

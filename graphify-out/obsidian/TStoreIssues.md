@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/use-issues.ts"
+source_file: "hooks/store/use-issues.ts"
 type: "code"
-community: "Issue Filters & Context"
+community: "Project Archives"
 location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters__Context
+  - community/Project_Archives
 ---
 
 # TStoreIssues
@@ -15,4 +15,4 @@ tags:
 
 - [[use-issues.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters\_\_Context
+#graphify/code #graphify/EXTRACTED #community/Project_Archives

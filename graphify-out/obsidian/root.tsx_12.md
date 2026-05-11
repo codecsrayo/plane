@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/modules/analytics-sidebar/root.tsx"
+source_file: "components/modules/analytics-sidebar/root.tsx"
 type: "code"
-community: "Module Analytics"
+community: "Module Forms"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Module_Forms
 ---
 
 # root.tsx
@@ -26,4 +26,4 @@ tags:
 - [[use-module.ts]] - `imports_from` [EXTRACTED]
 - [[useModule()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Module_Forms

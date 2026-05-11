@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/ui/modal/footer.tsx"
+source_file: "components/power-k/ui/modal/footer.tsx"
 type: "code"
-community: "Community 99"
+community: "Power Search"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_99
+  - community/Power_Search
 ---
 
 # footer.tsx
@@ -18,4 +18,4 @@ tags:
 - [[top-nav-power-k.tsx]] - `imports_from` [EXTRACTED]
 - [[wrapper.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_99
+#graphify/code #graphify/EXTRACTED #community/Power_Search

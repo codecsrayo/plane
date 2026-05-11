@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/member/project/base-project-member.store.ts"
+source_file: "store/member/project/base-project-member.store.ts"
 type: "code"
-community: "Community 173"
+community: "Member Project"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_173
+  - community/Member_Project
 ---
 
 # base-project-member.store.ts
@@ -44,4 +44,4 @@ tags:
 - [[updatedProjectRole]] - `contains` [EXTRACTED]
 - [[utils.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_173
+#graphify/code #graphify/EXTRACTED #community/Member_Project

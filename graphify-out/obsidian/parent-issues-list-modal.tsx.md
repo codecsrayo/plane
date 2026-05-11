@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/parent-issues-list-modal.tsx"
+source_file: "components/issues/parent-issues-list-modal.tsx"
 type: "code"
-community: "Layout System"
+community: "Issue Layouts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Layout_System
+  - community/Issue_Layouts
 ---
 
 # parent-issues-list-modal.tsx
@@ -26,4 +26,4 @@ tags:
 - [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Layout_System
+#graphify/code #graphify/EXTRACTED #community/Issue_Layouts

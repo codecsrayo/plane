@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail-widgets/links/title.tsx"
+source_file: "components/issues/issue-detail-widgets/links/title.tsx"
 type: "code"
-community: "Community 178"
+community: "Issue Activity"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_178
+  - community/Issue_Activity
 ---
 
 # IssueLinksCollapsibleTitle
@@ -16,4 +16,4 @@ tags:
 - [[root.tsx_42]] - `imports` [EXTRACTED]
 - [[title.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_178
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/editor/page-root.tsx"
+source_file: "components/pages/editor/page-root.tsx"
 type: "code"
-community: "Community 77"
+community: "Navigation Pane"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_77
+  - community/Navigation_Pane
 ---
 
 # TPageRootHandlers
@@ -19,4 +19,4 @@ tags:
 - [[root.tsx_82]] - `imports` [EXTRACTED]
 - [[version-history.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_77
+#graphify/code #graphify/EXTRACTED #community/Navigation_Pane

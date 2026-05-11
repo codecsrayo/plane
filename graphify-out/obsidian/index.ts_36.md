@@ -1,14 +1,14 @@
 ---
-source_file: "web/core/components/workspace/billing/comparison/index.ts"
+source_file: "components/workspace/billing/comparison/index.ts"
 type: "code"
-community: "Community 771"
+community: "Community 366"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_771
+  - community/Community_366
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_771
+#graphify/code #graphify/EXTRACTED #community/Community_366

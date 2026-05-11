@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/auth-screens/header.tsx"
+source_file: "components/auth-screens/header.tsx"
 type: "code"
-community: "Community 46"
+community: "Auth UI"
 location: "L64"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_46
+  - community/Auth_UI
 ---
 
 # TAuthHeaderBase
@@ -15,4 +15,4 @@ tags:
 
 - [[header.tsx_14]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_46
+#graphify/code #graphify/EXTRACTED #community/Auth_UI

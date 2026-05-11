@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/oauth/core.tsx"
+source_file: "hooks/oauth/core.tsx"
 type: "code"
-community: "Authentication UI"
+community: "Chat Support"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Authentication_UI
+  - community/Chat_Support
 ---
 
 # useCoreOAuthConfig()
@@ -19,4 +19,4 @@ tags:
 - [[useOAuthConfig()]] - `calls` [EXTRACTED]
 - [[useWorkspace()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Authentication_UI
+#graphify/code #graphify/EXTRACTED #community/Chat_Support

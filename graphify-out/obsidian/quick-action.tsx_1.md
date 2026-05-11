@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/workspace-draft/quick-action.tsx"
+source_file: "components/issues/workspace-draft/quick-action.tsx"
 type: "code"
-community: "Community 155"
+community: "Issue Identifiers"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_155
+  - community/Issue_Identifiers
 ---
 
 # quick-action.tsx
@@ -17,4 +17,4 @@ tags:
 - [[WorkspaceDraftIssueQuickActions]] - `contains` [EXTRACTED]
 - [[draft-issue-block.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_155
+#graphify/code #graphify/EXTRACTED #community/Issue_Identifiers

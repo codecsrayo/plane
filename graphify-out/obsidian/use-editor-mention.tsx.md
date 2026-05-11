@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/editor/use-editor-mention.tsx"
+source_file: "hooks/editor/use-editor-mention.tsx"
 type: "code"
-community: "Community 435"
+community: "Editor Args"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_435
+  - community/Editor_Args
 ---
 
 # use-editor-mention.tsx
@@ -16,4 +16,4 @@ tags:
 - [[TArgs_3]] - `contains` [EXTRACTED]
 - [[useEditorMention()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_435
+#graphify/code #graphify/EXTRACTED #community/Editor_Args

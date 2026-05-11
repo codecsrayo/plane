@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/views/default-view-list-item.tsx"
+source_file: "components/workspace/views/default-view-list-item.tsx"
 type: "code"
-community: "Community 445"
+community: "Global Globaldefaultviewlistitem"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_445
+  - community/Global_Globaldefaultviewlistitem
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[default-view-list-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_445
+#graphify/code #graphify/EXTRACTED #community/Global_Globaldefaultviewlistitem

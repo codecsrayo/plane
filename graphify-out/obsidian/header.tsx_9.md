@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/peek-overview/header.tsx"
+source_file: "components/issues/peek-overview/header.tsx"
 type: "code"
-community: "Empty States & Inbox"
+community: "Project Archives"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_States__Inbox
+  - community/Project_Archives
 ---
 
 # header.tsx
@@ -33,4 +33,4 @@ tags:
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[view.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_States\_\_Inbox
+#graphify/code #graphify/EXTRACTED #community/Project_Archives

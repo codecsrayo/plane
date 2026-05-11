@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-modal/form.tsx"
+source_file: "components/issues/issue-modal/form.tsx"
 type: "code"
-community: "Community 36"
+community: "Issue Identifiers"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_36
+  - community/Issue_Identifiers
 ---
 
 # form.tsx
@@ -32,4 +32,4 @@ tags:
 - [[useProjectIssueProperties()]] - `imports` [EXTRACTED]
 - [[useProjectState()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_36
+#graphify/code #graphify/EXTRACTED #community/Issue_Identifiers

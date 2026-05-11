@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/sidebar/favorites/new-fav-folder.tsx"
+source_file: "components/workspace/sidebar/favorites/new-fav-folder.tsx"
 type: "code"
-community: "Community 128"
+community: "Favorite Folder"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_128
+  - community/Favorite_Folder
 ---
 
 # new-fav-folder.tsx
@@ -21,4 +21,4 @@ tags:
 - [[use-favorite.ts]] - `imports_from` [EXTRACTED]
 - [[useFavorite()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_128
+#graphify/code #graphify/EXTRACTED #community/Favorite_Folder

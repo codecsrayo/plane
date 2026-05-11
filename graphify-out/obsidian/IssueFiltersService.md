@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/issue_filter.service.ts"
+source_file: "services/issue_filter.service.ts"
 type: "code"
-community: "Community 242"
+community: "Issue Filters"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_242
+  - community/Issue_Filters
 ---
 
 # IssueFiltersService
@@ -27,4 +27,4 @@ tags:
 - [[filter.store.ts_7]] - `imports` [EXTRACTED]
 - [[issue_filter.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_242
+#graphify/code #graphify/EXTRACTED #community/Issue_Filters

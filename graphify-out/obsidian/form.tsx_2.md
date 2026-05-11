@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/invite-modal/form.tsx"
+source_file: "components/workspace/invite-modal/form.tsx"
 type: "code"
-community: "Community 446"
+community: "Invitation Invitationform"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_446
+  - community/Invitation_Invitationform
 ---
 
 # form.tsx
@@ -16,4 +16,4 @@ tags:
 - [[InvitationForm]] - `contains` [EXTRACTED]
 - [[TInvitationFormProps]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_446
+#graphify/code #graphify/EXTRACTED #community/Invitation_Invitationform

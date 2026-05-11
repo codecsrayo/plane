@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/rich-filters/filters-toggle.tsx"
+source_file: "components/rich-filters/filters-toggle.tsx"
 type: "code"
-community: "Filter Components"
+community: "Filter Controls"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Components
+  - community/Filter_Controls
 ---
 
 # TFiltersToggleProps
@@ -15,4 +15,4 @@ tags:
 
 - [[filters-toggle.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Components
+#graphify/code #graphify/EXTRACTED #community/Filter_Controls

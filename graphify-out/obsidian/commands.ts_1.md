@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/ui/pages/context-based/page/commands.ts"
+source_file: "components/power-k/ui/pages/context-based/page/commands.ts"
 type: "code"
-community: "Community 45"
+community: "Context Based"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_45
+  - community/Context_Based
 ---
 
 # commands.ts
@@ -18,4 +18,4 @@ tags:
 - [[types.ts_2]] - `imports_from` [EXTRACTED]
 - [[usePowerKPageContextBasedActions()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_45
+#graphify/code #graphify/EXTRACTED #community/Context_Based

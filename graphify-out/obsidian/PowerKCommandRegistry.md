@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/core/registry.ts"
+source_file: "components/power-k/core/registry.ts"
 type: "code"
-community: "Community 83"
+community: "Shortcut Registry"
 location: "L37"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_83
+  - community/Shortcut_Registry
 ---
 
 # PowerKCommandRegistry
@@ -18,4 +18,4 @@ tags:
 - [[base-power-k.store.ts]] - `imports` [EXTRACTED]
 - [[registry.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_83
+#graphify/code #graphify/EXTRACTED #community/Shortcut_Registry

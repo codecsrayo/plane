@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/user/base-permissions.store.ts"
+source_file: "store/user/base-permissions.store.ts"
 type: "code"
-community: "Community 37"
+community: "Workspace Workspaceservice"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_37
+  - community/Workspace_Workspaceservice
 ---
 
 # base-permissions.store.ts
@@ -26,4 +26,4 @@ tags:
 - [[workspace.service.ts]] - `imports_from` [EXTRACTED]
 - [[workspaceService]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_37
+#graphify/code #graphify/EXTRACTED #community/Workspace_Workspaceservice

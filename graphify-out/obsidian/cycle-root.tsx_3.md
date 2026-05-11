@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/calendar/roots/cycle-root.tsx"
+source_file: "components/issues/issue-layouts/calendar/roots/cycle-root.tsx"
 type: "code"
-community: "Community 125"
+community: "Cycle Transfers"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_125
+  - community/Cycle_Transfers
 ---
 
 # cycle-root.tsx
@@ -23,4 +23,4 @@ tags:
 - [[useCycle()]] - `imports` [EXTRACTED]
 - [[useIssues()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_125
+#graphify/code #graphify/EXTRACTED #community/Cycle_Transfers

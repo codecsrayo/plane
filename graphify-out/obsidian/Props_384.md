@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/pages-list-main-content.tsx"
+source_file: "components/pages/pages-list-main-content.tsx"
 type: "code"
-community: "Community 237"
+community: "Pages Main"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_237
+  - community/Pages_Main
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[pages-list-main-content.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_237
+#graphify/code #graphify/EXTRACTED #community/Pages_Main

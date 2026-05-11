@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/base-layouts/gantt/layout.tsx"
+source_file: "components/base-layouts/gantt/layout.tsx"
 type: "code"
-community: "Community 176"
+community: "Gantt Chart"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_176
+  - community/Gantt_Chart
 ---
 
 # layout.tsx
@@ -21,4 +21,4 @@ tags:
 - [[root.tsx_5]] - `imports_from` [EXTRACTED]
 - [[sidebar.tsx_4]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_176
+#graphify/code #graphify/EXTRACTED #community/Gantt_Chart

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/cycles/list/cycles-list-item.tsx"
+source_file: "components/cycles/list/cycles-list-item.tsx"
 type: "code"
-community: "Cycle Services & Filters"
+community: "Cycle Cycles"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Services__Filters
+  - community/Cycle_Cycles
 ---
 
 # cycles-list-item.tsx
@@ -28,4 +28,4 @@ tags:
 - [[useCycle()]] - `imports` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Services\_\_Filters
+#graphify/code #graphify/EXTRACTED #community/Cycle_Cycles

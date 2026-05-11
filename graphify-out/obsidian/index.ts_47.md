@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project-states/index.ts"
+source_file: "components/project-states/index.ts"
 type: "code"
-community: "Community 133"
+community: "State Group"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_133
+  - community/State_Group
 ---
 
 # index.ts
@@ -21,4 +21,4 @@ tags:
 - [[state-list.tsx]] - `imports_from` [EXTRACTED]
 - [[update.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_133
+#graphify/code #graphify/EXTRACTED #community/State_Group

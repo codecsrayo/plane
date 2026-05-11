@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/gantt-chart/helpers/blockResizables/right-resizable.tsx"
+source_file: "components/gantt-chart/helpers/blockResizables/right-resizable.tsx"
 type: "code"
-community: "Community 235"
+community: "Resizable Left"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_235
+  - community/Resizable_Left
 ---
 
 # right-resizable.tsx
@@ -19,4 +19,4 @@ tags:
 - [[use-timeline-chart.ts]] - `imports_from` [EXTRACTED]
 - [[useTimeLineChartStore()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_235
+#graphify/code #graphify/EXTRACTED #community/Resizable_Left

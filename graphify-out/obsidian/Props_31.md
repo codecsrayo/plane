@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/sidebar/favorites/favorite-items/common/favorite-item-wrapper.tsx"
+source_file: "components/workspace/sidebar/favorites/favorite-items/common/favorite-item-wrapper.tsx"
 type: "code"
-community: "Community 443"
+community: "Favorite Wrapper"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_443
+  - community/Favorite_Wrapper
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[favorite-item-wrapper.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_443
+#graphify/code #graphify/EXTRACTED #community/Favorite_Wrapper

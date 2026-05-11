@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/filters.tsx"
+source_file: "components/issues/filters.tsx"
 type: "code"
-community: "Community 117"
+community: "Filter Controls"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_117
+  - community/Filter_Controls
 ---
 
 # filters.tsx
@@ -24,4 +24,4 @@ tags:
 - [[use-issues.ts]] - `imports_from` [EXTRACTED]
 - [[useIssues()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_117
+#graphify/code #graphify/EXTRACTED #community/Filter_Controls

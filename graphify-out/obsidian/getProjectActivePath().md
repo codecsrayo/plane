@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/settings/helper.ts"
+source_file: "components/settings/helper.ts"
 type: "code"
-community: "Community 257"
+community: "Href Label"
 location: "L45"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_257
+  - community/Href_Label
 ---
 
 # getProjectActivePath()
@@ -15,4 +15,4 @@ tags:
 
 - [[helper.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_257
+#graphify/code #graphify/EXTRACTED #community/Href_Label

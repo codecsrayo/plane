@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/license/index.ts"
+source_file: "components/license/index.ts"
 type: "code"
-community: "Community 194"
+community: "Plan Discount"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_194
+  - community/Plan_Discount
 ---
 
 # index.ts
@@ -15,4 +15,4 @@ tags:
 
 - [[plan-upgrade.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_194
+#graphify/code #graphify/EXTRACTED #community/Plan_Discount

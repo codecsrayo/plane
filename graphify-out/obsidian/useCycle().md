@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/use-cycle.ts"
+source_file: "hooks/store/use-cycle.ts"
 type: "code"
-community: "Cycle Services & Filters"
+community: "Cycle Transfers"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Services__Filters
+  - community/Cycle_Transfers
 ---
 
 # useCycle()
@@ -60,4 +60,4 @@ tags:
 - [[useWorkspaceIssueProperties()]] - `calls` [EXTRACTED]
 - [[view.tsx_2]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Services\_\_Filters
+#graphify/code #graphify/EXTRACTED #community/Cycle_Transfers

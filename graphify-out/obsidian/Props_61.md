@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/stickies/sticky/sticky-item-drag-handle.tsx"
+source_file: "components/stickies/sticky/sticky-item-drag-handle.tsx"
 type: "code"
-community: "Community 449"
+community: "Sticky Drag"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_449
+  - community/Sticky_Drag
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[sticky-item-drag-handle.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_449
+#graphify/code #graphify/EXTRACTED #community/Sticky_Drag

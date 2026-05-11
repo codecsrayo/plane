@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/ui/markdown-to-component.tsx"
+source_file: "components/ui/markdown-to-component.tsx"
 type: "code"
-community: "Community 210"
+community: "Markdown Custom"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_210
+  - community/Markdown_Custom
 ---
 
 # markdown-to-component.tsx
@@ -24,4 +24,4 @@ tags:
 - [[Props_5]] - `contains` [EXTRACTED]
 - [[UnorderedList()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_210
+#graphify/code #graphify/EXTRACTED #community/Markdown_Custom

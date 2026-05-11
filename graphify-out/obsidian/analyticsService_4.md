@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/analytics/overview/project-insights.tsx"
+source_file: "components/analytics/overview/project-insights.tsx"
 type: "code"
-community: "Community 186"
+community: "Analytics Project"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_186
+  - community/Analytics_Project
 ---
 
 # analyticsService
@@ -15,4 +15,4 @@ tags:
 
 - [[project-insights.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_186
+#graphify/code #graphify/EXTRACTED #community/Analytics_Project

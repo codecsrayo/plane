@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-group-dragndrop.ts"
+source_file: "hooks/use-group-dragndrop.ts"
 type: "code"
-community: "Community 41"
+community: "Issue Layout HOC"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_41
+  - community/Issue_Layout_HOC
 ---
 
 # use-group-dragndrop.ts
@@ -29,4 +29,4 @@ tags:
 - [[useIssuesActions()]] - `imports` [EXTRACTED]
 - [[utils.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_41
+#graphify/code #graphify/EXTRACTED #community/Issue_Layout_HOC

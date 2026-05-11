@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/modules/form.tsx"
+source_file: "components/modules/form.tsx"
 type: "code"
-community: "Community 45"
+community: "Module Forms"
 location: "L44"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_45
+  - community/Module_Forms
 ---
 
 # ModuleForm()
@@ -16,4 +16,4 @@ tags:
 - [[form.tsx_4]] - `contains` [EXTRACTED]
 - [[useUser()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_45
+#graphify/code #graphify/EXTRACTED #community/Module_Forms

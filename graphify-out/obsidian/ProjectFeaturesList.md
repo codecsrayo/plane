@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project/settings/features-list.tsx"
+source_file: "components/project/settings/features-list.tsx"
 type: "code"
-community: "Community 249"
+community: "Project Feature"
 location: "L78"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_249
+  - community/Project_Feature
 ---
 
 # ProjectFeaturesList
@@ -16,4 +16,4 @@ tags:
 - [[features-list.tsx]] - `contains` [EXTRACTED]
 - [[project-feature-update.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_249
+#graphify/code #graphify/EXTRACTED #community/Project_Feature

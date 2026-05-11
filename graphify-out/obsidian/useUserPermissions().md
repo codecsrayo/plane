@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/user/user-permissions.ts"
+source_file: "hooks/store/user/user-permissions.ts"
 type: "code"
-community: "Community 41"
+community: "Issue Layouts"
 location: "L13"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_41
+  - community/Issue_Layouts
 ---
 
 # useUserPermissions()
@@ -18,4 +18,4 @@ tags:
 - [[WorkspaceDraftIssueDeleteIssueModal()]] - `calls` [INFERRED]
 - [[user-permissions.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_41
+#graphify/code #graphify/INFERRED #community/Issue_Layouts

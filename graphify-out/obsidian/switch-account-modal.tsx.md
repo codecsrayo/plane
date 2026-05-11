@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/onboarding/switch-account-modal.tsx"
+source_file: "components/onboarding/switch-account-modal.tsx"
 type: "code"
-community: "Community 113"
+community: "Account Settings"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_113
+  - community/Account_Settings
 ---
 
 # switch-account-modal.tsx
@@ -20,4 +20,4 @@ tags:
 - [[use-app-router.tsx]] - `imports_from` [EXTRACTED]
 - [[useAppRouter()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_113
+#graphify/code #graphify/EXTRACTED #community/Account_Settings

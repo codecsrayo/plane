@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/preview-card/index.ts"
+source_file: "components/issues/preview-card/index.ts"
 type: "code"
-community: "Community 125"
+community: "Calendar Blocks"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_125
+  - community/Calendar_Blocks
 ---
 
 # index.ts
@@ -16,4 +16,4 @@ tags:
 - [[blocks.tsx_1]] - `imports_from` [EXTRACTED]
 - [[issue-block.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_125
+#graphify/code #graphify/EXTRACTED #community/Calendar_Blocks

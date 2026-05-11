@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/license/modal/card/base-paid-plan-card.tsx"
+source_file: "components/license/modal/card/base-paid-plan-card.tsx"
 type: "code"
-community: "Community 260"
+community: "Card Paid"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_260
+  - community/Card_Paid
 ---
 
 # base-paid-plan-card.tsx
@@ -17,4 +17,4 @@ tags:
 - [[TBasePaidPlanCardProps]] - `contains` [EXTRACTED]
 - [[talk-to-sales.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_260
+#graphify/code #graphify/EXTRACTED #community/Card_Paid

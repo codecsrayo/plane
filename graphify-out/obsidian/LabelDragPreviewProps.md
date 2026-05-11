@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/labels/label-drag-n-drop-HOC.tsx"
+source_file: "components/labels/label-drag-n-drop-HOC.tsx"
 type: "code"
-community: "Community 76"
+community: "Label Manager"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_76
+  - community/Label_Manager
 ---
 
 # LabelDragPreviewProps
@@ -15,4 +15,4 @@ tags:
 
 - [[label-drag-n-drop-HOC.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_76
+#graphify/code #graphify/EXTRACTED #community/Label_Manager

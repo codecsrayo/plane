@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/spreadsheet/roots/workspace-root.tsx"
+source_file: "components/issues/issue-layouts/spreadsheet/roots/workspace-root.tsx"
 type: "code"
-community: "Community 48"
+community: "Issue Layout Roots"
 location: "L40"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_48
+  - community/Issue_Layout_Roots
 ---
 
 # WorkspaceSpreadsheetRoot
@@ -16,4 +16,4 @@ tags:
 - [[helper.tsx]] - `imports` [EXTRACTED]
 - [[workspace-root.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_48
+#graphify/code #graphify/EXTRACTED #community/Issue_Layout_Roots

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/stickies/layout/stickies-infinite.tsx"
+source_file: "components/stickies/layout/stickies-infinite.tsx"
 type: "code"
-community: "Active Cycle Stats"
+community: "Kanban Groups"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Cycle_Stats
+  - community/Kanban_Groups
 ---
 
 # stickies-infinite.tsx
@@ -21,4 +21,4 @@ tags:
 - [[useIntersectionObserver()]] - `imports` [EXTRACTED]
 - [[useSticky()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats
+#graphify/code #graphify/EXTRACTED #community/Kanban_Groups

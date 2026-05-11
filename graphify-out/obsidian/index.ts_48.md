@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project-states/options/index.ts"
+source_file: "components/project-states/options/index.ts"
 type: "code"
-community: "Community 36"
+community: "Calendar Blocks"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_36
+  - community/Calendar_Blocks
 ---
 
 # index.ts
@@ -15,4 +15,4 @@ tags:
 
 - [[state-item-title.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_36
+#graphify/code #graphify/EXTRACTED #community/Calendar_Blocks

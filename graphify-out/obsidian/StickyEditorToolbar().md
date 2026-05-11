@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/editor/sticky-editor/toolbar.tsx"
+source_file: "components/editor/sticky-editor/toolbar.tsx"
 type: "code"
-community: "Editor Styles"
+community: "Issue Filters"
 location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Styles
+  - community/Issue_Filters
 ---
 
 # StickyEditorToolbar()
@@ -16,4 +16,4 @@ tags:
 - [[editor.tsx]] - `imports` [EXTRACTED]
 - [[toolbar.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Styles
+#graphify/code #graphify/EXTRACTED #community/Issue_Filters

@@ -1,14 +1,14 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/filters/header/helpers/index.ts"
+source_file: "components/issues/issue-layouts/filters/header/helpers/index.ts"
 type: "code"
-community: "Community 797"
+community: "Community 392"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_797
+  - community/Community_392
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_797
+#graphify/code #graphify/EXTRACTED #community/Community_392

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/workspace-draft/root.tsx"
+source_file: "components/issues/workspace-draft/root.tsx"
 type: "code"
-community: "Community 155"
+community: "Issue Identifiers"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_155
+  - community/Issue_Identifiers
 ---
 
 # root.tsx
@@ -30,4 +30,4 @@ tags:
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[useWorkspaceIssueProperties()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_155
+#graphify/code #graphify/EXTRACTED #community/Issue_Identifiers

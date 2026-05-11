@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/dropdowns/state/dropdown.tsx"
+source_file: "components/dropdowns/state/dropdown.tsx"
 type: "code"
-community: "Spreadsheet Column Components"
+community: "Issue Properties"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Column_Components
+  - community/Issue_Properties
 ---
 
 # TWorkItemStateDropdownProps
@@ -15,4 +15,4 @@ tags:
 
 - [[dropdown.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Column_Components
+#graphify/code #graphify/EXTRACTED #community/Issue_Properties

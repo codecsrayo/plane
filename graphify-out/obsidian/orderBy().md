@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/helpers/base-issues.store.ts"
+source_file: "store/issue/helpers/base-issues.store.ts"
 type: "code"
-community: "Community 160"
+community: "Issue Workspace"
 location: "L281"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_160
+  - community/Issue_Workspace
 ---
 
 # orderBy()
@@ -20,4 +20,4 @@ tags:
 - [[getOrderedWorkItems()]] - `calls` [EXTRACTED]
 - [[populateIssueDataForSorting()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_160
+#graphify/code #graphify/EXTRACTED #community/Issue_Workspace

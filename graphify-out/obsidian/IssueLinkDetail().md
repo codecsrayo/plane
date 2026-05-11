@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail/links/link-detail.tsx"
+source_file: "components/issues/issue-detail/links/link-detail.tsx"
 type: "code"
-community: "Issue Activity Tracking"
+community: "Issue Activity"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity_Tracking
+  - community/Issue_Activity
 ---
 
 # IssueLinkDetail()
@@ -19,4 +19,4 @@ tags:
 - [[useMember()]] - `calls` [EXTRACTED]
 - [[usePlatformOS()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Tracking
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

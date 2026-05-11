@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/issue/work_item_version.service.ts"
+source_file: "services/issue/work_item_version.service.ts"
 type: "code"
-community: "Community 299"
+community: "API Services"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_299
+  - community/API_Services
 ---
 
 # WorkItemVersionService
@@ -18,4 +18,4 @@ tags:
 - [[.retrieveDescriptionVersion()]] - `method` [EXTRACTED]
 - [[work_item_version.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_299
+#graphify/code #graphify/EXTRACTED #community/API_Services

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/work-item-filters/use-work-item-filters.ts"
+source_file: "hooks/store/work-item-filters/use-work-item-filters.ts"
 type: "code"
-community: "Community 117"
+community: "Cycle Details"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_117
+  - community/Cycle_Details
 ---
 
 # use-work-item-filters.ts
@@ -25,4 +25,4 @@ tags:
 - [[use-work-item-filter-instance.ts]] - `imports_from` [EXTRACTED]
 - [[useWorkItemFilters()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_117
+#graphify/code #graphify/EXTRACTED #community/Cycle_Details

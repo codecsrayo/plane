@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/ui/loader/notification-loader.tsx"
+source_file: "components/ui/loader/notification-loader.tsx"
 type: "code"
-community: "Community 630"
+community: "Notification Loader"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_630
+  - community/Notification_Loader
 ---
 
 # NotificationsLoader()
@@ -15,4 +15,4 @@ tags:
 
 - [[notification-loader.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_630
+#graphify/code #graphify/EXTRACTED #community/Notification_Loader

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/icons/attachment/zip-file-icon.tsx"
+source_file: "components/icons/attachment/zip-file-icon.tsx"
 type: "code"
-community: "Community 617"
+community: "Icon"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_617
+  - community/Icon
 ---
 
 # zip-file-icon.tsx
@@ -15,4 +15,4 @@ tags:
 
 - [[ZipIcon()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_617
+#graphify/code #graphify/EXTRACTED #community/Icon

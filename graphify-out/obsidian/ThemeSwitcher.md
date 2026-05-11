@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/appearance/theme-switcher.tsx"
+source_file: "components/appearance/theme-switcher.tsx"
 type: "code"
-community: "Community 151"
+community: "Theme Custom"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_151
+  - community/Theme_Custom
 ---
 
 # ThemeSwitcher
@@ -15,4 +15,4 @@ tags:
 
 - [[theme-switcher.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_151
+#graphify/code #graphify/EXTRACTED #community/Theme_Custom

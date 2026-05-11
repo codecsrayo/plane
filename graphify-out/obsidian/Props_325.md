@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/ui/pages/preferences/timezone-menu.tsx"
+source_file: "components/power-k/ui/pages/preferences/timezone-menu.tsx"
 type: "code"
-community: "Community 56"
+community: "Member Commands"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_56
+  - community/Member_Commands
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[timezone-menu.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_56
+#graphify/code #graphify/EXTRACTED #community/Member_Commands

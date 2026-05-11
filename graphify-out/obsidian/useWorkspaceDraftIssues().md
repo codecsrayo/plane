@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/workspace-draft/use-workspace-draft-issue.ts"
+source_file: "hooks/store/workspace-draft/use-workspace-draft-issue.ts"
 type: "code"
-community: "Community 92"
+community: "Workspace Draft"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_92
+  - community/Workspace_Draft
 ---
 
 # useWorkspaceDraftIssues()
@@ -15,4 +15,4 @@ tags:
 
 - [[use-workspace-draft-issue.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_92
+#graphify/code #graphify/EXTRACTED #community/Workspace_Draft

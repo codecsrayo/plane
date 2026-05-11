@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/onboarding/profile-setup.tsx"
+source_file: "components/onboarding/profile-setup.tsx"
 type: "code"
-community: "Community 69"
+community: "Image Upload"
 location: "L47"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_69
+  - community/Image_Upload
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[profile-setup.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_69
+#graphify/code #graphify/EXTRACTED #community/Image_Upload

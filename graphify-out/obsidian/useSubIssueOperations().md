@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail-widgets/sub-issues/helper.ts"
+source_file: "components/issues/issue-detail-widgets/sub-issues/helper.ts"
 type: "code"
-community: "Community 177"
+community: "Issue Activity"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_177
+  - community/Issue_Activity
 ---
 
 # useSubIssueOperations()
@@ -19,4 +19,4 @@ tags:
 - [[list-item.tsx_1]] - `imports` [EXTRACTED]
 - [[useIssueDetail()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_177
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/web-hooks/generated-hook-details.tsx"
+source_file: "components/web-hooks/generated-hook-details.tsx"
 type: "code"
-community: "Community 247"
+community: "Webhook Generated"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_247
+  - community/Webhook_Generated
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[generated-hook-details.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_247
+#graphify/code #graphify/EXTRACTED #community/Webhook_Generated

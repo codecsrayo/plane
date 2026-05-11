@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/analytics/work-items/modal/index.tsx"
+source_file: "components/analytics/work-items/modal/index.tsx"
 type: "code"
-community: "Community 193"
+community: "Active Projects"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_193
+  - community/Active_Projects
 ---
 
 # index.tsx
@@ -23,4 +23,4 @@ tags:
 - [[use-analytics.ts]] - `imports_from` [EXTRACTED]
 - [[useAnalytics()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_193
+#graphify/code #graphify/EXTRACTED #community/Active_Projects

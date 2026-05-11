@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/stickies/sticky/use-operations.tsx"
+source_file: "components/stickies/sticky/use-operations.tsx"
 type: "code"
-community: "Community 104"
+community: "Stickies Truncated"
 location: "L40"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_104
+  - community/Stickies_Truncated
 ---
 
 # useStickyOperations()
@@ -20,4 +20,4 @@ tags:
 - [[useSticky()]] - `calls` [EXTRACTED]
 - [[widget.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_104
+#graphify/code #graphify/EXTRACTED #community/Stickies_Truncated

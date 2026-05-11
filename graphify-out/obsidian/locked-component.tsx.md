@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/icons/locked-component.tsx"
+source_file: "components/icons/locked-component.tsx"
 type: "code"
-community: "Community 608"
+community: "Locked"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_608
+  - community/Locked
 ---
 
 # locked-component.tsx
@@ -15,4 +15,4 @@ tags:
 
 - [[LockedComponent()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_608
+#graphify/code #graphify/EXTRACTED #community/Locked

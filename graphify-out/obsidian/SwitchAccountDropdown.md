@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/onboarding/switch-account-dropdown.tsx"
+source_file: "components/onboarding/switch-account-dropdown.tsx"
 type: "code"
-community: "Community 113"
+community: "Invite Onboarding"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_113
+  - community/Invite_Onboarding
 ---
 
 # SwitchAccountDropdown
@@ -18,4 +18,4 @@ tags:
 - [[invite-members.tsx]] - `imports` [EXTRACTED]
 - [[switch-account-dropdown.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_113
+#graphify/code #graphify/EXTRACTED #community/Invite_Onboarding

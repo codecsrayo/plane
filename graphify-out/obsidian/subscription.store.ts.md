@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/issue-details/subscription.store.ts"
+source_file: "store/issue/issue-details/subscription.store.ts"
 type: "code"
-community: "Community 72"
+community: "Comment Reactions"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_72
+  - community/Comment_Reactions
 ---
 
 # subscription.store.ts
@@ -23,4 +23,4 @@ tags:
 - [[root.store.ts_2]] - `imports_from` [EXTRACTED]
 - [[toApiError()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_72
+#graphify/code #graphify/EXTRACTED #community/Comment_Reactions

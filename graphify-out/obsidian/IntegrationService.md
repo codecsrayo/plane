@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/integrations/integration.service.ts"
+source_file: "services/integrations/integration.service.ts"
 type: "code"
-community: "Community 137"
+community: "State Integration"
 location: "L34"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_137
+  - community/State_Integration
 ---
 
 # IntegrationService
@@ -29,4 +29,4 @@ tags:
 - [[.getWorkspaceIntegrationsList()]] - `method` [EXTRACTED]
 - [[integration.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_137
+#graphify/code #graphify/EXTRACTED #community/State_Integration

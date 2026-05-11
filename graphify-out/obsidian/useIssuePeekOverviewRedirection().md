@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-issue-peek-overview-redirection.tsx"
+source_file: "hooks/use-issue-peek-overview-redirection.tsx"
 type: "code"
-community: "Issue Activity Tracking"
+community: "Issue Activity"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity_Tracking
+  - community/Issue_Activity
 ---
 
 # useIssuePeekOverviewRedirection()
@@ -17,4 +17,4 @@ tags:
 - [[useIssueDetail()]] - `calls` [EXTRACTED]
 - [[useProject()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity_Tracking
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

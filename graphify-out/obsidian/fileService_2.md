@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-modal/base.tsx"
+source_file: "components/issues/issue-modal/base.tsx"
 type: "code"
-community: "Community 41"
+community: "Issue Identifiers"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_41
+  - community/Issue_Identifiers
 ---
 
 # fileService
@@ -15,4 +15,4 @@ tags:
 
 - [[base.tsx_7]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_41
+#graphify/code #graphify/EXTRACTED #community/Issue_Identifiers

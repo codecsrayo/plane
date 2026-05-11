@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/relations/issue-list-item.tsx"
+source_file: "components/issues/relations/issue-list-item.tsx"
 type: "code"
-community: "Layout System"
+community: "Issue Activity"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Layout_System
+  - community/Issue_Activity
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[issue-list-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Layout_System
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

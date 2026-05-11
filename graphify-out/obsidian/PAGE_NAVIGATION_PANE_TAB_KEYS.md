@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/navigation-pane/index.ts"
+source_file: "components/pages/navigation-pane/index.ts"
 type: "code"
-community: "Community 54"
+community: "Page Editor"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_54
+  - community/Page_Editor
 ---
 
 # PAGE_NAVIGATION_PANE_TAB_KEYS
@@ -15,4 +15,4 @@ tags:
 
 - [[index.ts_157]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_54
+#graphify/code #graphify/EXTRACTED #community/Page_Editor

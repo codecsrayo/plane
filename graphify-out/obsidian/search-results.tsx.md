@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/ui/modal/search-results.tsx"
+source_file: "components/power-k/ui/modal/search-results.tsx"
 type: "code"
-community: "Community 56"
+community: "Search Results"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_56
+  - community/Search_Results
 ---
 
 # search-results.tsx
@@ -23,4 +23,4 @@ tags:
 - [[use-app-router.tsx]] - `imports_from` [EXTRACTED]
 - [[useAppRouter()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_56
+#graphify/code #graphify/EXTRACTED #community/Search_Results

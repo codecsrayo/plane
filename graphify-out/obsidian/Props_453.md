@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/modals/bulk-delete-issues-modal.tsx"
+source_file: "components/core/modals/bulk-delete-issues-modal.tsx"
 type: "code"
-community: "Community 127"
+community: "Bulk Issues"
 location: "L41"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_127
+  - community/Bulk_Issues
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[bulk-delete-issues-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_127
+#graphify/code #graphify/EXTRACTED #community/Bulk_Issues

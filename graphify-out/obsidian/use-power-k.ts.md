@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/use-power-k.ts"
+source_file: "hooks/store/use-power-k.ts"
 type: "code"
-community: "Community 80"
+community: "Command Palette"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_80
+  - community/Command_Palette
 ---
 
 # use-power-k.ts
@@ -27,4 +27,4 @@ tags:
 - [[usePowerK()]] - `contains` [EXTRACTED]
 - [[wrapper.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_80
+#graphify/code #graphify/EXTRACTED #community/Command_Palette

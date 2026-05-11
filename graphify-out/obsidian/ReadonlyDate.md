@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/readonly/date.tsx"
+source_file: "components/readonly/date.tsx"
 type: "code"
-community: "Community 493"
+community: "Date Readonly"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_493
+  - community/Date_Readonly
 ---
 
 # ReadonlyDate
@@ -15,4 +15,4 @@ tags:
 
 - [[date.tsx_9]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_493
+#graphify/code #graphify/EXTRACTED #community/Date_Readonly

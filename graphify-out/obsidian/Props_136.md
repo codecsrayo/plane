@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project/member-list-item.tsx"
+source_file: "components/project/member-list-item.tsx"
 type: "code"
-community: "Community 44"
+community: "Member Project"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_44
+  - community/Member_Project
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[member-list-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_44
+#graphify/code #graphify/EXTRACTED #community/Member_Project

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/labels/project-setting-label-group.tsx"
+source_file: "components/labels/project-setting-label-group.tsx"
 type: "code"
-community: "Community 76"
+community: "Label Manager"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_76
+  - community/Label_Manager
 ---
 
 # project-setting-label-group.tsx
@@ -26,4 +26,4 @@ tags:
 - [[label-item-block.tsx]] - `imports_from` [EXTRACTED]
 - [[project-setting-label-item.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_76
+#graphify/code #graphify/EXTRACTED #community/Label_Manager

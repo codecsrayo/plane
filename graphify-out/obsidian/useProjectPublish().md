@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/use-project-publish.ts"
+source_file: "hooks/store/use-project-publish.ts"
 type: "code"
-community: "Community 67"
+community: "Project Projects"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_67
+  - community/Project_Projects
 ---
 
 # useProjectPublish()
@@ -16,4 +16,4 @@ tags:
 - [[modal.tsx_6]] - `imports` [EXTRACTED]
 - [[use-project-publish.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_67
+#graphify/code #graphify/EXTRACTED #community/Project_Projects

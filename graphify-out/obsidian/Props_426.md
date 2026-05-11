@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/analytics/analytics-wrapper.tsx"
+source_file: "components/analytics/analytics-wrapper.tsx"
 type: "code"
-community: "Community 185"
+community: "Insight Analytics"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_185
+  - community/Insight_Analytics
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[analytics-wrapper.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_185
+#graphify/code #graphify/EXTRACTED #community/Insight_Analytics

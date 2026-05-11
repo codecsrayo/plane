@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/analytics/work-items/priority-chart.tsx"
+source_file: "components/analytics/work-items/priority-chart.tsx"
 type: "code"
-community: "Community 205"
+community: "Chart Generate"
 location: "L51"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_205
+  - community/Chart_Generate
 ---
 
 # analyticsService
@@ -15,4 +15,4 @@ tags:
 
 - [[priority-chart.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_205
+#graphify/code #graphify/EXTRACTED #community/Chart_Generate

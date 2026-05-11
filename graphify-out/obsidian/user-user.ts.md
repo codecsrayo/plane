@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/user/user-user.ts"
+source_file: "hooks/store/user/user-user.ts"
 type: "code"
-community: "Community 37"
+community: "Module Forms"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_37
+  - community/Module_Forms
 ---
 
 # user-user.ts
@@ -21,4 +21,4 @@ tags:
 - [[store-context.tsx]] - `imports_from` [EXTRACTED]
 - [[useUser()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_37
+#graphify/code #graphify/EXTRACTED #community/Module_Forms

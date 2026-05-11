@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/preview-card/date.tsx"
+source_file: "components/issues/preview-card/date.tsx"
 type: "code"
-community: "Community 36"
+community: "Calendar Blocks"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_36
+  - community/Calendar_Blocks
 ---
 
 # WorkItemPreviewCardDate()
@@ -16,4 +16,4 @@ tags:
 - [[date.tsx_3]] - `contains` [EXTRACTED]
 - [[root.tsx_27]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_36
+#graphify/code #graphify/EXTRACTED #community/Calendar_Blocks

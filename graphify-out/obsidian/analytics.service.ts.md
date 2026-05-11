@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/analytics.service.ts"
+source_file: "services/analytics.service.ts"
 type: "code"
-community: "Community 186"
+community: "Analytics Project"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_186
+  - community/Analytics_Project
 ---
 
 # analytics.service.ts
@@ -21,4 +21,4 @@ tags:
 - [[total-insights.tsx]] - `imports_from` [EXTRACTED]
 - [[workitems-insight-table.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_186
+#graphify/code #graphify/EXTRACTED #community/Analytics_Project

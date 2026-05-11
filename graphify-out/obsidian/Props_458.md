@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/modals/workspace-image-upload-modal.tsx"
+source_file: "components/core/modals/workspace-image-upload-modal.tsx"
 type: "code"
-community: "Authentication UI"
+community: "Workspace Timezone"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Authentication_UI
+  - community/Workspace_Timezone
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[workspace-image-upload-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Authentication_UI
+#graphify/code #graphify/EXTRACTED #community/Workspace_Timezone

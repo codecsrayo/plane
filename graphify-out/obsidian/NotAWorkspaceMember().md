@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/auth-screens/workspace/not-a-member.tsx"
+source_file: "components/auth-screens/workspace/not-a-member.tsx"
 type: "code"
-community: "Community 199"
+community: "Authorized Maintenance"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_199
+  - community/Authorized_Maintenance
 ---
 
 # NotAWorkspaceMember()
@@ -15,4 +15,4 @@ tags:
 
 - [[not-a-member.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_199
+#graphify/code #graphify/EXTRACTED #community/Authorized_Maintenance

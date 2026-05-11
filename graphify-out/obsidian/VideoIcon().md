@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/icons/attachment/video-file-icon.tsx"
+source_file: "components/icons/attachment/video-file-icon.tsx"
 type: "code"
-community: "Community 623"
+community: "Video Icon"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_623
+  - community/Video_Icon
 ---
 
 # VideoIcon()
@@ -15,4 +15,4 @@ tags:
 
 - [[video-file-icon.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_623
+#graphify/code #graphify/EXTRACTED #community/Video_Icon

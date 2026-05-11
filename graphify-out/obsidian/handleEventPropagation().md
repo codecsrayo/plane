@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail-widgets/sub-issues/issues-list/properties.tsx"
+source_file: "components/issues/issue-detail-widgets/sub-issues/issues-list/properties.tsx"
 type: "code"
-community: "Spreadsheet Column Components"
+community: "List Group Layout"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Column_Components
+  - community/List_Group_Layout
 ---
 
 # handleEventPropagation()
@@ -15,4 +15,4 @@ tags:
 
 - [[properties.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Column_Components
+#graphify/code #graphify/EXTRACTED #community/List_Group_Layout

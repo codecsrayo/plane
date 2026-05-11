@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/analytics/trend-piece.tsx"
+source_file: "components/analytics/trend-piece.tsx"
 type: "code"
-community: "Community 292"
+community: "Trend Variants"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_292
+  - community/Trend_Variants
 ---
 
 # trend-piece.tsx
@@ -18,4 +18,4 @@ tags:
 - [[sizeConfig_1]] - `contains` [EXTRACTED]
 - [[variants]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_292
+#graphify/code #graphify/EXTRACTED #community/Trend_Variants

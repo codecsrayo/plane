@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/modules/module-view-header.tsx"
+source_file: "components/modules/module-view-header.tsx"
 type: "code"
-community: "Layout System"
+community: "Icon Ilayouticon"
 location: "L35"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Layout_System
+  - community/Icon_Ilayouticon
 ---
 
 # ModuleViewHeader
@@ -15,4 +15,4 @@ tags:
 
 - [[module-view-header.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Layout_System
+#graphify/code #graphify/EXTRACTED #community/Icon_Ilayouticon

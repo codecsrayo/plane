@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/version/root.tsx"
+source_file: "components/pages/version/root.tsx"
 type: "code"
-community: "Community 54"
+community: "Page Editor"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_54
+  - community/Page_Editor
 ---
 
 # root.tsx
@@ -23,4 +23,4 @@ tags:
 - [[use-query-params.ts]] - `imports_from` [EXTRACTED]
 - [[useQueryParams()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_54
+#graphify/code #graphify/EXTRACTED #community/Page_Editor

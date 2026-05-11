@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/config/commands.ts"
+source_file: "components/power-k/config/commands.ts"
 type: "code"
-community: "Community 45"
+community: "Command Palette"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_45
+  - community/Command_Palette
 ---
 
 # useProjectsAppPowerKCommands()
@@ -23,4 +23,4 @@ tags:
 - [[usePowerKNavigationCommands()]] - `calls` [EXTRACTED]
 - [[usePowerKPreferencesCommands()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_45
+#graphify/code #graphify/EXTRACTED #community/Command_Palette

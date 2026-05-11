@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/spreadsheet/issue-row.tsx"
+source_file: "components/issues/issue-layouts/spreadsheet/issue-row.tsx"
 type: "code"
-community: "Active Cycle Stats"
+community: "List Group Layout"
 location: "L174"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Cycle_Stats
+  - community/List_Group_Layout
 ---
 
 # IssueRowDetails
@@ -15,4 +15,4 @@ tags:
 
 - [[issue-row.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats
+#graphify/code #graphify/EXTRACTED #community/List_Group_Layout

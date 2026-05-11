@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/modules/dropdowns/index.ts"
+source_file: "components/modules/dropdowns/index.ts"
 type: "code"
-community: "Layout System"
+community: "Icon Ilayouticon"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Layout_System
+  - community/Icon_Ilayouticon
 ---
 
 # index.ts
@@ -15,4 +15,4 @@ tags:
 
 - [[module-view-header.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Layout_System
+#graphify/code #graphify/EXTRACTED #community/Icon_Ilayouticon

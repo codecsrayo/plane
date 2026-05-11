@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/inbox/inbox-filter/filters/members.tsx"
+source_file: "components/inbox/inbox-filter/filters/members.tsx"
 type: "code"
-community: "Community 42"
+community: "Lead Members"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_42
+  - community/Lead_Members
 ---
 
 # Props
@@ -17,4 +17,4 @@ tags:
 - [[members.tsx_3]] - `contains` [EXTRACTED]
 - [[members.tsx_8]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_42
+#graphify/code #graphify/EXTRACTED #community/Lead_Members

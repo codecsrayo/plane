@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/onboarding/switch-account-modal.tsx"
+source_file: "components/onboarding/switch-account-modal.tsx"
 type: "code"
-community: "Community 113"
+community: "Account Settings"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_113
+  - community/Account_Settings
 ---
 
 # SwitchAccountModal()
@@ -18,4 +18,4 @@ tags:
 - [[useAppRouter()]] - `calls` [EXTRACTED]
 - [[useUser()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_113
+#graphify/code #graphify/EXTRACTED #community/Account_Settings

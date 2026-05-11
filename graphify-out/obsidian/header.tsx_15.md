@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/analytics/work-items/modal/header.tsx"
+source_file: "components/analytics/work-items/modal/header.tsx"
 type: "code"
-community: "Community 193"
+community: "Active Projects"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_193
+  - community/Active_Projects
 ---
 
 # header.tsx
@@ -17,4 +17,4 @@ tags:
 - [[WorkItemsModalHeader]] - `contains` [EXTRACTED]
 - [[index.tsx_8]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_193
+#graphify/code #graphify/EXTRACTED #community/Active_Projects

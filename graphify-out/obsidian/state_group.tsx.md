@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/sidebar/progress-stats/state_group.tsx"
+source_file: "components/core/sidebar/progress-stats/state_group.tsx"
 type: "code"
-community: "Cycle Analytics"
+community: "Progress Stats"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Analytics
+  - community/Progress_Stats
 ---
 
 # state_group.tsx
@@ -21,4 +21,4 @@ tags:
 - [[progress-stats.tsx_1]] - `imports_from` [EXTRACTED]
 - [[single-progress-stats.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Analytics
+#graphify/code #graphify/EXTRACTED #community/Progress_Stats

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/billing/comparison/feature-detail.tsx"
+source_file: "components/workspace/billing/comparison/feature-detail.tsx"
 type: "code"
-community: "Community 131"
+community: "Plans Plan"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_131
+  - community/Plans_Plan
 ---
 
 # feature-detail.tsx
@@ -19,4 +19,4 @@ tags:
 - [[base.tsx]] - `imports_from` [EXTRACTED]
 - [[plans.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_131
+#graphify/code #graphify/EXTRACTED #community/Plans_Plan

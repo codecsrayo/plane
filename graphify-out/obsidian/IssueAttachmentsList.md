@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/attachment/attachments-list.tsx"
+source_file: "components/issues/attachment/attachments-list.tsx"
 type: "code"
-community: "Community 31"
+community: "Issue Attachments"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_31
+  - community/Issue_Attachments
 ---
 
 # IssueAttachmentsList
@@ -16,4 +16,4 @@ tags:
 - [[attachments-list.tsx]] - `contains` [EXTRACTED]
 - [[root.tsx_36]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_31
+#graphify/code #graphify/EXTRACTED #community/Issue_Attachments

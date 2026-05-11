@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/empty-states/index.tsx"
+source_file: "components/issues/issue-layouts/empty-states/index.tsx"
 type: "code"
-community: "Empty State Components"
+community: "Cycle Details"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_State_Components
+  - community/Cycle_Details
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[index.tsx_7]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_State_Components
+#graphify/code #graphify/EXTRACTED #community/Cycle_Details

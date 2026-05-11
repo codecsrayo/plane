@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/store/use-command-palette.ts"
+source_file: "hooks/store/use-command-palette.ts"
 type: "code"
-community: "Empty State Components"
+community: "Cycle Details"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_State_Components
+  - community/Cycle_Details
 ---
 
 # useCommandPalette()
@@ -37,4 +37,4 @@ tags:
 - [[user-menu-root.tsx]] - `imports` [EXTRACTED]
 - [[views-list.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_State_Components
+#graphify/code #graphify/EXTRACTED #community/Cycle_Details

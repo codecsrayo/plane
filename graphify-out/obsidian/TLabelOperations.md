@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-detail/label/root.tsx"
+source_file: "components/issues/issue-detail/label/root.tsx"
 type: "code"
-community: "Community 140"
+community: "Label Issue"
 location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_140
+  - community/Label_Issue
 ---
 
 # TLabelOperations
@@ -19,4 +19,4 @@ tags:
 - [[root.tsx_32]] - `contains` [EXTRACTED]
 - [[root.tsx_33]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_140
+#graphify/code #graphify/EXTRACTED #community/Label_Issue

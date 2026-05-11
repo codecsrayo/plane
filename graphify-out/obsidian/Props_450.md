@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/multiple-select/entity-select-action.tsx"
+source_file: "components/core/multiple-select/entity-select-action.tsx"
 type: "code"
-community: "Active Cycle Stats"
+community: "Multi Select Actions"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Cycle_Stats
+  - community/Multi_Select_Actions
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[entity-select-action.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats
+#graphify/code #graphify/EXTRACTED #community/Multi_Select_Actions

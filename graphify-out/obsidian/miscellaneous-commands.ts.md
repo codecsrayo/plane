@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/config/miscellaneous-commands.ts"
+source_file: "components/power-k/config/miscellaneous-commands.ts"
 type: "code"
-community: "Community 80"
+community: "Command Palette"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_80
+  - community/Command_Palette
 ---
 
 # miscellaneous-commands.ts
@@ -22,4 +22,4 @@ tags:
 - [[usePowerK()]] - `imports` [EXTRACTED]
 - [[usePowerKMiscellaneousCommands()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_80
+#graphify/code #graphify/EXTRACTED #community/Command_Palette

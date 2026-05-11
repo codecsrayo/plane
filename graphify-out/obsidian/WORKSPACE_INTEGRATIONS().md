@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/constants/fetch-keys.ts"
+source_file: "constants/fetch-keys.ts"
 type: "code"
-community: "Community 101"
+community: "Integration Sync"
 location: "L113"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_101
+  - community/Integration_Sync
 ---
 
 # WORKSPACE_INTEGRATIONS()
@@ -17,4 +17,4 @@ tags:
 - [[single-integration-card.tsx]] - `imports` [EXTRACTED]
 - [[use-integration-popup.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_101
+#graphify/code #graphify/EXTRACTED #community/Integration_Sync

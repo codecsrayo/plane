@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/workspace/index.ts"
+source_file: "store/workspace/index.ts"
 type: "code"
-community: "Community 112"
+community: "Workspace Invites"
 location: "L325"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_112
+  - community/Workspace_Invites
 ---
 
 # updatedPreferences
@@ -15,4 +15,4 @@ tags:
 
 - [[index.ts_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_112
+#graphify/code #graphify/EXTRACTED #community/Workspace_Invites

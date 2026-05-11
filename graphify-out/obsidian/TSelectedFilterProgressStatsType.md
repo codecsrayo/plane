@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/sidebar/progress-stats/shared.ts"
+source_file: "components/core/sidebar/progress-stats/shared.ts"
 type: "code"
-community: "Cycle Analytics"
+community: "Progress Stats"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Analytics
+  - community/Progress_Stats
 ---
 
 # TSelectedFilterProgressStatsType
@@ -15,4 +15,4 @@ tags:
 
 - [[shared.ts_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Analytics
+#graphify/code #graphify/EXTRACTED #community/Progress_Stats

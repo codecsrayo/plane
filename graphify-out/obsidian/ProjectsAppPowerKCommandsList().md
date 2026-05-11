@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/ui/modal/commands-list.tsx"
+source_file: "components/power-k/ui/modal/commands-list.tsx"
 type: "code"
-community: "Community 99"
+community: "Power Search"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_99
+  - community/Power_Search
 ---
 
 # ProjectsAppPowerKCommandsList()
@@ -17,4 +17,4 @@ tags:
 - [[projects-app-provider.tsx]] - `imports` [EXTRACTED]
 - [[top-nav-power-k.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_99
+#graphify/code #graphify/EXTRACTED #community/Power_Search
