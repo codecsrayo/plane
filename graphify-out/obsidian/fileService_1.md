@@ -1,18 +1,18 @@
 ---
-source_file: "components/project/create-project-modal.tsx"
+source_file: "web/core/hooks/editor/use-editor-config.ts"
 type: "code"
-community: "Project Feature"
-location: "L20"
+community: "Attachment Issue"
+location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Feature
+  - community/Attachment_Issue
 ---
 
 # fileService
 
 ## Connections
 
-- [[create-project-modal.tsx]] - `contains` [EXTRACTED]
+- [[use-editor-config.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Feature
+#graphify/code #graphify/EXTRACTED #community/Attachment_Issue

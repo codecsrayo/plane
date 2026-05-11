@@ -1,18 +1,20 @@
 ---
-source_file: "components/issues/issue-layouts/filters/header/helpers/dropdown.tsx"
+source_file: "space/components/issues/filters/helpers/dropdown.tsx"
 type: "code"
-community: "Dropdown Filters"
-location: "L27"
+community: "Issue Peek"
+location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dropdown_Filters
+  - community/Issue_Peek
 ---
 
 # FiltersDropdown()
 
 ## Connections
 
-- [[dropdown.tsx_5]] - `contains` [EXTRACTED]
+- [[dropdown.tsx_7]] - `contains` [EXTRACTED]
+- [[dropdown.tsx_11]] - `contains` [EXTRACTED]
+- [[root.tsx_140]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dropdown_Filters
+#graphify/code #graphify/EXTRACTED #community/Issue_Peek

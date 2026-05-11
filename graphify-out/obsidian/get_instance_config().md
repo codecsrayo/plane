@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/utils/instance_config.rs"
 type: "code"
-community: "Community 43"
+community: "Session Presigned"
 location: "L57"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_43
+  - community/Session_Presigned
 ---
 
 # get_instance_config()
@@ -28,4 +28,4 @@ tags:
 - [[list_gitlab_repositories()]] - `calls` [INFERRED]
 - [[register_github_webhook()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_43
+#graphify/code #graphify/INFERRED #community/Session_Presigned

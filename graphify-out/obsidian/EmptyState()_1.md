@@ -1,20 +1,18 @@
 ---
-source_file: "components/common/empty-state.tsx"
+source_file: "web/core/components/project/empty-state.tsx"
 type: "code"
-community: "Issue Parent"
-location: "L25"
+community: "Empty State"
+location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Parent
+  - community/Empty_State
 ---
 
 # EmptyState()
 
 ## Connections
 
-- [[empty-state.tsx_3]] - `contains` [EXTRACTED]
-- [[error.tsx]] - `imports` [EXTRACTED]
-- [[root.tsx_30]] - `imports` [EXTRACTED]
+- [[empty-state.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Parent
+#graphify/code #graphify/EXTRACTED #community/Empty_State

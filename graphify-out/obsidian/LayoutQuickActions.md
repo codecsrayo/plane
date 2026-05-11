@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/layout-quick-actions.tsx"
+source_file: "web/core/components/issues/layout-quick-actions.tsx"
 type: "code"
 community: "Menu Quick"
 location: "L22"

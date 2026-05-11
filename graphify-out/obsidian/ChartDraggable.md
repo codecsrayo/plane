@@ -1,18 +1,18 @@
 ---
-source_file: "components/gantt-chart/helpers/draggable.tsx"
+source_file: "web/core/components/gantt-chart/helpers/draggable.tsx"
 type: "code"
-community: "Resizable Left"
+community: "Gantt Chart"
 location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Resizable_Left
+  - community/Gantt_Chart
 ---
 
 # ChartDraggable
 
 ## Connections
 
-- [[draggable.tsx]] - `contains` [EXTRACTED]
+- [[draggable.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Resizable_Left
+#graphify/code #graphify/EXTRACTED #community/Gantt_Chart

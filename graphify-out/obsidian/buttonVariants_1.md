@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/button/helper.tsx"
 type: "code"
-community: "Button Auth"
+community: "Button Styling"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Button_Auth
+  - community/Button_Styling
 ---
 
 # buttonVariants
@@ -17,4 +17,4 @@ tags:
 - [[getButtonStyling()]] - `calls` [EXTRACTED]
 - [[helper.tsx_17]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Button_Auth
+#graphify/code #graphify/EXTRACTED #community/Button_Styling

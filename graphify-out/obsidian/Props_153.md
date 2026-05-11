@@ -1,18 +1,18 @@
 ---
-source_file: "components/integration/confirm-action-modal.tsx"
+source_file: "web/core/components/modules/sidebar-select/select-status.tsx"
 type: "code"
-community: "Github Integration"
-location: "L10"
+community: "Status Sidebar"
+location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Github_Integration
+  - community/Status_Sidebar
 ---
 
 # Props
 
 ## Connections
 
-- [[confirm-action-modal.tsx]] - `contains` [EXTRACTED]
+- [[select-status.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Github_Integration
+#graphify/code #graphify/EXTRACTED #community/Status_Sidebar

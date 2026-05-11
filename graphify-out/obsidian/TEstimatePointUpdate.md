@@ -1,5 +1,5 @@
 ---
-source_file: "components/estimates/points/update.tsx"
+source_file: "web/core/components/estimates/points/update.tsx"
 type: "code"
 community: "Estimate Point"
 location: "L25"
@@ -13,6 +13,6 @@ tags:
 
 ## Connections
 
-- [[update.tsx_1]] - `contains` [EXTRACTED]
+- [[update.tsx_2]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Estimate_Point

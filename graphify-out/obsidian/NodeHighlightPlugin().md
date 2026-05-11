@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/plugins/highlight.ts"
 type: "code"
-community: "Highlight Node"
+community: "Link Options"
 location: "L59"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Highlight_Node
+  - community/Link_Options
 ---
 
 # NodeHighlightPlugin()
@@ -15,4 +15,4 @@ tags:
 
 - [[highlight.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Highlight_Node
+#graphify/code #graphify/EXTRACTED #community/Link_Options

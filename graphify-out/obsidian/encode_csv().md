@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/jobs/export.rs"
 type: "code"
-community: "Community 135"
+community: "Encode Sanitize"
 location: "L555"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_135
+  - graphify/INFERRED
+  - community/Encode_Sanitize
 ---
 
 # encode_csv()
@@ -18,4 +18,4 @@ tags:
 - [[export.rs]] - `contains` [EXTRACTED]
 - [[sanitize_csv_cell()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_135
+#graphify/code #graphify/INFERRED #community/Encode_Sanitize

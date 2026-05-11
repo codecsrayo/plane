@@ -1,5 +1,5 @@
 ---
-source_file: "components/gantt-chart/chart/main-content.tsx"
+source_file: "web/core/components/gantt-chart/chart/main-content.tsx"
 type: "code"
 community: "Gantt Chart"
 location: "L69"

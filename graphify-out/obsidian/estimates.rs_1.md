@@ -1,19 +1,34 @@
 ---
-source_file: "api_rust/src/entities/estimates.rs"
+source_file: "api_rust/src/routes/estimates.rs"
 type: "code"
-community: "Community 429"
+community: "Request Intake"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_429
+  - community/Request_Intake
 ---
 
 # estimates.rs
 
 ## Connections
 
-- [[Model_110]] - `contains` [EXTRACTED]
-- [[Relation_110]] - `contains` [EXTRACTED]
+- [[CreateEstimatePointRequest]] - `contains` [EXTRACTED]
+- [[CreateEstimateRequest]] - `contains` [EXTRACTED]
+- [[EstimatePointInput]] - `contains` [EXTRACTED]
+- [[EstimatePointResponse]] - `contains` [EXTRACTED]
+- [[EstimateResponse]] - `contains` [EXTRACTED]
+- [[UpdateEstimatePointRequest]] - `contains` [EXTRACTED]
+- [[UpdateEstimateRequest]] - `contains` [EXTRACTED]
+- [[create_estimate()_2]] - `contains` [EXTRACTED]
+- [[create_estimate_point()_1]] - `contains` [EXTRACTED]
+- [[delete_estimate()]] - `contains` [EXTRACTED]
+- [[delete_estimate_point()]] - `contains` [EXTRACTED]
+- [[enrich_estimate()]] - `contains` [EXTRACTED]
+- [[get_estimate()]] - `contains` [EXTRACTED]
+- [[list_estimates()]] - `contains` [EXTRACTED]
+- [[list_project_estimates()]] - `contains` [EXTRACTED]
+- [[update_estimate()]] - `contains` [EXTRACTED]
+- [[update_estimate_point()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_429
+#graphify/code #graphify/EXTRACTED #community/Request_Intake

@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/portal/portal.stories.tsx"
 type: "code"
-community: "Button Auth"
+community: "Portal Positions"
 location: "L146"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Button_Auth
+  - community/Portal_Positions
 ---
 
 # Widths
@@ -15,4 +15,4 @@ tags:
 
 - [[portal.stories.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Button_Auth
+#graphify/code #graphify/EXTRACTED #community/Portal_Positions

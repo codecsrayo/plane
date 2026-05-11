@@ -1,5 +1,5 @@
 ---
-source_file: "components/estimates/create/stage-one.tsx"
+source_file: "web/core/components/estimates/create/stage-one.tsx"
 type: "code"
 community: "Estimate Stage"
 location: "L21"

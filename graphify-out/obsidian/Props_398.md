@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/loaders/page-content-loader.tsx"
+source_file: "web/core/components/power-k/ui/pages/preferences/languages-menu.tsx"
 type: "code"
-community: "Issue Filters"
-location: "L11"
+community: "Menu Power"
+location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters
+  - community/Menu_Power
 ---
 
 # Props
 
 ## Connections
 
-- [[page-content-loader.tsx]] - `contains` [EXTRACTED]
+- [[languages-menu.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

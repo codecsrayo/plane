@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-detail/identifier-text.tsx"
+source_file: "web/core/components/issues/issue-detail/identifier-text.tsx"
 type: "code"
-community: "Issue Identifiers"
+community: "Issue Work"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Identifiers
+  - community/Issue_Work
 ---
 
 # SIZE_MAP
@@ -15,4 +15,4 @@ tags:
 
 - [[identifier-text.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Identifiers
+#graphify/code #graphify/EXTRACTED #community/Issue_Work

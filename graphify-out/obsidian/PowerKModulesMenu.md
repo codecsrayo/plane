@@ -1,5 +1,5 @@
 ---
-source_file: "components/power-k/menus/modules.tsx"
+source_file: "web/core/components/power-k/menus/modules.tsx"
 type: "code"
 community: "Menu Power"
 location: "L21"

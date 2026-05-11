@@ -1,19 +1,19 @@
 ---
-source_file: "components/core/description-versions/dropdown.tsx"
+source_file: "web/core/components/core/description-versions/dropdown.tsx"
 type: "code"
-community: "Description Dropdown"
+community: "Member Members"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Description_Dropdown
+  - community/Member_Members
 ---
 
 # DescriptionVersionsDropdown
 
 ## Connections
 
-- [[dropdown.tsx_8]] - `contains` [EXTRACTED]
-- [[root.tsx_93]] - `imports` [EXTRACTED]
+- [[dropdown.tsx_10]] - `contains` [EXTRACTED]
+- [[root.tsx_134]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Description_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Member_Members

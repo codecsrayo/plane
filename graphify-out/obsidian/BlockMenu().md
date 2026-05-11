@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/components/menus/block-menu.tsx"
 type: "code"
-community: "Menu Options"
+community: "Table Node"
 location: "L44"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu_Options
+  - community/Table_Node
 ---
 
 # BlockMenu()
@@ -16,4 +16,4 @@ tags:
 - [[block-menu.tsx]] - `contains` [EXTRACTED]
 - [[getNodeOptions()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Menu_Options
+#graphify/code #graphify/EXTRACTED #community/Table_Node

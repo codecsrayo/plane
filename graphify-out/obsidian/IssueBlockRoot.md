@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/list/block-root.tsx"
+source_file: "web/core/components/issues/issue-layouts/list/block-root.tsx"
 type: "code"
-community: "Kanban Groups"
+community: "Select Multiple"
 location: "L51"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Kanban_Groups
+  - community/Select_Multiple
 ---
 
 # IssueBlockRoot
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[block-root.tsx]] - `contains` [EXTRACTED]
-- [[blocks-list.tsx_1]] - `imports` [EXTRACTED]
+- [[blocks-list.tsx_2]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Kanban_Groups
+#graphify/code #graphify/EXTRACTED #community/Select_Multiple

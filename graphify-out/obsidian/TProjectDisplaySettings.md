@@ -1,12 +1,12 @@
 ---
-source_file: "types/navigation-preferences.ts"
+source_file: "web/core/types/navigation-preferences.ts"
 type: "code"
-community: "Navigation Preferences"
+community: "Sidebar Navigation"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Navigation_Preferences
+  - community/Sidebar_Navigation
 ---
 
 # TProjectDisplaySettings
@@ -15,4 +15,4 @@ tags:
 
 - [[navigation-preferences.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Navigation_Preferences
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation

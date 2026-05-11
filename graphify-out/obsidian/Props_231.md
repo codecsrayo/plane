@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/filters/header/helpers/dropdown.tsx"
+source_file: "web/core/components/integration/github/project-issue-sync-modal.tsx"
 type: "code"
-community: "Dropdown Filters"
-location: "L15"
+community: "Project Workspace"
+location: "L47"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dropdown_Filters
+  - community/Project_Workspace
 ---
 
 # Props
 
 ## Connections
 
-- [[dropdown.tsx_5]] - `contains` [EXTRACTED]
+- [[project-issue-sync-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dropdown_Filters
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

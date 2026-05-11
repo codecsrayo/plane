@@ -1,18 +1,18 @@
 ---
-source_file: "components/core/description-versions/root.tsx"
+source_file: "web/core/components/onboarding/steps/common/header.tsx"
 type: "code"
-community: "Description Dropdown"
-location: "L24"
+community: "Common Onboarding"
+location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Description_Dropdown
+  - community/Common_Onboarding
 ---
 
 # Props
 
 ## Connections
 
-- [[root.tsx_93]] - `contains` [EXTRACTED]
+- [[header.tsx_55]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Description_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Common_Onboarding

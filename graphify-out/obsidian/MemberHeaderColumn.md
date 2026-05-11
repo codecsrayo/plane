@@ -1,12 +1,12 @@
 ---
-source_file: "components/project/member-header-column.tsx"
+source_file: "web/core/components/project/member-header-column.tsx"
 type: "code"
-community: "Member Sort"
+community: "Member Column"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Sort
+  - community/Member_Column
 ---
 
 # MemberHeaderColumn
@@ -14,5 +14,7 @@ tags:
 ## Connections
 
 - [[member-header-column.tsx]] - `contains` [EXTRACTED]
+- [[useMemberColumns.tsx]] - `imports` [EXTRACTED]
+- [[useProjectColumns.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Sort
+#graphify/code #graphify/EXTRACTED #community/Member_Column

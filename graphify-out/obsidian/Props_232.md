@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/filters/header/helpers/filter-option.tsx"
+source_file: "web/core/components/integration/github/pr-state-mapping-modal.tsx"
 type: "code"
-community: "Option"
-location: "L9"
+community: "Project Workspace"
+location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Option
+  - community/Project_Workspace
 ---
 
 # Props
 
 ## Connections
 
-- [[filter-option.tsx]] - `contains` [EXTRACTED]
+- [[pr-state-mapping-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Option
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

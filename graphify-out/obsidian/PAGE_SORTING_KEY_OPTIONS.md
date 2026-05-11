@@ -1,5 +1,5 @@
 ---
-source_file: "components/pages/list/order-by.tsx"
+source_file: "web/core/components/pages/list/order-by.tsx"
 type: "code"
 community: "Order Search"
 location: "L21"

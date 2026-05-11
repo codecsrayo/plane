@@ -1,18 +1,18 @@
 ---
-source_file: "components/modules/module-card-item.tsx"
+source_file: "web/ce/components/cycles/end-cycle/modal.tsx"
 type: "code"
-community: "Module Forms"
-location: "L39"
+community: "Cycle"
+location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Forms
+  - community/Cycle
 ---
 
 # Props
 
 ## Connections
 
-- [[module-card-item.tsx]] - `contains` [EXTRACTED]
+- [[modal.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Forms
+#graphify/code #graphify/EXTRACTED #community/Cycle

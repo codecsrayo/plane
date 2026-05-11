@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/modules.rs"
 type: "code"
-community: "Modules Rust API"
+community: "Request Intake"
 location: "L843"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Modules_Rust_API
+  - community/Request_Intake
 ---
 
 # ModuleUserPropertiesResponse
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[.from()_3]] - `method` [EXTRACTED]
-- [[modules.rs]] - `contains` [EXTRACTED]
+- [[modules.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Modules_Rust_API
+#graphify/code #graphify/EXTRACTED #community/Request_Intake

@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/navigation-pane/tab-panels/info/document-info.tsx"
+source_file: "web/core/components/power-k/ui/pages/open-entity/workspace-settings-menu.tsx"
 type: "code"
-community: "Info Navigation"
-location: "L16"
+community: "Menu Power"
+location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Info_Navigation
+  - community/Menu_Power
 ---
 
 # Props
 
 ## Connections
 
-- [[document-info.tsx]] - `contains` [EXTRACTED]
+- [[workspace-settings-menu.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Info_Navigation
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

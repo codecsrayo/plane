@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/icon-button/icon-button.stories.tsx"
 type: "code"
-community: "Icon Button"
+community: "Large Disabled"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Icon_Button
+  - community/Large_Disabled
 ---
 
 # icon-button.stories.tsx
@@ -34,4 +34,4 @@ tags:
 - [[icon()]] - `contains` [EXTRACTED]
 - [[icon-button.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Icon_Button
+#graphify/code #graphify/EXTRACTED #community/Large_Disabled

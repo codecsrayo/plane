@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/emoji-icon-picker/material-icons.tsx"
 type: "code"
-community: "Icons Lucide"
+community: "Emoji Icon"
 location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Icons_Lucide
+  - community/Emoji_Icon
 ---
 
 # MATERIAL_ICONS_LIST
@@ -16,4 +16,4 @@ tags:
 - [[material-icons.tsx]] - `contains` [EXTRACTED]
 - [[material-root.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Icons_Lucide
+#graphify/code #graphify/EXTRACTED #community/Emoji_Icon

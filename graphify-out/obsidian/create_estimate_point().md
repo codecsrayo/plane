@@ -1,20 +1,20 @@
 ---
-source_file: "api_rust/src/routes/estimates.rs"
+source_file: "api_rust/tests/estimates.rs"
 type: "code"
-community: "Community 130"
-location: "L438"
+community: "Returns Estimate"
+location: "L242"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_130
+  - community/Returns_Estimate
 ---
 
 # create_estimate_point()
 
 ## Connections
 
-- [[.from_model()_9]] - `calls` [EXTRACTED]
+- [[delete_estimate_point_returns_204()]] - `calls` [EXTRACTED]
 - [[estimates.rs]] - `contains` [EXTRACTED]
-- [[require_role()]] - `calls` [INFERRED]
+- [[update_estimate_point_returns_200()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_130
+#graphify/code #graphify/EXTRACTED #community/Returns_Estimate

@@ -1,18 +1,18 @@
 ---
-source_file: "components/stickies/sticky/root.tsx"
+source_file: "web/core/components/stickies/layout/stickies-list.tsx"
 type: "code"
-community: "Sticky Tprops"
-location: "L23"
+community: "Stickies Sticky"
+location: "L46"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sticky_Tprops
+  - community/Stickies_Sticky
 ---
 
 # TProps
 
 ## Connections
 
-- [[root.tsx_11]] - `contains` [EXTRACTED]
+- [[stickies-list.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sticky_Tprops
+#graphify/code #graphify/EXTRACTED #community/Stickies_Sticky

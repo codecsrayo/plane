@@ -1,20 +1,18 @@
 ---
-source_file: "components/inbox/inbox-filter/filters/status.tsx"
+source_file: "web/core/components/ui/profile-empty-state.tsx"
 type: "code"
-community: "Filter Selection UI"
-location: "L20"
+community: "Profile Empty"
+location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Selection_UI
+  - community/Profile_Empty
 ---
 
 # Props
 
 ## Connections
 
-- [[status.tsx_1]] - `contains` [EXTRACTED]
-- [[status.tsx_3]] - `contains` [EXTRACTED]
-- [[status.tsx_5]] - `contains` [EXTRACTED]
+- [[profile-empty-state.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Selection_UI
+#graphify/code #graphify/EXTRACTED #community/Profile_Empty

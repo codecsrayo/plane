@@ -11,9 +11,9 @@ members: 3
 
 ## Members
 
-- [[ComicBoxButton()]] - code - components/empty-state/comic-box-button.tsx
-- [[Props_383]] - code - components/empty-state/comic-box-button.tsx
-- [[comic-box-button.tsx]] - code - components/empty-state/comic-box-button.tsx
+- [[ComicBoxButton()]] - code - web/core/components/empty-state/comic-box-button.tsx
+- [[Props_458]] - code - web/core/components/empty-state/comic-box-button.tsx
+- [[comic-box-button.tsx]] - code - web/core/components/empty-state/comic-box-button.tsx
 
 ## Live Query (requires Dataview plugin)
 

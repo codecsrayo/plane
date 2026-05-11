@@ -11,9 +11,9 @@ members: 3
 
 ## Members
 
-- [[IWebHookToggle]] - code - components/web-hooks/form/toggle.tsx
-- [[WebhookToggle()]] - code - components/web-hooks/form/toggle.tsx
-- [[toggle.tsx]] - code - components/web-hooks/form/toggle.tsx
+- [[IWebHookToggle]] - code - web/core/components/web-hooks/form/toggle.tsx
+- [[WebhookToggle()]] - code - web/core/components/web-hooks/form/toggle.tsx
+- [[toggle.tsx]] - code - web/core/components/web-hooks/form/toggle.tsx
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,12 +1,12 @@
 ---
-source_file: "store/member/project/base-project-member.store.ts"
+source_file: "web/core/store/member/project/base-project-member.store.ts"
 type: "code"
-community: "Member Project"
+community: "Member Members"
 location: "L34"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Project
+  - community/Member_Members
 ---
 
 # IProjectMemberDetails
@@ -16,4 +16,4 @@ tags:
 - [[base-project-member.store.ts]] - `contains` [EXTRACTED]
 - [[member-list-item.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Project
+#graphify/code #graphify/EXTRACTED #community/Member_Members

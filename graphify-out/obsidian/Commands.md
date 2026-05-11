@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/keymap.ts"
 type: "code"
-community: "Editor Commands"
+community: "Table Node"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Commands
+  - community/Table_Node
 ---
 
 # Commands
@@ -15,4 +15,4 @@ tags:
 
 - [[keymap.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Commands
+#graphify/code #graphify/EXTRACTED #community/Table_Node

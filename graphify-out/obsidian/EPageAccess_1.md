@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/enums.ts"
 type: "code"
-community: "Favorites Pages"
+community: "Filters Sort"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Favorites_Pages
+  - community/Filters_Sort
 ---
 
 # EPageAccess
@@ -16,4 +16,4 @@ tags:
 - [[core.ts_4]] - `imports` [EXTRACTED]
 - [[enums.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Favorites_Pages
+#graphify/code #graphify/EXTRACTED #community/Filters_Sort

@@ -1,18 +1,18 @@
 ---
-source_file: "components/editor/sticky-editor/color-palette.tsx"
+source_file: "web/core/components/workspace/sidebar/dropdown-item.tsx"
 type: "code"
-community: "Sticky Tprops"
-location: "L56"
+community: "Dropdown Tprops"
+location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sticky_Tprops
+  - community/Dropdown_Tprops
 ---
 
 # TProps
 
 ## Connections
 
-- [[color-palette.tsx]] - `contains` [EXTRACTED]
+- [[dropdown-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sticky_Tprops
+#graphify/code #graphify/EXTRACTED #community/Dropdown_Tprops

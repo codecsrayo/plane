@@ -1,27 +1,27 @@
 ---
-source_file: "api_rust/src/routes/api_tokens.rs"
+source_file: "api_rust/tests/api_tokens.rs"
 type: "code"
-community: "Community 189"
+community: "Returns Sign"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_189
+  - community/Returns_Sign
 ---
 
 # api_tokens.rs
 
 ## Connections
 
-- [[ApiTokenFullResponse]] - `contains` [EXTRACTED]
-- [[ApiTokenReadResponse]] - `contains` [EXTRACTED]
-- [[CreateApiTokenRequest]] - `contains` [EXTRACTED]
-- [[UpdateApiTokenRequest]] - `contains` [EXTRACTED]
-- [[create_api_token()]] - `contains` [EXTRACTED]
-- [[delete_api_token()]] - `contains` [EXTRACTED]
-- [[get_api_token()]] - `contains` [EXTRACTED]
-- [[list_api_tokens()]] - `contains` [EXTRACTED]
-- [[rand_token()]] - `contains` [EXTRACTED]
-- [[update_api_token()]] - `contains` [EXTRACTED]
+- [[create_api_token_no_label_returns_201()]] - `contains` [EXTRACTED]
+- [[create_api_token_with_label_returns_201()]] - `contains` [EXTRACTED]
+- [[delete_api_token_returns_204()]] - `contains` [EXTRACTED]
+- [[get_api_token_by_id_returns_200()]] - `contains` [EXTRACTED]
+- [[get_api_token_not_found_returns_404()]] - `contains` [EXTRACTED]
+- [[list_api_tokens_returns_own_tokens()]] - `contains` [EXTRACTED]
+- [[list_api_tokens_unauthenticated_returns_401()]] - `contains` [EXTRACTED]
+- [[list_timezones_returns_200_with_data()]] - `contains` [EXTRACTED]
+- [[update_api_token_returns_200()]] - `contains` [EXTRACTED]
+- [[users_api_tokens_alias_returns_200()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_189
+#graphify/code #graphify/EXTRACTED #community/Returns_Sign

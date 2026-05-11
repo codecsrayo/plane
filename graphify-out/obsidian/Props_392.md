@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/editor/summary/content-browser.tsx"
+source_file: "web/core/components/power-k/ui/pages/context-based/work-item/labels-menu.tsx"
 type: "code"
-community: "Outline Content"
-location: "L15"
+community: "Member Members"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Outline_Content
+  - community/Member_Members
 ---
 
 # Props
 
 ## Connections
 
-- [[content-browser.tsx]] - `contains` [EXTRACTED]
+- [[labels-menu.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Outline_Content
+#graphify/code #graphify/EXTRACTED #community/Member_Members

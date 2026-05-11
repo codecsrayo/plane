@@ -1,26 +1,37 @@
 ---
 type: community
-cohesion: 0.22
-members: 10
+cohesion: 0.11
+members: 21
 ---
 
 # Member Project
 
-**Cohesion:** 0.22 - loosely connected
-**Members:** 10 nodes
+**Cohesion:** 0.11 - loosely connected
+**Members:** 21 nodes
 
 ## Members
 
-- [[DefaultSettingItem()]] - code - components/project/project-settings-member-defaults.tsx
-- [[MemberSelect]] - code - components/project/member-select.tsx
-- [[PROJECT_DETAILS()]] - code - constants/fetch-keys.ts
-- [[ProjectSettingsMemberDefaults]] - code - components/project/project-settings-member-defaults.tsx
-- [[Props_139]] - code - components/project/member-select.tsx
-- [[TDefaultSettingItemProps]] - code - components/project/project-settings-member-defaults.tsx
-- [[TProjectSettingsMemberDefaultsProps]] - code - components/project/project-settings-member-defaults.tsx
-- [[defaultValues_9]] - code - components/project/project-settings-member-defaults.tsx
-- [[member-select.tsx]] - code - components/project/member-select.tsx
-- [[project-settings-member-defaults.tsx]] - code - components/project/project-settings-member-defaults.tsx
+- [[.constructor()_131]] - code - web/core/store/member/project/project-member-filters.store.ts
+- [[IBaseProjectMemberStore]] - code - web/core/store/member/project/base-project-member.store.ts
+- [[IProjectMemberFiltersStore]] - code - web/core/store/member/project/project-member-filters.store.ts
+- [[IProjectMemberStore]] - code - web/ce/store/member/project-member.store.ts
+- [[ProjectMemberFiltersStore]] - code - web/core/store/member/project/project-member-filters.store.ts
+- [[ProjectMemberStore]] - code - web/ce/store/member/project-member.store.ts
+- [[allMembers]] - code - web/core/store/member/project/base-project-member.store.ts
+- [[base-project-member.store.ts]] - code - web/core/store/member/project/base-project-member.store.ts
+- [[constructor()_10]] - code - web/core/store/member/project/base-project-member.store.ts
+- [[filteredMemberIds_1]] - code - web/core/store/member/project/base-project-member.store.ts
+- [[memberDetails_1]] - code - web/core/store/member/project/base-project-member.store.ts
+- [[memberIds_1]] - code - web/core/store/member/project/base-project-member.store.ts
+- [[members_1]] - code - web/core/store/member/project/base-project-member.store.ts
+- [[membershipBeforeUpdate]] - code - web/core/store/member/project/base-project-member.store.ts
+- [[project-member-filters.store.ts]] - code - web/core/store/member/project/project-member-filters.store.ts
+- [[project-member.store.ts]] - code - web/ce/store/member/project-member.store.ts
+- [[projectMember]] - code - web/core/store/member/project/base-project-member.store.ts
+- [[projectMemberIds()]] - code - web/core/store/member/project/base-project-member.store.ts
+- [[projectMembership]] - code - web/core/store/member/project/base-project-member.store.ts
+- [[sortedMembers_1]] - code - web/core/store/member/project/project-member-filters.store.ts
+- [[updatedProjectRole]] - code - web/core/store/member/project/base-project-member.store.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -31,13 +42,18 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 3 edges to [[_COMMUNITY_Auth Wrappers]]
-- 2 edges to [[_COMMUNITY_Project Archives]]
-- 2 edges to [[_COMMUNITY_Issue Filters]]
-- 1 edge to [[_COMMUNITY_Member Settings]]
+- 6 edges to [[_COMMUNITY_Workspace Member]]
+- 4 edges to [[_COMMUNITY_Member Workspace]]
+- 2 edges to [[_COMMUNITY_Project Issue]]
+- 2 edges to [[_COMMUNITY_Member Members]]
+- 1 edge to [[_COMMUNITY_User Profile]]
+- 1 edge to [[_COMMUNITY_Label Dropdown]]
+- 1 edge to [[_COMMUNITY_Issue Activity]]
+- 1 edge to [[_COMMUNITY_Issue Project]]
+- 1 edge to [[_COMMUNITY_Estimate Project]]
 
 ## Top bridge nodes
 
-- [[project-settings-member-defaults.tsx]] - degree 12, connects to 3 communities
-- [[member-select.tsx]] - degree 5, connects to 1 community
-- [[PROJECT_DETAILS()]] - degree 3, connects to 1 community
+- [[base-project-member.store.ts]] - degree 31, connects to 9 communities
+- [[project-member-filters.store.ts]] - degree 7, connects to 1 community
+- [[projectMemberIds()]] - degree 2, connects to 1 community

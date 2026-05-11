@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-modal/context/issue-modal-context.tsx"
+source_file: "web/core/components/issues/issue-modal/context/issue-modal-context.tsx"
 type: "code"
 community: "Issue Context"
 location: "L84"

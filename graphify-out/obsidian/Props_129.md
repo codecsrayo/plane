@@ -1,18 +1,18 @@
 ---
-source_file: "components/project/confirm-project-member-remove.tsx"
+source_file: "web/core/components/gantt-chart/blocks/block-row.tsx"
 type: "code"
-community: "Member Project"
-location: "L20"
+community: "Gantt Chart"
+location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Project
+  - community/Gantt_Chart
 ---
 
 # Props
 
 ## Connections
 
-- [[confirm-project-member-remove.tsx]] - `contains` [EXTRACTED]
+- [[block-row.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Project
+#graphify/code #graphify/EXTRACTED #community/Gantt_Chart

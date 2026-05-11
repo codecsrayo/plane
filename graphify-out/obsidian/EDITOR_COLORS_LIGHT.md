@@ -1,12 +1,12 @@
 ---
 source_file: "utils/src/theme/constants.ts"
 type: "code"
-community: "Color Utils"
+community: "Color Shade"
 location: "L126"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Color_Utils
+  - community/Color_Shade
 ---
 
 # EDITOR_COLORS_LIGHT
@@ -16,4 +16,4 @@ tags:
 - [[constants.ts_1]] - `contains` [EXTRACTED]
 - [[theme-application.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Color_Utils
+#graphify/code #graphify/EXTRACTED #community/Color_Shade

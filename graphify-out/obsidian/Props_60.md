@@ -1,18 +1,18 @@
 ---
-source_file: "components/stickies/layout/sticky-dnd-wrapper.tsx"
+source_file: "web/ce/components/gantt-chart/layers/additional-layers.tsx"
 type: "code"
-community: "Stickies Sticky"
-location: "L28"
+community: "Additional Gantt"
+location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Stickies_Sticky
+  - community/Additional_Gantt
 ---
 
 # Props
 
 ## Connections
 
-- [[sticky-dnd-wrapper.tsx]] - `contains` [EXTRACTED]
+- [[additional-layers.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Stickies_Sticky
+#graphify/code #graphify/EXTRACTED #community/Additional_Gantt

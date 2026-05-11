@@ -1,12 +1,12 @@
 ---
-source_file: "store/pages/base-page.ts"
+source_file: "web/core/store/pages/base-page.ts"
 type: "code"
-community: "Logo Editor"
+community: "Current User"
 location: "L82"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Logo_Editor
+  - community/Current_User
 ---
 
 # BasePage
@@ -14,9 +14,9 @@ tags:
 ## Connections
 
 - [[.asJSON()]] - `method` [EXTRACTED]
-- [[.constructor()_68]] - `method` [EXTRACTED]
+- [[.constructor()_125]] - `method` [EXTRACTED]
 - [[.isCurrentUserOwner()]] - `method` [EXTRACTED]
 - [[base-page.ts]] - `contains` [EXTRACTED]
 - [[project-page.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Logo_Editor
+#graphify/code #graphify/EXTRACTED #community/Current_User

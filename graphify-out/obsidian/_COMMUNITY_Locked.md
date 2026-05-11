@@ -11,8 +11,8 @@ members: 2
 
 ## Members
 
-- [[LockedComponent()]] - code - components/icons/locked-component.tsx
-- [[locked-component.tsx]] - code - components/icons/locked-component.tsx
+- [[LockedComponent()]] - code - web/core/components/icons/locked-component.tsx
+- [[locked-component.tsx]] - code - web/core/components/icons/locked-component.tsx
 
 ## Live Query (requires Dataview plugin)
 

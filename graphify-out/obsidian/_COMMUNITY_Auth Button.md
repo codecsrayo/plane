@@ -28,7 +28,7 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 2 edges to [[_COMMUNITY_Toggle Checkbox]]
+- 2 edges to [[_COMMUNITY_Input Checkbox]]
 
 ## Top bridge nodes
 

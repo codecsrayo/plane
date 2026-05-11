@@ -1,5 +1,5 @@
 ---
-source_file: "components/icons/attachment/video-file-icon.tsx"
+source_file: "web/core/components/icons/attachment/video-file-icon.tsx"
 type: "code"
 community: "Video Icon"
 location: "L13"
@@ -13,6 +13,6 @@ tags:
 
 ## Connections
 
-- [[video-file-icon.tsx]] - `contains` [EXTRACTED]
+- [[video-file-icon.tsx_1]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Video_Icon

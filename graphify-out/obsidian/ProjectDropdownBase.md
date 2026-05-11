@@ -1,19 +1,19 @@
 ---
-source_file: "components/dropdowns/project/base.tsx"
+source_file: "web/core/components/dropdowns/project/base.tsx"
 type: "code"
-community: "Module Forms"
+community: "Label Dropdown"
 location: "L57"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Forms
+  - community/Label_Dropdown
 ---
 
 # ProjectDropdownBase
 
 ## Connections
 
-- [[base.tsx_3]] - `contains` [EXTRACTED]
-- [[dropdown.tsx_2]] - `imports` [EXTRACTED]
+- [[base.tsx_4]] - `contains` [EXTRACTED]
+- [[dropdown.tsx_4]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Forms
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

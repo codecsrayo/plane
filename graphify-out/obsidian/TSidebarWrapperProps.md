@@ -1,5 +1,5 @@
 ---
-source_file: "components/sidebar/sidebar-wrapper.tsx"
+source_file: "web/core/components/sidebar/sidebar-wrapper.tsx"
 type: "code"
 community: "Sidebar Navigation"
 location: "L23"

@@ -1,12 +1,12 @@
 ---
-source_file: "components/home/widgets/recents/issue.tsx"
+source_file: "web/core/components/home/widgets/recents/issue.tsx"
 type: "code"
-community: "Calendar Blocks"
+community: "Label Dropdown"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Blocks
+  - community/Label_Dropdown
 ---
 
 # BlockProps
@@ -15,4 +15,4 @@ tags:
 
 - [[issue.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Blocks
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

@@ -1,19 +1,22 @@
 ---
 source_file: "api_rust/src/routes/instances.rs"
 type: "code"
-community: "Community 57"
+community: "User Github"
 location: "L519"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_57
+  - graphify/INFERRED
+  - community/User_Github
 ---
 
 # disable_email_feature()
 
 ## Connections
 
-- [[instances.rs]] - `contains` [EXTRACTED]
+- [[.json()]] - `calls` [INFERRED]
+- [[.set()]] - `calls` [INFERRED]
+- [[instances.rs_1]] - `contains` [EXTRACTED]
+- [[now]] - `calls` [INFERRED]
 - [[require_instance_admin()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_57
+#graphify/code #graphify/INFERRED #community/User_Github

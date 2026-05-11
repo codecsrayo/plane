@@ -11,8 +11,8 @@ members: 2
 
 ## Members
 
-- [[PagesLoader()]] - code - components/ui/loader/pages-loader.tsx
-- [[pages-loader.tsx]] - code - components/ui/loader/pages-loader.tsx
+- [[PagesLoader()]] - code - web/core/components/ui/loader/pages-loader.tsx
+- [[pages-loader.tsx]] - code - web/core/components/ui/loader/pages-loader.tsx
 
 ## Live Query (requires Dataview plugin)
 

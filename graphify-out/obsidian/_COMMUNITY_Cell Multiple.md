@@ -33,12 +33,11 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 3 edges to [[_COMMUNITY_Table Selected]]
-- 2 edges to [[_COMMUNITY_Editor Commands]]
-- 2 edges to [[_COMMUNITY_Table Drag]]
+- 4 edges to [[_COMMUNITY_Table Node]]
+- 3 edges to [[_COMMUNITY_Drag Table]]
 - 1 edge to [[_COMMUNITY_Insert Table]]
 
 ## Top bridge nodes
 
-- [[delete-key-shortcut.ts]] - degree 17, connects to 4 communities
+- [[delete-key-shortcut.ts]] - degree 17, connects to 3 communities
 - [[handleDeleteKeyOnTable()]] - degree 9, connects to 2 communities

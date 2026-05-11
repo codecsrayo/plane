@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/workspace-draft/draft-issue-properties.tsx"
+source_file: "web/core/components/issues/workspace-draft/draft-issue-properties.tsx"
 type: "code"
-community: "Issue Identifiers"
+community: "Issue Work"
 location: "L47"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Identifiers
+  - community/Issue_Work
 ---
 
 # DraftIssueProperties
@@ -16,4 +16,4 @@ tags:
 - [[draft-issue-block.tsx]] - `imports` [EXTRACTED]
 - [[draft-issue-properties.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Identifiers
+#graphify/code #graphify/EXTRACTED #community/Issue_Work

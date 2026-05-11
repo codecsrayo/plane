@@ -1,18 +1,18 @@
 ---
-source_file: "components/core/filters/date-filter-select.tsx"
+source_file: "web/core/components/inbox/modals/select-duplicate.tsx"
 type: "code"
-community: "Date Start"
-location: "L13"
+community: "Project Settings"
+location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Date_Start
+  - community/Project_Settings
 ---
 
 # Props
 
 ## Connections
 
-- [[date-filter-select.tsx]] - `contains` [EXTRACTED]
+- [[select-duplicate.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Date_Start
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

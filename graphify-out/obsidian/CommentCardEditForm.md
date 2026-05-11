@@ -1,12 +1,12 @@
 ---
-source_file: "components/comments/card/edit-form.tsx"
+source_file: "web/core/components/comments/card/edit-form.tsx"
 type: "code"
-community: "Comment Card"
+community: "Notification Content"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Comment_Card
+  - community/Notification_Content
 ---
 
 # CommentCardEditForm
@@ -16,4 +16,4 @@ tags:
 - [[display.tsx]] - `imports` [EXTRACTED]
 - [[edit-form.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Comment_Card
+#graphify/code #graphify/EXTRACTED #community/Notification_Content

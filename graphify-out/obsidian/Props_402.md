@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/navigation-pane/tab-panels/outline.tsx"
+source_file: "web/core/components/power-k/ui/pages/preferences/themes-menu.tsx"
 type: "code"
-community: "Navigation Pane"
+community: "Menu Power"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Navigation_Pane
+  - community/Menu_Power
 ---
 
 # Props
 
 ## Connections
 
-- [[outline.tsx]] - `contains` [EXTRACTED]
+- [[themes-menu.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Navigation_Pane
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

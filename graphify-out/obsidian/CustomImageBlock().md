@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/custom-image/components/block.tsx"
 type: "code"
-community: "Custom Image Block"
+community: "Image Custom"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Custom_Image_Block
+  - community/Image_Custom
 ---
 
 # CustomImageBlock()
@@ -19,4 +19,4 @@ tags:
 - [[isImageDuplicating()]] - `calls` [EXTRACTED]
 - [[node-view.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Custom_Image_Block
+#graphify/code #graphify/EXTRACTED #community/Image_Custom

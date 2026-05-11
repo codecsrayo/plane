@@ -1,19 +1,19 @@
 ---
-source_file: "components/issues/workspace-draft/loader.tsx"
+source_file: "web/core/components/issues/workspace-draft/loader.tsx"
 type: "code"
-community: "Loader Kanban"
+community: "Loader Calendar"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Loader_Kanban
+  - community/Loader_Calendar
 ---
 
 # WorkspaceDraftIssuesLoader()
 
 ## Connections
 
-- [[loader.tsx_3]] - `contains` [EXTRACTED]
-- [[root.tsx_29]] - `imports` [EXTRACTED]
+- [[loader.tsx_6]] - `contains` [EXTRACTED]
+- [[root.tsx_70]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Loader_Kanban
+#graphify/code #graphify/EXTRACTED #community/Loader_Calendar

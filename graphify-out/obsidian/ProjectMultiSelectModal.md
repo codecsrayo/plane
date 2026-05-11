@@ -1,12 +1,12 @@
 ---
-source_file: "components/project/multi-select-modal.tsx"
+source_file: "web/core/components/project/multi-select-modal.tsx"
 type: "code"
-community: "Progress Empty"
+community: "Cycle Active"
 location: "L35"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Progress_Empty
+  - community/Cycle_Active
 ---
 
 # ProjectMultiSelectModal
@@ -15,4 +15,4 @@ tags:
 
 - [[multi-select-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Progress_Empty
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

@@ -1,14 +1,14 @@
 ---
 source_file: "api_rust/src/entities/django_celery_beat_periodictasks.rs"
 type: "code"
-community: "Community 736"
+community: "Active Model"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_736
+  - community/Active_Model
 ---
 
 # ActiveModel
 
-#graphify/code #graphify/EXTRACTED #community/Community_736
+#graphify/code #graphify/EXTRACTED #community/Active_Model

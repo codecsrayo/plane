@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/components/menus/bubble-menu/root.tsx"
 type: "code"
-community: "Heading Bubble"
+community: "Toggle Menu"
 location: "L75"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Heading_Bubble
+  - community/Toggle_Menu
 ---
 
 # EditorBubbleMenu()
@@ -21,4 +21,4 @@ tags:
 - [[UnderLineItem()]] - `calls` [INFERRED]
 - [[root.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Heading_Bubble
+#graphify/code #graphify/INFERRED #community/Toggle_Menu

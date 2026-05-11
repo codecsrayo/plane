@@ -1,12 +1,12 @@
 ---
-source_file: "components/modules/modules-list-view.tsx"
+source_file: "web/core/components/modules/modules-list-view.tsx"
 type: "code"
-community: "Modules Archived"
+community: "Cycles Archived"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Modules_Archived
+  - community/Cycles_Archived
 ---
 
 # ModulesListView
@@ -15,4 +15,4 @@ tags:
 
 - [[modules-list-view.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Modules_Archived
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

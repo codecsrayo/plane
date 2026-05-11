@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/page/core.ts"
 type: "code"
-community: "Favorites Pages"
+community: "Filters Sort"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Favorites_Pages
+  - community/Filters_Sort
 ---
 
 # core.ts
@@ -30,4 +30,4 @@ tags:
 - [[enums.ts]] - `imports_from` [EXTRACTED]
 - [[extended.ts_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Favorites_Pages
+#graphify/code #graphify/EXTRACTED #community/Filters_Sort

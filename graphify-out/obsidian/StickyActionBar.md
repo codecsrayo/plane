@@ -1,12 +1,12 @@
 ---
-source_file: "components/stickies/action-bar.tsx"
+source_file: "web/core/components/stickies/action-bar.tsx"
 type: "code"
-community: "Stickies Action"
+community: "Stickies Sticky"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Stickies_Action
+  - community/Stickies_Sticky
 ---
 
 # StickyActionBar
@@ -15,4 +15,4 @@ tags:
 
 - [[action-bar.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Stickies_Action
+#graphify/code #graphify/EXTRACTED #community/Stickies_Sticky

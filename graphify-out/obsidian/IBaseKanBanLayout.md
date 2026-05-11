@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/kanban/base-kanban-root.tsx"
+source_file: "web/core/components/issues/issue-layouts/kanban/base-kanban-root.tsx"
 type: "code"
-community: "Spreadsheet Columns"
+community: "Issue Project"
 location: "L46"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Columns
+  - community/Issue_Project
 ---
 
 # IBaseKanBanLayout
@@ -15,4 +15,4 @@ tags:
 
 - [[base-kanban-root.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Columns
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

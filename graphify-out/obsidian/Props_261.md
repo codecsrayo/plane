@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/attachment/attachment-upload-details.tsx"
+source_file: "web/core/components/issues/issue-layouts/group-drag-overlay.tsx"
 type: "code"
-community: "Issue Attachments"
-location: "L20"
+community: "Group Kanban"
+location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Attachments
+  - community/Group_Kanban
 ---
 
 # Props
 
 ## Connections
 
-- [[attachment-upload-details.tsx]] - `contains` [EXTRACTED]
+- [[group-drag-overlay.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Attachments
+#graphify/code #graphify/EXTRACTED #community/Group_Kanban

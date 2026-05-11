@@ -1,12 +1,12 @@
 ---
-source_file: "components/comments/card/display.tsx"
+source_file: "web/core/components/comments/card/display.tsx"
 type: "code"
-community: "Comment Card"
+community: "Notification Content"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Comment_Card
+  - community/Notification_Content
 ---
 
 # display.tsx
@@ -19,8 +19,8 @@ tags:
 - [[TCommentCardDisplayProps]] - `contains` [EXTRACTED]
 - [[comment-reaction.tsx]] - `imports_from` [EXTRACTED]
 - [[edit-form.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts_55]] - `imports_from` [EXTRACTED]
+- [[index.ts_320]] - `imports_from` [EXTRACTED]
 - [[use-member.ts]] - `imports_from` [EXTRACTED]
 - [[useMember()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Comment_Card
+#graphify/code #graphify/EXTRACTED #community/Notification_Content

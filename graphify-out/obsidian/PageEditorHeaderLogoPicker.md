@@ -1,12 +1,12 @@
 ---
-source_file: "components/pages/editor/header/logo-picker.tsx"
+source_file: "web/core/components/pages/editor/header/logo-picker.tsx"
 type: "code"
-community: "Badge Editor"
+community: "Control Move"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Badge_Editor
+  - community/Control_Move
 ---
 
 # PageEditorHeaderLogoPicker
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[logo-picker.tsx]] - `contains` [EXTRACTED]
-- [[root.tsx_76]] - `imports` [EXTRACTED]
+- [[root.tsx_117]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Badge_Editor
+#graphify/code #graphify/EXTRACTED #community/Control_Move

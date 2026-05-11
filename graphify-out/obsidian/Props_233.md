@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/filters/header/filters/assignee.tsx"
+source_file: "web/core/components/integration/github/select-repository.tsx"
 type: "code"
-community: "Issue Filters"
-location: "L20"
+community: "Github Select"
+location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters
+  - community/Github_Select
 ---
 
 # Props
 
 ## Connections
 
-- [[assignee.tsx]] - `contains` [EXTRACTED]
+- [[select-repository.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters
+#graphify/code #graphify/EXTRACTED #community/Github_Select

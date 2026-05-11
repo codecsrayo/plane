@@ -1,12 +1,12 @@
 ---
 source_file: "ui/src/auth-form/auth-form.tsx"
 type: "code"
-community: "Button Auth"
+community: "Auth Spinner"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Button_Auth
+  - community/Auth_Spinner
 ---
 
 # AuthFormData
@@ -15,4 +15,4 @@ tags:
 
 - [[auth-form.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Button_Auth
+#graphify/code #graphify/EXTRACTED #community/Auth_Spinner

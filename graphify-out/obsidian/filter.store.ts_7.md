@@ -1,38 +1,44 @@
 ---
-source_file: "store/issue/cycle/filter.store.ts"
+source_file: "web/core/store/issue/workspace/filter.store.ts"
 type: "code"
-community: "Filters Cycle"
+community: "Filters Params"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filters_Cycle
+  - community/Filters_Params
 ---
 
 # filter.store.ts
 
 ## Connections
 
-- [[CycleIssuesFilter]] - `contains` [EXTRACTED]
 - [[IBaseIssueFilterStore]] - `imports` [EXTRACTED]
-- [[ICycleIssuesFilter]] - `contains` [EXTRACTED]
+- [[IIssueFilterHelperStore]] - `imports` [EXTRACTED]
 - [[IIssueRootStore]] - `imports` [EXTRACTED]
+- [[IWorkspaceIssuesFilter]] - `contains` [EXTRACTED]
 - [[IssueFilterHelperStore]] - `imports` [EXTRACTED]
-- [[IssueFiltersService]] - `imports` [EXTRACTED]
-- [[_filters_7]] - `contains` [EXTRACTED]
-- [[api.service.ts]] - `imports_from` [EXTRACTED]
-- [[displayFilters_9]] - `contains` [EXTRACTED]
-- [[displayProperties_6]] - `contains` [EXTRACTED]
-- [[filterParams_8]] - `contains` [EXTRACTED]
+- [[TBaseFilterStore]] - `contains` [EXTRACTED]
+- [[TWorkspaceFilters]] - `contains` [EXTRACTED]
+- [[WorkspaceIssuesFilter]] - `contains` [EXTRACTED]
+- [[WorkspaceService_1]] - `imports` [EXTRACTED]
+- [[_filters_2]] - `contains` [EXTRACTED]
+- [[api.service.ts_1]] - `imports_from` [EXTRACTED]
+- [[filterParams_2]] - `contains` [EXTRACTED]
+- [[filteredParams]] - `contains` [EXTRACTED]
+- [[filteredRouteParams]] - `contains` [EXTRACTED]
 - [[issue-filter-helper.store.ts]] - `imports_from` [EXTRACTED]
 - [[issue.store.ts_8]] - `imports_from` [EXTRACTED]
-- [[issue_filter.service.ts]] - `imports_from` [EXTRACTED]
-- [[kanbanFilters_7]] - `contains` [EXTRACTED]
-- [[paginationParams_7]] - `contains` [EXTRACTED]
-- [[root.store.ts_1]] - `imports_from` [EXTRACTED]
+- [[issueFilters]] - `contains` [EXTRACTED]
+- [[kanbanFilters_2]] - `contains` [EXTRACTED]
+- [[paginationParams_2]] - `contains` [EXTRACTED]
+- [[paramForStaticView]] - `contains` [EXTRACTED]
+- [[root.store.ts_3]] - `imports_from` [EXTRACTED]
 - [[toApiError()]] - `imports` [EXTRACTED]
-- [[updatedDisplayFilters_7]] - `contains` [EXTRACTED]
-- [[updatedDisplayProperties_7]] - `contains` [EXTRACTED]
-- [[updatedKanbanFilters_6]] - `contains` [EXTRACTED]
+- [[updatedDisplayFilters_2]] - `contains` [EXTRACTED]
+- [[updatedDisplayProperties_2]] - `contains` [EXTRACTED]
+- [[updatedKanbanFilters_2]] - `contains` [EXTRACTED]
+- [[userFilters]] - `contains` [EXTRACTED]
+- [[workspace.service.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filters_Cycle
+#graphify/code #graphify/EXTRACTED #community/Filters_Params

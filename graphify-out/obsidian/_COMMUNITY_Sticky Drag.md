@@ -11,9 +11,9 @@ members: 3
 
 ## Members
 
-- [[Props_61]] - code - components/stickies/sticky/sticky-item-drag-handle.tsx
-- [[StickyItemDragHandle]] - code - components/stickies/sticky/sticky-item-drag-handle.tsx
-- [[sticky-item-drag-handle.tsx]] - code - components/stickies/sticky/sticky-item-drag-handle.tsx
+- [[Props_137]] - code - web/core/components/stickies/sticky/sticky-item-drag-handle.tsx
+- [[StickyItemDragHandle]] - code - web/core/components/stickies/sticky/sticky-item-drag-handle.tsx
+- [[sticky-item-drag-handle.tsx]] - code - web/core/components/stickies/sticky/sticky-item-drag-handle.tsx
 
 ## Live Query (requires Dataview plugin)
 

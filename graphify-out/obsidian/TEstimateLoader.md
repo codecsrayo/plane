@@ -1,5 +1,5 @@
 ---
-source_file: "store/estimates/project-estimate.store.ts"
+source_file: "web/core/store/estimates/project-estimate.store.ts"
 type: "code"
 community: "Estimate Project"
 location: "L21"

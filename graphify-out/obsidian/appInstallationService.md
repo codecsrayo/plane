@@ -1,18 +1,20 @@
 ---
-source_file: "components/integration/slack/select-channel.tsx"
+source_file: "web/app/(all)/auth/slack/callback/page.tsx"
 type: "code"
-community: "Channel Slack"
-location: "L28"
+community: "Callback Installation"
+location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Channel_Slack
+  - community/Callback_Installation
 ---
 
 # appInstallationService
 
 ## Connections
 
-- [[select-channel.tsx]] - `contains` [EXTRACTED]
+- [[page.tsx_2]] - `contains` [EXTRACTED]
+- [[page.tsx_3]] - `contains` [EXTRACTED]
+- [[page.tsx_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Channel_Slack
+#graphify/code #graphify/EXTRACTED #community/Callback_Installation

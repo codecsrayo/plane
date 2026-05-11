@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/navigation-pane/tab-panels/info/root.tsx"
+source_file: "web/core/components/power-k/ui/pages/open-entity/project-settings-menu.tsx"
 type: "code"
-community: "Info Navigation"
-location: "L17"
+community: "Menu Power"
+location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Info_Navigation
+  - community/Menu_Power
 ---
 
 # Props
 
 ## Connections
 
-- [[root.tsx_82]] - `contains` [EXTRACTED]
+- [[project-settings-menu.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Info_Navigation
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

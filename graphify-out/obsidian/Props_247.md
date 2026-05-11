@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/filters/applied-filters/project.tsx"
+source_file: "web/core/components/exporter/export-modal.tsx"
 type: "code"
-community: "Project Archives"
-location: "L13"
+community: "Project Settings"
+location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Archives
+  - community/Project_Settings
 ---
 
 # Props
 
 ## Connections
 
-- [[project.tsx_2]] - `contains` [EXTRACTED]
+- [[export-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Archives
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

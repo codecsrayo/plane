@@ -11,9 +11,9 @@ members: 3
 
 ## Members
 
-- [[IListContainer]] - code - components/core/list/list-root.tsx
-- [[ListLayout()]] - code - components/core/list/list-root.tsx
-- [[list-root.tsx]] - code - components/core/list/list-root.tsx
+- [[IListContainer]] - code - web/core/components/core/list/list-root.tsx
+- [[ListLayout()]] - code - web/core/components/core/list/list-root.tsx
+- [[list-root.tsx_1]] - code - web/core/components/core/list/list-root.tsx
 
 ## Live Query (requires Dataview plugin)
 

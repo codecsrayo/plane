@@ -1,20 +1,20 @@
 ---
-source_file: "components/work-item-filters/filters-hoc/shared.ts"
+source_file: "web/core/components/work-item-filters/filters-hoc/shared.ts"
 type: "code"
-community: "Work Filters"
+community: "Project Work"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Work_Filters
+  - community/Project_Work
 ---
 
 # TEnableUpdateViewProps
 
 ## Connections
 
-- [[project-level.tsx]] - `imports` [EXTRACTED]
-- [[shared.ts_2]] - `contains` [EXTRACTED]
-- [[workspace-level.tsx]] - `imports` [EXTRACTED]
+- [[project-level.tsx_1]] - `imports` [EXTRACTED]
+- [[shared.ts_13]] - `contains` [EXTRACTED]
+- [[workspace-level.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Work_Filters
+#graphify/code #graphify/EXTRACTED #community/Project_Work

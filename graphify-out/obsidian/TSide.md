@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/utils/placement.ts"
 type: "code"
-community: "Emoji Picker"
+community: "Emoji Icon"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Emoji_Picker
+  - community/Emoji_Icon
 ---
 
 # TSide
@@ -19,4 +19,4 @@ tags:
 - [[root.tsx_18]] - `imports` [EXTRACTED]
 - [[root.tsx_19]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Emoji_Picker
+#graphify/code #graphify/EXTRACTED #community/Emoji_Icon

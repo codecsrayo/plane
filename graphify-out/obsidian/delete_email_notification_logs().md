@@ -1,19 +1,20 @@
 ---
-source_file: "api_rust/src/jobs/cleanup.rs"
+source_file: "api/plane/bgtasks/cleanup_task.py"
 type: "code"
-community: "Community 115"
-location: "L208"
+community: "Transform Logs"
+location: "L435"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_115
+  - community/Transform_Logs
 ---
 
 # delete_email_notification_logs()
 
 ## Connections
 
-- [[cleanup.rs]] - `contains` [EXTRACTED]
-- [[start_cron()]] - `calls` [INFERRED]
+- [[Delete old email notification logs.]] - `rationale_for` [EXTRACTED]
+- [[cleanup_task.py]] - `contains` [EXTRACTED]
+- [[process_cleanup_task()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_115
+#graphify/code #graphify/EXTRACTED #community/Transform_Logs

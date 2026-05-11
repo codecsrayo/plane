@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/auth/magic_auth.rs"
 type: "code"
-community: "Community 50"
+community: "Magic Sign"
 location: "L460"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_50
+  - graphify/INFERRED
+  - community/Magic_Sign
 ---
 
 # create_magic_user()
@@ -14,8 +14,10 @@ tags:
 ## Connections
 
 - [[.new()]] - `calls` [INFERRED]
+- [[.set()]] - `calls` [INFERRED]
 - [[complete_magic_auth()]] - `calls` [EXTRACTED]
 - [[ensure_profile_exists()]] - `calls` [INFERRED]
 - [[magic_auth.rs]] - `contains` [EXTRACTED]
+- [[now]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_50
+#graphify/code #graphify/INFERRED #community/Magic_Sign

@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/jobs/webhook_delivery.rs"
 type: "code"
-community: "Community 116"
+community: "Envelope Truncate"
 location: "L93"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_116
+  - community/Envelope_Truncate
 ---
 
 # handle_deliver_webhook()
@@ -17,4 +17,4 @@ tags:
 - [[run_delivery()]] - `calls` [EXTRACTED]
 - [[webhook_delivery.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_116
+#graphify/code #graphify/EXTRACTED #community/Envelope_Truncate

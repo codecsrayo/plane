@@ -1,12 +1,12 @@
 ---
-source_file: "components/inbox/inbox-filter/filters/priority.tsx"
+source_file: "space/components/issues/filters/priority.tsx"
 type: "code"
-community: "Filter Selection UI"
+community: "Priority State"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Selection_UI
+  - community/Priority_State
 ---
 
 # FilterPriority
@@ -14,7 +14,9 @@ tags:
 ## Connections
 
 - [[filter-selection.tsx_1]] - `imports` [EXTRACTED]
-- [[priority.tsx_1]] - `contains` [EXTRACTED]
-- [[priority.tsx_4]] - `contains` [EXTRACTED]
+- [[priority.tsx_2]] - `contains` [EXTRACTED]
+- [[priority.tsx_5]] - `contains` [EXTRACTED]
+- [[priority.tsx_9]] - `contains` [EXTRACTED]
+- [[selection.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Selection_UI
+#graphify/code #graphify/EXTRACTED #community/Priority_State

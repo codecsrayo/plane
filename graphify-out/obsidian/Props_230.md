@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/filters/header/helpers/filter-header.tsx"
+source_file: "web/core/components/integration/github/project-issue-sync.tsx"
 type: "code"
-community: "Display Properties"
-location: "L10"
+community: "Project Workspace"
+location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Display_Properties
+  - community/Project_Workspace
 ---
 
 # Props
 
 ## Connections
 
-- [[filter-header.tsx]] - `contains` [EXTRACTED]
+- [[project-issue-sync.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Display_Properties
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

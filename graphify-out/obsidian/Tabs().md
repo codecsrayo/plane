@@ -1,12 +1,12 @@
 ---
 source_file: "ui/src/tabs/tabs.tsx"
 type: "code"
-community: "Local Tabs"
+community: "Local Value"
 location: "L36"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Local_Tabs
+  - community/Local_Value
 ---
 
 # Tabs()
@@ -17,4 +17,4 @@ tags:
 - [[tabs.tsx]] - `contains` [EXTRACTED]
 - [[useLocalStorage()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Local_Tabs
+#graphify/code #graphify/EXTRACTED #community/Local_Value

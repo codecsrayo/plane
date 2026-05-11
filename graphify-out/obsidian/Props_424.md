@@ -1,18 +1,18 @@
 ---
-source_file: "components/analytics/empty-state.tsx"
+source_file: "web/core/components/power-k/menus/cycles.tsx"
 type: "code"
-community: "Empty Analytics"
-location: "L14"
+community: "Menu Power"
+location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_Analytics
+  - community/Menu_Power
 ---
 
 # Props
 
 ## Connections
 
-- [[empty-state.tsx_7]] - `contains` [EXTRACTED]
+- [[cycles.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_Analytics
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

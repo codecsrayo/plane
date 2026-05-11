@@ -1,20 +1,23 @@
 ---
 source_file: "api_rust/src/routes/workspace_extras.rs"
 type: "code"
-community: "Workspace & Issues Rust API"
+community: "Project Response"
 location: "L164"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Workspace__Issues_Rust_API
+  - graphify/INFERRED
+  - community/Project_Response
 ---
 
 # create_favorite()
 
 ## Connections
 
+- [[.json()]] - `calls` [INFERRED]
+- [[.set()]] - `calls` [INFERRED]
+- [[now]] - `calls` [INFERRED]
 - [[require_member_or_admin()]] - `calls` [EXTRACTED]
 - [[workspace_by_slug()]] - `calls` [INFERRED]
-- [[workspace_extras.rs]] - `contains` [EXTRACTED]
+- [[workspace_extras.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace\_\_Issues_Rust_API
+#graphify/code #graphify/INFERRED #community/Project_Response

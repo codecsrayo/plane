@@ -1,18 +1,18 @@
 ---
-source_file: "components/modules/dropdowns/filters/target-date.tsx"
+source_file: "web/core/components/ui/markdown-to-component.tsx"
 type: "code"
-community: "Date Start"
+community: "Custom Heading"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Date_Start
+  - community/Custom_Heading
 ---
 
 # Props
 
 ## Connections
 
-- [[target-date.tsx]] - `contains` [EXTRACTED]
+- [[markdown-to-component.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Date_Start
+#graphify/code #graphify/EXTRACTED #community/Custom_Heading

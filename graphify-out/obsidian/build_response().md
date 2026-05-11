@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/utils/pagination.rs"
 type: "code"
-community: "Community 156"
+community: "Project Response"
 location: "L114"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_156
+  - community/Project_Response
 ---
 
 # build_response()
@@ -21,4 +21,4 @@ tags:
 - [[list_workspace_active_cycles()]] - `calls` [INFERRED]
 - [[pagination.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_156
+#graphify/code #graphify/INFERRED #community/Project_Response

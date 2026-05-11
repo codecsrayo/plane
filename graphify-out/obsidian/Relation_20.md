@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/comment_reactions.rs"
 type: "code"
-community: "Community 339"
+community: "Model Relation"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_339
+  - community/Model_Relation
 ---
 
 # Relation
@@ -15,4 +15,4 @@ tags:
 
 - [[comment_reactions.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_339
+#graphify/code #graphify/EXTRACTED #community/Model_Relation

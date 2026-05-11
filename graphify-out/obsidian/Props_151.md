@@ -1,18 +1,18 @@
 ---
-source_file: "components/project/applied-filters/project-display-filters.tsx"
+source_file: "web/core/components/modules/gantt-chart/blocks.tsx"
 type: "code"
-community: "Applied Filters"
-location: "L16"
+community: "Cycles Archived"
+location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters
+  - community/Cycles_Archived
 ---
 
 # Props
 
 ## Connections
 
-- [[project-display-filters.tsx]] - `contains` [EXTRACTED]
+- [[blocks.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

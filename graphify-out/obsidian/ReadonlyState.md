@@ -1,18 +1,18 @@
 ---
-source_file: "components/readonly/state.tsx"
+source_file: "web/core/components/readonly/state.tsx"
 type: "code"
-community: "Calendar Blocks"
+community: "Issue Work"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Blocks
+  - community/Issue_Work
 ---
 
 # ReadonlyState
 
 ## Connections
 
-- [[state.tsx_5]] - `contains` [EXTRACTED]
+- [[state.tsx_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Blocks
+#graphify/code #graphify/EXTRACTED #community/Issue_Work

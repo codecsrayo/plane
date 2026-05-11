@@ -1,18 +1,18 @@
 ---
-source_file: "components/editor/lite-text/toolbar.tsx"
+source_file: "web/core/components/editor/lite-text/toolbar.tsx"
 type: "code"
-community: "Toolbar Lite"
+community: "Toolbar Items"
 location: "L45"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toolbar_Lite
+  - community/Toolbar_Items
 ---
 
 # COMMENT_ACCESS_SPECIFIERS
 
 ## Connections
 
-- [[toolbar.tsx_1]] - `contains` [EXTRACTED]
+- [[toolbar.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toolbar_Lite
+#graphify/code #graphify/EXTRACTED #community/Toolbar_Items

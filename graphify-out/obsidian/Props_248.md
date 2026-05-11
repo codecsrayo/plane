@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/filters/applied-filters/module.tsx"
+source_file: "web/core/components/automation/auto-archive-automation.tsx"
 type: "code"
-community: "Module Analytics"
-location: "L13"
+community: "Project Settings"
+location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Project_Settings
 ---
 
 # Props
 
 ## Connections
 
-- [[module.tsx_2]] - `contains` [EXTRACTED]
+- [[auto-archive-automation.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

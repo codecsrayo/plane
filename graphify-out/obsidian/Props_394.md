@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/editor/header/logo-picker.tsx"
+source_file: "web/core/components/power-k/ui/pages/context-based/work-item/states-menu.tsx"
 type: "code"
-community: "Badge Editor"
-location: "L15"
+community: "Member Members"
+location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Badge_Editor
+  - community/Member_Members
 ---
 
 # Props
 
 ## Connections
 
-- [[logo-picker.tsx]] - `contains` [EXTRACTED]
+- [[states-menu.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Badge_Editor
+#graphify/code #graphify/EXTRACTED #community/Member_Members

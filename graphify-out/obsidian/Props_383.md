@@ -1,18 +1,18 @@
 ---
-source_file: "components/empty-state/comic-box-button.tsx"
+source_file: "web/core/components/cycles/list/cycle-list-item-action.tsx"
 type: "code"
-community: "Comic Button"
-location: "L14"
+community: "Cycle Active"
+location: "L40"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Comic_Button
+  - community/Cycle_Active
 ---
 
 # Props
 
 ## Connections
 
-- [[comic-box-button.tsx]] - `contains` [EXTRACTED]
+- [[cycle-list-item-action.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Comic_Button
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

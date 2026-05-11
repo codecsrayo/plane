@@ -1,18 +1,18 @@
 ---
-source_file: "components/analytics/work-items/modal/content.tsx"
+source_file: "web/core/components/onboarding/invite-members.tsx"
 type: "code"
-community: "Active Projects"
-location: "L21"
+community: "Invite Member"
+location: "L39"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Projects
+  - community/Invite_Member
 ---
 
 # Props
 
 ## Connections
 
-- [[content.tsx_5]] - `contains` [EXTRACTED]
+- [[invite-members.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Active_Projects
+#graphify/code #graphify/EXTRACTED #community/Invite_Member

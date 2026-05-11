@@ -11,8 +11,8 @@ members: 2
 
 ## Members
 
-- [[FormContainer()]] - code - components/account/auth-forms/common/container.tsx
-- [[container.tsx_1]] - code - components/account/auth-forms/common/container.tsx
+- [[FormContainer()]] - code - web/core/components/account/auth-forms/common/container.tsx
+- [[container.tsx_1]] - code - web/core/components/account/auth-forms/common/container.tsx
 
 ## Live Query (requires Dataview plugin)
 

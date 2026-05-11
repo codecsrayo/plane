@@ -1,18 +1,18 @@
 ---
-source_file: "components/settings/profile/modal.tsx"
+source_file: "web/ce/components/common/modal/global.tsx"
 type: "code"
-community: "Cycle Details"
-location: "L19"
+community: "Workspace Issue"
+location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Details
+  - community/Workspace_Issue
 ---
 
 # ProfileSettingsModal
 
 ## Connections
 
-- [[modal.tsx_5]] - `contains` [EXTRACTED]
+- [[global.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Details
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

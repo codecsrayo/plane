@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/columns/sub-issue-column.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/sub-issue-column.tsx"
 type: "code"
-community: "Account Settings"
+community: "Project Settings"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Account_Settings
+  - community/Project_Settings
 ---
 
 # SpreadsheetSubIssueColumn
@@ -15,4 +15,4 @@ tags:
 
 - [[sub-issue-column.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Account_Settings
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

@@ -1,12 +1,12 @@
 ---
-source_file: "constants/fetch-keys.ts"
+source_file: "web/core/constants/fetch-keys.ts"
 type: "code"
-community: "Auth Wrappers"
+community: "Project Workspace"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Wrappers
+  - community/Project_Workspace
 ---
 
 # fetch-keys.ts
@@ -63,6 +63,14 @@ tags:
 - [[activity-list.tsx_1]] - `imports_from` [EXTRACTED]
 - [[activity.tsx_1]] - `imports_from` [EXTRACTED]
 - [[guide.tsx]] - `imports_from` [EXTRACTED]
+- [[header.tsx_10]] - `imports_from` [EXTRACTED]
+- [[layout.tsx_7]] - `imports_from` [EXTRACTED]
+- [[page.tsx_10]] - `imports_from` [EXTRACTED]
+- [[page.tsx_52]] - `imports_from` [EXTRACTED]
+- [[page.tsx_53]] - `imports_from` [EXTRACTED]
+- [[page.tsx_58]] - `imports_from` [EXTRACTED]
+- [[page.tsx_62]] - `imports_from` [EXTRACTED]
+- [[page.tsx_63]] - `imports_from` [EXTRACTED]
 - [[paramsToKey()]] - `contains` [EXTRACTED]
 - [[prev-exports.tsx]] - `imports_from` [EXTRACTED]
 - [[profile-activity-list.tsx]] - `imports_from` [EXTRACTED]
@@ -76,4 +84,4 @@ tags:
 - [[workspace-activity-list.tsx]] - `imports_from` [EXTRACTED]
 - [[workspace-wrapper.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Wrappers
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

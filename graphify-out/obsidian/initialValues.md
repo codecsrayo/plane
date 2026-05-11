@@ -1,12 +1,12 @@
 ---
-source_file: "components/automation/auto-archive-automation.tsx"
+source_file: "web/core/components/automation/auto-archive-automation.tsx"
 type: "code"
-community: "Start Week"
+community: "Project Settings"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Start_Week
+  - community/Project_Settings
 ---
 
 # initialValues
@@ -15,4 +15,4 @@ tags:
 
 - [[auto-archive-automation.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Start_Week
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

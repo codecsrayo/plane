@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/badge/badge.tsx"
 type: "code"
-community: "Badge Icon"
+community: "Badge Styling"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Badge_Icon
+  - community/Badge_Styling
 ---
 
 # Badge
@@ -17,4 +17,4 @@ tags:
 - [[badge.tsx]] - `contains` [EXTRACTED]
 - [[badge.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Badge_Icon
+#graphify/code #graphify/EXTRACTED #community/Badge_Styling

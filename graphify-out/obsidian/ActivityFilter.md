@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-detail/issue-activity/activity-filter.tsx"
+source_file: "web/core/components/issues/issue-detail/issue-activity/activity-filter.tsx"
 type: "code"
 community: "Activity Activityfilter"
 location: "L24"

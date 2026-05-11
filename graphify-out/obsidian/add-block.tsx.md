@@ -1,5 +1,5 @@
 ---
-source_file: "components/gantt-chart/helpers/add-block.tsx"
+source_file: "web/core/components/gantt-chart/helpers/add-block.tsx"
 type: "code"
 community: "Gantt Chart"
 location: "L1"
@@ -14,9 +14,9 @@ tags:
 ## Connections
 
 - [[ChartAddBlock]] - `contains` [EXTRACTED]
-- [[Props_51]] - `contains` [EXTRACTED]
-- [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
-- [[use-timeline-chart.ts]] - `imports_from` [EXTRACTED]
+- [[Props_127]] - `contains` [EXTRACTED]
+- [[use-platform-os.tsx_1]] - `imports_from` [EXTRACTED]
+- [[use-timeline-chart.ts_1]] - `imports_from` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 - [[useTimeLineChartStore()]] - `imports` [EXTRACTED]
 

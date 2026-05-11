@@ -1,18 +1,19 @@
 ---
-source_file: "components/issues/issue-detail/root.tsx"
+source_file: "web/core/components/issues/issue-detail/root.tsx"
 type: "code"
-community: "Issue Parent"
+community: "Label Dropdown"
 location: "L61"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Parent
+  - community/Label_Dropdown
 ---
 
 # IssueDetailRoot
 
 ## Connections
 
-- [[root.tsx_30]] - `contains` [EXTRACTED]
+- [[root.tsx_71]] - `contains` [EXTRACTED]
+- [[workItem-detail.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Parent
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

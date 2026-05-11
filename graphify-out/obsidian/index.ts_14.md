@@ -1,12 +1,12 @@
 ---
 source_file: "ui/src/utils/index.ts"
 type: "code"
-community: "Toggle Checkbox"
+community: "Input Checkbox"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toggle_Checkbox
+  - community/Input_Checkbox
 ---
 
 # index.ts
@@ -63,4 +63,4 @@ tags:
 - [[toggle-switch.tsx]] - `imports_from` [EXTRACTED]
 - [[tooltip.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toggle_Checkbox
+#graphify/code #graphify/EXTRACTED #community/Input_Checkbox

@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/parent-issues-list-modal.tsx"
+source_file: "web/core/components/profile/overview/state-distribution.tsx"
 type: "code"
-community: "Issue Layouts"
-location: "L32"
+community: "Profile Priority"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layouts
+  - community/Profile_Priority
 ---
 
 # Props
 
 ## Connections
 
-- [[parent-issues-list-modal.tsx]] - `contains` [EXTRACTED]
+- [[state-distribution.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layouts
+#graphify/code #graphify/EXTRACTED #community/Profile_Priority

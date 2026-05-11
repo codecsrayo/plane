@@ -1,18 +1,18 @@
 ---
-source_file: "components/project/project-network-icon.tsx"
+source_file: "web/core/components/editor/pdf/document.tsx"
 type: "code"
-community: "Lead Members"
-location: "L12"
+community: "Toolbar Items"
+location: "L47"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Lead_Members
+  - community/Toolbar_Items
 ---
 
 # Props
 
 ## Connections
 
-- [[project-network-icon.tsx]] - `contains` [EXTRACTED]
+- [[document.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Lead_Members
+#graphify/code #graphify/EXTRACTED #community/Toolbar_Items

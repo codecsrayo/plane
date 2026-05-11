@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/ui/pages/open-entity/project-cycles-menu.tsx"
+source_file: "web/core/components/issues/attachment/delete-attachment-modal.tsx"
 type: "code"
-community: "File Icons Nav"
-location: "L17"
+community: "Attachment Issue"
+location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/File_Icons_Nav
+  - community/Attachment_Issue
 ---
 
 # Props
 
 ## Connections
 
-- [[project-cycles-menu.tsx]] - `contains` [EXTRACTED]
+- [[delete-attachment-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/File_Icons_Nav
+#graphify/code #graphify/EXTRACTED #community/Attachment_Issue

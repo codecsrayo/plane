@@ -1,18 +1,18 @@
 ---
-source_file: "components/stickies/sticky/use-operations.tsx"
+source_file: "web/core/components/stickies/sticky/inputs.tsx"
 type: "code"
-community: "Sticky Tprops"
-location: "L31"
+community: "Stickies Sticky"
+location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sticky_Tprops
+  - community/Stickies_Sticky
 ---
 
 # TProps
 
 ## Connections
 
-- [[use-operations.tsx]] - `contains` [EXTRACTED]
+- [[inputs.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sticky_Tprops
+#graphify/code #graphify/EXTRACTED #community/Stickies_Sticky

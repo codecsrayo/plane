@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/table/table/utilities/helpers.ts"
 type: "code"
-community: "Dropdown Table"
+community: "Drag Table"
 location: "L59"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dropdown_Table
+  - community/Drag_Table
 ---
 
 # findTable()
@@ -21,4 +21,4 @@ tags:
 - [[plugin.ts]] - `imports` [EXTRACTED]
 - [[plugin.ts_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dropdown_Table
+#graphify/code #graphify/EXTRACTED #community/Drag_Table

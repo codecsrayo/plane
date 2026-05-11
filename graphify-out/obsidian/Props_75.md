@@ -1,19 +1,18 @@
 ---
-source_file: "components/cycles/analytics-sidebar/root.tsx"
+source_file: "web/ce/components/pages/header/lock-control.tsx"
 type: "code"
-community: "Cycle Progress"
-location: "L17"
+community: "Control Move"
+location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Progress
+  - community/Control_Move
 ---
 
 # Props
 
 ## Connections
 
-- [[root.tsx_12]] - `contains` [EXTRACTED]
-- [[root.tsx_53]] - `contains` [EXTRACTED]
+- [[lock-control.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Progress
+#graphify/code #graphify/EXTRACTED #community/Control_Move

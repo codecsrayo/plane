@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/confirm-issue-discard.tsx"
+source_file: "web/core/components/settings/control-item.tsx"
 type: "code"
-community: "Issue Identifiers"
-location: "L12"
+community: "Theme Custom"
+location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Identifiers
+  - community/Theme_Custom
 ---
 
 # Props
 
 ## Connections
 
-- [[confirm-issue-discard.tsx]] - `contains` [EXTRACTED]
+- [[control-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Identifiers
+#graphify/code #graphify/EXTRACTED #community/Theme_Custom

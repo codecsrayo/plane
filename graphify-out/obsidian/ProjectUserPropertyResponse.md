@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/project_user_properties.rs"
 type: "code"
-community: "Community 208"
+community: "Project User"
 location: "L104"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_208
+  - community/Project_User
 ---
 
 # ProjectUserPropertyResponse
@@ -16,4 +16,4 @@ tags:
 - [[.from()_27]] - `method` [EXTRACTED]
 - [[project_user_properties.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_208
+#graphify/code #graphify/EXTRACTED #community/Project_User

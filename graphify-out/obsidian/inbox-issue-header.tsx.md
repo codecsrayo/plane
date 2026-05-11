@@ -1,5 +1,5 @@
 ---
-source_file: "components/inbox/content/inbox-issue-header.tsx"
+source_file: "web/core/components/inbox/content/inbox-issue-header.tsx"
 type: "code"
 community: "Issue Inbox"
 location: "L1"
@@ -29,10 +29,10 @@ tags:
 - [[inbox-issue-mobile-header.tsx]] - `imports_from` [EXTRACTED]
 - [[inbox-issue-status.tsx]] - `imports_from` [EXTRACTED]
 - [[inbox-issue.store.ts]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
 - [[issue-update-status.tsx]] - `imports_from` [EXTRACTED]
-- [[modal.tsx_7]] - `imports_from` [EXTRACTED]
-- [[root.tsx_74]] - `imports_from` [EXTRACTED]
+- [[modal.tsx_12]] - `imports_from` [EXTRACTED]
+- [[root.tsx_115]] - `imports_from` [EXTRACTED]
 - [[select-duplicate.tsx]] - `imports_from` [EXTRACTED]
 - [[snooze-issue-modal.tsx]] - `imports_from` [EXTRACTED]
 - [[use-app-router.tsx]] - `imports_from` [EXTRACTED]

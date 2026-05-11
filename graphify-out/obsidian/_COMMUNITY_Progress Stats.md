@@ -11,31 +11,31 @@ members: 25
 
 ## Members
 
-- [[AssigneeStatComponent]] - code - components/core/sidebar/progress-stats/assignee.tsx
-- [[LabelStatComponent]] - code - components/core/sidebar/progress-stats/label.tsx
-- [[ModuleProgressStats]] - code - components/modules/analytics-sidebar/progress-stats.tsx
-- [[PROGRESS_STATS]] - code - components/core/sidebar/progress-stats/shared.ts
-- [[SingleProgressStats()]] - code - components/core/sidebar/single-progress-stats.tsx
-- [[StateGroupStatComponent]] - code - components/core/sidebar/progress-stats/state_group.tsx
-- [[TAssigneeData]] - code - components/core/sidebar/progress-stats/assignee.tsx
-- [[TAssigneeStatComponent]] - code - components/core/sidebar/progress-stats/assignee.tsx
-- [[TCycleProgressStats]] - code - components/cycles/analytics-sidebar/progress-stats.tsx
-- [[TLabelData]] - code - components/core/sidebar/progress-stats/label.tsx
-- [[TLabelStatComponent]] - code - components/core/sidebar/progress-stats/label.tsx
-- [[TModuleProgressStats]] - code - components/modules/analytics-sidebar/progress-stats.tsx
-- [[TSelectedFilterProgressStats]] - code - components/core/sidebar/progress-stats/shared.ts
-- [[TSelectedFilterProgressStatsType]] - code - components/core/sidebar/progress-stats/shared.ts
-- [[TSingleProgressStatsProps]] - code - components/core/sidebar/single-progress-stats.tsx
-- [[TStateGroupData]] - code - components/core/sidebar/progress-stats/state_group.tsx
-- [[TStateGroupStatComponent]] - code - components/core/sidebar/progress-stats/state_group.tsx
-- [[assignee.tsx_2]] - code - components/core/sidebar/progress-stats/assignee.tsx
-- [[createFilterUpdateHandler()]] - code - components/core/sidebar/progress-stats/shared.ts
-- [[label.tsx_4]] - code - components/core/sidebar/progress-stats/label.tsx
-- [[progress-stats.tsx_1]] - code - components/cycles/analytics-sidebar/progress-stats.tsx
-- [[progress-stats.tsx]] - code - components/modules/analytics-sidebar/progress-stats.tsx
-- [[shared.ts_4]] - code - components/core/sidebar/progress-stats/shared.ts
-- [[single-progress-stats.tsx]] - code - components/core/sidebar/single-progress-stats.tsx
-- [[state_group.tsx]] - code - components/core/sidebar/progress-stats/state_group.tsx
+- [[AssigneeStatComponent]] - code - web/core/components/core/sidebar/progress-stats/assignee.tsx
+- [[LabelStatComponent]] - code - web/core/components/core/sidebar/progress-stats/label.tsx
+- [[ModuleProgressStats]] - code - web/core/components/modules/analytics-sidebar/progress-stats.tsx
+- [[PROGRESS_STATS]] - code - web/core/components/core/sidebar/progress-stats/shared.ts
+- [[SingleProgressStats()]] - code - web/core/components/core/sidebar/single-progress-stats.tsx
+- [[StateGroupStatComponent]] - code - web/core/components/core/sidebar/progress-stats/state_group.tsx
+- [[TAssigneeData]] - code - web/core/components/core/sidebar/progress-stats/assignee.tsx
+- [[TAssigneeStatComponent]] - code - web/core/components/core/sidebar/progress-stats/assignee.tsx
+- [[TCycleProgressStats]] - code - web/core/components/cycles/analytics-sidebar/progress-stats.tsx
+- [[TLabelData]] - code - web/core/components/core/sidebar/progress-stats/label.tsx
+- [[TLabelStatComponent]] - code - web/core/components/core/sidebar/progress-stats/label.tsx
+- [[TModuleProgressStats]] - code - web/core/components/modules/analytics-sidebar/progress-stats.tsx
+- [[TSelectedFilterProgressStats]] - code - web/core/components/core/sidebar/progress-stats/shared.ts
+- [[TSelectedFilterProgressStatsType]] - code - web/core/components/core/sidebar/progress-stats/shared.ts
+- [[TSingleProgressStatsProps]] - code - web/core/components/core/sidebar/single-progress-stats.tsx
+- [[TStateGroupData]] - code - web/core/components/core/sidebar/progress-stats/state_group.tsx
+- [[TStateGroupStatComponent]] - code - web/core/components/core/sidebar/progress-stats/state_group.tsx
+- [[assignee.tsx_2]] - code - web/core/components/core/sidebar/progress-stats/assignee.tsx
+- [[createFilterUpdateHandler()]] - code - web/core/components/core/sidebar/progress-stats/shared.ts
+- [[label.tsx_5]] - code - web/core/components/core/sidebar/progress-stats/label.tsx
+- [[progress-stats.tsx_1]] - code - web/core/components/cycles/analytics-sidebar/progress-stats.tsx
+- [[progress-stats.tsx]] - code - web/core/components/modules/analytics-sidebar/progress-stats.tsx
+- [[shared.ts_15]] - code - web/core/components/core/sidebar/progress-stats/shared.ts
+- [[single-progress-stats.tsx]] - code - web/core/components/core/sidebar/single-progress-stats.tsx
+- [[state_group.tsx]] - code - web/core/components/core/sidebar/progress-stats/state_group.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -46,9 +46,8 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 2 edges to [[_COMMUNITY_Rail Visibility]]
-- 2 edges to [[_COMMUNITY_Cycle Progress]]
-- 2 edges to [[_COMMUNITY_Issue Activity]]
+- 4 edges to [[_COMMUNITY_Cycle Active]]
+- 2 edges to [[_COMMUNITY_Project Profile]]
 
 ## Top bridge nodes
 

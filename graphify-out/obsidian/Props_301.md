@@ -1,18 +1,18 @@
 ---
-source_file: "components/cycles/cycle-peek-overview.tsx"
+source_file: "web/core/components/issues/issue-layouts/filters/header/display-filters/sub-group-by.tsx"
 type: "code"
-community: "Cycle Cycles"
-location: "L17"
+community: "Member Members"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Cycles
+  - community/Member_Members
 ---
 
 # Props
 
 ## Connections
 
-- [[cycle-peek-overview.tsx]] - `contains` [EXTRACTED]
+- [[sub-group-by.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Cycles
+#graphify/code #graphify/EXTRACTED #community/Member_Members

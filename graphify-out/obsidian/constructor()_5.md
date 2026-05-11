@@ -1,18 +1,18 @@
 ---
-source_file: "store/issue/helpers/base-issues.store.ts"
+source_file: "web/core/store/analytics.store.ts"
 type: "code"
-community: "Issue Store Ops"
-location: "L200"
+community: "Estimate Project"
+location: "L44"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Store_Ops
+  - community/Estimate_Project
 ---
 
 # constructor()
 
 ## Connections
 
-- [[base-issues.store.ts]] - `contains` [EXTRACTED]
+- [[analytics.store.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Store_Ops
+#graphify/code #graphify/EXTRACTED #community/Estimate_Project

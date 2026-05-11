@@ -1,12 +1,12 @@
 ---
-source_file: "components/auth-screens/footer.tsx"
+source_file: "web/core/components/auth-screens/footer.tsx"
 type: "code"
-community: "Auth UI"
+community: "Auth Terms"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_UI
+  - community/Auth_Terms
 ---
 
 # BRAND_LOGOS
@@ -15,4 +15,4 @@ tags:
 
 - [[footer.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_UI
+#graphify/code #graphify/EXTRACTED #community/Auth_Terms

@@ -1,12 +1,12 @@
 ---
-source_file: "services/cycle_archive.service.ts"
+source_file: "web/core/services/cycle_archive.service.ts"
 type: "code"
-community: "Data Export"
+community: "Cycle Cycles"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Data_Export
+  - community/Cycle_Cycles
 ---
 
 # cycle_archive.service.ts
@@ -14,8 +14,8 @@ tags:
 ## Connections
 
 - [[ApiError]] - `imports` [EXTRACTED]
-- [[CycleArchiveService]] - `contains` [EXTRACTED]
-- [[api.service.ts]] - `imports_from` [EXTRACTED]
+- [[CycleArchiveService_1]] - `contains` [EXTRACTED]
+- [[api.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[cycle.store.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Data_Export
+#graphify/code #graphify/EXTRACTED #community/Cycle_Cycles

@@ -1,12 +1,12 @@
 ---
-source_file: "components/estimates/estimate-list.tsx"
+source_file: "web/core/components/estimates/estimate-list.tsx"
 type: "code"
-community: "Estimate Disable"
+community: "Label Dropdown"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Estimate_Disable
+  - community/Label_Dropdown
 ---
 
 # TEstimateList
@@ -15,4 +15,4 @@ tags:
 
 - [[estimate-list.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Estimate_Disable
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

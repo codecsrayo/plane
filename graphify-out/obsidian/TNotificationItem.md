@@ -1,18 +1,18 @@
 ---
-source_file: "components/workspace-notifications/sidebar/notification-card/item.tsx"
+source_file: "web/core/components/workspace-notifications/sidebar/notification-card/item.tsx"
 type: "code"
-community: "Notification Option"
+community: "Notification Content"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Notification_Option
+  - community/Notification_Content
 ---
 
 # TNotificationItem
 
 ## Connections
 
-- [[item.tsx_1]] - `contains` [EXTRACTED]
+- [[item.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Notification_Option
+#graphify/code #graphify/EXTRACTED #community/Notification_Content

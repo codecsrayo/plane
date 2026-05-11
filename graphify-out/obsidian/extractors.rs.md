@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/auth/extractors.rs"
 type: "code"
-community: "Community 281"
+community: "Member Guard"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_281
+  - community/Member_Guard
 ---
 
 # extractors.rs
@@ -16,4 +16,4 @@ tags:
 - [[ProjectMemberGuard]] - `contains` [EXTRACTED]
 - [[WorkspaceMemberGuard]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_281
+#graphify/code #graphify/EXTRACTED #community/Member_Guard

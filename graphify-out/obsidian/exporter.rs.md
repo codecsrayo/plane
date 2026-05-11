@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/exporter.rs"
 type: "code"
-community: "Community 238"
+community: "User Github"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_238
+  - community/User_Github
 ---
 
 # exporter.rs
@@ -22,4 +22,4 @@ tags:
 - [[get_export_status()]] - `contains` [EXTRACTED]
 - [[list_export_issues()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_238
+#graphify/code #graphify/EXTRACTED #community/User_Github

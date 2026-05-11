@@ -11,8 +11,8 @@ members: 2
 
 ## Members
 
-- [[AuthFormHeader()]] - code - components/account/auth-forms/common/header.tsx
-- [[header.tsx_16]] - code - components/account/auth-forms/common/header.tsx
+- [[AuthFormHeader()]] - code - web/core/components/account/auth-forms/common/header.tsx
+- [[header.tsx_58]] - code - web/core/components/account/auth-forms/common/header.tsx
 
 ## Live Query (requires Dataview plugin)
 

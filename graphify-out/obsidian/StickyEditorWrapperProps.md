@@ -1,18 +1,18 @@
 ---
-source_file: "components/editor/sticky-editor/editor.tsx"
+source_file: "web/core/components/editor/sticky-editor/editor.tsx"
 type: "code"
-community: "Issue Filters"
+community: "Toolbar Items"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters
+  - community/Toolbar_Items
 ---
 
 # StickyEditorWrapperProps
 
 ## Connections
 
-- [[editor.tsx]] - `contains` [EXTRACTED]
+- [[editor.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters
+#graphify/code #graphify/EXTRACTED #community/Toolbar_Items

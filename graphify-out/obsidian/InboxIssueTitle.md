@@ -1,5 +1,5 @@
 ---
-source_file: "components/inbox/modals/create-modal/issue-title.tsx"
+source_file: "web/core/components/inbox/modals/create-modal/issue-title.tsx"
 type: "code"
 community: "Issue Inbox"
 location: "L24"

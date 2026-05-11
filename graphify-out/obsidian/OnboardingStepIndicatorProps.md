@@ -1,12 +1,12 @@
 ---
-source_file: "components/onboarding/step-indicator.tsx"
+source_file: "web/core/components/onboarding/step-indicator.tsx"
 type: "code"
-community: "Step Indicator"
+community: "Step Onboarding"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Step_Indicator
+  - community/Step_Onboarding
 ---
 
 # OnboardingStepIndicatorProps
@@ -15,4 +15,4 @@ tags:
 
 - [[step-indicator.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Step_Indicator
+#graphify/code #graphify/EXTRACTED #community/Step_Onboarding

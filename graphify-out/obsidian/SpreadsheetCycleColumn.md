@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/columns/cycle-column.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/cycle-column.tsx"
 type: "code"
-community: "Spreadsheet Columns"
+community: "Label Dropdown"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Columns
+  - community/Label_Dropdown
 ---
 
 # SpreadsheetCycleColumn
@@ -15,4 +15,4 @@ tags:
 
 - [[cycle-column.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Columns
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

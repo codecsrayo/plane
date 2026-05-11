@@ -1,12 +1,12 @@
 ---
-source_file: "components/profile/activity/workspace-activity-list.tsx"
+source_file: "web/core/components/profile/activity/workspace-activity-list.tsx"
 type: "code"
-community: "Activity List"
+community: "Activity User"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Activity_List
+  - community/Activity_User
 ---
 
 # WorkspaceActivityListPage()
@@ -14,6 +14,7 @@ tags:
 ## Connections
 
 - [[USER_PROFILE_ACTIVITY()]] - `calls` [EXTRACTED]
+- [[page.tsx_12]] - `imports` [EXTRACTED]
 - [[workspace-activity-list.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Activity_List
+#graphify/code #graphify/EXTRACTED #community/Activity_User

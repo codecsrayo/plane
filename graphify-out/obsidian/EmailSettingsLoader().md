@@ -1,12 +1,12 @@
 ---
-source_file: "components/ui/loader/settings/email.tsx"
+source_file: "web/core/components/ui/loader/settings/email.tsx"
 type: "code"
-community: "Email Settings"
+community: "Settings Profile"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Email_Settings
+  - community/Settings_Profile
 ---
 
 # EmailSettingsLoader()
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[email.tsx]] - `contains` [EXTRACTED]
-- [[root.tsx_22]] - `imports` [EXTRACTED]
+- [[root.tsx_63]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Email_Settings
+#graphify/code #graphify/EXTRACTED #community/Settings_Profile

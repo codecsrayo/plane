@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/utils.tsx"
+source_file: "space/components/issues/issue-layouts/utils.tsx"
 type: "code"
-community: "Kanban Groups"
-location: "L496"
+community: "Group Kanban"
+location: "L208"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Kanban_Groups
+  - community/Group_Kanban
 ---
 
 # getIssueBlockId()
@@ -14,9 +14,11 @@ tags:
 ## Connections
 
 - [[block-root.tsx]] - `imports` [EXTRACTED]
-- [[block.tsx_3]] - `imports` [EXTRACTED]
+- [[block.tsx_6]] - `imports` [EXTRACTED]
+- [[block.tsx_9]] - `imports` [EXTRACTED]
 - [[kanban-group.tsx]] - `imports` [EXTRACTED]
 - [[list-group.tsx]] - `imports` [EXTRACTED]
-- [[utils.tsx_1]] - `contains` [EXTRACTED]
+- [[utils.tsx_2]] - `contains` [EXTRACTED]
+- [[utils.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Kanban_Groups
+#graphify/code #graphify/EXTRACTED #community/Group_Kanban

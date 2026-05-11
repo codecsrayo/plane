@@ -1,5 +1,5 @@
 ---
-source_file: "components/power-k/ui/modal/search-results.tsx"
+source_file: "web/core/components/power-k/ui/modal/search-results.tsx"
 type: "code"
 community: "Search Results"
 location: "L23"

@@ -1,18 +1,18 @@
 ---
-source_file: "components/core/multiple-select/entity-select-action.tsx"
+source_file: "web/core/components/inbox/content/issue-properties.tsx"
 type: "code"
-community: "Multi Select Actions"
-location: "L15"
+community: "Label Dropdown"
+location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Multi_Select_Actions
+  - community/Label_Dropdown
 ---
 
 # Props
 
 ## Connections
 
-- [[entity-select-action.tsx]] - `contains` [EXTRACTED]
+- [[issue-properties.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Multi_Select_Actions
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

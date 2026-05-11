@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/popover/root.tsx"
 type: "code"
-community: "Side Popover"
+community: "Emoji Icon"
 location: "L67"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Side_Popover
+  - community/Emoji_Icon
 ---
 
 # Popover
@@ -16,4 +16,4 @@ tags:
 - [[popover.stories.tsx_1]] - `imports` [EXTRACTED]
 - [[root.tsx_18]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Side_Popover
+#graphify/code #graphify/EXTRACTED #community/Emoji_Icon

@@ -1,18 +1,18 @@
 ---
-source_file: "components/inbox/inbox-filter/filters/date.tsx"
+source_file: "web/core/components/cycles/form.tsx"
 type: "code"
-community: "Filter Selection UI"
-location: "L19"
+community: "Label Dropdown"
+location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Selection_UI
+  - community/Label_Dropdown
 ---
 
 # Props
 
 ## Connections
 
-- [[date.tsx_7]] - `contains` [EXTRACTED]
+- [[form.tsx_10]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Selection_UI
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

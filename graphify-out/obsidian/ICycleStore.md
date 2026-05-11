@@ -1,12 +1,12 @@
 ---
-source_file: "store/cycle.store.ts"
+source_file: "space/store/cycle.store.ts"
 type: "code"
-community: "Data Export"
-location: "L32"
+community: "Publish Cycle"
+location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Data_Export
+  - community/Publish_Cycle
 ---
 
 # ICycleStore
@@ -14,6 +14,10 @@ tags:
 ## Connections
 
 - [[cycle.store.ts]] - `contains` [EXTRACTED]
-- [[root.store.ts]] - `imports` [EXTRACTED]
+- [[cycle.store.ts_1]] - `contains` [EXTRACTED]
+- [[root.store.ts_2]] - `imports` [EXTRACTED]
+- [[root.store.ts_6]] - `imports` [EXTRACTED]
+- [[use-cycle.ts_1]] - `imports` [EXTRACTED]
+- [[utils.tsx_3]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Data_Export
+#graphify/code #graphify/EXTRACTED #community/Publish_Cycle

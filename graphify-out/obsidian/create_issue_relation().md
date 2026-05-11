@@ -1,19 +1,19 @@
 ---
-source_file: "api_rust/src/routes/issue_extras.rs"
+source_file: "api/plane/db/migrations/0043_alter_analyticview_created_by_and_more.py"
 type: "code"
-community: "Community 30"
-location: "L981"
+community: "Issue Migration"
+location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_30
+  - community/Issue_Migration
 ---
 
 # create_issue_relation()
 
 ## Connections
 
-- [[issue_extras.rs]] - `contains` [EXTRACTED]
-- [[require_role()]] - `calls` [INFERRED]
+- [[0043_alter_analyticview_created_by_and_more.py]] - `contains` [EXTRACTED]
+- [[IssueRelation_1]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_30
+#graphify/code #graphify/EXTRACTED #community/Issue_Migration

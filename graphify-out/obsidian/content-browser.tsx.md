@@ -1,5 +1,5 @@
 ---
-source_file: "components/pages/editor/summary/content-browser.tsx"
+source_file: "web/core/components/pages/editor/summary/content-browser.tsx"
 type: "code"
 community: "Outline Content"
 location: "L1"
@@ -17,7 +17,7 @@ tags:
 - [[OutlineHeading2()]] - `imports` [EXTRACTED]
 - [[OutlineHeading3()]] - `imports` [EXTRACTED]
 - [[PageContentBrowser()]] - `contains` [EXTRACTED]
-- [[Props_392]] - `contains` [EXTRACTED]
+- [[Props_466]] - `contains` [EXTRACTED]
 - [[THeadingComponentProps]] - `imports` [EXTRACTED]
 - [[heading-components.tsx]] - `imports_from` [EXTRACTED]
 

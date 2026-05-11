@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/custom-list-keymap/list-keymap.ts"
 type: "code"
-community: "Core Extensions"
+community: "Next Prev"
 location: "L20"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Core_Extensions
+  - graphify/INFERRED
+  - community/Next_Prev
 ---
 
 # ListKeymap()
@@ -16,4 +16,4 @@ tags:
 - [[CoreEditorExtensions()]] - `calls` [INFERRED]
 - [[list-keymap.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Core_Extensions
+#graphify/code #graphify/INFERRED #community/Next_Prev

@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/menus/workspaces.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/sub-issues/content.tsx"
 type: "code"
-community: "Workspace Invites"
-location: "L15"
+community: "Issue Work"
+location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Invites
+  - community/Issue_Work
 ---
 
 # Props
 
 ## Connections
 
-- [[workspaces.tsx]] - `contains` [EXTRACTED]
+- [[content.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Invites
+#graphify/code #graphify/EXTRACTED #community/Issue_Work

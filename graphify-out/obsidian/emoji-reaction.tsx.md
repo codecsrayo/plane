@@ -22,11 +22,11 @@ tags:
 - [[EmojiReactionType]] - `contains` [EXTRACTED]
 - [[emoji-reaction-picker.stories.tsx]] - `imports_from` [EXTRACTED]
 - [[emoji-reaction.stories.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts_189]] - `imports_from` [EXTRACTED]
-- [[index.ts_175]] - `imports_from` [EXTRACTED]
 - [[index.ts_138]] - `imports_from` [EXTRACTED]
+- [[index.ts_174]] - `imports_from` [EXTRACTED]
+- [[index.ts_175]] - `imports_from` [EXTRACTED]
+- [[index.ts_189]] - `imports_from` [EXTRACTED]
 - [[index.ts_193]] - `imports_from` [EXTRACTED]
 - [[index.ts_191]] - `imports_from` [EXTRACTED]
-- [[index.ts_174]] - `imports_from` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Reaction_Emoji

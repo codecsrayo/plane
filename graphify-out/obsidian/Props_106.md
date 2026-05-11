@@ -1,18 +1,18 @@
 ---
-source_file: "components/settings/heading.tsx"
+source_file: "web/core/components/workspace/sidebar/favorites/favorite-items/root.tsx"
 type: "code"
-community: "Project Settings"
-location: "L10"
+community: "Favorite Folder"
+location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Favorite_Folder
 ---
 
 # Props
 
 ## Connections
 
-- [[heading.tsx]] - `contains` [EXTRACTED]
+- [[root.tsx_44]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Favorite_Folder

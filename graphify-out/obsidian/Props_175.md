@@ -1,18 +1,18 @@
 ---
-source_file: "components/automation/select-month-modal.tsx"
+source_file: "web/core/components/profile/overview/stats.tsx"
 type: "code"
-community: "Select Month"
-location: "L16"
+community: "Profile Priority"
+location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Select_Month
+  - community/Profile_Priority
 ---
 
 # Props
 
 ## Connections
 
-- [[select-month-modal.tsx]] - `contains` [EXTRACTED]
+- [[stats.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Select_Month
+#graphify/code #graphify/EXTRACTED #community/Profile_Priority

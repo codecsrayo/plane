@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/callout/utils.ts"
 type: "code"
-community: "Callout Extension"
+community: "Callout Custom"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Callout_Extension
+  - community/Callout_Custom
 ---
 
 # getStoredLogo()
@@ -16,4 +16,4 @@ tags:
 - [[extension.tsx_2]] - `imports` [EXTRACTED]
 - [[utils.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Callout_Extension
+#graphify/code #graphify/EXTRACTED #community/Callout_Custom

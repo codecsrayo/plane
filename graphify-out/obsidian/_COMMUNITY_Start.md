@@ -11,8 +11,8 @@ members: 2
 
 ## Members
 
-- [[index.ts_24]] - code - lib/polyfills/index.ts
-- [[start]] - code - lib/polyfills/index.ts
+- [[index.ts_289]] - code - web/core/lib/polyfills/index.ts
+- [[start]] - code - web/core/lib/polyfills/index.ts
 
 ## Live Query (requires Dataview plugin)
 

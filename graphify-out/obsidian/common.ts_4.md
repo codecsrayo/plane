@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/common.ts"
 type: "code"
-community: "Favorites Pages"
+community: "Inbox Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Favorites_Pages
+  - community/Inbox_Issue
 ---
 
 # common.ts
@@ -27,4 +27,4 @@ tags:
 - [[views.ts_1]] - `imports_from` [EXTRACTED]
 - [[workspace.ts_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Favorites_Pages
+#graphify/code #graphify/EXTRACTED #community/Inbox_Issue

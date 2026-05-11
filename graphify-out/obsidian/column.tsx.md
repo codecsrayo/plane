@@ -1,21 +1,21 @@
 ---
-source_file: "components/exporter/column.tsx"
+source_file: "web/core/components/exporter/column.tsx"
 type: "code"
-community: "Guide Prev"
+community: "Rowdata Single"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Guide_Prev
+  - community/Rowdata_Single
 ---
 
 # column.tsx
 
 ## Connections
 
-- [[RowData_1]] - `contains` [EXTRACTED]
+- [[RowData_2]] - `contains` [EXTRACTED]
 - [[checkExpiry()]] - `contains` [EXTRACTED]
 - [[prev-exports.tsx]] - `imports_from` [EXTRACTED]
 - [[useExportColumns()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Guide_Prev
+#graphify/code #graphify/EXTRACTED #community/Rowdata_Single

@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/helpers/common.ts"
 type: "code"
-community: "Link Insert"
+community: "Document Collaborative"
 location: "L110"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Link_Insert
+  - community/Document_Collaborative
 ---
 
 # getParagraphCount()
@@ -16,4 +16,4 @@ tags:
 - [[common.ts_1]] - `contains` [EXTRACTED]
 - [[editor-ref.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Link_Insert
+#graphify/code #graphify/EXTRACTED #community/Document_Collaborative

@@ -1,19 +1,19 @@
 ---
-source_file: "components/settings/workspace/sidebar/header.tsx"
+source_file: "web/core/components/settings/workspace/sidebar/header.tsx"
 type: "code"
-community: "Sidebar Nav"
+community: "Sidebar Settings"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Nav
+  - community/Sidebar_Settings
 ---
 
 # WorkspaceSettingsSidebarHeader
 
 ## Connections
 
-- [[header.tsx_3]] - `contains` [EXTRACTED]
-- [[root.tsx_16]] - `imports` [EXTRACTED]
+- [[header.tsx_45]] - `contains` [EXTRACTED]
+- [[root.tsx_57]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Nav
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Settings

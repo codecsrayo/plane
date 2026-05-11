@@ -1,20 +1,22 @@
 ---
 source_file: "api_rust/src/routes/assets.rs"
 type: "code"
-community: "Community 181"
+community: "Asset Issue"
 location: "L1720"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_181
+  - community/Asset_Issue
 ---
 
 # duplicate_workspace_asset()
 
 ## Connections
 
+- [[.json()]] - `calls` [INFERRED]
+- [[.set()]] - `calls` [INFERRED]
 - [[assets.rs]] - `contains` [EXTRACTED]
 - [[build_s3_client()]] - `calls` [INFERRED]
-- [[copy_object()]] - `calls` [INFERRED]
+- [[now]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_181
+#graphify/code #graphify/INFERRED #community/Asset_Issue

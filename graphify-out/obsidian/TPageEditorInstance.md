@@ -1,12 +1,12 @@
 ---
-source_file: "store/pages/page-editor-info.ts"
+source_file: "web/core/store/pages/page-editor-info.ts"
 type: "code"
-community: "Logo Editor"
+community: "Control Move"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Logo_Editor
+  - community/Control_Move
 ---
 
 # TPageEditorInstance
@@ -15,4 +15,4 @@ tags:
 
 - [[page-editor-info.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Logo_Editor
+#graphify/code #graphify/EXTRACTED #community/Control_Move

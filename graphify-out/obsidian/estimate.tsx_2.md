@@ -1,22 +1,22 @@
 ---
-source_file: "components/readonly/estimate.tsx"
+source_file: "web/core/components/issues/issue-detail/issue-activity/activity/actions/estimate.tsx"
 type: "code"
-community: "Estimate Disable"
+community: "Issue Activity"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Estimate_Disable
+  - community/Issue_Activity
 ---
 
 # estimate.tsx
 
 ## Connections
 
-- [[ReadonlyEstimate]] - `contains` [EXTRACTED]
-- [[TReadonlyEstimateProps]] - `contains` [EXTRACTED]
-- [[index.ts_3]] - `imports_from` [EXTRACTED]
-- [[use-estimate.ts]] - `imports_from` [EXTRACTED]
-- [[useEstimate()]] - `imports` [EXTRACTED]
+- [[IssueEstimateActivity]] - `contains` [EXTRACTED]
+- [[TIssueEstimateActivity]] - `contains` [EXTRACTED]
+- [[index.ts_369]] - `imports_from` [EXTRACTED]
+- [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
+- [[useIssueDetail()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Estimate_Disable
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

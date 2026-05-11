@@ -1,12 +1,12 @@
 ---
 source_file: "utils/src/rich-filters/factories/configs/core.ts"
 type: "code"
-community: "Date Config"
+community: "Config Date"
 location: "L65"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Date_Config
+  - community/Config_Date
 ---
 
 # TMultiSelectConfig
@@ -15,4 +15,4 @@ tags:
 
 - [[core.ts_17]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Date_Config
+#graphify/code #graphify/EXTRACTED #community/Config_Date

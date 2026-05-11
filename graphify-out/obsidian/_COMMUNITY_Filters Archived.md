@@ -11,29 +11,29 @@ members: 23
 
 ## Members
 
-- [[.appliedFilters()]] - code - store/issue/archived/filter.store.ts
-- [[.constructor()_30]] - code - store/issue/archived/filter.store.ts
-- [[.constructor()_29]] - code - store/issue/archived/issue.store.ts
-- [[.getAppliedFilters()]] - code - store/issue/archived/filter.store.ts
-- [[.getIssueFilters()]] - code - store/issue/archived/filter.store.ts
-- [[.issueFilters()]] - code - store/issue/archived/filter.store.ts
-- [[ArchivedIssues]] - code - store/issue/archived/issue.store.ts
-- [[ArchivedIssuesFilter]] - code - store/issue/archived/filter.store.ts
-- [[IArchivedIssues]] - code - store/issue/archived/issue.store.ts
-- [[IArchivedIssuesFilter]] - code - store/issue/archived/filter.store.ts
-- [[_filters]] - code - store/issue/archived/filter.store.ts
-- [[cursorObject]] - code - store/issue/archived/issue.store.ts
-- [[displayFilters_3]] - code - store/issue/archived/filter.store.ts
-- [[displayProperties]] - code - store/issue/archived/filter.store.ts
-- [[filter.store.ts]] - code - store/issue/archived/filter.store.ts
-- [[filterParams]] - code - store/issue/archived/filter.store.ts
-- [[issue.store.ts_1]] - code - store/issue/archived/issue.store.ts
-- [[kanbanFilters]] - code - store/issue/archived/filter.store.ts
-- [[paginationParams]] - code - store/issue/archived/filter.store.ts
-- [[params]] - code - store/issue/archived/issue.store.ts
-- [[updatedDisplayFilters]] - code - store/issue/archived/filter.store.ts
-- [[updatedDisplayProperties]] - code - store/issue/archived/filter.store.ts
-- [[updatedKanbanFilters]] - code - store/issue/archived/filter.store.ts
+- [[.appliedFilters()]] - code - web/core/store/issue/archived/filter.store.ts
+- [[.constructor()_87]] - code - web/core/store/issue/archived/filter.store.ts
+- [[.constructor()_86]] - code - web/core/store/issue/archived/issue.store.ts
+- [[.getAppliedFilters()]] - code - web/core/store/issue/archived/filter.store.ts
+- [[.getIssueFilters()]] - code - web/core/store/issue/archived/filter.store.ts
+- [[.issueFilters()]] - code - web/core/store/issue/archived/filter.store.ts
+- [[ArchivedIssues]] - code - web/core/store/issue/archived/issue.store.ts
+- [[ArchivedIssuesFilter]] - code - web/core/store/issue/archived/filter.store.ts
+- [[IArchivedIssues]] - code - web/core/store/issue/archived/issue.store.ts
+- [[IArchivedIssuesFilter]] - code - web/core/store/issue/archived/filter.store.ts
+- [[_filters]] - code - web/core/store/issue/archived/filter.store.ts
+- [[cursorObject]] - code - web/core/store/issue/archived/issue.store.ts
+- [[displayFilters_3]] - code - web/core/store/issue/archived/filter.store.ts
+- [[displayProperties]] - code - web/core/store/issue/archived/filter.store.ts
+- [[filter.store.ts_5]] - code - web/core/store/issue/archived/filter.store.ts
+- [[filterParams]] - code - web/core/store/issue/archived/filter.store.ts
+- [[issue.store.ts_6]] - code - web/core/store/issue/archived/issue.store.ts
+- [[kanbanFilters]] - code - web/core/store/issue/archived/filter.store.ts
+- [[paginationParams]] - code - web/core/store/issue/archived/filter.store.ts
+- [[params]] - code - web/core/store/issue/archived/issue.store.ts
+- [[updatedDisplayFilters]] - code - web/core/store/issue/archived/filter.store.ts
+- [[updatedDisplayProperties]] - code - web/core/store/issue/archived/filter.store.ts
+- [[updatedKanbanFilters]] - code - web/core/store/issue/archived/filter.store.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -44,17 +44,13 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 2 edges to [[_COMMUNITY_Calendar Store]]
-- 2 edges to [[_COMMUNITY_Filters Cycle]]
-- 2 edges to [[_COMMUNITY_API Services]]
-- 2 edges to [[_COMMUNITY_Estimate Points]]
-- 2 edges to [[_COMMUNITY_Issue Filters]]
-- 2 edges to [[_COMMUNITY_Filters Display]]
-- 1 edge to [[_COMMUNITY_Issue Store Ops]]
-- 1 edge to [[_COMMUNITY_Issues Filters]]
-- 1 edge to [[_COMMUNITY_Filters Display]]
+- 7 edges to [[_COMMUNITY_Filters Issue]]
+- 2 edges to [[_COMMUNITY_Calendar Issue]]
+- 2 edges to [[_COMMUNITY_Issue Group]]
+- 2 edges to [[_COMMUNITY_Issue Project]]
+- 2 edges to [[_COMMUNITY_Estimate Project]]
 
 ## Top bridge nodes
 
-- [[filter.store.ts]] - degree 21, connects to 7 communities
-- [[issue.store.ts_1]] - degree 12, connects to 6 communities
+- [[issue.store.ts_6]] - degree 12, connects to 5 communities
+- [[filter.store.ts_5]] - degree 21, connects to 4 communities

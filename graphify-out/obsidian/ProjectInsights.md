@@ -1,5 +1,5 @@
 ---
-source_file: "components/analytics/overview/project-insights.tsx"
+source_file: "web/core/components/analytics/overview/project-insights.tsx"
 type: "code"
 community: "Analytics Project"
 location: "L31"

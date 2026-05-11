@@ -1,5 +1,5 @@
 ---
-source_file: "store/issue/helpers/base-issues-utils.ts"
+source_file: "web/core/store/issue/helpers/base-issues-utils.ts"
 type: "code"
 community: "Issue Group"
 location: "L1"
@@ -15,6 +15,7 @@ tags:
 
 - [[EIssueGroupedAction]] - `imports` [EXTRACTED]
 - [[ISSUE_GROUP_BY_KEY]] - `imports` [EXTRACTED]
+- [[base-issue.store.ts]] - `imports_from` [EXTRACTED]
 - [[base-issues.store.ts]] - `imports_from` [EXTRACTED]
 - [[checkIssueDateFilter()]] - `contains` [EXTRACTED]
 - [[getDifference()]] - `contains` [EXTRACTED]

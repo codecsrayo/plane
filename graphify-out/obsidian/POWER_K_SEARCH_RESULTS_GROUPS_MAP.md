@@ -1,5 +1,5 @@
 ---
-source_file: "components/power-k/ui/modal/search-results-map.tsx"
+source_file: "web/core/components/power-k/ui/modal/search-results-map.tsx"
 type: "code"
 community: "Search Results"
 location: "L31"
@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 
-- [[search-results-map.tsx]] - `contains` [EXTRACTED]
+- [[search-results-map.tsx_1]] - `contains` [EXTRACTED]
 - [[search-results.tsx]] - `imports` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Search_Results

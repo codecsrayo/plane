@@ -1,12 +1,12 @@
 ---
 source_file: "utils/src/rich-filters/factories/configs/core.ts"
 type: "code"
-community: "Date Config"
+community: "Config Date"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Date_Config
+  - community/Config_Date
 ---
 
 # core.ts
@@ -27,4 +27,4 @@ tags:
 - [[shared.ts_8]] - `imports_from` [EXTRACTED]
 - [[shared.ts_9]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Date_Config
+#graphify/code #graphify/EXTRACTED #community/Config_Date

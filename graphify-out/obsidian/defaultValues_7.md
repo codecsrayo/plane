@@ -1,5 +1,5 @@
 ---
-source_file: "components/modules/links/create-update-modal.tsx"
+source_file: "web/core/components/modules/links/create-update-modal.tsx"
 type: "code"
 community: "Link Values"
 location: "L24"

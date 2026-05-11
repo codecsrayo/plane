@@ -1,12 +1,12 @@
 ---
-source_file: "components/modules/gantt-chart/modules-list-layout.tsx"
+source_file: "web/core/components/modules/gantt-chart/modules-list-layout.tsx"
 type: "code"
-community: "Modules Archived"
+community: "Cycles Archived"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Modules_Archived
+  - community/Cycles_Archived
 ---
 
 # ModulesListGanttChartView
@@ -15,4 +15,4 @@ tags:
 
 - [[modules-list-layout.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Modules_Archived
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

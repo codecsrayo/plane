@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/intakes.rs"
 type: "code"
-community: "Community 348"
+community: "Model Relation"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_348
+  - community/Model_Relation
 ---
 
 # Relation
@@ -15,4 +15,4 @@ tags:
 
 - [[intakes.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_348
+#graphify/code #graphify/EXTRACTED #community/Model_Relation

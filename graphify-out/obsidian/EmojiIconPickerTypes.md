@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/emoji-icon-picker/helper.tsx"
 type: "code"
-community: "Emoji Picker"
+community: "Emoji Icon"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Emoji_Picker
+  - community/Emoji_Icon
 ---
 
 # EmojiIconPickerTypes
@@ -17,4 +17,4 @@ tags:
 - [[emoji-picker.tsx]] - `imports` [EXTRACTED]
 - [[helper.tsx_15]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Emoji_Picker
+#graphify/code #graphify/EXTRACTED #community/Emoji_Icon

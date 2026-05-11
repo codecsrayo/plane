@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/core/types.ts"
+source_file: "web/core/components/power-k/core/types.ts"
 type: "code"
-community: "Context Power"
+community: "Power Context"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Context_Power
+  - community/Power_Context
 ---
 
 # TPowerKContextType
@@ -14,11 +14,12 @@ tags:
 ## Connections
 
 - [[base-power-k.store.ts]] - `imports` [EXTRACTED]
-- [[context-detector.ts]] - `imports` [EXTRACTED]
+- [[context-detector.ts_1]] - `imports` [EXTRACTED]
 - [[context-indicator.tsx]] - `imports` [EXTRACTED]
-- [[index.ts_134]] - `imports` [EXTRACTED]
-- [[root.tsx_58]] - `imports` [EXTRACTED]
-- [[types.ts_2]] - `contains` [EXTRACTED]
+- [[index.ts_399]] - `imports` [EXTRACTED]
+- [[root.tsx_99]] - `imports` [EXTRACTED]
+- [[types.ts_16]] - `contains` [EXTRACTED]
 - [[use-context-indicator.ts]] - `imports` [EXTRACTED]
+- [[use-extended-context-indicator.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Context_Power
+#graphify/code #graphify/EXTRACTED #community/Power_Context

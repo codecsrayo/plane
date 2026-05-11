@@ -1,18 +1,19 @@
 ---
-source_file: "components/power-k/ui/pages/context-based/work-item/root.tsx"
+source_file: "space/components/issues/filters/applied-filters/priority.tsx"
 type: "code"
-community: "Menu Power"
-location: "L25"
+community: "Issue Applied"
+location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu_Power
+  - community/Issue_Applied
 ---
 
 # Props
 
 ## Connections
 
-- [[root.tsx_60]] - `contains` [EXTRACTED]
+- [[priority.tsx_3]] - `contains` [EXTRACTED]
+- [[priority.tsx_10]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Menu_Power
+#graphify/code #graphify/EXTRACTED #community/Issue_Applied

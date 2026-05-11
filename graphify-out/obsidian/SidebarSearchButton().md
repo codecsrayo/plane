@@ -1,12 +1,12 @@
 ---
-source_file: "components/sidebar/search-button.tsx"
+source_file: "web/core/components/sidebar/search-button.tsx"
 type: "code"
-community: "Search Button"
+community: "Search Sidebar"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Search_Button
+  - community/Search_Sidebar
 ---
 
 # SidebarSearchButton()
@@ -15,4 +15,4 @@ tags:
 
 - [[search-button.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Search_Button
+#graphify/code #graphify/EXTRACTED #community/Search_Sidebar

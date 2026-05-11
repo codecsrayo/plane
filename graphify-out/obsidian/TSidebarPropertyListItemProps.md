@@ -1,12 +1,12 @@
 ---
-source_file: "components/common/layout/sidebar/property-list-item.tsx"
+source_file: "web/core/components/common/layout/sidebar/property-list-item.tsx"
 type: "code"
-community: "Issue Properties"
+community: "Label Dropdown"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Label_Dropdown
 ---
 
 # TSidebarPropertyListItemProps
@@ -15,4 +15,4 @@ tags:
 
 - [[property-list-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

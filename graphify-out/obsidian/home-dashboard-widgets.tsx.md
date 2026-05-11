@@ -1,12 +1,12 @@
 ---
-source_file: "components/home/home-dashboard-widgets.tsx"
+source_file: "web/core/components/home/home-dashboard-widgets.tsx"
 type: "code"
-community: "Dashboard Widgets"
+community: "Widget Home"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dashboard_Widgets
+  - community/Widget_Home
 ---
 
 # home-dashboard-widgets.tsx
@@ -15,13 +15,14 @@ tags:
 
 - [[DashboardWidgets]] - `contains` [EXTRACTED]
 - [[HOME_WIDGETS_LIST]] - `contains` [EXTRACTED]
+- [[HomePageHeader()]] - `imports` [EXTRACTED]
 - [[ManageWidgetsModal]] - `imports` [EXTRACTED]
 - [[SimpleEmptyState]] - `imports` [EXTRACTED]
 - [[StickiesWidget]] - `imports` [EXTRACTED]
-- [[index.ts_29]] - `imports_from` [EXTRACTED]
-- [[index.ts_32]] - `imports_from` [EXTRACTED]
-- [[index.tsx_1]] - `imports_from` [EXTRACTED]
-- [[root.tsx]] - `imports_from` [EXTRACTED]
+- [[index.ts_294]] - `imports_from` [EXTRACTED]
+- [[index.ts_297]] - `imports_from` [EXTRACTED]
+- [[index.tsx_7]] - `imports_from` [EXTRACTED]
+- [[root.tsx_41]] - `imports_from` [EXTRACTED]
 - [[simple-empty-state-root.tsx]] - `imports_from` [EXTRACTED]
 - [[use-home.ts]] - `imports_from` [EXTRACTED]
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
@@ -30,4 +31,4 @@ tags:
 - [[widget-item.tsx]] - `imports_from` [EXTRACTED]
 - [[widget.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets
+#graphify/code #graphify/EXTRACTED #community/Widget_Home

@@ -1,18 +1,18 @@
 ---
-source_file: "components/editor/rich-text/description-input/loader.tsx"
+source_file: "web/ce/components/workspace/delete-workspace-modal.tsx"
 type: "code"
-community: "Description Input"
-location: "L11"
+community: "Workspace Issue"
+location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Description_Input
+  - community/Workspace_Issue
 ---
 
 # Props
 
 ## Connections
 
-- [[loader.tsx_2]] - `contains` [EXTRACTED]
+- [[delete-workspace-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Description_Input
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

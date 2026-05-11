@@ -40,14 +40,13 @@ SORT file.name ASC
 ## Connections to other communities
 
 - 3 edges to [[_COMMUNITY_Config Operator]]
-- 1 edge to [[_COMMUNITY_Group Transform]]
+- 2 edges to [[_COMMUNITY_Expression Work]]
+- 1 edge to [[_COMMUNITY_Group Condition]]
 - 1 edge to [[_COMMUNITY_Work Condition]]
 - 1 edge to [[_COMMUNITY_Config Manager]]
-- 1 edge to [[_COMMUNITY_Instance Filterinstance]]
-- 1 edge to [[_COMMUNITY_Operator Work]]
 
 ## Top bridge nodes
 
-- [[filter.ts_3]] - degree 18, connects to 5 communities
+- [[filter.ts_3]] - degree 18, connects to 4 communities
 - [[IFilterInstance]] - degree 3, connects to 1 community
 - [[._addConditionByOperator()]] - degree 2, connects to 1 community

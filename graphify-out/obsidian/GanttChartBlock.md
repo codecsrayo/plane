@@ -1,5 +1,5 @@
 ---
-source_file: "components/gantt-chart/blocks/block.tsx"
+source_file: "web/core/components/gantt-chart/blocks/block.tsx"
 type: "code"
 community: "Gantt Chart"
 location: "L35"
@@ -13,6 +13,7 @@ tags:
 
 ## Connections
 
-- [[block.tsx_2]] - `contains` [EXTRACTED]
+- [[block.tsx_5]] - `contains` [EXTRACTED]
+- [[blocks-list.tsx]] - `imports` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Gantt_Chart

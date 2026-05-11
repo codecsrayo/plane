@@ -1,5 +1,5 @@
 ---
-source_file: "store/estimates/project-estimate.store.ts"
+source_file: "web/core/store/estimates/project-estimate.store.ts"
 type: "code"
 community: "Estimate Project"
 location: "L57"
@@ -14,11 +14,11 @@ tags:
 ## Connections
 
 - [[.archivedEstimateIds()]] - `method` [EXTRACTED]
-- [[.constructor()_69]] - `method` [EXTRACTED]
+- [[.constructor()_126]] - `method` [EXTRACTED]
 - [[.currentActiveEstimate()]] - `method` [EXTRACTED]
 - [[.currentActiveEstimateId()]] - `method` [EXTRACTED]
 - [[.currentProjectEstimateType()]] - `method` [EXTRACTED]
 - [[project-estimate.store.ts]] - `contains` [EXTRACTED]
-- [[root.store.ts]] - `imports` [EXTRACTED]
+- [[root.store.ts_2]] - `imports` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Estimate_Project

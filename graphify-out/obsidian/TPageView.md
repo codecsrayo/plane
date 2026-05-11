@@ -1,5 +1,5 @@
 ---
-source_file: "components/pages/pages-list-view.tsx"
+source_file: "web/core/components/pages/pages-list-view.tsx"
 type: "code"
 community: "Pages Main"
 location: "L17"

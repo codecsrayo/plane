@@ -1,18 +1,18 @@
 ---
-source_file: "components/inbox/modals/delete-issue-modal.tsx"
+source_file: "web/core/components/cycles/analytics-sidebar/sidebar-header.tsx"
 type: "code"
-community: "Issue Inbox"
-location: "L21"
+community: "Cycle Active"
+location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Inbox
+  - community/Cycle_Active
 ---
 
 # Props
 
 ## Connections
 
-- [[delete-issue-modal.tsx_1]] - `contains` [EXTRACTED]
+- [[sidebar-header.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Inbox
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

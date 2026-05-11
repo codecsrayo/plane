@@ -38,7 +38,7 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 1 edge to [[_COMMUNITY_Import Export]]
+- 1 edge to [[_COMMUNITY_Workspace Search]]
 
 ## Top bridge nodes
 

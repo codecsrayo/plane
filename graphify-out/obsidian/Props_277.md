@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-detail-widgets/sub-issues/title.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/assignee-column.tsx"
 type: "code"
-community: "Title Issues"
-location: "L17"
+community: "Label Dropdown"
+location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Title_Issues
+  - community/Label_Dropdown
 ---
 
 # Props
 
 ## Connections
 
-- [[title.tsx_2]] - `contains` [EXTRACTED]
+- [[assignee-column.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Title_Issues
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

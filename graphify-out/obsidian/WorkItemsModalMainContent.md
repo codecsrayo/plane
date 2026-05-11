@@ -1,12 +1,12 @@
 ---
-source_file: "components/analytics/work-items/modal/content.tsx"
+source_file: "web/core/components/analytics/work-items/modal/content.tsx"
 type: "code"
-community: "Active Projects"
+community: "Webhook Workspace"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Projects
+  - community/Webhook_Workspace
 ---
 
 # WorkItemsModalMainContent
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[content.tsx_5]] - `contains` [EXTRACTED]
-- [[index.tsx_8]] - `imports` [EXTRACTED]
+- [[index.tsx_14]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Active_Projects
+#graphify/code #graphify/EXTRACTED #community/Webhook_Workspace

@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/editor/toolbar/color-dropdown.tsx"
+source_file: "web/core/components/power-k/ui/pages/work-item-selection-page.tsx"
 type: "code"
-community: "Toolbar Color"
-location: "L16"
+community: "Work Selection"
+location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toolbar_Color
+  - community/Work_Selection
 ---
 
 # Props
 
 ## Connections
 
-- [[color-dropdown.tsx]] - `contains` [EXTRACTED]
+- [[work-item-selection-page.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toolbar_Color
+#graphify/code #graphify/EXTRACTED #community/Work_Selection

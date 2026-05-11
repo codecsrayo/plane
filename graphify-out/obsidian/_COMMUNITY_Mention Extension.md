@@ -34,10 +34,10 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 2 edges to [[_COMMUNITY_Document Side]]
-- 2 edges to [[_COMMUNITY_Document Text]]
-- 2 edges to [[_COMMUNITY_Command Slash]]
-- 1 edge to [[_COMMUNITY_Core Extensions]]
+- 2 edges to [[_COMMUNITY_Document Collaborative]]
+- 2 edges to [[_COMMUNITY_Document Custom]]
+- 2 edges to [[_COMMUNITY_Emoji Command]]
+- 1 edge to [[_COMMUNITY_Unique Core]]
 
 ## Top bridge nodes
 

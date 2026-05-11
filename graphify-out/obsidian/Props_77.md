@@ -1,18 +1,18 @@
 ---
-source_file: "components/modules/select/status.tsx"
+source_file: "web/core/hooks/use-page-operations.ts"
 type: "code"
-community: "Status"
-location: "L21"
+community: "Control Move"
+location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Status
+  - community/Control_Move
 ---
 
 # Props
 
 ## Connections
 
-- [[status.tsx]] - `contains` [EXTRACTED]
+- [[use-page-operations.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Status
+#graphify/code #graphify/EXTRACTED #community/Control_Move

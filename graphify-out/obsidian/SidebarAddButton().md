@@ -1,12 +1,12 @@
 ---
-source_file: "components/sidebar/add-button.tsx"
+source_file: "web/core/components/sidebar/add-button.tsx"
 type: "code"
-community: "Project Archives"
+community: "Project Profile"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Archives
+  - community/Project_Profile
 ---
 
 # SidebarAddButton()
@@ -16,4 +16,4 @@ tags:
 - [[add-button.tsx]] - `contains` [EXTRACTED]
 - [[quick-actions.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Archives
+#graphify/code #graphify/EXTRACTED #community/Project_Profile

@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-layouts/quick-add/form/calendar.tsx"
+source_file: "web/core/components/issues/issue-layouts/quick-add/form/calendar.tsx"
 type: "code"
 community: "Issue Quick"
 location: "L10"

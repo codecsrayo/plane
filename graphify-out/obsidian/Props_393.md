@@ -1,19 +1,18 @@
 ---
-source_file: "components/pages/header/root.tsx"
+source_file: "web/core/components/power-k/ui/pages/context-based/work-item/estimates-menu.tsx"
 type: "code"
-community: "Badge Editor"
-location: "L29"
+community: "Menu Power"
+location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Badge_Editor
+  - community/Menu_Power
 ---
 
 # Props
 
 ## Connections
 
-- [[root.tsx_76]] - `contains` [EXTRACTED]
-- [[root.tsx_83]] - `contains` [EXTRACTED]
+- [[estimates-menu.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Badge_Editor
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/filters/header/filters/module.tsx"
+source_file: "web/core/components/web-hooks/generated-hook-details.tsx"
 type: "code"
-community: "Module Analytics"
-location: "L18"
+community: "Webhook Generated"
+location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Webhook_Generated
 ---
 
 # Props
 
 ## Connections
 
-- [[module.tsx_1]] - `contains` [EXTRACTED]
+- [[generated-hook-details.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Webhook_Generated

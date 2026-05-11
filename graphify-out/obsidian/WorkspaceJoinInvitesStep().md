@@ -1,12 +1,12 @@
 ---
-source_file: "components/onboarding/steps/workspace/join-invites.tsx"
+source_file: "web/core/components/onboarding/steps/workspace/join-invites.tsx"
 type: "code"
-community: "Workspace Invites"
+community: "Workspace Issue"
 location: "L31"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Workspace_Invites
+  - graphify/INFERRED
+  - community/Workspace_Issue
 ---
 
 # WorkspaceJoinInvitesStep()
@@ -15,6 +15,5 @@ tags:
 
 - [[join-invites.tsx]] - `contains` [EXTRACTED]
 - [[useUserSettings()]] - `calls` [INFERRED]
-- [[useWorkspace()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Invites
+#graphify/code #graphify/INFERRED #community/Workspace_Issue

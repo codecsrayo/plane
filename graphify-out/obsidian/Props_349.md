@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/menus/cycles.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/relations/root.tsx"
 type: "code"
-community: "File Icons Nav"
-location: "L15"
+community: "Issue Activity"
+location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/File_Icons_Nav
+  - community/Issue_Activity
 ---
 
 # Props
 
 ## Connections
 
-- [[cycles.tsx]] - `contains` [EXTRACTED]
+- [[root.tsx_80]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/File_Icons_Nav
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

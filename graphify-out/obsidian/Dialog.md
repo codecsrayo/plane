@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/dialog/root.tsx"
 type: "code"
-community: "Dialog Close"
+community: "Dialog Width"
 location: "L133"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dialog_Close
+  - community/Dialog_Width
 ---
 
 # Dialog
@@ -16,4 +16,4 @@ tags:
 - [[dialog.stories.tsx]] - `imports` [EXTRACTED]
 - [[root.tsx_8]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dialog_Close
+#graphify/code #graphify/EXTRACTED #community/Dialog_Width

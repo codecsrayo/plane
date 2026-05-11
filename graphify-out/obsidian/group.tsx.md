@@ -1,5 +1,5 @@
 ---
-source_file: "components/base-layouts/kanban/group.tsx"
+source_file: "web/core/components/base-layouts/kanban/group.tsx"
 type: "code"
 community: "Group Drop"
 location: "L1"
@@ -17,8 +17,8 @@ tags:
 - [[BaseKanbanItem]] - `imports` [EXTRACTED]
 - [[GroupHeader()]] - `imports` [EXTRACTED]
 - [[group-header.tsx]] - `imports_from` [EXTRACTED]
-- [[item.tsx_2]] - `imports_from` [EXTRACTED]
-- [[layout.tsx_2]] - `imports_from` [EXTRACTED]
+- [[item.tsx_3]] - `imports_from` [EXTRACTED]
+- [[layout.tsx_46]] - `imports_from` [EXTRACTED]
 - [[use-group-drop-target.ts]] - `imports_from` [EXTRACTED]
 - [[useGroupDropTarget()]] - `imports` [EXTRACTED]
 

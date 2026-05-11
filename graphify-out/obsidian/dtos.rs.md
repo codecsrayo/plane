@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/integrations/dtos.rs"
 type: "code"
-community: "Community 145"
+community: "Request Github"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_145
+  - community/Request_Github
 ---
 
 # dtos.rs
@@ -27,4 +27,4 @@ tags:
 - [[UserGithubConnectionResponse]] - `contains` [EXTRACTED]
 - [[WorkspaceIntegrationResponse]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_145
+#graphify/code #graphify/EXTRACTED #community/Request_Github

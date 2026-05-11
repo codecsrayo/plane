@@ -1,36 +1,34 @@
 ---
-source_file: "components/issues/peek-overview/header.tsx"
+source_file: "web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/header.tsx"
 type: "code"
-community: "Project Archives"
+community: "Project Settings"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Archives
+  - community/Project_Settings
 ---
 
 # header.tsx
 
 ## Connections
 
-- [[IssuePeekOverviewHeader]] - `contains` [EXTRACTED]
-- [[IssueSubscription]] - `imports` [EXTRACTED]
-- [[NameDescriptionUpdateStatus]] - `imports` [EXTRACTED]
-- [[PEEK_OPTIONS]] - `contains` [EXTRACTED]
-- [[PeekOverviewHeaderProps]] - `contains` [EXTRACTED]
-- [[TPeekModes]] - `contains` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
-- [[index.ts_96]] - `imports_from` [EXTRACTED]
-- [[issue-update-status.tsx]] - `imports_from` [EXTRACTED]
-- [[subscription.tsx]] - `imports_from` [EXTRACTED]
-- [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
+- [[BreadcrumbLink()]] - `imports` [EXTRACTED]
+- [[CommonProjectBreadcrumbs()]] - `imports` [EXTRACTED]
+- [[PROJECT_ARCHIVES_BREADCRUMB_LIST]] - `contains` [EXTRACTED]
+- [[ProjectArchivesHeader]] - `contains` [EXTRACTED]
+- [[TProps]] - `contains` [EXTRACTED]
+- [[breadcrumb-link.tsx]] - `imports_from` [EXTRACTED]
+- [[layout.tsx_15]] - `imports_from` [EXTRACTED]
+- [[layout.tsx_17]] - `imports_from` [EXTRACTED]
+- [[layout.tsx_18]] - `imports_from` [EXTRACTED]
+- [[use-app-router.tsx]] - `imports_from` [EXTRACTED]
 - [[use-issues.ts]] - `imports_from` [EXTRACTED]
-- [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
+- [[use-platform-os.tsx_1]] - `imports_from` [EXTRACTED]
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
-- [[useIssueDetail()]] - `imports` [EXTRACTED]
+- [[useAppRouter()]] - `imports` [EXTRACTED]
 - [[useIssues()]] - `imports` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
-- [[view.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Archives
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

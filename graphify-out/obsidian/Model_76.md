@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/users_user_permissions.rs"
 type: "code"
-community: "Community 395"
+community: "Model Relation"
 location: "L8"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_395
+  - community/Model_Relation
 ---
 
 # Model
@@ -15,4 +15,4 @@ tags:
 
 - [[users_user_permissions.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_395
+#graphify/code #graphify/EXTRACTED #community/Model_Relation

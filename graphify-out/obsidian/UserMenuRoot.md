@@ -1,18 +1,19 @@
 ---
-source_file: "components/workspace/sidebar/user-menu-root.tsx"
+source_file: "web/core/components/workspace/sidebar/user-menu-root.tsx"
 type: "code"
-community: "Image Upload"
+community: "Sidebar Rail"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Image_Upload
+  - community/Sidebar_Rail
 ---
 
 # UserMenuRoot
 
 ## Connections
 
+- [[top-navigation-root.tsx]] - `imports` [EXTRACTED]
 - [[user-menu-root.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Image_Upload
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Rail

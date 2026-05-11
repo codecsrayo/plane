@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/list/search-input.tsx"
+source_file: "web/core/components/power-k/ui/pages/context-based/work-item/modules-menu.tsx"
 type: "code"
-community: "Order Search"
-location: "L14"
+community: "Menu Power"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Order_Search
+  - community/Menu_Power
 ---
 
 # Props
 
 ## Connections
 
-- [[search-input.tsx]] - `contains` [EXTRACTED]
+- [[modules-menu.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Order_Search
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

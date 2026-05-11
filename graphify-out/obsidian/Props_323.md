@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/ui/pages/preferences/languages-menu.tsx"
+source_file: "web/core/components/issues/issue-layouts/filters/applied-filters/module.tsx"
 type: "code"
-community: "Member Commands"
-location: "L15"
+community: "Cycles Archived"
+location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Commands
+  - community/Cycles_Archived
 ---
 
 # Props
 
 ## Connections
 
-- [[languages-menu.tsx]] - `contains` [EXTRACTED]
+- [[module.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Commands
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

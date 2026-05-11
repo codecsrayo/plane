@@ -11,9 +11,9 @@ members: 3
 
 ## Members
 
-- [[DurationDropdown()]] - code - components/analytics/select/duration.tsx
-- [[Props_428]] - code - components/analytics/select/duration.tsx
-- [[duration.tsx]] - code - components/analytics/select/duration.tsx
+- [[DurationDropdown()]] - code - web/core/components/analytics/select/duration.tsx
+- [[Props_502]] - code - web/core/components/analytics/select/duration.tsx
+- [[duration.tsx]] - code - web/core/components/analytics/select/duration.tsx
 
 ## Live Query (requires Dataview plugin)
 

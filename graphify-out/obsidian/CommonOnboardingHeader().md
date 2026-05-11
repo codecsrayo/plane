@@ -1,5 +1,5 @@
 ---
-source_file: "components/onboarding/steps/common/header.tsx"
+source_file: "web/core/components/onboarding/steps/common/header.tsx"
 type: "code"
 community: "Common Onboarding"
 location: "L12"
@@ -13,6 +13,6 @@ tags:
 
 ## Connections
 
-- [[header.tsx_13]] - `contains` [EXTRACTED]
+- [[header.tsx_55]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Common_Onboarding

@@ -1,18 +1,18 @@
 ---
-source_file: "components/labels/project-setting-label-item.tsx"
+source_file: "web/ce/components/workflow/workflow-group-tree.tsx"
 type: "code"
-community: "Label Manager"
-location: "L22"
+community: "Group Workflow"
+location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Manager
+  - community/Group_Workflow
 ---
 
 # Props
 
 ## Connections
 
-- [[project-setting-label-item.tsx]] - `contains` [EXTRACTED]
+- [[workflow-group-tree.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Manager
+#graphify/code #graphify/EXTRACTED #community/Group_Workflow

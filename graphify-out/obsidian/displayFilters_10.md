@@ -1,12 +1,12 @@
 ---
-source_file: "store/project/project_filter.store.ts"
+source_file: "web/core/store/project/project_filter.store.ts"
 type: "code"
-community: "Project Root Store"
+community: "Project Issue"
 location: "L123"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Root_Store
+  - community/Project_Issue
 ---
 
 # displayFilters
@@ -15,4 +15,4 @@ tags:
 
 - [[project_filter.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Root_Store
+#graphify/code #graphify/EXTRACTED #community/Project_Issue

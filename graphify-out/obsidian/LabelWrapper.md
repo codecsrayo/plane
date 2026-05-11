@@ -1,12 +1,12 @@
 ---
-source_file: "components/common/breadcrumb-link.tsx"
+source_file: "web/core/components/common/breadcrumb-link.tsx"
 type: "code"
-community: "Auth UI"
+community: "Settings Project"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_UI
+  - community/Settings_Project
 ---
 
 # LabelWrapper
@@ -15,4 +15,4 @@ tags:
 
 - [[breadcrumb-link.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_UI
+#graphify/code #graphify/EXTRACTED #community/Settings_Project

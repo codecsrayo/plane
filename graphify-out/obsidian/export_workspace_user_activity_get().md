@@ -1,19 +1,21 @@
 ---
 source_file: "api_rust/src/routes/workspaces.rs"
 type: "code"
-community: "Workspace Activity & Analytics"
+community: "Workspace User"
 location: "L2822"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Workspace_Activity__Analytics
+  - graphify/INFERRED
+  - community/Workspace_User
 ---
 
 # export_workspace_user_activity_get()
 
 ## Connections
 
+- [[.json()]] - `calls` [INFERRED]
 - [[export_workspace_user_activity()]] - `calls` [EXTRACTED]
-- [[workspaces.rs]] - `contains` [EXTRACTED]
+- [[now]] - `calls` [INFERRED]
+- [[workspaces.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Activity\_\_Analytics
+#graphify/code #graphify/INFERRED #community/Workspace_User

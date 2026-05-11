@@ -1,12 +1,12 @@
 ---
-source_file: "components/account/auth-forms/auth-root.tsx"
+source_file: "space/components/account/auth-forms/auth-root.tsx"
 type: "code"
-community: "Auth UI"
-location: "L34"
+community: "Auth Terms"
+location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_UI
+  - community/Auth_Terms
 ---
 
 # AuthRoot
@@ -15,5 +15,6 @@ tags:
 
 - [[auth-base.tsx]] - `imports` [EXTRACTED]
 - [[auth-root.tsx]] - `contains` [EXTRACTED]
+- [[auth-root.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_UI
+#graphify/code #graphify/EXTRACTED #community/Auth_Terms

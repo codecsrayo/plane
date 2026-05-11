@@ -1,12 +1,12 @@
 ---
-source_file: "components/cycles/applied-filters/date.tsx"
+source_file: "web/core/components/cycles/applied-filters/date.tsx"
 type: "code"
-community: "Applied Filters"
+community: "Filters Applied"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters
+  - community/Filters_Applied
 ---
 
 # AppliedDateFilters
@@ -18,9 +18,9 @@ tags:
 - [[date.tsx_4]] - `contains` [EXTRACTED]
 - [[date.tsx_5]] - `contains` [EXTRACTED]
 - [[date.tsx_6]] - `contains` [EXTRACTED]
-- [[root.tsx_2]] - `imports` [EXTRACTED]
-- [[root.tsx_26]] - `imports` [EXTRACTED]
-- [[root.tsx_56]] - `imports` [EXTRACTED]
-- [[root.tsx_79]] - `imports` [EXTRACTED]
+- [[root.tsx_43]] - `imports` [EXTRACTED]
+- [[root.tsx_67]] - `imports` [EXTRACTED]
+- [[root.tsx_97]] - `imports` [EXTRACTED]
+- [[root.tsx_120]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters
+#graphify/code #graphify/EXTRACTED #community/Filters_Applied

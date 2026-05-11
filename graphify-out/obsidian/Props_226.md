@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/filters/header/display-filters/sub-group-by.tsx"
+source_file: "web/core/components/project/applied-filters/project-display-filters.tsx"
 type: "code"
-community: "Filter Selection UI"
+community: "Filters Applied"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Selection_UI
+  - community/Filters_Applied
 ---
 
 # Props
 
 ## Connections
 
-- [[sub-group-by.tsx]] - `contains` [EXTRACTED]
+- [[project-display-filters.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Selection_UI
+#graphify/code #graphify/EXTRACTED #community/Filters_Applied

@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/auth/api_key.rs"
 type: "code"
-community: "Community 195"
+community: "Issue Request"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_195
+  - community/Issue_Request
 ---
 
 # api_key.rs
@@ -17,4 +17,4 @@ tags:
 - [[ApiKeyUser]] - `contains` [EXTRACTED]
 - [[rate_limit_state()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_195
+#graphify/code #graphify/EXTRACTED #community/Issue_Request

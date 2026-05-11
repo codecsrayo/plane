@@ -1,18 +1,18 @@
 ---
-source_file: "components/project/integration-card.tsx"
+source_file: "web/core/components/labels/label-drag-n-drop-HOC.tsx"
 type: "code"
-community: "Github Integration"
-location: "L49"
+community: "Label Drag"
+location: "L42"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Github_Integration
+  - community/Label_Drag
 ---
 
 # Props
 
 ## Connections
 
-- [[integration-card.tsx]] - `contains` [EXTRACTED]
+- [[label-drag-n-drop-HOC.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Github_Integration
+#graphify/code #graphify/EXTRACTED #community/Label_Drag

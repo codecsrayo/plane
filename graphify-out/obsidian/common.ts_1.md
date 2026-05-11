@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/helpers/common.ts"
 type: "code"
-community: "Link Insert"
+community: "Table Node"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Link_Insert
+  - community/Table_Node
 ---
 
 # common.ts
@@ -34,4 +34,4 @@ tags:
 - [[link-selector.tsx]] - `imports_from` [EXTRACTED]
 - [[table-cell.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Link_Insert
+#graphify/code #graphify/EXTRACTED #community/Table_Node

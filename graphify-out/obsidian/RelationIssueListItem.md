@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/relations/issue-list-item.tsx"
+source_file: "web/core/components/issues/relations/issue-list-item.tsx"
 type: "code"
 community: "Issue Activity"
 location: "L45"

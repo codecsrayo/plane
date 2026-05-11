@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/navigation-pane/root.tsx"
+source_file: "web/core/components/power-k/ui/pages/preferences/start-of-week-menu.tsx"
 type: "code"
-community: "Navigation Pane"
-location: "L34"
+community: "Menu Power"
+location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Navigation_Pane
+  - community/Menu_Power
 ---
 
 # Props
 
 ## Connections
 
-- [[root.tsx_80]] - `contains` [EXTRACTED]
+- [[start-of-week-menu.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Navigation_Pane
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

@@ -1,19 +1,19 @@
 ---
-source_file: "components/workspace-notifications/sidebar/notification-card/options/snooze/modal.tsx"
+source_file: "web/core/components/workspace-notifications/sidebar/notification-card/options/snooze/modal.tsx"
 type: "code"
-community: "Notification Snooze"
+community: "Notification Option"
 location: "L38"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Notification_Snooze
+  - community/Notification_Option
 ---
 
 # NotificationSnoozeModal()
 
 ## Connections
 
-- [[modal.tsx_8]] - `contains` [EXTRACTED]
-- [[root.tsx_47]] - `imports` [EXTRACTED]
+- [[modal.tsx_13]] - `contains` [EXTRACTED]
+- [[root.tsx_88]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Notification_Snooze
+#graphify/code #graphify/EXTRACTED #community/Notification_Option

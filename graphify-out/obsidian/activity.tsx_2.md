@@ -1,19 +1,19 @@
 ---
-source_file: "components/core/activity.tsx"
+source_file: "web/core/components/core/activity.tsx"
 type: "code"
-community: "Activity List"
+community: "Activity User"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Activity_List
+  - community/Activity_User
 ---
 
 # activity.tsx
 
 ## Connections
 
-- [[ActivityIcon()]] - `contains` [EXTRACTED]
+- [[ActivityIcon()_1]] - `contains` [EXTRACTED]
 - [[ActivityMessage()]] - `contains` [EXTRACTED]
 - [[ActivityMessageProps]] - `contains` [EXTRACTED]
 - [[IssueLink()_1]] - `contains` [EXTRACTED]
@@ -27,8 +27,8 @@ tags:
 - [[inboxActivityMessage]] - `contains` [EXTRACTED]
 - [[profile-activity-list.tsx]] - `imports_from` [EXTRACTED]
 - [[use-label.ts]] - `imports_from` [EXTRACTED]
-- [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
+- [[use-platform-os.tsx_1]] - `imports_from` [EXTRACTED]
 - [[useLabel()]] - `imports` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Activity_List
+#graphify/code #graphify/EXTRACTED #community/Activity_User

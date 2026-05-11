@@ -1,14 +1,14 @@
 ---
 source_file: "api_rust/src/entities/users_user_permissions.rs"
 type: "code"
-community: "Community 726"
+community: "Active Model"
 location: "L47"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_726
+  - community/Active_Model
 ---
 
 # ActiveModel
 
-#graphify/code #graphify/EXTRACTED #community/Community_726
+#graphify/code #graphify/EXTRACTED #community/Active_Model

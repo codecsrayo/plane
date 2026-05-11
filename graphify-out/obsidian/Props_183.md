@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-update-status.tsx"
+source_file: "web/core/components/settings/sidebar/item.tsx"
 type: "code"
-community: "Issue Inbox"
-location: "L13"
+community: "Sidebar Settings"
+location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Inbox
+  - community/Sidebar_Settings
 ---
 
 # Props
 
 ## Connections
 
-- [[issue-update-status.tsx]] - `contains` [EXTRACTED]
+- [[item.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Inbox
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Settings

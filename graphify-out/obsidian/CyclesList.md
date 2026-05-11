@@ -1,18 +1,18 @@
 ---
-source_file: "components/cycles/list/root.tsx"
+source_file: "web/core/components/cycles/list/root.tsx"
 type: "code"
-community: "Cycle Cycles"
+community: "Cycle Active"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Cycles
+  - community/Cycle_Active
 ---
 
 # CyclesList
 
 ## Connections
 
-- [[root.tsx_54]] - `contains` [EXTRACTED]
+- [[root.tsx_95]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Cycles
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

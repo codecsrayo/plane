@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/ui/modal/search-menu.tsx"
+source_file: "web/core/components/issues/attachment/attachment-upload-details.tsx"
 type: "code"
-community: "Power Search"
-location: "L25"
+community: "Attachment Issue"
+location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Power_Search
+  - community/Attachment_Issue
 ---
 
 # Props
 
 ## Connections
 
-- [[search-menu.tsx]] - `contains` [EXTRACTED]
+- [[attachment-upload-details.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Power_Search
+#graphify/code #graphify/EXTRACTED #community/Attachment_Issue

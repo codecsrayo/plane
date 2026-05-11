@@ -1,5 +1,5 @@
 ---
-source_file: "components/power-k/menus/labels.tsx"
+source_file: "web/core/components/power-k/menus/labels.tsx"
 type: "code"
 community: "Menu Power"
 location: "L20"

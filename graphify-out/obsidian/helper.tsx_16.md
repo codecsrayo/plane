@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/empty-state/assets/helper.tsx"
 type: "code"
-community: "Illustration Assets"
+community: "Stack Vertical"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Illustration_Assets
+  - community/Stack_Vertical
 ---
 
 # helper.tsx
@@ -57,4 +57,4 @@ tags:
 - [[work-item.tsx_1]] - `imports_from` [EXTRACTED]
 - [[worklog.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Illustration_Assets
+#graphify/code #graphify/EXTRACTED #community/Stack_Vertical

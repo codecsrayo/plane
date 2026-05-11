@@ -1,18 +1,18 @@
 ---
-source_file: "components/workspace/billing/comparison/base.tsx"
+source_file: "web/core/components/workspace/billing/comparison/base.tsx"
 type: "code"
-community: "Plans Plan"
+community: "Plan Plans"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Plans_Plan
+  - community/Plan_Plans
 ---
 
 # TPlansComparisonBaseProps
 
 ## Connections
 
-- [[base.tsx]] - `contains` [EXTRACTED]
+- [[base.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Plans_Plan
+#graphify/code #graphify/EXTRACTED #community/Plan_Plans

@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/ce/components/link-container.tsx"
 type: "code"
-community: "Link Container"
+community: "Link Options"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Link_Container
+  - community/Link_Options
 ---
 
 # LinkContainer()
@@ -16,4 +16,4 @@ tags:
 - [[editor-container.tsx]] - `imports` [EXTRACTED]
 - [[link-container.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Link_Container
+#graphify/code #graphify/EXTRACTED #community/Link_Options

@@ -1,18 +1,18 @@
 ---
-source_file: "web/core/components/workspace-notifications/sidebar/filters/menu/root.tsx"
+source_file: "api_rust/src/routes/notifications.rs"
 type: "code"
-community: "Community 304"
-location: "L21"
+community: "User Github"
+location: "L218"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_304
+  - community/User_Github
 ---
 
 # NotificationFilter
 
 ## Connections
 
-- [[root.tsx_51]] - `contains` [EXTRACTED]
+- [[notifications.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_304
+#graphify/code #graphify/EXTRACTED #community/User_Github

@@ -1,18 +1,18 @@
 ---
-source_file: "components/inbox/content/root.tsx"
+source_file: "web/core/components/inbox/content/root.tsx"
 type: "code"
-community: "Inbox Content"
+community: "Issue Inbox"
 location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Inbox_Content
+  - community/Issue_Inbox
 ---
 
 # InboxContentRoot
 
 ## Connections
 
-- [[root.tsx_74]] - `contains` [EXTRACTED]
+- [[root.tsx_115]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Inbox_Content
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

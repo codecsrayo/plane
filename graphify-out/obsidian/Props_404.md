@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/navigation-pane/tab-panels/info/version-history.tsx"
+source_file: "web/core/components/power-k/ui/pages/open-entity/project-views-menu.tsx"
 type: "code"
-community: "Page Editor"
-location: "L27"
+community: "Menu Power"
+location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Page_Editor
+  - community/Menu_Power
 ---
 
 # Props
 
 ## Connections
 
-- [[version-history.tsx]] - `contains` [EXTRACTED]
+- [[project-views-menu.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Page_Editor
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

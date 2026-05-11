@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/dashboard.ts"
 type: "code"
-community: "Widget Response"
+community: "Widget Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Widget_Response
+  - community/Widget_Issue
 ---
 
 # dashboard.ts
@@ -46,4 +46,4 @@ tags:
 - [[issues.ts]] - `imports_from` [EXTRACTED]
 - [[state.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Widget_Response
+#graphify/code #graphify/EXTRACTED #community/Widget_Issue

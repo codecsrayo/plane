@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/table/table/utilities/helpers.ts"
 type: "code"
-community: "Drag Handle"
+community: "Drag Table"
 location: "L204"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Drag_Handle
+  - community/Drag_Table
 ---
 
 # getTableCellWidgetDecorationPos()
@@ -17,4 +17,4 @@ tags:
 - [[plugin.ts]] - `imports` [EXTRACTED]
 - [[plugin.ts_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Drag_Handle
+#graphify/code #graphify/EXTRACTED #community/Drag_Table

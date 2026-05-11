@@ -1,12 +1,12 @@
 ---
 source_file: "ui/src/form-fields/input.tsx"
 type: "code"
-community: "Input Auth"
+community: "Input Checkbox"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Input_Auth
+  - community/Input_Checkbox
 ---
 
 # Input
@@ -17,4 +17,4 @@ tags:
 - [[input-color-picker.tsx]] - `imports` [EXTRACTED]
 - [[input.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Input_Auth
+#graphify/code #graphify/EXTRACTED #community/Input_Checkbox

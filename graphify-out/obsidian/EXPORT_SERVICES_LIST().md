@@ -1,12 +1,12 @@
 ---
-source_file: "constants/fetch-keys.ts"
+source_file: "web/core/constants/fetch-keys.ts"
 type: "code"
-community: "Guide Prev"
+community: "Project Settings"
 location: "L127"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Guide_Prev
+  - community/Project_Settings
 ---
 
 # EXPORT_SERVICES_LIST()
@@ -17,4 +17,4 @@ tags:
 - [[guide.tsx]] - `imports` [EXTRACTED]
 - [[prev-exports.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Guide_Prev
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

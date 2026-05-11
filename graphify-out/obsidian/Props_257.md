@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-detail/issue-detail-quick-actions.tsx"
+source_file: "web/core/components/issues/archive-issue-modal.tsx"
 type: "code"
-community: "Project Archives"
-location: "L28"
+community: "Issue Work"
+location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Archives
+  - community/Issue_Work
 ---
 
 # Props
 
 ## Connections
 
-- [[issue-detail-quick-actions.tsx]] - `contains` [EXTRACTED]
+- [[archive-issue-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Archives
+#graphify/code #graphify/EXTRACTED #community/Issue_Work

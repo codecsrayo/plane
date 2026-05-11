@@ -1,18 +1,18 @@
 ---
-source_file: "components/integration/single-integration-card.tsx"
+source_file: "web/core/components/modules/select/status.tsx"
 type: "code"
-community: "Integration Sync"
-location: "L37"
+community: "Status"
+location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Integration_Sync
+  - community/Status
 ---
 
 # Props
 
 ## Connections
 
-- [[single-integration-card.tsx]] - `contains` [EXTRACTED]
+- [[status.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Integration_Sync
+#graphify/code #graphify/EXTRACTED #community/Status

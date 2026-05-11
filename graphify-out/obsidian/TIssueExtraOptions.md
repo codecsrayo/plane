@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/view-props.ts"
 type: "code"
-community: "Issue Options"
+community: "Issue Entity"
 location: "L61"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Options
+  - community/Issue_Entity
 ---
 
 # TIssueExtraOptions
@@ -16,4 +16,4 @@ tags:
 - [[issues.ts]] - `imports` [EXTRACTED]
 - [[view-props.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Options
+#graphify/code #graphify/EXTRACTED #community/Issue_Entity

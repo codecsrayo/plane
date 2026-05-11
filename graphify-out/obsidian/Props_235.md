@@ -1,19 +1,18 @@
 ---
-source_file: "components/inbox/inbox-filter/filters/state.tsx"
+source_file: "web/core/components/integration/github/personal-connect-card.tsx"
 type: "code"
-community: "Inbox Filters"
-location: "L18"
+community: "Personal Github"
+location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Inbox_Filters
+  - community/Personal_Github
 ---
 
 # Props
 
 ## Connections
 
-- [[state.tsx]] - `contains` [EXTRACTED]
-- [[state.tsx_3]] - `contains` [EXTRACTED]
+- [[personal-connect-card.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Inbox_Filters
+#graphify/code #graphify/EXTRACTED #community/Personal_Github

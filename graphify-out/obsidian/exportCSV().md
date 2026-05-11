@@ -1,5 +1,5 @@
 ---
-source_file: "components/analytics/export.ts"
+source_file: "web/core/components/analytics/export.ts"
 type: "code"
 community: "Insight Table"
 location: "L18"

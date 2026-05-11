@@ -1,12 +1,12 @@
 ---
-source_file: "components/cycles/active-cycle/cycle-stats.tsx"
+source_file: "web/core/components/cycles/active-cycle/cycle-stats.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Cycle Active"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Cycle_Active
 ---
 
 # cycle-stats.tsx
@@ -15,20 +15,22 @@ tags:
 
 - [[ActiveCycleStats]] - `contains` [EXTRACTED]
 - [[ActiveCycleStatsProps]] - `contains` [EXTRACTED]
+- [[IssueIdentifier]] - `imports` [EXTRACTED]
 - [[SimpleEmptyState]] - `imports` [EXTRACTED]
 - [[SingleProgressStats()]] - `imports` [EXTRACTED]
 - [[StateDropdown]] - `imports` [EXTRACTED]
-- [[dropdown.tsx_3]] - `imports_from` [EXTRACTED]
+- [[dropdown.tsx_5]] - `imports_from` [EXTRACTED]
 - [[getTabIndexByValue()]] - `contains` [EXTRACTED]
-- [[index.ts_15]] - `imports_from` [EXTRACTED]
+- [[index.ts_280]] - `imports_from` [EXTRACTED]
+- [[root.tsx_34]] - `imports_from` [EXTRACTED]
 - [[simple-empty-state-root.tsx]] - `imports_from` [EXTRACTED]
 - [[single-progress-stats.tsx]] - `imports_from` [EXTRACTED]
 - [[use-intersection-observer.ts]] - `imports_from` [EXTRACTED]
 - [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
 - [[use-issues.ts]] - `imports_from` [EXTRACTED]
-- [[use-local-storage.tsx]] - `imports_from` [EXTRACTED]
+- [[use-local-storage.tsx_1]] - `imports_from` [EXTRACTED]
 - [[useIntersectionObserver()]] - `imports` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 - [[useIssues()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

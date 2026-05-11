@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/filters/header/display-filters/display-properties.tsx"
+source_file: "web/core/components/issues/issue-layouts/filters/header/display-filters/display-properties.tsx"
 type: "code"
-community: "Display Properties"
+community: "Priority State"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Display_Properties
+  - community/Priority_State
 ---
 
 # FilterDisplayProperties
 
 ## Connections
 
-- [[display-properties.tsx]] - `contains` [EXTRACTED]
+- [[display-properties.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Display_Properties
+#graphify/code #graphify/EXTRACTED #community/Priority_State

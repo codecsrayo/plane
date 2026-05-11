@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/menus/settings.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/attachments/root.tsx"
 type: "code"
-community: "File Icons Nav"
-location: "L19"
+community: "Attachment Issue"
+location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/File_Icons_Nav
+  - community/Attachment_Issue
 ---
 
 # Props
 
 ## Connections
 
-- [[settings.tsx]] - `contains` [EXTRACTED]
+- [[root.tsx_79]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/File_Icons_Nav
+#graphify/code #graphify/EXTRACTED #community/Attachment_Issue

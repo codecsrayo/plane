@@ -1,18 +1,19 @@
 ---
-source_file: "components/project/empty-state.tsx"
+source_file: "space/components/editor/embeds/mentions/user.tsx"
 type: "code"
-community: "Empty State"
-location: "L11"
+community: "User Mentions"
+location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_State
+  - community/User_Mentions
 ---
 
 # Props
 
 ## Connections
 
-- [[empty-state.tsx]] - `contains` [EXTRACTED]
+- [[user.tsx]] - `contains` [EXTRACTED]
+- [[user.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_State
+#graphify/code #graphify/EXTRACTED #community/User_Mentions

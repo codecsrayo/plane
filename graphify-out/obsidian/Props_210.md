@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/columns/priority-column.tsx"
+source_file: "web/core/components/project/project-feature-update.tsx"
 type: "code"
-community: "Column Spreadsheet"
-location: "L15"
+community: "Project Profile"
+location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Column_Spreadsheet
+  - community/Project_Profile
 ---
 
 # Props
 
 ## Connections
 
-- [[priority-column.tsx]] - `contains` [EXTRACTED]
+- [[project-feature-update.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Column_Spreadsheet
+#graphify/code #graphify/EXTRACTED #community/Project_Profile

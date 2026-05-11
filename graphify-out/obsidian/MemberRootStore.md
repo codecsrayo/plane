@@ -1,5 +1,5 @@
 ---
-source_file: "store/member/index.ts"
+source_file: "web/core/store/member/index.ts"
 type: "code"
 community: "Member Workspace"
 location: "L30"
@@ -13,8 +13,8 @@ tags:
 
 ## Connections
 
-- [[.constructor()_71]] - `method` [EXTRACTED]
-- [[index.ts_17]] - `contains` [EXTRACTED]
-- [[root.store.ts]] - `imports` [EXTRACTED]
+- [[.constructor()_128]] - `method` [EXTRACTED]
+- [[index.ts_282]] - `contains` [EXTRACTED]
+- [[root.store.ts_2]] - `imports` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Member_Workspace

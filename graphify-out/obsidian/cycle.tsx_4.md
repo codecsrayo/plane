@@ -1,21 +1,22 @@
 ---
-source_file: "components/readonly/cycle.tsx"
+source_file: "web/core/components/issues/issue-detail/issue-activity/activity/actions/cycle.tsx"
 type: "code"
-community: "Cycle Transfers"
+community: "Issue Activity"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Transfers
+  - community/Issue_Activity
 ---
 
 # cycle.tsx
 
 ## Connections
 
-- [[ReadonlyCycle]] - `contains` [EXTRACTED]
-- [[TReadonlyCycleProps]] - `contains` [EXTRACTED]
-- [[use-cycle.ts]] - `imports_from` [EXTRACTED]
-- [[useCycle()]] - `imports` [EXTRACTED]
+- [[IssueCycleActivity]] - `contains` [EXTRACTED]
+- [[TIssueCycleActivity]] - `contains` [EXTRACTED]
+- [[index.ts_369]] - `imports_from` [EXTRACTED]
+- [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
+- [[useIssueDetail()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Transfers
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

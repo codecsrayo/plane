@@ -1,18 +1,18 @@
 ---
-source_file: "components/core/theme/download-config-button.tsx"
+source_file: "web/core/components/pages/editor/toolbar/color-dropdown.tsx"
 type: "code"
-community: "Theme Custom"
-location: "L15"
+community: "Toolbar Items"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Custom
+  - community/Toolbar_Items
 ---
 
 # Props
 
 ## Connections
 
-- [[download-config-button.tsx]] - `contains` [EXTRACTED]
+- [[color-dropdown.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Custom
+#graphify/code #graphify/EXTRACTED #community/Toolbar_Items

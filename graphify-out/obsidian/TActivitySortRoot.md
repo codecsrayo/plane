@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-detail/issue-activity/sort-root.tsx"
+source_file: "web/core/components/issues/issue-detail/issue-activity/sort-root.tsx"
 type: "code"
-community: "Activity Issue"
+community: "Workspace Issue"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Activity_Issue
+  - community/Workspace_Issue
 ---
 
 # TActivitySortRoot
@@ -15,4 +15,4 @@ tags:
 
 - [[sort-root.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Activity_Issue
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

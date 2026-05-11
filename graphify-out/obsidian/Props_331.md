@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/ui/pages/open-entity/project-modules-menu.tsx"
+source_file: "web/core/components/issues/issue-detail/main-content.tsx"
 type: "code"
-community: "File Icons Nav"
-location: "L17"
+community: "Issue Inbox"
+location: "L42"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/File_Icons_Nav
+  - community/Issue_Inbox
 ---
 
 # Props
 
 ## Connections
 
-- [[project-modules-menu.tsx]] - `contains` [EXTRACTED]
+- [[main-content.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/File_Icons_Nav
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

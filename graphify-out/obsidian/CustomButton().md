@@ -1,12 +1,12 @@
 ---
-source_file: "components/empty-state/detailed-empty-state-root.tsx"
+source_file: "web/core/components/empty-state/detailed-empty-state-root.tsx"
 type: "code"
-community: "Empty State"
+community: "Project Settings"
 location: "L42"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_State
+  - community/Project_Settings
 ---
 
 # CustomButton()
@@ -15,4 +15,4 @@ tags:
 
 - [[detailed-empty-state-root.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_State
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

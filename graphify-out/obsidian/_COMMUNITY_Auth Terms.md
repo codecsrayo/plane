@@ -1,35 +1,34 @@
 ---
 type: community
 cohesion: 0.13
-members: 19
+members: 18
 ---
 
 # Auth Terms
 
 **Cohesion:** 0.13 - loosely connected
-**Members:** 19 nodes
+**Members:** 18 nodes
 
 ## Members
 
-- [[AuthBanner()]] - code - components/account/auth-forms/auth-banner.tsx
-- [[AuthContainer()]] - code - components/account/auth-forms/auth-root.tsx
-- [[AuthHeader_1]] - code - components/account/auth-forms/auth-header.tsx
-- [[AuthHeaderBase()_1]] - code - components/account/auth-forms/auth-header.tsx
-- [[LEGAL_LINKS]] - code - components/account/terms-and-conditions.tsx
-- [[LegalLink()]] - code - components/account/terms-and-conditions.tsx
-- [[MESSAGES]] - code - components/account/terms-and-conditions.tsx
-- [[TAuthBanner]] - code - components/account/auth-forms/auth-banner.tsx
-- [[TAuthHeader]] - code - components/account/auth-forms/auth-header.tsx
-- [[TAuthHeaderBase_1]] - code - components/account/auth-forms/auth-header.tsx
-- [[TAuthRoot]] - code - components/account/auth-forms/auth-root.tsx
-- [[TermsAndConditions()]] - code - components/account/terms-and-conditions.tsx
-- [[TermsAndConditionsProps]] - code - components/account/terms-and-conditions.tsx
-- [[Titles]] - code - components/account/auth-forms/auth-header.tsx
-- [[auth-banner.tsx]] - code - components/account/auth-forms/auth-banner.tsx
-- [[auth-header.tsx]] - code - components/account/auth-forms/auth-header.tsx
-- [[auth-root.tsx]] - code - components/account/auth-forms/auth-root.tsx
-- [[terms-and-conditions.tsx]] - code - components/account/terms-and-conditions.tsx
-- [[workSpaceService]] - code - components/account/auth-forms/auth-header.tsx
+- [[AuthBaseProps]] - code - web/core/components/auth-screens/auth-base.tsx
+- [[AuthContainer()]] - code - web/core/components/account/auth-forms/auth-root.tsx
+- [[AuthFooter()]] - code - web/core/components/auth-screens/footer.tsx
+- [[AuthFormRoot]] - code - web/core/components/account/auth-forms/form-root.tsx
+- [[AuthRoot]] - code - space/components/account/auth-forms/auth-root.tsx
+- [[BRAND_LOGOS]] - code - web/core/components/auth-screens/footer.tsx
+- [[LEGAL_LINKS]] - code - web/core/components/account/terms-and-conditions.tsx
+- [[LegalLink()]] - code - web/core/components/account/terms-and-conditions.tsx
+- [[MESSAGES]] - code - web/core/components/account/terms-and-conditions.tsx
+- [[Props_581]] - code - space/components/account/terms-and-conditions.tsx
+- [[TAuthRoot]] - code - web/core/components/account/auth-forms/auth-root.tsx
+- [[TermsAndConditions()]] - code - space/components/account/terms-and-conditions.tsx
+- [[TermsAndConditionsProps]] - code - web/core/components/account/terms-and-conditions.tsx
+- [[auth-base.tsx]] - code - web/core/components/auth-screens/auth-base.tsx
+- [[auth-root.tsx]] - code - web/core/components/account/auth-forms/auth-root.tsx
+- [[footer.tsx_2]] - code - web/core/components/auth-screens/footer.tsx
+- [[terms-and-conditions.tsx_1]] - code - space/components/account/terms-and-conditions.tsx
+- [[terms-and-conditions.tsx]] - code - web/core/components/account/terms-and-conditions.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -40,15 +39,15 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 4 edges to [[_COMMUNITY_Chat Support]]
-- 2 edges to [[_COMMUNITY_Workspace Invites]]
-- 2 edges to [[_COMMUNITY_Wrapper Workspace]]
-- 2 edges to [[_COMMUNITY_Auth UI]]
-- 2 edges to [[_COMMUNITY_Auth Forms]]
-- 1 edge to [[_COMMUNITY_Workspace Workspaceservice]]
-- 1 edge to [[_COMMUNITY_Workspace Services]]
+- 9 edges to [[_COMMUNITY_Workspace Issue]]
+- 5 edges to [[_COMMUNITY_Auth Error]]
+- 3 edges to [[_COMMUNITY_Auth Titles]]
+- 2 edges to [[_COMMUNITY_Extended Auth]]
 
 ## Top bridge nodes
 
-- [[auth-header.tsx]] - degree 13, connects to 4 communities
-- [[auth-root.tsx]] - degree 17, connects to 3 communities
+- [[auth-root.tsx]] - degree 17, connects to 4 communities
+- [[auth-base.tsx]] - degree 10, connects to 1 community
+- [[TermsAndConditions()]] - degree 4, connects to 1 community
+- [[AuthRoot]] - degree 3, connects to 1 community
+- [[terms-and-conditions.tsx_1]] - degree 3, connects to 1 community

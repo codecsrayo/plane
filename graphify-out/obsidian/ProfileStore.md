@@ -1,5 +1,5 @@
 ---
-source_file: "store/user/profile.store.ts"
+source_file: "web/core/store/user/profile.store.ts"
 type: "code"
 community: "User Profile"
 location: "L36"
@@ -13,8 +13,8 @@ tags:
 
 ## Connections
 
-- [[.constructor()_22]] - `method` [EXTRACTED]
-- [[index.ts_7]] - `imports` [EXTRACTED]
+- [[.constructor()_79]] - `method` [EXTRACTED]
+- [[index.ts_272]] - `imports` [EXTRACTED]
 - [[profile.store.ts]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/User_Profile

@@ -1,18 +1,18 @@
 ---
-source_file: "components/core/modals/user-image-upload-modal.tsx"
+source_file: "web/core/components/core/image-picker-popover.tsx"
 type: "code"
-community: "Image Upload"
-location: "L20"
+community: "Project Profile"
+location: "L49"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Image_Upload
+  - community/Project_Profile
 ---
 
 # fileService
 
 ## Connections
 
-- [[user-image-upload-modal.tsx]] - `contains` [EXTRACTED]
+- [[image-picker-popover.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Image_Upload
+#graphify/code #graphify/EXTRACTED #community/Project_Profile

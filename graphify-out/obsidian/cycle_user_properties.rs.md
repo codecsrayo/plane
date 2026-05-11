@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/cycle_user_properties.rs"
 type: "code"
-community: "Community 390"
+community: "Model Relation"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_390
+  - community/Model_Relation
 ---
 
 # cycle_user_properties.rs
@@ -16,4 +16,4 @@ tags:
 - [[Model_71]] - `contains` [EXTRACTED]
 - [[Relation_71]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_390
+#graphify/code #graphify/EXTRACTED #community/Model_Relation

@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/list/list-view-types.d.ts"
+source_file: "web/core/components/issues/issue-layouts/list/list-view-types.d.ts"
 type: "code"
-community: "Quick Types"
+community: "Quick Action"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Quick_Types
+  - community/Quick_Action
 ---
 
 # TRenderQuickActions
@@ -15,4 +15,4 @@ tags:
 
 - [[list-view-types.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Quick_Types
+#graphify/code #graphify/EXTRACTED #community/Quick_Action

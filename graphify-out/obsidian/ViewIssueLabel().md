@@ -1,19 +1,19 @@
 ---
-source_file: "components/issues/label.tsx"
+source_file: "web/core/components/issues/label.tsx"
 type: "code"
-community: "Issue Layouts"
+community: "Issue Activity"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layouts
+  - community/Issue_Activity
 ---
 
 # ViewIssueLabel()
 
 ## Connections
 
-- [[label.tsx]] - `contains` [EXTRACTED]
+- [[label.tsx_1]] - `contains` [EXTRACTED]
 - [[usePlatformOS()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layouts
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

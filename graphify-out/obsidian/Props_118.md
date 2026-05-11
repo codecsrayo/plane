@@ -1,18 +1,21 @@
 ---
-source_file: "components/dropdowns/merged-date.tsx"
+source_file: "web/core/components/settings/project/sidebar/root.tsx"
 type: "code"
-community: "Cycle Cycles"
-location: "L12"
+community: "Sidebar Settings"
+location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Cycles
+  - community/Sidebar_Settings
 ---
 
 # Props
 
 ## Connections
 
-- [[merged-date.tsx]] - `contains` [EXTRACTED]
+- [[root.tsx_47]] - `contains` [EXTRACTED]
+- [[root.tsx_57]] - `contains` [EXTRACTED]
+- [[root.tsx_58]] - `contains` [EXTRACTED]
+- [[root.tsx_64]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Cycles
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Settings

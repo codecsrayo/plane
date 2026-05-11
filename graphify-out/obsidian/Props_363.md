@@ -1,18 +1,18 @@
 ---
-source_file: "components/onboarding/steps/workspace/join-invites.tsx"
+source_file: "web/core/components/issues/relations/issue-list.tsx"
 type: "code"
-community: "Workspace Invites"
-location: "L24"
+community: "Issue Activity"
+location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Invites
+  - community/Issue_Activity
 ---
 
 # Props
 
 ## Connections
 
-- [[join-invites.tsx]] - `contains` [EXTRACTED]
+- [[issue-list.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Invites
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

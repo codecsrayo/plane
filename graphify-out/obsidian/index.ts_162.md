@@ -1,14 +1,14 @@
 ---
 source_file: "propel/src/tab-navigation/index.ts"
 type: "code"
-community: "Community 539"
+community: "Community 1517"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_539
+  - community/Community_1517
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_539
+#graphify/code #graphify/EXTRACTED #community/Community_1517

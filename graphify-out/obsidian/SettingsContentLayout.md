@@ -1,5 +1,5 @@
 ---
-source_file: "components/settings/layout.tsx"
+source_file: "web/core/components/settings/layout.tsx"
 type: "code"
 community: "Settings Content"
 location: "L10"
@@ -13,6 +13,6 @@ tags:
 
 ## Connections
 
-- [[layout.tsx]] - `contains` [EXTRACTED]
+- [[layout.tsx_44]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Settings_Content

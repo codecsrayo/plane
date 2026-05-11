@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-modal/modal.tsx"
+source_file: "web/core/components/issues/issue-modal/modal.tsx"
 type: "code"
-community: "Project Archives"
+community: "Issue Work"
 location: "L38"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Archives
+  - community/Issue_Work
 ---
 
 # CreateUpdateIssueModal
@@ -18,15 +18,17 @@ tags:
 - [[content.tsx_2]] - `imports` [EXTRACTED]
 - [[cycle-issue.tsx]] - `imports` [EXTRACTED]
 - [[draft-issue-block.tsx]] - `imports` [EXTRACTED]
-- [[empty-state.tsx_2]] - `imports` [EXTRACTED]
+- [[empty-state.tsx_3]] - `imports` [EXTRACTED]
 - [[group-by-card.tsx]] - `imports` [EXTRACTED]
 - [[group-by-card.tsx_1]] - `imports` [EXTRACTED]
+- [[header.tsx_19]] - `imports` [EXTRACTED]
 - [[inbox-issue-header.tsx]] - `imports` [EXTRACTED]
 - [[issue-detail-widget-modals.tsx]] - `imports` [EXTRACTED]
 - [[issue-detail.tsx]] - `imports` [EXTRACTED]
-- [[modal.tsx_7]] - `contains` [EXTRACTED]
+- [[modal.tsx_12]] - `contains` [EXTRACTED]
 - [[module-issue.tsx]] - `imports` [EXTRACTED]
 - [[project-issue.tsx]] - `imports` [EXTRACTED]
 - [[quick-actions.tsx_1]] - `imports` [EXTRACTED]
+- [[work-item-level.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Archives
+#graphify/code #graphify/EXTRACTED #community/Issue_Work

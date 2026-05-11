@@ -1,18 +1,18 @@
 ---
-source_file: "components/analytics/work-items/modal/index.tsx"
+source_file: "web/core/components/onboarding/switch-account-modal.tsx"
 type: "code"
-community: "Active Projects"
-location: "L17"
+community: "Project Settings"
+location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Projects
+  - community/Project_Settings
 ---
 
 # Props
 
 ## Connections
 
-- [[index.tsx_8]] - `contains` [EXTRACTED]
+- [[switch-account-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Active_Projects
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

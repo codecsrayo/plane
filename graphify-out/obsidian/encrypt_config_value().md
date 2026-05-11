@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/utils/fernet.rs"
 type: "code"
-community: "Community 129"
+community: "Password Email"
 location: "L54"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_129
+  - community/Password_Email
 ---
 
 # encrypt_config_value()
@@ -18,4 +18,4 @@ tags:
 - [[fernet.rs]] - `contains` [EXTRACTED]
 - [[update_configurations()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_129
+#graphify/code #graphify/INFERRED #community/Password_Email

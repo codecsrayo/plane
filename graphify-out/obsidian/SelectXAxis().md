@@ -1,5 +1,5 @@
 ---
-source_file: "components/analytics/select/select-x-axis.tsx"
+source_file: "web/core/components/analytics/select/select-x-axis.tsx"
 type: "code"
 community: "Select Axis"
 location: "L21"

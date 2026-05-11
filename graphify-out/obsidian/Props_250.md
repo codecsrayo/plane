@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/filters/applied-filters/cycle.tsx"
+source_file: "web/core/components/automation/select-month-modal.tsx"
 type: "code"
-community: "Cycle Transfers"
-location: "L15"
+community: "Select Month"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Transfers
+  - community/Select_Month
 ---
 
 # Props
 
 ## Connections
 
-- [[cycle.tsx_2]] - `contains` [EXTRACTED]
+- [[select-month-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Transfers
+#graphify/code #graphify/EXTRACTED #community/Select_Month

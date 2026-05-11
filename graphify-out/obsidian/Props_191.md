@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/list/blocks-list.tsx"
+source_file: "web/core/components/settings/mobile/nav.tsx"
 type: "code"
-community: "Kanban Groups"
+community: "Project Workspace"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Kanban_Groups
+  - community/Project_Workspace
 ---
 
 # Props
 
 ## Connections
 
-- [[blocks-list.tsx_1]] - `contains` [EXTRACTED]
+- [[nav.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Kanban_Groups
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

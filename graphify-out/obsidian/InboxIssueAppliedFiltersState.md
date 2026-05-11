@@ -1,19 +1,19 @@
 ---
-source_file: "components/inbox/inbox-filter/applied-filters/state.tsx"
+source_file: "web/core/components/inbox/inbox-filter/applied-filters/state.tsx"
 type: "code"
-community: "Inbox Filters"
+community: "Issue Inbox"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Inbox_Filters
+  - community/Issue_Inbox
 ---
 
 # InboxIssueAppliedFiltersState
 
 ## Connections
 
-- [[root.tsx_73]] - `imports` [EXTRACTED]
-- [[state.tsx_4]] - `contains` [EXTRACTED]
+- [[root.tsx_114]] - `imports` [EXTRACTED]
+- [[state.tsx_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Inbox_Filters
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

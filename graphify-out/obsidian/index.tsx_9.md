@@ -1,14 +1,18 @@
 ---
-source_file: "components/readonly/index.tsx"
+source_file: "web/core/components/views/applied-filters/index.tsx"
 type: "code"
-community: "Community 417"
+community: "Project Settings"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_417
+  - community/Project_Settings
 ---
 
 # index.tsx
 
-#graphify/code #graphify/EXTRACTED #community/Community_417
+## Connections
+
+- [[page.tsx_16]] - `imports_from` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

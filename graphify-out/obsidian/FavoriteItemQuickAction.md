@@ -1,5 +1,5 @@
 ---
-source_file: "components/workspace/sidebar/favorites/favorite-items/common/favorite-item-quick-action.tsx"
+source_file: "web/core/components/workspace/sidebar/favorites/favorite-items/common/favorite-item-quick-action.tsx"
 type: "code"
 community: "Favorite Quick"
 location: "L25"

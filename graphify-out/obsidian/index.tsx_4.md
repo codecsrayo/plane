@@ -1,23 +1,26 @@
 ---
-source_file: "components/gantt-chart/contexts/index.tsx"
+source_file: "web/app/error/index.tsx"
 type: "code"
-community: "Gantt Chart"
+community: "Error Provider"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Chart
+  - community/Error_Provider
 ---
 
 # index.tsx
 
 ## Connections
 
-- [[TimeLineTypeContext]] - `contains` [EXTRACTED]
-- [[base-gantt-root.tsx]] - `imports_from` [EXTRACTED]
-- [[layout.tsx_4]] - `imports_from` [EXTRACTED]
-- [[modules-list-layout.tsx]] - `imports_from` [EXTRACTED]
-- [[use-timeline-chart.ts]] - `imports_from` [EXTRACTED]
-- [[useTimeLineType()]] - `contains` [EXTRACTED]
+- [[CustomErrorComponent()]] - `contains` [EXTRACTED]
+- [[DevErrorComponent()]] - `imports` [EXTRACTED]
+- [[ProdErrorComponent()]] - `imports` [EXTRACTED]
+- [[dev.tsx]] - `imports_from` [EXTRACTED]
+- [[handleReload()]] - `contains` [EXTRACTED]
+- [[prod.tsx]] - `imports_from` [EXTRACTED]
+- [[root.tsx_20]] - `imports_from` [EXTRACTED]
+- [[use-app-router.tsx]] - `imports_from` [EXTRACTED]
+- [[useAppRouter()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Chart
+#graphify/code #graphify/EXTRACTED #community/Error_Provider

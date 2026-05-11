@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/slash-commands/command-menu-item.tsx"
 type: "code"
-community: "Command Slash"
+community: "Emoji Command"
 location: "L49"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Command_Slash
+  - community/Emoji_Command
 ---
 
 # CommandMenuItem()
@@ -17,4 +17,4 @@ tags:
 - [[command-menu.tsx]] - `imports` [EXTRACTED]
 - [[highlightMatch()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Command_Slash
+#graphify/code #graphify/EXTRACTED #community/Emoji_Command

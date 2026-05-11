@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/peek-overview/error.tsx"
+source_file: "web/core/components/issues/peek-overview/error.tsx"
 type: "code"
-community: "Issue Parent"
+community: "Issue Inbox"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Parent
+  - community/Issue_Inbox
 ---
 
 # TIssuePeekOverviewError
@@ -15,4 +15,4 @@ tags:
 
 - [[error.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Parent
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

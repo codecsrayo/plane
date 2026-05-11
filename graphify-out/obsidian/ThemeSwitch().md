@@ -1,5 +1,5 @@
 ---
-source_file: "components/core/theme/theme-switch.tsx"
+source_file: "web/core/components/core/theme/theme-switch.tsx"
 type: "code"
 community: "Theme Custom"
 location: "L20"
@@ -15,5 +15,6 @@ tags:
 
 - [[theme-switch.tsx]] - `contains` [EXTRACTED]
 - [[theme-switcher.tsx]] - `imports` [EXTRACTED]
+- [[theme-switcher.tsx_1]] - `imports` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Theme_Custom

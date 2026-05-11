@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/ui/modal/search-menu.tsx"
+source_file: "web/core/components/power-k/ui/modal/search-menu.tsx"
 type: "code"
-community: "Power Search"
+community: "Power Shortcuts"
 location: "L34"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Power_Search
+  - community/Power_Shortcuts
 ---
 
 # PowerKModalSearchMenu()
@@ -18,4 +18,4 @@ tags:
 - [[useDebounce()]] - `calls` [EXTRACTED]
 - [[usePowerK()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Power_Search
+#graphify/code #graphify/EXTRACTED #community/Power_Shortcuts

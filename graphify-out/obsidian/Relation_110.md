@@ -1,18 +1,18 @@
 ---
 source_file: "api_rust/src/entities/estimates.rs"
 type: "code"
-community: "Community 429"
+community: "Model Relation"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_429
+  - community/Model_Relation
 ---
 
 # Relation
 
 ## Connections
 
-- [[estimates.rs_1]] - `contains` [EXTRACTED]
+- [[estimates.rs_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_429
+#graphify/code #graphify/EXTRACTED #community/Model_Relation

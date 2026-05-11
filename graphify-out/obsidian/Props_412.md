@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/header/offline-badge.tsx"
+source_file: "web/core/components/power-k/ui/modal/context-indicator.tsx"
 type: "code"
-community: "Badge Editor"
+community: "Power Context"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Badge_Editor
+  - community/Power_Context
 ---
 
 # Props
 
 ## Connections
 
-- [[offline-badge.tsx]] - `contains` [EXTRACTED]
+- [[context-indicator.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Badge_Editor
+#graphify/code #graphify/EXTRACTED #community/Power_Context

@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/unique-id/plugin.ts"
 type: "code"
-community: "Unique Extension"
+community: "Unique Core"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Unique_Extension
+  - community/Unique_Core
 ---
 
 # createUniqueIDPlugin()
@@ -16,4 +16,4 @@ tags:
 - [[extension.ts_2]] - `imports` [EXTRACTED]
 - [[plugin.ts_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Unique_Extension
+#graphify/code #graphify/EXTRACTED #community/Unique_Core

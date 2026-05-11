@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/properties/label-dropdown.tsx"
+source_file: "web/core/components/issues/issue-layouts/properties/label-dropdown.tsx"
 type: "code"
-community: "Issue Layouts"
+community: "Label Dropdown"
 location: "L54"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layouts
+  - community/Label_Dropdown
 ---
 
 # LabelDropdown()
@@ -17,8 +17,7 @@ tags:
 - [[label-dropdown.tsx]] - `contains` [EXTRACTED]
 - [[labels.tsx]] - `imports` [EXTRACTED]
 - [[useDropdownKeyDown()]] - `calls` [EXTRACTED]
-- [[useLabel()]] - `calls` [EXTRACTED]
 - [[usePlatformOS()]] - `calls` [EXTRACTED]
 - [[useUserPermissions()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layouts
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

@@ -1,18 +1,18 @@
 ---
-source_file: "components/core/modals/workspace-image-upload-modal.tsx"
+source_file: "web/core/components/empty-state/comic-box-button.tsx"
 type: "code"
-community: "Workspace Timezone"
-location: "L24"
+community: "Comic Button"
+location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Timezone
+  - community/Comic_Button
 ---
 
 # Props
 
 ## Connections
 
-- [[workspace-image-upload-modal.tsx]] - `contains` [EXTRACTED]
+- [[comic-box-button.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Timezone
+#graphify/code #graphify/EXTRACTED #community/Comic_Button

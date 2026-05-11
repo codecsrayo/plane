@@ -1,18 +1,18 @@
 ---
-source_file: "components/estimates/delete/modal.tsx"
+source_file: "web/core/components/estimates/delete/modal.tsx"
 type: "code"
-community: "Estimate Disable"
+community: "Label Dropdown"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Estimate_Disable
+  - community/Label_Dropdown
 ---
 
 # TDeleteEstimateModal
 
 ## Connections
 
-- [[modal.tsx_13]] - `contains` [EXTRACTED]
+- [[modal.tsx_18]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Estimate_Disable
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

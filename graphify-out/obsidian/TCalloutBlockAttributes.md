@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/callout/types.ts"
 type: "code"
-community: "Callout Extension"
+community: "Callout Custom"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Callout_Extension
+  - community/Callout_Custom
 ---
 
 # TCalloutBlockAttributes
@@ -19,4 +19,4 @@ tags:
 - [[types.ts_3]] - `contains` [EXTRACTED]
 - [[utils.ts_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Callout_Extension
+#graphify/code #graphify/EXTRACTED #community/Callout_Custom

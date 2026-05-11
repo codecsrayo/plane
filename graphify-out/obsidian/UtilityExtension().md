@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/utility.ts"
 type: "code"
-community: "Core Extensions"
+community: "Unique Core"
 location: "L64"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Core_Extensions
+  - community/Unique_Core
 ---
 
 # UtilityExtension()
@@ -16,4 +16,4 @@ tags:
 - [[CoreEditorExtensions()]] - `calls` [INFERRED]
 - [[utility.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Core_Extensions
+#graphify/code #graphify/EXTRACTED #community/Unique_Core

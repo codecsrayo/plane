@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/columns/start-date-column.tsx"
+source_file: "web/core/components/project/project-network-icon.tsx"
 type: "code"
-community: "Column Spreadsheet"
-location: "L18"
+community: "Project Common"
+location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Column_Spreadsheet
+  - community/Project_Common
 ---
 
 # Props
 
 ## Connections
 
-- [[start-date-column.tsx]] - `contains` [EXTRACTED]
+- [[project-network-icon.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Column_Spreadsheet
+#graphify/code #graphify/EXTRACTED #community/Project_Common

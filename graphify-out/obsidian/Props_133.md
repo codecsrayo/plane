@@ -1,18 +1,18 @@
 ---
-source_file: "components/project/multi-select-modal.tsx"
+source_file: "web/core/components/editor/rich-text/description-input/loader.tsx"
 type: "code"
-community: "Progress Empty"
-location: "L27"
+community: "Issue Inbox"
+location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Progress_Empty
+  - community/Issue_Inbox
 ---
 
 # Props
 
 ## Connections
 
-- [[multi-select-modal.tsx]] - `contains` [EXTRACTED]
+- [[loader.tsx_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Progress_Empty
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

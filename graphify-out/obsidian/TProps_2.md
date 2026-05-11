@@ -1,18 +1,18 @@
 ---
-source_file: "components/workspace/sidebar/dropdown-item.tsx"
+source_file: "web/core/components/home/widgets/manage/index.tsx"
 type: "code"
-community: "Workspace Invites"
-location: "L21"
+community: "Widget Home"
+location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Invites
+  - community/Widget_Home
 ---
 
 # TProps
 
 ## Connections
 
-- [[dropdown-item.tsx]] - `contains` [EXTRACTED]
+- [[index.tsx_7]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Invites
+#graphify/code #graphify/EXTRACTED #community/Widget_Home

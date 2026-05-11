@@ -1,12 +1,12 @@
 ---
-source_file: "store/base-power-k.store.ts"
+source_file: "web/core/store/base-power-k.store.ts"
 type: "code"
-community: "Shortcut Registry"
+community: "Power Context"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Shortcut_Registry
+  - community/Power_Context
 ---
 
 # IBasePowerKStore
@@ -14,5 +14,6 @@ tags:
 ## Connections
 
 - [[base-power-k.store.ts]] - `contains` [EXTRACTED]
+- [[power-k.store.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Shortcut_Registry
+#graphify/code #graphify/EXTRACTED #community/Power_Context

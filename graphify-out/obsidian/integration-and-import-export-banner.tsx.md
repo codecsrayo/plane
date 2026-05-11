@@ -1,12 +1,12 @@
 ---
-source_file: "components/ui/integration-and-import-export-banner.tsx"
+source_file: "web/core/components/ui/integration-and-import-export-banner.tsx"
 type: "code"
-community: "Integration Banner"
+community: "Project Workspace"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Integration_Banner
+  - community/Project_Workspace
 ---
 
 # integration-and-import-export-banner.tsx
@@ -14,6 +14,7 @@ tags:
 ## Connections
 
 - [[IntegrationAndImportExportBanner()]] - `contains` [EXTRACTED]
-- [[Props_7]] - `contains` [EXTRACTED]
+- [[Props_84]] - `contains` [EXTRACTED]
+- [[page.tsx_52]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Integration_Banner
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

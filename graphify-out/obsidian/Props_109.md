@@ -1,18 +1,18 @@
 ---
-source_file: "components/settings/profile/heading.tsx"
+source_file: "web/core/components/workspace/sidebar/favorites/favorite-items/common/favorite-item-title.tsx"
 type: "code"
-community: "Profile Settings"
-location: "L10"
+community: "Sidebar Navigation"
+location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Profile_Settings
+  - community/Sidebar_Navigation
 ---
 
 # Props
 
 ## Connections
 
-- [[heading.tsx_1]] - `contains` [EXTRACTED]
+- [[favorite-item-title.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Profile_Settings
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation

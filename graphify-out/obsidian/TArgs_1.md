@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/props.ts"
 type: "code"
-community: "Collaborative Editor"
+community: "Document Collaborative"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Collaborative_Editor
+  - community/Document_Collaborative
 ---
 
 # TArgs
@@ -15,4 +15,4 @@ tags:
 
 - [[props.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Collaborative_Editor
+#graphify/code #graphify/EXTRACTED #community/Document_Collaborative

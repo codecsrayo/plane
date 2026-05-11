@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/list/order-by.tsx"
+source_file: "web/core/components/power-k/ui/pages/context-based/work-item/cycles-menu.tsx"
 type: "code"
-community: "Order Search"
-location: "L15"
+community: "Menu Power"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Order_Search
+  - community/Menu_Power
 ---
 
 # Props
 
 ## Connections
 
-- [[order-by.tsx_5]] - `contains` [EXTRACTED]
+- [[cycles-menu.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Order_Search
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

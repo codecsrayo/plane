@@ -1,5 +1,5 @@
 ---
-source_file: "components/core/sidebar/progress-stats/label.tsx"
+source_file: "web/core/components/core/sidebar/progress-stats/label.tsx"
 type: "code"
 community: "Progress Stats"
 location: "L15"
@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 
-- [[label.tsx_4]] - `contains` [EXTRACTED]
+- [[label.tsx_5]] - `contains` [EXTRACTED]
 - [[progress-stats.tsx]] - `imports` [EXTRACTED]
 - [[progress-stats.tsx_1]] - `imports` [EXTRACTED]
 

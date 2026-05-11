@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/ce/types/editor-extended.ts"
 type: "code"
-community: "Callout Extension"
+community: "Items Extended"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Callout_Extension
+  - community/Items_Extended
 ---
 
 # ICollaborativeDocumentEditorPropsExtended
@@ -16,4 +16,4 @@ tags:
 - [[editor-extended.ts]] - `contains` [EXTRACTED]
 - [[editor.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Callout_Extension
+#graphify/code #graphify/EXTRACTED #community/Items_Extended

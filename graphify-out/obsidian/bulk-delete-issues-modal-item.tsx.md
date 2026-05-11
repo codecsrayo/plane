@@ -1,12 +1,12 @@
 ---
-source_file: "components/core/modals/bulk-delete-issues-modal-item.tsx"
+source_file: "web/core/components/core/modals/bulk-delete-issues-modal-item.tsx"
 type: "code"
-community: "Bulk Issues"
+community: "Cycle Active"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Bulk_Issues
+  - community/Cycle_Active
 ---
 
 # bulk-delete-issues-modal-item.tsx
@@ -14,7 +14,8 @@ tags:
 ## Connections
 
 - [[BulkDeleteIssuesModalItem]] - `contains` [EXTRACTED]
-- [[Props_459]] - `contains` [EXTRACTED]
+- [[IssueIdentifier]] - `imports` [EXTRACTED]
+- [[Props_533]] - `contains` [EXTRACTED]
 - [[bulk-delete-issues-modal.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Bulk_Issues
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

@@ -1,5 +1,5 @@
 ---
-source_file: "components/sidebar/sidebar-wrapper.tsx"
+source_file: "web/core/components/sidebar/sidebar-wrapper.tsx"
 type: "code"
 community: "Sidebar Navigation"
 location: "L29"
@@ -13,6 +13,7 @@ tags:
 
 ## Connections
 
+- [[_sidebar.tsx]] - `imports` [EXTRACTED]
 - [[sidebar-wrapper.tsx]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation

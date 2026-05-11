@@ -1,12 +1,12 @@
 ---
-source_file: "components/dropdowns/state/base.tsx"
+source_file: "web/core/components/dropdowns/project/base.tsx"
 type: "code"
-community: "Issue Properties"
+community: "Label Dropdown"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Label_Dropdown
 ---
 
 # base.tsx
@@ -14,13 +14,14 @@ tags:
 ## Connections
 
 - [[BUTTON_VARIANTS_WITH_TEXT]] - `imports` [EXTRACTED]
-- [[DropdownButton()]] - `imports` [EXTRACTED]
-- [[TWorkItemStateDropdownBaseProps_1]] - `contains` [EXTRACTED]
-- [[WorkItemStateDropdownBase_1]] - `contains` [EXTRACTED]
+- [[DropdownButton()_1]] - `imports` [EXTRACTED]
+- [[ProjectDropdownBase]] - `contains` [EXTRACTED]
+- [[Props_198]] - `contains` [EXTRACTED]
 - [[buttons.tsx]] - `imports_from` [EXTRACTED]
-- [[constants.ts_1]] - `imports_from` [EXTRACTED]
-- [[dropdown.tsx_3]] - `imports_from` [EXTRACTED]
+- [[constants.ts_5]] - `imports_from` [EXTRACTED]
+- [[dropdown.tsx_4]] - `imports_from` [EXTRACTED]
+- [[renderProjectIcon()_1]] - `contains` [EXTRACTED]
 - [[use-dropdown.ts]] - `imports_from` [EXTRACTED]
 - [[useDropdown()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

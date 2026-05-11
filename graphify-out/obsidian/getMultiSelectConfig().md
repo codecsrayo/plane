@@ -1,12 +1,12 @@
 ---
 source_file: "utils/src/rich-filters/factories/configs/core.ts"
 type: "code"
-community: "Params Date"
+community: "State Multi"
 location: "L77"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Params_Date
+  - community/State_Multi
 ---
 
 # getMultiSelectConfig()
@@ -26,4 +26,4 @@ tags:
 - [[getStateMultiSelectConfig()]] - `calls` [INFERRED]
 - [[shared.ts_9]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Params_Date
+#graphify/code #graphify/INFERRED #community/State_Multi

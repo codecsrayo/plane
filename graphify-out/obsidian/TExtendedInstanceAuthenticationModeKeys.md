@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/instance/auth-ee.ts"
 type: "code"
-community: "Instance Config"
+community: "User Instance"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Instance_Config
+  - community/User_Instance
 ---
 
 # TExtendedInstanceAuthenticationModeKeys
@@ -15,4 +15,4 @@ tags:
 
 - [[auth-ee.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Instance_Config
+#graphify/code #graphify/EXTRACTED #community/User_Instance

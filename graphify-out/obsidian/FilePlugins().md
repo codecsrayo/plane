@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/plugins/file/root.ts"
 type: "code"
-community: "Title Node"
+community: "Assets Node"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Title_Node
+  - community/Assets_Node
 ---
 
 # FilePlugins()
@@ -18,4 +18,4 @@ tags:
 - [[root.ts]] - `contains` [EXTRACTED]
 - [[utility.ts_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Title_Node
+#graphify/code #graphify/EXTRACTED #community/Assets_Node

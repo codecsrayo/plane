@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-detail/issue-activity/activity/actions/helpers/issue-link.tsx"
+source_file: "web/core/components/issues/issue-detail/issue-activity/activity/actions/helpers/issue-link.tsx"
 type: "code"
-community: "Issue Layouts"
+community: "Issue Activity"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layouts
+  - community/Issue_Activity
 ---
 
 # IssueLink()
@@ -17,4 +17,4 @@ tags:
 - [[useIssueDetail()]] - `calls` [EXTRACTED]
 - [[usePlatformOS()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layouts
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

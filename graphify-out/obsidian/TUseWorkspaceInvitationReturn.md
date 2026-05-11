@@ -1,5 +1,5 @@
 ---
-source_file: "hooks/use-workspace-invitation.tsx"
+source_file: "web/core/hooks/use-workspace-invitation.tsx"
 type: "code"
 community: "Invitation Workspace"
 location: "L36"

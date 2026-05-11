@@ -1,18 +1,18 @@
 ---
-source_file: "store/user/base-permissions.store.ts"
+source_file: "web/core/store/base-power-k.store.ts"
 type: "code"
-community: "Workspace Workspaceservice"
-location: "L76"
+community: "Power Context"
+location: "L48"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Workspaceservice
+  - community/Power_Context
 ---
 
 # constructor()
 
 ## Connections
 
-- [[base-permissions.store.ts]] - `contains` [EXTRACTED]
+- [[base-power-k.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Workspaceservice
+#graphify/code #graphify/EXTRACTED #community/Power_Context

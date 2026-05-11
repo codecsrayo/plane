@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/jobs/email_notification.rs"
 type: "code"
-community: "Community 229"
+community: "Password Email"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_229
+  - community/Password_Email
 ---
 
 # email_notification.rs
@@ -19,6 +19,6 @@ tags:
 - [[html_to_text()]] - `contains` [EXTRACTED]
 - [[send_email_for_issue()]] - `contains` [EXTRACTED]
 - [[send_smtp_email()]] - `contains` [EXTRACTED]
-- [[stack_email_notification()]] - `contains` [EXTRACTED]
+- [[stack_email_notification()_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_229
+#graphify/code #graphify/EXTRACTED #community/Password_Email

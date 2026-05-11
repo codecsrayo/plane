@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/filters/header/display-filters/group-by.tsx"
+source_file: "web/core/components/integration/single-integration-card.tsx"
 type: "code"
-community: "Filter Selection UI"
-location: "L15"
+community: "Project Workspace"
+location: "L37"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Selection_UI
+  - community/Project_Workspace
 ---
 
 # Props
 
 ## Connections
 
-- [[group-by.tsx]] - `contains` [EXTRACTED]
+- [[single-integration-card.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Selection_UI
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

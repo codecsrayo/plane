@@ -1,42 +1,31 @@
 ---
 type: community
-cohesion: 0.15
-members: 26
+cohesion: 0.23
+members: 15
 ---
 
 # Context Power
 
-**Cohesion:** 0.15 - loosely connected
-**Members:** 26 nodes
+**Cohesion:** 0.23 - loosely connected
+**Members:** 15 nodes
 
 ## Members
 
-- [[CONTEXT_ENTITY_MAP]] - code - components/power-k/ui/pages/context-based/index.ts
-- [[KeySequenceBadge()]] - code - components/power-k/ui/modal/command-item-shortcut-badge.tsx
-- [[POWER_K_GROUP_I18N_TITLES]] - code - components/power-k/ui/renderer/shared.ts
-- [[POWER_K_GROUP_PRIORITY]] - code - components/power-k/ui/renderer/shared.ts
-- [[PowerKModalContextIndicator()]] - code - components/power-k/ui/modal/context-indicator.tsx
-- [[Props_337]] - code - components/power-k/ui/modal/context-indicator.tsx
-- [[Props_344]] - code - components/power-k/ui/renderer/command.tsx
-- [[Props_343]] - code - components/power-k/ui/renderer/shortcut.tsx
-- [[ShortcutBadge()]] - code - components/power-k/ui/modal/command-item-shortcut-badge.tsx
-- [[TArgs_4]] - code - components/power-k/hooks/use-context-indicator.ts
-- [[TCommandPaletteState]] - code - components/power-k/core/types.ts
-- [[TContextEntityMap]] - code - components/power-k/ui/pages/context-based/index.ts
-- [[TPowerKCommandGroup]] - code - components/power-k/core/types.ts
-- [[TPowerKContextType]] - code - components/power-k/core/types.ts
-- [[TSelectionPageProps]] - code - components/power-k/core/types.ts
-- [[command-item-shortcut-badge.tsx]] - code - components/power-k/ui/modal/command-item-shortcut-badge.tsx
-- [[command.tsx]] - code - components/power-k/ui/renderer/command.tsx
-- [[context-indicator.tsx]] - code - components/power-k/ui/modal/context-indicator.tsx
-- [[formatKeySequenceForDisplay()]] - code - components/power-k/ui/modal/command-item-shortcut-badge.tsx
-- [[formatShortcutForDisplay()]] - code - components/power-k/ui/modal/command-item-shortcut-badge.tsx
-- [[index.ts_134]] - code - components/power-k/ui/pages/context-based/index.ts
-- [[shared.ts_1]] - code - components/power-k/ui/renderer/shared.ts
-- [[shortcut.tsx]] - code - components/power-k/ui/renderer/shortcut.tsx
-- [[types.ts_2]] - code - components/power-k/core/types.ts
-- [[use-context-indicator.ts]] - code - components/power-k/hooks/use-context-indicator.ts
-- [[useContextIndicator()]] - code - components/power-k/hooks/use-context-indicator.ts
+- [[CONTEXT_ENTITY_MAP]] - code - web/core/components/power-k/ui/pages/context-based/index.ts
+- [[CONTEXT_ENTITY_MAP_EXTENDED]] - code - web/ce/components/command-palette/power-k/pages/context-based/root.tsx
+- [[POWER_K_GROUP_I18N_TITLES]] - code - web/core/components/power-k/ui/renderer/shared.ts
+- [[POWER_K_GROUP_PRIORITY]] - code - web/core/components/power-k/ui/renderer/shared.ts
+- [[PowerKContextBasedActionsExtended()]] - code - web/ce/components/command-palette/power-k/pages/context-based/root.tsx
+- [[Props_419]] - code - web/core/components/power-k/ui/renderer/command.tsx
+- [[Props_418]] - code - web/core/components/power-k/ui/renderer/shortcut.tsx
+- [[TContextEntityMap]] - code - web/core/components/power-k/ui/pages/context-based/index.ts
+- [[TPowerKCommandGroup]] - code - web/core/components/power-k/core/types.ts
+- [[command.tsx_1]] - code - web/core/components/power-k/ui/renderer/command.tsx
+- [[index.ts_399]] - code - web/core/components/power-k/ui/pages/context-based/index.ts
+- [[root.tsx_38]] - code - web/ce/components/command-palette/power-k/pages/context-based/root.tsx
+- [[shared.ts_12]] - code - web/core/components/power-k/ui/renderer/shared.ts
+- [[shortcut.tsx]] - code - web/core/components/power-k/ui/renderer/shortcut.tsx
+- [[usePowerKContextBasedExtendedActions()]] - code - web/ce/components/command-palette/power-k/pages/context-based/root.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -47,23 +36,17 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 20 edges to [[_COMMUNITY_Command Palette]]
-- 12 edges to [[_COMMUNITY_Power Search]]
-- 7 edges to [[_COMMUNITY_File Icons Nav]]
-- 7 edges to [[_COMMUNITY_Member Commands]]
-- 5 edges to [[_COMMUNITY_Shortcut Registry]]
-- 4 edges to [[_COMMUNITY_Module Analytics]]
-- 4 edges to [[_COMMUNITY_Cycle Transfers]]
-- 3 edges to [[_COMMUNITY_Context Based]]
-- 3 edges to [[_COMMUNITY_Navigation Power]]
-- 2 edges to [[_COMMUNITY_Search Results]]
-- 1 edge to [[_COMMUNITY_Project Archives]]
-- 1 edge to [[_COMMUNITY_Menu Power]]
+- 11 edges to [[_COMMUNITY_Power Context]]
+- 5 edges to [[_COMMUNITY_Power Chat]]
+- 5 edges to [[_COMMUNITY_Power Shortcuts]]
+- 5 edges to [[_COMMUNITY_Menu Power]]
+- 1 edge to [[_COMMUNITY_Power Navigation]]
+- 1 edge to [[_COMMUNITY_Command Shortcut]]
 
 ## Top bridge nodes
 
-- [[types.ts_2]] - degree 53, connects to 12 communities
-- [[command.tsx]] - degree 14, connects to 3 communities
-- [[TPowerKContextType]] - degree 7, connects to 3 communities
-- [[use-context-indicator.ts]] - degree 9, connects to 2 communities
-- [[index.ts_134]] - degree 9, connects to 2 communities
+- [[command.tsx_1]] - degree 14, connects to 5 communities
+- [[shortcut.tsx]] - degree 14, connects to 4 communities
+- [[index.ts_399]] - degree 10, connects to 3 communities
+- [[root.tsx_38]] - degree 9, connects to 2 communities
+- [[TPowerKCommandGroup]] - degree 5, connects to 2 communities

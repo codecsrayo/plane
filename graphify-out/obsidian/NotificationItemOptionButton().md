@@ -1,5 +1,5 @@
 ---
-source_file: "components/workspace-notifications/sidebar/notification-card/options/button.tsx"
+source_file: "web/core/components/workspace-notifications/sidebar/notification-card/options/button.tsx"
 type: "code"
 community: "Notification Option"
 location: "L21"
@@ -14,7 +14,7 @@ tags:
 ## Connections
 
 - [[archive.tsx]] - `imports` [EXTRACTED]
-- [[button.tsx]] - `contains` [EXTRACTED]
+- [[button.tsx_3]] - `contains` [EXTRACTED]
 - [[read.tsx]] - `imports` [EXTRACTED]
 - [[usePlatformOS()]] - `calls` [EXTRACTED]
 

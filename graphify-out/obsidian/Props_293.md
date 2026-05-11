@@ -1,18 +1,18 @@
 ---
-source_file: "components/common/empty-state.tsx"
+source_file: "web/core/components/issues/issue-layouts/calendar/week-header.tsx"
 type: "code"
-community: "Issue Parent"
-location: "L12"
+community: "Calendar Issue"
+location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Parent
+  - community/Calendar_Issue
 ---
 
 # Props
 
 ## Connections
 
-- [[empty-state.tsx_3]] - `contains` [EXTRACTED]
+- [[week-header.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Parent
+#graphify/code #graphify/EXTRACTED #community/Calendar_Issue

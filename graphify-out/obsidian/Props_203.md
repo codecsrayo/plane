@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/columns/state-column.tsx"
+source_file: "web/core/components/project/create-project-modal.tsx"
 type: "code"
-community: "Column Spreadsheet"
-location: "L15"
+community: "Project Profile"
+location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Column_Spreadsheet
+  - community/Project_Profile
 ---
 
 # Props
 
 ## Connections
 
-- [[state-column.tsx]] - `contains` [EXTRACTED]
+- [[create-project-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Column_Spreadsheet
+#graphify/code #graphify/EXTRACTED #community/Project_Profile

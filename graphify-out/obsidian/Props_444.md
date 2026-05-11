@@ -1,18 +1,18 @@
 ---
-source_file: "components/core/description-versions/dropdown.tsx"
+source_file: "web/core/components/onboarding/steps/profile/root.tsx"
 type: "code"
-community: "Description Dropdown"
-location: "L20"
+community: "Setup Values"
+location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Description_Dropdown
+  - community/Setup_Values
 ---
 
 # Props
 
 ## Connections
 
-- [[dropdown.tsx_8]] - `contains` [EXTRACTED]
+- [[root.tsx_109]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Description_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Setup_Values

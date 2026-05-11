@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-detail-widgets/relations/content.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-header.tsx"
 type: "code"
-community: "Issue Activity"
-location: "L27"
+community: "Select Multiple"
+location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Select_Multiple
 ---
 
 # Props
 
 ## Connections
 
-- [[content.tsx_1]] - `contains` [EXTRACTED]
+- [[spreadsheet-header.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Select_Multiple

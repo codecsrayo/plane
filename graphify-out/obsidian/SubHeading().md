@@ -1,12 +1,12 @@
 ---
 source_file: "ui/src/typography/sub-heading.tsx"
 type: "code"
-community: "Toggle Checkbox"
+community: "Input Checkbox"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toggle_Checkbox
+  - community/Input_Checkbox
 ---
 
 # SubHeading()
@@ -15,4 +15,4 @@ tags:
 
 - [[sub-heading.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toggle_Checkbox
+#graphify/code #graphify/EXTRACTED #community/Input_Checkbox

@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/table/table/utilities/helpers.ts"
 type: "code"
-community: "Table Selected"
+community: "Drag Table"
 location: "L86"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Table_Selected
+  - community/Drag_Table
 ---
 
 # getSelectedRect()
@@ -24,4 +24,4 @@ tags:
 - [[utils.ts_3]] - `imports` [EXTRACTED]
 - [[utils.ts_4]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Table_Selected
+#graphify/code #graphify/EXTRACTED #community/Drag_Table

@@ -1,18 +1,18 @@
 ---
-source_file: "components/common/new-empty-state.tsx"
+source_file: "web/core/components/issues/issue-layouts/calendar/issue-block-root.tsx"
 type: "code"
-community: "Empty State"
-location: "L12"
+community: "Calendar Issue"
+location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_State
+  - community/Calendar_Issue
 ---
 
 # Props
 
 ## Connections
 
-- [[new-empty-state.tsx]] - `contains` [EXTRACTED]
+- [[issue-block-root.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_State
+#graphify/code #graphify/EXTRACTED #community/Calendar_Issue

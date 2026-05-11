@@ -1,18 +1,18 @@
 ---
-source_file: "components/modules/archived-modules/root.tsx"
+source_file: "web/core/components/modules/archived-modules/root.tsx"
 type: "code"
-community: "Modules Archived"
+community: "Cycles Archived"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Modules_Archived
+  - community/Cycles_Archived
 ---
 
 # ArchivedModuleLayoutRoot
 
 ## Connections
 
-- [[root.tsx_13]] - `contains` [EXTRACTED]
+- [[root.tsx_54]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Modules_Archived
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

@@ -1,19 +1,20 @@
 ---
-source_file: "api_rust/src/jobs/instance_traces.rs"
+source_file: "api/plane/license/bgtasks/tracer.py"
 type: "code"
-community: "Community 115"
-location: "L26"
+community: "Telemetry Shutdown"
+location: "L27"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_115
+  - graphify/INFERRED
+  - community/Telemetry_Shutdown
 ---
 
 # instance_traces()
 
 ## Connections
 
-- [[instance_traces.rs]] - `contains` [EXTRACTED]
-- [[start_cron()]] - `calls` [INFERRED]
+- [[init_tracer()]] - `calls` [INFERRED]
+- [[shutdown_tracer()]] - `calls` [INFERRED]
+- [[tracer.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_115
+#graphify/code #graphify/INFERRED #community/Telemetry_Shutdown

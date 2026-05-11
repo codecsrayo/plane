@@ -1,5 +1,5 @@
 ---
-source_file: "components/workspace/sidebar/favorites/favorite-folder.tsx"
+source_file: "web/core/components/workspace/sidebar/favorites/favorite-folder.tsx"
 type: "code"
 community: "Favorite Folder"
 location: "L49"

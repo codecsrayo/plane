@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/assets.rs"
 type: "code"
-community: "Community 157"
+community: "Asset Issue"
 location: "L230"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_157
+  - community/Asset_Issue
 ---
 
 # asset_url_from_key()
@@ -18,4 +18,4 @@ tags:
 - [[initiate_user_asset_upload()]] - `calls` [EXTRACTED]
 - [[initiate_workspace_asset_upload()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_157
+#graphify/code #graphify/EXTRACTED #community/Asset_Issue

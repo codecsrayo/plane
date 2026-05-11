@@ -11,13 +11,13 @@ members: 7
 
 ## Members
 
-- [[CreateApiTokenForm()]] - code - components/api-token/modal/form.tsx
-- [[EXPIRY_DATE_OPTIONS]] - code - components/api-token/modal/form.tsx
-- [[Props_296]] - code - components/api-token/modal/form.tsx
-- [[defaultValues_17]] - code - components/api-token/modal/form.tsx
-- [[form.tsx_9]] - code - components/api-token/modal/form.tsx
-- [[getExpiryDate()]] - code - components/api-token/modal/form.tsx
-- [[getFormattedDate()]] - code - components/api-token/modal/form.tsx
+- [[CreateApiTokenForm()]] - code - web/core/components/api-token/modal/form.tsx
+- [[EXPIRY_DATE_OPTIONS]] - code - web/core/components/api-token/modal/form.tsx
+- [[Props_371]] - code - web/core/components/api-token/modal/form.tsx
+- [[defaultValues_17]] - code - web/core/components/api-token/modal/form.tsx
+- [[form.tsx_9]] - code - web/core/components/api-token/modal/form.tsx
+- [[getExpiryDate()]] - code - web/core/components/api-token/modal/form.tsx
+- [[getFormattedDate()]] - code - web/core/components/api-token/modal/form.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -28,8 +28,10 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 2 edges to [[_COMMUNITY_Issue Properties]]
+- 2 edges to [[_COMMUNITY_Label Dropdown]]
+- 1 edge to [[_COMMUNITY_Issue Activity]]
 
 ## Top bridge nodes
 
 - [[form.tsx_9]] - degree 8, connects to 1 community
+- [[CreateApiTokenForm()]] - degree 4, connects to 1 community

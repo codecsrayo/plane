@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/ce/constants/utility.ts"
 type: "code"
-community: "Title Node"
+community: "Assets Node"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Title_Node
+  - community/Assets_Node
 ---
 
 # NodeFileMapType
@@ -17,4 +17,4 @@ tags:
 - [[restore.ts]] - `imports` [EXTRACTED]
 - [[utility.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Title_Node
+#graphify/code #graphify/EXTRACTED #community/Assets_Node

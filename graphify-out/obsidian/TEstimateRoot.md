@@ -1,18 +1,18 @@
 ---
-source_file: "components/estimates/root.tsx"
+source_file: "web/core/components/estimates/root.tsx"
 type: "code"
-community: "Estimate Disable"
+community: "Label Dropdown"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Estimate_Disable
+  - community/Label_Dropdown
 ---
 
 # TEstimateRoot
 
 ## Connections
 
-- [[root.tsx_85]] - `contains` [EXTRACTED]
+- [[root.tsx_126]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Estimate_Disable
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/quick-action-dropdowns/helper.tsx"
+source_file: "web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx"
 type: "code"
-community: "Project Archives"
+community: "Issue Work"
 location: "L34"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Archives
+  - community/Issue_Work
 ---
 
 # handleOptionalAction()
 
 ## Connections
 
-- [[helper.tsx_3]] - `contains` [EXTRACTED]
+- [[helper.tsx_25]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Archives
+#graphify/code #graphify/EXTRACTED #community/Issue_Work

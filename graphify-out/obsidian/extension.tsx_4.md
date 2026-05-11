@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/image/extension.tsx"
 type: "code"
-community: "Extension Storage"
+community: "Image Custom"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Extension_Storage
+  - community/Image_Custom
 ---
 
 # extension.tsx
@@ -28,4 +28,4 @@ tags:
 - [[insertEmptyParagraphAtNodeBoundaries()]] - `imports` [EXTRACTED]
 - [[node-view.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Extension_Storage
+#graphify/code #graphify/EXTRACTED #community/Image_Custom

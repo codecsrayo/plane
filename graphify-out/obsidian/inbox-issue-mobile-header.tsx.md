@@ -1,5 +1,5 @@
 ---
-source_file: "components/inbox/content/inbox-issue-mobile-header.tsx"
+source_file: "web/core/components/inbox/content/inbox-issue-mobile-header.tsx"
 type: "code"
 community: "Issue Inbox"
 location: "L1"
@@ -17,7 +17,7 @@ tags:
 - [[InboxIssueActionsMobileHeader]] - `contains` [EXTRACTED]
 - [[InboxIssueStatus]] - `imports` [EXTRACTED]
 - [[NameDescriptionUpdateStatus]] - `imports` [EXTRACTED]
-- [[Props_374]] - `contains` [EXTRACTED]
+- [[Props_449]] - `contains` [EXTRACTED]
 - [[inbox-issue-header.tsx]] - `imports_from` [EXTRACTED]
 - [[inbox-issue-status.tsx]] - `imports_from` [EXTRACTED]
 - [[inbox-issue.store.ts]] - `imports_from` [EXTRACTED]

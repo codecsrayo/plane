@@ -1,14 +1,14 @@
 ---
 source_file: "api_rust/src/entities/webhooks.rs"
 type: "code"
-community: "Community 763"
+community: "Active Model"
 location: "L71"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_763
+  - community/Active_Model
 ---
 
 # ActiveModel
 
-#graphify/code #graphify/EXTRACTED #community/Community_763
+#graphify/code #graphify/EXTRACTED #community/Active_Model

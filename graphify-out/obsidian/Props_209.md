@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/columns/sub-issue-column.tsx"
+source_file: "web/core/components/project/member-header-column.tsx"
 type: "code"
-community: "Account Settings"
+community: "Member Column"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Account_Settings
+  - community/Member_Column
 ---
 
 # Props
 
 ## Connections
 
-- [[sub-issue-column.tsx]] - `contains` [EXTRACTED]
+- [[member-header-column.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Account_Settings
+#graphify/code #graphify/EXTRACTED #community/Member_Column

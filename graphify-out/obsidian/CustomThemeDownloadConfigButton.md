@@ -1,5 +1,5 @@
 ---
-source_file: "components/core/theme/download-config-button.tsx"
+source_file: "web/core/components/core/theme/download-config-button.tsx"
 type: "code"
 community: "Theme Custom"
 location: "L19"

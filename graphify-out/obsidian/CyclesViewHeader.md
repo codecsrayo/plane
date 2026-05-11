@@ -1,12 +1,12 @@
 ---
-source_file: "components/cycles/cycles-view-header.tsx"
+source_file: "web/core/components/cycles/cycles-view-header.tsx"
 type: "code"
-community: "Archived Cycles"
+community: "Cycles Archived"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Archived_Cycles
+  - community/Cycles_Archived
 ---
 
 # CyclesViewHeader
@@ -14,5 +14,6 @@ tags:
 ## Connections
 
 - [[cycles-view-header.tsx]] - `contains` [EXTRACTED]
+- [[header.tsx_13]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Archived_Cycles
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

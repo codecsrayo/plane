@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/assets.rs"
 type: "code"
-community: "Community 181"
+community: "Asset Issue"
 location: "L1544"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_181
+  - community/Asset_Issue
 ---
 
 # get_project_asset()
@@ -17,4 +17,4 @@ tags:
 - [[build_s3_presign_client()]] - `calls` [INFERRED]
 - [[presigned_get_url()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_181
+#graphify/code #graphify/INFERRED #community/Asset_Issue

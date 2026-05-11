@@ -1,12 +1,12 @@
 ---
-source_file: "types/navigation-preferences.ts"
+source_file: "web/core/types/navigation-preferences.ts"
 type: "code"
-community: "Navigation Preferences"
+community: "Sidebar Navigation"
 location: "L43"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Navigation_Preferences
+  - community/Sidebar_Navigation
 ---
 
 # TWorkspaceNavigationPreferences
@@ -16,4 +16,4 @@ tags:
 - [[navigation-preferences.ts]] - `contains` [EXTRACTED]
 - [[use-navigation-preferences.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Navigation_Preferences
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation

@@ -1,18 +1,18 @@
 ---
-source_file: "components/core/modals/change-email-modal.tsx"
+source_file: "web/core/components/empty-state/simple-empty-state-root.tsx"
 type: "code"
-community: "Auth Forms"
-location: "L25"
+community: "Cycle Active"
+location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Forms
+  - community/Cycle_Active
 ---
 
 # Props
 
 ## Connections
 
-- [[change-email-modal.tsx]] - `contains` [EXTRACTED]
+- [[simple-empty-state-root.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Forms
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

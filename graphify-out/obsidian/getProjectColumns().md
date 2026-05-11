@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/utils.tsx"
+source_file: "web/core/components/issues/issue-layouts/utils.tsx"
 type: "code"
-community: "Spreadsheet Filters"
+community: "Group Kanban"
 location: "L129"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Filters
+  - community/Group_Kanban
 ---
 
 # getProjectColumns()
 
 ## Connections
 
-- [[utils.tsx_1]] - `contains` [EXTRACTED]
+- [[utils.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Filters
+#graphify/code #graphify/EXTRACTED #community/Group_Kanban

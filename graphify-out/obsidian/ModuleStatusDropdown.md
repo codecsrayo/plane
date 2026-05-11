@@ -1,12 +1,12 @@
 ---
-source_file: "components/modules/module-status-dropdown.tsx"
+source_file: "web/core/components/modules/module-status-dropdown.tsx"
 type: "code"
-community: "Action Status"
+community: "Cycles Archived"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Action_Status
+  - community/Cycles_Archived
 ---
 
 # ModuleStatusDropdown
@@ -17,4 +17,4 @@ tags:
 - [[module-list-item-action.tsx]] - `imports` [EXTRACTED]
 - [[module-status-dropdown.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Action_Status
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

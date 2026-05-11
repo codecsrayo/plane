@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/unique-id/extension.ts"
 type: "code"
-community: "Core Extensions"
+community: "Unique Core"
 location: "L65"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Core_Extensions
+  - community/Unique_Core
 ---
 
 # UniqueID
@@ -16,4 +16,4 @@ tags:
 - [[extension.ts_2]] - `contains` [EXTRACTED]
 - [[extensions.ts_3]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Core_Extensions
+#graphify/code #graphify/EXTRACTED #community/Unique_Core

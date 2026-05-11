@@ -1,18 +1,18 @@
 ---
-source_file: "components/integration/connected-account-details.tsx"
+source_file: "web/core/components/modules/archived-modules/modal.tsx"
 type: "code"
-community: "Connected Account"
-location: "L7"
+community: "Cycles Archived"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Connected_Account
+  - community/Cycles_Archived
 ---
 
 # Props
 
 ## Connections
 
-- [[connected-account-details.tsx]] - `contains` [EXTRACTED]
+- [[modal.tsx_8]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Connected_Account
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

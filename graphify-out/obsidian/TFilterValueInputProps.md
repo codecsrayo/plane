@@ -1,19 +1,20 @@
 ---
-source_file: "components/rich-filters/shared.ts"
+source_file: "web/core/components/rich-filters/shared.ts"
 type: "code"
-community: "Filter Controls"
+community: "Value Input"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Controls
+  - community/Value_Input
 ---
 
 # TFilterValueInputProps
 
 ## Connections
 
-- [[root.tsx_92]] - `imports` [EXTRACTED]
-- [[shared.ts_3]] - `contains` [EXTRACTED]
+- [[root.tsx_39]] - `imports` [EXTRACTED]
+- [[root.tsx_133]] - `imports` [EXTRACTED]
+- [[shared.ts_14]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Controls
+#graphify/code #graphify/EXTRACTED #community/Value_Input

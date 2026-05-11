@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/work-item-embed/extension.tsx"
 type: "code"
-community: "Work Embed"
+community: "Document Custom"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Work_Embed
+  - community/Document_Custom
 ---
 
 # extension.tsx
@@ -21,4 +21,4 @@ tags:
 - [[extension-config.ts]] - `imports_from` [EXTRACTED]
 - [[types.ts_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Work_Embed
+#graphify/code #graphify/EXTRACTED #community/Document_Custom

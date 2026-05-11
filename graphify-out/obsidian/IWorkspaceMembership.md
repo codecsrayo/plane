@@ -1,5 +1,5 @@
 ---
-source_file: "store/member/workspace/workspace-member-filters.store.ts"
+source_file: "web/core/store/member/workspace/workspace-member-filters.store.ts"
 type: "code"
 community: "Workspace Member"
 location: "L17"

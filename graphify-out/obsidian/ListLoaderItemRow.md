@@ -1,12 +1,12 @@
 ---
-source_file: "components/ui/loader/layouts/list-layout-loader.tsx"
+source_file: "web/core/components/ui/loader/layouts/list-layout-loader.tsx"
 type: "code"
-community: "Loader Kanban"
+community: "Loader Calendar"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Loader_Kanban
+  - community/Loader_Calendar
 ---
 
 # ListLoaderItemRow
@@ -16,6 +16,6 @@ tags:
 - [[block-root.tsx]] - `imports` [EXTRACTED]
 - [[list-group.tsx]] - `imports` [EXTRACTED]
 - [[list-layout-loader.tsx]] - `contains` [EXTRACTED]
-- [[loader.tsx_3]] - `imports` [EXTRACTED]
+- [[loader.tsx_6]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Loader_Kanban
+#graphify/code #graphify/EXTRACTED #community/Loader_Calendar

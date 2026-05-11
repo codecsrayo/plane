@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/kanban/default.tsx"
+source_file: "web/core/components/issues/issue-layouts/kanban/default.tsx"
 type: "code"
-community: "Spreadsheet Columns"
+community: "Group Kanban"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Columns
+  - community/Group_Kanban
 ---
 
 # default.tsx
@@ -32,6 +32,6 @@ tags:
 - [[use-kanban-view.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueStoreType()]] - `imports` [EXTRACTED]
 - [[useKanbanView()]] - `imports` [EXTRACTED]
-- [[utils.tsx_1]] - `imports_from` [EXTRACTED]
+- [[utils.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Columns
+#graphify/code #graphify/EXTRACTED #community/Group_Kanban

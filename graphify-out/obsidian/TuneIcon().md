@@ -1,5 +1,5 @@
 ---
-source_file: "components/icons/attachment/tune-icon.tsx"
+source_file: "web/core/components/icons/attachment/tune-icon.tsx"
 type: "code"
 community: "Tune Icon"
 location: "L11"

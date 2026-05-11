@@ -1,20 +1,20 @@
 ---
-source_file: "custom-events/chat-support.ts"
+source_file: "web/core/custom-events/chat-support.ts"
 type: "code"
-community: "Chat Support"
+community: "Power Chat"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Chat_Support
+  - community/Power_Chat
 ---
 
 # ChatSupportEvent
 
 ## Connections
 
-- [[.constructor()]] - `method` [EXTRACTED]
+- [[.constructor()_57]] - `method` [EXTRACTED]
 - [[chat-support.ts]] - `contains` [EXTRACTED]
 - [[use-chat-support.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Chat_Support
+#graphify/code #graphify/EXTRACTED #community/Power_Chat

@@ -1,18 +1,18 @@
 ---
-source_file: "components/cycles/quick-actions.tsx"
+source_file: "web/core/components/issues/issue-layouts/filters/header/display-filters/group-by.tsx"
 type: "code"
-community: "Cycle Cycles"
-location: "L28"
+community: "Group Kanban"
+location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Cycles
+  - community/Group_Kanban
 ---
 
 # Props
 
 ## Connections
 
-- [[quick-actions.tsx_3]] - `contains` [EXTRACTED]
+- [[group-by.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Cycles
+#graphify/code #graphify/EXTRACTED #community/Group_Kanban

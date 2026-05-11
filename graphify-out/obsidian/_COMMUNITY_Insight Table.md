@@ -11,14 +11,14 @@ members: 8
 
 ## Members
 
-- [[ColumnMeta]] - code - components/analytics/work-items/workitems-insight-table.tsx
-- [[WorkItemsInsightTable]] - code - components/analytics/work-items/workitems-insight-table.tsx
-- [[analyticsService_1]] - code - components/analytics/work-items/workitems-insight-table.tsx
-- [[csvConfig()]] - code - components/analytics/export.ts
-- [[export.ts]] - code - components/analytics/export.ts
-- [[exportCSV()]] - code - components/analytics/export.ts
-- [[index.ts_168]] - code - components/analytics/insight-table/index.ts
-- [[workitems-insight-table.tsx]] - code - components/analytics/work-items/workitems-insight-table.tsx
+- [[ColumnMeta]] - code - web/core/components/analytics/work-items/workitems-insight-table.tsx
+- [[WorkItemsInsightTable]] - code - web/core/components/analytics/work-items/workitems-insight-table.tsx
+- [[analyticsService_1]] - code - web/core/components/analytics/work-items/workitems-insight-table.tsx
+- [[csvConfig()]] - code - web/core/components/analytics/export.ts
+- [[export.ts]] - code - web/core/components/analytics/export.ts
+- [[exportCSV()]] - code - web/core/components/analytics/export.ts
+- [[index.ts_433]] - code - web/core/components/analytics/insight-table/index.ts
+- [[workitems-insight-table.tsx]] - code - web/core/components/analytics/work-items/workitems-insight-table.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -29,15 +29,14 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 3 edges to [[_COMMUNITY_Active Projects]]
-- 2 edges to [[_COMMUNITY_Project Archives]]
-- 2 edges to [[_COMMUNITY_Chart Generate]]
-- 1 edge to [[_COMMUNITY_Analytics Project]]
+- 3 edges to [[_COMMUNITY_Webhook Workspace]]
+- 2 edges to [[_COMMUNITY_Project Settings]]
+- 2 edges to [[_COMMUNITY_Analytics Insight]]
+- 2 edges to [[_COMMUNITY_Table Chart]]
 - 1 edge to [[_COMMUNITY_Analytics Advance]]
-- 1 edge to [[_COMMUNITY_Insight Analytics]]
 
 ## Top bridge nodes
 
-- [[workitems-insight-table.tsx]] - degree 14, connects to 5 communities
+- [[workitems-insight-table.tsx]] - degree 14, connects to 4 communities
 - [[exportCSV()]] - degree 4, connects to 1 community
 - [[export.ts]] - degree 4, connects to 1 community

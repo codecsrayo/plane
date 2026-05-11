@@ -11,9 +11,9 @@ members: 3
 
 ## Members
 
-- [[CommonOnboardingHeader()]] - code - components/onboarding/steps/common/header.tsx
-- [[Props_371]] - code - components/onboarding/steps/common/header.tsx
-- [[header.tsx_13]] - code - components/onboarding/steps/common/header.tsx
+- [[CommonOnboardingHeader()]] - code - web/core/components/onboarding/steps/common/header.tsx
+- [[Props_446]] - code - web/core/components/onboarding/steps/common/header.tsx
+- [[header.tsx_55]] - code - web/core/components/onboarding/steps/common/header.tsx
 
 ## Live Query (requires Dataview plugin)
 

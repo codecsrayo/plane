@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/ui/modal/footer.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/widget-button.tsx"
 type: "code"
-community: "Power Search"
-location: "L12"
+community: "Issue Widget"
+location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Power_Search
+  - community/Issue_Widget
 ---
 
 # Props
 
 ## Connections
 
-- [[footer.tsx_1]] - `contains` [EXTRACTED]
+- [[widget-button.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Power_Search
+#graphify/code #graphify/EXTRACTED #community/Issue_Widget

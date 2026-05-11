@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/list/block-item-action.tsx"
+source_file: "web/core/components/power-k/ui/pages/context-based/work-item/root.tsx"
 type: "code"
-community: "Action Pages"
-location: "L24"
+community: "Member Members"
+location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Action_Pages
+  - community/Member_Members
 ---
 
 # Props
 
 ## Connections
 
-- [[block-item-action.tsx]] - `contains` [EXTRACTED]
+- [[root.tsx_101]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Action_Pages
+#graphify/code #graphify/EXTRACTED #community/Member_Members

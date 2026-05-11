@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/list/block.tsx"
+source_file: "web/core/components/pages/list/block.tsx"
 type: "code"
-community: "Action Pages"
+community: "Project Work"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Action_Pages
+  - community/Project_Work
 ---
 
 # TPageListBlock
 
 ## Connections
 
-- [[block.tsx_5]] - `contains` [EXTRACTED]
+- [[block.tsx_8]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Action_Pages
+#graphify/code #graphify/EXTRACTED #community/Project_Work

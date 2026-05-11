@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/helpers/floating-ui.ts"
 type: "code"
-community: "Command Slash"
+community: "Emoji Command"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Command_Slash
+  - community/Emoji_Command
 ---
 
 # floating-ui.ts
@@ -18,4 +18,4 @@ tags:
 - [[suggestion.ts]] - `imports_from` [EXTRACTED]
 - [[utils.ts_8]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Command_Slash
+#graphify/code #graphify/EXTRACTED #community/Emoji_Command

@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/archive-issue-modal.tsx"
+source_file: "web/core/components/issues/archive-issue-modal.tsx"
 type: "code"
-community: "Project Archives"
+community: "Issue Work"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Archives
+  - community/Issue_Work
 ---
 
 # ArchiveIssueModal()
@@ -22,4 +22,4 @@ tags:
 - [[useIssues()]] - `calls` [EXTRACTED]
 - [[useProject()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Archives
+#graphify/code #graphify/EXTRACTED #community/Issue_Work

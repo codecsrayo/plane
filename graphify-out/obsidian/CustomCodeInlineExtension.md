@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/code-inline/index.tsx"
 type: "code"
-community: "Editor Commands"
+community: "Document Custom"
 location: "L37"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Commands
+  - community/Document_Custom
 ---
 
 # CustomCodeInlineExtension
@@ -16,4 +16,4 @@ tags:
 - [[core-without-props.ts]] - `imports` [EXTRACTED]
 - [[index.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Commands
+#graphify/code #graphify/EXTRACTED #community/Document_Custom

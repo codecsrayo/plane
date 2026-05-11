@@ -1,19 +1,19 @@
 ---
-source_file: "components/workspace-notifications/sidebar/loader.tsx"
+source_file: "web/core/components/workspace-notifications/sidebar/loader.tsx"
 type: "code"
-community: "Notification Option"
+community: "Settings Project"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Notification_Option
+  - community/Settings_Project
 ---
 
 # NotificationsLoader()
 
 ## Connections
 
-- [[loader.tsx_6]] - `contains` [EXTRACTED]
-- [[root.tsx_45]] - `imports` [EXTRACTED]
+- [[loader.tsx_9]] - `contains` [EXTRACTED]
+- [[root.tsx_86]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Notification_Option
+#graphify/code #graphify/EXTRACTED #community/Settings_Project

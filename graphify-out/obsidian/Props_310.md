@@ -1,18 +1,20 @@
 ---
-source_file: "components/cycles/dropdowns/filters/end-date.tsx"
+source_file: "space/components/issues/filters/state.tsx"
 type: "code"
-community: "Date Start"
-location: "L16"
+community: "Priority State"
+location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Date_Start
+  - community/Priority_State
 ---
 
 # Props
 
 ## Connections
 
-- [[end-date.tsx]] - `contains` [EXTRACTED]
+- [[state.tsx_1]] - `contains` [EXTRACTED]
+- [[state.tsx_4]] - `contains` [EXTRACTED]
+- [[state.tsx_8]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Date_Start
+#graphify/code #graphify/EXTRACTED #community/Priority_State

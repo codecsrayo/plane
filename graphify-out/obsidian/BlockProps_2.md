@@ -1,18 +1,18 @@
 ---
-source_file: "components/home/widgets/recents/page.tsx"
+source_file: "web/core/components/home/widgets/recents/page.tsx"
 type: "code"
-community: "Issue Filters"
+community: "Filters Recent"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters
+  - community/Filters_Recent
 ---
 
 # BlockProps
 
 ## Connections
 
-- [[page.tsx]] - `contains` [EXTRACTED]
+- [[page.tsx_66]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters
+#graphify/code #graphify/EXTRACTED #community/Filters_Recent

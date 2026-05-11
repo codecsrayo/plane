@@ -1,5 +1,5 @@
 ---
-source_file: "components/project-states/create-update/create.tsx"
+source_file: "web/core/components/project-states/create-update/create.tsx"
 type: "code"
 community: "State Group"
 location: "L1"
@@ -15,6 +15,6 @@ tags:
 
 - [[StateCreate]] - `contains` [EXTRACTED]
 - [[TStateCreate]] - `contains` [EXTRACTED]
-- [[index.ts_47]] - `imports_from` [EXTRACTED]
+- [[index.ts_312]] - `imports_from` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/State_Group

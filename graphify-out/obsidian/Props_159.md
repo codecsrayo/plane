@@ -1,18 +1,21 @@
 ---
-source_file: "components/integration/github/pr-state-mapping.tsx"
+source_file: "web/core/components/pages/list/filters/root.tsx"
 type: "code"
-community: "Calendar Blocks"
-location: "L21"
+community: "Member Members"
+location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Blocks
+  - community/Member_Members
 ---
 
 # Props
 
 ## Connections
 
-- [[pr-state-mapping.tsx]] - `contains` [EXTRACTED]
+- [[root.tsx_55]] - `contains` [EXTRACTED]
+- [[root.tsx_66]] - `contains` [EXTRACTED]
+- [[root.tsx_96]] - `contains` [EXTRACTED]
+- [[root.tsx_119]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Blocks
+#graphify/code #graphify/EXTRACTED #community/Member_Members

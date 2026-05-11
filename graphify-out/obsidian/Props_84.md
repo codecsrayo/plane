@@ -1,21 +1,18 @@
 ---
-source_file: "components/pages/list/filters/root.tsx"
+source_file: "web/core/components/ui/integration-and-import-export-banner.tsx"
 type: "code"
-community: "Lead Members"
-location: "L17"
+community: "Project Workspace"
+location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Lead_Members
+  - community/Project_Workspace
 ---
 
 # Props
 
 ## Connections
 
-- [[root.tsx_14]] - `contains` [EXTRACTED]
-- [[root.tsx_25]] - `contains` [EXTRACTED]
-- [[root.tsx_55]] - `contains` [EXTRACTED]
-- [[root.tsx_78]] - `contains` [EXTRACTED]
+- [[integration-and-import-export-banner.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Lead_Members
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

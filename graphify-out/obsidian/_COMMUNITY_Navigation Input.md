@@ -37,17 +37,17 @@ SORT file.name ASC
 ## Connections to other communities
 
 - 4 edges to [[_COMMUNITY_Icon Cycle]]
-- 2 edges to [[_COMMUNITY_Emoji Picker]]
-- 1 edge to [[_COMMUNITY_Toolbar Button]]
+- 2 edges to [[_COMMUNITY_Emoji Icon]]
+- 1 edge to [[_COMMUNITY_Toolbar Combobox]]
 - 1 edge to [[_COMMUNITY_Pill Radius]]
 - 1 edge to [[_COMMUNITY_Context Menu]]
-- 1 edge to [[_COMMUNITY_Badge Icon]]
-- 1 edge to [[_COMMUNITY_Banner Error]]
+- 1 edge to [[_COMMUNITY_Badge Styling]]
+- 1 edge to [[_COMMUNITY_Banner Styling]]
 - 1 edge to [[_COMMUNITY_Icon Button]]
 - 1 edge to [[_COMMUNITY_Reaction Emoji]]
-- 1 edge to [[_COMMUNITY_Dates Disabled]]
+- 1 edge to [[_COMMUNITY_Dates Chevron]]
 - 1 edge to [[_COMMUNITY_Animated Counter]]
-- 1 edge to [[_COMMUNITY_Button Auth]]
+- 1 edge to [[_COMMUNITY_Button Styling]]
 - 1 edge to [[_COMMUNITY_Separator Story]]
 - 1 edge to [[_COMMUNITY_Portal Handler]]
 

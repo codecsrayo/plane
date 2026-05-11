@@ -1,12 +1,12 @@
 ---
-source_file: "components/labels/label-block/label-item-block.tsx"
+source_file: "web/core/components/labels/label-block/label-item-block.tsx"
 type: "code"
-community: "Label Manager"
+community: "Label Project"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Manager
+  - community/Label_Project
 ---
 
 # ICustomMenuItem
@@ -17,4 +17,4 @@ tags:
 - [[project-setting-label-group.tsx]] - `imports` [EXTRACTED]
 - [[project-setting-label-item.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Manager
+#graphify/code #graphify/EXTRACTED #community/Label_Project

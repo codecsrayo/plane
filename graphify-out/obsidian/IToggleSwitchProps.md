@@ -1,12 +1,12 @@
 ---
 source_file: "ui/src/button/toggle-switch.tsx"
 type: "code"
-community: "Toggle Checkbox"
+community: "Input Checkbox"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toggle_Checkbox
+  - community/Input_Checkbox
 ---
 
 # IToggleSwitchProps
@@ -15,4 +15,4 @@ tags:
 
 - [[toggle-switch.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toggle_Checkbox
+#graphify/code #graphify/EXTRACTED #community/Input_Checkbox

@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/collapsible/collapsible.tsx"
 type: "code"
-community: "Collapsible Context"
+community: "Collapsible Chevron"
 location: "L106"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Collapsible_Context
+  - community/Collapsible_Chevron
 ---
 
 # Collapsible
@@ -17,4 +17,4 @@ tags:
 - [[collapsible.tsx]] - `contains` [EXTRACTED]
 - [[collapsible.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Collapsible_Context
+#graphify/code #graphify/EXTRACTED #community/Collapsible_Chevron

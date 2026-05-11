@@ -1,12 +1,12 @@
 ---
-source_file: "components/pages/modals/create-page-modal.tsx"
+source_file: "web/core/components/pages/modals/create-page-modal.tsx"
 type: "code"
-community: "Access Field"
+community: "Project Settings"
 location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Access_Field
+  - community/Project_Settings
 ---
 
 # CreatePageModal()
@@ -14,6 +14,8 @@ tags:
 ## Connections
 
 - [[create-page-modal.tsx]] - `contains` [EXTRACTED]
+- [[project-level.tsx]] - `imports` [EXTRACTED]
 - [[useAppRouter()]] - `calls` [EXTRACTED]
+- [[usePageStore()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Access_Field
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

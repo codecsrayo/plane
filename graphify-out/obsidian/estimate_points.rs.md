@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/estimate_points.rs"
 type: "code"
-community: "Community 356"
+community: "Model Relation"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_356
+  - community/Model_Relation
 ---
 
 # estimate_points.rs
@@ -16,4 +16,4 @@ tags:
 - [[Model_37]] - `contains` [EXTRACTED]
 - [[Relation_37]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_356
+#graphify/code #graphify/EXTRACTED #community/Model_Relation

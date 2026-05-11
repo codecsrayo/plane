@@ -1,5 +1,5 @@
 ---
-source_file: "components/project/settings/features-list.tsx"
+source_file: "web/core/components/project/settings/features-list.tsx"
 type: "code"
 community: "Project Settings"
 location: "L30"
@@ -13,6 +13,6 @@ tags:
 
 ## Connections
 
-- [[features-list.tsx]] - `contains` [EXTRACTED]
+- [[features-list.tsx_1]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Project_Settings

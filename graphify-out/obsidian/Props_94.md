@@ -1,18 +1,19 @@
 ---
-source_file: "components/profile/time.tsx"
+source_file: "web/core/components/workspace/views/modal.tsx"
 type: "code"
-community: "Dashboard Widgets"
-location: "L10"
+community: "Project Work"
+location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dashboard_Widgets
+  - community/Project_Work
 ---
 
 # Props
 
 ## Connections
 
-- [[time.tsx]] - `contains` [EXTRACTED]
+- [[modal.tsx_5]] - `contains` [EXTRACTED]
+- [[modal.tsx_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets
+#graphify/code #graphify/EXTRACTED #community/Project_Work

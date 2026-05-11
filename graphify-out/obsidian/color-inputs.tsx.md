@@ -1,5 +1,5 @@
 ---
-source_file: "components/core/theme/color-inputs.tsx"
+source_file: "web/core/components/core/theme/color-inputs.tsx"
 type: "code"
 community: "Theme Custom"
 location: "L1"
@@ -14,7 +14,7 @@ tags:
 ## Connections
 
 - [[CustomThemeColorInputs]] - `contains` [EXTRACTED]
-- [[Props_461]] - `contains` [EXTRACTED]
+- [[Props_535]] - `contains` [EXTRACTED]
 - [[custom-theme-selector.tsx]] - `imports_from` [EXTRACTED]
 - [[handleValueChange()]] - `contains` [EXTRACTED]
 

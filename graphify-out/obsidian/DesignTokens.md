@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/toast/toast.stories.tsx"
 type: "code"
-community: "Static Toast"
+community: "Toast Static"
 location: "L509"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Static_Toast
+  - community/Toast_Static
 ---
 
 # DesignTokens
@@ -15,4 +15,4 @@ tags:
 
 - [[toast.stories.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Static_Toast
+#graphify/code #graphify/EXTRACTED #community/Toast_Static

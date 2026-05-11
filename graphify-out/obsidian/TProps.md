@@ -1,18 +1,18 @@
 ---
-source_file: "components/home/widgets/manage/index.tsx"
+source_file: "web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/header.tsx"
 type: "code"
-community: "Dashboard Widgets"
-location: "L14"
+community: "Project Settings"
+location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dashboard_Widgets
+  - community/Project_Settings
 ---
 
 # TProps
 
 ## Connections
 
-- [[index.tsx_1]] - `contains` [EXTRACTED]
+- [[header.tsx_9]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

@@ -1,18 +1,18 @@
 ---
-source_file: "components/core/multiple-select/select-group.tsx"
+source_file: "web/core/components/inbox/content/inbox-issue-mobile-header.tsx"
 type: "code"
-community: "Multi Select Actions"
-location: "L12"
+community: "Issue Inbox"
+location: "L34"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Multi_Select_Actions
+  - community/Issue_Inbox
 ---
 
 # Props
 
 ## Connections
 
-- [[select-group.tsx]] - `contains` [EXTRACTED]
+- [[inbox-issue-mobile-header.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Multi_Select_Actions
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

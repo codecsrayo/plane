@@ -1,12 +1,12 @@
 ---
 source_file: "ui/src/tooltip/tooltip.tsx"
 type: "code"
-community: "Toggle Checkbox"
+community: "Input Checkbox"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toggle_Checkbox
+  - community/Input_Checkbox
 ---
 
 # TPosition
@@ -15,4 +15,4 @@ tags:
 
 - [[tooltip.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toggle_Checkbox
+#graphify/code #graphify/EXTRACTED #community/Input_Checkbox

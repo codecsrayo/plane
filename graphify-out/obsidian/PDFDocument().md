@@ -1,12 +1,12 @@
 ---
-source_file: "components/editor/pdf/document.tsx"
+source_file: "web/core/components/editor/pdf/document.tsx"
 type: "code"
-community: "Editor Items"
+community: "Toolbar Items"
 location: "L52"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Items
+  - community/Toolbar_Items
 ---
 
 # PDFDocument()
@@ -15,4 +15,4 @@ tags:
 
 - [[document.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Items
+#graphify/code #graphify/EXTRACTED #community/Toolbar_Items

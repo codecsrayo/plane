@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/django_migrations.rs"
 type: "code"
-community: "Community 361"
+community: "Model Relation"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_361
+  - community/Model_Relation
 ---
 
 # django_migrations.rs
@@ -16,4 +16,4 @@ tags:
 - [[Model_42]] - `contains` [EXTRACTED]
 - [[Relation_42]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_361
+#graphify/code #graphify/EXTRACTED #community/Model_Relation

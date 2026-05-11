@@ -1,5 +1,5 @@
 ---
-source_file: "services/project/project.service.ts"
+source_file: "web/core/services/project/project.service.ts"
 type: "code"
 community: "Project User"
 location: "L21"
@@ -15,7 +15,7 @@ tags:
 
 - [[.addProjectToFavorites()]] - `method` [EXTRACTED]
 - [[.checkProjectIdentifierAvailability()]] - `method` [EXTRACTED]
-- [[.constructor()_119]] - `method` [EXTRACTED]
+- [[.constructor()_176]] - `method` [EXTRACTED]
 - [[.createProject()]] - `method` [EXTRACTED]
 - [[.deleteProject()]] - `method` [EXTRACTED]
 - [[.getProject()]] - `method` [EXTRACTED]

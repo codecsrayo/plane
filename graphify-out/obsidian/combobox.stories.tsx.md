@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/combobox/combobox.stories.tsx"
 type: "code"
-community: "Disabled Custom"
+community: "Toolbar Combobox"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Disabled_Custom
+  - community/Toolbar_Combobox
 ---
 
 # combobox.stories.tsx
@@ -28,4 +28,4 @@ tags:
 - [[index.ts_138]] - `imports_from` [EXTRACTED]
 - [[render()_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Disabled_Custom
+#graphify/code #graphify/EXTRACTED #community/Toolbar_Combobox

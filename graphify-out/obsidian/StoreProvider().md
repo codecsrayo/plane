@@ -1,18 +1,19 @@
 ---
-source_file: "lib/store-context.tsx"
+source_file: "web/core/lib/store-context.tsx"
 type: "code"
-community: "Workspace Draft"
+community: "Error Provider"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Draft
+  - community/Error_Provider
 ---
 
 # StoreProvider()
 
 ## Connections
 
+- [[provider.tsx]] - `imports` [EXTRACTED]
 - [[store-context.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Draft
+#graphify/code #graphify/EXTRACTED #community/Error_Provider

@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/utility.ts"
 type: "code"
-community: "Document Side"
+community: "Document Collaborative"
 location: "L45"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Document_Side
+  - community/Document_Collaborative
 ---
 
 # Storage
@@ -15,4 +15,4 @@ tags:
 
 - [[utility.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Document_Side
+#graphify/code #graphify/EXTRACTED #community/Document_Collaborative

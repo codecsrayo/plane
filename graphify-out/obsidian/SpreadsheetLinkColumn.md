@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/columns/link-column.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/link-column.tsx"
 type: "code"
 community: "Link Column"
 location: "L17"

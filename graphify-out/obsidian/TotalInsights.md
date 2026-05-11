@@ -1,12 +1,12 @@
 ---
-source_file: "components/analytics/total-insights.tsx"
+source_file: "web/core/components/analytics/total-insights.tsx"
 type: "code"
-community: "Insight Analytics"
+community: "Analytics Insight"
 location: "L53"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Insight_Analytics
+  - community/Analytics_Insight
 ---
 
 # TotalInsights
@@ -15,4 +15,4 @@ tags:
 
 - [[total-insights.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Insight_Analytics
+#graphify/code #graphify/EXTRACTED #community/Analytics_Insight

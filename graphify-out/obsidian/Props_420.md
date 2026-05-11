@@ -1,18 +1,18 @@
 ---
-source_file: "components/base-layouts/layout-switcher.tsx"
+source_file: "web/core/components/power-k/menus/settings.tsx"
 type: "code"
-community: "Issue Layouts"
-location: "L14"
+community: "Menu Power"
+location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layouts
+  - community/Menu_Power
 ---
 
 # Props
 
 ## Connections
 
-- [[layout-switcher.tsx]] - `contains` [EXTRACTED]
+- [[settings.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layouts
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

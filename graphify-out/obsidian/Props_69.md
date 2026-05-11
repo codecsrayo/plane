@@ -1,18 +1,18 @@
 ---
-source_file: "components/modules/modal.tsx"
+source_file: "web/ce/components/cycles/additional-actions.tsx"
 type: "code"
-community: "Module Analytics"
-location: "L22"
+community: "Additional Cycle"
+location: "L8"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Additional_Cycle
 ---
 
 # Props
 
 ## Connections
 
-- [[modal.tsx_2]] - `contains` [EXTRACTED]
+- [[additional-actions.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Additional_Cycle

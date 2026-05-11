@@ -1,26 +1,28 @@
 ---
-source_file: "components/project/header.tsx"
+source_file: "web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/views/(list)/header.tsx"
 type: "code"
-community: "Auth UI"
+community: "Project Profile"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_UI
+  - community/Project_Profile
 ---
 
 # header.tsx
 
 ## Connections
 
-- [[BreadcrumbLink]] - `imports` [EXTRACTED]
-- [[ProjectSearch]] - `imports` [EXTRACTED]
-- [[ProjectsBaseHeader]] - `contains` [EXTRACTED]
+- [[BreadcrumbLink()]] - `imports` [EXTRACTED]
+- [[CommonProjectBreadcrumbs()]] - `imports` [EXTRACTED]
+- [[ProjectViewsHeader]] - `contains` [EXTRACTED]
+- [[ViewListHeader]] - `imports` [EXTRACTED]
 - [[breadcrumb-link.tsx]] - `imports_from` [EXTRACTED]
-- [[filters.tsx_1]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
-- [[search-projects.tsx]] - `imports_from` [EXTRACTED]
+- [[layout.tsx_12]] - `imports_from` [EXTRACTED]
 - [[use-command-palette.ts]] - `imports_from` [EXTRACTED]
+- [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[useCommandPalette()]] - `imports` [EXTRACTED]
+- [[useProject()]] - `imports` [EXTRACTED]
+- [[view-list-header.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_UI
+#graphify/code #graphify/EXTRACTED #community/Project_Profile

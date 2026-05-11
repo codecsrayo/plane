@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/components/menus/bubble-menu/node-selector.tsx"
 type: "code"
-community: "Heading Bubble"
+community: "Toggle Menu"
 location: "L38"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Heading_Bubble
+  - community/Toggle_Menu
 ---
 
 # BubbleMenuNodeSelector()
@@ -28,4 +28,4 @@ tags:
 - [[node-selector.tsx]] - `contains` [EXTRACTED]
 - [[useFloatingMenu()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Heading_Bubble
+#graphify/code #graphify/INFERRED #community/Toggle_Menu

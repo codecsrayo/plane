@@ -1,5 +1,5 @@
 ---
-source_file: "components/power-k/ui/pages/context-based/index.ts"
+source_file: "web/core/components/power-k/ui/pages/context-based/index.ts"
 type: "code"
 community: "Context Power"
 location: "L19"
@@ -13,9 +13,9 @@ tags:
 
 ## Connections
 
-- [[command.tsx]] - `imports` [EXTRACTED]
+- [[command.tsx_1]] - `imports` [EXTRACTED]
 - [[context-indicator.tsx]] - `imports` [EXTRACTED]
-- [[index.ts_134]] - `contains` [EXTRACTED]
+- [[index.ts_399]] - `contains` [EXTRACTED]
 - [[shortcut.tsx]] - `imports` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Context_Power

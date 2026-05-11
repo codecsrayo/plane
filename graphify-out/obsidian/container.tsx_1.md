@@ -1,5 +1,5 @@
 ---
-source_file: "components/account/auth-forms/common/container.tsx"
+source_file: "web/core/components/account/auth-forms/common/container.tsx"
 type: "code"
 community: "Container"
 location: "L1"

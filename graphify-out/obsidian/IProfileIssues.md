@@ -1,18 +1,18 @@
 ---
-source_file: "store/issue/profile/issue.store.ts"
+source_file: "web/core/store/issue/profile/issue.store.ts"
 type: "code"
-community: "Profile Issues"
+community: "Filters Display"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Profile_Issues
+  - community/Filters_Display
 ---
 
 # IProfileIssues
 
 ## Connections
 
-- [[issue.store.ts_6]] - `contains` [EXTRACTED]
+- [[issue.store.ts_11]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Profile_Issues
+#graphify/code #graphify/EXTRACTED #community/Filters_Display

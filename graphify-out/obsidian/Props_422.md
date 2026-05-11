@@ -1,18 +1,18 @@
 ---
-source_file: "components/comments/card/edit-form.tsx"
+source_file: "web/core/components/power-k/menus/projects.tsx"
 type: "code"
-community: "Comment Card"
-location: "L18"
+community: "Menu Power"
+location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Comment_Card
+  - community/Menu_Power
 ---
 
 # Props
 
 ## Connections
 
-- [[edit-form.tsx]] - `contains` [EXTRACTED]
+- [[projects.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Comment_Card
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

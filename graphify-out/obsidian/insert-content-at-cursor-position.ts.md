@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/helpers/insert-content-at-cursor-position.ts"
 type: "code"
-community: "Scroll Insert"
+community: "Document Collaborative"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Scroll_Insert
+  - community/Document_Collaborative
 ---
 
 # insert-content-at-cursor-position.ts
@@ -16,4 +16,4 @@ tags:
 - [[editor-ref.ts]] - `imports_from` [EXTRACTED]
 - [[insertContentAtSavedSelection()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Scroll_Insert
+#graphify/code #graphify/EXTRACTED #community/Document_Collaborative

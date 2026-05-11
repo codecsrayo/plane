@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-modal/components/project-select.tsx"
+source_file: "web/core/components/issues/issue-modal/components/project-select.tsx"
 type: "code"
-community: "Module Forms"
+community: "Label Dropdown"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Forms
+  - community/Label_Dropdown
 ---
 
 # TIssueProjectSelectProps
@@ -15,4 +15,4 @@ tags:
 
 - [[project-select.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Forms
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

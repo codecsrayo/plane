@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/ce/extensions/slash-commands.tsx"
 type: "code"
-community: "Collaborative Editor"
+community: "Document Collaborative"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Collaborative_Editor
+  - community/Document_Collaborative
 ---
 
 # coreEditorAdditionalSlashCommandOptions()
@@ -15,4 +15,4 @@ tags:
 
 - [[slash-commands.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Collaborative_Editor
+#graphify/code #graphify/EXTRACTED #community/Document_Collaborative

@@ -1,5 +1,5 @@
 ---
-source_file: "components/estimates/points/create-root.tsx"
+source_file: "web/core/components/estimates/points/create-root.tsx"
 type: "code"
 community: "Estimate Point"
 location: "L37"

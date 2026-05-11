@@ -1,30 +1,30 @@
 ---
-source_file: "components/account/auth-forms/auth-header.tsx"
+source_file: "web/core/components/account/auth-forms/auth-header.tsx"
 type: "code"
-community: "Auth Terms"
+community: "Auth Titles"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Terms
+  - community/Auth_Titles
 ---
 
 # auth-header.tsx
 
 ## Connections
 
-- [[AuthHeader_1]] - `contains` [EXTRACTED]
+- [[AuthHeader()]] - `contains` [EXTRACTED]
 - [[AuthHeaderBase()_1]] - `contains` [EXTRACTED]
 - [[LogoSpinner()]] - `imports` [EXTRACTED]
 - [[TAuthHeader]] - `contains` [EXTRACTED]
 - [[TAuthHeaderBase_1]] - `contains` [EXTRACTED]
 - [[Titles]] - `contains` [EXTRACTED]
 - [[WorkspaceLogo]] - `imports` [EXTRACTED]
-- [[WorkspaceService]] - `imports` [EXTRACTED]
+- [[WorkspaceService_1]] - `imports` [EXTRACTED]
 - [[auth-root.tsx]] - `imports_from` [EXTRACTED]
 - [[logo-spinner.tsx]] - `imports_from` [EXTRACTED]
-- [[logo.tsx]] - `imports_from` [EXTRACTED]
+- [[logo.tsx_1]] - `imports_from` [EXTRACTED]
 - [[workSpaceService]] - `contains` [EXTRACTED]
-- [[workspace.service.ts]] - `imports_from` [EXTRACTED]
+- [[workspace.service.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Terms
+#graphify/code #graphify/EXTRACTED #community/Auth_Titles

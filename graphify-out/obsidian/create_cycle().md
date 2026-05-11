@@ -1,21 +1,18 @@
 ---
-source_file: "api_rust/src/routes/cycles.rs"
+source_file: "api/plane/tests/contract/api/test_cycles.py"
 type: "code"
-community: "Cycles Rust API"
-location: "L335"
+community: "Cycle Test"
+location: "L51"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycles_Rust_API
+  - community/Cycle_Test
 ---
 
 # create_cycle()
 
 ## Connections
 
-- [[.from_model()]] - `calls` [EXTRACTED]
-- [[cycles.rs]] - `contains` [EXTRACTED]
-- [[project_tz_to_utc()]] - `calls` [INFERRED]
-- [[require_role()]] - `calls` [INFERRED]
+- [[test_cycles.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycles_Rust_API
+#graphify/code #graphify/EXTRACTED #community/Cycle_Test

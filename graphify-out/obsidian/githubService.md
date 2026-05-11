@@ -1,12 +1,12 @@
 ---
-source_file: "components/integration/github/select-repository.tsx"
+source_file: "web/core/components/integration/github/select-repository.tsx"
 type: "code"
-community: "Github Integration"
+community: "Github Select"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Github_Integration
+  - community/Github_Select
 ---
 
 # githubService
@@ -15,4 +15,4 @@ tags:
 
 - [[select-repository.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Github_Integration
+#graphify/code #graphify/EXTRACTED #community/Github_Select

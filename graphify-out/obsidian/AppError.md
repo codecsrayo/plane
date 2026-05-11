@@ -1,19 +1,32 @@
 ---
-source_file: "api_rust/src/error.rs"
+source_file: "live/src/lib/errors.ts"
 type: "code"
-community: "Community 294"
-location: "L11"
+community: "Broadcast Context"
+location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_294
+  - community/Broadcast_Context
 ---
 
 # AppError
 
 ## Connections
 
-- [[.into_response()]] - `method` [EXTRACTED]
-- [[error.rs]] - `contains` [EXTRACTED]
+- [[.constructor()_187]] - `method` [EXTRACTED]
+- [[api.service.ts_2]] - `imports` [EXTRACTED]
+- [[auth.ts_3]] - `imports` [EXTRACTED]
+- [[broadcast-message.ts]] - `imports` [EXTRACTED]
+- [[core.service.ts]] - `imports` [EXTRACTED]
+- [[database.ts]] - `imports` [EXTRACTED]
+- [[errors.ts]] - `contains` [EXTRACTED]
+- [[handler.ts]] - `imports` [EXTRACTED]
+- [[pdf-export.controller.ts]] - `imports` [EXTRACTED]
+- [[project-page.service.ts_1]] - `imports` [EXTRACTED]
+- [[redis.ts_1]] - `imports` [EXTRACTED]
+- [[start.ts]] - `imports` [EXTRACTED]
+- [[title-sync.ts]] - `imports` [EXTRACTED]
+- [[title-update-manager.ts]] - `imports` [EXTRACTED]
+- [[user.service.ts_2]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_294
+#graphify/code #graphify/EXTRACTED #community/Broadcast_Context

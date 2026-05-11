@@ -1,12 +1,12 @@
 ---
-source_file: "components/ui/loader/utils.tsx"
+source_file: "web/core/components/ui/loader/utils.tsx"
 type: "code"
-community: "Loader Kanban"
+community: "Loader Calendar"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Loader_Kanban
+  - community/Loader_Calendar
 ---
 
 # getRandomLength()
@@ -19,6 +19,6 @@ tags:
 - [[gantt-layout-loader.tsx]] - `imports` [EXTRACTED]
 - [[list-layout-loader.tsx]] - `imports` [EXTRACTED]
 - [[spreadsheet-layout-loader.tsx]] - `imports` [EXTRACTED]
-- [[utils.tsx]] - `contains` [EXTRACTED]
+- [[utils.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Loader_Kanban
+#graphify/code #graphify/EXTRACTED #community/Loader_Calendar

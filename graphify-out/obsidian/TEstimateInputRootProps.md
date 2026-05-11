@@ -1,18 +1,18 @@
 ---
-source_file: "components/estimates/inputs/root.tsx"
+source_file: "web/core/components/estimates/inputs/root.tsx"
 type: "code"
-community: "Input Estimate"
+community: "Estimate Point"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Input_Estimate
+  - community/Estimate_Point
 ---
 
 # TEstimateInputRootProps
 
 ## Connections
 
-- [[root.tsx_86]] - `contains` [EXTRACTED]
+- [[root.tsx_127]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Input_Estimate
+#graphify/code #graphify/EXTRACTED #community/Estimate_Point

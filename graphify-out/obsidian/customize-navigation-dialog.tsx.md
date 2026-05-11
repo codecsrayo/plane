@@ -1,5 +1,5 @@
 ---
-source_file: "components/navigation/customize-navigation-dialog.tsx"
+source_file: "web/core/components/navigation/customize-navigation-dialog.tsx"
 type: "code"
 community: "Sidebar Navigation"
 location: "L1"
@@ -18,8 +18,9 @@ tags:
 - [[TCustomizeNavigationDialogProps]] - `contains` [EXTRACTED]
 - [[TPersonalNavigationItemKey]] - `imports` [EXTRACTED]
 - [[TWorkspaceNavigationItem]] - `contains` [EXTRACTED]
+- [[getSidebarNavigationItemIcon()]] - `imports` [EXTRACTED]
 - [[handleProjectCountInputKeyDown()]] - `contains` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
 - [[navigation-preferences.ts]] - `imports_from` [EXTRACTED]
 - [[sidebar-wrapper.tsx]] - `imports_from` [EXTRACTED]
 - [[use-navigation-preferences.ts]] - `imports_from` [EXTRACTED]

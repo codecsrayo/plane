@@ -1,22 +1,26 @@
 ---
-source_file: "api_rust/src/routes/webhooks.rs"
+source_file: "api_rust/tests/webhooks.rs"
 type: "code"
-community: "Community 47"
-location: "L194"
+community: "Returns Webhook"
+location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_47
+  - community/Returns_Webhook
 ---
 
 # create_webhook()
 
 ## Connections
 
-- [[.from_model()_10]] - `calls` [EXTRACTED]
-- [[generate_secret()]] - `calls` [EXTRACTED]
-- [[require_workspace_admin()]] - `calls` [INFERRED]
-- [[validate_webhook_url()]] - `calls` [EXTRACTED]
+- [[delete_webhook_returns_204()]] - `calls` [EXTRACTED]
+- [[get_deleted_webhook_returns_404()]] - `calls` [EXTRACTED]
+- [[get_webhook_returns_200()]] - `calls` [EXTRACTED]
+- [[list_webhook_logs_returns_200()]] - `calls` [EXTRACTED]
+- [[list_webhook_logs_unauthenticated_returns_401()]] - `calls` [EXTRACTED]
+- [[list_webhooks_returns_created_webhook()]] - `calls` [EXTRACTED]
+- [[regenerate_webhook_secret_returns_200()]] - `calls` [EXTRACTED]
+- [[update_webhook_returns_200()]] - `calls` [EXTRACTED]
 - [[webhooks.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_47
+#graphify/code #graphify/EXTRACTED #community/Returns_Webhook

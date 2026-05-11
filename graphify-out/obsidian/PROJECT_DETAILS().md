@@ -1,12 +1,12 @@
 ---
-source_file: "constants/fetch-keys.ts"
+source_file: "web/core/constants/fetch-keys.ts"
 type: "code"
-community: "Member Project"
+community: "Project Workspace"
 location: "L161"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Project
+  - community/Project_Workspace
 ---
 
 # PROJECT_DETAILS()
@@ -17,4 +17,4 @@ tags:
 - [[project-settings-member-defaults.tsx]] - `imports` [EXTRACTED]
 - [[project-wrapper.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Project
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

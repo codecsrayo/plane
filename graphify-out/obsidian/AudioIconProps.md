@@ -1,5 +1,5 @@
 ---
-source_file: "components/icons/attachment/audio-file-icon.tsx"
+source_file: "web/core/components/icons/attachment/audio-file-icon.tsx"
 type: "code"
 community: "Audio Icon"
 location: "L11"
@@ -13,6 +13,6 @@ tags:
 
 ## Connections
 
-- [[audio-file-icon.tsx]] - `contains` [EXTRACTED]
+- [[audio-file-icon.tsx_1]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Audio_Icon

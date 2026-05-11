@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/emoji-icon-picker/logo.tsx"
 type: "code"
-community: "Icons Lucide"
+community: "Emoji Icon"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Icons_Lucide
+  - community/Emoji_Icon
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[logo.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Icons_Lucide
+#graphify/code #graphify/EXTRACTED #community/Emoji_Icon

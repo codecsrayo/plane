@@ -1,18 +1,18 @@
 ---
-source_file: "components/dropdowns/member/avatar.tsx"
+source_file: "web/core/components/dropdowns/member/avatar.tsx"
 type: "code"
-community: "Module Forms"
+community: "Label Dropdown"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Forms
+  - community/Label_Dropdown
 ---
 
 # AvatarProps
 
 ## Connections
 
-- [[avatar.tsx]] - `contains` [EXTRACTED]
+- [[avatar.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Forms
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

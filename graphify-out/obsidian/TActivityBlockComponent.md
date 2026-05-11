@@ -1,12 +1,12 @@
 ---
-source_file: "components/common/activity/activity-block.tsx"
+source_file: "web/core/components/common/activity/activity-block.tsx"
 type: "code"
-community: "Activity User"
+community: "Issue Activity"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Activity_User
+  - community/Issue_Activity
 ---
 
 # TActivityBlockComponent
@@ -15,4 +15,4 @@ tags:
 
 - [[activity-block.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Activity_User
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/constants/extension.ts"
 type: "code"
-community: "Editor Commands"
+community: "Unique Core"
 location: "L54"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Commands
+  - community/Unique_Core
 ---
 
 # BLOCK_NODE_TYPES
@@ -16,4 +16,4 @@ tags:
 - [[extension.ts]] - `contains` [EXTRACTED]
 - [[extension.ts_2]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Commands
+#graphify/code #graphify/EXTRACTED #community/Unique_Core

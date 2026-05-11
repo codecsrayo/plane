@@ -1,5 +1,5 @@
 ---
-source_file: "components/core/sidebar/progress-stats/shared.ts"
+source_file: "web/core/components/core/sidebar/progress-stats/shared.ts"
 type: "code"
 community: "Progress Stats"
 location: "L25"
@@ -13,6 +13,6 @@ tags:
 
 ## Connections
 
-- [[shared.ts_4]] - `contains` [EXTRACTED]
+- [[shared.ts_15]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Progress_Stats

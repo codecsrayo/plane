@@ -1,12 +1,12 @@
 ---
-source_file: "components/ui/empty-space.tsx"
+source_file: "web/core/components/ui/empty-space.tsx"
 type: "code"
-community: "Empty Space"
+community: "Workspace Issue"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_Space
+  - community/Workspace_Issue
 ---
 
 # EmptySpaceProps
@@ -15,4 +15,4 @@ tags:
 
 - [[empty-space.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_Space
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

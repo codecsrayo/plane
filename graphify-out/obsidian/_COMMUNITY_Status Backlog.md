@@ -37,7 +37,7 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 12 edges to [[_COMMUNITY_Logo Icons]]
+- 12 edges to [[_COMMUNITY_Icon Panel]]
 
 ## Top bridge nodes
 

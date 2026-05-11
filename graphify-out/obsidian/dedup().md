@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/issue_filters.rs"
 type: "code"
-community: "Issue Routes Rust API"
+community: "Load Apply"
 location: "L734"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Routes_Rust_API
+  - community/Load_Apply
 ---
 
 # dedup()
@@ -20,4 +20,4 @@ tags:
 - [[load_issues_with_labels()]] - `calls` [EXTRACTED]
 - [[load_issues_with_subscribers()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Routes_Rust_API
+#graphify/code #graphify/EXTRACTED #community/Load_Apply

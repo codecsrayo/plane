@@ -1,5 +1,5 @@
 ---
-source_file: "components/sidebar/sidebar-item.tsx"
+source_file: "web/core/components/sidebar/sidebar-item.tsx"
 type: "code"
 community: "Sidebar Rail"
 location: "L175"
@@ -13,6 +13,6 @@ tags:
 
 ## Connections
 
-- [[sidebar-item.tsx]] - `contains` [EXTRACTED]
+- [[sidebar-item.tsx_1]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Sidebar_Rail

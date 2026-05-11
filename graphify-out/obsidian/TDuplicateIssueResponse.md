@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/de-dupe.ts"
 type: "code"
-community: "Issue Options"
+community: "Issue Entity"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Options
+  - community/Issue_Entity
 ---
 
 # TDuplicateIssueResponse
@@ -15,4 +15,4 @@ tags:
 
 - [[de-dupe.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Options
+#graphify/code #graphify/EXTRACTED #community/Issue_Entity

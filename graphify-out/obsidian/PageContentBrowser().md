@@ -1,5 +1,5 @@
 ---
-source_file: "components/pages/editor/summary/content-browser.tsx"
+source_file: "web/core/components/pages/editor/summary/content-browser.tsx"
 type: "code"
 community: "Outline Content"
 location: "L23"

@@ -1,18 +1,18 @@
 ---
-source_file: "components/onboarding/steps/team/root.tsx"
+source_file: "web/core/components/common/access-field.tsx"
 type: "code"
-community: "Workspace Workspaceservice"
-location: "L38"
+community: "Project Work"
+location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Workspaceservice
+  - community/Project_Work
 ---
 
 # Props
 
 ## Connections
 
-- [[root.tsx_67]] - `contains` [EXTRACTED]
+- [[access-field.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Workspaceservice
+#graphify/code #graphify/EXTRACTED #community/Project_Work

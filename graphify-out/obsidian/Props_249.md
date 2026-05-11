@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/filters/applied-filters/label.tsx"
+source_file: "web/core/components/automation/auto-close-automation.tsx"
 type: "code"
-community: "Applied Labels"
-location: "L14"
+community: "Issue Work"
+location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Labels
+  - community/Issue_Work
 ---
 
 # Props
 
 ## Connections
 
-- [[label.tsx_1]] - `contains` [EXTRACTED]
+- [[auto-close-automation.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Labels
+#graphify/code #graphify/EXTRACTED #community/Issue_Work

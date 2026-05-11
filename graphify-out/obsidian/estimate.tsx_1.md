@@ -1,22 +1,36 @@
 ---
-source_file: "components/issues/issue-detail/issue-activity/activity/actions/estimate.tsx"
+source_file: "web/core/components/dropdowns/estimate.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Label Dropdown"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Label_Dropdown
 ---
 
 # estimate.tsx
 
 ## Connections
 
-- [[IssueEstimateActivity]] - `contains` [EXTRACTED]
-- [[TIssueEstimateActivity]] - `contains` [EXTRACTED]
-- [[index.ts_104]] - `imports_from` [EXTRACTED]
-- [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
-- [[useIssueDetail()]] - `imports` [EXTRACTED]
+- [[BUTTON_VARIANTS_WITH_TEXT]] - `imports` [EXTRACTED]
+- [[DropdownButton()_1]] - `imports` [EXTRACTED]
+- [[DropdownOptions]] - `contains` [EXTRACTED]
+- [[EstimateDropdown]] - `contains` [EXTRACTED]
+- [[Props_194]] - `contains` [EXTRACTED]
+- [[all-properties.tsx]] - `imports_from` [EXTRACTED]
+- [[buttons.tsx]] - `imports_from` [EXTRACTED]
+- [[constants.ts_5]] - `imports_from` [EXTRACTED]
+- [[default-properties.tsx]] - `imports_from` [EXTRACTED]
+- [[draft-issue-properties.tsx]] - `imports_from` [EXTRACTED]
+- [[estimate-column.tsx]] - `imports_from` [EXTRACTED]
+- [[index.ts_268]] - `imports_from` [EXTRACTED]
+- [[issue-properties.tsx_1]] - `imports_from` [EXTRACTED]
+- [[properties.tsx_2]] - `imports_from` [EXTRACTED]
+- [[sidebar.tsx_4]] - `imports_from` [EXTRACTED]
+- [[use-dropdown.ts]] - `imports_from` [EXTRACTED]
+- [[use-estimate.ts]] - `imports_from` [EXTRACTED]
+- [[useDropdown()]] - `imports` [EXTRACTED]
+- [[useEstimate()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

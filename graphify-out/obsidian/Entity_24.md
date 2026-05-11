@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/django_content_type.rs"
 type: "code"
-community: "Community 522"
+community: "Entity"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_522
+  - community/Entity
 ---
 
 # Entity
@@ -15,4 +15,4 @@ tags:
 
 - [[.to()_24]] - `method` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_522
+#graphify/code #graphify/EXTRACTED #community/Entity

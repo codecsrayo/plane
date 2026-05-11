@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/config.rs"
 type: "code"
-community: "Community 170"
+community: "Config Only"
 location: "L321"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_170
+  - community/Config_Only
 ---
 
 # app_base_url_only_falls_back_to_web_url()
@@ -16,4 +16,4 @@ tags:
 - [[config.rs]] - `contains` [EXTRACTED]
 - [[config_with()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_170
+#graphify/code #graphify/EXTRACTED #community/Config_Only

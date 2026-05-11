@@ -11,9 +11,9 @@ members: 3
 
 ## Members
 
-- [[ProfileEmptyState()]] - code - components/ui/profile-empty-state.tsx
-- [[Props_6]] - code - components/ui/profile-empty-state.tsx
-- [[profile-empty-state.tsx]] - code - components/ui/profile-empty-state.tsx
+- [[ProfileEmptyState()]] - code - web/core/components/ui/profile-empty-state.tsx
+- [[Props_83]] - code - web/core/components/ui/profile-empty-state.tsx
+- [[profile-empty-state.tsx]] - code - web/core/components/ui/profile-empty-state.tsx
 
 ## Live Query (requires Dataview plugin)
 

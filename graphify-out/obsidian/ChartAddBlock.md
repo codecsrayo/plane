@@ -1,5 +1,5 @@
 ---
-source_file: "components/gantt-chart/helpers/add-block.tsx"
+source_file: "web/core/components/gantt-chart/helpers/add-block.tsx"
 type: "code"
 community: "Gantt Chart"
 location: "L26"

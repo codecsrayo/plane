@@ -1,18 +1,18 @@
 ---
-source_file: "components/estimates/estimate-list-item.tsx"
+source_file: "web/ce/components/estimates/estimate-list-item-buttons.tsx"
 type: "code"
-community: "Estimate Disable"
-location: "L19"
+community: "Estimate Buttons"
+location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Estimate_Disable
+  - community/Estimate_Buttons
 ---
 
 # TEstimateListItem
 
 ## Connections
 
-- [[estimate-list-item.tsx]] - `contains` [EXTRACTED]
+- [[estimate-list-item-buttons.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Estimate_Disable
+#graphify/code #graphify/EXTRACTED #community/Estimate_Buttons

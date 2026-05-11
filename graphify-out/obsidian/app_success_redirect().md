@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/auth/magic_auth.rs"
 type: "code"
-community: "Community 50"
+community: "Magic Sign"
 location: "L672"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_50
+  - graphify/INFERRED
+  - community/Magic_Sign
 ---
 
 # app_success_redirect()
@@ -18,4 +18,4 @@ tags:
 - [[magic_auth.rs]] - `contains` [EXTRACTED]
 - [[safe_next_path()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_50
+#graphify/code #graphify/INFERRED #community/Magic_Sign

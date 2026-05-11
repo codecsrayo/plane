@@ -1,12 +1,12 @@
 ---
-source_file: "components/estimates/inputs/number-input.tsx"
+source_file: "web/core/components/estimates/inputs/number-input.tsx"
 type: "code"
-community: "Input Estimate"
+community: "Estimate Point"
 location: "L8"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Input_Estimate
+  - community/Estimate_Point
 ---
 
 # TEstimateNumberInputProps
@@ -15,4 +15,4 @@ tags:
 
 - [[number-input.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Input_Estimate
+#graphify/code #graphify/EXTRACTED #community/Estimate_Point

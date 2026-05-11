@@ -1,18 +1,18 @@
 ---
-source_file: "components/work-item-filters/filters-hoc/base.tsx"
+source_file: "web/core/components/work-item-filters/filters-hoc/base.tsx"
 type: "code"
-community: "Work Filters"
+community: "Project Work"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Work_Filters
+  - community/Project_Work
 ---
 
 # TAdditionalWorkItemFiltersProps
 
 ## Connections
 
-- [[base.tsx_8]] - `contains` [EXTRACTED]
+- [[base.tsx_9]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Work_Filters
+#graphify/code #graphify/EXTRACTED #community/Project_Work

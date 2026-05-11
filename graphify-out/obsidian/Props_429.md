@@ -1,18 +1,18 @@
 ---
-source_file: "components/analytics/select/project.tsx"
+source_file: "web/core/components/power-k/menus/members.tsx"
 type: "code"
-community: "Analytics Project"
+community: "Member Members"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Analytics_Project
+  - community/Member_Members
 ---
 
 # Props
 
 ## Connections
 
-- [[project.tsx_3]] - `contains` [EXTRACTED]
+- [[members.tsx_8]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Analytics_Project
+#graphify/code #graphify/EXTRACTED #community/Member_Members

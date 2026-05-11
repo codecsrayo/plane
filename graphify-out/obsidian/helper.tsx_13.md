@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/banner/helper.tsx"
 type: "code"
-community: "Banner Error"
+community: "Banner Styling"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Banner_Error
+  - community/Banner_Styling
 ---
 
 # helper.tsx
@@ -24,4 +24,4 @@ tags:
 - [[getBannerStyling()]] - `contains` [EXTRACTED]
 - [[getBannerTitleStyling()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Banner_Error
+#graphify/code #graphify/EXTRACTED #community/Banner_Styling

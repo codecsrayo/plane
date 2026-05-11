@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/ui/pages/context-based/work-item/estimates-menu.tsx"
+source_file: "web/core/components/issues/issue-layouts/filters/header/filters/due-date.tsx"
 type: "code"
-community: "Menu Power"
-location: "L21"
+community: "Date Start"
+location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu_Power
+  - community/Date_Start
 ---
 
 # Props
 
 ## Connections
 
-- [[estimates-menu.tsx]] - `contains` [EXTRACTED]
+- [[due-date.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Menu_Power
+#graphify/code #graphify/EXTRACTED #community/Date_Start

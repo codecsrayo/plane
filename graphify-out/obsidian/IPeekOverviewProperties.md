@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/peek-overview/properties.tsx"
+source_file: "web/core/components/issues/peek-overview/properties.tsx"
 type: "code"
-community: "Issue Properties"
+community: "Label Dropdown"
 location: "L49"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Label_Dropdown
 ---
 
 # IPeekOverviewProperties
@@ -15,4 +15,4 @@ tags:
 
 - [[properties.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

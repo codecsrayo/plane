@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-detail-widgets/issue-detail-widget-modals.tsx"
+source_file: "web/core/components/issues/issue-layouts/empty-states/index.tsx"
 type: "code"
-community: "Issue Activity"
-location: "L24"
+community: "Project Profile"
+location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Project_Profile
 ---
 
 # Props
 
 ## Connections
 
-- [[issue-detail-widget-modals.tsx]] - `contains` [EXTRACTED]
+- [[index.tsx_13]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Project_Profile

@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/charts/index.ts"
 type: "code"
-community: "Analytics Charts"
+community: "Chart Analytics"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Analytics_Charts
+  - community/Chart_Analytics
 ---
 
 # index.ts
@@ -38,4 +38,4 @@ tags:
 - [[TreeMapItem]] - `contains` [EXTRACTED]
 - [[analytics.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Analytics_Charts
+#graphify/code #graphify/EXTRACTED #community/Chart_Analytics

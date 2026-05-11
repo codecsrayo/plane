@@ -1,24 +1,25 @@
 ---
-source_file: "components/cycles/modal.tsx"
+source_file: "web/core/components/cycles/modal.tsx"
 type: "code"
-community: "Module Forms"
+community: "Project Settings"
 location: "L37"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Forms
+  - community/Project_Settings
 ---
 
 # CycleCreateUpdateModal()
 
 ## Connections
 
-- [[modal.tsx_9]] - `contains` [EXTRACTED]
+- [[modal.tsx_14]] - `contains` [EXTRACTED]
+- [[page.tsx_26]] - `imports` [EXTRACTED]
+- [[project-level.tsx]] - `imports` [EXTRACTED]
 - [[quick-actions.tsx_3]] - `imports` [EXTRACTED]
-- [[useCycle()]] - `calls` [EXTRACTED]
 - [[useKeypress()]] - `calls` [EXTRACTED]
-- [[useLocalStorage()]] - `calls` [EXTRACTED]
+- [[useLocalStorage()_1]] - `calls` [EXTRACTED]
 - [[usePlatformOS()]] - `calls` [EXTRACTED]
 - [[useProject()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Forms
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

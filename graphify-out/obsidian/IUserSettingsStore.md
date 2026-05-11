@@ -1,5 +1,5 @@
 ---
-source_file: "store/user/settings.store.ts"
+source_file: "web/core/store/user/settings.store.ts"
 type: "code"
 community: "User Profile"
 location: "L19"
@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 
-- [[index.ts_7]] - `imports` [EXTRACTED]
+- [[index.ts_272]] - `imports` [EXTRACTED]
 - [[settings.store.ts]] - `contains` [EXTRACTED]
 - [[user-user-settings.ts]] - `imports` [EXTRACTED]
 

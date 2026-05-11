@@ -1,14 +1,14 @@
 ---
 source_file: "api_rust/src/entities/django_celery_beat_clockedschedule.rs"
 type: "code"
-community: "Community 704"
+community: "Active Model"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_704
+  - community/Active_Model
 ---
 
 # ActiveModel
 
-#graphify/code #graphify/EXTRACTED #community/Community_704
+#graphify/code #graphify/EXTRACTED #community/Active_Model

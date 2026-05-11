@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/types/hook.ts"
 type: "code"
-community: "Callout Extension"
+community: "Items Extended"
 location: "L48"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Callout_Extension
+  - community/Items_Extended
 ---
 
 # TCollaborativeEditorHookProps
@@ -15,4 +15,4 @@ tags:
 
 - [[hook.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Callout_Extension
+#graphify/code #graphify/EXTRACTED #community/Items_Extended

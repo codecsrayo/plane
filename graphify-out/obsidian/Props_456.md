@@ -1,18 +1,18 @@
 ---
-source_file: "components/core/modals/existing-issues-list-modal.tsx"
+source_file: "web/core/components/empty-state/detailed-empty-state-root.tsx"
 type: "code"
-community: "Spreadsheet Columns"
-location: "L32"
+community: "Project Settings"
+location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Columns
+  - community/Project_Settings
 ---
 
 # Props
 
 ## Connections
 
-- [[existing-issues-list-modal.tsx]] - `contains` [EXTRACTED]
+- [[detailed-empty-state-root.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Columns
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

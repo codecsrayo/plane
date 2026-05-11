@@ -1,5 +1,5 @@
 ---
-source_file: "components/workspace-notifications/sidebar/notification-card/options/archive.tsx"
+source_file: "web/core/components/workspace-notifications/sidebar/notification-card/options/archive.tsx"
 type: "code"
 community: "Notification Option"
 location: "L18"

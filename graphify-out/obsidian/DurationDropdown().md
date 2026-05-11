@@ -1,5 +1,5 @@
 ---
-source_file: "components/analytics/select/duration.tsx"
+source_file: "web/core/components/analytics/select/duration.tsx"
 type: "code"
 community: "Duration"
 location: "L30"

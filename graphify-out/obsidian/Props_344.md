@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/ui/renderer/command.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/attachments/title.tsx"
 type: "code"
-community: "Context Power"
-location: "L17"
+community: "Attachment Issue"
+location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Context_Power
+  - community/Attachment_Issue
 ---
 
 # Props
 
 ## Connections
 
-- [[command.tsx]] - `contains` [EXTRACTED]
+- [[title.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Context_Power
+#graphify/code #graphify/EXTRACTED #community/Attachment_Issue

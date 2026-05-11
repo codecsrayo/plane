@@ -1,5 +1,5 @@
 ---
-source_file: "components/automation/select-month-modal.tsx"
+source_file: "web/core/components/automation/select-month-modal.tsx"
 type: "code"
 community: "Select Month"
 location: "L24"

@@ -1,19 +1,19 @@
 ---
 source_file: "api_rust/src/error.rs"
 type: "code"
-community: "Community 294"
+community: "User Github"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_294
+  - community/User_Github
 ---
 
 # error.rs
 
 ## Connections
 
-- [[AppError]] - `contains` [EXTRACTED]
+- [[AppError_1]] - `contains` [EXTRACTED]
 - [[ErrorBody]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_294
+#graphify/code #graphify/EXTRACTED #community/User_Github

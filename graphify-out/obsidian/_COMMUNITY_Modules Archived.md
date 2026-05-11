@@ -1,34 +1,59 @@
 ---
 type: community
-cohesion: 0.21
-members: 18
+cohesion: 0.05
+members: 43
 ---
 
 # Modules Archived
 
-**Cohesion:** 0.21 - loosely connected
-**Members:** 18 nodes
+**Cohesion:** 0.05 - loosely connected
+**Members:** 43 nodes
 
 ## Members
 
-- [[ArchivedModuleLayoutRoot]] - code - components/modules/archived-modules/root.tsx
-- [[ArchivedModulesHeader]] - code - components/modules/archived-modules/header.tsx
-- [[ArchivedModulesView]] - code - components/modules/archived-modules/view.tsx
-- [[CycleModuleBoardLayoutLoader()]] - code - components/ui/loader/cycle-module-board-loader.tsx
-- [[CycleModuleListLayoutLoader()]] - code - components/ui/loader/cycle-module-list-loader.tsx
-- [[IArchivedModulesView]] - code - components/modules/archived-modules/view.tsx
-- [[ModulesListGanttChartView]] - code - components/modules/gantt-chart/modules-list-layout.tsx
-- [[ModulesListView]] - code - components/modules/modules-list-view.tsx
-- [[cycle-module-board-loader.tsx]] - code - components/ui/loader/cycle-module-board-loader.tsx
-- [[cycle-module-list-loader.tsx]] - code - components/ui/loader/cycle-module-list-loader.tsx
-- [[header.tsx_2]] - code - components/modules/archived-modules/header.tsx
-- [[index.ts_58]] - code - components/modules/index.ts
-- [[modules-list-layout.tsx]] - code - components/modules/gantt-chart/modules-list-layout.tsx
-- [[modules-list-view.tsx]] - code - components/modules/modules-list-view.tsx
-- [[root.tsx_13]] - code - components/modules/archived-modules/root.tsx
-- [[use-module-filter.ts]] - code - hooks/store/use-module-filter.ts
-- [[useModuleFilter()]] - code - hooks/store/use-module-filter.ts
-- [[view.tsx]] - code - components/modules/archived-modules/view.tsx
+- [[.addIssuesToModule()_2]] - code - web/core/services/module.service.ts
+- [[.addModuleToFavorites()_2]] - code - web/core/services/module.service.ts
+- [[.addModulesToIssue()_2]] - code - web/core/services/module.service.ts
+- [[.archiveModule()]] - code - web/core/services/module_archive.service.ts
+- [[.constructor()_153]] - code - web/core/services/module_archive.service.ts
+- [[.constructor()_154]] - code - web/core/services/module.service.ts
+- [[.constructor()_61]] - code - web/core/store/module.store.ts
+- [[.createModule()]] - code - web/core/services/module.service.ts
+- [[.createModuleLink()_1]] - code - web/core/services/module.service.ts
+- [[.deleteModule()]] - code - web/core/services/module.service.ts
+- [[.deleteModuleLink()_1]] - code - web/core/services/module.service.ts
+- [[.getArchivedModuleDetails()]] - code - web/core/services/module_archive.service.ts
+- [[.getArchivedModules()]] - code - web/core/services/module_archive.service.ts
+- [[.getModuleDetails()]] - code - web/core/services/module.service.ts
+- [[.getModuleIssues()_1]] - code - web/core/services/module.service.ts
+- [[.getModules()]] - code - web/core/services/module.service.ts
+- [[.getWorkspaceModules()]] - code - web/core/services/module.service.ts
+- [[.patchModule()]] - code - web/core/services/module.service.ts
+- [[.projectArchivedModuleIds()]] - code - web/core/store/module.store.ts
+- [[.projectModuleIds()]] - code - web/core/store/module.store.ts
+- [[.removeIssuesFromModuleBulk()_2]] - code - web/core/services/module.service.ts
+- [[.removeModuleFromFavorites()_2]] - code - web/core/services/module.service.ts
+- [[.removeModulesFromIssueBulk()_2]] - code - web/core/services/module.service.ts
+- [[.restoreModule()]] - code - web/core/services/module_archive.service.ts
+- [[.updateModule()]] - code - web/core/services/module.service.ts
+- [[.updateModuleLink()_1]] - code - web/core/services/module.service.ts
+- [[IModuleStore]] - code - web/core/store/module.store.ts
+- [[ModuleArchiveService]] - code - web/core/services/module_archive.service.ts
+- [[ModuleService_1]] - code - web/core/services/module.service.ts
+- [[ModulesStore]] - code - web/core/store/module.store.ts
+- [[displayFilters]] - code - web/core/store/module.store.ts
+- [[filters]] - code - web/core/store/module.store.ts
+- [[linkModules]] - code - web/core/store/module.store.ts
+- [[module.service.ts_1]] - code - web/core/services/module.service.ts
+- [[module.store.ts]] - code - web/core/store/module.store.ts
+- [[moduleDetails]] - code - web/core/store/module.store.ts
+- [[moduleIds]] - code - web/core/store/module.store.ts
+- [[module_archive.service.ts]] - code - web/core/services/module_archive.service.ts
+- [[modules]] - code - web/core/store/module.store.ts
+- [[originalModuleDetails]] - code - web/core/store/module.store.ts
+- [[projectModuleIds]] - code - web/core/store/module.store.ts
+- [[projectModules]] - code - web/core/store/module.store.ts
+- [[uniqueProjectIds]] - code - web/core/store/module.store.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -39,30 +64,17 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 13 edges to [[_COMMUNITY_Module Analytics]]
-- 7 edges to [[_COMMUNITY_Archived Cycles]]
-- 3 edges to [[_COMMUNITY_Module Forms]]
-- 2 edges to [[_COMMUNITY_Cycle Details]]
-- 2 edges to [[_COMMUNITY_Project Archives]]
-- 2 edges to [[_COMMUNITY_Workspace Draft]]
-- 2 edges to [[_COMMUNITY_Storage Display]]
-- 2 edges to [[_COMMUNITY_Icon Ilayouticon]]
-- 2 edges to [[_COMMUNITY_Issue Filters]]
-- 2 edges to [[_COMMUNITY_Gantt Sidebar]]
-- 2 edges to [[_COMMUNITY_Gantt Chart]]
-- 2 edges to [[_COMMUNITY_Gantt Chart]]
-- 1 edge to [[_COMMUNITY_Member Settings]]
-- 1 edge to [[_COMMUNITY_Action Status]]
-- 1 edge to [[_COMMUNITY_Menu Quick]]
-- 1 edge to [[_COMMUNITY_Lead Members]]
-- 1 edge to [[_COMMUNITY_Applied Filters]]
-- 1 edge to [[_COMMUNITY_Action Pages]]
-- 1 edge to [[_COMMUNITY_Filter Selection UI]]
+- 5 edges to [[_COMMUNITY_Issue Project]]
+- 4 edges to [[_COMMUNITY_Project Issue]]
+- 2 edges to [[_COMMUNITY_Cycles Archived]]
+- 2 edges to [[_COMMUNITY_Issue Group]]
+- 1 edge to [[_COMMUNITY_Issue Activity]]
+- 1 edge to [[_COMMUNITY_Estimate Project]]
 
 ## Top bridge nodes
 
-- [[index.ts_58]] - degree 18, connects to 7 communities
-- [[modules-list-view.tsx]] - degree 16, connects to 5 communities
-- [[modules-list-layout.tsx]] - degree 11, connects to 4 communities
-- [[use-module-filter.ts]] - degree 11, connects to 3 communities
-- [[header.tsx_2]] - degree 8, connects to 3 communities
+- [[module.store.ts]] - degree 22, connects to 5 communities
+- [[module.service.ts_1]] - degree 5, connects to 2 communities
+- [[IModuleStore]] - degree 3, connects to 2 communities
+- [[ModuleService_1]] - degree 21, connects to 1 community
+- [[ModulesStore]] - degree 5, connects to 1 community

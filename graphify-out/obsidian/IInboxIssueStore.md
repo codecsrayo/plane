@@ -1,5 +1,5 @@
 ---
-source_file: "store/inbox/inbox-issue.store.ts"
+source_file: "web/core/store/inbox/inbox-issue.store.ts"
 type: "code"
 community: "Issue Inbox"
 location: "L24"
@@ -18,7 +18,7 @@ tags:
 - [[inbox-issue-status.tsx]] - `imports` [EXTRACTED]
 - [[inbox-issue.store.ts]] - `contains` [EXTRACTED]
 - [[issue-root.tsx]] - `imports` [EXTRACTED]
-- [[project-inbox.store.ts]] - `imports` [EXTRACTED]
+- [[project-inbox.store.ts_1]] - `imports` [EXTRACTED]
 - [[use-inbox-issues.ts]] - `imports` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Issue_Inbox

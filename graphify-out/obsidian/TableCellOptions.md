@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/table/table-cell.ts"
 type: "code"
-community: "Table Cell"
+community: "Table Node"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Table_Cell
+  - community/Table_Node
 ---
 
 # TableCellOptions
@@ -15,4 +15,4 @@ tags:
 
 - [[table-cell.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Table_Cell
+#graphify/code #graphify/EXTRACTED #community/Table_Node

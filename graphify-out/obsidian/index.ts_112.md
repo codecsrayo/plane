@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/importer/index.ts"
 type: "code"
-community: "Import Export"
+community: "User Instance"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Import_Export
+  - community/User_Instance
 ---
 
 # index.ts
@@ -20,4 +20,4 @@ tags:
 - [[index.ts_98]] - `imports_from` [EXTRACTED]
 - [[users.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Import_Export
+#graphify/code #graphify/EXTRACTED #community/User_Instance

@@ -1,18 +1,18 @@
 ---
-source_file: "components/automation/auto-archive-automation.tsx"
+source_file: "web/core/components/profile/activity/workspace-activity-list.tsx"
 type: "code"
-community: "Start Week"
-location: "L23"
+community: "Activity User"
+location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Start_Week
+  - community/Activity_User
 ---
 
 # Props
 
 ## Connections
 
-- [[auto-archive-automation.tsx]] - `contains` [EXTRACTED]
+- [[workspace-activity-list.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Start_Week
+#graphify/code #graphify/EXTRACTED #community/Activity_User

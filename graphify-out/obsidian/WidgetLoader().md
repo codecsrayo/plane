@@ -1,5 +1,5 @@
 ---
-source_file: "components/home/widgets/loaders/loader.tsx"
+source_file: "web/core/components/home/widgets/loaders/loader.tsx"
 type: "code"
 community: "Widget Quick"
 location: "L22"
@@ -13,6 +13,6 @@ tags:
 
 ## Connections
 
-- [[loader.tsx]] - `contains` [EXTRACTED]
+- [[loader.tsx_3]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Widget_Quick

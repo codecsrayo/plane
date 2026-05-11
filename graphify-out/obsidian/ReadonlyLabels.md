@@ -1,12 +1,12 @@
 ---
-source_file: "components/readonly/labels.tsx"
+source_file: "web/core/components/readonly/labels.tsx"
 type: "code"
-community: "Label Workspace"
+community: "Label Dropdown"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Workspace
+  - community/Label_Dropdown
 ---
 
 # ReadonlyLabels
@@ -15,4 +15,4 @@ tags:
 
 - [[labels.tsx_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Workspace
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

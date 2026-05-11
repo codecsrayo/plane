@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/store/use-issues.ts"
+source_file: "web/core/hooks/store/use-issues.ts"
 type: "code"
-community: "Project Archives"
+community: "Issue Project"
 location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Archives
+  - community/Issue_Project
 ---
 
 # TStoreIssues
@@ -15,4 +15,4 @@ tags:
 
 - [[use-issues.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Archives
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

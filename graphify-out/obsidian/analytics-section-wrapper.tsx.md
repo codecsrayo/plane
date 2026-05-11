@@ -1,5 +1,5 @@
 ---
-source_file: "components/analytics/analytics-section-wrapper.tsx"
+source_file: "web/core/components/analytics/analytics-section-wrapper.tsx"
 type: "code"
 community: "Analytics Project"
 location: "L1"
@@ -14,7 +14,7 @@ tags:
 ## Connections
 
 - [[AnalyticsSectionWrapper()]] - `contains` [EXTRACTED]
-- [[Props_425]] - `contains` [EXTRACTED]
+- [[Props_499]] - `contains` [EXTRACTED]
 - [[active-projects.tsx]] - `imports_from` [EXTRACTED]
 - [[created-vs-resolved.tsx]] - `imports_from` [EXTRACTED]
 - [[customized-insights.tsx]] - `imports_from` [EXTRACTED]

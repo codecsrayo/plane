@@ -1,5 +1,5 @@
 ---
-source_file: "components/workspace-notifications/sidebar/notification-card/content.tsx"
+source_file: "web/core/components/workspace-notifications/sidebar/notification-card/content.tsx"
 type: "code"
 community: "Notification Content"
 location: "L149"
@@ -15,6 +15,7 @@ tags:
 
 - [[content.tsx_4]] - `contains` [EXTRACTED]
 - [[getNotificationContentDetails()]] - `calls` [EXTRACTED]
-- [[item.tsx_1]] - `imports` [EXTRACTED]
+- [[item.tsx_2]] - `imports` [EXTRACTED]
+- [[shouldShowConnector()]] - `calls` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Notification_Content

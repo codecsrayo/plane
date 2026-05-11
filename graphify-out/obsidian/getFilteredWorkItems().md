@@ -1,12 +1,12 @@
 ---
-source_file: "store/issue/helpers/base-issues-utils.ts"
+source_file: "web/core/store/issue/helpers/base-issues-utils.ts"
 type: "code"
-community: "Issue Work"
+community: "Issue Group"
 location: "L247"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Work
+  - community/Issue_Group
 ---
 
 # getFilteredWorkItems()
@@ -16,4 +16,4 @@ tags:
 - [[base-issues-utils.ts]] - `contains` [EXTRACTED]
 - [[sub_issues_filter.store.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Work
+#graphify/code #graphify/EXTRACTED #community/Issue_Group

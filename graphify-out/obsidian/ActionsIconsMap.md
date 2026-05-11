@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/icons/constants.tsx"
 type: "code"
-community: "Icons Project"
+community: "Icons Icon"
 location: "L8"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Icons_Project
+  - community/Icons_Icon
 ---
 
 # ActionsIconsMap
@@ -16,4 +16,4 @@ tags:
 - [[constants.tsx]] - `contains` [EXTRACTED]
 - [[icons.stories.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Icons_Project
+#graphify/code #graphify/EXTRACTED #community/Icons_Icon

@@ -1,20 +1,18 @@
 ---
-source_file: "components/inbox/inbox-filter/filters/members.tsx"
+source_file: "web/core/components/sidebar/search-button.tsx"
 type: "code"
-community: "Lead Members"
-location: "L23"
+community: "Search Sidebar"
+location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Lead_Members
+  - community/Search_Sidebar
 ---
 
 # Props
 
 ## Connections
 
-- [[members.tsx_1]] - `contains` [EXTRACTED]
-- [[members.tsx_3]] - `contains` [EXTRACTED]
-- [[members.tsx_8]] - `contains` [EXTRACTED]
+- [[search-button.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Lead_Members
+#graphify/code #graphify/EXTRACTED #community/Search_Sidebar

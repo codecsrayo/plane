@@ -1,12 +1,12 @@
 ---
-source_file: "components/project/settings/control-section.tsx"
+source_file: "web/core/components/project/settings/control-section.tsx"
 type: "code"
-community: "Account Settings"
+community: "Project Settings"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Account_Settings
+  - community/Project_Settings
 ---
 
 # GeneralProjectSettingsControlSection
@@ -14,5 +14,6 @@ tags:
 ## Connections
 
 - [[control-section.tsx]] - `contains` [EXTRACTED]
+- [[page.tsx_37]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Account_Settings
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

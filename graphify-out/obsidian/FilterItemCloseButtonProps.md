@@ -1,12 +1,12 @@
 ---
-source_file: "components/rich-filters/filter-item/close-button.tsx"
+source_file: "web/core/components/rich-filters/filter-item/close-button.tsx"
 type: "code"
-community: "Filter Controls"
+community: "Value Input"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Controls
+  - community/Value_Input
 ---
 
 # FilterItemCloseButtonProps
@@ -15,4 +15,4 @@ tags:
 
 - [[close-button.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Controls
+#graphify/code #graphify/EXTRACTED #community/Value_Input

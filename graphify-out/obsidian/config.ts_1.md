@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/constants/config.ts"
 type: "code"
-community: "Highlight Node"
+community: "Document Collaborative"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Highlight_Node
+  - community/Document_Collaborative
 ---
 
 # config.ts
@@ -25,4 +25,4 @@ tags:
 - [[index.ts_46]] - `imports_from` [EXTRACTED]
 - [[uploader.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Highlight_Node
+#graphify/code #graphify/EXTRACTED #community/Document_Collaborative

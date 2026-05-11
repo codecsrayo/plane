@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/ui/pages/open-entity/project-cycles-menu.tsx"
+source_file: "web/core/components/power-k/ui/pages/open-entity/project-cycles-menu.tsx"
 type: "code"
-community: "File Icons Nav"
+community: "Menu Power"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/File_Icons_Nav
+  - community/Menu_Power
 ---
 
 # PowerKOpenProjectCyclesMenu
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[project-cycles-menu.tsx]] - `contains` [EXTRACTED]
-- [[root.tsx_62]] - `imports` [EXTRACTED]
+- [[root.tsx_103]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/File_Icons_Nav
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

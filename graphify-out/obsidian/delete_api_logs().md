@@ -1,19 +1,20 @@
 ---
-source_file: "api_rust/src/jobs/cleanup.rs"
+source_file: "api/plane/bgtasks/cleanup_task.py"
 type: "code"
-community: "Community 115"
-location: "L191"
+community: "Transform Logs"
+location: "L423"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_115
+  - community/Transform_Logs
 ---
 
 # delete_api_logs()
 
 ## Connections
 
-- [[cleanup.rs]] - `contains` [EXTRACTED]
-- [[start_cron()]] - `calls` [INFERRED]
+- [[Delete old API activity logs.]] - `rationale_for` [EXTRACTED]
+- [[cleanup_task.py]] - `contains` [EXTRACTED]
+- [[process_cleanup_task()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_115
+#graphify/code #graphify/EXTRACTED #community/Transform_Logs

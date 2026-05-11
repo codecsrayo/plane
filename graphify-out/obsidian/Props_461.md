@@ -1,18 +1,18 @@
 ---
-source_file: "components/core/theme/color-inputs.tsx"
+source_file: "web/core/components/pages/editor/editor-body.tsx"
 type: "code"
-community: "Theme Custom"
-location: "L14"
+community: "Content Body"
+location: "L58"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Custom
+  - community/Content_Body
 ---
 
 # Props
 
 ## Connections
 
-- [[color-inputs.tsx]] - `contains` [EXTRACTED]
+- [[editor-body.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Custom
+#graphify/code #graphify/EXTRACTED #community/Content_Body

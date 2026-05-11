@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/attachment/delete-attachment-modal.tsx"
+source_file: "web/core/components/issues/issue-update-status.tsx"
 type: "code"
-community: "Issue Attachments"
-location: "L25"
+community: "Issue Inbox"
+location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Attachments
+  - community/Issue_Inbox
 ---
 
 # Props
 
 ## Connections
 
-- [[delete-attachment-modal.tsx]] - `contains` [EXTRACTED]
+- [[issue-update-status.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Attachments
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

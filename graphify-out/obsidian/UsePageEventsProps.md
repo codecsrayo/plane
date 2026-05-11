@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/use-realtime-page-events.tsx"
+source_file: "web/core/hooks/use-realtime-page-events.tsx"
 type: "code"
-community: "Editor Body"
+community: "Content Body"
 location: "L35"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Body
+  - community/Content_Body
 ---
 
 # UsePageEventsProps
@@ -15,4 +15,4 @@ tags:
 
 - [[use-realtime-page-events.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Body
+#graphify/code #graphify/EXTRACTED #community/Content_Body

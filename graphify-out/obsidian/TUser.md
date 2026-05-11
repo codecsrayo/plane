@@ -1,12 +1,12 @@
 ---
-source_file: "components/common/activity/user.tsx"
+source_file: "web/core/components/common/activity/user.tsx"
 type: "code"
-community: "Activity User"
+community: "Workspace Issue"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Activity_User
+  - community/Workspace_Issue
 ---
 
 # TUser
@@ -15,4 +15,4 @@ tags:
 
 - [[user.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Activity_User
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

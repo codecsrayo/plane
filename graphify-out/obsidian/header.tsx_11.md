@@ -1,27 +1,20 @@
 ---
-source_file: "components/power-k/ui/modal/header.tsx"
+source_file: "web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/issues/(list)/header.tsx"
 type: "code"
-community: "Power Search"
+community: "Issues Project"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Power_Search
+  - community/Issues_Project
 ---
 
 # header.tsx
 
 ## Connections
 
-- [[POWER_K_MODAL_PAGE_DETAILS]] - `imports` [EXTRACTED]
-- [[PowerKModalContextIndicator()]] - `imports` [EXTRACTED]
-- [[PowerKModalHeader()]] - `contains` [EXTRACTED]
-- [[Props_335]] - `contains` [EXTRACTED]
-- [[TPowerKContext]] - `imports` [EXTRACTED]
-- [[TPowerKPageType]] - `imports` [EXTRACTED]
-- [[constants.ts_2]] - `imports_from` [EXTRACTED]
-- [[context-indicator.tsx]] - `imports_from` [EXTRACTED]
-- [[types.ts_2]] - `imports_from` [EXTRACTED]
-- [[wrapper.tsx]] - `imports_from` [EXTRACTED]
+- [[IssuesHeader]] - `imports` [EXTRACTED]
+- [[ProjectIssuesHeader()]] - `contains` [EXTRACTED]
+- [[layout.tsx_19]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Power_Search
+#graphify/code #graphify/EXTRACTED #community/Issues_Project

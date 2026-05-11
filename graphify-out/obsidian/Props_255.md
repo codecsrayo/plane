@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-detail/sidebar.tsx"
+source_file: "web/core/components/issues/filters.tsx"
 type: "code"
-community: "Issue Properties"
-location: "L51"
+community: "Project Profile"
+location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Project_Profile
 ---
 
 # Props
 
 ## Connections
 
-- [[sidebar.tsx_3]] - `contains` [EXTRACTED]
+- [[filters.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Project_Profile

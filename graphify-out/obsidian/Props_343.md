@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/ui/renderer/shortcut.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/attachments/content.tsx"
 type: "code"
-community: "Context Power"
-location: "L18"
+community: "Attachment Issue"
+location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Context_Power
+  - community/Attachment_Issue
 ---
 
 # Props
 
 ## Connections
 
-- [[shortcut.tsx]] - `contains` [EXTRACTED]
+- [[content.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Context_Power
+#graphify/code #graphify/EXTRACTED #community/Attachment_Issue

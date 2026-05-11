@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/emoji/emoji.ts"
 type: "code"
-community: "Emoji Suggestion"
+community: "Emoji Command"
 location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Emoji_Suggestion
+  - community/Emoji_Command
 ---
 
 # ExtendedEmojiStorage
@@ -17,4 +17,4 @@ tags:
 - [[emoji.ts]] - `contains` [EXTRACTED]
 - [[suggestion.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Emoji_Suggestion
+#graphify/code #graphify/EXTRACTED #community/Emoji_Command

@@ -1,18 +1,18 @@
 ---
-source_file: "components/core/modals/gpt-assistant-popover.tsx"
+source_file: "web/core/components/empty-state/section-empty-state-root.tsx"
 type: "code"
-community: "Editor Aiservice"
-location: "L25"
+community: "Issue Activity"
+location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Aiservice
+  - community/Issue_Activity
 ---
 
 # Props
 
 ## Connections
 
-- [[gpt-assistant-popover.tsx]] - `contains` [EXTRACTED]
+- [[section-empty-state-root.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Aiservice
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

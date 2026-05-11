@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/utils.tsx"
+source_file: "space/components/issues/issue-layouts/utils.tsx"
 type: "code"
-community: "Spreadsheet Columns"
-location: "L86"
+community: "Group Kanban"
+location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Columns
+  - community/Group_Kanban
 ---
 
 # getGroupByColumns()
@@ -15,8 +15,19 @@ tags:
 
 - [[default.tsx]] - `imports` [EXTRACTED]
 - [[default.tsx_1]] - `imports` [EXTRACTED]
-- [[root.tsx_41]] - `imports` [EXTRACTED]
+- [[default.tsx_4]] - `imports` [EXTRACTED]
+- [[default.tsx_5]] - `imports` [EXTRACTED]
+- [[getAssigneeColumns()]] - `calls` [EXTRACTED]
+- [[getCreatedByColumns()]] - `calls` [EXTRACTED]
+- [[getCycleColumns()]] - `calls` [EXTRACTED]
+- [[getLabelsColumns()]] - `calls` [EXTRACTED]
+- [[getModuleColumns()]] - `calls` [EXTRACTED]
+- [[getPriorityColumns()]] - `calls` [EXTRACTED]
+- [[getStateColumns()]] - `calls` [EXTRACTED]
+- [[root.tsx_82]] - `imports` [EXTRACTED]
 - [[swimlanes.tsx]] - `imports` [EXTRACTED]
-- [[utils.tsx_1]] - `contains` [EXTRACTED]
+- [[swimlanes.tsx_1]] - `imports` [EXTRACTED]
+- [[utils.tsx_2]] - `contains` [EXTRACTED]
+- [[utils.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Columns
+#graphify/code #graphify/EXTRACTED #community/Group_Kanban

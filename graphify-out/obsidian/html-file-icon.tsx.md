@@ -1,5 +1,5 @@
 ---
-source_file: "components/icons/attachment/html-file-icon.tsx"
+source_file: "web/core/components/icons/attachment/html-file-icon.tsx"
 type: "code"
 community: "Html Icon"
 location: "L1"

@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/ui/pages/context-based/module/root.tsx"
+source_file: "web/core/components/issues/issue-layouts/filters/header/filters/mentions.tsx"
 type: "code"
-community: "Member Commands"
-location: "L18"
+community: "Member Members"
+location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Commands
+  - community/Member_Members
 ---
 
 # Props
 
 ## Connections
 
-- [[root.tsx_59]] - `contains` [EXTRACTED]
+- [[mentions.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Commands
+#graphify/code #graphify/EXTRACTED #community/Member_Members

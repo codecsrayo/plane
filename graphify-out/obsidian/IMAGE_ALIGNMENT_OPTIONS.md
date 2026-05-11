@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/custom-image/utils.ts"
 type: "code"
-community: "Image Alignment"
+community: "Image Custom"
 location: "L41"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Image_Alignment
+  - community/Image_Custom
 ---
 
 # IMAGE_ALIGNMENT_OPTIONS
@@ -16,4 +16,4 @@ tags:
 - [[alignment.tsx]] - `imports` [EXTRACTED]
 - [[utils.ts_9]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Image_Alignment
+#graphify/code #graphify/EXTRACTED #community/Image_Custom

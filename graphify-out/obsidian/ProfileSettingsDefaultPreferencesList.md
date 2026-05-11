@@ -1,12 +1,12 @@
 ---
-source_file: "components/settings/profile/content/pages/preferences/default-list.tsx"
+source_file: "web/core/components/settings/profile/content/pages/preferences/default-list.tsx"
 type: "code"
-community: "Profile Settings"
+community: "Settings Profile"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Profile_Settings
+  - community/Settings_Profile
 ---
 
 # ProfileSettingsDefaultPreferencesList
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[default-list.tsx]] - `contains` [EXTRACTED]
-- [[root.tsx_19]] - `imports` [EXTRACTED]
+- [[root.tsx_60]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Profile_Settings
+#graphify/code #graphify/EXTRACTED #community/Settings_Profile

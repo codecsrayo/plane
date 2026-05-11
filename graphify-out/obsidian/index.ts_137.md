@@ -1,14 +1,14 @@
 ---
 source_file: "decorators/src/index.ts"
 type: "code"
-community: "Community 522"
+community: "Community 1500"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_522
+  - community/Community_1500
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_522
+#graphify/code #graphify/EXTRACTED #community/Community_1500

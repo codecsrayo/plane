@@ -11,8 +11,8 @@ members: 2
 
 ## Members
 
-- [[estimates.ts_1]] - code - utils/src/estimates.ts
-- [[isEstimatePointValuesRepeated()]] - code - utils/src/estimates.ts
+- [[Decorator for estimate point-related endpoints]] - rationale - api/plane/utils/openapi/decorators.py
+- [[estimate_point_docs()]] - code - api/plane/utils/openapi/decorators.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -20,3 +20,12 @@ members: 2
 TABLE source_file, type FROM #community/Estimate_Point
 SORT file.name ASC
 ```
+
+## Connections to other communities
+
+- 1 edge to [[_COMMUNITY_Sample Schema]]
+- 1 edge to [[_COMMUNITY_Decorator Endpoints]]
+
+## Top bridge nodes
+
+- [[estimate_point_docs()]] - degree 3, connects to 2 communities

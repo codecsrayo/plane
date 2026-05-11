@@ -1,18 +1,18 @@
 ---
-source_file: "components/editor/pdf/document.tsx"
+source_file: "web/ce/components/views/publish/modal.tsx"
 type: "code"
-community: "Editor Items"
-location: "L47"
+community: "Publish"
+location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Items
+  - community/Publish
 ---
 
 # Props
 
 ## Connections
 
-- [[document.tsx]] - `contains` [EXTRACTED]
+- [[modal.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Items
+#graphify/code #graphify/EXTRACTED #community/Publish

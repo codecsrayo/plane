@@ -39,7 +39,7 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 1 edge to [[_COMMUNITY_Toolbar Button]]
+- 1 edge to [[_COMMUNITY_Toolbar Combobox]]
 
 ## Top bridge nodes
 

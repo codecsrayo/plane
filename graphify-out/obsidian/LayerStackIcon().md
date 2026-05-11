@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/icons/layer-stack.tsx"
 type: "code"
-community: "Logo Icons"
+community: "Icon Panel"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Logo_Icons
+  - community/Icon_Panel
 ---
 
 # LayerStackIcon()
@@ -15,4 +15,4 @@ tags:
 
 - [[layer-stack.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Logo_Icons
+#graphify/code #graphify/EXTRACTED #community/Icon_Panel

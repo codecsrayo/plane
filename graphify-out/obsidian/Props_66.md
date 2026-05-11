@@ -1,18 +1,18 @@
 ---
-source_file: "components/modules/form.tsx"
+source_file: "web/ce/components/issues/filters/issue-types.tsx"
 type: "code"
-community: "Module Forms"
-location: "L26"
+community: "Issue Activity"
+location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Forms
+  - community/Issue_Activity
 ---
 
 # Props
 
 ## Connections
 
-- [[form.tsx_4]] - `contains` [EXTRACTED]
+- [[issue-types.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Forms
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

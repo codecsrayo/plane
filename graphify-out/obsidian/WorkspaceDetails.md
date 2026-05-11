@@ -1,18 +1,19 @@
 ---
-source_file: "components/workspace/settings/workspace-details.tsx"
+source_file: "web/core/components/workspace/settings/workspace-details.tsx"
 type: "code"
-community: "Workspace Timezone"
+community: "Workspace Issue"
 location: "L36"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Timezone
+  - community/Workspace_Issue
 ---
 
 # WorkspaceDetails
 
 ## Connections
 
+- [[page.tsx_48]] - `imports` [EXTRACTED]
 - [[workspace-details.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Timezone
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

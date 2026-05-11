@@ -1,19 +1,19 @@
 ---
-source_file: "components/power-k/ui/pages/preferences/themes-menu.tsx"
+source_file: "web/core/components/power-k/ui/pages/preferences/themes-menu.tsx"
 type: "code"
-community: "Member Commands"
+community: "Menu Power"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Commands
+  - community/Menu_Power
 ---
 
 # PowerKPreferencesThemesMenu
 
 ## Connections
 
-- [[root.tsx_61]] - `imports` [EXTRACTED]
+- [[root.tsx_102]] - `imports` [EXTRACTED]
 - [[themes-menu.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Commands
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

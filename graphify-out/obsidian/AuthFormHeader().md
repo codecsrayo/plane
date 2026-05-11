@@ -1,5 +1,5 @@
 ---
-source_file: "components/account/auth-forms/common/header.tsx"
+source_file: "web/core/components/account/auth-forms/common/header.tsx"
 type: "code"
 community: "Auth"
 location: "L7"
@@ -13,6 +13,6 @@ tags:
 
 ## Connections
 
-- [[header.tsx_16]] - `contains` [EXTRACTED]
+- [[header.tsx_58]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Auth

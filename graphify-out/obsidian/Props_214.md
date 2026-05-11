@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/gantt/blocks.tsx"
+source_file: "web/core/components/project/member-select.tsx"
 type: "code"
-community: "Calendar Blocks"
-location: "L32"
+community: "Project Workspace"
+location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Blocks
+  - community/Project_Workspace
 ---
 
 # Props
 
 ## Connections
 
-- [[blocks.tsx_1]] - `contains` [EXTRACTED]
+- [[member-select.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Blocks
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

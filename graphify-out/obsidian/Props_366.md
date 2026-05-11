@@ -1,18 +1,18 @@
 ---
-source_file: "components/onboarding/steps/role/root.tsx"
+source_file: "web/core/components/common/new-empty-state.tsx"
 type: "code"
-community: "Values Setup"
-location: "L22"
+community: "Empty State"
+location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Values_Setup
+  - community/Empty_State
 ---
 
 # Props
 
 ## Connections
 
-- [[root.tsx_66]] - `contains` [EXTRACTED]
+- [[new-empty-state.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Values_Setup
+#graphify/code #graphify/EXTRACTED #community/Empty_State

@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-layouts/filters/applied-filters/state-group.tsx"
+source_file: "web/core/components/issues/issue-layouts/filters/applied-filters/state-group.tsx"
 type: "code"
 community: "State Group"
 location: "L19"

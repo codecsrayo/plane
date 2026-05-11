@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/issues/issue_relation.ts"
 type: "code"
-community: "Issue Enums"
+community: "Widget Issue"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Enums
+  - community/Widget_Issue
 ---
 
 # TIssueRelationTypes
@@ -17,4 +17,4 @@ tags:
 - [[issue.ts]] - `imports` [EXTRACTED]
 - [[issue_relation.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Enums
+#graphify/code #graphify/EXTRACTED #community/Widget_Issue

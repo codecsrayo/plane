@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/menus/settings.tsx"
+source_file: "web/core/components/power-k/menus/settings.tsx"
 type: "code"
-community: "File Icons Nav"
+community: "Menu Power"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/File_Icons_Nav
+  - community/Menu_Power
 ---
 
 # PowerKSettingsMenu
@@ -14,7 +14,7 @@ tags:
 ## Connections
 
 - [[project-settings-menu.tsx]] - `imports` [EXTRACTED]
-- [[settings.tsx]] - `contains` [EXTRACTED]
+- [[settings.tsx_1]] - `contains` [EXTRACTED]
 - [[workspace-settings-menu.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/File_Icons_Nav
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

@@ -1,14 +1,14 @@
 ---
 source_file: "ui/src/badge/index.ts"
 type: "code"
-community: "Community 341"
+community: "Community 1319"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_341
+  - community/Community_1319
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_341
+#graphify/code #graphify/EXTRACTED #community/Community_1319

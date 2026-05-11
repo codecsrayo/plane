@@ -1,18 +1,19 @@
 ---
-source_file: "components/gantt-chart/blocks/block-row.tsx"
+source_file: "admin/app/types/next-link.d.ts"
 type: "code"
-community: "Gantt Chart"
-location: "L21"
+community: "Next Link"
+location: "L2"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Chart
+  - community/Next_Link
 ---
 
 # Props
 
 ## Connections
 
-- [[block-row.tsx]] - `contains` [EXTRACTED]
+- [[next-link.d.ts]] - `contains` [EXTRACTED]
+- [[next-link.d.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Chart
+#graphify/code #graphify/EXTRACTED #community/Next_Link

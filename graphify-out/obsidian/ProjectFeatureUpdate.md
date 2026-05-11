@@ -1,12 +1,12 @@
 ---
-source_file: "components/project/project-feature-update.tsx"
+source_file: "web/core/components/project/project-feature-update.tsx"
 type: "code"
-community: "Project Feature"
+community: "Project Profile"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Feature
+  - community/Project_Profile
 ---
 
 # ProjectFeatureUpdate
@@ -16,4 +16,4 @@ tags:
 - [[create-project-modal.tsx]] - `imports` [EXTRACTED]
 - [[project-feature-update.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Feature
+#graphify/code #graphify/EXTRACTED #community/Project_Profile

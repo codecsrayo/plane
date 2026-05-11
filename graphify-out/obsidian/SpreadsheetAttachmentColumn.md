@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/columns/attachment-column.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/attachment-column.tsx"
 type: "code"
 community: "Attachment Column"
 location: "L17"

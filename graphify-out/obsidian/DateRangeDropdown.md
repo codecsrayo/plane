@@ -1,12 +1,12 @@
 ---
-source_file: "components/dropdowns/date-range.tsx"
+source_file: "web/core/components/dropdowns/date-range.tsx"
 type: "code"
-community: "Module Forms"
+community: "Cycles Archived"
 location: "L73"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Forms
+  - community/Cycles_Archived
 ---
 
 # DateRangeDropdown
@@ -22,7 +22,7 @@ tags:
 - [[module-list-item-action.tsx]] - `imports` [EXTRACTED]
 - [[properties.tsx]] - `imports` [EXTRACTED]
 - [[range.tsx]] - `imports` [EXTRACTED]
-- [[root.tsx_12]] - `imports` [EXTRACTED]
+- [[root.tsx_53]] - `imports` [EXTRACTED]
 - [[sidebar-header.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Forms
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

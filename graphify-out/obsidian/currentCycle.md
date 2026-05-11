@@ -1,12 +1,12 @@
 ---
-source_file: "store/cycle.store.ts"
+source_file: "web/core/store/cycle.store.ts"
 type: "code"
-community: "Data Export"
+community: "Cycle Cycles"
 location: "L638"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Data_Export
+  - community/Cycle_Cycles
 ---
 
 # currentCycle
@@ -15,4 +15,4 @@ tags:
 
 - [[cycle.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Data_Export
+#graphify/code #graphify/EXTRACTED #community/Cycle_Cycles

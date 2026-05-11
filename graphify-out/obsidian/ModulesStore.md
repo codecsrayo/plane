@@ -1,22 +1,22 @@
 ---
-source_file: "store/module.store.ts"
+source_file: "web/core/store/module.store.ts"
 type: "code"
-community: "Archived Modules"
+community: "Modules Archived"
 location: "L83"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Archived_Modules
+  - community/Modules_Archived
 ---
 
 # ModulesStore
 
 ## Connections
 
-- [[.constructor()_4]] - `method` [EXTRACTED]
+- [[.constructor()_61]] - `method` [EXTRACTED]
 - [[.projectArchivedModuleIds()]] - `method` [EXTRACTED]
 - [[.projectModuleIds()]] - `method` [EXTRACTED]
 - [[module.store.ts]] - `contains` [EXTRACTED]
-- [[root.store.ts]] - `imports` [EXTRACTED]
+- [[root.store.ts_2]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Archived_Modules
+#graphify/code #graphify/EXTRACTED #community/Modules_Archived

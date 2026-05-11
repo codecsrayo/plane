@@ -1,12 +1,12 @@
 ---
 source_file: "utils/src/work-item-filters/configs/filters/date.ts"
 type: "code"
-community: "Date Project"
+community: "Cycle Date"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Date_Project
+  - community/Cycle_Date
 ---
 
 # date.ts
@@ -19,4 +19,4 @@ tags:
 - [[getUpdatedAtFilterConfig()]] - `contains` [EXTRACTED]
 - [[index.ts_121]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Date_Project
+#graphify/code #graphify/EXTRACTED #community/Cycle_Date

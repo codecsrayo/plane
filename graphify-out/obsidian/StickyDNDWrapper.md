@@ -1,5 +1,5 @@
 ---
-source_file: "components/stickies/layout/sticky-dnd-wrapper.tsx"
+source_file: "web/core/components/stickies/layout/sticky-dnd-wrapper.tsx"
 type: "code"
 community: "Stickies Sticky"
 location: "L39"

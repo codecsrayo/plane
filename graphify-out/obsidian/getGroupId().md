@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/utils.tsx"
+source_file: "space/components/issues/issue-layouts/utils.tsx"
 type: "code"
-community: "Spreadsheet Filters"
-location: "L504"
+community: "Group Kanban"
+location: "L216"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Filters
+  - community/Group_Kanban
 ---
 
 # getGroupId()
@@ -14,6 +14,7 @@ tags:
 ## Connections
 
 - [[handleGroupDragDrop()]] - `calls` [EXTRACTED]
-- [[utils.tsx_1]] - `contains` [EXTRACTED]
+- [[utils.tsx_2]] - `contains` [EXTRACTED]
+- [[utils.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Filters
+#graphify/code #graphify/EXTRACTED #community/Group_Kanban

@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/calendar/utils.ts"
+source_file: "web/core/components/issues/issue-layouts/calendar/utils.ts"
 type: "code"
-community: "Calendar Chart"
+community: "Issue Project"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Chart
+  - community/Issue_Project
 ---
 
 # handleDragDrop()
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[base-calendar-root.tsx]] - `imports` [EXTRACTED]
-- [[utils.ts_5]] - `contains` [EXTRACTED]
+- [[utils.ts_17]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Chart
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

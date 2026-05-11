@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-modal/base.tsx"
+source_file: "web/core/components/project/create-project-modal.tsx"
 type: "code"
-community: "Issue Identifiers"
-location: "L28"
+community: "Project Profile"
+location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Identifiers
+  - community/Project_Profile
 ---
 
 # fileService
 
 ## Connections
 
-- [[base.tsx_7]] - `contains` [EXTRACTED]
+- [[create-project-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Identifiers
+#graphify/code #graphify/EXTRACTED #community/Project_Profile

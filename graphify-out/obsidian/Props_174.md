@@ -1,18 +1,18 @@
 ---
-source_file: "components/automation/auto-close-automation.tsx"
+source_file: "web/core/components/profile/overview/priority-distribution.tsx"
 type: "code"
-community: "Calendar Blocks"
-location: "L24"
+community: "Profile Priority"
+location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Blocks
+  - community/Profile_Priority
 ---
 
 # Props
 
 ## Connections
 
-- [[auto-close-automation.tsx]] - `contains` [EXTRACTED]
+- [[priority-distribution.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Blocks
+#graphify/code #graphify/EXTRACTED #community/Profile_Priority

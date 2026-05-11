@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/issue_extras2.rs"
 type: "code"
-community: "Community 53"
+community: "Issue Bulk"
 location: "L476"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_53
+  - community/Issue_Bulk
 ---
 
 # IssueVersionResponse
@@ -16,4 +16,4 @@ tags:
 - [[.from()_8]] - `method` [EXTRACTED]
 - [[issue_extras2.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_53
+#graphify/code #graphify/EXTRACTED #community/Issue_Bulk

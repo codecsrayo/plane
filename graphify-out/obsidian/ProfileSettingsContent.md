@@ -1,5 +1,5 @@
 ---
-source_file: "components/settings/profile/content/root.tsx"
+source_file: "web/core/components/settings/profile/content/root.tsx"
 type: "code"
 community: "Profile Settings"
 location: "L21"
@@ -13,6 +13,6 @@ tags:
 
 ## Connections
 
-- [[root.tsx_18]] - `contains` [EXTRACTED]
+- [[root.tsx_59]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Profile_Settings

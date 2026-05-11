@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/menus/empty-state.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/sub-issues/quick-action-button.tsx"
 type: "code"
-community: "File Icons Nav"
-location: "L9"
+community: "Issue Activity"
+location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/File_Icons_Nav
+  - community/Issue_Activity
 ---
 
 # Props
 
 ## Connections
 
-- [[empty-state.tsx_6]] - `contains` [EXTRACTED]
+- [[quick-action-button.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/File_Icons_Nav
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

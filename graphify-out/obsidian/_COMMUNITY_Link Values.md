@@ -11,10 +11,10 @@ members: 4
 
 ## Members
 
-- [[CreateUpdateModuleLinkModal()]] - code - components/modules/links/create-update-modal.tsx
-- [[Props_87]] - code - components/modules/links/create-update-modal.tsx
-- [[create-update-modal.tsx]] - code - components/modules/links/create-update-modal.tsx
-- [[defaultValues_7]] - code - components/modules/links/create-update-modal.tsx
+- [[CreateUpdateModuleLinkModal()]] - code - web/core/components/modules/links/create-update-modal.tsx
+- [[Props_162]] - code - web/core/components/modules/links/create-update-modal.tsx
+- [[create-update-modal.tsx]] - code - web/core/components/modules/links/create-update-modal.tsx
+- [[defaultValues_7]] - code - web/core/components/modules/links/create-update-modal.tsx
 
 ## Live Query (requires Dataview plugin)
 

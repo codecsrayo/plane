@@ -1,12 +1,12 @@
 ---
 source_file: "shared-state/src/utils/work-item-filters.helper.ts"
 type: "code"
-community: "Operator Work"
+community: "Expression Work"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Operator_Work
+  - community/Expression_Work
 ---
 
 # buildWorkItemFilterExpressionFromConditions()
@@ -16,4 +16,4 @@ tags:
 - [[buildTempFilterExpressionFromConditions()]] - `calls` [EXTRACTED]
 - [[work-item-filters.helper.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Operator_Work
+#graphify/code #graphify/EXTRACTED #community/Expression_Work

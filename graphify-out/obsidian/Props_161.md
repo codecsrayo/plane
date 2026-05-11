@@ -1,18 +1,20 @@
 ---
-source_file: "components/integration/slack/select-channel.tsx"
+source_file: "web/core/components/inbox/inbox-filter/filters/members.tsx"
 type: "code"
-community: "Channel Slack"
-location: "L24"
+community: "Member Members"
+location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Channel_Slack
+  - community/Member_Members
 ---
 
 # Props
 
 ## Connections
 
-- [[select-channel.tsx]] - `contains` [EXTRACTED]
+- [[members.tsx_2]] - `contains` [EXTRACTED]
+- [[members.tsx_4]] - `contains` [EXTRACTED]
+- [[members.tsx_9]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Channel_Slack
+#graphify/code #graphify/EXTRACTED #community/Member_Members

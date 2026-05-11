@@ -1,18 +1,18 @@
 ---
 source_file: "api_rust/src/routes/views.rs"
 type: "code"
-community: "Community 124"
+community: "Project Workspace"
 location: "L110"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_124
+  - community/Project_Workspace
 ---
 
 # AddFavoriteRequest
 
 ## Connections
 
-- [[views.rs]] - `contains` [EXTRACTED]
+- [[views.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_124
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

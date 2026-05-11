@@ -1,21 +1,21 @@
 ---
-source_file: "components/project/join-project-modal.tsx"
+source_file: "web/core/components/project/join-project-modal.tsx"
 type: "code"
-community: "Account Settings"
+community: "Project Settings"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Account_Settings
+  - community/Project_Settings
 ---
 
 # JoinProjectModal()
 
 ## Connections
 
-- [[card.tsx]] - `imports` [EXTRACTED]
+- [[card.tsx_2]] - `imports` [EXTRACTED]
 - [[join-project-modal.tsx]] - `contains` [EXTRACTED]
 - [[useAppRouter()]] - `calls` [EXTRACTED]
 - [[useUserPermissions()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Account_Settings
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

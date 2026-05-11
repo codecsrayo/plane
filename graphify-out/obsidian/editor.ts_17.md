@@ -1,14 +1,14 @@
 ---
 source_file: "i18n/src/locales/pl/editor.ts"
 type: "code"
-community: "Community 477"
+community: "Community 1455"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_477
+  - community/Community_1455
 ---
 
 # editor.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_477
+#graphify/code #graphify/EXTRACTED #community/Community_1455

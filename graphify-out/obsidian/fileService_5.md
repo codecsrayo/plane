@@ -1,18 +1,18 @@
 ---
-source_file: "components/core/image-picker-popover.tsx"
+source_file: "web/core/components/comments/comment-create.tsx"
 type: "code"
-community: "Image Upload"
-location: "L49"
+community: "Workspace Issue"
+location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Image_Upload
+  - community/Workspace_Issue
 ---
 
 # fileService
 
 ## Connections
 
-- [[image-picker-popover.tsx]] - `contains` [EXTRACTED]
+- [[comment-create.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Image_Upload
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

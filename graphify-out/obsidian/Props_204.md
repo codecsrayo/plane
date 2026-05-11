@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/columns/label-column.tsx"
+source_file: "web/core/components/project/confirm-project-member-remove.tsx"
 type: "code"
-community: "Column Spreadsheet"
-location: "L17"
+community: "Member Members"
+location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Column_Spreadsheet
+  - community/Member_Members
 ---
 
 # Props
 
 ## Connections
 
-- [[label-column.tsx]] - `contains` [EXTRACTED]
+- [[confirm-project-member-remove.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Column_Spreadsheet
+#graphify/code #graphify/EXTRACTED #community/Member_Members

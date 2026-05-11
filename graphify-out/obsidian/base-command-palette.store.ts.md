@@ -1,12 +1,12 @@
 ---
-source_file: "store/base-command-palette.store.ts"
+source_file: "web/core/store/base-command-palette.store.ts"
 type: "code"
-community: "Workspace Draft"
+community: "Command Palette"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Draft
+  - community/Command_Palette
 ---
 
 # base-command-palette.store.ts
@@ -15,10 +15,11 @@ tags:
 
 - [[IBaseCommandPaletteStore]] - `contains` [EXTRACTED]
 - [[ModalData]] - `contains` [EXTRACTED]
-- [[constructor()]] - `contains` [EXTRACTED]
+- [[command-palette.store.ts]] - `imports_from` [EXTRACTED]
+- [[constructor()_3]] - `contains` [EXTRACTED]
 - [[getCoreModalsState()]] - `contains` [EXTRACTED]
 - [[store]] - `imports` [EXTRACTED]
 - [[store-context.tsx]] - `imports_from` [EXTRACTED]
 - [[updatedSettings]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Draft
+#graphify/code #graphify/EXTRACTED #community/Command_Palette

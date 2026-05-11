@@ -1,12 +1,12 @@
 ---
-source_file: "components/modules/links/list-item.tsx"
+source_file: "web/core/components/modules/links/list-item.tsx"
 type: "code"
-community: "Issue Filters"
+community: "Member Members"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters
+  - community/Member_Members
 ---
 
 # ModulesLinksListItem
@@ -15,4 +15,4 @@ tags:
 
 - [[list-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters
+#graphify/code #graphify/EXTRACTED #community/Member_Members

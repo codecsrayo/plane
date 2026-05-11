@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/icons/properties/due-date-icon.tsx"
 type: "code"
-community: "Logo Icons"
+community: "Icon Property"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Logo_Icons
+  - community/Icon_Property
 ---
 
 # DueDatePropertyIcon()
@@ -15,4 +15,4 @@ tags:
 
 - [[due-date-icon.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Logo_Icons
+#graphify/code #graphify/EXTRACTED #community/Icon_Property

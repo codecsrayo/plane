@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/issues.ts"
 type: "code"
-community: "Issue Options"
+community: "Issue Entity"
 location: "L35"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Options
+  - community/Issue_Entity
 ---
 
 # IIssueModule
@@ -15,4 +15,4 @@ tags:
 
 - [[issues.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Options
+#graphify/code #graphify/EXTRACTED #community/Issue_Entity

@@ -1,18 +1,18 @@
 ---
-source_file: "store/inbox/project-inbox.store.ts"
+source_file: "web/core/store/inbox/project-inbox.store.ts"
 type: "code"
-community: "Inbox Issue"
+community: "Project Issue"
 location: "L205"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Inbox_Issue
+  - community/Project_Issue
 ---
 
 # dateValue
 
 ## Connections
 
-- [[project-inbox.store.ts]] - `contains` [EXTRACTED]
+- [[project-inbox.store.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Inbox_Issue
+#graphify/code #graphify/EXTRACTED #community/Project_Issue

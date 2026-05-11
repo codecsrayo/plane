@@ -1,18 +1,18 @@
 ---
-source_file: "components/profile/overview/stats.tsx"
+source_file: "web/core/components/workspace/delete-workspace-form.tsx"
 type: "code"
-community: "Stats Profile"
-location: "L17"
+community: "Workspace Issue"
+location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Stats_Profile
+  - community/Workspace_Issue
 ---
 
 # Props
 
 ## Connections
 
-- [[stats.tsx]] - `contains` [EXTRACTED]
+- [[delete-workspace-form.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Stats_Profile
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

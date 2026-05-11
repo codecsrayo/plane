@@ -1,5 +1,5 @@
 ---
-source_file: "components/base-layouts/gantt/sidebar.tsx"
+source_file: "web/core/components/base-layouts/gantt/sidebar.tsx"
 type: "code"
 community: "Gantt Chart"
 location: "L33"
@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 
-- [[layout.tsx_4]] - `imports` [EXTRACTED]
-- [[sidebar.tsx_4]] - `contains` [EXTRACTED]
+- [[layout.tsx_48]] - `imports` [EXTRACTED]
+- [[sidebar.tsx_5]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Gantt_Chart

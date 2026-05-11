@@ -1,12 +1,12 @@
 ---
 source_file: "shared-state/src/store/rich-filters/filter.ts"
 type: "code"
-community: "Instance Filterinstance"
+community: "Expression Work"
 location: "L140"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Instance_Filterinstance
+  - community/Expression_Work
 ---
 
 # FilterInstance
@@ -31,4 +31,4 @@ tags:
 - [[filter.ts_3]] - `contains` [EXTRACTED]
 - [[rich-filter.helper.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Instance_Filterinstance
+#graphify/code #graphify/EXTRACTED #community/Expression_Work

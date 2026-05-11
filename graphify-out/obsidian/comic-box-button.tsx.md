@@ -1,5 +1,5 @@
 ---
-source_file: "components/empty-state/comic-box-button.tsx"
+source_file: "web/core/components/empty-state/comic-box-button.tsx"
 type: "code"
 community: "Comic Button"
 location: "L1"
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[ComicBoxButton()]] - `contains` [EXTRACTED]
-- [[Props_383]] - `contains` [EXTRACTED]
+- [[Props_458]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Comic_Button

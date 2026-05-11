@@ -1,5 +1,5 @@
 ---
-source_file: "components/pages/list/tab-navigation.tsx"
+source_file: "web/core/components/pages/list/tab-navigation.tsx"
 type: "code"
 community: "Order Search"
 location: "L35"
@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 
-- [[root.tsx_83]] - `imports` [EXTRACTED]
+- [[root.tsx_124]] - `imports` [EXTRACTED]
 - [[tab-navigation.tsx]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Order_Search

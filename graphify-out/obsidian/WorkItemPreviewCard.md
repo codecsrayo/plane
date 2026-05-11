@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/preview-card/root.tsx"
+source_file: "web/core/components/issues/preview-card/root.tsx"
 type: "code"
-community: "Calendar Blocks"
+community: "Issue Work"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Blocks
+  - community/Issue_Work
 ---
 
 # WorkItemPreviewCard
 
 ## Connections
 
-- [[root.tsx_27]] - `contains` [EXTRACTED]
+- [[root.tsx_68]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Blocks
+#graphify/code #graphify/EXTRACTED #community/Issue_Work

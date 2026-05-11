@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/empty-states/index.tsx"
+source_file: "web/core/components/settings/profile/content/pages/notifications/email-notification-form.tsx"
 type: "code"
-community: "Cycle Details"
-location: "L22"
+community: "Settings Profile"
+location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Details
+  - community/Settings_Profile
 ---
 
 # Props
 
 ## Connections
 
-- [[index.tsx_7]] - `contains` [EXTRACTED]
+- [[email-notification-form.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Details
+#graphify/code #graphify/EXTRACTED #community/Settings_Profile

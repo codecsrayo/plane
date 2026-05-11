@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/editor/toolbar/toolbar.tsx"
+source_file: "web/core/components/pages/editor/toolbar/toolbar.tsx"
 type: "code"
-community: "Toolbar Color"
+community: "Toolbar Items"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toolbar_Color
+  - community/Toolbar_Items
 ---
 
 # ToolbarButton
 
 ## Connections
 
-- [[toolbar.tsx_2]] - `contains` [EXTRACTED]
+- [[toolbar.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toolbar_Color
+#graphify/code #graphify/EXTRACTED #community/Toolbar_Items

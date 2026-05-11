@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/custom-image/components/uploader.tsx"
 type: "code"
-community: "Args Uploader"
+community: "Image Custom"
 location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Args_Uploader
+  - community/Image_Custom
 ---
 
 # CustomImageUploader()
@@ -18,4 +18,4 @@ tags:
 - [[useDropZone()]] - `calls` [EXTRACTED]
 - [[useUploader()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Args_Uploader
+#graphify/code #graphify/EXTRACTED #community/Image_Custom

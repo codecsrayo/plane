@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/ui/pages/context-based/work-item/root.tsx"
+source_file: "web/core/components/power-k/ui/pages/context-based/work-item/root.tsx"
 type: "code"
-community: "Menu Power"
+community: "Member Members"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu_Power
+  - community/Member_Members
 ---
 
 # PowerKWorkItemContextBasedPages
 
 ## Connections
 
-- [[root.tsx_60]] - `contains` [EXTRACTED]
+- [[root.tsx_101]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Menu_Power
+#graphify/code #graphify/EXTRACTED #community/Member_Members

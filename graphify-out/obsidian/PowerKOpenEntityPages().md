@@ -1,19 +1,19 @@
 ---
-source_file: "components/power-k/ui/pages/open-entity/root.tsx"
+source_file: "web/core/components/power-k/ui/pages/open-entity/root.tsx"
 type: "code"
-community: "File Icons Nav"
+community: "Menu Power"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/File_Icons_Nav
+  - community/Menu_Power
 ---
 
 # PowerKOpenEntityPages()
 
 ## Connections
 
-- [[root.tsx_57]] - `imports` [EXTRACTED]
-- [[root.tsx_62]] - `contains` [EXTRACTED]
+- [[root.tsx_98]] - `imports` [EXTRACTED]
+- [[root.tsx_103]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/File_Icons_Nav
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

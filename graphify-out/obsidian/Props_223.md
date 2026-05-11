@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/filters/header/layout-selection.tsx"
+source_file: "web/core/components/project/dropdowns/filters/access.tsx"
 type: "code"
-community: "Selection Mobile"
-location: "L18"
+community: "Project Common"
+location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Selection_Mobile
+  - community/Project_Common
 ---
 
 # Props
 
 ## Connections
 
-- [[layout-selection.tsx]] - `contains` [EXTRACTED]
+- [[access.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Selection_Mobile
+#graphify/code #graphify/EXTRACTED #community/Project_Common

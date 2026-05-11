@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/config/navigation/commands.ts"
+source_file: "web/core/components/power-k/config/navigation/commands.ts"
 type: "code"
-community: "Navigation Power"
+community: "Power Navigation"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Navigation_Power
+  - community/Power_Navigation
 ---
 
 # baseWorkspaceConditions()
@@ -15,4 +15,4 @@ tags:
 
 - [[commands.ts_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Navigation_Power
+#graphify/code #graphify/EXTRACTED #community/Power_Navigation

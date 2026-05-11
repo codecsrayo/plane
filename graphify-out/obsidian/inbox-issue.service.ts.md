@@ -1,12 +1,12 @@
 ---
-source_file: "services/inbox/inbox-issue.service.ts"
+source_file: "web/core/services/inbox/inbox-issue.service.ts"
 type: "code"
-community: "Inbox Issue"
+community: "Issue Project"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Inbox_Issue
+  - community/Issue_Project
 ---
 
 # inbox-issue.service.ts
@@ -15,6 +15,6 @@ tags:
 
 - [[ApiError]] - `imports` [EXTRACTED]
 - [[InboxIssueService]] - `contains` [EXTRACTED]
-- [[api.service.ts]] - `imports_from` [EXTRACTED]
+- [[api.service.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Inbox_Issue
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

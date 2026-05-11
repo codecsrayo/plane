@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/quick-action-dropdowns/project-issue.tsx"
+source_file: "web/core/components/issues/issue-layouts/quick-action-dropdowns/project-issue.tsx"
 type: "code"
-community: "Project Archives"
+community: "Issue Work"
 location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Archives
+  - community/Issue_Work
 ---
 
 # ProjectIssueQuickActions
@@ -15,4 +15,4 @@ tags:
 
 - [[project-issue.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Archives
+#graphify/code #graphify/EXTRACTED #community/Issue_Work

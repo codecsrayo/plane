@@ -1,44 +1,20 @@
 ---
-source_file: "store/issue/workspace/filter.store.ts"
+source_file: "web/ce/store/issue/team/filter.store.ts"
 type: "code"
-community: "Filters Params"
+community: "Calendar Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filters_Params
+  - community/Calendar_Issue
 ---
 
 # filter.store.ts
 
 ## Connections
 
-- [[IBaseIssueFilterStore]] - `imports` [EXTRACTED]
-- [[IIssueFilterHelperStore]] - `imports` [EXTRACTED]
-- [[IIssueRootStore]] - `imports` [EXTRACTED]
-- [[IWorkspaceIssuesFilter]] - `contains` [EXTRACTED]
-- [[IssueFilterHelperStore]] - `imports` [EXTRACTED]
-- [[TBaseFilterStore]] - `contains` [EXTRACTED]
-- [[TWorkspaceFilters]] - `contains` [EXTRACTED]
-- [[WorkspaceIssuesFilter]] - `contains` [EXTRACTED]
-- [[WorkspaceService]] - `imports` [EXTRACTED]
-- [[_filters_2]] - `contains` [EXTRACTED]
-- [[api.service.ts]] - `imports_from` [EXTRACTED]
-- [[filterParams_2]] - `contains` [EXTRACTED]
-- [[filteredParams]] - `contains` [EXTRACTED]
-- [[filteredRouteParams]] - `contains` [EXTRACTED]
-- [[issue-filter-helper.store.ts]] - `imports_from` [EXTRACTED]
-- [[issue.store.ts_3]] - `imports_from` [EXTRACTED]
-- [[issueFilters]] - `contains` [EXTRACTED]
-- [[kanbanFilters_2]] - `contains` [EXTRACTED]
-- [[paginationParams_2]] - `contains` [EXTRACTED]
-- [[paramForStaticView]] - `contains` [EXTRACTED]
-- [[root.store.ts_1]] - `imports_from` [EXTRACTED]
-- [[toApiError()]] - `imports` [EXTRACTED]
-- [[updatedDisplayFilters_2]] - `contains` [EXTRACTED]
-- [[updatedDisplayProperties_2]] - `contains` [EXTRACTED]
-- [[updatedKanbanFilters_2]] - `contains` [EXTRACTED]
-- [[userFilters]] - `contains` [EXTRACTED]
-- [[workspace.service.ts]] - `imports_from` [EXTRACTED]
+- [[ITeamIssuesFilter]] - `contains` [EXTRACTED]
+- [[TeamIssuesFilter]] - `contains` [EXTRACTED]
+- [[index.ts_279]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filters_Params
+#graphify/code #graphify/EXTRACTED #community/Calendar_Issue

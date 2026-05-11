@@ -1,12 +1,12 @@
 ---
-source_file: "components/dropdowns/member/types.d.ts"
+source_file: "web/core/components/dropdowns/member/types.d.ts"
 type: "code"
-community: "Types Member"
+community: "Member Dropdown"
 location: "L3"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Types_Member
+  - community/Member_Dropdown
 ---
 
 # MemberDropdownProps
@@ -15,4 +15,4 @@ tags:
 
 - [[types.d.ts_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Types_Member
+#graphify/code #graphify/EXTRACTED #community/Member_Dropdown

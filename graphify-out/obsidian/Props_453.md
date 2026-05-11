@@ -1,18 +1,18 @@
 ---
-source_file: "components/core/modals/bulk-delete-issues-modal.tsx"
+source_file: "web/core/components/inbox/modals/decline-issue-modal.tsx"
 type: "code"
-community: "Bulk Issues"
-location: "L41"
+community: "Issue Inbox"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Bulk_Issues
+  - community/Issue_Inbox
 ---
 
 # Props
 
 ## Connections
 
-- [[bulk-delete-issues-modal.tsx]] - `contains` [EXTRACTED]
+- [[decline-issue-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Bulk_Issues
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

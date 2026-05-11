@@ -1,18 +1,18 @@
 ---
-source_file: "components/stickies/layout/stickies-list.tsx"
+source_file: "web/core/components/workspace/sidebar/favorites/new-fav-folder.tsx"
 type: "code"
-community: "Stickies Sticky"
-location: "L46"
+community: "Favorite Folder"
+location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Stickies_Sticky
+  - community/Favorite_Folder
 ---
 
 # TProps
 
 ## Connections
 
-- [[stickies-list.tsx]] - `contains` [EXTRACTED]
+- [[new-fav-folder.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Stickies_Sticky
+#graphify/code #graphify/EXTRACTED #community/Favorite_Folder

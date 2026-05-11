@@ -1,19 +1,19 @@
 ---
-source_file: "components/home/widgets/manage/widget-list.tsx"
+source_file: "web/core/components/home/widgets/manage/widget-list.tsx"
 type: "code"
-community: "Dashboard Widgets"
+community: "Widget Home"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dashboard_Widgets
+  - community/Widget_Home
 ---
 
 # WidgetList
 
 ## Connections
 
-- [[index.tsx_1]] - `imports` [EXTRACTED]
+- [[index.tsx_7]] - `imports` [EXTRACTED]
 - [[widget-list.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets
+#graphify/code #graphify/EXTRACTED #community/Widget_Home

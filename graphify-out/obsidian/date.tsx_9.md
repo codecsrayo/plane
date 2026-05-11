@@ -1,5 +1,5 @@
 ---
-source_file: "components/readonly/date.tsx"
+source_file: "web/core/components/readonly/date.tsx"
 type: "code"
 community: "Date Readonly"
 location: "L1"

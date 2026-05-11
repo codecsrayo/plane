@@ -1,8 +1,8 @@
 ---
-source_file: "store/estimates/project-estimate.store.ts"
+source_file: "web/ce/store/estimates/estimate.ts"
 type: "code"
 community: "Estimate Project"
-location: "L22"
+location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
@@ -13,6 +13,6 @@ tags:
 
 ## Connections
 
-- [[project-estimate.store.ts]] - `contains` [EXTRACTED]
+- [[estimate.ts_1]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Estimate_Project

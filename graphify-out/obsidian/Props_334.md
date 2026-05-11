@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/ui/pages/open-entity/workspaces-menu.tsx"
+source_file: "web/core/components/issues/attachment/attachment-list-upload-item.tsx"
 type: "code"
-community: "Workspace Invites"
-location: "L16"
+community: "Attachment Issue"
+location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Invites
+  - community/Attachment_Issue
 ---
 
 # Props
 
 ## Connections
 
-- [[workspaces-menu.tsx]] - `contains` [EXTRACTED]
+- [[attachment-list-upload-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Invites
+#graphify/code #graphify/EXTRACTED #community/Attachment_Issue

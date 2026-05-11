@@ -37,11 +37,12 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 2 edges to [[_COMMUNITY_Issue Options]]
+- 2 edges to [[_COMMUNITY_Issue Entity]]
 - 2 edges to [[_COMMUNITY_Issue Identifier]]
-- 2 edges to [[_COMMUNITY_Issue Enums]]
+- 1 edge to [[_COMMUNITY_Issue Public]]
+- 1 edge to [[_COMMUNITY_Widget Issue]]
 
 ## Top bridge nodes
 
-- [[modules.ts]] - degree 20, connects to 3 communities
+- [[modules.ts]] - degree 20, connects to 4 communities
 - [[ILinkDetails]] - degree 2, connects to 1 community

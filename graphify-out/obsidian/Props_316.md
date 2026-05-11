@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/ui/pages/context-based/work-item/priorities-menu.tsx"
+source_file: "web/core/components/issues/issue-layouts/filters/header/filters/cycle.tsx"
 type: "code"
-community: "Menu Power"
-location: "L16"
+community: "Cycle Active"
+location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu_Power
+  - community/Cycle_Active
 ---
 
 # Props
 
 ## Connections
 
-- [[priorities-menu.tsx]] - `contains` [EXTRACTED]
+- [[cycle.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Menu_Power
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

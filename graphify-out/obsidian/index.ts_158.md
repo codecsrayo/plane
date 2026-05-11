@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/card/index.ts"
 type: "code"
-community: "Calculate Tree"
+community: "Custom Chart"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calculate_Tree
+  - community/Custom_Chart
 ---
 
 # index.ts
@@ -17,4 +17,4 @@ tags:
 - [[tooltip.tsx_2]] - `imports_from` [EXTRACTED]
 - [[tooltip.tsx_3]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calculate_Tree
+#graphify/code #graphify/EXTRACTED #community/Custom_Chart

@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/ce/constants/extensions.ts"
 type: "code"
-community: "Assets Additional"
+community: "Assets Node"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Assets_Additional
+  - community/Assets_Node
 ---
 
 # extensions.ts
@@ -17,4 +17,4 @@ tags:
 - [[ADDITIONAL_EXTENSIONS]] - `contains` [EXTRACTED]
 - [[assets.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Assets_Additional
+#graphify/code #graphify/EXTRACTED #community/Assets_Node

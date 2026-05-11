@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/components/menus/menu-items.ts"
 type: "code"
-community: "Toggle Insert"
+community: "Toggle Menu"
 location: "L63"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toggle_Insert
+  - community/Toggle_Menu
 ---
 
 # EditorMenuItem
@@ -15,4 +15,4 @@ tags:
 
 - [[menu-items.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toggle_Insert
+#graphify/code #graphify/EXTRACTED #community/Toggle_Menu

@@ -1,12 +1,12 @@
 ---
-source_file: "store/issue/issue-details/root.store.ts"
+source_file: "web/core/store/issue/issue-details/root.store.ts"
 type: "code"
-community: "Comment Reactions"
+community: "Issue Reaction"
 location: "L67"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Comment_Reactions
+  - community/Issue_Reaction
 ---
 
 # IIssueDetail
@@ -16,12 +16,13 @@ tags:
 - [[attachment.store.ts]] - `imports` [EXTRACTED]
 - [[comment.store.ts]] - `imports` [EXTRACTED]
 - [[comment_reaction.store.ts]] - `imports` [EXTRACTED]
-- [[issue.store.ts_9]] - `imports` [EXTRACTED]
+- [[issue.store.ts_14]] - `imports` [EXTRACTED]
 - [[link.store.ts_1]] - `imports` [EXTRACTED]
 - [[reaction.store.ts]] - `imports` [EXTRACTED]
 - [[relation.store.ts]] - `imports` [EXTRACTED]
-- [[root.store.ts_2]] - `contains` [EXTRACTED]
+- [[root.store.ts_1]] - `contains` [EXTRACTED]
+- [[root.store.ts_4]] - `contains` [EXTRACTED]
 - [[sub_issues.store.ts]] - `imports` [EXTRACTED]
 - [[subscription.store.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Comment_Reactions
+#graphify/code #graphify/EXTRACTED #community/Issue_Reaction

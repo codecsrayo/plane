@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/archive-issue-modal.tsx"
+source_file: "web/core/components/issues/archive-issue-modal.tsx"
 type: "code"
-community: "Project Archives"
+community: "Issue Work"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Archives
+  - community/Issue_Work
 ---
 
 # archive-issue-modal.tsx
@@ -14,7 +14,7 @@ tags:
 ## Connections
 
 - [[ArchiveIssueModal()]] - `contains` [EXTRACTED]
-- [[Props_182]] - `contains` [EXTRACTED]
+- [[Props_257]] - `contains` [EXTRACTED]
 - [[all-issue.tsx]] - `imports_from` [EXTRACTED]
 - [[cycle-issue.tsx]] - `imports_from` [EXTRACTED]
 - [[issue-detail.tsx]] - `imports_from` [EXTRACTED]
@@ -25,4 +25,4 @@ tags:
 - [[useIssues()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Archives
+#graphify/code #graphify/EXTRACTED #community/Issue_Work

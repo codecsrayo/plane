@@ -1,18 +1,18 @@
 ---
-source_file: "components/labels/delete-label-modal.tsx"
+source_file: "web/ce/components/issues/bulk-operations/root.tsx"
 type: "code"
-community: "Label Workspace"
-location: "L19"
+community: "Select Multiple"
+location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Workspace
+  - community/Select_Multiple
 ---
 
 # Props
 
 ## Connections
 
-- [[delete-label-modal.tsx]] - `contains` [EXTRACTED]
+- [[root.tsx_29]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Workspace
+#graphify/code #graphify/EXTRACTED #community/Select_Multiple

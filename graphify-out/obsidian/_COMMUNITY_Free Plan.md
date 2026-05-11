@@ -11,9 +11,9 @@ members: 3
 
 ## Members
 
-- [[FreePlanCard]] - code - components/license/modal/card/free-plan.tsx
-- [[FreePlanCardProps]] - code - components/license/modal/card/free-plan.tsx
-- [[free-plan.tsx]] - code - components/license/modal/card/free-plan.tsx
+- [[FreePlanCard]] - code - web/core/components/license/modal/card/free-plan.tsx
+- [[FreePlanCardProps]] - code - web/core/components/license/modal/card/free-plan.tsx
+- [[free-plan.tsx]] - code - web/core/components/license/modal/card/free-plan.tsx
 
 ## Live Query (requires Dataview plugin)
 

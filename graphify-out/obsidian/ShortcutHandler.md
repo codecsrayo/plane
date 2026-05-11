@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/core/shortcut-handler.ts"
+source_file: "web/core/components/power-k/core/shortcut-handler.ts"
 type: "code"
-community: "Shortcut Registry"
+community: "Command Shortcut"
 location: "L47"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Shortcut_Registry
+  - community/Command_Shortcut
 ---
 
 # ShortcutHandler
@@ -14,8 +14,8 @@ tags:
 ## Connections
 
 - [[.canExecuteCommand()]] - `method` [EXTRACTED]
-- [[.constructor()_124]] - `method` [EXTRACTED]
-- [[.destroy()_1]] - `method` [EXTRACTED]
+- [[.constructor()_181]] - `method` [EXTRACTED]
+- [[.destroy()_10]] - `method` [EXTRACTED]
 - [[.executeCommand()]] - `method` [EXTRACTED]
 - [[.handleKeyOrSequence()]] - `method` [EXTRACTED]
 - [[.handleModifierShortcut()]] - `method` [EXTRACTED]
@@ -25,4 +25,4 @@ tags:
 - [[global-shortcuts.tsx]] - `imports` [EXTRACTED]
 - [[shortcut-handler.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Shortcut_Registry
+#graphify/code #graphify/EXTRACTED #community/Command_Shortcut

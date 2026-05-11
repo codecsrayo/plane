@@ -1,12 +1,12 @@
 ---
-source_file: "components/editor/sticky-editor/color-palette.tsx"
+source_file: "web/core/components/editor/sticky-editor/color-palette.tsx"
 type: "code"
-community: "Toolbar Lite"
+community: "Stickies Sticky"
 location: "L60"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toolbar_Lite
+  - community/Stickies_Sticky
 ---
 
 # ColorPalette()
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[color-palette.tsx]] - `contains` [EXTRACTED]
-- [[toolbar.tsx]] - `imports` [EXTRACTED]
+- [[toolbar.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toolbar_Lite
+#graphify/code #graphify/EXTRACTED #community/Stickies_Sticky

@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/django_celery_beat_periodictask.rs"
 type: "code"
-community: "Community 427"
+community: "Model Relation"
 location: "L8"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_427
+  - community/Model_Relation
 ---
 
 # Model
@@ -15,4 +15,4 @@ tags:
 
 - [[django_celery_beat_periodictask.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_427
+#graphify/code #graphify/EXTRACTED #community/Model_Relation

@@ -1,18 +1,18 @@
 ---
-source_file: "components/project/dropdowns/filters/access.tsx"
+source_file: "web/core/components/modules/module-list-item.tsx"
 type: "code"
-community: "Lead Members"
-location: "L17"
+community: "Cycles Archived"
+location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Lead_Members
+  - community/Cycles_Archived
 ---
 
 # Props
 
 ## Connections
 
-- [[access.tsx_1]] - `contains` [EXTRACTED]
+- [[module-list-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Lead_Members
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

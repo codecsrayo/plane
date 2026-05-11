@@ -1,12 +1,12 @@
 ---
 source_file: "services/src/module/link.service.ts"
 type: "code"
-community: "Sites Cycle"
+community: "Link Modulelinkservice"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sites_Cycle
+  - community/Link_Modulelinkservice
 ---
 
 # ModuleLinkService
@@ -18,4 +18,4 @@ tags:
 - [[.update()_8]] - `method` [EXTRACTED]
 - [[link.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sites_Cycle
+#graphify/code #graphify/EXTRACTED #community/Link_Modulelinkservice

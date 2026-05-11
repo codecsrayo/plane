@@ -1,12 +1,12 @@
 ---
-source_file: "store/member/utils.ts"
+source_file: "web/core/store/member/utils.ts"
 type: "code"
-community: "Member Sort"
+community: "Workspace Member"
 location: "L75"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Sort
+  - community/Workspace_Member
 ---
 
 # filterWorkspaceMembersByRole()
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[sortWorkspaceMembers()]] - `calls` [EXTRACTED]
-- [[utils.ts]] - `contains` [EXTRACTED]
+- [[utils.ts_12]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Sort
+#graphify/code #graphify/EXTRACTED #community/Workspace_Member

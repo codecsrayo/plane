@@ -1,5 +1,5 @@
 ---
-source_file: "components/workspace/invite-modal/fields.tsx"
+source_file: "web/core/components/workspace/invite-modal/fields.tsx"
 type: "code"
 community: "Invitation Workspace"
 location: "L29"
@@ -14,5 +14,6 @@ tags:
 ## Connections
 
 - [[fields.tsx]] - `contains` [EXTRACTED]
+- [[invite-modal.tsx]] - `imports` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Invitation_Workspace

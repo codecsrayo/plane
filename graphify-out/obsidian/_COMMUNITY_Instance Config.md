@@ -1,57 +1,31 @@
 ---
 type: community
-cohesion: 0.05
-members: 41
+cohesion: 0.20
+members: 15
 ---
 
 # Instance Config
 
-**Cohesion:** 0.05 - loosely connected
-**Members:** 41 nodes
+**Cohesion:** 0.20 - loosely connected
+**Members:** 15 nodes
 
 ## Members
 
-- [[EStartOfTheWeek]] - code - types/src/users.ts
-- [[IFormattedInstanceConfiguration]] - code - types/src/instance/base.ts
-- [[IInstance]] - code - types/src/instance/base.ts
-- [[IInstanceAdmin]] - code - types/src/instance/base.ts
-- [[IInstanceAdminStatus]] - code - types/src/users.ts
-- [[IInstanceConfig]] - code - types/src/instance/base.ts
-- [[IInstanceConfiguration]] - code - types/src/instance/base.ts
-- [[IInstanceInfo]] - code - types/src/instance/base.ts
-- [[IIssueReaction]] - code - types/src/reaction.ts
-- [[IUserAccount]] - code - types/src/users.ts
-- [[IUserActivity]] - code - types/src/users.ts
-- [[IUserActivityResponse]] - code - types/src/users.ts
-- [[IUserEmailNotificationSettings]] - code - types/src/users.ts
-- [[IUserLite]] - code - types/src/users.ts
-- [[IUserMemberLite]] - code - types/src/users.ts
-- [[IUserPriorityDistribution]] - code - types/src/users.ts
-- [[IUserProfileData]] - code - types/src/users.ts
-- [[IUserProfileProjectSegregation]] - code - types/src/users.ts
-- [[IUserProjectsRole]] - code - types/src/users.ts
-- [[IUserSettings]] - code - types/src/users.ts
-- [[IUserStateDistribution]] - code - types/src/users.ts
-- [[IUserTheme]] - code - types/src/users.ts
-- [[IssueCommentReaction]] - code - types/src/reaction.ts
-- [[IssueCommentReactionForm]] - code - types/src/reaction.ts
-- [[IssueReactionForm]] - code - types/src/reaction.ts
-- [[TExtendedInstanceAuthenticationModeKeys]] - code - types/src/instance/auth-ee.ts
-- [[TExtendedLoginMediums]] - code - types/src/instance/auth-ee.ts
-- [[TInstanceConfigurationKeys]] - code - types/src/instance/base.ts
-- [[TInstanceIntegrationConfigurationKeys]] - code - types/src/instance/base.ts
-- [[TInstanceIntercomConfigurationKeys]] - code - types/src/instance/base.ts
-- [[TLoginMediums]] - code - types/src/instance/base.ts
-- [[TOnboardingSteps]] - code - types/src/users.ts
-- [[TProfileViews]] - code - types/src/users.ts
-- [[TPublicMember]] - code - types/src/users.ts
-- [[TUserProfile]] - code - types/src/users.ts
-- [[UserAuth]] - code - types/src/users.ts
-- [[auth-ee.ts]] - code - types/src/instance/auth-ee.ts
-- [[base.ts_3]] - code - types/src/instance/base.ts
-- [[index.ts_102]] - code - types/src/instance/index.ts
-- [[reaction.ts]] - code - types/src/reaction.ts
-- [[users.ts]] - code - types/src/users.ts
+- [[InstanceGithubConfigForm()]] - code - admin/app/(all)/(dashboard)/authentication/github/form.tsx
+- [[InstanceIntegrationsConfigForm]] - code - admin/app/(all)/(dashboard)/integrations/form.tsx
+- [[InstanceIntegrationsPage]] - code - admin/app/(all)/(dashboard)/integrations/page.tsx
+- [[IntegrationConfigFormValues]] - code - admin/app/(all)/(dashboard)/integrations/form.tsx
+- [[Props_540]] - code - admin/app/(all)/(dashboard)/integrations/form.tsx
+- [[decodeBase64()]] - code - admin/app/(all)/(dashboard)/integrations/form.tsx
+- [[decodePrivateKeyForDisplay()]] - code - admin/app/(all)/(dashboard)/integrations/form.tsx
+- [[encodeBase64()]] - code - admin/app/(all)/(dashboard)/integrations/form.tsx
+- [[encodePrivateKeyForStorage()]] - code - admin/app/(all)/(dashboard)/integrations/form.tsx
+- [[form.tsx_13]] - code - admin/app/(all)/(dashboard)/integrations/form.tsx
+- [[meta()_17]] - code - admin/app/(all)/(dashboard)/integrations/page.tsx
+- [[normalizePemBlock()]] - code - admin/app/(all)/(dashboard)/integrations/form.tsx
+- [[page.tsx_71]] - code - admin/app/(all)/(dashboard)/integrations/page.tsx
+- [[use-origin.ts]] - code - admin/hooks/use-origin.ts
+- [[useOrigin()]] - code - admin/hooks/use-origin.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -62,15 +36,15 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 8 edges to [[_COMMUNITY_Import Export]]
-- 4 edges to [[_COMMUNITY_Estimate Notification]]
-- 2 edges to [[_COMMUNITY_Issue Options]]
-- 2 edges to [[_COMMUNITY_Project State]]
-- 2 edges to [[_COMMUNITY_Issue Enums]]
-- 2 edges to [[_COMMUNITY_Issue Activity]]
+- 12 edges to [[_COMMUNITY_Controller Values]]
+- 3 edges to [[_COMMUNITY_Instance Authentication]]
+- 2 edges to [[_COMMUNITY_Sidebar Admin]]
+- 2 edges to [[_COMMUNITY_Config Authentication]]
 
 ## Top bridge nodes
 
-- [[users.ts]] - degree 35, connects to 6 communities
-- [[IUserLite]] - degree 10, connects to 6 communities
-- [[index.ts_102]] - degree 3, connects to 1 community
+- [[form.tsx_13]] - degree 23, connects to 3 communities
+- [[page.tsx_71]] - degree 7, connects to 2 communities
+- [[InstanceGithubConfigForm()]] - degree 3, connects to 2 communities
+- [[useOrigin()]] - degree 4, connects to 1 community
+- [[use-origin.ts]] - degree 3, connects to 1 community

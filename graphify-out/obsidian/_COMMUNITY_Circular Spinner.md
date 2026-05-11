@@ -37,7 +37,7 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 2 edges to [[_COMMUNITY_Toast Promise]]
+- 2 edges to [[_COMMUNITY_Toast Static]]
 
 ## Top bridge nodes
 

@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/columns/label-column.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/label-column.tsx"
 type: "code"
-community: "Column Spreadsheet"
+community: "Label Dropdown"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Column_Spreadsheet
+  - community/Label_Dropdown
 ---
 
 # SpreadsheetLabelColumn
@@ -15,4 +15,4 @@ tags:
 
 - [[label-column.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Column_Spreadsheet
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

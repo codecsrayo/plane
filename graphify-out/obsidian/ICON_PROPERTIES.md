@@ -1,5 +1,5 @@
 ---
-source_file: "components/inbox/inbox-status-icon.tsx"
+source_file: "web/core/components/inbox/inbox-status-icon.tsx"
 type: "code"
 community: "Issue Inbox"
 location: "L13"

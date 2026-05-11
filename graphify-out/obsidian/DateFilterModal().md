@@ -1,5 +1,5 @@
 ---
-source_file: "components/core/filters/date-filter-modal.tsx"
+source_file: "web/core/components/core/filters/date-filter-modal.tsx"
 type: "code"
 community: "Date Start"
 location: "L33"
@@ -19,6 +19,8 @@ tags:
 - [[date.tsx_7]] - `imports` [EXTRACTED]
 - [[due-date.tsx]] - `imports` [EXTRACTED]
 - [[end-date.tsx]] - `imports` [EXTRACTED]
+- [[getDate()_1]] - `calls` [INFERRED]
+- [[renderFormattedDate()_1]] - `calls` [INFERRED]
 - [[start-date.tsx]] - `imports` [EXTRACTED]
 - [[start-date.tsx_1]] - `imports` [EXTRACTED]
 - [[start-date.tsx_2]] - `imports` [EXTRACTED]

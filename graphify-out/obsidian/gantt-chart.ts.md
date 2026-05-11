@@ -1,19 +1,18 @@
 ---
-source_file: "constants/gantt-chart.ts"
+source_file: "web/ce/types/gantt-chart.ts"
 type: "code"
-community: "Relation Issue"
+community: "Issue Relation"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Relation_Issue
+  - community/Issue_Relation
 ---
 
 # gantt-chart.ts
 
 ## Connections
 
-- [[REVERSE_RELATIONS]] - `contains` [EXTRACTED]
-- [[relation.store.ts]] - `imports_from` [EXTRACTED]
+- [[TIssueRelationTypes_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Relation_Issue
+#graphify/code #graphify/EXTRACTED #community/Issue_Relation

@@ -1,12 +1,12 @@
 ---
-source_file: "services/project/project-archive.service.ts"
+source_file: "web/core/services/project/project-archive.service.ts"
 type: "code"
-community: "API Services"
+community: "Issue Project"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/API_Services
+  - community/Issue_Project
 ---
 
 # ProjectArchiveService
@@ -14,8 +14,8 @@ tags:
 ## Connections
 
 - [[.archiveProject()]] - `method` [EXTRACTED]
-- [[.constructor()_117]] - `method` [EXTRACTED]
+- [[.constructor()_174]] - `method` [EXTRACTED]
 - [[.restoreProject()]] - `method` [EXTRACTED]
 - [[project-archive.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/API_Services
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

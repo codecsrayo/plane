@@ -1,12 +1,12 @@
 ---
-source_file: "components/pages/editor/page-root.tsx"
+source_file: "web/core/components/pages/editor/page-root.tsx"
 type: "code"
-community: "Editor Body"
+community: "Content Body"
 location: "L41"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Body
+  - community/Content_Body
 ---
 
 # TPageRootProps
@@ -15,4 +15,4 @@ tags:
 
 - [[page-root.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Body
+#graphify/code #graphify/EXTRACTED #community/Content_Body

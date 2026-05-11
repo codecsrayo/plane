@@ -1,18 +1,18 @@
 ---
-source_file: "components/comments/comment-reaction.tsx"
+source_file: "web/core/components/cycles/dropdowns/estimate-type-dropdown.tsx"
 type: "code"
-community: "Comment Card"
+community: "Cycle Active"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Comment_Card
+  - community/Cycle_Active
 ---
 
 # TProps
 
 ## Connections
 
-- [[comment-reaction.tsx]] - `contains` [EXTRACTED]
+- [[estimate-type-dropdown.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Comment_Card
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

@@ -1,5 +1,5 @@
 ---
-source_file: "components/project/settings/helper.tsx"
+source_file: "web/core/components/project/settings/helper.tsx"
 type: "code"
 community: "Project Settings"
 location: "L23"
@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 
-- [[features-list.tsx]] - `imports` [EXTRACTED]
-- [[helper.tsx_2]] - `contains` [EXTRACTED]
+- [[features-list.tsx_1]] - `imports` [EXTRACTED]
+- [[helper.tsx_24]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Project_Settings

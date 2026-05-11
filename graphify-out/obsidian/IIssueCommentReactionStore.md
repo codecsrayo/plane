@@ -1,12 +1,12 @@
 ---
-source_file: "store/issue/issue-details/comment_reaction.store.ts"
+source_file: "web/core/store/issue/issue-details/comment_reaction.store.ts"
 type: "code"
-community: "Comment Reactions"
+community: "Issue Reaction"
 location: "L41"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Comment_Reactions
+  - community/Issue_Reaction
 ---
 
 # IIssueCommentReactionStore
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[comment_reaction.store.ts]] - `contains` [EXTRACTED]
-- [[root.store.ts_2]] - `imports` [EXTRACTED]
+- [[root.store.ts_4]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Comment_Reactions
+#graphify/code #graphify/EXTRACTED #community/Issue_Reaction

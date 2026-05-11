@@ -1,12 +1,12 @@
 ---
-source_file: "store/project/project.store.ts"
+source_file: "web/core/store/project/project.store.ts"
 type: "code"
-community: "Project Root Store"
+community: "Project Issue"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Root_Store
+  - community/Project_Issue
 ---
 
 # ProjectOverviewCollapsible
@@ -15,4 +15,4 @@ tags:
 
 - [[project.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Root_Store
+#graphify/code #graphify/EXTRACTED #community/Project_Issue

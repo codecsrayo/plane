@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/issue-row.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/issue-row.tsx"
 type: "code"
-community: "List Group Layout"
+community: "Issue Activity"
 location: "L156"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/List_Group_Layout
+  - community/Issue_Activity
 ---
 
 # IssueRowDetailsProps
@@ -15,4 +15,4 @@ tags:
 
 - [[issue-row.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/List_Group_Layout
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

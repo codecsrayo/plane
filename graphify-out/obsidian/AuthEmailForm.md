@@ -1,19 +1,21 @@
 ---
-source_file: "components/account/auth-forms/email.tsx"
+source_file: "space/components/account/auth-forms/email.tsx"
 type: "code"
-community: "Auth Forms"
-location: "L24"
+community: "Issue Properties"
+location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Forms
+  - community/Issue_Properties
 ---
 
 # AuthEmailForm
 
 ## Connections
 
+- [[auth-root.tsx_1]] - `imports` [EXTRACTED]
 - [[email.tsx_1]] - `contains` [EXTRACTED]
+- [[email.tsx_2]] - `contains` [EXTRACTED]
 - [[form-root.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Forms
+#graphify/code #graphify/EXTRACTED #community/Issue_Properties

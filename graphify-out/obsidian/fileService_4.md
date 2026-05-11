@@ -1,18 +1,18 @@
 ---
-source_file: "components/comments/comment-create.tsx"
+source_file: "web/core/components/inbox/modals/create-modal/create-root.tsx"
 type: "code"
-community: "Comment Card"
-location: "L32"
+community: "Issue Inbox"
+location: "L37"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Comment_Card
+  - community/Issue_Inbox
 ---
 
 # fileService
 
 ## Connections
 
-- [[comment-create.tsx]] - `contains` [EXTRACTED]
+- [[create-root.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Comment_Card
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

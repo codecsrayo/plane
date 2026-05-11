@@ -1,18 +1,19 @@
 ---
-source_file: "components/issues/issue-detail-widgets/widget-button.tsx"
+source_file: "space/components/issues/issue-layouts/list/blocks-list.tsx"
 type: "code"
-community: "Issue Widget"
-location: "L11"
+community: "Group Kanban"
+location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Widget
+  - community/Group_Kanban
 ---
 
 # Props
 
 ## Connections
 
-- [[widget-button.tsx]] - `contains` [EXTRACTED]
+- [[blocks-list.tsx_2]] - `contains` [EXTRACTED]
+- [[blocks-list.tsx_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Widget
+#graphify/code #graphify/EXTRACTED #community/Group_Kanban

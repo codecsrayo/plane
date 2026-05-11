@@ -1,12 +1,12 @@
 ---
-source_file: "components/pages/modals/export-page-modal.tsx"
+source_file: "web/core/components/pages/modals/export-page-modal.tsx"
 type: "code"
-community: "Formats Content"
+community: "Formats Values"
 location: "L40"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Formats_Content
+  - community/Formats_Values
 ---
 
 # EXPORT_FORMATS
@@ -15,4 +15,4 @@ tags:
 
 - [[export-page-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Formats_Content
+#graphify/code #graphify/EXTRACTED #community/Formats_Values

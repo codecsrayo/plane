@@ -11,9 +11,9 @@ members: 3
 
 ## Members
 
-- [[AudioIcon()]] - code - components/icons/attachment/audio-file-icon.tsx
-- [[AudioIconProps]] - code - components/icons/attachment/audio-file-icon.tsx
-- [[audio-file-icon.tsx]] - code - components/icons/attachment/audio-file-icon.tsx
+- [[AudioIcon()]] - code - web/core/components/icons/attachment/audio-file-icon.tsx
+- [[AudioIconProps]] - code - web/core/components/icons/attachment/audio-file-icon.tsx
+- [[audio-file-icon.tsx_1]] - code - web/core/components/icons/attachment/audio-file-icon.tsx
 
 ## Live Query (requires Dataview plugin)
 

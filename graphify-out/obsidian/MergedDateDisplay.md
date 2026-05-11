@@ -1,12 +1,12 @@
 ---
-source_file: "components/dropdowns/merged-date.tsx"
+source_file: "web/core/components/dropdowns/merged-date.tsx"
 type: "code"
-community: "Cycle Cycles"
+community: "Label Dropdown"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Cycles
+  - community/Label_Dropdown
 ---
 
 # MergedDateDisplay
@@ -17,4 +17,4 @@ tags:
 - [[date-range.tsx]] - `imports` [EXTRACTED]
 - [[merged-date.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Cycles
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

@@ -1,12 +1,12 @@
 ---
-source_file: "components/pages/dropdowns/actions.tsx"
+source_file: "web/core/components/pages/dropdowns/actions.tsx"
 type: "code"
-community: "Collaborative Copy"
+community: "Flag Pageactions"
 location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Collaborative_Copy
+  - community/Flag_Pageactions
 ---
 
 # TPageActions
@@ -15,4 +15,4 @@ tags:
 
 - [[actions.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Collaborative_Copy
+#graphify/code #graphify/EXTRACTED #community/Flag_Pageactions

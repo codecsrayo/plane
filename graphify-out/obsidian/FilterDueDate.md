@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-layouts/filters/header/filters/due-date.tsx"
+source_file: "web/core/components/issues/issue-layouts/filters/header/filters/due-date.tsx"
 type: "code"
 community: "Date Start"
 location: "L21"

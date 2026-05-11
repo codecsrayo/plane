@@ -1,12 +1,12 @@
 ---
-source_file: "components/modules/module-list-item-action.tsx"
+source_file: "web/core/components/modules/module-list-item-action.tsx"
 type: "code"
-community: "Action Status"
+community: "Cycles Archived"
 location: "L36"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Action_Status
+  - community/Cycles_Archived
 ---
 
 # ModuleListItemAction
@@ -15,4 +15,4 @@ tags:
 
 - [[module-list-item-action.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Action_Status
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

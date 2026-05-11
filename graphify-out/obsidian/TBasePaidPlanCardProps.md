@@ -1,5 +1,5 @@
 ---
-source_file: "components/license/modal/card/base-paid-plan-card.tsx"
+source_file: "web/core/components/license/modal/card/base-paid-plan-card.tsx"
 type: "code"
 community: "Card Paid"
 location: "L16"

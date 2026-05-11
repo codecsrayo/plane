@@ -1,12 +1,12 @@
 ---
-source_file: "components/home/widgets/manage/index.tsx"
+source_file: "web/core/components/home/widgets/manage/index.tsx"
 type: "code"
-community: "Dashboard Widgets"
+community: "Widget Home"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dashboard_Widgets
+  - community/Widget_Home
 ---
 
 # ManageWidgetsModal
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[home-dashboard-widgets.tsx]] - `imports` [EXTRACTED]
-- [[index.tsx_1]] - `contains` [EXTRACTED]
+- [[index.tsx_7]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets
+#graphify/code #graphify/EXTRACTED #community/Widget_Home

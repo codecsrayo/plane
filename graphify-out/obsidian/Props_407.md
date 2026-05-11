@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/dropdowns/actions.tsx"
+source_file: "web/core/components/power-k/ui/pages/open-entity/projects-menu.tsx"
 type: "code"
-community: "Collaborative Copy"
-location: "L46"
+community: "Menu Power"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Collaborative_Copy
+  - community/Menu_Power
 ---
 
 # Props
 
 ## Connections
 
-- [[actions.tsx_1]] - `contains` [EXTRACTED]
+- [[projects-menu.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Collaborative_Copy
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/ce/extensions/rich-text-extensions.tsx"
 type: "code"
-community: "Command Slash"
+community: "Emoji Command"
 location: "L39"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Command_Slash
+  - community/Emoji_Command
 ---
 
 # RichTextEditorAdditionalExtensions()
@@ -16,4 +16,4 @@ tags:
 - [[editor.tsx]] - `imports` [EXTRACTED]
 - [[rich-text-extensions.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Command_Slash
+#graphify/code #graphify/EXTRACTED #community/Emoji_Command

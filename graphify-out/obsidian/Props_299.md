@@ -1,18 +1,18 @@
 ---
-source_file: "components/cycles/cycles-view-header.tsx"
+source_file: "web/core/components/issues/issue-layouts/filters/header/display-filters/extra-options.tsx"
 type: "code"
-community: "Archived Cycles"
-location: "L24"
+community: "Extra Options"
+location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Archived_Cycles
+  - community/Extra_Options
 ---
 
 # Props
 
 ## Connections
 
-- [[cycles-view-header.tsx]] - `contains` [EXTRACTED]
+- [[extra-options.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Archived_Cycles
+#graphify/code #graphify/EXTRACTED #community/Extra_Options

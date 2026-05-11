@@ -1,18 +1,18 @@
 ---
-source_file: "components/work-item-filters/filters-hoc/project-level.tsx"
+source_file: "web/core/components/work-item-filters/filters-hoc/project-level.tsx"
 type: "code"
-community: "Work Filters"
+community: "Project Work"
 location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Work_Filters
+  - community/Project_Work
 ---
 
 # TProjectLevelWorkItemFiltersHOCProps
 
 ## Connections
 
-- [[project-level.tsx]] - `contains` [EXTRACTED]
+- [[project-level.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Work_Filters
+#graphify/code #graphify/EXTRACTED #community/Project_Work

@@ -1,12 +1,12 @@
 ---
-source_file: "components/labels/delete-label-modal.tsx"
+source_file: "web/core/components/labels/delete-label-modal.tsx"
 type: "code"
-community: "Label Workspace"
+community: "Label Dropdown"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Workspace
+  - community/Label_Dropdown
 ---
 
 # DeleteLabelModal
@@ -15,4 +15,4 @@ tags:
 
 - [[delete-label-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Workspace
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

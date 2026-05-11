@@ -1,19 +1,19 @@
 ---
-source_file: "services/integrations/integration.service.ts"
+source_file: "web/core/services/integrations/integration.service.ts"
 type: "code"
-community: "State Integration"
+community: "State Repo"
 location: "L34"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/State_Integration
+  - community/State_Repo
 ---
 
 # IntegrationService
 
 ## Connections
 
-- [[.constructor()_115]] - `method` [EXTRACTED]
+- [[.constructor()_172]] - `method` [EXTRACTED]
 - [[.createPRStateMapping()]] - `method` [EXTRACTED]
 - [[.createRepoSync()]] - `method` [EXTRACTED]
 - [[.deleteImporterService()]] - `method` [EXTRACTED]
@@ -29,4 +29,4 @@ tags:
 - [[.getWorkspaceIntegrationsList()]] - `method` [EXTRACTED]
 - [[integration.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/State_Integration
+#graphify/code #graphify/EXTRACTED #community/State_Repo

@@ -1,12 +1,12 @@
 ---
-source_file: "components/onboarding/switch-account-dropdown.tsx"
+source_file: "web/core/components/onboarding/switch-account-dropdown.tsx"
 type: "code"
-community: "Invite Onboarding"
+community: "Workspace Issue"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Invite_Onboarding
+  - community/Workspace_Issue
 ---
 
 # SwitchAccountDropdown
@@ -14,8 +14,8 @@ tags:
 ## Connections
 
 - [[create-or-join-workspaces.tsx]] - `imports` [EXTRACTED]
-- [[header.tsx_12]] - `imports` [EXTRACTED]
+- [[header.tsx_54]] - `imports` [EXTRACTED]
 - [[invite-members.tsx]] - `imports` [EXTRACTED]
 - [[switch-account-dropdown.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Invite_Onboarding
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

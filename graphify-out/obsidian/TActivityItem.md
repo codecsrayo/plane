@@ -1,12 +1,12 @@
 ---
-source_file: "components/common/activity/activity-item.tsx"
+source_file: "web/core/components/common/activity/activity-item.tsx"
 type: "code"
-community: "Activity User"
+community: "Webhook Workspace"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Activity_User
+  - community/Webhook_Workspace
 ---
 
 # TActivityItem
@@ -15,4 +15,4 @@ tags:
 
 - [[activity-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Activity_User
+#graphify/code #graphify/EXTRACTED #community/Webhook_Workspace

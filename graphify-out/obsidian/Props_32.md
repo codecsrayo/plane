@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/callout/logo-selector.tsx"
 type: "code"
-community: "Callout Extension"
+community: "Callout Custom"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Callout_Extension
+  - community/Callout_Custom
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[logo-selector.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Callout_Extension
+#graphify/code #graphify/EXTRACTED #community/Callout_Custom

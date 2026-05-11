@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/calendar/base-calendar-root.tsx"
+source_file: "web/core/components/issues/issue-layouts/calendar/base-calendar-root.tsx"
 type: "code"
-community: "Calendar Chart"
+community: "Issue Project"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Chart
+  - community/Issue_Project
 ---
 
 # base-calendar-root.tsx
@@ -20,7 +20,7 @@ tags:
 - [[calendar.tsx]] - `imports_from` [EXTRACTED]
 - [[cycle-root.tsx_3]] - `imports_from` [EXTRACTED]
 - [[handleDragDrop()]] - `imports` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
 - [[issue-block.tsx]] - `imports_from` [EXTRACTED]
 - [[module-root.tsx_3]] - `imports_from` [EXTRACTED]
 - [[project-root.tsx_3]] - `imports_from` [EXTRACTED]
@@ -33,6 +33,6 @@ tags:
 - [[useIssueStoreType()]] - `imports` [EXTRACTED]
 - [[useIssues()]] - `imports` [EXTRACTED]
 - [[useIssuesActions()]] - `imports` [EXTRACTED]
-- [[utils.ts_5]] - `imports_from` [EXTRACTED]
+- [[utils.ts_17]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Chart
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

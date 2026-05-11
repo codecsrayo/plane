@@ -1,5 +1,5 @@
 ---
-source_file: "components/inbox/modals/create-modal/create-root.tsx"
+source_file: "web/core/components/inbox/modals/create-modal/create-root.tsx"
 type: "code"
 community: "Issue Inbox"
 location: "L1"
@@ -13,26 +13,28 @@ tags:
 
 ## Connections
 
-- [[FileService]] - `imports` [EXTRACTED]
+- [[DeDupeButtonRoot()]] - `imports` [EXTRACTED]
+- [[FileService_1]] - `imports` [EXTRACTED]
 - [[InboxIssueCreateRoot]] - `contains` [EXTRACTED]
 - [[InboxIssueDescription]] - `imports` [EXTRACTED]
 - [[InboxIssueProperties]] - `imports` [EXTRACTED]
 - [[InboxIssueTitle]] - `imports` [EXTRACTED]
 - [[TInboxIssueCreateRoot]] - `contains` [EXTRACTED]
 - [[defaultIssueData]] - `contains` [EXTRACTED]
-- [[file.service.ts]] - `imports_from` [EXTRACTED]
-- [[fileService_3]] - `contains` [EXTRACTED]
+- [[file.service.ts_1]] - `imports_from` [EXTRACTED]
+- [[fileService_4]] - `contains` [EXTRACTED]
 - [[issue-description.tsx]] - `imports_from` [EXTRACTED]
 - [[issue-properties.tsx_1]] - `imports_from` [EXTRACTED]
 - [[issue-title.tsx]] - `imports_from` [EXTRACTED]
-- [[modal.tsx_11]] - `imports_from` [EXTRACTED]
+- [[modal.tsx_16]] - `imports_from` [EXTRACTED]
 - [[use-app-router.tsx]] - `imports_from` [EXTRACTED]
 - [[use-keypress.tsx]] - `imports_from` [EXTRACTED]
-- [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
+- [[use-platform-os.tsx_1]] - `imports_from` [EXTRACTED]
 - [[use-project-inbox.ts]] - `imports_from` [EXTRACTED]
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[use-workspace.ts]] - `imports_from` [EXTRACTED]
 - [[useAppRouter()]] - `imports` [EXTRACTED]
+- [[useDebouncedDuplicateIssues()]] - `imports` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[useProjectInbox()]] - `imports` [EXTRACTED]

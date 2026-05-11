@@ -1,19 +1,20 @@
 ---
 source_file: "api_rust/src/routes/instances.rs"
 type: "code"
-community: "Community 57"
+community: "User Github"
 location: "L613"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_57
+  - community/User_Github
 ---
 
 # instance_workspace_slug_check()
 
 ## Connections
 
-- [[instances.rs]] - `contains` [EXTRACTED]
+- [[.json()]] - `calls` [INFERRED]
+- [[instances.rs_1]] - `contains` [EXTRACTED]
 - [[require_instance_admin()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_57
+#graphify/code #graphify/EXTRACTED #community/User_Github

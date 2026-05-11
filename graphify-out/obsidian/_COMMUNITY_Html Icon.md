@@ -11,8 +11,8 @@ members: 2
 
 ## Members
 
-- [[HtmlIcon()]] - code - components/icons/attachment/html-file-icon.tsx
-- [[html-file-icon.tsx]] - code - components/icons/attachment/html-file-icon.tsx
+- [[HtmlIcon()]] - code - web/core/components/icons/attachment/html-file-icon.tsx
+- [[html-file-icon.tsx]] - code - web/core/components/icons/attachment/html-file-icon.tsx
 
 ## Live Query (requires Dataview plugin)
 

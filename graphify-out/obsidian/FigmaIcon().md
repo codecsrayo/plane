@@ -1,5 +1,5 @@
 ---
-source_file: "components/icons/attachment/figma-file-icon.tsx"
+source_file: "web/core/components/icons/attachment/figma-file-icon.tsx"
 type: "code"
 community: "Figma Icon"
 location: "L13"

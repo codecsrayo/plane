@@ -1,18 +1,18 @@
 ---
-source_file: "components/navigation/items-root.tsx"
+source_file: "web/core/components/onboarding/profile-setup.tsx"
 type: "code"
-community: "Sidebar Rail"
-location: "L14"
+community: "Setup Values"
+location: "L47"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Rail
+  - community/Setup_Values
 ---
 
 # Props
 
 ## Connections
 
-- [[items-root.tsx]] - `contains` [EXTRACTED]
+- [[profile-setup.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Rail
+#graphify/code #graphify/EXTRACTED #community/Setup_Values

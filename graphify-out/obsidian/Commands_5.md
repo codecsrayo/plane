@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/callout/extension-config.ts"
 type: "code"
-community: "Callout Extension"
+community: "Callout Custom"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Callout_Extension
+  - community/Callout_Custom
 ---
 
 # Commands
@@ -15,4 +15,4 @@ tags:
 
 - [[extension-config.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Callout_Extension
+#graphify/code #graphify/EXTRACTED #community/Callout_Custom

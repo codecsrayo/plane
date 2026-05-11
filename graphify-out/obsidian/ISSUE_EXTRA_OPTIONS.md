@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/filters/header/display-filters/extra-options.tsx"
+source_file: "web/core/components/issues/issue-layouts/filters/header/display-filters/extra-options.tsx"
 type: "code"
-community: "Filter Selection UI"
+community: "Extra Options"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Selection_UI
+  - community/Extra_Options
 ---
 
 # ISSUE_EXTRA_OPTIONS
@@ -15,4 +15,4 @@ tags:
 
 - [[extra-options.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Selection_UI
+#graphify/code #graphify/EXTRACTED #community/Extra_Options

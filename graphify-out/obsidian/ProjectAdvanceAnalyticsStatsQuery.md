@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/analytics.rs"
 type: "code"
-community: "Community 40"
+community: "Analytics Advance"
 location: "L1896"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_40
+  - community/Analytics_Advance
 ---
 
 # ProjectAdvanceAnalyticsStatsQuery
@@ -15,4 +15,4 @@ tags:
 
 - [[analytics.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_40
+#graphify/code #graphify/EXTRACTED #community/Analytics_Advance

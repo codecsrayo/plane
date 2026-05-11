@@ -1,18 +1,18 @@
 ---
-source_file: "components/project/project-feature-update.tsx"
+source_file: "web/core/components/editor/lite-text/toolbar.tsx"
 type: "code"
-community: "Project Feature"
-location: "L20"
+community: "Toolbar Items"
+location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Feature
+  - community/Toolbar_Items
 ---
 
 # Props
 
 ## Connections
 
-- [[project-feature-update.tsx]] - `contains` [EXTRACTED]
+- [[toolbar.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Feature
+#graphify/code #graphify/EXTRACTED #community/Toolbar_Items

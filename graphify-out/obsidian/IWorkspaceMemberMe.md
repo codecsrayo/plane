@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/workspace.ts"
 type: "code"
-community: "Import Export"
+community: "Workspace Search"
 location: "L101"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Import_Export
+  - community/Workspace_Search
 ---
 
 # IWorkspaceMemberMe
@@ -15,4 +15,4 @@ tags:
 
 - [[workspace.ts_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Import_Export
+#graphify/code #graphify/EXTRACTED #community/Workspace_Search

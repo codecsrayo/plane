@@ -1,14 +1,14 @@
 ---
 source_file: "utils/src/rich-filters/factories/configs/index.ts"
 type: "code"
-community: "Community 510"
+community: "Community 1488"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_510
+  - community/Community_1488
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_510
+#graphify/code #graphify/EXTRACTED #community/Community_1488

@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/utils/content_validator.rs"
 type: "code"
-community: "Community 171"
+community: "Test Binary"
 location: "L262"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_171
+  - community/Test_Binary
 ---
 
 # html_over_limit_rejected()
@@ -15,4 +15,4 @@ tags:
 
 - [[content_validator.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_171
+#graphify/code #graphify/EXTRACTED #community/Test_Binary

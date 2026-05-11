@@ -1,12 +1,12 @@
 ---
-source_file: "components/account/auth-forms/form-root.tsx"
+source_file: "web/core/components/account/auth-forms/form-root.tsx"
 type: "code"
-community: "Auth Forms"
+community: "Workspace Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Forms
+  - community/Workspace_Issue
 ---
 
 # form-root.tsx
@@ -15,11 +15,11 @@ tags:
 
 - [[AuthEmailForm]] - `imports` [EXTRACTED]
 - [[AuthFormRoot]] - `contains` [EXTRACTED]
-- [[AuthService]] - `imports` [EXTRACTED]
+- [[AuthService_1]] - `imports` [EXTRACTED]
 - [[AuthUniqueCodeForm()]] - `imports` [EXTRACTED]
 - [[TAuthFormRoot]] - `contains` [EXTRACTED]
 - [[auth-root.tsx]] - `imports_from` [EXTRACTED]
-- [[auth.service.ts]] - `imports_from` [EXTRACTED]
+- [[auth.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[authService_4]] - `contains` [EXTRACTED]
 - [[email.tsx_1]] - `imports_from` [EXTRACTED]
 - [[unique-code.tsx]] - `imports_from` [EXTRACTED]
@@ -30,4 +30,4 @@ tags:
 - [[useInstance()]] - `imports` [EXTRACTED]
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Forms
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

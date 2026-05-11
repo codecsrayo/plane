@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/empty-state/assets/horizontal-stack/webhook.tsx"
 type: "code"
-community: "Illustration Assets"
+community: "Stack Vertical"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Illustration_Assets
+  - community/Stack_Vertical
 ---
 
 # WebhookHorizontalStackIllustration()
@@ -15,4 +15,4 @@ tags:
 
 - [[webhook.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Illustration_Assets
+#graphify/code #graphify/EXTRACTED #community/Stack_Vertical

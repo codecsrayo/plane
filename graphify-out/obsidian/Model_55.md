@@ -1,18 +1,18 @@
 ---
 source_file: "api_rust/src/entities/api_tokens.rs"
 type: "code"
-community: "Community 374"
+community: "Model Relation"
 location: "L8"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_374
+  - community/Model_Relation
 ---
 
 # Model
 
 ## Connections
 
-- [[api_tokens.rs_1]] - `contains` [EXTRACTED]
+- [[api_tokens.rs_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_374
+#graphify/code #graphify/EXTRACTED #community/Model_Relation

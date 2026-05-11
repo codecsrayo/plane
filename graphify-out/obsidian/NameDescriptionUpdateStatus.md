@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-update-status.tsx"
+source_file: "web/core/components/issues/issue-update-status.tsx"
 type: "code"
 community: "Issue Inbox"
 location: "L17"
@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 
-- [[header.tsx_9]] - `imports` [EXTRACTED]
+- [[header.tsx_51]] - `imports` [EXTRACTED]
 - [[inbox-issue-header.tsx]] - `imports` [EXTRACTED]
 - [[inbox-issue-mobile-header.tsx]] - `imports` [EXTRACTED]
 - [[issue-update-status.tsx]] - `contains` [EXTRACTED]

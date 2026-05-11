@@ -1,12 +1,12 @@
 ---
-source_file: "components/rich-filters/filter-item/container.tsx"
+source_file: "web/core/components/rich-filters/filter-item/container.tsx"
 type: "code"
-community: "Filter Controls"
+community: "Value Input"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Controls
+  - community/Value_Input
 ---
 
 # container.tsx
@@ -16,6 +16,6 @@ tags:
 - [[FilterItemContainer()]] - `contains` [EXTRACTED]
 - [[FilterItemContainerProps]] - `contains` [EXTRACTED]
 - [[invalid.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_91]] - `imports_from` [EXTRACTED]
+- [[root.tsx_132]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Controls
+#graphify/code #graphify/EXTRACTED #community/Value_Input

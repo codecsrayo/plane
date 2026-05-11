@@ -1,20 +1,18 @@
 ---
-source_file: "api_rust/src/routes/labels.rs"
+source_file: "api/plane/tests/contract/api/test_labels.py"
 type: "code"
-community: "Community 188"
-location: "L132"
+community: "Label Test"
+location: "L41"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_188
+  - community/Label_Test
 ---
 
 # create_label()
 
 ## Connections
 
-- [[.from_model()_6]] - `calls` [EXTRACTED]
-- [[labels.rs]] - `contains` [EXTRACTED]
-- [[require_role()]] - `calls` [INFERRED]
+- [[test_labels.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_188
+#graphify/code #graphify/EXTRACTED #community/Label_Test

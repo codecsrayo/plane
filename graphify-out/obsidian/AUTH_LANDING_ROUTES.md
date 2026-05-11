@@ -1,18 +1,18 @@
 ---
-source_file: "services/api.service.ts"
+source_file: "web/core/services/api.service.ts"
 type: "code"
-community: "API Services"
+community: "Issue Project"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/API_Services
+  - community/Issue_Project
 ---
 
 # AUTH_LANDING_ROUTES
 
 ## Connections
 
-- [[api.service.ts]] - `contains` [EXTRACTED]
+- [[api.service.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/API_Services
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

@@ -1,21 +1,20 @@
 ---
-source_file: "components/cycles/archived-cycles/modal.tsx"
+source_file: "web/core/components/cycles/archived-cycles/modal.tsx"
 type: "code"
-community: "Cycle Cycles"
+community: "Cycle Active"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Cycles
+  - community/Cycle_Active
 ---
 
 # ArchiveCycleModal()
 
 ## Connections
 
-- [[modal.tsx_10]] - `contains` [EXTRACTED]
+- [[modal.tsx_15]] - `contains` [EXTRACTED]
 - [[quick-actions.tsx_3]] - `imports` [EXTRACTED]
 - [[useAppRouter()]] - `calls` [EXTRACTED]
-- [[useCycle()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Cycles
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

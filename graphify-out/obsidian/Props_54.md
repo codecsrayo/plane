@@ -1,18 +1,18 @@
 ---
-source_file: "components/editor/sticky-editor/toolbar.tsx"
+source_file: "web/app/(all)/[workspaceSlug]/(projects)/extended-sidebar-wrapper.tsx"
 type: "code"
-community: "Toolbar Lite"
-location: "L23"
+community: "Sidebar Navigation"
+location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toolbar_Lite
+  - community/Sidebar_Navigation
 ---
 
 # Props
 
 ## Connections
 
-- [[toolbar.tsx]] - `contains` [EXTRACTED]
+- [[extended-sidebar-wrapper.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toolbar_Lite
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation

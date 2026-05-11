@@ -11,9 +11,9 @@ members: 3
 
 ## Members
 
-- [[Props_200]] - code - components/issues/issue-layouts/spreadsheet/columns/attachment-column.tsx
-- [[SpreadsheetAttachmentColumn]] - code - components/issues/issue-layouts/spreadsheet/columns/attachment-column.tsx
-- [[attachment-column.tsx]] - code - components/issues/issue-layouts/spreadsheet/columns/attachment-column.tsx
+- [[Props_275]] - code - web/core/components/issues/issue-layouts/spreadsheet/columns/attachment-column.tsx
+- [[SpreadsheetAttachmentColumn]] - code - web/core/components/issues/issue-layouts/spreadsheet/columns/attachment-column.tsx
+- [[attachment-column.tsx]] - code - web/core/components/issues/issue-layouts/spreadsheet/columns/attachment-column.tsx
 
 ## Live Query (requires Dataview plugin)
 

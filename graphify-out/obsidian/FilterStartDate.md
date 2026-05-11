@@ -1,5 +1,5 @@
 ---
-source_file: "components/cycles/dropdowns/filters/start-date.tsx"
+source_file: "web/core/components/cycles/dropdowns/filters/start-date.tsx"
 type: "code"
 community: "Date Start"
 location: "L24"
@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 
-- [[root.tsx_55]] - `imports` [EXTRACTED]
+- [[root.tsx_96]] - `imports` [EXTRACTED]
 - [[start-date.tsx]] - `contains` [EXTRACTED]
 - [[start-date.tsx_1]] - `contains` [EXTRACTED]
 - [[start-date.tsx_2]] - `contains` [EXTRACTED]

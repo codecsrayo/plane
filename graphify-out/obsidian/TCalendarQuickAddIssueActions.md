@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/calendar/quick-add-issue-actions.tsx"
+source_file: "web/core/components/issues/issue-layouts/calendar/quick-add-issue-actions.tsx"
 type: "code"
-community: "Calendar Views"
+community: "Issue Activity"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Views
+  - community/Issue_Activity
 ---
 
 # TCalendarQuickAddIssueActions
@@ -15,4 +15,4 @@ tags:
 
 - [[quick-add-issue-actions.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Views
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

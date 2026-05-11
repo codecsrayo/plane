@@ -1,18 +1,18 @@
 ---
-source_file: "components/analytics/analytics-wrapper.tsx"
+source_file: "web/core/components/power-k/menus/workspaces.tsx"
 type: "code"
-community: "Insight Analytics"
-location: "L12"
+community: "Menu Power"
+location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Insight_Analytics
+  - community/Menu_Power
 ---
 
 # Props
 
 ## Connections
 
-- [[analytics-wrapper.tsx]] - `contains` [EXTRACTED]
+- [[workspaces.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Insight_Analytics
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

@@ -1,19 +1,19 @@
 ---
-source_file: "components/analytics/insight-table/loader.tsx"
+source_file: "web/core/components/analytics/insight-table/loader.tsx"
 type: "code"
-community: "Table Insight"
+community: "Table Chart"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Table_Insight
+  - community/Table_Chart
 ---
 
 # TableLoader()
 
 ## Connections
 
-- [[loader.tsx_7]] - `contains` [EXTRACTED]
-- [[root.tsx_88]] - `imports` [EXTRACTED]
+- [[loader.tsx_10]] - `contains` [EXTRACTED]
+- [[root.tsx_129]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Table_Insight
+#graphify/code #graphify/EXTRACTED #community/Table_Chart

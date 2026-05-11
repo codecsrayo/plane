@@ -1,12 +1,12 @@
 ---
-source_file: "components/core/sidebar/sidebar-menu-hamburger-toggle.tsx"
+source_file: "web/core/components/core/sidebar/sidebar-menu-hamburger-toggle.tsx"
 type: "code"
-community: "Theme Wrapper"
+community: "Sidebar Navigation"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Wrapper
+  - community/Sidebar_Navigation
 ---
 
 # SidebarHamburgerToggle
@@ -16,4 +16,4 @@ tags:
 - [[profile-setting-content-wrapper.tsx]] - `imports` [EXTRACTED]
 - [[sidebar-menu-hamburger-toggle.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Wrapper
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation

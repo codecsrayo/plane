@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/utils/django_defaults.rs"
 type: "code"
-community: "Community 262"
+community: "Display Defaults"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_262
+  - community/Display_Defaults
 ---
 
 # django_defaults.rs
@@ -21,4 +21,4 @@ tags:
 - [[default_props_combines_filters_and_display_filters()]] - `contains` [EXTRACTED]
 - [[defaults_are_objects()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_262
+#graphify/code #graphify/EXTRACTED #community/Display_Defaults

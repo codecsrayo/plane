@@ -1,26 +1,28 @@
 ---
 type: community
-cohesion: 0.24
-members: 10
+cohesion: 0.20
+members: 12
 ---
 
 # Estimate Stage
 
-**Cohesion:** 0.24 - loosely connected
-**Members:** 10 nodes
+**Cohesion:** 0.20 - loosely connected
+**Members:** 12 nodes
 
 ## Members
 
-- [[CreateEstimateModal]] - code - components/estimates/create/modal.tsx
-- [[EstimateCreateStageOne()]] - code - components/estimates/create/stage-one.tsx
-- [[RadioInput()]] - code - components/estimates/radio-select.tsx
-- [[RadioInputProps]] - code - components/estimates/radio-select.tsx
-- [[TCreateEstimateModal]] - code - components/estimates/create/modal.tsx
-- [[TEstimateCreateStageOne]] - code - components/estimates/create/stage-one.tsx
-- [[index.ts_163]] - code - components/estimates/points/index.ts
-- [[modal.tsx_12]] - code - components/estimates/create/modal.tsx
-- [[radio-select.tsx]] - code - components/estimates/radio-select.tsx
-- [[stage-one.tsx]] - code - components/estimates/create/stage-one.tsx
+- [[CreateEstimateModal]] - code - web/core/components/estimates/create/modal.tsx
+- [[EstimateCreateStageOne()]] - code - web/core/components/estimates/create/stage-one.tsx
+- [[RadioInput()]] - code - web/core/components/estimates/radio-select.tsx
+- [[RadioInputProps]] - code - web/core/components/estimates/radio-select.tsx
+- [[TCreateEstimateModal]] - code - web/core/components/estimates/create/modal.tsx
+- [[TEstimateCreateStageOne]] - code - web/core/components/estimates/create/stage-one.tsx
+- [[helper.tsx_21]] - code - web/ce/components/estimates/helper.tsx
+- [[index.ts_428]] - code - web/core/components/estimates/points/index.ts
+- [[isEstimateSystemEnabled()]] - code - web/ce/components/estimates/helper.tsx
+- [[modal.tsx_17]] - code - web/core/components/estimates/create/modal.tsx
+- [[radio-select.tsx]] - code - web/core/components/estimates/radio-select.tsx
+- [[stage-one.tsx]] - code - web/core/components/estimates/create/stage-one.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -31,10 +33,11 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 2 edges to [[_COMMUNITY_Estimate Disable]]
-- 1 edge to [[_COMMUNITY_Issue Properties]]
+- 3 edges to [[_COMMUNITY_Label Dropdown]]
+- 1 edge to [[_COMMUNITY_Sidebar Navigation]]
 
 ## Top bridge nodes
 
-- [[modal.tsx_12]] - degree 7, connects to 2 communities
+- [[modal.tsx_17]] - degree 7, connects to 1 community
+- [[stage-one.tsx]] - degree 7, connects to 1 community
 - [[CreateEstimateModal]] - degree 2, connects to 1 community

@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/emoji-reaction/emoji-reaction-picker.stories.tsx"
 type: "code"
-community: "Emoji Reaction"
+community: "Reaction Emoji"
 location: "L90"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Emoji_Reaction
+  - community/Reaction_Emoji
 ---
 
 # InlineReactions
@@ -15,4 +15,4 @@ tags:
 
 - [[emoji-reaction-picker.stories.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Emoji_Reaction
+#graphify/code #graphify/EXTRACTED #community/Reaction_Emoji

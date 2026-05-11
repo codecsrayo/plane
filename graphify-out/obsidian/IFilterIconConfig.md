@@ -1,12 +1,12 @@
 ---
 source_file: "utils/src/rich-filters/factories/configs/shared.ts"
 type: "code"
-community: "Params Date"
+community: "Config Date"
 location: "L51"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Params_Date
+  - community/Config_Date
 ---
 
 # IFilterIconConfig
@@ -17,4 +17,4 @@ tags:
 - [[shared.ts_8]] - `contains` [EXTRACTED]
 - [[shared.ts_9]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Params_Date
+#graphify/code #graphify/EXTRACTED #community/Config_Date

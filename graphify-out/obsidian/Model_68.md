@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/deploy_boards.rs"
 type: "code"
-community: "Community 387"
+community: "Model Relation"
 location: "L8"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_387
+  - community/Model_Relation
 ---
 
 # Model
@@ -15,4 +15,4 @@ tags:
 
 - [[deploy_boards.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_387
+#graphify/code #graphify/EXTRACTED #community/Model_Relation

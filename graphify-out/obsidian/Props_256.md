@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-detail/main-content.tsx"
+source_file: "web/core/components/issues/delete-issue-modal.tsx"
 type: "code"
-community: "Issue Content"
-location: "L42"
+community: "Issue Work"
+location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Content
+  - community/Issue_Work
 ---
 
 # Props
 
 ## Connections
 
-- [[main-content.tsx_1]] - `contains` [EXTRACTED]
+- [[delete-issue-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Content
+#graphify/code #graphify/EXTRACTED #community/Issue_Work

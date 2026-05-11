@@ -1,12 +1,12 @@
 ---
-source_file: "store/pages/project-page.ts"
+source_file: "web/core/store/pages/project-page.ts"
 type: "code"
-community: "Page Permissions"
+community: "Current User"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Page_Permissions
+  - community/Current_User
 ---
 
 # ProjectPage
@@ -22,9 +22,9 @@ tags:
 - [[.canCurrentUserFavoritePage()]] - `method` [EXTRACTED]
 - [[.canCurrentUserLockPage()]] - `method` [EXTRACTED]
 - [[.canCurrentUserMovePage()]] - `method` [EXTRACTED]
-- [[.constructor()_67]] - `method` [EXTRACTED]
+- [[.constructor()_124]] - `method` [EXTRACTED]
 - [[.isContentEditable()]] - `method` [EXTRACTED]
 - [[project-page.store.ts]] - `imports` [EXTRACTED]
 - [[project-page.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Page_Permissions
+#graphify/code #graphify/EXTRACTED #community/Current_User

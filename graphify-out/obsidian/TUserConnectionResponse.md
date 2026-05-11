@@ -1,12 +1,12 @@
 ---
-source_file: "services/integrations/github-user-connection.service.ts"
+source_file: "web/core/services/integrations/github-user-connection.service.ts"
 type: "code"
-community: "API Services"
+community: "Issue Project"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/API_Services
+  - community/Issue_Project
 ---
 
 # TUserConnectionResponse
@@ -15,4 +15,4 @@ tags:
 
 - [[github-user-connection.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/API_Services
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

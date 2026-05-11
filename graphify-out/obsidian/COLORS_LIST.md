@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/constants/common.ts"
 type: "code"
-community: "Callout Extension"
+community: "Callout Custom"
 location: "L189"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Callout_Extension
+  - community/Callout_Custom
 ---
 
 # COLORS_LIST
@@ -22,4 +22,4 @@ tags:
 - [[custom-color.ts]] - `imports` [EXTRACTED]
 - [[root.tsx_3]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Callout_Extension
+#graphify/code #graphify/EXTRACTED #community/Callout_Custom

@@ -1,12 +1,12 @@
 ---
-source_file: "components/workspace/sidebar/dropdown-item.tsx"
+source_file: "web/core/components/workspace/sidebar/dropdown-item.tsx"
 type: "code"
-community: "Workspace Invites"
+community: "Dropdown Tprops"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Invites
+  - community/Dropdown_Tprops
 ---
 
 # SidebarDropdownItem
@@ -15,4 +15,4 @@ tags:
 
 - [[dropdown-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Invites
+#graphify/code #graphify/EXTRACTED #community/Dropdown_Tprops

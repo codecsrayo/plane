@@ -1,5 +1,5 @@
 ---
-source_file: "components/inbox/modals/snooze-issue-modal.tsx"
+source_file: "web/core/components/inbox/modals/snooze-issue-modal.tsx"
 type: "code"
 community: "Issue Inbox"
 location: "L14"

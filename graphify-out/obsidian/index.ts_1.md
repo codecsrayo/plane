@@ -1,14 +1,14 @@
 ---
 source_file: "ui/src/spinners/index.ts"
 type: "code"
-community: "Community 334"
+community: "Community 1312"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_334
+  - community/Community_1312
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_334
+#graphify/code #graphify/EXTRACTED #community/Community_1312

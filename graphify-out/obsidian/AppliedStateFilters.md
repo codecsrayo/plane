@@ -1,18 +1,20 @@
 ---
-source_file: "components/issues/issue-layouts/filters/applied-filters/state.tsx"
+source_file: "space/components/issues/filters/applied-filters/state.tsx"
 type: "code"
-community: "State Applied"
-location: "L21"
+community: "Issue Applied"
+location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/State_Applied
+  - community/Issue_Applied
 ---
 
 # AppliedStateFilters
 
 ## Connections
 
-- [[state.tsx_1]] - `contains` [EXTRACTED]
+- [[filters-list.tsx]] - `imports` [EXTRACTED]
+- [[state.tsx_2]] - `contains` [EXTRACTED]
+- [[state.tsx_9]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/State_Applied
+#graphify/code #graphify/EXTRACTED #community/Issue_Applied

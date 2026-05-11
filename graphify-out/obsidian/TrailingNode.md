@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/trailing-node.ts"
 type: "code"
-community: "Editor Commands"
+community: "Table Node"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Commands
+  - community/Table_Node
 ---
 
 # TrailingNode
@@ -15,4 +15,4 @@ tags:
 
 - [[trailing-node.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Commands
+#graphify/code #graphify/EXTRACTED #community/Table_Node

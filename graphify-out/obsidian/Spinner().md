@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/spinners/circular-spinner.tsx"
 type: "code"
-community: "Spinner Circular"
+community: "Auth Spinner"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spinner_Circular
+  - community/Auth_Spinner
 ---
 
 # Spinner()
@@ -18,4 +18,4 @@ tags:
 - [[circular-spinner.tsx]] - `contains` [EXTRACTED]
 - [[circular-spinner.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spinner_Circular
+#graphify/code #graphify/EXTRACTED #community/Auth_Spinner

@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/hooks/use-collaborative-editor.ts"
 type: "code"
-community: "Collaborative Editor"
+community: "Document Collaborative"
 location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Collaborative_Editor
+  - community/Document_Collaborative
 ---
 
 # UseCollaborativeEditorArgs
@@ -15,4 +15,4 @@ tags:
 
 - [[use-collaborative-editor.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Collaborative_Editor
+#graphify/code #graphify/EXTRACTED #community/Document_Collaborative

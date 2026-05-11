@@ -1,18 +1,19 @@
 ---
-source_file: "components/profile/overview/workload.tsx"
+source_file: "web/core/components/profile/overview/workload.tsx"
 type: "code"
-community: "Workload Profile"
+community: "Profile Priority"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workload_Profile
+  - community/Profile_Priority
 ---
 
 # ProfileWorkload()
 
 ## Connections
 
+- [[page.tsx_10]] - `imports` [EXTRACTED]
 - [[workload.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workload_Profile
+#graphify/code #graphify/EXTRACTED #community/Profile_Priority

@@ -1,12 +1,12 @@
 ---
-source_file: "components/integration/confirm-action-modal.tsx"
+source_file: "web/core/components/integration/confirm-action-modal.tsx"
 type: "code"
-community: "Github Integration"
+community: "Project Workspace"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Github_Integration
+  - community/Project_Workspace
 ---
 
 # confirm-action-modal.tsx
@@ -14,8 +14,9 @@ tags:
 ## Connections
 
 - [[IntegrationConfirmActionModal()]] - `contains` [EXTRACTED]
-- [[Props_153]] - `contains` [EXTRACTED]
+- [[Props_228]] - `contains` [EXTRACTED]
+- [[page.tsx_53]] - `imports_from` [EXTRACTED]
 - [[pr-state-mapping.tsx]] - `imports_from` [EXTRACTED]
 - [[project-issue-sync.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Github_Integration
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

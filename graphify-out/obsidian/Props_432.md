@@ -1,18 +1,18 @@
 ---
-source_file: "components/analytics/work-items/priority-chart.tsx"
+source_file: "web/core/components/onboarding/invitations.tsx"
 type: "code"
-community: "Chart Generate"
-location: "L44"
+community: "Workspace Issue"
+location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Chart_Generate
+  - community/Workspace_Issue
 ---
 
 # Props
 
 ## Connections
 
-- [[priority-chart.tsx]] - `contains` [EXTRACTED]
+- [[invitations.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Chart_Generate
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

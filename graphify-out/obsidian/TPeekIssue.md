@@ -1,18 +1,19 @@
 ---
-source_file: "store/issue/issue-details/root.store.ts"
+source_file: "web/core/store/issue/issue-details/root.store.ts"
 type: "code"
-community: "Comment Reactions"
+community: "Issue Reaction"
 location: "L47"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Comment_Reactions
+  - community/Issue_Reaction
 ---
 
 # TPeekIssue
 
 ## Connections
 
-- [[root.store.ts_2]] - `contains` [EXTRACTED]
+- [[root.store.ts_4]] - `contains` [EXTRACTED]
+- [[use-notification-preview.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Comment_Reactions
+#graphify/code #graphify/EXTRACTED #community/Issue_Reaction

@@ -1,19 +1,19 @@
 ---
-source_file: "components/dropdowns/member/member-options.tsx"
+source_file: "web/core/components/dropdowns/member/member-options.tsx"
 type: "code"
-community: "Issue Layouts"
+community: "Member Members"
 location: "L38"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layouts
+  - community/Member_Members
 ---
 
 # MemberOptions
 
 ## Connections
 
-- [[base.tsx_5]] - `imports` [EXTRACTED]
+- [[base.tsx_6]] - `imports` [EXTRACTED]
 - [[member-options.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layouts
+#graphify/code #graphify/EXTRACTED #community/Member_Members

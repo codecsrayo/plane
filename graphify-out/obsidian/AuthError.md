@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/auth/responses.rs"
 type: "code"
-community: "Auth Rust API"
+community: "Password Email"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Rust_API
+  - community/Password_Email
 ---
 
 # AuthError
@@ -29,4 +29,4 @@ tags:
 - [[.user_does_not_exist()]] - `method` [EXTRACTED]
 - [[responses.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Rust_API
+#graphify/code #graphify/EXTRACTED #community/Password_Email

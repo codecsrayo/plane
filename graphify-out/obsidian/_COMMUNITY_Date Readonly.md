@@ -11,9 +11,9 @@ members: 3
 
 ## Members
 
-- [[ReadonlyDate]] - code - components/readonly/date.tsx
-- [[TReadonlyDateProps]] - code - components/readonly/date.tsx
-- [[date.tsx_9]] - code - components/readonly/date.tsx
+- [[ReadonlyDate]] - code - web/core/components/readonly/date.tsx
+- [[TReadonlyDateProps]] - code - web/core/components/readonly/date.tsx
+- [[date.tsx_9]] - code - web/core/components/readonly/date.tsx
 
 ## Live Query (requires Dataview plugin)
 

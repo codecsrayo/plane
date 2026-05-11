@@ -1,27 +1,30 @@
 ---
-source_file: "components/issues/issue-layouts/calendar/header.tsx"
+source_file: "web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/modules/(list)/header.tsx"
 type: "code"
-community: "Calendar Views"
+community: "Project Profile"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Views
+  - community/Project_Profile
 ---
 
 # header.tsx
 
 ## Connections
 
-- [[CalendarHeader]] - `contains` [EXTRACTED]
-- [[ICalendarHeader]] - `contains` [EXTRACTED]
-- [[calendar.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts_15]] - `imports_from` [EXTRACTED]
-- [[index.ts_11]] - `imports_from` [EXTRACTED]
-- [[index.ts_14]] - `imports_from` [EXTRACTED]
-- [[index.ts_9]] - `imports_from` [EXTRACTED]
-- [[index.ts_88]] - `imports_from` [EXTRACTED]
-- [[use-calendar-view.ts]] - `imports_from` [EXTRACTED]
-- [[useCalendarView()]] - `imports` [EXTRACTED]
+- [[BreadcrumbLink()]] - `imports` [EXTRACTED]
+- [[CommonProjectBreadcrumbs()]] - `imports` [EXTRACTED]
+- [[ModulesListHeader]] - `contains` [EXTRACTED]
+- [[breadcrumb-link.tsx]] - `imports_from` [EXTRACTED]
+- [[index.ts_323]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
+- [[layout.tsx_14]] - `imports_from` [EXTRACTED]
+- [[use-app-router.tsx]] - `imports_from` [EXTRACTED]
+- [[use-command-palette.ts]] - `imports_from` [EXTRACTED]
+- [[use-project.ts]] - `imports_from` [EXTRACTED]
+- [[useAppRouter()]] - `imports` [EXTRACTED]
+- [[useCommandPalette()]] - `imports` [EXTRACTED]
+- [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Views
+#graphify/code #graphify/EXTRACTED #community/Project_Profile

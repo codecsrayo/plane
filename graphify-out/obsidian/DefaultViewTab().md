@@ -1,18 +1,18 @@
 ---
-source_file: "components/workspace/views/header.tsx"
+source_file: "web/core/components/workspace/views/header.tsx"
 type: "code"
-community: "Global Quick"
+community: "Project Work"
 location: "L44"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Global_Quick
+  - community/Project_Work
 ---
 
 # DefaultViewTab()
 
 ## Connections
 
-- [[header.tsx]] - `contains` [EXTRACTED]
+- [[header.tsx_42]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Global_Quick
+#graphify/code #graphify/EXTRACTED #community/Project_Work

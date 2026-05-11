@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-detail-widgets/relations/quick-action-button.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/relations/quick-action-button.tsx"
 type: "code"
 community: "Issue Activity"
 location: "L28"

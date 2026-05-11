@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/callout/color-selector.tsx"
 type: "code"
-community: "Callout Extension"
+community: "Callout Custom"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Callout_Extension
+  - community/Callout_Custom
 ---
 
 # color-selector.tsx
@@ -19,4 +19,4 @@ tags:
 - [[block.tsx_1]] - `imports_from` [EXTRACTED]
 - [[common.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Callout_Extension
+#graphify/code #graphify/EXTRACTED #community/Callout_Custom

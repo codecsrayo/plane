@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/editor/toolbar/toolbar.tsx"
+source_file: "web/core/components/power-k/ui/pages/context-based/work-item/priorities-menu.tsx"
 type: "code"
-community: "Toolbar Color"
-location: "L20"
+community: "Menu Power"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toolbar_Color
+  - community/Menu_Power
 ---
 
 # Props
 
 ## Connections
 
-- [[toolbar.tsx_2]] - `contains` [EXTRACTED]
+- [[priorities-menu.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toolbar_Color
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

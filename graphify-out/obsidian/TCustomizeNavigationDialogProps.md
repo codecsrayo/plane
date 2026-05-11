@@ -1,5 +1,5 @@
 ---
-source_file: "components/navigation/customize-navigation-dialog.tsx"
+source_file: "web/core/components/navigation/customize-navigation-dialog.tsx"
 type: "code"
 community: "Sidebar Navigation"
 location: "L28"

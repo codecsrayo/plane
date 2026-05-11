@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-detail-widgets/attachments/root.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/attachments/root.tsx"
 type: "code"
-community: "Issue Attachments"
+community: "Attachment Issue"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Attachments
+  - community/Attachment_Issue
 ---
 
 # AttachmentsCollapsible
 
 ## Connections
 
-- [[root.tsx_38]] - `contains` [EXTRACTED]
+- [[root.tsx_79]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Attachments
+#graphify/code #graphify/EXTRACTED #community/Attachment_Issue

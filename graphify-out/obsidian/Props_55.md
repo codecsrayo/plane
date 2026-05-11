@@ -1,18 +1,18 @@
 ---
-source_file: "components/editor/embeds/mentions/user.tsx"
+source_file: "web/app/(all)/[workspaceSlug]/(projects)/profile/[userId]/navbar.tsx"
 type: "code"
-community: "Member Settings"
-location: "L19"
+community: "Project Profile"
+location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Settings
+  - community/Project_Profile
 ---
 
 # Props
 
 ## Connections
 
-- [[user.tsx]] - `contains` [EXTRACTED]
+- [[navbar.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Settings
+#graphify/code #graphify/EXTRACTED #community/Project_Profile

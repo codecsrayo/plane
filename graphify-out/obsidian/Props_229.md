@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/filters/header/display-filters/order-by.tsx"
+source_file: "web/core/components/integration/connected-account-details.tsx"
 type: "code"
-community: "Filter Selection UI"
-location: "L16"
+community: "Project Workspace"
+location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Selection_UI
+  - community/Project_Workspace
 ---
 
 # Props
 
 ## Connections
 
-- [[order-by.tsx_3]] - `contains` [EXTRACTED]
+- [[connected-account-details.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Selection_UI
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

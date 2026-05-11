@@ -1,12 +1,12 @@
 ---
-source_file: "components/exporter/column.tsx"
+source_file: "web/core/components/exporter/column.tsx"
 type: "code"
-community: "Guide Prev"
+community: "Rowdata Single"
 location: "L12"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Guide_Prev
+  - graphify/INFERRED
+  - community/Rowdata_Single
 ---
 
 # checkExpiry()
@@ -15,5 +15,6 @@ tags:
 
 - [[SingleExport()]] - `calls` [INFERRED]
 - [[column.tsx]] - `contains` [EXTRACTED]
+- [[getDate()_1]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Guide_Prev
+#graphify/code #graphify/INFERRED #community/Rowdata_Single

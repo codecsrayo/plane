@@ -1,12 +1,12 @@
 ---
-source_file: "components/analytics/work-items/modal/index.tsx"
+source_file: "web/core/components/analytics/work-items/modal/index.tsx"
 type: "code"
-community: "Filter Controls"
+community: "Issue Project"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Controls
+  - community/Issue_Project
 ---
 
 # WorkItemsModal
@@ -14,6 +14,11 @@ tags:
 ## Connections
 
 - [[filters.tsx_2]] - `imports` [EXTRACTED]
-- [[index.tsx_8]] - `contains` [EXTRACTED]
+- [[header.tsx_7]] - `imports` [EXTRACTED]
+- [[header.tsx_12]] - `imports` [EXTRACTED]
+- [[index.tsx_14]] - `contains` [EXTRACTED]
+- [[mobile-header.tsx_2]] - `imports` [EXTRACTED]
+- [[mobile-header.tsx_4]] - `imports` [EXTRACTED]
+- [[mobile-header.tsx_5]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Controls
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

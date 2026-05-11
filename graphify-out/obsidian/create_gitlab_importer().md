@@ -1,19 +1,22 @@
 ---
 source_file: "api_rust/src/routes/importer.rs"
 type: "code"
-community: "Community 143"
+community: "User Github"
 location: "L526"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_143
+  - graphify/INFERRED
+  - community/User_Github
 ---
 
 # create_gitlab_importer()
 
 ## Connections
 
+- [[.json()]] - `calls` [INFERRED]
+- [[.set()]] - `calls` [INFERRED]
 - [[get_or_create_importer_token()]] - `calls` [EXTRACTED]
 - [[importer.rs]] - `contains` [EXTRACTED]
+- [[now]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_143
+#graphify/code #graphify/INFERRED #community/User_Github

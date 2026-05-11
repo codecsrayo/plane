@@ -1,23 +1,23 @@
 ---
 source_file: "api_rust/src/routes/analytics.rs"
 type: "code"
-community: "Community 40"
+community: "Analytics Advance"
 location: "L1112"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_40
+  - community/Analytics_Advance
 ---
 
 # advance_analytics()
 
 ## Connections
 
-- [[.from_string()]] - `calls` [INFERRED]
+- [[.json()]] - `calls` [INFERRED]
 - [[.new()]] - `calls` [INFERRED]
 - [[analytics.rs]] - `contains` [EXTRACTED]
 - [[analytics_date_clause()]] - `calls` [EXTRACTED]
 - [[base_issue_filter()]] - `calls` [EXTRACTED]
 - [[project_ids_filter()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_40
+#graphify/code #graphify/EXTRACTED #community/Analytics_Advance

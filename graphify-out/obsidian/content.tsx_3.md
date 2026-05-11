@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-detail-widgets/links/content.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/links/content.tsx"
 type: "code"
 community: "Issue Activity"
 location: "L1"
@@ -14,10 +14,10 @@ tags:
 ## Connections
 
 - [[IssueLinksCollapsibleContent()]] - `contains` [EXTRACTED]
-- [[Props_283]] - `contains` [EXTRACTED]
-- [[helper.tsx_7]] - `imports_from` [EXTRACTED]
-- [[index.ts_107]] - `imports_from` [EXTRACTED]
-- [[root.tsx_42]] - `imports_from` [EXTRACTED]
+- [[Props_358]] - `contains` [EXTRACTED]
+- [[helper.tsx_29]] - `imports_from` [EXTRACTED]
+- [[index.ts_372]] - `imports_from` [EXTRACTED]
+- [[root.tsx_83]] - `imports_from` [EXTRACTED]
 - [[useLinkOperations()]] - `imports` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Issue_Activity

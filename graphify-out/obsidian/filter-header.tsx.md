@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/filters/header/helpers/filter-header.tsx"
+source_file: "web/core/components/issues/issue-layouts/filters/header/helpers/filter-header.tsx"
 type: "code"
-community: "Display Properties"
+community: "Priority State"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Display_Properties
+  - community/Priority_State
 ---
 
 # filter-header.tsx
@@ -14,7 +14,7 @@ tags:
 ## Connections
 
 - [[FilterHeader()]] - `contains` [EXTRACTED]
-- [[Props_230]] - `contains` [EXTRACTED]
-- [[display-properties.tsx]] - `imports_from` [EXTRACTED]
+- [[Props_305]] - `contains` [EXTRACTED]
+- [[display-properties.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Display_Properties
+#graphify/code #graphify/EXTRACTED #community/Priority_State

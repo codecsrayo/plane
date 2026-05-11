@@ -1,18 +1,18 @@
 ---
-source_file: "components/empty-state/section-empty-state-root.tsx"
+source_file: "web/core/components/cycles/analytics-sidebar/sidebar-details.tsx"
 type: "code"
-community: "List Group Layout"
-location: "L9"
+community: "Cycle Active"
+location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/List_Group_Layout
+  - community/Cycle_Active
 ---
 
 # Props
 
 ## Connections
 
-- [[section-empty-state-root.tsx]] - `contains` [EXTRACTED]
+- [[sidebar-details.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/List_Group_Layout
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

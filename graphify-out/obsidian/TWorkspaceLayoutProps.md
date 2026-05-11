@@ -1,18 +1,19 @@
 ---
-source_file: "components/views/helper.tsx"
+source_file: "web/core/components/views/helper.tsx"
 type: "code"
-community: "Issue Layout Roots"
+community: "Issue Project"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layout_Roots
+  - community/Issue_Project
 ---
 
 # TWorkspaceLayoutProps
 
 ## Connections
 
-- [[helper.tsx]] - `contains` [EXTRACTED]
+- [[helper.tsx_18]] - `imports` [EXTRACTED]
+- [[helper.tsx_22]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layout_Roots
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

@@ -1,12 +1,12 @@
 ---
-source_file: "components/workspace-notifications/sidebar/filters/applied-filter.tsx"
+source_file: "web/core/components/workspace-notifications/sidebar/filters/applied-filter.tsx"
 type: "code"
-community: "Notification Option"
+community: "Notification Content"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Notification_Option
+  - community/Notification_Content
 ---
 
 # applied-filter.tsx
@@ -15,7 +15,7 @@ tags:
 
 - [[AppliedFilters]] - `contains` [EXTRACTED]
 - [[TAppliedFilters]] - `contains` [EXTRACTED]
-- [[index.ts_2]] - `imports_from` [EXTRACTED]
-- [[root.tsx_45]] - `imports_from` [EXTRACTED]
+- [[index.ts_267]] - `imports_from` [EXTRACTED]
+- [[root.tsx_86]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Notification_Option
+#graphify/code #graphify/EXTRACTED #community/Notification_Content

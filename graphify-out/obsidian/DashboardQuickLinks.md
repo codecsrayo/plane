@@ -1,18 +1,18 @@
 ---
-source_file: "components/home/widgets/links/root.tsx"
+source_file: "web/core/components/home/widgets/links/root.tsx"
 type: "code"
-community: "Dashboard Widgets"
+community: "Link Links"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dashboard_Widgets
+  - community/Link_Links
 ---
 
 # DashboardQuickLinks
 
 ## Connections
 
-- [[root.tsx_1]] - `contains` [EXTRACTED]
+- [[root.tsx_42]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets
+#graphify/code #graphify/EXTRACTED #community/Link_Links

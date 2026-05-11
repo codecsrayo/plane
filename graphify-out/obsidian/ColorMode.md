@@ -1,12 +1,12 @@
 ---
 source_file: "utils/src/theme/constants.ts"
 type: "code"
-community: "Color Utils"
+community: "Color Shade"
 location: "L103"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Color_Utils
+  - community/Color_Shade
 ---
 
 # ColorMode
@@ -15,4 +15,4 @@ tags:
 
 - [[constants.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Color_Utils
+#graphify/code #graphify/EXTRACTED #community/Color_Shade

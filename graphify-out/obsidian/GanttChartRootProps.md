@@ -1,5 +1,5 @@
 ---
-source_file: "components/gantt-chart/root.tsx"
+source_file: "web/core/components/gantt-chart/root.tsx"
 type: "code"
 community: "Gantt Chart"
 location: "L15"
@@ -13,6 +13,6 @@ tags:
 
 ## Connections
 
-- [[root.tsx_5]] - `contains` [EXTRACTED]
+- [[root.tsx_46]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Gantt_Chart

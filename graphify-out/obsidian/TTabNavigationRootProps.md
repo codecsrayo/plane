@@ -1,12 +1,12 @@
 ---
-source_file: "components/navigation/tab-navigation-root.tsx"
+source_file: "web/core/components/navigation/tab-navigation-root.tsx"
 type: "code"
-community: "Project Tab Nav"
+community: "Project Navigation"
 location: "L45"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Tab_Nav
+  - community/Project_Navigation
 ---
 
 # TTabNavigationRootProps
@@ -15,4 +15,4 @@ tags:
 
 - [[tab-navigation-root.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Tab_Nav
+#graphify/code #graphify/EXTRACTED #community/Project_Navigation

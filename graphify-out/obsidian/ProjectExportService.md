@@ -1,21 +1,21 @@
 ---
-source_file: "services/project/project-export.service.ts"
+source_file: "web/core/services/project/project-export.service.ts"
 type: "code"
-community: "Project Settings"
+community: "Issue Project"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Issue_Project
 ---
 
 # ProjectExportService
 
 ## Connections
 
-- [[.constructor()_120]] - `method` [EXTRACTED]
+- [[.constructor()_177]] - `method` [EXTRACTED]
 - [[.csvExport()]] - `method` [EXTRACTED]
 - [[export-form.tsx]] - `imports` [EXTRACTED]
 - [[project-export.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

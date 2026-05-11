@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx"
+source_file: "web/core/components/project/settings/control-section.tsx"
 type: "code"
-community: "Calendar Views"
-location: "L24"
+community: "Project Settings"
+location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Views
+  - community/Project_Settings
 ---
 
 # Props
 
 ## Connections
 
-- [[months-dropdown.tsx]] - `contains` [EXTRACTED]
+- [[control-section.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Views
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

@@ -1,5 +1,5 @@
 ---
-source_file: "components/workspace-notifications/sidebar/notification-card/options/button.tsx"
+source_file: "web/core/components/workspace-notifications/sidebar/notification-card/options/button.tsx"
 type: "code"
 community: "Notification Option"
 location: "L14"
@@ -13,6 +13,6 @@ tags:
 
 ## Connections
 
-- [[button.tsx]] - `contains` [EXTRACTED]
+- [[button.tsx_3]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Notification_Option

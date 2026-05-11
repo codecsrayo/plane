@@ -1,12 +1,12 @@
 ---
-source_file: "components/estimates/estimate-list-item.tsx"
+source_file: "web/core/components/estimates/estimate-list-item.tsx"
 type: "code"
-community: "Estimate Disable"
+community: "Label Dropdown"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Estimate_Disable
+  - community/Label_Dropdown
 ---
 
 # estimate-list-item.tsx
@@ -15,11 +15,11 @@ tags:
 
 - [[EstimateListItem]] - `contains` [EXTRACTED]
 - [[SettingsBoxedControlItem()]] - `imports` [EXTRACTED]
-- [[TEstimateListItem]] - `contains` [EXTRACTED]
+- [[TEstimateListItem_1]] - `contains` [EXTRACTED]
 - [[boxed-control-item.tsx]] - `imports_from` [EXTRACTED]
 - [[estimate-list.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts_3]] - `imports_from` [EXTRACTED]
+- [[index.ts_268]] - `imports_from` [EXTRACTED]
 - [[use-estimate.ts]] - `imports_from` [EXTRACTED]
 - [[useEstimate()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Estimate_Disable
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

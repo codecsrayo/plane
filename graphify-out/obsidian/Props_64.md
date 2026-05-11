@@ -1,18 +1,18 @@
 ---
-source_file: "components/labels/label-drag-n-drop-HOC.tsx"
+source_file: "web/ce/components/issues/issue-layouts/issue-stats.tsx"
 type: "code"
-community: "Label Manager"
-location: "L42"
+community: "Issue Activity"
+location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Manager
+  - community/Issue_Activity
 ---
 
 # Props
 
 ## Connections
 
-- [[label-drag-n-drop-HOC.tsx]] - `contains` [EXTRACTED]
+- [[issue-stats.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Manager
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

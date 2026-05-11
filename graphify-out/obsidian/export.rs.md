@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/jobs/export.rs"
 type: "code"
-community: "Community 135"
+community: "Encode Sanitize"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_135
+  - community/Encode_Sanitize
 ---
 
 # export.rs
@@ -31,4 +31,4 @@ tags:
 - [[sanitize_filename_segment()]] - `contains` [EXTRACTED]
 - [[unique_base_name()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_135
+#graphify/code #graphify/EXTRACTED #community/Encode_Sanitize

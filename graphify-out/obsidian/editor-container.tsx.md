@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/components/editors/editor-container.tsx"
 type: "code"
-community: "Highlight Node"
+community: "Link Options"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Highlight_Node
+  - community/Link_Options
 ---
 
 # editor-container.tsx
@@ -26,4 +26,4 @@ tags:
 - [[index.ts_46]] - `imports_from` [EXTRACTED]
 - [[nodeHighlightPluginKey]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Highlight_Node
+#graphify/code #graphify/EXTRACTED #community/Link_Options

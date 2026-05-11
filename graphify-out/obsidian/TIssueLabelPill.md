@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-detail/issue-activity/activity/actions/label-activity-chip.tsx"
+source_file: "web/core/components/issues/issue-detail/issue-activity/activity/actions/label-activity-chip.tsx"
 type: "code"
 community: "Label Activity"
 location: "L9"

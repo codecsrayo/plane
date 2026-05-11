@@ -1,23 +1,17 @@
 ---
 type: community
-cohesion: 0.29
-members: 7
+cohesion: 1.00
+members: 1
 ---
 
 # Cycle Archive
 
-**Cohesion:** 0.29 - loosely connected
-**Members:** 7 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[.archive()_1]] - code - services/src/cycle/cycle-archive.service.ts
-- [[.constructor()_23]] - code - services/src/cycle/cycle-archive.service.ts
-- [[.list()_11]] - code - services/src/cycle/cycle-archive.service.ts
-- [[.restore()]] - code - services/src/cycle/cycle-archive.service.ts
-- [[.retrieve()_5]] - code - services/src/cycle/cycle-archive.service.ts
-- [[CycleArchiveService]] - code - services/src/cycle/cycle-archive.service.ts
-- [[cycle-archive.service.ts]] - code - services/src/cycle/cycle-archive.service.ts
+- [[Archive cycle          Move a completed cycle to archived status for historical]] - rationale - api/plane/api/views/cycle.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -25,11 +19,3 @@ members: 7
 TABLE source_file, type FROM #community/Cycle_Archive
 SORT file.name ASC
 ```
-
-## Connections to other communities
-
-- 1 edge to [[_COMMUNITY_Sites Cycle]]
-
-## Top bridge nodes
-
-- [[cycle-archive.service.ts]] - degree 2, connects to 1 community

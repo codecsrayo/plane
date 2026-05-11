@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/table/table/utilities/create-cell.ts"
 type: "code"
-community: "Table Drag"
+community: "Table Node"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Table_Drag
+  - community/Table_Node
 ---
 
 # create-cell.ts
@@ -16,4 +16,4 @@ tags:
 - [[create-table.ts]] - `imports_from` [EXTRACTED]
 - [[createCell()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Table_Drag
+#graphify/code #graphify/EXTRACTED #community/Table_Node

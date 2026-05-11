@@ -1,12 +1,12 @@
 ---
-source_file: "constants/fetch-keys.ts"
+source_file: "web/core/constants/fetch-keys.ts"
 type: "code"
-community: "Channel Slack"
+community: "Project Workspace"
 location: "L135"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Channel_Slack
+  - community/Project_Workspace
 ---
 
 # SLACK_CHANNEL_INFO()
@@ -16,4 +16,4 @@ tags:
 - [[fetch-keys.ts]] - `contains` [EXTRACTED]
 - [[select-channel.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Channel_Slack
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

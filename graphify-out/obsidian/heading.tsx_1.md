@@ -1,12 +1,12 @@
 ---
-source_file: "components/settings/profile/heading.tsx"
+source_file: "web/core/components/settings/profile/heading.tsx"
 type: "code"
-community: "Profile Settings"
+community: "Settings Profile"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Profile_Settings
+  - community/Settings_Profile
 ---
 
 # heading.tsx
@@ -14,11 +14,11 @@ tags:
 ## Connections
 
 - [[ProfileSettingsHeading()]] - `contains` [EXTRACTED]
-- [[Props_109]] - `contains` [EXTRACTED]
+- [[Props_184]] - `contains` [EXTRACTED]
 - [[custom-theme-selector.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_19]] - `imports_from` [EXTRACTED]
-- [[root.tsx_20]] - `imports_from` [EXTRACTED]
-- [[root.tsx_22]] - `imports_from` [EXTRACTED]
+- [[root.tsx_60]] - `imports_from` [EXTRACTED]
+- [[root.tsx_61]] - `imports_from` [EXTRACTED]
+- [[root.tsx_63]] - `imports_from` [EXTRACTED]
 - [[security.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Profile_Settings
+#graphify/code #graphify/EXTRACTED #community/Settings_Profile

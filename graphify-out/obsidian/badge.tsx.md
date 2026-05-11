@@ -1,12 +1,12 @@
 ---
 source_file: "ui/src/badge/badge.tsx"
 type: "code"
-community: "Badge Icon"
+community: "Badge Styling"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Badge_Icon
+  - community/Badge_Styling
 ---
 
 # badge.tsx
@@ -22,4 +22,4 @@ tags:
 - [[helper.tsx_2]] - `imports_from` [EXTRACTED]
 - [[index.ts_14]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Badge_Icon
+#graphify/code #graphify/EXTRACTED #community/Badge_Styling

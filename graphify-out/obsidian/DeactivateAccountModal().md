@@ -1,12 +1,12 @@
 ---
-source_file: "components/account/deactivate-account-modal.tsx"
+source_file: "web/core/components/account/deactivate-account-modal.tsx"
 type: "code"
-community: "Account Settings"
+community: "Project Profile"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Account_Settings
+  - community/Project_Profile
 ---
 
 # DeactivateAccountModal()
@@ -16,6 +16,5 @@ tags:
 - [[deactivate-account-modal.tsx]] - `contains` [EXTRACTED]
 - [[form.tsx_5]] - `imports` [EXTRACTED]
 - [[useAppRouter()]] - `calls` [EXTRACTED]
-- [[useUser()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Account_Settings
+#graphify/code #graphify/EXTRACTED #community/Project_Profile

@@ -1,18 +1,19 @@
 ---
-source_file: "components/issues/issue-layouts/kanban/block.tsx"
+source_file: "space/components/issues/issue-layouts/kanban/block.tsx"
 type: "code"
-community: "List Group Layout"
-location: "L64"
+community: "Issue Peek"
+location: "L38"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/List_Group_Layout
+  - community/Issue_Peek
 ---
 
 # IssueDetailsBlockProps
 
 ## Connections
 
-- [[block.tsx_3]] - `contains` [EXTRACTED]
+- [[block.tsx_6]] - `contains` [EXTRACTED]
+- [[block.tsx_9]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/List_Group_Layout
+#graphify/code #graphify/EXTRACTED #community/Issue_Peek

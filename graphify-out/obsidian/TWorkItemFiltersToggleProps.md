@@ -1,12 +1,12 @@
 ---
-source_file: "components/work-item-filters/filters-toggle.tsx"
+source_file: "web/core/components/work-item-filters/filters-toggle.tsx"
 type: "code"
-community: "Filter Controls"
+community: "Project Profile"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Controls
+  - community/Project_Profile
 ---
 
 # TWorkItemFiltersToggleProps
@@ -15,4 +15,4 @@ tags:
 
 - [[filters-toggle.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Controls
+#graphify/code #graphify/EXTRACTED #community/Project_Profile

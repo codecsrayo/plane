@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/workspace-draft-issues/base.ts"
 type: "code"
-community: "Issue Options"
+community: "Issue Entity"
 location: "L39"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Options
+  - community/Issue_Entity
 ---
 
 # TWorkspaceDraftPaginationInfo
@@ -15,4 +15,4 @@ tags:
 
 - [[base.ts_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Options
+#graphify/code #graphify/EXTRACTED #community/Issue_Entity

@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-detail/relation-select.tsx"
+source_file: "web/core/components/issues/issue-detail/relation-select.tsx"
 type: "code"
-community: "Project Archives"
+community: "Issue Activity"
 location: "L38"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Archives
+  - community/Issue_Activity
 ---
 
 # IssueRelationSelect
@@ -15,4 +15,4 @@ tags:
 
 - [[relation-select.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Archives
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

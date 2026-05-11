@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-layouts/quick-add/button/list.tsx"
+source_file: "web/core/components/issues/issue-layouts/quick-add/button/list.tsx"
 type: "code"
 community: "Issue Quick"
 location: "L14"

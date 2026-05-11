@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/settings.ts"
 type: "code"
-community: "Import Export"
+community: "Workspace Search"
 location: "L34"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Import_Export
+  - community/Workspace_Search
 ---
 
 # TProjectSettingsItem
@@ -15,4 +15,4 @@ tags:
 
 - [[settings.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Import_Export
+#graphify/code #graphify/EXTRACTED #community/Workspace_Search

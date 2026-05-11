@@ -1,14 +1,14 @@
 ---
 source_file: "api_rust/src/entities/gitlab_comment_syncs.rs"
 type: "code"
-community: "Community 732"
+community: "Active Model"
 location: "L98"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_732
+  - community/Active_Model
 ---
 
 # ActiveModel
 
-#graphify/code #graphify/EXTRACTED #community/Community_732
+#graphify/code #graphify/EXTRACTED #community/Active_Model

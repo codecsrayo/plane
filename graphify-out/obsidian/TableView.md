@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/table/table/table-view.tsx"
 type: "code"
-community: "Table Tableview"
+community: "Table Node"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Table_Tableview
+  - community/Table_Node
 ---
 
 # TableView
@@ -22,4 +22,4 @@ tags:
 - [[table-view.tsx]] - `contains` [EXTRACTED]
 - [[table.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Table_Tableview
+#graphify/code #graphify/EXTRACTED #community/Table_Node

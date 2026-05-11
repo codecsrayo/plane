@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/combobox/combobox.stories.tsx"
 type: "code"
-community: "Disabled Custom"
+community: "Toolbar Combobox"
 location: "L212"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Disabled_Custom
+  - community/Toolbar_Combobox
 ---
 
 # CustomMaxHeight
@@ -15,4 +15,4 @@ tags:
 
 - [[combobox.stories.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Disabled_Custom
+#graphify/code #graphify/EXTRACTED #community/Toolbar_Combobox

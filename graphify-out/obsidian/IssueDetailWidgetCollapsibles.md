@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-detail-widgets/issue-detail-widget-collapsibles.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/issue-detail-widget-collapsibles.tsx"
 type: "code"
 community: "Issue Widget"
 location: "L31"
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[issue-detail-widget-collapsibles.tsx]] - `contains` [EXTRACTED]
-- [[root.tsx_37]] - `imports` [EXTRACTED]
+- [[root.tsx_78]] - `imports` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Issue_Widget

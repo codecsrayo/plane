@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/base-layouts/gantt/index.ts"
 type: "code"
-community: "Gantt Layout"
+community: "Layouts Gantt"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Layout
+  - community/Layouts_Gantt
 ---
 
 # index.ts
@@ -31,4 +31,4 @@ tags:
 - [[core.ts_5]] - `imports_from` [EXTRACTED]
 - [[extended.ts_3]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Layout
+#graphify/code #graphify/EXTRACTED #community/Layouts_Gantt

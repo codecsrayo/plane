@@ -1,12 +1,12 @@
 ---
-source_file: "components/rich-filters/filter-item/container.tsx"
+source_file: "web/core/components/rich-filters/filter-item/container.tsx"
 type: "code"
-community: "Filter Controls"
+community: "Value Input"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Controls
+  - community/Value_Input
 ---
 
 # FilterItemContainerProps
@@ -15,4 +15,4 @@ tags:
 
 - [[container.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Controls
+#graphify/code #graphify/EXTRACTED #community/Value_Input

@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/custom-image/components/uploader.tsx"
 type: "code"
-community: "Args Uploader"
+community: "Image Custom"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Args_Uploader
+  - community/Image_Custom
 ---
 
 # CustomImageUploaderProps
@@ -15,4 +15,4 @@ tags:
 
 - [[uploader.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Args_Uploader
+#graphify/code #graphify/EXTRACTED #community/Image_Custom

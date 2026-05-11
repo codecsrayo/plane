@@ -1,18 +1,19 @@
 ---
-source_file: "components/pages/list/root.tsx"
+source_file: "web/core/components/pages/list/root.tsx"
 type: "code"
-community: "Action Pages"
+community: "Project Work"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Action_Pages
+  - community/Project_Work
 ---
 
 # PagesListRoot
 
 ## Connections
 
-- [[root.tsx_77]] - `contains` [EXTRACTED]
+- [[page.tsx_28]] - `imports` [EXTRACTED]
+- [[root.tsx_118]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Action_Pages
+#graphify/code #graphify/EXTRACTED #community/Project_Work

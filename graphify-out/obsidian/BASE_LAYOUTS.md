@@ -1,19 +1,19 @@
 ---
-source_file: "components/base-layouts/constants.ts"
+source_file: "web/core/components/base-layouts/constants.ts"
 type: "code"
-community: "Issue Layouts"
+community: "Issue Activity"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layouts
+  - community/Issue_Activity
 ---
 
 # BASE_LAYOUTS
 
 ## Connections
 
-- [[constants.ts_3]] - `contains` [EXTRACTED]
+- [[constants.ts_7]] - `contains` [EXTRACTED]
 - [[layout-switcher.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layouts
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

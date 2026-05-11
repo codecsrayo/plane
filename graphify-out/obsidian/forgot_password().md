@@ -1,19 +1,21 @@
 ---
-source_file: "api_rust/src/auth/forgot_reset_password.rs"
+source_file: "api/plane/bgtasks/forgot_password_task.py"
 type: "code"
-community: "Auth Rust API"
-location: "L81"
+community: "Email Task"
+location: "L23"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Auth_Rust_API
+  - graphify/INFERRED
+  - community/Email_Task
 ---
 
 # forgot_password()
 
 ## Connections
 
-- [[forgot_reset_password.rs]] - `contains` [EXTRACTED]
-- [[handle_forgot_password()]] - `calls` [EXTRACTED]
+- [[forgot_password_task.py]] - `contains` [EXTRACTED]
+- [[generate_plain_text_from_html()]] - `calls` [INFERRED]
+- [[get_email_configuration()]] - `calls` [INFERRED]
+- [[log_exception()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Rust_API
+#graphify/code #graphify/INFERRED #community/Email_Task

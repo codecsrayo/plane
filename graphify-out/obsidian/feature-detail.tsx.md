@@ -1,12 +1,12 @@
 ---
-source_file: "components/workspace/billing/comparison/feature-detail.tsx"
+source_file: "web/core/components/workspace/billing/comparison/feature-detail.tsx"
 type: "code"
-community: "Plans Plan"
+community: "Plan Plans"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Plans_Plan
+  - community/Plan_Plans
 ---
 
 # feature-detail.tsx
@@ -16,7 +16,7 @@ tags:
 - [[PlanFeatureDetail()]] - `contains` [EXTRACTED]
 - [[TPlanFeatureData]] - `imports` [EXTRACTED]
 - [[TPlanFeatureDetailProps]] - `contains` [EXTRACTED]
-- [[base.tsx]] - `imports_from` [EXTRACTED]
+- [[base.tsx_1]] - `imports_from` [EXTRACTED]
 - [[plans.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Plans_Plan
+#graphify/code #graphify/EXTRACTED #community/Plan_Plans

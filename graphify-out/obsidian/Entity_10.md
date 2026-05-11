@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/gitlab_issue_syncs.rs"
 type: "code"
-community: "Community 508"
+community: "Entity"
 location: "L78"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_508
+  - community/Entity
 ---
 
 # Entity
@@ -15,4 +15,4 @@ tags:
 
 - [[.to()_10]] - `method` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_508
+#graphify/code #graphify/EXTRACTED #community/Entity

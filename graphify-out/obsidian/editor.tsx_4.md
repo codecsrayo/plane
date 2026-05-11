@@ -1,28 +1,27 @@
 ---
-source_file: "components/pages/version/editor.tsx"
+source_file: "web/core/components/editor/rich-text/editor.tsx"
 type: "code"
-community: "Page Editor"
+community: "Member Members"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Page_Editor
+  - community/Member_Members
 ---
 
 # editor.tsx
 
 ## Connections
 
-- [[DocumentEditor]] - `imports` [EXTRACTED]
-- [[PagesVersionEditor]] - `contains` [EXTRACTED]
-- [[TVersionEditorProps]] - `contains` [EXTRACTED]
-- [[editor.tsx_2]] - `imports_from` [EXTRACTED]
-- [[main-content.tsx_2]] - `imports_from` [EXTRACTED]
-- [[page-root.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_84]] - `imports_from` [EXTRACTED]
-- [[use-page-filters.ts]] - `imports_from` [EXTRACTED]
-- [[use-workspace.ts]] - `imports_from` [EXTRACTED]
-- [[usePageFilters()]] - `imports` [EXTRACTED]
-- [[useWorkspace()]] - `imports` [EXTRACTED]
+- [[RichTextEditor]] - `contains` [EXTRACTED]
+- [[RichTextEditorWrapperProps]] - `contains` [EXTRACTED]
+- [[index.ts_269]] - `imports_from` [EXTRACTED]
+- [[index.ts_316]] - `imports_from` [EXTRACTED]
+- [[issue-description.tsx]] - `imports_from` [EXTRACTED]
+- [[use-member.ts]] - `imports_from` [EXTRACTED]
+- [[use-parse-editor-content.ts]] - `imports_from` [EXTRACTED]
+- [[useEditorFlagging()]] - `imports` [EXTRACTED]
+- [[useMember()]] - `imports` [EXTRACTED]
+- [[useParseEditorContent()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Page_Editor
+#graphify/code #graphify/EXTRACTED #community/Member_Members

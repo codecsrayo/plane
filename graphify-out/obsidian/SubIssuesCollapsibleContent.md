@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-detail-widgets/sub-issues/content.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/sub-issues/content.tsx"
 type: "code"
-community: "Title Issues"
+community: "Issue Activity"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Title_Issues
+  - community/Issue_Activity
 ---
 
 # SubIssuesCollapsibleContent
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[content.tsx_2]] - `contains` [EXTRACTED]
-- [[root.tsx_40]] - `imports` [EXTRACTED]
+- [[root.tsx_81]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Title_Issues
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

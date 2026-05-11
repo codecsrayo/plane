@@ -1,12 +1,12 @@
 ---
-source_file: "components/workspace/settings/members-list.tsx"
+source_file: "web/core/components/workspace/settings/members-list.tsx"
 type: "code"
-community: "Member Settings"
+community: "Member Members"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Settings
+  - community/Member_Members
 ---
 
 # WorkspaceMembersList
@@ -14,5 +14,6 @@ tags:
 ## Connections
 
 - [[members-list.tsx]] - `contains` [EXTRACTED]
+- [[page.tsx_51]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Settings
+#graphify/code #graphify/EXTRACTED #community/Member_Members

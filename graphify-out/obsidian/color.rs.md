@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/utils/color.rs"
 type: "code"
-community: "Community 297"
+community: "Color Random"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_297
+  - community/Color_Random
 ---
 
 # color.rs
@@ -17,4 +17,4 @@ tags:
 - [[produces_different_values()]] - `contains` [EXTRACTED]
 - [[produces_valid_hex_color()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_297
+#graphify/code #graphify/EXTRACTED #community/Color_Random

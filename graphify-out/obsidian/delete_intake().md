@@ -1,19 +1,21 @@
 ---
 source_file: "api_rust/src/routes/intake.rs"
 type: "code"
-community: "Community 108"
+community: "Request Intake"
 location: "L431"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_108
+  - graphify/INFERRED
+  - community/Request_Intake
 ---
 
 # delete_intake()
 
 ## Connections
 
-- [[intake.rs]] - `contains` [EXTRACTED]
+- [[.set()]] - `calls` [INFERRED]
+- [[intake.rs_1]] - `contains` [EXTRACTED]
+- [[now]] - `calls` [INFERRED]
 - [[require_role()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_108
+#graphify/code #graphify/INFERRED #community/Request_Intake

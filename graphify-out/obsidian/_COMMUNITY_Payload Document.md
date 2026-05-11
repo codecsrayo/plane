@@ -52,7 +52,7 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 1 edge to [[_COMMUNITY_Document Side]]
+- 1 edge to [[_COMMUNITY_Document Collaborative]]
 
 ## Top bridge nodes
 

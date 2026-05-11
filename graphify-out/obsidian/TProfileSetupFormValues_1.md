@@ -1,20 +1,20 @@
 ---
-source_file: "components/onboarding/steps/profile/root.tsx"
+source_file: "web/core/components/onboarding/steps/profile/root.tsx"
 type: "code"
-community: "Values Setup"
+community: "Setup Values"
 location: "L34"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Values_Setup
+  - community/Setup_Values
 ---
 
 # TProfileSetupFormValues
 
 ## Connections
 
-- [[root.tsx_66]] - `imports` [EXTRACTED]
-- [[root.tsx_68]] - `contains` [EXTRACTED]
-- [[root.tsx_69]] - `imports` [EXTRACTED]
+- [[root.tsx_107]] - `imports` [EXTRACTED]
+- [[root.tsx_109]] - `contains` [EXTRACTED]
+- [[root.tsx_110]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Values_Setup
+#graphify/code #graphify/EXTRACTED #community/Setup_Values

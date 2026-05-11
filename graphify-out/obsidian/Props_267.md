@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-detail-widgets/attachments/quick-action-button.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-view.tsx"
 type: "code"
-community: "Issue Attachments"
-location: "L22"
+community: "Issue Project"
+location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Attachments
+  - community/Issue_Project
 ---
 
 # Props
 
 ## Connections
 
-- [[quick-action-button.tsx]] - `contains` [EXTRACTED]
+- [[spreadsheet-view.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Attachments
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

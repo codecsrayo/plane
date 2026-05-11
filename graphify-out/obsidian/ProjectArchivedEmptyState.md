@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/empty-states/archived-issues.tsx"
+source_file: "web/core/components/issues/issue-layouts/empty-states/archived-issues.tsx"
 type: "code"
-community: "Cycle Details"
+community: "Project Profile"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Details
+  - community/Project_Profile
 ---
 
 # ProjectArchivedEmptyState
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[archived-issues.tsx]] - `contains` [EXTRACTED]
-- [[index.tsx_7]] - `imports` [EXTRACTED]
+- [[index.tsx_13]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Details
+#graphify/code #graphify/EXTRACTED #community/Project_Profile

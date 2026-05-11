@@ -1,18 +1,22 @@
 ---
-source_file: "components/profile/overview/priority-distribution.tsx"
+source_file: "web/core/components/pages/list/applied-filters/root.tsx"
 type: "code"
-community: "Priority Distribution"
-location: "L15"
+community: "Filters Applied"
+location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Priority_Distribution
+  - community/Filters_Applied
 ---
 
 # Props
 
 ## Connections
 
-- [[priority-distribution.tsx]] - `contains` [EXTRACTED]
+- [[root.tsx_43]] - `contains` [EXTRACTED]
+- [[root.tsx_56]] - `contains` [EXTRACTED]
+- [[root.tsx_67]] - `contains` [EXTRACTED]
+- [[root.tsx_97]] - `contains` [EXTRACTED]
+- [[root.tsx_120]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Priority_Distribution
+#graphify/code #graphify/EXTRACTED #community/Filters_Applied

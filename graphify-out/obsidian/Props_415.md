@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/version/root.tsx"
+source_file: "web/core/components/power-k/ui/modal/wrapper.tsx"
 type: "code"
-community: "Page Editor"
-location: "L22"
+community: "Power Shortcuts"
+location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Page_Editor
+  - community/Power_Shortcuts
 ---
 
 # Props
 
 ## Connections
 
-- [[root.tsx_84]] - `contains` [EXTRACTED]
+- [[wrapper.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Page_Editor
+#graphify/code #graphify/EXTRACTED #community/Power_Shortcuts

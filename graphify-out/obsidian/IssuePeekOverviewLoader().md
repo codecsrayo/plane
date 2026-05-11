@@ -1,20 +1,20 @@
 ---
-source_file: "components/issues/peek-overview/loader.tsx"
+source_file: "web/core/components/issues/peek-overview/loader.tsx"
 type: "code"
-community: "Peek Overview"
+community: "Issue Activity"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Peek_Overview
+  - community/Issue_Activity
 ---
 
 # IssuePeekOverviewLoader()
 
 ## Connections
 
-- [[loader.tsx_5]] - `contains` [EXTRACTED]
+- [[loader.tsx_8]] - `contains` [EXTRACTED]
 - [[usePlatformOS()]] - `calls` [EXTRACTED]
-- [[view.tsx_1]] - `imports` [EXTRACTED]
+- [[view.tsx_2]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Peek_Overview
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

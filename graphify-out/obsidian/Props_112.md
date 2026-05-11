@@ -1,18 +1,18 @@
 ---
-source_file: "components/settings/profile/content/pages/general/form.tsx"
+source_file: "web/core/components/workspace/views/quick-action.tsx"
 type: "code"
-community: "Image Upload"
-location: "L48"
+community: "Project Work"
+location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Image_Upload
+  - community/Project_Work
 ---
 
 # Props
 
 ## Connections
 
-- [[form.tsx_5]] - `contains` [EXTRACTED]
+- [[quick-action.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Image_Upload
+#graphify/code #graphify/EXTRACTED #community/Project_Work

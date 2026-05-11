@@ -1,12 +1,12 @@
 ---
-source_file: "components/comments/comment-reaction.tsx"
+source_file: "web/core/components/comments/comment-reaction.tsx"
 type: "code"
-community: "Comment Card"
+community: "Notification Content"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Comment_Card
+  - community/Notification_Content
 ---
 
 # comment-reaction.tsx
@@ -14,7 +14,7 @@ tags:
 ## Connections
 
 - [[CommentReactions]] - `contains` [EXTRACTED]
-- [[TProps_13]] - `contains` [EXTRACTED]
+- [[TProps_15]] - `contains` [EXTRACTED]
 - [[display.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Comment_Card
+#graphify/code #graphify/EXTRACTED #community/Notification_Content

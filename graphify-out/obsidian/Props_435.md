@@ -1,18 +1,18 @@
 ---
-source_file: "components/analytics/overview/active-project-item.tsx"
+source_file: "web/core/components/onboarding/root.tsx"
 type: "code"
-community: "Project Archives"
-location: "L15"
+community: "Workspace Issue"
+location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Archives
+  - community/Workspace_Issue
 ---
 
 # Props
 
 ## Connections
 
-- [[active-project-item.tsx]] - `contains` [EXTRACTED]
+- [[root.tsx_104]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Archives
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/rich-filters/operators/index.ts"
 type: "code"
-community: "Field Config"
+community: "Node Condition"
 location: "L62"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Field_Config
+  - community/Node_Condition
 ---
 
 # TSupportedOperators
@@ -17,4 +17,4 @@ tags:
 - [[expression.ts]] - `imports` [EXTRACTED]
 - [[index.ts_107]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Field_Config
+#graphify/code #graphify/EXTRACTED #community/Node_Condition

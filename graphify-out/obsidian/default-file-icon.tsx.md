@@ -1,5 +1,5 @@
 ---
-source_file: "components/icons/attachment/default-file-icon.tsx"
+source_file: "web/core/components/icons/attachment/default-file-icon.tsx"
 type: "code"
 community: "Icon"
 location: "L1"
@@ -13,6 +13,6 @@ tags:
 
 ## Connections
 
-- [[DefaultIcon()]] - `contains` [EXTRACTED]
+- [[DefaultIcon()_1]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Icon

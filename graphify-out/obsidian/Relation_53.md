@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/draft_issue_cycles.rs"
 type: "code"
-community: "Community 372"
+community: "Model Relation"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_372
+  - community/Model_Relation
 ---
 
 # Relation
@@ -15,4 +15,4 @@ tags:
 
 - [[draft_issue_cycles.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_372
+#graphify/code #graphify/EXTRACTED #community/Model_Relation

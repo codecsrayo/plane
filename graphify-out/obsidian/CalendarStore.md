@@ -1,12 +1,12 @@
 ---
-source_file: "store/issue/issue_calendar_view.store.ts"
+source_file: "web/core/store/issue/issue_calendar_view.store.ts"
 type: "code"
-community: "Calendar Store"
+community: "Calendar Issue"
 location: "L40"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Store
+  - community/Calendar_Issue
 ---
 
 # CalendarStore
@@ -16,8 +16,8 @@ tags:
 - [[.activeWeekNumber()]] - `method` [EXTRACTED]
 - [[.allDaysOfActiveWeek()]] - `method` [EXTRACTED]
 - [[.allWeeksOfActiveMonth()]] - `method` [EXTRACTED]
-- [[.constructor()_28]] - `method` [EXTRACTED]
+- [[.constructor()_85]] - `method` [EXTRACTED]
 - [[issue_calendar_view.store.ts]] - `contains` [EXTRACTED]
-- [[root.store.ts_1]] - `imports` [EXTRACTED]
+- [[root.store.ts_3]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Store
+#graphify/code #graphify/EXTRACTED #community/Calendar_Issue

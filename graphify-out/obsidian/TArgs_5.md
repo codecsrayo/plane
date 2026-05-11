@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/helpers/tippy.ts"
 type: "code"
-community: "Command Slash"
+community: "Emoji Command"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Command_Slash
+  - community/Emoji_Command
 ---
 
 # TArgs
@@ -15,4 +15,4 @@ tags:
 
 - [[tippy.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Command_Slash
+#graphify/code #graphify/EXTRACTED #community/Emoji_Command

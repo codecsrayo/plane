@@ -1,18 +1,18 @@
 ---
-source_file: "components/empty-state/detailed-empty-state-root.tsx"
+source_file: "web/core/components/cycles/list/cycle-list-project-group-header.tsx"
 type: "code"
-community: "Empty State"
-location: "L24"
+community: "Project Settings"
+location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_State
+  - community/Project_Settings
 ---
 
 # Props
 
 ## Connections
 
-- [[detailed-empty-state-root.tsx]] - `contains` [EXTRACTED]
+- [[cycle-list-project-group-header.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_State
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

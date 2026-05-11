@@ -11,9 +11,9 @@ members: 3
 
 ## Members
 
-- [[LabelActivityChip()]] - code - components/issues/issue-detail/issue-activity/activity/actions/label-activity-chip.tsx
-- [[TIssueLabelPill]] - code - components/issues/issue-detail/issue-activity/activity/actions/label-activity-chip.tsx
-- [[label-activity-chip.tsx]] - code - components/issues/issue-detail/issue-activity/activity/actions/label-activity-chip.tsx
+- [[LabelActivityChip()]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/label-activity-chip.tsx
+- [[TIssueLabelPill]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/label-activity-chip.tsx
+- [[label-activity-chip.tsx]] - code - web/core/components/issues/issue-detail/issue-activity/activity/actions/label-activity-chip.tsx
 
 ## Live Query (requires Dataview plugin)
 

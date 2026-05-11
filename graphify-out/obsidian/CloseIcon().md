@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/icons/actions/close-icon.tsx"
 type: "code"
-community: "Dialog Close"
+community: "Dialog Width"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dialog_Close
+  - community/Dialog_Width
 ---
 
 # CloseIcon()
@@ -18,4 +18,4 @@ tags:
 - [[popover.stories.tsx_1]] - `imports` [EXTRACTED]
 - [[toast.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dialog_Close
+#graphify/code #graphify/EXTRACTED #community/Dialog_Width

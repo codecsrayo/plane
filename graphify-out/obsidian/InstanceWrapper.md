@@ -1,18 +1,18 @@
 ---
-source_file: "lib/wrappers/instance-wrapper.tsx"
+source_file: "web/app/provider.tsx"
 type: "code"
-community: "Wrapper Workspace"
-location: "L20"
+community: "Error Provider"
+location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Wrapper_Workspace
+  - community/Error_Provider
 ---
 
 # InstanceWrapper
 
 ## Connections
 
-- [[instance-wrapper.tsx]] - `contains` [EXTRACTED]
+- [[provider.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Wrapper_Workspace
+#graphify/code #graphify/EXTRACTED #community/Error_Provider

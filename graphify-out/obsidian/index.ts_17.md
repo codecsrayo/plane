@@ -1,14 +1,14 @@
 ---
 source_file: "ui/src/sortable/index.ts"
 type: "code"
-community: "Community 348"
+community: "Community 1326"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_348
+  - community/Community_1326
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_348
+#graphify/code #graphify/EXTRACTED #community/Community_1326

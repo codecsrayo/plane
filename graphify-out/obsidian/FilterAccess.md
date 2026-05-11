@@ -1,12 +1,12 @@
 ---
-source_file: "components/project/dropdowns/filters/access.tsx"
+source_file: "web/core/components/project/dropdowns/filters/access.tsx"
 type: "code"
-community: "Lead Members"
+community: "Project Common"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Lead_Members
+  - community/Project_Common
 ---
 
 # FilterAccess
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[access.tsx_1]] - `contains` [EXTRACTED]
-- [[root.tsx_25]] - `imports` [EXTRACTED]
+- [[root.tsx_66]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Lead_Members
+#graphify/code #graphify/EXTRACTED #community/Project_Common

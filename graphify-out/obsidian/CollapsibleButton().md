@@ -1,12 +1,12 @@
 ---
 source_file: "ui/src/collapsible/collapsible-button.tsx"
 type: "code"
-community: "Toggle Checkbox"
+community: "Input Checkbox"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toggle_Checkbox
+  - community/Input_Checkbox
 ---
 
 # CollapsibleButton()
@@ -15,4 +15,4 @@ tags:
 
 - [[collapsible-button.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toggle_Checkbox
+#graphify/code #graphify/EXTRACTED #community/Input_Checkbox

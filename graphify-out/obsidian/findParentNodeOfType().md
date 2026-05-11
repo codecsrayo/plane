@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/helpers/common.ts"
 type: "code"
-community: "Link Insert"
+community: "Table Node"
 location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Link_Insert
+  - community/Table_Node
 ---
 
 # findParentNodeOfType()
@@ -20,4 +20,4 @@ tags:
 - [[insertLineBelowTableAction()]] - `calls` [EXTRACTED]
 - [[table-cell.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Link_Insert
+#graphify/code #graphify/EXTRACTED #community/Table_Node

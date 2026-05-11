@@ -41,10 +41,9 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 2 edges to [[_COMMUNITY_Table Drag]]
-- 2 edges to [[_COMMUNITY_Table Selected]]
+- 3 edges to [[_COMMUNITY_Drag Table]]
+- 2 edges to [[_COMMUNITY_Table Node]]
 - 1 edge to [[_COMMUNITY_Cell Multiple]]
-- 1 edge to [[_COMMUNITY_Drag Drop]]
 
 ## Top bridge nodes
 

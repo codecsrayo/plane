@@ -1,12 +1,12 @@
 ---
 source_file: "constants/src/event-tracker/core.ts"
 type: "code"
-community: "Event Tracker"
+community: "Tracker Elements"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Event_Tracker
+  - community/Tracker_Elements
 ---
 
 # core.ts
@@ -51,4 +51,4 @@ tags:
 - [[WORK_ITEM_TRACKER_ELEMENTS]] - `contains` [EXTRACTED]
 - [[WORK_ITEM_TRACKER_EVENTS]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Event_Tracker
+#graphify/code #graphify/EXTRACTED #community/Tracker_Elements

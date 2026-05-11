@@ -1,18 +1,18 @@
 ---
-source_file: "components/exporter/prev-exports.tsx"
+source_file: "web/core/components/exporter/column.tsx"
 type: "code"
-community: "Guide Prev"
-location: "L32"
+community: "Rowdata Single"
+location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Guide_Prev
+  - community/Rowdata_Single
 ---
 
 # RowData
 
 ## Connections
 
-- [[prev-exports.tsx]] - `contains` [EXTRACTED]
+- [[column.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Guide_Prev
+#graphify/code #graphify/EXTRACTED #community/Rowdata_Single

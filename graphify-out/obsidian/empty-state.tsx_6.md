@@ -1,20 +1,19 @@
 ---
-source_file: "components/power-k/menus/empty-state.tsx"
+source_file: "web/core/components/api-token/empty-state.tsx"
 type: "code"
-community: "File Icons Nav"
+community: "Empty Token"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/File_Icons_Nav
+  - community/Empty_Token
 ---
 
 # empty-state.tsx
 
 ## Connections
 
-- [[PowerKMenuEmptyState()]] - `contains` [EXTRACTED]
-- [[Props_350]] - `contains` [EXTRACTED]
-- [[builder.tsx]] - `imports_from` [EXTRACTED]
+- [[ApiTokenEmptyState()]] - `contains` [EXTRACTED]
+- [[Props_370]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/File_Icons_Nav
+#graphify/code #graphify/EXTRACTED #community/Empty_Token

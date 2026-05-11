@@ -1,12 +1,12 @@
 ---
-source_file: "components/project/member-select.tsx"
+source_file: "web/core/components/project/member-select.tsx"
 type: "code"
-community: "Member Project"
+community: "Project Workspace"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Project
+  - community/Project_Workspace
 ---
 
 # MemberSelect
@@ -16,4 +16,4 @@ tags:
 - [[member-select.tsx]] - `contains` [EXTRACTED]
 - [[project-settings-member-defaults.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Project
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

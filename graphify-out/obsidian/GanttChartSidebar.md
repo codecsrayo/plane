@@ -1,18 +1,18 @@
 ---
-source_file: "components/gantt-chart/sidebar/root.tsx"
+source_file: "web/core/components/gantt-chart/sidebar/root.tsx"
 type: "code"
-community: "Multi Select Actions"
+community: "Sidebar Settings"
 location: "L36"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Multi_Select_Actions
+  - community/Sidebar_Settings
 ---
 
 # GanttChartSidebar
 
 ## Connections
 
-- [[root.tsx_6]] - `contains` [EXTRACTED]
+- [[root.tsx_47]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Multi_Select_Actions
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Settings

@@ -1,14 +1,14 @@
 ---
 source_file: "ui/src/constants/index.ts"
 type: "code"
-community: "Community 337"
+community: "Community 1315"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_337
+  - community/Community_1315
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_337
+#graphify/code #graphify/EXTRACTED #community/Community_1315

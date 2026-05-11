@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/calendar/issue-blocks.tsx"
+source_file: "web/core/components/project/settings/features-list.tsx"
 type: "code"
-community: "Calendar Views"
-location: "L19"
+community: "Project Settings"
+location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Views
+  - community/Project_Settings
 ---
 
 # Props
 
 ## Connections
 
-- [[issue-blocks.tsx]] - `contains` [EXTRACTED]
+- [[features-list.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Views
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

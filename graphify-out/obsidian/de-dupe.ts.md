@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/de-dupe.ts"
 type: "code"
-community: "Issue Options"
+community: "Issue Entity"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Options
+  - community/Issue_Entity
 ---
 
 # de-dupe.ts
@@ -19,4 +19,4 @@ tags:
 - [[TIssuePriorities_1]] - `imports` [EXTRACTED]
 - [[issues.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Options
+#graphify/code #graphify/EXTRACTED #community/Issue_Entity

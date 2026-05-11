@@ -1,5 +1,5 @@
 ---
-source_file: "components/base-layouts/list/group-header.tsx"
+source_file: "web/core/components/base-layouts/list/group-header.tsx"
 type: "code"
 community: "Group Drop"
 location: "L1"

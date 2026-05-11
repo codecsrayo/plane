@@ -1,21 +1,18 @@
 ---
-source_file: "api_rust/src/routes/cycles.rs"
+source_file: "api/plane/utils/analytics_plot.py"
 type: "code"
-community: "Cycles Rust API"
-location: "L1173"
+community: "Analytics Plot"
+location: "L97"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycles_Rust_API
+  - community/Analytics_Plot
 ---
 
 # burndown_plot()
 
 ## Connections
 
-- [[.from_string()]] - `calls` [INFERRED]
-- [[.new()]] - `calls` [INFERRED]
-- [[cycle_analytics()]] - `calls` [EXTRACTED]
-- [[cycles.rs]] - `contains` [EXTRACTED]
+- [[analytics_plot.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycles_Rust_API
+#graphify/code #graphify/EXTRACTED #community/Analytics_Plot

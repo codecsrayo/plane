@@ -1,5 +1,5 @@
 ---
-source_file: "components/inbox/modals/delete-issue-modal.tsx"
+source_file: "web/core/components/inbox/modals/delete-issue-modal.tsx"
 type: "code"
 community: "Issue Inbox"
 location: "L1"
@@ -14,8 +14,8 @@ tags:
 ## Connections
 
 - [[DeleteInboxIssueModal]] - `contains` [EXTRACTED]
-- [[Props_379]] - `contains` [EXTRACTED]
-- [[api.service.ts]] - `imports_from` [EXTRACTED]
+- [[Props_454]] - `contains` [EXTRACTED]
+- [[api.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[extractApiErrorMessage()]] - `imports` [EXTRACTED]
 - [[inbox-issue-header.tsx]] - `imports_from` [EXTRACTED]
 - [[use-project.ts]] - `imports_from` [EXTRACTED]

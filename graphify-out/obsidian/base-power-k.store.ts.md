@@ -1,12 +1,12 @@
 ---
-source_file: "store/base-power-k.store.ts"
+source_file: "web/core/store/base-power-k.store.ts"
 type: "code"
-community: "Shortcut Registry"
+community: "Power Context"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Shortcut_Registry
+  - community/Power_Context
 ---
 
 # base-power-k.store.ts
@@ -19,8 +19,9 @@ tags:
 - [[PowerKCommandRegistry]] - `imports` [EXTRACTED]
 - [[TPowerKContextType]] - `imports` [EXTRACTED]
 - [[TPowerKPageType]] - `imports` [EXTRACTED]
-- [[constructor()_1]] - `contains` [EXTRACTED]
-- [[registry.ts]] - `imports_from` [EXTRACTED]
-- [[types.ts_2]] - `imports_from` [EXTRACTED]
+- [[constructor()_4]] - `contains` [EXTRACTED]
+- [[power-k.store.ts]] - `imports_from` [EXTRACTED]
+- [[registry.ts_1]] - `imports_from` [EXTRACTED]
+- [[types.ts_16]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Shortcut_Registry
+#graphify/code #graphify/EXTRACTED #community/Power_Context

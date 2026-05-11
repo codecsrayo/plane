@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/columns/header-column.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/header-column.tsx"
 type: "code"
-community: "Rail Visibility"
+community: "Select Multiple"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Rail_Visibility
+  - community/Select_Multiple
 ---
 
 # HeaderColumn()
@@ -15,6 +15,6 @@ tags:
 
 - [[header-column.tsx]] - `contains` [EXTRACTED]
 - [[spreadsheet-header-column.tsx]] - `imports` [EXTRACTED]
-- [[useLocalStorage()]] - `calls` [EXTRACTED]
+- [[useLocalStorage()_1]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Rail_Visibility
+#graphify/code #graphify/EXTRACTED #community/Select_Multiple

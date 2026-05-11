@@ -1,12 +1,12 @@
 ---
-source_file: "components/pages/list/block-item-action.tsx"
+source_file: "web/core/components/pages/list/block-item-action.tsx"
 type: "code"
-community: "Action Pages"
+community: "Control Move"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Action_Pages
+  - community/Control_Move
 ---
 
 # BlockItemAction
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[block-item-action.tsx]] - `contains` [EXTRACTED]
-- [[block.tsx_5]] - `imports` [EXTRACTED]
+- [[block.tsx_8]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Action_Pages
+#graphify/code #graphify/EXTRACTED #community/Control_Move

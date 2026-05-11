@@ -1,12 +1,12 @@
 ---
-source_file: "editor/src/core/extensions/custom-image/components/toolbar/root.tsx"
+source_file: "web/core/components/pages/editor/toolbar/root.tsx"
 type: "code"
-community: "Image Alignment"
-location: "L17"
+community: "Formats Values"
+location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Image_Alignment
+  - community/Formats_Values
 ---
 
 # Props
@@ -14,5 +14,6 @@ tags:
 ## Connections
 
 - [[root.tsx_5]] - `contains` [EXTRACTED]
+- [[root.tsx_116]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Image_Alignment
+#graphify/code #graphify/EXTRACTED #community/Formats_Values

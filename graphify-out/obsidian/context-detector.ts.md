@@ -1,21 +1,20 @@
 ---
-source_file: "components/power-k/core/context-detector.ts"
+source_file: "web/ce/components/command-palette/power-k/context-detector.ts"
 type: "code"
-community: "Command Palette"
+community: "Power Context"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Command_Palette
+  - community/Power_Context
 ---
 
 # context-detector.ts
 
 ## Connections
 
-- [[TPowerKContextType]] - `imports` [EXTRACTED]
-- [[detectContextFromURL()]] - `contains` [EXTRACTED]
-- [[global-shortcuts.tsx]] - `imports_from` [EXTRACTED]
-- [[types.ts_2]] - `imports_from` [EXTRACTED]
+- [[TPowerKContextTypeExtended]] - `imports` [EXTRACTED]
+- [[detectExtendedContextFromURL()]] - `contains` [EXTRACTED]
+- [[types.ts_13]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Command_Palette
+#graphify/code #graphify/EXTRACTED #community/Power_Context

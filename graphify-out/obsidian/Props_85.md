@@ -1,19 +1,18 @@
 ---
-source_file: "components/project/dropdowns/filters/lead.tsx"
+source_file: "web/core/components/sidebar/add-button.tsx"
 type: "code"
-community: "Lead Members"
-location: "L20"
+community: "Project Profile"
+location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Lead_Members
+  - community/Project_Profile
 ---
 
 # Props
 
 ## Connections
 
-- [[lead.tsx]] - `contains` [EXTRACTED]
-- [[lead.tsx_1]] - `contains` [EXTRACTED]
+- [[add-button.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Lead_Members
+#graphify/code #graphify/EXTRACTED #community/Project_Profile

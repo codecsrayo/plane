@@ -1,18 +1,18 @@
 ---
-source_file: "components/onboarding/steps/common/header.tsx"
+source_file: "web/core/components/api-token/modal/form.tsx"
 type: "code"
-community: "Common Onboarding"
-location: "L7"
+community: "Expiry Token"
+location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Common_Onboarding
+  - community/Expiry_Token
 ---
 
 # Props
 
 ## Connections
 
-- [[header.tsx_13]] - `contains` [EXTRACTED]
+- [[form.tsx_9]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Common_Onboarding
+#graphify/code #graphify/EXTRACTED #community/Expiry_Token

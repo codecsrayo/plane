@@ -1,12 +1,12 @@
 ---
-source_file: "components/global/timezone-select.tsx"
+source_file: "web/core/components/global/timezone-select.tsx"
 type: "code"
-community: "Workspace Timezone"
+community: "Timezone Select"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Timezone
+  - community/Timezone_Select
 ---
 
 # TimezoneSelect
@@ -16,4 +16,4 @@ tags:
 - [[timezone-select.tsx]] - `contains` [EXTRACTED]
 - [[workspace-details.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Timezone
+#graphify/code #graphify/EXTRACTED #community/Timezone_Select

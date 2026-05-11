@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/mentions/mentions-list-dropdown.tsx"
 type: "code"
-community: "Command Slash"
+community: "Emoji Command"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Command_Slash
+  - community/Emoji_Command
 ---
 
 # MentionsListDropdown
@@ -16,4 +16,4 @@ tags:
 - [[mentions-list-dropdown.tsx]] - `contains` [EXTRACTED]
 - [[utils.ts_8]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Command_Slash
+#graphify/code #graphify/EXTRACTED #community/Emoji_Command

@@ -1,12 +1,12 @@
 ---
-source_file: "components/project/dropdowns/filters/lead.tsx"
+source_file: "web/core/components/project/dropdowns/filters/lead.tsx"
 type: "code"
-community: "Lead Members"
+community: "Member Members"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Lead_Members
+  - community/Member_Members
 ---
 
 # FilterLead
@@ -15,6 +15,6 @@ tags:
 
 - [[lead.tsx]] - `contains` [EXTRACTED]
 - [[lead.tsx_1]] - `contains` [EXTRACTED]
-- [[root.tsx_25]] - `imports` [EXTRACTED]
+- [[root.tsx_66]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Lead_Members
+#graphify/code #graphify/EXTRACTED #community/Member_Members

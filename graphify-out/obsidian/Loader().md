@@ -1,12 +1,12 @@
 ---
 source_file: "ui/src/loader.tsx"
 type: "code"
-community: "Toggle Checkbox"
+community: "Input Checkbox"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toggle_Checkbox
+  - community/Input_Checkbox
 ---
 
 # Loader()
@@ -15,4 +15,4 @@ tags:
 
 - [[loader.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toggle_Checkbox
+#graphify/code #graphify/EXTRACTED #community/Input_Checkbox

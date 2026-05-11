@@ -1,19 +1,19 @@
 ---
-source_file: "components/issues/select/base.tsx"
+source_file: "web/core/components/issues/select/base.tsx"
 type: "code"
-community: "Issue Layouts"
+community: "Label Dropdown"
 location: "L42"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layouts
+  - community/Label_Dropdown
 ---
 
 # WorkItemLabelSelectBase
 
 ## Connections
 
-- [[base.tsx_6]] - `contains` [EXTRACTED]
-- [[dropdown.tsx_6]] - `imports` [EXTRACTED]
+- [[base.tsx_7]] - `contains` [EXTRACTED]
+- [[dropdown.tsx_8]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layouts
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

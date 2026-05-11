@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/states.rs"
 type: "code"
-community: "Community 114"
+community: "State Project"
 location: "L546"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_114
+  - graphify/INFERRED
+  - community/State_Project
 ---
 
 # intake_state()
@@ -14,10 +14,13 @@ tags:
 ## Connections
 
 - [[.from()_23]] - `calls` [EXTRACTED]
+- [[.json()]] - `calls` [INFERRED]
 - [[.new()]] - `calls` [INFERRED]
+- [[.set()]] - `calls` [INFERRED]
+- [[now]] - `calls` [INFERRED]
 - [[project_member_for_user()_2]] - `calls` [EXTRACTED]
 - [[require_project_member()]] - `calls` [EXTRACTED]
-- [[states.rs]] - `contains` [EXTRACTED]
+- [[states.rs_1]] - `contains` [EXTRACTED]
 - [[workspace_by_slug()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_114
+#graphify/code #graphify/INFERRED #community/State_Project

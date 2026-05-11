@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/types/asset.ts"
 type: "code"
-community: "Editor Commands"
+community: "Table Node"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Commands
+  - community/Table_Node
 ---
 
 # asset.ts
@@ -19,4 +19,4 @@ tags:
 - [[TEditorImageAsset]] - `contains` [EXTRACTED]
 - [[extension.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Commands
+#graphify/code #graphify/EXTRACTED #community/Table_Node

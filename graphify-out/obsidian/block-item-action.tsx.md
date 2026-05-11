@@ -1,12 +1,12 @@
 ---
-source_file: "components/pages/list/block-item-action.tsx"
+source_file: "web/core/components/pages/list/block-item-action.tsx"
 type: "code"
-community: "Action Pages"
+community: "Control Move"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Action_Pages
+  - community/Control_Move
 ---
 
 # block-item-action.tsx
@@ -14,14 +14,14 @@ tags:
 ## Connections
 
 - [[BlockItemAction]] - `contains` [EXTRACTED]
-- [[Props_396]] - `contains` [EXTRACTED]
+- [[Props_470]] - `contains` [EXTRACTED]
 - [[TPageInstance]] - `imports` [EXTRACTED]
 - [[base-page.ts]] - `imports_from` [EXTRACTED]
-- [[block.tsx_5]] - `imports_from` [EXTRACTED]
-- [[index.ts_159]] - `imports_from` [EXTRACTED]
+- [[block.tsx_8]] - `imports_from` [EXTRACTED]
+- [[index.ts_424]] - `imports_from` [EXTRACTED]
 - [[use-member.ts]] - `imports_from` [EXTRACTED]
 - [[use-page-operations.ts]] - `imports_from` [EXTRACTED]
 - [[useMember()]] - `imports` [EXTRACTED]
 - [[usePageOperations()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Action_Pages
+#graphify/code #graphify/EXTRACTED #community/Control_Move

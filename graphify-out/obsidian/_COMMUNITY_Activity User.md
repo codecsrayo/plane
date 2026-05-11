@@ -1,29 +1,27 @@
 ---
 type: community
-cohesion: 0.21
-members: 13
+cohesion: 0.24
+members: 11
 ---
 
 # Activity User
 
-**Cohesion:** 0.21 - loosely connected
-**Members:** 13 nodes
+**Cohesion:** 0.24 - loosely connected
+**Members:** 11 nodes
 
 ## Members
 
-- [[ActivityBlockComponent()]] - code - components/common/activity/activity-block.tsx
-- [[ActivityIconMap]] - code - components/common/activity/helper.tsx
-- [[ActivityItem]] - code - components/common/activity/activity-item.tsx
-- [[TActivityBlockComponent]] - code - components/common/activity/activity-block.tsx
-- [[TActivityItem]] - code - components/common/activity/activity-item.tsx
-- [[TUser]] - code - components/common/activity/user.tsx
-- [[User]] - code - components/common/activity/user.tsx
-- [[activity-block.tsx_1]] - code - components/common/activity/activity-block.tsx
-- [[activity-item.tsx]] - code - components/common/activity/activity-item.tsx
-- [[helper.tsx_8]] - code - components/common/activity/helper.tsx
-- [[iconsMap]] - code - components/common/activity/helper.tsx
-- [[messages()]] - code - components/common/activity/helper.tsx
-- [[user.tsx_1]] - code - components/common/activity/user.tsx
+- [[ActivityList]] - code - web/core/components/profile/activity/activity-list.tsx
+- [[DownloadActivityButton()]] - code - web/core/components/profile/activity/download-button.tsx
+- [[ProfileActivityPage()]] - code - web/app/(all)/[workspaceSlug]/(projects)/profile/[userId]/activity/page.tsx
+- [[Props_173]] - code - web/core/components/profile/activity/workspace-activity-list.tsx
+- [[USER_PROFILE_ACTIVITY()]] - code - web/core/constants/fetch-keys.ts
+- [[WorkspaceActivityListPage()]] - code - web/core/components/profile/activity/workspace-activity-list.tsx
+- [[download-button.tsx]] - code - web/core/components/profile/activity/download-button.tsx
+- [[page.tsx_12]] - code - web/app/(all)/[workspaceSlug]/(projects)/profile/[userId]/activity/page.tsx
+- [[userService_2]] - code - web/core/components/profile/activity/download-button.tsx
+- [[userService_4]] - code - web/core/components/profile/activity/workspace-activity-list.tsx
+- [[workspace-activity-list.tsx]] - code - web/core/components/profile/activity/workspace-activity-list.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -34,14 +32,17 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 3 edges to [[_COMMUNITY_Issue Layouts]]
-- 2 edges to [[_COMMUNITY_Workspace Invites]]
-- 2 edges to [[_COMMUNITY_Issue Filters]]
-- 2 edges to [[_COMMUNITY_Workspace Draft]]
+- 3 edges to [[_COMMUNITY_Project Settings]]
+- 3 edges to [[_COMMUNITY_Activity User]]
+- 2 edges to [[_COMMUNITY_User Profile]]
+- 2 edges to [[_COMMUNITY_User Profile]]
+- 2 edges to [[_COMMUNITY_Project Workspace]]
+- 1 edge to [[_COMMUNITY_Project Profile]]
 
 ## Top bridge nodes
 
-- [[user.tsx_1]] - degree 7, connects to 2 communities
-- [[activity-block.tsx_1]] - degree 7, connects to 1 community
-- [[helper.tsx_8]] - degree 6, connects to 1 community
-- [[ActivityBlockComponent()]] - degree 3, connects to 1 community
+- [[workspace-activity-list.tsx]] - degree 10, connects to 4 communities
+- [[page.tsx_12]] - degree 8, connects to 2 communities
+- [[download-button.tsx]] - degree 5, connects to 2 communities
+- [[USER_PROFILE_ACTIVITY()]] - degree 4, connects to 2 communities
+- [[ActivityList]] - degree 2, connects to 1 community

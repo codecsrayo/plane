@@ -1,19 +1,19 @@
 ---
 source_file: "api_rust/src/routes/cycles.rs"
 type: "code"
-community: "Cycles Rust API"
+community: "Cycle Request"
 location: "L1365"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycles_Rust_API
+  - community/Cycle_Request
 ---
 
 # cycle_default_display_filters()
 
 ## Connections
 
-- [[cycles.rs]] - `contains` [EXTRACTED]
+- [[cycles.rs_1]] - `contains` [EXTRACTED]
 - [[get_or_create_cycle_user_properties()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycles_Rust_API
+#graphify/code #graphify/EXTRACTED #community/Cycle_Request

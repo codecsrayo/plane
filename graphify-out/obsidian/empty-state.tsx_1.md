@@ -1,5 +1,5 @@
 ---
-source_file: "components/web-hooks/empty-state.tsx"
+source_file: "web/core/components/project/empty-state.tsx"
 type: "code"
 community: "Empty State"
 location: "L1"
@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 
-- [[Props_162]] - `contains` [EXTRACTED]
-- [[WebhooksEmptyState()]] - `contains` [EXTRACTED]
+- [[EmptyState()_1]] - `contains` [EXTRACTED]
+- [[Props_206]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Empty_State

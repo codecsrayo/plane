@@ -1,18 +1,18 @@
 ---
-source_file: "components/cycles/analytics-sidebar/sidebar-header.tsx"
+source_file: "web/core/components/issues/issue-layouts/filters/header/display-filters/order-by.tsx"
 type: "code"
-community: "Cycle Cycles"
-location: "L27"
+community: "Member Members"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Cycles
+  - community/Member_Members
 ---
 
 # Props
 
 ## Connections
 
-- [[sidebar-header.tsx]] - `contains` [EXTRACTED]
+- [[order-by.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Cycles
+#graphify/code #graphify/EXTRACTED #community/Member_Members

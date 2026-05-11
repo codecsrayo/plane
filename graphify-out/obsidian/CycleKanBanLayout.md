@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/kanban/roots/cycle-root.tsx"
+source_file: "web/core/components/issues/issue-layouts/kanban/roots/cycle-root.tsx"
 type: "code"
-community: "Cycle Transfers"
+community: "Issue Project"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Transfers
+  - community/Issue_Project
 ---
 
 # CycleKanBanLayout
@@ -16,4 +16,4 @@ tags:
 - [[cycle-layout-root.tsx]] - `imports` [EXTRACTED]
 - [[cycle-root.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Transfers
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

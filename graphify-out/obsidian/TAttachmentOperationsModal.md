@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/attachment/attachment-upload.tsx"
+source_file: "web/core/components/issues/attachment/attachment-upload.tsx"
 type: "code"
-community: "Issue Attachments"
+community: "Attachment Issue"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Attachments
+  - community/Attachment_Issue
 ---
 
 # TAttachmentOperationsModal
@@ -15,4 +15,4 @@ tags:
 
 - [[attachment-upload.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Attachments
+#graphify/code #graphify/EXTRACTED #community/Attachment_Issue

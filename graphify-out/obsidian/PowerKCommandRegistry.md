@@ -1,21 +1,21 @@
 ---
-source_file: "components/power-k/core/registry.ts"
+source_file: "web/core/components/power-k/core/registry.ts"
 type: "code"
-community: "Shortcut Registry"
+community: "Command Shortcut"
 location: "L37"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Shortcut_Registry
+  - community/Command_Shortcut
 ---
 
 # PowerKCommandRegistry
 
 ## Connections
 
-- [[.constructor()_125]] - `method` [EXTRACTED]
+- [[.constructor()_182]] - `method` [EXTRACTED]
 - [[.isCommandVisible()]] - `method` [EXTRACTED]
 - [[base-power-k.store.ts]] - `imports` [EXTRACTED]
-- [[registry.ts]] - `contains` [EXTRACTED]
+- [[registry.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Shortcut_Registry
+#graphify/code #graphify/EXTRACTED #community/Command_Shortcut

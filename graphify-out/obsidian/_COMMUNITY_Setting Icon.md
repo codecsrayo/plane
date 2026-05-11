@@ -11,8 +11,8 @@ members: 2
 
 ## Members
 
-- [[SettingIcon()]] - code - components/icons/attachment/setting-icon.tsx
-- [[setting-icon.tsx]] - code - components/icons/attachment/setting-icon.tsx
+- [[SettingIcon()]] - code - web/core/components/icons/attachment/setting-icon.tsx
+- [[setting-icon.tsx]] - code - web/core/components/icons/attachment/setting-icon.tsx
 
 ## Live Query (requires Dataview plugin)
 

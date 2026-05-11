@@ -1,18 +1,20 @@
 ---
-source_file: "components/power-k/ui/pages/context-based/work-item/labels-menu.tsx"
+source_file: "space/components/issues/filters/labels.tsx"
 type: "code"
-community: "Menu Power"
-location: "L16"
+community: "Priority State"
+location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu_Power
+  - community/Priority_State
 ---
 
 # Props
 
 ## Connections
 
-- [[labels-menu.tsx]] - `contains` [EXTRACTED]
+- [[labels.tsx_1]] - `contains` [EXTRACTED]
+- [[labels.tsx_3]] - `contains` [EXTRACTED]
+- [[labels.tsx_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Menu_Power
+#graphify/code #graphify/EXTRACTED #community/Priority_State

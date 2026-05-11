@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-detail/issue-activity/activity/actions/helpers/issue-user.tsx"
+source_file: "web/ce/components/issues/issue-details/issue-creator.tsx"
 type: "code"
 community: "Issue Activity"
 location: "L11"
@@ -13,6 +13,6 @@ tags:
 
 ## Connections
 
-- [[issue-user.tsx]] - `contains` [EXTRACTED]
+- [[issue-creator.tsx]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Issue_Activity

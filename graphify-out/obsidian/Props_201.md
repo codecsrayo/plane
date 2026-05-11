@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/columns/cycle-column.tsx"
+source_file: "web/core/components/dropdowns/member/member-options.tsx"
 type: "code"
-community: "Spreadsheet Columns"
-location: "L17"
+community: "Member Members"
+location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Columns
+  - community/Member_Members
 ---
 
 # Props
 
 ## Connections
 
-- [[cycle-column.tsx]] - `contains` [EXTRACTED]
+- [[member-options.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Columns
+#graphify/code #graphify/EXTRACTED #community/Member_Members

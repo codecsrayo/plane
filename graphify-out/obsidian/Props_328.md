@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/ui/pages/open-entity/workspace-settings-menu.tsx"
+source_file: "web/core/components/issues/workspace-draft/draft-issue-block.tsx"
 type: "code"
-community: "File Icons Nav"
-location: "L18"
+community: "Issue Work"
+location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/File_Icons_Nav
+  - community/Issue_Work
 ---
 
 # Props
 
 ## Connections
 
-- [[workspace-settings-menu.tsx]] - `contains` [EXTRACTED]
+- [[draft-issue-block.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/File_Icons_Nav
+#graphify/code #graphify/EXTRACTED #community/Issue_Work

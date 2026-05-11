@@ -25,8 +25,8 @@ tags:
 - [[TSingleSelectFilterFieldConfig]] - `contains` [EXTRACTED]
 - [[TSupportedOperators]] - `imports` [EXTRACTED]
 - [[expression.ts]] - `imports_from` [EXTRACTED]
-- [[index.ts_110]] - `imports_from` [EXTRACTED]
 - [[index.ts_107]] - `imports_from` [EXTRACTED]
+- [[index.ts_110]] - `imports_from` [EXTRACTED]
 - [[shared.ts_1]] - `imports_from` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Field_Config

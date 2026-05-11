@@ -1,12 +1,12 @@
 ---
-source_file: "components/common/latest-feature-block.tsx"
+source_file: "web/core/components/common/latest-feature-block.tsx"
 type: "code"
-community: "Latest Feature"
+community: "Project Settings"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Latest_Feature
+  - community/Project_Settings
 ---
 
 # LatestFeatureBlock()
@@ -14,5 +14,6 @@ tags:
 ## Connections
 
 - [[latest-feature-block.tsx]] - `contains` [EXTRACTED]
+- [[useTheme()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Latest_Feature
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

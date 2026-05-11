@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/project_public_members.rs"
 type: "code"
-community: "Community 388"
+community: "Model Relation"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_388
+  - community/Model_Relation
 ---
 
 # Relation
@@ -15,4 +15,4 @@ tags:
 
 - [[project_public_members.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_388
+#graphify/code #graphify/EXTRACTED #community/Model_Relation

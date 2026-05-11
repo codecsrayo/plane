@@ -1,18 +1,18 @@
 ---
-source_file: "components/analytics/overview/root.tsx"
+source_file: "web/core/components/analytics/overview/root.tsx"
 type: "code"
-community: "Insight Analytics"
+community: "Analytics Insight"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Insight_Analytics
+  - community/Analytics_Insight
 ---
 
 # Overview()
 
 ## Connections
 
-- [[root.tsx_90]] - `contains` [EXTRACTED]
+- [[root.tsx_131]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Insight_Analytics
+#graphify/code #graphify/EXTRACTED #community/Analytics_Insight

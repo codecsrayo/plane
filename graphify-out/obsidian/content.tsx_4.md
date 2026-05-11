@@ -1,5 +1,5 @@
 ---
-source_file: "components/workspace-notifications/sidebar/notification-card/content.tsx"
+source_file: "web/core/components/workspace-notifications/sidebar/notification-card/content.tsx"
 type: "code"
 community: "Notification Content"
 location: "L1"
@@ -13,14 +13,19 @@ tags:
 
 ## Connections
 
+- [[ADDITIONAL_NOTIFICATION_CONTENT_MAP]] - `imports` [EXTRACTED]
 - [[BASE_NOTIFICATION_CONTENT_MAP]] - `contains` [EXTRACTED]
 - [[NotificationContent()]] - `contains` [EXTRACTED]
 - [[TNotificationContentDetails]] - `contains` [EXTRACTED]
 - [[TNotificationContentHandler]] - `contains` [EXTRACTED]
 - [[TNotificationContentMap]] - `contains` [EXTRACTED]
 - [[TNotificationFieldData]] - `contains` [EXTRACTED]
+- [[content.ts]] - `imports_from` [EXTRACTED]
 - [[getNotificationContentDetails()]] - `contains` [EXTRACTED]
-- [[index.ts_55]] - `imports_from` [EXTRACTED]
-- [[item.tsx_1]] - `imports_from` [EXTRACTED]
+- [[index.ts_320]] - `imports_from` [EXTRACTED]
+- [[item.tsx_2]] - `imports_from` [EXTRACTED]
+- [[renderAdditionalAction()]] - `imports` [EXTRACTED]
+- [[renderAdditionalValue()]] - `imports` [EXTRACTED]
+- [[shouldShowConnector()]] - `imports` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Notification_Content

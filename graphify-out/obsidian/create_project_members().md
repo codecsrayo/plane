@@ -1,24 +1,19 @@
 ---
-source_file: "api_rust/src/routes/projects.rs"
+source_file: "api/plane/bgtasks/dummy_data_task.py"
 type: "code"
-community: "Projects Rust API"
-location: "L1840"
+community: "Issue Dummy"
+location: "L63"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Projects_Rust_API
+  - community/Issue_Dummy
 ---
 
 # create_project_members()
 
 ## Connections
 
-- [[default_props()]] - `calls` [INFERRED]
-- [[project_by_id()]] - `calls` [EXTRACTED]
-- [[project_member_for_user()_1]] - `calls` [EXTRACTED]
-- [[projects.rs]] - `contains` [EXTRACTED]
-- [[require_project_admin()]] - `calls` [EXTRACTED]
-- [[validate_role()]] - `calls` [EXTRACTED]
-- [[workspace_by_slug()]] - `calls` [INFERRED]
+- [[create_dummy_data()]] - `calls` [EXTRACTED]
+- [[dummy_data_task.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Projects_Rust_API
+#graphify/code #graphify/EXTRACTED #community/Issue_Dummy

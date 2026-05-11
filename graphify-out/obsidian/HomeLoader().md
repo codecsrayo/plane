@@ -1,5 +1,5 @@
 ---
-source_file: "components/home/widgets/loaders/home-loader.tsx"
+source_file: "web/core/components/home/widgets/loaders/home-loader.tsx"
 type: "code"
 community: "Home Loader"
 location: "L11"

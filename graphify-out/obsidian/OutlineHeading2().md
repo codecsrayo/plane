@@ -1,5 +1,5 @@
 ---
-source_file: "components/pages/editor/summary/heading-components.tsx"
+source_file: "web/core/components/pages/editor/summary/heading-components.tsx"
 type: "code"
 community: "Outline Content"
 location: "L27"

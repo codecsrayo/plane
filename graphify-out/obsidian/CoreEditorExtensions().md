@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/extensions.ts"
 type: "code"
-community: "Core Extensions"
+community: "Unique Core"
 location: "L65"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Core_Extensions
+  - community/Unique_Core
 ---
 
 # CoreEditorExtensions()
@@ -24,4 +24,4 @@ tags:
 - [[extensions.ts_3]] - `contains` [EXTRACTED]
 - [[useEditor()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Core_Extensions
+#graphify/code #graphify/INFERRED #community/Unique_Core

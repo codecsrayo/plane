@@ -1,12 +1,12 @@
 ---
-source_file: "components/common/filters/created-at.tsx"
+source_file: "web/core/components/common/filters/created-at.tsx"
 type: "code"
-community: "Created Selection"
+community: "Member Members"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Created_Selection
+  - community/Member_Members
 ---
 
 # created-at.tsx
@@ -15,10 +15,10 @@ tags:
 
 - [[DateFilterModal()]] - `imports` [EXTRACTED]
 - [[FilterCreatedDate]] - `contains` [EXTRACTED]
-- [[Props_150]] - `contains` [EXTRACTED]
+- [[Props_225]] - `contains` [EXTRACTED]
 - [[date-filter-modal.tsx]] - `imports_from` [EXTRACTED]
 - [[filter-selection.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts_90]] - `imports_from` [EXTRACTED]
-- [[root.tsx_78]] - `imports_from` [EXTRACTED]
+- [[index.ts_355]] - `imports_from` [EXTRACTED]
+- [[root.tsx_119]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Created_Selection
+#graphify/code #graphify/EXTRACTED #community/Member_Members

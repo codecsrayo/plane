@@ -1,12 +1,12 @@
 ---
-source_file: "components/integration/oauth-callback-page.tsx"
+source_file: "web/core/components/integration/oauth-callback-page.tsx"
 type: "code"
-community: "Callback Auth"
+community: "Callback Installation"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Callback_Auth
+  - community/Callback_Installation
 ---
 
 # OAuthCallbackPageProps
@@ -15,4 +15,4 @@ tags:
 
 - [[oauth-callback-page.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Callback_Auth
+#graphify/code #graphify/EXTRACTED #community/Callback_Installation

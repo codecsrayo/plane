@@ -1,18 +1,18 @@
 ---
 source_file: "api_rust/src/routes/projects.rs"
 type: "code"
-community: "Projects Rust API"
+community: "Project Response"
 location: "L593"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Projects_Rust_API
+  - community/Project_Response
 ---
 
 # ProjectDetailResponse
 
 ## Connections
 
-- [[projects.rs]] - `contains` [EXTRACTED]
+- [[projects.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Projects_Rust_API
+#graphify/code #graphify/EXTRACTED #community/Project_Response

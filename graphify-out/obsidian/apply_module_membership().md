@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/issue_filters.rs"
 type: "code"
-community: "Issue Routes Rust API"
+community: "Load Apply"
 location: "L622"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Routes_Rust_API
+  - community/Load_Apply
 ---
 
 # apply_module_membership()
@@ -17,4 +17,4 @@ tags:
 - [[issue_filters.rs]] - `contains` [EXTRACTED]
 - [[load_issues_in_modules()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Routes_Rust_API
+#graphify/code #graphify/EXTRACTED #community/Load_Apply

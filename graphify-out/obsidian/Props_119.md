@@ -1,18 +1,18 @@
 ---
-source_file: "components/dropdowns/estimate.tsx"
+source_file: "web/core/components/gantt-chart/sidebar/modules/block.tsx"
 type: "code"
-community: "Issue Properties"
-location: "L29"
+community: "Gantt Chart"
+location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Gantt_Chart
 ---
 
 # Props
 
 ## Connections
 
-- [[estimate.tsx]] - `contains` [EXTRACTED]
+- [[block.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Gantt_Chart

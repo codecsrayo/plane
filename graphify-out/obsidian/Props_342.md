@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/ui/modal/search-results.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/attachments/quick-action-button.tsx"
 type: "code"
-community: "Search Results"
-location: "L18"
+community: "Attachment Issue"
+location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Search_Results
+  - community/Attachment_Issue
 ---
 
 # Props
 
 ## Connections
 
-- [[search-results.tsx]] - `contains` [EXTRACTED]
+- [[quick-action-button.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Search_Results
+#graphify/code #graphify/EXTRACTED #community/Attachment_Issue

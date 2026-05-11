@@ -1,5 +1,5 @@
 ---
-source_file: "components/project-states/create-update/create.tsx"
+source_file: "web/core/components/project-states/create-update/create.tsx"
 type: "code"
 community: "State Group"
 location: "L15"

@@ -1,5 +1,5 @@
 ---
-source_file: "components/settings/heading.tsx"
+source_file: "web/core/components/settings/heading.tsx"
 type: "code"
 community: "Project Settings"
 location: "L18"
@@ -13,9 +13,20 @@ tags:
 
 ## Connections
 
-- [[features-list.tsx]] - `imports` [EXTRACTED]
+- [[features-list.tsx_1]] - `imports` [EXTRACTED]
 - [[heading.tsx]] - `contains` [EXTRACTED]
+- [[page.tsx_38]] - `imports` [EXTRACTED]
+- [[page.tsx_41]] - `imports` [EXTRACTED]
+- [[page.tsx_42]] - `imports` [EXTRACTED]
+- [[page.tsx_43]] - `imports` [EXTRACTED]
+- [[page.tsx_44]] - `imports` [EXTRACTED]
+- [[page.tsx_45]] - `imports` [EXTRACTED]
+- [[page.tsx_46]] - `imports` [EXTRACTED]
+- [[page.tsx_47]] - `imports` [EXTRACTED]
+- [[page.tsx_49]] - `imports` [EXTRACTED]
+- [[page.tsx_54]] - `imports` [EXTRACTED]
 - [[project-setting-label-list.tsx]] - `imports` [EXTRACTED]
-- [[root.tsx_85]] - `imports` [EXTRACTED]
+- [[root.tsx_21]] - `imports` [EXTRACTED]
+- [[root.tsx_126]] - `imports` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Project_Settings

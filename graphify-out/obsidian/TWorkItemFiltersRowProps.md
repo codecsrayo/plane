@@ -1,12 +1,12 @@
 ---
-source_file: "components/work-item-filters/filters-row.tsx"
+source_file: "web/core/components/work-item-filters/filters-row.tsx"
 type: "code"
-community: "Issue Layout Roots"
+community: "Issue Project"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layout_Roots
+  - community/Issue_Project
 ---
 
 # TWorkItemFiltersRowProps
@@ -15,4 +15,4 @@ tags:
 
 - [[filters-row.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layout_Roots
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

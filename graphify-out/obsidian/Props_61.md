@@ -1,18 +1,18 @@
 ---
-source_file: "components/stickies/sticky/sticky-item-drag-handle.tsx"
+source_file: "web/ce/components/workflow/workflow-disabled-message.tsx"
 type: "code"
-community: "Sticky Drag"
-location: "L13"
+community: "Disabled Workflow"
+location: "L8"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sticky_Drag
+  - community/Disabled_Workflow
 ---
 
 # Props
 
 ## Connections
 
-- [[sticky-item-drag-handle.tsx]] - `contains` [EXTRACTED]
+- [[workflow-disabled-message.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sticky_Drag
+#graphify/code #graphify/EXTRACTED #community/Disabled_Workflow

@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/helpers/editor-ref.ts"
 type: "code"
-community: "Scroll Insert"
+community: "Document Collaborative"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Scroll_Insert
+  - community/Document_Collaborative
 ---
 
 # editor-ref.ts
@@ -31,4 +31,4 @@ tags:
 - [[use-editor.ts]] - `imports_from` [EXTRACTED]
 - [[use-title-editor.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Scroll_Insert
+#graphify/code #graphify/EXTRACTED #community/Document_Collaborative

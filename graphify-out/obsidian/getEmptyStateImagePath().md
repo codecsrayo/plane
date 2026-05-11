@@ -1,5 +1,5 @@
 ---
-source_file: "components/empty-state/helper.tsx"
+source_file: "web/core/components/empty-state/helper.tsx"
 type: "code"
 community: "Empty State"
 location: "L7"
@@ -13,6 +13,6 @@ tags:
 
 ## Connections
 
-- [[helper.tsx_9]] - `contains` [EXTRACTED]
+- [[helper.tsx_31]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Empty_State

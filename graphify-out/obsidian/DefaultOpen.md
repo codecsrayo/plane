@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/collapsible/collapsible.stories.tsx"
 type: "code"
-community: "Collapsible Context"
+community: "Collapsible Chevron"
 location: "L54"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Collapsible_Context
+  - community/Collapsible_Chevron
 ---
 
 # DefaultOpen
@@ -15,4 +15,4 @@ tags:
 
 - [[collapsible.stories.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Collapsible_Context
+#graphify/code #graphify/EXTRACTED #community/Collapsible_Chevron

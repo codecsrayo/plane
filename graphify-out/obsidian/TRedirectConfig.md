@@ -1,12 +1,12 @@
 ---
-source_file: "lib/wrappers/authentication-wrapper.tsx"
+source_file: "web/core/lib/wrappers/authentication-wrapper.tsx"
 type: "code"
-community: "Wrapper Workspace"
+community: "Workspace Issue"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Wrapper_Workspace
+  - community/Workspace_Issue
 ---
 
 # TRedirectConfig
@@ -15,4 +15,4 @@ tags:
 
 - [[authentication-wrapper.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Wrapper_Workspace
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

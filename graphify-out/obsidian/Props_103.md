@@ -1,18 +1,18 @@
 ---
-source_file: "components/settings/control-item.tsx"
+source_file: "web/core/components/workspace/logo.tsx"
 type: "code"
-community: "Start Week"
-location: "L7"
+community: "Workspace Issue"
+location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Start_Week
+  - community/Workspace_Issue
 ---
 
 # Props
 
 ## Connections
 
-- [[control-item.tsx]] - `contains` [EXTRACTED]
+- [[logo.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Start_Week
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

@@ -1,18 +1,18 @@
 ---
-source_file: "components/api-token/empty-state.tsx"
+source_file: "web/core/components/issues/issue-layouts/calendar/issue-blocks.tsx"
 type: "code"
-community: "Empty Token"
-location: "L13"
+community: "Calendar Issue"
+location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_Token
+  - community/Calendar_Issue
 ---
 
 # Props
 
 ## Connections
 
-- [[empty-state.tsx_5]] - `contains` [EXTRACTED]
+- [[issue-blocks.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_Token
+#graphify/code #graphify/EXTRACTED #community/Calendar_Issue

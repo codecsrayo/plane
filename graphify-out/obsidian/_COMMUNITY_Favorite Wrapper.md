@@ -11,9 +11,9 @@ members: 3
 
 ## Members
 
-- [[FavoriteItemWrapper()]] - code - components/workspace/sidebar/favorites/favorite-items/common/favorite-item-wrapper.tsx
-- [[Props_31]] - code - components/workspace/sidebar/favorites/favorite-items/common/favorite-item-wrapper.tsx
-- [[favorite-item-wrapper.tsx]] - code - components/workspace/sidebar/favorites/favorite-items/common/favorite-item-wrapper.tsx
+- [[FavoriteItemWrapper()]] - code - web/core/components/workspace/sidebar/favorites/favorite-items/common/favorite-item-wrapper.tsx
+- [[Props_107]] - code - web/core/components/workspace/sidebar/favorites/favorite-items/common/favorite-item-wrapper.tsx
+- [[favorite-item-wrapper.tsx]] - code - web/core/components/workspace/sidebar/favorites/favorite-items/common/favorite-item-wrapper.tsx
 
 ## Live Query (requires Dataview plugin)
 

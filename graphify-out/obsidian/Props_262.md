@@ -1,18 +1,19 @@
 ---
-source_file: "components/issues/issue-detail-widgets/issue-detail-widget-collapsibles.tsx"
+source_file: "space/components/issues/issue-layouts/issue-layout-HOC.tsx"
 type: "code"
-community: "Issue Widget"
-location: "L22"
+community: "Loader Calendar"
+location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Widget
+  - community/Loader_Calendar
 ---
 
 # Props
 
 ## Connections
 
-- [[issue-detail-widget-collapsibles.tsx]] - `contains` [EXTRACTED]
+- [[issue-layout-HOC.tsx]] - `contains` [EXTRACTED]
+- [[issue-layout-HOC.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Widget
+#graphify/code #graphify/EXTRACTED #community/Loader_Calendar

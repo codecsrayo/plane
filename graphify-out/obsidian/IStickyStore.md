@@ -1,5 +1,5 @@
 ---
-source_file: "store/sticky/sticky.store.ts"
+source_file: "web/core/store/sticky/sticky.store.ts"
 type: "code"
 community: "Sticky Stickies"
 location: "L15"
@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 
-- [[root.store.ts]] - `imports` [EXTRACTED]
+- [[root.store.ts_2]] - `imports` [EXTRACTED]
 - [[sticky.store.ts]] - `contains` [EXTRACTED]
 - [[use-stickies.tsx]] - `imports` [EXTRACTED]
 

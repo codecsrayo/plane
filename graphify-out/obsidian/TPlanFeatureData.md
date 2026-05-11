@@ -1,12 +1,12 @@
 ---
-source_file: "constants/plans.tsx"
+source_file: "web/core/constants/plans.tsx"
 type: "code"
-community: "Plans Plan"
+community: "Plan Plans"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Plans_Plan
+  - community/Plan_Plans
 ---
 
 # TPlanFeatureData
@@ -16,4 +16,4 @@ tags:
 - [[feature-detail.tsx]] - `imports` [EXTRACTED]
 - [[plans.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Plans_Plan
+#graphify/code #graphify/EXTRACTED #community/Plan_Plans

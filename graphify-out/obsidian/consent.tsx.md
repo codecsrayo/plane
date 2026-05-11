@@ -1,12 +1,12 @@
 ---
-source_file: "components/onboarding/steps/profile/consent.tsx"
+source_file: "web/core/components/onboarding/steps/profile/consent.tsx"
 type: "code"
-community: "Values Setup"
+community: "Setup Values"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Values_Setup
+  - community/Setup_Values
 ---
 
 # consent.tsx
@@ -14,7 +14,7 @@ tags:
 ## Connections
 
 - [[MarketingConsent()]] - `contains` [EXTRACTED]
-- [[Props_368]] - `contains` [EXTRACTED]
-- [[root.tsx_68]] - `imports_from` [EXTRACTED]
+- [[Props_443]] - `contains` [EXTRACTED]
+- [[root.tsx_109]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Values_Setup
+#graphify/code #graphify/EXTRACTED #community/Setup_Values

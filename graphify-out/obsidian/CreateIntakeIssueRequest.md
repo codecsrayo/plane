@@ -1,18 +1,18 @@
 ---
 source_file: "api_rust/src/routes/intake.rs"
 type: "code"
-community: "Community 108"
+community: "Request Intake"
 location: "L231"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_108
+  - community/Request_Intake
 ---
 
 # CreateIntakeIssueRequest
 
 ## Connections
 
-- [[intake.rs]] - `contains` [EXTRACTED]
+- [[intake.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_108
+#graphify/code #graphify/EXTRACTED #community/Request_Intake

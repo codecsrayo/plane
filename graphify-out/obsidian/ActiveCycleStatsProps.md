@@ -1,12 +1,12 @@
 ---
-source_file: "components/cycles/active-cycle/cycle-stats.tsx"
+source_file: "web/core/components/cycles/active-cycle/cycle-stats.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Cycle Active"
 location: "L46"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Cycle_Active
 ---
 
 # ActiveCycleStatsProps
@@ -15,4 +15,4 @@ tags:
 
 - [[cycle-stats.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

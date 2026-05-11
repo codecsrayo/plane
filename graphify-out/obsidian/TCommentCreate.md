@@ -1,12 +1,12 @@
 ---
-source_file: "components/comments/comment-create.tsx"
+source_file: "web/core/components/comments/comment-create.tsx"
 type: "code"
-community: "Comment Card"
+community: "Workspace Issue"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Comment_Card
+  - community/Workspace_Issue
 ---
 
 # TCommentCreate
@@ -15,4 +15,4 @@ tags:
 
 - [[comment-create.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Comment_Card
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

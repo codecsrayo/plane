@@ -1,12 +1,12 @@
 ---
-source_file: "components/common/layout/sidebar/property-list-item.tsx"
+source_file: "web/core/components/common/layout/sidebar/property-list-item.tsx"
 type: "code"
-community: "Issue Properties"
+community: "Label Dropdown"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Label_Dropdown
 ---
 
 # SidebarPropertyListItem()
@@ -15,6 +15,6 @@ tags:
 
 - [[properties.tsx_2]] - `imports` [EXTRACTED]
 - [[property-list-item.tsx]] - `contains` [EXTRACTED]
-- [[sidebar.tsx_3]] - `imports` [EXTRACTED]
+- [[sidebar.tsx_4]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

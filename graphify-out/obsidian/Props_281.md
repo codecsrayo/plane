@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-detail-widgets/sub-issues/issues-list/root.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/header-column.tsx"
 type: "code"
-community: "List Group Layout"
-location: "L21"
+community: "Select Multiple"
+location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/List_Group_Layout
+  - community/Select_Multiple
 ---
 
 # Props
 
 ## Connections
 
-- [[root.tsx_41]] - `contains` [EXTRACTED]
+- [[header-column.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/List_Group_Layout
+#graphify/code #graphify/EXTRACTED #community/Select_Multiple

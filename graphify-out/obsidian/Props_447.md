@@ -1,18 +1,18 @@
 ---
-source_file: "components/core/description-versions/dropdown-item.tsx"
+source_file: "web/core/components/inbox/inbox-issue-status.tsx"
 type: "code"
-community: "Description Dropdown"
-location: "L16"
+community: "Issue Inbox"
+location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Description_Dropdown
+  - community/Issue_Inbox
 ---
 
 # Props
 
 ## Connections
 
-- [[dropdown-item.tsx_1]] - `contains` [EXTRACTED]
+- [[inbox-issue-status.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Description_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

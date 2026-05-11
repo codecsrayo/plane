@@ -1,18 +1,18 @@
 ---
-source_file: "store/issue/issue-details/root.store.ts"
+source_file: "web/core/store/workspace/index.ts"
 type: "code"
-community: "Comment Reactions"
-location: "L171"
+community: "Webhook Workspace"
+location: "L90"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Comment_Reactions
+  - community/Webhook_Workspace
 ---
 
 # constructor()
 
 ## Connections
 
-- [[root.store.ts_2]] - `contains` [EXTRACTED]
+- [[index.ts_271]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Comment_Reactions
+#graphify/code #graphify/EXTRACTED #community/Webhook_Workspace

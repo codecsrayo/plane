@@ -1,12 +1,12 @@
 ---
-source_file: "components/inbox/inbox-filter/applied-filters/date.tsx"
+source_file: "web/core/components/inbox/inbox-filter/applied-filters/date.tsx"
 type: "code"
-community: "Inbox Filters"
+community: "Issue Inbox"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Inbox_Filters
+  - community/Issue_Inbox
 ---
 
 # TInboxIssueAppliedFiltersDateProps
@@ -15,4 +15,4 @@ tags:
 
 - [[date.tsx_8]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Inbox_Filters
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

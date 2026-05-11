@@ -1,18 +1,18 @@
 ---
-source_file: "components/common/breadcrumb-link.tsx"
+source_file: "web/core/components/issues/issue-layouts/calendar/calendar.tsx"
 type: "code"
-community: "Auth UI"
-location: "L13"
+community: "Calendar Issue"
+location: "L46"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_UI
+  - community/Calendar_Issue
 ---
 
 # Props
 
 ## Connections
 
-- [[breadcrumb-link.tsx]] - `contains` [EXTRACTED]
+- [[calendar.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_UI
+#graphify/code #graphify/EXTRACTED #community/Calendar_Issue

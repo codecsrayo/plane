@@ -1,19 +1,19 @@
 ---
-source_file: "components/issues/peek-overview/view.tsx"
+source_file: "web/core/components/issues/peek-overview/view.tsx"
 type: "code"
-community: "Peek Overview"
+community: "Issue Inbox"
 location: "L43"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Peek_Overview
+  - community/Issue_Inbox
 ---
 
 # IssueView
 
 ## Connections
 
-- [[root.tsx_43]] - `imports` [EXTRACTED]
-- [[view.tsx_1]] - `contains` [EXTRACTED]
+- [[root.tsx_84]] - `imports` [EXTRACTED]
+- [[view.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Peek_Overview
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

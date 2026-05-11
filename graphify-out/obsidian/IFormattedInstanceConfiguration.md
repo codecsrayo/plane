@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/instance/base.ts"
 type: "code"
-community: "Instance Config"
+community: "User Instance"
 location: "L124"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Instance_Config
+  - community/User_Instance
 ---
 
 # IFormattedInstanceConfiguration
@@ -15,4 +15,4 @@ tags:
 
 - [[base.ts_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Instance_Config
+#graphify/code #graphify/EXTRACTED #community/User_Instance

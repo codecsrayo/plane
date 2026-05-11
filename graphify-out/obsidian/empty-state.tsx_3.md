@@ -1,21 +1,22 @@
 ---
-source_file: "components/common/empty-state.tsx"
+source_file: "web/core/components/issues/workspace-draft/empty-state.tsx"
 type: "code"
-community: "Issue Parent"
+community: "Project Profile"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Parent
+  - community/Project_Profile
 ---
 
 # empty-state.tsx
 
 ## Connections
 
-- [[EmptyState()_1]] - `contains` [EXTRACTED]
-- [[Props_293]] - `contains` [EXTRACTED]
-- [[error.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_30]] - `imports_from` [EXTRACTED]
+- [[CreateUpdateIssueModal]] - `imports` [EXTRACTED]
+- [[WorkspaceDraftEmptyState]] - `contains` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
+- [[modal.tsx_12]] - `imports_from` [EXTRACTED]
+- [[root.tsx_70]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Parent
+#graphify/code #graphify/EXTRACTED #community/Project_Profile

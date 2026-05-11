@@ -1,12 +1,12 @@
 ---
-source_file: "components/stickies/delete-modal.tsx"
+source_file: "web/core/components/stickies/delete-modal.tsx"
 type: "code"
-community: "Sticky Tprops"
+community: "Stickies Sticky"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sticky_Tprops
+  - community/Stickies_Sticky
 ---
 
 # IStickyDelete
@@ -15,4 +15,4 @@ tags:
 
 - [[delete-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sticky_Tprops
+#graphify/code #graphify/EXTRACTED #community/Stickies_Sticky

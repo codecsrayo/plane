@@ -1,12 +1,12 @@
 ---
-source_file: "components/workspace/invite-modal/actions.tsx"
+source_file: "web/core/components/workspace/invite-modal/actions.tsx"
 type: "code"
-community: "Invitation Invitationmodalactions"
+community: "Invitation Workspace"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Invitation_Invitationmodalactions
+  - community/Invitation_Workspace
 ---
 
 # TInvitationModalActionsProps
@@ -15,4 +15,4 @@ tags:
 
 - [[actions.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Invitation_Invitationmodalactions
+#graphify/code #graphify/EXTRACTED #community/Invitation_Workspace

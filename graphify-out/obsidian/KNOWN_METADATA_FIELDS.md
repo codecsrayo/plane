@@ -1,12 +1,12 @@
 ---
-source_file: "components/integration/connected-account-details.tsx"
+source_file: "web/core/components/integration/connected-account-details.tsx"
 type: "code"
-community: "Connected Account"
+community: "Project Workspace"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Connected_Account
+  - community/Project_Workspace
 ---
 
 # KNOWN_METADATA_FIELDS
@@ -15,4 +15,4 @@ tags:
 
 - [[connected-account-details.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Connected_Account
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

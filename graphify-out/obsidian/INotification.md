@@ -1,5 +1,5 @@
 ---
-source_file: "store/notifications/notification.ts"
+source_file: "web/core/store/notifications/notification.ts"
 type: "code"
 community: "Notification Option"
 location: "L16"
@@ -14,9 +14,9 @@ tags:
 ## Connections
 
 - [[archive.tsx]] - `imports` [EXTRACTED]
-- [[notification.ts]] - `contains` [EXTRACTED]
+- [[notification.ts_2]] - `contains` [EXTRACTED]
 - [[read.tsx]] - `imports` [EXTRACTED]
-- [[root.tsx_47]] - `imports` [EXTRACTED]
+- [[root.tsx_88]] - `imports` [EXTRACTED]
 - [[use-notification.ts]] - `imports` [EXTRACTED]
 - [[workspace-notifications.store.ts]] - `imports` [EXTRACTED]
 

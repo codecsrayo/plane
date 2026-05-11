@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/utils/django_sessions.rs"
 type: "code"
-community: "Community 187"
+community: "Password Email"
 location: "L166"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_187
+  - community/Password_Email
 ---
 
 # display_name_uses_email_local_part()
@@ -15,4 +15,4 @@ tags:
 
 - [[django_sessions.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_187
+#graphify/code #graphify/EXTRACTED #community/Password_Email

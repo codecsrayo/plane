@@ -1,18 +1,19 @@
 ---
-source_file: "components/issues/preview-card/root.tsx"
+source_file: "web/core/components/settings/project/sidebar/item-categories.tsx"
 type: "code"
-community: "Calendar Blocks"
-location: "L19"
+community: "Sidebar Settings"
+location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Blocks
+  - community/Sidebar_Settings
 ---
 
 # Props
 
 ## Connections
 
-- [[root.tsx_27]] - `contains` [EXTRACTED]
+- [[item-categories.tsx_1]] - `contains` [EXTRACTED]
+- [[item-categories.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Blocks
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Settings

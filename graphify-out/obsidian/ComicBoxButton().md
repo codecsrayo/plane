@@ -1,5 +1,5 @@
 ---
-source_file: "components/empty-state/comic-box-button.tsx"
+source_file: "web/core/components/empty-state/comic-box-button.tsx"
 type: "code"
 community: "Comic Button"
 location: "L23"

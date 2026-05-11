@@ -1,18 +1,19 @@
 ---
-source_file: "constants/ai.ts"
+source_file: "web/core/constants/ai.ts"
 type: "code"
-community: "Editor Aiservice"
+community: "Aiservice Menu"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Aiservice
+  - community/Aiservice_Menu
 ---
 
 # LOADING_TEXTS
 
 ## Connections
 
-- [[ai.ts]] - `contains` [EXTRACTED]
+- [[ai.ts_4]] - `contains` [EXTRACTED]
+- [[menu.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Aiservice
+#graphify/code #graphify/EXTRACTED #community/Aiservice_Menu

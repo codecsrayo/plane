@@ -1,18 +1,18 @@
 ---
-source_file: "components/global/product-updates/modal.tsx"
+source_file: "web/core/components/global/product-updates/modal.tsx"
 type: "code"
-community: "Start Week"
+community: "Product Updates"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Start_Week
+  - community/Product_Updates
 ---
 
 # ProductUpdatesModalProps
 
 ## Connections
 
-- [[modal.tsx_4]] - `contains` [EXTRACTED]
+- [[modal.tsx_9]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Start_Week
+#graphify/code #graphify/EXTRACTED #community/Product_Updates

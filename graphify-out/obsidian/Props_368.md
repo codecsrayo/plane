@@ -1,18 +1,19 @@
 ---
-source_file: "components/onboarding/steps/profile/consent.tsx"
+source_file: "admin/components/common/empty-state.tsx"
 type: "code"
-community: "Values Setup"
-location: "L9"
+community: "Project Settings"
+location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Values_Setup
+  - community/Project_Settings
 ---
 
 # Props
 
 ## Connections
 
-- [[consent.tsx]] - `contains` [EXTRACTED]
+- [[empty-state.tsx_4]] - `contains` [EXTRACTED]
+- [[empty-state.tsx_9]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Values_Setup
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

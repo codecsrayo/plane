@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/navigation-pane/tab-panels/assets.tsx"
+source_file: "web/core/components/power-k/ui/pages/preferences/timezone-menu.tsx"
 type: "code"
-community: "Navigation Pane"
-location: "L22"
+community: "Menu Power"
+location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Navigation_Pane
+  - community/Menu_Power
 ---
 
 # Props
 
 ## Connections
 
-- [[assets.tsx]] - `contains` [EXTRACTED]
+- [[timezone-menu.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Navigation_Pane
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

@@ -53,8 +53,8 @@ SORT file.name ASC
 ## Connections to other communities
 
 - 2 edges to [[_COMMUNITY_Tabs Custom]]
-- 1 edge to [[_COMMUNITY_Document Side]]
-- 1 edge to [[_COMMUNITY_Toolbar Button]]
+- 1 edge to [[_COMMUNITY_Document Collaborative]]
+- 1 edge to [[_COMMUNITY_Toolbar Combobox]]
 
 ## Top bridge nodes
 

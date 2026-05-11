@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/peek-overview/error.tsx"
+source_file: "web/core/components/issues/peek-overview/error.tsx"
 type: "code"
-community: "Issue Parent"
+community: "Issue Inbox"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Parent
+  - community/Issue_Inbox
 ---
 
 # IssuePeekOverviewError()
@@ -15,6 +15,6 @@ tags:
 
 - [[error.tsx]] - `contains` [EXTRACTED]
 - [[usePlatformOS()]] - `calls` [EXTRACTED]
-- [[view.tsx_1]] - `imports` [EXTRACTED]
+- [[view.tsx_2]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Parent
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

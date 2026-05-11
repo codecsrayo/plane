@@ -1,18 +1,18 @@
 ---
-source_file: "components/inbox/content/inbox-issue-mobile-header.tsx"
+source_file: "web/core/components/cycles/cycles-view-header.tsx"
 type: "code"
-community: "Issue Inbox"
-location: "L34"
+community: "Cycles Archived"
+location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Inbox
+  - community/Cycles_Archived
 ---
 
 # Props
 
 ## Connections
 
-- [[inbox-issue-mobile-header.tsx]] - `contains` [EXTRACTED]
+- [[cycles-view-header.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Inbox
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

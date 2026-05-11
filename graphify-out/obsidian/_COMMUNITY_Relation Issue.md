@@ -1,32 +1,20 @@
 ---
 type: community
-cohesion: 0.13
-members: 16
+cohesion: 0.50
+members: 4
 ---
 
 # Relation Issue
 
-**Cohesion:** 0.13 - loosely connected
-**Members:** 16 nodes
+**Cohesion:** 0.50 - moderately connected
+**Members:** 4 nodes
 
 ## Members
 
-- [[.constructor()_48]] - code - store/issue/issue-details/relation.store.ts
-- [[.issueRelations()]] - code - store/issue/issue-details/relation.store.ts
-- [[IIssueRelationStore]] - code - store/issue/issue-details/relation.store.ts
-- [[IIssueRelationStoreActions]] - code - store/issue/issue-details/relation.store.ts
-- [[IssueRelationStore]] - code - store/issue/issue-details/relation.store.ts
-- [[REVERSE_RELATIONS]] - code - constants/gantt-chart.ts
-- [[gantt-chart.ts]] - code - constants/gantt-chart.ts
-- [[issueRelationKeys]] - code - store/issue/issue-details/relation.store.ts
-- [[issueRelations]] - code - store/issue/issue-details/relation.store.ts
-- [[issues_1]] - code - store/issue/issue-details/relation.store.ts
-- [[issuesOfRelated]] - code - store/issue/issue-details/relation.store.ts
-- [[issuesOfRelation]] - code - store/issue/issue-details/relation.store.ts
-- [[relatedIndex]] - code - store/issue/issue-details/relation.store.ts
-- [[relation.store.ts]] - code - store/issue/issue-details/relation.store.ts
-- [[relationIndex]] - code - store/issue/issue-details/relation.store.ts
-- [[relation_key]] - code - store/issue/issue-details/relation.store.ts
+- [[ISSUE_RELATION_OPTIONS]] - code - web/ce/components/relations/index.tsx
+- [[index.ts_379]] - code - web/core/components/issues/issue-detail-widgets/relations/index.ts
+- [[index.tsx_5]] - code - web/ce/components/relations/index.tsx
+- [[useTimeLineRelationOptions()]] - code - web/ce/components/relations/index.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -37,14 +25,11 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 6 edges to [[_COMMUNITY_Comment Reactions]]
-- 1 edge to [[_COMMUNITY_Issue Widget]]
-- 1 edge to [[_COMMUNITY_API Services]]
-- 1 edge to [[_COMMUNITY_Estimate Points]]
+- 2 edges to [[_COMMUNITY_Issue Reaction]]
+- 2 edges to [[_COMMUNITY_Issue Widget]]
+- 1 edge to [[_COMMUNITY_Issue Activity]]
 
 ## Top bridge nodes
 
-- [[relation.store.ts]] - degree 19, connects to 4 communities
-- [[IssueRelationStore]] - degree 4, connects to 1 community
-- [[IIssueRelationStore]] - degree 2, connects to 1 community
-- [[IIssueRelationStoreActions]] - degree 2, connects to 1 community
+- [[index.ts_379]] - degree 5, connects to 3 communities
+- [[index.tsx_5]] - degree 4, connects to 1 community

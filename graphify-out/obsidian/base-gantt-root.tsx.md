@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-layouts/gantt/base-gantt-root.tsx"
+source_file: "web/core/components/issues/issue-layouts/gantt/base-gantt-root.tsx"
 type: "code"
 community: "Gantt Chart"
 location: "L1"
@@ -22,16 +22,17 @@ tags:
 - [[IssueLayoutHOC]] - `imports` [EXTRACTED]
 - [[TimeLineTypeContext]] - `imports` [EXTRACTED]
 - [[blocks.tsx_1]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
-- [[index.ts_97]] - `imports_from` [EXTRACTED]
-- [[index.tsx_4]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
+- [[index.ts_362]] - `imports_from` [EXTRACTED]
+- [[index.tsx_10]] - `imports_from` [EXTRACTED]
 - [[issue-layout-HOC.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_5]] - `imports_from` [EXTRACTED]
-- [[sidebar.tsx_1]] - `imports_from` [EXTRACTED]
+- [[root.tsx_46]] - `imports_from` [EXTRACTED]
+- [[sidebar.tsx_2]] - `imports_from` [EXTRACTED]
 - [[use-issue-layout-store.ts]] - `imports_from` [EXTRACTED]
 - [[use-issues-actions.tsx]] - `imports_from` [EXTRACTED]
 - [[use-issues.ts]] - `imports_from` [EXTRACTED]
-- [[use-timeline-chart.ts]] - `imports_from` [EXTRACTED]
+- [[use-timeline-chart.ts_1]] - `imports_from` [EXTRACTED]
+- [[useBulkOperationStatus()]] - `imports` [EXTRACTED]
 - [[useIssueStoreType()]] - `imports` [EXTRACTED]
 - [[useIssues()]] - `imports` [EXTRACTED]
 - [[useIssuesActions()]] - `imports` [EXTRACTED]

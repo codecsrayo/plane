@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/roots/cycle-layout-root.tsx"
+source_file: "web/core/components/issues/issue-layouts/roots/cycle-layout-root.tsx"
 type: "code"
-community: "Cycle Transfers"
+community: "Issue Project"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Transfers
+  - community/Issue_Project
 ---
 
 # cycle-layout-root.tsx
@@ -24,14 +24,15 @@ tags:
 - [[TransferIssues()]] - `imports` [EXTRACTED]
 - [[TransferIssuesModal]] - `imports` [EXTRACTED]
 - [[WorkItemFiltersRow]] - `imports` [EXTRACTED]
-- [[cycle-root.tsx_3]] - `imports_from` [EXTRACTED]
 - [[cycle-root.tsx]] - `imports_from` [EXTRACTED]
 - [[cycle-root.tsx_1]] - `imports_from` [EXTRACTED]
 - [[cycle-root.tsx_2]] - `imports_from` [EXTRACTED]
+- [[cycle-root.tsx_3]] - `imports_from` [EXTRACTED]
 - [[filters-row.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts_117]] - `imports_from` [EXTRACTED]
-- [[index.ts_87]] - `imports_from` [EXTRACTED]
-- [[project-level.tsx]] - `imports_from` [EXTRACTED]
+- [[index.ts_352]] - `imports_from` [EXTRACTED]
+- [[index.ts_382]] - `imports_from` [EXTRACTED]
+- [[page.tsx_25]] - `imports_from` [EXTRACTED]
+- [[project-level.tsx_1]] - `imports_from` [EXTRACTED]
 - [[transfer-issues-modal.tsx]] - `imports_from` [EXTRACTED]
 - [[transfer-issues.tsx]] - `imports_from` [EXTRACTED]
 - [[use-cycle.ts]] - `imports_from` [EXTRACTED]
@@ -40,4 +41,4 @@ tags:
 - [[useCycle()]] - `imports` [EXTRACTED]
 - [[useIssues()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Transfers
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

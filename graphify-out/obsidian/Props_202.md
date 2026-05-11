@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/columns/assignee-column.tsx"
+source_file: "web/core/components/project/archive-restore-modal.tsx"
 type: "code"
-community: "Column Spreadsheet"
-location: "L15"
+community: "Project Settings"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Column_Spreadsheet
+  - community/Project_Settings
 ---
 
 # Props
 
 ## Connections
 
-- [[assignee-column.tsx]] - `contains` [EXTRACTED]
+- [[archive-restore-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Column_Spreadsheet
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

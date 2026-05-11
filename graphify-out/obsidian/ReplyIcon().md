@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/icons/arrows/reply-icon.tsx"
 type: "code"
-community: "Icon Library"
+community: "Icon Property"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Icon_Library
+  - community/Icon_Property
 ---
 
 # ReplyIcon()
@@ -15,4 +15,4 @@ tags:
 
 - [[reply-icon.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Icon_Library
+#graphify/code #graphify/EXTRACTED #community/Icon_Property

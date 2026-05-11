@@ -1,18 +1,18 @@
 ---
-source_file: "store/issue/issue.store.ts"
+source_file: "web/core/store/issue/issue.store.ts"
 type: "code"
-community: "Comment Reactions"
+community: "Issue Reaction"
 location: "L159"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Comment_Reactions
+  - community/Issue_Reaction
 ---
 
 # filteredIssues
 
 ## Connections
 
-- [[issue.store.ts]] - `contains` [EXTRACTED]
+- [[issue.store.ts_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Comment_Reactions
+#graphify/code #graphify/EXTRACTED #community/Issue_Reaction

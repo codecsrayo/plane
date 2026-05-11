@@ -11,8 +11,8 @@ members: 2
 
 ## Members
 
-- [[VideoIcon()]] - code - components/icons/attachment/video-file-icon.tsx
-- [[video-file-icon.tsx]] - code - components/icons/attachment/video-file-icon.tsx
+- [[VideoIcon()]] - code - web/core/components/icons/attachment/video-file-icon.tsx
+- [[video-file-icon.tsx_1]] - code - web/core/components/icons/attachment/video-file-icon.tsx
 
 ## Live Query (requires Dataview plugin)
 

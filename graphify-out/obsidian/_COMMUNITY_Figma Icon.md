@@ -11,8 +11,8 @@ members: 2
 
 ## Members
 
-- [[FigmaIcon()]] - code - components/icons/attachment/figma-file-icon.tsx
-- [[figma-file-icon.tsx]] - code - components/icons/attachment/figma-file-icon.tsx
+- [[FigmaIcon()]] - code - web/core/components/icons/attachment/figma-file-icon.tsx
+- [[figma-file-icon.tsx]] - code - web/core/components/icons/attachment/figma-file-icon.tsx
 
 ## Live Query (requires Dataview plugin)
 

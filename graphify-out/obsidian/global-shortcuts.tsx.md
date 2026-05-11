@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/global-shortcuts.tsx"
+source_file: "web/core/components/power-k/global-shortcuts.tsx"
 type: "code"
-community: "Command Palette"
+community: "Power Shortcuts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Command_Palette
+  - community/Power_Shortcuts
 ---
 
 # global-shortcuts.tsx
@@ -19,13 +19,13 @@ tags:
 - [[ShortcutsModal()]] - `imports` [EXTRACTED]
 - [[TPowerKCommandConfig]] - `imports` [EXTRACTED]
 - [[TPowerKContext]] - `imports` [EXTRACTED]
-- [[context-detector.ts]] - `imports_from` [EXTRACTED]
+- [[context-detector.ts_1]] - `imports_from` [EXTRACTED]
 - [[detectContextFromURL()]] - `imports` [EXTRACTED]
 - [[projects-app-provider.tsx]] - `imports_from` [EXTRACTED]
 - [[shortcut-handler.ts]] - `imports_from` [EXTRACTED]
 - [[shortcuts-root.tsx]] - `imports_from` [EXTRACTED]
-- [[types.ts_2]] - `imports_from` [EXTRACTED]
+- [[types.ts_16]] - `imports_from` [EXTRACTED]
 - [[use-power-k.ts]] - `imports_from` [EXTRACTED]
 - [[usePowerK()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Command_Palette
+#graphify/code #graphify/EXTRACTED #community/Power_Shortcuts

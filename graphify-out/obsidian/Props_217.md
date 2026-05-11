@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/calendar/week-days.tsx"
+source_file: "web/core/components/project/create/project-create-buttons.tsx"
 type: "code"
-community: "Calendar Views"
-location: "L21"
+community: "Project Common"
+location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Views
+  - community/Project_Common
 ---
 
 # Props
 
 ## Connections
 
-- [[week-days.tsx]] - `contains` [EXTRACTED]
+- [[project-create-buttons.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Views
+#graphify/code #graphify/EXTRACTED #community/Project_Common

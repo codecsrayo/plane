@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/helpers/insert-empty-paragraph-at-node-boundary.ts"
 type: "code"
-community: "Callout Extension"
+community: "Image Custom"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Callout_Extension
+  - community/Image_Custom
 ---
 
 # insertEmptyParagraphAtNodeBoundaries()
@@ -18,4 +18,4 @@ tags:
 - [[extension.tsx_5]] - `imports` [EXTRACTED]
 - [[insert-empty-paragraph-at-node-boundary.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Callout_Extension
+#graphify/code #graphify/EXTRACTED #community/Image_Custom

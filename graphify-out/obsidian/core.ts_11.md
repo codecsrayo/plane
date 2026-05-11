@@ -26,8 +26,8 @@ tags:
 - [[getGroupChildren()]] - `imports` [EXTRACTED]
 - [[isConditionNode()]] - `imports` [EXTRACTED]
 - [[isGroupNode()]] - `imports` [EXTRACTED]
-- [[shared.ts_6]] - `imports_from` [EXTRACTED]
 - [[shared.ts_4]] - `imports_from` [EXTRACTED]
+- [[shared.ts_6]] - `imports_from` [EXTRACTED]
 - [[traverseExpressionTree()]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Find_Conditions

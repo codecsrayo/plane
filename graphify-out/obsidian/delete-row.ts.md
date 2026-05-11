@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/table/table/utilities/delete-row.ts"
 type: "code"
-community: "Table Drag"
+community: "Table Node"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Table_Drag
+  - community/Table_Node
 ---
 
 # delete-row.ts
@@ -18,4 +18,4 @@ tags:
 - [[isCellSelection()]] - `imports` [EXTRACTED]
 - [[table.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Table_Drag
+#graphify/code #graphify/EXTRACTED #community/Table_Node

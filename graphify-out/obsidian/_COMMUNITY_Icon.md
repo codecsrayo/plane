@@ -11,8 +11,8 @@ members: 2
 
 ## Members
 
-- [[CsvIcon()]] - code - components/icons/attachment/csv-file-icon.tsx
-- [[csv-file-icon.tsx]] - code - components/icons/attachment/csv-file-icon.tsx
+- [[CsvIcon()]] - code - web/core/components/icons/attachment/csv-file-icon.tsx
+- [[csv-file-icon.tsx]] - code - web/core/components/icons/attachment/csv-file-icon.tsx
 
 ## Live Query (requires Dataview plugin)
 

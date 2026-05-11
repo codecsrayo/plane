@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/columns/created-on-column.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/created-on-column.tsx"
 type: "code"
 community: "Created Column"
 location: "L19"

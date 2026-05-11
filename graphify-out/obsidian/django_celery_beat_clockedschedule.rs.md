@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/django_celery_beat_clockedschedule.rs"
 type: "code"
-community: "Community 373"
+community: "Model Relation"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_373
+  - community/Model_Relation
 ---
 
 # django_celery_beat_clockedschedule.rs
@@ -16,4 +16,4 @@ tags:
 - [[Model_54]] - `contains` [EXTRACTED]
 - [[Relation_54]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_373
+#graphify/code #graphify/EXTRACTED #community/Model_Relation

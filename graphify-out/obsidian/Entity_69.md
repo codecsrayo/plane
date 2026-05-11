@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/users_user_permissions.rs"
 type: "code"
-community: "Community 567"
+community: "Entity"
 location: "L35"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_567
+  - community/Entity
 ---
 
 # Entity
@@ -15,4 +15,4 @@ tags:
 
 - [[.to()_69]] - `method` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_567
+#graphify/code #graphify/EXTRACTED #community/Entity

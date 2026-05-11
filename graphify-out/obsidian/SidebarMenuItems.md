@@ -1,18 +1,19 @@
 ---
-source_file: "components/workspace/sidebar/sidebar-menu-items.tsx"
+source_file: "web/core/components/workspace/sidebar/sidebar-menu-items.tsx"
 type: "code"
-community: "Sidebar Menu"
+community: "Sidebar Resizable"
 location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Menu
+  - community/Sidebar_Resizable
 ---
 
 # SidebarMenuItems
 
 ## Connections
 
+- [[_sidebar.tsx]] - `imports` [EXTRACTED]
 - [[sidebar-menu-items.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Menu
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Resizable

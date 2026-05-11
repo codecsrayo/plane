@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/contexts/index.ts"
 type: "code"
-community: "Highlight Node"
+community: "Toggle Menu"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Highlight_Node
+  - community/Toggle_Menu
 ---
 
 # index.ts
@@ -16,4 +16,4 @@ tags:
 - [[editor-container.tsx]] - `imports_from` [EXTRACTED]
 - [[page-renderer.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Highlight_Node
+#graphify/code #graphify/EXTRACTED #community/Toggle_Menu

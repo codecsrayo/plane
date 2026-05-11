@@ -1,20 +1,20 @@
 ---
-source_file: "components/cycles/applied-filters/status.tsx"
+source_file: "web/core/components/cycles/applied-filters/status.tsx"
 type: "code"
-community: "Applied Filters"
+community: "Filters Applied"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters
+  - community/Filters_Applied
 ---
 
 # AppliedStatusFilters
 
 ## Connections
 
-- [[root.tsx_56]] - `imports` [EXTRACTED]
+- [[root.tsx_97]] - `imports` [EXTRACTED]
 - [[status.tsx_2]] - `contains` [EXTRACTED]
 - [[status.tsx_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters
+#graphify/code #graphify/EXTRACTED #community/Filters_Applied

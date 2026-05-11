@@ -1,18 +1,18 @@
 ---
-source_file: "components/core/multiple-select/group-select-action.tsx"
+source_file: "web/core/components/inbox/inbox-filter/filters/date.tsx"
 type: "code"
-community: "Multi Select Actions"
-location: "L14"
+community: "Date Start"
+location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Multi_Select_Actions
+  - community/Date_Start
 ---
 
 # Props
 
 ## Connections
 
-- [[group-select-action.tsx]] - `contains` [EXTRACTED]
+- [[date.tsx_7]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Multi_Select_Actions
+#graphify/code #graphify/EXTRACTED #community/Date_Start

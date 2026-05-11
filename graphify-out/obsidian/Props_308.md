@@ -1,18 +1,18 @@
 ---
-source_file: "components/cycles/list/cycle-list-item-action.tsx"
+source_file: "web/core/components/issues/issue-layouts/filters/header/filters/assignee.tsx"
 type: "code"
-community: "Cycle Cycles"
-location: "L40"
+community: "Member Members"
+location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Cycles
+  - community/Member_Members
 ---
 
 # Props
 
 ## Connections
 
-- [[cycle-list-item-action.tsx]] - `contains` [EXTRACTED]
+- [[assignee.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Cycles
+#graphify/code #graphify/EXTRACTED #community/Member_Members

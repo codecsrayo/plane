@@ -1,12 +1,12 @@
 ---
-source_file: "components/project/integration-card.tsx"
+source_file: "web/core/components/project/integration-card.tsx"
 type: "code"
-community: "Github Integration"
+community: "Project Workspace"
 location: "L66"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Github_Integration
+  - community/Project_Workspace
 ---
 
 # IntegrationCard()
@@ -17,4 +17,4 @@ tags:
 - [[getSyncedRepoLabel()]] - `calls` [EXTRACTED]
 - [[integration-card.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Github_Integration
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

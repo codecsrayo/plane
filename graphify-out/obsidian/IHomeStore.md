@@ -1,20 +1,20 @@
 ---
-source_file: "store/workspace/home.ts"
+source_file: "web/core/store/workspace/home.ts"
 type: "code"
-community: "Link Home"
+community: "Webhook Workspace"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Link_Home
+  - community/Webhook_Workspace
 ---
 
 # IHomeStore
 
 ## Connections
 
-- [[home.ts]] - `contains` [EXTRACTED]
-- [[index.ts_6]] - `imports` [EXTRACTED]
+- [[home.ts_1]] - `contains` [EXTRACTED]
+- [[index.ts_271]] - `imports` [EXTRACTED]
 - [[use-home.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Link_Home
+#graphify/code #graphify/EXTRACTED #community/Webhook_Workspace

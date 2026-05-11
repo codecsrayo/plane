@@ -1,5 +1,5 @@
 ---
-source_file: "components/integration/github/personal-connect-card.tsx"
+source_file: "web/core/components/integration/github/personal-connect-card.tsx"
 type: "code"
 community: "Personal Github"
 location: "L28"

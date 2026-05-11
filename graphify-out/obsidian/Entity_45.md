@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/file_assets.rs"
 type: "code"
-community: "Community 543"
+community: "Entity"
 location: "L115"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_543
+  - community/Entity
 ---
 
 # Entity
@@ -15,4 +15,4 @@ tags:
 
 - [[.to()_45]] - `method` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_543
+#graphify/code #graphify/EXTRACTED #community/Entity

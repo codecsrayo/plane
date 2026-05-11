@@ -1,36 +1,30 @@
 ---
-source_file: "components/issues/issue-layouts/list/block.tsx"
+source_file: "web/core/components/gantt-chart/sidebar/issues/block.tsx"
 type: "code"
-community: "List Group Layout"
+community: "Gantt Chart"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/List_Group_Layout
+  - community/Gantt_Chart
 ---
 
 # block.tsx
 
 ## Connections
 
-- [[IssueBlock]] - `contains` [EXTRACTED]
-- [[IssueBlockProps_1]] - `contains` [EXTRACTED]
+- [[IssueGanttSidebarBlock]] - `imports` [EXTRACTED]
+- [[IssuesSidebarBlock]] - `contains` [EXTRACTED]
+- [[Props_121]] - `contains` [EXTRACTED]
 - [[TSelectionHelper]] - `imports` [EXTRACTED]
-- [[WithDisplayPropertiesHOC]] - `imports` [EXTRACTED]
-- [[block-root.tsx]] - `imports_from` [EXTRACTED]
-- [[calculateIdentifierWidth()]] - `imports` [EXTRACTED]
-- [[index.ts_178]] - `imports_from` [EXTRACTED]
-- [[index.ts_89]] - `imports_from` [EXTRACTED]
-- [[use-app-theme.ts]] - `imports_from` [EXTRACTED]
+- [[blocks.tsx_1]] - `imports_from` [EXTRACTED]
+- [[constants.ts_4]] - `imports_from` [EXTRACTED]
+- [[index.ts_443]] - `imports_from` [EXTRACTED]
+- [[sidebar.tsx_2]] - `imports_from` [EXTRACTED]
 - [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
 - [[use-multiple-select.ts]] - `imports_from` [EXTRACTED]
-- [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
-- [[use-project.ts]] - `imports_from` [EXTRACTED]
-- [[useAppTheme()]] - `imports` [EXTRACTED]
+- [[use-timeline-chart.ts_1]] - `imports_from` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
-- [[usePlatformOS()]] - `imports` [EXTRACTED]
-- [[useProject()]] - `imports` [EXTRACTED]
-- [[utils.tsx_1]] - `imports_from` [EXTRACTED]
-- [[with-display-properties-HOC.tsx]] - `imports_from` [EXTRACTED]
+- [[useTimeLineChartStore()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/List_Group_Layout
+#graphify/code #graphify/EXTRACTED #community/Gantt_Chart

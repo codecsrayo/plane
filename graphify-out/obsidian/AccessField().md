@@ -1,12 +1,12 @@
 ---
-source_file: "components/common/access-field.tsx"
+source_file: "web/core/components/common/access-field.tsx"
 type: "code"
-community: "Access Field"
+community: "Project Work"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Access_Field
+  - community/Project_Work
 ---
 
 # AccessField()
@@ -16,4 +16,4 @@ tags:
 - [[access-field.tsx]] - `contains` [EXTRACTED]
 - [[page-form.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Access_Field
+#graphify/code #graphify/EXTRACTED #community/Project_Work

@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/ui/pages/work-item-selection-page.tsx"
+source_file: "web/core/components/issues/issue-layouts/filters/header/filters/module.tsx"
 type: "code"
-community: "Workspace Workspaceservice"
-location: "L25"
+community: "Cycles Archived"
+location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Workspaceservice
+  - community/Cycles_Archived
 ---
 
 # Props
 
 ## Connections
 
-- [[work-item-selection-page.tsx]] - `contains` [EXTRACTED]
+- [[module.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Workspaceservice
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

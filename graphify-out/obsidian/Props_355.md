@@ -1,18 +1,18 @@
 ---
-source_file: "components/onboarding/create-workspace.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/sub-issues/issues-list/properties.tsx"
 type: "code"
-community: "Wrapper Workspace"
-location: "L26"
+community: "Label Dropdown"
+location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Wrapper_Workspace
+  - community/Label_Dropdown
 ---
 
 # Props
 
 ## Connections
 
-- [[create-workspace.tsx]] - `contains` [EXTRACTED]
+- [[properties.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Wrapper_Workspace
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

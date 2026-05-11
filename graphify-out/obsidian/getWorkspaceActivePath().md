@@ -1,18 +1,19 @@
 ---
-source_file: "components/settings/helper.ts"
+source_file: "web/core/components/settings/helper.ts"
 type: "code"
-community: "Href Label"
+community: "Project Workspace"
 location: "L37"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Href_Label
+  - community/Project_Workspace
 ---
 
 # getWorkspaceActivePath()
 
 ## Connections
 
-- [[helper.ts]] - `contains` [EXTRACTED]
+- [[helper.ts_4]] - `contains` [EXTRACTED]
+- [[layout.tsx_34]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Href_Label
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

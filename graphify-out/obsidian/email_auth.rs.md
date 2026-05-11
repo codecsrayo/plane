@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/auth/email_auth.rs"
 type: "code"
-community: "Community 50"
+community: "Magic Sign"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_50
+  - community/Magic_Sign
 ---
 
 # email_auth.rs
@@ -33,4 +33,4 @@ tags:
 - [[success_redirect()]] - `contains` [EXTRACTED]
 - [[update_login_metadata()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_50
+#graphify/code #graphify/EXTRACTED #community/Magic_Sign

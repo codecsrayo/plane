@@ -1,18 +1,18 @@
 ---
-source_file: "components/project/create-project-modal.tsx"
+source_file: "web/core/components/gantt-chart/blocks/block.tsx"
 type: "code"
-community: "Project Feature"
+community: "Gantt Chart"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Feature
+  - community/Gantt_Chart
 ---
 
 # Props
 
 ## Connections
 
-- [[create-project-modal.tsx]] - `contains` [EXTRACTED]
+- [[block.tsx_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Feature
+#graphify/code #graphify/EXTRACTED #community/Gantt_Chart

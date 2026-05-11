@@ -1,19 +1,20 @@
 ---
-source_file: "api_rust/src/jobs/scheduled.rs"
+source_file: "api/plane/bgtasks/issue_automation_task.py"
 type: "code"
-community: "Community 282"
-location: "L69"
+community: "Task Object"
+location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_282
+  - community/Task_Object
 ---
 
 # archive_old_issues()
 
 ## Connections
 
-- [[handle_run_issue_automation()]] - `calls` [EXTRACTED]
-- [[scheduled.rs]] - `contains` [EXTRACTED]
+- [[archive_and_close_old_issues()]] - `calls` [EXTRACTED]
+- [[issue_automation_task.py]] - `contains` [EXTRACTED]
+- [[log_exception()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_282
+#graphify/code #graphify/EXTRACTED #community/Task_Object

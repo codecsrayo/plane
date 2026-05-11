@@ -1,12 +1,12 @@
 ---
-source_file: "components/project/filters.tsx"
+source_file: "web/core/components/project/filters.tsx"
 type: "code"
-community: "Auth UI"
+community: "Member Members"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_UI
+  - community/Member_Members
 ---
 
 # filters.tsx
@@ -15,14 +15,14 @@ tags:
 
 - [[HeaderFilters]] - `contains` [EXTRACTED]
 - [[ProjectOrderByDropdown()]] - `imports` [EXTRACTED]
-- [[Props_137]] - `contains` [EXTRACTED]
-- [[header.tsx_6]] - `imports_from` [EXTRACTED]
-- [[index.ts_90]] - `imports_from` [EXTRACTED]
-- [[index.ts_80]] - `imports_from` [EXTRACTED]
+- [[Props_212]] - `contains` [EXTRACTED]
+- [[header.tsx_48]] - `imports_from` [EXTRACTED]
+- [[index.ts_355]] - `imports_from` [EXTRACTED]
+- [[index.ts_345]] - `imports_from` [EXTRACTED]
 - [[order-by.tsx_2]] - `imports_from` [EXTRACTED]
 - [[use-member.ts]] - `imports_from` [EXTRACTED]
 - [[use-project-filter.ts]] - `imports_from` [EXTRACTED]
 - [[useMember()]] - `imports` [EXTRACTED]
 - [[useProjectFilter()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_UI
+#graphify/code #graphify/EXTRACTED #community/Member_Members

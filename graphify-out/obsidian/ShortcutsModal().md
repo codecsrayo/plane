@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/ui/modal/shortcuts-root.tsx"
+source_file: "web/core/components/power-k/ui/modal/shortcuts-root.tsx"
 type: "code"
-community: "Command Palette"
+community: "Power Shortcuts"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Command_Palette
+  - community/Power_Shortcuts
 ---
 
 # ShortcutsModal()
@@ -17,4 +17,4 @@ tags:
 - [[shortcuts-root.tsx]] - `contains` [EXTRACTED]
 - [[usePowerK()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Command_Palette
+#graphify/code #graphify/EXTRACTED #community/Power_Shortcuts

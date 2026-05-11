@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/modals/page-form.tsx"
+source_file: "web/core/components/power-k/ui/renderer/shortcut.tsx"
 type: "code"
-community: "Access Field"
-location: "L27"
+community: "Context Power"
+location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Access_Field
+  - community/Context_Power
 ---
 
 # Props
 
 ## Connections
 
-- [[page-form.tsx]] - `contains` [EXTRACTED]
+- [[shortcut.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Access_Field
+#graphify/code #graphify/EXTRACTED #community/Context_Power

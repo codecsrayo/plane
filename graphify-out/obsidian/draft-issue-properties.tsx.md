@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/workspace-draft/draft-issue-properties.tsx"
+source_file: "web/core/components/issues/workspace-draft/draft-issue-properties.tsx"
 type: "code"
-community: "Issue Properties"
+community: "Label Dropdown"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Label_Dropdown
 ---
 
 # draft-issue-properties.tsx
@@ -24,18 +24,18 @@ tags:
 - [[StateDropdown]] - `imports` [EXTRACTED]
 - [[date.tsx_1]] - `imports_from` [EXTRACTED]
 - [[draft-issue-block.tsx]] - `imports_from` [EXTRACTED]
-- [[dropdown.tsx_4]] - `imports_from` [EXTRACTED]
-- [[dropdown.tsx]] - `imports_from` [EXTRACTED]
-- [[dropdown.tsx_3]] - `imports_from` [EXTRACTED]
-- [[estimate.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts_3]] - `imports_from` [EXTRACTED]
-- [[index.ts_1]] - `imports_from` [EXTRACTED]
-- [[index.ts_89]] - `imports_from` [EXTRACTED]
-- [[index.tsx_6]] - `imports_from` [EXTRACTED]
-- [[priority.tsx]] - `imports_from` [EXTRACTED]
+- [[dropdown.tsx_2]] - `imports_from` [EXTRACTED]
+- [[dropdown.tsx_5]] - `imports_from` [EXTRACTED]
+- [[dropdown.tsx_6]] - `imports_from` [EXTRACTED]
+- [[estimate.tsx_1]] - `imports_from` [EXTRACTED]
+- [[index.ts_266]] - `imports_from` [EXTRACTED]
+- [[index.ts_268]] - `imports_from` [EXTRACTED]
+- [[index.ts_354]] - `imports_from` [EXTRACTED]
+- [[index.tsx_12]] - `imports_from` [EXTRACTED]
+- [[priority.tsx_1]] - `imports_from` [EXTRACTED]
 - [[stopEventPropagation()_1]] - `contains` [EXTRACTED]
 - [[use-label.ts]] - `imports_from` [EXTRACTED]
-- [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
+- [[use-platform-os.tsx_1]] - `imports_from` [EXTRACTED]
 - [[use-project-state.ts]] - `imports_from` [EXTRACTED]
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[useLabel()]] - `imports` [EXTRACTED]
@@ -43,4 +43,4 @@ tags:
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[useProjectState()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

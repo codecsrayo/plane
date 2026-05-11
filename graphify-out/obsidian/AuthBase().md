@@ -1,12 +1,12 @@
 ---
-source_file: "components/auth-screens/auth-base.tsx"
+source_file: "web/core/components/auth-screens/auth-base.tsx"
 type: "code"
-community: "Auth UI"
+community: "Workspace Issue"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_UI
+  - community/Workspace_Issue
 ---
 
 # AuthBase()
@@ -14,5 +14,7 @@ tags:
 ## Connections
 
 - [[auth-base.tsx]] - `contains` [EXTRACTED]
+- [[page.tsx_1]] - `imports` [EXTRACTED]
+- [[page.tsx_57]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_UI
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

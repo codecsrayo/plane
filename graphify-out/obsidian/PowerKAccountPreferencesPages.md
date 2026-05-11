@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/ui/pages/preferences/root.tsx"
+source_file: "web/core/components/power-k/ui/pages/preferences/root.tsx"
 type: "code"
-community: "Member Commands"
+community: "Menu Power"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Commands
+  - community/Menu_Power
 ---
 
 # PowerKAccountPreferencesPages
 
 ## Connections
 
-- [[root.tsx_61]] - `contains` [EXTRACTED]
+- [[root.tsx_102]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Commands
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

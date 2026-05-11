@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-layouts/gantt/blocks.tsx"
+source_file: "web/core/components/issues/issue-layouts/gantt/blocks.tsx"
 type: "code"
 community: "Gantt Chart"
 location: "L37"

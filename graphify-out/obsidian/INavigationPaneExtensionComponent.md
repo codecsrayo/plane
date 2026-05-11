@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/navigation-pane/types/extensions.ts"
+source_file: "web/core/components/pages/navigation-pane/types/extensions.ts"
 type: "code"
-community: "Navigation Pane"
+community: "Pane Navigation"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Navigation_Pane
+  - community/Pane_Navigation
 ---
 
 # INavigationPaneExtensionComponent
 
 ## Connections
 
-- [[extensions.ts]] - `contains` [EXTRACTED]
+- [[extensions.ts_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Navigation_Pane
+#graphify/code #graphify/EXTRACTED #community/Pane_Navigation

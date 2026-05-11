@@ -1,23 +1,21 @@
 ---
-source_file: "store/analytics.store.ts"
+source_file: "web/ce/store/analytics.store.ts"
 type: "code"
-community: "Estimate Points"
+community: "Estimate Project"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Estimate_Points
+  - community/Estimate_Project
 ---
 
 # analytics.store.ts
 
 ## Connections
 
-- [[DurationType]] - `contains` [EXTRACTED]
-- [[IBaseAnalyticsStore]] - `contains` [EXTRACTED]
-- [[api.service.ts]] - `imports_from` [EXTRACTED]
-- [[constructor()_2]] - `contains` [EXTRACTED]
-- [[selectedDurationLabel()]] - `contains` [EXTRACTED]
-- [[toApiError()]] - `imports` [EXTRACTED]
+- [[AnalyticsStore]] - `contains` [EXTRACTED]
+- [[IAnalyticsStore]] - `contains` [EXTRACTED]
+- [[IBaseAnalyticsStore]] - `imports` [EXTRACTED]
+- [[analytics.store.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Estimate_Points
+#graphify/code #graphify/EXTRACTED #community/Estimate_Project

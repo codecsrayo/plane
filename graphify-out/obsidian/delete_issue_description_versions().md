@@ -1,20 +1,20 @@
 ---
-source_file: "api_rust/src/jobs/cleanup.rs"
+source_file: "api/plane/bgtasks/cleanup_task.py"
 type: "code"
-community: "Community 115"
-location: "L258"
+community: "Transform Logs"
+location: "L459"
 tags:
   - graphify/code
-  - graphify/INFERRED
-  - community/Community_115
+  - graphify/EXTRACTED
+  - community/Transform_Logs
 ---
 
 # delete_issue_description_versions()
 
 ## Connections
 
-- [[.from_string()]] - `calls` [INFERRED]
-- [[cleanup.rs]] - `contains` [EXTRACTED]
-- [[start_cron()]] - `calls` [INFERRED]
+- [[Delete excess issue description versions.]] - `rationale_for` [EXTRACTED]
+- [[cleanup_task.py]] - `contains` [EXTRACTED]
+- [[process_cleanup_task()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_115
+#graphify/code #graphify/EXTRACTED #community/Transform_Logs

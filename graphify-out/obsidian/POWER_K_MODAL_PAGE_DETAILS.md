@@ -1,19 +1,19 @@
 ---
-source_file: "components/power-k/ui/modal/constants.ts"
+source_file: "web/core/components/power-k/ui/modal/constants.ts"
 type: "code"
-community: "Power Search"
+community: "Power Context"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Power_Search
+  - community/Power_Context
 ---
 
 # POWER_K_MODAL_PAGE_DETAILS
 
 ## Connections
 
-- [[constants.ts_2]] - `contains` [EXTRACTED]
-- [[header.tsx_11]] - `imports` [EXTRACTED]
+- [[constants.ts_6]] - `contains` [EXTRACTED]
+- [[header.tsx_53]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Power_Search
+#graphify/code #graphify/EXTRACTED #community/Power_Context

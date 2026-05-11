@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/assets.rs"
 type: "code"
-community: "Community 181"
+community: "Asset Issue"
 location: "L1898"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_181
+  - community/Asset_Issue
 ---
 
 # download_project_asset()
@@ -17,4 +17,4 @@ tags:
 - [[build_s3_presign_client()]] - `calls` [INFERRED]
 - [[presigned_get_download_url()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_181
+#graphify/code #graphify/EXTRACTED #community/Asset_Issue

@@ -1,18 +1,20 @@
 ---
-source_file: "components/modules/module-peek-overview.tsx"
+source_file: "web/core/components/cycles/analytics-sidebar/root.tsx"
 type: "code"
-community: "Module Analytics"
+community: "Cycle Active"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Cycle_Active
 ---
 
 # Props
 
 ## Connections
 
-- [[module-peek-overview.tsx]] - `contains` [EXTRACTED]
+- [[root.tsx_33]] - `contains` [EXTRACTED]
+- [[root.tsx_53]] - `contains` [EXTRACTED]
+- [[root.tsx_94]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

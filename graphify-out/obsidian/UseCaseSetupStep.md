@@ -1,18 +1,18 @@
 ---
-source_file: "components/onboarding/steps/usecase/root.tsx"
+source_file: "web/core/components/onboarding/steps/usecase/root.tsx"
 type: "code"
-community: "Values Setup"
+community: "Setup Values"
 location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Values_Setup
+  - community/Setup_Values
 ---
 
 # UseCaseSetupStep
 
 ## Connections
 
-- [[root.tsx_69]] - `contains` [EXTRACTED]
+- [[root.tsx_110]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Values_Setup
+#graphify/code #graphify/EXTRACTED #community/Setup_Values

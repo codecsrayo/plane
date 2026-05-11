@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/toolbar/toolbar.tsx"
 type: "code"
-community: "Toolbar Button"
+community: "Toolbar Combobox"
 location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toolbar_Button
+  - community/Toolbar_Combobox
 ---
 
 # ToolbarSeparatorProps
@@ -15,4 +15,4 @@ tags:
 
 - [[toolbar.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toolbar_Button
+#graphify/code #graphify/EXTRACTED #community/Toolbar_Combobox

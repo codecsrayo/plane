@@ -1,5 +1,5 @@
 ---
-source_file: "components/account/auth-forms/auth-root.tsx"
+source_file: "web/core/components/account/auth-forms/auth-root.tsx"
 type: "code"
 community: "Auth Terms"
 location: "L1"
@@ -16,7 +16,7 @@ tags:
 - [[AuthBanner()]] - `imports` [EXTRACTED]
 - [[AuthContainer()]] - `contains` [EXTRACTED]
 - [[AuthFormRoot]] - `imports` [EXTRACTED]
-- [[AuthHeader_1]] - `imports` [EXTRACTED]
+- [[AuthHeader()]] - `imports` [EXTRACTED]
 - [[AuthHeaderBase()_1]] - `imports` [EXTRACTED]
 - [[AuthRoot]] - `contains` [EXTRACTED]
 - [[TAuthRoot]] - `contains` [EXTRACTED]
@@ -25,7 +25,7 @@ tags:
 - [[auth-base.tsx]] - `imports_from` [EXTRACTED]
 - [[auth-header.tsx]] - `imports_from` [EXTRACTED]
 - [[form-root.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts_5]] - `imports_from` [EXTRACTED]
+- [[index.ts_270]] - `imports_from` [EXTRACTED]
 - [[terms-and-conditions.tsx]] - `imports_from` [EXTRACTED]
 - [[use-instance.ts]] - `imports_from` [EXTRACTED]
 - [[useInstance()]] - `imports` [EXTRACTED]

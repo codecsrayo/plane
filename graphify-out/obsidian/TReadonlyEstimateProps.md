@@ -1,18 +1,18 @@
 ---
-source_file: "components/readonly/estimate.tsx"
+source_file: "web/core/components/readonly/estimate.tsx"
 type: "code"
-community: "Estimate Disable"
+community: "Label Dropdown"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Estimate_Disable
+  - community/Label_Dropdown
 ---
 
 # TReadonlyEstimateProps
 
 ## Connections
 
-- [[estimate.tsx_2]] - `contains` [EXTRACTED]
+- [[estimate.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Estimate_Disable
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

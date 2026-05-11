@@ -1,19 +1,19 @@
 ---
-source_file: "components/cycles/analytics-sidebar/sidebar-details.tsx"
+source_file: "web/core/components/cycles/analytics-sidebar/sidebar-details.tsx"
 type: "code"
-community: "Cycle Progress"
+community: "Cycle Active"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Progress
+  - community/Cycle_Active
 ---
 
 # CycleSidebarDetails
 
 ## Connections
 
-- [[root.tsx_53]] - `imports` [EXTRACTED]
+- [[root.tsx_94]] - `imports` [EXTRACTED]
 - [[sidebar-details.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Progress
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

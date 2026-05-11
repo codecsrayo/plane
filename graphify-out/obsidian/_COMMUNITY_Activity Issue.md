@@ -1,31 +1,36 @@
 ---
 type: community
-cohesion: 0.17
-members: 15
+cohesion: 0.13
+members: 20
 ---
 
 # Activity Issue
 
-**Cohesion:** 0.17 - loosely connected
-**Members:** 15 nodes
+**Cohesion:** 0.13 - loosely connected
+**Members:** 20 nodes
 
 ## Members
 
-- [[ActivitySortRoot]] - code - components/issues/issue-detail/issue-activity/sort-root.tsx
-- [[IssueActivity]] - code - components/issues/issue-detail/issue-activity/root.tsx
-- [[IssueActivityCommentRoot]] - code - components/issues/issue-detail/issue-activity/activity-comment-root.tsx
-- [[IssueActivityItem]] - code - components/issues/issue-detail/issue-activity/activity/activity-list.tsx
-- [[IssueActivityLoader()]] - code - components/issues/issue-detail/issue-activity/loader.tsx
-- [[TActivityOperations]] - code - components/issues/issue-detail/issue-activity/root.tsx
-- [[TActivitySortRoot]] - code - components/issues/issue-detail/issue-activity/sort-root.tsx
-- [[TIssueActivity]] - code - components/issues/issue-detail/issue-activity/root.tsx
-- [[TIssueActivityCommentRoot]] - code - components/issues/issue-detail/issue-activity/activity-comment-root.tsx
-- [[TIssueActivityItem]] - code - components/issues/issue-detail/issue-activity/activity/activity-list.tsx
-- [[activity-comment-root.tsx]] - code - components/issues/issue-detail/issue-activity/activity-comment-root.tsx
-- [[activity-list.tsx_2]] - code - components/issues/issue-detail/issue-activity/activity/activity-list.tsx
-- [[loader.tsx_4]] - code - components/issues/issue-detail/issue-activity/loader.tsx
-- [[root.tsx_31]] - code - components/issues/issue-detail/issue-activity/root.tsx
-- [[sort-root.tsx]] - code - components/issues/issue-detail/issue-activity/sort-root.tsx
+- [[CommentCard]] - code - web/core/components/comments/card/root.tsx
+- [[CommentQuickActions]] - code - web/core/components/comments/quick-actions.tsx
+- [[CommentsWrapper]] - code - web/core/components/comments/comments.tsx
+- [[IssueActivityCommentRoot]] - code - web/core/components/issues/issue-detail/issue-activity/activity-comment-root.tsx
+- [[IssueActivityItem]] - code - web/core/components/issues/issue-detail/issue-activity/activity/activity-list.tsx
+- [[IssueActivityLoader()]] - code - web/core/components/issues/issue-detail/issue-activity/loader.tsx
+- [[IssueActivityWorklog()]] - code - web/ce/components/issues/worklog/activity/root.tsx
+- [[TCommentCard_1]] - code - web/core/components/comments/card/root.tsx
+- [[TCommentCard]] - code - web/core/components/comments/quick-actions.tsx
+- [[TCommentsWrapper]] - code - web/core/components/comments/comments.tsx
+- [[TIssueActivityCommentRoot]] - code - web/core/components/issues/issue-detail/issue-activity/activity-comment-root.tsx
+- [[TIssueActivityItem]] - code - web/core/components/issues/issue-detail/issue-activity/activity/activity-list.tsx
+- [[TIssueActivityWorklog]] - code - web/ce/components/issues/worklog/activity/root.tsx
+- [[activity-comment-root.tsx]] - code - web/core/components/issues/issue-detail/issue-activity/activity-comment-root.tsx
+- [[activity-list.tsx_2]] - code - web/core/components/issues/issue-detail/issue-activity/activity/activity-list.tsx
+- [[comments.tsx]] - code - web/core/components/comments/comments.tsx
+- [[loader.tsx_7]] - code - web/core/components/issues/issue-detail/issue-activity/loader.tsx
+- [[quick-actions.tsx_4]] - code - web/core/components/comments/quick-actions.tsx
+- [[root.tsx_27]] - code - web/ce/components/issues/worklog/activity/root.tsx
+- [[root.tsx_128]] - code - web/core/components/comments/card/root.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -36,13 +41,14 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 7 edges to [[_COMMUNITY_Issue Activity]]
-- 4 edges to [[_COMMUNITY_Project Archives]]
-- 4 edges to [[_COMMUNITY_Comment Card]]
-- 1 edge to [[_COMMUNITY_Member Settings]]
+- 5 edges to [[_COMMUNITY_Issue Activity]]
+- 4 edges to [[_COMMUNITY_Workspace Issue]]
+- 1 edge to [[_COMMUNITY_Project Profile]]
 
 ## Top bridge nodes
 
-- [[root.tsx_31]] - degree 16, connects to 4 communities
-- [[activity-comment-root.tsx]] - degree 11, connects to 2 communities
+- [[activity-comment-root.tsx]] - degree 12, connects to 2 communities
+- [[comments.tsx]] - degree 6, connects to 1 community
 - [[activity-list.tsx_2]] - degree 6, connects to 1 community
+- [[quick-actions.tsx_4]] - degree 4, connects to 1 community
+- [[IssueActivityCommentRoot]] - degree 2, connects to 1 community

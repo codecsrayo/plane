@@ -1,12 +1,12 @@
 ---
-source_file: "components/cycles/form.tsx"
+source_file: "web/core/components/cycles/form.tsx"
 type: "code"
-community: "Module Forms"
+community: "Label Dropdown"
 location: "L41"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Forms
+  - community/Label_Dropdown
 ---
 
 # CycleForm()
@@ -14,7 +14,6 @@ tags:
 ## Connections
 
 - [[form.tsx_10]] - `contains` [EXTRACTED]
-- [[modal.tsx_9]] - `imports` [EXTRACTED]
-- [[useUser()]] - `calls` [EXTRACTED]
+- [[modal.tsx_14]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Forms
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

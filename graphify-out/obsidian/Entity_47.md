@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/draft_issue_labels.rs"
 type: "code"
-community: "Community 545"
+community: "Entity"
 location: "L74"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_545
+  - community/Entity
 ---
 
 # Entity
@@ -15,4 +15,4 @@ tags:
 
 - [[.to()_47]] - `method` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_545
+#graphify/code #graphify/EXTRACTED #community/Entity

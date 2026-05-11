@@ -1,18 +1,19 @@
 ---
-source_file: "components/onboarding/steps/profile/root.tsx"
+source_file: "admin/components/common/breadcrumb-link.tsx"
 type: "code"
-community: "Values Setup"
-location: "L30"
+community: "Settings Project"
+location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Values_Setup
+  - community/Settings_Project
 ---
 
 # Props
 
 ## Connections
 
-- [[root.tsx_68]] - `contains` [EXTRACTED]
+- [[breadcrumb-link.tsx]] - `contains` [EXTRACTED]
+- [[breadcrumb-link.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Values_Setup
+#graphify/code #graphify/EXTRACTED #community/Settings_Project

@@ -1,18 +1,18 @@
 ---
-source_file: "components/dropdowns/project/base.tsx"
+source_file: "web/core/components/gantt-chart/chart/header.tsx"
 type: "code"
-community: "Issue Properties"
-location: "L28"
+community: "Gantt Chart"
+location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Gantt_Chart
 ---
 
 # Props
 
 ## Connections
 
-- [[base.tsx_3]] - `contains` [EXTRACTED]
+- [[header.tsx_43]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Gantt_Chart

@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/editor/editor-body.tsx"
+source_file: "web/core/components/power-k/ui/pages/default.tsx"
 type: "code"
-community: "Issue Filters"
-location: "L58"
+community: "Power Shortcuts"
+location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters
+  - community/Power_Shortcuts
 ---
 
 # Props
 
 ## Connections
 
-- [[editor-body.tsx]] - `contains` [EXTRACTED]
+- [[default.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters
+#graphify/code #graphify/EXTRACTED #community/Power_Shortcuts

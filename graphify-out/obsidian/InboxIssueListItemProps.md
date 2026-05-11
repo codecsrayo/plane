@@ -1,12 +1,12 @@
 ---
-source_file: "components/inbox/sidebar/inbox-list-item.tsx"
+source_file: "web/core/components/inbox/sidebar/inbox-list-item.tsx"
 type: "code"
-community: "Inbox Filters"
+community: "Issue Inbox"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Inbox_Filters
+  - community/Issue_Inbox
 ---
 
 # InboxIssueListItemProps
@@ -15,4 +15,4 @@ tags:
 
 - [[inbox-list-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Inbox_Filters
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

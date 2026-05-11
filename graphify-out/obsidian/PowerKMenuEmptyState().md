@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/menus/empty-state.tsx"
+source_file: "web/core/components/power-k/menus/empty-state.tsx"
 type: "code"
-community: "File Icons Nav"
+community: "Menu Power"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/File_Icons_Nav
+  - community/Menu_Power
 ---
 
 # PowerKMenuEmptyState()
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[builder.tsx]] - `imports` [EXTRACTED]
-- [[empty-state.tsx_6]] - `contains` [EXTRACTED]
+- [[empty-state.tsx_7]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/File_Icons_Nav
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

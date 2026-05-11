@@ -1,14 +1,14 @@
 ---
 source_file: "api_rust/src/entities/db_githubprstatemapping.rs"
 type: "code"
-community: "Community 755"
+community: "Active Model"
 location: "L85"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_755
+  - community/Active_Model
 ---
 
 # ActiveModel
 
-#graphify/code #graphify/EXTRACTED #community/Community_755
+#graphify/code #graphify/EXTRACTED #community/Active_Model

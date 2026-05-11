@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/layout-quick-actions.tsx"
+source_file: "web/core/components/profile/overview/workload.tsx"
 type: "code"
-community: "Menu Quick"
-location: "L16"
+community: "Profile Priority"
+location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu_Quick
+  - community/Profile_Priority
 ---
 
 # Props
 
 ## Connections
 
-- [[layout-quick-actions.tsx]] - `contains` [EXTRACTED]
+- [[workload.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Menu_Quick
+#graphify/code #graphify/EXTRACTED #community/Profile_Priority

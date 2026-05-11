@@ -1,14 +1,14 @@
 ---
 source_file: "api_rust/src/entities/draft_issue_assignees.rs"
 type: "code"
-community: "Community 690"
+community: "Active Model"
 location: "L92"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_690
+  - community/Active_Model
 ---
 
 # ActiveModel
 
-#graphify/code #graphify/EXTRACTED #community/Community_690
+#graphify/code #graphify/EXTRACTED #community/Active_Model

@@ -1,19 +1,20 @@
 ---
-source_file: "components/analytics/empty-state.tsx"
+source_file: "web/core/components/power-k/menus/empty-state.tsx"
 type: "code"
-community: "Empty Analytics"
+community: "Menu Power"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_Analytics
+  - community/Menu_Power
 ---
 
 # empty-state.tsx
 
 ## Connections
 
-- [[AnalyticsEmptyState()]] - `contains` [EXTRACTED]
-- [[Props_424]] - `contains` [EXTRACTED]
+- [[PowerKMenuEmptyState()]] - `contains` [EXTRACTED]
+- [[Props_425]] - `contains` [EXTRACTED]
+- [[builder.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_Analytics
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

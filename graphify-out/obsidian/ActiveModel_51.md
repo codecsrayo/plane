@@ -1,14 +1,14 @@
 ---
 source_file: "api_rust/src/entities/auth_group.rs"
 type: "code"
-community: "Community 701"
+community: "Active Model"
 location: "L35"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_701
+  - community/Active_Model
 ---
 
 # ActiveModel
 
-#graphify/code #graphify/EXTRACTED #community/Community_701
+#graphify/code #graphify/EXTRACTED #community/Active_Model

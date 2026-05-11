@@ -1,18 +1,19 @@
 ---
-source_file: "components/power-k/ui/pages/preferences/start-of-week-menu.tsx"
+source_file: "space/components/issues/filters/applied-filters/label.tsx"
 type: "code"
-community: "Member Commands"
-location: "L15"
+community: "Label Applied"
+location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Commands
+  - community/Label_Applied
 ---
 
 # Props
 
 ## Connections
 
-- [[start-of-week-menu.tsx]] - `contains` [EXTRACTED]
+- [[label.tsx_2]] - `contains` [EXTRACTED]
+- [[label.tsx_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Commands
+#graphify/code #graphify/EXTRACTED #community/Label_Applied

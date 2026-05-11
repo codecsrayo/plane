@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/ui/pages/work-item-selection-page.tsx"
+source_file: "web/core/components/power-k/ui/pages/work-item-selection-page.tsx"
 type: "code"
-community: "Workspace Workspaceservice"
+community: "Work Selection"
 location: "L36"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Workspaceservice
+  - community/Work_Selection
 ---
 
 # WorkItemSelectionPage()
@@ -15,4 +15,4 @@ tags:
 
 - [[work-item-selection-page.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Workspaceservice
+#graphify/code #graphify/EXTRACTED #community/Work_Selection

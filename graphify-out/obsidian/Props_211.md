@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/columns/updated-on-column.tsx"
+source_file: "web/core/components/project/member-list-item.tsx"
 type: "code"
-community: "Updated Column"
-location: "L15"
+community: "Member Members"
+location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Updated_Column
+  - community/Member_Members
 ---
 
 # Props
 
 ## Connections
 
-- [[updated-on-column.tsx]] - `contains` [EXTRACTED]
+- [[member-list-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Updated_Column
+#graphify/code #graphify/EXTRACTED #community/Member_Members

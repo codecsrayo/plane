@@ -1,18 +1,19 @@
 ---
-source_file: "components/integration/github/project-issue-sync-modal.tsx"
+source_file: "web/core/components/integration/github/project-issue-sync-modal.tsx"
 type: "code"
-community: "Integration Sync"
+community: "Project Workspace"
 location: "L93"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Integration_Sync
+  - community/Project_Workspace
 ---
 
 # GithubProjectIssueSyncModal
 
 ## Connections
 
+- [[page.tsx_53]] - `imports` [EXTRACTED]
 - [[project-issue-sync-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Integration_Sync
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

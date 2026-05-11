@@ -1,19 +1,27 @@
 ---
-source_file: "api_rust/src/entities/api_tokens.rs"
+source_file: "api_rust/src/routes/api_tokens.rs"
 type: "code"
-community: "Community 374"
+community: "Issue Request"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_374
+  - community/Issue_Request
 ---
 
 # api_tokens.rs
 
 ## Connections
 
-- [[Model_55]] - `contains` [EXTRACTED]
-- [[Relation_55]] - `contains` [EXTRACTED]
+- [[ApiTokenFullResponse]] - `contains` [EXTRACTED]
+- [[ApiTokenReadResponse]] - `contains` [EXTRACTED]
+- [[CreateApiTokenRequest]] - `contains` [EXTRACTED]
+- [[UpdateApiTokenRequest]] - `contains` [EXTRACTED]
+- [[create_api_token()]] - `contains` [EXTRACTED]
+- [[delete_api_token()]] - `contains` [EXTRACTED]
+- [[get_api_token()]] - `contains` [EXTRACTED]
+- [[list_api_tokens()]] - `contains` [EXTRACTED]
+- [[rand_token()]] - `contains` [EXTRACTED]
+- [[update_api_token()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_374
+#graphify/code #graphify/EXTRACTED #community/Issue_Request

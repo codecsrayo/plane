@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/emoji-icon-picker/helper.tsx"
 type: "code"
-community: "Icons Lucide"
+community: "Emoji Icon"
 location: "L161"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Icons_Lucide
+  - community/Emoji_Icon
 ---
 
 # getEmojiSize()
@@ -17,4 +17,4 @@ tags:
 - [[helper.tsx_15]] - `contains` [EXTRACTED]
 - [[logo.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Icons_Lucide
+#graphify/code #graphify/EXTRACTED #community/Emoji_Icon

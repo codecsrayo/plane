@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/page/extended.ts"
 type: "code"
-community: "Favorites Pages"
+community: "Filters Sort"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Favorites_Pages
+  - community/Filters_Sort
 ---
 
 # extended.ts
@@ -16,4 +16,4 @@ tags:
 - [[TPageExtended]] - `contains` [EXTRACTED]
 - [[core.ts_4]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Favorites_Pages
+#graphify/code #graphify/EXTRACTED #community/Filters_Sort

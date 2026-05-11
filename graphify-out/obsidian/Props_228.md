@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/filters/header/display-filters/display-properties.tsx"
+source_file: "web/core/components/integration/confirm-action-modal.tsx"
 type: "code"
-community: "Display Properties"
-location: "L18"
+community: "Project Workspace"
+location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Display_Properties
+  - community/Project_Workspace
 ---
 
 # Props
 
 ## Connections
 
-- [[display-properties.tsx]] - `contains` [EXTRACTED]
+- [[confirm-action-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Display_Properties
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

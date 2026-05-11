@@ -1,14 +1,14 @@
 ---
 source_file: "ui/src/color-picker/index.ts"
 type: "code"
-community: "Community 336"
+community: "Community 1314"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_336
+  - community/Community_1314
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_336
+#graphify/code #graphify/EXTRACTED #community/Community_1314

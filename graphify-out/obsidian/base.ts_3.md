@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/instance/base.ts"
 type: "code"
-community: "Instance Config"
+community: "User Instance"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Instance_Config
+  - community/User_Instance
 ---
 
 # base.ts
@@ -29,4 +29,4 @@ tags:
 - [[index.ts_102]] - `imports_from` [EXTRACTED]
 - [[users.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Instance_Config
+#graphify/code #graphify/EXTRACTED #community/User_Instance

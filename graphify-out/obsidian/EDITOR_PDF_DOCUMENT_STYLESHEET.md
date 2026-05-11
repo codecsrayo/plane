@@ -1,12 +1,12 @@
 ---
-source_file: "constants/editor.ts"
+source_file: "web/core/constants/editor.ts"
 type: "code"
-community: "Editor Items"
+community: "Toolbar Items"
 location: "L359"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Items
+  - community/Toolbar_Items
 ---
 
 # EDITOR_PDF_DOCUMENT_STYLESHEET
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[document.tsx]] - `imports` [EXTRACTED]
-- [[editor.ts]] - `contains` [EXTRACTED]
+- [[editor.ts_20]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Items
+#graphify/code #graphify/EXTRACTED #community/Toolbar_Items

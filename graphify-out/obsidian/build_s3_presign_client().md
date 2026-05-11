@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/utils/s3.rs"
 type: "code"
-community: "Community 181"
+community: "Asset Issue"
 location: "L69"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_181
+  - community/Asset_Issue
 ---
 
 # build_s3_presign_client()
@@ -22,4 +22,4 @@ tags:
 - [[run_export()]] - `calls` [INFERRED]
 - [[s3.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_181
+#graphify/code #graphify/INFERRED #community/Asset_Issue

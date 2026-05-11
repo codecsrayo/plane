@@ -1,21 +1,23 @@
 ---
 source_file: "api_rust/src/routes/search.rs"
 type: "code"
-community: "Community 207"
+community: "Analytics Advance"
 location: "L351"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_207
+  - graphify/INFERRED
+  - community/Analytics_Advance
 ---
 
 # entity_search()
 
 ## Connections
 
+- [[.json()]] - `calls` [INFERRED]
 - [[.new()]] - `calls` [INFERRED]
 - [[array]] - `calls` [INFERRED]
 - [[fetch_user_mentions()]] - `calls` [EXTRACTED]
+- [[now]] - `calls` [INFERRED]
 - [[search.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_207
+#graphify/code #graphify/INFERRED #community/Analytics_Advance

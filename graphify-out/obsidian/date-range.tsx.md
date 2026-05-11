@@ -1,12 +1,12 @@
 ---
-source_file: "components/dropdowns/date-range.tsx"
+source_file: "web/core/components/dropdowns/date-range.tsx"
 type: "code"
-community: "Module Forms"
+community: "Label Dropdown"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Forms
+  - community/Label_Dropdown
 ---
 
 # date-range.tsx
@@ -14,23 +14,23 @@ tags:
 ## Connections
 
 - [[DateRangeDropdown]] - `contains` [EXTRACTED]
-- [[DropdownButton()]] - `imports` [EXTRACTED]
+- [[DropdownButton()_1]] - `imports` [EXTRACTED]
 - [[MergedDateDisplay]] - `imports` [EXTRACTED]
-- [[Props_120]] - `contains` [EXTRACTED]
+- [[Props_195]] - `contains` [EXTRACTED]
 - [[all-properties.tsx]] - `imports_from` [EXTRACTED]
 - [[buttons.tsx]] - `imports_from` [EXTRACTED]
 - [[cycle-list-item-action.tsx]] - `imports_from` [EXTRACTED]
 - [[form.tsx_4]] - `imports_from` [EXTRACTED]
 - [[form.tsx_10]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
 - [[merged-date.tsx]] - `imports_from` [EXTRACTED]
 - [[module-card-item.tsx]] - `imports_from` [EXTRACTED]
 - [[module-list-item-action.tsx]] - `imports_from` [EXTRACTED]
 - [[properties.tsx]] - `imports_from` [EXTRACTED]
 - [[range.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_12]] - `imports_from` [EXTRACTED]
+- [[root.tsx_53]] - `imports_from` [EXTRACTED]
 - [[sidebar-header.tsx]] - `imports_from` [EXTRACTED]
 - [[use-dropdown.ts]] - `imports_from` [EXTRACTED]
 - [[useDropdown()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Forms
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

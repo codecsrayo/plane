@@ -1,18 +1,18 @@
 ---
-source_file: "components/analytics/analytics-section-wrapper.tsx"
+source_file: "web/core/components/power-k/menus/empty-state.tsx"
 type: "code"
-community: "Analytics Project"
+community: "Menu Power"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Analytics_Project
+  - community/Menu_Power
 ---
 
 # Props
 
 ## Connections
 
-- [[analytics-section-wrapper.tsx]] - `contains` [EXTRACTED]
+- [[empty-state.tsx_7]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Analytics_Project
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

@@ -1,12 +1,12 @@
 ---
-source_file: "store/issue/helpers/base-issues.store.ts"
+source_file: "space/store/helpers/base-issues.store.ts"
 type: "code"
-community: "Spreadsheet Filters"
-location: "L131"
+community: "Issue Group"
+location: "L59"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Filters
+  - community/Issue_Group
 ---
 
 # ISSUE_FILTER_DEFAULT_DATA
@@ -14,7 +14,8 @@ tags:
 ## Connections
 
 - [[base-issues.store.ts]] - `contains` [EXTRACTED]
+- [[base-issues.store.ts_1]] - `contains` [EXTRACTED]
 - [[use-group-dragndrop.ts]] - `imports` [EXTRACTED]
-- [[utils.tsx_1]] - `imports` [EXTRACTED]
+- [[utils.tsx_2]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Filters
+#graphify/code #graphify/EXTRACTED #community/Issue_Group

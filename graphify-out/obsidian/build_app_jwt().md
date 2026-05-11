@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/utils/github_app.rs"
 type: "code"
-community: "Community 107"
+community: "Session Presigned"
 location: "L25"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_107
+  - graphify/INFERRED
+  - community/Session_Presigned
 ---
 
 # build_app_jwt()
@@ -17,5 +17,6 @@ tags:
 - [[get_installation_access_token()]] - `calls` [EXTRACTED]
 - [[get_instance_config()]] - `calls` [INFERRED]
 - [[github_app.rs]] - `contains` [EXTRACTED]
+- [[now]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_107
+#graphify/code #graphify/INFERRED #community/Session_Presigned

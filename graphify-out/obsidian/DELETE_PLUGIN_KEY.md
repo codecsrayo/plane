@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/plugins/file/delete.ts"
 type: "code"
-community: "Title Node"
+community: "Assets Node"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Title_Node
+  - community/Assets_Node
 ---
 
 # DELETE_PLUGIN_KEY
@@ -15,4 +15,4 @@ tags:
 
 - [[delete.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Title_Node
+#graphify/code #graphify/EXTRACTED #community/Assets_Node

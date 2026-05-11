@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/notifications.rs"
 type: "code"
-community: "Community 91"
+community: "User Github"
 location: "L120"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_91
+  - community/User_Github
 ---
 
 # enrich_notifications()
@@ -18,10 +18,10 @@ tags:
 - [[archive_notification()]] - `calls` [EXTRACTED]
 - [[get_notification()]] - `calls` [EXTRACTED]
 - [[list_notifications()]] - `calls` [EXTRACTED]
-- [[mark_read()]] - `calls` [EXTRACTED]
-- [[mark_unread()]] - `calls` [EXTRACTED]
-- [[notifications.rs]] - `contains` [EXTRACTED]
+- [[mark_read()_1]] - `calls` [EXTRACTED]
+- [[mark_unread()_1]] - `calls` [EXTRACTED]
+- [[notifications.rs_1]] - `contains` [EXTRACTED]
 - [[unarchive_notification()]] - `calls` [EXTRACTED]
 - [[update_notification()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_91
+#graphify/code #graphify/EXTRACTED #community/User_Github

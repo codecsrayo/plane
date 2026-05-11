@@ -1,12 +1,12 @@
 ---
-source_file: "components/editor/rich-text/description-input/loader.tsx"
+source_file: "web/core/components/editor/rich-text/description-input/loader.tsx"
 type: "code"
-community: "Description Input"
+community: "Issue Inbox"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Description_Input
+  - community/Issue_Inbox
 ---
 
 # DescriptionInputLoader()
@@ -14,7 +14,7 @@ tags:
 ## Connections
 
 - [[issue-root.tsx]] - `imports` [EXTRACTED]
-- [[loader.tsx_2]] - `contains` [EXTRACTED]
-- [[root.tsx_10]] - `imports` [EXTRACTED]
+- [[loader.tsx_5]] - `contains` [EXTRACTED]
+- [[root.tsx_51]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Description_Input
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

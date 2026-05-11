@@ -1,5 +1,5 @@
 ---
-source_file: "components/estimates/points/preview.tsx"
+source_file: "web/core/components/estimates/points/preview.tsx"
 type: "code"
 community: "Estimate Point"
 location: "L21"

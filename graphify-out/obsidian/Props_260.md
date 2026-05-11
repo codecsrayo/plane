@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/attachment/attachment-upload.tsx"
+source_file: "web/core/components/issues/preview-card/root.tsx"
 type: "code"
-community: "Issue Attachments"
-location: "L17"
+community: "Issue Work"
+location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Attachments
+  - community/Issue_Work
 ---
 
 # Props
 
 ## Connections
 
-- [[attachment-upload.tsx]] - `contains` [EXTRACTED]
+- [[root.tsx_68]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Attachments
+#graphify/code #graphify/EXTRACTED #community/Issue_Work

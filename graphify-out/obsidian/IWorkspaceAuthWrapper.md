@@ -1,12 +1,12 @@
 ---
-source_file: "layouts/auth-layout/workspace-wrapper.tsx"
+source_file: "web/core/layouts/auth-layout/workspace-wrapper.tsx"
 type: "code"
-community: "Auth Wrappers"
+community: "Project Workspace"
 location: "L44"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Wrappers
+  - community/Project_Workspace
 ---
 
 # IWorkspaceAuthWrapper
@@ -15,4 +15,4 @@ tags:
 
 - [[workspace-wrapper.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Wrappers
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

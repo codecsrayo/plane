@@ -1,16 +1,17 @@
 ---
 type: community
-cohesion: 0.27
-members: 17
+cohesion: 0.25
+members: 18
 ---
 
 # Next Prev
 
-**Cohesion:** 0.27 - loosely connected
-**Members:** 17 nodes
+**Cohesion:** 0.25 - loosely connected
+**Members:** 18 nodes
 
 ## Members
 
+- [[ListKeymap()]] - code - editor/src/core/extensions/custom-list-keymap/list-keymap.ts
 - [[ListKeymapOptions]] - code - editor/src/core/extensions/custom-list-keymap/list-keymap.ts
 - [[findListItemPos()]] - code - editor/src/core/extensions/custom-list-keymap/list-helpers.ts
 - [[getNextListDepth()]] - code - editor/src/core/extensions/custom-list-keymap/list-helpers.ts
@@ -38,10 +39,11 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 4 edges to [[_COMMUNITY_Editor Commands]]
-- 1 edge to [[_COMMUNITY_Core Extensions]]
+- 4 edges to [[_COMMUNITY_Table Node]]
+- 1 edge to [[_COMMUNITY_Unique Core]]
 
 ## Top bridge nodes
 
-- [[list-keymap.ts]] - degree 7, connects to 2 communities
 - [[list-helpers.ts]] - degree 17, connects to 1 community
+- [[list-keymap.ts]] - degree 7, connects to 1 community
+- [[ListKeymap()]] - degree 2, connects to 1 community

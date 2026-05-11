@@ -1,5 +1,5 @@
 ---
-source_file: "components/core/filters/date-filter-select.tsx"
+source_file: "web/core/components/core/filters/date-filter-select.tsx"
 type: "code"
 community: "Date Start"
 location: "L1"
@@ -15,7 +15,7 @@ tags:
 
 - [[DateFilterSelect()]] - `contains` [EXTRACTED]
 - [[DueDate]] - `contains` [EXTRACTED]
-- [[Props_452]] - `contains` [EXTRACTED]
+- [[Props_526]] - `contains` [EXTRACTED]
 - [[date-filter-modal.tsx]] - `imports_from` [EXTRACTED]
 - [[dueDateRange]] - `contains` [EXTRACTED]
 

@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-detail/main-content.tsx"
+source_file: "web/core/components/issues/issue-detail/main-content.tsx"
 type: "code"
-community: "Issue Content"
+community: "Label Dropdown"
 location: "L51"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Content
+  - community/Label_Dropdown
 ---
 
 # IssueMainContent
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[main-content.tsx_1]] - `contains` [EXTRACTED]
-- [[root.tsx_30]] - `imports` [EXTRACTED]
+- [[root.tsx_71]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Content
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/workspace_extras.rs"
 type: "code"
-community: "Workspace & Issues Rust API"
+community: "Project Response"
 location: "L1674"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace__Issues_Rust_API
+  - community/Project_Response
 ---
 
 # hydrate_draft_issue_responses()
@@ -16,6 +16,6 @@ tags:
 - [[.new()]] - `calls` [INFERRED]
 - [[hydrate_draft_issue_response()]] - `calls` [EXTRACTED]
 - [[list_draft_issues()]] - `calls` [EXTRACTED]
-- [[workspace_extras.rs]] - `contains` [EXTRACTED]
+- [[workspace_extras.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace\_\_Issues_Rust_API
+#graphify/code #graphify/EXTRACTED #community/Project_Response

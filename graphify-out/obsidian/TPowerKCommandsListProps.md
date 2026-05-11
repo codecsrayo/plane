@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/ui/modal/commands-list.tsx"
+source_file: "web/core/components/power-k/ui/modal/commands-list.tsx"
 type: "code"
-community: "Power Search"
+community: "Power Shortcuts"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Power_Search
+  - community/Power_Shortcuts
 ---
 
 # TPowerKCommandsListProps
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[commands-list.tsx]] - `contains` [EXTRACTED]
-- [[wrapper.tsx]] - `imports` [EXTRACTED]
+- [[wrapper.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Power_Search
+#graphify/code #graphify/EXTRACTED #community/Power_Shortcuts

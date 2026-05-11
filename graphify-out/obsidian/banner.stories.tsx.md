@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/banner/banner.stories.tsx"
 type: "code"
-community: "Banner Error"
+community: "Error Info"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Banner_Error
+  - community/Error_Info
 ---
 
 # banner.stories.tsx
@@ -27,4 +27,4 @@ tags:
 - [[WarningIcon()]] - `contains` [EXTRACTED]
 - [[banner.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Banner_Error
+#graphify/code #graphify/EXTRACTED #community/Error_Info

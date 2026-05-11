@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/helpers.rs"
 type: "code"
-community: "Community 318"
+community: "Project Response"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_318
+  - community/Project_Response
 ---
 
 # helpers.rs
@@ -17,4 +17,4 @@ tags:
 - [[require_workspace_member()_1]] - `contains` [EXTRACTED]
 - [[workspace_by_slug()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_318
+#graphify/code #graphify/EXTRACTED #community/Project_Response

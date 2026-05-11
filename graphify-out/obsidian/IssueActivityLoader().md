@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-detail/issue-activity/loader.tsx"
+source_file: "web/core/components/issues/issue-detail/issue-activity/loader.tsx"
 type: "code"
 community: "Activity Issue"
 location: "L10"
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[activity-comment-root.tsx]] - `imports` [EXTRACTED]
-- [[loader.tsx_4]] - `contains` [EXTRACTED]
+- [[loader.tsx_7]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Activity_Issue

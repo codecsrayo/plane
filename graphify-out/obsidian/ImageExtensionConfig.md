@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/image/extension-config.tsx"
 type: "code"
-community: "Extension Storage"
+community: "Image Custom"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Extension_Storage
+  - community/Image_Custom
 ---
 
 # ImageExtensionConfig
@@ -16,4 +16,4 @@ tags:
 - [[extension-config.tsx]] - `contains` [EXTRACTED]
 - [[extension.tsx_4]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Extension_Storage
+#graphify/code #graphify/EXTRACTED #community/Image_Custom

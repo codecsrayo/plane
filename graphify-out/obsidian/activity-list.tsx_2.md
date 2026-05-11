@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-detail/issue-activity/activity/activity-list.tsx"
+source_file: "web/core/components/issues/issue-detail/issue-activity/activity/activity-list.tsx"
 type: "code"
 community: "Activity Issue"
 location: "L1"
@@ -16,7 +16,7 @@ tags:
 - [[IssueActivityItem]] - `contains` [EXTRACTED]
 - [[TIssueActivityItem]] - `contains` [EXTRACTED]
 - [[activity-comment-root.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts_104]] - `imports_from` [EXTRACTED]
+- [[index.ts_369]] - `imports_from` [EXTRACTED]
 - [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 

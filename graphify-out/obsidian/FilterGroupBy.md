@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/filters/header/display-filters/group-by.tsx"
+source_file: "web/core/components/issues/issue-layouts/filters/header/display-filters/group-by.tsx"
 type: "code"
-community: "Filter Selection UI"
+community: "Group Kanban"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Selection_UI
+  - community/Group_Kanban
 ---
 
 # FilterGroupBy
@@ -15,4 +15,4 @@ tags:
 
 - [[group-by.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Selection_UI
+#graphify/code #graphify/EXTRACTED #community/Group_Kanban

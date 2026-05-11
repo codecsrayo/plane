@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-detail-widgets/attachments/title.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/issue-row.tsx"
 type: "code"
-community: "Issue Attachments"
-location: "L18"
+community: "Issue Activity"
+location: "L41"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Attachments
+  - community/Issue_Activity
 ---
 
 # Props
 
 ## Connections
 
-- [[title.tsx]] - `contains` [EXTRACTED]
+- [[issue-row.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Attachments
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

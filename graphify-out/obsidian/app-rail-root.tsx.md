@@ -1,5 +1,5 @@
 ---
-source_file: "components/navigation/app-rail-root.tsx"
+source_file: "web/core/components/navigation/app-rail-root.tsx"
 type: "code"
 community: "Sidebar Rail"
 location: "L1"
@@ -18,7 +18,7 @@ tags:
 - [[AppSidebarItemsRoot]] - `imports` [EXTRACTED]
 - [[context.tsx]] - `imports_from` [EXTRACTED]
 - [[items-root.tsx]] - `imports_from` [EXTRACTED]
-- [[sidebar-item.tsx]] - `imports_from` [EXTRACTED]
+- [[sidebar-item.tsx_1]] - `imports_from` [EXTRACTED]
 - [[use-navigation-preferences.ts]] - `imports_from` [EXTRACTED]
 - [[useAppRailPreferences()]] - `imports` [EXTRACTED]
 - [[useAppRailVisibility()]] - `imports` [EXTRACTED]

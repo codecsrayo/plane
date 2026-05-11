@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/ui/modal/command-item.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/root.tsx"
 type: "code"
-community: "Member Commands"
-location: "L16"
+community: "Issue Widget"
+location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Commands
+  - community/Issue_Widget
 ---
 
 # Props
 
 ## Connections
 
-- [[command-item.tsx]] - `contains` [EXTRACTED]
+- [[root.tsx_78]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Commands
+#graphify/code #graphify/EXTRACTED #community/Issue_Widget

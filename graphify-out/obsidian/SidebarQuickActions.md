@@ -1,18 +1,19 @@
 ---
-source_file: "components/workspace/sidebar/quick-actions.tsx"
+source_file: "web/core/components/workspace/sidebar/quick-actions.tsx"
 type: "code"
-community: "Project Archives"
+community: "Sidebar Resizable"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Archives
+  - community/Sidebar_Resizable
 ---
 
 # SidebarQuickActions
 
 ## Connections
 
+- [[_sidebar.tsx]] - `imports` [EXTRACTED]
 - [[quick-actions.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Archives
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Resizable

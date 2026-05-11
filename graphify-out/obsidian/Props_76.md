@@ -1,18 +1,18 @@
 ---
-source_file: "components/modules/gantt-chart/blocks.tsx"
+source_file: "web/ce/components/automations/list/wrapper.tsx"
 type: "code"
-community: "Spreadsheet Filters"
-location: "L23"
+community: "Automations Wrapper"
+location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Filters
+  - community/Automations_Wrapper
 ---
 
 # Props
 
 ## Connections
 
-- [[blocks.tsx]] - `contains` [EXTRACTED]
+- [[wrapper.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Filters
+#graphify/code #graphify/EXTRACTED #community/Automations_Wrapper

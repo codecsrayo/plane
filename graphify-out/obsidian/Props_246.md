@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/filters/applied-filters/priority.tsx"
+source_file: "web/core/components/exporter/single-export.tsx"
 type: "code"
-community: "Priority Applied"
-location: "L14"
+community: "Rowdata Single"
+location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Priority_Applied
+  - community/Rowdata_Single
 ---
 
 # Props
 
 ## Connections
 
-- [[priority.tsx_2]] - `contains` [EXTRACTED]
+- [[single-export.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Priority_Applied
+#graphify/code #graphify/EXTRACTED #community/Rowdata_Single

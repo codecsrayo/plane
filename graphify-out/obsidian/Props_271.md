@@ -1,8 +1,8 @@
 ---
-source_file: "components/issues/issue-detail-widgets/relations/quick-action-button.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/issue-column.tsx"
 type: "code"
 community: "Issue Activity"
-location: "L21"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
@@ -13,6 +13,6 @@ tags:
 
 ## Connections
 
-- [[quick-action-button.tsx_1]] - `contains` [EXTRACTED]
+- [[issue-column.tsx]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Issue_Activity

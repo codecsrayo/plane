@@ -1,19 +1,19 @@
 ---
-source_file: "components/project/search-projects.tsx"
+source_file: "web/core/components/project/search-projects.tsx"
 type: "code"
-community: "Auth UI"
+community: "Workspace Issue"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_UI
+  - community/Workspace_Issue
 ---
 
 # ProjectSearch
 
 ## Connections
 
-- [[header.tsx_6]] - `imports` [EXTRACTED]
+- [[header.tsx_48]] - `imports` [EXTRACTED]
 - [[search-projects.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_UI
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

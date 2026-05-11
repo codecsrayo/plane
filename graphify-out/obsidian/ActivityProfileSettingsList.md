@@ -1,12 +1,12 @@
 ---
-source_file: "components/settings/profile/content/pages/activity/activity-list.tsx"
+source_file: "web/core/components/settings/profile/content/pages/activity/activity-list.tsx"
 type: "code"
-community: "Empty State"
+community: "Settings Profile"
 location: "L35"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_State
+  - community/Settings_Profile
 ---
 
 # ActivityProfileSettingsList
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[activity-list.tsx_1]] - `contains` [EXTRACTED]
-- [[root.tsx_20]] - `imports` [EXTRACTED]
+- [[root.tsx_61]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_State
+#graphify/code #graphify/EXTRACTED #community/Settings_Profile

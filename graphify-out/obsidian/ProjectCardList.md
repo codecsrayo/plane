@@ -1,12 +1,12 @@
 ---
-source_file: "components/project/card-list.tsx"
+source_file: "web/core/components/project/card-list.tsx"
 type: "code"
-community: "Auth UI"
+community: "Workspace Issue"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_UI
+  - community/Workspace_Issue
 ---
 
 # ProjectCardList
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[card-list.tsx]] - `contains` [EXTRACTED]
-- [[root.tsx_24]] - `imports` [EXTRACTED]
+- [[root.tsx_65]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_UI
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

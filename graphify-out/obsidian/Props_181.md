@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/delete-issue-modal.tsx"
+source_file: "web/core/components/settings/heading.tsx"
 type: "code"
-community: "Project Archives"
-location: "L24"
+community: "Project Settings"
+location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Archives
+  - community/Project_Settings
 ---
 
 # Props
 
 ## Connections
 
-- [[delete-issue-modal.tsx]] - `contains` [EXTRACTED]
+- [[heading.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Archives
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

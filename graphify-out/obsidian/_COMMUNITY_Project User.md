@@ -1,33 +1,27 @@
 ---
 type: community
-cohesion: 0.12
-members: 17
+cohesion: 0.33
+members: 11
 ---
 
 # Project User
 
-**Cohesion:** 0.12 - loosely connected
-**Members:** 17 nodes
+**Cohesion:** 0.33 - loosely connected
+**Members:** 11 nodes
 
 ## Members
 
-- [[.addProjectToFavorites()]] - code - services/project/project.service.ts
-- [[.checkProjectIdentifierAvailability()]] - code - services/project/project.service.ts
-- [[.constructor()_119]] - code - services/project/project.service.ts
-- [[.createProject()]] - code - services/project/project.service.ts
-- [[.deleteProject()]] - code - services/project/project.service.ts
-- [[.getProject()]] - code - services/project/project.service.ts
-- [[.getProjectAnalyticsCount()]] - code - services/project/project.service.ts
-- [[.getProjectUserProperties()]] - code - services/project/project.service.ts
-- [[.getProjects()]] - code - services/project/project.service.ts
-- [[.getProjectsLite()]] - code - services/project/project.service.ts
-- [[.getUserProjectFavorites()]] - code - services/project/project.service.ts
-- [[.projectIssuesSearch()]] - code - services/project/project.service.ts
-- [[.removeProjectFromFavorites()]] - code - services/project/project.service.ts
-- [[.updateProject()]] - code - services/project/project.service.ts
-- [[.updateProjectUserProperties()]] - code - services/project/project.service.ts
-- [[ProjectService]] - code - services/project/project.service.ts
-- [[project.service.ts]] - code - services/project/project.service.ts
+- [[.from()_27]] - code - api_rust/src/routes/project_user_properties.rs
+- [[ProjectUserPropertyResponse]] - code - api_rust/src/routes/project_user_properties.rs
+- [[UpdateProjectUserPropertyRequest]] - code - api_rust/src/routes/project_user_properties.rs
+- [[default_display_filters()_1]] - code - api_rust/src/routes/project_user_properties.rs
+- [[default_display_properties()_1]] - code - api_rust/src/routes/project_user_properties.rs
+- [[default_filters()_1]] - code - api_rust/src/routes/project_user_properties.rs
+- [[default_preferences()]] - code - api_rust/src/routes/project_user_properties.rs
+- [[get_or_create()]] - code - api_rust/src/routes/project_user_properties.rs
+- [[get_project_user_properties()]] - code - api_rust/src/routes/project_user_properties.rs
+- [[project_user_properties.rs]] - code - api_rust/src/routes/project_user_properties.rs
+- [[update_project_user_properties()]] - code - api_rust/src/routes/project_user_properties.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -38,10 +32,12 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 2 edges to [[_COMMUNITY_API Services]]
-- 1 edge to [[_COMMUNITY_Switcher Project]]
+- 2 edges to [[_COMMUNITY_Issue Request]]
+- 2 edges to [[_COMMUNITY_Asset Issue]]
+- 2 edges to [[_COMMUNITY_User Github]]
 
 ## Top bridge nodes
 
-- [[project.service.ts]] - degree 3, connects to 1 community
-- [[.getProjectUserProperties()]] - degree 2, connects to 1 community
+- [[update_project_user_properties()]] - degree 6, connects to 3 communities
+- [[get_or_create()]] - degree 9, connects to 2 communities
+- [[get_project_user_properties()]] - degree 4, connects to 1 community

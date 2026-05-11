@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/types/editor.ts"
 type: "code"
-community: "Callout Extension"
+community: "Items Extended"
 location: "L71"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Callout_Extension
+  - community/Items_Extended
 ---
 
 # TCommandExtraProps
@@ -16,4 +16,4 @@ tags:
 - [[common.ts]] - `imports` [EXTRACTED]
 - [[editor.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Callout_Extension
+#graphify/code #graphify/EXTRACTED #community/Items_Extended

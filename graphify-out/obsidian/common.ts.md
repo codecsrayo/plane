@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/constants/common.ts"
 type: "code"
-community: "Callout Extension"
+community: "Items Extended"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Callout_Extension
+  - community/Items_Extended
 ---
 
 # common.ts
@@ -35,4 +35,4 @@ tags:
 - [[editor.ts]] - `imports_from` [EXTRACTED]
 - [[root.tsx_3]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Callout_Extension
+#graphify/code #graphify/EXTRACTED #community/Items_Extended

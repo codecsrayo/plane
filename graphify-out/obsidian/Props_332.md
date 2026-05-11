@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/ui/pages/open-entity/projects-menu.tsx"
+source_file: "web/core/components/issues/issue-detail/issue-detail-quick-actions.tsx"
 type: "code"
-community: "File Icons Nav"
-location: "L16"
+community: "Project Settings"
+location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/File_Icons_Nav
+  - community/Project_Settings
 ---
 
 # Props
 
 ## Connections
 
-- [[projects-menu.tsx]] - `contains` [EXTRACTED]
+- [[issue-detail-quick-actions.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/File_Icons_Nav
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

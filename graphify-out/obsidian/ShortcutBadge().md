@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/ui/modal/command-item-shortcut-badge.tsx"
+source_file: "web/core/components/power-k/ui/modal/command-item-shortcut-badge.tsx"
 type: "code"
-community: "Context Power"
+community: "Menu Power"
 location: "L70"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Context_Power
+  - community/Menu_Power
 ---
 
 # ShortcutBadge()
@@ -18,4 +18,4 @@ tags:
 - [[formatShortcutForDisplay()]] - `calls` [EXTRACTED]
 - [[shortcut.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Context_Power
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

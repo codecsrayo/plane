@@ -1,12 +1,12 @@
 ---
-source_file: "components/project/filters.tsx"
+source_file: "web/core/components/project/filters.tsx"
 type: "code"
-community: "Auth UI"
+community: "Member Members"
 location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_UI
+  - community/Member_Members
 ---
 
 # HeaderFilters
@@ -15,4 +15,4 @@ tags:
 
 - [[filters.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_UI
+#graphify/code #graphify/EXTRACTED #community/Member_Members

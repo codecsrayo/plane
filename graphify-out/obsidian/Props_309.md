@@ -1,18 +1,18 @@
 ---
-source_file: "components/cycles/list/cycles-list-map.tsx"
+source_file: "web/core/components/issues/issue-layouts/filters/header/filters/state-group.tsx"
 type: "code"
-community: "Cycle Cycles"
-location: "L10"
+community: "Member Members"
+location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Cycles
+  - community/Member_Members
 ---
 
 # Props
 
 ## Connections
 
-- [[cycles-list-map.tsx]] - `contains` [EXTRACTED]
+- [[state-group.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Cycles
+#graphify/code #graphify/EXTRACTED #community/Member_Members

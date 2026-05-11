@@ -1,18 +1,18 @@
 ---
-source_file: "components/stickies/sticky/inputs.tsx"
+source_file: "web/core/components/editor/sticky-editor/color-palette.tsx"
 type: "code"
-community: "Workspace Invites"
-location: "L22"
+community: "Stickies Sticky"
+location: "L56"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Invites
+  - community/Stickies_Sticky
 ---
 
 # TProps
 
 ## Connections
 
-- [[inputs.tsx]] - `contains` [EXTRACTED]
+- [[color-palette.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Invites
+#graphify/code #graphify/EXTRACTED #community/Stickies_Sticky

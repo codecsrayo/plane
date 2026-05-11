@@ -1,18 +1,18 @@
 ---
-source_file: "components/analytics/work-items/utils.ts"
+source_file: "web/core/components/analytics/work-items/utils.ts"
 type: "code"
-community: "Chart Generate"
+community: "Table Chart"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Chart_Generate
+  - community/Table_Chart
 ---
 
 # ParamsProps
 
 ## Connections
 
-- [[utils.ts_6]] - `contains` [EXTRACTED]
+- [[utils.ts_18]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Chart_Generate
+#graphify/code #graphify/EXTRACTED #community/Table_Chart

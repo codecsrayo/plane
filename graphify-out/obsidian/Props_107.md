@@ -1,18 +1,18 @@
 ---
-source_file: "components/settings/page-header.tsx"
+source_file: "web/core/components/workspace/sidebar/favorites/favorite-items/common/favorite-item-wrapper.tsx"
 type: "code"
-community: "Settings"
-location: "L9"
+community: "Favorite Wrapper"
+location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Settings
+  - community/Favorite_Wrapper
 ---
 
 # Props
 
 ## Connections
 
-- [[page-header.tsx]] - `contains` [EXTRACTED]
+- [[favorite-item-wrapper.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Settings
+#graphify/code #graphify/EXTRACTED #community/Favorite_Wrapper

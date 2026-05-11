@@ -1,12 +1,12 @@
 ---
-source_file: "components/exporter/guide.tsx"
+source_file: "web/core/components/exporter/guide.tsx"
 type: "code"
-community: "Guide Prev"
+community: "Project Settings"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Guide_Prev
+  - community/Project_Settings
 ---
 
 # ExportGuide
@@ -14,5 +14,6 @@ tags:
 ## Connections
 
 - [[guide.tsx]] - `contains` [EXTRACTED]
+- [[page.tsx_49]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Guide_Prev
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

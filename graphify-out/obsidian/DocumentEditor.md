@@ -1,19 +1,22 @@
 ---
-source_file: "components/editor/document/editor.tsx"
+source_file: "web/core/components/editor/document/editor.tsx"
 type: "code"
-community: "Page Editor"
+community: "Document Version"
 location: "L42"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Page_Editor
+  - community/Document_Version
 ---
 
 # DocumentEditor
 
 ## Connections
 
-- [[editor.tsx_2]] - `contains` [EXTRACTED]
-- [[editor.tsx_4]] - `imports` [EXTRACTED]
+- [[editor.tsx_1]] - `contains` [EXTRACTED]
+- [[editor.tsx_5]] - `contains` [EXTRACTED]
+- [[editor.tsx_7]] - `imports` [EXTRACTED]
+- [[getEditorClassNames()]] - `calls` [EXTRACTED]
+- [[useEditor()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Page_Editor
+#graphify/code #graphify/EXTRACTED #community/Document_Version

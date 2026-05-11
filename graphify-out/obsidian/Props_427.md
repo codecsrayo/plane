@@ -1,18 +1,18 @@
 ---
-source_file: "components/analytics/select/select-y-axis.tsx"
+source_file: "web/core/components/power-k/menus/views.tsx"
 type: "code"
-community: "Select Axis"
-location: "L17"
+community: "Menu Power"
+location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Select_Axis
+  - community/Menu_Power
 ---
 
 # Props
 
 ## Connections
 
-- [[select-y-axis.tsx]] - `contains` [EXTRACTED]
+- [[views.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Select_Axis
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

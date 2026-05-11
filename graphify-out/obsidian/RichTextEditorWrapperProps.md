@@ -1,18 +1,18 @@
 ---
-source_file: "components/editor/rich-text/editor.tsx"
+source_file: "web/core/components/editor/rich-text/editor.tsx"
 type: "code"
-community: "Issue Filters"
+community: "Member Members"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters
+  - community/Member_Members
 ---
 
 # RichTextEditorWrapperProps
 
 ## Connections
 
-- [[editor.tsx_1]] - `contains` [EXTRACTED]
+- [[editor.tsx_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters
+#graphify/code #graphify/EXTRACTED #community/Member_Members

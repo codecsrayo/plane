@@ -1,12 +1,12 @@
 ---
-source_file: "components/dropdowns/buttons.tsx"
+source_file: "web/core/components/dropdowns/buttons.tsx"
 type: "code"
-community: "Issue Properties"
+community: "Label Dropdown"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Label_Dropdown
 ---
 
 # DropdownButtonProps
@@ -15,4 +15,4 @@ tags:
 
 - [[buttons.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/calendar/week-header.tsx"
+source_file: "web/core/components/issues/issue-layouts/calendar/week-header.tsx"
 type: "code"
-community: "Calendar Views"
+community: "Calendar Issue"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Views
+  - community/Calendar_Issue
 ---
 
 # CalendarWeekHeader
@@ -16,4 +16,4 @@ tags:
 - [[calendar.tsx]] - `imports` [EXTRACTED]
 - [[week-header.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Views
+#graphify/code #graphify/EXTRACTED #community/Calendar_Issue

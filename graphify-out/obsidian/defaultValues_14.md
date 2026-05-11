@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-layouts/quick-add/root.tsx"
+source_file: "web/core/components/issues/issue-layouts/quick-add/root.tsx"
 type: "code"
 community: "Issue Quick"
 location: "L51"
@@ -13,6 +13,6 @@ tags:
 
 ## Connections
 
-- [[root.tsx_28]] - `contains` [EXTRACTED]
+- [[root.tsx_69]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Issue_Quick

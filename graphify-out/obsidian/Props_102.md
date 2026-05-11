@@ -1,18 +1,18 @@
 ---
-source_file: "components/profile/overview/state-distribution.tsx"
+source_file: "web/core/components/workspace/create-workspace-form.tsx"
 type: "code"
-community: "State Distribution"
-location: "L16"
+community: "Workspace Issue"
+location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/State_Distribution
+  - community/Workspace_Issue
 ---
 
 # Props
 
 ## Connections
 
-- [[state-distribution.tsx]] - `contains` [EXTRACTED]
+- [[create-workspace-form.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/State_Distribution
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

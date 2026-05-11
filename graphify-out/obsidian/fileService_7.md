@@ -1,18 +1,18 @@
 ---
-source_file: "components/core/modals/workspace-image-upload-modal.tsx"
+source_file: "web/core/components/core/modals/user-image-upload-modal.tsx"
 type: "code"
-community: "Workspace Timezone"
-location: "L33"
+community: "Setup Values"
+location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Timezone
+  - community/Setup_Values
 ---
 
 # fileService
 
 ## Connections
 
-- [[workspace-image-upload-modal.tsx]] - `contains` [EXTRACTED]
+- [[user-image-upload-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Timezone
+#graphify/code #graphify/EXTRACTED #community/Setup_Values

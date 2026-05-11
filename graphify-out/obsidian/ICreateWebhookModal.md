@@ -1,5 +1,5 @@
 ---
-source_file: "components/web-hooks/create-webhook-modal.tsx"
+source_file: "web/core/components/web-hooks/create-webhook-modal.tsx"
 type: "code"
 community: "Webhook Generated"
 location: "L25"

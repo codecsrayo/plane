@@ -1,18 +1,18 @@
 ---
-source_file: "components/core/sidebar/progress-chart.tsx"
+source_file: "web/core/components/onboarding/steps/profile/consent.tsx"
 type: "code"
-community: "Cycle Productivity"
-location: "L13"
+community: "Setup Values"
+location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Productivity
+  - community/Setup_Values
 ---
 
 # Props
 
 ## Connections
 
-- [[progress-chart.tsx]] - `contains` [EXTRACTED]
+- [[consent.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Productivity
+#graphify/code #graphify/EXTRACTED #community/Setup_Values

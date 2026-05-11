@@ -1,5 +1,5 @@
 ---
-source_file: "store/member/project/project-member-filters.store.ts"
+source_file: "web/core/store/member/project/project-member-filters.store.ts"
 type: "code"
 community: "Member Project"
 location: "L30"
@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 
-- [[.constructor()_74]] - `method` [EXTRACTED]
+- [[.constructor()_131]] - `method` [EXTRACTED]
 - [[base-project-member.store.ts]] - `imports` [EXTRACTED]
 - [[project-member-filters.store.ts]] - `contains` [EXTRACTED]
 

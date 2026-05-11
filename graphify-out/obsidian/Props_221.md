@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/calendar/day-tile.tsx"
+source_file: "web/core/components/project/settings/helper.tsx"
 type: "code"
-community: "Calendar Views"
-location: "L30"
+community: "Project Settings"
+location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Views
+  - community/Project_Settings
 ---
 
 # Props
 
 ## Connections
 
-- [[day-tile.tsx]] - `contains` [EXTRACTED]
+- [[helper.tsx_24]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Views
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

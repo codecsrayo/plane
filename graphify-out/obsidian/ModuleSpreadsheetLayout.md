@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/roots/module-root.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/roots/module-root.tsx"
 type: "code"
-community: "Calendar Chart"
+community: "Issue Project"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Chart
+  - community/Issue_Project
 ---
 
 # ModuleSpreadsheetLayout
@@ -16,4 +16,4 @@ tags:
 - [[module-layout-root.tsx]] - `imports` [EXTRACTED]
 - [[module-root.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Chart
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

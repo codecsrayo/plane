@@ -1,12 +1,12 @@
 ---
-source_file: "components/workspace/settings/workspace-details.tsx"
+source_file: "web/core/components/workspace/settings/workspace-details.tsx"
 type: "code"
-community: "Workspace Timezone"
+community: "Workspace Issue"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Timezone
+  - community/Workspace_Issue
 ---
 
 # defaultValues
@@ -15,4 +15,4 @@ tags:
 
 - [[workspace-details.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Timezone
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

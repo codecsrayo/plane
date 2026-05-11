@@ -11,8 +11,8 @@ members: 2
 
 ## Members
 
-- [[TuneIcon()]] - code - components/icons/attachment/tune-icon.tsx
-- [[tune-icon.tsx]] - code - components/icons/attachment/tune-icon.tsx
+- [[TuneIcon()]] - code - web/core/components/icons/attachment/tune-icon.tsx
+- [[tune-icon.tsx]] - code - web/core/components/icons/attachment/tune-icon.tsx
 
 ## Live Query (requires Dataview plugin)
 

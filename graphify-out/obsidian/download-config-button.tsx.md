@@ -1,5 +1,5 @@
 ---
-source_file: "components/core/theme/download-config-button.tsx"
+source_file: "web/core/components/core/theme/download-config-button.tsx"
 type: "code"
 community: "Theme Custom"
 location: "L1"
@@ -14,7 +14,7 @@ tags:
 ## Connections
 
 - [[CustomThemeDownloadConfigButton]] - `contains` [EXTRACTED]
-- [[Props_463]] - `contains` [EXTRACTED]
+- [[Props_537]] - `contains` [EXTRACTED]
 - [[custom-theme-selector.tsx]] - `imports_from` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Theme_Custom

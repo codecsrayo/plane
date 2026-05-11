@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-modal/components/default-properties.tsx"
+source_file: "web/core/components/issues/issue-modal/components/default-properties.tsx"
 type: "code"
-community: "Issue Properties"
+community: "Issue Activity"
 location: "L52"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Issue_Activity
 ---
 
 # IssueDefaultProperties
@@ -15,4 +15,4 @@ tags:
 
 - [[default-properties.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

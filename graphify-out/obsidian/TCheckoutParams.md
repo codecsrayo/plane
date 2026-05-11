@@ -1,12 +1,12 @@
 ---
-source_file: "components/license/modal/card/checkout-button.tsx"
+source_file: "web/core/components/license/modal/card/checkout-button.tsx"
 type: "code"
-community: "Plan Discount"
+community: "Plan Plans"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Plan_Discount
+  - community/Plan_Plans
 ---
 
 # TCheckoutParams
@@ -15,5 +15,6 @@ tags:
 
 - [[checkout-button.tsx]] - `contains` [EXTRACTED]
 - [[plan-upgrade.tsx]] - `imports` [EXTRACTED]
+- [[upgrade-modal.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Plan_Discount
+#graphify/code #graphify/EXTRACTED #community/Plan_Plans

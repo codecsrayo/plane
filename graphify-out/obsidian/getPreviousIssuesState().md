@@ -1,5 +1,5 @@
 ---
-source_file: "store/issue/helpers/base-issues-utils.ts"
+source_file: "web/core/store/issue/helpers/base-issues-utils.ts"
 type: "code"
 community: "Issue Group"
 location: "L229"

@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/issues/issue.ts"
 type: "code"
-community: "Issue Enums"
+community: "Issue Public"
 location: "L142"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Enums
+  - community/Issue_Public
 ---
 
 # TBulkIssueProperties
@@ -15,4 +15,4 @@ tags:
 
 - [[issue.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Enums
+#graphify/code #graphify/EXTRACTED #community/Issue_Public

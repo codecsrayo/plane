@@ -1,18 +1,18 @@
 ---
-source_file: "components/settings/profile/content/root.tsx"
+source_file: "web/core/components/workspace/views/default-view-quick-action.tsx"
 type: "code"
-community: "Profile Settings"
-location: "L16"
+community: "Project Work"
+location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Profile_Settings
+  - community/Project_Work
 ---
 
 # Props
 
 ## Connections
 
-- [[root.tsx_18]] - `contains` [EXTRACTED]
+- [[default-view-quick-action.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Profile_Settings
+#graphify/code #graphify/EXTRACTED #community/Project_Work

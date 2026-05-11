@@ -1,12 +1,12 @@
 ---
-source_file: "components/ui/loader/layouts/spreadsheet-layout-loader.tsx"
+source_file: "web/core/components/ui/loader/layouts/spreadsheet-layout-loader.tsx"
 type: "code"
-community: "Loader Kanban"
+community: "Issue Project"
 location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Loader_Kanban
+  - community/Issue_Project
 ---
 
 # SpreadsheetLayoutLoader()
@@ -17,4 +17,4 @@ tags:
 - [[spreadsheet-layout-loader.tsx]] - `contains` [EXTRACTED]
 - [[workspace-root.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Loader_Kanban
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

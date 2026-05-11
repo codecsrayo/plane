@@ -1,12 +1,12 @@
 ---
-source_file: "lib/wrappers/store-wrapper.tsx"
+source_file: "web/core/lib/wrappers/store-wrapper.tsx"
 type: "code"
-community: "Theme Wrapper"
+community: "Sidebar Navigation"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Wrapper
+  - community/Sidebar_Navigation
 ---
 
 # StoreWrapper()
@@ -16,6 +16,6 @@ tags:
 - [[store-wrapper.tsx]] - `contains` [EXTRACTED]
 - [[useAppTheme()]] - `calls` [EXTRACTED]
 - [[useRouterParams()]] - `calls` [EXTRACTED]
-- [[useUserProfile()]] - `calls` [INFERRED]
+- [[useTheme()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Wrapper
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation

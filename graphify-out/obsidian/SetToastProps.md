@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/toast/toast.tsx"
 type: "code"
-community: "Toast Promise"
+community: "Toast Static"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toast_Promise
+  - community/Toast_Static
 ---
 
 # SetToastProps
@@ -15,4 +15,4 @@ tags:
 
 - [[toast.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toast_Promise
+#graphify/code #graphify/EXTRACTED #community/Toast_Static

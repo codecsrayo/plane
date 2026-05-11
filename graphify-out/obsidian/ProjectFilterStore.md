@@ -1,23 +1,23 @@
 ---
-source_file: "store/project/project_filter.store.ts"
+source_file: "web/core/store/project/project_filter.store.ts"
 type: "code"
-community: "Project Root Store"
+community: "Project Issue"
 location: "L35"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Root_Store
+  - community/Project_Issue
 ---
 
 # ProjectFilterStore
 
 ## Connections
 
-- [[.constructor()_59]] - `method` [EXTRACTED]
+- [[.constructor()_116]] - `method` [EXTRACTED]
 - [[.currentWorkspaceAppliedDisplayFilters()]] - `method` [EXTRACTED]
 - [[.currentWorkspaceDisplayFilters()]] - `method` [EXTRACTED]
 - [[.currentWorkspaceFilters()]] - `method` [EXTRACTED]
-- [[index.ts_16]] - `imports` [EXTRACTED]
+- [[index.ts_281]] - `imports` [EXTRACTED]
 - [[project_filter.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Root_Store
+#graphify/code #graphify/EXTRACTED #community/Project_Issue

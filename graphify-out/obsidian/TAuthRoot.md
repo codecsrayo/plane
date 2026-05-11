@@ -1,5 +1,5 @@
 ---
-source_file: "components/account/auth-forms/auth-root.tsx"
+source_file: "web/core/components/account/auth-forms/auth-root.tsx"
 type: "code"
 community: "Auth Terms"
 location: "L30"

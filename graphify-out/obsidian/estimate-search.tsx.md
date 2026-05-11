@@ -1,5 +1,5 @@
 ---
-source_file: "components/estimates/estimate-search.tsx"
+source_file: "web/core/components/estimates/estimate-search.tsx"
 type: "code"
 community: "Estimate Search"
 location: "L1"

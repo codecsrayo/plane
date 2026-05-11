@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/spreadsheet-header.tsx"
+source_file: "web/core/components/dropdowns/module/module-options.tsx"
 type: "code"
-community: "Spreadsheet Table"
-location: "L20"
+community: "Label Dropdown"
+location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Table
+  - community/Label_Dropdown
 ---
 
 # Props
 
 ## Connections
 
-- [[spreadsheet-header.tsx]] - `contains` [EXTRACTED]
+- [[module-options.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Table
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

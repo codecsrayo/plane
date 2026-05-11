@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/columns/created-on-column.tsx"
+source_file: "web/core/components/dropdowns/project/dropdown.tsx"
 type: "code"
-community: "Created Column"
+community: "Label Dropdown"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Created_Column
+  - community/Label_Dropdown
 ---
 
 # Props
 
 ## Connections
 
-- [[created-on-column.tsx]] - `contains` [EXTRACTED]
+- [[dropdown.tsx_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Created_Column
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

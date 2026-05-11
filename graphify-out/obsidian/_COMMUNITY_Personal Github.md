@@ -11,13 +11,13 @@ members: 7
 
 ## Members
 
-- [[GithubPersonalConnectCard()]] - code - components/integration/github/personal-connect-card.tsx
-- [[Props_160]] - code - components/integration/github/personal-connect-card.tsx
-- [[TGithubPersonalConnection]] - code - components/integration/github/personal-connect-card.tsx
-- [[TUserAccount]] - code - components/integration/github/personal-connect-card.tsx
-- [[getGithubPersonalConnection()]] - code - components/integration/github/personal-connect-card.tsx
-- [[personal-connect-card.tsx]] - code - components/integration/github/personal-connect-card.tsx
-- [[userService_7]] - code - components/integration/github/personal-connect-card.tsx
+- [[GithubPersonalConnectCard()]] - code - web/core/components/integration/github/personal-connect-card.tsx
+- [[Props_235]] - code - web/core/components/integration/github/personal-connect-card.tsx
+- [[TGithubPersonalConnection]] - code - web/core/components/integration/github/personal-connect-card.tsx
+- [[TUserAccount]] - code - web/core/components/integration/github/personal-connect-card.tsx
+- [[getGithubPersonalConnection()]] - code - web/core/components/integration/github/personal-connect-card.tsx
+- [[personal-connect-card.tsx]] - code - web/core/components/integration/github/personal-connect-card.tsx
+- [[userService_9]] - code - web/core/components/integration/github/personal-connect-card.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -28,9 +28,11 @@ SORT file.name ASC
 
 ## Connections to other communities
 
+- 2 edges to [[_COMMUNITY_Project Workspace]]
 - 1 edge to [[_COMMUNITY_User Profile]]
-- 1 edge to [[_COMMUNITY_User Service]]
+- 1 edge to [[_COMMUNITY_User Profile]]
 
 ## Top bridge nodes
 
-- [[personal-connect-card.tsx]] - degree 8, connects to 2 communities
+- [[personal-connect-card.tsx]] - degree 9, connects to 3 communities
+- [[GithubPersonalConnectCard()]] - degree 3, connects to 1 community

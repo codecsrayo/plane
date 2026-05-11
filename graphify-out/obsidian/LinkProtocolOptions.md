@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/custom-link/extension.tsx"
 type: "code"
-community: "Options Link"
+community: "Link Options"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Options_Link
+  - community/Link_Options
 ---
 
 # LinkProtocolOptions
@@ -15,4 +15,4 @@ tags:
 
 - [[extension.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Options_Link
+#graphify/code #graphify/EXTRACTED #community/Link_Options

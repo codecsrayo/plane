@@ -1,12 +1,12 @@
 ---
-source_file: "components/workspace/views/default-view-quick-action.tsx"
+source_file: "web/core/components/workspace/views/default-view-quick-action.tsx"
 type: "code"
-community: "Global Quick"
+community: "Project Work"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Global_Quick
+  - community/Project_Work
 ---
 
 # default-view-quick-action.tsx
@@ -14,7 +14,8 @@ tags:
 ## Connections
 
 - [[DefaultWorkspaceViewQuickActions]] - `contains` [EXTRACTED]
-- [[Props_35]] - `contains` [EXTRACTED]
-- [[header.tsx]] - `imports_from` [EXTRACTED]
+- [[Props_111]] - `contains` [EXTRACTED]
+- [[header.tsx_17]] - `imports_from` [EXTRACTED]
+- [[header.tsx_42]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Global_Quick
+#graphify/code #graphify/EXTRACTED #community/Project_Work

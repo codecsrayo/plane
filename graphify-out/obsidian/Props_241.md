@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/filters/header/filters/cycle.tsx"
+source_file: "web/core/components/web-hooks/form/input.tsx"
 type: "code"
-community: "Cycle Transfers"
-location: "L20"
+community: "Webhook Input"
+location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Transfers
+  - community/Webhook_Input
 ---
 
 # Props
 
 ## Connections
 
-- [[cycle.tsx_1]] - `contains` [EXTRACTED]
+- [[input.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Transfers
+#graphify/code #graphify/EXTRACTED #community/Webhook_Input

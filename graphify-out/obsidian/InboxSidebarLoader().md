@@ -1,12 +1,12 @@
 ---
-source_file: "components/ui/loader/layouts/project-inbox/inbox-sidebar-loader.tsx"
+source_file: "web/core/components/ui/loader/layouts/project-inbox/inbox-sidebar-loader.tsx"
 type: "code"
-community: "Inbox Filters"
+community: "Issue Inbox"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Inbox_Filters
+  - community/Issue_Inbox
 ---
 
 # InboxSidebarLoader()
@@ -15,6 +15,6 @@ tags:
 
 - [[inbox-layout-loader.tsx]] - `imports` [EXTRACTED]
 - [[inbox-sidebar-loader.tsx]] - `contains` [EXTRACTED]
-- [[root.tsx_71]] - `imports` [EXTRACTED]
+- [[root.tsx_112]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Inbox_Filters
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

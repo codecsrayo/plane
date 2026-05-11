@@ -1,5 +1,5 @@
 ---
-source_file: "lib/app-rail/types.ts"
+source_file: "web/core/lib/app-rail/types.ts"
 type: "code"
 community: "Rail Visibility"
 location: "L11"
@@ -14,7 +14,7 @@ tags:
 ## Connections
 
 - [[context.tsx]] - `imports` [EXTRACTED]
-- [[provider.tsx]] - `imports` [EXTRACTED]
-- [[types.ts]] - `contains` [EXTRACTED]
+- [[provider.tsx_3]] - `imports` [EXTRACTED]
+- [[types.ts_14]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Rail_Visibility

@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/bulk-operations/upgrade-banner.tsx"
+source_file: "web/core/components/issues/issue-layouts/calendar/issue-block.tsx"
 type: "code"
-community: "Upgrade Bulk"
-location: "L11"
+community: "Issue Project"
+location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Upgrade_Bulk
+  - community/Issue_Project
 ---
 
 # Props
 
 ## Connections
 
-- [[upgrade-banner.tsx]] - `contains` [EXTRACTED]
+- [[issue-block.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Upgrade_Bulk
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

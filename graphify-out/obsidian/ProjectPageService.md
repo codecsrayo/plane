@@ -1,8 +1,8 @@
 ---
-source_file: "services/page/project-page.service.ts"
+source_file: "live/src/services/page/project-page.service.ts"
 type: "code"
 community: "Project Projectpageservice"
-location: "L15"
+location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
@@ -13,10 +13,10 @@ tags:
 
 ## Connections
 
-- [[.addToFavorites()]] - `method` [EXTRACTED]
-- [[.archive()]] - `method` [EXTRACTED]
-- [[.constructor()_110]] - `method` [EXTRACTED]
-- [[.create()]] - `method` [EXTRACTED]
+- [[.addToFavorites()_1]] - `method` [EXTRACTED]
+- [[.archive()_2]] - `method` [EXTRACTED]
+- [[.constructor()_167]] - `method` [EXTRACTED]
+- [[.create()_7]] - `method` [EXTRACTED]
 - [[.duplicate()]] - `method` [EXTRACTED]
 - [[.fetchAll()]] - `method` [EXTRACTED]
 - [[.fetchArchived()]] - `method` [EXTRACTED]
@@ -25,13 +25,15 @@ tags:
 - [[.fetchFavorites()]] - `method` [EXTRACTED]
 - [[.lock()]] - `method` [EXTRACTED]
 - [[.move()]] - `method` [EXTRACTED]
-- [[.remove()]] - `method` [EXTRACTED]
-- [[.removeFromFavorites()]] - `method` [EXTRACTED]
-- [[.restore()]] - `method` [EXTRACTED]
+- [[.remove()_1]] - `method` [EXTRACTED]
+- [[.removeFromFavorites()_1]] - `method` [EXTRACTED]
+- [[.restore()_1]] - `method` [EXTRACTED]
 - [[.unlock()]] - `method` [EXTRACTED]
-- [[.update()]] - `method` [EXTRACTED]
+- [[.update()_13]] - `method` [EXTRACTED]
 - [[.updateAccess()]] - `method` [EXTRACTED]
 - [[.updateDescription()]] - `method` [EXTRACTED]
+- [[handler.ts]] - `imports` [EXTRACTED]
 - [[project-page.service.ts]] - `contains` [EXTRACTED]
+- [[project-page.service.ts_1]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Project_Projectpageservice

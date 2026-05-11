@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/utils/webhook_dispatch.rs"
 type: "code"
-community: "Community 228"
+community: "Payload Webhook"
 location: "L218"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_228
+  - community/Payload_Webhook
 ---
 
 # action_payload_strings_match_django()
@@ -15,4 +15,4 @@ tags:
 
 - [[webhook_dispatch.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_228
+#graphify/code #graphify/EXTRACTED #community/Payload_Webhook

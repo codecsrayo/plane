@@ -1,12 +1,12 @@
 ---
-source_file: "components/global/product-updates/footer.tsx"
+source_file: "web/core/components/global/product-updates/footer.tsx"
 type: "code"
-community: "Footer Product"
+community: "Product Updates"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Footer_Product
+  - community/Product_Updates
 ---
 
 # footer.tsx
@@ -15,4 +15,4 @@ tags:
 
 - [[ProductUpdatesFooter()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Footer_Product
+#graphify/code #graphify/EXTRACTED #community/Product_Updates

@@ -1,43 +1,27 @@
 ---
-source_file: "api_rust/src/routes/instances.rs"
+source_file: "api_rust/tests/instances.rs"
 type: "code"
-community: "Community 57"
+community: "Instance Returns"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_57
+  - community/Instance_Returns
 ---
 
 # instances.rs
 
 ## Connections
 
-- [[ConfigVar]] - `contains` [EXTRACTED]
-- [[CreateAdminRequest]] - `contains` [EXTRACTED]
-- [[TestEmailRequest]] - `contains` [EXTRACTED]
-- [[UpdateInstanceRequest]] - `contains` [EXTRACTED]
-- [[WorkspaceListQuery]] - `contains` [EXTRACTED]
-- [[WorkspaceSlugQuery]] - `contains` [EXTRACTED]
-- [[build_config()]] - `contains` [EXTRACTED]
-- [[cfg()]] - `contains` [EXTRACTED]
-- [[config_var()]] - `contains` [EXTRACTED]
-- [[create_instance_admin()]] - `contains` [EXTRACTED]
-- [[delete_instance_admin()]] - `contains` [EXTRACTED]
-- [[disable_email_feature()]] - `contains` [EXTRACTED]
-- [[email_credentials_check()]] - `contains` [EXTRACTED]
-- [[get_instance()]] - `contains` [EXTRACTED]
-- [[get_instance_admin_me()]] - `contains` [EXTRACTED]
-- [[get_instance_admin_session()]] - `contains` [EXTRACTED]
-- [[instance_workspace_slug_check()]] - `contains` [EXTRACTED]
-- [[list_configurations()]] - `contains` [EXTRACTED]
-- [[list_instance_admins()]] - `contains` [EXTRACTED]
-- [[list_instance_workspaces()]] - `contains` [EXTRACTED]
-- [[patch_instance()]] - `contains` [EXTRACTED]
-- [[require_instance_admin()]] - `contains` [EXTRACTED]
-- [[serialize_config_row()]] - `contains` [EXTRACTED]
-- [[serialize_instance()]] - `contains` [EXTRACTED]
-- [[signup_screen_visited()]] - `contains` [EXTRACTED]
-- [[update_configurations()]] - `contains` [EXTRACTED]
+- [[email_credentials_check_unauthenticated_returns_401()]] - `contains` [EXTRACTED]
+- [[get_instance_admin_me_returns_200()]] - `contains` [EXTRACTED]
+- [[get_instance_admin_session_authenticated()]] - `contains` [EXTRACTED]
+- [[get_instance_admin_session_unauthenticated()]] - `contains` [EXTRACTED]
+- [[get_instance_configurations_unauthenticated_returns_401()]] - `contains` [EXTRACTED]
+- [[get_instance_is_activated()]] - `contains` [EXTRACTED]
+- [[get_instance_public_returns_200()]] - `contains` [EXTRACTED]
+- [[instance_workspace_slug_check_unauthenticated_returns_401()]] - `contains` [EXTRACTED]
+- [[list_instance_workspaces_without_admin_returns_4xx()]] - `contains` [EXTRACTED]
+- [[signup_screen_visited_returns_204()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_57
+#graphify/code #graphify/EXTRACTED #community/Instance_Returns

@@ -1,12 +1,12 @@
 ---
-source_file: "lib/store-context.tsx"
+source_file: "web/core/lib/store-context.tsx"
 type: "code"
-community: "Workspace Draft"
+community: "Webhook Workspace"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Draft
+  - community/Webhook_Workspace
 ---
 
 # initializeStore()
@@ -15,4 +15,4 @@ tags:
 
 - [[store-context.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Draft
+#graphify/code #graphify/EXTRACTED #community/Webhook_Workspace

@@ -1,18 +1,18 @@
 ---
-source_file: "components/dropdowns/member/dropdown.tsx"
+source_file: "web/core/components/dropdowns/member/dropdown.tsx"
 type: "code"
-community: "Issue Properties"
+community: "Label Dropdown"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Label_Dropdown
 ---
 
 # TMemberDropdownProps
 
 ## Connections
 
-- [[dropdown.tsx_4]] - `contains` [EXTRACTED]
+- [[dropdown.tsx_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

@@ -1,18 +1,18 @@
 ---
-source_file: "components/web-hooks/form/form.tsx"
+source_file: "web/core/components/modules/links/list.tsx"
 type: "code"
-community: "Webhook Webhooks"
-location: "L27"
+community: "Cycles Archived"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Webhook_Webhooks
+  - community/Cycles_Archived
 ---
 
 # Props
 
 ## Connections
 
-- [[form.tsx_7]] - `contains` [EXTRACTED]
+- [[list.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Webhook_Webhooks
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

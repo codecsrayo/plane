@@ -1,19 +1,22 @@
 ---
 source_file: "api_rust/src/routes/integrations/pr_state.rs"
 type: "code"
-community: "Community 47"
+community: "Workspace Webhook"
 location: "L82"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_47
+  - graphify/INFERRED
+  - community/Workspace_Webhook
 ---
 
 # create_pr_state_mapping()
 
 ## Connections
 
+- [[.json()]] - `calls` [INFERRED]
+- [[.set()]] - `calls` [INFERRED]
+- [[now]] - `calls` [INFERRED]
 - [[pr_state.rs]] - `contains` [EXTRACTED]
 - [[require_workspace_admin()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_47
+#graphify/code #graphify/INFERRED #community/Workspace_Webhook

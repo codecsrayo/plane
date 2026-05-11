@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-detail-widgets/sub-issues/issues-list/list-item.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/label-column.tsx"
 type: "code"
-community: "List Group Layout"
-location: "L31"
+community: "Label Dropdown"
+location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/List_Group_Layout
+  - community/Label_Dropdown
 ---
 
 # Props
 
 ## Connections
 
-- [[list-item.tsx_1]] - `contains` [EXTRACTED]
+- [[label-column.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/List_Group_Layout
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

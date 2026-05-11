@@ -1,12 +1,12 @@
 ---
-source_file: "components/workspace/sidebar/favorites/favorites.helpers.ts"
+source_file: "web/core/components/workspace/sidebar/favorites/favorites.helpers.ts"
 type: "code"
-community: "Favorite Favorites"
+community: "Favorite Folder"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Favorite_Favorites
+  - community/Favorite_Folder
 ---
 
 # favorites.helpers.ts
@@ -18,6 +18,6 @@ tags:
 - [[favorites-menu.tsx]] - `imports_from` [EXTRACTED]
 - [[getCanDrop()_1]] - `contains` [EXTRACTED]
 - [[getInstructionFromPayload()_1]] - `contains` [EXTRACTED]
-- [[root.tsx_3]] - `imports_from` [EXTRACTED]
+- [[root.tsx_44]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Favorite_Favorites
+#graphify/code #graphify/EXTRACTED #community/Favorite_Folder

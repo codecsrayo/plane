@@ -1,12 +1,12 @@
 ---
-source_file: "components/core/modals/user-image-upload-modal.tsx"
+source_file: "web/core/components/core/modals/user-image-upload-modal.tsx"
 type: "code"
-community: "Image Upload"
+community: "Setup Values"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Image_Upload
+  - community/Setup_Values
 ---
 
 # UserImageUploadModal
@@ -15,7 +15,7 @@ tags:
 
 - [[form.tsx_5]] - `imports` [EXTRACTED]
 - [[profile-setup.tsx]] - `imports` [EXTRACTED]
-- [[root.tsx_68]] - `imports` [EXTRACTED]
+- [[root.tsx_109]] - `imports` [EXTRACTED]
 - [[user-image-upload-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Image_Upload
+#graphify/code #graphify/EXTRACTED #community/Setup_Values

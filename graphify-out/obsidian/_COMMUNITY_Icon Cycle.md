@@ -49,10 +49,10 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 16 edges to [[_COMMUNITY_Logo Icons]]
-- 12 edges to [[_COMMUNITY_Icon Library]]
+- 16 edges to [[_COMMUNITY_Icon Panel]]
+- 12 edges to [[_COMMUNITY_Icon Property]]
 - 4 edges to [[_COMMUNITY_Navigation Input]]
-- 2 edges to [[_COMMUNITY_Icons Project]]
+- 2 edges to [[_COMMUNITY_Icons Icon]]
 
 ## Top bridge nodes
 

@@ -1,18 +1,18 @@
 ---
-source_file: "components/exporter/export-form.tsx"
+source_file: "web/core/components/profile/profile-issues.tsx"
 type: "code"
-community: "Project Settings"
-location: "L33"
+community: "Issue Project"
+location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Issue_Project
 ---
 
 # Props
 
 ## Connections
 
-- [[export-form.tsx]] - `contains` [EXTRACTED]
+- [[profile-issues.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

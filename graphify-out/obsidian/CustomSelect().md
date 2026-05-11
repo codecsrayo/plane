@@ -1,12 +1,12 @@
 ---
 source_file: "ui/src/dropdowns/custom-select.tsx"
 type: "code"
-community: "Custom Menu"
+community: "Dropdown Select"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Custom_Menu
+  - community/Dropdown_Select
 ---
 
 # CustomSelect()
@@ -17,4 +17,4 @@ tags:
 - [[useDropdownKeyDown()]] - `calls` [EXTRACTED]
 - [[useOutsideClickDetector()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Custom_Menu
+#graphify/code #graphify/EXTRACTED #community/Dropdown_Select

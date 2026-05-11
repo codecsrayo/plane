@@ -1,12 +1,12 @@
 ---
-source_file: "components/workspace/logo.tsx"
+source_file: "web/core/components/workspace/logo.tsx"
 type: "code"
-community: "Workspace Invites"
+community: "Workspace Issue"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Invites
+  - community/Workspace_Issue
 ---
 
 # WorkspaceLogo
@@ -14,12 +14,13 @@ tags:
 ## Connections
 
 - [[auth-header.tsx]] - `imports` [EXTRACTED]
-- [[header.tsx_3]] - `imports` [EXTRACTED]
+- [[header.tsx_45]] - `imports` [EXTRACTED]
 - [[invitations.tsx]] - `imports` [EXTRACTED]
 - [[join-invites.tsx]] - `imports` [EXTRACTED]
-- [[logo.tsx]] - `contains` [EXTRACTED]
+- [[logo.tsx_1]] - `contains` [EXTRACTED]
+- [[page.tsx_58]] - `imports` [EXTRACTED]
 - [[workspace-menu-root.tsx]] - `imports` [EXTRACTED]
 - [[workspace-options.tsx]] - `imports` [EXTRACTED]
 - [[workspaces.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Invites
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

@@ -1,63 +1,34 @@
 ---
-source_file: "api_rust/src/routes/cycles.rs"
+source_file: "api_rust/tests/cycles.rs"
 type: "code"
-community: "Cycles Rust API"
+community: "Cycle Returns"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycles_Rust_API
+  - community/Cycle_Returns
 ---
 
 # cycles.rs
 
 ## Connections
 
-- [[AddCycleIssuesRequest]] - `contains` [EXTRACTED]
-- [[BurndownMode]] - `contains` [EXTRACTED]
-- [[CreateCycleRequest]] - `contains` [EXTRACTED]
-- [[CycleAnalyticsQuery]] - `contains` [EXTRACTED]
-- [[CycleCountRow]] - `contains` [EXTRACTED]
-- [[CycleIssueResponse]] - `contains` [EXTRACTED]
-- [[CycleResponse]] - `contains` [EXTRACTED]
-- [[CycleUserPropertiesResponse]] - `contains` [EXTRACTED]
-- [[DateCheckRequest]] - `contains` [EXTRACTED]
-- [[FavoriteCycleRequest]] - `contains` [EXTRACTED]
-- [[ProgressEstimatePoints]] - `contains` [EXTRACTED]
-- [[ProgressIssueCounts]] - `contains` [EXTRACTED]
-- [[TransferCycleIssuesRequest]] - `contains` [EXTRACTED]
-- [[UpdateCycleRequest]] - `contains` [EXTRACTED]
-- [[UpdateCycleUserPropertiesRequest]] - `contains` [EXTRACTED]
-- [[add_issues_to_cycle()]] - `contains` [EXTRACTED]
-- [[archive_cycle()]] - `contains` [EXTRACTED]
-- [[burndown_plot()]] - `contains` [EXTRACTED]
-- [[compute_estimate_points()]] - `contains` [EXTRACTED]
-- [[compute_issue_counts()]] - `contains` [EXTRACTED]
-- [[create_cycle()]] - `contains` [EXTRACTED]
-- [[create_favorite_cycle()]] - `contains` [EXTRACTED]
-- [[cycle_analytics()]] - `contains` [EXTRACTED]
-- [[cycle_date_check()]] - `contains` [EXTRACTED]
-- [[cycle_default_display_filters()]] - `contains` [EXTRACTED]
-- [[cycle_default_display_properties()]] - `contains` [EXTRACTED]
-- [[cycle_default_filters()]] - `contains` [EXTRACTED]
-- [[cycle_progress()]] - `contains` [EXTRACTED]
-- [[delete_cycle()]] - `contains` [EXTRACTED]
-- [[delete_favorite_cycle()]] - `contains` [EXTRACTED]
-- [[enrich_cycle_counts()]] - `contains` [EXTRACTED]
-- [[ensure_cycle_belongs_to_project()]] - `contains` [EXTRACTED]
-- [[get_archived_cycle()]] - `contains` [EXTRACTED]
-- [[get_cycle()]] - `contains` [EXTRACTED]
-- [[get_cycle_user_properties()]] - `contains` [EXTRACTED]
-- [[get_or_create_cycle_user_properties()]] - `contains` [EXTRACTED]
-- [[list_archived_cycles()]] - `contains` [EXTRACTED]
-- [[list_cycle_issues()]] - `contains` [EXTRACTED]
-- [[list_cycles()]] - `contains` [EXTRACTED]
-- [[list_favorite_cycles()]] - `contains` [EXTRACTED]
-- [[remove_issue_from_cycle()]] - `contains` [EXTRACTED]
-- [[snapshot_i64()]] - `contains` [EXTRACTED]
-- [[transfer_cycle_issues()]] - `contains` [EXTRACTED]
-- [[unarchive_cycle()]] - `contains` [EXTRACTED]
-- [[update_cycle()]] - `contains` [EXTRACTED]
-- [[update_cycle_user_properties()]] - `contains` [EXTRACTED]
+- [[add_issue_to_cycle_and_remove()]] - `contains` [EXTRACTED]
+- [[archive_cycle_and_list_archived()]] - `contains` [EXTRACTED]
+- [[create_cycle()_1]] - `contains` [EXTRACTED]
+- [[create_cycle_empty_name_returns_400()]] - `contains` [EXTRACTED]
+- [[create_cycle_proptest_valid_names()]] - `contains` [EXTRACTED]
+- [[create_cycle_start_gte_end_returns_400()]] - `contains` [EXTRACTED]
+- [[create_cycle_success()]] - `contains` [EXTRACTED]
+- [[create_issue()_1]] - `contains` [EXTRACTED]
+- [[delete_cycle_returns_204()]] - `contains` [EXTRACTED]
+- [[get_cycle_not_found_returns_404()]] - `contains` [EXTRACTED]
+- [[get_cycle_returns_200()]] - `contains` [EXTRACTED]
+- [[list_cycle_issues_empty_returns_200()]] - `contains` [EXTRACTED]
+- [[list_cycles_empty_returns_200()]] - `contains` [EXTRACTED]
+- [[list_cycles_returns_created_cycle()]] - `contains` [EXTRACTED]
+- [[list_cycles_unauthenticated_returns_401()]] - `contains` [EXTRACTED]
+- [[setup()_3]] - `contains` [EXTRACTED]
+- [[update_cycle_returns_200()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycles_Rust_API
+#graphify/code #graphify/EXTRACTED #community/Cycle_Returns

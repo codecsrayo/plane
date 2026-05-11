@@ -1,5 +1,5 @@
 ---
-source_file: "components/gantt-chart/chart/timeline-drag-helper.tsx"
+source_file: "web/core/components/gantt-chart/chart/timeline-drag-helper.tsx"
 type: "code"
 community: "Gantt Chart"
 location: "L18"

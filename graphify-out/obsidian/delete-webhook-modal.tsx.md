@@ -1,12 +1,12 @@
 ---
-source_file: "components/web-hooks/delete-webhook-modal.tsx"
+source_file: "web/core/components/web-hooks/delete-webhook-modal.tsx"
 type: "code"
-community: "Webhook Webhooks"
+community: "Webhook Workspace"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Webhook_Webhooks
+  - community/Webhook_Workspace
 ---
 
 # delete-webhook-modal.tsx
@@ -20,4 +20,4 @@ tags:
 - [[useAppRouter()]] - `imports` [EXTRACTED]
 - [[useWebhook()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Webhook_Webhooks
+#graphify/code #graphify/EXTRACTED #community/Webhook_Workspace

@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/pages.rs"
 type: "code"
-community: "Community 66"
+community: "Request Intake"
 location: "L230"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_66
+  - community/Request_Intake
 ---
 
 # fetch_pages_m2m()
@@ -18,6 +18,6 @@ tags:
 - [[list_favorite_pages()]] - `calls` [EXTRACTED]
 - [[list_pages()]] - `calls` [EXTRACTED]
 - [[move_page()]] - `calls` [EXTRACTED]
-- [[pages.rs]] - `contains` [EXTRACTED]
+- [[pages.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_66
+#graphify/code #graphify/EXTRACTED #community/Request_Intake

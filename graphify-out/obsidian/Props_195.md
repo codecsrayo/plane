@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/spreadsheet-header-column.tsx"
+source_file: "web/core/components/dropdowns/date-range.tsx"
 type: "code"
-community: "Spreadsheet Table"
-location: "L16"
+community: "Label Dropdown"
+location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Table
+  - community/Label_Dropdown
 ---
 
 # Props
 
 ## Connections
 
-- [[spreadsheet-header-column.tsx]] - `contains` [EXTRACTED]
+- [[date-range.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Table
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

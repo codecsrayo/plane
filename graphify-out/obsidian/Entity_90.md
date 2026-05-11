@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/github_comment_syncs.rs"
 type: "code"
-community: "Community 588"
+community: "Entity"
 location: "L75"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_588
+  - community/Entity
 ---
 
 # Entity
@@ -15,4 +15,4 @@ tags:
 
 - [[.to()_90]] - `method` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_588
+#graphify/code #graphify/EXTRACTED #community/Entity

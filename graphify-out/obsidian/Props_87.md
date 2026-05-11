@@ -1,18 +1,18 @@
 ---
-source_file: "components/modules/links/create-update-modal.tsx"
+source_file: "web/core/components/home/widgets/manage/widget-item.tsx"
 type: "code"
-community: "Link Values"
-location: "L16"
+community: "Widget Home"
+location: "L34"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Link_Values
+  - community/Widget_Home
 ---
 
 # Props
 
 ## Connections
 
-- [[create-update-modal.tsx]] - `contains` [EXTRACTED]
+- [[widget-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Link_Values
+#graphify/code #graphify/EXTRACTED #community/Widget_Home

@@ -1,12 +1,12 @@
 ---
-source_file: "components/pages/modals/delete-page-modal.tsx"
+source_file: "web/core/components/pages/modals/delete-page-modal.tsx"
 type: "code"
-community: "Collaborative Copy"
+community: "Flag Pageactions"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Collaborative_Copy
+  - community/Flag_Pageactions
 ---
 
 # delete-page-modal.tsx
@@ -21,4 +21,4 @@ tags:
 - [[use-app-router.tsx]] - `imports_from` [EXTRACTED]
 - [[useAppRouter()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Collaborative_Copy
+#graphify/code #graphify/EXTRACTED #community/Flag_Pageactions

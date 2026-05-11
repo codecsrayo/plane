@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/label.tsx"
+source_file: "web/core/components/settings/content-wrapper.tsx"
 type: "code"
-community: "Issue Layouts"
-location: "L12"
+community: "Project Settings"
+location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layouts
+  - community/Project_Settings
 ---
 
 # Props
 
 ## Connections
 
-- [[label.tsx]] - `contains` [EXTRACTED]
+- [[content-wrapper.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layouts
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

@@ -1,18 +1,18 @@
 ---
-source_file: "components/modules/links/list-item.tsx"
+source_file: "web/core/components/home/widgets/manage/widget-item-drag-handle.tsx"
 type: "code"
-community: "Issue Filters"
-location: "L23"
+community: "Widget Home"
+location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters
+  - community/Widget_Home
 ---
 
 # Props
 
 ## Connections
 
-- [[list-item.tsx]] - `contains` [EXTRACTED]
+- [[widget-item-drag-handle.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters
+#graphify/code #graphify/EXTRACTED #community/Widget_Home

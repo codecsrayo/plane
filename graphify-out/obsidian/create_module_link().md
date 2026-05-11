@@ -1,20 +1,21 @@
 ---
-source_file: "api_rust/src/routes/modules.rs"
+source_file: "api_rust/tests/modules_extras.rs"
 type: "code"
-community: "Modules Rust API"
-location: "L1318"
+community: "Returns Link"
+location: "L171"
 tags:
   - graphify/code
-  - graphify/INFERRED
-  - community/Modules_Rust_API
+  - graphify/EXTRACTED
+  - community/Returns_Link
 ---
 
 # create_module_link()
 
 ## Connections
 
-- [[modules.rs]] - `contains` [EXTRACTED]
-- [[normalize_and_validate_url()]] - `calls` [INFERRED]
-- [[require_role()]] - `calls` [INFERRED]
+- [[delete_module_link_returns_204()]] - `calls` [EXTRACTED]
+- [[get_module_link_returns_200()]] - `calls` [EXTRACTED]
+- [[modules_extras.rs]] - `contains` [EXTRACTED]
+- [[update_module_link_returns_200()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Modules_Rust_API
+#graphify/code #graphify/EXTRACTED #community/Returns_Link

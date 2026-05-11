@@ -1,5 +1,5 @@
 ---
-source_file: "components/analytics/analytics-section-wrapper.tsx"
+source_file: "web/core/components/analytics/analytics-section-wrapper.tsx"
 type: "code"
 community: "Analytics Project"
 location: "L18"

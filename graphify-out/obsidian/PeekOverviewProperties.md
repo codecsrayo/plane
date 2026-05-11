@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/peek-overview/properties.tsx"
+source_file: "web/core/components/issues/peek-overview/properties.tsx"
 type: "code"
-community: "Peek Overview"
+community: "Issue Inbox"
 location: "L57"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Peek_Overview
+  - community/Issue_Inbox
 ---
 
 # PeekOverviewProperties
@@ -15,6 +15,6 @@ tags:
 
 - [[main-content.tsx_1]] - `imports` [EXTRACTED]
 - [[properties.tsx_2]] - `contains` [EXTRACTED]
-- [[view.tsx_1]] - `imports` [EXTRACTED]
+- [[view.tsx_2]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Peek_Overview
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

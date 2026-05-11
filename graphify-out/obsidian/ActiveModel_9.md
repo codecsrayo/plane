@@ -1,14 +1,14 @@
 ---
 source_file: "api_rust/src/entities/django_celery_beat_intervalschedule.rs"
 type: "code"
-community: "Community 659"
+community: "Active Model"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_659
+  - community/Active_Model
 ---
 
 # ActiveModel
 
-#graphify/code #graphify/EXTRACTED #community/Community_659
+#graphify/code #graphify/EXTRACTED #community/Active_Model

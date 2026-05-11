@@ -1,12 +1,12 @@
 ---
-source_file: "components/cycles/cycle-peek-overview.tsx"
+source_file: "web/core/components/cycles/cycle-peek-overview.tsx"
 type: "code"
-community: "Cycle Cycles"
+community: "Cycle Active"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Cycles
+  - community/Cycle_Active
 ---
 
 # CyclePeekOverview
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[cycle-peek-overview.tsx]] - `contains` [EXTRACTED]
-- [[root.tsx_54]] - `imports` [EXTRACTED]
+- [[root.tsx_95]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Cycles
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

@@ -1,12 +1,12 @@
 ---
-source_file: "store/issue/issue-details/link.store.ts"
+source_file: "web/core/store/issue/issue-details/link.store.ts"
 type: "code"
-community: "Comment Reactions"
+community: "Issue Reaction"
 location: "L131"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Comment_Reactions
+  - community/Issue_Reaction
 ---
 
 # initialData
@@ -15,4 +15,4 @@ tags:
 
 - [[link.store.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Comment_Reactions
+#graphify/code #graphify/EXTRACTED #community/Issue_Reaction

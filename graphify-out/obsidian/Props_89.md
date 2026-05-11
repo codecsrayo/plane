@@ -1,18 +1,18 @@
 ---
-source_file: "components/modules/links/list.tsx"
+source_file: "web/core/components/home/widgets/loaders/loader.tsx"
 type: "code"
-community: "Module Analytics"
-location: "L16"
+community: "Widget Quick"
+location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Widget_Quick
 ---
 
 # Props
 
 ## Connections
 
-- [[list.tsx]] - `contains` [EXTRACTED]
+- [[loader.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Widget_Quick

@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/components/menus/bubble-menu/link-selector.tsx"
 type: "code"
-community: "Link Insert"
+community: "Toggle Menu"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Link_Insert
+  - community/Toggle_Menu
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[link-selector.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Link_Insert
+#graphify/code #graphify/EXTRACTED #community/Toggle_Menu

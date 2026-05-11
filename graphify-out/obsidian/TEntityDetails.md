@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/use-multiple-select.ts"
+source_file: "web/core/hooks/use-multiple-select.ts"
 type: "code"
-community: "Multi Select Actions"
+community: "Project Issue"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Multi_Select_Actions
+  - community/Project_Issue
 ---
 
 # TEntityDetails
@@ -16,4 +16,4 @@ tags:
 - [[multiple_select.store.ts]] - `imports` [EXTRACTED]
 - [[use-multiple-select.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Multi_Select_Actions
+#graphify/code #graphify/EXTRACTED #community/Project_Issue

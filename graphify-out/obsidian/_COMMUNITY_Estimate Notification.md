@@ -53,11 +53,11 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 4 edges to [[_COMMUNITY_Instance Config]]
-- 2 edges to [[_COMMUNITY_Favorites Pages]]
+- 4 edges to [[_COMMUNITY_User Instance]]
+- 2 edges to [[_COMMUNITY_Filters Sort]]
 - 2 edges to [[_COMMUNITY_Issue Attachment]]
-- 2 edges to [[_COMMUNITY_Widget Response]]
-- 2 edges to [[_COMMUNITY_Import Export]]
+- 2 edges to [[_COMMUNITY_Widget Issue]]
+- 2 edges to [[_COMMUNITY_Workspace Search]]
 - 2 edges to [[_COMMUNITY_Project State]]
 - 2 edges to [[_COMMUNITY_Issue Activity]]
 

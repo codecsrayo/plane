@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/use-intersection-observer.ts"
+source_file: "space/hooks/use-intersection-observer.tsx"
 type: "code"
-community: "Kanban Groups"
+community: "Group Kanban"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Kanban_Groups
+  - community/Group_Kanban
 ---
 
 # UseIntersectionObserverProps
@@ -14,5 +14,6 @@ tags:
 ## Connections
 
 - [[use-intersection-observer.ts]] - `contains` [EXTRACTED]
+- [[use-intersection-observer.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Kanban_Groups
+#graphify/code #graphify/EXTRACTED #community/Group_Kanban

@@ -1,18 +1,18 @@
 ---
-source_file: "components/project-states/root.tsx"
+source_file: "web/core/components/project-states/root.tsx"
 type: "code"
-community: "State Group"
+community: "Issue Work"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/State_Group
+  - community/Issue_Work
 ---
 
 # TProjectState
 
 ## Connections
 
-- [[root.tsx_8]] - `contains` [EXTRACTED]
+- [[root.tsx_49]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/State_Group
+#graphify/code #graphify/EXTRACTED #community/Issue_Work

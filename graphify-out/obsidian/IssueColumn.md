@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/issue-column.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/issue-column.tsx"
 type: "code"
-community: "List Group Layout"
+community: "Issue Activity"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/List_Group_Layout
+  - community/Issue_Activity
 ---
 
 # IssueColumn
@@ -16,4 +16,4 @@ tags:
 - [[issue-column.tsx]] - `contains` [EXTRACTED]
 - [[issue-row.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/List_Group_Layout
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

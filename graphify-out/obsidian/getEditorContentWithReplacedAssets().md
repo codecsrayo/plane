@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/helpers/parser.ts"
 type: "code"
-community: "Document Text"
+community: "Document Custom"
 location: "L66"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Document_Text
+  - community/Document_Custom
 ---
 
 # getEditorContentWithReplacedAssets()
@@ -18,4 +18,4 @@ tags:
 - [[parser.ts_1]] - `contains` [EXTRACTED]
 - [[replaceAssetsInHTMLContent()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Document_Text
+#graphify/code #graphify/EXTRACTED #community/Document_Custom

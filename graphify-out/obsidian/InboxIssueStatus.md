@@ -1,5 +1,5 @@
 ---
-source_file: "components/inbox/inbox-issue-status.tsx"
+source_file: "web/core/components/inbox/inbox-issue-status.tsx"
 type: "code"
 community: "Issue Inbox"
 location: "L24"

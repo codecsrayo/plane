@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-detail-widgets/relations/root.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/created-on-column.tsx"
 type: "code"
-community: "Issue Activity"
-location: "L18"
+community: "Created Column"
+location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Created_Column
 ---
 
 # Props
 
 ## Connections
 
-- [[root.tsx_39]] - `contains` [EXTRACTED]
+- [[created-on-column.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Created_Column

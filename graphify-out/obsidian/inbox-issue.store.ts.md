@@ -1,12 +1,12 @@
 ---
-source_file: "store/inbox/inbox-issue.store.ts"
+source_file: "web/core/store/inbox/inbox-issue.store.ts"
 type: "code"
-community: "Inbox Issue"
+community: "Project Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Inbox_Issue
+  - community/Project_Issue
 ---
 
 # inbox-issue.store.ts
@@ -20,14 +20,14 @@ tags:
 - [[inbox-issue-mobile-header.tsx]] - `imports_from` [EXTRACTED]
 - [[inbox-issue-status.tsx]] - `imports_from` [EXTRACTED]
 - [[inboxIssue]] - `contains` [EXTRACTED]
-- [[index.ts_23]] - `imports_from` [EXTRACTED]
-- [[index.ts_19]] - `imports_from` [EXTRACTED]
+- [[index.ts_288]] - `imports_from` [EXTRACTED]
+- [[index.ts_284]] - `imports_from` [EXTRACTED]
 - [[issue-root.tsx]] - `imports_from` [EXTRACTED]
 - [[issueKey]] - `contains` [EXTRACTED]
 - [[previousData]] - `contains` [EXTRACTED]
-- [[project-inbox.store.ts]] - `imports_from` [EXTRACTED]
-- [[root.store.ts]] - `imports_from` [EXTRACTED]
+- [[project-inbox.store.ts_1]] - `imports_from` [EXTRACTED]
+- [[root.store.ts_2]] - `imports_from` [EXTRACTED]
 - [[updatedIssue]] - `contains` [EXTRACTED]
 - [[use-inbox-issues.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Inbox_Issue
+#graphify/code #graphify/EXTRACTED #community/Project_Issue

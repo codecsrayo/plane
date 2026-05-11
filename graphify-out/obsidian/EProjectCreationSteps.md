@@ -1,12 +1,12 @@
 ---
-source_file: "components/project/create-project-modal.tsx"
+source_file: "web/core/components/project/create-project-modal.tsx"
 type: "code"
-community: "Project Feature"
+community: "Project Profile"
 location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Feature
+  - community/Project_Profile
 ---
 
 # EProjectCreationSteps
@@ -15,4 +15,4 @@ tags:
 
 - [[create-project-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Feature
+#graphify/code #graphify/EXTRACTED #community/Project_Profile

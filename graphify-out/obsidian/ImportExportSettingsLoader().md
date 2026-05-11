@@ -1,12 +1,12 @@
 ---
-source_file: "components/ui/loader/settings/import-and-export.tsx"
+source_file: "web/core/components/ui/loader/settings/import-and-export.tsx"
 type: "code"
-community: "Guide Prev"
+community: "Rowdata Single"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Guide_Prev
+  - community/Rowdata_Single
 ---
 
 # ImportExportSettingsLoader()
@@ -16,4 +16,4 @@ tags:
 - [[import-and-export.tsx]] - `contains` [EXTRACTED]
 - [[prev-exports.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Guide_Prev
+#graphify/code #graphify/EXTRACTED #community/Rowdata_Single

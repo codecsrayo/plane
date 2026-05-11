@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/auth/oauth.rs"
 type: "code"
-community: "Community 43"
+community: "Session Presigned"
 location: "L441"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_43
+  - community/Session_Presigned
 ---
 
 # gitea_callback()
@@ -20,4 +20,4 @@ tags:
 - [[oauth.rs]] - `contains` [EXTRACTED]
 - [[postmessage_html()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_43
+#graphify/code #graphify/INFERRED #community/Session_Presigned

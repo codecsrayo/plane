@@ -1,27 +1,26 @@
 ---
-source_file: "components/workspace/billing/comparison/base.tsx"
+source_file: "web/ce/components/cycles/analytics-sidebar/base.tsx"
 type: "code"
-community: "Plans Plan"
+community: "Cycle Active"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Plans_Plan
+  - community/Cycle_Active
 ---
 
 # base.tsx
 
 ## Connections
 
-- [[ComingSoonBadge()]] - `imports` [EXTRACTED]
-- [[PLANE_PLANS]] - `imports` [EXTRACTED]
-- [[PLANS_LIST]] - `imports` [EXTRACTED]
-- [[PlanFeatureDetail()]] - `imports` [EXTRACTED]
-- [[PlansComparisonBase]] - `contains` [EXTRACTED]
-- [[TPlanePlans]] - `imports` [EXTRACTED]
-- [[TPlansComparisonBaseProps]] - `contains` [EXTRACTED]
-- [[feature-detail.tsx]] - `imports_from` [EXTRACTED]
-- [[plans.tsx]] - `imports_from` [EXTRACTED]
-- [[shouldRenderPlanDetail()]] - `contains` [EXTRACTED]
+- [[ProgressChartProps]] - `contains` [EXTRACTED]
+- [[SidebarChart]] - `contains` [EXTRACTED]
+- [[index.ts_395]] - `imports_from` [EXTRACTED]
+- [[issue-progress.tsx_1]] - `imports_from` [EXTRACTED]
+- [[progress-chart.tsx]] - `imports_from` [EXTRACTED]
+- [[root.tsx_33]] - `imports_from` [EXTRACTED]
+- [[use-cycle.ts]] - `imports_from` [EXTRACTED]
+- [[useCycle()]] - `imports` [EXTRACTED]
+- [[validateCycleSnapshot()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Plans_Plan
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

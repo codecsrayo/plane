@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/charts/pie-chart/active-shape.tsx"
 type: "code"
-community: "Custom Active"
+community: "Custom Chart"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Custom_Active
+  - community/Custom_Chart
 ---
 
 # CustomActiveShape
@@ -16,4 +16,4 @@ tags:
 - [[active-shape.tsx]] - `contains` [EXTRACTED]
 - [[root.tsx_10]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Custom_Active
+#graphify/code #graphify/EXTRACTED #community/Custom_Chart

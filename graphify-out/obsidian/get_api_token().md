@@ -1,18 +1,19 @@
 ---
 source_file: "api_rust/src/routes/api_tokens.rs"
 type: "code"
-community: "Community 189"
+community: "Issue Request"
 location: "L224"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_189
+  - graphify/INFERRED
+  - community/Issue_Request
 ---
 
 # get_api_token()
 
 ## Connections
 
-- [[api_tokens.rs]] - `contains` [EXTRACTED]
+- [[.json()]] - `calls` [INFERRED]
+- [[api_tokens.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_189
+#graphify/code #graphify/INFERRED #community/Issue_Request

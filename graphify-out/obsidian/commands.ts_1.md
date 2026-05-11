@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/ui/pages/context-based/page/commands.ts"
+source_file: "web/core/components/power-k/ui/pages/context-based/page/commands.ts"
 type: "code"
-community: "Context Based"
+community: "Power Chat"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Context_Based
+  - community/Power_Chat
 ---
 
 # commands.ts
@@ -14,8 +14,8 @@ tags:
 ## Connections
 
 - [[TPowerKCommandConfig]] - `imports` [EXTRACTED]
-- [[root.tsx_58]] - `imports_from` [EXTRACTED]
-- [[types.ts_2]] - `imports_from` [EXTRACTED]
+- [[root.tsx_99]] - `imports_from` [EXTRACTED]
+- [[types.ts_16]] - `imports_from` [EXTRACTED]
 - [[usePowerKPageContextBasedActions()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Context_Based
+#graphify/code #graphify/EXTRACTED #community/Power_Chat

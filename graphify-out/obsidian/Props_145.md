@@ -1,18 +1,18 @@
 ---
-source_file: "components/project/settings/features-list.tsx"
+source_file: "web/core/components/modules/modal.tsx"
 type: "code"
-community: "Project Settings"
-location: "L24"
+community: "Cycles Archived"
+location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Cycles_Archived
 ---
 
 # Props
 
 ## Connections
 
-- [[features-list.tsx]] - `contains` [EXTRACTED]
+- [[modal.tsx_7]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-detail/label/select/label-select.tsx"
+source_file: "web/core/components/issues/issue-detail/label/select/label-select.tsx"
 type: "code"
-community: "Label Issue"
+community: "Label Dropdown"
 location: "L35"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Issue
+  - community/Label_Dropdown
 ---
 
 # IssueLabelSelect
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[label-select.tsx]] - `contains` [EXTRACTED]
-- [[root.tsx_33]] - `imports` [EXTRACTED]
+- [[root.tsx_74]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Issue
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

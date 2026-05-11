@@ -33,7 +33,7 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 2 edges to [[_COMMUNITY_Toggle Checkbox]]
+- 2 edges to [[_COMMUNITY_Input Checkbox]]
 - 1 edge to [[_COMMUNITY_Variant Context]]
 
 ## Top bridge nodes

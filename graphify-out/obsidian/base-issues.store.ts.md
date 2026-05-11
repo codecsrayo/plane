@@ -1,19 +1,19 @@
 ---
-source_file: "store/issue/helpers/base-issues.store.ts"
+source_file: "web/core/store/issue/helpers/base-issues.store.ts"
 type: "code"
-community: "Issue Store Ops"
+community: "Issue Group"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Store_Ops
+  - community/Issue_Group
 ---
 
 # base-issues.store.ts
 
 ## Connections
 
-- [[CycleService]] - `imports` [EXTRACTED]
+- [[CycleService_1]] - `imports` [EXTRACTED]
 - [[EIssueGroupedAction]] - `contains` [EXTRACTED]
 - [[IBaseIssueFilterStore]] - `imports` [EXTRACTED]
 - [[IBaseIssuesStore]] - `contains` [EXTRACTED]
@@ -21,7 +21,7 @@ tags:
 - [[ISSUE_FILTER_DEFAULT_DATA]] - `contains` [EXTRACTED]
 - [[ISSUE_GROUP_BY_KEY]] - `contains` [EXTRACTED]
 - [[ISSUE_ORDERBY_KEY]] - `contains` [EXTRACTED]
-- [[ModuleService]] - `imports` [EXTRACTED]
+- [[ModuleService_1]] - `imports` [EXTRACTED]
 - [[TIssueDisplayFilterOptions]] - `contains` [EXTRACTED]
 - [[accumulateIssueUpdates()]] - `contains` [EXTRACTED]
 - [[addIssue()]] - `contains` [EXTRACTED]
@@ -29,14 +29,14 @@ tags:
 - [[addIssueToList()]] - `contains` [EXTRACTED]
 - [[addIssuesToModule()]] - `contains` [EXTRACTED]
 - [[addModulesToIssue()]] - `contains` [EXTRACTED]
-- [[api.service.ts]] - `imports_from` [EXTRACTED]
+- [[api.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[array]] - `contains` [EXTRACTED]
 - [[base-issues-utils.ts]] - `imports_from` [EXTRACTED]
 - [[changeModulesInIssue()]] - `contains` [EXTRACTED]
 - [[clear()]] - `contains` [EXTRACTED]
-- [[constructor()_5]] - `contains` [EXTRACTED]
+- [[constructor()_8]] - `contains` [EXTRACTED]
 - [[createIssue()]] - `contains` [EXTRACTED]
-- [[cycle.service.ts]] - `imports_from` [EXTRACTED]
+- [[cycle.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[cycleId()]] - `contains` [EXTRACTED]
 - [[getDifference()]] - `imports` [EXTRACTED]
 - [[getGroupIssueKeyActions()]] - `imports` [EXTRACTED]
@@ -46,17 +46,17 @@ tags:
 - [[getSortOrderToFilterEmptyValues()]] - `imports` [EXTRACTED]
 - [[getSubGroupIssueKeyActions()]] - `imports` [EXTRACTED]
 - [[groupActionsArray]] - `contains` [EXTRACTED]
-- [[groupBy()]] - `contains` [EXTRACTED]
+- [[groupBy()_1]] - `contains` [EXTRACTED]
 - [[groupIssuesKeys]] - `contains` [EXTRACTED]
-- [[index.ts_19]] - `imports_from` [EXTRACTED]
+- [[index.ts_284]] - `imports_from` [EXTRACTED]
 - [[issue-filter-helper.store.ts]] - `imports_from` [EXTRACTED]
-- [[issue.store.ts_1]] - `imports_from` [EXTRACTED]
-- [[issue.store.ts_2]] - `imports_from` [EXTRACTED]
-- [[issue.store.ts_3]] - `imports_from` [EXTRACTED]
-- [[issue.store.ts_4]] - `imports_from` [EXTRACTED]
 - [[issue.store.ts_6]] - `imports_from` [EXTRACTED]
 - [[issue.store.ts_7]] - `imports_from` [EXTRACTED]
 - [[issue.store.ts_8]] - `imports_from` [EXTRACTED]
+- [[issue.store.ts_9]] - `imports_from` [EXTRACTED]
+- [[issue.store.ts_11]] - `imports_from` [EXTRACTED]
+- [[issue.store.ts_12]] - `imports_from` [EXTRACTED]
+- [[issue.store.ts_13]] - `imports_from` [EXTRACTED]
 - [[issueAfterUpdate]] - `contains` [EXTRACTED]
 - [[issueArchive()]] - `contains` [EXTRACTED]
 - [[issueBeforeRemoval]] - `contains` [EXTRACTED]
@@ -70,7 +70,7 @@ tags:
 - [[issueSubGroupKey()]] - `contains` [EXTRACTED]
 - [[issueUpdate()]] - `contains` [EXTRACTED]
 - [[issues]] - `contains` [EXTRACTED]
-- [[module.service.ts]] - `imports_from` [EXTRACTED]
+- [[module.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[moduleId()]] - `contains` [EXTRACTED]
 - [[nextPage]] - `contains` [EXTRACTED]
 - [[onfetchIssues()]] - `contains` [EXTRACTED]
@@ -80,13 +80,13 @@ tags:
 - [[orderByUpdates]] - `contains` [EXTRACTED]
 - [[populateIssueDataForSorting()]] - `contains` [EXTRACTED]
 - [[processIssueResponse()]] - `contains` [EXTRACTED]
-- [[property]] - `contains` [EXTRACTED]
+- [[property_1]] - `contains` [EXTRACTED]
 - [[removeBulkIssues()]] - `contains` [EXTRACTED]
 - [[removeIssue()]] - `contains` [EXTRACTED]
 - [[removeIssueFromCycle()]] - `contains` [EXTRACTED]
 - [[removeIssueFromList()]] - `contains` [EXTRACTED]
 - [[removeIssuesFromModule()]] - `contains` [EXTRACTED]
-- [[root.store.ts_1]] - `imports_from` [EXTRACTED]
+- [[root.store.ts_3]] - `imports_from` [EXTRACTED]
 - [[setLoader()]] - `contains` [EXTRACTED]
 - [[setPaginationData()]] - `contains` [EXTRACTED]
 - [[sortArray]] - `contains` [EXTRACTED]
@@ -100,6 +100,6 @@ tags:
 - [[updateIssueList()]] - `contains` [EXTRACTED]
 - [[updateUpdateAccumulator()]] - `contains` [EXTRACTED]
 - [[use-group-dragndrop.ts]] - `imports_from` [EXTRACTED]
-- [[utils.tsx_1]] - `imports_from` [EXTRACTED]
+- [[utils.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Store_Ops
+#graphify/code #graphify/EXTRACTED #community/Issue_Group

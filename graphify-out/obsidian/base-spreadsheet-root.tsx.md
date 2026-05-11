@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/base-spreadsheet-root.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/base-spreadsheet-root.tsx"
 type: "code"
-community: "Issue Layout HOC"
+community: "Issue Project"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layout_HOC
+  - community/Issue_Project
 ---
 
 # base-spreadsheet-root.tsx
@@ -19,7 +19,7 @@ tags:
 - [[SpreadsheetStoreType]] - `contains` [EXTRACTED]
 - [[SpreadsheetView]] - `imports` [EXTRACTED]
 - [[cycle-root.tsx_2]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
 - [[issue-layout-HOC.tsx]] - `imports_from` [EXTRACTED]
 - [[module-root.tsx_2]] - `imports_from` [EXTRACTED]
 - [[project-root.tsx_2]] - `imports_from` [EXTRACTED]
@@ -32,4 +32,4 @@ tags:
 - [[useIssues()]] - `imports` [EXTRACTED]
 - [[useIssuesActions()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layout_HOC
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

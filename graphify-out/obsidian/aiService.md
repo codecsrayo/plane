@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-modal/components/description-editor.tsx"
+source_file: "web/ce/components/pages/editor/ai/menu.tsx"
 type: "code"
-community: "Editor Aiservice"
-location: "L36"
+community: "Aiservice Menu"
+location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Aiservice
+  - community/Aiservice_Menu
 ---
 
 # aiService
 
 ## Connections
 
-- [[description-editor.tsx]] - `contains` [EXTRACTED]
+- [[menu.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Aiservice
+#graphify/code #graphify/EXTRACTED #community/Aiservice_Menu

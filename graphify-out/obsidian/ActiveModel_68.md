@@ -1,14 +1,14 @@
 ---
 source_file: "api_rust/src/entities/deploy_boards.rs"
 type: "code"
-community: "Community 718"
+community: "Active Model"
 location: "L94"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_718
+  - community/Active_Model
 ---
 
 # ActiveModel
 
-#graphify/code #graphify/EXTRACTED #community/Community_718
+#graphify/code #graphify/EXTRACTED #community/Active_Model

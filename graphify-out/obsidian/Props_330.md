@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/ui/pages/open-entity/project-settings-menu.tsx"
+source_file: "web/core/components/issues/issue-detail/sidebar.tsx"
 type: "code"
-community: "File Icons Nav"
-location: "L18"
+community: "Label Dropdown"
+location: "L51"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/File_Icons_Nav
+  - community/Label_Dropdown
 ---
 
 # Props
 
 ## Connections
 
-- [[project-settings-menu.tsx]] - `contains` [EXTRACTED]
+- [[sidebar.tsx_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/File_Icons_Nav
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

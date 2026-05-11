@@ -1,12 +1,12 @@
 ---
-source_file: "components/onboarding/create-or-join-workspaces.tsx"
+source_file: "web/core/components/onboarding/create-or-join-workspaces.tsx"
 type: "code"
-community: "Wrapper Workspace"
+community: "Workspace Issue"
 location: "L34"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Wrapper_Workspace
+  - community/Workspace_Issue
 ---
 
 # CreateOrJoinWorkspaces
@@ -15,4 +15,4 @@ tags:
 
 - [[create-or-join-workspaces.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Wrapper_Workspace
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

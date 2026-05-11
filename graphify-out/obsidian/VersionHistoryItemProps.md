@@ -1,12 +1,12 @@
 ---
-source_file: "components/pages/navigation-pane/tab-panels/info/version-history.tsx"
+source_file: "web/core/components/pages/navigation-pane/tab-panels/info/version-history.tsx"
 type: "code"
-community: "Page Editor"
+community: "Pane Navigation"
 location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Page_Editor
+  - community/Pane_Navigation
 ---
 
 # VersionHistoryItemProps
@@ -15,4 +15,4 @@ tags:
 
 - [[version-history.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Page_Editor
+#graphify/code #graphify/EXTRACTED #community/Pane_Navigation

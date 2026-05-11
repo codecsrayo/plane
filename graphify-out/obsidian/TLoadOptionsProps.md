@@ -1,12 +1,12 @@
 ---
-source_file: "components/rich-filters/filter-value-input/select/shared.tsx"
+source_file: "web/core/components/rich-filters/filter-value-input/select/shared.tsx"
 type: "code"
-community: "Filter Controls"
+community: "Value Input"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Controls
+  - community/Value_Input
 ---
 
 # TLoadOptionsProps
@@ -15,4 +15,4 @@ tags:
 
 - [[shared.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Controls
+#graphify/code #graphify/EXTRACTED #community/Value_Input

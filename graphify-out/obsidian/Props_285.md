@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-detail-widgets/links/root.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/priority-column.tsx"
 type: "code"
-community: "Issue Activity"
-location: "L18"
+community: "Label Dropdown"
+location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Label_Dropdown
 ---
 
 # Props
 
 ## Connections
 
-- [[root.tsx_42]] - `contains` [EXTRACTED]
+- [[priority-column.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-detail/module-select.tsx"
+source_file: "web/core/components/issues/issue-detail/module-select.tsx"
 type: "code"
-community: "Issue Properties"
+community: "Label Dropdown"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Label_Dropdown
 ---
 
 # IssueModuleSelect
@@ -15,6 +15,6 @@ tags:
 
 - [[module-select.tsx]] - `contains` [EXTRACTED]
 - [[properties.tsx_2]] - `imports` [EXTRACTED]
-- [[sidebar.tsx_3]] - `imports` [EXTRACTED]
+- [[sidebar.tsx_4]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

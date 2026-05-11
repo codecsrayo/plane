@@ -1,18 +1,18 @@
 ---
-source_file: "store/estimates/estimate-point.ts"
+source_file: "web/core/store/estimates/project-estimate.store.ts"
 type: "code"
-community: "Estimate Points"
-location: "L17"
+community: "Estimate Project"
+location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Estimate_Points
+  - community/Estimate_Project
 ---
 
 # TErrorCodes
 
 ## Connections
 
-- [[estimate-point.ts]] - `contains` [EXTRACTED]
+- [[project-estimate.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Estimate_Points
+#graphify/code #graphify/EXTRACTED #community/Estimate_Project

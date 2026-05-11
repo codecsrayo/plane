@@ -1,5 +1,5 @@
 ---
-source_file: "components/power-k/core/types.ts"
+source_file: "web/core/components/power-k/core/types.ts"
 type: "code"
 community: "Search Results"
 location: "L136"
@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 
-- [[search-results-map.tsx]] - `imports` [EXTRACTED]
-- [[types.ts_2]] - `contains` [EXTRACTED]
+- [[search-results-map.tsx_1]] - `imports` [EXTRACTED]
+- [[types.ts_16]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Search_Results

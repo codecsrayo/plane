@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/analytics.rs"
 type: "code"
-community: "Community 40"
+community: "Analytics Advance"
 location: "L125"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_40
+  - community/Analytics_Advance
 ---
 
 # analytic_view_to_response()
@@ -19,4 +19,4 @@ tags:
 - [[get_saved_analytic_view()]] - `calls` [EXTRACTED]
 - [[update_analytic_view()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_40
+#graphify/code #graphify/EXTRACTED #community/Analytics_Advance

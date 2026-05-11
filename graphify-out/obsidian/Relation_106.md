@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/issue_assignees.rs"
 type: "code"
-community: "Community 425"
+community: "Model Relation"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_425
+  - community/Model_Relation
 ---
 
 # Relation
@@ -15,4 +15,4 @@ tags:
 
 - [[issue_assignees.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_425
+#graphify/code #graphify/EXTRACTED #community/Model_Relation

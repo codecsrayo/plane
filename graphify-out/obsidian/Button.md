@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/button/button.tsx"
 type: "code"
-community: "Button Auth"
+community: "Empty State"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Button_Auth
+  - community/Empty_State
 ---
 
 # Button
@@ -21,4 +21,4 @@ tags:
 - [[detailed-empty-state.tsx]] - `imports` [EXTRACTED]
 - [[portal.stories.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Button_Auth
+#graphify/code #graphify/EXTRACTED #community/Empty_State

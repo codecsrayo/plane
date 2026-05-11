@@ -1,12 +1,12 @@
 ---
-source_file: "components/integration/utils.ts"
+source_file: "web/core/components/integration/utils.ts"
 type: "code"
-community: "Integration Sync"
+community: "Project Workspace"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Integration_Sync
+  - community/Project_Workspace
 ---
 
 # TIntegrationProvider
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[single-integration-card.tsx]] - `imports` [EXTRACTED]
-- [[utils.ts_3]] - `contains` [EXTRACTED]
+- [[utils.ts_15]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Integration_Sync
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

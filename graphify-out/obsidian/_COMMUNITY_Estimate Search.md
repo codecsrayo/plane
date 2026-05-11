@@ -11,8 +11,8 @@ members: 2
 
 ## Members
 
-- [[EstimateSearch]] - code - components/estimates/estimate-search.tsx
-- [[estimate-search.tsx]] - code - components/estimates/estimate-search.tsx
+- [[EstimateSearch]] - code - web/core/components/estimates/estimate-search.tsx
+- [[estimate-search.tsx]] - code - web/core/components/estimates/estimate-search.tsx
 
 ## Live Query (requires Dataview plugin)
 

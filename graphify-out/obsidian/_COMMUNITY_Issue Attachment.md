@@ -1,29 +1,18 @@
 ---
 type: community
-cohesion: 0.17
-members: 13
+cohesion: 1.00
+members: 2
 ---
 
 # Issue Attachment
 
-**Cohesion:** 0.17 - loosely connected
-**Members:** 13 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 2 nodes
 
 ## Members
 
-- [[EFileAssetType]] - code - types/src/enums.ts
-- [[TDuplicateAssetData]] - code - types/src/file.ts
-- [[TDuplicateAssetResponse]] - code - types/src/file.ts
-- [[TFileEntityInfo]] - code - types/src/file.ts
-- [[TFileMetaData]] - code - types/src/file.ts
-- [[TFileMetaDataLite]] - code - types/src/file.ts
-- [[TFileSignedURLResponse]] - code - types/src/file.ts
-- [[TIssueAttachment]] - code - types/src/issues/issue_attachment.ts
-- [[TIssueAttachmentIdMap]] - code - types/src/issues/issue_attachment.ts
-- [[TIssueAttachmentMap]] - code - types/src/issues/issue_attachment.ts
-- [[TIssueAttachmentUploadResponse]] - code - types/src/issues/issue_attachment.ts
-- [[file.ts_2]] - code - types/src/file.ts
-- [[issue_attachment.ts]] - code - types/src/issues/issue_attachment.ts
+- [[Decorator for issue attachment endpoints]] - rationale - api/plane/utils/openapi/decorators.py
+- [[issue_attachment_docs()]] - code - api/plane/utils/openapi/decorators.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -34,14 +23,9 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 2 edges to [[_COMMUNITY_Estimate Notification]]
-- 2 edges to [[_COMMUNITY_Issue Activity]]
-- 2 edges to [[_COMMUNITY_Issue Enums]]
+- 1 edge to [[_COMMUNITY_Sample Schema]]
+- 1 edge to [[_COMMUNITY_Decorator Endpoints]]
 
 ## Top bridge nodes
 
-- [[file.ts_2]] - degree 10, connects to 2 communities
-- [[issue_attachment.ts]] - degree 7, connects to 1 community
-- [[TFileSignedURLResponse]] - degree 3, connects to 1 community
-- [[TIssueAttachment]] - degree 2, connects to 1 community
-- [[EFileAssetType]] - degree 2, connects to 1 community
+- [[issue_attachment_docs()]] - degree 3, connects to 2 communities

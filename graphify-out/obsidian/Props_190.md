@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/list/block-root.tsx"
+source_file: "web/core/components/settings/project/content/feature-control-item.tsx"
 type: "code"
-community: "Kanban Groups"
-location: "L31"
+community: "Project Settings"
+location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Kanban_Groups
+  - community/Project_Settings
 ---
 
 # Props
 
 ## Connections
 
-- [[block-root.tsx]] - `contains` [EXTRACTED]
+- [[feature-control-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Kanban_Groups
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

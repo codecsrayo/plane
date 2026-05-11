@@ -1,18 +1,18 @@
 ---
-source_file: "components/workspace/sidebar/favorites/new-fav-folder.tsx"
+source_file: "web/core/components/home/widgets/links/action.tsx"
 type: "code"
-community: "Favorite Folder"
-location: "L29"
+community: "Tprops Action"
+location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Favorite_Folder
+  - community/Tprops_Action
 ---
 
 # TProps
 
 ## Connections
 
-- [[new-fav-folder.tsx]] - `contains` [EXTRACTED]
+- [[action.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Favorite_Folder
+#graphify/code #graphify/EXTRACTED #community/Tprops_Action

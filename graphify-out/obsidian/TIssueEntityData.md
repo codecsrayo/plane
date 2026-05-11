@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/home.ts"
 type: "code"
-community: "Favorites Pages"
+community: "Issue Entity"
 location: "L34"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Favorites_Pages
+  - community/Issue_Entity
 ---
 
 # TIssueEntityData
@@ -15,4 +15,4 @@ tags:
 
 - [[home.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Favorites_Pages
+#graphify/code #graphify/EXTRACTED #community/Issue_Entity

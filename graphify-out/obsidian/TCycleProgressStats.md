@@ -1,5 +1,5 @@
 ---
-source_file: "components/cycles/analytics-sidebar/progress-stats.tsx"
+source_file: "web/core/components/cycles/analytics-sidebar/progress-stats.tsx"
 type: "code"
 community: "Progress Stats"
 location: "L27"

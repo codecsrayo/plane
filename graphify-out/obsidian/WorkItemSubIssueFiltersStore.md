@@ -1,20 +1,20 @@
 ---
-source_file: "store/issue/issue-details/sub_issues_filter.store.ts"
+source_file: "web/core/store/issue/issue-details/sub_issues_filter.store.ts"
 type: "code"
-community: "Issue Work"
+community: "Issue Reaction"
 location: "L46"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Work
+  - community/Issue_Reaction
 ---
 
 # WorkItemSubIssueFiltersStore
 
 ## Connections
 
-- [[.constructor()_45]] - `method` [EXTRACTED]
+- [[.constructor()_102]] - `method` [EXTRACTED]
 - [[sub_issues.store.ts]] - `imports` [EXTRACTED]
 - [[sub_issues_filter.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Work
+#graphify/code #graphify/EXTRACTED #community/Issue_Reaction

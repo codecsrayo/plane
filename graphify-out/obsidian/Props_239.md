@@ -1,19 +1,18 @@
 ---
-source_file: "components/common/filters/created-by.tsx"
+source_file: "web/core/components/web-hooks/form/form.tsx"
 type: "code"
-community: "Created Selection"
-location: "L20"
+community: "Webhook Workspace"
+location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Created_Selection
+  - community/Webhook_Workspace
 ---
 
 # Props
 
 ## Connections
 
-- [[created-by.tsx]] - `contains` [EXTRACTED]
-- [[created-by.tsx_1]] - `contains` [EXTRACTED]
+- [[form.tsx_7]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Created_Selection
+#graphify/code #graphify/EXTRACTED #community/Webhook_Workspace

@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/confirm-issue-discard.tsx"
+source_file: "web/core/components/issues/confirm-issue-discard.tsx"
 type: "code"
-community: "Issue Identifiers"
+community: "Issue Work"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Identifiers
+  - community/Issue_Work
 ---
 
 # ConfirmIssueDiscard()
@@ -16,4 +16,4 @@ tags:
 - [[confirm-issue-discard.tsx]] - `contains` [EXTRACTED]
 - [[draft-issue-layout.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Identifiers
+#graphify/code #graphify/EXTRACTED #community/Issue_Work

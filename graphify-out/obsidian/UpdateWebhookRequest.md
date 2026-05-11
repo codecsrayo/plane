@@ -1,18 +1,18 @@
 ---
 source_file: "api_rust/src/routes/webhooks.rs"
 type: "code"
-community: "Community 47"
+community: "Workspace Webhook"
 location: "L95"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_47
+  - community/Workspace_Webhook
 ---
 
 # UpdateWebhookRequest
 
 ## Connections
 
-- [[webhooks.rs]] - `contains` [EXTRACTED]
+- [[webhooks.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_47
+#graphify/code #graphify/EXTRACTED #community/Workspace_Webhook

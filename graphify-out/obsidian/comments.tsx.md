@@ -1,12 +1,12 @@
 ---
-source_file: "components/comments/comments.tsx"
+source_file: "web/core/components/comments/comments.tsx"
 type: "code"
-community: "Comment Card"
+community: "Activity Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Comment_Card
+  - community/Activity_Issue
 ---
 
 # comments.tsx
@@ -18,6 +18,6 @@ tags:
 - [[CommentsWrapper]] - `contains` [EXTRACTED]
 - [[TCommentsWrapper]] - `contains` [EXTRACTED]
 - [[comment-create.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_87]] - `imports_from` [EXTRACTED]
+- [[root.tsx_128]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Comment_Card
+#graphify/code #graphify/EXTRACTED #community/Activity_Issue

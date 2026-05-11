@@ -1,12 +1,12 @@
 ---
-source_file: "components/inbox/inbox-filter/filters/date.tsx"
+source_file: "web/core/components/inbox/inbox-filter/filters/date.tsx"
 type: "code"
-community: "Filter Selection UI"
+community: "Date Start"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Selection_UI
+  - community/Date_Start
 ---
 
 # FilterDate
@@ -16,4 +16,4 @@ tags:
 - [[date.tsx_7]] - `contains` [EXTRACTED]
 - [[filter-selection.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Selection_UI
+#graphify/code #graphify/EXTRACTED #community/Date_Start

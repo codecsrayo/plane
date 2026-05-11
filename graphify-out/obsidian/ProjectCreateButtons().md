@@ -1,12 +1,12 @@
 ---
-source_file: "components/project/create/project-create-buttons.tsx"
+source_file: "web/core/components/project/create/project-create-buttons.tsx"
 type: "code"
-community: "Project Buttons"
+community: "Project Common"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Buttons
+  - community/Project_Common
 ---
 
 # ProjectCreateButtons()
@@ -15,4 +15,4 @@ tags:
 
 - [[project-create-buttons.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Buttons
+#graphify/code #graphify/EXTRACTED #community/Project_Common

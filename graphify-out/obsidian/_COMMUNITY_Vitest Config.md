@@ -11,7 +11,7 @@ members: 1
 
 ## Members
 
-- [[vitest.config.ts]] - code - codemods/vitest.config.ts
+- [[vitest.config.ts_1]] - code - live/vitest.config.ts
 
 ## Live Query (requires Dataview plugin)
 

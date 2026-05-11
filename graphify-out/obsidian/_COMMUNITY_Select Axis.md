@@ -11,17 +11,17 @@ members: 11
 
 ## Members
 
-- [[AnalyticsSelectParams]] - code - components/analytics/select/analytics-params.tsx
-- [[CustomizedInsights]] - code - components/analytics/work-items/customized-insights.tsx
-- [[Props_431]] - code - components/analytics/select/analytics-params.tsx
-- [[Props_430]] - code - components/analytics/select/select-x-axis.tsx
-- [[Props_427]] - code - components/analytics/select/select-y-axis.tsx
-- [[SelectXAxis()]] - code - components/analytics/select/select-x-axis.tsx
-- [[SelectYAxis]] - code - components/analytics/select/select-y-axis.tsx
-- [[analytics-params.tsx]] - code - components/analytics/select/analytics-params.tsx
-- [[customized-insights.tsx]] - code - components/analytics/work-items/customized-insights.tsx
-- [[select-x-axis.tsx]] - code - components/analytics/select/select-x-axis.tsx
-- [[select-y-axis.tsx]] - code - components/analytics/select/select-y-axis.tsx
+- [[AnalyticsSelectParams]] - code - web/core/components/analytics/select/analytics-params.tsx
+- [[CustomizedInsights]] - code - web/core/components/analytics/work-items/customized-insights.tsx
+- [[Props_505]] - code - web/core/components/analytics/select/analytics-params.tsx
+- [[Props_504]] - code - web/core/components/analytics/select/select-x-axis.tsx
+- [[Props_501]] - code - web/core/components/analytics/select/select-y-axis.tsx
+- [[SelectXAxis()]] - code - web/core/components/analytics/select/select-x-axis.tsx
+- [[SelectYAxis]] - code - web/core/components/analytics/select/select-y-axis.tsx
+- [[analytics-params.tsx]] - code - web/core/components/analytics/select/analytics-params.tsx
+- [[customized-insights.tsx]] - code - web/core/components/analytics/work-items/customized-insights.tsx
+- [[select-x-axis.tsx]] - code - web/core/components/analytics/select/select-x-axis.tsx
+- [[select-y-axis.tsx]] - code - web/core/components/analytics/select/select-y-axis.tsx
 
 ## Live Query (requires Dataview plugin)
 
@@ -32,11 +32,11 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 1 edge to [[_COMMUNITY_Issue Properties]]
+- 1 edge to [[_COMMUNITY_Label Dropdown]]
 - 1 edge to [[_COMMUNITY_Analytics Project]]
-- 1 edge to [[_COMMUNITY_Chart Generate]]
-- 1 edge to [[_COMMUNITY_Insight Analytics]]
-- 1 edge to [[_COMMUNITY_Active Projects]]
+- 1 edge to [[_COMMUNITY_Table Chart]]
+- 1 edge to [[_COMMUNITY_Analytics Insight]]
+- 1 edge to [[_COMMUNITY_Webhook Workspace]]
 
 ## Top bridge nodes
 

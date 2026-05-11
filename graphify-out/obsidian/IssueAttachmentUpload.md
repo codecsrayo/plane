@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/attachment/attachment-upload.tsx"
+source_file: "web/core/components/issues/attachment/attachment-upload.tsx"
 type: "code"
-community: "Issue Attachments"
+community: "Attachment Issue"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Attachments
+  - community/Attachment_Issue
 ---
 
 # IssueAttachmentUpload
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[attachment-upload.tsx]] - `contains` [EXTRACTED]
-- [[root.tsx_36]] - `imports` [EXTRACTED]
+- [[root.tsx_77]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Attachments
+#graphify/code #graphify/EXTRACTED #community/Attachment_Issue

@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/attachment/attachment-detail.tsx"
+source_file: "web/core/components/issues/attachment/attachment-detail.tsx"
 type: "code"
-community: "Issue Attachments"
+community: "Attachment Issue"
 location: "L37"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Attachments
+  - community/Attachment_Issue
 ---
 
 # TIssueAttachmentsDetail
@@ -15,4 +15,4 @@ tags:
 
 - [[attachment-detail.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Attachments
+#graphify/code #graphify/EXTRACTED #community/Attachment_Issue

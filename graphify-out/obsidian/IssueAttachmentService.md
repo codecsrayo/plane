@@ -1,5 +1,5 @@
 ---
-source_file: "services/issue/issue_attachment.service.ts"
+source_file: "web/core/services/issue/issue_attachment.service.ts"
 type: "code"
 community: "Issue Attachment"
 location: "L17"
@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 
-- [[.constructor()_104]] - `method` [EXTRACTED]
+- [[.constructor()_161]] - `method` [EXTRACTED]
 - [[.deleteIssueAttachment()]] - `method` [EXTRACTED]
 - [[.getIssueAttachments()]] - `method` [EXTRACTED]
 - [[.updateIssueAttachmentUploadStatus()]] - `method` [EXTRACTED]

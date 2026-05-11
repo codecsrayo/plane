@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/relations/issue-list.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/roots/workspace-root.tsx"
 type: "code"
-community: "Issue Activity"
-location: "L17"
+community: "Issue Project"
+location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Issue_Project
 ---
 
 # Props
 
 ## Connections
 
-- [[issue-list.tsx]] - `contains` [EXTRACTED]
+- [[workspace-root.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

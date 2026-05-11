@@ -11,26 +11,26 @@ members: 20
 
 ## Members
 
-- [[.addToFavorites()]] - code - services/page/project-page.service.ts
-- [[.archive()]] - code - services/page/project-page.service.ts
-- [[.constructor()_110]] - code - services/page/project-page.service.ts
-- [[.create()]] - code - services/page/project-page.service.ts
-- [[.duplicate()]] - code - services/page/project-page.service.ts
-- [[.fetchAll()]] - code - services/page/project-page.service.ts
-- [[.fetchArchived()]] - code - services/page/project-page.service.ts
-- [[.fetchById()]] - code - services/page/project-page.service.ts
-- [[.fetchDescriptionBinary()]] - code - services/page/project-page.service.ts
-- [[.fetchFavorites()]] - code - services/page/project-page.service.ts
-- [[.lock()]] - code - services/page/project-page.service.ts
-- [[.move()]] - code - services/page/project-page.service.ts
-- [[.remove()]] - code - services/page/project-page.service.ts
-- [[.removeFromFavorites()]] - code - services/page/project-page.service.ts
-- [[.restore()]] - code - services/page/project-page.service.ts
-- [[.unlock()]] - code - services/page/project-page.service.ts
-- [[.update()]] - code - services/page/project-page.service.ts
-- [[.updateAccess()]] - code - services/page/project-page.service.ts
-- [[.updateDescription()]] - code - services/page/project-page.service.ts
-- [[ProjectPageService]] - code - services/page/project-page.service.ts
+- [[.addToFavorites()_1]] - code - web/core/services/page/project-page.service.ts
+- [[.archive()_2]] - code - web/core/services/page/project-page.service.ts
+- [[.constructor()_167]] - code - live/src/services/page/project-page.service.ts
+- [[.create()_7]] - code - web/core/services/page/project-page.service.ts
+- [[.duplicate()]] - code - web/core/services/page/project-page.service.ts
+- [[.fetchAll()]] - code - web/core/services/page/project-page.service.ts
+- [[.fetchArchived()]] - code - web/core/services/page/project-page.service.ts
+- [[.fetchById()]] - code - web/core/services/page/project-page.service.ts
+- [[.fetchDescriptionBinary()]] - code - web/core/services/page/project-page.service.ts
+- [[.fetchFavorites()]] - code - web/core/services/page/project-page.service.ts
+- [[.lock()]] - code - web/core/services/page/project-page.service.ts
+- [[.move()]] - code - web/core/services/page/project-page.service.ts
+- [[.remove()_1]] - code - web/core/services/page/project-page.service.ts
+- [[.removeFromFavorites()_1]] - code - web/core/services/page/project-page.service.ts
+- [[.restore()_1]] - code - web/core/services/page/project-page.service.ts
+- [[.unlock()]] - code - web/core/services/page/project-page.service.ts
+- [[.update()_13]] - code - web/core/services/page/project-page.service.ts
+- [[.updateAccess()]] - code - web/core/services/page/project-page.service.ts
+- [[.updateDescription()]] - code - web/core/services/page/project-page.service.ts
+- [[ProjectPageService]] - code - live/src/services/page/project-page.service.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -41,8 +41,9 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 1 edge to [[_COMMUNITY_API Services]]
+- 2 edges to [[_COMMUNITY_Broadcast Context]]
+- 1 edge to [[_COMMUNITY_Issue Project]]
 
 ## Top bridge nodes
 
-- [[ProjectPageService]] - degree 20, connects to 1 community
+- [[ProjectPageService]] - degree 22, connects to 2 communities

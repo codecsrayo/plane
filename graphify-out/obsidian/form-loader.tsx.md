@@ -1,12 +1,12 @@
 ---
-source_file: "components/project/form-loader.tsx"
+source_file: "web/core/components/project/form-loader.tsx"
 type: "code"
-community: "Loader Project"
+community: "Project Settings"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Loader_Project
+  - community/Project_Settings
 ---
 
 # form-loader.tsx
@@ -14,5 +14,6 @@ tags:
 ## Connections
 
 - [[ProjectDetailsFormLoader()]] - `contains` [EXTRACTED]
+- [[page.tsx_37]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Loader_Project
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

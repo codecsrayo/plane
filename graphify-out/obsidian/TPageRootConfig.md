@@ -1,12 +1,12 @@
 ---
-source_file: "components/pages/editor/page-root.tsx"
+source_file: "web/core/components/pages/editor/page-root.tsx"
 type: "code"
-community: "Editor Body"
+community: "Content Body"
 location: "L39"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Body
+  - community/Content_Body
 ---
 
 # TPageRootConfig
@@ -14,5 +14,6 @@ tags:
 ## Connections
 
 - [[page-root.tsx]] - `contains` [EXTRACTED]
+- [[page.tsx_27]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Body
+#graphify/code #graphify/EXTRACTED #community/Content_Body

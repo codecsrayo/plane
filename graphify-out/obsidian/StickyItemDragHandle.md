@@ -1,5 +1,5 @@
 ---
-source_file: "components/stickies/sticky/sticky-item-drag-handle.tsx"
+source_file: "web/core/components/stickies/sticky/sticky-item-drag-handle.tsx"
 type: "code"
 community: "Sticky Drag"
 location: "L17"

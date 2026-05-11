@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/components/editors/document/page-renderer.tsx"
 type: "code"
-community: "Highlight Node"
+community: "Toggle Menu"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Highlight_Node
+  - community/Toggle_Menu
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[page-renderer.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Highlight_Node
+#graphify/code #graphify/EXTRACTED #community/Toggle_Menu

@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/auth/email_check.rs"
 type: "code"
-community: "Auth Rust API"
+community: "Password Email"
 location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Rust_API
+  - community/Password_Email
 ---
 
 # email_check()
@@ -16,4 +16,4 @@ tags:
 - [[email_check.rs]] - `contains` [EXTRACTED]
 - [[run_email_check()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Rust_API
+#graphify/code #graphify/EXTRACTED #community/Password_Email

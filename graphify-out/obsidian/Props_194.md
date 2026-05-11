@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/issue-row.tsx"
+source_file: "web/core/components/dropdowns/estimate.tsx"
 type: "code"
-community: "List Group Layout"
-location: "L41"
+community: "Label Dropdown"
+location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/List_Group_Layout
+  - community/Label_Dropdown
 ---
 
 # Props
 
 ## Connections
 
-- [[issue-row.tsx]] - `contains` [EXTRACTED]
+- [[estimate.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/List_Group_Layout
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

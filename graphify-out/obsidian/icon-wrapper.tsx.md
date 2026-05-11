@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/icons/icon-wrapper.tsx"
 type: "code"
-community: "Icon Library"
+community: "Icon Property"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Icon_Library
+  - community/Icon_Property
 ---
 
 # icon-wrapper.tsx
@@ -100,4 +100,4 @@ tags:
 - [[workflows-icon.tsx]] - `imports_from` [EXTRACTED]
 - [[your-work-icon.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Icon_Library
+#graphify/code #graphify/EXTRACTED #community/Icon_Property

@@ -1,18 +1,19 @@
 ---
-source_file: "components/integration/single-integration-card.tsx"
+source_file: "web/core/components/integration/single-integration-card.tsx"
 type: "code"
-community: "Integration Sync"
+community: "Project Workspace"
 location: "L65"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Integration_Sync
+  - community/Project_Workspace
 ---
 
 # SingleIntegrationCard
 
 ## Connections
 
+- [[page.tsx_52]] - `imports` [EXTRACTED]
 - [[single-integration-card.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Integration_Sync
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

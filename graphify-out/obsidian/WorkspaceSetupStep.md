@@ -1,5 +1,5 @@
 ---
-source_file: "components/onboarding/steps/workspace/root.tsx"
+source_file: "web/core/components/onboarding/steps/workspace/root.tsx"
 type: "code"
 community: "Step Onboarding"
 location: "L22"
@@ -13,6 +13,6 @@ tags:
 
 ## Connections
 
-- [[root.tsx_65]] - `contains` [EXTRACTED]
+- [[root.tsx_106]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Step_Onboarding

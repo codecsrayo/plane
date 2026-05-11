@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/filters/header/helpers/filter-option.tsx"
+source_file: "web/core/components/issues/issue-layouts/filters/header/helpers/filter-option.tsx"
 type: "code"
-community: "Option"
+community: "Priority State"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Option
+  - community/Priority_State
 ---
 
 # filter-option.tsx
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[FilterOption()]] - `contains` [EXTRACTED]
-- [[Props_232]] - `contains` [EXTRACTED]
+- [[Props_307]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Option
+#graphify/code #graphify/EXTRACTED #community/Priority_State

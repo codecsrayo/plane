@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/auth/forgot_reset_password.rs"
 type: "code"
-community: "Auth Rust API"
+community: "Password Email"
 location: "L127"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Rust_API
+  - community/Password_Email
 ---
 
 # forgot_password_space()
@@ -16,4 +16,4 @@ tags:
 - [[forgot_reset_password.rs]] - `contains` [EXTRACTED]
 - [[handle_forgot_password()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Rust_API
+#graphify/code #graphify/EXTRACTED #community/Password_Email

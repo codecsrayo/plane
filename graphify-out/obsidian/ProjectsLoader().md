@@ -1,12 +1,12 @@
 ---
-source_file: "components/ui/loader/projects-loader.tsx"
+source_file: "web/core/components/ui/loader/projects-loader.tsx"
 type: "code"
-community: "Auth UI"
+community: "Workspace Issue"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_UI
+  - community/Workspace_Issue
 ---
 
 # ProjectsLoader()
@@ -16,4 +16,4 @@ tags:
 - [[card-list.tsx]] - `imports` [EXTRACTED]
 - [[projects-loader.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_UI
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

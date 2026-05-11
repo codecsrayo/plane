@@ -1,12 +1,12 @@
 ---
-source_file: "components/inbox/inbox-filter/applied-filters/member.tsx"
+source_file: "web/core/components/inbox/inbox-filter/applied-filters/member.tsx"
 type: "code"
-community: "Inbox Filters"
+community: "Issue Inbox"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Inbox_Filters
+  - community/Issue_Inbox
 ---
 
 # InboxIssueAppliedFiltersMember
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[member.tsx]] - `contains` [EXTRACTED]
-- [[root.tsx_73]] - `imports` [EXTRACTED]
+- [[root.tsx_114]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Inbox_Filters
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

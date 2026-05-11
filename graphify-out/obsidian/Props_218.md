@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/calendar/week-header.tsx"
+source_file: "web/core/components/project/create/common-attributes.tsx"
 type: "code"
-community: "Calendar Views"
-location: "L15"
+community: "Project Common"
+location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Views
+  - community/Project_Common
 ---
 
 # Props
 
 ## Connections
 
-- [[week-header.tsx]] - `contains` [EXTRACTED]
+- [[common-attributes.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Views
+#graphify/code #graphify/EXTRACTED #community/Project_Common

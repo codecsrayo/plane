@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/changelogs.rs"
 type: "code"
-community: "Community 332"
+community: "Model Relation"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_332
+  - community/Model_Relation
 ---
 
 # changelogs.rs
@@ -16,4 +16,4 @@ tags:
 - [[Model_13]] - `contains` [EXTRACTED]
 - [[Relation_13]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_332
+#graphify/code #graphify/EXTRACTED #community/Model_Relation

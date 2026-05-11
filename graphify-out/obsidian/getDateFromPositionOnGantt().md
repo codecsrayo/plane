@@ -1,18 +1,19 @@
 ---
-source_file: "components/gantt-chart/views/helpers.ts"
+source_file: "web/core/components/gantt-chart/views/helpers.ts"
 type: "code"
-community: "Calendar Helpers"
+community: "Time Month"
 location: "L73"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Helpers
+  - community/Time_Month
 ---
 
 # getDateFromPositionOnGantt()
 
 ## Connections
 
-- [[helpers.ts]] - `contains` [EXTRACTED]
+- [[base-timeline.store.ts]] - `imports` [EXTRACTED]
+- [[helpers.ts_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Helpers
+#graphify/code #graphify/EXTRACTED #community/Time_Month

@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/relations/properties.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/updated-on-column.tsx"
 type: "code"
-community: "Issue Activity"
-location: "L20"
+community: "Updated Column"
+location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Updated_Column
 ---
 
 # Props
 
 ## Connections
 
-- [[properties.tsx_1]] - `contains` [EXTRACTED]
+- [[updated-on-column.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Updated_Column

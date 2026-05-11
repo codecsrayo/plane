@@ -1,21 +1,21 @@
 ---
-source_file: "store/issue/issue-details/link.store.ts"
+source_file: "web/core/store/issue/issue-details/link.store.ts"
 type: "code"
-community: "Comment Reactions"
+community: "Issue Reaction"
 location: "L46"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Comment_Reactions
+  - community/Issue_Reaction
 ---
 
 # IssueLinkStore
 
 ## Connections
 
-- [[.constructor()_52]] - `method` [EXTRACTED]
+- [[.constructor()_109]] - `method` [EXTRACTED]
 - [[.issueLinks()]] - `method` [EXTRACTED]
 - [[link.store.ts_1]] - `contains` [EXTRACTED]
-- [[root.store.ts_2]] - `imports` [EXTRACTED]
+- [[root.store.ts_4]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Comment_Reactions
+#graphify/code #graphify/EXTRACTED #community/Issue_Reaction

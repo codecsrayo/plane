@@ -1,12 +1,12 @@
 ---
-source_file: "services/integrations/github.service.ts"
+source_file: "web/core/services/integrations/github.service.ts"
 type: "code"
-community: "Github Integration"
+community: "Github Select"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Github_Integration
+  - community/Github_Select
 ---
 
 # github.service.ts
@@ -15,7 +15,7 @@ tags:
 
 - [[ApiError]] - `imports` [EXTRACTED]
 - [[GithubIntegrationService]] - `contains` [EXTRACTED]
-- [[api.service.ts]] - `imports_from` [EXTRACTED]
+- [[api.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[select-repository.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Github_Integration
+#graphify/code #graphify/EXTRACTED #community/Github_Select

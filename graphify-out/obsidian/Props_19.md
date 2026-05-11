@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/components/menus/bubble-menu/node-selector.tsx"
 type: "code"
-community: "Menu Color"
+community: "Toggle Menu"
 location: "L34"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu_Color
+  - community/Toggle_Menu
 ---
 
 # Props
@@ -15,4 +15,4 @@ tags:
 
 - [[node-selector.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Menu_Color
+#graphify/code #graphify/EXTRACTED #community/Toggle_Menu

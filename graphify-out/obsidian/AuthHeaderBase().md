@@ -1,18 +1,18 @@
 ---
-source_file: "components/auth-screens/header.tsx"
+source_file: "web/core/components/auth-screens/header.tsx"
 type: "code"
-community: "Auth UI"
+community: "Workspace Issue"
 location: "L69"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_UI
+  - community/Workspace_Issue
 ---
 
 # AuthHeaderBase()
 
 ## Connections
 
-- [[header.tsx_14]] - `contains` [EXTRACTED]
+- [[header.tsx_56]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_UI
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

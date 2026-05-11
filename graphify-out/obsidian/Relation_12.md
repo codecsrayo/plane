@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/email_notification_logs.rs"
 type: "code"
-community: "Community 331"
+community: "Model Relation"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_331
+  - community/Model_Relation
 ---
 
 # Relation
@@ -15,4 +15,4 @@ tags:
 
 - [[email_notification_logs.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_331
+#graphify/code #graphify/EXTRACTED #community/Model_Relation

@@ -1,12 +1,12 @@
 ---
-source_file: "shared-state/src/store/workspace.store.ts"
+source_file: "admin/store/workspace.store.ts"
 type: "code"
-community: "User Workspace"
-location: "L16"
+community: "Instance User"
+location: "L34"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User_Workspace
+  - community/Instance_User
 ---
 
 # WorkspaceStore
@@ -14,6 +14,9 @@ tags:
 ## Connections
 
 - [[.constructor()_34]] - `method` [EXTRACTED]
+- [[.workspaceIds()]] - `method` [EXTRACTED]
+- [[root.store.ts_5]] - `imports` [EXTRACTED]
 - [[workspace.store.ts]] - `contains` [EXTRACTED]
+- [[workspace.store.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User_Workspace
+#graphify/code #graphify/EXTRACTED #community/Instance_User

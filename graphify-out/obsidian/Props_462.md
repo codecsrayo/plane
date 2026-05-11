@@ -1,18 +1,18 @@
 ---
-source_file: "components/core/theme/theme-mode-selector.tsx"
+source_file: "web/core/components/pages/editor/content-limit-banner.tsx"
 type: "code"
-community: "Theme Custom"
-location: "L13"
+community: "Content Body"
+location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Custom
+  - community/Content_Body
 ---
 
 # Props
 
 ## Connections
 
-- [[theme-mode-selector.tsx]] - `contains` [EXTRACTED]
+- [[content-limit-banner.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Custom
+#graphify/code #graphify/EXTRACTED #community/Content_Body

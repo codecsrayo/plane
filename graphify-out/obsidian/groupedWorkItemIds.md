@@ -1,12 +1,12 @@
 ---
-source_file: "store/issue/issue-details/sub_issues_filter.store.ts"
+source_file: "web/core/store/issue/issue-details/sub_issues_filter.store.ts"
 type: "code"
-community: "Issue Work"
+community: "Issue Group"
 location: "L115"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Work
+  - community/Issue_Group
 ---
 
 # groupedWorkItemIds
@@ -15,4 +15,4 @@ tags:
 
 - [[sub_issues_filter.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Work
+#graphify/code #graphify/EXTRACTED #community/Issue_Group

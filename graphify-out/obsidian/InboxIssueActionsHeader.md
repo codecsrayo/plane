@@ -1,12 +1,12 @@
 ---
-source_file: "components/inbox/content/inbox-issue-header.tsx"
+source_file: "web/core/components/inbox/content/inbox-issue-header.tsx"
 type: "code"
-community: "Inbox Content"
+community: "Issue Inbox"
 location: "L59"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Inbox_Content
+  - community/Issue_Inbox
 ---
 
 # InboxIssueActionsHeader
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[inbox-issue-header.tsx]] - `contains` [EXTRACTED]
-- [[root.tsx_74]] - `imports` [EXTRACTED]
+- [[root.tsx_115]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Inbox_Content
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

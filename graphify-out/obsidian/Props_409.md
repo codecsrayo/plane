@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/header/favorite-control.tsx"
+source_file: "web/core/components/power-k/ui/pages/open-entity/workspaces-menu.tsx"
 type: "code"
-community: "Badge Editor"
+community: "Menu Power"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Badge_Editor
+  - community/Menu_Power
 ---
 
 # Props
 
 ## Connections
 
-- [[favorite-control.tsx]] - `contains` [EXTRACTED]
+- [[workspaces-menu.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Badge_Editor
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

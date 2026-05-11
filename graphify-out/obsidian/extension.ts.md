@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/constants/extension.ts"
 type: "code"
-community: "Editor Commands"
+community: "Table Node"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Commands
+  - community/Table_Node
 ---
 
 # extension.ts
@@ -66,4 +66,4 @@ tags:
 - [[utility.ts_1]] - `imports_from` [EXTRACTED]
 - [[utils.ts_8]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Commands
+#graphify/code #graphify/EXTRACTED #community/Table_Node

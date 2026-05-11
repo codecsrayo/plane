@@ -1,12 +1,12 @@
 ---
-source_file: "components/home/widgets/links/use-links.tsx"
+source_file: "web/core/components/home/widgets/links/use-links.tsx"
 type: "code"
-community: "Dashboard Widgets"
+community: "Link Links"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dashboard_Widgets
+  - community/Link_Links
 ---
 
 # TLinkOperations
@@ -18,4 +18,4 @@ tags:
 - [[links.tsx_1]] - `imports` [EXTRACTED]
 - [[use-links.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets
+#graphify/code #graphify/EXTRACTED #community/Link_Links

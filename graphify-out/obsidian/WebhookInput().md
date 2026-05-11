@@ -1,18 +1,18 @@
 ---
-source_file: "components/web-hooks/form/input.tsx"
+source_file: "web/core/components/web-hooks/form/input.tsx"
 type: "code"
-community: "Input Webhook"
+community: "Webhook Input"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Input_Webhook
+  - community/Webhook_Input
 ---
 
 # WebhookInput()
 
 ## Connections
 
-- [[input.tsx]] - `contains` [EXTRACTED]
+- [[input.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Input_Webhook
+#graphify/code #graphify/EXTRACTED #community/Webhook_Input

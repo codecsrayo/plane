@@ -1,12 +1,12 @@
 ---
-source_file: "components/analytics/insight-table/data-table.tsx"
+source_file: "web/core/components/analytics/insight-table/data-table.tsx"
 type: "code"
-community: "Table Insight"
+community: "Table Chart"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Table_Insight
+  - community/Table_Chart
 ---
 
 # data-table.tsx
@@ -16,6 +16,6 @@ tags:
 - [[DataTable()]] - `contains` [EXTRACTED]
 - [[DataTableProps]] - `contains` [EXTRACTED]
 - [[priority-chart.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_88]] - `imports_from` [EXTRACTED]
+- [[root.tsx_129]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Table_Insight
+#graphify/code #graphify/EXTRACTED #community/Table_Chart

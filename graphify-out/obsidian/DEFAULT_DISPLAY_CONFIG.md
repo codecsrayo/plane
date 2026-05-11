@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/constants/config.ts"
 type: "code"
-community: "Highlight Node"
+community: "Document Collaborative"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Highlight_Node
+  - community/Document_Collaborative
 ---
 
 # DEFAULT_DISPLAY_CONFIG
@@ -19,4 +19,4 @@ tags:
 - [[editor-wrapper.tsx]] - `imports` [EXTRACTED]
 - [[editor.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Highlight_Node
+#graphify/code #graphify/EXTRACTED #community/Document_Collaborative

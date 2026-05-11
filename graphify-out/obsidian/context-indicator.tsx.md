@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/ui/modal/context-indicator.tsx"
+source_file: "web/core/components/power-k/ui/modal/context-indicator.tsx"
 type: "code"
-community: "Context Power"
+community: "Power Context"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Context_Power
+  - community/Power_Context
 ---
 
 # context-indicator.tsx
@@ -15,12 +15,12 @@ tags:
 
 - [[CONTEXT_ENTITY_MAP]] - `imports` [EXTRACTED]
 - [[PowerKModalContextIndicator()]] - `contains` [EXTRACTED]
-- [[Props_337]] - `contains` [EXTRACTED]
+- [[Props_412]] - `contains` [EXTRACTED]
 - [[TPowerKContextType]] - `imports` [EXTRACTED]
-- [[header.tsx_11]] - `imports_from` [EXTRACTED]
-- [[index.ts_134]] - `imports_from` [EXTRACTED]
-- [[types.ts_2]] - `imports_from` [EXTRACTED]
+- [[header.tsx_53]] - `imports_from` [EXTRACTED]
+- [[index.ts_399]] - `imports_from` [EXTRACTED]
+- [[types.ts_16]] - `imports_from` [EXTRACTED]
 - [[use-context-indicator.ts]] - `imports_from` [EXTRACTED]
 - [[useContextIndicator()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Context_Power
+#graphify/code #graphify/EXTRACTED #community/Power_Context

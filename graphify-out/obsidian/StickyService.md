@@ -1,5 +1,5 @@
 ---
-source_file: "services/sticky.service.ts"
+source_file: "web/core/services/sticky.service.ts"
 type: "code"
 community: "Sticky Stickies"
 location: "L13"
@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 
-- [[.constructor()_77]] - `method` [EXTRACTED]
+- [[.constructor()_134]] - `method` [EXTRACTED]
 - [[.createSticky()]] - `method` [EXTRACTED]
 - [[.deleteSticky()]] - `method` [EXTRACTED]
 - [[.getStickies()]] - `method` [EXTRACTED]

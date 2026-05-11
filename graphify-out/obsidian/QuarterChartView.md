@@ -1,5 +1,5 @@
 ---
-source_file: "components/gantt-chart/chart/views/quarter.tsx"
+source_file: "web/core/components/gantt-chart/chart/views/quarter.tsx"
 type: "code"
 community: "Gantt Chart"
 location: "L17"

@@ -1,12 +1,12 @@
 ---
-source_file: "components/gantt-chart/views/helpers.ts"
+source_file: "web/core/components/gantt-chart/views/helpers.ts"
 type: "code"
-community: "Calendar Helpers"
+community: "Time Month"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Helpers
+  - community/Time_Month
 ---
 
 # getNumberOfDaysInMonth()
@@ -14,7 +14,7 @@ tags:
 ## Connections
 
 - [[getMonthsBetweenTwoDates()]] - `calls` [EXTRACTED]
-- [[helpers.ts]] - `contains` [EXTRACTED]
+- [[helpers.ts_2]] - `contains` [EXTRACTED]
 - [[month-view.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Helpers
+#graphify/code #graphify/EXTRACTED #community/Time_Month

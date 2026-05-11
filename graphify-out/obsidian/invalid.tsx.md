@@ -1,12 +1,12 @@
 ---
-source_file: "components/rich-filters/filter-item/invalid.tsx"
+source_file: "web/core/components/rich-filters/filter-item/invalid.tsx"
 type: "code"
-community: "Filter Controls"
+community: "Value Input"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Controls
+  - community/Value_Input
 ---
 
 # invalid.tsx
@@ -21,6 +21,6 @@ tags:
 - [[close-button.tsx]] - `imports_from` [EXTRACTED]
 - [[container.tsx]] - `imports_from` [EXTRACTED]
 - [[property.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_91]] - `imports_from` [EXTRACTED]
+- [[root.tsx_132]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Controls
+#graphify/code #graphify/EXTRACTED #community/Value_Input

@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/states.rs"
 type: "code"
-community: "Community 114"
+community: "State Project"
 location: "L73"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_114
+  - community/State_Project
 ---
 
 # StateResponse
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[.from()_23]] - `method` [EXTRACTED]
-- [[states.rs]] - `contains` [EXTRACTED]
+- [[states.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_114
+#graphify/code #graphify/EXTRACTED #community/State_Project

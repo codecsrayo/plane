@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/editor/title.tsx"
+source_file: "web/core/components/cycles/dropdowns/filters/end-date.tsx"
 type: "code"
-community: "Page Editor"
-location: "L18"
+community: "Date Start"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Page_Editor
+  - community/Date_Start
 ---
 
 # Props
 
 ## Connections
 
-- [[title.tsx_4]] - `contains` [EXTRACTED]
+- [[end-date.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Page_Editor
+#graphify/code #graphify/EXTRACTED #community/Date_Start

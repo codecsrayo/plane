@@ -1,12 +1,12 @@
 ---
-source_file: "components/core/modals/gpt-assistant-popover.tsx"
+source_file: "web/core/components/core/modals/gpt-assistant-popover.tsx"
 type: "code"
-community: "Editor Aiservice"
+community: "Aiservice Menu"
 location: "L39"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Aiservice
+  - community/Aiservice_Menu
 ---
 
 # FormData
@@ -15,4 +15,4 @@ tags:
 
 - [[gpt-assistant-popover.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Aiservice
+#graphify/code #graphify/EXTRACTED #community/Aiservice_Menu

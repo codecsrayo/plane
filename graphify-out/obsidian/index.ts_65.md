@@ -1,14 +1,14 @@
 ---
 source_file: "services/src/module/index.ts"
 type: "code"
-community: "Community 387"
+community: "Community 1365"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_387
+  - community/Community_1365
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_387
+#graphify/code #graphify/EXTRACTED #community/Community_1365

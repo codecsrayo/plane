@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/peek-overview/root.tsx"
+source_file: "web/core/components/issues/peek-overview/root.tsx"
 type: "code"
-community: "Peek Overview"
+community: "Issue Project"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Peek_Overview
+  - community/Issue_Project
 ---
 
 # IssuePeekOverview
 
 ## Connections
 
-- [[root.tsx_43]] - `contains` [EXTRACTED]
+- [[root.tsx_84]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Peek_Overview
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

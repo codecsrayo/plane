@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/common.ts"
 type: "code"
-community: "Favorites Pages"
+community: "Inbox Issue"
 location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Favorites_Pages
+  - community/Inbox_Issue
 ---
 
 # TPaginationInfo
@@ -17,4 +17,4 @@ tags:
 - [[inbox.ts]] - `imports` [EXTRACTED]
 - [[workspace.ts_2]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Favorites_Pages
+#graphify/code #graphify/EXTRACTED #community/Inbox_Issue

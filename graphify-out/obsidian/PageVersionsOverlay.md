@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/version/root.tsx"
+source_file: "web/core/components/pages/version/root.tsx"
 type: "code"
-community: "Page Editor"
+community: "Document Version"
 location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Page_Editor
+  - community/Document_Version
 ---
 
 # PageVersionsOverlay
 
 ## Connections
 
-- [[root.tsx_84]] - `contains` [EXTRACTED]
+- [[root.tsx_125]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Page_Editor
+#graphify/code #graphify/EXTRACTED #community/Document_Version

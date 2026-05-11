@@ -1,12 +1,12 @@
 ---
-source_file: "services/issue/issue.service.ts"
+source_file: "web/core/services/issue/issue.service.ts"
 type: "code"
-community: "Issue Service API"
+community: "Issue Issues"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Service_API
+  - community/Issue_Issues
 ---
 
 # IssueService
@@ -19,7 +19,7 @@ tags:
 - [[.bulkDeleteIssues()]] - `method` [EXTRACTED]
 - [[.bulkOperations()]] - `method` [EXTRACTED]
 - [[.bulkSubscribeIssues()]] - `method` [EXTRACTED]
-- [[.constructor()_100]] - `method` [EXTRACTED]
+- [[.constructor()_157]] - `method` [EXTRACTED]
 - [[.createIssue()]] - `method` [EXTRACTED]
 - [[.createIssueLink()]] - `method` [EXTRACTED]
 - [[.deleteIssue()]] - `method` [EXTRACTED]
@@ -36,7 +36,7 @@ tags:
 - [[.getIssuesWithParams()]] - `method` [EXTRACTED]
 - [[.patchIssue()]] - `method` [EXTRACTED]
 - [[.removeIssueFromCycle()]] - `method` [EXTRACTED]
-- [[.retrieve()]] - `method` [EXTRACTED]
+- [[.retrieve()_8]] - `method` [EXTRACTED]
 - [[.retrieveIssues()]] - `method` [EXTRACTED]
 - [[.retrieveWithIdentifier()]] - `method` [EXTRACTED]
 - [[.subIssues()]] - `method` [EXTRACTED]
@@ -45,7 +45,8 @@ tags:
 - [[.updateIssueDates()]] - `method` [EXTRACTED]
 - [[.updateIssueDisplayProperties()]] - `method` [EXTRACTED]
 - [[.updateIssueLink()]] - `method` [EXTRACTED]
-- [[issue.service.ts]] - `contains` [EXTRACTED]
+- [[issue.service.ts_1]] - `contains` [EXTRACTED]
+- [[page.tsx_23]] - `imports` [EXTRACTED]
 - [[subscription.store.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Service_API
+#graphify/code #graphify/EXTRACTED #community/Issue_Issues

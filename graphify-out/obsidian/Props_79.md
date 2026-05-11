@@ -1,18 +1,18 @@
 ---
-source_file: "components/modules/archived-modules/modal.tsx"
+source_file: "web/core/hooks/use-collaborative-page-actions.tsx"
 type: "code"
-community: "Module Analytics"
-location: "L16"
+community: "Control Move"
+location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Control_Move
 ---
 
 # Props
 
 ## Connections
 
-- [[modal.tsx_3]] - `contains` [EXTRACTED]
+- [[use-collaborative-page-actions.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Control_Move

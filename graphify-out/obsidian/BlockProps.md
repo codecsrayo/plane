@@ -1,18 +1,18 @@
 ---
-source_file: "components/home/widgets/recents/project.tsx"
+source_file: "web/core/components/home/widgets/recents/project.tsx"
 type: "code"
-community: "Issue Properties"
+community: "Label Dropdown"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Label_Dropdown
 ---
 
 # BlockProps
 
 ## Connections
 
-- [[project.tsx]] - `contains` [EXTRACTED]
+- [[project.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

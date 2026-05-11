@@ -1,5 +1,5 @@
 ---
-source_file: "components/inbox/inbox-issue-status.tsx"
+source_file: "web/core/components/inbox/inbox-issue-status.tsx"
 type: "code"
 community: "Issue Inbox"
 location: "L1"
@@ -17,7 +17,7 @@ tags:
 - [[IInboxIssueStore]] - `imports` [EXTRACTED]
 - [[InboxIssueStatus]] - `contains` [EXTRACTED]
 - [[InboxStatusIcon()]] - `imports` [EXTRACTED]
-- [[Props_372]] - `contains` [EXTRACTED]
+- [[Props_447]] - `contains` [EXTRACTED]
 - [[inbox-issue-header.tsx]] - `imports_from` [EXTRACTED]
 - [[inbox-issue-mobile-header.tsx]] - `imports_from` [EXTRACTED]
 - [[inbox-issue.store.ts]] - `imports_from` [EXTRACTED]

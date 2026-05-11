@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/header/syncing-badge.tsx"
+source_file: "web/core/components/power-k/ui/modal/search-menu.tsx"
 type: "code"
-community: "Syncing Badge"
-location: "L12"
+community: "Power Shortcuts"
+location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Syncing_Badge
+  - community/Power_Shortcuts
 ---
 
 # Props
 
 ## Connections
 
-- [[syncing-badge.tsx]] - `contains` [EXTRACTED]
+- [[search-menu.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Syncing_Badge
+#graphify/code #graphify/EXTRACTED #community/Power_Shortcuts

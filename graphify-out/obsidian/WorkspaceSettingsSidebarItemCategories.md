@@ -1,12 +1,12 @@
 ---
-source_file: "components/settings/workspace/sidebar/item-categories.tsx"
+source_file: "web/core/components/settings/workspace/sidebar/item-categories.tsx"
 type: "code"
-community: "Sidebar Nav"
+community: "Sidebar Settings"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Nav
+  - community/Sidebar_Settings
 ---
 
 # WorkspaceSettingsSidebarItemCategories
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[item-categories.tsx]] - `contains` [EXTRACTED]
-- [[root.tsx_16]] - `imports` [EXTRACTED]
+- [[root.tsx_57]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Nav
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Settings

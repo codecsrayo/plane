@@ -1,19 +1,19 @@
 ---
-source_file: "services/issue/workspace_draft.service.ts"
+source_file: "web/core/services/issue/workspace_draft.service.ts"
 type: "code"
-community: "Issue Draft"
+community: "Draft Issue"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Draft
+  - community/Draft_Issue
 ---
 
 # WorkspaceDraftService
 
 ## Connections
 
-- [[.constructor()_106]] - `method` [EXTRACTED]
+- [[.constructor()_163]] - `method` [EXTRACTED]
 - [[.createIssue()_1]] - `method` [EXTRACTED]
 - [[.deleteIssue()_1]] - `method` [EXTRACTED]
 - [[.getIssueById()]] - `method` [EXTRACTED]
@@ -22,4 +22,4 @@ tags:
 - [[.updateIssue()]] - `method` [EXTRACTED]
 - [[workspace_draft.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Draft
+#graphify/code #graphify/EXTRACTED #community/Draft_Issue

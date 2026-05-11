@@ -1,5 +1,5 @@
 ---
-source_file: "components/pages/navigation-pane/tab-panels/assets.tsx"
+source_file: "web/core/components/pages/navigation-pane/tab-panels/assets.tsx"
 type: "code"
 community: "Navigation Pane"
 location: "L110"
@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 
-- [[assets.tsx]] - `contains` [EXTRACTED]
-- [[root.tsx_81]] - `imports` [EXTRACTED]
+- [[assets.tsx_2]] - `contains` [EXTRACTED]
+- [[root.tsx_122]] - `imports` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Navigation_Pane

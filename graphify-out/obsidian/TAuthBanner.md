@@ -1,12 +1,12 @@
 ---
-source_file: "components/account/auth-forms/auth-banner.tsx"
+source_file: "space/components/account/auth-forms/auth-banner.tsx"
 type: "code"
-community: "Auth Terms"
-location: "L14"
+community: "Auth Error"
+location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Terms
+  - community/Auth_Error
 ---
 
 # TAuthBanner
@@ -14,5 +14,6 @@ tags:
 ## Connections
 
 - [[auth-banner.tsx]] - `contains` [EXTRACTED]
+- [[auth-banner.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Terms
+#graphify/code #graphify/EXTRACTED #community/Auth_Error

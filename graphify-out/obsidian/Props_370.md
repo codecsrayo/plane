@@ -1,18 +1,18 @@
 ---
-source_file: "components/onboarding/steps/usecase/root.tsx"
+source_file: "web/core/components/api-token/empty-state.tsx"
 type: "code"
-community: "Values Setup"
-location: "L23"
+community: "Empty Token"
+location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Values_Setup
+  - community/Empty_Token
 ---
 
 # Props
 
 ## Connections
 
-- [[root.tsx_69]] - `contains` [EXTRACTED]
+- [[empty-state.tsx_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Values_Setup
+#graphify/code #graphify/EXTRACTED #community/Empty_Token

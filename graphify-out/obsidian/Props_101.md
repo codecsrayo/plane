@@ -1,18 +1,19 @@
 ---
-source_file: "components/profile/overview/workload.tsx"
+source_file: "web/core/components/workspace/confirm-workspace-member-remove.tsx"
 type: "code"
-community: "Workload Profile"
-location: "L15"
+community: "Member Members"
+location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workload_Profile
+  - community/Member_Members
 ---
 
 # Props
 
 ## Connections
 
-- [[workload.tsx]] - `contains` [EXTRACTED]
+- [[ConfirmWorkspaceMemberRemove.tsx]] - `imports` [EXTRACTED]
+- [[confirm-workspace-member-remove.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workload_Profile
+#graphify/code #graphify/EXTRACTED #community/Member_Members

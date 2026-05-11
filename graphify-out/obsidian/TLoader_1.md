@@ -1,18 +1,18 @@
 ---
-source_file: "store/pages/project-page.store.ts"
+source_file: "web/core/store/inbox/project-inbox.store.ts"
 type: "code"
-community: "Page Permissions"
-location: "L27"
+community: "Project Issue"
+location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Page_Permissions
+  - community/Project_Issue
 ---
 
 # TLoader
 
 ## Connections
 
-- [[project-page.store.ts]] - `contains` [EXTRACTED]
+- [[project-inbox.store.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Page_Permissions
+#graphify/code #graphify/EXTRACTED #community/Project_Issue

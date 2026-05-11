@@ -37,7 +37,7 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 3 edges to [[_COMMUNITY_Button Auth]]
+- 3 edges to [[_COMMUNITY_Portal Positions]]
 - 1 edge to [[_COMMUNITY_Navigation Input]]
 
 ## Top bridge nodes

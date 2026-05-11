@@ -1,12 +1,12 @@
 ---
-source_file: "components/ui/loader/settings/activity.tsx"
+source_file: "web/core/components/ui/loader/settings/activity.tsx"
 type: "code"
-community: "Activity List"
+community: "Activity User"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Activity_List
+  - community/Activity_User
 ---
 
 # activity.tsx
@@ -18,6 +18,6 @@ tags:
 - [[activity-list.tsx_1]] - `imports_from` [EXTRACTED]
 - [[getRandomLength()]] - `imports` [EXTRACTED]
 - [[profile-activity-list.tsx]] - `imports_from` [EXTRACTED]
-- [[utils.tsx]] - `imports_from` [EXTRACTED]
+- [[utils.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Activity_List
+#graphify/code #graphify/EXTRACTED #community/Activity_User

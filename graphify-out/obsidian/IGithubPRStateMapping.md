@@ -1,12 +1,12 @@
 ---
-source_file: "services/integrations/integration.service.ts"
+source_file: "web/core/services/integrations/integration.service.ts"
 type: "code"
-community: "State Integration"
+community: "Issue Project"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/State_Integration
+  - community/Issue_Project
 ---
 
 # IGithubPRStateMapping
@@ -15,4 +15,4 @@ tags:
 
 - [[integration.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/State_Integration
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

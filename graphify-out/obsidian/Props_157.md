@@ -1,18 +1,18 @@
 ---
-source_file: "components/integration/github/pr-state-mapping-modal.tsx"
+source_file: "web/core/components/modules/dropdowns/filters/target-date.tsx"
 type: "code"
-community: "Calendar Blocks"
-location: "L30"
+community: "Date Start"
+location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Blocks
+  - community/Date_Start
 ---
 
 # Props
 
 ## Connections
 
-- [[pr-state-mapping-modal.tsx]] - `contains` [EXTRACTED]
+- [[target-date.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Blocks
+#graphify/code #graphify/EXTRACTED #community/Date_Start

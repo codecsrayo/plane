@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/table/table/utilities/insert-line-below-table-action.ts"
 type: "code"
-community: "Link Insert"
+community: "Table Node"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Link_Insert
+  - community/Table_Node
 ---
 
 # insert-line-below-table-action.ts
@@ -20,4 +20,4 @@ tags:
 - [[insertLineBelowTableAction()]] - `contains` [EXTRACTED]
 - [[table.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Link_Insert
+#graphify/code #graphify/EXTRACTED #community/Table_Node

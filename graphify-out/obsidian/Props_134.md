@@ -1,18 +1,18 @@
 ---
-source_file: "components/project/member-header-column.tsx"
+source_file: "web/core/components/editor/rich-text/description-input/root.tsx"
 type: "code"
-community: "Member Sort"
-location: "L19"
+community: "Workspace Issue"
+location: "L35"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Sort
+  - community/Workspace_Issue
 ---
 
 # Props
 
 ## Connections
 
-- [[member-header-column.tsx]] - `contains` [EXTRACTED]
+- [[root.tsx_51]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Sort
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

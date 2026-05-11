@@ -1,33 +1,33 @@
 ---
-source_file: "components/settings/profile/content/pages/activity/activity-list.tsx"
+source_file: "web/core/components/settings/profile/content/pages/activity/activity-list.tsx"
 type: "code"
-community: "Activity List"
+community: "Activity User"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Activity_List
+  - community/Activity_User
 ---
 
 # activity-list.tsx
 
 ## Connections
 
-- [[ActivityIcon()]] - `imports` [EXTRACTED]
+- [[ActivityIcon()_1]] - `imports` [EXTRACTED]
 - [[ActivityMessage()]] - `imports` [EXTRACTED]
 - [[ActivityProfileSettingsList]] - `contains` [EXTRACTED]
 - [[ActivitySettingsLoader()]] - `imports` [EXTRACTED]
-- [[Props_97]] - `contains` [EXTRACTED]
+- [[Props_172]] - `contains` [EXTRACTED]
 - [[USER_ACTIVITY()]] - `imports` [EXTRACTED]
-- [[UserService]] - `imports` [EXTRACTED]
-- [[activity.tsx_2]] - `imports_from` [EXTRACTED]
+- [[UserService_1]] - `imports` [EXTRACTED]
 - [[activity.tsx]] - `imports_from` [EXTRACTED]
+- [[activity.tsx_2]] - `imports_from` [EXTRACTED]
 - [[fetch-keys.ts]] - `imports_from` [EXTRACTED]
-- [[index.ts_53]] - `imports_from` [EXTRACTED]
-- [[root.tsx_20]] - `imports_from` [EXTRACTED]
+- [[index.ts_318]] - `imports_from` [EXTRACTED]
+- [[root.tsx_61]] - `imports_from` [EXTRACTED]
 - [[useUserProfile()]] - `imports` [EXTRACTED]
 - [[user-user-profile.ts]] - `imports_from` [EXTRACTED]
-- [[user.service.ts]] - `imports_from` [EXTRACTED]
-- [[userService_4]] - `contains` [EXTRACTED]
+- [[user.service.ts_1]] - `imports_from` [EXTRACTED]
+- [[userService_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Activity_List
+#graphify/code #graphify/EXTRACTED #community/Activity_User

@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-detail/issue-activity/activity/actions/parent.tsx"
+source_file: "web/core/components/issues/issue-detail/issue-activity/activity/actions/parent.tsx"
 type: "code"
 community: "Issue Activity"
 location: "L14"

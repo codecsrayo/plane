@@ -11,11 +11,11 @@ members: 5
 
 ## Members
 
-- [[Props_423]] - code - components/analytics/trend-piece.tsx
-- [[TrendPiece()]] - code - components/analytics/trend-piece.tsx
-- [[sizeConfig_1]] - code - components/analytics/trend-piece.tsx
-- [[trend-piece.tsx]] - code - components/analytics/trend-piece.tsx
-- [[variants]] - code - components/analytics/trend-piece.tsx
+- [[Props_497]] - code - web/core/components/analytics/trend-piece.tsx
+- [[TrendPiece()]] - code - web/core/components/analytics/trend-piece.tsx
+- [[sizeConfig_1]] - code - web/core/components/analytics/trend-piece.tsx
+- [[trend-piece.tsx]] - code - web/core/components/analytics/trend-piece.tsx
+- [[variants]] - code - web/core/components/analytics/trend-piece.tsx
 
 ## Live Query (requires Dataview plugin)
 

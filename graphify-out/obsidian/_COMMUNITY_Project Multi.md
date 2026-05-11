@@ -25,8 +25,9 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 2 edges to [[_COMMUNITY_Params Date]]
-- 1 edge to [[_COMMUNITY_Date Project]]
+- 1 edge to [[_COMMUNITY_Cycle Date]]
+- 1 edge to [[_COMMUNITY_Params Date]]
+- 1 edge to [[_COMMUNITY_State Multi]]
 
 ## Top bridge nodes
 

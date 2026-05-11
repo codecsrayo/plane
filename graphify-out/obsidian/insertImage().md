@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/helpers/editor-commands.ts"
 type: "code"
-community: "Toggle Insert"
+community: "Toggle Menu"
 location: "L112"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toggle_Insert
+  - community/Toggle_Menu
 ---
 
 # insertImage()
@@ -17,4 +17,4 @@ tags:
 - [[editor-commands.ts]] - `contains` [EXTRACTED]
 - [[menu-items.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toggle_Insert
+#graphify/code #graphify/EXTRACTED #community/Toggle_Menu

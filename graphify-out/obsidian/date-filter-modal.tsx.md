@@ -1,5 +1,5 @@
 ---
-source_file: "components/core/filters/date-filter-modal.tsx"
+source_file: "web/core/components/core/filters/date-filter-modal.tsx"
 type: "code"
 community: "Date Start"
 location: "L1"
@@ -15,7 +15,7 @@ tags:
 
 - [[DateFilterModal()]] - `contains` [EXTRACTED]
 - [[DateFilterSelect()]] - `imports` [EXTRACTED]
-- [[Props_451]] - `contains` [EXTRACTED]
+- [[Props_525]] - `contains` [EXTRACTED]
 - [[TFormValues_1]] - `contains` [EXTRACTED]
 - [[created-at.tsx]] - `imports_from` [EXTRACTED]
 - [[created-at.tsx_1]] - `imports_from` [EXTRACTED]

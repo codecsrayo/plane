@@ -1,12 +1,12 @@
 ---
-source_file: "store/user/base-permissions.store.ts"
+source_file: "web/core/store/user/base-permissions.store.ts"
 type: "code"
-community: "Workspace Workspaceservice"
+community: "Project User"
 location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Workspaceservice
+  - community/Project_User
 ---
 
 # IBaseUserPermissionStore
@@ -14,5 +14,6 @@ tags:
 ## Connections
 
 - [[base-permissions.store.ts]] - `contains` [EXTRACTED]
+- [[permission.store.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Workspaceservice
+#graphify/code #graphify/EXTRACTED #community/Project_User

@@ -1,5 +1,5 @@
 ---
-source_file: "components/icons/attachment/document-icon.tsx"
+source_file: "web/core/components/icons/attachment/document-icon.tsx"
 type: "code"
 community: "Document Icon"
 location: "L11"

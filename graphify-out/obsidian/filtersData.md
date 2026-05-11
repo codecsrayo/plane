@@ -1,12 +1,12 @@
 ---
-source_file: "store/module_filter.store.ts"
+source_file: "web/core/store/module_filter.store.ts"
 type: "code"
-community: "Storage Display"
+community: "Filters Issue"
 location: "L93"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Storage_Display
+  - community/Filters_Issue
 ---
 
 # filtersData
@@ -15,4 +15,4 @@ tags:
 
 - [[module_filter.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Storage_Display
+#graphify/code #graphify/EXTRACTED #community/Filters_Issue

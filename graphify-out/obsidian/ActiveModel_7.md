@@ -1,14 +1,14 @@
 ---
 source_file: "api_rust/src/entities/issue_description_versions.rs"
 type: "code"
-community: "Community 657"
+community: "Active Model"
 location: "L101"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_657
+  - community/Active_Model
 ---
 
 # ActiveModel
 
-#graphify/code #graphify/EXTRACTED #community/Community_657
+#graphify/code #graphify/EXTRACTED #community/Active_Model

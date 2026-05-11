@@ -1,18 +1,18 @@
 ---
-source_file: "components/modules/analytics-sidebar/root.tsx"
+source_file: "web/core/components/modules/analytics-sidebar/root.tsx"
 type: "code"
-community: "Module Forms"
+community: "Cycles Archived"
 location: "L40"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Forms
+  - community/Cycles_Archived
 ---
 
 # defaultValues
 
 ## Connections
 
-- [[root.tsx_12]] - `contains` [EXTRACTED]
+- [[root.tsx_53]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Forms
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

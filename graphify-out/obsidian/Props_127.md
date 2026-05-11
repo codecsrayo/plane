@@ -1,18 +1,18 @@
 ---
-source_file: "components/project/archive-restore-modal.tsx"
+source_file: "web/core/components/gantt-chart/helpers/add-block.tsx"
 type: "code"
-community: "Account Settings"
-location: "L16"
+community: "Gantt Chart"
+location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Account_Settings
+  - community/Gantt_Chart
 ---
 
 # Props
 
 ## Connections
 
-- [[archive-restore-modal.tsx]] - `contains` [EXTRACTED]
+- [[add-block.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Account_Settings
+#graphify/code #graphify/EXTRACTED #community/Gantt_Chart

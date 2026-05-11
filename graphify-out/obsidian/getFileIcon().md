@@ -1,12 +1,12 @@
 ---
-source_file: "components/icons/attachment/attachment-icon.tsx"
+source_file: "web/core/components/icons/attachment/attachment-icon.tsx"
 type: "code"
-community: "File Icons Nav"
+community: "Settings Project"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/File_Icons_Nav
+  - community/Settings_Project
 ---
 
 # getFileIcon()
@@ -15,4 +15,4 @@ tags:
 
 - [[attachment-icon.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/File_Icons_Nav
+#graphify/code #graphify/EXTRACTED #community/Settings_Project

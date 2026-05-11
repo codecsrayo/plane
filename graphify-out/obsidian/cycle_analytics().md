@@ -1,22 +1,22 @@
 ---
 source_file: "api_rust/src/routes/cycles.rs"
 type: "code"
-community: "Cycles Rust API"
+community: "Cycle Request"
 location: "L834"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Cycles_Rust_API
+  - community/Cycle_Request
 ---
 
 # cycle_analytics()
 
 ## Connections
 
-- [[.from_string()]] - `calls` [INFERRED]
+- [[.json()]] - `calls` [INFERRED]
 - [[.new()]] - `calls` [INFERRED]
-- [[burndown_plot()]] - `calls` [EXTRACTED]
-- [[cycles.rs]] - `contains` [EXTRACTED]
+- [[burndown_plot()_1]] - `calls` [EXTRACTED]
+- [[cycles.rs_1]] - `contains` [EXTRACTED]
 - [[require_role()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Cycles_Rust_API
+#graphify/code #graphify/INFERRED #community/Cycle_Request

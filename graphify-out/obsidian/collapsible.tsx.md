@@ -1,12 +1,12 @@
 ---
 source_file: "ui/src/collapsible/collapsible.tsx"
 type: "code"
-community: "Collapsible Context"
+community: "Collapsible Chevron"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Collapsible_Context
+  - community/Collapsible_Chevron
 ---
 
 # collapsible.tsx
@@ -16,4 +16,4 @@ tags:
 - [[Collapsible]] - `contains` [EXTRACTED]
 - [[TCollapsibleProps]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Collapsible_Context
+#graphify/code #graphify/EXTRACTED #community/Collapsible_Chevron

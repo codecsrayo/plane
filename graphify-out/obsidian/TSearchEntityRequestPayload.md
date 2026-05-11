@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/search.ts"
 type: "code"
-community: "Import Export"
+community: "Workspace Search"
 location: "L77"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Import_Export
+  - community/Workspace_Search
 ---
 
 # TSearchEntityRequestPayload
@@ -15,4 +15,4 @@ tags:
 
 - [[search.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Import_Export
+#graphify/code #graphify/EXTRACTED #community/Workspace_Search

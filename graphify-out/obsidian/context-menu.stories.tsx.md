@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/context-menu/context-menu.stories.tsx"
 type: "code"
-community: "Meta Submenus"
+community: "Context Menu"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Meta_Submenus
+  - community/Context_Menu
 ---
 
 # context-menu.stories.tsx
@@ -30,4 +30,4 @@ tags:
 - [[index.ts_138]] - `imports_from` [EXTRACTED]
 - [[meta_7]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Meta_Submenus
+#graphify/code #graphify/EXTRACTED #community/Context_Menu

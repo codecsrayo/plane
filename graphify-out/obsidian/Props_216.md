@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/calendar/issue-block-root.tsx"
+source_file: "web/core/components/project/create/header.tsx"
 type: "code"
-community: "Calendar Blocks"
-location: "L20"
+community: "Project Profile"
+location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Blocks
+  - community/Project_Profile
 ---
 
 # Props
 
 ## Connections
 
-- [[issue-block-root.tsx]] - `contains` [EXTRACTED]
+- [[header.tsx_49]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Blocks
+#graphify/code #graphify/EXTRACTED #community/Project_Profile

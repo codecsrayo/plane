@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/workspace-draft/draft-issue-block.tsx"
+source_file: "web/core/components/issues/confirm-issue-discard.tsx"
 type: "code"
-community: "Issue Identifiers"
-location: "L32"
+community: "Issue Work"
+location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Identifiers
+  - community/Issue_Work
 ---
 
 # Props
 
 ## Connections
 
-- [[draft-issue-block.tsx]] - `contains` [EXTRACTED]
+- [[confirm-issue-discard.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Identifiers
+#graphify/code #graphify/EXTRACTED #community/Issue_Work

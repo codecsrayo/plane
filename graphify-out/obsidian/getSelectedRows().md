@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/table/table/utilities/helpers.ts"
 type: "code"
-community: "Table Selected"
+community: "Drag Table"
 location: "L112"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Table_Selected
+  - community/Drag_Table
 ---
 
 # getSelectedRows()
@@ -18,4 +18,4 @@ tags:
 - [[helpers.ts]] - `contains` [EXTRACTED]
 - [[isCellSelection()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Table_Selected
+#graphify/code #graphify/EXTRACTED #community/Drag_Table

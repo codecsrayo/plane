@@ -11,14 +11,14 @@ members: 8
 
 ## Members
 
-- [[EWidgetKeys]] - code - components/home/widgets/loaders/loader.tsx
-- [[Props_12]] - code - components/home/widgets/loaders/loader.tsx
-- [[QuickLinksWidgetLoader()]] - code - components/home/widgets/loaders/quick-links.tsx
-- [[RecentActivityWidgetLoader()]] - code - components/home/widgets/loaders/recent-activity.tsx
-- [[WidgetLoader()]] - code - components/home/widgets/loaders/loader.tsx
-- [[loader.tsx]] - code - components/home/widgets/loaders/loader.tsx
-- [[quick-links.tsx]] - code - components/home/widgets/loaders/quick-links.tsx
-- [[recent-activity.tsx]] - code - components/home/widgets/loaders/recent-activity.tsx
+- [[EWidgetKeys]] - code - web/core/components/home/widgets/loaders/loader.tsx
+- [[Props_89]] - code - web/core/components/home/widgets/loaders/loader.tsx
+- [[QuickLinksWidgetLoader()]] - code - web/core/components/home/widgets/loaders/quick-links.tsx
+- [[RecentActivityWidgetLoader()]] - code - web/core/components/home/widgets/loaders/recent-activity.tsx
+- [[WidgetLoader()]] - code - web/core/components/home/widgets/loaders/loader.tsx
+- [[loader.tsx_3]] - code - web/core/components/home/widgets/loaders/loader.tsx
+- [[quick-links.tsx]] - code - web/core/components/home/widgets/loaders/quick-links.tsx
+- [[recent-activity.tsx]] - code - web/core/components/home/widgets/loaders/recent-activity.tsx
 
 ## Live Query (requires Dataview plugin)
 

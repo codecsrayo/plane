@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/project/index.ts"
 type: "code"
-community: "Import Export"
+community: "Workspace Search"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Import_Export
+  - community/Workspace_Search
 ---
 
 # index.ts
@@ -21,4 +21,4 @@ tags:
 - [[view-props.ts]] - `imports_from` [EXTRACTED]
 - [[workspace.ts_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Import_Export
+#graphify/code #graphify/EXTRACTED #community/Workspace_Search

@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/ui/pages/default.tsx"
+source_file: "web/core/components/power-k/ui/pages/default.tsx"
 type: "code"
-community: "Command Palette"
+community: "Power Shortcuts"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Command_Palette
+  - community/Power_Shortcuts
 ---
 
 # PowerKModalDefaultPage()
@@ -14,7 +14,7 @@ tags:
 ## Connections
 
 - [[default.tsx_3]] - `contains` [EXTRACTED]
-- [[root.tsx_57]] - `imports` [EXTRACTED]
+- [[root.tsx_98]] - `imports` [EXTRACTED]
 - [[usePowerK()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Command_Palette
+#graphify/code #graphify/EXTRACTED #community/Power_Shortcuts

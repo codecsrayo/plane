@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/editor/toolbar/root.tsx"
+source_file: "web/core/components/pages/editor/toolbar/root.tsx"
 type: "code"
-community: "Badge Editor"
+community: "Formats Values"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Badge_Editor
+  - community/Formats_Values
 ---
 
 # PageEditorToolbarRoot
 
 ## Connections
 
-- [[root.tsx_75]] - `contains` [EXTRACTED]
+- [[root.tsx_116]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Badge_Editor
+#graphify/code #graphify/EXTRACTED #community/Formats_Values

@@ -1,12 +1,12 @@
 ---
-source_file: "components/settings/profile/content/pages/notifications/email-notification-form.tsx"
+source_file: "web/core/components/settings/profile/content/pages/notifications/email-notification-form.tsx"
 type: "code"
-community: "Email Settings"
+community: "Settings Profile"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Email_Settings
+  - community/Settings_Profile
 ---
 
 # email-notification-form.tsx
@@ -14,12 +14,12 @@ tags:
 ## Connections
 
 - [[NotificationsProfileSettingsForm]] - `contains` [EXTRACTED]
-- [[Props_113]] - `contains` [EXTRACTED]
+- [[Props_188]] - `contains` [EXTRACTED]
 - [[SettingsControlItem()]] - `imports` [EXTRACTED]
-- [[UserService]] - `imports` [EXTRACTED]
+- [[UserService_1]] - `imports` [EXTRACTED]
 - [[control-item.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_22]] - `imports_from` [EXTRACTED]
-- [[user.service.ts]] - `imports_from` [EXTRACTED]
-- [[userService_5]] - `contains` [EXTRACTED]
+- [[root.tsx_63]] - `imports_from` [EXTRACTED]
+- [[user.service.ts_1]] - `imports_from` [EXTRACTED]
+- [[userService_7]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Email_Settings
+#graphify/code #graphify/EXTRACTED #community/Settings_Profile

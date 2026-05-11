@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/columns/due-date-column.tsx"
+source_file: "web/core/components/project/multi-select-modal.tsx"
 type: "code"
-community: "Column Spreadsheet"
-location: "L20"
+community: "Cycle Active"
+location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Column_Spreadsheet
+  - community/Cycle_Active
 ---
 
 # Props
 
 ## Connections
 
-- [[due-date-column.tsx]] - `contains` [EXTRACTED]
+- [[multi-select-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Column_Spreadsheet
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

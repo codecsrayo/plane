@@ -1,5 +1,5 @@
 ---
-source_file: "store/user/profile.store.ts"
+source_file: "web/core/store/user/profile.store.ts"
 type: "code"
 community: "User Profile"
 location: "L18"

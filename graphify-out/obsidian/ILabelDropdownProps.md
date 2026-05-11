@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/properties/label-dropdown.tsx"
+source_file: "web/core/components/issues/issue-layouts/properties/label-dropdown.tsx"
 type: "code"
-community: "Issue Layouts"
+community: "Label Dropdown"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layouts
+  - community/Label_Dropdown
 ---
 
 # ILabelDropdownProps
@@ -15,4 +15,4 @@ tags:
 
 - [[label-dropdown.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layouts
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

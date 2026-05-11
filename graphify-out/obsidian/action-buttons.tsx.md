@@ -1,26 +1,19 @@
 ---
-source_file: "components/issues/issue-detail-widgets/action-buttons.tsx"
+source_file: "web/ce/components/issues/issue-detail-widgets/action-buttons.tsx"
 type: "code"
-community: "Issue Widget"
+community: "Action Work"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Widget
+  - community/Action_Work
 ---
 
 # action-buttons.tsx
 
 ## Connections
 
-- [[IssueDetailWidgetActionButtons()]] - `contains` [EXTRACTED]
-- [[IssueDetailWidgetButton()]] - `imports` [EXTRACTED]
-- [[Props_265]] - `contains` [EXTRACTED]
-- [[index.ts_113]] - `imports_from` [EXTRACTED]
-- [[index.ts_116]] - `imports_from` [EXTRACTED]
-- [[index.ts_114]] - `imports_from` [EXTRACTED]
-- [[index.ts_115]] - `imports_from` [EXTRACTED]
-- [[root.tsx_37]] - `imports_from` [EXTRACTED]
-- [[widget-button.tsx]] - `imports_from` [EXTRACTED]
+- [[TWorkItemAdditionalWidgetActionButtonsProps]] - `contains` [EXTRACTED]
+- [[WorkItemAdditionalWidgetActionButtons()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Widget
+#graphify/code #graphify/EXTRACTED #community/Action_Work

@@ -1,19 +1,19 @@
 ---
-source_file: "components/pages/navigation-pane/tabs-list.tsx"
+source_file: "web/core/components/pages/navigation-pane/tabs-list.tsx"
 type: "code"
-community: "Navigation Pane"
+community: "Pane Navigation"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Navigation_Pane
+  - community/Pane_Navigation
 ---
 
 # PageNavigationPaneTabsList()
 
 ## Connections
 
-- [[root.tsx_80]] - `imports` [EXTRACTED]
+- [[root.tsx_121]] - `imports` [EXTRACTED]
 - [[tabs-list.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Navigation_Pane
+#graphify/code #graphify/EXTRACTED #community/Pane_Navigation

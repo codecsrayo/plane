@@ -1,12 +1,12 @@
 ---
-source_file: "components/license/modal/card/discount-info.tsx"
+source_file: "web/core/components/license/modal/card/discount-info.tsx"
 type: "code"
-community: "Plan Discount"
+community: "Plan Plans"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Plan_Discount
+  - community/Plan_Plans
 ---
 
 # PLANS_WITH_DISCOUNT
@@ -15,4 +15,4 @@ tags:
 
 - [[discount-info.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Plan_Discount
+#graphify/code #graphify/EXTRACTED #community/Plan_Plans

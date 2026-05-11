@@ -1,5 +1,5 @@
 ---
-source_file: "components/api-token/modal/form.tsx"
+source_file: "web/core/components/api-token/modal/form.tsx"
 type: "code"
 community: "Expiry Token"
 location: "L58"

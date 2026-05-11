@@ -1,5 +1,5 @@
 ---
-source_file: "components/analytics/work-items/customized-insights.tsx"
+source_file: "web/core/components/analytics/work-items/customized-insights.tsx"
 type: "code"
 community: "Select Axis"
 location: "L20"

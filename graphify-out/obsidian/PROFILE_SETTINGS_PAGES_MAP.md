@@ -1,5 +1,5 @@
 ---
-source_file: "components/settings/profile/content/pages/index.ts"
+source_file: "web/core/components/settings/profile/content/pages/index.ts"
 type: "code"
 community: "Profile Settings"
 location: "L11"
@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 
-- [[index.ts_74]] - `contains` [EXTRACTED]
-- [[root.tsx_18]] - `imports` [EXTRACTED]
+- [[index.ts_339]] - `contains` [EXTRACTED]
+- [[root.tsx_59]] - `imports` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Profile_Settings

@@ -1,18 +1,18 @@
 ---
-source_file: "components/modules/module-list-item.tsx"
+source_file: "web/ce/components/onboarding/tour/sidebar.tsx"
 type: "code"
-community: "Module Analytics"
-location: "L25"
+community: "Tour Steps"
+location: "L45"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Tour_Steps
 ---
 
 # Props
 
 ## Connections
 
-- [[module-list-item.tsx]] - `contains` [EXTRACTED]
+- [[sidebar.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Tour_Steps

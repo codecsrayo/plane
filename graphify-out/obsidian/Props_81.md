@@ -1,20 +1,18 @@
 ---
-source_file: "components/cycles/dropdowns/filters/start-date.tsx"
+source_file: "web/core/components/icons/types.d.ts"
 type: "code"
-community: "Date Start"
-location: "L18"
+community: "Image Icon"
+location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Date_Start
+  - community/Image_Icon
 ---
 
 # Props
 
 ## Connections
 
-- [[start-date.tsx]] - `contains` [EXTRACTED]
-- [[start-date.tsx_1]] - `contains` [EXTRACTED]
-- [[start-date.tsx_2]] - `contains` [EXTRACTED]
+- [[types.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Date_Start
+#graphify/code #graphify/EXTRACTED #community/Image_Icon

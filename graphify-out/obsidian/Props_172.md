@@ -1,18 +1,19 @@
 ---
-source_file: "components/exporter/export-modal.tsx"
+source_file: "web/core/components/settings/profile/content/pages/activity/activity-list.tsx"
 type: "code"
-community: "Data Export"
-location: "L24"
+community: "Activity User"
+location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Data_Export
+  - community/Activity_User
 ---
 
 # Props
 
 ## Connections
 
-- [[export-modal.tsx]] - `contains` [EXTRACTED]
+- [[activity-list.tsx]] - `contains` [EXTRACTED]
+- [[activity-list.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Data_Export
+#graphify/code #graphify/EXTRACTED #community/Activity_User

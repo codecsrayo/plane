@@ -1,5 +1,5 @@
 ---
-source_file: "store/router.store.ts"
+source_file: "web/core/store/router.store.ts"
 type: "code"
 community: "Router Routerstore"
 location: "L33"
@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 
-- [[.constructor()_14]] - `method` [EXTRACTED]
+- [[.constructor()_71]] - `method` [EXTRACTED]
 - [[.cycleId()]] - `method` [EXTRACTED]
 - [[.epicId()]] - `method` [EXTRACTED]
 - [[.globalViewId()]] - `method` [EXTRACTED]
@@ -28,7 +28,7 @@ tags:
 - [[.viewId()]] - `method` [EXTRACTED]
 - [[.webhookId()]] - `method` [EXTRACTED]
 - [[.workspaceSlug()]] - `method` [EXTRACTED]
-- [[root.store.ts]] - `imports` [EXTRACTED]
+- [[root.store.ts_2]] - `imports` [EXTRACTED]
 - [[router.store.ts]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Router_Routerstore

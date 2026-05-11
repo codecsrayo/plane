@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/rich-filters/config/filter-config.ts"
 type: "code"
-community: "Node Condition"
+community: "Operator Configs"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Node_Condition
+  - community/Operator_Configs
 ---
 
 # TFilterConfig
@@ -15,4 +15,4 @@ tags:
 
 - [[filter-config.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Node_Condition
+#graphify/code #graphify/EXTRACTED #community/Operator_Configs

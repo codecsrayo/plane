@@ -1,12 +1,12 @@
 ---
-source_file: "components/pages/modals/page-form.tsx"
+source_file: "web/core/components/pages/modals/page-form.tsx"
 type: "code"
-community: "Access Field"
+community: "Project Work"
 location: "L43"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Access_Field
+  - community/Project_Work
 ---
 
 # PageForm()
@@ -17,4 +17,4 @@ tags:
 - [[page-form.tsx]] - `contains` [EXTRACTED]
 - [[usePlatformOS()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Access_Field
+#graphify/code #graphify/EXTRACTED #community/Project_Work

@@ -1,12 +1,12 @@
 ---
-source_file: "components/analytics/analytics-wrapper.tsx"
+source_file: "web/core/components/analytics/analytics-wrapper.tsx"
 type: "code"
-community: "Insight Analytics"
+community: "Analytics Insight"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Insight_Analytics
+  - community/Analytics_Insight
 ---
 
 # analytics-wrapper.tsx
@@ -14,8 +14,8 @@ tags:
 ## Connections
 
 - [[AnalyticsWrapper()]] - `contains` [EXTRACTED]
-- [[Props_426]] - `contains` [EXTRACTED]
-- [[root.tsx_89]] - `imports_from` [EXTRACTED]
-- [[root.tsx_90]] - `imports_from` [EXTRACTED]
+- [[Props_500]] - `contains` [EXTRACTED]
+- [[root.tsx_130]] - `imports_from` [EXTRACTED]
+- [[root.tsx_131]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Insight_Analytics
+#graphify/code #graphify/EXTRACTED #community/Analytics_Insight

@@ -1,18 +1,18 @@
 ---
-source_file: "components/inbox/content/issue-properties.tsx"
+source_file: "web/core/components/cycles/transfer-issues.tsx"
 type: "code"
-community: "Issue Properties"
-location: "L32"
+community: "Issue Project"
+location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Issue_Project
 ---
 
 # Props
 
 ## Connections
 
-- [[issue-properties.tsx]] - `contains` [EXTRACTED]
+- [[transfer-issues.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-detail-widgets/sub-issues/content.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/cycle-column.tsx"
 type: "code"
-community: "Project Archives"
-location: "L20"
+community: "Label Dropdown"
+location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Archives
+  - community/Label_Dropdown
 ---
 
 # Props
 
 ## Connections
 
-- [[content.tsx_2]] - `contains` [EXTRACTED]
+- [[cycle-column.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Archives
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

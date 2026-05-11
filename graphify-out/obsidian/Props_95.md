@@ -1,18 +1,18 @@
 ---
-source_file: "components/profile/profile-issues.tsx"
+source_file: "web/core/components/views/quick-actions.tsx"
 type: "code"
-community: "Issue Layout Roots"
-location: "L24"
+community: "Project Work"
+location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layout_Roots
+  - community/Project_Work
 ---
 
 # Props
 
 ## Connections
 
-- [[profile-issues.tsx]] - `contains` [EXTRACTED]
+- [[quick-actions.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layout_Roots
+#graphify/code #graphify/EXTRACTED #community/Project_Work

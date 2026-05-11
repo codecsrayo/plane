@@ -1,12 +1,12 @@
 ---
-source_file: "components/common/pro-icon.tsx"
+source_file: "web/core/components/common/pro-icon.tsx"
 type: "code"
-community: "Icon Tproicon"
+community: "Upgrade Workspace"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Icon_Tproicon
+  - community/Upgrade_Workspace
 ---
 
 # TProIcon
@@ -15,4 +15,4 @@ tags:
 
 - [[pro-icon.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Icon_Tproicon
+#graphify/code #graphify/EXTRACTED #community/Upgrade_Workspace

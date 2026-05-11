@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/columns/header-column.tsx"
+source_file: "web/core/components/project/empty-state.tsx"
 type: "code"
-community: "Spreadsheet Filters"
-location: "L19"
+community: "Empty State"
+location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Filters
+  - community/Empty_State
 ---
 
 # Props
 
 ## Connections
 
-- [[header-column.tsx]] - `contains` [EXTRACTED]
+- [[empty-state.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Filters
+#graphify/code #graphify/EXTRACTED #community/Empty_State

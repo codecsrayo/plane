@@ -1,12 +1,12 @@
 ---
 source_file: "hooks/src/use-local-storage.tsx"
 type: "code"
-community: "Local Tabs"
+community: "Local Value"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Local_Tabs
+  - community/Local_Value
 ---
 
 # getValueFromLocalStorage()
@@ -15,4 +15,4 @@ tags:
 
 - [[use-local-storage.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Local_Tabs
+#graphify/code #graphify/EXTRACTED #community/Local_Value

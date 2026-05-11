@@ -1,14 +1,14 @@
 ---
 source_file: "api_rust/src/entities/django_celery_beat_solarschedule.rs"
 type: "code"
-community: "Community 667"
+community: "Active Model"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_667
+  - community/Active_Model
 ---
 
 # ActiveModel
 
-#graphify/code #graphify/EXTRACTED #community/Community_667
+#graphify/code #graphify/EXTRACTED #community/Active_Model

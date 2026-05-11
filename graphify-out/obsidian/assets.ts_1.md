@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/helpers/assets.ts"
 type: "code"
-community: "Assets Additional"
+community: "Assets Node"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Assets_Additional
+  - community/Assets_Node
 ---
 
 # assets.ts
@@ -22,4 +22,4 @@ tags:
 - [[restore.ts]] - `imports_from` [EXTRACTED]
 - [[utils.ts_9]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Assets_Additional
+#graphify/code #graphify/EXTRACTED #community/Assets_Node

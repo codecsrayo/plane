@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/utils/django_sessions.rs"
 type: "code"
-community: "Community 187"
+community: "Password Email"
 location: "L113"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_187
+  - graphify/INFERRED
+  - community/Password_Email
 ---
 
 # base62_encode()
@@ -16,4 +16,4 @@ tags:
 - [[.new()]] - `calls` [INFERRED]
 - [[django_sessions.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_187
+#graphify/code #graphify/INFERRED #community/Password_Email

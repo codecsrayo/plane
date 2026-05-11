@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/workspace-draft/quick-action.tsx"
+source_file: "web/core/components/issues/parent-issues-list-modal.tsx"
 type: "code"
-community: "Issue Identifiers"
-location: "L15"
+community: "Issue Activity"
+location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Identifiers
+  - community/Issue_Activity
 ---
 
 # Props
 
 ## Connections
 
-- [[quick-action.tsx_1]] - `contains` [EXTRACTED]
+- [[parent-issues-list-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Identifiers
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

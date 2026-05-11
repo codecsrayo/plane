@@ -1,18 +1,19 @@
 ---
-source_file: "components/integration/github/project-issue-sync.tsx"
+source_file: "web/core/components/project/dropdowns/order-by.tsx"
 type: "code"
-community: "Github Integration"
-location: "L19"
+community: "Member Members"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Github_Integration
+  - community/Member_Members
 ---
 
 # Props
 
 ## Connections
 
-- [[project-issue-sync.tsx]] - `contains` [EXTRACTED]
+- [[order-by.tsx_1]] - `contains` [EXTRACTED]
+- [[order-by.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Github_Integration
+#graphify/code #graphify/EXTRACTED #community/Member_Members

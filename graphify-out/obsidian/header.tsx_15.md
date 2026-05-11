@@ -1,20 +1,24 @@
 ---
-source_file: "components/analytics/work-items/modal/header.tsx"
+source_file: "web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/pages/(list)/header.tsx"
 type: "code"
-community: "Active Projects"
+community: "Settings Project"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Projects
+  - community/Settings_Project
 ---
 
 # header.tsx
 
 ## Connections
 
-- [[Props_335]] - `contains` [EXTRACTED]
-- [[WorkItemsModalHeader]] - `contains` [EXTRACTED]
-- [[index.tsx_8]] - `imports_from` [EXTRACTED]
+- [[BreadcrumbLink()]] - `imports` [EXTRACTED]
+- [[CommonProjectBreadcrumbs()]] - `imports` [EXTRACTED]
+- [[PagesListHeader]] - `contains` [EXTRACTED]
+- [[breadcrumb-link.tsx]] - `imports_from` [EXTRACTED]
+- [[layout.tsx_23]] - `imports_from` [EXTRACTED]
+- [[use-project.ts]] - `imports_from` [EXTRACTED]
+- [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Active_Projects
+#graphify/code #graphify/EXTRACTED #community/Settings_Project

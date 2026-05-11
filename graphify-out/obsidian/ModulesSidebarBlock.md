@@ -1,19 +1,19 @@
 ---
-source_file: "components/gantt-chart/sidebar/modules/block.tsx"
+source_file: "web/core/components/gantt-chart/sidebar/modules/block.tsx"
 type: "code"
-community: "Gantt Sidebar"
+community: "Gantt Chart"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Sidebar
+  - community/Gantt_Chart
 ---
 
 # ModulesSidebarBlock
 
 ## Connections
 
-- [[block.tsx]] - `contains` [EXTRACTED]
-- [[sidebar.tsx]] - `imports` [EXTRACTED]
+- [[block.tsx_3]] - `contains` [EXTRACTED]
+- [[sidebar.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Sidebar
+#graphify/code #graphify/EXTRACTED #community/Gantt_Chart

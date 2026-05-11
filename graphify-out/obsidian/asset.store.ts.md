@@ -1,12 +1,12 @@
 ---
-source_file: "store/editor/asset.store.ts"
+source_file: "web/core/store/editor/asset.store.ts"
 type: "code"
-community: "Editor Asset"
+community: "Project Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Asset
+  - community/Project_Issue
 ---
 
 # asset.store.ts
@@ -14,16 +14,16 @@ tags:
 ## Connections
 
 - [[EditorAssetStore]] - `contains` [EXTRACTED]
-- [[FileService]] - `imports` [EXTRACTED]
+- [[FileService_1]] - `imports` [EXTRACTED]
 - [[IEditorAssetStore]] - `contains` [EXTRACTED]
 - [[TAttachmentUploadStatus]] - `imports` [EXTRACTED]
-- [[api.service.ts]] - `imports_from` [EXTRACTED]
+- [[api.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[attachment.store.ts]] - `imports_from` [EXTRACTED]
-- [[file.service.ts]] - `imports_from` [EXTRACTED]
+- [[file.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[progressPercentage]] - `contains` [EXTRACTED]
-- [[root.store.ts]] - `imports_from` [EXTRACTED]
+- [[root.store.ts_2]] - `imports_from` [EXTRACTED]
 - [[tempId]] - `contains` [EXTRACTED]
 - [[toApiError()]] - `imports` [EXTRACTED]
 - [[use-editor-asset.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Asset
+#graphify/code #graphify/EXTRACTED #community/Project_Issue

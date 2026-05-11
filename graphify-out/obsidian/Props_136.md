@@ -1,18 +1,18 @@
 ---
-source_file: "components/project/member-list-item.tsx"
+source_file: "web/core/components/stickies/layout/sticky-dnd-wrapper.tsx"
 type: "code"
-community: "Member Project"
-location: "L23"
+community: "Stickies Sticky"
+location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Project
+  - community/Stickies_Sticky
 ---
 
 # Props
 
 ## Connections
 
-- [[member-list-item.tsx]] - `contains` [EXTRACTED]
+- [[sticky-dnd-wrapper.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Project
+#graphify/code #graphify/EXTRACTED #community/Stickies_Sticky

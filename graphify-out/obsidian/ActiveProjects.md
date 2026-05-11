@@ -1,12 +1,12 @@
 ---
-source_file: "components/analytics/overview/active-projects.tsx"
+source_file: "web/core/components/analytics/overview/active-projects.tsx"
 type: "code"
-community: "Active Projects"
+community: "Webhook Workspace"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Projects
+  - community/Webhook_Workspace
 ---
 
 # ActiveProjects
@@ -15,4 +15,4 @@ tags:
 
 - [[active-projects.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Active_Projects
+#graphify/code #graphify/EXTRACTED #community/Webhook_Workspace

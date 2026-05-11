@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/menus/members.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/sub-issues/issues-list/list-item.tsx"
 type: "code"
-community: "Member Commands"
-location: "L17"
+community: "Issue Activity"
+location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Commands
+  - community/Issue_Activity
 ---
 
 # Props
 
 ## Connections
 
-- [[members.tsx_7]] - `contains` [EXTRACTED]
+- [[list-item.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Commands
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

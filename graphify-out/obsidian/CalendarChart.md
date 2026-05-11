@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/calendar/calendar.tsx"
+source_file: "web/core/components/issues/issue-layouts/calendar/calendar.tsx"
 type: "code"
-community: "Calendar Chart"
+community: "Calendar Issue"
 location: "L75"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Chart
+  - community/Calendar_Issue
 ---
 
 # CalendarChart
@@ -16,4 +16,4 @@ tags:
 - [[base-calendar-root.tsx]] - `imports` [EXTRACTED]
 - [[calendar.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Chart
+#graphify/code #graphify/EXTRACTED #community/Calendar_Issue

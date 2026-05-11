@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/columns/updated-on-column.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/updated-on-column.tsx"
 type: "code"
 community: "Updated Column"
 location: "L19"

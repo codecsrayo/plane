@@ -11,7 +11,7 @@ members: 1
 
 ## Members
 
-- [[tsdown.config.ts_11]] - code - propel/tsdown.config.ts
+- [[tsdown.config.ts_12]] - code - live/tsdown.config.ts
 
 ## Live Query (requires Dataview plugin)
 

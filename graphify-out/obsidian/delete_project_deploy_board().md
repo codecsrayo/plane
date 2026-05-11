@@ -1,20 +1,22 @@
 ---
 source_file: "api_rust/src/routes/projects.rs"
 type: "code"
-community: "Projects Rust API"
+community: "Project Response"
 location: "L3051"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Projects_Rust_API
+  - graphify/INFERRED
+  - community/Project_Response
 ---
 
 # delete_project_deploy_board()
 
 ## Connections
 
+- [[.set()]] - `calls` [INFERRED]
+- [[now]] - `calls` [INFERRED]
 - [[project_by_id()]] - `calls` [EXTRACTED]
-- [[projects.rs]] - `contains` [EXTRACTED]
+- [[projects.rs_1]] - `contains` [EXTRACTED]
 - [[workspace_by_slug()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Projects_Rust_API
+#graphify/code #graphify/INFERRED #community/Project_Response

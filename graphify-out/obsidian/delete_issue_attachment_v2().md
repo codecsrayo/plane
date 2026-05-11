@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/assets.rs"
 type: "code"
-community: "Community 51"
+community: "Asset Issue"
 location: "L1219"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_51
+  - community/Asset_Issue
 ---
 
 # delete_issue_attachment_v2()
@@ -16,4 +16,4 @@ tags:
 - [[assets.rs]] - `contains` [EXTRACTED]
 - [[soft_delete_asset()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_51
+#graphify/code #graphify/EXTRACTED #community/Asset_Issue

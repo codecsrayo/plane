@@ -1,18 +1,18 @@
 ---
-source_file: "components/analytics/trend-piece.tsx"
+source_file: "web/core/components/power-k/menus/builder.tsx"
 type: "code"
-community: "Trend Variants"
+community: "Menu Power"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Trend_Variants
+  - community/Menu_Power
 ---
 
 # Props
 
 ## Connections
 
-- [[trend-piece.tsx]] - `contains` [EXTRACTED]
+- [[builder.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Trend_Variants
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

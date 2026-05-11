@@ -1,12 +1,12 @@
 ---
-source_file: "components/sidebar/resizable-sidebar.tsx"
+source_file: "web/core/components/sidebar/resizable-sidebar.tsx"
 type: "code"
-community: "Issue Layouts"
+community: "Sidebar Resizable"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layouts
+  - community/Sidebar_Resizable
 ---
 
 # ResizableSidebarProps
@@ -15,4 +15,4 @@ tags:
 
 - [[resizable-sidebar.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layouts
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Resizable

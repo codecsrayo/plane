@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/instance_admins.rs"
 type: "code"
-community: "Community 407"
+community: "Model Relation"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_407
+  - community/Model_Relation
 ---
 
 # Relation
@@ -15,4 +15,4 @@ tags:
 
 - [[instance_admins.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_407
+#graphify/code #graphify/EXTRACTED #community/Model_Relation

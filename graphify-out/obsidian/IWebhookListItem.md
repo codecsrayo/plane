@@ -1,12 +1,12 @@
 ---
-source_file: "components/web-hooks/webhooks-list-item.tsx"
+source_file: "web/core/components/web-hooks/webhooks-list-item.tsx"
 type: "code"
-community: "Webhook Webhooks"
+community: "Webhook Workspace"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Webhook_Webhooks
+  - community/Webhook_Workspace
 ---
 
 # IWebhookListItem
@@ -15,4 +15,4 @@ tags:
 
 - [[webhooks-list-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Webhook_Webhooks
+#graphify/code #graphify/EXTRACTED #community/Webhook_Workspace

@@ -1,8 +1,8 @@
 ---
-source_file: "store/state.store.ts"
+source_file: "space/store/state.store.ts"
 type: "code"
 community: "State Project"
-location: "L20"
+location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
@@ -13,6 +13,10 @@ tags:
 
 ## Connections
 
-- [[state.store.ts]] - `contains` [EXTRACTED]
+- [[root.store.ts_6]] - `imports` [EXTRACTED]
+- [[state.store.ts_1]] - `contains` [EXTRACTED]
+- [[state.store.ts_2]] - `contains` [EXTRACTED]
+- [[use-state.ts]] - `imports` [EXTRACTED]
+- [[utils.tsx_3]] - `imports` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/State_Project

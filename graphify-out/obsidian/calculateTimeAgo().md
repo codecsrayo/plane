@@ -5,7 +5,7 @@ community: "Matchers Icon"
 location: "L180"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
+  - graphify/INFERRED
   - community/Matchers_Icon
 ---
 
@@ -16,4 +16,4 @@ tags:
 - [[LinkItemBlock()]] - `calls` [INFERRED]
 - [[datetime.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Matchers_Icon
+#graphify/code #graphify/INFERRED #community/Matchers_Icon

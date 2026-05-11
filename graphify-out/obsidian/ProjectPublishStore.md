@@ -1,20 +1,20 @@
 ---
-source_file: "store/project/project-publish.store.ts"
+source_file: "web/core/store/project/project-publish.store.ts"
 type: "code"
-community: "Project Root Store"
+community: "Project Issue"
 location: "L41"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Root_Store
+  - community/Project_Issue
 ---
 
 # ProjectPublishStore
 
 ## Connections
 
-- [[.constructor()_57]] - `method` [EXTRACTED]
-- [[index.ts_16]] - `imports` [EXTRACTED]
+- [[.constructor()_114]] - `method` [EXTRACTED]
+- [[index.ts_281]] - `imports` [EXTRACTED]
 - [[project-publish.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Root_Store
+#graphify/code #graphify/EXTRACTED #community/Project_Issue

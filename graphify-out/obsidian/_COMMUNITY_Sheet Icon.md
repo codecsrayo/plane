@@ -11,8 +11,8 @@ members: 2
 
 ## Members
 
-- [[SheetIcon()]] - code - components/icons/attachment/sheet-file-icon.tsx
-- [[sheet-file-icon.tsx]] - code - components/icons/attachment/sheet-file-icon.tsx
+- [[SheetIcon()]] - code - web/core/components/icons/attachment/sheet-file-icon.tsx
+- [[sheet-file-icon.tsx]] - code - web/core/components/icons/attachment/sheet-file-icon.tsx
 
 ## Live Query (requires Dataview plugin)
 

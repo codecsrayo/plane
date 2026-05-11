@@ -1,5 +1,5 @@
 ---
-source_file: "components/license/modal/card/free-plan.tsx"
+source_file: "web/core/components/license/modal/card/free-plan.tsx"
 type: "code"
 community: "Free Plan"
 location: "L18"

@@ -1,12 +1,12 @@
 ---
-source_file: "store/project/project.store.ts"
+source_file: "web/core/store/project/project.store.ts"
 type: "code"
-community: "Project Projectstore"
+community: "Project Issue"
 location: "L91"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Projectstore
+  - community/Project_Issue
 ---
 
 # ProjectStore
@@ -14,7 +14,7 @@ tags:
 ## Connections
 
 - [[.archivedProjectIds()]] - `method` [EXTRACTED]
-- [[.constructor()_60]] - `method` [EXTRACTED]
+- [[.constructor()_117]] - `method` [EXTRACTED]
 - [[.currentProjectDetails()]] - `method` [EXTRACTED]
 - [[.currentProjectNextSequenceId()]] - `method` [EXTRACTED]
 - [[.favoriteProjectIds()]] - `method` [EXTRACTED]
@@ -23,7 +23,7 @@ tags:
 - [[.joinedProjectIds()]] - `method` [EXTRACTED]
 - [[.totalProjectIds()]] - `method` [EXTRACTED]
 - [[.workspaceProjectIds()]] - `method` [EXTRACTED]
-- [[index.ts_16]] - `imports` [EXTRACTED]
+- [[index.ts_281]] - `imports` [EXTRACTED]
 - [[project.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Projectstore
+#graphify/code #graphify/EXTRACTED #community/Project_Issue

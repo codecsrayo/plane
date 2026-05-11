@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/issues.ts"
 type: "code"
-community: "Issue Options"
+community: "Issue Entity"
 location: "L111"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Options
+  - community/Issue_Entity
 ---
 
 # TIssuePriorities
@@ -22,4 +22,4 @@ tags:
 - [[issue.ts]] - `imports` [EXTRACTED]
 - [[issues.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Options
+#graphify/code #graphify/EXTRACTED #community/Issue_Entity

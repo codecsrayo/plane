@@ -1,18 +1,18 @@
 ---
-source_file: "components/onboarding/steps/workspace/create.tsx"
+source_file: "web/core/components/issues/bulk-operations/upgrade-banner.tsx"
 type: "code"
-community: "Chat Support"
-location: "L28"
+community: "Select Multiple"
+location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Chat_Support
+  - community/Select_Multiple
 ---
 
 # Props
 
 ## Connections
 
-- [[create.tsx_1]] - `contains` [EXTRACTED]
+- [[upgrade-banner.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Chat_Support
+#graphify/code #graphify/EXTRACTED #community/Select_Multiple

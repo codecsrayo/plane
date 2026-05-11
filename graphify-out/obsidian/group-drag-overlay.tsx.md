@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/group-drag-overlay.tsx"
+source_file: "web/core/components/issues/issue-layouts/group-drag-overlay.tsx"
 type: "code"
-community: "Kanban Groups"
+community: "Group Kanban"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Kanban_Groups
+  - community/Group_Kanban
 ---
 
 # group-drag-overlay.tsx
@@ -14,8 +14,8 @@ tags:
 ## Connections
 
 - [[GroupDragOverlay()]] - `contains` [EXTRACTED]
-- [[Props_186]] - `contains` [EXTRACTED]
+- [[Props_261]] - `contains` [EXTRACTED]
 - [[kanban-group.tsx]] - `imports_from` [EXTRACTED]
 - [[list-group.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Kanban_Groups
+#graphify/code #graphify/EXTRACTED #community/Group_Kanban

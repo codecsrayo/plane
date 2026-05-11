@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/integrations/helpers.rs"
 type: "code"
-community: "Community 47"
+community: "Workspace Webhook"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_47
+  - community/Workspace_Webhook
 ---
 
 # helpers.rs
@@ -15,4 +15,4 @@ tags:
 
 - [[get_or_create_api_token()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_47
+#graphify/code #graphify/EXTRACTED #community/Workspace_Webhook

@@ -1,5 +1,5 @@
 ---
-source_file: "components/common/new-empty-state.tsx"
+source_file: "web/core/components/common/new-empty-state.tsx"
 type: "code"
 community: "Empty State"
 location: "L30"

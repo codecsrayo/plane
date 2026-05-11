@@ -1,5 +1,5 @@
 ---
-source_file: "components/home/widgets/empty-states/recents.tsx"
+source_file: "web/core/components/home/widgets/empty-states/recents.tsx"
 type: "code"
 community: "Recents Display"
 location: "L36"

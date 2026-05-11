@@ -11,9 +11,9 @@ members: 3
 
 ## Members
 
-- [[FavoriteItemQuickAction]] - code - components/workspace/sidebar/favorites/favorite-items/common/favorite-item-quick-action.tsx
-- [[Props_32]] - code - components/workspace/sidebar/favorites/favorite-items/common/favorite-item-quick-action.tsx
-- [[favorite-item-quick-action.tsx]] - code - components/workspace/sidebar/favorites/favorite-items/common/favorite-item-quick-action.tsx
+- [[FavoriteItemQuickAction]] - code - web/core/components/workspace/sidebar/favorites/favorite-items/common/favorite-item-quick-action.tsx
+- [[Props_108]] - code - web/core/components/workspace/sidebar/favorites/favorite-items/common/favorite-item-quick-action.tsx
+- [[favorite-item-quick-action.tsx]] - code - web/core/components/workspace/sidebar/favorites/favorite-items/common/favorite-item-quick-action.tsx
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,19 +1,19 @@
 ---
-source_file: "components/core/description-versions/modal.tsx"
+source_file: "web/core/components/core/description-versions/modal.tsx"
 type: "code"
-community: "Description Dropdown"
+community: "Member Members"
 location: "L40"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Description_Dropdown
+  - community/Member_Members
 ---
 
 # DescriptionVersionsModal
 
 ## Connections
 
-- [[modal.tsx_14]] - `contains` [EXTRACTED]
-- [[root.tsx_93]] - `imports` [EXTRACTED]
+- [[modal.tsx_19]] - `contains` [EXTRACTED]
+- [[root.tsx_134]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Description_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Member_Members

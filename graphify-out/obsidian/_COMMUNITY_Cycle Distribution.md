@@ -42,8 +42,9 @@ SORT file.name ASC
 ## Connections to other communities
 
 - 2 edges to [[_COMMUNITY_Issue Identifier]]
-- 2 edges to [[_COMMUNITY_Issue Enums]]
+- 1 edge to [[_COMMUNITY_Issue Public]]
+- 1 edge to [[_COMMUNITY_Widget Issue]]
 
 ## Top bridge nodes
 
-- [[cycle.ts_1]] - degree 23, connects to 2 communities
+- [[cycle.ts_1]] - degree 23, connects to 3 communities

@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/core/types.ts"
+source_file: "web/core/components/power-k/core/types.ts"
 type: "code"
-community: "Context Power"
+community: "Power Context"
 location: "L128"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Context_Power
+  - community/Power_Context
 ---
 
 # TSelectionPageProps
 
 ## Connections
 
-- [[types.ts_2]] - `contains` [EXTRACTED]
+- [[types.ts_16]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Context_Power
+#graphify/code #graphify/EXTRACTED #community/Power_Context

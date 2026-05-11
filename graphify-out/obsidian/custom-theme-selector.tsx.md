@@ -1,5 +1,5 @@
 ---
-source_file: "components/core/theme/custom-theme-selector.tsx"
+source_file: "web/core/components/core/theme/custom-theme-selector.tsx"
 type: "code"
 community: "Theme Custom"
 location: "L1"
@@ -23,8 +23,9 @@ tags:
 - [[download-config-button.tsx]] - `imports_from` [EXTRACTED]
 - [[heading.tsx_1]] - `imports_from` [EXTRACTED]
 - [[import-config-button.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
 - [[theme-mode-selector.tsx]] - `imports_from` [EXTRACTED]
 - [[theme-switcher.tsx]] - `imports_from` [EXTRACTED]
+- [[theme-switcher.tsx_1]] - `imports_from` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Theme_Custom

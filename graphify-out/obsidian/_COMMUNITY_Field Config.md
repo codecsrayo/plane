@@ -1,13 +1,13 @@
 ---
 type: community
-cohesion: 0.14
-members: 21
+cohesion: 0.15
+members: 20
 ---
 
 # Field Config
 
-**Cohesion:** 0.14 - loosely connected
-**Members:** 21 nodes
+**Cohesion:** 0.15 - loosely connected
+**Members:** 20 nodes
 
 ## Members
 
@@ -27,7 +27,6 @@ members: 21
 - [[TNegativeOperatorConfig]] - code - types/src/rich-filters/field-types/shared.ts
 - [[TSingleSelectFilterFieldConfig]] - code - types/src/rich-filters/field-types/core.ts
 - [[TSupportedFilterFieldConfigs]] - code - types/src/rich-filters/field-types/index.ts
-- [[TSupportedOperators]] - code - types/src/rich-filters/operators/index.ts
 - [[core.ts_9]] - code - types/src/rich-filters/field-types/core.ts
 - [[extended.ts_7]] - code - types/src/rich-filters/field-types/extended.ts
 - [[index.ts_110]] - code - types/src/rich-filters/field-types/index.ts
@@ -45,12 +44,12 @@ SORT file.name ASC
 - 7 edges to [[_COMMUNITY_Node Condition]]
 - 4 edges to [[_COMMUNITY_Operators Supported]]
 - 2 edges to [[_COMMUNITY_Operator Configs]]
-- 2 edges to [[_COMMUNITY_Operator Core]]
+- 1 edge to [[_COMMUNITY_Operator Core]]
 
 ## Top bridge nodes
 
 - [[index.ts_110]] - degree 13, connects to 3 communities
 - [[TFilterValue]] - degree 10, connects to 3 communities
 - [[core.ts_9]] - degree 15, connects to 2 communities
-- [[TSupportedOperators]] - degree 3, connects to 2 communities
 - [[shared.ts_1]] - degree 6, connects to 1 community
+- [[extended.ts_7]] - degree 5, connects to 1 community

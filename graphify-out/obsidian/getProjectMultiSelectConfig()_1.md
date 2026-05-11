@@ -1,12 +1,12 @@
 ---
 source_file: "utils/src/rich-filters/factories/configs/properties/shared.ts"
 type: "code"
-community: "Params Date"
+community: "State Multi"
 location: "L73"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Params_Date
+  - community/State_Multi
 ---
 
 # getProjectMultiSelectConfig()
@@ -16,4 +16,4 @@ tags:
 - [[getMultiSelectConfig()]] - `calls` [EXTRACTED]
 - [[shared.ts_9]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Params_Date
+#graphify/code #graphify/EXTRACTED #community/State_Multi

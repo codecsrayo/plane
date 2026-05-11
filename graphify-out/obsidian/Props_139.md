@@ -1,18 +1,18 @@
 ---
-source_file: "components/project/member-select.tsx"
+source_file: "web/core/components/labels/project-setting-label-group.tsx"
 type: "code"
-community: "Member Project"
-location: "L19"
+community: "Label Project"
+location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Project
+  - community/Label_Project
 ---
 
 # Props
 
 ## Connections
 
-- [[member-select.tsx]] - `contains` [EXTRACTED]
+- [[project-setting-label-group.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Project
+#graphify/code #graphify/EXTRACTED #community/Label_Project

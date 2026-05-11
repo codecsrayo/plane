@@ -1,5 +1,5 @@
 ---
-source_file: "components/base-layouts/list/group.tsx"
+source_file: "web/core/components/base-layouts/list/group.tsx"
 type: "code"
 community: "Group Drop"
 location: "L1"
@@ -17,8 +17,8 @@ tags:
 - [[BaseListItem]] - `imports` [EXTRACTED]
 - [[GroupHeader()_1]] - `imports` [EXTRACTED]
 - [[group-header.tsx_1]] - `imports_from` [EXTRACTED]
-- [[item.tsx_3]] - `imports_from` [EXTRACTED]
-- [[layout.tsx_3]] - `imports_from` [EXTRACTED]
+- [[item.tsx_4]] - `imports_from` [EXTRACTED]
+- [[layout.tsx_47]] - `imports_from` [EXTRACTED]
 - [[use-group-drop-target.ts]] - `imports_from` [EXTRACTED]
 - [[useGroupDropTarget()]] - `imports` [EXTRACTED]
 

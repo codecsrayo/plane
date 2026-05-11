@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/issue_assignees.rs"
 type: "code"
-community: "Community 595"
+community: "Entity"
 location: "L74"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_595
+  - community/Entity
 ---
 
 # Entity
@@ -15,4 +15,4 @@ tags:
 
 - [[.to()_97]] - `method` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_595
+#graphify/code #graphify/EXTRACTED #community/Entity

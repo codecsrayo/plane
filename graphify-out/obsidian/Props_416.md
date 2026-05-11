@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/modals/export-page-modal.tsx"
+source_file: "web/core/components/power-k/ui/modal/footer.tsx"
 type: "code"
-community: "Formats Content"
-location: "L23"
+community: "Power Shortcuts"
+location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Formats_Content
+  - community/Power_Shortcuts
 ---
 
 # Props
 
 ## Connections
 
-- [[export-page-modal.tsx]] - `contains` [EXTRACTED]
+- [[footer.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Formats_Content
+#graphify/code #graphify/EXTRACTED #community/Power_Shortcuts

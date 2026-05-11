@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/editor/toolbar/root.tsx"
+source_file: "web/core/components/power-k/ui/pages/context-based/module/root.tsx"
 type: "code"
-community: "Badge Editor"
-location: "L22"
+community: "Member Members"
+location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Badge_Editor
+  - community/Member_Members
 ---
 
 # Props
 
 ## Connections
 
-- [[root.tsx_75]] - `contains` [EXTRACTED]
+- [[root.tsx_100]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Badge_Editor
+#graphify/code #graphify/EXTRACTED #community/Member_Members

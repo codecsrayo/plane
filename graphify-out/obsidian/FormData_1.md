@@ -1,5 +1,5 @@
 ---
-source_file: "components/exporter/export-form.tsx"
+source_file: "web/core/components/exporter/export-form.tsx"
 type: "code"
 community: "Project Settings"
 location: "L38"

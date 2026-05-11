@@ -1,12 +1,12 @@
 ---
-source_file: "components/profile/activity/download-button.tsx"
+source_file: "web/core/components/profile/activity/download-button.tsx"
 type: "code"
-community: "User Profile"
+community: "Activity User"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User_Profile
+  - community/Activity_User
 ---
 
 # DownloadActivityButton()
@@ -14,5 +14,6 @@ tags:
 ## Connections
 
 - [[download-button.tsx]] - `contains` [EXTRACTED]
+- [[page.tsx_12]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User_Profile
+#graphify/code #graphify/EXTRACTED #community/Activity_User

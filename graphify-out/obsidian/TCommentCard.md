@@ -1,12 +1,12 @@
 ---
-source_file: "components/comments/quick-actions.tsx"
+source_file: "web/core/components/comments/quick-actions.tsx"
 type: "code"
-community: "Comment Card"
+community: "Activity Issue"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Comment_Card
+  - community/Activity_Issue
 ---
 
 # TCommentCard
@@ -15,4 +15,4 @@ tags:
 
 - [[quick-actions.tsx_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Comment_Card
+#graphify/code #graphify/EXTRACTED #community/Activity_Issue

@@ -1,12 +1,12 @@
 ---
-source_file: "store/instance.store.ts"
+source_file: "space/store/instance.store.ts"
 type: "code"
-community: "Chat Support"
-location: "L23"
+community: "Instance User"
+location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Chat_Support
+  - community/Instance_User
 ---
 
 # IInstanceStore
@@ -14,7 +14,13 @@ tags:
 ## Connections
 
 - [[instance.store.ts]] - `contains` [EXTRACTED]
-- [[root.store.ts]] - `imports` [EXTRACTED]
+- [[instance.store.ts_1]] - `contains` [EXTRACTED]
+- [[instance.store.ts_2]] - `contains` [EXTRACTED]
+- [[root.store.ts_2]] - `imports` [EXTRACTED]
+- [[root.store.ts_5]] - `imports` [EXTRACTED]
+- [[root.store.ts_6]] - `imports` [EXTRACTED]
 - [[use-instance.ts]] - `imports` [EXTRACTED]
+- [[use-instance.ts_1]] - `imports` [EXTRACTED]
+- [[use-instance.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Chat_Support
+#graphify/code #graphify/EXTRACTED #community/Instance_User

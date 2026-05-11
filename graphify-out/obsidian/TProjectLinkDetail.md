@@ -1,12 +1,12 @@
 ---
-source_file: "components/home/widgets/links/link-detail.tsx"
+source_file: "web/core/components/home/widgets/links/link-detail.tsx"
 type: "code"
-community: "Dashboard Widgets"
+community: "Link Links"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dashboard_Widgets
+  - community/Link_Links
 ---
 
 # TProjectLinkDetail
@@ -15,4 +15,4 @@ tags:
 
 - [[link-detail.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets
+#graphify/code #graphify/EXTRACTED #community/Link_Links

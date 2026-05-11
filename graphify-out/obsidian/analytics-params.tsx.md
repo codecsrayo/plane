@@ -1,5 +1,5 @@
 ---
-source_file: "components/analytics/select/analytics-params.tsx"
+source_file: "web/core/components/analytics/select/analytics-params.tsx"
 type: "code"
 community: "Select Axis"
 location: "L1"
@@ -14,7 +14,7 @@ tags:
 ## Connections
 
 - [[AnalyticsSelectParams]] - `contains` [EXTRACTED]
-- [[Props_431]] - `contains` [EXTRACTED]
+- [[Props_505]] - `contains` [EXTRACTED]
 - [[SelectXAxis()]] - `imports` [EXTRACTED]
 - [[SelectYAxis]] - `imports` [EXTRACTED]
 - [[customized-insights.tsx]] - `imports_from` [EXTRACTED]

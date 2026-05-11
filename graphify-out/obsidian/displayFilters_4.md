@@ -1,18 +1,18 @@
 ---
-source_file: "store/issue/project-views/filter.store.ts"
+source_file: "web/core/store/issue/project-views/filter.store.ts"
 type: "code"
-community: "Issues Filters"
+community: "Project Filters"
 location: "L149"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issues_Filters
+  - community/Project_Filters
 ---
 
 # displayFilters
 
 ## Connections
 
-- [[filter.store.ts_1]] - `contains` [EXTRACTED]
+- [[filter.store.ts_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issues_Filters
+#graphify/code #graphify/EXTRACTED #community/Project_Filters

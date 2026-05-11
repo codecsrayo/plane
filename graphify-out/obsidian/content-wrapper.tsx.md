@@ -18,7 +18,7 @@ tags:
 - [[ERowVariant]] - `imports` [EXTRACTED]
 - [[TRowVariant]] - `imports` [EXTRACTED]
 - [[helper.tsx_7]] - `imports_from` [EXTRACTED]
-- [[index.ts_16]] - `imports_from` [EXTRACTED]
 - [[index.ts_14]] - `imports_from` [EXTRACTED]
+- [[index.ts_16]] - `imports_from` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Content_Wrapper

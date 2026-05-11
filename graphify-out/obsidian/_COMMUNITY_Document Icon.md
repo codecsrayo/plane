@@ -11,8 +11,8 @@ members: 2
 
 ## Members
 
-- [[DocumentIcon()]] - code - components/icons/attachment/document-icon.tsx
-- [[document-icon.tsx]] - code - components/icons/attachment/document-icon.tsx
+- [[DocumentIcon()]] - code - web/core/components/icons/attachment/document-icon.tsx
+- [[document-icon.tsx]] - code - web/core/components/icons/attachment/document-icon.tsx
 
 ## Live Query (requires Dataview plugin)
 

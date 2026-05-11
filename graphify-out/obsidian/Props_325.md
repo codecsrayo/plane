@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/ui/pages/preferences/timezone-menu.tsx"
+source_file: "web/core/components/issues/issue-layouts/filters/applied-filters/cycle.tsx"
 type: "code"
-community: "Member Commands"
+community: "Cycle Active"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Commands
+  - community/Cycle_Active
 ---
 
 # Props
 
 ## Connections
 
-- [[timezone-menu.tsx]] - `contains` [EXTRACTED]
+- [[cycle.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Commands
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

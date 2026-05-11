@@ -1,19 +1,19 @@
 ---
-source_file: "components/power-k/ui/pages/open-entity/shared.ts"
+source_file: "web/core/components/power-k/ui/pages/open-entity/shared.ts"
 type: "code"
-community: "File Icons Nav"
+community: "Menu Power"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/File_Icons_Nav
+  - community/Menu_Power
 ---
 
 # TPowerKOpenEntityActionsProps
 
 ## Connections
 
-- [[root.tsx_62]] - `imports` [EXTRACTED]
-- [[shared.ts]] - `contains` [EXTRACTED]
+- [[root.tsx_103]] - `imports` [EXTRACTED]
+- [[shared.ts_11]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/File_Icons_Nav
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

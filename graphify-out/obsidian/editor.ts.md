@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/types/editor.ts"
 type: "code"
-community: "Callout Extension"
+community: "Items Extended"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Callout_Extension
+  - community/Items_Extended
 ---
 
 # editor.ts
@@ -33,8 +33,8 @@ tags:
 - [[TExtendedEditorCommands]] - `imports` [EXTRACTED]
 - [[common.ts]] - `imports_from` [EXTRACTED]
 - [[hook.ts]] - `imports_from` [EXTRACTED]
-- [[index.ts_47]] - `imports_from` [EXTRACTED]
 - [[index.ts_46]] - `imports_from` [EXTRACTED]
+- [[index.ts_47]] - `imports_from` [EXTRACTED]
 - [[use-title-editor.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Callout_Extension
+#graphify/code #graphify/EXTRACTED #community/Items_Extended

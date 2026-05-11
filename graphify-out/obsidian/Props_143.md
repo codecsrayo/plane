@@ -1,18 +1,18 @@
 ---
-source_file: "components/project/create/common-attributes.tsx"
+source_file: "web/core/components/modules/module-status-dropdown.tsx"
 type: "code"
-community: "Common Attributes"
-location: "L23"
+community: "Cycles Archived"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Common_Attributes
+  - community/Cycles_Archived
 ---
 
 # Props
 
 ## Connections
 
-- [[common-attributes.tsx]] - `contains` [EXTRACTED]
+- [[module-status-dropdown.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Common_Attributes
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

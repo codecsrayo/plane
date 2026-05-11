@@ -1,12 +1,12 @@
 ---
-source_file: "components/inbox/content/issue-properties.tsx"
+source_file: "web/core/components/inbox/content/issue-properties.tsx"
 type: "code"
-community: "Issue Content"
+community: "Label Dropdown"
 location: "L42"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Content
+  - community/Label_Dropdown
 ---
 
 # InboxIssueContentProperties
@@ -16,4 +16,4 @@ tags:
 - [[issue-properties.tsx]] - `contains` [EXTRACTED]
 - [[issue-root.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Content
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

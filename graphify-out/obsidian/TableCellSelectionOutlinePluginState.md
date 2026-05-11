@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/table/plugins/selection-outline/plugin.ts"
 type: "code"
-community: "Table Cell"
+community: "Table Node"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Table_Cell
+  - community/Table_Node
 ---
 
 # TableCellSelectionOutlinePluginState
@@ -15,4 +15,4 @@ tags:
 
 - [[plugin.ts_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Table_Cell
+#graphify/code #graphify/EXTRACTED #community/Table_Node

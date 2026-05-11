@@ -1,18 +1,18 @@
 ---
-source_file: "components/inbox/modals/decline-issue-modal.tsx"
+source_file: "web/core/components/cycles/archived-cycles/modal.tsx"
 type: "code"
-community: "Project Archives"
+community: "Cycle Active"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Archives
+  - community/Cycle_Active
 ---
 
 # Props
 
 ## Connections
 
-- [[decline-issue-modal.tsx]] - `contains` [EXTRACTED]
+- [[modal.tsx_15]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Archives
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

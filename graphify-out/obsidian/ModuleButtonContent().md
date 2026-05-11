@@ -1,21 +1,20 @@
 ---
-source_file: "components/dropdowns/module/button-content.tsx"
+source_file: "web/core/components/dropdowns/module/button-content.tsx"
 type: "code"
-community: "Issue Layouts"
+community: "Label Dropdown"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layouts
+  - community/Label_Dropdown
 ---
 
 # ModuleButtonContent()
 
 ## Connections
 
-- [[base.tsx_1]] - `imports` [EXTRACTED]
+- [[base.tsx_2]] - `imports` [EXTRACTED]
 - [[button-content.tsx]] - `contains` [EXTRACTED]
-- [[useModule()]] - `calls` [EXTRACTED]
 - [[usePlatformOS()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layouts
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

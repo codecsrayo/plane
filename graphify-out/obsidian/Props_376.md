@@ -1,18 +1,18 @@
 ---
-source_file: "components/inbox/content/issue-root.tsx"
+source_file: "web/core/components/cycles/cycle-peek-overview.tsx"
 type: "code"
-community: "Issue Content"
-location: "L44"
+community: "Cycle Active"
+location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Content
+  - community/Cycle_Active
 ---
 
 # Props
 
 ## Connections
 
-- [[issue-root.tsx]] - `contains` [EXTRACTED]
+- [[cycle-peek-overview.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Content
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

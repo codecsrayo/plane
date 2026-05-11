@@ -1,5 +1,5 @@
 ---
-source_file: "components/inbox/modals/delete-issue-modal.tsx"
+source_file: "web/core/components/inbox/modals/delete-issue-modal.tsx"
 type: "code"
 community: "Issue Inbox"
 location: "L28"

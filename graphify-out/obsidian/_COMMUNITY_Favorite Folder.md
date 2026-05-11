@@ -1,28 +1,34 @@
 ---
 type: community
-cohesion: 0.33
-members: 12
+cohesion: 0.23
+members: 18
 ---
 
 # Favorite Folder
 
-**Cohesion:** 0.33 - loosely connected
-**Members:** 12 nodes
+**Cohesion:** 0.23 - loosely connected
+**Members:** 18 nodes
 
 ## Members
 
-- [[FavoriteFolder()]] - code - components/workspace/sidebar/favorites/favorite-folder.tsx
-- [[NewFavoriteFolder]] - code - components/workspace/sidebar/favorites/new-fav-folder.tsx
-- [[Props_29]] - code - components/workspace/sidebar/favorites/favorite-folder.tsx
-- [[SidebarFavoritesMenu]] - code - components/workspace/sidebar/favorites/favorites-menu.tsx
-- [[TForm]] - code - components/workspace/sidebar/favorites/new-fav-folder.tsx
-- [[TProps_3]] - code - components/workspace/sidebar/favorites/new-fav-folder.tsx
-- [[favorite-folder.tsx]] - code - components/workspace/sidebar/favorites/favorite-folder.tsx
-- [[favorites-menu.tsx]] - code - components/workspace/sidebar/favorites/favorites-menu.tsx
-- [[index.ts_33]] - code - components/workspace/sidebar/favorites/favorite-items/index.ts
-- [[new-fav-folder.tsx]] - code - components/workspace/sidebar/favorites/new-fav-folder.tsx
-- [[use-favorite.ts]] - code - hooks/store/use-favorite.ts
-- [[useFavorite()]] - code - hooks/store/use-favorite.ts
+- [[FavoriteFolder()]] - code - web/core/components/workspace/sidebar/favorites/favorite-folder.tsx
+- [[FavoriteRoot]] - code - web/core/components/workspace/sidebar/favorites/favorite-items/root.tsx
+- [[NewFavoriteFolder]] - code - web/core/components/workspace/sidebar/favorites/new-fav-folder.tsx
+- [[Props_106]] - code - web/core/components/workspace/sidebar/favorites/favorite-items/root.tsx
+- [[Props_105]] - code - web/core/components/workspace/sidebar/favorites/favorite-folder.tsx
+- [[TForm]] - code - web/core/components/workspace/sidebar/favorites/new-fav-folder.tsx
+- [[TProps_5]] - code - web/core/components/workspace/sidebar/favorites/new-fav-folder.tsx
+- [[TargetData_1]] - code - web/core/components/workspace/sidebar/favorites/favorites.helpers.ts
+- [[favorite-folder.tsx]] - code - web/core/components/workspace/sidebar/favorites/favorite-folder.tsx
+- [[favorites-menu.tsx]] - code - web/core/components/workspace/sidebar/favorites/favorites-menu.tsx
+- [[favorites.helpers.ts]] - code - web/core/components/workspace/sidebar/favorites/favorites.helpers.ts
+- [[getCanDrop()_1]] - code - web/core/components/workspace/sidebar/favorites/favorites.helpers.ts
+- [[getInstructionFromPayload()_1]] - code - web/core/components/workspace/sidebar/favorites/favorites.helpers.ts
+- [[index.ts_298]] - code - web/core/components/workspace/sidebar/favorites/favorite-items/index.ts
+- [[new-fav-folder.tsx]] - code - web/core/components/workspace/sidebar/favorites/new-fav-folder.tsx
+- [[root.tsx_44]] - code - web/core/components/workspace/sidebar/favorites/favorite-items/root.tsx
+- [[use-favorite.ts]] - code - web/core/hooks/store/use-favorite.ts
+- [[useFavorite()]] - code - web/core/hooks/store/use-favorite.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -33,17 +39,19 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 6 edges to [[_COMMUNITY_Favorite Favorites]]
-- 3 edges to [[_COMMUNITY_Issue Layouts]]
-- 2 edges to [[_COMMUNITY_Workspace Draft]]
-- 2 edges to [[_COMMUNITY_Project Root Store]]
-- 2 edges to [[_COMMUNITY_Auth Wrappers]]
-- 1 edge to [[_COMMUNITY_Rail Visibility]]
+- 4 edges to [[_COMMUNITY_Sidebar Resizable]]
+- 3 edges to [[_COMMUNITY_Issue Activity]]
+- 3 edges to [[_COMMUNITY_Project Work]]
+- 3 edges to [[_COMMUNITY_Group Drop]]
+- 2 edges to [[_COMMUNITY_Webhook Workspace]]
+- 2 edges to [[_COMMUNITY_Project Issue]]
+- 2 edges to [[_COMMUNITY_Project Workspace]]
+- 1 edge to [[_COMMUNITY_Project Profile]]
 
 ## Top bridge nodes
 
-- [[use-favorite.ts]] - degree 9, connects to 3 communities
-- [[favorite-folder.tsx]] - degree 13, connects to 2 communities
-- [[favorites-menu.tsx]] - degree 12, connects to 2 communities
-- [[useFavorite()]] - degree 6, connects to 1 community
-- [[FavoriteFolder()]] - degree 4, connects to 1 community
+- [[use-favorite.ts]] - degree 10, connects to 4 communities
+- [[favorites-menu.tsx]] - degree 14, connects to 3 communities
+- [[favorite-folder.tsx]] - degree 14, connects to 2 communities
+- [[root.tsx_44]] - degree 9, connects to 2 communities
+- [[useFavorite()]] - degree 7, connects to 2 communities

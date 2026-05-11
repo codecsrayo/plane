@@ -1,19 +1,18 @@
 ---
-source_file: "components/project/dropdowns/order-by.tsx"
+source_file: "web/core/layouts/default-layout/index.tsx"
 type: "code"
-community: "Auth UI"
-location: "L16"
+community: "Workspace Issue"
+location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_UI
+  - community/Workspace_Issue
 ---
 
 # Props
 
 ## Connections
 
-- [[order-by.tsx_1]] - `contains` [EXTRACTED]
-- [[order-by.tsx_2]] - `contains` [EXTRACTED]
+- [[index.tsx_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_UI
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

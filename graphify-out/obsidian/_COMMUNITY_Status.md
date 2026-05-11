@@ -11,9 +11,9 @@ members: 3
 
 ## Members
 
-- [[ModuleStatusSelect()]] - code - components/modules/select/status.tsx
-- [[Props_77]] - code - components/modules/select/status.tsx
-- [[status.tsx]] - code - components/modules/select/status.tsx
+- [[ModuleStatusSelect()]] - code - web/core/components/modules/select/status.tsx
+- [[Props_152]] - code - web/core/components/modules/select/status.tsx
+- [[status.tsx]] - code - web/core/components/modules/select/status.tsx
 
 ## Live Query (requires Dataview plugin)
 

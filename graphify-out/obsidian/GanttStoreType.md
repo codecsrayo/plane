@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-layouts/gantt/base-gantt-root.tsx"
+source_file: "web/core/components/issues/issue-layouts/gantt/base-gantt-root.tsx"
 type: "code"
 community: "Gantt Chart"
 location: "L40"

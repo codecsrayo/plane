@@ -1,5 +1,5 @@
 ---
-source_file: "components/account/terms-and-conditions.tsx"
+source_file: "web/core/components/account/terms-and-conditions.tsx"
 type: "code"
 community: "Auth Terms"
 location: "L11"

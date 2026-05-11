@@ -1,5 +1,5 @@
 ---
-source_file: "components/pages/navigation-pane/tab-panels/outline.tsx"
+source_file: "web/core/components/pages/navigation-pane/tab-panels/outline.tsx"
 type: "code"
 community: "Navigation Pane"
 location: "L20"
@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 
-- [[outline.tsx]] - `contains` [EXTRACTED]
-- [[root.tsx_81]] - `imports` [EXTRACTED]
+- [[outline.tsx_1]] - `contains` [EXTRACTED]
+- [[root.tsx_122]] - `imports` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Navigation_Pane

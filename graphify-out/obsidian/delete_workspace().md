@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/workspaces.rs"
 type: "code"
-community: "Workspace Activity & Analytics"
+community: "Workspace User"
 location: "L774"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Workspace_Activity__Analytics
+  - community/Workspace_User
 ---
 
 # delete_workspace()
@@ -14,9 +14,10 @@ tags:
 ## Connections
 
 - [[.new()]] - `calls` [INFERRED]
+- [[.set()]] - `calls` [INFERRED]
+- [[now]] - `calls` [INFERRED]
 - [[require_admin()_1]] - `calls` [EXTRACTED]
-- [[track_event()]] - `calls` [INFERRED]
 - [[workspace_by_slug()]] - `calls` [INFERRED]
-- [[workspaces.rs]] - `contains` [EXTRACTED]
+- [[workspaces.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Workspace_Activity\_\_Analytics
+#graphify/code #graphify/INFERRED #community/Workspace_User

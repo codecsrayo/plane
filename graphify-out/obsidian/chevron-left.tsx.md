@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/icons/arrows/chevron-left.tsx"
 type: "code"
-community: "Icon Library"
+community: "Dates Chevron"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Icon_Library
+  - community/Dates_Chevron
 ---
 
 # chevron-left.tsx
@@ -20,4 +20,4 @@ tags:
 - [[root.tsx_16]] - `imports_from` [EXTRACTED]
 - [[type.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Icon_Library
+#graphify/code #graphify/EXTRACTED #community/Dates_Chevron

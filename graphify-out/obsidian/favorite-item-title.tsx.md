@@ -1,12 +1,12 @@
 ---
-source_file: "components/workspace/sidebar/favorites/favorite-items/common/favorite-item-title.tsx"
+source_file: "web/core/components/workspace/sidebar/favorites/favorite-items/common/favorite-item-title.tsx"
 type: "code"
-community: "Theme Wrapper"
+community: "Sidebar Navigation"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Wrapper
+  - community/Sidebar_Navigation
 ---
 
 # favorite-item-title.tsx
@@ -14,10 +14,10 @@ tags:
 ## Connections
 
 - [[FavoriteItemTitle]] - `contains` [EXTRACTED]
-- [[Props_33]] - `contains` [EXTRACTED]
+- [[Props_109]] - `contains` [EXTRACTED]
 - [[use-app-theme.ts]] - `imports_from` [EXTRACTED]
-- [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
+- [[use-platform-os.tsx_1]] - `imports_from` [EXTRACTED]
 - [[useAppTheme()]] - `imports` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Wrapper
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation

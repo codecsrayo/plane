@@ -1,18 +1,18 @@
 ---
-source_file: "components/onboarding/steps/root.tsx"
+source_file: "web/core/components/issues/relations/issue-list-item.tsx"
 type: "code"
-community: "Step Onboarding"
-location: "L18"
+community: "Issue Activity"
+location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Step_Onboarding
+  - community/Issue_Activity
 ---
 
 # Props
 
 ## Connections
 
-- [[root.tsx_64]] - `contains` [EXTRACTED]
+- [[issue-list-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Step_Onboarding
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

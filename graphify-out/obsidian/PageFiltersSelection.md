@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/list/filters/root.tsx"
+source_file: "web/core/components/pages/list/filters/root.tsx"
 type: "code"
-community: "Created Selection"
+community: "Member Members"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Created_Selection
+  - community/Member_Members
 ---
 
 # PageFiltersSelection
 
 ## Connections
 
-- [[root.tsx_78]] - `contains` [EXTRACTED]
+- [[root.tsx_119]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Created_Selection
+#graphify/code #graphify/EXTRACTED #community/Member_Members

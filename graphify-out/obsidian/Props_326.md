@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/ui/pages/preferences/root.tsx"
+source_file: "web/core/components/issues/issue-layouts/roots/all-issue-layout-root.tsx"
 type: "code"
-community: "Member Commands"
-location: "L17"
+community: "Issue Project"
+location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Commands
+  - community/Issue_Project
 ---
 
 # Props
 
 ## Connections
 
-- [[root.tsx_61]] - `contains` [EXTRACTED]
+- [[all-issue-layout-root.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Commands
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

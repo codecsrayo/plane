@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/utils/s3_presigned_post.rs"
 type: "code"
-community: "Community 157"
+community: "Session Presigned"
 location: "L36"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_157
+  - community/Session_Presigned
 ---
 
 # PresignedPost
@@ -15,4 +15,4 @@ tags:
 
 - [[s3_presigned_post.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_157
+#graphify/code #graphify/EXTRACTED #community/Session_Presigned

@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx"
+source_file: "web/core/components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx"
 type: "code"
-community: "Calendar Views"
+community: "Calendar Issue"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Views
+  - community/Calendar_Issue
 ---
 
 # CalendarMonthsDropdown
@@ -15,4 +15,4 @@ tags:
 
 - [[months-dropdown.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Views
+#graphify/code #graphify/EXTRACTED #community/Calendar_Issue

@@ -1,12 +1,12 @@
 ---
-source_file: "constants/fetch-keys.ts"
+source_file: "web/core/constants/fetch-keys.ts"
 type: "code"
-community: "Activity List"
+community: "Activity User"
 location: "L141"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Activity_List
+  - community/Activity_User
 ---
 
 # USER_PROFILE_ACTIVITY()
@@ -18,4 +18,4 @@ tags:
 - [[fetch-keys.ts]] - `contains` [EXTRACTED]
 - [[workspace-activity-list.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Activity_List
+#graphify/code #graphify/EXTRACTED #community/Activity_User

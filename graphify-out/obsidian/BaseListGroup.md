@@ -1,5 +1,5 @@
 ---
-source_file: "components/base-layouts/list/group.tsx"
+source_file: "web/core/components/base-layouts/list/group.tsx"
 type: "code"
 community: "Group Drop"
 location: "L15"
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[group.tsx_1]] - `contains` [EXTRACTED]
-- [[layout.tsx_3]] - `imports` [EXTRACTED]
+- [[layout.tsx_47]] - `imports` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Group_Drop

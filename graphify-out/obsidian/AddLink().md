@@ -1,12 +1,12 @@
 ---
-source_file: "components/home/widgets/links/action.tsx"
+source_file: "web/core/components/home/widgets/links/action.tsx"
 type: "code"
-community: "Action Tprops"
+community: "Tprops Action"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Action_Tprops
+  - community/Tprops_Action
 ---
 
 # AddLink()
@@ -15,4 +15,4 @@ tags:
 
 - [[action.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Action_Tprops
+#graphify/code #graphify/EXTRACTED #community/Tprops_Action

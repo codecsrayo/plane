@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/db_githubprstatemapping.rs"
 type: "code"
-community: "Community 424"
+community: "Model Relation"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_424
+  - community/Model_Relation
 ---
 
 # Relation
@@ -15,4 +15,4 @@ tags:
 
 - [[db_githubprstatemapping.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_424
+#graphify/code #graphify/EXTRACTED #community/Model_Relation

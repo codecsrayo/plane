@@ -1,12 +1,12 @@
 ---
-source_file: "store/instance.store.ts"
+source_file: "space/store/instance.store.ts"
 type: "code"
-community: "Chat Support"
-location: "L14"
+community: "Instance User"
+location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Chat_Support
+  - community/Instance_User
 ---
 
 # TError
@@ -14,5 +14,6 @@ tags:
 ## Connections
 
 - [[instance.store.ts]] - `contains` [EXTRACTED]
+- [[instance.store.ts_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Chat_Support
+#graphify/code #graphify/EXTRACTED #community/Instance_User

@@ -11,8 +11,8 @@ members: 2
 
 ## Members
 
-- [[JavaScriptIcon()]] - code - components/icons/attachment/js-file-icon.tsx
-- [[js-file-icon.tsx]] - code - components/icons/attachment/js-file-icon.tsx
+- [[JavaScriptIcon()]] - code - web/core/components/icons/attachment/js-file-icon.tsx
+- [[js-file-icon.tsx]] - code - web/core/components/icons/attachment/js-file-icon.tsx
 
 ## Live Query (requires Dataview plugin)
 

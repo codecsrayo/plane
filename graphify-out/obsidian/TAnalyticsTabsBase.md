@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/analytics.ts"
 type: "code"
-community: "Analytics Charts"
+community: "Chart Analytics"
 location: "L40"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Analytics_Charts
+  - community/Chart_Analytics
 ---
 
 # TAnalyticsTabsBase
@@ -15,4 +15,4 @@ tags:
 
 - [[analytics.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Analytics_Charts
+#graphify/code #graphify/EXTRACTED #community/Chart_Analytics

@@ -1,21 +1,21 @@
 ---
-source_file: "api_rust/src/routes/intake.rs"
+source_file: "api_rust/tests/intake.rs"
 type: "code"
-community: "Community 108"
-location: "L533"
+community: "Returns Intake"
+location: "L215"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_108
+  - community/Returns_Intake
 ---
 
 # create_intake_issue()
 
 ## Connections
 
-- [[.from_joined()]] - `calls` [EXTRACTED]
-- [[.new()]] - `calls` [INFERRED]
+- [[delete_intake_issue_returns_204()]] - `calls` [EXTRACTED]
+- [[get_intake_issue_returns_200()]] - `calls` [EXTRACTED]
 - [[intake.rs]] - `contains` [EXTRACTED]
-- [[require_role()]] - `calls` [INFERRED]
+- [[update_intake_issue_returns_200()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_108
+#graphify/code #graphify/EXTRACTED #community/Returns_Intake

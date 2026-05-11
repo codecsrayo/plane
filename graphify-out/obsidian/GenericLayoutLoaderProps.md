@@ -1,12 +1,12 @@
 ---
-source_file: "components/base-layouts/loaders/layout-loader.tsx"
+source_file: "web/core/components/base-layouts/loaders/layout-loader.tsx"
 type: "code"
-community: "Loader Kanban"
+community: "Loader Calendar"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Loader_Kanban
+  - community/Loader_Calendar
 ---
 
 # GenericLayoutLoaderProps
@@ -15,4 +15,4 @@ tags:
 
 - [[layout-loader.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Loader_Kanban
+#graphify/code #graphify/EXTRACTED #community/Loader_Calendar

@@ -1,18 +1,19 @@
 ---
-source_file: "components/project/header.tsx"
+source_file: "web/core/components/project/header.tsx"
 type: "code"
-community: "Auth UI"
+community: "Projects Projectsbaseheader"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_UI
+  - community/Projects_Projectsbaseheader
 ---
 
 # ProjectsBaseHeader
 
 ## Connections
 
-- [[header.tsx_6]] - `contains` [EXTRACTED]
+- [[header.tsx_39]] - `imports` [EXTRACTED]
+- [[header.tsx_48]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_UI
+#graphify/code #graphify/EXTRACTED #community/Projects_Projectsbaseheader

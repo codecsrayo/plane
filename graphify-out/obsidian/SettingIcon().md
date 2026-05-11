@@ -1,5 +1,5 @@
 ---
-source_file: "components/icons/attachment/setting-icon.tsx"
+source_file: "web/core/components/icons/attachment/setting-icon.tsx"
 type: "code"
 community: "Setting Icon"
 location: "L11"

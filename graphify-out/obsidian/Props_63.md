@@ -1,18 +1,18 @@
 ---
-source_file: "components/labels/project-setting-label-group.tsx"
+source_file: "web/ce/components/projects/create/attributes.tsx"
 type: "code"
-community: "Label Manager"
-location: "L22"
+community: "Project Common"
+location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Manager
+  - community/Project_Common
 ---
 
 # Props
 
 ## Connections
 
-- [[project-setting-label-group.tsx]] - `contains` [EXTRACTED]
+- [[attributes.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Manager
+#graphify/code #graphify/EXTRACTED #community/Project_Common

@@ -1,12 +1,12 @@
 ---
-source_file: "components/analytics/analytics-filter-actions.tsx"
+source_file: "web/core/components/analytics/analytics-filter-actions.tsx"
 type: "code"
-community: "Analytics Project"
+community: "Webhook Workspace"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Analytics_Project
+  - community/Webhook_Workspace
 ---
 
 # AnalyticsFilterActions
@@ -15,4 +15,4 @@ tags:
 
 - [[analytics-filter-actions.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Analytics_Project
+#graphify/code #graphify/EXTRACTED #community/Webhook_Workspace

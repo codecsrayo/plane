@@ -1,12 +1,12 @@
 ---
-source_file: "components/editor/sticky-editor/color-palette.tsx"
+source_file: "web/core/components/editor/sticky-editor/color-palette.tsx"
 type: "code"
-community: "Sticky Tprops"
+community: "Stickies Sticky"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sticky_Tprops
+  - community/Stickies_Sticky
 ---
 
 # STICKY_COLORS_LIST
@@ -15,7 +15,7 @@ tags:
 
 - [[action-bar.tsx]] - `imports` [EXTRACTED]
 - [[color-palette.tsx]] - `contains` [EXTRACTED]
-- [[root.tsx_11]] - `imports` [EXTRACTED]
+- [[root.tsx_52]] - `imports` [EXTRACTED]
 - [[use-operations.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sticky_Tprops
+#graphify/code #graphify/EXTRACTED #community/Stickies_Sticky

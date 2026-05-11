@@ -1,20 +1,20 @@
 ---
-source_file: "services/issue/issue_activity.service.ts"
+source_file: "web/core/services/issue/issue_activity.service.ts"
 type: "code"
-community: "API Services"
+community: "Issue Project"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/API_Services
+  - community/Issue_Project
 ---
 
 # IssueActivityService
 
 ## Connections
 
-- [[.constructor()_102]] - `method` [EXTRACTED]
+- [[.constructor()_159]] - `method` [EXTRACTED]
 - [[.getIssueActivities()_1]] - `method` [EXTRACTED]
 - [[issue_activity.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/API_Services
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

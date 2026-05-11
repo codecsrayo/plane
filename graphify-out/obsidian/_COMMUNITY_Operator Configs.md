@@ -1,13 +1,13 @@
 ---
 type: community
-cohesion: 0.16
-members: 18
+cohesion: 0.13
+members: 21
 ---
 
 # Operator Configs
 
-**Cohesion:** 0.16 - loosely connected
-**Members:** 18 nodes
+**Cohesion:** 0.13 - loosely connected
+**Members:** 21 nodes
 
 ## Members
 
@@ -23,11 +23,14 @@ members: 18
 - [[TExtendedInOperatorConfigs]] - code - types/src/rich-filters/operator-configs/extended.ts
 - [[TExtendedOperatorSpecificConfigs]] - code - types/src/rich-filters/operator-configs/extended.ts
 - [[TExtendedRangeOperatorConfigs]] - code - types/src/rich-filters/operator-configs/extended.ts
+- [[TFilterConfig]] - code - types/src/rich-filters/config/filter-config.ts
 - [[TInOperatorConfigs]] - code - types/src/rich-filters/operator-configs/index.ts
+- [[TOperatorConfigMap]] - code - types/src/rich-filters/operator-configs/index.ts
 - [[TOperatorSpecificConfigs]] - code - types/src/rich-filters/operator-configs/index.ts
 - [[TRangeOperatorConfigs]] - code - types/src/rich-filters/operator-configs/index.ts
 - [[core.ts_6]] - code - types/src/rich-filters/operator-configs/core.ts
 - [[extended.ts_4]] - code - types/src/rich-filters/operator-configs/extended.ts
+- [[filter-config.ts]] - code - types/src/rich-filters/config/filter-config.ts
 - [[index.ts_106]] - code - types/src/rich-filters/operator-configs/index.ts
 
 ## Live Query (requires Dataview plugin)
@@ -46,8 +49,8 @@ SORT file.name ASC
 
 ## Top bridge nodes
 
-- [[index.ts_106]] - degree 20, connects to 3 communities
 - [[core.ts_6]] - degree 9, connects to 3 communities
+- [[index.ts_106]] - degree 20, connects to 2 communities
+- [[filter-config.ts]] - degree 5, connects to 1 community
 - [[COLLECTION_OPERATOR]] - degree 2, connects to 1 community
 - [[COMPARISON_OPERATOR]] - degree 2, connects to 1 community
-- [[EQUALITY_OPERATOR]] - degree 2, connects to 1 community

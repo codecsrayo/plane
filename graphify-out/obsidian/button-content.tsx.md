@@ -1,12 +1,12 @@
 ---
-source_file: "components/dropdowns/module/button-content.tsx"
+source_file: "web/core/components/dropdowns/module/button-content.tsx"
 type: "code"
-community: "Issue Layouts"
+community: "Label Dropdown"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layouts
+  - community/Label_Dropdown
 ---
 
 # button-content.tsx
@@ -15,10 +15,10 @@ tags:
 
 - [[ModuleButtonContent()]] - `contains` [EXTRACTED]
 - [[ModuleButtonContentProps]] - `contains` [EXTRACTED]
-- [[base.tsx_1]] - `imports_from` [EXTRACTED]
+- [[base.tsx_2]] - `imports_from` [EXTRACTED]
 - [[use-module.ts]] - `imports_from` [EXTRACTED]
-- [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
+- [[use-platform-os.tsx_1]] - `imports_from` [EXTRACTED]
 - [[useModule()]] - `imports` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layouts
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

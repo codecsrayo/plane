@@ -1,5 +1,5 @@
 ---
-source_file: "components/project-states/state-item.tsx"
+source_file: "web/core/components/project-states/state-item.tsx"
 type: "code"
 community: "State Group"
 location: "L31"

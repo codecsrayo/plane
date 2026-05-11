@@ -1,18 +1,18 @@
 ---
-source_file: "components/cycles/transfer-issues-modal.tsx"
+source_file: "web/core/components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx"
 type: "code"
-community: "Cycle Transfers"
-location: "L18"
+community: "Calendar Issue"
+location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Transfers
+  - community/Calendar_Issue
 ---
 
 # Props
 
 ## Connections
 
-- [[transfer-issues-modal.tsx]] - `contains` [EXTRACTED]
+- [[months-dropdown.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Transfers
+#graphify/code #graphify/EXTRACTED #community/Calendar_Issue

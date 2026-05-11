@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/toast/toast.tsx"
 type: "code"
-community: "Toast Promise"
+community: "Toast Static"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toast_Promise
+  - community/Toast_Static
 ---
 
 # TOAST_TYPE
@@ -16,4 +16,4 @@ tags:
 - [[toast.stories.tsx]] - `imports` [EXTRACTED]
 - [[toast.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toast_Promise
+#graphify/code #graphify/EXTRACTED #community/Toast_Static

@@ -1,21 +1,18 @@
 ---
-source_file: "api_rust/src/jobs/cleanup.rs"
+source_file: "api/plane/bgtasks/deletion_task.py"
 type: "code"
-community: "Community 115"
-location: "L75"
+community: "Related Soft"
+location: "L114"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_115
+  - community/Related_Soft
 ---
 
 # hard_delete()
 
 ## Connections
 
-- [[cleanup.rs]] - `contains` [EXTRACTED]
-- [[find_tables_with_deleted_at()]] - `calls` [EXTRACTED]
-- [[purge_soft_deleted()]] - `calls` [EXTRACTED]
-- [[start_cron()]] - `calls` [INFERRED]
+- [[deletion_task.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_115
+#graphify/code #graphify/EXTRACTED #community/Related_Soft

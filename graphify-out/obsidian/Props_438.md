@@ -1,18 +1,18 @@
 ---
-source_file: "components/navigation/tab-navigation-overflow-menu.tsx"
+source_file: "web/core/components/onboarding/steps/workspace/join-invites.tsx"
 type: "code"
-community: "Project Tab Nav"
-location: "L20"
+community: "Workspace Issue"
+location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Tab_Nav
+  - community/Workspace_Issue
 ---
 
 # Props
 
 ## Connections
 
-- [[tab-navigation-overflow-menu.tsx]] - `contains` [EXTRACTED]
+- [[join-invites.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Tab_Nav
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

@@ -1,18 +1,18 @@
 ---
-source_file: "components/settings/profile/content/pages/activity/root.tsx"
+source_file: "web/core/components/settings/profile/content/pages/activity/root.tsx"
 type: "code"
-community: "Empty State"
+community: "Settings Profile"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_State
+  - community/Settings_Profile
 ---
 
 # ActivityProfileSettings
 
 ## Connections
 
-- [[root.tsx_20]] - `contains` [EXTRACTED]
+- [[root.tsx_61]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_State
+#graphify/code #graphify/EXTRACTED #community/Settings_Profile

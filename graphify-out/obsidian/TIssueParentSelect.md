@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-detail/parent-select.tsx"
+source_file: "web/ce/components/issues/issue-details/parent-select-root.tsx"
 type: "code"
-community: "Issue Layouts"
-location: "L26"
+community: "Issue Activity"
+location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layouts
+  - community/Issue_Activity
 ---
 
 # TIssueParentSelect
 
 ## Connections
 
-- [[parent-select.tsx]] - `contains` [EXTRACTED]
+- [[parent-select-root.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layouts
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

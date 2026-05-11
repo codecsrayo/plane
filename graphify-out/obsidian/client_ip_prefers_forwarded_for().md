@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/auth/session.rs"
 type: "code"
-community: "Community 43"
+community: "Session Presigned"
 location: "L294"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_43
+  - graphify/INFERRED
+  - community/Session_Presigned
 ---
 
 # client_ip_prefers_forwarded_for()
@@ -16,4 +16,4 @@ tags:
 - [[.new()]] - `calls` [INFERRED]
 - [[session.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_43
+#graphify/code #graphify/INFERRED #community/Session_Presigned

@@ -1,12 +1,12 @@
 ---
-source_file: "components/auth-screens/auth-base.tsx"
+source_file: "web/core/components/auth-screens/auth-base.tsx"
 type: "code"
-community: "Auth UI"
+community: "Auth Terms"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_UI
+  - community/Auth_Terms
 ---
 
 # AuthBaseProps
@@ -15,4 +15,4 @@ tags:
 
 - [[auth-base.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_UI
+#graphify/code #graphify/EXTRACTED #community/Auth_Terms

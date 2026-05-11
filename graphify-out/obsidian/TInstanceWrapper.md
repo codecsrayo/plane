@@ -1,12 +1,12 @@
 ---
-source_file: "lib/wrappers/instance-wrapper.tsx"
+source_file: "web/core/lib/wrappers/instance-wrapper.tsx"
 type: "code"
-community: "Wrapper Workspace"
+community: "Workspace Issue"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Wrapper_Workspace
+  - community/Workspace_Issue
 ---
 
 # TInstanceWrapper
@@ -15,4 +15,4 @@ tags:
 
 - [[instance-wrapper.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Wrapper_Workspace
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

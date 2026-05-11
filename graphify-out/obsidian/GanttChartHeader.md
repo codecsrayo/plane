@@ -1,18 +1,18 @@
 ---
-source_file: "components/gantt-chart/chart/header.tsx"
+source_file: "web/core/components/gantt-chart/chart/header.tsx"
 type: "code"
-community: "Gantt Current"
+community: "Gantt Chart"
 location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Current
+  - community/Gantt_Chart
 ---
 
 # GanttChartHeader
 
 ## Connections
 
-- [[header.tsx_1]] - `contains` [EXTRACTED]
+- [[header.tsx_43]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Current
+#graphify/code #graphify/EXTRACTED #community/Gantt_Chart

@@ -1,19 +1,21 @@
 ---
-source_file: "components/editor/embeds/mentions/user.tsx"
+source_file: "space/components/editor/embeds/mentions/user.tsx"
 type: "code"
-community: "Member Settings"
-location: "L23"
+community: "User Mentions"
+location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Settings
+  - community/User_Mentions
 ---
 
 # EditorUserMention
 
 ## Connections
 
-- [[root.tsx_9]] - `imports` [EXTRACTED]
+- [[root.tsx_50]] - `imports` [EXTRACTED]
+- [[root.tsx_137]] - `imports` [EXTRACTED]
 - [[user.tsx]] - `contains` [EXTRACTED]
+- [[user.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Settings
+#graphify/code #graphify/EXTRACTED #community/User_Mentions

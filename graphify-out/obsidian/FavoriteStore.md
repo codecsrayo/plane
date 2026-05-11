@@ -1,23 +1,23 @@
 ---
-source_file: "store/favorite.store.ts"
+source_file: "web/core/store/favorite.store.ts"
 type: "code"
-community: "Project Root Store"
+community: "Project Issue"
 location: "L46"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Root_Store
+  - community/Project_Issue
 ---
 
 # FavoriteStore
 
 ## Connections
 
-- [[.constructor()_1]] - `method` [EXTRACTED]
+- [[.constructor()_58]] - `method` [EXTRACTED]
 - [[.currentWorkspaceFavorites()]] - `method` [EXTRACTED]
 - [[.existingFolders()]] - `method` [EXTRACTED]
 - [[.groupedFavorites()]] - `method` [EXTRACTED]
 - [[favorite.store.ts]] - `contains` [EXTRACTED]
-- [[root.store.ts]] - `imports` [EXTRACTED]
+- [[root.store.ts_2]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Root_Store
+#graphify/code #graphify/EXTRACTED #community/Project_Issue

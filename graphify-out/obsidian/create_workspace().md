@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/workspaces.rs"
 type: "code"
-community: "Workspace Activity & Analytics"
+community: "Workspace User"
 location: "L516"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Workspace_Activity__Analytics
+  - community/Workspace_User
 ---
 
 # create_workspace()
@@ -14,11 +14,13 @@ tags:
 ## Connections
 
 - [[.from_model()_8]] - `calls` [EXTRACTED]
+- [[.json()]] - `calls` [INFERRED]
 - [[.new()]] - `calls` [INFERRED]
-- [[contains_url()]] - `calls` [INFERRED]
+- [[.set()]] - `calls` [INFERRED]
+- [[Database]] - `calls` [INFERRED]
 - [[get_config_value()]] - `calls` [INFERRED]
-- [[get_random_color()]] - `calls` [INFERRED]
+- [[now]] - `calls` [INFERRED]
 - [[validate_slug()]] - `calls` [EXTRACTED]
-- [[workspaces.rs]] - `contains` [EXTRACTED]
+- [[workspaces.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Workspace_Activity\_\_Analytics
+#graphify/code #graphify/INFERRED #community/Workspace_User

@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/workspace-draft/draft-issue-properties.tsx"
+source_file: "web/core/components/issues/workspace-draft/draft-issue-properties.tsx"
 type: "code"
-community: "Issue Properties"
+community: "Label Dropdown"
 location: "L39"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Label_Dropdown
 ---
 
 # IIssueProperties
@@ -15,4 +15,4 @@ tags:
 
 - [[draft-issue-properties.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

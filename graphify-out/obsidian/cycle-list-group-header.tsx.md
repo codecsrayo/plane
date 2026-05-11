@@ -1,12 +1,12 @@
 ---
-source_file: "components/cycles/list/cycle-list-group-header.tsx"
+source_file: "web/core/components/cycles/list/cycle-list-group-header.tsx"
 type: "code"
-community: "Cycle Cycles"
+community: "Cycle Active"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Cycles
+  - community/Cycle_Active
 ---
 
 # cycle-list-group-header.tsx
@@ -14,7 +14,8 @@ tags:
 ## Connections
 
 - [[CycleListGroupHeader()]] - `contains` [EXTRACTED]
-- [[Props_307]] - `contains` [EXTRACTED]
-- [[root.tsx_54]] - `imports_from` [EXTRACTED]
+- [[Props_382]] - `contains` [EXTRACTED]
+- [[root.tsx_34]] - `imports_from` [EXTRACTED]
+- [[root.tsx_95]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Cycles
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

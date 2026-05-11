@@ -1,22 +1,25 @@
 ---
-source_file: "store/state.store.ts"
+source_file: "space/store/state.store.ts"
 type: "code"
-community: "Issue Group"
-location: "L63"
+community: "State Project"
+location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Group
+  - community/State_Project
 ---
 
 # StateStore
 
 ## Connections
 
-- [[.constructor()_15]] - `method` [EXTRACTED]
+- [[.constructor()_72]] - `method` [EXTRACTED]
 - [[.groupedProjectStates()]] - `method` [EXTRACTED]
 - [[.projectStates()]] - `method` [EXTRACTED]
+- [[.sortedStates()]] - `method` [EXTRACTED]
 - [[.workspaceStates()]] - `method` [EXTRACTED]
-- [[state.store.ts]] - `contains` [EXTRACTED]
+- [[root.store.ts_6]] - `imports` [EXTRACTED]
+- [[state.store.ts_1]] - `contains` [EXTRACTED]
+- [[state.store.ts_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Group
+#graphify/code #graphify/EXTRACTED #community/State_Project

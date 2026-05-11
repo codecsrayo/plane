@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/auth/csrf.rs"
 type: "code"
-community: "Community 73"
+community: "Password Email"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_73
+  - community/Password_Email
 ---
 
 # CsrfTokenResponse
@@ -15,4 +15,4 @@ tags:
 
 - [[csrf.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_73
+#graphify/code #graphify/EXTRACTED #community/Password_Email

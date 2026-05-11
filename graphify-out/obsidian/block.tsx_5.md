@@ -1,25 +1,27 @@
 ---
-source_file: "components/pages/list/block.tsx"
+source_file: "web/core/components/gantt-chart/blocks/block.tsx"
 type: "code"
-community: "Action Pages"
+community: "Gantt Chart"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Action_Pages
+  - community/Gantt_Chart
 ---
 
 # block.tsx
 
 ## Connections
 
-- [[BlockItemAction]] - `imports` [EXTRACTED]
-- [[PageListBlock]] - `contains` [EXTRACTED]
-- [[TPageListBlock]] - `contains` [EXTRACTED]
-- [[block-item-action.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts_177]] - `imports_from` [EXTRACTED]
-- [[root.tsx_77]] - `imports_from` [EXTRACTED]
-- [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
-- [[usePlatformOS()]] - `imports` [EXTRACTED]
+- [[GanttChartBlock]] - `contains` [EXTRACTED]
+- [[Props_128]] - `contains` [EXTRACTED]
+- [[blocks-list.tsx]] - `imports_from` [EXTRACTED]
+- [[constants.ts_4]] - `imports_from` [EXTRACTED]
+- [[index.ts_310]] - `imports_from` [EXTRACTED]
+- [[render-if-visible-HOC.tsx]] - `imports_from` [EXTRACTED]
+- [[use-gantt-resizable.ts]] - `imports_from` [EXTRACTED]
+- [[use-timeline-chart.ts_1]] - `imports_from` [EXTRACTED]
+- [[useGanttResizable()]] - `imports` [EXTRACTED]
+- [[useTimeLineChartStore()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Action_Pages
+#graphify/code #graphify/EXTRACTED #community/Gantt_Chart

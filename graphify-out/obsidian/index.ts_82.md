@@ -1,14 +1,14 @@
 ---
 source_file: "constants/src/analytics/index.ts"
 type: "code"
-community: "Community 408"
+community: "Community 1386"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_408
+  - community/Community_1386
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_408
+#graphify/code #graphify/EXTRACTED #community/Community_1386

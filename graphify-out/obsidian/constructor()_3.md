@@ -1,18 +1,18 @@
 ---
-source_file: "store/workspace/index.ts"
+source_file: "web/core/store/base-command-palette.store.ts"
 type: "code"
-community: "Workspace Invites"
-location: "L90"
+community: "Command Palette"
+location: "L74"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Invites
+  - community/Command_Palette
 ---
 
 # constructor()
 
 ## Connections
 
-- [[index.ts_6]] - `contains` [EXTRACTED]
+- [[base-command-palette.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Invites
+#graphify/code #graphify/EXTRACTED #community/Command_Palette

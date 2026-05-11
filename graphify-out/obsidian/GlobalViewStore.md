@@ -1,23 +1,23 @@
 ---
-source_file: "store/global-view.store.ts"
+source_file: "web/core/store/global-view.store.ts"
 type: "code"
-community: "Project Root Store"
+community: "Project Issue"
 location: "L40"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Root_Store
+  - community/Project_Issue
 ---
 
 # GlobalViewStore
 
 ## Connections
 
-- [[.constructor()_3]] - `method` [EXTRACTED]
+- [[.constructor()_60]] - `method` [EXTRACTED]
 - [[.createGlobalView()]] - `method` [EXTRACTED]
 - [[.currentWorkspaceViews()]] - `method` [EXTRACTED]
 - [[.updateGlobalView()]] - `method` [EXTRACTED]
-- [[global-view.store.ts]] - `contains` [EXTRACTED]
-- [[root.store.ts]] - `imports` [EXTRACTED]
+- [[global-view.store.ts_1]] - `contains` [EXTRACTED]
+- [[root.store.ts_2]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Root_Store
+#graphify/code #graphify/EXTRACTED #community/Project_Issue

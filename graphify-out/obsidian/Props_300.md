@@ -1,18 +1,18 @@
 ---
-source_file: "components/cycles/transfer-issues.tsx"
+source_file: "web/core/components/issues/issue-layouts/filters/header/display-filters/display-filters-selection.tsx"
 type: "code"
-community: "Cycle Transfers"
-location: "L13"
+community: "Member Members"
+location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Transfers
+  - community/Member_Members
 ---
 
 # Props
 
 ## Connections
 
-- [[transfer-issues.tsx]] - `contains` [EXTRACTED]
+- [[display-filters-selection.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Transfers
+#graphify/code #graphify/EXTRACTED #community/Member_Members

@@ -1,12 +1,12 @@
 ---
-source_file: "components/workspace-notifications/notification-app-sidebar-option.tsx"
+source_file: "web/core/components/workspace-notifications/notification-app-sidebar-option.tsx"
 type: "code"
-community: "Sidebar Menu"
+community: "Sidebar Navigation"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Menu
+  - community/Sidebar_Navigation
 ---
 
 # NotificationAppSidebarOption
@@ -16,4 +16,4 @@ tags:
 - [[notification-app-sidebar-option.tsx]] - `contains` [EXTRACTED]
 - [[user-menu-item.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Menu
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation

@@ -1,19 +1,18 @@
 ---
-source_file: "components/settings/project/sidebar/item-categories.tsx"
+source_file: "web/core/components/workspace/sidebar/favorites/favorite-items/common/favorite-item-drag-handle.tsx"
 type: "code"
-community: "Sidebar Nav"
-location: "L20"
+community: "Issue Activity"
+location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Nav
+  - community/Issue_Activity
 ---
 
 # Props
 
 ## Connections
 
-- [[item-categories.tsx_1]] - `contains` [EXTRACTED]
-- [[item-categories.tsx_2]] - `contains` [EXTRACTED]
+- [[favorite-item-drag-handle.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Nav
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

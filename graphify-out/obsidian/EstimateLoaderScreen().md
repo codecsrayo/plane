@@ -1,12 +1,12 @@
 ---
-source_file: "components/estimates/loader-screen.tsx"
+source_file: "web/core/components/estimates/loader-screen.tsx"
 type: "code"
-community: "Estimate Disable"
+community: "Label Dropdown"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Estimate_Disable
+  - community/Label_Dropdown
 ---
 
 # EstimateLoaderScreen()
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[loader-screen.tsx]] - `contains` [EXTRACTED]
-- [[root.tsx_85]] - `imports` [EXTRACTED]
+- [[root.tsx_126]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Estimate_Disable
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

@@ -1,5 +1,5 @@
 ---
-source_file: "components/core/filters/date-filter-select.tsx"
+source_file: "web/core/components/core/filters/date-filter-select.tsx"
 type: "code"
 community: "Date Start"
 location: "L43"

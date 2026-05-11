@@ -42,7 +42,7 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 2 edges to [[_COMMUNITY_Emoji Picker]]
+- 2 edges to [[_COMMUNITY_Emoji Icon]]
 
 ## Top bridge nodes
 

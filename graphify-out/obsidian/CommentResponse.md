@@ -1,18 +1,18 @@
 ---
 source_file: "api_rust/src/routes/issue_extras.rs"
 type: "code"
-community: "Community 30"
+community: "Issue Request"
 location: "L56"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_30
+  - community/Issue_Request
 ---
 
 # CommentResponse
 
 ## Connections
 
-- [[issue_extras.rs]] - `contains` [EXTRACTED]
+- [[issue_extras.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_30
+#graphify/code #graphify/EXTRACTED #community/Issue_Request

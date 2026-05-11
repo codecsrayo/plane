@@ -1,18 +1,18 @@
 ---
-source_file: "components/exporter/single-export.tsx"
+source_file: "web/core/components/profile/activity/profile-activity-list.tsx"
 type: "code"
-community: "Guide Prev"
-location: "L15"
+community: "Activity User"
+location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Guide_Prev
+  - community/Activity_User
 ---
 
 # Props
 
 ## Connections
 
-- [[single-export.tsx]] - `contains` [EXTRACTED]
+- [[profile-activity-list.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Guide_Prev
+#graphify/code #graphify/EXTRACTED #community/Activity_User

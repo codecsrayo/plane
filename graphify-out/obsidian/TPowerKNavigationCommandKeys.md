@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/config/navigation/commands.ts"
+source_file: "web/core/components/power-k/config/navigation/commands.ts"
 type: "code"
-community: "Navigation Power"
+community: "Power Navigation"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Navigation_Power
+  - community/Power_Navigation
 ---
 
 # TPowerKNavigationCommandKeys
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[commands.ts_4]] - `contains` [EXTRACTED]
-- [[root.ts_1]] - `imports` [EXTRACTED]
+- [[root.ts_3]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Navigation_Power
+#graphify/code #graphify/EXTRACTED #community/Power_Navigation

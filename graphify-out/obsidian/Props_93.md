@@ -1,18 +1,18 @@
 ---
-source_file: "components/profile/profile-setting-content-wrapper.tsx"
+source_file: "web/core/components/views/view-list-item-action.tsx"
 type: "code"
-community: "Theme Wrapper"
-location: "L10"
+community: "Project Work"
+location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Wrapper
+  - community/Project_Work
 ---
 
 # Props
 
 ## Connections
 
-- [[profile-setting-content-wrapper.tsx]] - `contains` [EXTRACTED]
+- [[view-list-item-action.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Wrapper
+#graphify/code #graphify/EXTRACTED #community/Project_Work

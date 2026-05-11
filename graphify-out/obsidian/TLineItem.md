@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/charts/index.ts"
 type: "code"
-community: "Analytics Charts"
+community: "Chart Analytics"
 location: "L93"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Analytics_Charts
+  - community/Chart_Analytics
 ---
 
 # TLineItem
@@ -15,4 +15,4 @@ tags:
 
 - [[index.ts_99]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Analytics_Charts
+#graphify/code #graphify/EXTRACTED #community/Chart_Analytics

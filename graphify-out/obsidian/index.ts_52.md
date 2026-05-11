@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/table/table/index.ts"
 type: "code"
-community: "Table Cell"
+community: "Table Node"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Table_Cell
+  - community/Table_Node
 ---
 
 # index.ts
@@ -17,4 +17,4 @@ tags:
 - [[table-header.ts]] - `imports_from` [EXTRACTED]
 - [[table.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Table_Cell
+#graphify/code #graphify/EXTRACTED #community/Table_Node

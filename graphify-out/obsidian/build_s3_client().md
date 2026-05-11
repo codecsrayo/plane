@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/utils/s3.rs"
 type: "code"
-community: "Community 181"
+community: "Asset Issue"
 location: "L26"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_181
+  - community/Asset_Issue
 ---
 
 # build_s3_client()
@@ -21,4 +21,4 @@ tags:
 - [[s3.rs]] - `contains` [EXTRACTED]
 - [[start_cron()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_181
+#graphify/code #graphify/INFERRED #community/Asset_Issue

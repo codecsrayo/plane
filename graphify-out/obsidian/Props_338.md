@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/ui/modal/shortcuts-root.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/issue-detail-widget-modals.tsx"
 type: "code"
-community: "Command Palette"
-location: "L17"
+community: "Issue Activity"
+location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Command_Palette
+  - community/Issue_Activity
 ---
 
 # Props
 
 ## Connections
 
-- [[shortcuts-root.tsx]] - `contains` [EXTRACTED]
+- [[issue-detail-widget-modals.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Command_Palette
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/archived-issues-header.tsx"
+source_file: "web/core/components/issues/archived-issues-header.tsx"
 type: "code"
-community: "Project Archives"
+community: "Project Settings"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Archives
+  - community/Project_Settings
 ---
 
 # ArchivedIssuesHeader
@@ -14,5 +14,6 @@ tags:
 ## Connections
 
 - [[archived-issues-header.tsx]] - `contains` [EXTRACTED]
+- [[page.tsx_21]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Archives
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

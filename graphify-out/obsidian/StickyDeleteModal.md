@@ -1,12 +1,12 @@
 ---
-source_file: "components/stickies/delete-modal.tsx"
+source_file: "web/core/components/stickies/delete-modal.tsx"
 type: "code"
-community: "Sticky Tprops"
+community: "Stickies Sticky"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sticky_Tprops
+  - community/Stickies_Sticky
 ---
 
 # StickyDeleteModal
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[delete-modal.tsx]] - `contains` [EXTRACTED]
-- [[root.tsx_11]] - `imports` [EXTRACTED]
+- [[root.tsx_52]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sticky_Tprops
+#graphify/code #graphify/EXTRACTED #community/Stickies_Sticky

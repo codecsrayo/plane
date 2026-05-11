@@ -1,12 +1,12 @@
 ---
-source_file: "components/empty-state/simple-empty-state-root.tsx"
+source_file: "web/core/components/empty-state/simple-empty-state-root.tsx"
 type: "code"
-community: "Progress Empty"
+community: "Cycle Active"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Progress_Empty
+  - community/Cycle_Active
 ---
 
 # EmptyStateSize
@@ -15,4 +15,4 @@ tags:
 
 - [[simple-empty-state-root.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Progress_Empty
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

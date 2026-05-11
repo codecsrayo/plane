@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/gitlab_repositories.rs"
 type: "code"
-community: "Community 406"
+community: "Model Relation"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_406
+  - community/Model_Relation
 ---
 
 # Relation
@@ -15,4 +15,4 @@ tags:
 
 - [[gitlab_repositories.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_406
+#graphify/code #graphify/EXTRACTED #community/Model_Relation

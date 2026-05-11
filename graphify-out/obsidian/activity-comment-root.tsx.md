@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-detail/issue-activity/activity-comment-root.tsx"
+source_file: "web/core/components/issues/issue-detail/issue-activity/activity-comment-root.tsx"
 type: "code"
 community: "Activity Issue"
 location: "L1"
@@ -17,11 +17,12 @@ tags:
 - [[IssueActivityCommentRoot]] - `contains` [EXTRACTED]
 - [[IssueActivityItem]] - `imports` [EXTRACTED]
 - [[IssueActivityLoader()]] - `imports` [EXTRACTED]
+- [[IssueActivityWorklog()]] - `imports` [EXTRACTED]
 - [[TIssueActivityCommentRoot]] - `contains` [EXTRACTED]
 - [[activity-list.tsx_2]] - `imports_from` [EXTRACTED]
-- [[loader.tsx_4]] - `imports_from` [EXTRACTED]
-- [[root.tsx_87]] - `imports_from` [EXTRACTED]
-- [[root.tsx_31]] - `imports_from` [EXTRACTED]
+- [[loader.tsx_7]] - `imports_from` [EXTRACTED]
+- [[root.tsx_128]] - `imports_from` [EXTRACTED]
+- [[root.tsx_72]] - `imports_from` [EXTRACTED]
 - [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 

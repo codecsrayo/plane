@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/components/menus/bubble-menu/alignment-selector.tsx"
 type: "code"
-community: "Menu Color"
+community: "Toggle Menu"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu_Color
+  - community/Toggle_Menu
 ---
 
 # alignment-selector.tsx
@@ -20,4 +20,4 @@ tags:
 - [[index.ts_46]] - `imports_from` [EXTRACTED]
 - [[root.tsx_3]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Menu_Color
+#graphify/code #graphify/EXTRACTED #community/Toggle_Menu

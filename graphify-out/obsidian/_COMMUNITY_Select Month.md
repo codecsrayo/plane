@@ -11,9 +11,9 @@ members: 3
 
 ## Members
 
-- [[Props_175]] - code - components/automation/select-month-modal.tsx
-- [[SelectMonthModal()]] - code - components/automation/select-month-modal.tsx
-- [[select-month-modal.tsx]] - code - components/automation/select-month-modal.tsx
+- [[Props_250]] - code - web/core/components/automation/select-month-modal.tsx
+- [[SelectMonthModal()]] - code - web/core/components/automation/select-month-modal.tsx
+- [[select-month-modal.tsx]] - code - web/core/components/automation/select-month-modal.tsx
 
 ## Live Query (requires Dataview plugin)
 

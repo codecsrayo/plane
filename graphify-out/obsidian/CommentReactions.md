@@ -1,12 +1,12 @@
 ---
-source_file: "components/comments/comment-reaction.tsx"
+source_file: "web/core/components/comments/comment-reaction.tsx"
 type: "code"
-community: "Comment Card"
+community: "Notification Content"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Comment_Card
+  - community/Notification_Content
 ---
 
 # CommentReactions
@@ -16,4 +16,4 @@ tags:
 - [[comment-reaction.tsx]] - `contains` [EXTRACTED]
 - [[display.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Comment_Card
+#graphify/code #graphify/EXTRACTED #community/Notification_Content

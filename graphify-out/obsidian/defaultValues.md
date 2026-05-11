@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-detail/links/create-update-link-modal.tsx"
+source_file: "web/core/components/issues/issue-detail/links/create-update-link-modal.tsx"
 type: "code"
-community: "Dashboard Widgets"
+community: "Link Links"
 location: "L34"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dashboard_Widgets
+  - community/Link_Links
 ---
 
 # defaultValues
@@ -16,4 +16,4 @@ tags:
 - [[create-update-link-modal.tsx]] - `contains` [EXTRACTED]
 - [[create-update-link-modal.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets
+#graphify/code #graphify/EXTRACTED #community/Link_Links

@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/roots/cycle-layout-root.tsx"
+source_file: "web/core/components/issues/issue-layouts/roots/cycle-layout-root.tsx"
 type: "code"
-community: "Cycle Transfers"
+community: "Issue Project"
 location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Transfers
+  - community/Issue_Project
 ---
 
 # CycleIssueLayout()
@@ -15,4 +15,4 @@ tags:
 
 - [[cycle-layout-root.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Transfers
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

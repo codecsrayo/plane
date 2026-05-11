@@ -1,12 +1,12 @@
 ---
-source_file: "components/sidebar/sidebar-navigation.tsx"
+source_file: "web/core/components/sidebar/sidebar-navigation.tsx"
 type: "code"
-community: "Sidebar Menu"
+community: "Sidebar Navigation"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Menu
+  - community/Sidebar_Navigation
 ---
 
 # TSidebarNavItem
@@ -15,4 +15,4 @@ tags:
 
 - [[sidebar-navigation.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Menu
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation

@@ -24,9 +24,9 @@ tags:
 - [[TFilterOperatorHelper]] - `imports` [EXTRACTED]
 - [[TFilterValue]] - `imports` [EXTRACTED]
 - [[expression.ts]] - `imports_from` [EXTRACTED]
+- [[index.ts_106]] - `imports_from` [EXTRACTED]
 - [[index.ts_109]] - `imports_from` [EXTRACTED]
 - [[index.ts_110]] - `imports_from` [EXTRACTED]
-- [[index.ts_106]] - `imports_from` [EXTRACTED]
 - [[shared.ts]] - `imports_from` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Operators_Supported

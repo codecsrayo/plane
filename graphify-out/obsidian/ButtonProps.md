@@ -1,12 +1,12 @@
 ---
 source_file: "ui/src/button/button.tsx"
 type: "code"
-community: "Button Auth"
+community: "Button Styling"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Button_Auth
+  - community/Button_Styling
 ---
 
 # ButtonProps
@@ -15,4 +15,4 @@ tags:
 
 - [[button.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Button_Auth
+#graphify/code #graphify/EXTRACTED #community/Button_Styling

@@ -1,20 +1,21 @@
 ---
-source_file: "components/stickies/modal/search.tsx"
+source_file: "web/core/components/stickies/modal/search.tsx"
 type: "code"
-community: "Stickies Truncated"
+community: "Stickies Sticky"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Stickies_Truncated
+  - community/Stickies_Sticky
 ---
 
 # StickySearch
 
 ## Connections
 
-- [[search.tsx]] - `contains` [EXTRACTED]
+- [[header.tsx_2]] - `imports` [EXTRACTED]
+- [[search.tsx_1]] - `contains` [EXTRACTED]
 - [[stickies.tsx_1]] - `imports` [EXTRACTED]
 - [[widget.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Stickies_Truncated
+#graphify/code #graphify/EXTRACTED #community/Stickies_Sticky

@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/workspaces.rs"
 type: "code"
-community: "Workspace Activity & Analytics"
+community: "Workspace User"
 location: "L2844"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Activity__Analytics
+  - community/Workspace_User
 ---
 
 # format_activity_datetime()
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[encode_user_activity_csv()]] - `calls` [EXTRACTED]
-- [[workspaces.rs]] - `contains` [EXTRACTED]
+- [[workspaces.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Activity\_\_Analytics
+#graphify/code #graphify/EXTRACTED #community/Workspace_User

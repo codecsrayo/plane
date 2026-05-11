@@ -11,9 +11,9 @@ members: 3
 
 ## Members
 
-- [[StateMarksAsDefault]] - code - components/project-states/options/mark-as-default.tsx
-- [[TStateMarksAsDefault]] - code - components/project-states/options/mark-as-default.tsx
-- [[mark-as-default.tsx]] - code - components/project-states/options/mark-as-default.tsx
+- [[StateMarksAsDefault]] - code - web/core/components/project-states/options/mark-as-default.tsx
+- [[TStateMarksAsDefault]] - code - web/core/components/project-states/options/mark-as-default.tsx
+- [[mark-as-default.tsx]] - code - web/core/components/project-states/options/mark-as-default.tsx
 
 ## Live Query (requires Dataview plugin)
 

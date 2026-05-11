@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/badge/badge.stories.tsx"
 type: "code"
-community: "Badge Icon"
+community: "Brand Danger"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Badge_Icon
+  - community/Brand_Danger
 ---
 
 # badge.stories.tsx
@@ -30,4 +30,4 @@ tags:
 - [[WithPrependIcon]] - `contains` [EXTRACTED]
 - [[badge.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Badge_Icon
+#graphify/code #graphify/EXTRACTED #community/Brand_Danger

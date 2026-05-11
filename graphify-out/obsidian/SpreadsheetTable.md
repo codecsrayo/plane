@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/spreadsheet-table.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-table.tsx"
 type: "code"
-community: "Spreadsheet Table"
+community: "Issue Project"
 location: "L43"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Table
+  - community/Issue_Project
 ---
 
 # SpreadsheetTable
@@ -16,4 +16,4 @@ tags:
 - [[spreadsheet-table.tsx]] - `contains` [EXTRACTED]
 - [[spreadsheet-view.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Table
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

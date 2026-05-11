@@ -43,9 +43,9 @@ SORT file.name ASC
 
 ## Connections to other communities
 
+- 5 edges to [[_COMMUNITY_Node Condition]]
 - 5 edges to [[_COMMUNITY_Operator Configs]]
-- 4 edges to [[_COMMUNITY_Node Condition]]
-- 2 edges to [[_COMMUNITY_Field Config]]
+- 1 edge to [[_COMMUNITY_Field Config]]
 
 ## Top bridge nodes
 

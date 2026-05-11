@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/extensions.ts"
 type: "code"
-community: "Core Extensions"
+community: "Unique Core"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Core_Extensions
+  - community/Unique_Core
 ---
 
 # extensions.ts
@@ -23,9 +23,9 @@ tags:
 - [[extension.ts_1]] - `imports_from` [EXTRACTED]
 - [[extension.ts_2]] - `imports_from` [EXTRACTED]
 - [[extension.tsx_5]] - `imports_from` [EXTRACTED]
-- [[index.ts_47]] - `imports_from` [EXTRACTED]
 - [[index.ts_46]] - `imports_from` [EXTRACTED]
+- [[index.ts_47]] - `imports_from` [EXTRACTED]
 - [[placeholder.ts]] - `imports_from` [EXTRACTED]
 - [[starter-kit.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Core_Extensions
+#graphify/code #graphify/EXTRACTED #community/Unique_Core

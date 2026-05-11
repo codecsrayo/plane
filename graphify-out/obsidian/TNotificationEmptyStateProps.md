@@ -1,18 +1,18 @@
 ---
-source_file: "components/workspace-notifications/sidebar/empty-state.tsx"
+source_file: "web/core/components/workspace-notifications/sidebar/empty-state.tsx"
 type: "code"
-community: "Notification Option"
+community: "Settings Project"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Notification_Option
+  - community/Settings_Project
 ---
 
 # TNotificationEmptyStateProps
 
 ## Connections
 
-- [[empty-state.tsx_4]] - `contains` [EXTRACTED]
+- [[empty-state.tsx_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Notification_Option
+#graphify/code #graphify/EXTRACTED #community/Settings_Project

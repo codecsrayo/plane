@@ -1,19 +1,20 @@
 ---
-source_file: "components/api-token/empty-state.tsx"
+source_file: "web/core/components/workspace-notifications/sidebar/empty-state.tsx"
 type: "code"
-community: "Empty Token"
+community: "Settings Project"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_Token
+  - community/Settings_Project
 ---
 
 # empty-state.tsx
 
 ## Connections
 
-- [[ApiTokenEmptyState()]] - `contains` [EXTRACTED]
-- [[Props_295]] - `contains` [EXTRACTED]
+- [[NotificationEmptyState]] - `contains` [EXTRACTED]
+- [[TNotificationEmptyStateProps]] - `contains` [EXTRACTED]
+- [[root.tsx_86]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_Token
+#graphify/code #graphify/EXTRACTED #community/Settings_Project

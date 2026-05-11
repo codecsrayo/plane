@@ -1,12 +1,12 @@
 ---
-source_file: "components/onboarding/switch-account-dropdown.tsx"
+source_file: "web/core/components/onboarding/switch-account-dropdown.tsx"
 type: "code"
-community: "Account Settings"
+community: "Workspace Issue"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Account_Settings
+  - community/Workspace_Issue
 ---
 
 # TSwitchAccountDropdownProps
@@ -15,4 +15,4 @@ tags:
 
 - [[switch-account-dropdown.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Account_Settings
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

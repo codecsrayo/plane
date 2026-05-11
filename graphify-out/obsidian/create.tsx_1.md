@@ -1,28 +1,28 @@
 ---
-source_file: "components/onboarding/steps/workspace/create.tsx"
+source_file: "web/core/components/onboarding/steps/workspace/create.tsx"
 type: "code"
-community: "Chat Support"
+community: "Workspace Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Chat_Support
+  - community/Workspace_Issue
 ---
 
 # create.tsx
 
 ## Connections
 
-- [[Props_365]] - `contains` [EXTRACTED]
+- [[Props_440]] - `contains` [EXTRACTED]
 - [[WorkspaceCreateStep]] - `contains` [EXTRACTED]
-- [[WorkspaceService]] - `imports` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
-- [[index.ts_145]] - `imports_from` [EXTRACTED]
+- [[WorkspaceService_1]] - `imports` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
+- [[index.ts_410]] - `imports_from` [EXTRACTED]
 - [[use-instance.ts]] - `imports_from` [EXTRACTED]
 - [[use-workspace.ts]] - `imports_from` [EXTRACTED]
 - [[useInstance()]] - `imports` [EXTRACTED]
 - [[useWorkspace()]] - `imports` [EXTRACTED]
-- [[workspace.service.ts]] - `imports_from` [EXTRACTED]
-- [[workspaceService_12]] - `contains` [EXTRACTED]
+- [[workspace.service.ts_1]] - `imports_from` [EXTRACTED]
+- [[workspaceService_16]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Chat_Support
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

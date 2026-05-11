@@ -1,18 +1,18 @@
 ---
 source_file: "api_rust/src/jobs/instance_traces.rs"
 type: "code"
-community: "Community 115"
+community: "Instance Traces"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_115
+  - community/Instance_Traces
 ---
 
 # instance_traces.rs
 
 ## Connections
 
-- [[instance_traces()]] - `contains` [EXTRACTED]
+- [[instance_traces()_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_115
+#graphify/code #graphify/EXTRACTED #community/Instance_Traces

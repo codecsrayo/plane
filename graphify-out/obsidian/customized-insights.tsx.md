@@ -1,5 +1,5 @@
 ---
-source_file: "components/analytics/work-items/customized-insights.tsx"
+source_file: "web/core/components/analytics/work-items/customized-insights.tsx"
 type: "code"
 community: "Select Axis"
 location: "L1"
@@ -19,6 +19,6 @@ tags:
 - [[analytics-section-wrapper.tsx]] - `imports_from` [EXTRACTED]
 - [[content.tsx_5]] - `imports_from` [EXTRACTED]
 - [[priority-chart.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_89]] - `imports_from` [EXTRACTED]
+- [[root.tsx_130]] - `imports_from` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Select_Axis

@@ -1,18 +1,18 @@
 ---
-source_file: "components/onboarding/invitations.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/links/quick-action-button.tsx"
 type: "code"
-community: "Workspace Invites"
-location: "L25"
+community: "Issue Activity"
+location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Invites
+  - community/Issue_Activity
 ---
 
 # Props
 
 ## Connections
 
-- [[invitations.tsx]] - `contains` [EXTRACTED]
+- [[quick-action-button.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Invites
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

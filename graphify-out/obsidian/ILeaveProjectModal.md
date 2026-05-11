@@ -1,12 +1,12 @@
 ---
-source_file: "components/project/leave-project-modal.tsx"
+source_file: "web/core/components/project/leave-project-modal.tsx"
 type: "code"
-community: "Project Projects"
+community: "Project Profile"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Projects
+  - community/Project_Profile
 ---
 
 # ILeaveProjectModal
@@ -15,4 +15,4 @@ tags:
 
 - [[leave-project-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Projects
+#graphify/code #graphify/EXTRACTED #community/Project_Profile

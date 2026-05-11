@@ -1,5 +1,5 @@
 ---
-source_file: "components/estimates/inputs/root.tsx"
+source_file: "web/core/components/estimates/inputs/root.tsx"
 type: "code"
 community: "Estimate Point"
 location: "L22"
@@ -14,7 +14,7 @@ tags:
 ## Connections
 
 - [[create.tsx_2]] - `imports` [EXTRACTED]
-- [[root.tsx_86]] - `contains` [EXTRACTED]
-- [[update.tsx_1]] - `imports` [EXTRACTED]
+- [[root.tsx_127]] - `contains` [EXTRACTED]
+- [[update.tsx_2]] - `imports` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Estimate_Point

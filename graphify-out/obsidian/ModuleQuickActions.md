@@ -1,12 +1,12 @@
 ---
-source_file: "components/modules/quick-actions.tsx"
+source_file: "web/core/components/modules/quick-actions.tsx"
 type: "code"
-community: "Menu Quick"
+community: "Cycles Archived"
 location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu_Quick
+  - community/Cycles_Archived
 ---
 
 # ModuleQuickActions
@@ -15,4 +15,4 @@ tags:
 
 - [[quick-actions.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Menu_Quick
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

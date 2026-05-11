@@ -1,18 +1,18 @@
 ---
-source_file: "components/dropdowns/project/dropdown.tsx"
+source_file: "web/core/components/gantt-chart/chart/main-content.tsx"
 type: "code"
-community: "Module Forms"
-location: "L15"
+community: "Gantt Chart"
+location: "L41"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Forms
+  - community/Gantt_Chart
 ---
 
 # Props
 
 ## Connections
 
-- [[dropdown.tsx_2]] - `contains` [EXTRACTED]
+- [[main-content.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Forms
+#graphify/code #graphify/EXTRACTED #community/Gantt_Chart

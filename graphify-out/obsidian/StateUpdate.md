@@ -1,5 +1,5 @@
 ---
-source_file: "components/project-states/create-update/update.tsx"
+source_file: "web/core/components/project-states/create-update/update.tsx"
 type: "code"
 community: "State Group"
 location: "L21"
@@ -13,6 +13,6 @@ tags:
 
 ## Connections
 
-- [[update.tsx]] - `contains` [EXTRACTED]
+- [[update.tsx_1]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/State_Group

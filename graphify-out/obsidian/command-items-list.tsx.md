@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/slash-commands/command-items-list.tsx"
 type: "code"
-community: "Toggle Insert"
+community: "Toggle Menu"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toggle_Insert
+  - community/Toggle_Menu
 ---
 
 # command-items-list.tsx
@@ -36,4 +36,4 @@ tags:
 - [[toggleTaskList()]] - `imports` [EXTRACTED]
 - [[toggleTextColor()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toggle_Insert
+#graphify/code #graphify/EXTRACTED #community/Toggle_Menu

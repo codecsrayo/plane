@@ -1,12 +1,12 @@
 ---
 source_file: "utils/src/rich-filters/operations/manipulation/core.ts"
 type: "code"
-community: "Group Transform"
+community: "Group Condition"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group_Transform
+  - community/Group_Condition
 ---
 
 # addAndCondition()
@@ -20,4 +20,4 @@ tags:
 - [[isConditionNode()]] - `calls` [EXTRACTED]
 - [[isGroupNode()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group_Transform
+#graphify/code #graphify/EXTRACTED #community/Group_Condition

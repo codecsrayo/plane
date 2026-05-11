@@ -1,5 +1,5 @@
 ---
-source_file: "components/api-token/modal/form.tsx"
+source_file: "web/core/components/api-token/modal/form.tsx"
 type: "code"
 community: "Expiry Token"
 location: "L1"
@@ -16,7 +16,7 @@ tags:
 - [[CreateApiTokenForm()]] - `contains` [EXTRACTED]
 - [[DateDropdown]] - `imports` [EXTRACTED]
 - [[EXPIRY_DATE_OPTIONS]] - `contains` [EXTRACTED]
-- [[Props_296]] - `contains` [EXTRACTED]
+- [[Props_371]] - `contains` [EXTRACTED]
 - [[date.tsx_1]] - `imports_from` [EXTRACTED]
 - [[defaultValues_17]] - `contains` [EXTRACTED]
 - [[getExpiryDate()]] - `contains` [EXTRACTED]

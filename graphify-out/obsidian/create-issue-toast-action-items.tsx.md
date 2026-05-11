@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/create-issue-toast-action-items.tsx"
+source_file: "web/core/components/issues/create-issue-toast-action-items.tsx"
 type: "code"
-community: "Project Archives"
+community: "Issue Work"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Archives
+  - community/Issue_Work
 ---
 
 # create-issue-toast-action-items.tsx
@@ -15,11 +15,11 @@ tags:
 
 - [[CreateIssueToastActionItems]] - `contains` [EXTRACTED]
 - [[TCreateIssueToastActionItems]] - `contains` [EXTRACTED]
-- [[base.tsx_7]] - `imports_from` [EXTRACTED]
-- [[root.tsx_28]] - `imports_from` [EXTRACTED]
+- [[base.tsx_8]] - `imports_from` [EXTRACTED]
+- [[root.tsx_69]] - `imports_from` [EXTRACTED]
 - [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Archives
+#graphify/code #graphify/EXTRACTED #community/Issue_Work

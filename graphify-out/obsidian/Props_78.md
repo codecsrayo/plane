@@ -1,18 +1,18 @@
 ---
-source_file: "components/modules/sidebar-select/select-status.tsx"
+source_file: "web/core/hooks/use-multiple-select.ts"
 type: "code"
-community: "Status Select"
-location: "L22"
+community: "Select Multiple"
+location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Status_Select
+  - community/Select_Multiple
 ---
 
 # Props
 
 ## Connections
 
-- [[select-status.tsx]] - `contains` [EXTRACTED]
+- [[use-multiple-select.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Status_Select
+#graphify/code #graphify/EXTRACTED #community/Select_Multiple

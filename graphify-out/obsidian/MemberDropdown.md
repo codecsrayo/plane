@@ -1,12 +1,12 @@
 ---
-source_file: "components/dropdowns/member/dropdown.tsx"
+source_file: "web/core/components/dropdowns/member/dropdown.tsx"
 type: "code"
-community: "Issue Properties"
+community: "Label Dropdown"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Label_Dropdown
 ---
 
 # MemberDropdown
@@ -15,18 +15,19 @@ tags:
 
 - [[all-properties.tsx]] - `imports` [EXTRACTED]
 - [[assignee-column.tsx]] - `imports` [EXTRACTED]
+- [[attributes.tsx]] - `imports` [EXTRACTED]
 - [[default-properties.tsx]] - `imports` [EXTRACTED]
 - [[draft-issue-properties.tsx]] - `imports` [EXTRACTED]
-- [[dropdown.tsx_4]] - `contains` [EXTRACTED]
+- [[dropdown.tsx_6]] - `contains` [EXTRACTED]
 - [[form.tsx_4]] - `imports` [EXTRACTED]
 - [[issue-properties.tsx]] - `imports` [EXTRACTED]
 - [[issue-properties.tsx_1]] - `imports` [EXTRACTED]
 - [[issue.tsx]] - `imports` [EXTRACTED]
-- [[project.tsx]] - `imports` [EXTRACTED]
+- [[project.tsx_3]] - `imports` [EXTRACTED]
 - [[properties.tsx]] - `imports` [EXTRACTED]
 - [[properties.tsx_1]] - `imports` [EXTRACTED]
 - [[properties.tsx_2]] - `imports` [EXTRACTED]
-- [[root.tsx_12]] - `imports` [EXTRACTED]
-- [[sidebar.tsx_3]] - `imports` [EXTRACTED]
+- [[root.tsx_53]] - `imports` [EXTRACTED]
+- [[sidebar.tsx_4]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

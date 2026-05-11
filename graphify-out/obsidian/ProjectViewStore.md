@@ -1,23 +1,23 @@
 ---
-source_file: "store/project-view.store.ts"
+source_file: "web/core/store/project-view.store.ts"
 type: "code"
-community: "Project Views"
+community: "Project Filters"
 location: "L52"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Views
+  - community/Project_Filters
 ---
 
 # ProjectViewStore
 
 ## Connections
 
-- [[.constructor()_2]] - `method` [EXTRACTED]
+- [[.constructor()_59]] - `method` [EXTRACTED]
 - [[.createView()]] - `method` [EXTRACTED]
 - [[.projectViewIds()]] - `method` [EXTRACTED]
 - [[.updateView()]] - `method` [EXTRACTED]
-- [[project-view.store.ts]] - `contains` [EXTRACTED]
-- [[root.store.ts]] - `imports` [EXTRACTED]
+- [[project-view.store.ts_1]] - `contains` [EXTRACTED]
+- [[root.store.ts_2]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Views
+#graphify/code #graphify/EXTRACTED #community/Project_Filters

@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/spreadsheet-header-column.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-header-column.tsx"
 type: "code"
-community: "Spreadsheet Table"
+community: "Select Multiple"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Table
+  - community/Select_Multiple
 ---
 
 # SpreadsheetHeaderColumn
@@ -16,4 +16,4 @@ tags:
 - [[spreadsheet-header-column.tsx]] - `contains` [EXTRACTED]
 - [[spreadsheet-header.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Table
+#graphify/code #graphify/EXTRACTED #community/Select_Multiple

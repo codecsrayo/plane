@@ -1,12 +1,12 @@
 ---
-source_file: "components/modules/module-peek-overview.tsx"
+source_file: "web/core/components/modules/module-peek-overview.tsx"
 type: "code"
-community: "Module Analytics"
+community: "Cycles Archived"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Cycles_Archived
 ---
 
 # ModulePeekOverview
@@ -15,4 +15,4 @@ tags:
 
 - [[module-peek-overview.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

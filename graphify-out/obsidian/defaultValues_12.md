@@ -1,12 +1,12 @@
 ---
-source_file: "components/project/delete-project-modal.tsx"
+source_file: "web/core/components/project/delete-project-modal.tsx"
 type: "code"
-community: "Account Settings"
+community: "Project Settings"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Account_Settings
+  - community/Project_Settings
 ---
 
 # defaultValues
@@ -15,4 +15,4 @@ tags:
 
 - [[delete-project-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Account_Settings
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

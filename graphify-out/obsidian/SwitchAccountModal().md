@@ -1,12 +1,12 @@
 ---
-source_file: "components/onboarding/switch-account-modal.tsx"
+source_file: "web/core/components/onboarding/switch-account-modal.tsx"
 type: "code"
-community: "Account Settings"
+community: "Project Settings"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Account_Settings
+  - community/Project_Settings
 ---
 
 # SwitchAccountModal()
@@ -16,6 +16,6 @@ tags:
 - [[switch-account-dropdown.tsx]] - `imports` [EXTRACTED]
 - [[switch-account-modal.tsx]] - `contains` [EXTRACTED]
 - [[useAppRouter()]] - `calls` [EXTRACTED]
-- [[useUser()]] - `calls` [INFERRED]
+- [[useTheme()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Account_Settings
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

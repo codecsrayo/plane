@@ -1,12 +1,12 @@
 ---
-source_file: "components/core/modals/issue-search-modal-empty-state.tsx"
+source_file: "web/core/components/core/modals/issue-search-modal-empty-state.tsx"
 type: "code"
-community: "Spreadsheet Columns"
+community: "Issue Activity"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Columns
+  - community/Issue_Activity
 ---
 
 # EmptyStateContainer()
@@ -15,4 +15,4 @@ tags:
 
 - [[issue-search-modal-empty-state.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Columns
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

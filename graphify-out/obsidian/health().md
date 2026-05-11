@@ -1,18 +1,19 @@
 ---
 source_file: "api_rust/src/routes/health.rs"
 type: "code"
-community: "Community 296"
+community: "User Github"
 location: "L34"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_296
+  - graphify/INFERRED
+  - community/User_Github
 ---
 
 # health()
 
 ## Connections
 
+- [[.json()]] - `calls` [INFERRED]
 - [[health.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_296
+#graphify/code #graphify/INFERRED #community/User_Github

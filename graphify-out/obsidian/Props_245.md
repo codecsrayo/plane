@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/filters/applied-filters/state.tsx"
+source_file: "web/core/components/exporter/export-form.tsx"
 type: "code"
-community: "State Applied"
-location: "L14"
+community: "Project Settings"
+location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/State_Applied
+  - community/Project_Settings
 ---
 
 # Props
 
 ## Connections
 
-- [[state.tsx_1]] - `contains` [EXTRACTED]
+- [[export-form.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/State_Applied
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

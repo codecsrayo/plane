@@ -1,18 +1,18 @@
 ---
-source_file: "components/exporter/prev-exports.tsx"
+source_file: "web/core/components/profile/time.tsx"
 type: "code"
-community: "Guide Prev"
-location: "L26"
+community: "User Greetings"
+location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Guide_Prev
+  - community/User_Greetings
 ---
 
 # Props
 
 ## Connections
 
-- [[prev-exports.tsx]] - `contains` [EXTRACTED]
+- [[time.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Guide_Prev
+#graphify/code #graphify/EXTRACTED #community/User_Greetings

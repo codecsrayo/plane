@@ -1,12 +1,12 @@
 ---
-source_file: "components/cycles/list/cycles-list-item.tsx"
+source_file: "web/core/components/cycles/list/cycles-list-item.tsx"
 type: "code"
-community: "Cycle Cycles"
+community: "Cycle Active"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Cycles
+  - community/Cycle_Active
 ---
 
 # TCyclesListItem
@@ -15,4 +15,4 @@ tags:
 
 - [[cycles-list-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Cycles
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

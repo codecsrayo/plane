@@ -1,12 +1,12 @@
 ---
-source_file: "components/workspace-notifications/notification-app-sidebar-option.tsx"
+source_file: "web/core/components/workspace-notifications/notification-app-sidebar-option.tsx"
 type: "code"
-community: "Notification Option"
+community: "Settings Project"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Notification_Option
+  - community/Settings_Project
 ---
 
 # TNotificationAppSidebarOption
@@ -15,4 +15,4 @@ tags:
 
 - [[notification-app-sidebar-option.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Notification_Option
+#graphify/code #graphify/EXTRACTED #community/Settings_Project

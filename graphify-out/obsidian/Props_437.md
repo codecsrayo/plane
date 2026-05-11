@@ -1,18 +1,18 @@
 ---
-source_file: "components/navigation/project-actions-menu.tsx"
+source_file: "web/core/components/onboarding/steps/root.tsx"
 type: "code"
-community: "Project Tab Nav"
-location: "L16"
+community: "Step Onboarding"
+location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Tab_Nav
+  - community/Step_Onboarding
 ---
 
 # Props
 
 ## Connections
 
-- [[project-actions-menu.tsx]] - `contains` [EXTRACTED]
+- [[root.tsx_105]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Tab_Nav
+#graphify/code #graphify/EXTRACTED #community/Step_Onboarding

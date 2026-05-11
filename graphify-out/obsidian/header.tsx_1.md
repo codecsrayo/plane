@@ -1,24 +1,23 @@
 ---
-source_file: "components/gantt-chart/chart/header.tsx"
+source_file: "web/app/(all)/[workspaceSlug]/(projects)/header.tsx"
 type: "code"
-community: "Gantt Current"
+community: "Workspace Dashboard"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Current
+  - community/Workspace_Dashboard
 ---
 
 # header.tsx
 
 ## Connections
 
-- [[GanttChartHeader]] - `contains` [EXTRACTED]
-- [[Props_47]] - `contains` [EXTRACTED]
-- [[VIEWS_LIST]] - `imports` [EXTRACTED]
-- [[constants.ts]] - `imports_from` [EXTRACTED]
-- [[index.ts_46]] - `imports_from` [EXTRACTED]
-- [[use-timeline-chart.ts]] - `imports_from` [EXTRACTED]
-- [[useTimeLineChartStore()]] - `imports` [EXTRACTED]
+- [[BreadcrumbLink()]] - `imports` [EXTRACTED]
+- [[WorkspaceDashboardHeader]] - `contains` [EXTRACTED]
+- [[breadcrumb-link.tsx]] - `imports_from` [EXTRACTED]
+- [[page.tsx_7]] - `imports_from` [EXTRACTED]
+- [[use-home.ts]] - `imports_from` [EXTRACTED]
+- [[useHome()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Current
+#graphify/code #graphify/EXTRACTED #community/Workspace_Dashboard

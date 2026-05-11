@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/custom-image/components/node-view.tsx"
 type: "code"
-community: "Custom Image Block"
+community: "Image Custom"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Custom_Image_Block
+  - community/Image_Custom
 ---
 
 # CustomImageNodeView()
@@ -18,4 +18,4 @@ tags:
 - [[hasImageDuplicationFailed()]] - `calls` [EXTRACTED]
 - [[node-view.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Custom_Image_Block
+#graphify/code #graphify/EXTRACTED #community/Image_Custom

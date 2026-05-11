@@ -1,12 +1,12 @@
 ---
-source_file: "constants/fetch-keys.ts"
+source_file: "web/core/constants/fetch-keys.ts"
 type: "code"
-community: "Auth Wrappers"
+community: "Project Workspace"
 location: "L96"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Wrappers
+  - community/Project_Workspace
 ---
 
 # WORKSPACE_ACTIVE_CYCLES_LIST()
@@ -15,4 +15,4 @@ tags:
 
 - [[fetch-keys.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Wrappers
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

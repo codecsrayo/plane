@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/calendar/calendar.stories.tsx"
 type: "code"
-community: "Dates Disabled"
+community: "Dates Chevron"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dates_Disabled
+  - community/Dates_Chevron
 ---
 
 # calendar.stories.tsx
@@ -27,4 +27,4 @@ tags:
 - [[WithoutOutsideDays]] - `contains` [EXTRACTED]
 - [[root.tsx_16]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dates_Disabled
+#graphify/code #graphify/EXTRACTED #community/Dates_Chevron

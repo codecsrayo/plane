@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/modals/create-page-modal.tsx"
+source_file: "web/core/components/power-k/ui/modal/search-results.tsx"
 type: "code"
-community: "Access Field"
-location: "L21"
+community: "Search Results"
+location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Access_Field
+  - community/Search_Results
 ---
 
 # Props
 
 ## Connections
 
-- [[create-page-modal.tsx]] - `contains` [EXTRACTED]
+- [[search-results.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Access_Field
+#graphify/code #graphify/EXTRACTED #community/Search_Results

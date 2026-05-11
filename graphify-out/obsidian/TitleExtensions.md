@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/title-extension.ts"
 type: "code"
-community: "Title Node"
+community: "Document Collaborative"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Title_Node
+  - community/Document_Collaborative
 ---
 
 # TitleExtensions
@@ -17,4 +17,4 @@ tags:
 - [[use-title-editor.ts]] - `imports` [EXTRACTED]
 - [[yjs-utils.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Title_Node
+#graphify/code #graphify/EXTRACTED #community/Document_Collaborative

@@ -1,12 +1,12 @@
 ---
-source_file: "components/views/filters/filter-selection.tsx"
+source_file: "web/core/components/views/filters/filter-selection.tsx"
 type: "code"
-community: "Created Selection"
+community: "Member Members"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Created_Selection
+  - community/Member_Members
 ---
 
 # ViewFiltersSelection
@@ -14,6 +14,7 @@ tags:
 ## Connections
 
 - [[filter-selection.tsx]] - `contains` [EXTRACTED]
+- [[mobile-header.tsx_1]] - `imports` [EXTRACTED]
 - [[view-list-header.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Created_Selection
+#graphify/code #graphify/EXTRACTED #community/Member_Members

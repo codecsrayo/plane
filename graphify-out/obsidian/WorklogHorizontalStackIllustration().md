@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/empty-state/assets/horizontal-stack/worklog.tsx"
 type: "code"
-community: "Illustration Assets"
+community: "Stack Vertical"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Illustration_Assets
+  - community/Stack_Vertical
 ---
 
 # WorklogHorizontalStackIllustration()
@@ -15,4 +15,4 @@ tags:
 
 - [[worklog.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Illustration_Assets
+#graphify/code #graphify/EXTRACTED #community/Stack_Vertical

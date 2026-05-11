@@ -1,18 +1,18 @@
 ---
-source_file: "components/settings/sidebar/item.tsx"
+source_file: "web/core/components/workspace/sidebar/favorites/favorite-items/common/favorite-item-quick-action.tsx"
 type: "code"
-community: "Sidebar Nav"
-location: "L14"
+community: "Favorite Quick"
+location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Nav
+  - community/Favorite_Quick
 ---
 
 # Props
 
 ## Connections
 
-- [[item.tsx]] - `contains` [EXTRACTED]
+- [[favorite-item-quick-action.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Nav
+#graphify/code #graphify/EXTRACTED #community/Favorite_Quick

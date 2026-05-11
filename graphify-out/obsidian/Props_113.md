@@ -1,18 +1,18 @@
 ---
-source_file: "components/settings/profile/content/pages/notifications/email-notification-form.tsx"
+source_file: "web/core/components/workspace/views/default-view-list-item.tsx"
 type: "code"
-community: "Email Settings"
-location: "L20"
+community: "Project Work"
+location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Email_Settings
+  - community/Project_Work
 ---
 
 # Props
 
 ## Connections
 
-- [[email-notification-form.tsx]] - `contains` [EXTRACTED]
+- [[default-view-list-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Email_Settings
+#graphify/code #graphify/EXTRACTED #community/Project_Work

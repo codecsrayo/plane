@@ -1,25 +1,27 @@
 ---
-source_file: "components/modules/archived-modules/header.tsx"
+source_file: "web/app/(all)/[workspaceSlug]/(projects)/stickies/header.tsx"
 type: "code"
-community: "Modules Archived"
+community: "Stickies Sticky"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Modules_Archived
+  - community/Stickies_Sticky
 ---
 
 # header.tsx
 
 ## Connections
 
-- [[ArchivedModulesHeader]] - `contains` [EXTRACTED]
-- [[index.ts_70]] - `imports_from` [EXTRACTED]
-- [[index.ts_90]] - `imports_from` [EXTRACTED]
-- [[index.ts_58]] - `imports_from` [EXTRACTED]
-- [[use-member.ts]] - `imports_from` [EXTRACTED]
-- [[use-module-filter.ts]] - `imports_from` [EXTRACTED]
-- [[useMember()]] - `imports` [EXTRACTED]
-- [[useModuleFilter()]] - `imports` [EXTRACTED]
+- [[BreadcrumbLink()]] - `imports` [EXTRACTED]
+- [[StickySearch]] - `imports` [EXTRACTED]
+- [[WorkspaceStickyHeader]] - `contains` [EXTRACTED]
+- [[breadcrumb-link.tsx]] - `imports_from` [EXTRACTED]
+- [[layout.tsx_5]] - `imports_from` [EXTRACTED]
+- [[search.tsx_1]] - `imports_from` [EXTRACTED]
+- [[use-operations.tsx]] - `imports_from` [EXTRACTED]
+- [[use-stickies.tsx]] - `imports_from` [EXTRACTED]
+- [[useSticky()]] - `imports` [EXTRACTED]
+- [[useStickyOperations()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Modules_Archived
+#graphify/code #graphify/EXTRACTED #community/Stickies_Sticky

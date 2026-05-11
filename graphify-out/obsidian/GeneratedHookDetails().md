@@ -1,5 +1,5 @@
 ---
-source_file: "components/web-hooks/generated-hook-details.tsx"
+source_file: "web/core/components/web-hooks/generated-hook-details.tsx"
 type: "code"
 community: "Webhook Generated"
 location: "L20"

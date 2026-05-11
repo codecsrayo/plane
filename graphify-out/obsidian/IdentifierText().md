@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-detail/identifier-text.tsx"
+source_file: "web/core/components/issues/issue-detail/identifier-text.tsx"
 type: "code"
-community: "Issue Identifiers"
+community: "Issue Work"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Identifiers
+  - community/Issue_Work
 ---
 
 # IdentifierText()
@@ -15,5 +15,6 @@ tags:
 
 - [[draft-issue-block.tsx]] - `imports` [EXTRACTED]
 - [[identifier-text.tsx]] - `contains` [EXTRACTED]
+- [[issue-identifier.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Identifiers
+#graphify/code #graphify/EXTRACTED #community/Issue_Work

@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/version/main-content.tsx"
+source_file: "web/core/components/power-k/ui/modal/command-item.tsx"
 type: "code"
-community: "Page Editor"
-location: "L21"
+community: "Menu Power"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Page_Editor
+  - community/Menu_Power
 ---
 
 # Props
 
 ## Connections
 
-- [[main-content.tsx_2]] - `contains` [EXTRACTED]
+- [[command-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Page_Editor
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

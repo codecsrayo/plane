@@ -1,18 +1,18 @@
 ---
-source_file: "components/settings/mobile/nav.tsx"
+source_file: "web/core/components/workspace/settings/invitations-list-item.tsx"
 type: "code"
-community: "Member Settings"
-location: "L16"
+community: "Member Members"
+location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Settings
+  - community/Member_Members
 ---
 
 # Props
 
 ## Connections
 
-- [[nav.tsx]] - `contains` [EXTRACTED]
+- [[invitations-list-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Settings
+#graphify/code #graphify/EXTRACTED #community/Member_Members

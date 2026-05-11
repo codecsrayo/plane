@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/auth/god_mode.rs"
 type: "code"
-community: "Community 73"
+community: "Password Email"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_73
+  - community/Password_Email
 ---
 
 # god_mode.rs
@@ -23,4 +23,4 @@ tags:
 - [[is_password_strong()]] - `contains` [EXTRACTED]
 - [[is_valid_email()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_73
+#graphify/code #graphify/EXTRACTED #community/Password_Email

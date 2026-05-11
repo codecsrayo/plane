@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/issue_description_versions.rs"
 type: "code"
-community: "Issue Routes Rust API"
+community: "Issue Issues"
 location: "L173"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Routes_Rust_API
+  - community/Issue_Issues
 ---
 
 # check_guest_issue_access()
@@ -17,4 +17,4 @@ tags:
 - [[issue_description_versions.rs]] - `contains` [EXTRACTED]
 - [[list_description_versions()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Routes_Rust_API
+#graphify/code #graphify/EXTRACTED #community/Issue_Issues

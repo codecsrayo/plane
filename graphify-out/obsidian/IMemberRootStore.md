@@ -1,5 +1,5 @@
 ---
-source_file: "store/member/index.ts"
+source_file: "web/core/store/member/index.ts"
 type: "code"
 community: "Member Workspace"
 location: "L19"
@@ -14,8 +14,8 @@ tags:
 ## Connections
 
 - [[base-project-member.store.ts]] - `imports` [EXTRACTED]
-- [[index.ts_17]] - `contains` [EXTRACTED]
-- [[root.store.ts]] - `imports` [EXTRACTED]
+- [[index.ts_282]] - `contains` [EXTRACTED]
+- [[root.store.ts_2]] - `imports` [EXTRACTED]
 - [[use-member.ts]] - `imports` [EXTRACTED]
 - [[workspace-member.store.ts]] - `imports` [EXTRACTED]
 

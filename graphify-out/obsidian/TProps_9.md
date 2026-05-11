@@ -1,18 +1,18 @@
 ---
-source_file: "components/stickies/modal/index.tsx"
+source_file: "web/core/components/stickies/sticky/root.tsx"
 type: "code"
-community: "Stickies Action"
-location: "L10"
+community: "Stickies Sticky"
+location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Stickies_Action
+  - community/Stickies_Sticky
 ---
 
 # TProps
 
 ## Connections
 
-- [[index.tsx_5]] - `contains` [EXTRACTED]
+- [[root.tsx_52]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Stickies_Action
+#graphify/code #graphify/EXTRACTED #community/Stickies_Sticky

@@ -1,18 +1,18 @@
 ---
-source_file: "components/cycles/form.tsx"
+source_file: "web/core/components/issues/issue-layouts/filters/header/layout-selection.tsx"
 type: "code"
-community: "Module Forms"
-location: "L24"
+community: "Issue Activity"
+location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Forms
+  - community/Issue_Activity
 ---
 
 # Props
 
 ## Connections
 
-- [[form.tsx_10]] - `contains` [EXTRACTED]
+- [[layout-selection.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Forms
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

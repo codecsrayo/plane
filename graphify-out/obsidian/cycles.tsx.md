@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/menus/cycles.tsx"
+source_file: "web/core/components/power-k/menus/cycles.tsx"
 type: "code"
-community: "File Icons Nav"
+community: "Menu Power"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/File_Icons_Nav
+  - community/Menu_Power
 ---
 
 # cycles.tsx
@@ -15,9 +15,9 @@ tags:
 
 - [[PowerKCyclesMenu]] - `contains` [EXTRACTED]
 - [[PowerKMenuBuilder()]] - `imports` [EXTRACTED]
-- [[Props_349]] - `contains` [EXTRACTED]
+- [[Props_424]] - `contains` [EXTRACTED]
 - [[builder.tsx]] - `imports_from` [EXTRACTED]
 - [[cycles-menu.tsx]] - `imports_from` [EXTRACTED]
 - [[project-cycles-menu.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/File_Icons_Nav
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

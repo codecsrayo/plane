@@ -1,5 +1,5 @@
 ---
-source_file: "components/analytics/loaders.tsx"
+source_file: "web/core/components/analytics/loaders.tsx"
 type: "code"
 community: "Analytics Project"
 location: "L27"

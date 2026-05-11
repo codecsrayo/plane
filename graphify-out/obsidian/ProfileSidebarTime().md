@@ -1,20 +1,20 @@
 ---
-source_file: "components/profile/time.tsx"
+source_file: "web/core/components/profile/time.tsx"
 type: "code"
-community: "Dashboard Widgets"
+community: "User Greetings"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dashboard_Widgets
+  - community/User_Greetings
 ---
 
 # ProfileSidebarTime()
 
 ## Connections
 
-- [[sidebar.tsx_2]] - `imports` [EXTRACTED]
+- [[sidebar.tsx_3]] - `imports` [EXTRACTED]
 - [[time.tsx]] - `contains` [EXTRACTED]
 - [[useCurrentTime()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets
+#graphify/code #graphify/EXTRACTED #community/User_Greetings

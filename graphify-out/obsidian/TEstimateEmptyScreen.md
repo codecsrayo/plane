@@ -1,12 +1,12 @@
 ---
-source_file: "components/estimates/empty-screen.tsx"
+source_file: "web/core/components/estimates/empty-screen.tsx"
 type: "code"
-community: "Empty State"
+community: "Project Settings"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_State
+  - community/Project_Settings
 ---
 
 # TEstimateEmptyScreen
@@ -15,4 +15,4 @@ tags:
 
 - [[empty-screen.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_State
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

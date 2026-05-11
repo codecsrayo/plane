@@ -11,8 +11,8 @@ members: 2
 
 ## Members
 
-- [[SettingsContentLayout]] - code - components/settings/layout.tsx
-- [[layout.tsx]] - code - components/settings/layout.tsx
+- [[SettingsContentLayout]] - code - web/core/components/settings/layout.tsx
+- [[layout.tsx_44]] - code - web/core/components/settings/layout.tsx
 
 ## Live Query (requires Dataview plugin)
 

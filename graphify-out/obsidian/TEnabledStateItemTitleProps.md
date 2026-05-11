@@ -1,12 +1,12 @@
 ---
-source_file: "components/project-states/state-item-title.tsx"
+source_file: "web/core/components/project-states/state-item-title.tsx"
 type: "code"
-community: "Calendar Blocks"
+community: "State Title"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Blocks
+  - community/State_Title
 ---
 
 # TEnabledStateItemTitleProps
@@ -15,4 +15,4 @@ tags:
 
 - [[state-item-title.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Blocks
+#graphify/code #graphify/EXTRACTED #community/State_Title

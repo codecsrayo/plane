@@ -1,12 +1,12 @@
 ---
-source_file: "components/web-hooks/form/delete-section.tsx"
+source_file: "web/core/components/web-hooks/form/delete-section.tsx"
 type: "code"
-community: "Section Webhook"
+community: "Webhook Section"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Section_Webhook
+  - community/Webhook_Section
 ---
 
 # WebhookDeleteSection()
@@ -15,4 +15,4 @@ tags:
 
 - [[delete-section.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Section_Webhook
+#graphify/code #graphify/EXTRACTED #community/Webhook_Section

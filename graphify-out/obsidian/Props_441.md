@@ -1,18 +1,18 @@
 ---
-source_file: "components/core/render-if-visible-HOC.tsx"
+source_file: "web/core/components/onboarding/steps/role/root.tsx"
 type: "code"
-community: "Gantt Sidebar"
-location: "L11"
+community: "Setup Values"
+location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Sidebar
+  - community/Setup_Values
 ---
 
 # Props
 
 ## Connections
 
-- [[render-if-visible-HOC.tsx]] - `contains` [EXTRACTED]
+- [[root.tsx_107]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Sidebar
+#graphify/code #graphify/EXTRACTED #community/Setup_Values

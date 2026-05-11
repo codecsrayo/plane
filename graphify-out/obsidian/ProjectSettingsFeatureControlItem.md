@@ -1,5 +1,5 @@
 ---
-source_file: "components/settings/project/content/feature-control-item.tsx"
+source_file: "web/core/components/settings/project/content/feature-control-item.tsx"
 type: "code"
 community: "Project Settings"
 location: "L27"
@@ -14,5 +14,10 @@ tags:
 ## Connections
 
 - [[feature-control-item.tsx]] - `contains` [EXTRACTED]
+- [[page.tsx_41]] - `imports` [EXTRACTED]
+- [[page.tsx_42]] - `imports` [EXTRACTED]
+- [[page.tsx_43]] - `imports` [EXTRACTED]
+- [[page.tsx_44]] - `imports` [EXTRACTED]
+- [[page.tsx_45]] - `imports` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Project_Settings

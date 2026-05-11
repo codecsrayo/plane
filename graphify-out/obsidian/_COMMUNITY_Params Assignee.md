@@ -30,7 +30,7 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 1 edge to [[_COMMUNITY_Date Project]]
+- 1 edge to [[_COMMUNITY_Cycle Date]]
 
 ## Top bridge nodes
 

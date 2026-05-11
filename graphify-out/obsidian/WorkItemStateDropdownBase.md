@@ -1,19 +1,19 @@
 ---
-source_file: "components/dropdowns/intake-state/base.tsx"
+source_file: "web/core/components/dropdowns/intake-state/base.tsx"
 type: "code"
-community: "Issue Properties"
+community: "Label Dropdown"
 location: "L47"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Label_Dropdown
 ---
 
 # WorkItemStateDropdownBase
 
 ## Connections
 
-- [[base.tsx_2]] - `contains` [EXTRACTED]
-- [[dropdown.tsx_1]] - `imports` [EXTRACTED]
+- [[base.tsx_3]] - `contains` [EXTRACTED]
+- [[dropdown.tsx_3]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

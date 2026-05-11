@@ -1,20 +1,19 @@
 ---
-source_file: "components/modules/archived-modules/modal.tsx"
+source_file: "web/core/components/modules/archived-modules/modal.tsx"
 type: "code"
-community: "Module Analytics"
+community: "Cycles Archived"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Cycles_Archived
 ---
 
 # ArchiveModuleModal()
 
 ## Connections
 
-- [[modal.tsx_3]] - `contains` [EXTRACTED]
+- [[modal.tsx_8]] - `contains` [EXTRACTED]
 - [[useAppRouter()]] - `calls` [EXTRACTED]
-- [[useModule()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

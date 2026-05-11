@@ -1,12 +1,12 @@
 ---
-source_file: "components/views/view-list-item-action.tsx"
+source_file: "web/core/components/views/view-list-item-action.tsx"
 type: "code"
-community: "Project Quick"
+community: "Project Work"
 location: "L37"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Quick
+  - community/Project_Work
 ---
 
 # ViewListItemAction
@@ -16,4 +16,4 @@ tags:
 - [[view-list-item-action.tsx]] - `contains` [EXTRACTED]
 - [[view-list-item.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Quick
+#graphify/code #graphify/EXTRACTED #community/Project_Work

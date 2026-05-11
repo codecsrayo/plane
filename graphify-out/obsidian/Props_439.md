@@ -1,18 +1,18 @@
 ---
-source_file: "components/license/modal/card/checkout-button.tsx"
+source_file: "web/core/components/onboarding/steps/workspace/root.tsx"
 type: "code"
-community: "Plan Discount"
-location: "L21"
+community: "Step Onboarding"
+location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Plan_Discount
+  - community/Step_Onboarding
 ---
 
 # Props
 
 ## Connections
 
-- [[checkout-button.tsx]] - `contains` [EXTRACTED]
+- [[root.tsx_106]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Plan_Discount
+#graphify/code #graphify/EXTRACTED #community/Step_Onboarding

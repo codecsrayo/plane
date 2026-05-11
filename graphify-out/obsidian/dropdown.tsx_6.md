@@ -1,25 +1,38 @@
 ---
-source_file: "components/issues/select/dropdown.tsx"
+source_file: "web/core/components/dropdowns/member/dropdown.tsx"
 type: "code"
-community: "Issue Layouts"
+community: "Label Dropdown"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layouts
+  - community/Label_Dropdown
 ---
 
 # dropdown.tsx
 
 ## Connections
 
-- [[IssueLabelSelect]] - `contains` [EXTRACTED]
-- [[TWorkItemLabelSelectBaseProps]] - `imports` [EXTRACTED]
-- [[TWorkItemLabelSelectProps]] - `contains` [EXTRACTED]
-- [[WorkItemLabelSelectBase]] - `imports` [EXTRACTED]
+- [[MemberDropdown]] - `contains` [EXTRACTED]
+- [[MemberDropdownBase]] - `imports` [EXTRACTED]
+- [[TMemberDropdownProps]] - `contains` [EXTRACTED]
+- [[all-properties.tsx]] - `imports_from` [EXTRACTED]
+- [[assignee-column.tsx]] - `imports_from` [EXTRACTED]
+- [[attributes.tsx]] - `imports_from` [EXTRACTED]
 - [[base.tsx_6]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
-- [[use-label.ts]] - `imports_from` [EXTRACTED]
-- [[useLabel()]] - `imports` [EXTRACTED]
+- [[default-properties.tsx]] - `imports_from` [EXTRACTED]
+- [[draft-issue-properties.tsx]] - `imports_from` [EXTRACTED]
+- [[form.tsx_4]] - `imports_from` [EXTRACTED]
+- [[issue-properties.tsx]] - `imports_from` [EXTRACTED]
+- [[issue-properties.tsx_1]] - `imports_from` [EXTRACTED]
+- [[issue.tsx]] - `imports_from` [EXTRACTED]
+- [[project.tsx_3]] - `imports_from` [EXTRACTED]
+- [[properties.tsx]] - `imports_from` [EXTRACTED]
+- [[properties.tsx_1]] - `imports_from` [EXTRACTED]
+- [[properties.tsx_2]] - `imports_from` [EXTRACTED]
+- [[root.tsx_53]] - `imports_from` [EXTRACTED]
+- [[sidebar.tsx_4]] - `imports_from` [EXTRACTED]
+- [[use-member.ts]] - `imports_from` [EXTRACTED]
+- [[useMember()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layouts
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

@@ -1,26 +1,24 @@
 ---
 type: community
-cohesion: 0.19
-members: 24
+cohesion: 0.21
+members: 22
 ---
 
 # Group Transform
 
-**Cohesion:** 0.19 - loosely connected
-**Members:** 24 nodes
+**Cohesion:** 0.21 - loosely connected
+**Members:** 22 nodes
 
 ## Members
 
 - [[TProcessGroupNodeHandlers]] - code - utils/src/rich-filters/types/shared.ts
 - [[TTreeTransformFn]] - code - utils/src/rich-filters/operations/transformation/core.ts
 - [[TTreeTransformResult]] - code - utils/src/rich-filters/operations/transformation/core.ts
-- [[addAndCondition()]] - code - utils/src/rich-filters/operations/manipulation/core.ts
-- [[core.ts_16]] - code - utils/src/rich-filters/factories/nodes/core.ts
 - [[core.ts_13]] - code - utils/src/rich-filters/operations/manipulation/core.ts
 - [[core.ts_12]] - code - utils/src/rich-filters/operations/transformation/core.ts
-- [[createAndGroupNode()]] - code - utils/src/rich-filters/factories/nodes/core.ts
 - [[createGroupTransformResult()]] - code - utils/src/rich-filters/operations/transformation/core.ts
 - [[getGroupChildren()]] - code - utils/src/rich-filters/types/shared.ts
+- [[index.ts_124]] - code - utils/src/rich-filters/types/index.ts
 - [[isAndGroupNode()]] - code - utils/src/rich-filters/types/core.ts
 - [[processGroupNode()]] - code - utils/src/rich-filters/types/shared.ts
 - [[removeNodeFromExpression()]] - code - utils/src/rich-filters/operations/transformation/core.ts
@@ -45,15 +43,14 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 19 edges to [[_COMMUNITY_Condition Group]]
-- 8 edges to [[_COMMUNITY_Find Conditions]]
-- 3 edges to [[_COMMUNITY_Operator Work]]
-- 1 edge to [[_COMMUNITY_Instance Condition]]
+- 23 edges to [[_COMMUNITY_Group Condition]]
+- 4 edges to [[_COMMUNITY_Find Conditions]]
+- 3 edges to [[_COMMUNITY_Adapter Keys]]
 
 ## Top bridge nodes
 
-- [[addAndCondition()]] - degree 6, connects to 3 communities
-- [[core.ts_12]] - degree 19, connects to 2 communities
 - [[core.ts_13]] - degree 15, connects to 2 communities
-- [[transformExpressionTree()]] - degree 11, connects to 2 communities
 - [[getGroupChildren()]] - degree 11, connects to 2 communities
+- [[shared.ts_6]] - degree 11, connects to 2 communities
+- [[isAndGroupNode()]] - degree 6, connects to 2 communities
+- [[core.ts_12]] - degree 19, connects to 1 community

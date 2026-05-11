@@ -1,18 +1,21 @@
 ---
 source_file: "api_rust/src/routes/labels.rs"
 type: "code"
-community: "Community 188"
+community: "Issue Request"
 location: "L320"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_188
+  - graphify/INFERRED
+  - community/Issue_Request
 ---
 
 # bulk_create_labels()
 
 ## Connections
 
-- [[labels.rs]] - `contains` [EXTRACTED]
+- [[.json()]] - `calls` [INFERRED]
+- [[.set()]] - `calls` [INFERRED]
+- [[labels.rs_1]] - `contains` [EXTRACTED]
+- [[now]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_188
+#graphify/code #graphify/INFERRED #community/Issue_Request

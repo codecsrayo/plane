@@ -1,12 +1,12 @@
 ---
-source_file: "store/pages/project-page.store.ts"
+source_file: "web/core/store/pages/project-page.store.ts"
 type: "code"
-community: "Page Permissions"
+community: "Current User"
 location: "L38"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Page_Permissions
+  - community/Current_User
 ---
 
 # IProjectPageStore
@@ -14,6 +14,7 @@ tags:
 ## Connections
 
 - [[project-page.store.ts]] - `contains` [EXTRACTED]
-- [[root.store.ts]] - `imports` [EXTRACTED]
+- [[root.store.ts_2]] - `imports` [EXTRACTED]
+- [[use-page-store.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Page_Permissions
+#graphify/code #graphify/EXTRACTED #community/Current_User

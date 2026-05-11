@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/calendar/calendar.tsx"
+source_file: "web/core/components/project/publish-project/modal.tsx"
 type: "code"
-community: "Calendar Views"
-location: "L46"
+community: "Project Navigation"
+location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Views
+  - community/Project_Navigation
 ---
 
 # Props
 
 ## Connections
 
-- [[calendar.tsx]] - `contains` [EXTRACTED]
+- [[modal.tsx_11]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Views
+#graphify/code #graphify/EXTRACTED #community/Project_Navigation

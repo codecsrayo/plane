@@ -1,12 +1,12 @@
 ---
-source_file: "components/workspace/sidebar/favorites/favorite-items/common/favorite-item-drag-handle.tsx"
+source_file: "web/core/components/workspace/sidebar/favorites/favorite-items/common/favorite-item-drag-handle.tsx"
 type: "code"
-community: "Issue Layouts"
+community: "Issue Activity"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layouts
+  - community/Issue_Activity
 ---
 
 # FavoriteItemDragHandle
@@ -15,4 +15,4 @@ tags:
 
 - [[favorite-item-drag-handle.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layouts
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

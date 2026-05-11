@@ -1,18 +1,18 @@
 ---
-source_file: "components/common/access-field.tsx"
+source_file: "web/core/components/issues/issue-layouts/calendar/week-days.tsx"
 type: "code"
-community: "Access Field"
-location: "L15"
+community: "Calendar Issue"
+location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Access_Field
+  - community/Calendar_Issue
 ---
 
 # Props
 
 ## Connections
 
-- [[access-field.tsx]] - `contains` [EXTRACTED]
+- [[week-days.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Access_Field
+#graphify/code #graphify/EXTRACTED #community/Calendar_Issue

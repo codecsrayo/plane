@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/header/copy-link-control.tsx"
+source_file: "web/core/components/power-k/ui/modal/shortcuts-root.tsx"
 type: "code"
-community: "Collaborative Copy"
-location: "L20"
+community: "Power Shortcuts"
+location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Collaborative_Copy
+  - community/Power_Shortcuts
 ---
 
 # Props
 
 ## Connections
 
-- [[copy-link-control.tsx]] - `contains` [EXTRACTED]
+- [[shortcuts-root.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Collaborative_Copy
+#graphify/code #graphify/EXTRACTED #community/Power_Shortcuts

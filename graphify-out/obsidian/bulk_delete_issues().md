@@ -1,18 +1,20 @@
 ---
 source_file: "api_rust/src/routes/issue_extras2.rs"
 type: "code"
-community: "Community 53"
+community: "Issue Bulk"
 location: "L791"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_53
+  - graphify/INFERRED
+  - community/Issue_Bulk
 ---
 
 # bulk_delete_issues()
 
 ## Connections
 
+- [[.json()]] - `calls` [INFERRED]
 - [[issue_extras2.rs]] - `contains` [EXTRACTED]
+- [[now]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_53
+#graphify/code #graphify/INFERRED #community/Issue_Bulk

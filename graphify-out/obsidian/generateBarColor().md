@@ -1,12 +1,12 @@
 ---
-source_file: "components/analytics/work-items/utils.ts"
+source_file: "web/core/components/analytics/work-items/utils.ts"
 type: "code"
-community: "Chart Generate"
+community: "Table Chart"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Chart_Generate
+  - community/Table_Chart
 ---
 
 # generateBarColor()
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[priority-chart.tsx]] - `imports` [EXTRACTED]
-- [[utils.ts_6]] - `contains` [EXTRACTED]
+- [[utils.ts_18]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Chart_Generate
+#graphify/code #graphify/EXTRACTED #community/Table_Chart

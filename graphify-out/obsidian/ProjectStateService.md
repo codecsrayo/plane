@@ -1,5 +1,5 @@
 ---
-source_file: "services/project/project-state.service.ts"
+source_file: "web/core/services/project/project-state.service.ts"
 type: "code"
 community: "State Project"
 location: "L14"
@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 
-- [[.constructor()_118]] - `method` [EXTRACTED]
+- [[.constructor()_175]] - `method` [EXTRACTED]
 - [[.createState()]] - `method` [EXTRACTED]
 - [[.deleteState()]] - `method` [EXTRACTED]
 - [[.getIntakeState()]] - `method` [EXTRACTED]
@@ -24,6 +24,6 @@ tags:
 - [[.patchState()]] - `method` [EXTRACTED]
 - [[.updateState()]] - `method` [EXTRACTED]
 - [[project-state.service.ts]] - `contains` [EXTRACTED]
-- [[state.store.ts]] - `imports` [EXTRACTED]
+- [[state.store.ts_1]] - `imports` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/State_Project

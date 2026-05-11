@@ -1,5 +1,5 @@
 ---
-source_file: "components/analytics/work-items/workitems-insight-table.tsx"
+source_file: "web/core/components/analytics/work-items/workitems-insight-table.tsx"
 type: "code"
 community: "Insight Table"
 location: "L42"

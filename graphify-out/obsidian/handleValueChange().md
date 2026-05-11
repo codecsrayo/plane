@@ -1,5 +1,5 @@
 ---
-source_file: "components/core/theme/color-inputs.tsx"
+source_file: "web/core/components/core/theme/color-inputs.tsx"
 type: "code"
 community: "Theme Custom"
 location: "L18"

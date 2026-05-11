@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/config/account-commands.ts"
+source_file: "web/core/components/power-k/config/account-commands.ts"
 type: "code"
-community: "Command Palette"
+community: "Project Settings"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Command_Palette
+  - community/Project_Settings
 ---
 
 # account-commands.ts
@@ -15,10 +15,10 @@ tags:
 
 - [[TPowerKCommandConfig]] - `imports` [EXTRACTED]
 - [[commands.ts_3]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
-- [[types.ts_2]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
+- [[types.ts_16]] - `imports_from` [EXTRACTED]
 - [[use-app-router.tsx]] - `imports_from` [EXTRACTED]
 - [[useAppRouter()]] - `imports` [EXTRACTED]
 - [[usePowerKAccountCommands()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Command_Palette
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

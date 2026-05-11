@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/columns/link-column.tsx"
+source_file: "web/core/components/project/send-project-invitation-modal.tsx"
 type: "code"
-community: "Link Column"
-location: "L13"
+community: "Member Members"
+location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Link_Column
+  - community/Member_Members
 ---
 
 # Props
 
 ## Connections
 
-- [[link-column.tsx]] - `contains` [EXTRACTED]
+- [[send-project-invitation-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Link_Column
+#graphify/code #graphify/EXTRACTED #community/Member_Members

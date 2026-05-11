@@ -1,12 +1,12 @@
 ---
 source_file: "utils/src/theme/color-validation.ts"
 type: "code"
-community: "Color Utils"
+community: "Color Shade"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Color_Utils
+  - community/Color_Shade
 ---
 
 # color-validation.ts
@@ -20,4 +20,4 @@ tags:
 - [[validateAndAdjustOKLCH()]] - `contains` [EXTRACTED]
 - [[validateHexColor()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Color_Utils
+#graphify/code #graphify/EXTRACTED #community/Color_Shade

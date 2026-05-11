@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/custom-image/components/toolbar/download.tsx"
 type: "code"
-community: "Image Alignment"
+community: "Image Custom"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Image_Alignment
+  - community/Image_Custom
 ---
 
 # download.tsx
@@ -17,4 +17,4 @@ tags:
 - [[Props_43]] - `contains` [EXTRACTED]
 - [[root.tsx_5]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Image_Alignment
+#graphify/code #graphify/EXTRACTED #community/Image_Custom

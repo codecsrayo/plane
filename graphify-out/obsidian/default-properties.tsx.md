@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-modal/components/default-properties.tsx"
+source_file: "web/core/components/issues/issue-modal/components/default-properties.tsx"
 type: "code"
-community: "Issue Properties"
+community: "Issue Activity"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Issue_Activity
 ---
 
 # default-properties.tsx
@@ -17,6 +17,7 @@ tags:
 - [[DateDropdown]] - `imports` [EXTRACTED]
 - [[EstimateDropdown]] - `imports` [EXTRACTED]
 - [[IssueDefaultProperties]] - `contains` [EXTRACTED]
+- [[IssueIdentifier]] - `imports` [EXTRACTED]
 - [[MemberDropdown]] - `imports` [EXTRACTED]
 - [[ModuleDropdown]] - `imports` [EXTRACTED]
 - [[ParentIssuesListModal()]] - `imports` [EXTRACTED]
@@ -24,19 +25,19 @@ tags:
 - [[StateDropdown]] - `imports` [EXTRACTED]
 - [[TIssueDefaultPropertiesProps]] - `contains` [EXTRACTED]
 - [[date.tsx_1]] - `imports_from` [EXTRACTED]
-- [[dropdown.tsx_4]] - `imports_from` [EXTRACTED]
-- [[dropdown.tsx]] - `imports_from` [EXTRACTED]
-- [[dropdown.tsx_3]] - `imports_from` [EXTRACTED]
-- [[estimate.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts_101]] - `imports_from` [EXTRACTED]
-- [[index.ts_3]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
-- [[index.tsx_6]] - `imports_from` [EXTRACTED]
+- [[dropdown.tsx_2]] - `imports_from` [EXTRACTED]
+- [[dropdown.tsx_5]] - `imports_from` [EXTRACTED]
+- [[dropdown.tsx_6]] - `imports_from` [EXTRACTED]
+- [[estimate.tsx_1]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
+- [[index.ts_268]] - `imports_from` [EXTRACTED]
+- [[index.ts_366]] - `imports_from` [EXTRACTED]
+- [[index.tsx_12]] - `imports_from` [EXTRACTED]
 - [[parent-issues-list-modal.tsx]] - `imports_from` [EXTRACTED]
-- [[priority.tsx]] - `imports_from` [EXTRACTED]
-- [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
+- [[priority.tsx_1]] - `imports_from` [EXTRACTED]
+- [[use-platform-os.tsx_1]] - `imports_from` [EXTRACTED]
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

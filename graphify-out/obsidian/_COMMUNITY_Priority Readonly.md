@@ -11,9 +11,9 @@ members: 3
 
 ## Members
 
-- [[ReadonlyPriority]] - code - components/readonly/priority.tsx
-- [[TReadonlyPriorityProps]] - code - components/readonly/priority.tsx
-- [[priority.tsx_6]] - code - components/readonly/priority.tsx
+- [[ReadonlyPriority]] - code - web/core/components/readonly/priority.tsx
+- [[TReadonlyPriorityProps]] - code - web/core/components/readonly/priority.tsx
+- [[priority.tsx_7]] - code - web/core/components/readonly/priority.tsx
 
 ## Live Query (requires Dataview plugin)
 

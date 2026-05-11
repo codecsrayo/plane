@@ -1,20 +1,22 @@
 ---
-source_file: "api_rust/src/routes/estimates.rs"
+source_file: "api_rust/tests/estimates_v1.rs"
 type: "code"
-community: "Community 130"
-location: "L200"
+community: "Estimate Point"
+location: "L35"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_130
+  - community/Estimate_Point
 ---
 
 # create_estimate()
 
 ## Connections
 
-- [[enrich_estimate()]] - `calls` [EXTRACTED]
-- [[estimates.rs]] - `contains` [EXTRACTED]
-- [[require_role()]] - `calls` [INFERRED]
+- [[create_estimate_point_v1_creates_and_lists()]] - `calls` [EXTRACTED]
+- [[create_multiple_estimate_points_v1()]] - `calls` [EXTRACTED]
+- [[delete_estimate_point_v1_full_cycle()]] - `calls` [EXTRACTED]
+- [[estimates_v1.rs]] - `contains` [EXTRACTED]
+- [[patch_estimate_point_v1_updates_value()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_130
+#graphify/code #graphify/EXTRACTED #community/Estimate_Point

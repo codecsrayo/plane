@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/ui/pages/open-entity/project-views-menu.tsx"
+source_file: "web/core/components/issues/workspace-draft/delete-modal.tsx"
 type: "code"
-community: "File Icons Nav"
-location: "L17"
+community: "Issue Project"
+location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/File_Icons_Nav
+  - community/Issue_Project
 ---
 
 # Props
 
 ## Connections
 
-- [[project-views-menu.tsx]] - `contains` [EXTRACTED]
+- [[delete-modal.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/File_Icons_Nav
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

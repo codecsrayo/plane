@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/constants/meta.ts"
 type: "code"
-community: "Title Node"
+community: "Document Collaborative"
 location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Title_Node
+  - community/Document_Collaborative
 ---
 
 # CORE_EDITOR_META
@@ -19,4 +19,4 @@ tags:
 - [[use-title-editor.ts]] - `imports` [EXTRACTED]
 - [[utils.ts_2]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Title_Node
+#graphify/code #graphify/EXTRACTED #community/Document_Collaborative

@@ -1,18 +1,18 @@
 ---
-source_file: "components/home/root.tsx"
+source_file: "web/core/components/home/root.tsx"
 type: "code"
-community: "Dashboard Widgets"
+community: "User Greetings"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dashboard_Widgets
+  - community/User_Greetings
 ---
 
 # WorkspaceHomeView
 
 ## Connections
 
-- [[root.tsx]] - `contains` [EXTRACTED]
+- [[root.tsx_41]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets
+#graphify/code #graphify/EXTRACTED #community/User_Greetings

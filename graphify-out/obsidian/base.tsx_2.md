@@ -1,26 +1,32 @@
 ---
-source_file: "components/dropdowns/intake-state/base.tsx"
+source_file: "web/core/components/dropdowns/module/base.tsx"
 type: "code"
-community: "Issue Properties"
+community: "Label Dropdown"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Label_Dropdown
 ---
 
 # base.tsx
 
 ## Connections
 
-- [[BUTTON_VARIANTS_WITH_TEXT]] - `imports` [EXTRACTED]
-- [[DropdownButton()]] - `imports` [EXTRACTED]
-- [[TWorkItemStateDropdownBaseProps]] - `contains` [EXTRACTED]
-- [[WorkItemStateDropdownBase]] - `contains` [EXTRACTED]
+- [[BUTTON_VARIANTS_WITHOUT_TEXT]] - `imports` [EXTRACTED]
+- [[DropdownButton()_1]] - `imports` [EXTRACTED]
+- [[ModuleButtonContent()]] - `imports` [EXTRACTED]
+- [[ModuleDropdownBase]] - `contains` [EXTRACTED]
+- [[ModuleOptions]] - `imports` [EXTRACTED]
+- [[TModuleDropdownBaseProps]] - `contains` [EXTRACTED]
+- [[button-content.tsx]] - `imports_from` [EXTRACTED]
 - [[buttons.tsx]] - `imports_from` [EXTRACTED]
-- [[constants.ts_1]] - `imports_from` [EXTRACTED]
-- [[dropdown.tsx_1]] - `imports_from` [EXTRACTED]
+- [[constants.ts_5]] - `imports_from` [EXTRACTED]
+- [[dropdown.tsx_2]] - `imports_from` [EXTRACTED]
+- [[module-options.tsx]] - `imports_from` [EXTRACTED]
 - [[use-dropdown.ts]] - `imports_from` [EXTRACTED]
+- [[use-platform-os.tsx_1]] - `imports_from` [EXTRACTED]
 - [[useDropdown()]] - `imports` [EXTRACTED]
+- [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

@@ -1,19 +1,19 @@
 ---
-source_file: "store/inbox/project-inbox.store.ts"
+source_file: "web/core/store/inbox/project-inbox.store.ts"
 type: "code"
-community: "Inbox Issue"
+community: "Project Issue"
 location: "L39"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Inbox_Issue
+  - community/Project_Issue
 ---
 
 # IProjectInboxStore
 
 ## Connections
 
-- [[project-inbox.store.ts]] - `contains` [EXTRACTED]
-- [[root.store.ts]] - `imports` [EXTRACTED]
+- [[project-inbox.store.ts_1]] - `contains` [EXTRACTED]
+- [[root.store.ts_2]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Inbox_Issue
+#graphify/code #graphify/EXTRACTED #community/Project_Issue

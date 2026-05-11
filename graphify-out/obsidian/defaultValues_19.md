@@ -1,12 +1,12 @@
 ---
-source_file: "components/cycles/analytics-sidebar/sidebar-header.tsx"
+source_file: "web/core/components/cycles/analytics-sidebar/sidebar-header.tsx"
 type: "code"
-community: "Cycle Cycles"
+community: "Cycle Active"
 location: "L35"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Cycles
+  - community/Cycle_Active
 ---
 
 # defaultValues
@@ -15,4 +15,4 @@ tags:
 
 - [[sidebar-header.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Cycles
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

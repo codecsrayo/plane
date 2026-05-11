@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/constants/config.ts"
 type: "code"
-community: "Highlight Node"
+community: "Document Collaborative"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Highlight_Node
+  - community/Document_Collaborative
 ---
 
 # ACCEPTED_IMAGE_MIME_TYPES
@@ -18,4 +18,4 @@ tags:
 - [[extension.tsx_5]] - `imports` [EXTRACTED]
 - [[uploader.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Highlight_Node
+#graphify/code #graphify/EXTRACTED #community/Document_Collaborative

@@ -1,18 +1,18 @@
 ---
-source_file: "components/modules/archived-modules/header.tsx"
+source_file: "web/core/components/modules/archived-modules/header.tsx"
 type: "code"
-community: "Modules Archived"
+community: "Member Members"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Modules_Archived
+  - community/Member_Members
 ---
 
 # ArchivedModulesHeader
 
 ## Connections
 
-- [[header.tsx_2]] - `contains` [EXTRACTED]
+- [[header.tsx_44]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Modules_Archived
+#graphify/code #graphify/EXTRACTED #community/Member_Members

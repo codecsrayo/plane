@@ -1,18 +1,18 @@
 ---
-source_file: "components/editor/lite-text/editor.tsx"
+source_file: "web/core/components/editor/lite-text/editor.tsx"
 type: "code"
-community: "Toolbar Lite"
+community: "Toolbar Items"
 location: "L36"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toolbar_Lite
+  - community/Toolbar_Items
 ---
 
 # LiteTextEditorWrapperProps
 
 ## Connections
 
-- [[editor.tsx_3]] - `contains` [EXTRACTED]
+- [[editor.tsx_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toolbar_Lite
+#graphify/code #graphify/EXTRACTED #community/Toolbar_Items

@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/filters.tsx"
+source_file: "web/core/components/settings/boxed-control-item.tsx"
 type: "code"
-community: "Filter Controls"
-location: "L30"
+community: "Project Settings"
+location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Controls
+  - community/Project_Settings
 ---
 
 # Props
 
 ## Connections
 
-- [[filters.tsx_2]] - `contains` [EXTRACTED]
+- [[boxed-control-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Controls
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

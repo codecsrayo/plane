@@ -1,18 +1,18 @@
 ---
-source_file: "components/base-layouts/gantt/sidebar.tsx"
+source_file: "web/core/components/power-k/menus/modules.tsx"
 type: "code"
-community: "Gantt Sidebar"
-location: "L21"
+community: "Menu Power"
+location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Sidebar
+  - community/Menu_Power
 ---
 
 # Props
 
 ## Connections
 
-- [[sidebar.tsx_4]] - `contains` [EXTRACTED]
+- [[modules.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Sidebar
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/auth/logout.rs"
 type: "code"
-community: "Community 73"
+community: "Password Email"
 location: "L60"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_73
+  - community/Password_Email
 ---
 
 # LogoutTarget
@@ -15,4 +15,4 @@ tags:
 
 - [[logout.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_73
+#graphify/code #graphify/EXTRACTED #community/Password_Email

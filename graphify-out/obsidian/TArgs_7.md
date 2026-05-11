@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/helpers/file.ts"
 type: "code"
-community: "Args Uploader"
+community: "Image Custom"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Args_Uploader
+  - community/Image_Custom
 ---
 
 # TArgs
@@ -15,4 +15,4 @@ tags:
 
 - [[file.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Args_Uploader
+#graphify/code #graphify/EXTRACTED #community/Image_Custom

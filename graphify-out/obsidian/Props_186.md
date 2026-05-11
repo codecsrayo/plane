@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/group-drag-overlay.tsx"
+source_file: "web/core/components/settings/profile/content/root.tsx"
 type: "code"
-community: "Kanban Groups"
-location: "L18"
+community: "Profile Settings"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Kanban_Groups
+  - community/Profile_Settings
 ---
 
 # Props
 
 ## Connections
 
-- [[group-drag-overlay.tsx]] - `contains` [EXTRACTED]
+- [[root.tsx_59]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Kanban_Groups
+#graphify/code #graphify/EXTRACTED #community/Profile_Settings

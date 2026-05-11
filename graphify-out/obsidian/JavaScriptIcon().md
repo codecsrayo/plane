@@ -1,5 +1,5 @@
 ---
-source_file: "components/icons/attachment/js-file-icon.tsx"
+source_file: "web/core/components/icons/attachment/js-file-icon.tsx"
 type: "code"
 community: "Java Script"
 location: "L13"

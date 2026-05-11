@@ -1,5 +1,5 @@
 ---
-source_file: "components/stickies/layout/stickies-list.tsx"
+source_file: "web/core/components/stickies/layout/stickies-list.tsx"
 type: "code"
 community: "Stickies Sticky"
 location: "L185"

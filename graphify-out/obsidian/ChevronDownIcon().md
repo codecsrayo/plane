@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/icons/arrows/chevron-down.tsx"
 type: "code"
-community: "Collapsible Context"
+community: "Collapsible Chevron"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Collapsible_Context
+  - community/Collapsible_Chevron
 ---
 
 # ChevronDownIcon()
@@ -16,4 +16,4 @@ tags:
 - [[chevron-down.tsx]] - `contains` [EXTRACTED]
 - [[collapsible.stories.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Collapsible_Context
+#graphify/code #graphify/EXTRACTED #community/Collapsible_Chevron

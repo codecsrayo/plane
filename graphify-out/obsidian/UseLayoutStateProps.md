@@ -1,5 +1,5 @@
 ---
-source_file: "components/base-layouts/hooks/use-layout-state.ts"
+source_file: "web/core/components/base-layouts/hooks/use-layout-state.ts"
 type: "code"
 community: "Group Drop"
 location: "L11"

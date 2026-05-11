@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/base-spreadsheet-root.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/base-spreadsheet-root.tsx"
 type: "code"
-community: "Issue Layout HOC"
+community: "Issue Project"
 location: "L34"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layout_HOC
+  - community/Issue_Project
 ---
 
 # IBaseSpreadsheetRoot
@@ -15,4 +15,4 @@ tags:
 
 - [[base-spreadsheet-root.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layout_HOC
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

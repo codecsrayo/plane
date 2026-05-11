@@ -1,5 +1,5 @@
 ---
-source_file: "components/analytics/work-items/created-vs-resolved.tsx"
+source_file: "web/core/components/analytics/work-items/created-vs-resolved.tsx"
 type: "code"
 community: "Analytics Project"
 location: "L25"

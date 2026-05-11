@@ -1,5 +1,5 @@
 ---
-source_file: "components/core/theme/theme-mode-selector.tsx"
+source_file: "web/core/components/core/theme/theme-mode-selector.tsx"
 type: "code"
 community: "Theme Custom"
 location: "L17"

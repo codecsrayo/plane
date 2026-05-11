@@ -1,18 +1,19 @@
 ---
-source_file: "components/cycles/archived-cycles/header.tsx"
+source_file: "web/core/components/cycles/archived-cycles/header.tsx"
 type: "code"
-community: "Archived Cycles"
+community: "Cycles Archived"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Archived_Cycles
+  - community/Cycles_Archived
 ---
 
 # ArchivedCyclesHeader
 
 ## Connections
 
-- [[header.tsx_10]] - `contains` [EXTRACTED]
+- [[header.tsx_52]] - `contains` [EXTRACTED]
+- [[page.tsx_22]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Archived_Cycles
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

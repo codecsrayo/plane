@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/menus/builder.tsx"
+source_file: "web/core/components/power-k/menus/builder.tsx"
 type: "code"
-community: "File Icons Nav"
+community: "Menu Power"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/File_Icons_Nav
+  - community/Menu_Power
 ---
 
 # PowerKMenuBuilder()
@@ -18,8 +18,8 @@ tags:
 - [[labels.tsx_2]] - `imports` [EXTRACTED]
 - [[modules.tsx]] - `imports` [EXTRACTED]
 - [[projects.tsx]] - `imports` [EXTRACTED]
-- [[settings.tsx]] - `imports` [EXTRACTED]
+- [[settings.tsx_1]] - `imports` [EXTRACTED]
 - [[views.tsx]] - `imports` [EXTRACTED]
 - [[workspaces.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/File_Icons_Nav
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

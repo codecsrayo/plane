@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/button/helper.tsx"
 type: "code"
-community: "Button Auth"
+community: "Button Styling"
 location: "L43"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Button_Auth
+  - community/Button_Styling
 ---
 
 # ButtonProps
@@ -16,4 +16,4 @@ tags:
 - [[button.tsx_2]] - `imports` [EXTRACTED]
 - [[helper.tsx_17]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Button_Auth
+#graphify/code #graphify/EXTRACTED #community/Button_Styling

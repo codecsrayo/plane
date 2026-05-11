@@ -1,12 +1,12 @@
 ---
-source_file: "components/dropdowns/cycle/cycle-options.tsx"
+source_file: "web/core/components/dropdowns/cycle/cycle-options.tsx"
 type: "code"
-community: "Issue Layouts"
+community: "Label Dropdown"
 location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layouts
+  - community/Label_Dropdown
 ---
 
 # CycleOptionsProps
@@ -15,4 +15,4 @@ tags:
 
 - [[cycle-options.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layouts
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

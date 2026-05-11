@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/preview-card/date.tsx"
+source_file: "web/core/components/settings/profile/heading.tsx"
 type: "code"
-community: "Calendar Blocks"
-location: "L13"
+community: "Settings Profile"
+location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Blocks
+  - community/Settings_Profile
 ---
 
 # Props
 
 ## Connections
 
-- [[date.tsx_3]] - `contains` [EXTRACTED]
+- [[heading.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Blocks
+#graphify/code #graphify/EXTRACTED #community/Settings_Profile

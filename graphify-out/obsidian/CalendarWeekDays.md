@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/calendar/week-days.tsx"
+source_file: "web/core/components/issues/issue-layouts/calendar/week-days.tsx"
 type: "code"
-community: "Calendar Views"
+community: "Calendar Issue"
 location: "L47"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Views
+  - community/Calendar_Issue
 ---
 
 # CalendarWeekDays
@@ -16,4 +16,4 @@ tags:
 - [[calendar.tsx]] - `imports` [EXTRACTED]
 - [[week-days.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Views
+#graphify/code #graphify/EXTRACTED #community/Calendar_Issue

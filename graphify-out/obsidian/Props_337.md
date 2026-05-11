@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/ui/modal/context-indicator.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/issue-detail-widget-collapsibles.tsx"
 type: "code"
-community: "Context Power"
-location: "L15"
+community: "Issue Widget"
+location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Context_Power
+  - community/Issue_Widget
 ---
 
 # Props
 
 ## Connections
 
-- [[context-indicator.tsx]] - `contains` [EXTRACTED]
+- [[issue-detail-widget-collapsibles.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Context_Power
+#graphify/code #graphify/EXTRACTED #community/Issue_Widget

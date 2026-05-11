@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/jobs/cron.rs"
 type: "code"
-community: "Community 115"
+community: "Asset Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_115
+  - community/Asset_Issue
 ---
 
 # cron.rs
@@ -18,4 +18,4 @@ tags:
 - [[secs_until_utc()]] - `contains` [EXTRACTED]
 - [[start_cron()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_115
+#graphify/code #graphify/EXTRACTED #community/Asset_Issue

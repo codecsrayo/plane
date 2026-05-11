@@ -1,18 +1,18 @@
 ---
-source_file: "components/settings/content-wrapper.tsx"
+source_file: "web/core/components/workspace/sidebar/projects-list-item.tsx"
 type: "code"
-community: "Content Wrapper"
-location: "L13"
+community: "Project Profile"
+location: "L47"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Content_Wrapper
+  - community/Project_Profile
 ---
 
 # Props
 
 ## Connections
 
-- [[content-wrapper.tsx]] - `contains` [EXTRACTED]
+- [[projects-list-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Content_Wrapper
+#graphify/code #graphify/EXTRACTED #community/Project_Profile

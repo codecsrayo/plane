@@ -1,18 +1,18 @@
 ---
 source_file: "api_rust/src/routes/api_tokens.rs"
 type: "code"
-community: "Community 189"
+community: "Issue Request"
 location: "L103"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_189
+  - community/Issue_Request
 ---
 
 # CreateApiTokenRequest
 
 ## Connections
 
-- [[api_tokens.rs]] - `contains` [EXTRACTED]
+- [[api_tokens.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_189
+#graphify/code #graphify/EXTRACTED #community/Issue_Request

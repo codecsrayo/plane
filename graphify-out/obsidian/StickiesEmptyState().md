@@ -1,5 +1,5 @@
 ---
-source_file: "components/home/widgets/empty-states/stickies.tsx"
+source_file: "web/core/components/home/widgets/empty-states/stickies.tsx"
 type: "code"
 community: "Stickies Sticky"
 location: "L10"

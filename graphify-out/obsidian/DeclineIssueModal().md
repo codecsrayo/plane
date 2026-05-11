@@ -1,12 +1,12 @@
 ---
-source_file: "components/inbox/modals/decline-issue-modal.tsx"
+source_file: "web/core/components/inbox/modals/decline-issue-modal.tsx"
 type: "code"
-community: "Project Archives"
+community: "Issue Inbox"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Archives
+  - community/Issue_Inbox
 ---
 
 # DeclineIssueModal()
@@ -17,4 +17,4 @@ tags:
 - [[inbox-issue-header.tsx]] - `imports` [EXTRACTED]
 - [[useProject()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Archives
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

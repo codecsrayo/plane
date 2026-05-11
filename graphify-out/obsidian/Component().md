@@ -1,5 +1,5 @@
 ---
-source_file: "components/navigation/items-root.tsx"
+source_file: "web/core/components/navigation/items-root.tsx"
 type: "code"
 community: "Sidebar Rail"
 location: "L19"

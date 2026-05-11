@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/roots/all-issue-layout-root.tsx"
+source_file: "web/core/components/issues/layout-quick-actions.tsx"
 type: "code"
-community: "Issue Layout Roots"
-location: "L29"
+community: "Menu Quick"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layout_Roots
+  - community/Menu_Quick
 ---
 
 # Props
 
 ## Connections
 
-- [[all-issue-layout-root.tsx]] - `contains` [EXTRACTED]
+- [[layout-quick-actions.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layout_Roots
+#graphify/code #graphify/EXTRACTED #community/Menu_Quick

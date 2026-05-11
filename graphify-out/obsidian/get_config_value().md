@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/utils/instance_config.rs"
 type: "code"
-community: "Community 136"
+community: "Magic Sign"
 location: "L36"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_136
+  - community/Magic_Sign
 ---
 
 # get_config_value()
@@ -26,7 +26,7 @@ tags:
 - [[run_email_check()]] - `calls` [INFERRED]
 - [[send_magic_code_email()]] - `calls` [INFERRED]
 - [[send_reset_email()]] - `calls` [INFERRED]
-- [[track_event()]] - `calls` [INFERRED]
+- [[track_event()_1]] - `calls` [INFERRED]
 - [[unsplash()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_136
+#graphify/code #graphify/INFERRED #community/Magic_Sign

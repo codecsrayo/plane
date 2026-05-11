@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-detail/label/label-list-item.tsx"
+source_file: "web/core/components/issues/issue-detail/label/label-list-item.tsx"
 type: "code"
-community: "Label Issue"
+community: "Label Dropdown"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Issue
+  - community/Label_Dropdown
 ---
 
 # LabelListItem
@@ -16,4 +16,4 @@ tags:
 - [[label-list-item.tsx]] - `contains` [EXTRACTED]
 - [[label-list.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Issue
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

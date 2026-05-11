@@ -1,12 +1,12 @@
 ---
-source_file: "components/ui/loader/cycle-module-list-loader.tsx"
+source_file: "web/core/components/ui/loader/cycle-module-list-loader.tsx"
 type: "code"
-community: "Modules Archived"
+community: "Cycles Archived"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Modules_Archived
+  - community/Cycles_Archived
 ---
 
 # CycleModuleListLayoutLoader()
@@ -16,9 +16,10 @@ tags:
 - [[cycle-module-list-loader.tsx]] - `contains` [EXTRACTED]
 - [[cycles-view.tsx]] - `imports` [EXTRACTED]
 - [[modules-list-view.tsx]] - `imports` [EXTRACTED]
-- [[root.tsx_13]] - `imports` [EXTRACTED]
-- [[root.tsx_52]] - `imports` [EXTRACTED]
-- [[view.tsx]] - `imports` [EXTRACTED]
-- [[view.tsx_2]] - `imports` [EXTRACTED]
+- [[page.tsx_26]] - `imports` [EXTRACTED]
+- [[root.tsx_54]] - `imports` [EXTRACTED]
+- [[root.tsx_93]] - `imports` [EXTRACTED]
+- [[view.tsx_1]] - `imports` [EXTRACTED]
+- [[view.tsx_3]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Modules_Archived
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

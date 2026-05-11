@@ -1,5 +1,5 @@
 ---
-source_file: "components/workspace/invite-modal/fields.tsx"
+source_file: "web/core/components/workspace/invite-modal/fields.tsx"
 type: "code"
 community: "Invitation Workspace"
 location: "L20"

@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/plugins/file/delete.ts"
 type: "code"
-community: "Title Node"
+community: "Assets Node"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Title_Node
+  - community/Assets_Node
 ---
 
 # TrackFileDeletionPlugin()
@@ -17,4 +17,4 @@ tags:
 - [[delete.ts]] - `contains` [EXTRACTED]
 - [[root.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Title_Node
+#graphify/code #graphify/EXTRACTED #community/Assets_Node

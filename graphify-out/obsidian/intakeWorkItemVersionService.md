@@ -1,12 +1,12 @@
 ---
-source_file: "components/inbox/content/issue-root.tsx"
+source_file: "web/core/components/inbox/content/issue-root.tsx"
 type: "code"
-community: "Issue Content"
+community: "Issue Inbox"
 location: "L42"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Content
+  - community/Issue_Inbox
 ---
 
 # intakeWorkItemVersionService
@@ -15,4 +15,4 @@ tags:
 
 - [[issue-root.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Content
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

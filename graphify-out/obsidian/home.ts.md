@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/home.ts"
 type: "code"
-community: "Favorites Pages"
+community: "Issue Entity"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Favorites_Pages
+  - community/Issue_Entity
 ---
 
 # home.ts
@@ -30,4 +30,4 @@ tags:
 - [[common.ts_4]] - `imports_from` [EXTRACTED]
 - [[issues.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Favorites_Pages
+#graphify/code #graphify/EXTRACTED #community/Issue_Entity

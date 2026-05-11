@@ -1,12 +1,12 @@
 ---
-source_file: "store/favorite.store.ts"
+source_file: "web/core/store/favorite.store.ts"
 type: "code"
-community: "Project Root Store"
+community: "Project Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Root_Store
+  - community/Project_Issue
 ---
 
 # favorite.store.ts
@@ -16,14 +16,14 @@ tags:
 - [[CoreRootStore]] - `imports` [EXTRACTED]
 - [[FavoriteStore]] - `contains` [EXTRACTED]
 - [[IFavoriteStore]] - `contains` [EXTRACTED]
-- [[api.service.ts]] - `imports_from` [EXTRACTED]
+- [[api.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[destinationIndex]] - `contains` [EXTRACTED]
 - [[id]] - `contains` [EXTRACTED]
-- [[index.ts_18]] - `imports_from` [EXTRACTED]
+- [[index.ts_283]] - `imports_from` [EXTRACTED]
 - [[projectData]] - `contains` [EXTRACTED]
-- [[root.store.ts]] - `imports_from` [EXTRACTED]
+- [[root.store.ts_2]] - `imports_from` [EXTRACTED]
 - [[sortedIds]] - `contains` [EXTRACTED]
 - [[toApiError()]] - `imports` [EXTRACTED]
 - [[use-favorite.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Root_Store
+#graphify/code #graphify/EXTRACTED #community/Project_Issue

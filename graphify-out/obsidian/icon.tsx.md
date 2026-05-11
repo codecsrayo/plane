@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/icons/icon.tsx"
 type: "code"
-community: "Icon Copy"
+community: "Icons Icon"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Icon_Copy
+  - community/Icons_Icon
 ---
 
 # icon.tsx
@@ -23,4 +23,4 @@ tags:
 - [[registry.ts]] - `imports_from` [EXTRACTED]
 - [[type.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Icon_Copy
+#graphify/code #graphify/EXTRACTED #community/Icons_Icon

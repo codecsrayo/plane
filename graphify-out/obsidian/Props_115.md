@@ -1,18 +1,18 @@
 ---
-source_file: "components/settings/project/content/feature-control-item.tsx"
+source_file: "web/core/components/workspace/settings/members-list-item.tsx"
 type: "code"
-community: "Project Settings"
-location: "L17"
+community: "Member Members"
+location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Member_Members
 ---
 
 # Props
 
 ## Connections
 
-- [[feature-control-item.tsx]] - `contains` [EXTRACTED]
+- [[members-list-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Member_Members

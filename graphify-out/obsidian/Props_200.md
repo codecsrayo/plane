@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/columns/attachment-column.tsx"
+source_file: "web/core/components/dropdowns/cycle/index.tsx"
 type: "code"
-community: "Attachment Column"
-location: "L13"
+community: "Label Dropdown"
+location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Attachment_Column
+  - community/Label_Dropdown
 ---
 
 # Props
 
 ## Connections
 
-- [[attachment-column.tsx]] - `contains` [EXTRACTED]
+- [[index.tsx_12]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Attachment_Column
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

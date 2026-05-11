@@ -1,18 +1,18 @@
 ---
-source_file: "components/web-hooks/generated-hook-details.tsx"
+source_file: "web/core/components/modules/links/list-item.tsx"
 type: "code"
-community: "Webhook Generated"
-location: "L15"
+community: "Member Members"
+location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Webhook_Generated
+  - community/Member_Members
 ---
 
 # Props
 
 ## Connections
 
-- [[generated-hook-details.tsx]] - `contains` [EXTRACTED]
+- [[list-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Webhook_Generated
+#graphify/code #graphify/EXTRACTED #community/Member_Members

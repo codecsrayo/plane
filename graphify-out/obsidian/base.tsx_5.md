@@ -1,12 +1,12 @@
 ---
-source_file: "components/dropdowns/member/base.tsx"
+source_file: "web/core/components/dropdowns/state/base.tsx"
 type: "code"
-community: "Issue Properties"
+community: "Label Dropdown"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Label_Dropdown
 ---
 
 # base.tsx
@@ -14,17 +14,13 @@ tags:
 ## Connections
 
 - [[BUTTON_VARIANTS_WITH_TEXT]] - `imports` [EXTRACTED]
-- [[ButtonAvatars]] - `imports` [EXTRACTED]
-- [[DropdownButton()]] - `imports` [EXTRACTED]
-- [[MemberDropdownBase]] - `contains` [EXTRACTED]
-- [[MemberOptions]] - `imports` [EXTRACTED]
-- [[TMemberDropdownBaseProps]] - `contains` [EXTRACTED]
-- [[avatar.tsx]] - `imports_from` [EXTRACTED]
+- [[DropdownButton()_1]] - `imports` [EXTRACTED]
+- [[TWorkItemStateDropdownBaseProps_1]] - `contains` [EXTRACTED]
+- [[WorkItemStateDropdownBase_1]] - `contains` [EXTRACTED]
 - [[buttons.tsx]] - `imports_from` [EXTRACTED]
-- [[constants.ts_1]] - `imports_from` [EXTRACTED]
-- [[dropdown.tsx_4]] - `imports_from` [EXTRACTED]
-- [[member-options.tsx]] - `imports_from` [EXTRACTED]
+- [[constants.ts_5]] - `imports_from` [EXTRACTED]
+- [[dropdown.tsx_5]] - `imports_from` [EXTRACTED]
 - [[use-dropdown.ts]] - `imports_from` [EXTRACTED]
 - [[useDropdown()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

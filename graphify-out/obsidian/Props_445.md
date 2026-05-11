@@ -1,18 +1,18 @@
 ---
-source_file: "components/core/description-versions/modal.tsx"
+source_file: "web/core/components/onboarding/steps/usecase/root.tsx"
 type: "code"
-community: "Description Dropdown"
-location: "L26"
+community: "Setup Values"
+location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Description_Dropdown
+  - community/Setup_Values
 ---
 
 # Props
 
 ## Connections
 
-- [[modal.tsx_14]] - `contains` [EXTRACTED]
+- [[root.tsx_110]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Description_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Setup_Values

@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/jobs/cron.rs"
 type: "code"
-community: "Community 115"
+community: "Asset Issue"
 location: "L249"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_115
+  - community/Asset_Issue
 ---
 
 # enqueue_issue_automation()
@@ -17,4 +17,4 @@ tags:
 - [[cron.rs]] - `contains` [EXTRACTED]
 - [[start_cron()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_115
+#graphify/code #graphify/EXTRACTED #community/Asset_Issue

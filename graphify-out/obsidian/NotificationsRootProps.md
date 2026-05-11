@@ -1,18 +1,18 @@
 ---
-source_file: "components/workspace-notifications/root.tsx"
+source_file: "web/core/components/workspace-notifications/root.tsx"
 type: "code"
-community: "Wrapper Workspace"
+community: "Workspace Issue"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Wrapper_Workspace
+  - community/Workspace_Issue
 ---
 
 # NotificationsRootProps
 
 ## Connections
 
-- [[root.tsx_44]] - `contains` [EXTRACTED]
+- [[root.tsx_85]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Wrapper_Workspace
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

@@ -1,12 +1,12 @@
 ---
 source_file: "utils/src/work-item-filters/configs/filters/cycle.ts"
 type: "code"
-community: "Cycle Multi"
+community: "Cycle Date"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Multi
+  - community/Cycle_Date
 ---
 
 # getCycleMultiSelectConfig()
@@ -16,4 +16,4 @@ tags:
 - [[cycle.ts_3]] - `contains` [EXTRACTED]
 - [[getMultiSelectConfig()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Multi
+#graphify/code #graphify/EXTRACTED #community/Cycle_Date

@@ -1,12 +1,12 @@
 ---
-source_file: "components/readonly/member.tsx"
+source_file: "web/core/components/readonly/member.tsx"
 type: "code"
-community: "Issue Filters"
+community: "Label Dropdown"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters
+  - community/Label_Dropdown
 ---
 
 # TReadonlyMemberProps
@@ -15,4 +15,4 @@ tags:
 
 - [[member.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

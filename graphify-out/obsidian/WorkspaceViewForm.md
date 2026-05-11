@@ -1,12 +1,12 @@
 ---
-source_file: "components/workspace/views/form.tsx"
+source_file: "web/core/components/workspace/views/form.tsx"
 type: "code"
-community: "Issue Layout Roots"
+community: "Issue Project"
 location: "L43"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layout_Roots
+  - community/Issue_Project
 ---
 
 # WorkspaceViewForm
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[form.tsx_1]] - `contains` [EXTRACTED]
-- [[modal.tsx_1]] - `imports` [EXTRACTED]
+- [[modal.tsx_6]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layout_Roots
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

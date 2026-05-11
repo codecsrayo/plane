@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/archive-issue-modal.tsx"
+source_file: "web/core/components/settings/page-header.tsx"
 type: "code"
-community: "Project Archives"
-location: "L19"
+community: "Settings Project"
+location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Archives
+  - community/Settings_Project
 ---
 
 # Props
 
 ## Connections
 
-- [[archive-issue-modal.tsx]] - `contains` [EXTRACTED]
+- [[page-header.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Archives
+#graphify/code #graphify/EXTRACTED #community/Settings_Project

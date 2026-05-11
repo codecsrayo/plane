@@ -1,12 +1,12 @@
 ---
-source_file: "components/workspace/ConfirmWorkspaceMemberRemove.tsx"
+source_file: "web/core/components/workspace/ConfirmWorkspaceMemberRemove.tsx"
 type: "code"
-community: "Member Settings"
+community: "Member Members"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Settings
+  - community/Member_Members
 ---
 
 # ConfirmWorkspaceMemberRemove.tsx
@@ -14,8 +14,8 @@ tags:
 ## Connections
 
 - [[ConfirmWorkspaceMemberRemove_1]] - `contains` [EXTRACTED]
-- [[Props_24]] - `imports` [EXTRACTED]
+- [[Props_101]] - `imports` [EXTRACTED]
 - [[confirm-workspace-member-remove.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Settings
+#graphify/code #graphify/EXTRACTED #community/Member_Members

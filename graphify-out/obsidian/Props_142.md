@@ -1,18 +1,18 @@
 ---
-source_file: "components/project/create/project-create-buttons.tsx"
+source_file: "web/core/components/modules/form.tsx"
 type: "code"
-community: "Project Buttons"
-location: "L17"
+community: "Label Dropdown"
+location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Buttons
+  - community/Label_Dropdown
 ---
 
 # Props
 
 ## Connections
 
-- [[project-create-buttons.tsx]] - `contains` [EXTRACTED]
+- [[form.tsx_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Buttons
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

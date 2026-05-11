@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/attachment/attachment-item-list.tsx"
+source_file: "web/core/components/issues/attachment/attachment-item-list.tsx"
 type: "code"
-community: "Issue Attachments"
+community: "Attachment Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Attachments
+  - community/Attachment_Issue
 ---
 
 # attachment-item-list.tsx
@@ -23,8 +23,9 @@ tags:
 - [[attachment-list-upload-item.tsx]] - `imports_from` [EXTRACTED]
 - [[content.tsx]] - `imports_from` [EXTRACTED]
 - [[delete-attachment-modal.tsx]] - `imports_from` [EXTRACTED]
-- [[helper.tsx_5]] - `imports_from` [EXTRACTED]
+- [[helper.tsx_27]] - `imports_from` [EXTRACTED]
 - [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
+- [[useFileSize()]] - `imports` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Attachments
+#graphify/code #graphify/EXTRACTED #community/Attachment_Issue

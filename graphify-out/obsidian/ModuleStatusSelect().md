@@ -1,5 +1,5 @@
 ---
-source_file: "components/modules/select/status.tsx"
+source_file: "web/core/components/modules/select/status.tsx"
 type: "code"
 community: "Status"
 location: "L27"

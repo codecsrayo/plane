@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-detail/issue-activity/activity/actions/helpers/activity-block.tsx"
+source_file: "web/core/components/issues/issue-detail/issue-activity/activity/actions/helpers/activity-block.tsx"
 type: "code"
 community: "Issue Activity"
 location: "L27"
@@ -14,6 +14,7 @@ tags:
 ## Connections
 
 - [[activity-block.tsx]] - `contains` [EXTRACTED]
+- [[renderFormattedDate()_1]] - `calls` [INFERRED]
 - [[useIssueDetail()]] - `calls` [EXTRACTED]
 - [[usePlatformOS()]] - `calls` [EXTRACTED]
 

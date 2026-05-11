@@ -1,18 +1,18 @@
 ---
-source_file: "components/empty-state/simple-empty-state-root.tsx"
+source_file: "web/core/components/cycles/list/cycle-list-group-header.tsx"
 type: "code"
-community: "Progress Empty"
-location: "L13"
+community: "Cycle Active"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Progress_Empty
+  - community/Cycle_Active
 ---
 
 # Props
 
 ## Connections
 
-- [[simple-empty-state-root.tsx]] - `contains` [EXTRACTED]
+- [[cycle-list-group-header.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Progress_Empty
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

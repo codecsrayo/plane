@@ -11,22 +11,22 @@ members: 16
 
 ## Members
 
-- [[.constructor()_14]] - code - store/router.store.ts
-- [[.cycleId()]] - code - store/router.store.ts
-- [[.epicId()]] - code - store/router.store.ts
-- [[.globalViewId()]] - code - store/router.store.ts
-- [[.inboxId()]] - code - store/router.store.ts
-- [[.issueId()]] - code - store/router.store.ts
-- [[.moduleId()]] - code - store/router.store.ts
-- [[.peekId()]] - code - store/router.store.ts
-- [[.profileViewId()]] - code - store/router.store.ts
-- [[.projectId()]] - code - store/router.store.ts
-- [[.teamspaceId()]] - code - store/router.store.ts
-- [[.userId()]] - code - store/router.store.ts
-- [[.viewId()]] - code - store/router.store.ts
-- [[.webhookId()]] - code - store/router.store.ts
-- [[.workspaceSlug()]] - code - store/router.store.ts
-- [[RouterStore]] - code - store/router.store.ts
+- [[.constructor()_71]] - code - web/core/store/router.store.ts
+- [[.cycleId()]] - code - web/core/store/router.store.ts
+- [[.epicId()]] - code - web/core/store/router.store.ts
+- [[.globalViewId()]] - code - web/core/store/router.store.ts
+- [[.inboxId()]] - code - web/core/store/router.store.ts
+- [[.issueId()]] - code - web/core/store/router.store.ts
+- [[.moduleId()]] - code - web/core/store/router.store.ts
+- [[.peekId()]] - code - web/core/store/router.store.ts
+- [[.profileViewId()]] - code - web/core/store/router.store.ts
+- [[.projectId()]] - code - web/core/store/router.store.ts
+- [[.teamspaceId()]] - code - web/core/store/router.store.ts
+- [[.userId()]] - code - web/core/store/router.store.ts
+- [[.viewId()]] - code - web/core/store/router.store.ts
+- [[.webhookId()]] - code - web/core/store/router.store.ts
+- [[.workspaceSlug()]] - code - web/core/store/router.store.ts
+- [[RouterStore]] - code - web/core/store/router.store.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -37,8 +37,8 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 1 edge to [[_COMMUNITY_Project Root Store]]
-- 1 edge to [[_COMMUNITY_Router Params]]
+- 1 edge to [[_COMMUNITY_Project Issue]]
+- 1 edge to [[_COMMUNITY_Member Workspace]]
 
 ## Top bridge nodes
 

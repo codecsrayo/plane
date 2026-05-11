@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/auth/magic_auth.rs"
 type: "code"
-community: "Auth Rust API"
+community: "Password Email"
 location: "L560"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Auth_Rust_API
+  - community/Password_Email
 ---
 
 # ensure_magic_enabled()
@@ -20,4 +20,4 @@ tags:
 - [[get_config_value()]] - `calls` [INFERRED]
 - [[magic_auth.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Auth_Rust_API
+#graphify/code #graphify/INFERRED #community/Password_Email

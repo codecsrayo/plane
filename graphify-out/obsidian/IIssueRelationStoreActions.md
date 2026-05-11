@@ -1,12 +1,12 @@
 ---
-source_file: "store/issue/issue-details/relation.store.ts"
+source_file: "web/core/store/issue/issue-details/relation.store.ts"
 type: "code"
-community: "Relation Issue"
+community: "Issue Reaction"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Relation_Issue
+  - community/Issue_Reaction
 ---
 
 # IIssueRelationStoreActions
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[relation.store.ts]] - `contains` [EXTRACTED]
-- [[root.store.ts_2]] - `imports` [EXTRACTED]
+- [[root.store.ts_4]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Relation_Issue
+#graphify/code #graphify/EXTRACTED #community/Issue_Reaction

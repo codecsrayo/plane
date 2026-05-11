@@ -1,18 +1,18 @@
 ---
-source_file: "components/settings/helper.ts"
+source_file: "web/core/components/settings/helper.ts"
 type: "code"
-community: "Href Label"
+community: "Project Workspace"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Href_Label
+  - community/Project_Workspace
 ---
 
 # hrefToLabelMap()
 
 ## Connections
 
-- [[helper.ts]] - `contains` [EXTRACTED]
+- [[helper.ts_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Href_Label
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

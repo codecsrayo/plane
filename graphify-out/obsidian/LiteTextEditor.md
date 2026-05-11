@@ -1,18 +1,19 @@
 ---
-source_file: "components/editor/lite-text/editor.tsx"
+source_file: "web/core/components/editor/lite-text/editor.tsx"
 type: "code"
-community: "Toolbar Lite"
+community: "Document Collaborative"
 location: "L65"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toolbar_Lite
+  - community/Document_Collaborative
 ---
 
 # LiteTextEditor
 
 ## Connections
 
-- [[editor.tsx_3]] - `contains` [EXTRACTED]
+- [[editor.tsx_2]] - `contains` [EXTRACTED]
+- [[editor.tsx_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toolbar_Lite
+#graphify/code #graphify/EXTRACTED #community/Document_Collaborative

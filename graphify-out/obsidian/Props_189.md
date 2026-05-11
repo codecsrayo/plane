@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/list/list-group.tsx"
+source_file: "web/core/components/settings/project/sidebar/header.tsx"
 type: "code"
-community: "Kanban Groups"
-location: "L51"
+community: "Project Settings"
+location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Kanban_Groups
+  - community/Project_Settings
 ---
 
 # Props
 
 ## Connections
 
-- [[list-group.tsx]] - `contains` [EXTRACTED]
+- [[header.tsx_47]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Kanban_Groups
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/combobox/combobox.tsx"
 type: "code"
-community: "Combobox Button"
+community: "Toolbar Combobox"
 location: "L99"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Combobox_Button
+  - community/Toolbar_Combobox
 ---
 
 # ComboboxButton
@@ -15,4 +15,4 @@ tags:
 
 - [[combobox.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Combobox_Button
+#graphify/code #graphify/EXTRACTED #community/Toolbar_Combobox

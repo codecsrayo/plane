@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/workspace-draft/root.tsx"
+source_file: "web/core/components/issues/workspace-draft/root.tsx"
 type: "code"
-community: "Issue Identifiers"
+community: "Project Profile"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Identifiers
+  - community/Project_Profile
 ---
 
 # TWorkspaceDraftIssuesRoot
 
 ## Connections
 
-- [[root.tsx_29]] - `contains` [EXTRACTED]
+- [[root.tsx_70]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Identifiers
+#graphify/code #graphify/EXTRACTED #community/Project_Profile

@@ -1,12 +1,12 @@
 ---
-source_file: "store/base-command-palette.store.ts"
+source_file: "web/core/store/base-command-palette.store.ts"
 type: "code"
-community: "Workspace Draft"
+community: "Command Palette"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Draft
+  - community/Command_Palette
 ---
 
 # ModalData
@@ -15,4 +15,4 @@ tags:
 
 - [[base-command-palette.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Draft
+#graphify/code #graphify/EXTRACTED #community/Command_Palette

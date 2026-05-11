@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/db_githubprstatemapping.rs"
 type: "code"
-community: "Community 594"
+community: "Entity"
 location: "L67"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_594
+  - community/Entity
 ---
 
 # Entity
@@ -15,4 +15,4 @@ tags:
 
 - [[.to()_96]] - `method` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_594
+#graphify/code #graphify/EXTRACTED #community/Entity

@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/cycles.rs"
 type: "code"
-community: "Cycles Rust API"
+community: "Cycle Request"
 location: "L189"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycles_Rust_API
+  - community/Cycle_Request
 ---
 
 # enrich_cycle_counts()
@@ -14,9 +14,9 @@ tags:
 ## Connections
 
 - [[.new()]] - `calls` [INFERRED]
-- [[cycles.rs]] - `contains` [EXTRACTED]
+- [[cycles.rs_1]] - `contains` [EXTRACTED]
 - [[get_cycle()]] - `calls` [EXTRACTED]
 - [[list_cycles()]] - `calls` [EXTRACTED]
 - [[update_cycle()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycles_Rust_API
+#graphify/code #graphify/EXTRACTED #community/Cycle_Request

@@ -1,18 +1,18 @@
 ---
-source_file: "components/dropdowns/module/module-options.tsx"
+source_file: "web/core/components/gantt-chart/sidebar/issues/sidebar.tsx"
 type: "code"
-community: "Issue Layouts"
-location: "L28"
+community: "Gantt Chart"
+location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layouts
+  - community/Gantt_Chart
 ---
 
 # Props
 
 ## Connections
 
-- [[module-options.tsx]] - `contains` [EXTRACTED]
+- [[sidebar.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layouts
+#graphify/code #graphify/EXTRACTED #community/Gantt_Chart

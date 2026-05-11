@@ -1,18 +1,18 @@
 ---
-source_file: "components/cycles/dropdowns/estimate-type-dropdown.tsx"
+source_file: "web/core/components/stickies/modal/index.tsx"
 type: "code"
-community: "Cycle Productivity"
-location: "L17"
+community: "Stickies Sticky"
+location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Productivity
+  - community/Stickies_Sticky
 ---
 
 # TProps
 
 ## Connections
 
-- [[estimate-type-dropdown.tsx]] - `contains` [EXTRACTED]
+- [[index.tsx_11]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Productivity
+#graphify/code #graphify/EXTRACTED #community/Stickies_Sticky

@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/filters/header/display-filters/extra-options.tsx"
+source_file: "web/core/components/project/dropdowns/filters/member-list.tsx"
 type: "code"
-community: "Filter Selection UI"
-location: "L29"
+community: "Member Members"
+location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Selection_UI
+  - community/Member_Members
 ---
 
 # Props
 
 ## Connections
 
-- [[extra-options.tsx]] - `contains` [EXTRACTED]
+- [[member-list.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Selection_UI
+#graphify/code #graphify/EXTRACTED #community/Member_Members

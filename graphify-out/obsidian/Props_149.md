@@ -1,18 +1,18 @@
 ---
-source_file: "components/project/dropdowns/filters/member-list.tsx"
+source_file: "web/core/components/modules/delete-module-modal.tsx"
 type: "code"
-community: "Member Project"
-location: "L23"
+community: "Cycles Archived"
+location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Project
+  - community/Cycles_Archived
 ---
 
 # Props
 
 ## Connections
 
-- [[member-list.tsx_1]] - `contains` [EXTRACTED]
+- [[delete-module-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Project
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

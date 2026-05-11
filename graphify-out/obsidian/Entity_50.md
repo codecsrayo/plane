@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/api_tokens.rs"
 type: "code"
-community: "Community 548"
+community: "Entity"
 location: "L71"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_548
+  - community/Entity
 ---
 
 # Entity
@@ -15,4 +15,4 @@ tags:
 
 - [[.to()_50]] - `method` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_548
+#graphify/code #graphify/EXTRACTED #community/Entity

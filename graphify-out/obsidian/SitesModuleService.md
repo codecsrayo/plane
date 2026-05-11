@@ -1,12 +1,12 @@
 ---
 source_file: "services/src/module/sites-module.service.ts"
 type: "code"
-community: "Sites Sitesmoduleservice"
+community: "Sites Cycle"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sites_Sitesmoduleservice
+  - community/Sites_Cycle
 ---
 
 # SitesModuleService
@@ -17,4 +17,4 @@ tags:
 - [[.list()_7]] - `method` [EXTRACTED]
 - [[sites-module.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sites_Sitesmoduleservice
+#graphify/code #graphify/EXTRACTED #community/Sites_Cycle

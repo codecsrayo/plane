@@ -11,16 +11,16 @@ members: 10
 
 ## Members
 
-- [[IssueModalContext]] - code - components/issues/issue-modal/context/issue-modal-context.tsx
-- [[TActiveAdditionalPropertiesProps]] - code - components/issues/issue-modal/context/issue-modal-context.tsx
-- [[TCreateSubWorkItemProps]] - code - components/issues/issue-modal/context/issue-modal-context.tsx
-- [[TCreateUpdatePropertyValuesProps]] - code - components/issues/issue-modal/context/issue-modal-context.tsx
-- [[THandleParentWorkItemDetailsProps]] - code - components/issues/issue-modal/context/issue-modal-context.tsx
-- [[THandleProjectEntitiesFetchProps]] - code - components/issues/issue-modal/context/issue-modal-context.tsx
-- [[THandleTemplateChangeProps]] - code - components/issues/issue-modal/context/issue-modal-context.tsx
-- [[TIssueModalContext]] - code - components/issues/issue-modal/context/issue-modal-context.tsx
-- [[TPropertyValuesValidationProps]] - code - components/issues/issue-modal/context/issue-modal-context.tsx
-- [[issue-modal-context.tsx]] - code - components/issues/issue-modal/context/issue-modal-context.tsx
+- [[IssueModalContext]] - code - web/core/components/issues/issue-modal/context/issue-modal-context.tsx
+- [[TActiveAdditionalPropertiesProps]] - code - web/core/components/issues/issue-modal/context/issue-modal-context.tsx
+- [[TCreateSubWorkItemProps]] - code - web/core/components/issues/issue-modal/context/issue-modal-context.tsx
+- [[TCreateUpdatePropertyValuesProps]] - code - web/core/components/issues/issue-modal/context/issue-modal-context.tsx
+- [[THandleParentWorkItemDetailsProps]] - code - web/core/components/issues/issue-modal/context/issue-modal-context.tsx
+- [[THandleProjectEntitiesFetchProps]] - code - web/core/components/issues/issue-modal/context/issue-modal-context.tsx
+- [[THandleTemplateChangeProps]] - code - web/core/components/issues/issue-modal/context/issue-modal-context.tsx
+- [[TIssueModalContext]] - code - web/core/components/issues/issue-modal/context/issue-modal-context.tsx
+- [[TPropertyValuesValidationProps]] - code - web/core/components/issues/issue-modal/context/issue-modal-context.tsx
+- [[issue-modal-context.tsx]] - code - web/core/components/issues/issue-modal/context/issue-modal-context.tsx
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-detail-widgets/root.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/root.tsx"
 type: "code"
 community: "Issue Widget"
 location: "L25"
@@ -13,6 +13,6 @@ tags:
 
 ## Connections
 
-- [[root.tsx_37]] - `contains` [EXTRACTED]
+- [[root.tsx_78]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Issue_Widget

@@ -1,12 +1,12 @@
 ---
-source_file: "components/navigation/tab-navigation-utils.ts"
+source_file: "web/core/components/navigation/tab-navigation-utils.ts"
 type: "code"
-community: "Project Tab Nav"
+community: "Project Navigation"
 location: "L88"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Tab_Nav
+  - community/Project_Navigation
 ---
 
 # getDefaultTabUrl()
@@ -18,4 +18,4 @@ tags:
 - [[getValidatedDefaultTab()]] - `calls` [EXTRACTED]
 - [[tab-navigation-utils.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Tab_Nav
+#graphify/code #graphify/EXTRACTED #community/Project_Navigation

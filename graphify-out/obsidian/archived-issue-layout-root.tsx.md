@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/roots/archived-issue-layout-root.tsx"
+source_file: "web/core/components/issues/issue-layouts/roots/archived-issue-layout-root.tsx"
 type: "code"
-community: "Issue Layout Roots"
+community: "Issue Project"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layout_Roots
+  - community/Issue_Project
 ---
 
 # archived-issue-layout-root.tsx
@@ -20,10 +20,11 @@ tags:
 - [[WorkItemFiltersRow]] - `imports` [EXTRACTED]
 - [[archived-issue-root.tsx]] - `imports_from` [EXTRACTED]
 - [[filters-row.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts_117]] - `imports_from` [EXTRACTED]
-- [[project-level.tsx]] - `imports_from` [EXTRACTED]
+- [[index.ts_382]] - `imports_from` [EXTRACTED]
+- [[page.tsx_21]] - `imports_from` [EXTRACTED]
+- [[project-level.tsx_1]] - `imports_from` [EXTRACTED]
 - [[use-issue-layout-store.ts]] - `imports_from` [EXTRACTED]
 - [[use-issues.ts]] - `imports_from` [EXTRACTED]
 - [[useIssues()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layout_Roots
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

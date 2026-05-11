@@ -1,18 +1,18 @@
 ---
 source_file: "api_rust/src/routes/estimates.rs"
 type: "code"
-community: "Community 130"
+community: "Request Intake"
 location: "L107"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_130
+  - community/Request_Intake
 ---
 
 # CreateEstimatePointRequest
 
 ## Connections
 
-- [[estimates.rs]] - `contains` [EXTRACTED]
+- [[estimates.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_130
+#graphify/code #graphify/EXTRACTED #community/Request_Intake

@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/auth/any_auth.rs"
 type: "code"
-community: "Community 279"
+community: "Auth Request"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_279
+  - community/Auth_Request
 ---
 
 # any_auth.rs
@@ -16,4 +16,4 @@ tags:
 - [[AnyAuth]] - `contains` [EXTRACTED]
 - [[OptionalAnyAuth]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_279
+#graphify/code #graphify/EXTRACTED #community/Auth_Request

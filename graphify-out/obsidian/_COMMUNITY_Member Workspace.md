@@ -1,24 +1,21 @@
 ---
 type: community
-cohesion: 0.25
-members: 8
+cohesion: 0.40
+members: 5
 ---
 
 # Member Workspace
 
-**Cohesion:** 0.25 - loosely connected
-**Members:** 8 nodes
+**Cohesion:** 0.40 - moderately connected
+**Members:** 5 nodes
 
 ## Members
 
-- [[.constructor()_6]] - code - services/src/workspace/member.service.ts
-- [[.destroy()_2]] - code - services/src/workspace/member.service.ts
-- [[.getWorkspaceUserProjectsRole()]] - code - services/src/workspace/member.service.ts
-- [[.list()_2]] - code - services/src/workspace/member.service.ts
-- [[.myInfo()]] - code - services/src/workspace/member.service.ts
-- [[.update()_4]] - code - services/src/workspace/member.service.ts
-- [[WorkspaceMemberService]] - code - services/src/workspace/member.service.ts
-- [[member.service.ts]] - code - services/src/workspace/member.service.ts
+- [[.constructor()_130]] - code - web/core/store/member/workspace/workspace-member.store.ts
+- [[.memberMap()]] - code - web/core/store/member/workspace/workspace-member.store.ts
+- [[.workspaceMemberIds()]] - code - web/core/store/member/workspace/workspace-member.store.ts
+- [[.workspaceMemberInvitationIds()]] - code - web/core/store/member/workspace/workspace-member.store.ts
+- [[WorkspaceMemberStore]] - code - web/core/store/member/workspace/workspace-member.store.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -29,8 +26,8 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 1 edge to [[_COMMUNITY_Sites Cycle]]
+- 2 edges to [[_COMMUNITY_Member Workspace]]
 
 ## Top bridge nodes
 
-- [[member.service.ts]] - degree 2, connects to 1 community
+- [[WorkspaceMemberStore]] - degree 6, connects to 1 community

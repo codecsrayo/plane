@@ -1,18 +1,18 @@
 ---
-source_file: "components/onboarding/switch-account-modal.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/links/title.tsx"
 type: "code"
-community: "Account Settings"
-location: "L19"
+community: "Issue Activity"
+location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Account_Settings
+  - community/Issue_Activity
 ---
 
 # Props
 
 ## Connections
 
-- [[switch-account-modal.tsx]] - `contains` [EXTRACTED]
+- [[title.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Account_Settings
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

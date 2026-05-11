@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-detail/subscription.tsx"
+source_file: "web/core/components/issues/issue-detail/subscription.tsx"
 type: "code"
-community: "Project Archives"
+community: "Issue Inbox"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Archives
+  - community/Issue_Inbox
 ---
 
 # TIssueSubscription
@@ -15,4 +15,4 @@ tags:
 
 - [[subscription.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Archives
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

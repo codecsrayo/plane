@@ -1,12 +1,12 @@
 ---
 source_file: "utils/src/theme/palette-generator.ts"
 type: "code"
-community: "Color Utils"
+community: "Color Shade"
 location: "L205"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Color_Utils
+  - community/Color_Shade
 ---
 
 # generateThemePalettes()
@@ -18,4 +18,4 @@ tags:
 - [[palette-generator.ts]] - `contains` [EXTRACTED]
 - [[theme-application.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Color_Utils
+#graphify/code #graphify/EXTRACTED #community/Color_Shade

@@ -1,18 +1,20 @@
 ---
-source_file: "components/integration/github/project-issue-sync-modal.tsx"
+source_file: "web/core/components/cycles/dropdowns/filters/start-date.tsx"
 type: "code"
-community: "Integration Sync"
-location: "L47"
+community: "Date Start"
+location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Integration_Sync
+  - community/Date_Start
 ---
 
 # Props
 
 ## Connections
 
-- [[project-issue-sync-modal.tsx]] - `contains` [EXTRACTED]
+- [[start-date.tsx]] - `contains` [EXTRACTED]
+- [[start-date.tsx_1]] - `contains` [EXTRACTED]
+- [[start-date.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Integration_Sync
+#graphify/code #graphify/EXTRACTED #community/Date_Start

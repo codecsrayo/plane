@@ -1,19 +1,19 @@
 ---
-source_file: "components/issues/workspace-draft/empty-state.tsx"
+source_file: "web/core/components/issues/workspace-draft/empty-state.tsx"
 type: "code"
-community: "Issue Identifiers"
+community: "Project Profile"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Identifiers
+  - community/Project_Profile
 ---
 
 # WorkspaceDraftEmptyState
 
 ## Connections
 
-- [[empty-state.tsx_2]] - `contains` [EXTRACTED]
-- [[root.tsx_29]] - `imports` [EXTRACTED]
+- [[empty-state.tsx_3]] - `contains` [EXTRACTED]
+- [[root.tsx_70]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Identifiers
+#graphify/code #graphify/EXTRACTED #community/Project_Profile

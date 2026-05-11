@@ -1,19 +1,21 @@
 ---
-source_file: "components/inbox/inbox-filter/filters/state.tsx"
+source_file: "space/components/issues/filters/state.tsx"
 type: "code"
-community: "Inbox Filters"
-location: "L23"
+community: "Priority State"
+location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Inbox_Filters
+  - community/Priority_State
 ---
 
 # FilterState
 
 ## Connections
 
-- [[state.tsx]] - `contains` [EXTRACTED]
-- [[state.tsx_3]] - `contains` [EXTRACTED]
+- [[selection.tsx]] - `imports` [EXTRACTED]
+- [[state.tsx_1]] - `contains` [EXTRACTED]
+- [[state.tsx_4]] - `contains` [EXTRACTED]
+- [[state.tsx_8]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Inbox_Filters
+#graphify/code #graphify/EXTRACTED #community/Priority_State

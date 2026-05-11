@@ -1,5 +1,5 @@
 ---
-source_file: "components/power-k/ui/renderer/shared.ts"
+source_file: "web/core/components/power-k/ui/renderer/shared.ts"
 type: "code"
 community: "Context Power"
 location: "L9"
@@ -13,8 +13,8 @@ tags:
 
 ## Connections
 
-- [[command.tsx]] - `imports` [EXTRACTED]
-- [[shared.ts_1]] - `contains` [EXTRACTED]
+- [[command.tsx_1]] - `imports` [EXTRACTED]
+- [[shared.ts_12]] - `contains` [EXTRACTED]
 - [[shortcut.tsx]] - `imports` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Context_Power

@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/gantt/blocks.tsx"
+source_file: "web/core/components/issues/issue-layouts/gantt/blocks.tsx"
 type: "code"
-community: "Calendar Blocks"
+community: "Issue Activity"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Blocks
+  - community/Issue_Activity
 ---
 
 # blocks.tsx
@@ -16,17 +16,19 @@ tags:
 - [[GanttStoreType]] - `imports` [EXTRACTED]
 - [[IssueGanttBlock]] - `contains` [EXTRACTED]
 - [[IssueGanttSidebarBlock]] - `contains` [EXTRACTED]
-- [[Props_214]] - `contains` [EXTRACTED]
+- [[IssueIdentifier]] - `imports` [EXTRACTED]
+- [[IssueStats()]] - `imports` [EXTRACTED]
+- [[Props_289]] - `contains` [EXTRACTED]
 - [[base-gantt-root.tsx]] - `imports_from` [EXTRACTED]
-- [[block.tsx_1]] - `imports_from` [EXTRACTED]
-- [[constants.ts]] - `imports_from` [EXTRACTED]
+- [[block.tsx_4]] - `imports_from` [EXTRACTED]
+- [[constants.ts_4]] - `imports_from` [EXTRACTED]
 - [[getBlockViewDetails()]] - `imports` [EXTRACTED]
-- [[index.ts_85]] - `imports_from` [EXTRACTED]
+- [[index.ts_350]] - `imports_from` [EXTRACTED]
 - [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
 - [[use-issue-layout-store.ts]] - `imports_from` [EXTRACTED]
 - [[use-issue-peek-overview-redirection.tsx]] - `imports_from` [EXTRACTED]
 - [[use-issues.ts]] - `imports_from` [EXTRACTED]
-- [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
+- [[use-platform-os.tsx_1]] - `imports_from` [EXTRACTED]
 - [[use-project-state.ts]] - `imports_from` [EXTRACTED]
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
@@ -35,6 +37,6 @@ tags:
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[useProjectState()]] - `imports` [EXTRACTED]
-- [[utils.tsx_1]] - `imports_from` [EXTRACTED]
+- [[utils.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Blocks
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

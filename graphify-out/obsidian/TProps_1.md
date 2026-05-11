@@ -1,18 +1,18 @@
 ---
-source_file: "components/home/widgets/links/action.tsx"
+source_file: "web/ce/components/common/subscription/subscription-pill.tsx"
 type: "code"
-community: "Action Tprops"
-location: "L10"
+community: "Dropdown Tprops"
+location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Action_Tprops
+  - community/Dropdown_Tprops
 ---
 
 # TProps
 
 ## Connections
 
-- [[action.tsx]] - `contains` [EXTRACTED]
+- [[subscription-pill.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Action_Tprops
+#graphify/code #graphify/EXTRACTED #community/Dropdown_Tprops

@@ -1,20 +1,20 @@
 ---
-source_file: "services/integrations/gitlab.service.ts"
+source_file: "web/core/services/integrations/gitlab.service.ts"
 type: "code"
-community: "API Services"
+community: "Issue Project"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/API_Services
+  - community/Issue_Project
 ---
 
 # GitlabIntegrationService
 
 ## Connections
 
-- [[.constructor()_113]] - `method` [EXTRACTED]
+- [[.constructor()_170]] - `method` [EXTRACTED]
 - [[.listAllRepositories()_1]] - `method` [EXTRACTED]
 - [[gitlab.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/API_Services
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

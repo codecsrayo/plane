@@ -1,12 +1,12 @@
 ---
-source_file: "components/dropdowns/date.tsx"
+source_file: "web/core/components/dropdowns/date.tsx"
 type: "code"
-community: "Issue Properties"
+community: "Label Dropdown"
 location: "L47"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Label_Dropdown
 ---
 
 # DateDropdown
@@ -21,11 +21,11 @@ tags:
 - [[form.tsx_9]] - `imports` [EXTRACTED]
 - [[issue-properties.tsx]] - `imports` [EXTRACTED]
 - [[issue-properties.tsx_1]] - `imports` [EXTRACTED]
-- [[modal.tsx_8]] - `imports` [EXTRACTED]
+- [[modal.tsx_13]] - `imports` [EXTRACTED]
 - [[properties.tsx]] - `imports` [EXTRACTED]
 - [[properties.tsx_2]] - `imports` [EXTRACTED]
-- [[sidebar.tsx_3]] - `imports` [EXTRACTED]
+- [[sidebar.tsx_4]] - `imports` [EXTRACTED]
 - [[single.tsx_1]] - `imports` [EXTRACTED]
 - [[start-date-column.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

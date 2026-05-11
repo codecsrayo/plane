@@ -1,27 +1,47 @@
 ---
 type: community
-cohesion: 0.22
-members: 11
+cohesion: 0.07
+members: 31
 ---
 
 # Cycle Cycles
 
-**Cohesion:** 0.22 - loosely connected
-**Members:** 11 nodes
+**Cohesion:** 0.07 - loosely connected
+**Members:** 31 nodes
 
 ## Members
 
-- [[CycleListGroupHeader()]] - code - components/cycles/list/cycle-list-group-header.tsx
-- [[CyclePeekOverview]] - code - components/cycles/cycle-peek-overview.tsx
-- [[CyclesList]] - code - components/cycles/list/root.tsx
-- [[CyclesListMap()]] - code - components/cycles/list/cycles-list-map.tsx
-- [[ICyclesList]] - code - components/cycles/list/root.tsx
-- [[Props_301]] - code - components/cycles/cycle-peek-overview.tsx
-- [[Props_307]] - code - components/cycles/list/cycle-list-group-header.tsx
-- [[cycle-list-group-header.tsx]] - code - components/cycles/list/cycle-list-group-header.tsx
-- [[cycle-peek-overview.tsx]] - code - components/cycles/cycle-peek-overview.tsx
-- [[index.ts_128]] - code - components/cycles/analytics-sidebar/index.ts
-- [[root.tsx_54]] - code - components/cycles/list/root.tsx
+- [[.addCycleToFavorites()]] - code - web/core/services/cycle.service.ts
+- [[.archiveCycle()]] - code - web/core/services/cycle_archive.service.ts
+- [[.constructor()_146]] - code - web/core/services/cycle_archive.service.ts
+- [[.constructor()_151]] - code - web/core/services/cycle.service.ts
+- [[.createCycle()]] - code - web/core/services/cycle.service.ts
+- [[.cycleDateCheck()]] - code - web/core/services/cycle.service.ts
+- [[.deleteCycle()]] - code - web/core/services/cycle.service.ts
+- [[.getArchivedCycleDetails()]] - code - web/core/services/cycle_archive.service.ts
+- [[.getArchivedCycles()]] - code - web/core/services/cycle_archive.service.ts
+- [[.getCycleDetails()]] - code - web/core/services/cycle.service.ts
+- [[.getCycleIssues()_1]] - code - web/core/services/cycle.service.ts
+- [[.getCyclesWithParams()]] - code - web/core/services/cycle.service.ts
+- [[.getWorkspaceCycles()_1]] - code - web/core/services/cycle.service.ts
+- [[.patchCycle()]] - code - web/core/services/cycle.service.ts
+- [[.removeCycleFromFavorites()]] - code - web/core/services/cycle.service.ts
+- [[.restoreCycle()]] - code - web/core/services/cycle_archive.service.ts
+- [[.transferIssues()_1]] - code - web/core/services/cycle.service.ts
+- [[.workspaceActiveCycles()_1]] - code - web/core/services/cycle.service.ts
+- [[.workspaceActiveCyclesAnalytics()_1]] - code - web/core/services/cycle.service.ts
+- [[.workspaceActiveCyclesProgress()_1]] - code - web/core/services/cycle.service.ts
+- [[.workspaceActiveCyclesProgressPro()_1]] - code - web/core/services/cycle.service.ts
+- [[CycleArchiveService_1]] - code - web/core/services/cycle_archive.service.ts
+- [[CycleService_1]] - code - web/core/services/cycle.service.ts
+- [[currentCycle]] - code - web/core/store/cycle.store.ts
+- [[cycle]] - code - web/core/store/cycle.store.ts
+- [[cycle.store.ts]] - code - web/core/store/cycle.store.ts
+- [[cycleDetails]] - code - web/core/store/cycle.store.ts
+- [[cycleIds]] - code - web/core/store/cycle.store.ts
+- [[cycle_archive.service.ts]] - code - web/core/services/cycle_archive.service.ts
+- [[cycles]] - code - web/core/store/cycle.store.ts
+- [[filters_1]] - code - web/core/store/cycle.store.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -32,13 +52,17 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 2 edges to [[_COMMUNITY_Account Settings]]
-- 2 edges to [[_COMMUNITY_Cycle Transfers]]
-- 2 edges to [[_COMMUNITY_Cycle Cycles]]
-- 1 edge to [[_COMMUNITY_Action Pages]]
+- 4 edges to [[_COMMUNITY_Cycle Active]]
+- 3 edges to [[_COMMUNITY_Issue Project]]
+- 2 edges to [[_COMMUNITY_Project Issue]]
+- 2 edges to [[_COMMUNITY_Publish Cycle]]
+- 1 edge to [[_COMMUNITY_Issue Reaction]]
+- 1 edge to [[_COMMUNITY_Issue Activity]]
+- 1 edge to [[_COMMUNITY_Estimate Project]]
+- 1 edge to [[_COMMUNITY_Issue Group]]
 
 ## Top bridge nodes
 
-- [[root.tsx_54]] - degree 9, connects to 2 communities
-- [[cycle-peek-overview.tsx]] - degree 8, connects to 2 communities
-- [[CyclesListMap()]] - degree 2, connects to 1 community
+- [[cycle.store.ts]] - degree 18, connects to 7 communities
+- [[CycleService_1]] - degree 21, connects to 2 communities
+- [[cycle_archive.service.ts]] - degree 4, connects to 1 community

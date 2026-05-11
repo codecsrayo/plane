@@ -1,13 +1,13 @@
 ---
 type: community
 cohesion: 0.23
-members: 14
+members: 13
 ---
 
 # Find Conditions
 
 **Cohesion:** 0.23 - loosely connected
-**Members:** 14 nodes
+**Members:** 13 nodes
 
 ## Members
 
@@ -22,7 +22,6 @@ members: 14
 - [[findNodeById()]] - code - utils/src/rich-filters/operations/traversal/core.ts
 - [[findParentChain()]] - code - utils/src/rich-filters/operations/traversal/core.ts
 - [[getDisplayOperator()]] - code - utils/src/rich-filters/operations/traversal/shared.ts
-- [[isGroupNode()]] - code - utils/src/rich-filters/types/core.ts
 - [[shared.ts_4]] - code - utils/src/rich-filters/operations/traversal/shared.ts
 - [[traverseExpressionTree()]] - code - utils/src/rich-filters/operations/traversal/core.ts
 
@@ -35,14 +34,14 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 8 edges to [[_COMMUNITY_Condition Group]]
-- 8 edges to [[_COMMUNITY_Group Transform]]
-- 2 edges to [[_COMMUNITY_Instance Filterinstance]]
+- 6 edges to [[_COMMUNITY_Group Condition]]
+- 4 edges to [[_COMMUNITY_Group Transform]]
+- 2 edges to [[_COMMUNITY_Expression Work]]
 
 ## Top bridge nodes
 
 - [[core.ts_11]] - degree 16, connects to 2 communities
-- [[isGroupNode()]] - degree 12, connects to 2 communities
 - [[traverseExpressionTree()]] - degree 6, connects to 2 communities
+- [[findParentChain()]] - degree 4, connects to 2 communities
 - [[extractConditions()]] - degree 4, connects to 1 community
-- [[findParentChain()]] - degree 4, connects to 1 community
+- [[.allConditionsForDisplay()]] - degree 2, connects to 1 community

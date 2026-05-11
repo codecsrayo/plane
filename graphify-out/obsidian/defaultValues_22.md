@@ -1,18 +1,18 @@
 ---
-source_file: "components/onboarding/steps/role/root.tsx"
+source_file: "web/core/components/onboarding/steps/role/root.tsx"
 type: "code"
-community: "Values Setup"
+community: "Setup Values"
 location: "L36"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Values_Setup
+  - community/Setup_Values
 ---
 
 # defaultValues
 
 ## Connections
 
-- [[root.tsx_66]] - `contains` [EXTRACTED]
+- [[root.tsx_107]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Values_Setup
+#graphify/code #graphify/EXTRACTED #community/Setup_Values

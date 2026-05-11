@@ -1,12 +1,12 @@
 ---
-source_file: "components/ui/loader/layouts/gantt-layout-loader.tsx"
+source_file: "web/core/components/ui/loader/layouts/gantt-layout-loader.tsx"
 type: "code"
-community: "Gantt Sidebar"
+community: "Gantt Chart"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Sidebar
+  - community/Gantt_Chart
 ---
 
 # gantt-layout-loader.tsx
@@ -15,12 +15,12 @@ tags:
 
 - [[GanttLayoutListItemLoader()]] - `contains` [EXTRACTED]
 - [[GanttLayoutLoader()]] - `contains` [EXTRACTED]
-- [[constants.ts]] - `imports_from` [EXTRACTED]
+- [[constants.ts_4]] - `imports_from` [EXTRACTED]
 - [[getRandomLength()]] - `imports` [EXTRACTED]
 - [[issue-layout-HOC.tsx]] - `imports_from` [EXTRACTED]
 - [[modules-list-view.tsx]] - `imports_from` [EXTRACTED]
-- [[sidebar.tsx_1]] - `imports_from` [EXTRACTED]
-- [[sidebar.tsx_4]] - `imports_from` [EXTRACTED]
-- [[utils.tsx]] - `imports_from` [EXTRACTED]
+- [[sidebar.tsx_2]] - `imports_from` [EXTRACTED]
+- [[sidebar.tsx_5]] - `imports_from` [EXTRACTED]
+- [[utils.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Sidebar
+#graphify/code #graphify/EXTRACTED #community/Gantt_Chart

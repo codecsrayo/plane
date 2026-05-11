@@ -11,12 +11,12 @@ members: 6
 
 ## Members
 
-- [[.constructor()_92]] - code - services/analytics.service.ts
-- [[.getAdvanceAnalytics()]] - code - services/analytics.service.ts
-- [[.getAdvanceAnalyticsCharts()]] - code - services/analytics.service.ts
-- [[.getAdvanceAnalyticsStats()]] - code - services/analytics.service.ts
-- [[.processUrl()]] - code - services/analytics.service.ts
-- [[AnalyticsService]] - code - services/analytics.service.ts
+- [[.constructor()_149]] - code - web/core/services/analytics.service.ts
+- [[.getAdvanceAnalytics()]] - code - web/core/services/analytics.service.ts
+- [[.getAdvanceAnalyticsCharts()]] - code - web/core/services/analytics.service.ts
+- [[.getAdvanceAnalyticsStats()]] - code - web/core/services/analytics.service.ts
+- [[.processUrl()]] - code - web/core/services/analytics.service.ts
+- [[AnalyticsService]] - code - web/core/services/analytics.service.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -27,10 +27,10 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 3 edges to [[_COMMUNITY_Analytics Project]]
-- 1 edge to [[_COMMUNITY_Insight Analytics]]
+- 2 edges to [[_COMMUNITY_Analytics Insight]]
+- 2 edges to [[_COMMUNITY_Analytics Project]]
 - 1 edge to [[_COMMUNITY_Insight Table]]
-- 1 edge to [[_COMMUNITY_Chart Generate]]
+- 1 edge to [[_COMMUNITY_Table Chart]]
 
 ## Top bridge nodes
 

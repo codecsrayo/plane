@@ -1,19 +1,19 @@
 ---
-source_file: "components/analytics/work-items/modal/header.tsx"
+source_file: "web/core/components/analytics/work-items/modal/header.tsx"
 type: "code"
-community: "Active Projects"
+community: "Power Context"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Projects
+  - community/Power_Context
 ---
 
 # WorkItemsModalHeader
 
 ## Connections
 
-- [[header.tsx_15]] - `contains` [EXTRACTED]
-- [[index.tsx_8]] - `imports` [EXTRACTED]
+- [[header.tsx_57]] - `contains` [EXTRACTED]
+- [[index.tsx_14]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Active_Projects
+#graphify/code #graphify/EXTRACTED #community/Power_Context

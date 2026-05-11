@@ -1,12 +1,12 @@
 ---
-source_file: "components/analytics/insight-card.tsx"
+source_file: "web/core/components/analytics/insight-card.tsx"
 type: "code"
-community: "Insight Analytics"
+community: "Analytics Insight"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Insight_Analytics
+  - community/Analytics_Insight
 ---
 
 # InsightCard()
@@ -15,4 +15,4 @@ tags:
 
 - [[insight-card.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Insight_Analytics
+#graphify/code #graphify/EXTRACTED #community/Analytics_Insight

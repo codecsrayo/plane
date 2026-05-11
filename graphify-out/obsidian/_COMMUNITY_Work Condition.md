@@ -39,9 +39,9 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 2 edges to [[_COMMUNITY_Operator Work]]
+- 2 edges to [[_COMMUNITY_Adapter Keys]]
 - 1 edge to [[_COMMUNITY_Instance Condition]]
-- 1 edge to [[_COMMUNITY_Instance Filterinstance]]
+- 1 edge to [[_COMMUNITY_Expression Work]]
 
 ## Top bridge nodes
 

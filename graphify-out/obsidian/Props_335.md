@@ -1,19 +1,18 @@
 ---
-source_file: "components/analytics/work-items/modal/header.tsx"
+source_file: "web/core/components/issues/attachment/attachment-upload.tsx"
 type: "code"
-community: "Active Projects"
-location: "L14"
+community: "Attachment Issue"
+location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Projects
+  - community/Attachment_Issue
 ---
 
 # Props
 
 ## Connections
 
-- [[header.tsx_11]] - `contains` [EXTRACTED]
-- [[header.tsx_15]] - `contains` [EXTRACTED]
+- [[attachment-upload.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Active_Projects
+#graphify/code #graphify/EXTRACTED #community/Attachment_Issue

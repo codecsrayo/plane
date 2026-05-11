@@ -1,5 +1,5 @@
 ---
-source_file: "services/analytics.service.ts"
+source_file: "web/core/services/analytics.service.ts"
 type: "code"
 community: "Analytics Advance"
 location: "L18"
@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 
-- [[.constructor()_92]] - `method` [EXTRACTED]
+- [[.constructor()_149]] - `method` [EXTRACTED]
 - [[.getAdvanceAnalytics()]] - `method` [EXTRACTED]
 - [[.getAdvanceAnalyticsCharts()]] - `method` [EXTRACTED]
 - [[.getAdvanceAnalyticsStats()]] - `method` [EXTRACTED]

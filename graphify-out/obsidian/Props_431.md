@@ -1,18 +1,18 @@
 ---
-source_file: "components/analytics/select/analytics-params.tsx"
+source_file: "web/core/components/onboarding/create-or-join-workspaces.tsx"
 type: "code"
-community: "Select Axis"
-location: "L22"
+community: "Workspace Issue"
+location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Select_Axis
+  - community/Workspace_Issue
 ---
 
 # Props
 
 ## Connections
 
-- [[analytics-params.tsx]] - `contains` [EXTRACTED]
+- [[create-or-join-workspaces.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Select_Axis
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

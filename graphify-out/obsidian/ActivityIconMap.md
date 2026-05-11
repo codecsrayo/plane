@@ -1,18 +1,18 @@
 ---
-source_file: "components/common/activity/helper.tsx"
+source_file: "web/core/components/common/activity/helper.tsx"
 type: "code"
-community: "Activity User"
+community: "Webhook Workspace"
 location: "L45"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Activity_User
+  - community/Webhook_Workspace
 ---
 
 # ActivityIconMap
 
 ## Connections
 
-- [[helper.tsx_8]] - `contains` [EXTRACTED]
+- [[helper.tsx_30]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Activity_User
+#graphify/code #graphify/EXTRACTED #community/Webhook_Workspace

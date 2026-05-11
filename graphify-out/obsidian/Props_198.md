@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/columns/estimate-column.tsx"
+source_file: "web/core/components/dropdowns/project/base.tsx"
 type: "code"
-community: "Column Spreadsheet"
-location: "L14"
+community: "Label Dropdown"
+location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Column_Spreadsheet
+  - community/Label_Dropdown
 ---
 
 # Props
 
 ## Connections
 
-- [[estimate-column.tsx]] - `contains` [EXTRACTED]
+- [[base.tsx_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Column_Spreadsheet
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

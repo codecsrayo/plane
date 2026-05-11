@@ -1,12 +1,12 @@
 ---
-source_file: "store/estimates/estimate-point.ts"
+source_file: "web/core/store/estimates/estimate-point.ts"
 type: "code"
-community: "Estimate Points"
+community: "Estimate Project"
 location: "L116"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Estimate_Points
+  - community/Estimate_Project
 ---
 
 # estimatePointKey
@@ -15,4 +15,4 @@ tags:
 
 - [[estimate-point.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Estimate_Points
+#graphify/code #graphify/EXTRACTED #community/Estimate_Project

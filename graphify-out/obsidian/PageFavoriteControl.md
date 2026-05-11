@@ -1,12 +1,12 @@
 ---
-source_file: "components/pages/header/favorite-control.tsx"
+source_file: "web/core/components/pages/header/favorite-control.tsx"
 type: "code"
-community: "Badge Editor"
+community: "Control Move"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Badge_Editor
+  - community/Control_Move
 ---
 
 # PageFavoriteControl
@@ -16,4 +16,4 @@ tags:
 - [[actions.tsx_2]] - `imports` [EXTRACTED]
 - [[favorite-control.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Badge_Editor
+#graphify/code #graphify/EXTRACTED #community/Control_Move

@@ -1,18 +1,18 @@
 ---
-source_file: "components/project/publish-project/modal.tsx"
+source_file: "web/core/components/modules/module-list-item-action.tsx"
 type: "code"
-community: "Project Projects"
-location: "L25"
+community: "Cycles Archived"
+location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Projects
+  - community/Cycles_Archived
 ---
 
 # Props
 
 ## Connections
 
-- [[modal.tsx_6]] - `contains` [EXTRACTED]
+- [[module-list-item-action.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Projects
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

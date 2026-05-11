@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/custom-link/helpers/clickHandler.ts"
 type: "code"
-community: "Options Link"
+community: "Link Options"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Options_Link
+  - community/Link_Options
 ---
 
 # ClickHandlerOptions
@@ -15,4 +15,4 @@ tags:
 
 - [[clickHandler.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Options_Link
+#graphify/code #graphify/EXTRACTED #community/Link_Options

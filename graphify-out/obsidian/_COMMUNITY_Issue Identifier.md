@@ -1,17 +1,16 @@
 ---
 type: community
 cohesion: 0.05
-members: 53
+members: 52
 ---
 
 # Issue Identifier
 
 **Cohesion:** 0.05 - loosely connected
-**Members:** 53 nodes
+**Members:** 52 nodes
 
 ## Members
 
-- [[CompleteOrEmpty]] - code - types/src/utils.ts
 - [[EViewAccess]] - code - types/src/views.ts
 - [[IIssueDisplayFilterOptions]] - code - types/src/view-props.ts
 - [[IIssueDisplayProperties]] - code - types/src/view-props.ts
@@ -74,17 +73,18 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 6 edges to [[_COMMUNITY_Issue Options]]
-- 3 edges to [[_COMMUNITY_Import Export]]
+- 6 edges to [[_COMMUNITY_Issue Entity]]
+- 3 edges to [[_COMMUNITY_Workspace Search]]
 - 2 edges to [[_COMMUNITY_Node Condition]]
-- 2 edges to [[_COMMUNITY_Favorites Pages]]
-- 2 edges to [[_COMMUNITY_Issue Enums]]
+- 2 edges to [[_COMMUNITY_Inbox Issue]]
 - 2 edges to [[_COMMUNITY_Distribution Link]]
 - 2 edges to [[_COMMUNITY_Cycle Distribution]]
+- 1 edge to [[_COMMUNITY_Issue Public]]
+- 1 edge to [[_COMMUNITY_Widget Issue]]
 
 ## Top bridge nodes
 
-- [[view-props.ts]] - degree 44, connects to 6 communities
+- [[view-props.ts]] - degree 44, connects to 7 communities
 - [[IIssueFilterOptions]] - degree 4, connects to 2 communities
 - [[views.ts_1]] - degree 17, connects to 1 community
 - [[IIssueDisplayProperties]] - degree 5, connects to 1 community

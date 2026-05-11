@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-detail-widgets/sub-issues/issues-list/properties.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/link-column.tsx"
 type: "code"
-community: "List Group Layout"
-location: "L30"
+community: "Link Column"
+location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/List_Group_Layout
+  - community/Link_Column
 ---
 
 # Props
 
 ## Connections
 
-- [[properties.tsx]] - `contains` [EXTRACTED]
+- [[link-column.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/List_Group_Layout
+#graphify/code #graphify/EXTRACTED #community/Link_Column

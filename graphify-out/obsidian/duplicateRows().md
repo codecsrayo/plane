@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/table/plugins/drag-handles/actions.ts"
 type: "code"
-community: "Dropdown Table"
+community: "Drag Table"
 location: "L118"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dropdown_Table
+  - community/Drag_Table
 ---
 
 # duplicateRows()
@@ -17,4 +17,4 @@ tags:
 - [[dropdown.tsx_1]] - `imports` [EXTRACTED]
 - [[tableToCells()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dropdown_Table
+#graphify/code #graphify/EXTRACTED #community/Drag_Table

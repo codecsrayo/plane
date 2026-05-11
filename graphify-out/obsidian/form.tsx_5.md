@@ -1,12 +1,12 @@
 ---
-source_file: "components/settings/profile/content/pages/general/form.tsx"
+source_file: "web/core/components/settings/profile/content/pages/general/form.tsx"
 type: "code"
-community: "Image Upload"
+community: "Project Profile"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Image_Upload
+  - community/Project_Profile
 ---
 
 # form.tsx
@@ -18,7 +18,7 @@ tags:
 - [[DeactivateAccountModal()]] - `imports` [EXTRACTED]
 - [[GeneralProfileSettingsForm]] - `contains` [EXTRACTED]
 - [[ImagePickerPopover]] - `imports` [EXTRACTED]
-- [[Props_112]] - `contains` [EXTRACTED]
+- [[Props_187]] - `contains` [EXTRACTED]
 - [[SettingsBoxedControlItem()]] - `imports` [EXTRACTED]
 - [[TUserProfileForm]] - `contains` [EXTRACTED]
 - [[UserImageUploadModal]] - `imports` [EXTRACTED]
@@ -27,10 +27,10 @@ tags:
 - [[cover-image.tsx]] - `imports_from` [EXTRACTED]
 - [[deactivate-account-modal.tsx]] - `imports_from` [EXTRACTED]
 - [[image-picker-popover.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
-- [[root.tsx_21]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
+- [[root.tsx_62]] - `imports_from` [EXTRACTED]
 - [[use-instance.ts]] - `imports_from` [EXTRACTED]
 - [[useInstance()]] - `imports` [EXTRACTED]
 - [[user-image-upload-modal.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Image_Upload
+#graphify/code #graphify/EXTRACTED #community/Project_Profile

@@ -1,18 +1,18 @@
 ---
-source_file: "components/onboarding/root.tsx"
+source_file: "web/core/components/onboarding/root.tsx"
 type: "code"
-community: "Invite Onboarding"
+community: "Workspace Issue"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Invite_Onboarding
+  - community/Workspace_Issue
 ---
 
 # OnboardingRoot
 
 ## Connections
 
-- [[root.tsx_63]] - `contains` [EXTRACTED]
+- [[root.tsx_104]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Invite_Onboarding
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

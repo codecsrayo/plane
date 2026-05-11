@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-detail/issue-activity/activity/actions/module.tsx"
+source_file: "web/core/components/issues/issue-detail/issue-activity/activity/actions/module.tsx"
 type: "code"
 community: "Issue Activity"
 location: "L15"
@@ -13,6 +13,6 @@ tags:
 
 ## Connections
 
-- [[module.tsx_3]] - `contains` [EXTRACTED]
+- [[module.tsx_4]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Issue_Activity

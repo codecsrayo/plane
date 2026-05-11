@@ -1,12 +1,12 @@
 ---
-source_file: "components/modules/gantt-chart/blocks.tsx"
+source_file: "web/core/components/modules/gantt-chart/blocks.tsx"
 type: "code"
-community: "Spreadsheet Filters"
+community: "Cycles Archived"
 location: "L77"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Filters
+  - community/Cycles_Archived
 ---
 
 # ModuleGanttSidebarBlock
@@ -15,4 +15,4 @@ tags:
 
 - [[blocks.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Filters
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

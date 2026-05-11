@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/utils.ts"
 type: "code"
-community: "Issue Identifier"
+community: "Node Condition"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Identifier
+  - community/Node_Condition
 ---
 
 # CompleteOrEmpty
@@ -16,4 +16,4 @@ tags:
 - [[utils.ts_10]] - `contains` [EXTRACTED]
 - [[view-props.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Identifier
+#graphify/code #graphify/EXTRACTED #community/Node_Condition

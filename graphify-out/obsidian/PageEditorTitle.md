@@ -1,12 +1,12 @@
 ---
-source_file: "components/pages/editor/title.tsx"
+source_file: "web/core/components/pages/editor/title.tsx"
 type: "code"
-community: "Page Editor"
+community: "Formats Values"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Page_Editor
+  - community/Formats_Values
 ---
 
 # PageEditorTitle
@@ -15,4 +15,4 @@ tags:
 
 - [[title.tsx_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Page_Editor
+#graphify/code #graphify/EXTRACTED #community/Formats_Values

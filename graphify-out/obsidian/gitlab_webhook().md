@@ -1,19 +1,20 @@
 ---
 source_file: "api_rust/src/routes/external.rs"
 type: "code"
-community: "Community 136"
+community: "Magic Sign"
 location: "L789"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_136
+  - graphify/INFERRED
+  - community/Magic_Sign
 ---
 
 # gitlab_webhook()
 
 ## Connections
 
+- [[.json()]] - `calls` [INFERRED]
 - [[external.rs]] - `contains` [EXTRACTED]
 - [[get_config_value()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_136
+#graphify/code #graphify/INFERRED #community/Magic_Sign

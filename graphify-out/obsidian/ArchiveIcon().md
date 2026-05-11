@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/icons/workspace/archive-icon.tsx"
 type: "code"
-community: "Icon Library"
+community: "Icon Panel"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Icon_Library
+  - community/Icon_Panel
 ---
 
 # ArchiveIcon()
@@ -15,4 +15,4 @@ tags:
 
 - [[archive-icon.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Icon_Library
+#graphify/code #graphify/EXTRACTED #community/Icon_Panel

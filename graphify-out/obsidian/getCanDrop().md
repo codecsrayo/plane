@@ -1,12 +1,12 @@
 ---
-source_file: "components/home/widgets/manage/widget.helpers.ts"
+source_file: "web/core/components/home/widgets/manage/widget.helpers.ts"
 type: "code"
-community: "Dashboard Widgets"
+community: "Widget Home"
 location: "L59"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dashboard_Widgets
+  - community/Widget_Home
 ---
 
 # getCanDrop()
@@ -16,4 +16,4 @@ tags:
 - [[widget-item.tsx]] - `imports` [EXTRACTED]
 - [[widget.helpers.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets
+#graphify/code #graphify/EXTRACTED #community/Widget_Home

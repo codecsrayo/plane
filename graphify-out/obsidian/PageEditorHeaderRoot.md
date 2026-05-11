@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/editor/header/root.tsx"
+source_file: "web/core/components/pages/editor/header/root.tsx"
 type: "code"
-community: "Badge Editor"
+community: "Control Move"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Badge_Editor
+  - community/Control_Move
 ---
 
 # PageEditorHeaderRoot
 
 ## Connections
 
-- [[root.tsx_76]] - `contains` [EXTRACTED]
+- [[root.tsx_117]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Badge_Editor
+#graphify/code #graphify/EXTRACTED #community/Control_Move

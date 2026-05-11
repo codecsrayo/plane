@@ -1,12 +1,12 @@
 ---
-source_file: "components/cycles/analytics-sidebar/issue-progress.tsx"
+source_file: "web/core/components/cycles/analytics-sidebar/issue-progress.tsx"
 type: "code"
-community: "Cycle Productivity"
+community: "Cycle Active"
 location: "L36"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Productivity
+  - community/Cycle_Active
 ---
 
 # cycleEstimateOptions
@@ -16,4 +16,4 @@ tags:
 - [[estimate-type-dropdown.tsx]] - `imports` [EXTRACTED]
 - [[issue-progress.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Productivity
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

@@ -1,5 +1,5 @@
 ---
-source_file: "components/sidebar/sidebar-item.tsx"
+source_file: "web/core/components/sidebar/sidebar-item.tsx"
 type: "code"
 community: "Sidebar Rail"
 location: "L242"
@@ -15,8 +15,9 @@ tags:
 
 - [[app-rail-root.tsx]] - `imports` [EXTRACTED]
 - [[items-root.tsx]] - `imports` [EXTRACTED]
-- [[root.tsx_4]] - `imports` [EXTRACTED]
-- [[sidebar-item.tsx]] - `contains` [EXTRACTED]
+- [[root.tsx_45]] - `imports` [EXTRACTED]
+- [[sidebar-item.tsx_1]] - `contains` [EXTRACTED]
+- [[top-navigation-root.tsx]] - `imports` [EXTRACTED]
 - [[user-menu-root.tsx]] - `imports` [EXTRACTED]
 - [[workspace-menu-root.tsx]] - `imports` [EXTRACTED]
 

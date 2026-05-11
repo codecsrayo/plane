@@ -1,5 +1,5 @@
 ---
-source_file: "components/web-hooks/utils.ts"
+source_file: "web/core/components/web-hooks/utils.ts"
 type: "code"
 community: "Webhook Generated"
 location: "L12"
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[create-webhook-modal.tsx]] - `imports` [EXTRACTED]
-- [[utils.ts_4]] - `contains` [EXTRACTED]
+- [[utils.ts_16]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Webhook_Generated

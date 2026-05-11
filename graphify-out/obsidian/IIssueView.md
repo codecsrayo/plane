@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/peek-overview/view.tsx"
+source_file: "web/core/components/issues/peek-overview/view.tsx"
 type: "code"
-community: "Peek Overview"
+community: "Issue Inbox"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Peek_Overview
+  - community/Issue_Inbox
 ---
 
 # IIssueView
 
 ## Connections
 
-- [[view.tsx_1]] - `contains` [EXTRACTED]
+- [[view.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Peek_Overview
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

@@ -1,12 +1,12 @@
 ---
-source_file: "components/settings/control-item.tsx"
+source_file: "web/core/components/settings/control-item.tsx"
 type: "code"
-community: "Start Week"
+community: "Theme Custom"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Start_Week
+  - community/Theme_Custom
 ---
 
 # SettingsControlItem()
@@ -20,5 +20,6 @@ tags:
 - [[language-and-timezone-list.tsx]] - `imports` [EXTRACTED]
 - [[start-of-week-preference.tsx]] - `imports` [EXTRACTED]
 - [[theme-switcher.tsx]] - `imports` [EXTRACTED]
+- [[theme-switcher.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Start_Week
+#graphify/code #graphify/EXTRACTED #community/Theme_Custom

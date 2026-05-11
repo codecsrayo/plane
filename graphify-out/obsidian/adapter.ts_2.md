@@ -1,12 +1,12 @@
 ---
 source_file: "shared-state/src/store/rich-filters/adapter.ts"
 type: "code"
-community: "Operator Work"
+community: "Adapter Keys"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Operator_Work
+  - community/Adapter_Keys
 ---
 
 # adapter.ts
@@ -15,4 +15,4 @@ tags:
 
 - [[adapter.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Operator_Work
+#graphify/code #graphify/EXTRACTED #community/Adapter_Keys

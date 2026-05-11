@@ -1,18 +1,18 @@
 ---
-source_file: "components/project/settings/helper.tsx"
+source_file: "web/core/components/modules/module-peek-overview.tsx"
 type: "code"
-community: "Project Settings"
-location: "L14"
+community: "Cycles Archived"
+location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Cycles_Archived
 ---
 
 # Props
 
 ## Connections
 
-- [[helper.tsx_2]] - `contains` [EXTRACTED]
+- [[module-peek-overview.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

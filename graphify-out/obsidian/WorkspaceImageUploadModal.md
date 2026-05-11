@@ -1,12 +1,12 @@
 ---
-source_file: "components/core/modals/workspace-image-upload-modal.tsx"
+source_file: "web/core/components/core/modals/workspace-image-upload-modal.tsx"
 type: "code"
-community: "Workspace Timezone"
+community: "Workspace Issue"
 location: "L35"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Timezone
+  - community/Workspace_Issue
 ---
 
 # WorkspaceImageUploadModal
@@ -16,4 +16,4 @@ tags:
 - [[workspace-details.tsx]] - `imports` [EXTRACTED]
 - [[workspace-image-upload-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Timezone
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

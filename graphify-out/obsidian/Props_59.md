@@ -1,18 +1,18 @@
 ---
-source_file: "components/editor/lite-text/toolbar.tsx"
+source_file: "web/ce/components/gantt-chart/dependency/dependency-paths.tsx"
 type: "code"
-community: "Toolbar Lite"
-location: "L26"
+community: "Dependency Timeline"
+location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toolbar_Lite
+  - community/Dependency_Timeline
 ---
 
 # Props
 
 ## Connections
 
-- [[toolbar.tsx_1]] - `contains` [EXTRACTED]
+- [[dependency-paths.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toolbar_Lite
+#graphify/code #graphify/EXTRACTED #community/Dependency_Timeline

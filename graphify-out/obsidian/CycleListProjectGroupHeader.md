@@ -1,12 +1,12 @@
 ---
-source_file: "components/cycles/list/cycle-list-project-group-header.tsx"
+source_file: "web/core/components/cycles/list/cycle-list-project-group-header.tsx"
 type: "code"
-community: "Project Archives"
+community: "Project Settings"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Archives
+  - community/Project_Settings
 ---
 
 # CycleListProjectGroupHeader
@@ -15,4 +15,4 @@ tags:
 
 - [[cycle-list-project-group-header.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Archives
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

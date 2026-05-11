@@ -1,5 +1,5 @@
 ---
-source_file: "components/analytics/work-items/created-vs-resolved.tsx"
+source_file: "web/core/components/analytics/work-items/created-vs-resolved.tsx"
 type: "code"
 community: "Analytics Project"
 location: "L1"
@@ -21,7 +21,7 @@ tags:
 - [[analyticsService_3]] - `contains` [EXTRACTED]
 - [[content.tsx_5]] - `imports_from` [EXTRACTED]
 - [[loaders.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_89]] - `imports_from` [EXTRACTED]
+- [[root.tsx_130]] - `imports_from` [EXTRACTED]
 - [[use-analytics.ts]] - `imports_from` [EXTRACTED]
 - [[useAnalytics()]] - `imports` [EXTRACTED]
 

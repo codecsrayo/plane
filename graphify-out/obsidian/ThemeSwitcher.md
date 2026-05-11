@@ -1,18 +1,19 @@
 ---
-source_file: "components/appearance/theme-switcher.tsx"
+source_file: "web/ce/components/preferences/theme-switcher.tsx"
 type: "code"
-community: "Theme Custom"
-location: "L22"
+community: "Settings Profile"
+location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Custom
+  - community/Settings_Profile
 ---
 
 # ThemeSwitcher
 
 ## Connections
 
+- [[default-list.tsx]] - `imports` [EXTRACTED]
 - [[theme-switcher.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Custom
+#graphify/code #graphify/EXTRACTED #community/Settings_Profile

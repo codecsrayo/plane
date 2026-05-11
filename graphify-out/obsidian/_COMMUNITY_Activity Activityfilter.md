@@ -11,9 +11,9 @@ members: 3
 
 ## Members
 
-- [[ActivityFilter]] - code - components/issues/issue-detail/issue-activity/activity-filter.tsx
-- [[TActivityFilter]] - code - components/issues/issue-detail/issue-activity/activity-filter.tsx
-- [[activity-filter.tsx]] - code - components/issues/issue-detail/issue-activity/activity-filter.tsx
+- [[ActivityFilter]] - code - web/core/components/issues/issue-detail/issue-activity/activity-filter.tsx
+- [[TActivityFilter]] - code - web/core/components/issues/issue-detail/issue-activity/activity-filter.tsx
+- [[activity-filter.tsx]] - code - web/core/components/issues/issue-detail/issue-activity/activity-filter.tsx
 
 ## Live Query (requires Dataview plugin)
 

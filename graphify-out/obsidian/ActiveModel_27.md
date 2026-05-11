@@ -1,14 +1,14 @@
 ---
 source_file: "api_rust/src/entities/social_login_connections.rs"
 type: "code"
-community: "Community 677"
+community: "Active Model"
 location: "L54"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_677
+  - community/Active_Model
 ---
 
 # ActiveModel
 
-#graphify/code #graphify/EXTRACTED #community/Community_677
+#graphify/code #graphify/EXTRACTED #community/Active_Model

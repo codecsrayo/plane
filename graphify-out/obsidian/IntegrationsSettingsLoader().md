@@ -1,12 +1,12 @@
 ---
-source_file: "components/ui/loader/settings/integration.tsx"
+source_file: "web/core/components/ui/loader/settings/integration.tsx"
 type: "code"
-community: "Integration Integrations"
+community: "Project Workspace"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Integration_Integrations
+  - community/Project_Workspace
 ---
 
 # IntegrationsSettingsLoader()
@@ -14,5 +14,6 @@ tags:
 ## Connections
 
 - [[integration.tsx]] - `contains` [EXTRACTED]
+- [[page.tsx_52]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Integration_Integrations
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

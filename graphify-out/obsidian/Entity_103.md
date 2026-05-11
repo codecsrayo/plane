@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/webhooks.rs"
 type: "code"
-community: "Community 601"
+community: "Entity"
 location: "L59"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_601
+  - community/Entity
 ---
 
 # Entity
@@ -15,4 +15,4 @@ tags:
 
 - [[.to()_103]] - `method` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_601
+#graphify/code #graphify/EXTRACTED #community/Entity

@@ -1,18 +1,18 @@
 ---
-source_file: "components/onboarding/invite-members.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/links/content.tsx"
 type: "code"
-community: "Invite Onboarding"
-location: "L39"
+community: "Issue Activity"
+location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Invite_Onboarding
+  - community/Issue_Activity
 ---
 
 # Props
 
 ## Connections
 
-- [[invite-members.tsx]] - `contains` [EXTRACTED]
+- [[content.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Invite_Onboarding
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

@@ -1,12 +1,12 @@
 ---
-source_file: "components/home/widgets/links/create-update-link-modal.tsx"
+source_file: "web/core/components/home/widgets/links/create-update-link-modal.tsx"
 type: "code"
-community: "Dashboard Widgets"
+community: "Link Links"
 location: "L36"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dashboard_Widgets
+  - community/Link_Links
 ---
 
 # LinkCreateUpdateModal
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[create-update-link-modal.tsx]] - `contains` [EXTRACTED]
-- [[root.tsx_1]] - `imports` [EXTRACTED]
+- [[root.tsx_42]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets
+#graphify/code #graphify/EXTRACTED #community/Link_Links

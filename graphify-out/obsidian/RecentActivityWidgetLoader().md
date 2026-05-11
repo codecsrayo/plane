@@ -1,5 +1,5 @@
 ---
-source_file: "components/home/widgets/loaders/recent-activity.tsx"
+source_file: "web/core/components/home/widgets/loaders/recent-activity.tsx"
 type: "code"
 community: "Widget Quick"
 location: "L11"
@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 
-- [[loader.tsx]] - `imports` [EXTRACTED]
+- [[loader.tsx_3]] - `imports` [EXTRACTED]
 - [[recent-activity.tsx]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Widget_Quick

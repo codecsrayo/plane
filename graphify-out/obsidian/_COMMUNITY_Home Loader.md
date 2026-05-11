@@ -11,8 +11,8 @@ members: 2
 
 ## Members
 
-- [[HomeLoader()]] - code - components/home/widgets/loaders/home-loader.tsx
-- [[home-loader.tsx]] - code - components/home/widgets/loaders/home-loader.tsx
+- [[HomeLoader()]] - code - web/core/components/home/widgets/loaders/home-loader.tsx
+- [[home-loader.tsx]] - code - web/core/components/home/widgets/loaders/home-loader.tsx
 
 ## Live Query (requires Dataview plugin)
 

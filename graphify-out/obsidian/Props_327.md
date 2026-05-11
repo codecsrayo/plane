@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/ui/pages/preferences/themes-menu.tsx"
+source_file: "web/core/components/issues/workspace-draft/quick-action.tsx"
 type: "code"
-community: "Member Commands"
-location: "L16"
+community: "Issue Work"
+location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Commands
+  - community/Issue_Work
 ---
 
 # Props
 
 ## Connections
 
-- [[themes-menu.tsx]] - `contains` [EXTRACTED]
+- [[quick-action.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Commands
+#graphify/code #graphify/EXTRACTED #community/Issue_Work

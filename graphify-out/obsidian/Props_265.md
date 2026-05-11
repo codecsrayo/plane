@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-detail-widgets/action-buttons.tsx"
+source_file: "web/core/components/issues/issue-layouts/list/block-root.tsx"
 type: "code"
-community: "Issue Widget"
-location: "L22"
+community: "Select Multiple"
+location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Widget
+  - community/Select_Multiple
 ---
 
 # Props
 
 ## Connections
 
-- [[action-buttons.tsx]] - `contains` [EXTRACTED]
+- [[block-root.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Widget
+#graphify/code #graphify/EXTRACTED #community/Select_Multiple

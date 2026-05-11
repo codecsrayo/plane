@@ -1,18 +1,18 @@
 ---
-source_file: "components/workspace/sidebar/favorites/favorite-items/root.tsx"
+source_file: "web/core/components/workspace/sidebar/favorites/favorite-items/root.tsx"
 type: "code"
-community: "Favorite Favorites"
+community: "Favorite Folder"
 location: "L39"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Favorite_Favorites
+  - community/Favorite_Folder
 ---
 
 # FavoriteRoot
 
 ## Connections
 
-- [[root.tsx_3]] - `contains` [EXTRACTED]
+- [[root.tsx_44]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Favorite_Favorites
+#graphify/code #graphify/EXTRACTED #community/Favorite_Folder

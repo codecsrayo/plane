@@ -1,18 +1,18 @@
 ---
-source_file: "components/cycles/analytics-sidebar/sidebar-details.tsx"
+source_file: "web/core/components/issues/issue-layouts/filters/header/helpers/filter-header.tsx"
 type: "code"
-community: "Cycle Progress"
-location: "L25"
+community: "Priority State"
+location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Progress
+  - community/Priority_State
 ---
 
 # Props
 
 ## Connections
 
-- [[sidebar-details.tsx]] - `contains` [EXTRACTED]
+- [[filter-header.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Progress
+#graphify/code #graphify/EXTRACTED #community/Priority_State

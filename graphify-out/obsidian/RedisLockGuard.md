@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/jobs/email_notification.rs"
 type: "code"
-community: "Community 229"
+community: "Returns Sign"
 location: "L395"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_229
+  - community/Returns_Sign
 ---
 
 # RedisLockGuard
@@ -16,4 +16,4 @@ tags:
 - [[.drop()]] - `method` [EXTRACTED]
 - [[email_notification.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_229
+#graphify/code #graphify/EXTRACTED #community/Returns_Sign

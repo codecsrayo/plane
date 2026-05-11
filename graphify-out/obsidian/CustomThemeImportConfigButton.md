@@ -1,5 +1,5 @@
 ---
-source_file: "components/core/theme/import-config-button.tsx"
+source_file: "web/core/components/core/theme/import-config-button.tsx"
 type: "code"
 community: "Theme Custom"
 location: "L21"

@@ -1,18 +1,18 @@
 ---
-source_file: "components/inbox/inbox-issue-status.tsx"
+source_file: "web/core/components/cycles/transfer-issues-modal.tsx"
 type: "code"
-community: "Issue Inbox"
+community: "Cycle Active"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Inbox
+  - community/Cycle_Active
 ---
 
 # Props
 
 ## Connections
 
-- [[inbox-issue-status.tsx]] - `contains` [EXTRACTED]
+- [[transfer-issues-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Inbox
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

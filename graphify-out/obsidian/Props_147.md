@@ -1,18 +1,18 @@
 ---
-source_file: "components/project/settings/control-section.tsx"
+source_file: "web/core/components/modules/module-card-item.tsx"
 type: "code"
-community: "Account Settings"
-location: "L22"
+community: "Cycles Archived"
+location: "L39"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Account_Settings
+  - community/Cycles_Archived
 ---
 
 # Props
 
 ## Connections
 
-- [[control-section.tsx]] - `contains` [EXTRACTED]
+- [[module-card-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Account_Settings
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

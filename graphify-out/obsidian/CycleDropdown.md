@@ -1,12 +1,12 @@
 ---
-source_file: "components/dropdowns/cycle/index.tsx"
+source_file: "web/core/components/dropdowns/cycle/index.tsx"
 type: "code"
-community: "Issue Properties"
+community: "Label Dropdown"
 location: "L38"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Label_Dropdown
 ---
 
 # CycleDropdown
@@ -18,7 +18,7 @@ tags:
 - [[cycle-select.tsx]] - `imports` [EXTRACTED]
 - [[default-properties.tsx]] - `imports` [EXTRACTED]
 - [[draft-issue-properties.tsx]] - `imports` [EXTRACTED]
-- [[index.tsx_6]] - `contains` [EXTRACTED]
+- [[index.tsx_12]] - `contains` [EXTRACTED]
 - [[issue-properties.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

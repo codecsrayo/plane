@@ -1,12 +1,12 @@
 ---
 source_file: "utils/src/theme/color-conversion.ts"
 type: "code"
-community: "Color Utils"
+community: "Color Shade"
 location: "L73"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Color_Utils
+  - community/Color_Shade
 ---
 
 # hexToOKLCHString()
@@ -17,4 +17,4 @@ tags:
 - [[hexToOKLCH()]] - `calls` [EXTRACTED]
 - [[oklchToCSS()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Color_Utils
+#graphify/code #graphify/EXTRACTED #community/Color_Shade

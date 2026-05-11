@@ -1,12 +1,12 @@
 ---
-source_file: "services/view.service.ts"
+source_file: "web/core/services/view.service.ts"
 type: "code"
-community: "Project Views"
+community: "Project Filters"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Views
+  - community/Project_Filters
 ---
 
 # ViewService
@@ -14,16 +14,16 @@ tags:
 ## Connections
 
 - [[.addViewToFavorites()]] - `method` [EXTRACTED]
-- [[.constructor()_78]] - `method` [EXTRACTED]
+- [[.constructor()_135]] - `method` [EXTRACTED]
 - [[.createView()_1]] - `method` [EXTRACTED]
 - [[.deleteView()]] - `method` [EXTRACTED]
 - [[.getViewDetails()]] - `method` [EXTRACTED]
-- [[.getViewIssues()]] - `method` [EXTRACTED]
+- [[.getViewIssues()_1]] - `method` [EXTRACTED]
 - [[.getViews()]] - `method` [EXTRACTED]
 - [[.patchView()]] - `method` [EXTRACTED]
 - [[.removeViewFromFavorites()]] - `method` [EXTRACTED]
-- [[filter.store.ts_1]] - `imports` [EXTRACTED]
-- [[project-view.store.ts]] - `imports` [EXTRACTED]
-- [[view.service.ts]] - `contains` [EXTRACTED]
+- [[filter.store.ts_6]] - `imports` [EXTRACTED]
+- [[project-view.store.ts_1]] - `imports` [EXTRACTED]
+- [[view.service.ts_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Views
+#graphify/code #graphify/EXTRACTED #community/Project_Filters

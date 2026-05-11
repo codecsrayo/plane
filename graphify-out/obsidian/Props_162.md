@@ -1,18 +1,18 @@
 ---
-source_file: "components/web-hooks/empty-state.tsx"
+source_file: "web/core/components/modules/links/create-update-modal.tsx"
 type: "code"
-community: "Empty State"
-location: "L13"
+community: "Link Values"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_State
+  - community/Link_Values
 ---
 
 # Props
 
 ## Connections
 
-- [[empty-state.tsx_1]] - `contains` [EXTRACTED]
+- [[create-update-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_State
+#graphify/code #graphify/EXTRACTED #community/Link_Values

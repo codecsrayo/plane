@@ -1,12 +1,12 @@
 ---
-source_file: "components/dropdowns/buttons.tsx"
+source_file: "web/core/components/dropdowns/buttons.tsx"
 type: "code"
-community: "Issue Layouts"
+community: "Label Dropdown"
 location: "L224"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layouts
+  - community/Label_Dropdown
 ---
 
 # TransparentButton()
@@ -16,4 +16,4 @@ tags:
 - [[buttons.tsx]] - `contains` [EXTRACTED]
 - [[usePlatformOS()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layouts
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

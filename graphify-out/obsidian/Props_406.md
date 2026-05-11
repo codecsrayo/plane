@@ -1,18 +1,18 @@
 ---
-source_file: "components/pages/navigation-pane/tab-panels/info/actors-info.tsx"
+source_file: "web/core/components/power-k/ui/pages/open-entity/project-modules-menu.tsx"
 type: "code"
-community: "Info Navigation"
-location: "L19"
+community: "Menu Power"
+location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Info_Navigation
+  - community/Menu_Power
 ---
 
 # Props
 
 ## Connections
 
-- [[actors-info.tsx]] - `contains` [EXTRACTED]
+- [[project-modules-menu.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Info_Navigation
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

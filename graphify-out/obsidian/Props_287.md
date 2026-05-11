@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/relations/issue-list-item.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/module-column.tsx"
 type: "code"
-community: "Issue Activity"
-location: "L29"
+community: "Label Dropdown"
+location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Label_Dropdown
 ---
 
 # Props
 
 ## Connections
 
-- [[issue-list-item.tsx]] - `contains` [EXTRACTED]
+- [[module-column.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

@@ -1,34 +1,37 @@
 ---
 type: community
-cohesion: 0.12
-members: 18
+cohesion: 0.20
+members: 21
 ---
 
 # State Project
 
-**Cohesion:** 0.12 - loosely connected
-**Members:** 18 nodes
+**Cohesion:** 0.20 - loosely connected
+**Members:** 21 nodes
 
 ## Members
 
-- [[.constructor()_118]] - code - services/project/project-state.service.ts
-- [[.createState()]] - code - services/project/project-state.service.ts
-- [[.deleteState()]] - code - services/project/project-state.service.ts
-- [[.getIntakeState()]] - code - services/project/project-state.service.ts
-- [[.getState()]] - code - services/project/project-state.service.ts
-- [[.getStates()]] - code - services/project/project-state.service.ts
-- [[.getWorkspaceStates()]] - code - services/project/project-state.service.ts
-- [[.markDefault()]] - code - services/project/project-state.service.ts
-- [[.patchState()]] - code - services/project/project-state.service.ts
-- [[.updateState()]] - code - services/project/project-state.service.ts
-- [[IStateStore]] - code - store/state.store.ts
-- [[ProjectStateService]] - code - services/project/project-state.service.ts
-- [[currentDefaultState]] - code - store/state.store.ts
-- [[project-state.service.ts]] - code - services/project/project-state.service.ts
-- [[projectIntakeState]] - code - store/state.store.ts
-- [[projectStates]] - code - store/state.store.ts
-- [[state.store.ts]] - code - store/state.store.ts
-- [[stateIndex]] - code - store/state.store.ts
+- [[.from()_23]] - code - api_rust/src/routes/states.rs
+- [[CreateStateRequest]] - code - api_rust/src/routes/states.rs
+- [[GroupedQuery]] - code - api_rust/src/routes/states.rs
+- [[StateResponse]] - code - api_rust/src/routes/states.rs
+- [[UpdateStateRequest]] - code - api_rust/src/routes/states.rs
+- [[WorkspaceProjectPath]] - code - api_rust/src/routes/states.rs
+- [[WorkspaceProjectStatePath]] - code - api_rust/src/routes/states.rs
+- [[create_state()]] - code - api_rust/src/routes/states.rs
+- [[delete_state()]] - code - api_rust/src/routes/states.rs
+- [[get_state()]] - code - api_rust/src/routes/states.rs
+- [[intake_state()]] - code - api_rust/src/routes/states.rs
+- [[list_states()]] - code - api_rust/src/routes/states.rs
+- [[mark_default()]] - code - api_rust/src/routes/states.rs
+- [[normalize_sequence_by_group()]] - code - api_rust/src/routes/states.rs
+- [[project_member_for_user()_2]] - code - api_rust/src/routes/states.rs
+- [[require_admin()]] - code - api_rust/src/routes/states.rs
+- [[require_project_member()]] - code - api_rust/src/routes/states.rs
+- [[slugify()]] - code - api_rust/src/routes/states.rs
+- [[states.rs_1]] - code - api_rust/src/routes/states.rs
+- [[update_state()]] - code - api_rust/src/routes/states.rs
+- [[validate_group()]] - code - api_rust/src/routes/states.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -39,11 +42,18 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 3 edges to [[_COMMUNITY_API Services]]
-- 1 edge to [[_COMMUNITY_Estimate Points]]
-- 1 edge to [[_COMMUNITY_Issue Group]]
+- 7 edges to [[_COMMUNITY_Project Response]]
+- 5 edges to [[_COMMUNITY_Issue Request]]
+- 5 edges to [[_COMMUNITY_Asset Issue]]
+- 5 edges to [[_COMMUNITY_User Github]]
+- 3 edges to [[_COMMUNITY_Password Email]]
+- 2 edges to [[_COMMUNITY_Workspace Webhook]]
+- 1 edge to [[_COMMUNITY_Issue Sync]]
 
 ## Top bridge nodes
 
-- [[state.store.ts]] - degree 10, connects to 3 communities
-- [[project-state.service.ts]] - degree 4, connects to 1 community
+- [[create_state()]] - degree 11, connects to 5 communities
+- [[update_state()]] - degree 11, connects to 5 communities
+- [[intake_state()]] - degree 9, connects to 5 communities
+- [[list_states()]] - degree 7, connects to 3 communities
+- [[delete_state()]] - degree 6, connects to 3 communities

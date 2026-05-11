@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/ce/helpers/parser.ts"
 type: "code"
-community: "Document Text"
+community: "Document Custom"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Document_Text
+  - community/Document_Custom
 ---
 
 # extractAdditionalAssetsFromHTMLContent()
@@ -17,4 +17,4 @@ tags:
 - [[parser.ts]] - `contains` [EXTRACTED]
 - [[parser.ts_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Document_Text
+#graphify/code #graphify/EXTRACTED #community/Document_Custom

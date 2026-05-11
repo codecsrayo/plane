@@ -1,12 +1,12 @@
 ---
 source_file: "utils/src/rich-filters/factories/nodes/core.ts"
 type: "code"
-community: "Group Transform"
+community: "Adapter Keys"
 location: "L37"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group_Transform
+  - community/Adapter_Keys
 ---
 
 # createAndGroupNode()
@@ -18,4 +18,4 @@ tags:
 - [[core.ts_13]] - `imports` [EXTRACTED]
 - [[core.ts_16]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group_Transform
+#graphify/code #graphify/EXTRACTED #community/Adapter_Keys

@@ -1,18 +1,18 @@
 ---
-source_file: "hooks/editor/use-editor-config.ts"
+source_file: "web/helpers/cover-image.helper.ts"
 type: "code"
-community: "Editor Asset"
-location: "L18"
+community: "Cover Image"
+location: "L42"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Asset
+  - community/Cover_Image
 ---
 
 # fileService
 
 ## Connections
 
-- [[use-editor-config.ts]] - `contains` [EXTRACTED]
+- [[cover-image.helper.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Asset
+#graphify/code #graphify/EXTRACTED #community/Cover_Image

@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/custom-image/extension-config.ts"
 type: "code"
-community: "Custom Image Block"
+community: "Document Custom"
 location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Custom_Image_Block
+  - community/Document_Custom
 ---
 
 # CustomImageExtensionConfig
@@ -17,4 +17,4 @@ tags:
 - [[extension-config.ts_3]] - `contains` [EXTRACTED]
 - [[extension.tsx_5]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Custom_Image_Block
+#graphify/code #graphify/EXTRACTED #community/Document_Custom

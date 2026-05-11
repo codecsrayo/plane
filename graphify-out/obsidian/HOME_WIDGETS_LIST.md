@@ -1,12 +1,12 @@
 ---
-source_file: "components/home/home-dashboard-widgets.tsx"
+source_file: "web/core/components/home/home-dashboard-widgets.tsx"
 type: "code"
-community: "Dashboard Widgets"
+community: "Widget Home"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dashboard_Widgets
+  - community/Widget_Home
 ---
 
 # HOME_WIDGETS_LIST
@@ -16,4 +16,4 @@ tags:
 - [[home-dashboard-widgets.tsx]] - `contains` [EXTRACTED]
 - [[widget-item.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets
+#graphify/code #graphify/EXTRACTED #community/Widget_Home

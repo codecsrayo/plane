@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-detail/issue-activity/activity-comment-root.tsx"
+source_file: "web/core/components/issues/issue-detail/issue-activity/activity-comment-root.tsx"
 type: "code"
 community: "Activity Issue"
 location: "L23"

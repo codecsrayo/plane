@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/filters/header/filters/due-date.tsx"
+source_file: "web/core/components/web-hooks/form/delete-section.tsx"
 type: "code"
-community: "Date Start"
-location: "L15"
+community: "Webhook Section"
+location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Date_Start
+  - community/Webhook_Section
 ---
 
 # Props
 
 ## Connections
 
-- [[due-date.tsx]] - `contains` [EXTRACTED]
+- [[delete-section.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Date_Start
+#graphify/code #graphify/EXTRACTED #community/Webhook_Section

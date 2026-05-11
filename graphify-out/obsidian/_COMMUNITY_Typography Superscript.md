@@ -44,7 +44,7 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 2 edges to [[_COMMUNITY_Editor Commands]]
+- 2 edges to [[_COMMUNITY_Table Node]]
 
 ## Top bridge nodes
 

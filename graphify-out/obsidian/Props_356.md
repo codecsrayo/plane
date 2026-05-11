@@ -1,18 +1,18 @@
 ---
-source_file: "components/onboarding/create-or-join-workspaces.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/sub-issues/issues-list/root.tsx"
 type: "code"
-community: "Wrapper Workspace"
-location: "L27"
+community: "Issue Activity"
+location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Wrapper_Workspace
+  - community/Issue_Activity
 ---
 
 # Props
 
 ## Connections
 
-- [[create-or-join-workspaces.tsx]] - `contains` [EXTRACTED]
+- [[root.tsx_82]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Wrapper_Workspace
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

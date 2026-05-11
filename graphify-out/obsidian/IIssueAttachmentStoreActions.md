@@ -1,12 +1,12 @@
 ---
-source_file: "store/issue/issue-details/attachment.store.ts"
+source_file: "web/core/store/issue/issue-details/attachment.store.ts"
 type: "code"
-community: "Attachment Attachments"
+community: "Issue Reaction"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Attachment_Attachments
+  - community/Issue_Reaction
 ---
 
 # IIssueAttachmentStoreActions
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[attachment.store.ts]] - `contains` [EXTRACTED]
-- [[root.store.ts_2]] - `imports` [EXTRACTED]
+- [[root.store.ts_4]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Attachment_Attachments
+#graphify/code #graphify/EXTRACTED #community/Issue_Reaction

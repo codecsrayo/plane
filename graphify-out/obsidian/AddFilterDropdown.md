@@ -1,20 +1,20 @@
 ---
-source_file: "components/rich-filters/add-filters/dropdown.tsx"
+source_file: "web/core/components/rich-filters/add-filters/dropdown.tsx"
 type: "code"
-community: "Filter Controls"
+community: "Value Input"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Controls
+  - community/Value_Input
 ---
 
 # AddFilterDropdown
 
 ## Connections
 
-- [[button.tsx_1]] - `imports` [EXTRACTED]
-- [[dropdown.tsx_7]] - `contains` [EXTRACTED]
+- [[button.tsx_4]] - `imports` [EXTRACTED]
+- [[dropdown.tsx_9]] - `contains` [EXTRACTED]
 - [[property.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Controls
+#graphify/code #graphify/EXTRACTED #community/Value_Input

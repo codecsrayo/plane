@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/user_notification_preferences.rs"
 type: "code"
-community: "Community 365"
+community: "Model Relation"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_365
+  - community/Model_Relation
 ---
 
 # Relation
@@ -15,4 +15,4 @@ tags:
 
 - [[user_notification_preferences.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_365
+#graphify/code #graphify/EXTRACTED #community/Model_Relation

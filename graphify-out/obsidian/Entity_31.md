@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/page_logs.rs"
 type: "code"
-community: "Community 529"
+community: "Entity"
 location: "L60"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_529
+  - community/Entity
 ---
 
 # Entity
@@ -15,4 +15,4 @@ tags:
 
 - [[.to()_31]] - `method` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_529
+#graphify/code #graphify/EXTRACTED #community/Entity
