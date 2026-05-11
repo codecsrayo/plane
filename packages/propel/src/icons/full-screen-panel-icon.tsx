@@ -19,12 +19,12 @@ export function FullScreenPanelIcon({ className = "text-current", ...rest }: ISv
       {...rest}
     >
       <path
-        d="M19 3H5C3.89543 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1046 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3Z"
+        d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3Z"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
-        d="M16.6667 6H7.20015C6.50001 6 6 6 6 7.33C6.00027 8.44 6 13.82 6 15.88L6.00017 16.67C6.00017 18 6 18 7.2 18H16.6667C18 18 18 18 18 16.67V7.33335C18 6 18 6 16.67 6H16.6667Z"
+        d="M16.67 6H7.2C6.5 6 6 6 6 7.33C6 8.44 6 13.82 6 15.88L6 16.67C6 18 6 18 7.2 18H16.67C18 18 18 18 18 16.67V7.33C18 6 18 6 16.67 6H16.67Z"
         fill="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
