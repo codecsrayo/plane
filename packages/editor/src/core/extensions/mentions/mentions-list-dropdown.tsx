@@ -146,7 +146,7 @@ export const MentionsListDropdown = forwardRef(function MentionsListDropdown(pro
         }}
       >
         {isLoading ? (
-          <div className="text-center text-13 text-placeholder">Loading...</div>
+          <div className="text-center text-13 text-placeholder">Loading…</div>
         ) : sections.length ? (
           sections.map((section, sectionIndex) => (
             <div key={section.key} className="space-y-2">

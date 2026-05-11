@@ -102,7 +102,7 @@ export function AskPiMenu(props: Props) {
             </div>
           </div>
         ) : isLoading ? (
-          <p className="text-13 text-secondary">Pi is generating response...</p>
+          <p className="text-13 text-secondary">Pi is generating response…</p>
         ) : (
           <p className="text-13 text-secondary">Ask Pi anything about the selected text.</p>
         )}
@@ -129,7 +129,7 @@ export function AskPiMenu(props: Props) {
           <button
             type="button"
             className={cn("grid size-4 flex-shrink-0 place-items-center transition-opacity", {
-              "opacity-40 cursor-not-allowed": !query.trim() || isLoading,
+              "cursor-not-allowed opacity-40": !query.trim() || isLoading,
             })}
             onClick={handleSubmit}
             disabled={!query.trim() || isLoading}

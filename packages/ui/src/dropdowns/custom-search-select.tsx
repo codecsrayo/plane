@@ -129,7 +129,7 @@ export function CustomSearchSelect(props: ICustomSearchSelectProps) {
                   `toggleDropdown` mantiene el click (UX idéntica); el estado
                   `disabled` del componente ya fluye al Combobox vía props.
                 */}
-                {/* eslint-disable-next-line jsx-a11y/prefer-tag-over-role */}
+                {/* eslint-disable jsx-a11y/prefer-tag-over-role */}
                 <span
                   role="button"
                   ref={setReferenceElement}
@@ -148,6 +148,7 @@ export function CustomSearchSelect(props: ICustomSearchSelectProps) {
                 >
                   {customButton}
                 </span>
+                {/* eslint-enable jsx-a11y/prefer-tag-over-role */}
               </Combobox.Button>
             ) : (
               <Combobox.Button as="div" className="contents">
@@ -248,7 +249,7 @@ export function CustomSearchSelect(props: ICustomSearchSelectProps) {
                           <p className="px-1.5 py-1 text-placeholder italic">{noResultsMessage}</p>
                         )
                       ) : (
-                        <p className="px-1.5 py-1 text-placeholder italic">Loading...</p>
+                        <p className="px-1.5 py-1 text-placeholder italic">Loading…</p>
                       )}
                     </div>
                     {footerOption}

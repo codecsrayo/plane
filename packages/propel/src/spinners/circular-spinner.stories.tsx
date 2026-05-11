@@ -122,7 +122,7 @@ export const InButton: Story = {
     return (
       <button className="bg-blue-500 flex items-center gap-2 rounded-sm px-4 py-2 text-on-color">
         <Spinner height="16px" width="16px" />
-        <span>Loading...</span>
+        <span>Loading…</span>
       </button>
     );
   },
@@ -134,7 +134,7 @@ export const CenteredInCard: Story = {
       <div className="border-gray-200 shadow-md w-96 rounded-lg border bg-white p-8">
         <div className="flex flex-col items-center justify-center space-y-4">
           <Spinner height="48px" width="48px" />
-          <p className="text-gray-600 text-13">Loading content...</p>
+          <p className="text-gray-600 text-13">Loading content…</p>
         </div>
       </div>
     );

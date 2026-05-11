@@ -169,7 +169,7 @@ export const GithubPRStateMappingModal = observer(function GithubPRStateMappingM
             value={selectedProject}
             onChange={(e) => handleProjectChange(e.target.value)}
           >
-            <option value="">Choose Project...</option>
+            <option value="">Choose Project…</option>
             {(workspaceProjectIds ?? []).map((id) => {
               const p = getProjectById(id);
               return p ? (
