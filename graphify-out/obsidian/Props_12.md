@@ -1,18 +1,18 @@
 ---
-source_file: "components/home/widgets/loaders/loader.tsx"
+source_file: "ui/src/modals/modal-core.tsx"
 type: "code"
-community: "Widget Quick"
-location: "L13"
+community: "Variant Alert"
+location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Widget_Quick
+  - community/Variant_Alert
 ---
 
 # Props
 
 ## Connections
 
-- [[loader.tsx]] - `contains` [EXTRACTED]
+- [[modal-core.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Widget_Quick
+#graphify/code #graphify/EXTRACTED #community/Variant_Alert

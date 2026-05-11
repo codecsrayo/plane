@@ -1,23 +1,23 @@
 ---
-source_file: "components/gantt-chart/helpers/draggable.tsx"
+source_file: "ui/src/sortable/draggable.tsx"
 type: "code"
-community: "Resizable Left"
+community: "Story Meta"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Resizable_Left
+  - community/Story_Meta
 ---
 
 # draggable.tsx
 
 ## Connections
 
-- [[ChartDraggable]] - `contains` [EXTRACTED]
-- [[LeftResizable]] - `imports` [EXTRACTED]
-- [[Props_50]] - `contains` [EXTRACTED]
-- [[RightResizable]] - `imports` [EXTRACTED]
-- [[left-resizable.tsx]] - `imports_from` [EXTRACTED]
-- [[right-resizable.tsx]] - `imports_from` [EXTRACTED]
+- [[Draggable()]] - `contains` [EXTRACTED]
+- [[DropIndicator()]] - `imports` [EXTRACTED]
+- [[Props_8]] - `contains` [EXTRACTED]
+- [[drop-indicator.tsx]] - `imports_from` [EXTRACTED]
+- [[index.ts_14]] - `imports_from` [EXTRACTED]
+- [[sortable.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Resizable_Left
+#graphify/code #graphify/EXTRACTED #community/Story_Meta

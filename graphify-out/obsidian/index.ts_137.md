@@ -1,18 +1,14 @@
 ---
-source_file: "components/power-k/ui/pages/preferences/index.ts"
+source_file: "decorators/src/index.ts"
 type: "code"
-community: "File Icons Nav"
+community: "Community 522"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/File_Icons_Nav
+  - community/Community_522
 ---
 
 # index.ts
 
-## Connections
-
-- [[root.tsx_57]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/File_Icons_Nav
+#graphify/code #graphify/EXTRACTED #community/Community_522

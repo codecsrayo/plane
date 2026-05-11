@@ -1,19 +1,14 @@
 ---
-source_file: "store/issue/archived/index.ts"
+source_file: "ui/src/badge/index.ts"
 type: "code"
-community: "Calendar Store"
+community: "Community 341"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Store
+  - community/Community_341
 ---
 
 # index.ts
 
-## Connections
-
-- [[root.store.ts_1]] - `imports_from` [EXTRACTED]
-- [[use-issues.ts]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Calendar_Store
+#graphify/code #graphify/EXTRACTED #community/Community_341

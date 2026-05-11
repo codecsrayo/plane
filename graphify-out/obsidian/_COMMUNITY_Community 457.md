@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 457
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[ProfileStateDistribution()]] - code - web/core/components/profile/overview/state-distribution.tsx
-- [[Props_102]] - code - web/core/components/profile/overview/state-distribution.tsx
-- [[state-distribution.tsx]] - code - web/core/components/profile/overview/state-distribution.tsx
+- [[editor.ts_12]] - code - i18n/src/locales/fr/editor.ts
 
 ## Live Query (requires Dataview plugin)
 

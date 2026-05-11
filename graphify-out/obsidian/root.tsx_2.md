@@ -1,28 +1,22 @@
 ---
-source_file: "components/views/applied-filters/root.tsx"
+source_file: "editor/src/core/components/menus/floating-menu/root.tsx"
 type: "code"
-community: "Applied Filters"
+community: "Menu Color"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters
+  - community/Menu_Color
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[AppliedAccessFilters]] - `imports` [EXTRACTED]
-- [[AppliedDateFilters]] - `imports` [EXTRACTED]
-- [[AppliedMembersFilters]] - `imports` [EXTRACTED]
-- [[DATE_FILTERS]] - `contains` [EXTRACTED]
-- [[MEMBERS_FILTERS]] - `contains` [EXTRACTED]
-- [[Props_22]] - `contains` [EXTRACTED]
-- [[VIEW_ACCESS_FILTERS]] - `contains` [EXTRACTED]
-- [[ViewAppliedFiltersList()]] - `contains` [EXTRACTED]
-- [[access.tsx]] - `imports_from` [EXTRACTED]
-- [[date.tsx_5]] - `imports_from` [EXTRACTED]
-- [[members.tsx_6]] - `imports_from` [EXTRACTED]
+- [[FloatingMenuRoot()]] - `contains` [EXTRACTED]
+- [[Props_17]] - `contains` [EXTRACTED]
+- [[color-selector.tsx]] - `imports_from` [EXTRACTED]
+- [[link-selector.tsx]] - `imports_from` [EXTRACTED]
+- [[node-selector.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters
+#graphify/code #graphify/EXTRACTED #community/Menu_Color

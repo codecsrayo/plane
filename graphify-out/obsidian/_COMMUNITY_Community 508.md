@@ -1,18 +1,17 @@
 ---
 type: community
 cohesion: 1.00
-members: 2
+members: 1
 ---
 
 # Community 508
 
 **Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
 
-- [[.to()_10]] - code - api_rust/src/entities/gitlab_issue_syncs.rs
-- [[Entity_10]] - code - api_rust/src/entities/gitlab_issue_syncs.rs
+- [[index.ts_125]] - code - utils/src/rich-filters/validators/index.ts
 
 ## Live Query (requires Dataview plugin)
 

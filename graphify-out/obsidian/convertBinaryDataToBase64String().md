@@ -1,0 +1,20 @@
+---
+source_file: "editor/src/core/helpers/yjs-utils.ts"
+type: "code"
+community: "Document Text"
+location: "L52"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Document_Text
+---
+
+# convertBinaryDataToBase64String()
+
+## Connections
+
+- [[getAllDocumentFormatsFromDocumentEditorBinaryData()]] - `calls` [EXTRACTED]
+- [[getAllDocumentFormatsFromRichTextEditorBinaryData()]] - `calls` [EXTRACTED]
+- [[yjs-utils.ts]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Document_Text

@@ -11,7 +11,7 @@ members: 1
 
 ## Members
 
-- [[index.ts_170]] - code - components/analytics/overview/index.ts
+- [[editor.ts_1]] - code - i18n/src/locales/vi-VN/editor.ts
 
 ## Live Query (requires Dataview plugin)
 

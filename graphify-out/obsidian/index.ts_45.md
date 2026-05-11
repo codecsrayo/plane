@@ -1,19 +1,21 @@
 ---
-source_file: "components/gantt-chart/helpers/index.ts"
+source_file: "editor/src/core/components/links/index.ts"
 type: "code"
-community: "Gantt Chart"
+community: "Link Container"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Chart
+  - community/Link_Container
 ---
 
 # index.ts
 
 ## Connections
 
-- [[block-row.tsx]] - `imports_from` [EXTRACTED]
-- [[block.tsx_2]] - `imports_from` [EXTRACTED]
+- [[link-edit-view.tsx]] - `imports_from` [EXTRACTED]
+- [[link-preview.tsx]] - `imports_from` [EXTRACTED]
+- [[link-view-container.tsx]] - `imports_from` [EXTRACTED]
+- [[link-view.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Chart
+#graphify/code #graphify/EXTRACTED #community/Link_Container

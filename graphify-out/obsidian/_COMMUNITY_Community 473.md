@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 473
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[FiltersDropdown()]] - code - web/core/components/issues/issue-layouts/filters/header/helpers/dropdown.tsx
-- [[Props_231]] - code - web/core/components/issues/issue-layouts/filters/header/helpers/dropdown.tsx
-- [[dropdown.tsx_5]] - code - web/core/components/issues/issue-layouts/filters/header/helpers/dropdown.tsx
+- [[editor.ts_16]] - code - i18n/src/locales/ua/editor.ts
 
 ## Live Query (requires Dataview plugin)
 

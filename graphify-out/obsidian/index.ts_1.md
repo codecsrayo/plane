@@ -1,22 +1,14 @@
 ---
-source_file: "hooks/store/workspace-draft/index.ts"
+source_file: "ui/src/spinners/index.ts"
 type: "code"
-community: "Issue Identifiers"
+community: "Community 334"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Identifiers
+  - community/Community_334
 ---
 
 # index.ts
 
-## Connections
-
-- [[draft-issue-block.tsx]] - `imports_from` [EXTRACTED]
-- [[draft-issue-layout.tsx]] - `imports_from` [EXTRACTED]
-- [[draft-issue-properties.tsx]] - `imports_from` [EXTRACTED]
-- [[form.tsx_8]] - `imports_from` [EXTRACTED]
-- [[root.tsx_29]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Issue_Identifiers
+#graphify/code #graphify/EXTRACTED #community/Community_334

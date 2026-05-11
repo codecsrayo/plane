@@ -1,21 +1,18 @@
 ---
-source_file: "components/settings/project/sidebar/root.tsx"
+source_file: "editor/src/core/extensions/custom-image/components/upload-status.tsx"
 type: "code"
-community: "Multi Select Actions"
-location: "L13"
+community: "Custom Image Block"
+location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Multi_Select_Actions
+  - community/Custom_Image_Block
 ---
 
 # Props
 
 ## Connections
 
-- [[root.tsx_6]] - `contains` [EXTRACTED]
-- [[root.tsx_16]] - `contains` [EXTRACTED]
-- [[root.tsx_17]] - `contains` [EXTRACTED]
-- [[root.tsx_23]] - `contains` [EXTRACTED]
+- [[upload-status.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Multi_Select_Actions
+#graphify/code #graphify/EXTRACTED #community/Custom_Image_Block

@@ -1,37 +1,34 @@
 ---
-source_file: "components/issues/issue-detail/issue-activity/activity/actions/index.ts"
+source_file: "types/src/base-layouts/gantt/index.ts"
 type: "code"
-community: "Issue Activity"
+community: "Gantt Layout"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Gantt_Layout
 ---
 
 # index.ts
 
 ## Connections
 
-- [[activity-block.tsx]] - `imports_from` [EXTRACTED]
-- [[activity-list.tsx_2]] - `imports_from` [EXTRACTED]
-- [[archived-at.tsx]] - `imports_from` [EXTRACTED]
-- [[assignee.tsx_1]] - `imports_from` [EXTRACTED]
-- [[attachment.tsx]] - `imports_from` [EXTRACTED]
-- [[cycle.tsx_3]] - `imports_from` [EXTRACTED]
-- [[default.tsx_2]] - `imports_from` [EXTRACTED]
-- [[description.tsx]] - `imports_from` [EXTRACTED]
-- [[estimate.tsx_1]] - `imports_from` [EXTRACTED]
-- [[inbox.tsx]] - `imports_from` [EXTRACTED]
-- [[label.tsx_2]] - `imports_from` [EXTRACTED]
-- [[link.tsx]] - `imports_from` [EXTRACTED]
-- [[module.tsx_3]] - `imports_from` [EXTRACTED]
-- [[name.tsx]] - `imports_from` [EXTRACTED]
-- [[parent.tsx]] - `imports_from` [EXTRACTED]
-- [[priority.tsx_3]] - `imports_from` [EXTRACTED]
-- [[relation.tsx]] - `imports_from` [EXTRACTED]
-- [[start_date.tsx]] - `imports_from` [EXTRACTED]
-- [[state.tsx_2]] - `imports_from` [EXTRACTED]
-- [[target_date.tsx]] - `imports_from` [EXTRACTED]
+- [[CORE_GANTT_TIMELINE_TYPE]] - `imports` [EXTRACTED]
+- [[EXTENDED_GANTT_TIMELINE_TYPE]] - `imports` [EXTRACTED]
+- [[GANTT_TIMELINE_TYPE]] - `contains` [EXTRACTED]
+- [[IBaseLayoutsBaseItem]] - `imports` [EXTRACTED]
+- [[IBaseLayoutsBaseProps]] - `imports` [EXTRACTED]
+- [[IBaseLayoutsGanttItem]] - `contains` [EXTRACTED]
+- [[IBaseLayoutsGanttProps]] - `contains` [EXTRACTED]
+- [[IGanttCapabilities]] - `contains` [EXTRACTED]
+- [[IGanttRenderProps]] - `contains` [EXTRACTED]
+- [[TGanttBlockUpdateData]] - `contains` [EXTRACTED]
+- [[TGanttDateUpdate]] - `contains` [EXTRACTED]
+- [[TGanttDisplayOptions]] - `contains` [EXTRACTED]
+- [[TTimelineType]] - `contains` [EXTRACTED]
+- [[TTimelineTypeCore]] - `contains` [EXTRACTED]
+- [[base.ts_4]] - `imports_from` [EXTRACTED]
+- [[core.ts_5]] - `imports_from` [EXTRACTED]
+- [[extended.ts_3]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Gantt_Layout

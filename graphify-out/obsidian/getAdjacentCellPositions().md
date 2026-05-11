@@ -1,0 +1,19 @@
+---
+source_file: "editor/src/core/extensions/table/plugins/selection-outline/utils.ts"
+type: "code"
+community: "Table Cell"
+location: "L15"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Table_Cell
+---
+
+# getAdjacentCellPositions()
+
+## Connections
+
+- [[getCellBorderClasses()]] - `calls` [EXTRACTED]
+- [[utils.ts_6]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Table_Cell

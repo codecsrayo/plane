@@ -1,19 +1,14 @@
 ---
-source_file: "components/issues/issue-detail/parent/index.ts"
+source_file: "types/src/rich-filters/config/index.ts"
 type: "code"
-community: "Issue Content"
+community: "Community 495"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Content
+  - community/Community_495
 ---
 
 # index.ts
 
-## Connections
-
-- [[issue-detail.tsx_1]] - `imports_from` [EXTRACTED]
-- [[main-content.tsx_1]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Issue_Content
+#graphify/code #graphify/EXTRACTED #community/Community_495

@@ -1,18 +1,17 @@
 ---
 type: community
 cohesion: 1.00
-members: 2
+members: 1
 ---
 
 # Community 496
 
 **Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
 
-- [[AppState]] - code - api_rust/src/lib.rs
-- [[lib.rs]] - code - api_rust/src/lib.rs
+- [[index.ts_111]] - code - types/src/intake/index.ts
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,22 +1,29 @@
 ---
-source_file: "components/workspace/sidebar/favorites/favorite-items/common/helper.tsx"
+source_file: "ui/src/card/helper.tsx"
 type: "code"
-community: "Favorite Generate"
+community: "Card Direction"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Favorite_Generate
+  - community/Card_Direction
 ---
 
 # helper.tsx
 
 ## Connections
 
-- [[FAVORITE_ITEM_ICONS]] - `imports` [EXTRACTED]
-- [[FAVORITE_ITEM_LINKS]] - `imports` [EXTRACTED]
-- [[generateFavoriteItemLink()]] - `contains` [EXTRACTED]
-- [[getFavoriteItemIcon()]] - `contains` [EXTRACTED]
-- [[sidebar-favorites.ts]] - `imports_from` [EXTRACTED]
+- [[ECardDirection]] - `contains` [EXTRACTED]
+- [[ECardSpacing]] - `contains` [EXTRACTED]
+- [[ECardVariant]] - `contains` [EXTRACTED]
+- [[ICardProperties]] - `contains` [EXTRACTED]
+- [[TCardDirection]] - `contains` [EXTRACTED]
+- [[TCardSpacing]] - `contains` [EXTRACTED]
+- [[TCardVariant]] - `contains` [EXTRACTED]
+- [[card.tsx]] - `imports_from` [EXTRACTED]
+- [[containerStyle_1]] - `contains` [EXTRACTED]
+- [[directions]] - `contains` [EXTRACTED]
+- [[getCardStyle()]] - `contains` [EXTRACTED]
+- [[spacings]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Favorite_Generate
+#graphify/code #graphify/EXTRACTED #community/Card_Direction

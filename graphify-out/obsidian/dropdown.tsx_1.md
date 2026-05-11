@@ -1,26 +1,28 @@
 ---
-source_file: "components/dropdowns/intake-state/dropdown.tsx"
+source_file: "editor/src/core/extensions/table/plugins/drag-handles/row/dropdown.tsx"
 type: "code"
-community: "Issue Properties"
+community: "Dropdown Table"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Dropdown_Table
 ---
 
 # dropdown.tsx
 
 ## Connections
 
-- [[IntakeStateDropdown]] - `contains` [EXTRACTED]
-- [[TWorkItemStateDropdownBaseProps]] - `imports` [EXTRACTED]
-- [[TWorkItemStateDropdownProps]] - `contains` [EXTRACTED]
-- [[WorkItemStateDropdownBase]] - `imports` [EXTRACTED]
-- [[base.tsx_2]] - `imports_from` [EXTRACTED]
-- [[issue-properties.tsx]] - `imports_from` [EXTRACTED]
-- [[issue-properties.tsx_1]] - `imports_from` [EXTRACTED]
-- [[use-project-state.ts]] - `imports_from` [EXTRACTED]
-- [[useProjectState()]] - `imports` [EXTRACTED]
+- [[DROPDOWN_ITEMS_1]] - `contains` [EXTRACTED]
+- [[Props_37]] - `contains` [EXTRACTED]
+- [[RowOptionsDropdown()]] - `contains` [EXTRACTED]
+- [[TableDragHandleDropdownColorSelector()]] - `imports` [EXTRACTED]
+- [[actions.ts]] - `imports_from` [EXTRACTED]
+- [[color-selector.tsx_2]] - `imports_from` [EXTRACTED]
+- [[drag-handle.tsx_2]] - `imports_from` [EXTRACTED]
+- [[duplicateRows()]] - `imports` [EXTRACTED]
+- [[findTable()]] - `imports` [EXTRACTED]
+- [[getSelectedRows()]] - `imports` [EXTRACTED]
+- [[helpers.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Dropdown_Table

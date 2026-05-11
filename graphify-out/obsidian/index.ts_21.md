@@ -1,24 +1,14 @@
 ---
-source_file: "services/integrations/index.ts"
+source_file: "ui/src/control-link/index.ts"
 type: "code"
-community: "Github Integration"
+community: "Community 352"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Github_Integration
+  - community/Community_352
 ---
 
 # index.ts
 
-## Connections
-
-- [[integration-card.tsx]] - `imports_from` [EXTRACTED]
-- [[pr-state-mapping-modal.tsx]] - `imports_from` [EXTRACTED]
-- [[pr-state-mapping.tsx]] - `imports_from` [EXTRACTED]
-- [[prev-exports.tsx]] - `imports_from` [EXTRACTED]
-- [[project-issue-sync-modal.tsx]] - `imports_from` [EXTRACTED]
-- [[project-issue-sync.tsx]] - `imports_from` [EXTRACTED]
-- [[single-integration-card.tsx]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Github_Integration
+#graphify/code #graphify/EXTRACTED #community/Community_352

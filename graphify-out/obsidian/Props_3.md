@@ -1,18 +1,18 @@
 ---
-source_file: "layouts/default-layout/index.tsx"
+source_file: "ui/src/dropdowns/combo-box.tsx"
 type: "code"
-community: "Authorized Maintenance"
-location: "L10"
+community: "Combo Drop"
+location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Authorized_Maintenance
+  - community/Combo_Drop
 ---
 
 # Props
 
 ## Connections
 
-- [[index.tsx]] - `contains` [EXTRACTED]
+- [[combo-box.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Authorized_Maintenance
+#graphify/code #graphify/EXTRACTED #community/Combo_Drop

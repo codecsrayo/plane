@@ -11,7 +11,7 @@ members: 1
 
 ## Members
 
-- [[index.ts_100]] - code - components/issues/workspace-draft/index.ts
+- [[index.ts_75]] - code - services/src/ai/index.ts
 
 ## Live Query (requires Dataview plugin)
 

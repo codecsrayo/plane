@@ -1,20 +1,14 @@
 ---
-source_file: "components/issues/issue-detail/issue-activity/index.ts"
+source_file: "types/src/base-layouts/index.ts"
 type: "code"
-community: "Issue Content"
+community: "Community 494"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Content
+  - community/Community_494
 ---
 
 # index.ts
 
-## Connections
-
-- [[issue-root.tsx]] - `imports_from` [EXTRACTED]
-- [[main-content.tsx_1]] - `imports_from` [EXTRACTED]
-- [[view.tsx_1]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Issue_Content
+#graphify/code #graphify/EXTRACTED #community/Community_494

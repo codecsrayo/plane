@@ -1,18 +1,14 @@
 ---
-source_file: "components/issues/attachment/index.ts"
+source_file: "types/src/intake/index.ts"
 type: "code"
-community: "Issue Content"
+community: "Community 496"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Content
+  - community/Community_496
 ---
 
 # index.ts
 
-## Connections
-
-- [[issue-root.tsx]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Issue_Content
+#graphify/code #graphify/EXTRACTED #community/Community_496

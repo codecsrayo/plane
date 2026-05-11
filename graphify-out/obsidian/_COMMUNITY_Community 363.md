@@ -11,7 +11,7 @@ members: 1
 
 ## Members
 
-- [[index.ts_28]] - code - components/home/index.ts
+- [[index.ts_32]] - code - hooks/src/index.ts
 
 ## Live Query (requires Dataview plugin)
 

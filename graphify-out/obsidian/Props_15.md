@@ -1,19 +1,18 @@
 ---
-source_file: "components/workspace/views/view-list-item.tsx"
+source_file: "editor/src/core/components/menus/ai-menu.tsx"
 type: "code"
-community: "Project Quick"
-location: "L21"
+community: "Menu Disabled"
+location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Quick
+  - community/Menu_Disabled
 ---
 
 # Props
 
 ## Connections
 
-- [[view-list-item.tsx]] - `contains` [EXTRACTED]
-- [[view-list-item.tsx_1]] - `contains` [EXTRACTED]
+- [[ai-menu.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Quick
+#graphify/code #graphify/EXTRACTED #community/Menu_Disabled

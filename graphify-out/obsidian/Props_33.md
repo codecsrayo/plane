@@ -1,18 +1,18 @@
 ---
-source_file: "components/workspace/sidebar/favorites/favorite-items/common/favorite-item-title.tsx"
+source_file: "editor/src/core/extensions/callout/color-selector.tsx"
 type: "code"
-community: "Theme Wrapper"
+community: "Callout Extension"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Wrapper
+  - community/Callout_Extension
 ---
 
 # Props
 
 ## Connections
 
-- [[favorite-item-title.tsx]] - `contains` [EXTRACTED]
+- [[color-selector.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Wrapper
+#graphify/code #graphify/EXTRACTED #community/Callout_Extension

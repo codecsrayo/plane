@@ -1,24 +1,23 @@
 ---
-source_file: "services/dashboard.service.ts"
+source_file: "services/src/dashboard/dashboard.service.ts"
 type: "code"
-community: "Dashboard Widget"
-location: "L13"
+community: "Dashboard Dashboardservice"
+location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dashboard_Widget
+  - community/Dashboard_Dashboardservice
 ---
 
 # DashboardService
 
 ## Connections
 
-- [[.constructor()_91]] - `method` [EXTRACTED]
-- [[.getDashboardDetails()]] - `method` [EXTRACTED]
-- [[.getHomeDashboardWidgets()]] - `method` [EXTRACTED]
+- [[.constructor()_26]] - `method` [EXTRACTED]
+- [[.getHomeWidgets()]] - `method` [EXTRACTED]
 - [[.getWidgetStats()]] - `method` [EXTRACTED]
-- [[.updateDashboardWidget()]] - `method` [EXTRACTED]
+- [[.retrieve()_7]] - `method` [EXTRACTED]
+- [[.updateWidget()]] - `method` [EXTRACTED]
 - [[dashboard.service.ts]] - `contains` [EXTRACTED]
-- [[dashboard.store.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dashboard_Widget
+#graphify/code #graphify/EXTRACTED #community/Dashboard_Dashboardservice

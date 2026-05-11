@@ -1,14 +1,18 @@
 ---
-source_file: "components/license/modal/card/index.ts"
+source_file: "propel/src/icon-button/index.ts"
 type: "code"
-community: "Community 416"
+community: "Reaction Emoji"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_416
+  - community/Reaction_Emoji
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_416
+## Connections
+
+- [[emoji-reaction.tsx]] - `imports_from` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Reaction_Emoji

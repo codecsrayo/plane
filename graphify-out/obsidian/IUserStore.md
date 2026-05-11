@@ -1,22 +1,18 @@
 ---
-source_file: "store/user/index.ts"
+source_file: "shared-state/src/store/user.store.ts"
 type: "code"
-community: "Member Workspace"
-location: "L33"
+community: "User Workspace"
+location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Workspace
+  - community/User_Workspace
 ---
 
 # IUserStore
 
 ## Connections
 
-- [[base-project-member.store.ts]] - `imports` [EXTRACTED]
-- [[index.ts_7]] - `contains` [EXTRACTED]
-- [[root.store.ts]] - `imports` [EXTRACTED]
-- [[user-user.ts]] - `imports` [EXTRACTED]
-- [[workspace-member.store.ts]] - `imports` [EXTRACTED]
+- [[user.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Workspace
+#graphify/code #graphify/EXTRACTED #community/User_Workspace

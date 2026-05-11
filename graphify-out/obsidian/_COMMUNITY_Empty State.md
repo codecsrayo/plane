@@ -1,18 +1,17 @@
 ---
 type: community
 cohesion: 1.00
-members: 2
+members: 1
 ---
 
 # Empty State
 
 **Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
 
-- [[getEmptyStateImagePath()]] - code - components/empty-state/helper.tsx
-- [[helper.tsx_9]] - code - components/empty-state/helper.tsx
+- [[empty-state.ts_18]] - code - i18n/src/locales/en/empty-state.ts
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,18 +1,14 @@
 ---
-source_file: "components/web-hooks/index.ts"
+source_file: "constants/src/analytics/index.ts"
 type: "code"
-community: "Webhook Webhooks"
+community: "Community 408"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Webhook_Webhooks
+  - community/Community_408
 ---
 
 # index.ts
 
-## Connections
-
-- [[form.tsx_7]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Webhook_Webhooks
+#graphify/code #graphify/EXTRACTED #community/Community_408

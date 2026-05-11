@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 345
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[Model_26]] - code - api_rust/src/entities/django_content_type.rs
-- [[Relation_26]] - code - api_rust/src/entities/django_content_type.rs
-- [[django_content_type.rs]] - code - api_rust/src/entities/django_content_type.rs
+- [[index.ts_12]] - code - ui/src/header/index.ts
 
 ## Live Query (requires Dataview plugin)
 

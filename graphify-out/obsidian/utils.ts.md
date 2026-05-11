@@ -1,29 +1,18 @@
 ---
-source_file: "store/member/utils.ts"
+source_file: "editor/src/ce/types/utils.ts"
 type: "code"
-community: "Member Sort"
+community: "Document Side"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Sort
+  - community/Document_Side
 ---
 
 # utils.ts
 
 ## Connections
 
-- [[IMemberFilters]] - `contains` [EXTRACTED]
-- [[base-project-member.store.ts]] - `imports_from` [EXTRACTED]
-- [[filterProjectMembersByRole()]] - `contains` [EXTRACTED]
-- [[filterWorkspaceMembersByRole()]] - `contains` [EXTRACTED]
-- [[getMemberSortKey()]] - `contains` [EXTRACTED]
-- [[member-header-column.tsx]] - `imports_from` [EXTRACTED]
-- [[parseOrderKey()]] - `contains` [EXTRACTED]
-- [[project-member-filters.store.ts]] - `imports_from` [EXTRACTED]
-- [[sortMembers()]] - `contains` [EXTRACTED]
-- [[sortProjectMembers()]] - `contains` [EXTRACTED]
-- [[sortWorkspaceMembers()]] - `contains` [EXTRACTED]
-- [[workspace-member-filters.store.ts]] - `imports_from` [EXTRACTED]
+- [[TAdditionalActiveDropbarExtensions]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Sort
+#graphify/code #graphify/EXTRACTED #community/Document_Side

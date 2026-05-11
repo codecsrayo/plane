@@ -1,22 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/quick-add/index.ts"
+source_file: "types/src/page/index.ts"
 type: "code"
-community: "Calendar Views"
+community: "Import Export"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Views
+  - community/Import_Export
 ---
 
 # index.ts
 
 ## Connections
 
-- [[base-gantt-root.tsx]] - `imports_from` [EXTRACTED]
-- [[kanban-group.tsx]] - `imports_from` [EXTRACTED]
-- [[list-group.tsx]] - `imports_from` [EXTRACTED]
-- [[quick-add-issue-actions.tsx]] - `imports_from` [EXTRACTED]
-- [[spreadsheet-view.tsx]] - `imports_from` [EXTRACTED]
+- [[search.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Views
+#graphify/code #graphify/EXTRACTED #community/Import_Export

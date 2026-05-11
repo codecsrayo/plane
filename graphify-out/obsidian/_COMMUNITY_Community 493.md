@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 493
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[ReadonlyDate]] - code - web/core/components/readonly/date.tsx
-- [[TReadonlyDateProps]] - code - web/core/components/readonly/date.tsx
-- [[date.tsx_9]] - code - web/core/components/readonly/date.tsx
+- [[index.ts_101]] - code - types/src/current-user/index.ts
 
 ## Live Query (requires Dataview plugin)
 

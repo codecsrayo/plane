@@ -1,0 +1,35 @@
+---
+source_file: "propel/src/avatar/avatar.stories.tsx"
+type: "code"
+community: "Avatar Fallback"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Avatar_Fallback
+---
+
+# avatar.stories.tsx
+
+## Connections
+
+- [[AllShapes]] - `contains` [EXTRACTED]
+- [[AllSizes_5]] - `contains` [EXTRACTED]
+- [[Avatar()]] - `imports` [EXTRACTED]
+- [[AvatarGroup]] - `contains` [EXTRACTED]
+- [[Base_1]] - `contains` [EXTRACTED]
+- [[CircleShape]] - `contains` [EXTRACTED]
+- [[Default_3]] - `contains` [EXTRACTED]
+- [[Fallback]] - `contains` [EXTRACTED]
+- [[FallbackVariations]] - `contains` [EXTRACTED]
+- [[FallbackWithCustomColor]] - `contains` [EXTRACTED]
+- [[FallbackWithCustomText]] - `contains` [EXTRACTED]
+- [[Large]] - `contains` [EXTRACTED]
+- [[Medium_4]] - `contains` [EXTRACTED]
+- [[Small_5]] - `contains` [EXTRACTED]
+- [[SquareShape]] - `contains` [EXTRACTED]
+- [[Story_3]] - `contains` [EXTRACTED]
+- [[WithName]] - `contains` [EXTRACTED]
+- [[avatar.tsx_1]] - `imports_from` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Avatar_Fallback

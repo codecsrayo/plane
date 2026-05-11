@@ -1,19 +1,31 @@
 ---
-source_file: "components/issues/issue-layouts/calendar/utils.ts"
+source_file: "editor/src/core/extensions/table/plugins/insert-handlers/utils.ts"
 type: "code"
-community: "Calendar Chart"
+community: "Insert Table"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Chart
+  - community/Insert_Table
 ---
 
 # utils.ts
 
 ## Connections
 
-- [[base-calendar-root.tsx]] - `imports_from` [EXTRACTED]
-- [[handleDragDrop()]] - `contains` [EXTRACTED]
+- [[TableInfo_1]] - `contains` [EXTRACTED]
+- [[createColumnInsertButton()]] - `contains` [EXTRACTED]
+- [[createRowInsertButton()]] - `contains` [EXTRACTED]
+- [[findAllTables()]] - `contains` [EXTRACTED]
+- [[getCurrentTableInfo()]] - `contains` [EXTRACTED]
+- [[helpers.ts]] - `imports_from` [EXTRACTED]
+- [[insertColumnAfterLast()]] - `contains` [EXTRACTED]
+- [[insertRowAfterLast()]] - `contains` [EXTRACTED]
+- [[isCellEmpty()]] - `imports` [EXTRACTED]
+- [[isColumnEmpty()]] - `contains` [EXTRACTED]
+- [[isRowEmpty()]] - `contains` [EXTRACTED]
+- [[plugin.ts_2]] - `imports_from` [EXTRACTED]
+- [[removeLastColumn()]] - `contains` [EXTRACTED]
+- [[removeLastRow()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Chart
+#graphify/code #graphify/EXTRACTED #community/Insert_Table

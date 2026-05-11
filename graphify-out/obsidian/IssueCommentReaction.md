@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-detail/reactions/issue-comment.tsx"
+source_file: "types/src/reaction.ts"
 type: "code"
-community: "Issue Filters"
-location: "L26"
+community: "Instance Config"
+location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters
+  - community/Instance_Config
 ---
 
 # IssueCommentReaction
 
 ## Connections
 
-- [[issue-comment.tsx]] - `contains` [EXTRACTED]
+- [[reaction.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters
+#graphify/code #graphify/EXTRACTED #community/Instance_Config

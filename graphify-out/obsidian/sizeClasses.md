@@ -1,18 +1,18 @@
 ---
-source_file: "components/empty-state/detailed-empty-state-root.tsx"
+source_file: "propel/src/animated-counter/animated-counter.tsx"
 type: "code"
-community: "Empty State"
-location: "L36"
+community: "Animated Counter"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_State
+  - community/Animated_Counter
 ---
 
 # sizeClasses
 
 ## Connections
 
-- [[detailed-empty-state-root.tsx]] - `contains` [EXTRACTED]
+- [[animated-counter.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_State
+#graphify/code #graphify/EXTRACTED #community/Animated_Counter

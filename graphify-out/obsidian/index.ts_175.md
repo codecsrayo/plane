@@ -1,14 +1,19 @@
 ---
-source_file: "components/account/auth-forms/index.ts"
+source_file: "propel/src/emoji-icon-picker/index.ts"
 type: "code"
-community: "Community 418"
+community: "Emoji Reaction"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_418
+  - community/Emoji_Reaction
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_418
+## Connections
+
+- [[emoji-reaction-picker.stories.tsx]] - `imports_from` [EXTRACTED]
+- [[emoji-reaction.tsx]] - `imports_from` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Emoji_Reaction

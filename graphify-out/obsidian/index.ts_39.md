@@ -1,14 +1,23 @@
 ---
-source_file: "components/gantt-chart/sidebar/index.ts"
+source_file: "editor/src/core/components/menus/index.ts"
 type: "code"
-community: "Community 368"
+community: "Menu Color"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_368
+  - community/Menu_Color
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_368
+## Connections
+
+- [[alignment-selector.tsx]] - `imports_from` [EXTRACTED]
+- [[editor-ref.ts]] - `imports_from` [EXTRACTED]
+- [[editor.tsx]] - `imports_from` [EXTRACTED]
+- [[node-selector.tsx]] - `imports_from` [EXTRACTED]
+- [[page-renderer.tsx]] - `imports_from` [EXTRACTED]
+- [[root.tsx_3]] - `imports_from` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Menu_Color

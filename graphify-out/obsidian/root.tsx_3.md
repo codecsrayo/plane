@@ -1,25 +1,34 @@
 ---
-source_file: "components/workspace/sidebar/favorites/favorite-items/root.tsx"
+source_file: "editor/src/core/components/menus/bubble-menu/root.tsx"
 type: "code"
-community: "Favorite Favorites"
+community: "Menu Color"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Favorite_Favorites
+  - community/Menu_Color
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[FavoriteRoot]] - `contains` [EXTRACTED]
-- [[Props_30]] - `contains` [EXTRACTED]
-- [[favorites.helpers.ts]] - `imports_from` [EXTRACTED]
-- [[getCanDrop()_1]] - `imports` [EXTRACTED]
-- [[getInstructionFromPayload()_1]] - `imports` [EXTRACTED]
-- [[index.ts_34]] - `imports_from` [EXTRACTED]
-- [[use-favorite-item-details.tsx]] - `imports_from` [EXTRACTED]
-- [[useFavoriteItemDetails()]] - `imports` [EXTRACTED]
+- [[BubbleMenuLinkSelector()]] - `imports` [EXTRACTED]
+- [[COLORS_LIST]] - `imports` [EXTRACTED]
+- [[CORE_EXTENSIONS]] - `imports` [EXTRACTED]
+- [[EditorBubbleMenu()]] - `contains` [EXTRACTED]
+- [[EditorBubbleMenuProps]] - `contains` [EXTRACTED]
+- [[EditorStateType]] - `contains` [EXTRACTED]
+- [[Props_21]] - `contains` [EXTRACTED]
+- [[TextAlignmentSelector()]] - `imports` [EXTRACTED]
+- [[alignment-selector.tsx]] - `imports_from` [EXTRACTED]
+- [[color-selector.tsx]] - `imports_from` [EXTRACTED]
+- [[common.ts]] - `imports_from` [EXTRACTED]
+- [[extension.ts]] - `imports_from` [EXTRACTED]
+- [[helpers.ts]] - `imports_from` [EXTRACTED]
+- [[index.ts_39]] - `imports_from` [EXTRACTED]
+- [[index.ts_46]] - `imports_from` [EXTRACTED]
+- [[isCellSelection()]] - `imports` [EXTRACTED]
+- [[link-selector.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Favorite_Favorites
+#graphify/code #graphify/EXTRACTED #community/Menu_Color

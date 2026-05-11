@@ -1,23 +1,21 @@
 ---
-source_file: "components/home/widgets/recents/project.tsx"
+source_file: "propel/src/empty-state/assets/vertical-stack/project.tsx"
 type: "code"
-community: "Issue Properties"
+community: "Illustration Assets"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Illustration_Assets
 ---
 
 # project.tsx
 
 ## Connections
 
-- [[BlockProps]] - `contains` [EXTRACTED]
-- [[MemberDropdown]] - `imports` [EXTRACTED]
-- [[RecentProject()]] - `contains` [EXTRACTED]
-- [[dropdown.tsx_4]] - `imports_from` [EXTRACTED]
-- [[index.ts_177]] - `imports_from` [EXTRACTED]
-- [[index.tsx_2]] - `imports_from` [EXTRACTED]
+- [[ILLUSTRATION_COLOR_TOKEN_MAP]] - `imports` [EXTRACTED]
+- [[ProjectVerticalStackIllustration()]] - `contains` [EXTRACTED]
+- [[TIllustrationAssetProps]] - `imports` [EXTRACTED]
+- [[helper.tsx_16]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Illustration_Assets

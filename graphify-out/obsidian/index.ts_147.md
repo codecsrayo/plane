@@ -1,18 +1,14 @@
 ---
-source_file: "components/inbox/sidebar/index.ts"
+source_file: "propel/src/icons/cycle/index.ts"
 type: "code"
-community: "Inbox Filters"
+community: "Community 528"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Inbox_Filters
+  - community/Community_528
 ---
 
 # index.ts
 
-## Connections
-
-- [[root.tsx_70]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Inbox_Filters
+#graphify/code #graphify/EXTRACTED #community/Community_528

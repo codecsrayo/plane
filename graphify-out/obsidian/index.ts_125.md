@@ -1,18 +1,14 @@
 ---
-source_file: "components/workspace-notifications/sidebar/header/options/menu-option/index.ts"
+source_file: "utils/src/rich-filters/validators/index.ts"
 type: "code"
-community: "Issue Layouts"
+community: "Community 508"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layouts
+  - community/Community_508
 ---
 
 # index.ts
 
-## Connections
-
-- [[root.tsx_49]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Issue_Layouts
+#graphify/code #graphify/EXTRACTED #community/Community_508

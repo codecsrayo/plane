@@ -1,14 +1,14 @@
 ---
-source_file: "components/settings/profile/content/pages/general/index.ts"
+source_file: "constants/src/index.ts"
 type: "code"
-community: "Community 386"
+community: "Community 401"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_386
+  - community/Community_401
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_386
+#graphify/code #graphify/EXTRACTED #community/Community_401

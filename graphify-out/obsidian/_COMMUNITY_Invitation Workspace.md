@@ -1,26 +1,26 @@
 ---
 type: community
-cohesion: 0.22
+cohesion: 0.20
 members: 10
 ---
 
 # Invitation Workspace
 
-**Cohesion:** 0.22 - loosely connected
+**Cohesion:** 0.20 - loosely connected
 **Members:** 10 nodes
 
 ## Members
 
-- [[EmailRole]] - code - hooks/use-workspace-invitation.tsx
-- [[InvitationFields]] - code - components/workspace/invite-modal/fields.tsx
-- [[InvitationFormValues]] - code - hooks/use-workspace-invitation.tsx
-- [[SEND_WORKSPACE_INVITATION_MODAL_DEFAULT_VALUES]] - code - hooks/use-workspace-invitation.tsx
-- [[TInvitationFieldsProps]] - code - components/workspace/invite-modal/fields.tsx
-- [[TUseWorkspaceInvitationProps]] - code - hooks/use-workspace-invitation.tsx
-- [[TUseWorkspaceInvitationReturn]] - code - hooks/use-workspace-invitation.tsx
-- [[fields.tsx]] - code - components/workspace/invite-modal/fields.tsx
-- [[use-workspace-invitation.tsx]] - code - hooks/use-workspace-invitation.tsx
-- [[useWorkspaceInvitationActions()]] - code - hooks/use-workspace-invitation.tsx
+- [[.constructor()_5]] - code - services/src/workspace/invitation.service.ts
+- [[.destroy()_1]] - code - services/src/workspace/invitation.service.ts
+- [[.invite()]] - code - services/src/workspace/invitation.service.ts
+- [[.join()]] - code - services/src/workspace/invitation.service.ts
+- [[.joinMany()]] - code - services/src/workspace/invitation.service.ts
+- [[.update()_3]] - code - services/src/workspace/invitation.service.ts
+- [[.userInvitations()]] - code - services/src/workspace/invitation.service.ts
+- [[.workspaceInvitations()]] - code - services/src/workspace/invitation.service.ts
+- [[WorkspaceInvitationService]] - code - services/src/workspace/invitation.service.ts
+- [[invitation.service.ts]] - code - services/src/workspace/invitation.service.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -31,8 +31,8 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 1 edge to [[_COMMUNITY_Member Settings]]
+- 1 edge to [[_COMMUNITY_Sites Cycle]]
 
 ## Top bridge nodes
 
-- [[fields.tsx]] - degree 5, connects to 1 community
+- [[invitation.service.ts]] - degree 2, connects to 1 community

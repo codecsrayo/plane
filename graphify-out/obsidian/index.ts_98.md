@@ -1,14 +1,24 @@
 ---
-source_file: "components/issues/issue-layouts/quick-add/button/index.ts"
+source_file: "types/src/project/index.ts"
 type: "code"
-community: "Community 395"
+community: "Import Export"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_395
+  - community/Import_Export
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_395
+## Connections
+
+- [[ai.ts_2]] - `imports_from` [EXTRACTED]
+- [[index.ts_112]] - `imports_from` [EXTRACTED]
+- [[issues.ts]] - `imports_from` [EXTRACTED]
+- [[publish.ts]] - `imports_from` [EXTRACTED]
+- [[search.ts]] - `imports_from` [EXTRACTED]
+- [[view-props.ts]] - `imports_from` [EXTRACTED]
+- [[workspace.ts_2]] - `imports_from` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Import_Export

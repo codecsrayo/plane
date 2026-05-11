@@ -11,7 +11,7 @@ members: 1
 
 ## Members
 
-- [[index.ts_71]] - code - components/settings/workspace/sidebar/index.ts
+- [[index.ts_61]] - code - services/src/index.ts
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,25 +1,27 @@
 ---
-source_file: "components/settings/profile/content/pages/preferences/root.tsx"
+source_file: "propel/src/tooltip/root.tsx"
 type: "code"
-community: "Profile Settings"
+community: "Emoji Picker"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Profile_Settings
+  - community/Emoji_Picker
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[PreferencesProfileSettings]] - `contains` [EXTRACTED]
-- [[ProfileSettingsDefaultPreferencesList]] - `imports` [EXTRACTED]
-- [[ProfileSettingsHeading()]] - `imports` [EXTRACTED]
-- [[ProfileSettingsLanguageAndTimezonePreferencesList]] - `imports` [EXTRACTED]
-- [[default-list.tsx]] - `imports_from` [EXTRACTED]
-- [[heading.tsx_1]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
-- [[language-and-timezone-list.tsx]] - `imports_from` [EXTRACTED]
+- [[ITooltipProps_1]] - `contains` [EXTRACTED]
+- [[TAlign]] - `imports` [EXTRACTED]
+- [[TPlacement]] - `imports` [EXTRACTED]
+- [[TSide]] - `imports` [EXTRACTED]
+- [[Tooltip()_1]] - `contains` [EXTRACTED]
+- [[convertPlacementToSideAndAlign()]] - `imports` [EXTRACTED]
+- [[ensureRefCompatibleChild()]] - `contains` [EXTRACTED]
+- [[index.ts_191]] - `imports_from` [EXTRACTED]
+- [[placement.ts]] - `imports_from` [EXTRACTED]
+- [[tooltip.stories.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Profile_Settings
+#graphify/code #graphify/EXTRACTED #community/Emoji_Picker

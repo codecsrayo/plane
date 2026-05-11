@@ -1,18 +1,14 @@
 ---
-source_file: "components/cycles/applied-filters/index.ts"
+source_file: "shared-state/src/store/index.ts"
 type: "code"
-community: "Archived Cycles"
+community: "Community 517"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Archived_Cycles
+  - community/Community_517
 ---
 
 # index.ts
 
-## Connections
-
-- [[root.tsx_52]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Archived_Cycles
+#graphify/code #graphify/EXTRACTED #community/Community_517

@@ -1,21 +1,37 @@
 ---
-source_file: "components/issues/issue-detail/label/index.ts"
+source_file: "types/src/rich-filters/operator-configs/index.ts"
 type: "code"
-community: "Issue Properties"
+community: "Operator Configs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Operator_Configs
 ---
 
 # index.ts
 
 ## Connections
 
-- [[issue-properties.tsx]] - `imports_from` [EXTRACTED]
-- [[properties.tsx_2]] - `imports_from` [EXTRACTED]
-- [[root.tsx_32]] - `imports_from` [EXTRACTED]
-- [[sidebar.tsx_3]] - `imports_from` [EXTRACTED]
+- [[COLLECTION_OPERATOR]] - `imports` [EXTRACTED]
+- [[COMPARISON_OPERATOR]] - `imports` [EXTRACTED]
+- [[EQUALITY_OPERATOR]] - `imports` [EXTRACTED]
+- [[TCoreExactOperatorConfigs]] - `imports` [EXTRACTED]
+- [[TCoreInOperatorConfigs]] - `imports` [EXTRACTED]
+- [[TCoreRangeOperatorConfigs]] - `imports` [EXTRACTED]
+- [[TExactOperatorConfigs]] - `contains` [EXTRACTED]
+- [[TExtendedExactOperatorConfigs]] - `imports` [EXTRACTED]
+- [[TExtendedInOperatorConfigs]] - `imports` [EXTRACTED]
+- [[TExtendedOperatorSpecificConfigs]] - `imports` [EXTRACTED]
+- [[TExtendedRangeOperatorConfigs]] - `imports` [EXTRACTED]
+- [[TInOperatorConfigs]] - `contains` [EXTRACTED]
+- [[TOperatorConfigMap]] - `contains` [EXTRACTED]
+- [[TOperatorSpecificConfigs]] - `contains` [EXTRACTED]
+- [[TRangeOperatorConfigs]] - `contains` [EXTRACTED]
+- [[core.ts_6]] - `imports_from` [EXTRACTED]
+- [[core.ts_8]] - `imports_from` [EXTRACTED]
+- [[extended.ts_4]] - `imports_from` [EXTRACTED]
+- [[filter-config.ts]] - `imports_from` [EXTRACTED]
+- [[index.ts_107]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Operator_Configs

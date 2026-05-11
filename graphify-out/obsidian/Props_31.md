@@ -1,18 +1,18 @@
 ---
-source_file: "components/workspace/sidebar/favorites/favorite-items/common/favorite-item-wrapper.tsx"
+source_file: "editor/src/core/extensions/work-item-embed/extension.tsx"
 type: "code"
-community: "Favorite Wrapper"
-location: "L11"
+community: "Work Embed"
+location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Favorite_Wrapper
+  - community/Work_Embed
 ---
 
 # Props
 
 ## Connections
 
-- [[favorite-item-wrapper.tsx]] - `contains` [EXTRACTED]
+- [[extension.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Favorite_Wrapper
+#graphify/code #graphify/EXTRACTED #community/Work_Embed

@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 494
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[ContentWrapper()]] - code - web/core/components/core/content-wrapper.tsx
-- [[ContentWrapperProps]] - code - web/core/components/core/content-wrapper.tsx
-- [[content-wrapper.tsx_1]] - code - web/core/components/core/content-wrapper.tsx
+- [[index.ts_103]] - code - types/src/base-layouts/index.ts
 
 ## Live Query (requires Dataview plugin)
 

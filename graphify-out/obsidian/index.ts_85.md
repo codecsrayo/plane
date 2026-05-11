@@ -1,19 +1,14 @@
 ---
-source_file: "components/issues/preview-card/index.ts"
+source_file: "i18n/src/index.ts"
 type: "code"
-community: "Calendar Blocks"
+community: "Community 411"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Blocks
+  - community/Community_411
 ---
 
 # index.ts
 
-## Connections
-
-- [[blocks.tsx_1]] - `imports_from` [EXTRACTED]
-- [[issue-block.tsx]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Calendar_Blocks
+#graphify/code #graphify/EXTRACTED #community/Community_411

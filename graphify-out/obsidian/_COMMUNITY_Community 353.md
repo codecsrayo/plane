@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 353
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[Model_34]] - code - api_rust/src/entities/page_logs.rs
-- [[Relation_34]] - code - api_rust/src/entities/page_logs.rs
-- [[page_logs.rs]] - code - api_rust/src/entities/page_logs.rs
+- [[index.ts_22]] - code - ui/src/content-wrapper/index.ts
 
 ## Live Query (requires Dataview plugin)
 

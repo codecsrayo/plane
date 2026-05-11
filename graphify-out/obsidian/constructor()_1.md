@@ -1,18 +1,18 @@
 ---
-source_file: "store/base-power-k.store.ts"
+source_file: "services/src/api.service.ts"
 type: "code"
-community: "Shortcut Registry"
-location: "L48"
+community: "Sites Cycle"
+location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Shortcut_Registry
+  - community/Sites_Cycle
 ---
 
 # constructor()
 
 ## Connections
 
-- [[base-power-k.store.ts]] - `contains` [EXTRACTED]
+- [[api.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Shortcut_Registry
+#graphify/code #graphify/EXTRACTED #community/Sites_Cycle

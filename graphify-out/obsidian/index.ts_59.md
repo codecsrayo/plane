@@ -1,14 +1,14 @@
 ---
-source_file: "components/modules/analytics-sidebar/index.ts"
+source_file: "editor/src/core/extensions/custom-list-keymap/index.ts"
 type: "code"
-community: "Community 374"
+community: "Community 381"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_374
+  - community/Community_381
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_374
+#graphify/code #graphify/EXTRACTED #community/Community_381

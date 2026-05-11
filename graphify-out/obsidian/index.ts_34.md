@@ -1,19 +1,14 @@
 ---
-source_file: "components/workspace/sidebar/favorites/favorite-items/common/index.ts"
+source_file: "editor/src/ee/types/index.ts"
 type: "code"
-community: "Favorite Favorites"
+community: "Community 368"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Favorite_Favorites
+  - community/Community_368
 ---
 
 # index.ts
 
-## Connections
-
-- [[root.tsx_3]] - `imports_from` [EXTRACTED]
-- [[use-favorite-item-details.tsx]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Favorite_Favorites
+#graphify/code #graphify/EXTRACTED #community/Community_368

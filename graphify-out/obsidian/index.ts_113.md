@@ -1,19 +1,14 @@
 ---
-source_file: "components/issues/issue-detail-widgets/attachments/index.ts"
+source_file: "utils/src/index.ts"
 type: "code"
-community: "Issue Widget"
+community: "Community 499"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Widget
+  - community/Community_499
 ---
 
 # index.ts
 
-## Connections
-
-- [[action-buttons.tsx]] - `imports_from` [EXTRACTED]
-- [[issue-detail-widget-collapsibles.tsx]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Issue_Widget
+#graphify/code #graphify/EXTRACTED #community/Community_499

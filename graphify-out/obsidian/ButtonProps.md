@@ -1,18 +1,18 @@
 ---
-source_file: "components/dropdowns/priority.tsx"
+source_file: "ui/src/button/button.tsx"
 type: "code"
-community: "Issue Properties"
-location: "L41"
+community: "Button Auth"
+location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Button_Auth
 ---
 
 # ButtonProps
 
 ## Connections
 
-- [[priority.tsx]] - `contains` [EXTRACTED]
+- [[button.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Button_Auth

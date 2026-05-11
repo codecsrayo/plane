@@ -11,7 +11,7 @@ members: 1
 
 ## Members
 
-- [[index.ts_66]] - code - components/modules/links/index.ts
+- [[index.ts_55]] - code - editor/src/core/extensions/mentions/index.ts
 
 ## Live Query (requires Dataview plugin)
 

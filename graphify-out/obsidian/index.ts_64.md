@@ -1,18 +1,14 @@
 ---
-source_file: "components/modules/dropdowns/index.ts"
+source_file: "services/src/user/index.ts"
 type: "code"
-community: "Icon Ilayouticon"
+community: "Community 386"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Icon_Ilayouticon
+  - community/Community_386
 ---
 
 # index.ts
 
-## Connections
-
-- [[module-view-header.tsx]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Icon_Ilayouticon
+#graphify/code #graphify/EXTRACTED #community/Community_386

@@ -1,18 +1,19 @@
 ---
-source_file: "components/issues/issue-detail/issue-activity/activity/actions/helpers/issue-link.tsx"
+source_file: "types/src/issues/issue_link.ts"
 type: "code"
-community: "Issue Layouts"
-location: "L13"
+community: "Issue Enums"
+location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layouts
+  - community/Issue_Enums
 ---
 
 # TIssueLink
 
 ## Connections
 
-- [[issue-link.tsx]] - `contains` [EXTRACTED]
+- [[issue.ts]] - `imports` [EXTRACTED]
+- [[issue_link.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layouts
+#graphify/code #graphify/EXTRACTED #community/Issue_Enums

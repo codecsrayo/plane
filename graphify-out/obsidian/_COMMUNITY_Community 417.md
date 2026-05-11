@@ -11,7 +11,7 @@ members: 1
 
 ## Members
 
-- [[index.tsx_9]] - code - components/readonly/index.tsx
+- [[editor.ts_2]] - code - i18n/src/locales/es/editor.ts
 
 ## Live Query (requires Dataview plugin)
 

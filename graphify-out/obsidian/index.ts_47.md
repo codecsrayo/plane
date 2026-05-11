@@ -1,24 +1,28 @@
 ---
-source_file: "components/project-states/index.ts"
+source_file: "editor/src/core/extensions/index.ts"
 type: "code"
-community: "State Group"
+community: "Collaborative Editor"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/State_Group
+  - community/Collaborative_Editor
 ---
 
 # index.ts
 
 ## Connections
 
-- [[create.tsx]] - `imports_from` [EXTRACTED]
-- [[group-item.tsx]] - `imports_from` [EXTRACTED]
-- [[group-list.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_8]] - `imports_from` [EXTRACTED]
-- [[state-item.tsx]] - `imports_from` [EXTRACTED]
-- [[state-list.tsx]] - `imports_from` [EXTRACTED]
-- [[update.tsx]] - `imports_from` [EXTRACTED]
+- [[ai-handle.ts]] - `imports_from` [EXTRACTED]
+- [[document-extensions.tsx]] - `imports_from` [EXTRACTED]
+- [[drag-handle.ts]] - `imports_from` [EXTRACTED]
+- [[editor.ts]] - `imports_from` [EXTRACTED]
+- [[editor.tsx]] - `imports_from` [EXTRACTED]
+- [[editor.tsx_1]] - `imports_from` [EXTRACTED]
+- [[editor.tsx_2]] - `imports_from` [EXTRACTED]
+- [[extensions.ts_3]] - `imports_from` [EXTRACTED]
+- [[slash-commands.tsx]] - `imports_from` [EXTRACTED]
+- [[use-collaborative-editor.ts]] - `imports_from` [EXTRACTED]
+- [[use-editor.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/State_Group
+#graphify/code #graphify/EXTRACTED #community/Collaborative_Editor

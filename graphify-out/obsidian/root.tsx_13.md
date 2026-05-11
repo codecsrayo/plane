@@ -1,25 +1,25 @@
 ---
-source_file: "components/modules/archived-modules/root.tsx"
+source_file: "propel/src/charts/area-chart/root.tsx"
 type: "code"
-community: "Modules Archived"
+community: "Custom Chart"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Modules_Archived
+  - community/Custom_Chart
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[ArchivedModuleLayoutRoot]] - `contains` [EXTRACTED]
-- [[CycleModuleListLayoutLoader()]] - `imports` [EXTRACTED]
-- [[cycle-module-list-loader.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts_58]] - `imports_from` [EXTRACTED]
-- [[use-module-filter.ts]] - `imports_from` [EXTRACTED]
-- [[use-module.ts]] - `imports_from` [EXTRACTED]
-- [[useModule()]] - `imports` [EXTRACTED]
-- [[useModuleFilter()]] - `imports` [EXTRACTED]
+- [[AreaChart]] - `contains` [EXTRACTED]
+- [[CustomTooltip]] - `imports` [EXTRACTED]
+- [[CustomXAxisTick]] - `imports` [EXTRACTED]
+- [[CustomYAxisTick]] - `imports` [EXTRACTED]
+- [[getLegendProps()]] - `imports` [EXTRACTED]
+- [[legend.tsx]] - `imports_from` [EXTRACTED]
+- [[tick.tsx]] - `imports_from` [EXTRACTED]
+- [[tooltip.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Modules_Archived
+#graphify/code #graphify/EXTRACTED #community/Custom_Chart

@@ -1,18 +1,18 @@
 ---
-source_file: "components/onboarding/create-or-join-workspaces.tsx"
+source_file: "types/src/workspace.ts"
 type: "code"
-community: "Wrapper Workspace"
-location: "L22"
+community: "Import Export"
+location: "L269"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Wrapper_Workspace
+  - community/Import_Export
 ---
 
 # ECreateOrJoinWorkspaceViews
 
 ## Connections
 
-- [[create-or-join-workspaces.tsx]] - `contains` [EXTRACTED]
+- [[workspace.ts_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Wrapper_Workspace
+#graphify/code #graphify/EXTRACTED #community/Import_Export

@@ -1,18 +1,18 @@
 ---
-source_file: "store/analytics.store.ts"
+source_file: "services/src/live.service.ts"
 type: "code"
-community: "Estimate Points"
-location: "L44"
+community: "Sites Cycle"
+location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Estimate_Points
+  - community/Sites_Cycle
 ---
 
 # constructor()
 
 ## Connections
 
-- [[analytics.store.ts]] - `contains` [EXTRACTED]
+- [[live.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Estimate_Points
+#graphify/code #graphify/EXTRACTED #community/Sites_Cycle

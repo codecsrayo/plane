@@ -1,18 +1,18 @@
 ---
-source_file: "hooks/editor/use-editor-mention.tsx"
+source_file: "editor/src/core/extensions/placeholder.ts"
 type: "code"
-community: "Editor Args"
-location: "L19"
+community: "Core Extensions"
+location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Args
+  - community/Core_Extensions
 ---
 
 # TArgs
 
 ## Connections
 
-- [[use-editor-mention.tsx]] - `contains` [EXTRACTED]
+- [[placeholder.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Args
+#graphify/code #graphify/EXTRACTED #community/Core_Extensions

@@ -1,18 +1,18 @@
 ---
-source_file: "components/views/view-list-item-action.tsx"
+source_file: "editor/src/core/components/menus/block-menu.tsx"
 type: "code"
-community: "Project Quick"
-location: "L32"
+community: "Menu Options"
+location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Quick
+  - community/Menu_Options
 ---
 
 # Props
 
 ## Connections
 
-- [[view-list-item-action.tsx]] - `contains` [EXTRACTED]
+- [[block-menu.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Quick
+#graphify/code #graphify/EXTRACTED #community/Menu_Options

@@ -1,29 +1,28 @@
 ---
-source_file: "components/workspace/views/header.tsx"
+source_file: "ui/src/header/header.tsx"
 type: "code"
-community: "Global Quick"
+community: "Variant Context"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Global_Quick
+  - community/Variant_Context
 ---
 
 # header.tsx
 
 ## Connections
 
-- [[CreateUpdateWorkspaceViewModal]] - `imports` [EXTRACTED]
-- [[DefaultViewTab()]] - `contains` [EXTRACTED]
-- [[DefaultWorkspaceViewQuickActions]] - `imports` [EXTRACTED]
-- [[GlobalViewsHeader]] - `contains` [EXTRACTED]
-- [[ViewTab]] - `contains` [EXTRACTED]
-- [[WorkspaceViewQuickActions]] - `imports` [EXTRACTED]
-- [[default-view-quick-action.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
-- [[modal.tsx_1]] - `imports_from` [EXTRACTED]
-- [[quick-action.tsx]] - `imports_from` [EXTRACTED]
-- [[use-global-view.ts]] - `imports_from` [EXTRACTED]
-- [[useGlobalView()]] - `imports` [EXTRACTED]
+- [[EHeaderVariant]] - `imports` [EXTRACTED]
+- [[Header()]] - `contains` [EXTRACTED]
+- [[HeaderContext]] - `contains` [EXTRACTED]
+- [[HeaderProps]] - `contains` [EXTRACTED]
+- [[LeftItem()]] - `contains` [EXTRACTED]
+- [[RightItem()]] - `contains` [EXTRACTED]
+- [[THeaderVariant]] - `imports` [EXTRACTED]
+- [[getHeaderStyle()]] - `imports` [EXTRACTED]
+- [[helper.tsx_5]] - `imports_from` [EXTRACTED]
+- [[index.ts_16]] - `imports_from` [EXTRACTED]
+- [[index.ts_14]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Global_Quick
+#graphify/code #graphify/EXTRACTED #community/Variant_Context

@@ -1,18 +1,18 @@
 ---
-source_file: "components/workspace/views/default-view-list-item.tsx"
+source_file: "editor/src/core/extensions/table/plugins/drag-handles/row/dropdown.tsx"
 type: "code"
-community: "Global Globaldefaultviewlistitem"
-location: "L14"
+community: "Dropdown Table"
+location: "L66"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Global_Globaldefaultviewlistitem
+  - community/Dropdown_Table
 ---
 
 # Props
 
 ## Connections
 
-- [[default-view-list-item.tsx]] - `contains` [EXTRACTED]
+- [[dropdown.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Global_Globaldefaultviewlistitem
+#graphify/code #graphify/EXTRACTED #community/Dropdown_Table

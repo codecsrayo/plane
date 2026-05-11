@@ -1,18 +1,18 @@
 ---
-source_file: "components/views/filters/filter-selection.tsx"
+source_file: "editor/src/core/components/menus/bubble-menu/node-selector.tsx"
 type: "code"
-community: "Created Selection"
-location: "L20"
+community: "Menu Color"
+location: "L34"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Created_Selection
+  - community/Menu_Color
 ---
 
 # Props
 
 ## Connections
 
-- [[filter-selection.tsx]] - `contains` [EXTRACTED]
+- [[node-selector.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Created_Selection
+#graphify/code #graphify/EXTRACTED #community/Menu_Color

@@ -1,0 +1,30 @@
+---
+source_file: "propel/src/scrollarea/scrollarea.tsx"
+type: "code"
+community: "Scroll Size"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Scroll_Size
+---
+
+# scrollarea.tsx
+
+## Connections
+
+- [[ScrollArea()_1]] - `contains` [EXTRACTED]
+- [[ScrollAreaOrientation]] - `contains` [EXTRACTED]
+- [[ScrollAreaProps]] - `contains` [EXTRACTED]
+- [[ScrollAreaScrollType]] - `contains` [EXTRACTED]
+- [[ScrollAreaSize]] - `contains` [EXTRACTED]
+- [[ScrollBar]] - `contains` [EXTRACTED]
+- [[ScrollBarProps]] - `contains` [EXTRACTED]
+- [[classname.tsx_1]] - `imports_from` [EXTRACTED]
+- [[cn()_1]] - `imports` [EXTRACTED]
+- [[horizontalSizeStyles]] - `contains` [EXTRACTED]
+- [[scrollarea.stories.tsx]] - `imports_from` [EXTRACTED]
+- [[thumbSizeStyles_1]] - `contains` [EXTRACTED]
+- [[verticalSizeStyles]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Scroll_Size

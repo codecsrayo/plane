@@ -1,19 +1,23 @@
 ---
-source_file: "components/issues/issue-detail-widgets/index.ts"
+source_file: "types/src/importer/index.ts"
 type: "code"
-community: "Peek Overview"
+community: "Import Export"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Peek_Overview
+  - community/Import_Export
 ---
 
 # index.ts
 
 ## Connections
 
-- [[main-content.tsx_1]] - `imports_from` [EXTRACTED]
-- [[view.tsx_1]] - `imports_from` [EXTRACTED]
+- [[IExportData]] - `contains` [EXTRACTED]
+- [[IExportServiceResponse]] - `contains` [EXTRACTED]
+- [[IImporterService]] - `contains` [EXTRACTED]
+- [[IUserLite]] - `imports` [EXTRACTED]
+- [[index.ts_98]] - `imports_from` [EXTRACTED]
+- [[users.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Peek_Overview
+#graphify/code #graphify/EXTRACTED #community/Import_Export

@@ -1,23 +1,21 @@
 ---
-source_file: "services/ai.service.ts"
+source_file: "services/src/ai/ai.service.ts"
 type: "code"
-community: "Editor Aiservice"
-location: "L27"
+community: "Aiservice Task"
+location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Aiservice
+  - community/Aiservice_Task
 ---
 
 # AIService
 
 ## Connections
 
-- [[.constructor()_87]] - `method` [EXTRACTED]
-- [[.createGptTask()]] - `method` [EXTRACTED]
-- [[.performEditorTask()]] - `method` [EXTRACTED]
+- [[.constructor()_29]] - `method` [EXTRACTED]
+- [[.prompt()]] - `method` [EXTRACTED]
+- [[.rephraseGrammar()]] - `method` [EXTRACTED]
 - [[ai.service.ts]] - `contains` [EXTRACTED]
-- [[description-editor.tsx]] - `imports` [EXTRACTED]
-- [[gpt-assistant-popover.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Aiservice
+#graphify/code #graphify/EXTRACTED #community/Aiservice_Task

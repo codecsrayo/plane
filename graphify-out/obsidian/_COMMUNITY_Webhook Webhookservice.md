@@ -1,31 +1,25 @@
 ---
 type: community
-cohesion: 0.14
-members: 15
+cohesion: 0.22
+members: 9
 ---
 
 # Webhook Webhookservice
 
-**Cohesion:** 0.14 - loosely connected
-**Members:** 15 nodes
+**Cohesion:** 0.22 - loosely connected
+**Members:** 9 nodes
 
 ## Members
 
-- [[.constructor()_83]] - code - services/webhook.service.ts
-- [[.constructor()_16]] - code - store/workspace/webhook.store.ts
-- [[.createWebhook()]] - code - services/webhook.service.ts
-- [[.currentWebhook()]] - code - store/workspace/webhook.store.ts
-- [[.deleteWebhook()]] - code - services/webhook.service.ts
-- [[.fetchWebhookDetails()]] - code - services/webhook.service.ts
-- [[.fetchWebhooksList()]] - code - services/webhook.service.ts
-- [[.regenerateSecretKey()]] - code - services/webhook.service.ts
-- [[.updateWebhook()]] - code - services/webhook.service.ts
-- [[IWebhookStore]] - code - store/workspace/webhook.store.ts
-- [[WebhookService]] - code - services/webhook.service.ts
-- [[WebhookStore]] - code - store/workspace/webhook.store.ts
-- [[webHookObject]] - code - store/workspace/webhook.store.ts
-- [[webhook.service.ts]] - code - services/webhook.service.ts
-- [[webhook.store.ts]] - code - store/workspace/webhook.store.ts
+- [[.constructor()_19]] - code - services/src/developer/webhook.service.ts
+- [[.create()_5]] - code - services/src/developer/webhook.service.ts
+- [[.destroy()_6]] - code - services/src/developer/webhook.service.ts
+- [[.list()_9]] - code - services/src/developer/webhook.service.ts
+- [[.regenerateSecretKey()]] - code - services/src/developer/webhook.service.ts
+- [[.retrieve()_4]] - code - services/src/developer/webhook.service.ts
+- [[.update()_10]] - code - services/src/developer/webhook.service.ts
+- [[WebhookService]] - code - services/src/developer/webhook.service.ts
+- [[webhook.service.ts]] - code - services/src/developer/webhook.service.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -36,14 +30,8 @@ SORT file.name ASC
 
 ## Connections to other communities
 
-- 3 edges to [[_COMMUNITY_Workspace Invites]]
-- 2 edges to [[_COMMUNITY_Webhook Webhooks]]
-- 2 edges to [[_COMMUNITY_Project Root Store]]
-- 2 edges to [[_COMMUNITY_API Services]]
+- 1 edge to [[_COMMUNITY_Sites Cycle]]
 
 ## Top bridge nodes
 
-- [[webhook.store.ts]] - degree 9, connects to 3 communities
-- [[IWebhookStore]] - degree 3, connects to 2 communities
-- [[webhook.service.ts]] - degree 4, connects to 1 community
-- [[WebhookStore]] - degree 4, connects to 1 community
+- [[webhook.service.ts]] - degree 2, connects to 1 community

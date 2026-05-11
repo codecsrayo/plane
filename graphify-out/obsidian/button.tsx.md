@@ -1,23 +1,26 @@
 ---
-source_file: "components/workspace-notifications/sidebar/notification-card/options/button.tsx"
+source_file: "ui/src/button/button.tsx"
 type: "code"
-community: "Notification Option"
+community: "Button Auth"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Notification_Option
+  - community/Button_Auth
 ---
 
 # button.tsx
 
 ## Connections
 
-- [[NotificationItemOptionButton()]] - `contains` [EXTRACTED]
-- [[TNotificationItemOptionButton]] - `contains` [EXTRACTED]
-- [[archive.tsx]] - `imports_from` [EXTRACTED]
-- [[read.tsx]] - `imports_from` [EXTRACTED]
-- [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
-- [[usePlatformOS()]] - `imports` [EXTRACTED]
+- [[Button]] - `contains` [EXTRACTED]
+- [[ButtonProps]] - `contains` [EXTRACTED]
+- [[TButtonSizes]] - `imports` [EXTRACTED]
+- [[TButtonVariant]] - `imports` [EXTRACTED]
+- [[auth-form.tsx]] - `imports_from` [EXTRACTED]
+- [[getButtonStyling()]] - `imports` [EXTRACTED]
+- [[getIconStyling()_1]] - `imports` [EXTRACTED]
+- [[helper.tsx_6]] - `imports_from` [EXTRACTED]
+- [[index.ts_14]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Notification_Option
+#graphify/code #graphify/EXTRACTED #community/Button_Auth

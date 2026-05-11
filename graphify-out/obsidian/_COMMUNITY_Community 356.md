@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 356
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[Model_37]] - code - api_rust/src/entities/estimate_points.rs
-- [[Relation_37]] - code - api_rust/src/entities/estimate_points.rs
-- [[estimate_points.rs]] - code - api_rust/src/entities/estimate_points.rs
+- [[index.ts_25]] - code - ui/src/form-fields/password/index.ts
 
 ## Live Query (requires Dataview plugin)
 

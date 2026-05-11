@@ -1,18 +1,14 @@
 ---
-source_file: "components/pages/header/index.ts"
+source_file: "propel/src/badge/index.ts"
 type: "code"
-community: "Pages Main"
+community: "Community 537"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Pages_Main
+  - community/Community_537
 ---
 
 # index.ts
 
-## Connections
-
-- [[pages-list-view.tsx]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Pages_Main
+#graphify/code #graphify/EXTRACTED #community/Community_537

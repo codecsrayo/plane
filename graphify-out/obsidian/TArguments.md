@@ -1,18 +1,18 @@
 ---
-source_file: "hooks/use-dropdown.ts"
+source_file: "editor/src/core/extensions/extensions.ts"
 type: "code"
-community: "Issue Properties"
-location: "L14"
+community: "Core Extensions"
+location: "L47"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Core_Extensions
 ---
 
 # TArguments
 
 ## Connections
 
-- [[use-dropdown.ts]] - `contains` [EXTRACTED]
+- [[extensions.ts_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Core_Extensions

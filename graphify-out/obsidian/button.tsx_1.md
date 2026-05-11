@@ -1,23 +1,19 @@
 ---
-source_file: "components/rich-filters/add-filters/button.tsx"
+source_file: "ui/src/dropdown/common/button.tsx"
 type: "code"
-community: "Filter Controls"
+community: "Toggle Checkbox"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Controls
+  - community/Toggle_Checkbox
 ---
 
 # button.tsx
 
 ## Connections
 
-- [[AddFilterButton]] - `contains` [EXTRACTED]
-- [[AddFilterDropdown]] - `imports` [EXTRACTED]
-- [[TAddFilterButtonProps]] - `contains` [EXTRACTED]
-- [[dropdown.tsx_7]] - `imports_from` [EXTRACTED]
-- [[filters-row.tsx_1]] - `imports_from` [EXTRACTED]
-- [[filters-toggle.tsx_1]] - `imports_from` [EXTRACTED]
+- [[DropdownButton()]] - `contains` [EXTRACTED]
+- [[index.ts_14]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Controls
+#graphify/code #graphify/EXTRACTED #community/Toggle_Checkbox

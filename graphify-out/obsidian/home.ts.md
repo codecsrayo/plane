@@ -1,31 +1,33 @@
 ---
-source_file: "store/workspace/home.ts"
+source_file: "types/src/home.ts"
 type: "code"
-community: "Link Home"
+community: "Favorites Pages"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Link_Home
+  - community/Favorites_Pages
 ---
 
 # home.ts
 
 ## Connections
 
-- [[HomeStore]] - `contains` [EXTRACTED]
-- [[IHomeStore]] - `contains` [EXTRACTED]
-- [[IWorkspaceLinkStore]] - `imports` [EXTRACTED]
-- [[WorkspaceLinkStore]] - `imports` [EXTRACTED]
-- [[WorkspaceService]] - `imports` [EXTRACTED]
-- [[api.service.ts]] - `imports_from` [EXTRACTED]
-- [[destinationIndex_1]] - `contains` [EXTRACTED]
-- [[index.ts_6]] - `imports_from` [EXTRACTED]
-- [[link.store.ts]] - `imports_from` [EXTRACTED]
-- [[sortOrderBeforeUpdate]] - `contains` [EXTRACTED]
-- [[sortedIds_1]] - `contains` [EXTRACTED]
-- [[toApiError()]] - `imports` [EXTRACTED]
-- [[use-home.ts]] - `imports_from` [EXTRACTED]
-- [[workspace.service.ts]] - `imports_from` [EXTRACTED]
+- [[TActivityEntityData]] - `contains` [EXTRACTED]
+- [[THomeWidgetKeys]] - `contains` [EXTRACTED]
+- [[THomeWidgetProps]] - `contains` [EXTRACTED]
+- [[TIssueEntityData]] - `contains` [EXTRACTED]
+- [[TIssuePriorities_1]] - `imports` [EXTRACTED]
+- [[TLink]] - `contains` [EXTRACTED]
+- [[TLinkEditableFields]] - `contains` [EXTRACTED]
+- [[TLinkIdMap]] - `contains` [EXTRACTED]
+- [[TLinkMap]] - `contains` [EXTRACTED]
+- [[TLogoProps]] - `imports` [EXTRACTED]
+- [[TPageEntityData]] - `contains` [EXTRACTED]
+- [[TProjectEntityData]] - `contains` [EXTRACTED]
+- [[TRecentActivityFilterKeys]] - `contains` [EXTRACTED]
+- [[TWidgetEntityData]] - `contains` [EXTRACTED]
+- [[common.ts_4]] - `imports_from` [EXTRACTED]
+- [[issues.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Link_Home
+#graphify/code #graphify/EXTRACTED #community/Favorites_Pages

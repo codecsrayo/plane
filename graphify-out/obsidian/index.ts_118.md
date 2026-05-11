@@ -1,14 +1,14 @@
 ---
-source_file: "components/appearance/index.ts"
+source_file: "utils/src/work-item-filters/index.ts"
 type: "code"
-community: "Community 398"
+community: "Community 503"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_398
+  - community/Community_503
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_398
+#graphify/code #graphify/EXTRACTED #community/Community_503

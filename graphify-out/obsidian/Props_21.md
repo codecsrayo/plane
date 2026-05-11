@@ -1,19 +1,18 @@
 ---
-source_file: "components/project/applied-filters/access.tsx"
+source_file: "editor/src/core/components/menus/bubble-menu/root.tsx"
 type: "code"
-community: "Applied Filters"
-location: "L13"
+community: "Menu Color"
+location: "L68"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters
+  - community/Menu_Color
 ---
 
 # Props
 
 ## Connections
 
-- [[access.tsx]] - `contains` [EXTRACTED]
-- [[access.tsx_2]] - `contains` [EXTRACTED]
+- [[root.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters
+#graphify/code #graphify/EXTRACTED #community/Menu_Color

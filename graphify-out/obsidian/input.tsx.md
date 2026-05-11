@@ -1,19 +1,22 @@
 ---
-source_file: "components/web-hooks/form/input.tsx"
+source_file: "ui/src/form-fields/input.tsx"
 type: "code"
-community: "Input Webhook"
+community: "Input Auth"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Input_Webhook
+  - community/Input_Auth
 ---
 
 # input.tsx
 
 ## Connections
 
-- [[Props_166]] - `contains` [EXTRACTED]
-- [[WebhookInput()]] - `contains` [EXTRACTED]
+- [[Input]] - `contains` [EXTRACTED]
+- [[InputProps]] - `contains` [EXTRACTED]
+- [[auth-input.tsx]] - `imports_from` [EXTRACTED]
+- [[index.ts_14]] - `imports_from` [EXTRACTED]
+- [[input-color-picker.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Input_Webhook
+#graphify/code #graphify/EXTRACTED #community/Input_Auth

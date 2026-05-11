@@ -1,22 +1,21 @@
 ---
-source_file: "components/issues/issue-layouts/filters/header/filters/project.tsx"
+source_file: "propel/src/empty-state/assets/horizontal-stack/project.tsx"
 type: "code"
-community: "Project Archives"
+community: "Illustration Assets"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Archives
+  - community/Illustration_Assets
 ---
 
 # project.tsx
 
 ## Connections
 
-- [[FilterProjects]] - `contains` [EXTRACTED]
-- [[Props_237]] - `contains` [EXTRACTED]
-- [[index.ts_90]] - `imports_from` [EXTRACTED]
-- [[use-project.ts]] - `imports_from` [EXTRACTED]
-- [[useProject()]] - `imports` [EXTRACTED]
+- [[ILLUSTRATION_COLOR_TOKEN_MAP]] - `imports` [EXTRACTED]
+- [[ProjectHorizontalStackIllustration()]] - `contains` [EXTRACTED]
+- [[TIllustrationAssetProps]] - `imports` [EXTRACTED]
+- [[helper.tsx_16]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Archives
+#graphify/code #graphify/EXTRACTED #community/Illustration_Assets

@@ -1,20 +1,14 @@
 ---
-source_file: "components/gantt-chart/index.ts"
+source_file: "editor/src/ce/extensions/core/index.ts"
 type: "code"
-community: "Gantt Chart"
+community: "Community 372"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Chart
+  - community/Community_372
 ---
 
 # index.ts
 
-## Connections
-
-- [[main-content.tsx]] - `imports_from` [EXTRACTED]
-- [[modules-list-layout.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_7]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Gantt_Chart
+#graphify/code #graphify/EXTRACTED #community/Community_372

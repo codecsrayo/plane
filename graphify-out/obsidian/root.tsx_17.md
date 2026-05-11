@@ -1,23 +1,24 @@
 ---
-source_file: "components/settings/profile/sidebar/root.tsx"
+source_file: "propel/src/skeleton/root.tsx"
 type: "code"
-community: "Sidebar Nav"
+community: "Tabs Custom"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Nav
+  - community/Tabs_Custom
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[ProfileSettingsSidebarHeader]] - `imports` [EXTRACTED]
-- [[ProfileSettingsSidebarItemCategories]] - `imports` [EXTRACTED]
-- [[ProfileSettingsSidebarRoot()]] - `contains` [EXTRACTED]
-- [[Props_42]] - `contains` [EXTRACTED]
-- [[header.tsx_4]] - `imports_from` [EXTRACTED]
-- [[item-categories.tsx_1]] - `imports_from` [EXTRACTED]
+- [[ItemProps_1]] - `contains` [EXTRACTED]
+- [[Skeleton]] - `contains` [EXTRACTED]
+- [[SkeletonItem()]] - `contains` [EXTRACTED]
+- [[SkeletonProps]] - `contains` [EXTRACTED]
+- [[SkeletonRoot()]] - `contains` [EXTRACTED]
+- [[classname.tsx_1]] - `imports_from` [EXTRACTED]
+- [[cn()_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Nav
+#graphify/code #graphify/EXTRACTED #community/Tabs_Custom

@@ -1,0 +1,20 @@
+---
+source_file: "ui/src/dropdown/common/input-search.tsx"
+type: "code"
+community: "Toggle Checkbox"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Toggle_Checkbox
+---
+
+# input-search.tsx
+
+## Connections
+
+- [[IInputSearch]] - `contains` [EXTRACTED]
+- [[InputSearch()]] - `contains` [EXTRACTED]
+- [[index.ts_14]] - `imports_from` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Toggle_Checkbox

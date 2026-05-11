@@ -1,18 +1,18 @@
 ---
-source_file: "components/sidebar/search-button.tsx"
+source_file: "ui/src/progress/progress-bar.tsx"
 type: "code"
-community: "Search Button"
-location: "L10"
+community: "Progress Calculate"
+location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Search_Button
+  - community/Progress_Calculate
 ---
 
 # Props
 
 ## Connections
 
-- [[search-button.tsx]] - `contains` [EXTRACTED]
+- [[progress-bar.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Search_Button
+#graphify/code #graphify/EXTRACTED #community/Progress_Calculate

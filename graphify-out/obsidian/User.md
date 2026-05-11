@@ -1,19 +1,18 @@
 ---
-source_file: "components/common/activity/user.tsx"
+source_file: "types/src/importer/jira-importer.ts"
 type: "code"
-community: "Activity User"
-location: "L20"
+community: "Jira Response"
+location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Activity_User
+  - community/Jira_Response
 ---
 
 # User
 
 ## Connections
 
-- [[activity-block.tsx_1]] - `imports` [EXTRACTED]
-- [[user.tsx_1]] - `contains` [EXTRACTED]
+- [[jira-importer.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Activity_User
+#graphify/code #graphify/EXTRACTED #community/Jira_Response

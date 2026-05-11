@@ -1,38 +1,34 @@
 ---
-source_file: "services/module.service.ts"
+source_file: "services/src/module/module.service.ts"
 type: "code"
-community: "Archived Modules"
-location: "L13"
+community: "Modules Issues"
+location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Archived_Modules
+  - community/Modules_Issues
 ---
 
 # ModuleService
 
 ## Connections
 
-- [[.addIssuesToModule()]] - `method` [EXTRACTED]
-- [[.addModuleToFavorites()]] - `method` [EXTRACTED]
-- [[.addModulesToIssue()]] - `method` [EXTRACTED]
-- [[.constructor()_97]] - `method` [EXTRACTED]
-- [[.createModule()]] - `method` [EXTRACTED]
+- [[.addIssuesToModule()_1]] - `method` [EXTRACTED]
+- [[.addModuleToFavorites()_1]] - `method` [EXTRACTED]
+- [[.addModulesToIssue()_1]] - `method` [EXTRACTED]
+- [[.create()_4]] - `method` [EXTRACTED]
 - [[.createModuleLink()]] - `method` [EXTRACTED]
-- [[.deleteModule()]] - `method` [EXTRACTED]
 - [[.deleteModuleLink()]] - `method` [EXTRACTED]
-- [[.getModuleDetails()]] - `method` [EXTRACTED]
+- [[.destroy()_5]] - `method` [EXTRACTED]
 - [[.getModuleIssues()]] - `method` [EXTRACTED]
-- [[.getModules()]] - `method` [EXTRACTED]
-- [[.getWorkspaceModules()]] - `method` [EXTRACTED]
-- [[.patchModule()]] - `method` [EXTRACTED]
-- [[.removeIssuesFromModuleBulk()]] - `method` [EXTRACTED]
-- [[.removeModuleFromFavorites()]] - `method` [EXTRACTED]
-- [[.removeModulesFromIssueBulk()]] - `method` [EXTRACTED]
-- [[.updateModule()]] - `method` [EXTRACTED]
+- [[.projectModulesList()]] - `method` [EXTRACTED]
+- [[.removeIssuesFromModuleBulk()_1]] - `method` [EXTRACTED]
+- [[.removeModuleFromFavorites()_1]] - `method` [EXTRACTED]
+- [[.removeModulesFromIssueBulk()_1]] - `method` [EXTRACTED]
+- [[.retrieve()_2]] - `method` [EXTRACTED]
+- [[.update()_9]] - `method` [EXTRACTED]
 - [[.updateModuleLink()]] - `method` [EXTRACTED]
-- [[base-issues.store.ts]] - `imports` [EXTRACTED]
+- [[.workspaceModulesList()]] - `method` [EXTRACTED]
 - [[module.service.ts]] - `contains` [EXTRACTED]
-- [[module.store.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Archived_Modules
+#graphify/code #graphify/EXTRACTED #community/Modules_Issues

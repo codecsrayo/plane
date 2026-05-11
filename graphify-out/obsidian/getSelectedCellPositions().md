@@ -1,0 +1,24 @@
+---
+source_file: "editor/src/core/extensions/table/plugins/drag-handles/utils.ts"
+type: "code"
+community: "Table Selected"
+location: "L61"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Table_Selected
+---
+
+# getSelectedCellPositions()
+
+## Connections
+
+- [[constructColumnDragPreview()]] - `calls` [EXTRACTED]
+- [[constructRowDragPreview()]] - `calls` [EXTRACTED]
+- [[getSelectedRect()]] - `calls` [EXTRACTED]
+- [[isCellSelection()]] - `calls` [EXTRACTED]
+- [[utils.ts_2]] - `contains` [EXTRACTED]
+- [[utils.ts_3]] - `imports` [EXTRACTED]
+- [[utils.ts_4]] - `imports` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Table_Selected

@@ -1,0 +1,18 @@
+---
+source_file: "constants/src/issue/filter.ts"
+type: "code"
+community: "Issue Filters"
+location: "L66"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Issue_Filters
+---
+
+# ISSUE_PRIORITY_FILTERS
+
+## Connections
+
+- [[filter.ts_1]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Issue_Filters

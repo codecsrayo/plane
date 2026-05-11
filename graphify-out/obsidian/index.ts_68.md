@@ -1,21 +1,14 @@
 ---
-source_file: "components/global/index.ts"
+source_file: "services/src/file/index.ts"
 type: "code"
-community: "Start Week"
+community: "Community 390"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Start_Week
+  - community/Community_390
 ---
 
 # index.ts
 
-## Connections
-
-- [[form.tsx_6]] - `imports_from` [EXTRACTED]
-- [[language-and-timezone-list.tsx]] - `imports_from` [EXTRACTED]
-- [[modal.tsx_4]] - `imports_from` [EXTRACTED]
-- [[root.tsx_4]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Start_Week
+#graphify/code #graphify/EXTRACTED #community/Community_390

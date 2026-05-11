@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 359
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[Model_40]] - code - api_rust/src/entities/draft_issue_assignees.rs
-- [[Relation_40]] - code - api_rust/src/entities/draft_issue_assignees.rs
-- [[draft_issue_assignees.rs]] - code - api_rust/src/entities/draft_issue_assignees.rs
+- [[index.ts_28]] - code - ui/src/dropdown/index.ts
 
 ## Live Query (requires Dataview plugin)
 

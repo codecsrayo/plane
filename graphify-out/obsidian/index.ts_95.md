@@ -1,14 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/filters/applied-filters/index.ts"
+source_file: "types/src/editor/index.ts"
 type: "code"
-community: "Community 394"
+community: "Issue Activity"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_394
+  - community/Issue_Activity
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_394
+## Connections
+
+- [[issue_comment.ts]] - `imports_from` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

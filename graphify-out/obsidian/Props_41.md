@@ -1,18 +1,18 @@
 ---
-source_file: "components/gantt-chart/sidebar/gantt-dnd-HOC.tsx"
+source_file: "editor/src/core/extensions/custom-image/extension.tsx"
 type: "code"
-community: "Gantt Sidebar"
-location: "L17"
+community: "Custom Image Block"
+location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Sidebar
+  - community/Custom_Image_Block
 ---
 
 # Props
 
 ## Connections
 
-- [[gantt-dnd-HOC.tsx]] - `contains` [EXTRACTED]
+- [[extension.tsx_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Sidebar
+#graphify/code #graphify/EXTRACTED #community/Custom_Image_Block

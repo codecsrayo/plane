@@ -1,24 +1,23 @@
 ---
-source_file: "services/cycle_archive.service.ts"
+source_file: "services/src/cycle/cycle-archive.service.ts"
 type: "code"
-community: "Data Export"
-location: "L14"
+community: "Cycle Archive"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Data_Export
+  - community/Cycle_Archive
 ---
 
 # CycleArchiveService
 
 ## Connections
 
-- [[.archiveCycle()]] - `method` [EXTRACTED]
-- [[.constructor()_89]] - `method` [EXTRACTED]
-- [[.getArchivedCycleDetails()]] - `method` [EXTRACTED]
-- [[.getArchivedCycles()]] - `method` [EXTRACTED]
-- [[.restoreCycle()]] - `method` [EXTRACTED]
-- [[cycle.store.ts]] - `imports` [EXTRACTED]
-- [[cycle_archive.service.ts]] - `contains` [EXTRACTED]
+- [[.archive()_1]] - `method` [EXTRACTED]
+- [[.constructor()_23]] - `method` [EXTRACTED]
+- [[.list()_11]] - `method` [EXTRACTED]
+- [[.restore()]] - `method` [EXTRACTED]
+- [[.retrieve()_5]] - `method` [EXTRACTED]
+- [[cycle-archive.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Data_Export
+#graphify/code #graphify/EXTRACTED #community/Cycle_Archive

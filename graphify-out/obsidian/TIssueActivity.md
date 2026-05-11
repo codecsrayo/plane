@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-detail/issue-activity/root.tsx"
+source_file: "types/src/issues/activity/issue_activity.ts"
 type: "code"
-community: "Activity Issue"
-location: "L31"
+community: "Issue Activity"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Activity_Issue
+  - community/Issue_Activity
 ---
 
 # TIssueActivity
 
 ## Connections
 
-- [[root.tsx_31]] - `contains` [EXTRACTED]
+- [[issue_activity.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Activity_Issue
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

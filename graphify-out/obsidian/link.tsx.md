@@ -1,22 +1,21 @@
 ---
-source_file: "components/issues/issue-detail/issue-activity/activity/actions/link.tsx"
+source_file: "propel/src/empty-state/assets/horizontal-stack/link.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Illustration Assets"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Illustration_Assets
 ---
 
 # link.tsx
 
 ## Connections
 
-- [[IssueLinkActivity]] - `contains` [EXTRACTED]
-- [[TIssueLinkActivity]] - `contains` [EXTRACTED]
-- [[index.ts_104]] - `imports_from` [EXTRACTED]
-- [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
-- [[useIssueDetail()]] - `imports` [EXTRACTED]
+- [[ILLUSTRATION_COLOR_TOKEN_MAP]] - `imports` [EXTRACTED]
+- [[LinkHorizontalStackIllustration()]] - `contains` [EXTRACTED]
+- [[TIllustrationAssetProps]] - `imports` [EXTRACTED]
+- [[helper.tsx_16]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Illustration_Assets

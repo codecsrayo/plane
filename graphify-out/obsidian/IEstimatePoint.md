@@ -1,19 +1,18 @@
 ---
-source_file: "store/estimates/estimate-point.ts"
+source_file: "types/src/estimate.ts"
 type: "code"
-community: "Estimate Point"
-location: "L22"
+community: "Estimate Notification"
+location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Estimate_Point
+  - community/Estimate_Notification
 ---
 
 # IEstimatePoint
 
 ## Connections
 
-- [[estimate-point.ts]] - `contains` [EXTRACTED]
-- [[use-estimate-point.ts]] - `imports` [EXTRACTED]
+- [[estimate.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Estimate_Point
+#graphify/code #graphify/EXTRACTED #community/Estimate_Notification

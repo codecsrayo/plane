@@ -1,23 +1,21 @@
 ---
-source_file: "components/common/activity/helper.tsx"
+source_file: "ui/src/form-fields/password/helper.tsx"
 type: "code"
-community: "Activity User"
+community: "Password Strength"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Activity_User
+  - community/Password_Strength
 ---
 
 # helper.tsx
 
 ## Connections
 
-- [[ActivityIconMap]] - `contains` [EXTRACTED]
-- [[activity-item.tsx]] - `imports_from` [EXTRACTED]
-- [[iconsMap]] - `contains` [EXTRACTED]
-- [[messages()]] - `contains` [EXTRACTED]
-- [[store]] - `imports` [EXTRACTED]
-- [[store-context.tsx]] - `imports_from` [EXTRACTED]
+- [[StrengthInfo]] - `contains` [EXTRACTED]
+- [[getFragmentColor()]] - `contains` [EXTRACTED]
+- [[getStrengthInfo()]] - `contains` [EXTRACTED]
+- [[indicator.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Activity_User
+#graphify/code #graphify/EXTRACTED #community/Password_Strength

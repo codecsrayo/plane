@@ -1,18 +1,14 @@
 ---
-source_file: "components/instance/index.ts"
+source_file: "propel/src/accordion/index.ts"
 type: "code"
-community: "Wrapper Workspace"
+community: "Community 542"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Wrapper_Workspace
+  - community/Community_542
 ---
 
 # index.ts
 
-## Connections
-
-- [[instance-wrapper.tsx]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Wrapper_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_542

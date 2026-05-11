@@ -1,18 +1,18 @@
 ---
-source_file: "components/gantt-chart/sidebar/modules/block.tsx"
+source_file: "editor/src/core/extensions/custom-image/components/toolbar/download.tsx"
 type: "code"
-community: "Gantt Chart"
-location: "L18"
+community: "Image Alignment"
+location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Chart
+  - community/Image_Alignment
 ---
 
 # Props
 
 ## Connections
 
-- [[block.tsx]] - `contains` [EXTRACTED]
+- [[download.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Chart
+#graphify/code #graphify/EXTRACTED #community/Image_Alignment

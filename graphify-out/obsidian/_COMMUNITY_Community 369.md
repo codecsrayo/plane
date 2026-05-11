@@ -11,7 +11,7 @@ members: 1
 
 ## Members
 
-- [[index.ts_40]] - code - components/gantt-chart/sidebar/modules/index.ts
+- [[index.ts_35]] - code - editor/src/ee/extensions/index.ts
 
 ## Live Query (requires Dataview plugin)
 

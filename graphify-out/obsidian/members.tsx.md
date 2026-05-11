@@ -1,20 +1,21 @@
 ---
-source_file: "components/ui/loader/settings/members.tsx"
+source_file: "propel/src/empty-state/assets/horizontal-stack/members.tsx"
 type: "code"
-community: "Member Settings"
+community: "Illustration Assets"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Settings
+  - community/Illustration_Assets
 ---
 
 # members.tsx
 
 ## Connections
 
-- [[MembersSettingsLoader()]] - `contains` [EXTRACTED]
-- [[member-list.tsx]] - `imports_from` [EXTRACTED]
-- [[members-list.tsx]] - `imports_from` [EXTRACTED]
+- [[ILLUSTRATION_COLOR_TOKEN_MAP]] - `imports` [EXTRACTED]
+- [[MembersHorizontalStackIllustration()]] - `contains` [EXTRACTED]
+- [[TIllustrationAssetProps]] - `imports` [EXTRACTED]
+- [[helper.tsx_16]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Settings
+#graphify/code #graphify/EXTRACTED #community/Illustration_Assets

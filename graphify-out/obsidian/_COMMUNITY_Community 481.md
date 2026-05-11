@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 481
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[BulkOperationsUpgradeBanner()]] - code - web/core/components/issues/bulk-operations/upgrade-banner.tsx
-- [[Props_290]] - code - web/core/components/issues/bulk-operations/upgrade-banner.tsx
-- [[upgrade-banner.tsx]] - code - web/core/components/issues/bulk-operations/upgrade-banner.tsx
+- [[editor.ts_18]] - code - i18n/src/locales/sk/editor.ts
 
 ## Live Query (requires Dataview plugin)
 

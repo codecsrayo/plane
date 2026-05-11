@@ -11,7 +11,7 @@ members: 1
 
 ## Members
 
-- [[index.ts_75]] - code - components/settings/profile/content/pages/preferences/index.ts
+- [[index.ts_62]] - code - services/src/auth/index.ts
 
 ## Live Query (requires Dataview plugin)
 

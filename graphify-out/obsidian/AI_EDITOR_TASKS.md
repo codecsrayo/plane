@@ -1,19 +1,18 @@
 ---
-source_file: "constants/ai.ts"
+source_file: "constants/src/ai.ts"
 type: "code"
-community: "Editor Aiservice"
+community: "Tasks"
 location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Aiservice
+  - community/Tasks
 ---
 
 # AI_EDITOR_TASKS
 
 ## Connections
 
-- [[ai.service.ts]] - `imports` [EXTRACTED]
-- [[ai.ts]] - `contains` [EXTRACTED]
+- [[ai.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Aiservice
+#graphify/code #graphify/EXTRACTED #community/Tasks

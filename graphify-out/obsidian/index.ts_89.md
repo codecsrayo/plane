@@ -1,20 +1,20 @@
 ---
-source_file: "components/issues/issue-layouts/properties/index.ts"
+source_file: "i18n/src/types/index.ts"
 type: "code"
-community: "Column Spreadsheet"
+community: "Translation Language"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Column_Spreadsheet
+  - community/Translation_Language
 ---
 
 # index.ts
 
 ## Connections
 
-- [[block.tsx_4]] - `imports_from` [EXTRACTED]
-- [[draft-issue-properties.tsx]] - `imports_from` [EXTRACTED]
-- [[label-column.tsx]] - `imports_from` [EXTRACTED]
+- [[index.ts_87]] - `imports_from` [EXTRACTED]
+- [[language.ts]] - `imports_from` [EXTRACTED]
+- [[use-translation.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Column_Spreadsheet
+#graphify/code #graphify/EXTRACTED #community/Translation_Language

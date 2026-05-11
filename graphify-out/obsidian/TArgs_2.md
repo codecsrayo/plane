@@ -1,18 +1,18 @@
 ---
-source_file: "hooks/editor/use-editor-config.ts"
+source_file: "editor/src/core/components/menus/floating-menu/use-floating-menu.ts"
 type: "code"
-community: "Editor Asset"
+community: "Menu Color"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Asset
+  - community/Menu_Color
 ---
 
 # TArgs
 
 ## Connections
 
-- [[use-editor-config.ts]] - `contains` [EXTRACTED]
+- [[use-floating-menu.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Asset
+#graphify/code #graphify/EXTRACTED #community/Menu_Color

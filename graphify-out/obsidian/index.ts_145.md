@@ -1,23 +1,18 @@
 ---
-source_file: "components/onboarding/steps/common/index.ts"
+source_file: "propel/src/icons/project/index.ts"
 type: "code"
-community: "Values Setup"
+community: "Icon Copy"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Values_Setup
+  - community/Icon_Copy
 ---
 
 # index.ts
 
 ## Connections
 
-- [[create.tsx_1]] - `imports_from` [EXTRACTED]
-- [[join-invites.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_66]] - `imports_from` [EXTRACTED]
-- [[root.tsx_67]] - `imports_from` [EXTRACTED]
-- [[root.tsx_68]] - `imports_from` [EXTRACTED]
-- [[root.tsx_69]] - `imports_from` [EXTRACTED]
+- [[registry.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Values_Setup
+#graphify/code #graphify/EXTRACTED #community/Icon_Copy

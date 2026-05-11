@@ -1,18 +1,18 @@
 ---
-source_file: "components/views/filters/order-by.tsx"
+source_file: "editor/src/core/components/menus/bubble-menu/alignment-selector.tsx"
 type: "code"
-community: "Created Selection"
-location: "L16"
+community: "Menu Color"
+location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Created_Selection
+  - community/Menu_Color
 ---
 
 # Props
 
 ## Connections
 
-- [[order-by.tsx]] - `contains` [EXTRACTED]
+- [[alignment-selector.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Created_Selection
+#graphify/code #graphify/EXTRACTED #community/Menu_Color

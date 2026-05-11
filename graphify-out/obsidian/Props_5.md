@@ -1,18 +1,19 @@
 ---
-source_file: "components/ui/markdown-to-component.tsx"
+source_file: "propel/src/avatar/avatar.tsx"
 type: "code"
-community: "Markdown Custom"
-location: "L17"
+community: "Avatar Fallback"
+location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Markdown_Custom
+  - community/Avatar_Fallback
 ---
 
 # Props
 
 ## Connections
 
-- [[markdown-to-component.tsx]] - `contains` [EXTRACTED]
+- [[avatar.tsx]] - `contains` [EXTRACTED]
+- [[avatar.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Markdown_Custom
+#graphify/code #graphify/EXTRACTED #community/Avatar_Fallback

@@ -1,19 +1,14 @@
 ---
-source_file: "components/pages/editor/summary/index.ts"
+source_file: "propel/src/spinners/index.ts"
 type: "code"
-community: "Navigation Pane"
+community: "Community 530"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Navigation_Pane
+  - community/Community_530
 ---
 
 # index.ts
 
-## Connections
-
-- [[editor-body.tsx]] - `imports_from` [EXTRACTED]
-- [[outline.tsx]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Navigation_Pane
+#graphify/code #graphify/EXTRACTED #community/Community_530

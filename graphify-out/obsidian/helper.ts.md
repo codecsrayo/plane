@@ -1,23 +1,25 @@
 ---
-source_file: "components/settings/helper.ts"
+source_file: "services/src/file/helper.ts"
 type: "code"
-community: "Href Label"
+community: "Upload Detect"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Href_Label
+  - community/Upload_Detect
 ---
 
 # helper.ts
 
 ## Connections
 
-- [[getProjectActivePath()]] - `contains` [EXTRACTED]
-- [[getWorkspaceActivePath()]] - `contains` [EXTRACTED]
-- [[hrefToLabelMap()]] - `contains` [EXTRACTED]
-- [[pathnameToAccessKey()]] - `contains` [EXTRACTED]
-- [[projectHrefToLabelMap]] - `contains` [EXTRACTED]
-- [[workspaceHrefToLabelMap]] - `contains` [EXTRACTED]
+- [[detectMimeTypeFromSignature()]] - `contains` [EXTRACTED]
+- [[file.service.ts]] - `imports_from` [EXTRACTED]
+- [[generateFileUploadPayload()]] - `contains` [EXTRACTED]
+- [[getAssetIdFromUrl()]] - `contains` [EXTRACTED]
+- [[getFileMetaDataForUpload()]] - `contains` [EXTRACTED]
+- [[sites-file.service.ts]] - `imports_from` [EXTRACTED]
+- [[validateAndDetectFileType()]] - `contains` [EXTRACTED]
+- [[validateFilename()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Href_Label
+#graphify/code #graphify/EXTRACTED #community/Upload_Detect

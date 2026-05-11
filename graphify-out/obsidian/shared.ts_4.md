@@ -1,23 +1,19 @@
 ---
-source_file: "components/core/sidebar/progress-stats/shared.ts"
+source_file: "utils/src/rich-filters/operations/traversal/shared.ts"
 type: "code"
-community: "Progress Stats"
+community: "Find Conditions"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Progress_Stats
+  - community/Find_Conditions
 ---
 
 # shared.ts
 
 ## Connections
 
-- [[PROGRESS_STATS]] - `contains` [EXTRACTED]
-- [[TSelectedFilterProgressStats]] - `contains` [EXTRACTED]
-- [[TSelectedFilterProgressStatsType]] - `contains` [EXTRACTED]
-- [[createFilterUpdateHandler()]] - `contains` [EXTRACTED]
-- [[progress-stats.tsx]] - `imports_from` [EXTRACTED]
-- [[progress-stats.tsx_1]] - `imports_from` [EXTRACTED]
+- [[core.ts_11]] - `imports_from` [EXTRACTED]
+- [[getDisplayOperator()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Progress_Stats
+#graphify/code #graphify/EXTRACTED #community/Find_Conditions

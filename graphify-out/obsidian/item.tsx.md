@@ -1,23 +1,24 @@
 ---
-source_file: "components/settings/sidebar/item.tsx"
+source_file: "ui/src/dropdowns/context-menu/item.tsx"
 type: "code"
-community: "Sidebar Nav"
+community: "Context Menu"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Nav
+  - community/Context_Menu
 ---
 
 # item.tsx
 
 ## Connections
 
-- [[Props_108]] - `contains` [EXTRACTED]
-- [[SettingsSidebarItem()]] - `contains` [EXTRACTED]
-- [[item-categories.tsx]] - `imports_from` [EXTRACTED]
-- [[item-categories.tsx_1]] - `imports_from` [EXTRACTED]
-- [[item-categories.tsx_2]] - `imports_from` [EXTRACTED]
-- [[workspace-options.tsx]] - `imports_from` [EXTRACTED]
+- [[ContextMenuContext]] - `imports` [EXTRACTED]
+- [[ContextMenuItem()]] - `contains` [EXTRACTED]
+- [[ContextMenuItemProps]] - `contains` [EXTRACTED]
+- [[Portal()_1]] - `imports` [EXTRACTED]
+- [[TContextMenuItem]] - `imports` [EXTRACTED]
+- [[index.ts_14]] - `imports_from` [EXTRACTED]
+- [[root.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Nav
+#graphify/code #graphify/EXTRACTED #community/Context_Menu

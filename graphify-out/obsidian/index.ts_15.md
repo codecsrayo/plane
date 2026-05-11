@@ -1,26 +1,14 @@
 ---
-source_file: "store/issue/cycle/index.ts"
+source_file: "ui/src/breadcrumbs/index.ts"
 type: "code"
-community: "Calendar Views"
+community: "Community 347"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Views
+  - community/Community_347
 ---
 
 # index.ts
 
-## Connections
-
-- [[calendar.tsx]] - `imports_from` [EXTRACTED]
-- [[cycle-stats.tsx]] - `imports_from` [EXTRACTED]
-- [[day-tile.tsx]] - `imports_from` [EXTRACTED]
-- [[header.tsx_8]] - `imports_from` [EXTRACTED]
-- [[months-dropdown.tsx]] - `imports_from` [EXTRACTED]
-- [[options-dropdown.tsx]] - `imports_from` [EXTRACTED]
-- [[root.store.ts_1]] - `imports_from` [EXTRACTED]
-- [[use-issues.ts]] - `imports_from` [EXTRACTED]
-- [[week-days.tsx]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Calendar_Views
+#graphify/code #graphify/EXTRACTED #community/Community_347

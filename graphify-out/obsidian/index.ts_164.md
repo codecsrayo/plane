@@ -1,14 +1,14 @@
 ---
-source_file: "components/estimates/inputs/index.ts"
+source_file: "propel/src/banner/index.ts"
 type: "code"
-community: "Community 409"
+community: "Community 541"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_409
+  - community/Community_541
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_409
+#graphify/code #graphify/EXTRACTED #community/Community_541

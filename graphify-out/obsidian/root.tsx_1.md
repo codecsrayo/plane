@@ -1,26 +1,23 @@
 ---
-source_file: "components/home/widgets/links/root.tsx"
+source_file: "ui/src/form-fields/root.tsx"
 type: "code"
-community: "Dashboard Widgets"
+community: "Validation Field"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dashboard_Widgets
+  - community/Validation_Field
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[DashboardQuickLinks]] - `contains` [EXTRACTED]
-- [[LinkCreateUpdateModal]] - `imports` [EXTRACTED]
-- [[ProjectLinkList]] - `imports` [EXTRACTED]
-- [[create-update-link-modal.tsx]] - `imports_from` [EXTRACTED]
-- [[links.tsx_1]] - `imports_from` [EXTRACTED]
-- [[use-home.ts]] - `imports_from` [EXTRACTED]
-- [[use-links.tsx]] - `imports_from` [EXTRACTED]
-- [[useHome()]] - `imports` [EXTRACTED]
-- [[useLinks()]] - `imports` [EXTRACTED]
+- [[FormField()]] - `contains` [EXTRACTED]
+- [[FormFieldProps]] - `contains` [EXTRACTED]
+- [[Label()]] - `contains` [EXTRACTED]
+- [[LabelProps]] - `contains` [EXTRACTED]
+- [[ValidationMessage()]] - `contains` [EXTRACTED]
+- [[ValidationMessageProps]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets
+#graphify/code #graphify/EXTRACTED #community/Validation_Field

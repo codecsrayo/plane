@@ -1,20 +1,14 @@
 ---
-source_file: "components/archives/index.ts"
+source_file: "services/src/cycle/index.ts"
 type: "code"
-community: "Archived Cycles"
+community: "Community 392"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Archived_Cycles
+  - community/Community_392
 ---
 
 # index.ts
 
-## Connections
-
-- [[archived-issues-header.tsx]] - `imports_from` [EXTRACTED]
-- [[header.tsx_2]] - `imports_from` [EXTRACTED]
-- [[header.tsx_10]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Archived_Cycles
+#graphify/code #graphify/EXTRACTED #community/Community_392

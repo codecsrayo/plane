@@ -1,21 +1,20 @@
 ---
-source_file: "components/issues/issue-layouts/filters/header/display-filters/display-properties.tsx"
+source_file: "propel/src/icons/display-properties.tsx"
 type: "code"
-community: "Display Properties"
+community: "Logo Icons"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Display_Properties
+  - community/Logo_Icons
 ---
 
 # display-properties.tsx
 
 ## Connections
 
-- [[FilterDisplayProperties]] - `contains` [EXTRACTED]
-- [[FilterHeader()]] - `imports` [EXTRACTED]
-- [[Props_228]] - `contains` [EXTRACTED]
-- [[filter-header.tsx]] - `imports_from` [EXTRACTED]
+- [[DisplayPropertiesIcon()]] - `contains` [EXTRACTED]
+- [[ISvgIcons]] - `imports` [EXTRACTED]
+- [[type.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Display_Properties
+#graphify/code #graphify/EXTRACTED #community/Logo_Icons

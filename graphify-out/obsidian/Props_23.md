@@ -1,18 +1,18 @@
 ---
-source_file: "components/workspace/delete-workspace-form.tsx"
+source_file: "editor/src/core/components/editors/editor-content.tsx"
 type: "code"
-community: "Workspace Invites"
-location: "L22"
+community: "Collaborative Editor"
+location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Invites
+  - community/Collaborative_Editor
 ---
 
 # Props
 
 ## Connections
 
-- [[delete-workspace-form.tsx]] - `contains` [EXTRACTED]
+- [[editor-content.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Invites
+#graphify/code #graphify/EXTRACTED #community/Collaborative_Editor

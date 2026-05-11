@@ -1,19 +1,14 @@
 ---
-source_file: "components/cycles/list/index.ts"
+source_file: "utils/src/rich-filters/values/index.ts"
 type: "code"
-community: "Archived Cycles"
+community: "Community 512"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Archived_Cycles
+  - community/Community_512
 ---
 
 # index.ts
 
-## Connections
-
-- [[cycles-view.tsx]] - `imports_from` [EXTRACTED]
-- [[view.tsx_2]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Archived_Cycles
+#graphify/code #graphify/EXTRACTED #community/Community_512

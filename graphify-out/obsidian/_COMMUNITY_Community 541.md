@@ -1,18 +1,17 @@
 ---
 type: community
 cohesion: 1.00
-members: 2
+members: 1
 ---
 
 # Community 541
 
 **Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
 
-- [[.to()_43]] - code - api_rust/src/entities/draft_issue_modules.rs
-- [[Entity_43]] - code - api_rust/src/entities/draft_issue_modules.rs
+- [[index.ts_164]] - code - propel/src/banner/index.ts
 
 ## Live Query (requires Dataview plugin)
 

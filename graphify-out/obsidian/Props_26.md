@@ -1,18 +1,18 @@
 ---
-source_file: "components/workspace/logo.tsx"
+source_file: "editor/src/core/components/editors/link-view-container.tsx"
 type: "code"
-community: "Workspace Invites"
-location: "L12"
+community: "Link Container"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Invites
+  - community/Link_Container
 ---
 
 # Props
 
 ## Connections
 
-- [[logo.tsx]] - `contains` [EXTRACTED]
+- [[link-view-container.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Invites
+#graphify/code #graphify/EXTRACTED #community/Link_Container

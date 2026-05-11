@@ -1,18 +1,14 @@
 ---
-source_file: "components/workspace-notifications/sidebar/header/index.ts"
+source_file: "utils/src/rich-filters/operations/index.ts"
 type: "code"
-community: "Notification Option"
+community: "Community 507"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Notification_Option
+  - community/Community_507
 ---
 
 # index.ts
 
-## Connections
-
-- [[root.tsx_45]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Notification_Option
+#graphify/code #graphify/EXTRACTED #community/Community_507

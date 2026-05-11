@@ -1,30 +1,26 @@
 ---
-source_file: "store/notifications/notification.ts"
+source_file: "constants/src/notification.ts"
 type: "code"
-community: "Notification Option"
+community: "Notification Options"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Notification_Option
+  - community/Notification_Options
 ---
 
 # notification.ts
 
 ## Connections
 
-- [[CoreRootStore]] - `imports` [EXTRACTED]
-- [[INotification]] - `contains` [EXTRACTED]
-- [[Notification]] - `contains` [EXTRACTED]
-- [[api.service.ts]] - `imports_from` [EXTRACTED]
-- [[archive.tsx]] - `imports_from` [EXTRACTED]
-- [[payload]] - `contains` [EXTRACTED]
-- [[read.tsx]] - `imports_from` [EXTRACTED]
-- [[root.store.ts]] - `imports_from` [EXTRACTED]
-- [[root.tsx_47]] - `imports_from` [EXTRACTED]
-- [[toApiError()]] - `imports` [EXTRACTED]
-- [[use-notification.ts]] - `imports_from` [EXTRACTED]
-- [[workspace-notification.service.ts]] - `imports_from` [EXTRACTED]
-- [[workspace-notifications.store.ts]] - `imports_from` [EXTRACTED]
+- [[ENotificationFilterType]] - `contains` [EXTRACTED]
+- [[ENotificationLoader]] - `contains` [EXTRACTED]
+- [[ENotificationQueryParamType]] - `contains` [EXTRACTED]
+- [[ENotificationTab]] - `contains` [EXTRACTED]
+- [[FILTER_TYPE_OPTIONS]] - `contains` [EXTRACTED]
+- [[NOTIFICATION_SNOOZE_OPTIONS]] - `contains` [EXTRACTED]
+- [[NOTIFICATION_TABS]] - `contains` [EXTRACTED]
+- [[TNotificationTab]] - `contains` [EXTRACTED]
+- [[allTimeIn30MinutesInterval12HoursFormat]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Notification_Option
+#graphify/code #graphify/EXTRACTED #community/Notification_Options

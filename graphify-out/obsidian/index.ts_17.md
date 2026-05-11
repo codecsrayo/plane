@@ -1,25 +1,14 @@
 ---
-source_file: "store/member/index.ts"
+source_file: "ui/src/sortable/index.ts"
 type: "code"
-community: "Member Workspace"
+community: "Community 348"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Workspace
+  - community/Community_348
 ---
 
 # index.ts
 
-## Connections
-
-- [[IMemberRootStore]] - `contains` [EXTRACTED]
-- [[IWorkspaceMemberStore]] - `imports` [EXTRACTED]
-- [[MemberRootStore]] - `contains` [EXTRACTED]
-- [[WorkspaceMemberStore]] - `imports` [EXTRACTED]
-- [[base-project-member.store.ts]] - `imports_from` [EXTRACTED]
-- [[root.store.ts]] - `imports_from` [EXTRACTED]
-- [[use-member.ts]] - `imports_from` [EXTRACTED]
-- [[workspace-member.store.ts]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Member_Workspace
+#graphify/code #graphify/EXTRACTED #community/Community_348

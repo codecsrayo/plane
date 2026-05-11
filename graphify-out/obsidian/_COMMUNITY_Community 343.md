@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 343
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[Model_24]] - code - api_rust/src/entities/django_celery_beat_crontabschedule.rs
-- [[Relation_24]] - code - api_rust/src/entities/django_celery_beat_crontabschedule.rs
-- [[django_celery_beat_crontabschedule.rs]] - code - api_rust/src/entities/django_celery_beat_crontabschedule.rs
+- [[index.ts_11]] - code - ui/src/avatar/index.ts
 
 ## Live Query (requires Dataview plugin)
 

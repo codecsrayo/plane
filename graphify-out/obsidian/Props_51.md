@@ -1,18 +1,18 @@
 ---
-source_file: "components/gantt-chart/helpers/add-block.tsx"
+source_file: "propel/src/charts/components/tooltip.tsx"
 type: "code"
-community: "Gantt Chart"
-location: "L21"
+community: "Custom Chart"
+location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Chart
+  - community/Custom_Chart
 ---
 
 # Props
 
 ## Connections
 
-- [[add-block.tsx]] - `contains` [EXTRACTED]
+- [[tooltip.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Chart
+#graphify/code #graphify/EXTRACTED #community/Custom_Chart

@@ -1,21 +1,18 @@
 ---
-source_file: "services/api.service.ts"
+source_file: "services/src/api.service.ts"
 type: "code"
-community: "Issue Store Ops"
-location: "L166"
+community: "Sites Cycle"
+location: "L37"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Store_Ops
+  - community/Sites_Cycle
 ---
 
 # get()
 
 ## Connections
 
-- [[addModulesToIssue()]] - `calls` [EXTRACTED]
 - [[api.service.ts]] - `contains` [EXTRACTED]
-- [[changeModulesInIssue()]] - `calls` [EXTRACTED]
-- [[updateIssueCount()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Store_Ops
+#graphify/code #graphify/EXTRACTED #community/Sites_Cycle

@@ -1,0 +1,34 @@
+---
+source_file: "ui/src/breadcrumbs/breadcrumbs.tsx"
+type: "code"
+community: "Breadcrumb Navigation"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Breadcrumb_Navigation
+---
+
+# breadcrumbs.tsx
+
+## Connections
+
+- [[BreadcrumbIcon()]] - `contains` [EXTRACTED]
+- [[BreadcrumbIconProps]] - `contains` [EXTRACTED]
+- [[BreadcrumbItem()]] - `contains` [EXTRACTED]
+- [[BreadcrumbItemLoader()]] - `contains` [EXTRACTED]
+- [[BreadcrumbItemProps]] - `contains` [EXTRACTED]
+- [[BreadcrumbItemWrapper()]] - `contains` [EXTRACTED]
+- [[BreadcrumbItemWrapperProps]] - `contains` [EXTRACTED]
+- [[BreadcrumbLabel()]] - `contains` [EXTRACTED]
+- [[BreadcrumbLabelProps]] - `contains` [EXTRACTED]
+- [[BreadcrumbSeparator()]] - `contains` [EXTRACTED]
+- [[BreadcrumbSeparatorProps]] - `contains` [EXTRACTED]
+- [[Breadcrumbs()]] - `contains` [EXTRACTED]
+- [[BreadcrumbsProps]] - `contains` [EXTRACTED]
+- [[breadcrumbs.stories.tsx]] - `imports_from` [EXTRACTED]
+- [[index.ts_14]] - `imports_from` [EXTRACTED]
+- [[navigation-dropdown.tsx]] - `imports_from` [EXTRACTED]
+- [[navigation-search-dropdown.tsx]] - `imports_from` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Breadcrumb_Navigation

@@ -1,0 +1,28 @@
+---
+source_file: "propel/src/portal/modal-portal.tsx"
+type: "code"
+community: "Portal Handler"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Portal_Handler
+---
+
+# modal-portal.tsx
+
+## Connections
+
+- [[EPortalPosition]] - `imports` [EXTRACTED]
+- [[EPortalWidth]] - `imports` [EXTRACTED]
+- [[ModalPortal()]] - `contains` [EXTRACTED]
+- [[ModalPortalProps]] - `imports` [EXTRACTED]
+- [[PORTAL_POSITION_CLASSES]] - `imports` [EXTRACTED]
+- [[PORTAL_WIDTH_CLASSES]] - `imports` [EXTRACTED]
+- [[PortalWrapper()]] - `imports` [EXTRACTED]
+- [[constants.ts_2]] - `imports_from` [EXTRACTED]
+- [[index.ts_191]] - `imports_from` [EXTRACTED]
+- [[portal-wrapper.tsx]] - `imports_from` [EXTRACTED]
+- [[types.ts_12]] - `imports_from` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Portal_Handler

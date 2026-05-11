@@ -1,22 +1,27 @@
 ---
-source_file: "services/instance.service.ts"
+source_file: "services/src/instance/instance.service.ts"
 type: "code"
-community: "Chat Support"
-location: "L14"
+community: "Instance Instanceservice"
+location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Chat_Support
+  - community/Instance_Instanceservice
 ---
 
 # InstanceService
 
 ## Connections
 
-- [[.constructor()_81]] - `method` [EXTRACTED]
-- [[.getInstanceInfo()]] - `method` [EXTRACTED]
-- [[.requestCSRFToken()]] - `method` [EXTRACTED]
+- [[.admins()]] - `method` [EXTRACTED]
+- [[.changelog()]] - `method` [EXTRACTED]
+- [[.configurations()]] - `method` [EXTRACTED]
+- [[.constructor()_27]] - `method` [EXTRACTED]
+- [[.disableEmail()]] - `method` [EXTRACTED]
+- [[.info()]] - `method` [EXTRACTED]
+- [[.sendTestEmail()]] - `method` [EXTRACTED]
+- [[.update()_12]] - `method` [EXTRACTED]
+- [[.updateConfigurations()]] - `method` [EXTRACTED]
 - [[instance.service.ts]] - `contains` [EXTRACTED]
-- [[instance.store.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Chat_Support
+#graphify/code #graphify/EXTRACTED #community/Instance_Instanceservice

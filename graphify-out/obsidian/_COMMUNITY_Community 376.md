@@ -11,7 +11,7 @@ members: 1
 
 ## Members
 
-- [[index.ts_61]] - code - components/modules/select/index.ts
+- [[index.ts_44]] - code - editor/src/core/components/editors/lite-text/index.ts
 
 ## Live Query (requires Dataview plugin)
 

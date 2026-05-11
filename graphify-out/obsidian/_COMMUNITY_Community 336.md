@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 336
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[Model_17]] - code - api_rust/src/entities/django_celery_beat_solarschedule.rs
-- [[Relation_17]] - code - api_rust/src/entities/django_celery_beat_solarschedule.rs
-- [[django_celery_beat_solarschedule.rs]] - code - api_rust/src/entities/django_celery_beat_solarschedule.rs
+- [[index.ts_3]] - code - ui/src/color-picker/index.ts
 
 ## Live Query (requires Dataview plugin)
 

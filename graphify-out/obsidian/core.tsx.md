@@ -1,23 +1,28 @@
 ---
-source_file: "hooks/oauth/core.tsx"
+source_file: "propel/src/table/core.tsx"
 type: "code"
-community: "Chat Support"
+community: "Table Caption"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Chat_Support
+  - community/Table_Caption
 ---
 
 # core.tsx
 
 ## Connections
 
-- [[index.ts_5]] - `imports_from` [EXTRACTED]
-- [[use-instance.ts]] - `imports_from` [EXTRACTED]
-- [[use-workspace.ts]] - `imports_from` [EXTRACTED]
-- [[useCoreOAuthConfig()]] - `contains` [EXTRACTED]
-- [[useInstance()]] - `imports` [EXTRACTED]
-- [[useWorkspace()]] - `imports` [EXTRACTED]
+- [[Table_1]] - `contains` [EXTRACTED]
+- [[TableBody]] - `contains` [EXTRACTED]
+- [[TableCaption]] - `contains` [EXTRACTED]
+- [[TableCell_1]] - `contains` [EXTRACTED]
+- [[TableFooter]] - `contains` [EXTRACTED]
+- [[TableHead]] - `contains` [EXTRACTED]
+- [[TableHeader_1]] - `contains` [EXTRACTED]
+- [[TableRow_3]] - `contains` [EXTRACTED]
+- [[classname.tsx_1]] - `imports_from` [EXTRACTED]
+- [[cn()_1]] - `imports` [EXTRACTED]
+- [[table.stories.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Chat_Support
+#graphify/code #graphify/EXTRACTED #community/Table_Caption

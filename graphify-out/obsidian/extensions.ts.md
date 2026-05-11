@@ -1,23 +1,20 @@
 ---
-source_file: "components/pages/navigation-pane/types/extensions.ts"
+source_file: "editor/src/ce/constants/extensions.ts"
 type: "code"
-community: "Navigation Pane"
+community: "Assets Additional"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Navigation_Pane
+  - community/Assets_Additional
 ---
 
 # extensions.ts
 
 ## Connections
 
-- [[INavigationPaneExtension]] - `contains` [EXTRACTED]
-- [[INavigationPaneExtensionComponent]] - `contains` [EXTRACTED]
-- [[INavigationPaneExtensionProps]] - `contains` [EXTRACTED]
-- [[TPageInstance]] - `imports` [EXTRACTED]
-- [[base-page.ts]] - `imports_from` [EXTRACTED]
-- [[root.tsx_80]] - `imports_from` [EXTRACTED]
+- [[ADDITIONAL_BLOCK_NODE_TYPES]] - `contains` [EXTRACTED]
+- [[ADDITIONAL_EXTENSIONS]] - `contains` [EXTRACTED]
+- [[assets.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Navigation_Pane
+#graphify/code #graphify/EXTRACTED #community/Assets_Additional

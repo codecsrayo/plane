@@ -1,18 +1,14 @@
 ---
-source_file: "components/pages/editor/header/index.ts"
+source_file: "propel/src/toolbar/index.ts"
 type: "code"
-community: "Issue Filters"
+community: "Community 531"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters
+  - community/Community_531
 ---
 
 # index.ts
 
-## Connections
-
-- [[editor-body.tsx]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters
+#graphify/code #graphify/EXTRACTED #community/Community_531

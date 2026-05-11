@@ -1,18 +1,18 @@
 ---
-source_file: "hooks/use-collaborative-page-actions.tsx"
+source_file: "ui/src/drop-indicator.tsx"
 type: "code"
-community: "Collaborative Copy"
-location: "L24"
+community: "Story Meta"
+location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Collaborative_Copy
+  - community/Story_Meta
 ---
 
 # Props
 
 ## Connections
 
-- [[use-collaborative-page-actions.tsx]] - `contains` [EXTRACTED]
+- [[drop-indicator.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Collaborative_Copy
+#graphify/code #graphify/EXTRACTED #community/Story_Meta

@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 461
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[ProjectCreateButtons()]] - code - web/core/components/project/create/project-create-buttons.tsx
-- [[Props_142]] - code - web/core/components/project/create/project-create-buttons.tsx
-- [[project-create-buttons.tsx]] - code - web/core/components/project/create/project-create-buttons.tsx
+- [[editor.ts_13]] - code - i18n/src/locales/cs/editor.ts
 
 ## Live Query (requires Dataview plugin)
 

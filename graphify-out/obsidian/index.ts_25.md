@@ -1,14 +1,14 @@
 ---
-source_file: "lib/app-rail/index.ts"
+source_file: "ui/src/form-fields/password/index.ts"
 type: "code"
-community: "Community 362"
+community: "Community 356"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_362
+  - community/Community_356
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_362
+#graphify/code #graphify/EXTRACTED #community/Community_356

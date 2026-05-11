@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/ui/pages/context-based/module/index.ts"
+source_file: "shared-state/src/utils/index.ts"
 type: "code"
-community: "Context Based"
+community: "Work Condition"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Context_Based
+  - community/Work_Condition
 ---
 
 # index.ts
 
 ## Connections
 
-- [[root.tsx_58]] - `imports_from` [EXTRACTED]
+- [[filter.store.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Context_Based
+#graphify/code #graphify/EXTRACTED #community/Work_Condition

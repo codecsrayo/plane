@@ -1,18 +1,18 @@
 ---
-source_file: "components/workspace/views/quick-action.tsx"
+source_file: "editor/src/core/extensions/table/plugins/drag-handles/column/dropdown.tsx"
 type: "code"
-community: "Global Quick"
-location: "L23"
+community: "Dropdown Table"
+location: "L66"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Global_Quick
+  - community/Dropdown_Table
 ---
 
 # Props
 
 ## Connections
 
-- [[quick-action.tsx]] - `contains` [EXTRACTED]
+- [[dropdown.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Global_Quick
+#graphify/code #graphify/EXTRACTED #community/Dropdown_Table

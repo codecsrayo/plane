@@ -1,18 +1,18 @@
 ---
-source_file: "components/gantt-chart/sidebar/issues/sidebar.tsx"
+source_file: "editor/src/core/extensions/custom-image/components/toolbar/full-screen/modal.tsx"
 type: "code"
-community: "Gantt Sidebar"
-location: "L27"
+community: "Image Full"
+location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Sidebar
+  - community/Image_Full
 ---
 
 # Props
 
 ## Connections
 
-- [[sidebar.tsx_1]] - `contains` [EXTRACTED]
+- [[modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Sidebar
+#graphify/code #graphify/EXTRACTED #community/Image_Full

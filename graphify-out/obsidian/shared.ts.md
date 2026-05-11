@@ -1,22 +1,19 @@
 ---
-source_file: "components/power-k/ui/pages/open-entity/shared.ts"
+source_file: "types/src/rich-filters/derived/shared.ts"
 type: "code"
-community: "File Icons Nav"
+community: "Operators Supported"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/File_Icons_Nav
+  - community/Operators_Supported
 ---
 
 # shared.ts
 
 ## Connections
 
-- [[TPowerKContext]] - `imports` [EXTRACTED]
-- [[TPowerKOpenEntityActionsProps]] - `contains` [EXTRACTED]
-- [[TPowerKPageType]] - `imports` [EXTRACTED]
-- [[root.tsx_62]] - `imports_from` [EXTRACTED]
-- [[types.ts_2]] - `imports_from` [EXTRACTED]
+- [[TFilterOperatorHelper]] - `contains` [EXTRACTED]
+- [[core.ts_8]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/File_Icons_Nav
+#graphify/code #graphify/EXTRACTED #community/Operators_Supported

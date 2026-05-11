@@ -1,18 +1,18 @@
 ---
-source_file: "api_rust/src/routes/instances.rs"
+source_file: "e2e-utils/src/helpers/feature-flags.ts"
 type: "code"
-community: "Community 57"
-location: "L31"
+community: "Flag Keys"
+location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_57
+  - community/Flag_Keys
 ---
 
 # ConfigVar
 
 ## Connections
 
-- [[instances.rs]] - `contains` [EXTRACTED]
+- [[feature-flags.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_57
+#graphify/code #graphify/EXTRACTED #community/Flag_Keys

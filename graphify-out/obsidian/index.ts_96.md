@@ -1,39 +1,14 @@
 ---
-source_file: "components/issues/issue-layouts/quick-action-dropdowns/index.ts"
+source_file: "types/src/layout/index.ts"
 type: "code"
-community: "Cycle Transfers"
+community: "Community 492"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Transfers
+  - community/Community_492
 ---
 
 # index.ts
 
-## Connections
-
-- [[archived-issue-root.tsx]] - `imports_from` [EXTRACTED]
-- [[cycle-root.tsx]] - `imports_from` [EXTRACTED]
-- [[cycle-root.tsx_1]] - `imports_from` [EXTRACTED]
-- [[cycle-root.tsx_2]] - `imports_from` [EXTRACTED]
-- [[cycle-root.tsx_3]] - `imports_from` [EXTRACTED]
-- [[header.tsx_9]] - `imports_from` [EXTRACTED]
-- [[issue-detail-quick-actions.tsx]] - `imports_from` [EXTRACTED]
-- [[module-root.tsx]] - `imports_from` [EXTRACTED]
-- [[module-root.tsx_1]] - `imports_from` [EXTRACTED]
-- [[module-root.tsx_2]] - `imports_from` [EXTRACTED]
-- [[module-root.tsx_3]] - `imports_from` [EXTRACTED]
-- [[profile-issues-root.tsx]] - `imports_from` [EXTRACTED]
-- [[profile-issues-root.tsx_1]] - `imports_from` [EXTRACTED]
-- [[project-root.tsx]] - `imports_from` [EXTRACTED]
-- [[project-root.tsx_1]] - `imports_from` [EXTRACTED]
-- [[project-root.tsx_2]] - `imports_from` [EXTRACTED]
-- [[project-root.tsx_3]] - `imports_from` [EXTRACTED]
-- [[project-view-root.tsx]] - `imports_from` [EXTRACTED]
-- [[project-view-root.tsx_1]] - `imports_from` [EXTRACTED]
-- [[project-view-root.tsx_2]] - `imports_from` [EXTRACTED]
-- [[project-view-root.tsx_3]] - `imports_from` [EXTRACTED]
-- [[workspace-root.tsx]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Cycle_Transfers
+#graphify/code #graphify/EXTRACTED #community/Community_492

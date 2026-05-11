@@ -1,18 +1,18 @@
 ---
-source_file: "components/gantt-chart/sidebar/issues/block.tsx"
+source_file: "editor/src/core/extensions/custom-image/components/toolbar/alignment.tsx"
 type: "code"
-community: "Multi Select Actions"
-location: "L22"
+community: "Image Alignment"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Multi_Select_Actions
+  - community/Image_Alignment
 ---
 
 # Props
 
 ## Connections
 
-- [[block.tsx_1]] - `contains` [EXTRACTED]
+- [[alignment.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Multi_Select_Actions
+#graphify/code #graphify/EXTRACTED #community/Image_Alignment

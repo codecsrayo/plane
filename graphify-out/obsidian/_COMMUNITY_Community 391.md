@@ -11,7 +11,7 @@ members: 1
 
 ## Members
 
-- [[index.ts_92]] - code - components/issues/issue-layouts/filters/header/display-filters/index.ts
+- [[index.ts_69]] - code - services/src/developer/index.ts
 
 ## Live Query (requires Dataview plugin)
 

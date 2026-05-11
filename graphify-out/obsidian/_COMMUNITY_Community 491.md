@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 491
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[FreePlanCard]] - code - web/core/components/license/modal/card/free-plan.tsx
-- [[FreePlanCardProps]] - code - web/core/components/license/modal/card/free-plan.tsx
-- [[free-plan.tsx]] - code - web/core/components/license/modal/card/free-plan.tsx
+- [[index.ts_93]] - code - types/src/favorite/index.ts
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,20 +1,14 @@
 ---
-source_file: "components/editor/rich-text/description-input/index.ts"
+source_file: "editor/src/core/extensions/slash-commands/index.ts"
 type: "code"
-community: "Issue Content"
+community: "Community 379"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Content
+  - community/Community_379
 ---
 
 # index.ts
 
-## Connections
-
-- [[issue-detail.tsx_1]] - `imports_from` [EXTRACTED]
-- [[issue-root.tsx]] - `imports_from` [EXTRACTED]
-- [[main-content.tsx_1]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Issue_Content
+#graphify/code #graphify/EXTRACTED #community/Community_379

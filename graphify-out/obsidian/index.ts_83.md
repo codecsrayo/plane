@@ -1,19 +1,14 @@
 ---
-source_file: "components/web-hooks/form/index.ts"
+source_file: "constants/src/rich-filters/index.ts"
 type: "code"
-community: "Webhook Generated"
+community: "Community 409"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Webhook_Generated
+  - community/Community_409
 ---
 
 # index.ts
 
-## Connections
-
-- [[create-webhook-modal.tsx]] - `imports_from` [EXTRACTED]
-- [[generated-hook-details.tsx]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Webhook_Generated
+#graphify/code #graphify/EXTRACTED #community/Community_409

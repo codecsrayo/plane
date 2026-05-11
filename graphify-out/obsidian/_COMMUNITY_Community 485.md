@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 485
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[OnboardingStepIndicator()]] - code - web/core/components/onboarding/step-indicator.tsx
-- [[OnboardingStepIndicatorProps]] - code - web/core/components/onboarding/step-indicator.tsx
-- [[step-indicator.tsx]] - code - web/core/components/onboarding/step-indicator.tsx
+- [[editor.ts_19]] - code - i18n/src/locales/en/editor.ts
 
 ## Live Query (requires Dataview plugin)
 

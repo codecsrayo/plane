@@ -1,18 +1,18 @@
 ---
-source_file: "store/base-command-palette.store.ts"
+source_file: "services/src/indexedDB.service.ts"
 type: "code"
-community: "Workspace Draft"
-location: "L74"
+community: "Indexed Indexeddb"
+location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Draft
+  - community/Indexed_Indexeddb
 ---
 
 # constructor()
 
 ## Connections
 
-- [[base-command-palette.store.ts]] - `contains` [EXTRACTED]
+- [[indexedDB.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Draft
+#graphify/code #graphify/EXTRACTED #community/Indexed_Indexeddb

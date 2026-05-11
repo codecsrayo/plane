@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/use-local-storage.tsx"
+source_file: "hooks/src/use-local-storage.tsx"
 type: "code"
-community: "Rail Visibility"
+community: "Local Tabs"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Rail_Visibility
+  - community/Local_Tabs
 ---
 
 # getValueFromLocalStorage()
@@ -15,4 +15,4 @@ tags:
 
 - [[use-local-storage.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Rail_Visibility
+#graphify/code #graphify/EXTRACTED #community/Local_Tabs

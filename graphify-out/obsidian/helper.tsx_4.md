@@ -1,28 +1,23 @@
 ---
-source_file: "components/issues/issue-detail/issue-activity/helper.tsx"
+source_file: "ui/src/avatar/helper.tsx"
 type: "code"
-community: "Project Archives"
+community: "Avatar Fallback"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Archives
+  - community/Avatar_Fallback
 ---
 
 # helper.tsx
 
 ## Connections
 
-- [[index.ts]] - `imports_from` [EXTRACTED]
-- [[root.tsx_31]] - `imports_from` [EXTRACTED]
-- [[use-editor-asset.ts]] - `imports_from` [EXTRACTED]
-- [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
-- [[use-member.ts]] - `imports_from` [EXTRACTED]
-- [[use-project.ts]] - `imports_from` [EXTRACTED]
-- [[useEditorAsset()]] - `imports` [EXTRACTED]
-- [[useIssueDetail()]] - `imports` [EXTRACTED]
-- [[useMember()]] - `imports` [EXTRACTED]
-- [[useProject()]] - `imports` [EXTRACTED]
-- [[useWorkItemCommentOperations()]] - `contains` [EXTRACTED]
+- [[TAvatarSize]] - `contains` [EXTRACTED]
+- [[avatar-group.tsx]] - `imports_from` [EXTRACTED]
+- [[avatar.tsx]] - `imports_from` [EXTRACTED]
+- [[getBorderRadius()]] - `contains` [EXTRACTED]
+- [[getSizeInfo()]] - `contains` [EXTRACTED]
+- [[isAValidNumber()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Archives
+#graphify/code #graphify/EXTRACTED #community/Avatar_Fallback

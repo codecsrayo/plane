@@ -1,19 +1,14 @@
 ---
-source_file: "components/onboarding/steps/workspace/index.ts"
+source_file: "propel/src/icons/attachments/index.ts"
 type: "code"
-community: "Step Onboarding"
+community: "Community 525"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Step_Onboarding
+  - community/Community_525
 ---
 
 # index.ts
 
-## Connections
-
-- [[root.tsx_64]] - `imports_from` [EXTRACTED]
-- [[root.tsx_65]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Step_Onboarding
+#graphify/code #graphify/EXTRACTED #community/Community_525

@@ -1,18 +1,18 @@
 ---
-source_file: "store/notifications/notification.ts"
+source_file: "shared-state/src/store/rich-filters/filter-helpers.ts"
 type: "code"
-community: "Notification Option"
-location: "L197"
+community: "Instance Condition"
+location: "L198"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Notification_Option
+  - community/Instance_Condition
 ---
 
 # payload
 
 ## Connections
 
-- [[notification.ts]] - `contains` [EXTRACTED]
+- [[filter-helpers.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Notification_Option
+#graphify/code #graphify/EXTRACTED #community/Instance_Condition

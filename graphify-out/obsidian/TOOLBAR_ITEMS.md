@@ -1,21 +1,18 @@
 ---
-source_file: "constants/editor.ts"
+source_file: "editor/src/core/constants/common.ts"
 type: "code"
-community: "Toolbar Lite"
-location: "L183"
+community: "Callout Extension"
+location: "L168"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toolbar_Lite
+  - community/Callout_Extension
 ---
 
 # TOOLBAR_ITEMS
 
 ## Connections
 
-- [[editor.ts]] - `contains` [EXTRACTED]
-- [[toolbar.tsx]] - `imports` [EXTRACTED]
-- [[toolbar.tsx_1]] - `imports` [EXTRACTED]
-- [[toolbar.tsx_2]] - `imports` [EXTRACTED]
+- [[common.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toolbar_Lite
+#graphify/code #graphify/EXTRACTED #community/Callout_Extension

@@ -1,29 +1,27 @@
 ---
-source_file: "components/modules/analytics-sidebar/root.tsx"
+source_file: "propel/src/charts/bar-chart/root.tsx"
 type: "code"
-community: "Module Forms"
+community: "Custom Chart"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Forms
+  - community/Custom_Chart
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[DateRangeDropdown]] - `imports` [EXTRACTED]
-- [[MemberDropdown]] - `imports` [EXTRACTED]
-- [[ModuleAnalyticsSidebar]] - `contains` [EXTRACTED]
-- [[Props_75]] - `contains` [EXTRACTED]
-- [[date-range.tsx]] - `imports_from` [EXTRACTED]
-- [[defaultValues_6]] - `contains` [EXTRACTED]
-- [[dropdown.tsx_4]] - `imports_from` [EXTRACTED]
-- [[index.ts_58]] - `imports_from` [EXTRACTED]
-- [[index.ts_3]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
-- [[use-module.ts]] - `imports_from` [EXTRACTED]
-- [[useModule()]] - `imports` [EXTRACTED]
+- [[BarChart]] - `contains` [EXTRACTED]
+- [[CustomTooltip]] - `imports` [EXTRACTED]
+- [[CustomXAxisTick]] - `imports` [EXTRACTED]
+- [[CustomYAxisTick]] - `imports` [EXTRACTED]
+- [[bar.tsx]] - `imports_from` [EXTRACTED]
+- [[barShapeVariants]] - `imports` [EXTRACTED]
+- [[getLegendProps()]] - `imports` [EXTRACTED]
+- [[legend.tsx]] - `imports_from` [EXTRACTED]
+- [[tick.tsx]] - `imports_from` [EXTRACTED]
+- [[tooltip.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Forms
+#graphify/code #graphify/EXTRACTED #community/Custom_Chart

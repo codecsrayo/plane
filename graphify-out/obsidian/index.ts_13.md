@@ -1,19 +1,18 @@
 ---
-source_file: "store/issue/profile/index.ts"
+source_file: "ui/src/button/index.ts"
 type: "code"
-community: "Calendar Store"
+community: "Input Auth"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Store
+  - community/Input_Auth
 ---
 
 # index.ts
 
 ## Connections
 
-- [[root.store.ts_1]] - `imports_from` [EXTRACTED]
-- [[use-issues.ts]] - `imports_from` [EXTRACTED]
+- [[input-color-picker.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Store
+#graphify/code #graphify/EXTRACTED #community/Input_Auth

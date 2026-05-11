@@ -1,39 +1,40 @@
 ---
-source_file: "constants/editor.ts"
+source_file: "editor/src/core/types/editor.ts"
 type: "code"
-community: "Editor Items"
+community: "Callout Extension"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Items
+  - community/Callout_Extension
 ---
 
 # editor.ts
 
 ## Connections
 
-- [[BASIC_MARK_ITEMS]] - `contains` [EXTRACTED]
-- [[COMPLEX_ITEMS]] - `contains` [EXTRACTED]
-- [[EDITOR_FONT_STYLES]] - `contains` [EXTRACTED]
-- [[EDITOR_PDF_CODE_STYLES]] - `contains` [EXTRACTED]
-- [[EDITOR_PDF_DOCUMENT_STYLESHEET]] - `contains` [EXTRACTED]
-- [[EDITOR_PDF_FONT_FAMILY_STYLES]] - `contains` [EXTRACTED]
-- [[EDITOR_PDF_LIST_STYLES]] - `contains` [EXTRACTED]
-- [[EDITOR_PDF_TYPOGRAPHY_STYLES]] - `contains` [EXTRACTED]
-- [[ExtraPropsForCommand]] - `contains` [EXTRACTED]
-- [[IMAGE_ITEM]] - `contains` [EXTRACTED]
-- [[LIST_ITEMS]] - `contains` [EXTRACTED]
-- [[TEXT_ALIGNMENT_ITEMS]] - `contains` [EXTRACTED]
-- [[TEditorTypes]] - `contains` [EXTRACTED]
-- [[TOOLBAR_ITEMS]] - `contains` [EXTRACTED]
-- [[TYPOGRAPHY_ITEMS]] - `contains` [EXTRACTED]
-- [[ToolbarMenuItem]] - `contains` [EXTRACTED]
-- [[USER_ACTION_ITEMS]] - `contains` [EXTRACTED]
-- [[document.tsx]] - `imports_from` [EXTRACTED]
-- [[lite-toolbar.tsx]] - `imports_from` [EXTRACTED]
-- [[toolbar.tsx]] - `imports_from` [EXTRACTED]
-- [[toolbar.tsx_1]] - `imports_from` [EXTRACTED]
-- [[toolbar.tsx_2]] - `imports_from` [EXTRACTED]
+- [[CoreEditorRefApi]] - `contains` [EXTRACTED]
+- [[EditorEvents]] - `contains` [EXTRACTED]
+- [[EditorRefApi]] - `contains` [EXTRACTED]
+- [[EditorTitleRefApi]] - `contains` [EXTRACTED]
+- [[ICollaborativeDocumentEditorProps]] - `contains` [EXTRACTED]
+- [[ICollaborativeDocumentEditorPropsExtended]] - `imports` [EXTRACTED]
+- [[IDocumentEditorProps]] - `contains` [EXTRACTED]
+- [[IEditorProps]] - `contains` [EXTRACTED]
+- [[IEditorPropsExtended]] - `imports` [EXTRACTED]
+- [[ILiteTextEditorProps]] - `contains` [EXTRACTED]
+- [[IRichTextEditorProps]] - `contains` [EXTRACTED]
+- [[NodeViewProps]] - `contains` [EXTRACTED]
+- [[TCommandExtraProps]] - `contains` [EXTRACTED]
+- [[TCommandWithProps]] - `contains` [EXTRACTED]
+- [[TCommandWithPropsWithItemKey]] - `contains` [EXTRACTED]
+- [[TDocumentInfo]] - `contains` [EXTRACTED]
+- [[TEditorCommands]] - `contains` [EXTRACTED]
+- [[TExtendedEditorCommands]] - `imports` [EXTRACTED]
+- [[common.ts]] - `imports_from` [EXTRACTED]
+- [[hook.ts]] - `imports_from` [EXTRACTED]
+- [[index.ts_47]] - `imports_from` [EXTRACTED]
+- [[index.ts_46]] - `imports_from` [EXTRACTED]
+- [[use-title-editor.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Items
+#graphify/code #graphify/EXTRACTED #community/Callout_Extension

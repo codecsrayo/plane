@@ -1,20 +1,19 @@
 ---
-source_file: "constants/ai.ts"
+source_file: "editor/src/core/types/ai.ts"
 type: "code"
-community: "Editor Aiservice"
+community: "Handler Taihandler"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Aiservice
+  - community/Handler_Taihandler
 ---
 
 # ai.ts
 
 ## Connections
 
-- [[AI_EDITOR_TASKS]] - `contains` [EXTRACTED]
-- [[LOADING_TEXTS]] - `contains` [EXTRACTED]
-- [[ai.service.ts]] - `imports_from` [EXTRACTED]
+- [[TAIHandler]] - `contains` [EXTRACTED]
+- [[TAIMenuProps]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Aiservice
+#graphify/code #graphify/EXTRACTED #community/Handler_Taihandler

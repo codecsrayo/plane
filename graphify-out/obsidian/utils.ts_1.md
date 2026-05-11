@@ -1,21 +1,32 @@
 ---
-source_file: "components/gantt-chart/sidebar/utils.ts"
+source_file: "editor/src/core/extensions/callout/utils.ts"
 type: "code"
-community: "Gantt Sidebar"
+community: "Callout Extension"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Sidebar
+  - community/Callout_Extension
 ---
 
 # utils.ts
 
 ## Connections
 
-- [[handleOrderChange()]] - `contains` [EXTRACTED]
-- [[sidebar.tsx]] - `imports_from` [EXTRACTED]
-- [[sidebar.tsx_1]] - `imports_from` [EXTRACTED]
-- [[sidebar.tsx_4]] - `imports_from` [EXTRACTED]
+- [[DEFAULT_CALLOUT_BLOCK_ATTRIBUTES]] - `contains` [EXTRACTED]
+- [[ECalloutAttributeNames]] - `imports` [EXTRACTED]
+- [[TCalloutBlockAttributes]] - `imports` [EXTRACTED]
+- [[TCalloutBlockEmojiAttributes]] - `imports` [EXTRACTED]
+- [[TCalloutBlockIconAttributes]] - `imports` [EXTRACTED]
+- [[TStoredLogoValue]] - `contains` [EXTRACTED]
+- [[block.tsx_1]] - `imports_from` [EXTRACTED]
+- [[extension-config.ts_1]] - `imports_from` [EXTRACTED]
+- [[extension.tsx_2]] - `imports_from` [EXTRACTED]
+- [[getStoredBackgroundColor()]] - `contains` [EXTRACTED]
+- [[getStoredLogo()]] - `contains` [EXTRACTED]
+- [[logo-selector.tsx]] - `imports_from` [EXTRACTED]
+- [[types.ts_3]] - `imports_from` [EXTRACTED]
+- [[updateStoredBackgroundColor()]] - `contains` [EXTRACTED]
+- [[updateStoredLogo()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Sidebar
+#graphify/code #graphify/EXTRACTED #community/Callout_Extension

@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 445
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[GlobalDefaultViewListItem]] - code - web/core/components/workspace/views/default-view-list-item.tsx
-- [[Props_37]] - code - web/core/components/workspace/views/default-view-list-item.tsx
-- [[default-view-list-item.tsx]] - code - web/core/components/workspace/views/default-view-list-item.tsx
+- [[editor.ts_9]] - code - i18n/src/locales/tr-TR/editor.ts
 
 ## Live Query (requires Dataview plugin)
 

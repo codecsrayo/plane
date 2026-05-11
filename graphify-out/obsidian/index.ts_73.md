@@ -1,18 +1,14 @@
 ---
-source_file: "components/settings/profile/content/index.ts"
+source_file: "services/src/instance/index.ts"
 type: "code"
-community: "Cycle Details"
+community: "Community 395"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Details
+  - community/Community_395
 ---
 
 # index.ts
 
-## Connections
-
-- [[modal.tsx_5]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Cycle_Details
+#graphify/code #graphify/EXTRACTED #community/Community_395

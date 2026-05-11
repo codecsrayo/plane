@@ -1,14 +1,18 @@
 ---
-source_file: "components/inbox/modals/create-modal/index.ts"
+source_file: "propel/src/icons/properties/index.ts"
 type: "code"
-community: "Community 405"
+community: "Icon Copy"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_405
+  - community/Icon_Copy
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_405
+## Connections
+
+- [[registry.ts]] - `imports_from` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Icon_Copy

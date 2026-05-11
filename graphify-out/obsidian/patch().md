@@ -1,12 +1,12 @@
 ---
-source_file: "services/api.service.ts"
+source_file: "services/src/api.service.ts"
 type: "code"
-community: "API Services"
-location: "L178"
+community: "Sites Cycle"
+location: "L73"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/API_Services
+  - community/Sites_Cycle
 ---
 
 # patch()
@@ -15,4 +15,4 @@ tags:
 
 - [[api.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/API_Services
+#graphify/code #graphify/EXTRACTED #community/Sites_Cycle

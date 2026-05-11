@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 341
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[Model_22]] - code - api_rust/src/entities/workspace_user_links.rs
-- [[Relation_22]] - code - api_rust/src/entities/workspace_user_links.rs
-- [[workspace_user_links.rs]] - code - api_rust/src/entities/workspace_user_links.rs
+- [[index.ts_8]] - code - ui/src/badge/index.ts
 
 ## Live Query (requires Dataview plugin)
 

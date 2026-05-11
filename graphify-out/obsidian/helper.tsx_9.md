@@ -1,18 +1,22 @@
 ---
-source_file: "components/empty-state/helper.tsx"
+source_file: "propel/src/icons/cycle/helper.tsx"
 type: "code"
-community: "Empty State"
+community: "Icon Cycle"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_State
+  - community/Icon_Cycle
 ---
 
 # helper.tsx
 
 ## Connections
 
-- [[getEmptyStateImagePath()]] - `contains` [EXTRACTED]
+- [[CYCLE_GROUP_COLORS]] - `contains` [EXTRACTED]
+- [[CYCLE_GROUP_I18N_LABELS]] - `contains` [EXTRACTED]
+- [[ICycleGroupIcon]] - `contains` [EXTRACTED]
+- [[TCycleGroups_1]] - `contains` [EXTRACTED]
+- [[cycle-group-icon.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_State
+#graphify/code #graphify/EXTRACTED #community/Icon_Cycle

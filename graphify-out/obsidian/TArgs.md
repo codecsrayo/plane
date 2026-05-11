@@ -1,18 +1,18 @@
 ---
-source_file: "hooks/use-parse-editor-content.ts"
+source_file: "hooks/src/use-hash-scroll.ts"
 type: "code"
-community: "Issue Filters"
-location: "L20"
+community: "Hash Scroll"
+location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters
+  - community/Hash_Scroll
 ---
 
 # TArgs
 
 ## Connections
 
-- [[use-parse-editor-content.ts]] - `contains` [EXTRACTED]
+- [[use-hash-scroll.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters
+#graphify/code #graphify/EXTRACTED #community/Hash_Scroll

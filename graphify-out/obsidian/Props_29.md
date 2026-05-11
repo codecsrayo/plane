@@ -1,18 +1,18 @@
 ---
-source_file: "components/workspace/sidebar/favorites/favorite-folder.tsx"
+source_file: "editor/src/core/extensions/utility.ts"
 type: "code"
-community: "Favorite Folder"
-location: "L41"
+community: "Document Side"
+location: "L58"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Favorite_Folder
+  - community/Document_Side
 ---
 
 # Props
 
 ## Connections
 
-- [[favorite-folder.tsx]] - `contains` [EXTRACTED]
+- [[utility.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Favorite_Folder
+#graphify/code #graphify/EXTRACTED #community/Document_Side

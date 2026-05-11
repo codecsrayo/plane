@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 433
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[Model_114]] - code - api_rust/src/entities/project_user_properties.rs
-- [[Relation_114]] - code - api_rust/src/entities/project_user_properties.rs
-- [[project_user_properties.rs_1]] - code - api_rust/src/entities/project_user_properties.rs
+- [[editor.ts_6]] - code - i18n/src/locales/ro/editor.ts
 
 ## Live Query (requires Dataview plugin)
 

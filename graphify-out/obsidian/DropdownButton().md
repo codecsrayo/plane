@@ -1,27 +1,18 @@
 ---
-source_file: "components/dropdowns/buttons.tsx"
+source_file: "ui/src/dropdown/common/button.tsx"
 type: "code"
-community: "Issue Properties"
-location: "L51"
+community: "Toggle Checkbox"
+location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Toggle_Checkbox
 ---
 
 # DropdownButton()
 
 ## Connections
 
-- [[base.tsx_1]] - `imports` [EXTRACTED]
-- [[base.tsx_2]] - `imports` [EXTRACTED]
-- [[base.tsx_3]] - `imports` [EXTRACTED]
-- [[base.tsx_4]] - `imports` [EXTRACTED]
-- [[base.tsx_5]] - `imports` [EXTRACTED]
-- [[buttons.tsx]] - `contains` [EXTRACTED]
-- [[date-range.tsx]] - `imports` [EXTRACTED]
-- [[date.tsx_1]] - `imports` [EXTRACTED]
-- [[estimate.tsx]] - `imports` [EXTRACTED]
-- [[index.tsx_6]] - `imports` [EXTRACTED]
+- [[button.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Toggle_Checkbox

@@ -1,18 +1,18 @@
 ---
-source_file: "components/home/widgets/manage/widget-item.tsx"
+source_file: "ui/src/progress/linear-progress-indicator.tsx"
 type: "code"
-community: "Dashboard Widgets"
-location: "L34"
+community: "Toggle Checkbox"
+location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dashboard_Widgets
+  - community/Toggle_Checkbox
 ---
 
 # Props
 
 ## Connections
 
-- [[widget-item.tsx]] - `contains` [EXTRACTED]
+- [[linear-progress-indicator.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets
+#graphify/code #graphify/EXTRACTED #community/Toggle_Checkbox

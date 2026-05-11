@@ -1,18 +1,18 @@
 ---
-source_file: "constants/editor.ts"
+source_file: "editor/src/core/constants/common.ts"
 type: "code"
-community: "Editor Items"
-location: "L102"
+community: "Callout Extension"
+location: "L96"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Items
+  - community/Callout_Extension
 ---
 
 # BASIC_MARK_ITEMS
 
 ## Connections
 
-- [[editor.ts]] - `contains` [EXTRACTED]
+- [[common.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Items
+#graphify/code #graphify/EXTRACTED #community/Callout_Extension

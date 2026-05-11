@@ -1,18 +1,14 @@
 ---
-source_file: "components/cycles/analytics-sidebar/index.ts"
+source_file: "utils/src/rich-filters/factories/configs/properties/index.ts"
 type: "code"
-community: "Cycle Cycles"
+community: "Community 511"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Cycles
+  - community/Community_511
 ---
 
 # index.ts
 
-## Connections
-
-- [[cycle-peek-overview.tsx]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Cycle_Cycles
+#graphify/code #graphify/EXTRACTED #community/Community_511

@@ -1,20 +1,20 @@
 ---
-source_file: "components/analytics/work-items/utils.ts"
+source_file: "editor/src/core/extensions/table/plugins/selection-outline/utils.ts"
 type: "code"
-community: "Chart Generate"
+community: "Table Cell"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Chart_Generate
+  - community/Table_Cell
 ---
 
 # utils.ts
 
 ## Connections
 
-- [[ParamsProps]] - `contains` [EXTRACTED]
-- [[generateBarColor()]] - `contains` [EXTRACTED]
-- [[priority-chart.tsx]] - `imports_from` [EXTRACTED]
+- [[getAdjacentCellPositions()]] - `contains` [EXTRACTED]
+- [[getCellBorderClasses()]] - `contains` [EXTRACTED]
+- [[plugin.ts_3]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Chart_Generate
+#graphify/code #graphify/EXTRACTED #community/Table_Cell

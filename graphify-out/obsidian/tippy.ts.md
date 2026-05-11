@@ -1,0 +1,26 @@
+---
+source_file: "editor/src/core/helpers/tippy.ts"
+type: "code"
+community: "Command Slash"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Command_Slash
+---
+
+# tippy.ts
+
+## Connections
+
+- [[CommandListInstance]] - `contains` [EXTRACTED]
+- [[DROPDOWN_NAVIGATION_KEYS]] - `contains` [EXTRACTED]
+- [[TArgs_5]] - `contains` [EXTRACTED]
+- [[command-menu.tsx]] - `imports_from` [EXTRACTED]
+- [[getNextValidIndex()]] - `contains` [EXTRACTED]
+- [[mentions-list-dropdown.tsx]] - `imports_from` [EXTRACTED]
+- [[root.tsx_4]] - `imports_from` [EXTRACTED]
+- [[suggestion.ts]] - `imports_from` [EXTRACTED]
+- [[utils.ts_8]] - `imports_from` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Command_Slash

@@ -11,7 +11,7 @@ members: 1
 
 ## Members
 
-- [[index.ts_79]] - code - components/settings/project/sidebar/index.ts
+- [[index.ts_66]] - code - services/src/issue/index.ts
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,23 +1,14 @@
 ---
-source_file: "layouts/default-layout/index.tsx"
+source_file: "ui/src/typography/index.tsx"
 type: "code"
-community: "Authorized Maintenance"
+community: "Community 344"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Authorized_Maintenance
+  - community/Community_344
 ---
 
 # index.tsx
 
-## Connections
-
-- [[DefaultLayout()]] - `contains` [EXTRACTED]
-- [[Props_3]] - `contains` [EXTRACTED]
-- [[maintenance-view.tsx]] - `imports_from` [EXTRACTED]
-- [[not-a-member.tsx]] - `imports_from` [EXTRACTED]
-- [[not-authorized-view.tsx]] - `imports_from` [EXTRACTED]
-- [[not-ready-view.tsx]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Authorized_Maintenance
+#graphify/code #graphify/EXTRACTED #community/Community_344

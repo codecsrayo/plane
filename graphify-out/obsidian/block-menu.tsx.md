@@ -1,0 +1,25 @@
+---
+source_file: "editor/src/core/components/menus/block-menu.tsx"
+type: "code"
+community: "Menu Options"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Menu_Options
+---
+
+# block-menu.tsx
+
+## Connections
+
+- [[BlockMenu()]] - `contains` [EXTRACTED]
+- [[BlockMenuOption]] - `contains` [EXTRACTED]
+- [[CORE_EXTENSIONS]] - `imports` [EXTRACTED]
+- [[Props_16]] - `contains` [EXTRACTED]
+- [[block-menu-options.tsx]] - `imports_from` [EXTRACTED]
+- [[extension.ts]] - `imports_from` [EXTRACTED]
+- [[getNodeOptions()]] - `imports` [EXTRACTED]
+- [[index.ts_46]] - `imports_from` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Menu_Options

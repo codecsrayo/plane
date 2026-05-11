@@ -1,14 +1,14 @@
 ---
-source_file: "components/settings/profile/content/pages/preferences/index.ts"
+source_file: "services/src/ai/index.ts"
 type: "code"
-community: "Community 384"
+community: "Community 397"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_384
+  - community/Community_397
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_384
+#graphify/code #graphify/EXTRACTED #community/Community_397

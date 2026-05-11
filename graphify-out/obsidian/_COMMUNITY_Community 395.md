@@ -11,7 +11,7 @@ members: 1
 
 ## Members
 
-- [[index.ts_98]] - code - components/issues/issue-layouts/quick-add/button/index.ts
+- [[index.ts_73]] - code - services/src/instance/index.ts
 
 ## Live Query (requires Dataview plugin)
 

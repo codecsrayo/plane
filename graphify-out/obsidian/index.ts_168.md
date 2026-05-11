@@ -1,18 +1,14 @@
 ---
-source_file: "components/analytics/insight-table/index.ts"
+source_file: "propel/src/charts/tree-map/index.ts"
 type: "code"
-community: "Insight Table"
+community: "Community 545"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Insight_Table
+  - community/Community_545
 ---
 
 # index.ts
 
-## Connections
-
-- [[workitems-insight-table.tsx]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Insight_Table
+#graphify/code #graphify/EXTRACTED #community/Community_545

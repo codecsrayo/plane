@@ -1,18 +1,18 @@
 ---
-source_file: "components/views/quick-actions.tsx"
+source_file: "editor/src/core/components/menus/bubble-menu/color-selector.tsx"
 type: "code"
-community: "Project Quick"
-location: "L28"
+community: "Menu Color"
+location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Quick
+  - community/Menu_Color
 ---
 
 # Props
 
 ## Connections
 
-- [[quick-actions.tsx]] - `contains` [EXTRACTED]
+- [[color-selector.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Quick
+#graphify/code #graphify/EXTRACTED #community/Menu_Color

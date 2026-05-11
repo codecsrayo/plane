@@ -1,18 +1,17 @@
 ---
 type: community
 cohesion: 1.00
-members: 2
+members: 1
 ---
 
 # Community 522
 
 **Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
 
-- [[.to()_24]] - code - api_rust/src/entities/django_content_type.rs
-- [[Entity_24]] - code - api_rust/src/entities/django_content_type.rs
+- [[index.ts_137]] - code - decorators/src/index.ts
 
 ## Live Query (requires Dataview plugin)
 

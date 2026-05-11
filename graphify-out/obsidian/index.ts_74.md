@@ -1,19 +1,14 @@
 ---
-source_file: "components/settings/profile/content/pages/index.ts"
+source_file: "services/src/state/index.ts"
 type: "code"
-community: "Profile Settings"
+community: "Community 396"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Profile_Settings
+  - community/Community_396
 ---
 
 # index.ts
 
-## Connections
-
-- [[PROFILE_SETTINGS_PAGES_MAP]] - `contains` [EXTRACTED]
-- [[root.tsx_18]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Profile_Settings
+#graphify/code #graphify/EXTRACTED #community/Community_396

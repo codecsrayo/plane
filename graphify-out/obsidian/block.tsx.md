@@ -1,24 +1,23 @@
 ---
-source_file: "components/gantt-chart/sidebar/modules/block.tsx"
+source_file: "ui/src/link/block.tsx"
 type: "code"
-community: "Gantt Chart"
+community: "Context Menu"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Chart
+  - community/Context_Menu
 ---
 
 # block.tsx
 
 ## Connections
 
-- [[ModulesSidebarBlock]] - `contains` [EXTRACTED]
-- [[Props_43]] - `contains` [EXTRACTED]
-- [[constants.ts]] - `imports_from` [EXTRACTED]
-- [[index.ts_58]] - `imports_from` [EXTRACTED]
-- [[sidebar.tsx]] - `imports_from` [EXTRACTED]
-- [[use-timeline-chart.ts]] - `imports_from` [EXTRACTED]
-- [[useTimeLineChartStore()]] - `imports` [EXTRACTED]
+- [[CustomMenu()]] - `imports` [EXTRACTED]
+- [[LinkItemBlock()]] - `contains` [EXTRACTED]
+- [[TContextMenuItem]] - `imports` [EXTRACTED]
+- [[TLinkItemBlockProps]] - `contains` [EXTRACTED]
+- [[custom-menu.tsx]] - `imports_from` [EXTRACTED]
+- [[root.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Chart
+#graphify/code #graphify/EXTRACTED #community/Context_Menu

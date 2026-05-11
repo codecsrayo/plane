@@ -1,18 +1,18 @@
 ---
-source_file: "components/workspace/sidebar/favorites/favorite-items/common/favorite-item-drag-handle.tsx"
+source_file: "editor/src/core/extensions/table/table/utilities/create-table.ts"
 type: "code"
-community: "Issue Layouts"
-location: "L17"
+community: "Table Drag"
+location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layouts
+  - community/Table_Drag
 ---
 
 # Props
 
 ## Connections
 
-- [[favorite-item-drag-handle.tsx]] - `contains` [EXTRACTED]
+- [[create-table.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layouts
+#graphify/code #graphify/EXTRACTED #community/Table_Drag

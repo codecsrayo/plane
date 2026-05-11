@@ -1,14 +1,14 @@
 ---
-source_file: "components/settings/project/sidebar/index.ts"
+source_file: "constants/src/issue/index.ts"
 type: "code"
-community: "Community 388"
+community: "Community 405"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_388
+  - community/Community_405
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_388
+#graphify/code #graphify/EXTRACTED #community/Community_405

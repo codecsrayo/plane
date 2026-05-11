@@ -1,18 +1,14 @@
 ---
-source_file: "components/pages/list/filters/index.ts"
+source_file: "propel/src/pill/index.ts"
 type: "code"
-community: "Order Search"
+community: "Community 533"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Order_Search
+  - community/Community_533
 ---
 
 # index.ts
 
-## Connections
-
-- [[root.tsx_83]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Order_Search
+#graphify/code #graphify/EXTRACTED #community/Community_533

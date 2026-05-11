@@ -1,19 +1,18 @@
 ---
-source_file: "components/workspace/views/delete-view-modal.tsx"
+source_file: "editor/src/ce/extensions/slash-commands.tsx"
 type: "code"
-community: "Project Quick"
-location: "L18"
+community: "Collaborative Editor"
+location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Quick
+  - community/Collaborative_Editor
 ---
 
 # Props
 
 ## Connections
 
-- [[delete-view-modal.tsx]] - `contains` [EXTRACTED]
-- [[delete-view-modal.tsx_1]] - `contains` [EXTRACTED]
+- [[slash-commands.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Quick
+#graphify/code #graphify/EXTRACTED #community/Collaborative_Editor

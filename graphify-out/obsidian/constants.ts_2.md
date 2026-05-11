@@ -1,22 +1,25 @@
 ---
-source_file: "components/power-k/ui/modal/constants.ts"
+source_file: "propel/src/portal/constants.ts"
 type: "code"
-community: "Power Search"
+community: "Portal Handler"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Power_Search
+  - community/Portal_Handler
 ---
 
 # constants.ts
 
 ## Connections
 
-- [[POWER_K_MODAL_PAGE_DETAILS]] - `contains` [EXTRACTED]
-- [[TPowerKModalPageDetails]] - `contains` [EXTRACTED]
-- [[TPowerKPageType]] - `imports` [EXTRACTED]
-- [[header.tsx_11]] - `imports_from` [EXTRACTED]
-- [[types.ts_2]] - `imports_from` [EXTRACTED]
+- [[EPortalPosition]] - `contains` [EXTRACTED]
+- [[EPortalWidth]] - `contains` [EXTRACTED]
+- [[PORTAL_POSITION_CLASSES]] - `contains` [EXTRACTED]
+- [[PORTAL_WIDTH_CLASSES]] - `contains` [EXTRACTED]
+- [[modal-portal.tsx]] - `imports_from` [EXTRACTED]
+- [[portal-wrapper.tsx]] - `imports_from` [EXTRACTED]
+- [[portal.stories.tsx]] - `imports_from` [EXTRACTED]
+- [[types.ts_12]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Power_Search
+#graphify/code #graphify/EXTRACTED #community/Portal_Handler

@@ -1,18 +1,18 @@
 ---
-source_file: "components/gantt-chart/chart/header.tsx"
+source_file: "editor/src/core/extensions/custom-image/components/toolbar/full-screen/root.tsx"
 type: "code"
-community: "Gantt Current"
-location: "L22"
+community: "Image Full"
+location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Current
+  - community/Image_Full
 ---
 
 # Props
 
 ## Connections
 
-- [[header.tsx_1]] - `contains` [EXTRACTED]
+- [[root.tsx_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Current
+#graphify/code #graphify/EXTRACTED #community/Image_Full

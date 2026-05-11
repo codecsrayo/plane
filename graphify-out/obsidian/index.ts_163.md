@@ -1,18 +1,14 @@
 ---
-source_file: "components/estimates/points/index.ts"
+source_file: "propel/src/toast/index.ts"
 type: "code"
-community: "Estimate Stage"
+community: "Community 540"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Estimate_Stage
+  - community/Community_540
 ---
 
 # index.ts
 
-## Connections
-
-- [[modal.tsx_12]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Estimate_Stage
+#graphify/code #graphify/EXTRACTED #community/Community_540

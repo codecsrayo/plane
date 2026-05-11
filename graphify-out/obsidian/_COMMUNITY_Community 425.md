@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 425
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[Model_106]] - code - api_rust/src/entities/issue_assignees.rs
-- [[Relation_106]] - code - api_rust/src/entities/issue_assignees.rs
-- [[issue_assignees.rs]] - code - api_rust/src/entities/issue_assignees.rs
+- [[editor.ts_4]] - code - i18n/src/locales/ru/editor.ts
 
 ## Live Query (requires Dataview plugin)
 

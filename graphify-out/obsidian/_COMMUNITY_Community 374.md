@@ -11,7 +11,7 @@ members: 1
 
 ## Members
 
-- [[index.ts_59]] - code - components/modules/analytics-sidebar/index.ts
+- [[index.ts_42]] - code - editor/src/core/components/editors/rich-text/index.ts
 
 ## Live Query (requires Dataview plugin)
 

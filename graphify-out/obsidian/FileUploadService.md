@@ -1,24 +1,22 @@
 ---
-source_file: "services/file-upload.service.ts"
+source_file: "services/src/file/file-upload.service.ts"
 type: "code"
-community: "API Services"
-location: "L12"
+community: "Upload Detect"
+location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/API_Services
+  - community/Upload_Detect
 ---
 
 # FileUploadService
 
 ## Connections
 
-- [[.cancelUpload()]] - `method` [EXTRACTED]
+- [[.cancelUpload()_1]] - `method` [EXTRACTED]
+- [[.constructor()_17]] - `method` [EXTRACTED]
 - [[.uploadFile()]] - `method` [EXTRACTED]
 - [[file-upload.service.ts]] - `contains` [EXTRACTED]
-- [[file.service.ts]] - `imports` [EXTRACTED]
-- [[issue_attachment.service.ts]] - `imports` [EXTRACTED]
-- [[issue_comment.service.ts]] - `imports` [EXTRACTED]
-- [[project-page.service.ts]] - `imports` [EXTRACTED]
+- [[sites-file.service.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/API_Services
+#graphify/code #graphify/EXTRACTED #community/Upload_Detect

@@ -1,14 +1,14 @@
 ---
-source_file: "components/modules/archived-modules/index.ts"
+source_file: "services/src/workspace/index.ts"
 type: "code"
-community: "Community 378"
+community: "Community 385"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_378
+  - community/Community_385
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_378
+#graphify/code #graphify/EXTRACTED #community/Community_385

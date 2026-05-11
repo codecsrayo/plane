@@ -1,18 +1,18 @@
 ---
-source_file: "components/ui/profile-empty-state.tsx"
+source_file: "ui/src/typography/sub-heading.tsx"
 type: "code"
-community: "Profile Empty"
-location: "L9"
+community: "Toggle Checkbox"
+location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Profile_Empty
+  - community/Toggle_Checkbox
 ---
 
 # Props
 
 ## Connections
 
-- [[profile-empty-state.tsx]] - `contains` [EXTRACTED]
+- [[sub-heading.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Profile_Empty
+#graphify/code #graphify/EXTRACTED #community/Toggle_Checkbox

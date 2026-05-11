@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 495
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[IListContainer]] - code - web/core/components/core/list/list-root.tsx
-- [[ListLayout()]] - code - web/core/components/core/list/list-root.tsx
-- [[list-root.tsx]] - code - web/core/components/core/list/list-root.tsx
+- [[index.ts_108]] - code - types/src/rich-filters/config/index.ts
 
 ## Live Query (requires Dataview plugin)
 

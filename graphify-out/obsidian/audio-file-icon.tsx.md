@@ -1,19 +1,22 @@
 ---
-source_file: "components/icons/attachment/audio-file-icon.tsx"
+source_file: "propel/src/icons/attachments/audio-file-icon.tsx"
 type: "code"
-community: "Audio Icon"
+community: "Icon Library"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Audio_Icon
+  - community/Icon_Library
 ---
 
 # audio-file-icon.tsx
 
 ## Connections
 
-- [[AudioIcon()]] - `contains` [EXTRACTED]
-- [[AudioIconProps]] - `contains` [EXTRACTED]
+- [[AudioFileIcon()]] - `contains` [EXTRACTED]
+- [[ISvgIcons]] - `imports` [EXTRACTED]
+- [[IconWrapper()]] - `imports` [EXTRACTED]
+- [[icon-wrapper.tsx]] - `imports_from` [EXTRACTED]
+- [[type.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Audio_Icon
+#graphify/code #graphify/EXTRACTED #community/Icon_Library

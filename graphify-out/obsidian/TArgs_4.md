@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/hooks/use-context-indicator.ts"
+source_file: "editor/src/core/extensions/starter-kit.ts"
 type: "code"
-community: "Context Power"
-location: "L19"
+community: "Core Extensions"
+location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Context_Power
+  - community/Core_Extensions
 ---
 
 # TArgs
 
 ## Connections
 
-- [[use-context-indicator.ts]] - `contains` [EXTRACTED]
+- [[starter-kit.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Context_Power
+#graphify/code #graphify/EXTRACTED #community/Core_Extensions

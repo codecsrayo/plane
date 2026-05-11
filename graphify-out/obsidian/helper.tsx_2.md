@@ -1,20 +1,26 @@
 ---
-source_file: "components/project/settings/helper.tsx"
+source_file: "ui/src/badge/helper.tsx"
 type: "code"
-community: "Project Settings"
+community: "Badge Icon"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Badge_Icon
 ---
 
 # helper.tsx
 
 ## Connections
 
-- [[ProjectFeatureToggle()]] - `contains` [EXTRACTED]
-- [[Props_146]] - `contains` [EXTRACTED]
-- [[features-list.tsx]] - `imports_from` [EXTRACTED]
+- [[IBadgeStyling]] - `contains` [EXTRACTED]
+- [[TBadgeSizes]] - `contains` [EXTRACTED]
+- [[TBadgeVariant]] - `contains` [EXTRACTED]
+- [[badge.tsx]] - `imports_from` [EXTRACTED]
+- [[badgeIconStyling]] - `contains` [EXTRACTED]
+- [[badgeSizeStyling]] - `contains` [EXTRACTED]
+- [[badgeStyling]] - `contains` [EXTRACTED]
+- [[getBadgeStyling()]] - `contains` [EXTRACTED]
+- [[getIconStyling()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Badge_Icon

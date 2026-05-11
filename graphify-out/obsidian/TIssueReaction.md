@@ -1,18 +1,19 @@
 ---
-source_file: "components/issues/issue-detail/reactions/issue.tsx"
+source_file: "types/src/issues/issue_reaction.ts"
 type: "code"
-community: "Issue Filters"
-location: "L22"
+community: "Issue Enums"
+location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters
+  - community/Issue_Enums
 ---
 
 # TIssueReaction
 
 ## Connections
 
-- [[issue.tsx_1]] - `contains` [EXTRACTED]
+- [[issue.ts]] - `imports` [EXTRACTED]
+- [[issue_reaction.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters
+#graphify/code #graphify/EXTRACTED #community/Issue_Enums

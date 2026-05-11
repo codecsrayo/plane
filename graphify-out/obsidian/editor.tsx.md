@@ -1,25 +1,24 @@
 ---
-source_file: "components/editor/sticky-editor/editor.tsx"
+source_file: "editor/src/core/components/editors/rich-text/editor.tsx"
 type: "code"
-community: "Issue Filters"
+community: "Collaborative Editor"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters
+  - community/Collaborative_Editor
 ---
 
 # editor.tsx
 
 ## Connections
 
-- [[StickyEditor]] - `contains` [EXTRACTED]
-- [[StickyEditorToolbar()]] - `imports` [EXTRACTED]
-- [[StickyEditorWrapperProps]] - `contains` [EXTRACTED]
-- [[index.ts_4]] - `imports_from` [EXTRACTED]
-- [[isMutableRefObject()]] - `contains` [EXTRACTED]
-- [[toolbar.tsx]] - `imports_from` [EXTRACTED]
-- [[use-parse-editor-content.ts]] - `imports_from` [EXTRACTED]
-- [[useParseEditorContent()]] - `imports` [EXTRACTED]
+- [[RichTextEditor()]] - `contains` [EXTRACTED]
+- [[RichTextEditorAdditionalExtensions()]] - `imports` [EXTRACTED]
+- [[RichTextEditorWithRef]] - `contains` [EXTRACTED]
+- [[index.ts_41]] - `imports_from` [EXTRACTED]
+- [[index.ts_39]] - `imports_from` [EXTRACTED]
+- [[index.ts_47]] - `imports_from` [EXTRACTED]
+- [[index.ts_46]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters
+#graphify/code #graphify/EXTRACTED #community/Collaborative_Editor

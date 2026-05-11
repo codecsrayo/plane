@@ -1,20 +1,19 @@
 ---
-source_file: "services/favorite/favorite.service.ts"
+source_file: "services/src/user/favorite.service.ts"
 type: "code"
-community: "Favorite Favoriteservice"
+community: "Favorite User"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Favorite_Favoriteservice
+  - community/Favorite_User
 ---
 
 # favorite.service.ts
 
 ## Connections
 
-- [[ApiError]] - `imports` [EXTRACTED]
-- [[FavoriteService]] - `contains` [EXTRACTED]
+- [[UserFavoriteService]] - `contains` [EXTRACTED]
 - [[api.service.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Favorite_Favoriteservice
+#graphify/code #graphify/EXTRACTED #community/Favorite_User

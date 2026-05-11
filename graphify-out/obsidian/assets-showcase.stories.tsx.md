@@ -1,0 +1,29 @@
+---
+source_file: "propel/src/empty-state/assets-showcase.stories.tsx"
+type: "code"
+community: "Assets Stack"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Assets_Stack
+---
+
+# assets-showcase.stories.tsx
+
+## Connections
+
+- [[AllAssets]] - `contains` [EXTRACTED]
+- [[HorizontalStackAssets]] - `contains` [EXTRACTED]
+- [[HorizontalStackAssetsMap]] - `imports` [EXTRACTED]
+- [[IllustrationAssets]] - `contains` [EXTRACTED]
+- [[IllustrationMap]] - `imports` [EXTRACTED]
+- [[Story_31]] - `contains` [EXTRACTED]
+- [[VerticalStackAssets]] - `contains` [EXTRACTED]
+- [[VerticalStackAssetsMap]] - `imports` [EXTRACTED]
+- [[constant.tsx_2]] - `imports_from` [EXTRACTED]
+- [[constant.tsx]] - `imports_from` [EXTRACTED]
+- [[constant.tsx_1]] - `imports_from` [EXTRACTED]
+- [[meta_10]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Assets_Stack

@@ -1,21 +1,21 @@
 ---
-source_file: "components/issues/label.tsx"
+source_file: "propel/src/empty-state/assets/horizontal-stack/label.tsx"
 type: "code"
-community: "Issue Layouts"
+community: "Illustration Assets"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layouts
+  - community/Illustration_Assets
 ---
 
 # label.tsx
 
 ## Connections
 
-- [[Props_179]] - `contains` [EXTRACTED]
-- [[ViewIssueLabel()]] - `contains` [EXTRACTED]
-- [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
-- [[usePlatformOS()]] - `imports` [EXTRACTED]
+- [[ILLUSTRATION_COLOR_TOKEN_MAP]] - `imports` [EXTRACTED]
+- [[LabelHorizontalStackIllustration()]] - `contains` [EXTRACTED]
+- [[TIllustrationAssetProps]] - `imports` [EXTRACTED]
+- [[helper.tsx_16]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layouts
+#graphify/code #graphify/EXTRACTED #community/Illustration_Assets

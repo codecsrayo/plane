@@ -1,33 +1,34 @@
 ---
-source_file: "components/issues/issue-layouts/quick-action-dropdowns/helper.tsx"
+source_file: "ui/src/dropdowns/helper.tsx"
 type: "code"
-community: "Project Archives"
+community: "Custom Menu"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Archives
+  - community/Custom_Menu
 ---
 
 # helper.tsx
 
 ## Connections
 
-- [[MenuItemFactoryProps]] - `contains` [EXTRACTED]
-- [[all-issue.tsx]] - `imports_from` [EXTRACTED]
-- [[archived-issue.tsx]] - `imports_from` [EXTRACTED]
-- [[cycle-issue.tsx]] - `imports_from` [EXTRACTED]
-- [[handleOptionalAction()]] - `contains` [EXTRACTED]
-- [[issue-detail.tsx]] - `imports_from` [EXTRACTED]
-- [[module-issue.tsx]] - `imports_from` [EXTRACTED]
-- [[project-issue.tsx]] - `imports_from` [EXTRACTED]
-- [[useAllIssueMenuItems()]] - `contains` [EXTRACTED]
-- [[useArchivedIssueMenuItems()]] - `contains` [EXTRACTED]
-- [[useCycleIssueMenuItems()]] - `contains` [EXTRACTED]
-- [[useIssueActionHandlers()]] - `contains` [EXTRACTED]
-- [[useMenuItemFactory()]] - `contains` [EXTRACTED]
-- [[useModuleIssueMenuItems()]] - `contains` [EXTRACTED]
-- [[useProjectIssueMenuItems()]] - `contains` [EXTRACTED]
-- [[useWorkItemDetailMenuItems()]] - `contains` [EXTRACTED]
+- [[CustomSearchSelectProps]] - `contains` [EXTRACTED]
+- [[ICustomMenuDropdownProps]] - `contains` [EXTRACTED]
+- [[ICustomMenuItemProps]] - `contains` [EXTRACTED]
+- [[ICustomSearchSelectProps]] - `contains` [EXTRACTED]
+- [[ICustomSelectItemProps]] - `contains` [EXTRACTED]
+- [[ICustomSelectProps]] - `contains` [EXTRACTED]
+- [[ICustomSubMenuContentProps]] - `contains` [EXTRACTED]
+- [[ICustomSubMenuProps]] - `contains` [EXTRACTED]
+- [[ICustomSubMenuTriggerProps]] - `contains` [EXTRACTED]
+- [[IDropdownProps]] - `contains` [EXTRACTED]
+- [[IPortalProps]] - `contains` [EXTRACTED]
+- [[MultipleValuesProps]] - `contains` [EXTRACTED]
+- [[Placement]] - `contains` [EXTRACTED]
+- [[SingleValueProps]] - `contains` [EXTRACTED]
+- [[custom-menu.tsx]] - `imports_from` [EXTRACTED]
+- [[custom-search-select.tsx]] - `imports_from` [EXTRACTED]
+- [[custom-select.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Archives
+#graphify/code #graphify/EXTRACTED #community/Custom_Menu

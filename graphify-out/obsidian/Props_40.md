@@ -1,18 +1,18 @@
 ---
-source_file: "components/workspace/settings/invitations-list-item.tsx"
+source_file: "editor/src/core/extensions/image/extension.tsx"
 type: "code"
-community: "Member Settings"
-location: "L26"
+community: "Extension Storage"
+location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Settings
+  - community/Extension_Storage
 ---
 
 # Props
 
 ## Connections
 
-- [[invitations-list-item.tsx]] - `contains` [EXTRACTED]
+- [[extension.tsx_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Settings
+#graphify/code #graphify/EXTRACTED #community/Extension_Storage

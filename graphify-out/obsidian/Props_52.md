@@ -1,18 +1,18 @@
 ---
-source_file: "components/gantt-chart/blocks/block.tsx"
+source_file: "propel/src/emoji-icon-picker/logo.tsx"
 type: "code"
-community: "Gantt Chart"
-location: "L23"
+community: "Icons Lucide"
+location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Chart
+  - community/Icons_Lucide
 ---
 
 # Props
 
 ## Connections
 
-- [[block.tsx_2]] - `contains` [EXTRACTED]
+- [[logo.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Chart
+#graphify/code #graphify/EXTRACTED #community/Icons_Lucide

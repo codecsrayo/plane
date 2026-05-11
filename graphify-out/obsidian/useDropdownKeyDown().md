@@ -1,24 +1,24 @@
 ---
-source_file: "hooks/use-dropdown-key-down.tsx"
+source_file: "ui/src/hooks/use-dropdown-key-down.tsx"
 type: "code"
-community: "Issue Properties"
-location: "L17"
+community: "Custom Menu"
+location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Custom_Menu
 ---
 
 # useDropdownKeyDown()
 
 ## Connections
 
-- [[LabelDropdown()]] - `calls` [EXTRACTED]
-- [[base.tsx_6]] - `imports` [EXTRACTED]
-- [[image-picker-popover.tsx]] - `imports` [EXTRACTED]
-- [[label-dropdown.tsx]] - `imports` [EXTRACTED]
+- [[CustomMenu()]] - `calls` [EXTRACTED]
+- [[CustomSearchSelect()]] - `calls` [EXTRACTED]
+- [[CustomSelect()]] - `calls` [EXTRACTED]
+- [[custom-menu.tsx]] - `imports` [EXTRACTED]
+- [[custom-search-select.tsx]] - `imports` [EXTRACTED]
+- [[custom-select.tsx]] - `imports` [EXTRACTED]
 - [[use-dropdown-key-down.tsx]] - `contains` [EXTRACTED]
-- [[use-dropdown.ts]] - `imports` [EXTRACTED]
-- [[useDropdown()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Custom_Menu

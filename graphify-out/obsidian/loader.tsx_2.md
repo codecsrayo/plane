@@ -1,21 +1,19 @@
 ---
-source_file: "components/editor/rich-text/description-input/loader.tsx"
+source_file: "editor/src/core/components/editors/document/loader.tsx"
 type: "code"
-community: "Description Input"
+community: "Document Content"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Description_Input
+  - community/Document_Content
 ---
 
 # loader.tsx
 
 ## Connections
 
-- [[DescriptionInputLoader()]] - `contains` [EXTRACTED]
-- [[Props_57]] - `contains` [EXTRACTED]
-- [[issue-root.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_10]] - `imports_from` [EXTRACTED]
+- [[DocumentContentLoader()]] - `contains` [EXTRACTED]
+- [[Props_28]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Description_Input
+#graphify/code #graphify/EXTRACTED #community/Document_Content

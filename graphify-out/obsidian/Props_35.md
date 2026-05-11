@@ -1,18 +1,18 @@
 ---
-source_file: "components/workspace/views/default-view-quick-action.tsx"
+source_file: "editor/src/core/extensions/table/plugins/drag-handles/color-selector.tsx"
 type: "code"
-community: "Global Quick"
+community: "Dropdown Table"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Global_Quick
+  - community/Dropdown_Table
 ---
 
 # Props
 
 ## Connections
 
-- [[default-view-quick-action.tsx]] - `contains` [EXTRACTED]
+- [[color-selector.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Global_Quick
+#graphify/code #graphify/EXTRACTED #community/Dropdown_Table

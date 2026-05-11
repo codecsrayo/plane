@@ -1,22 +1,23 @@
 ---
-source_file: "components/home/widgets/manage/index.tsx"
+source_file: "editor/src/core/extensions/code/index.tsx"
 type: "code"
-community: "Dashboard Widgets"
+community: "Code Lowlight"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dashboard_Widgets
+  - community/Code_Lowlight
 ---
 
 # index.tsx
 
 ## Connections
 
-- [[ManageWidgetsModal]] - `contains` [EXTRACTED]
-- [[TProps]] - `contains` [EXTRACTED]
-- [[WidgetList]] - `imports` [EXTRACTED]
-- [[home-dashboard-widgets.tsx]] - `imports_from` [EXTRACTED]
-- [[widget-list.tsx]] - `imports_from` [EXTRACTED]
+- [[CodeBlockComponent()]] - `imports` [EXTRACTED]
+- [[CodeBlockLowlight]] - `imports` [EXTRACTED]
+- [[CustomCodeBlockExtension]] - `contains` [EXTRACTED]
+- [[code-block-lowlight.ts]] - `imports_from` [EXTRACTED]
+- [[code-block-node-view.tsx]] - `imports_from` [EXTRACTED]
+- [[lowlight]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets
+#graphify/code #graphify/EXTRACTED #community/Code_Lowlight

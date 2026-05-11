@@ -1,18 +1,14 @@
 ---
-source_file: "components/power-k/ui/pages/context-based/work-item/index.ts"
+source_file: "logger/src/index.ts"
 type: "code"
-community: "Context Based"
+community: "Community 520"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Context_Based
+  - community/Community_520
 ---
 
 # index.ts
 
-## Connections
-
-- [[root.tsx_58]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Context_Based
+#graphify/code #graphify/EXTRACTED #community/Community_520

@@ -1,30 +1,22 @@
 ---
-source_file: "components/gantt-chart/chart/root.tsx"
+source_file: "propel/src/switch/root.tsx"
 type: "code"
-community: "Gantt Chart"
+community: "Checked Disabled"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Chart
+  - community/Checked_Disabled
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[ChartViewRoot]] - `contains` [EXTRACTED]
-- [[ChartViewRootProps]] - `contains` [EXTRACTED]
-- [[constants.ts]] - `imports_from` [EXTRACTED]
-- [[currentViewDataWithView()]] - `imports` [EXTRACTED]
-- [[index.ts_38]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
-- [[index.ts_46]] - `imports_from` [EXTRACTED]
-- [[index.ts_42]] - `imports_from` [EXTRACTED]
-- [[root.tsx_5]] - `imports_from` [EXTRACTED]
-- [[timelineViewHelpers]] - `contains` [EXTRACTED]
-- [[updateCurrentLeftScrollPosition()]] - `contains` [EXTRACTED]
-- [[use-timeline-chart.ts]] - `imports_from` [EXTRACTED]
-- [[useTimeLineChartStore()]] - `imports` [EXTRACTED]
+- [[IToggleSwitchProps_1]] - `contains` [EXTRACTED]
+- [[Switch()]] - `contains` [EXTRACTED]
+- [[classname.tsx_1]] - `imports_from` [EXTRACTED]
+- [[cn()_1]] - `imports` [EXTRACTED]
+- [[switch.stories.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Chart
+#graphify/code #graphify/EXTRACTED #community/Checked_Disabled

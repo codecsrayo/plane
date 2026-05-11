@@ -1,21 +1,29 @@
 ---
-source_file: "components/settings/profile/content/root.tsx"
+source_file: "propel/src/popover/root.tsx"
 type: "code"
-community: "Profile Settings"
+community: "Emoji Picker"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Profile_Settings
+  - community/Emoji_Picker
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[PROFILE_SETTINGS_PAGES_MAP]] - `imports` [EXTRACTED]
-- [[ProfileSettingsContent]] - `contains` [EXTRACTED]
-- [[Props_111]] - `contains` [EXTRACTED]
-- [[index.ts_74]] - `imports_from` [EXTRACTED]
+- [[Popover]] - `contains` [EXTRACTED]
+- [[PopoverContent]] - `contains` [EXTRACTED]
+- [[PopoverContentProps]] - `contains` [EXTRACTED]
+- [[PopoverPortal]] - `contains` [EXTRACTED]
+- [[PopoverPositioner]] - `contains` [EXTRACTED]
+- [[PopoverTrigger]] - `contains` [EXTRACTED]
+- [[TAlign]] - `imports` [EXTRACTED]
+- [[TPlacement]] - `imports` [EXTRACTED]
+- [[TSide]] - `imports` [EXTRACTED]
+- [[convertPlacementToSideAndAlign()]] - `imports` [EXTRACTED]
+- [[placement.ts]] - `imports_from` [EXTRACTED]
+- [[popover.stories.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Profile_Settings
+#graphify/code #graphify/EXTRACTED #community/Emoji_Picker

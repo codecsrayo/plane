@@ -1,12 +1,12 @@
 ---
-source_file: "services/instance.service.ts"
+source_file: "services/src/instance/instance.service.ts"
 type: "code"
-community: "Chat Support"
+community: "Instance Instanceservice"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Chat_Support
+  - community/Instance_Instanceservice
 ---
 
 # instance.service.ts
@@ -15,7 +15,5 @@ tags:
 
 - [[InstanceService]] - `contains` [EXTRACTED]
 - [[api.service.ts]] - `imports_from` [EXTRACTED]
-- [[instance.store.ts]] - `imports_from` [EXTRACTED]
-- [[toApiError()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Chat_Support
+#graphify/code #graphify/EXTRACTED #community/Instance_Instanceservice

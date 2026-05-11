@@ -1,18 +1,17 @@
 ---
 type: community
 cohesion: 1.00
-members: 2
+members: 1
 ---
 
 # Community 547
 
 **Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
 
-- [[.to()_49]] - code - api_rust/src/entities/django_celery_beat_clockedschedule.rs
-- [[Entity_49]] - code - api_rust/src/entities/django_celery_beat_clockedschedule.rs
+- [[index.ts_170]] - code - propel/src/charts/area-chart/index.ts
 
 ## Live Query (requires Dataview plugin)
 

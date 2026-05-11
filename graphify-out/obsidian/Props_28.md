@@ -1,18 +1,18 @@
 ---
-source_file: "components/workspace/sidebar/projects-list-item.tsx"
+source_file: "editor/src/core/components/editors/document/loader.tsx"
 type: "code"
-community: "Project Projects"
-location: "L47"
+community: "Document Content"
+location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Projects
+  - community/Document_Content
 ---
 
 # Props
 
 ## Connections
 
-- [[projects-list-item.tsx]] - `contains` [EXTRACTED]
+- [[loader.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Projects
+#graphify/code #graphify/EXTRACTED #community/Document_Content

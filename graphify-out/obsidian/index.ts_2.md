@@ -1,25 +1,14 @@
 ---
-source_file: "hooks/store/notifications/index.ts"
+source_file: "ui/src/tag/index.ts"
 type: "code"
-community: "Notification Option"
+community: "Community 335"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Notification_Option
+  - community/Community_335
 ---
 
 # index.ts
 
-## Connections
-
-- [[applied-filter.tsx]] - `imports_from` [EXTRACTED]
-- [[item.tsx_1]] - `imports_from` [EXTRACTED]
-- [[menu-option-item.tsx]] - `imports_from` [EXTRACTED]
-- [[notification-app-sidebar-option.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_44]] - `imports_from` [EXTRACTED]
-- [[root.tsx_45]] - `imports_from` [EXTRACTED]
-- [[root.tsx_49]] - `imports_from` [EXTRACTED]
-- [[root.tsx_50]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Notification_Option
+#graphify/code #graphify/EXTRACTED #community/Community_335

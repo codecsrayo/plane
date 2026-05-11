@@ -11,7 +11,7 @@ members: 1
 
 ## Members
 
-- [[index.ts_150]] - code - components/inbox/modals/create-modal/index.ts
+- [[index.ts_79]] - code - constants/src/issue/index.ts
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,18 +1,20 @@
 ---
-source_file: "components/editor/pdf/index.ts"
+source_file: "editor/src/core/extensions/table/table/index.ts"
 type: "code"
-community: "Formats Content"
+community: "Table Cell"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Formats_Content
+  - community/Table_Cell
 ---
 
 # index.ts
 
 ## Connections
 
-- [[export-page-modal.tsx]] - `imports_from` [EXTRACTED]
+- [[table-cell.ts]] - `imports_from` [EXTRACTED]
+- [[table-header.ts]] - `imports_from` [EXTRACTED]
+- [[table.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Formats_Content
+#graphify/code #graphify/EXTRACTED #community/Table_Cell

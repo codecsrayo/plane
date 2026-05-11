@@ -1,26 +1,23 @@
 ---
-source_file: "components/editor/document/editor.tsx"
+source_file: "editor/src/core/components/editors/lite-text/editor.tsx"
 type: "code"
-community: "Issue Filters"
+community: "Collaborative Editor"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters
+  - community/Collaborative_Editor
 ---
 
 # editor.tsx
 
 ## Connections
 
-- [[DocumentEditor]] - `contains` [EXTRACTED]
-- [[DocumentEditorWrapperProps]] - `contains` [EXTRACTED]
-- [[editor.tsx_4]] - `imports_from` [EXTRACTED]
-- [[index.ts_4]] - `imports_from` [EXTRACTED]
-- [[index.ts_51]] - `imports_from` [EXTRACTED]
-- [[use-member.ts]] - `imports_from` [EXTRACTED]
-- [[use-parse-editor-content.ts]] - `imports_from` [EXTRACTED]
-- [[useMember()]] - `imports` [EXTRACTED]
-- [[useParseEditorContent()]] - `imports` [EXTRACTED]
+- [[EditorWrapper()]] - `imports` [EXTRACTED]
+- [[LiteTextEditor()]] - `contains` [EXTRACTED]
+- [[LiteTextEditorWithRef]] - `contains` [EXTRACTED]
+- [[editor-wrapper.tsx]] - `imports_from` [EXTRACTED]
+- [[index.ts_47]] - `imports_from` [EXTRACTED]
+- [[index.ts_46]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters
+#graphify/code #graphify/EXTRACTED #community/Collaborative_Editor

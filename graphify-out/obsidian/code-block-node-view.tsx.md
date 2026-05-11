@@ -1,0 +1,24 @@
+---
+source_file: "editor/src/core/extensions/code/code-block-node-view.tsx"
+type: "code"
+community: "Code Lowlight"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Code_Lowlight
+---
+
+# code-block-node-view.tsx
+
+## Connections
+
+- [[CodeBlockComponent()]] - `contains` [EXTRACTED]
+- [[ECodeBlockAttributeNames]] - `imports` [EXTRACTED]
+- [[Props_38]] - `contains` [EXTRACTED]
+- [[TCodeBlockAttributes]] - `imports` [EXTRACTED]
+- [[index.tsx_1]] - `imports_from` [EXTRACTED]
+- [[lowlight_2]] - `contains` [EXTRACTED]
+- [[types.ts_4]] - `imports_from` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Code_Lowlight

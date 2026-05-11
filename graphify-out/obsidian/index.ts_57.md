@@ -1,18 +1,18 @@
 ---
-source_file: "components/labels/index.ts"
+source_file: "editor/src/core/extensions/custom-image/components/toolbar/index.ts"
 type: "code"
-community: "Project Settings"
+community: "Custom Image Block"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Settings
+  - community/Custom_Image_Block
 ---
 
 # index.ts
 
 ## Connections
 
-- [[project-setting-label-list.tsx]] - `imports_from` [EXTRACTED]
+- [[block.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Settings
+#graphify/code #graphify/EXTRACTED #community/Custom_Image_Block

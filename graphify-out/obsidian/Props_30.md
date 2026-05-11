@@ -1,18 +1,18 @@
 ---
-source_file: "components/workspace/sidebar/favorites/favorite-items/root.tsx"
+source_file: "editor/src/core/extensions/side-menu.ts"
 type: "code"
-community: "Favorite Favorites"
-location: "L30"
+community: "Handle Node"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Favorite_Favorites
+  - community/Handle_Node
 ---
 
 # Props
 
 ## Connections
 
-- [[root.tsx_3]] - `contains` [EXTRACTED]
+- [[side-menu.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Favorite_Favorites
+#graphify/code #graphify/EXTRACTED #community/Handle_Node

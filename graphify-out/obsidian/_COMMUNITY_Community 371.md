@@ -11,7 +11,7 @@ members: 1
 
 ## Members
 
-- [[index.ts_43]] - code - components/gantt-chart/chart/index.ts
+- [[index.ts_37]] - code - editor/src/ce/extensions/index.ts
 
 ## Live Query (requires Dataview plugin)
 

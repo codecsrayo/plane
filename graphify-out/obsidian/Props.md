@@ -1,18 +1,18 @@
 ---
-source_file: "hooks/use-page-operations.ts"
+source_file: "ui/src/favorite-star.tsx"
 type: "code"
-community: "Collaborative Copy"
-location: "L30"
+community: "Toggle Checkbox"
+location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Collaborative_Copy
+  - community/Toggle_Checkbox
 ---
 
 # Props
 
 ## Connections
 
-- [[use-page-operations.ts]] - `contains` [EXTRACTED]
+- [[favorite-star.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Collaborative_Copy
+#graphify/code #graphify/EXTRACTED #community/Toggle_Checkbox

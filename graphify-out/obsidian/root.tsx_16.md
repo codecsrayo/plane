@@ -1,23 +1,23 @@
 ---
-source_file: "components/settings/workspace/sidebar/root.tsx"
+source_file: "propel/src/calendar/root.tsx"
 type: "code"
-community: "Sidebar Nav"
+community: "Dates Disabled"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Nav
+  - community/Dates_Disabled
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[Props_42]] - `contains` [EXTRACTED]
-- [[WorkspaceSettingsSidebarHeader]] - `imports` [EXTRACTED]
-- [[WorkspaceSettingsSidebarItemCategories]] - `imports` [EXTRACTED]
-- [[WorkspaceSettingsSidebarRoot()]] - `contains` [EXTRACTED]
-- [[header.tsx_3]] - `imports_from` [EXTRACTED]
-- [[item-categories.tsx]] - `imports_from` [EXTRACTED]
+- [[Calendar()]] - `contains` [EXTRACTED]
+- [[CalendarProps]] - `contains` [EXTRACTED]
+- [[ChevronLeftIcon()]] - `imports` [EXTRACTED]
+- [[calendar.stories.tsx]] - `imports_from` [EXTRACTED]
+- [[chevron-left.tsx]] - `imports_from` [EXTRACTED]
+- [[index.ts_191]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Nav
+#graphify/code #graphify/EXTRACTED #community/Dates_Disabled

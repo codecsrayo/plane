@@ -1,18 +1,14 @@
 ---
-source_file: "components/home/widgets/empty-states/index.ts"
+source_file: "ui/src/collapsible/index.ts"
 type: "code"
-community: "Dashboard Widgets"
+community: "Community 360"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dashboard_Widgets
+  - community/Community_360
 ---
 
 # index.ts
 
-## Connections
-
-- [[index.tsx_2]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets
+#graphify/code #graphify/EXTRACTED #community/Community_360

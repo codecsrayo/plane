@@ -1,19 +1,18 @@
 ---
-source_file: "components/issues/issue-detail-widgets/sub-issues/index.ts"
+source_file: "utils/src/editor/index.ts"
 type: "code"
-community: "Issue Widget"
+community: "Issue Handle"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Widget
+  - community/Issue_Handle
 ---
 
 # index.ts
 
 ## Connections
 
-- [[action-buttons.tsx]] - `imports_from` [EXTRACTED]
-- [[issue-detail-widget-collapsibles.tsx]] - `imports_from` [EXTRACTED]
+- [[base.ts_5]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Widget
+#graphify/code #graphify/EXTRACTED #community/Issue_Handle

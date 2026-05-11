@@ -11,7 +11,7 @@ members: 1
 
 ## Members
 
-- [[index.ts_65]] - code - components/modules/dropdowns/filters/index.ts
+- [[index.ts_54]] - code - editor/src/core/extensions/slash-commands/index.ts
 
 ## Live Query (requires Dataview plugin)
 

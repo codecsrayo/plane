@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 429
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[Model_110]] - code - api_rust/src/entities/estimates.rs
-- [[Relation_110]] - code - api_rust/src/entities/estimates.rs
-- [[estimates.rs_1]] - code - api_rust/src/entities/estimates.rs
+- [[editor.ts_5]] - code - i18n/src/locales/zh-TW/editor.ts
 
 ## Live Query (requires Dataview plugin)
 

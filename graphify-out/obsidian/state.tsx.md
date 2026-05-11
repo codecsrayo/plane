@@ -1,20 +1,21 @@
 ---
-source_file: "components/issues/issue-layouts/filters/header/filters/state.tsx"
+source_file: "propel/src/empty-state/assets/horizontal-stack/state.tsx"
 type: "code"
-community: "Inbox Filters"
+community: "Illustration Assets"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Inbox_Filters
+  - community/Illustration_Assets
 ---
 
 # state.tsx
 
 ## Connections
 
-- [[FilterState]] - `contains` [EXTRACTED]
-- [[Props_235]] - `contains` [EXTRACTED]
-- [[index.ts_90]] - `imports_from` [EXTRACTED]
+- [[ILLUSTRATION_COLOR_TOKEN_MAP]] - `imports` [EXTRACTED]
+- [[StateHorizontalStackIllustration()]] - `contains` [EXTRACTED]
+- [[TIllustrationAssetProps]] - `imports` [EXTRACTED]
+- [[helper.tsx_16]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Inbox_Filters
+#graphify/code #graphify/EXTRACTED #community/Illustration_Assets

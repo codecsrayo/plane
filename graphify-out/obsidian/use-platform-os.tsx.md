@@ -1,105 +1,18 @@
 ---
-source_file: "hooks/use-platform-os.tsx"
+source_file: "hooks/src/use-platform-os.tsx"
 type: "code"
-community: "Issue Layouts"
+community: "Platform"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layouts
+  - community/Platform
 ---
 
 # use-platform-os.tsx
 
 ## Connections
 
-- [[activity-block.tsx]] - `imports_from` [EXTRACTED]
-- [[activity-block.tsx_1]] - `imports_from` [EXTRACTED]
-- [[activity.tsx_2]] - `imports_from` [EXTRACTED]
-- [[add-block.tsx]] - `imports_from` [EXTRACTED]
-- [[all-properties.tsx]] - `imports_from` [EXTRACTED]
-- [[attachment-detail.tsx]] - `imports_from` [EXTRACTED]
-- [[attachment-list-item.tsx]] - `imports_from` [EXTRACTED]
-- [[attachment-list-upload-item.tsx]] - `imports_from` [EXTRACTED]
-- [[attachment-upload-details.tsx]] - `imports_from` [EXTRACTED]
-- [[base.tsx_1]] - `imports_from` [EXTRACTED]
-- [[base.tsx_6]] - `imports_from` [EXTRACTED]
-- [[block-root.tsx]] - `imports_from` [EXTRACTED]
-- [[block.tsx_3]] - `imports_from` [EXTRACTED]
-- [[block.tsx_4]] - `imports_from` [EXTRACTED]
-- [[block.tsx_5]] - `imports_from` [EXTRACTED]
-- [[blocks.tsx]] - `imports_from` [EXTRACTED]
-- [[blocks.tsx_1]] - `imports_from` [EXTRACTED]
-- [[breadcrumb-link.tsx]] - `imports_from` [EXTRACTED]
-- [[button-content.tsx]] - `imports_from` [EXTRACTED]
-- [[button.tsx]] - `imports_from` [EXTRACTED]
-- [[buttons.tsx]] - `imports_from` [EXTRACTED]
-- [[card.tsx]] - `imports_from` [EXTRACTED]
-- [[create-root.tsx]] - `imports_from` [EXTRACTED]
-- [[cycle-list-item-action.tsx]] - `imports_from` [EXTRACTED]
-- [[cycle-options.tsx]] - `imports_from` [EXTRACTED]
-- [[cycles-list-item.tsx]] - `imports_from` [EXTRACTED]
-- [[default-properties.tsx]] - `imports_from` [EXTRACTED]
-- [[delete.tsx]] - `imports_from` [EXTRACTED]
-- [[description-editor.tsx]] - `imports_from` [EXTRACTED]
-- [[draft-issue-properties.tsx]] - `imports_from` [EXTRACTED]
-- [[error.tsx]] - `imports_from` [EXTRACTED]
-- [[existing-issues-list-modal.tsx]] - `imports_from` [EXTRACTED]
-- [[favorite-folder.tsx]] - `imports_from` [EXTRACTED]
-- [[favorite-item-drag-handle.tsx]] - `imports_from` [EXTRACTED]
-- [[favorite-item-title.tsx]] - `imports_from` [EXTRACTED]
-- [[form.tsx]] - `imports_from` [EXTRACTED]
-- [[form.tsx_6]] - `imports_from` [EXTRACTED]
-- [[form.tsx_8]] - `imports_from` [EXTRACTED]
-- [[header.tsx_9]] - `imports_from` [EXTRACTED]
-- [[inbox-list-item.tsx]] - `imports_from` [EXTRACTED]
-- [[issue-block.tsx]] - `imports_from` [EXTRACTED]
-- [[issue-description.tsx]] - `imports_from` [EXTRACTED]
-- [[issue-detail-quick-actions.tsx]] - `imports_from` [EXTRACTED]
-- [[issue-link.tsx]] - `imports_from` [EXTRACTED]
-- [[issue-list-item.tsx]] - `imports_from` [EXTRACTED]
-- [[issue-properties.tsx_1]] - `imports_from` [EXTRACTED]
-- [[issue-row.tsx]] - `imports_from` [EXTRACTED]
-- [[issue-title.tsx]] - `imports_from` [EXTRACTED]
-- [[label-dropdown.tsx]] - `imports_from` [EXTRACTED]
-- [[label-select.tsx]] - `imports_from` [EXTRACTED]
-- [[label.tsx]] - `imports_from` [EXTRACTED]
-- [[labels-list.tsx]] - `imports_from` [EXTRACTED]
-- [[labels.tsx]] - `imports_from` [EXTRACTED]
-- [[labels.tsx_4]] - `imports_from` [EXTRACTED]
-- [[layout-selection.tsx]] - `imports_from` [EXTRACTED]
-- [[layout-switcher.tsx]] - `imports_from` [EXTRACTED]
-- [[link-detail.tsx_1]] - `imports_from` [EXTRACTED]
-- [[link-item.tsx]] - `imports_from` [EXTRACTED]
-- [[list-item.tsx]] - `imports_from` [EXTRACTED]
-- [[list-item.tsx_1]] - `imports_from` [EXTRACTED]
-- [[loader.tsx_5]] - `imports_from` [EXTRACTED]
-- [[member-options.tsx]] - `imports_from` [EXTRACTED]
-- [[modal.tsx_2]] - `imports_from` [EXTRACTED]
-- [[modal.tsx_9]] - `imports_from` [EXTRACTED]
-- [[module-card-item.tsx]] - `imports_from` [EXTRACTED]
-- [[module-list-item.tsx]] - `imports_from` [EXTRACTED]
-- [[module-options.tsx]] - `imports_from` [EXTRACTED]
-- [[module-view-header.tsx]] - `imports_from` [EXTRACTED]
-- [[page-form.tsx]] - `imports_from` [EXTRACTED]
-- [[parent-issues-list-modal.tsx]] - `imports_from` [EXTRACTED]
-- [[parent-select.tsx]] - `imports_from` [EXTRACTED]
-- [[parent-tag.tsx]] - `imports_from` [EXTRACTED]
-- [[priority.tsx]] - `imports_from` [EXTRACTED]
-- [[project-select.tsx]] - `imports_from` [EXTRACTED]
-- [[projects-list-item.tsx]] - `imports_from` [EXTRACTED]
-- [[relation-select.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_35]] - `imports_from` [EXTRACTED]
-- [[root.tsx_47]] - `imports_from` [EXTRACTED]
-- [[root.tsx_49]] - `imports_from` [EXTRACTED]
-- [[root.tsx_51]] - `imports_from` [EXTRACTED]
-- [[root.tsx_78]] - `imports_from` [EXTRACTED]
-- [[sidebar.tsx_2]] - `imports_from` [EXTRACTED]
-- [[single-integration-card.tsx]] - `imports_from` [EXTRACTED]
-- [[title-input.tsx_1]] - `imports_from` [EXTRACTED]
-- [[use-dropdown.ts]] - `imports_from` [EXTRACTED]
-- [[usePlatformOS()]] - `contains` [EXTRACTED]
-- [[view-list-item.tsx]] - `imports_from` [EXTRACTED]
-- [[workspace-wrapper.tsx]] - `imports_from` [EXTRACTED]
+- [[usePlatformOS()_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layouts
+#graphify/code #graphify/EXTRACTED #community/Platform

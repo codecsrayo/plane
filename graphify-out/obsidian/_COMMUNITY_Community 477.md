@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 477
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[AppliedPriorityFilters]] - code - web/core/components/issues/issue-layouts/filters/applied-filters/priority.tsx
-- [[Props_246]] - code - web/core/components/issues/issue-layouts/filters/applied-filters/priority.tsx
-- [[priority.tsx_2]] - code - web/core/components/issues/issue-layouts/filters/applied-filters/priority.tsx
+- [[editor.ts_17]] - code - i18n/src/locales/pl/editor.ts
 
 ## Live Query (requires Dataview plugin)
 

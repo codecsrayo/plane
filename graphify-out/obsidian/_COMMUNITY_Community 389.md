@@ -11,7 +11,7 @@ members: 1
 
 ## Members
 
-- [[index.ts_86]] - code - components/issues/issue-layouts/spreadsheet/columns/index.ts
+- [[index.ts_67]] - code - services/src/project/index.ts
 
 ## Live Query (requires Dataview plugin)
 

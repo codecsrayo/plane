@@ -1,23 +1,14 @@
 ---
-source_file: "hooks/oauth/index.ts"
+source_file: "ui/src/card/index.ts"
 type: "code"
-community: "Chat Support"
+community: "Community 338"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Chat_Support
+  - community/Community_338
 ---
 
 # index.ts
 
-## Connections
-
-- [[auth-root.tsx]] - `imports_from` [EXTRACTED]
-- [[core.tsx]] - `imports_from` [EXTRACTED]
-- [[extended.tsx]] - `imports_from` [EXTRACTED]
-- [[useCoreOAuthConfig()]] - `imports` [EXTRACTED]
-- [[useExtendedOAuthConfig()]] - `imports` [EXTRACTED]
-- [[useOAuthConfig()]] - `contains` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Chat_Support
+#graphify/code #graphify/EXTRACTED #community/Community_338

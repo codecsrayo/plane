@@ -1,18 +1,18 @@
 ---
-source_file: "components/project-states/options/index.ts"
+source_file: "editor/src/core/extensions/custom-link/index.ts"
 type: "code"
-community: "Calendar Blocks"
+community: "Document Text"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Blocks
+  - community/Document_Text
 ---
 
 # index.ts
 
 ## Connections
 
-- [[state-item-title.tsx]] - `imports_from` [EXTRACTED]
+- [[core-without-props.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Blocks
+#graphify/code #graphify/EXTRACTED #community/Document_Text

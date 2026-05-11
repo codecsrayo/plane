@@ -1,33 +1,22 @@
 ---
-source_file: "components/views/modal.tsx"
+source_file: "editor/src/core/extensions/custom-image/components/toolbar/full-screen/modal.tsx"
 type: "code"
-community: "Project Quick"
+community: "Image Full"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Quick
+  - community/Image_Full
 ---
 
 # modal.tsx
 
 ## Connections
 
-- [[CreateUpdateProjectViewModal]] - `contains` [EXTRACTED]
-- [[ProjectViewForm]] - `imports` [EXTRACTED]
-- [[Props_17]] - `contains` [EXTRACTED]
-- [[form.tsx]] - `imports_from` [EXTRACTED]
-- [[project-level.tsx]] - `imports_from` [EXTRACTED]
-- [[quick-actions.tsx]] - `imports_from` [EXTRACTED]
-- [[use-app-router.tsx]] - `imports_from` [EXTRACTED]
-- [[use-issues.ts]] - `imports_from` [EXTRACTED]
-- [[use-keypress.tsx]] - `imports_from` [EXTRACTED]
-- [[use-project-view.ts]] - `imports_from` [EXTRACTED]
-- [[use-work-item-filters.ts]] - `imports_from` [EXTRACTED]
-- [[useAppRouter()]] - `imports` [EXTRACTED]
-- [[useIssues()]] - `imports` [EXTRACTED]
-- [[useProjectView()]] - `imports` [EXTRACTED]
-- [[useWorkItemFilters()]] - `imports` [EXTRACTED]
-- [[view-list-item-action.tsx]] - `imports_from` [EXTRACTED]
+- [[ImageFullScreenModal()]] - `contains` [EXTRACTED]
+- [[ImageFullScreenModalWithoutPortal()]] - `contains` [EXTRACTED]
+- [[Props_46]] - `contains` [EXTRACTED]
+- [[ZOOM_STEPS]] - `contains` [EXTRACTED]
+- [[root.tsx_6]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Quick
+#graphify/code #graphify/EXTRACTED #community/Image_Full

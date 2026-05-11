@@ -1,19 +1,18 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 2
 ---
 
 # Community 330
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 2 nodes
 
 ## Members
 
-- [[Model_11]] - code - api_rust/src/entities/gitlab_repository_syncs.rs
-- [[Relation_11]] - code - api_rust/src/entities/gitlab_repository_syncs.rs
-- [[gitlab_repository_syncs.rs]] - code - api_rust/src/entities/gitlab_repository_syncs.rs
+- [[@planeeditor Package]] - document - packages/editor/Readme.md
+- [[useEditor Hook]] - document - packages/editor/Readme.md
 
 ## Live Query (requires Dataview plugin)
 

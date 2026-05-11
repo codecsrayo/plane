@@ -1,14 +1,22 @@
 ---
-source_file: "components/gantt-chart/sidebar/issues/index.ts"
+source_file: "editor/src/core/components/editors/index.ts"
 type: "code"
-community: "Community 370"
+community: "Collaborative Editor"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_370
+  - community/Collaborative_Editor
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_370
+## Connections
+
+- [[collaborative-editor.tsx]] - `imports_from` [EXTRACTED]
+- [[editor-wrapper.tsx]] - `imports_from` [EXTRACTED]
+- [[editor.tsx]] - `imports_from` [EXTRACTED]
+- [[editor.tsx_1]] - `imports_from` [EXTRACTED]
+- [[page-renderer.tsx]] - `imports_from` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Collaborative_Editor

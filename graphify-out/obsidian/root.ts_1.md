@@ -1,24 +1,27 @@
 ---
-source_file: "components/power-k/config/navigation/root.ts"
+source_file: "utils/src/editor/markdown-parser/root.ts"
 type: "code"
-community: "Navigation Power"
+community: "Custom Components"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Navigation_Power
+  - community/Custom_Components
 ---
 
 # root.ts
 
 ## Connections
 
-- [[TPowerKCommandConfig]] - `imports` [EXTRACTED]
-- [[TPowerKNavigationCommandKeys]] - `imports` [EXTRACTED]
-- [[commands.ts_3]] - `imports_from` [EXTRACTED]
-- [[commands.ts_4]] - `imports_from` [EXTRACTED]
-- [[types.ts_2]] - `imports_from` [EXTRACTED]
-- [[usePowerKNavigationCommands()]] - `contains` [EXTRACTED]
-- [[usePowerKNavigationCommandsRecord()]] - `imports` [EXTRACTED]
+- [[TArgs_10]] - `contains` [EXTRACTED]
+- [[TCustomComponentsMetaData]] - `imports` [EXTRACTED]
+- [[addSpacesToCheckboxes()]] - `contains` [EXTRACTED]
+- [[convertHTMLToMarkdown()]] - `contains` [EXTRACTED]
+- [[custom-components-handler.ts]] - `imports_from` [EXTRACTED]
+- [[marks-handler.ts]] - `imports_from` [EXTRACTED]
+- [[parseCustomComponents()]] - `imports` [EXTRACTED]
+- [[parseMarks]] - `imports` [EXTRACTED]
+- [[sanitizeHTML()_1]] - `contains` [EXTRACTED]
+- [[types.ts_9]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Navigation_Power
+#graphify/code #graphify/EXTRACTED #community/Custom_Components

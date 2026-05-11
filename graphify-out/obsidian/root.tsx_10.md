@@ -1,30 +1,24 @@
 ---
-source_file: "components/editor/rich-text/description-input/root.tsx"
+source_file: "propel/src/charts/pie-chart/root.tsx"
 type: "code"
-community: "Description Input"
+community: "Custom Active"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Description_Input
+  - community/Custom_Active
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[DescriptionInput]] - `contains` [EXTRACTED]
-- [[DescriptionInputLoader()]] - `imports` [EXTRACTED]
-- [[Props_58]] - `contains` [EXTRACTED]
-- [[TFormData]] - `contains` [EXTRACTED]
-- [[WorkspaceService]] - `imports` [EXTRACTED]
-- [[index.ts_53]] - `imports_from` [EXTRACTED]
-- [[loader.tsx_2]] - `imports_from` [EXTRACTED]
-- [[use-editor-asset.ts]] - `imports_from` [EXTRACTED]
-- [[use-workspace.ts]] - `imports_from` [EXTRACTED]
-- [[useEditorAsset()]] - `imports` [EXTRACTED]
-- [[useWorkspace()]] - `imports` [EXTRACTED]
-- [[workspace.service.ts]] - `imports_from` [EXTRACTED]
-- [[workspaceService_3]] - `contains` [EXTRACTED]
+- [[CustomActiveShape]] - `imports` [EXTRACTED]
+- [[CustomPieChartTooltip]] - `imports` [EXTRACTED]
+- [[PieChart]] - `contains` [EXTRACTED]
+- [[active-shape.tsx]] - `imports_from` [EXTRACTED]
+- [[getLegendProps()]] - `imports` [EXTRACTED]
+- [[legend.tsx]] - `imports_from` [EXTRACTED]
+- [[tooltip.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Description_Input
+#graphify/code #graphify/EXTRACTED #community/Custom_Active

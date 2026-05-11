@@ -1,21 +1,23 @@
 ---
-source_file: "components/issues/issue-layouts/gantt/index.ts"
+source_file: "i18n/src/store/index.ts"
 type: "code"
-community: "Calendar Chart"
+community: "Translation Language"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Chart
+  - community/Translation_Language
 ---
 
 # index.ts
 
 ## Connections
 
-- [[cycle-layout-root.tsx]] - `imports_from` [EXTRACTED]
-- [[module-layout-root.tsx]] - `imports_from` [EXTRACTED]
-- [[project-layout-root.tsx]] - `imports_from` [EXTRACTED]
-- [[project-view-layout-root.tsx]] - `imports_from` [EXTRACTED]
+- [[TranslationStore]] - `contains` [EXTRACTED]
+- [[index.ts_88]] - `imports_from` [EXTRACTED]
+- [[index.ts_90]] - `imports_from` [EXTRACTED]
+- [[index.ts_89]] - `imports_from` [EXTRACTED]
+- [[index.tsx_3]] - `imports_from` [EXTRACTED]
+- [[locales]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Chart
+#graphify/code #graphify/EXTRACTED #community/Translation_Language

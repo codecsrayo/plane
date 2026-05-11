@@ -1,18 +1,18 @@
 ---
-source_file: "components/inbox/inbox-filter/index.ts"
+source_file: "propel/src/icons/sub-brand/index.ts"
 type: "code"
-community: "Inbox Filters"
+community: "Icon Copy"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Inbox_Filters
+  - community/Icon_Copy
 ---
 
 # index.ts
 
 ## Connections
 
-- [[root.tsx_71]] - `imports_from` [EXTRACTED]
+- [[registry.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Inbox_Filters
+#graphify/code #graphify/EXTRACTED #community/Icon_Copy

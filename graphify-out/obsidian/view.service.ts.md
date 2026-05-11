@@ -1,22 +1,19 @@
 ---
-source_file: "services/view.service.ts"
+source_file: "services/src/workspace/view.service.ts"
 type: "code"
-community: "Project Views"
+community: "Workspace Workspaceviewservice"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Views
+  - community/Workspace_Workspaceviewservice
 ---
 
 # view.service.ts
 
 ## Connections
 
-- [[ApiError]] - `imports` [EXTRACTED]
-- [[ViewService]] - `contains` [EXTRACTED]
+- [[WorkspaceViewService]] - `contains` [EXTRACTED]
 - [[api.service.ts]] - `imports_from` [EXTRACTED]
-- [[filter.store.ts_1]] - `imports_from` [EXTRACTED]
-- [[project-view.store.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Views
+#graphify/code #graphify/EXTRACTED #community/Workspace_Workspaceviewservice

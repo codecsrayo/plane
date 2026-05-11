@@ -1,38 +1,36 @@
 ---
-source_file: "store/issue/archived/filter.store.ts"
+source_file: "shared-state/src/store/work-item-filters/filter.store.ts"
 type: "code"
-community: "Filters Archived"
+community: "Work Condition"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filters_Archived
+  - community/Work_Condition
 ---
 
 # filter.store.ts
 
 ## Connections
 
-- [[ArchivedIssuesFilter]] - `contains` [EXTRACTED]
-- [[IArchivedIssuesFilter]] - `contains` [EXTRACTED]
-- [[IBaseIssueFilterStore]] - `imports` [EXTRACTED]
-- [[IIssueRootStore]] - `imports` [EXTRACTED]
-- [[IssueFilterHelperStore]] - `imports` [EXTRACTED]
-- [[IssueFiltersService]] - `imports` [EXTRACTED]
-- [[_filters]] - `contains` [EXTRACTED]
-- [[api.service.ts]] - `imports_from` [EXTRACTED]
-- [[displayFilters_3]] - `contains` [EXTRACTED]
-- [[displayProperties]] - `contains` [EXTRACTED]
-- [[filterParams]] - `contains` [EXTRACTED]
-- [[issue-filter-helper.store.ts]] - `imports_from` [EXTRACTED]
-- [[issue.store.ts_1]] - `imports_from` [EXTRACTED]
-- [[issue_filter.service.ts]] - `imports_from` [EXTRACTED]
-- [[kanbanFilters]] - `contains` [EXTRACTED]
-- [[paginationParams]] - `contains` [EXTRACTED]
-- [[root.store.ts_1]] - `imports_from` [EXTRACTED]
-- [[toApiError()]] - `imports` [EXTRACTED]
-- [[updatedDisplayFilters]] - `contains` [EXTRACTED]
-- [[updatedDisplayProperties]] - `contains` [EXTRACTED]
-- [[updatedKanbanFilters]] - `contains` [EXTRACTED]
+- [[FilterInstance]] - `imports` [EXTRACTED]
+- [[IWorkItemFilterInstance]] - `imports` [EXTRACTED]
+- [[IWorkItemFilterStore]] - `contains` [EXTRACTED]
+- [[TGetOrCreateFilterParams]] - `contains` [EXTRACTED]
+- [[TWorkItemFilterKey]] - `imports` [EXTRACTED]
+- [[WorkItemFilterStore]] - `contains` [EXTRACTED]
+- [[WorkItemFiltersAdapter]] - `imports` [EXTRACTED]
+- [[adapter.ts_1]] - `imports_from` [EXTRACTED]
+- [[conditionNode]] - `contains` [EXTRACTED]
+- [[conditionPayload]] - `contains` [EXTRACTED]
+- [[existingFilter]] - `contains` [EXTRACTED]
+- [[filter]] - `contains` [EXTRACTED]
+- [[filter.ts_3]] - `imports_from` [EXTRACTED]
+- [[filterKey]] - `contains` [EXTRACTED]
+- [[index.ts_135]] - `imports_from` [EXTRACTED]
+- [[newFilter]] - `contains` [EXTRACTED]
+- [[newFilterExpression]] - `contains` [EXTRACTED]
+- [[shared.ts_10]] - `imports_from` [EXTRACTED]
+- [[{ operator, isNegation }]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filters_Archived
+#graphify/code #graphify/EXTRACTED #community/Work_Condition

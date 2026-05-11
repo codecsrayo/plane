@@ -1,31 +1,26 @@
 ---
-source_file: "components/dropdowns/member/avatar.tsx"
+source_file: "ui/src/avatar/avatar.tsx"
 type: "code"
-community: "Module Forms"
+community: "Avatar Fallback"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Forms
+  - community/Avatar_Fallback
 ---
 
 # avatar.tsx
 
 ## Connections
 
-- [[AvatarProps]] - `contains` [EXTRACTED]
-- [[ButtonAvatars]] - `contains` [EXTRACTED]
-- [[attachment-list-item.tsx]] - `imports_from` [EXTRACTED]
-- [[base.tsx_5]] - `imports_from` [EXTRACTED]
-- [[cycle-list-item-action.tsx]] - `imports_from` [EXTRACTED]
-- [[inbox-list-item.tsx]] - `imports_from` [EXTRACTED]
-- [[member.tsx_1]] - `imports_from` [EXTRACTED]
-- [[module-card-item.tsx]] - `imports_from` [EXTRACTED]
-- [[module-list-item-action.tsx]] - `imports_from` [EXTRACTED]
-- [[properties.tsx_2]] - `imports_from` [EXTRACTED]
-- [[sidebar.tsx_3]] - `imports_from` [EXTRACTED]
-- [[use-member.ts]] - `imports_from` [EXTRACTED]
-- [[useMember()]] - `imports` [EXTRACTED]
-- [[view-list-item-action.tsx]] - `imports_from` [EXTRACTED]
+- [[Avatar()]] - `contains` [EXTRACTED]
+- [[Props_5]] - `contains` [EXTRACTED]
+- [[TAvatarSize]] - `imports` [EXTRACTED]
+- [[avatar.stories.tsx]] - `imports_from` [EXTRACTED]
+- [[getBorderRadius()]] - `imports` [EXTRACTED]
+- [[getSizeInfo()]] - `imports` [EXTRACTED]
+- [[helper.tsx_4]] - `imports_from` [EXTRACTED]
+- [[index.ts_14]] - `imports_from` [EXTRACTED]
+- [[isAValidNumber()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Forms
+#graphify/code #graphify/EXTRACTED #community/Avatar_Fallback

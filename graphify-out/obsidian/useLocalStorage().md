@@ -1,23 +1,19 @@
 ---
-source_file: "hooks/use-local-storage.tsx"
+source_file: "hooks/src/use-local-storage.tsx"
 type: "code"
-community: "Rail Visibility"
-location: "L31"
+community: "Local Tabs"
+location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Rail_Visibility
+  - community/Local_Tabs
 ---
 
 # useLocalStorage()
 
 ## Connections
 
-- [[CycleCreateUpdateModal()]] - `calls` [EXTRACTED]
-- [[HeaderColumn()]] - `calls` [EXTRACTED]
+- [[Tabs()]] - `calls` [INFERRED]
 - [[use-local-storage.tsx]] - `contains` [EXTRACTED]
-- [[useAppRailPreferences()]] - `calls` [EXTRACTED]
-- [[usePageFilters()]] - `calls` [EXTRACTED]
-- [[usePageOperations()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Rail_Visibility
+#graphify/code #graphify/EXTRACTED #community/Local_Tabs

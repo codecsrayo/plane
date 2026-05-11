@@ -1,18 +1,19 @@
 ---
-source_file: "components/dropdowns/buttons.tsx"
+source_file: "propel/src/button/helper.tsx"
 type: "code"
-community: "Issue Properties"
-location: "L35"
+community: "Button Auth"
+location: "L43"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Button_Auth
 ---
 
 # ButtonProps
 
 ## Connections
 
-- [[buttons.tsx]] - `contains` [EXTRACTED]
+- [[button.tsx_2]] - `imports` [EXTRACTED]
+- [[helper.tsx_17]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Button_Auth

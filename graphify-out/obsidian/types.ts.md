@@ -1,20 +1,20 @@
 ---
-source_file: "lib/app-rail/types.ts"
+source_file: "ui/src/tables/types.ts"
 type: "code"
-community: "Rail Visibility"
+community: "Table Meta"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Rail_Visibility
+  - community/Table_Meta
 ---
 
 # types.ts
 
 ## Connections
 
-- [[IAppRailVisibilityContext]] - `contains` [EXTRACTED]
-- [[context.tsx]] - `imports_from` [EXTRACTED]
-- [[provider.tsx]] - `imports_from` [EXTRACTED]
+- [[TTableColumn]] - `contains` [EXTRACTED]
+- [[TTableData_1]] - `contains` [EXTRACTED]
+- [[table.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Rail_Visibility
+#graphify/code #graphify/EXTRACTED #community/Table_Meta

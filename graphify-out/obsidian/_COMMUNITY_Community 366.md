@@ -11,7 +11,7 @@ members: 1
 
 ## Members
 
-- [[index.ts_36]] - code - components/workspace/billing/comparison/index.ts
+- [[index.ts_33]] - code - editor/src/index.ts
 
 ## Live Query (requires Dataview plugin)
 

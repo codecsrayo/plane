@@ -1,24 +1,25 @@
 ---
-source_file: "components/power-k/config/creation/root.ts"
+source_file: "editor/src/core/plugins/file/root.ts"
 type: "code"
-community: "Command Palette"
+community: "Title Node"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Command_Palette
+  - community/Title_Node
 ---
 
 # root.ts
 
 ## Connections
 
-- [[TPowerKCommandConfig]] - `imports` [EXTRACTED]
-- [[TPowerKCreationCommandKeys]] - `imports` [EXTRACTED]
-- [[command.ts]] - `imports_from` [EXTRACTED]
-- [[commands.ts_3]] - `imports_from` [EXTRACTED]
-- [[types.ts_2]] - `imports_from` [EXTRACTED]
-- [[usePowerKCreationCommands()]] - `contains` [EXTRACTED]
-- [[usePowerKCreationCommandsRecord()]] - `imports` [EXTRACTED]
+- [[FilePlugins()]] - `contains` [EXTRACTED]
+- [[TArgs_9]] - `contains` [EXTRACTED]
+- [[TrackFileDeletionPlugin()]] - `imports` [EXTRACTED]
+- [[TrackFileRestorationPlugin()]] - `imports` [EXTRACTED]
+- [[delete.ts]] - `imports_from` [EXTRACTED]
+- [[index.ts_46]] - `imports_from` [EXTRACTED]
+- [[restore.ts]] - `imports_from` [EXTRACTED]
+- [[utility.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Command_Palette
+#graphify/code #graphify/EXTRACTED #community/Title_Node

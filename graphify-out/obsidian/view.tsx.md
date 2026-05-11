@@ -1,26 +1,21 @@
 ---
-source_file: "components/modules/archived-modules/view.tsx"
+source_file: "propel/src/empty-state/assets/vertical-stack/view.tsx"
 type: "code"
-community: "Modules Archived"
+community: "Illustration Assets"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Modules_Archived
+  - community/Illustration_Assets
 ---
 
 # view.tsx
 
 ## Connections
 
-- [[ArchivedModulesView]] - `contains` [EXTRACTED]
-- [[CycleModuleListLayoutLoader()]] - `imports` [EXTRACTED]
-- [[IArchivedModulesView]] - `contains` [EXTRACTED]
-- [[cycle-module-list-loader.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts_58]] - `imports_from` [EXTRACTED]
-- [[use-module-filter.ts]] - `imports_from` [EXTRACTED]
-- [[use-module.ts]] - `imports_from` [EXTRACTED]
-- [[useModule()]] - `imports` [EXTRACTED]
-- [[useModuleFilter()]] - `imports` [EXTRACTED]
+- [[ILLUSTRATION_COLOR_TOKEN_MAP]] - `imports` [EXTRACTED]
+- [[TIllustrationAssetProps]] - `imports` [EXTRACTED]
+- [[ViewVerticalStackIllustration()]] - `contains` [EXTRACTED]
+- [[helper.tsx_16]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Modules_Archived
+#graphify/code #graphify/EXTRACTED #community/Illustration_Assets

@@ -1,18 +1,18 @@
 ---
-source_file: "components/project-states/loader.tsx"
+source_file: "ui/src/dropdown/common/loader.tsx"
 type: "code"
-community: "Loader Project"
+community: "Dropdown Options"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Loader_Project
+  - community/Dropdown_Options
 ---
 
 # loader.tsx
 
 ## Connections
 
-- [[ProjectStateLoader()]] - `contains` [EXTRACTED]
+- [[DropdownOptionsLoader()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Loader_Project
+#graphify/code #graphify/EXTRACTED #community/Dropdown_Options

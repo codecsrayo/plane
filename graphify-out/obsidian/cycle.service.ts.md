@@ -1,24 +1,19 @@
 ---
-source_file: "services/cycle.service.ts"
+source_file: "services/src/cycle/cycle.service.ts"
 type: "code"
-community: "Cycle Cycles"
+community: "Cycle Cycleservice"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Cycles
+  - community/Cycle_Cycleservice
 ---
 
 # cycle.service.ts
 
 ## Connections
 
-- [[ApiError]] - `imports` [EXTRACTED]
 - [[CycleService]] - `contains` [EXTRACTED]
 - [[api.service.ts]] - `imports_from` [EXTRACTED]
-- [[base-issues.store.ts]] - `imports_from` [EXTRACTED]
-- [[cycle.store.ts]] - `imports_from` [EXTRACTED]
-- [[modal.tsx_9]] - `imports_from` [EXTRACTED]
-- [[sidebar-header.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Cycles
+#graphify/code #graphify/EXTRACTED #community/Cycle_Cycleservice

@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-layouts/calendar/dropdowns/index.ts"
+source_file: "i18n/src/constants/index.ts"
 type: "code"
-community: "Calendar Views"
+community: "Translation Language"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Views
+  - community/Translation_Language
 ---
 
 # index.ts
 
 ## Connections
 
-- [[header.tsx_8]] - `imports_from` [EXTRACTED]
+- [[index.ts_87]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Views
+#graphify/code #graphify/EXTRACTED #community/Translation_Language

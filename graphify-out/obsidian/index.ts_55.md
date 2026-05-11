@@ -1,21 +1,14 @@
 ---
-source_file: "components/editor/lite-text/index.ts"
+source_file: "editor/src/core/extensions/mentions/index.ts"
 type: "code"
-community: "Comment Card"
+community: "Community 380"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Comment_Card
+  - community/Community_380
 ---
 
 # index.ts
 
-## Connections
-
-- [[comment-create.tsx]] - `imports_from` [EXTRACTED]
-- [[content.tsx_4]] - `imports_from` [EXTRACTED]
-- [[display.tsx]] - `imports_from` [EXTRACTED]
-- [[edit-form.tsx]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Comment_Card
+#graphify/code #graphify/EXTRACTED #community/Community_380

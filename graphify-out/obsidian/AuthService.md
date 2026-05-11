@@ -1,31 +1,25 @@
 ---
-source_file: "services/auth.service.ts"
+source_file: "services/src/auth/auth.service.ts"
 type: "code"
-community: "Auth Forms"
-location: "L14"
+community: "Auth Authservice"
+location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Forms
+  - community/Auth_Authservice
 ---
 
 # AuthService
 
 ## Connections
 
-- [[.constructor()_84]] - `method` [EXTRACTED]
+- [[.constructor()_1]] - `method` [EXTRACTED]
+- [[.emailCheck()]] - `method` [EXTRACTED]
 - [[.generateUniqueCode()]] - `method` [EXTRACTED]
-- [[.requestCSRFToken()_1]] - `method` [EXTRACTED]
+- [[.requestCSRFToken()]] - `method` [EXTRACTED]
 - [[.sendResetPasswordLink()]] - `method` [EXTRACTED]
 - [[.setPassword()]] - `method` [EXTRACTED]
 - [[.signOut()]] - `method` [EXTRACTED]
 - [[auth.service.ts]] - `contains` [EXTRACTED]
-- [[change-email-modal.tsx]] - `imports` [EXTRACTED]
-- [[form-root.tsx]] - `imports` [EXTRACTED]
-- [[index.ts_7]] - `imports` [EXTRACTED]
-- [[profile-setup.tsx]] - `imports` [EXTRACTED]
-- [[root.tsx_68]] - `imports` [EXTRACTED]
-- [[security.tsx]] - `imports` [EXTRACTED]
-- [[unique-code.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Forms
+#graphify/code #graphify/EXTRACTED #community/Auth_Authservice

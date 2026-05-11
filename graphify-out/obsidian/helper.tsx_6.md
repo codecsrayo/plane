@@ -1,24 +1,26 @@
 ---
-source_file: "components/issues/issue-detail-widgets/relations/helper.tsx"
+source_file: "ui/src/button/helper.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Button Auth"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Button_Auth
 ---
 
 # helper.tsx
 
 ## Connections
 
-- [[TRelationIssueOperations]] - `contains` [EXTRACTED]
-- [[content.tsx_1]] - `imports_from` [EXTRACTED]
-- [[issue-list-item.tsx]] - `imports_from` [EXTRACTED]
-- [[properties.tsx_1]] - `imports_from` [EXTRACTED]
-- [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
-- [[useIssueDetail()]] - `imports` [EXTRACTED]
-- [[useRelationOperations()]] - `contains` [EXTRACTED]
+- [[IButtonStyling]] - `contains` [EXTRACTED]
+- [[TButtonSizes]] - `contains` [EXTRACTED]
+- [[TButtonVariant]] - `contains` [EXTRACTED]
+- [[button.tsx]] - `imports_from` [EXTRACTED]
+- [[buttonIconStyling]] - `contains` [EXTRACTED]
+- [[buttonSizeStyling]] - `contains` [EXTRACTED]
+- [[buttonStyling]] - `contains` [EXTRACTED]
+- [[getButtonStyling()]] - `contains` [EXTRACTED]
+- [[getIconStyling()_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Button_Auth

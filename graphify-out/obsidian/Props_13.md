@@ -1,19 +1,18 @@
 ---
-source_file: "components/workspace/views/form.tsx"
+source_file: "ui/src/modals/alert-modal.tsx"
 type: "code"
-community: "Issue Layout Roots"
-location: "L24"
+community: "Variant Alert"
+location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layout_Roots
+  - community/Variant_Alert
 ---
 
 # Props
 
 ## Connections
 
-- [[form.tsx]] - `contains` [EXTRACTED]
-- [[form.tsx_1]] - `contains` [EXTRACTED]
+- [[alert-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layout_Roots
+#graphify/code #graphify/EXTRACTED #community/Variant_Alert

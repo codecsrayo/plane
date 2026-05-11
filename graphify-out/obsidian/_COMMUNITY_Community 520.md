@@ -1,18 +1,17 @@
 ---
 type: community
 cohesion: 1.00
-members: 2
+members: 1
 ---
 
 # Community 520
 
 **Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
 
-- [[.to()_22]] - code - api_rust/src/entities/django_celery_beat_crontabschedule.rs
-- [[Entity_22]] - code - api_rust/src/entities/django_celery_beat_crontabschedule.rs
+- [[index.ts_136]] - code - logger/src/index.ts
 
 ## Live Query (requires Dataview plugin)
 

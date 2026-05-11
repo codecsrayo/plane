@@ -1,22 +1,19 @@
 ---
-source_file: "store/user/index.ts"
+source_file: "shared-state/src/store/user.store.ts"
 type: "code"
-community: "User Profile"
-location: "L60"
+community: "User Workspace"
+location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User_Profile
+  - community/User_Workspace
 ---
 
 # UserStore
 
 ## Connections
 
-- [[.canPerformAnyCreateAction()]] - `method` [EXTRACTED]
-- [[.constructor()_20]] - `method` [EXTRACTED]
-- [[.projectsWithCreatePermissions()]] - `method` [EXTRACTED]
-- [[index.ts_7]] - `contains` [EXTRACTED]
-- [[root.store.ts]] - `imports` [EXTRACTED]
+- [[.constructor()_33]] - `method` [EXTRACTED]
+- [[user.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User_Profile
+#graphify/code #graphify/EXTRACTED #community/User_Workspace

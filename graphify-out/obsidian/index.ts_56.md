@@ -1,19 +1,19 @@
 ---
-source_file: "components/stickies/sticky/index.ts"
+source_file: "editor/src/core/extensions/image/index.ts"
 type: "code"
-community: "Stickies Sticky"
+community: "Title Node"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Stickies_Sticky
+  - community/Title_Node
 ---
 
 # index.ts
 
 ## Connections
 
-- [[action-bar.tsx]] - `imports_from` [EXTRACTED]
-- [[sticky-dnd-wrapper.tsx]] - `imports_from` [EXTRACTED]
+- [[core-without-props.ts]] - `imports_from` [EXTRACTED]
+- [[storage.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Stickies_Sticky
+#graphify/code #graphify/EXTRACTED #community/Title_Node

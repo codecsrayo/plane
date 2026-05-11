@@ -1,18 +1,18 @@
 ---
-source_file: "components/gantt-chart/chart/timeline-drag-helper.tsx"
+source_file: "propel/src/icons/module/module-status-icon.tsx"
 type: "code"
-community: "Gantt Chart"
-location: "L15"
+community: "Status Backlog"
+location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Chart
+  - community/Status_Backlog
 ---
 
 # Props
 
 ## Connections
 
-- [[timeline-drag-helper.tsx]] - `contains` [EXTRACTED]
+- [[module-status-icon.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Chart
+#graphify/code #graphify/EXTRACTED #community/Status_Backlog

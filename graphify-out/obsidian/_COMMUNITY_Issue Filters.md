@@ -1,35 +1,61 @@
 ---
 type: community
-cohesion: 0.11
-members: 19
+cohesion: 0.05
+members: 45
 ---
 
 # Issue Filters
 
-**Cohesion:** 0.11 - loosely connected
-**Members:** 19 nodes
+**Cohesion:** 0.05 - loosely connected
+**Members:** 45 nodes
 
 ## Members
 
-- [[.constructor()_76]] - code - services/issue_filter.service.ts
-- [[.fetchCycleIssueFilters()]] - code - services/issue_filter.service.ts
-- [[.fetchModuleIssueFilters()]] - code - services/issue_filter.service.ts
-- [[.fetchProjectEpicFilters()]] - code - services/issue_filter.service.ts
-- [[.patchCycleIssueFilters()]] - code - services/issue_filter.service.ts
-- [[.patchModuleIssueFilters()]] - code - services/issue_filter.service.ts
-- [[.patchProjectEpicFilters()]] - code - services/issue_filter.service.ts
-- [[IWorkspaceDraftIssuesFilter]] - code - store/issue/workspace-draft/filter.store.ts
-- [[IssueFiltersService]] - code - services/issue_filter.service.ts
-- [[_filters_4]] - code - store/issue/workspace-draft/filter.store.ts
-- [[displayFilters_6]] - code - store/issue/workspace-draft/filter.store.ts
-- [[displayProperties_3]] - code - store/issue/workspace-draft/filter.store.ts
-- [[filter.store.ts_4]] - code - store/issue/workspace-draft/filter.store.ts
-- [[filterParams_5]] - code - store/issue/workspace-draft/filter.store.ts
-- [[issue_filter.service.ts]] - code - services/issue_filter.service.ts
-- [[kanbanFilters_4]] - code - store/issue/workspace-draft/filter.store.ts
-- [[paginationParams_4]] - code - store/issue/workspace-draft/filter.store.ts
-- [[updatedDisplayFilters_4]] - code - store/issue/workspace-draft/filter.store.ts
-- [[updatedDisplayProperties_4]] - code - store/issue/workspace-draft/filter.store.ts
+- [[ACTIVITY_FILTER_TYPE_OPTIONS]] - code - constants/src/issue/filter.ts
+- [[BASE_ACTIVITY_FILTER_TYPES]] - code - constants/src/issue/filter.ts
+- [[DRAG_ALLOWED_GROUPS]] - code - constants/src/issue/common.ts
+- [[EActivityFilterType]] - code - constants/src/issue/filter.ts
+- [[EIssueCommentAccessSpecifier]] - code - constants/src/issue/common.ts
+- [[EIssueFilterType]] - code - constants/src/issue/filter.ts
+- [[EIssueGroupBYServerToProperty]] - code - constants/src/issue/common.ts
+- [[EIssueGroupByToServerOptions]] - code - constants/src/issue/common.ts
+- [[EIssueListRow]] - code - constants/src/issue/common.ts
+- [[EServerGroupByToFilterOptions]] - code - constants/src/issue/filter.ts
+- [[FILTER_TO_ISSUE_MAP]] - code - constants/src/issue/common.ts
+- [[ISSUE_DISPLAY_FILTERS_BY_LAYOUT]] - code - constants/src/issue/filter.ts
+- [[ISSUE_DISPLAY_FILTERS_BY_PAGE]] - code - constants/src/issue/filter.ts
+- [[ISSUE_DISPLAY_PROPERTIES]] - code - constants/src/issue/common.ts
+- [[ISSUE_DISPLAY_PROPERTIES_KEYS]] - code - constants/src/issue/common.ts
+- [[ISSUE_GROUP_BY_OPTIONS]] - code - constants/src/issue/common.ts
+- [[ISSUE_LAYOUTS]] - code - constants/src/issue/layout.ts
+- [[ISSUE_LAYOUT_MAP]] - code - constants/src/issue/layout.ts
+- [[ISSUE_ORDER_BY_OPTIONS]] - code - constants/src/issue/common.ts
+- [[ISSUE_PRIORITIES]] - code - constants/src/issue/common.ts
+- [[ISSUE_PRIORITY_FILTERS]] - code - constants/src/issue/filter.ts
+- [[ISSUE_STORE_TO_FILTERS_MAP]] - code - constants/src/issue/filter.ts
+- [[SITES_ISSUE_LAYOUTS]] - code - constants/src/issue/layout.ts
+- [[SPREADSHEET_PROPERTY_DETAILS]] - code - constants/src/issue/common.ts
+- [[SPREADSHEET_PROPERTY_LIST]] - code - constants/src/issue/common.ts
+- [[SUB_ISSUES_DISPLAY_PROPERTIES_KEYS]] - code - constants/src/issue/common.ts
+- [[SUB_WORK_ITEM_AVAILABLE_FILTERS_FOR_WORK_ITEM_PAGE]] - code - constants/src/issue/filter.ts
+- [[TActivityFilterOption]] - code - constants/src/issue/filter.ts
+- [[TActivityFilterOptionsKey]] - code - constants/src/issue/filter.ts
+- [[TActivityFilters]] - code - constants/src/issue/filter.ts
+- [[TCreateModalStoreTypes]] - code - constants/src/issue/common.ts
+- [[TFilterPropertiesByPageType]] - code - constants/src/issue/filter.ts
+- [[TFiltersLayoutOptions]] - code - constants/src/issue/filter.ts
+- [[TIssueFilterKeys]] - code - constants/src/issue/filter.ts
+- [[TIssueFilterPriorityObject]] - code - constants/src/issue/common.ts
+- [[TIssueFiltersToDisplayByPageType]] - code - constants/src/issue/filter.ts
+- [[TIssueLayout]] - code - constants/src/issue/layout.ts
+- [[TIssueLayoutMap]] - code - constants/src/issue/layout.ts
+- [[TIssuePriorities]] - code - constants/src/issue/common.ts
+- [[TSupportedFilterTypeForUpdate]] - code - constants/src/issue/filter.ts
+- [[common.ts_2]] - code - constants/src/issue/common.ts
+- [[defaultActivityFilters]] - code - constants/src/issue/filter.ts
+- [[filter.ts_1]] - code - constants/src/issue/filter.ts
+- [[filterActivityOnSelectedFilters()]] - code - constants/src/issue/filter.ts
+- [[layout.ts]] - code - constants/src/issue/layout.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -37,21 +63,3 @@ members: 19
 TABLE source_file, type FROM #community/Issue_Filters
 SORT file.name ASC
 ```
-
-## Connections to other communities
-
-- 4 edges to [[_COMMUNITY_Filters Display]]
-- 3 edges to [[_COMMUNITY_Filters Cycle]]
-- 3 edges to [[_COMMUNITY_API Services]]
-- 2 edges to [[_COMMUNITY_Filters Archived]]
-- 2 edges to [[_COMMUNITY_Filters Display]]
-- 1 edge to [[_COMMUNITY_Calendar Store]]
-- 1 edge to [[_COMMUNITY_Filters Display]]
-- 1 edge to [[_COMMUNITY_Estimate Points]]
-- 1 edge to [[_COMMUNITY_Workspace Draft]]
-
-## Top bridge nodes
-
-- [[filter.store.ts_4]] - degree 19, connects to 7 communities
-- [[issue_filter.service.ts]] - degree 8, connects to 5 communities
-- [[IssueFiltersService]] - degree 13, connects to 4 communities

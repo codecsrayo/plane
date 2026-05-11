@@ -1,18 +1,14 @@
 ---
-source_file: "components/pages/version/index.ts"
+source_file: "propel/src/table/index.ts"
 type: "code"
-community: "Editor Body"
+community: "Community 538"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Body
+  - community/Community_538
 ---
 
 # index.ts
 
-## Connections
-
-- [[page-root.tsx]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Editor_Body
+#graphify/code #graphify/EXTRACTED #community/Community_538

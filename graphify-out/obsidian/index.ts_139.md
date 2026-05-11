@@ -1,18 +1,18 @@
 ---
-source_file: "components/onboarding/steps/index.ts"
+source_file: "propel/src/icons/arrows/index.ts"
 type: "code"
-community: "Invite Onboarding"
+community: "Icon Copy"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Invite_Onboarding
+  - community/Icon_Copy
 ---
 
 # index.ts
 
 ## Connections
 
-- [[root.tsx_63]] - `imports_from` [EXTRACTED]
+- [[registry.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Invite_Onboarding
+#graphify/code #graphify/EXTRACTED #community/Icon_Copy

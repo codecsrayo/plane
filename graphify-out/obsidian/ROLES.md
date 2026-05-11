@@ -1,18 +1,18 @@
 ---
-source_file: "components/onboarding/steps/role/root.tsx"
+source_file: "e2e-utils/src/helpers/roles.ts"
 type: "code"
-community: "Values Setup"
-location: "L26"
+community: "Roles Role"
+location: "L5"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Values_Setup
+  - community/Roles_Role
 ---
 
 # ROLES
 
 ## Connections
 
-- [[root.tsx_66]] - `contains` [EXTRACTED]
+- [[roles.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Values_Setup
+#graphify/code #graphify/EXTRACTED #community/Roles_Role

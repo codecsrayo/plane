@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 453
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[FilterOrderBy]] - code - web/core/components/issues/issue-layouts/filters/header/display-filters/order-by.tsx
-- [[Props_229]] - code - web/core/components/issues/issue-layouts/filters/header/display-filters/order-by.tsx
-- [[order-by.tsx_3]] - code - web/core/components/issues/issue-layouts/filters/header/display-filters/order-by.tsx
+- [[editor.ts_11]] - code - i18n/src/locales/ko/editor.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -21,11 +19,3 @@ members: 3
 TABLE source_file, type FROM #community/Community_453
 SORT file.name ASC
 ```
-
-## Connections to other communities
-
-- 1 edge to [[_COMMUNITY_Community 42]]
-
-## Top bridge nodes
-
-- [[order-by.tsx_3]] - degree 3, connects to 1 community

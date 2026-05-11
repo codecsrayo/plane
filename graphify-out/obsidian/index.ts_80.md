@@ -1,18 +1,14 @@
 ---
-source_file: "components/project/dropdowns/filters/index.ts"
+source_file: "constants/src/settings/index.ts"
 type: "code"
-community: "Auth UI"
+community: "Community 406"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_UI
+  - community/Community_406
 ---
 
 # index.ts
 
-## Connections
-
-- [[filters.tsx_1]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Auth_UI
+#graphify/code #graphify/EXTRACTED #community/Community_406

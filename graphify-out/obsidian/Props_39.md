@@ -1,18 +1,18 @@
 ---
-source_file: "components/workspace/settings/members-list-item.tsx"
+source_file: "editor/src/core/extensions/slash-commands/command-menu-item.tsx"
 type: "code"
-community: "Member Settings"
-location: "L26"
+community: "Command Slash"
+location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Settings
+  - community/Command_Slash
 ---
 
 # Props
 
 ## Connections
 
-- [[members-list-item.tsx]] - `contains` [EXTRACTED]
+- [[command-menu-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Settings
+#graphify/code #graphify/EXTRACTED #community/Command_Slash

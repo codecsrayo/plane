@@ -1,18 +1,19 @@
 ---
-source_file: "components/workspace-notifications/sidebar/header/options/index.ts"
+source_file: "utils/src/rich-filters/types/index.ts"
 type: "code"
-community: "Auth UI"
+community: "Condition Group"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_UI
+  - community/Condition_Group
 ---
 
 # index.ts
 
 ## Connections
 
-- [[root.tsx_48]] - `imports_from` [EXTRACTED]
+- [[core.ts_13]] - `imports_from` [EXTRACTED]
+- [[core.ts_15]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_UI
+#graphify/code #graphify/EXTRACTED #community/Condition_Group

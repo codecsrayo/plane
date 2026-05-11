@@ -1,12 +1,12 @@
 ---
-source_file: "services/ai.service.ts"
+source_file: "services/src/ai/ai.service.ts"
 type: "code"
-community: "Editor Aiservice"
-location: "L18"
+community: "Aiservice Task"
+location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Aiservice
+  - community/Aiservice_Task
 ---
 
 # TTaskPayload
@@ -15,4 +15,4 @@ tags:
 
 - [[ai.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Aiservice
+#graphify/code #graphify/EXTRACTED #community/Aiservice_Task

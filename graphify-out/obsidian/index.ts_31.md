@@ -1,19 +1,14 @@
 ---
-source_file: "components/home/widgets/loaders/index.ts"
+source_file: "ui/src/modals/index.ts"
 type: "code"
-community: "Dashboard Widgets"
+community: "Community 361"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dashboard_Widgets
+  - community/Community_361
 ---
 
 # index.ts
 
-## Connections
-
-- [[index.tsx_2]] - `imports_from` [EXTRACTED]
-- [[links.tsx_1]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets
+#graphify/code #graphify/EXTRACTED #community/Community_361

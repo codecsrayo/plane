@@ -1,22 +1,21 @@
 ---
-source_file: "components/stickies/modal/search.tsx"
+source_file: "propel/src/empty-state/assets/illustration/search.tsx"
 type: "code"
-community: "Stickies Truncated"
+community: "Illustration Assets"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Stickies_Truncated
+  - community/Illustration_Assets
 ---
 
 # search.tsx
 
 ## Connections
 
-- [[StickySearch]] - `contains` [EXTRACTED]
-- [[stickies.tsx_1]] - `imports_from` [EXTRACTED]
-- [[use-stickies.tsx]] - `imports_from` [EXTRACTED]
-- [[useSticky()]] - `imports` [EXTRACTED]
-- [[widget.tsx]] - `imports_from` [EXTRACTED]
+- [[ILLUSTRATION_COLOR_TOKEN_MAP]] - `imports` [EXTRACTED]
+- [[SearchIllustration()]] - `contains` [EXTRACTED]
+- [[TIllustrationAssetProps]] - `imports` [EXTRACTED]
+- [[helper.tsx_16]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Stickies_Truncated
+#graphify/code #graphify/EXTRACTED #community/Illustration_Assets

@@ -1,18 +1,18 @@
 ---
-source_file: "components/gantt-chart/helpers/draggable.tsx"
+source_file: "propel/src/charts/pie-chart/tooltip.tsx"
 type: "code"
-community: "Resizable Left"
-location: "L20"
+community: "Custom Active"
+location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Resizable_Left
+  - community/Custom_Active
 ---
 
 # Props
 
 ## Connections
 
-- [[draggable.tsx]] - `contains` [EXTRACTED]
+- [[tooltip.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Resizable_Left
+#graphify/code #graphify/EXTRACTED #community/Custom_Active

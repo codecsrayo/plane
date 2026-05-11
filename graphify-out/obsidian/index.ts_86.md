@@ -1,14 +1,14 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/columns/index.ts"
+source_file: "i18n/src/hooks/index.ts"
 type: "code"
-community: "Community 389"
+community: "Community 412"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_389
+  - community/Community_412
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_389
+#graphify/code #graphify/EXTRACTED #community/Community_412

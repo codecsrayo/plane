@@ -1,8 +1,8 @@
 ---
-source_file: "components/project/empty-state.tsx"
+source_file: "propel/src/empty-state/empty-state.tsx"
 type: "code"
 community: "Empty State"
-location: "L24"
+location: "L38"
 tags:
   - graphify/code
   - graphify/EXTRACTED

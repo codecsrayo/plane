@@ -1,38 +1,28 @@
 ---
-source_file: "services/cycle.service.ts"
+source_file: "services/src/cycle/cycle.service.ts"
 type: "code"
-community: "Cycle Cycles"
-location: "L20"
+community: "Cycle Cycleservice"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Cycles
+  - community/Cycle_Cycleservice
 ---
 
 # CycleService
 
 ## Connections
 
-- [[.addCycleToFavorites()]] - `method` [EXTRACTED]
-- [[.constructor()_94]] - `method` [EXTRACTED]
-- [[.createCycle()]] - `method` [EXTRACTED]
-- [[.cycleDateCheck()]] - `method` [EXTRACTED]
-- [[.deleteCycle()]] - `method` [EXTRACTED]
-- [[.getCycleDetails()]] - `method` [EXTRACTED]
+- [[.constructor()_24]] - `method` [EXTRACTED]
+- [[.create()_6]] - `method` [EXTRACTED]
+- [[.destroy()_7]] - `method` [EXTRACTED]
 - [[.getCycleIssues()]] - `method` [EXTRACTED]
-- [[.getCyclesWithParams()]] - `method` [EXTRACTED]
+- [[.getWithParams()]] - `method` [EXTRACTED]
 - [[.getWorkspaceCycles()]] - `method` [EXTRACTED]
-- [[.patchCycle()]] - `method` [EXTRACTED]
-- [[.removeCycleFromFavorites()]] - `method` [EXTRACTED]
-- [[.transferIssues()]] - `method` [EXTRACTED]
+- [[.retrieve()_6]] - `method` [EXTRACTED]
+- [[.update()_11]] - `method` [EXTRACTED]
+- [[.validateDates()]] - `method` [EXTRACTED]
 - [[.workspaceActiveCycles()]] - `method` [EXTRACTED]
-- [[.workspaceActiveCyclesAnalytics()]] - `method` [EXTRACTED]
-- [[.workspaceActiveCyclesProgress()]] - `method` [EXTRACTED]
-- [[.workspaceActiveCyclesProgressPro()]] - `method` [EXTRACTED]
-- [[base-issues.store.ts]] - `imports` [EXTRACTED]
 - [[cycle.service.ts]] - `contains` [EXTRACTED]
-- [[cycle.store.ts]] - `imports` [EXTRACTED]
-- [[modal.tsx_9]] - `imports` [EXTRACTED]
-- [[sidebar-header.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Cycles
+#graphify/code #graphify/EXTRACTED #community/Cycle_Cycleservice

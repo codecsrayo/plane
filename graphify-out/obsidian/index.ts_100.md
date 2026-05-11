@@ -1,14 +1,20 @@
 ---
-source_file: "components/issues/workspace-draft/index.ts"
+source_file: "types/src/cycle/index.ts"
 type: "code"
-community: "Community 397"
+community: "Import Export"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_397
+  - community/Import_Export
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_397
+## Connections
+
+- [[issues.ts]] - `imports_from` [EXTRACTED]
+- [[search.ts]] - `imports_from` [EXTRACTED]
+- [[workspace.ts_2]] - `imports_from` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Import_Export

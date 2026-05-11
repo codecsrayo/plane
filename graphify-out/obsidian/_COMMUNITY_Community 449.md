@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 449
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[Props_61]] - code - web/core/components/stickies/sticky/sticky-item-drag-handle.tsx
-- [[StickyItemDragHandle]] - code - web/core/components/stickies/sticky/sticky-item-drag-handle.tsx
-- [[sticky-item-drag-handle.tsx]] - code - web/core/components/stickies/sticky/sticky-item-drag-handle.tsx
+- [[editor.ts_10]] - code - i18n/src/locales/zh-CN/editor.ts
 
 ## Live Query (requires Dataview plugin)
 

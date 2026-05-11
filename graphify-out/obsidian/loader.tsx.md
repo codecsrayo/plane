@@ -1,24 +1,22 @@
 ---
-source_file: "components/home/widgets/loaders/loader.tsx"
+source_file: "ui/src/loader.tsx"
 type: "code"
-community: "Widget Quick"
+community: "Toggle Checkbox"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Widget_Quick
+  - community/Toggle_Checkbox
 ---
 
 # loader.tsx
 
 ## Connections
 
-- [[EWidgetKeys]] - `contains` [EXTRACTED]
-- [[Props_12]] - `contains` [EXTRACTED]
-- [[QuickLinksWidgetLoader()]] - `imports` [EXTRACTED]
-- [[RecentActivityWidgetLoader()]] - `imports` [EXTRACTED]
-- [[WidgetLoader()]] - `contains` [EXTRACTED]
-- [[quick-links.tsx]] - `imports_from` [EXTRACTED]
-- [[recent-activity.tsx]] - `imports_from` [EXTRACTED]
+- [[Item()]] - `contains` [EXTRACTED]
+- [[ItemProps]] - `contains` [EXTRACTED]
+- [[Loader()]] - `contains` [EXTRACTED]
+- [[Props_1]] - `contains` [EXTRACTED]
+- [[index.ts_14]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Widget_Quick
+#graphify/code #graphify/EXTRACTED #community/Toggle_Checkbox

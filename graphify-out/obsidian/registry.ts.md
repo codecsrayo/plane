@@ -1,29 +1,35 @@
 ---
-source_file: "components/power-k/core/registry.ts"
+source_file: "propel/src/icons/registry.ts"
 type: "code"
-community: "Shortcut Registry"
+community: "Icon Copy"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Shortcut_Registry
+  - community/Icon_Copy
 ---
 
 # registry.ts
 
 ## Connections
 
-- [[IPowerKCommandRegistry]] - `contains` [EXTRACTED]
-- [[PowerKCommandRegistry]] - `contains` [EXTRACTED]
-- [[TPowerKCommandConfig]] - `imports` [EXTRACTED]
-- [[TPowerKCommandGroup]] - `imports` [EXTRACTED]
-- [[TPowerKContext]] - `imports` [EXTRACTED]
-- [[base-power-k.store.ts]] - `imports_from` [EXTRACTED]
-- [[commandId]] - `contains` [EXTRACTED]
-- [[keySequenceMap]] - `contains` [EXTRACTED]
-- [[modifierShortcutMap]] - `contains` [EXTRACTED]
-- [[shortcut-handler.ts]] - `imports_from` [EXTRACTED]
-- [[shortcutMap]] - `contains` [EXTRACTED]
-- [[types.ts_2]] - `imports_from` [EXTRACTED]
+- [[CopyLinkIcon()]] - `imports` [EXTRACTED]
+- [[DefaultIcon()]] - `imports` [EXTRACTED]
+- [[ICON_REGISTRY]] - `contains` [EXTRACTED]
+- [[IconName]] - `contains` [EXTRACTED]
+- [[LabelFilledIcon()]] - `imports` [EXTRACTED]
+- [[copy-link.tsx]] - `imports_from` [EXTRACTED]
+- [[default-icon.tsx]] - `imports_from` [EXTRACTED]
+- [[helpers.ts_1]] - `imports_from` [EXTRACTED]
+- [[icon.tsx]] - `imports_from` [EXTRACTED]
+- [[index.ts_146]] - `imports_from` [EXTRACTED]
+- [[index.ts_139]] - `imports_from` [EXTRACTED]
+- [[index.ts_143]] - `imports_from` [EXTRACTED]
+- [[index.ts_151]] - `imports_from` [EXTRACTED]
+- [[index.ts_145]] - `imports_from` [EXTRACTED]
+- [[index.ts_150]] - `imports_from` [EXTRACTED]
+- [[index.ts_148]] - `imports_from` [EXTRACTED]
+- [[index.ts_141]] - `imports_from` [EXTRACTED]
+- [[label-filled-icon.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Shortcut_Registry
+#graphify/code #graphify/EXTRACTED #community/Icon_Copy

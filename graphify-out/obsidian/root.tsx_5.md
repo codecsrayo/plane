@@ -1,25 +1,26 @@
 ---
-source_file: "components/gantt-chart/root.tsx"
+source_file: "editor/src/core/extensions/custom-image/components/toolbar/root.tsx"
 type: "code"
-community: "Gantt Chart"
+community: "Image Alignment"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Chart
+  - community/Image_Alignment
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[ChartViewRoot]] - `imports` [EXTRACTED]
-- [[GanttChartRoot]] - `contains` [EXTRACTED]
-- [[GanttChartRootProps]] - `contains` [EXTRACTED]
-- [[base-gantt-root.tsx]] - `imports_from` [EXTRACTED]
-- [[layout.tsx_4]] - `imports_from` [EXTRACTED]
-- [[root.tsx_7]] - `imports_from` [EXTRACTED]
-- [[use-timeline-chart.ts]] - `imports_from` [EXTRACTED]
-- [[useTimeLineChartStore()]] - `imports` [EXTRACTED]
+- [[ImageAlignmentAction()]] - `imports` [EXTRACTED]
+- [[ImageDownloadAction()]] - `imports` [EXTRACTED]
+- [[ImageToolbarRoot()]] - `contains` [EXTRACTED]
+- [[Props_44]] - `contains` [EXTRACTED]
+- [[TCustomImageAlignment]] - `imports` [EXTRACTED]
+- [[alignment.tsx]] - `imports_from` [EXTRACTED]
+- [[download.tsx]] - `imports_from` [EXTRACTED]
+- [[index.ts_58]] - `imports_from` [EXTRACTED]
+- [[types.ts_6]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Chart
+#graphify/code #graphify/EXTRACTED #community/Image_Alignment

@@ -1,18 +1,14 @@
 ---
-source_file: "lib/polyfills/index.ts"
+source_file: "ui/src/form-fields/index.ts"
 type: "code"
-community: "Start"
+community: "Community 355"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Start
+  - community/Community_355
 ---
 
 # index.ts
 
-## Connections
-
-- [[start]] - `contains` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Start
+#graphify/code #graphify/EXTRACTED #community/Community_355

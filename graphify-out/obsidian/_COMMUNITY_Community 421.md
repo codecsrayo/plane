@@ -1,19 +1,17 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+cohesion: 1.00
+members: 1
 ---
 
 # Community 421
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
 
 ## Members
 
-- [[Model_102]] - code - api_rust/src/entities/intake_issues.rs
-- [[Relation_102]] - code - api_rust/src/entities/intake_issues.rs
-- [[intake_issues.rs]] - code - api_rust/src/entities/intake_issues.rs
+- [[editor.ts_3]] - code - i18n/src/locales/pt-BR/editor.ts
 
 ## Live Query (requires Dataview plugin)
 

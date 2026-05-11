@@ -1,23 +1,23 @@
 ---
-source_file: "components/power-k/ui/renderer/shared.ts"
+source_file: "types/src/rich-filters/field-types/shared.ts"
 type: "code"
-community: "Context Power"
+community: "Field Config"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Context_Power
+  - community/Field_Config
 ---
 
 # shared.ts
 
 ## Connections
 
-- [[POWER_K_GROUP_I18N_TITLES]] - `contains` [EXTRACTED]
-- [[POWER_K_GROUP_PRIORITY]] - `contains` [EXTRACTED]
-- [[TPowerKCommandGroup]] - `imports` [EXTRACTED]
-- [[command.tsx]] - `imports_from` [EXTRACTED]
-- [[shortcut.tsx]] - `imports_from` [EXTRACTED]
-- [[types.ts_2]] - `imports_from` [EXTRACTED]
+- [[IFilterOption]] - `contains` [EXTRACTED]
+- [[TBaseFilterFieldConfig]] - `contains` [EXTRACTED]
+- [[TFilterValue]] - `imports` [EXTRACTED]
+- [[TNegativeOperatorConfig]] - `contains` [EXTRACTED]
+- [[core.ts_9]] - `imports_from` [EXTRACTED]
+- [[expression.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Context_Power
+#graphify/code #graphify/EXTRACTED #community/Field_Config

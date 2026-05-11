@@ -1,18 +1,18 @@
 ---
-source_file: "components/ui/integration-and-import-export-banner.tsx"
+source_file: "ui/src/sortable/sortable.tsx"
 type: "code"
-community: "Integration Banner"
-location: "L9"
+community: "Story Meta"
+location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Integration_Banner
+  - community/Story_Meta
 ---
 
 # Props
 
 ## Connections
 
-- [[integration-and-import-export-banner.tsx]] - `contains` [EXTRACTED]
+- [[sortable.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Integration_Banner
+#graphify/code #graphify/EXTRACTED #community/Story_Meta

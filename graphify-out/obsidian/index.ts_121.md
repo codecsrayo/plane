@@ -1,18 +1,26 @@
 ---
-source_file: "components/workspace-notifications/sidebar/notification-card/options/index.ts"
+source_file: "utils/src/rich-filters/index.ts"
 type: "code"
-community: "Notification Option"
+community: "Date Project"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Notification_Option
+  - community/Date_Project
 ---
 
 # index.ts
 
 ## Connections
 
-- [[item.tsx_1]] - `imports_from` [EXTRACTED]
+- [[cycle.ts_3]] - `imports_from` [EXTRACTED]
+- [[date.ts]] - `imports_from` [EXTRACTED]
+- [[label.ts_1]] - `imports_from` [EXTRACTED]
+- [[module.ts_2]] - `imports_from` [EXTRACTED]
+- [[priority.ts]] - `imports_from` [EXTRACTED]
+- [[project.ts_3]] - `imports_from` [EXTRACTED]
+- [[shared.ts_2]] - `imports_from` [EXTRACTED]
+- [[state.ts_4]] - `imports_from` [EXTRACTED]
+- [[user.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Notification_Option
+#graphify/code #graphify/EXTRACTED #community/Date_Project

@@ -11,7 +11,7 @@ members: 1
 
 ## Members
 
-- [[index.ts_49]] - code - components/project-states/create-update/index.ts
+- [[index.ts_40]] - code - editor/src/core/components/menus/bubble-menu/index.ts
 
 ## Live Query (requires Dataview plugin)
 

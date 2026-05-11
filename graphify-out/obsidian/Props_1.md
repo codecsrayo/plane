@@ -1,18 +1,18 @@
 ---
-source_file: "hooks/use-multiple-select.ts"
+source_file: "ui/src/loader.tsx"
 type: "code"
-community: "Multi Select Actions"
-location: "L18"
+community: "Toggle Checkbox"
+location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Multi_Select_Actions
+  - community/Toggle_Checkbox
 ---
 
 # Props
 
 ## Connections
 
-- [[use-multiple-select.ts]] - `contains` [EXTRACTED]
+- [[loader.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Multi_Select_Actions
+#graphify/code #graphify/EXTRACTED #community/Toggle_Checkbox

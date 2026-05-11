@@ -1,18 +1,14 @@
 ---
-source_file: "components/power-k/ui/pages/index.ts"
+source_file: "shared-state/src/store/work-item-filters/index.ts"
 type: "code"
-community: "Power Search"
+community: "Community 518"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Power_Search
+  - community/Community_518
 ---
 
 # index.ts
 
-## Connections
-
-- [[commands-list.tsx]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Power_Search
+#graphify/code #graphify/EXTRACTED #community/Community_518

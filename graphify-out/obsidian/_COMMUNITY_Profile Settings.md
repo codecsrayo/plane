@@ -1,21 +1,22 @@
 ---
 type: community
-cohesion: 0.50
-members: 5
+cohesion: 0.33
+members: 6
 ---
 
 # Profile Settings
 
-**Cohesion:** 0.50 - moderately connected
-**Members:** 5 nodes
+**Cohesion:** 0.33 - loosely connected
+**Members:** 6 nodes
 
 ## Members
 
-- [[PROFILE_SETTINGS_PAGES_MAP]] - code - components/settings/profile/content/pages/index.ts
-- [[ProfileSettingsContent]] - code - components/settings/profile/content/root.tsx
-- [[Props_111]] - code - components/settings/profile/content/root.tsx
-- [[index.ts_74]] - code - components/settings/profile/content/pages/index.ts
-- [[root.tsx_18]] - code - components/settings/profile/content/root.tsx
+- [[GROUPED_PROFILE_SETTINGS]] - code - constants/src/settings/profile.ts
+- [[PROFILE_SETTINGS]] - code - constants/src/settings/profile.ts
+- [[PROFILE_SETTINGS_CATEGORIES]] - code - constants/src/settings/profile.ts
+- [[PROFILE_SETTINGS_CATEGORY]] - code - constants/src/settings/profile.ts
+- [[PROFILE_SETTINGS_TABS]] - code - constants/src/settings/profile.ts
+- [[profile.ts_1]] - code - constants/src/settings/profile.ts
 
 ## Live Query (requires Dataview plugin)
 

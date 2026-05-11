@@ -1,19 +1,18 @@
 ---
-source_file: "components/workspace/confirm-workspace-member-remove.tsx"
+source_file: "editor/src/core/components/editors/editor-container.tsx"
 type: "code"
-community: "Member Settings"
-location: "L17"
+community: "Highlight Node"
+location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Settings
+  - community/Highlight_Node
 ---
 
 # Props
 
 ## Connections
 
-- [[ConfirmWorkspaceMemberRemove.tsx]] - `imports` [EXTRACTED]
-- [[confirm-workspace-member-remove.tsx]] - `contains` [EXTRACTED]
+- [[editor-container.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Settings
+#graphify/code #graphify/EXTRACTED #community/Highlight_Node

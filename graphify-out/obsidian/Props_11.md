@@ -1,18 +1,18 @@
 ---
-source_file: "components/home/widgets/manage/widget-item-drag-handle.tsx"
+source_file: "ui/src/collapsible/collapsible-button.tsx"
 type: "code"
-community: "Dashboard Widgets"
-location: "L14"
+community: "Toggle Checkbox"
+location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dashboard_Widgets
+  - community/Toggle_Checkbox
 ---
 
 # Props
 
 ## Connections
 
-- [[widget-item-drag-handle.tsx]] - `contains` [EXTRACTED]
+- [[collapsible-button.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets
+#graphify/code #graphify/EXTRACTED #community/Toggle_Checkbox

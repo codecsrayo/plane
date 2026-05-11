@@ -1,18 +1,18 @@
 ---
-source_file: "components/icons/types.d.ts"
+source_file: "ui/src/avatar/avatar-group.tsx"
 type: "code"
-community: "Types Image"
-location: "L1"
+community: "Avatar Fallback"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Types_Image
+  - community/Avatar_Fallback
 ---
 
 # Props
 
 ## Connections
 
-- [[types.d.ts]] - `contains` [EXTRACTED]
+- [[avatar-group.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Types_Image
+#graphify/code #graphify/EXTRACTED #community/Avatar_Fallback

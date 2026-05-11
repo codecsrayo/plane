@@ -1,18 +1,14 @@
 ---
-source_file: "components/project/applied-filters/index.ts"
+source_file: "constants/src/event-tracker/index.ts"
 type: "code"
-community: "Auth UI"
+community: "Community 407"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_UI
+  - community/Community_407
 ---
 
 # index.ts
 
-## Connections
-
-- [[root.tsx_24]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Auth_UI
+#graphify/code #graphify/EXTRACTED #community/Community_407

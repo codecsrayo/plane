@@ -1,23 +1,21 @@
 ---
-source_file: "components/home/widgets/recents/page.tsx"
+source_file: "propel/src/empty-state/assets/vertical-stack/page.tsx"
 type: "code"
-community: "Issue Filters"
+community: "Illustration Assets"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters
+  - community/Illustration_Assets
 ---
 
 # page.tsx
 
 ## Connections
 
-- [[BlockProps_2]] - `contains` [EXTRACTED]
-- [[RecentPage()]] - `contains` [EXTRACTED]
-- [[index.ts_177]] - `imports_from` [EXTRACTED]
-- [[index.tsx_2]] - `imports_from` [EXTRACTED]
-- [[use-member.ts]] - `imports_from` [EXTRACTED]
-- [[useMember()]] - `imports` [EXTRACTED]
+- [[ILLUSTRATION_COLOR_TOKEN_MAP]] - `imports` [EXTRACTED]
+- [[PageVerticalStackIllustration()]] - `contains` [EXTRACTED]
+- [[TIllustrationAssetProps]] - `imports` [EXTRACTED]
+- [[helper.tsx_16]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters
+#graphify/code #graphify/EXTRACTED #community/Illustration_Assets

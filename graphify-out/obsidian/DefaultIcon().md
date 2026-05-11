@@ -1,18 +1,19 @@
 ---
-source_file: "components/icons/attachment/default-file-icon.tsx"
+source_file: "propel/src/icons/default-icon.tsx"
 type: "code"
-community: "Icon"
-location: "L13"
+community: "Icon Copy"
+location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Icon
+  - community/Icon_Copy
 ---
 
 # DefaultIcon()
 
 ## Connections
 
-- [[default-file-icon.tsx]] - `contains` [EXTRACTED]
+- [[default-icon.tsx]] - `contains` [EXTRACTED]
+- [[registry.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Icon
+#graphify/code #graphify/EXTRACTED #community/Icon_Copy

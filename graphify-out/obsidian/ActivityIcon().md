@@ -1,21 +1,18 @@
 ---
-source_file: "components/core/activity.tsx"
+source_file: "propel/src/icons/activity-icon.tsx"
 type: "code"
-community: "Activity List"
-location: "L752"
+community: "Logo Icons"
+location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Activity_List
+  - community/Logo_Icons
 ---
 
 # ActivityIcon()
 
 ## Connections
 
-- [[activity-list.tsx]] - `imports` [EXTRACTED]
-- [[activity-list.tsx_1]] - `imports` [EXTRACTED]
-- [[activity.tsx_2]] - `contains` [EXTRACTED]
-- [[profile-activity-list.tsx]] - `imports` [EXTRACTED]
+- [[activity-icon.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Activity_List
+#graphify/code #graphify/EXTRACTED #community/Logo_Icons

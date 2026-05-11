@@ -1,18 +1,18 @@
 ---
-source_file: "store/inbox/project-inbox.store.ts"
+source_file: "shared-state/src/store/work-item-filters/filter.store.ts"
 type: "code"
-community: "Inbox Issue"
-location: "L200"
+community: "Work Condition"
+location: "L102"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Inbox_Issue
+  - community/Work_Condition
 ---
 
 # filterKey
 
 ## Connections
 
-- [[project-inbox.store.ts]] - `contains` [EXTRACTED]
+- [[filter.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Inbox_Issue
+#graphify/code #graphify/EXTRACTED #community/Work_Condition

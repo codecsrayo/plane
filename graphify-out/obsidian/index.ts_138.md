@@ -1,14 +1,27 @@
 ---
-source_file: "components/onboarding/index.ts"
+source_file: "propel/src/icons/index.ts"
 type: "code"
-community: "Community 403"
+community: "Toolbar Button"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_403
+  - community/Toolbar_Button
 ---
 
 # index.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_403
+## Connections
+
+- [[accordion.tsx]] - `imports_from` [EXTRACTED]
+- [[combobox.stories.tsx]] - `imports_from` [EXTRACTED]
+- [[combobox.tsx]] - `imports_from` [EXTRACTED]
+- [[command.tsx]] - `imports_from` [EXTRACTED]
+- [[context-menu.stories.tsx]] - `imports_from` [EXTRACTED]
+- [[emoji-reaction.tsx]] - `imports_from` [EXTRACTED]
+- [[icon-root.tsx]] - `imports_from` [EXTRACTED]
+- [[menu.tsx]] - `imports_from` [EXTRACTED]
+- [[toolbar.stories.tsx]] - `imports_from` [EXTRACTED]
+- [[toolbar.tsx]] - `imports_from` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Toolbar_Button

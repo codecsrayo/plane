@@ -1,18 +1,18 @@
 ---
-source_file: "components/sidebar/add-button.tsx"
+source_file: "ui/src/sortable/draggable.tsx"
 type: "code"
-community: "Project Archives"
-location: "L9"
+community: "Story Meta"
+location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Archives
+  - community/Story_Meta
 ---
 
 # Props
 
 ## Connections
 
-- [[add-button.tsx]] - `contains` [EXTRACTED]
+- [[draggable.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Archives
+#graphify/code #graphify/EXTRACTED #community/Story_Meta

@@ -1,19 +1,14 @@
 ---
-source_file: "components/issues/select/index.ts"
+source_file: "types/src/current-user/index.ts"
 type: "code"
-community: "Issue Properties"
+community: "Community 493"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Community_493
 ---
 
 # index.ts
 
-## Connections
-
-- [[default-properties.tsx]] - `imports_from` [EXTRACTED]
-- [[issue-properties.tsx_1]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Community_493

@@ -1,19 +1,14 @@
 ---
-source_file: "components/pages/dropdowns/index.ts"
+source_file: "propel/src/dialog/index.ts"
 type: "code"
-community: "Action Pages"
+community: "Community 536"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Action_Pages
+  - community/Community_536
 ---
 
 # index.ts
 
-## Connections
-
-- [[block-item-action.tsx]] - `imports_from` [EXTRACTED]
-- [[options-dropdown.tsx_1]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Action_Pages
+#graphify/code #graphify/EXTRACTED #community/Community_536

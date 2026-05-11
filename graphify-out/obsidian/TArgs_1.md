@@ -1,18 +1,18 @@
 ---
-source_file: "hooks/use-page-fallback.ts"
+source_file: "editor/src/core/props.ts"
 type: "code"
-community: "Editor Body"
-location: "L17"
+community: "Collaborative Editor"
+location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Body
+  - community/Collaborative_Editor
 ---
 
 # TArgs
 
 ## Connections
 
-- [[use-page-fallback.ts]] - `contains` [EXTRACTED]
+- [[props.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Body
+#graphify/code #graphify/EXTRACTED #community/Collaborative_Editor

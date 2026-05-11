@@ -1,30 +1,24 @@
 ---
-source_file: "components/stickies/sticky/root.tsx"
+source_file: "propel/src/charts/tree-map/root.tsx"
 type: "code"
-community: "Sticky Tprops"
+community: "Calculate Tree"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sticky_Tprops
+  - community/Calculate_Tree
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[STICKY_COLORS_LIST]] - `imports` [EXTRACTED]
-- [[StickyDeleteModal]] - `imports` [EXTRACTED]
-- [[StickyInput()]] - `imports` [EXTRACTED]
-- [[StickyNote]] - `contains` [EXTRACTED]
-- [[TProps_7]] - `contains` [EXTRACTED]
-- [[color-palette.tsx]] - `imports_from` [EXTRACTED]
-- [[delete-modal.tsx]] - `imports_from` [EXTRACTED]
-- [[getRandomStickyColor()]] - `imports` [EXTRACTED]
-- [[inputs.tsx]] - `imports_from` [EXTRACTED]
-- [[use-operations.tsx]] - `imports_from` [EXTRACTED]
-- [[use-stickies.tsx]] - `imports_from` [EXTRACTED]
-- [[useSticky()]] - `imports` [EXTRACTED]
-- [[useStickyOperations()]] - `imports` [EXTRACTED]
+- [[CustomTreeMapContent()]] - `imports` [EXTRACTED]
+- [[TreeMapChart]] - `contains` [EXTRACTED]
+- [[TreeMapTooltip]] - `imports` [EXTRACTED]
+- [[classname.tsx_1]] - `imports_from` [EXTRACTED]
+- [[cn()_1]] - `imports` [EXTRACTED]
+- [[map-content.tsx]] - `imports_from` [EXTRACTED]
+- [[tooltip.tsx_3]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sticky_Tprops
+#graphify/code #graphify/EXTRACTED #community/Calculate_Tree

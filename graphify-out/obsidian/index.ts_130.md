@@ -1,19 +1,14 @@
 ---
-source_file: "components/cycles/dropdowns/index.ts"
+source_file: "utils/src/theme/index.ts"
 type: "code"
-community: "Archived Cycles"
+community: "Community 513"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Archived_Cycles
+  - community/Community_513
 ---
 
 # index.ts
 
-## Connections
-
-- [[cycles-view-header.tsx]] - `imports_from` [EXTRACTED]
-- [[header.tsx_10]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Archived_Cycles
+#graphify/code #graphify/EXTRACTED #community/Community_513

@@ -1,18 +1,18 @@
 ---
-source_file: "components/workspace/sidebar/favorites/favorite-items/common/favorite-item-quick-action.tsx"
+source_file: "editor/src/core/extensions/callout/logo-selector.tsx"
 type: "code"
-community: "Favorite Quick"
-location: "L17"
+community: "Callout Extension"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Favorite_Quick
+  - community/Callout_Extension
 ---
 
 # Props
 
 ## Connections
 
-- [[favorite-item-quick-action.tsx]] - `contains` [EXTRACTED]
+- [[logo-selector.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Favorite_Quick
+#graphify/code #graphify/EXTRACTED #community/Callout_Extension
