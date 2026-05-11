@@ -440,7 +440,7 @@ export const IssueFormRoot = observer(function IssueFormRoot(props: IssueFormPro
                   />
                 </div>
               )}
-              <div className="space-y-1">
+              <div className="gap-y-1">
                 <IssueTitleInput
                   control={control}
                   issueTitleRef={issueTitleRef}
@@ -451,7 +451,7 @@ export const IssueFormRoot = observer(function IssueFormRoot(props: IssueFormPro
             </div>
             <div
               className={cn(
-                "space-y-3 bg-surface-1 pb-4",
+                "gap-y-3 bg-surface-1 pb-4",
                 activeAdditionalPropertiesLength > 4 &&
                   "vertical-scrollbar scrollbar-sm max-h-[45vh] overflow-hidden overflow-y-auto"
               )}

@@ -32,7 +32,7 @@ const InstanceImagePage = observer(function InstanceImagePage(_props: Route.Comp
       {formattedConfig ? (
         <InstanceImageConfigForm config={formattedConfig} />
       ) : (
-        <Loader className="space-y-8">
+        <Loader className="gap-y-8">
           <Loader.Item height="50px" width="50%" />
           <Loader.Item height="50px" width="20%" />
         </Loader>

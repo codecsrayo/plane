@@ -10,7 +10,7 @@ import { Loader } from "@plane/ui";
 export function PageLoader() {
   return (
     <div className="relative flex h-full w-full flex-col">
-      <div className="border-b border-subtle px-3 py-3">
+      <div className="border-b border-subtle p-3">
         <Loader className="relative flex items-center gap-2">
           <Loader.Item width="200px" height="30px" />
           <div className="relative ml-auto flex items-center gap-2">

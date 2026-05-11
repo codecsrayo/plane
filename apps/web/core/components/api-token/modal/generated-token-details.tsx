@@ -38,7 +38,7 @@ export function GeneratedTokenDetails(props: Props) {
 
   return (
     <div className="w-full p-5">
-      <div className="w-full space-y-3 text-wrap">
+      <div className="w-full gap-y-3 text-wrap">
         <h3 className="text-16 leading-6 font-medium text-primary">{t("workspace_settings.key_created")}</h3>
         <p className="text-13 text-placeholder">{t("workspace_settings.copy_key")}</p>
       </div>

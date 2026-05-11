@@ -53,7 +53,7 @@ export const PlanDetail = observer(function PlanDetail(props: TPlanDetailProps) 
   };
 
   return (
-    <div className="col-span-1 flex flex-col justify-between space-y-0.5 p-3">
+    <div className="col-span-1 flex flex-col justify-between gap-y-0.5 p-3">
       {/* Plan name and pricing section */}
       <div className="flex flex-col items-start">
         <div className="flex w-full items-center gap-2 text-h4-semibold">

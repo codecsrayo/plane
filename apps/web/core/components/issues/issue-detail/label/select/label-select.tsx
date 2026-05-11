@@ -163,7 +163,7 @@ export const IssueLabelSelect = observer(function IssueLabelSelect(props: IIssue
                 />
               </div>
             </div>
-            <div className={`vertical-scrollbar mt-2 scrollbar-sm max-h-48 space-y-1 overflow-y-scroll px-2 pr-0`}>
+            <div className={`vertical-scrollbar mt-2 scrollbar-sm max-h-48 gap-y-1 overflow-y-scroll px-2 pr-0`}>
               {isLoading ? (
                 <p className="text-center text-secondary">{t("common.loading")}</p>
               ) : filteredOptions.length > 0 ? (
@@ -172,7 +172,7 @@ export const IssueLabelSelect = observer(function IssueLabelSelect(props: IIssue
                     key={option.value}
                     value={option.value}
                     className={({ selected }) =>
-                      `flex cursor-pointer items-center justify-between gap-2 truncate rounded-sm px-1 py-1.5 select-none hover:bg-layer-1 ${
+                      `flex cursor-pointer items-center justify-between gap-2 truncate rounded-sm p-1.5 select-none hover:bg-layer-1 ${
                         selected ? "text-primary" : "text-secondary"
                       }`
                     }

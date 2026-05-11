@@ -54,7 +54,7 @@ const RoleFilterGroup = observer(function RoleFilterGroup({
   const roleOptions = memberType === "project" ? PROJECT_ROLE_OPTIONS : WORKSPACE_ROLE_OPTIONS;
 
   return (
-    <div className="space-y-2">
+    <div className="gap-y-2">
       <FilterHeader
         title={`Roles${appliedFiltersCount > 0 ? ` (${appliedFiltersCount})` : ""}`}
         isPreviewEnabled={isExpanded}
@@ -62,7 +62,7 @@ const RoleFilterGroup = observer(function RoleFilterGroup({
       />
 
       {isExpanded && (
-        <div className="space-y-1">
+        <div className="gap-y-1">
           {roleOptions.map((role) => {
             const isSelected = appliedFilters?.includes(role.value) ?? false;
             return (
@@ -84,7 +84,7 @@ export const MemberListFilters = observer(function MemberListFilters(props: Prop
   const { appliedFilters, handleUpdate, memberType } = props;
 
   return (
-    <div className="space-y-4">
+    <div className="gap-y-4">
       {/* Role Filter Group */}
       <RoleFilterGroup appliedFilters={appliedFilters} handleUpdate={handleUpdate} memberType={memberType} />
     </div>

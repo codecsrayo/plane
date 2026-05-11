@@ -83,7 +83,7 @@ export function ShortcutRenderer(props: Props) {
         groupedCommands.map((group) => (
           <div key={group.key}>
             <h5 className="pt-1 pb-2 text-left text-13 font-medium">{group.title}</h5>
-            <div className="space-y-3 px-1">
+            <div className="gap-y-3 px-1">
               {group.commands.map((command) => (
                 <div key={command.id} className="mt-1">
                   <div className="flex items-center justify-between">

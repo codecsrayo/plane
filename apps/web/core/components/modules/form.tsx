@@ -6,7 +6,6 @@
 
 import { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
-import type { FieldNamesMarkedBoolean } from "react-hook-form";
 // plane imports
 import { ETabIndices } from "@plane/constants";
 import { useTranslation } from "@plane/i18n";
@@ -24,7 +23,10 @@ import { ModuleStatusSelect } from "@/components/modules";
 import { useUser } from "@/hooks/store/user/user-user";
 
 type Props = {
-  handleFormSubmit: (values: Partial<IModule>, dirtyFields: Partial<Readonly<Record<string, boolean>>>) => Promise<void>;
+  handleFormSubmit: (
+    values: Partial<IModule>,
+    dirtyFields: Partial<Readonly<Record<string, boolean>>>
+  ) => Promise<void>;
   handleClose: () => void;
   status: boolean;
   projectId: string;
@@ -83,7 +85,7 @@ export function ModuleForm(props: Props) {
 
   return (
     <form onSubmit={handleSubmit(handleCreateUpdateModule)}>
-      <div className="space-y-5 p-5">
+      <div className="gap-y-5 p-5">
         <div className="flex items-center gap-x-3">
           {!status && (
             <Controller
@@ -112,8 +114,8 @@ export function ModuleForm(props: Props) {
             {status ? t("common.update") : t("common.create")} {t("common.module").toLowerCase()}
           </h3>
         </div>
-        <div className="space-y-3">
-          <div className="space-y-1">
+        <div className="gap-y-3">
+          <div className="gap-y-1">
             <Controller
               control={control}
               name="name"

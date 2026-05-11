@@ -209,7 +209,7 @@ function CustomMenu(props: ICustomMenuDropdownProps) {
     >
       <div
         className={cn(
-          "my-1 min-w-[12rem] overflow-y-scroll rounded-md border-[0.5px] border-subtle-1 bg-surface-1 px-2 py-2.5 text-11 whitespace-nowrap focus:outline-none",
+          "my-1 min-w-[12rem] overflow-y-scroll rounded-md border-[0.5px] border-subtle-1 bg-surface-1 p-2.5 text-11 whitespace-nowrap focus:outline-none",
           {
             "max-h-60": maxHeight === "lg",
             "max-h-48": maxHeight === "md",
@@ -244,8 +244,8 @@ function CustomMenu(props: ICustomMenuDropdownProps) {
     >
       {({ open }) => (
         <>
+          {/* eslint-disable jsx-a11y/prefer-tag-over-role */}
           {customButton ? (
-            // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role
             <Menu.Button
               as="div"
               ref={setReferenceElement}
@@ -262,7 +262,6 @@ function CustomMenu(props: ICustomMenuDropdownProps) {
           ) : (
             <>
               {ellipsis || verticalEllipsis ? (
-                // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role
                 <Menu.Button
                   as="div"
                   ref={setReferenceElement}
@@ -279,7 +278,6 @@ function CustomMenu(props: ICustomMenuDropdownProps) {
                   <MoreHorizontal className={`h-3.5 w-3.5 ${verticalEllipsis ? "rotate-90" : ""}`} />
                 </Menu.Button>
               ) : (
-                // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role
                 <Menu.Button
                   as="div"
                   ref={setReferenceElement}
@@ -301,6 +299,7 @@ function CustomMenu(props: ICustomMenuDropdownProps) {
               )}
             </>
           )}
+          {/* eslint-enable jsx-a11y/prefer-tag-over-role */}
           {isOpen && menuItems}
         </>
       )}
@@ -410,7 +409,7 @@ function SubMenu(props: ICustomSubMenuProps) {
               role="menuitem"
               tabIndex={-1}
               className={cn(
-                "flex w-full cursor-pointer items-center justify-between rounded-sm px-1 py-1.5 text-left text-secondary select-none",
+                "flex w-full cursor-pointer items-center justify-between rounded-sm p-1.5 text-left text-secondary select-none",
                 {
                   "bg-layer-transparent-hover": active && !disabled,
                   "text-placeholder": disabled,
@@ -481,31 +480,31 @@ function MenuItem(props: ICustomMenuItemProps) {
           role="menuitem"
           tabIndex={-1}
           className={cn(
-            "w-full truncate rounded-sm px-1 py-1.5 text-left text-secondary select-none",
+            "w-full truncate rounded-sm p-1.5 text-left text-secondary select-none",
             {
               "bg-layer-transparent-hover": active && !disabled,
               "text-placeholder": disabled,
             },
             className
           )}
-            onClick={(e) => {
+          onClick={(e) => {
+            close();
+            onClick?.(e);
+            // Close submenu if this item is inside a submenu
+            submenuContext?.closeSubmenu();
+          }}
+          onKeyDown={(e) => {
+            if (disabled) return;
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
               close();
               onClick?.(e);
-              // Close submenu if this item is inside a submenu
               submenuContext?.closeSubmenu();
-            }}
-            onKeyDown={(e) => {
-              if (disabled) return;
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                close();
-                onClick?.(e);
-                submenuContext?.closeSubmenu();
-              }
-            }}
-            aria-disabled={disabled}
-          >
-            {children}
+            }
+          }}
+          aria-disabled={disabled}
+        >
+          {children}
         </div>
       )}
     </Menu.Item>
@@ -520,7 +519,7 @@ function SubMenuTrigger(props: ICustomSubMenuTriggerProps) {
       {({ active }) => (
         <div
           className={cn(
-            "flex w-full items-center justify-between rounded-sm px-1 py-1.5 text-left text-secondary select-none",
+            "flex w-full items-center justify-between rounded-sm p-1.5 text-left text-secondary select-none",
             {
               "bg-layer-transparent-hover": active && !disabled,
               "text-placeholder": disabled,

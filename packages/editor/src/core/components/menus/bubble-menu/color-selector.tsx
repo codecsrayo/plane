@@ -63,8 +63,8 @@ export function BubbleMenuColorSelector(props: Props) {
       getFloatingProps={getFloatingProps}
       getReferenceProps={getReferenceProps}
     >
-      <section className="mt-1 space-y-2 rounded-md border-[0.5px] border-strong bg-surface-1 p-2 shadow-raised-200">
-        <div className="space-y-1.5">
+      <section className="mt-1 gap-y-2 rounded-md border-[0.5px] border-strong bg-surface-1 p-2 shadow-raised-200">
+        <div className="gap-y-1.5">
           <p className="text-11 font-semibold text-tertiary">Text colors</p>
           <div className="flex items-center gap-2">
             {COLORS_LIST.map((color) => (
@@ -87,7 +87,7 @@ export function BubbleMenuColorSelector(props: Props) {
             </button>
           </div>
         </div>
-        <div className="space-y-1.5">
+        <div className="gap-y-1.5">
           <p className="text-11 font-semibold text-tertiary">Background colors</p>
           <div className="flex items-center gap-2">
             {COLORS_LIST.map((color) => (

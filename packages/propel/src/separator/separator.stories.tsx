@@ -22,7 +22,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render() {
     return (
-      <div className="w-[300px] space-y-4">
+      <div className="w-[300px] gap-y-4">
         <div>Content Above</div>
         <Separator />
         <div>Content Below</div>
@@ -34,7 +34,7 @@ export const Default: Story = {
 export const Vertical: Story = {
   render() {
     return (
-      <div className="flex h-[100px] items-center space-x-4">
+      <div className="flex h-[100px] items-center gap-x-4">
         <div>Left Content</div>
         <Separator orientation="vertical" />
         <div>Right Content</div>
@@ -46,13 +46,13 @@ export const Vertical: Story = {
 export const WithinContainer: Story = {
   render() {
     return (
-      <div className="w-[300px] space-y-4 rounded-lg border p-6">
-        <div className="space-y-2">
+      <div className="w-[300px] gap-y-4 rounded-lg border p-6">
+        <div className="gap-y-2">
           <h4 className="leading-none font-medium">Section 1</h4>
           <p className="text-muted-foreground text-13">Description for section 1</p>
         </div>
         <Separator />
-        <div className="space-y-2">
+        <div className="gap-y-2">
           <h4 className="leading-none font-medium">Section 2</h4>
           <p className="text-muted-foreground text-13">Description for section 2</p>
         </div>

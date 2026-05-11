@@ -43,7 +43,7 @@ export const InvitationFields = observer(function InvitationFields(props: TInvit
   const currentWorkspaceRole = workspaceInfoBySlug(workspaceSlug.toString())?.role;
 
   return (
-    <div className={cn("mb-3 space-y-4", className)}>
+    <div className={cn("mb-3 gap-y-4", className)}>
       {fields.map((field, index) => (
         <div
           key={field.id}

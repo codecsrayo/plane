@@ -142,7 +142,7 @@ export const InboxIssueMainContent = observer(function InboxIssueMainContent(pro
 
   return (
     <>
-      <div className="space-y-4 pb-4">
+      <div className="gap-y-4 pb-4">
         {duplicateIssues.length > 0 && (
           <DeDupeIssuePopoverRoot
             workspaceSlug={workspaceSlug}

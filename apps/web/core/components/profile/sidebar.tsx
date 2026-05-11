@@ -136,7 +136,7 @@ export const ProfileSidebar = observer(function ProfileSidebar(props: TProfileSi
               </h4>
               <h6 className="text-13 text-secondary">({userData?.display_name})</h6>
             </div>
-            <div className="mt-6 space-y-5">
+            <div className="mt-6 gap-y-5">
               {userDetails.map((detail) => (
                 <div key={detail.i18n_label} className="flex items-center gap-4 text-13">
                   <div className="w-2/5 flex-shrink-0 text-secondary">{t(detail.i18n_label)}</div>
@@ -230,7 +230,7 @@ export const ProfileSidebar = observer(function ProfileSidebar(props: TProfileSi
                                 />
                               </div>
                             )}
-                            <div className="mt-7 space-y-5 text-13 text-secondary">
+                            <div className="mt-7 gap-y-5 text-13 text-secondary">
                               <div className="flex items-center justify-between gap-2">
                                 <div className="flex items-center gap-2">
                                   <div className="h-2.5 w-2.5 rounded-xs bg-[#203b80]" />
@@ -279,9 +279,9 @@ export const ProfileSidebar = observer(function ProfileSidebar(props: TProfileSi
           </div>
         </>
       ) : (
-        <Loader className="space-y-7 px-5">
+        <Loader className="gap-y-7 px-5">
           <Loader.Item height="130px" />
-          <div className="space-y-5">
+          <div className="gap-y-5">
             <Loader.Item height="20px" />
             <Loader.Item height="20px" />
             <Loader.Item height="20px" />

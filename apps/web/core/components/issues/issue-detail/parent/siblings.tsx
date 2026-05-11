@@ -41,9 +41,7 @@ export const IssueParentSiblings = observer(function IssueParentSiblings(props: 
   return (
     <div className="my-1">
       {isLoading ? (
-        <div className="flex items-center gap-2 px-1 py-1 text-left text-11 whitespace-nowrap text-secondary">
-          Loading
-        </div>
+        <div className="flex items-center gap-2 p-1 text-left text-11 whitespace-nowrap text-secondary">Loading</div>
       ) : subIssueIds && subIssueIds.length > 0 ? (
         subIssueIds.map(
           (issueId) =>
@@ -52,7 +50,7 @@ export const IssueParentSiblings = observer(function IssueParentSiblings(props: 
             )
         )
       ) : (
-        <div className="flex items-center gap-2 px-1 py-1 text-left text-11 whitespace-nowrap text-secondary">
+        <div className="flex items-center gap-2 p-1 text-left text-11 whitespace-nowrap text-secondary">
           No sibling work items
         </div>
       )}

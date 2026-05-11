@@ -16,17 +16,17 @@ export const CustomStarterKitExtension = (args: TArgs) => {
   return StarterKitExtension.configure({
     bulletList: {
       HTMLAttributes: {
-        class: "list-disc pl-7 space-y-(--list-spacing-y)",
+        class: "list-disc pl-7 gap-y-(--list-spacing-y)",
       },
     },
     orderedList: {
       HTMLAttributes: {
-        class: "list-decimal pl-7 space-y-(--list-spacing-y)",
+        class: "list-decimal pl-7 gap-y-(--list-spacing-y)",
       },
     },
     listItem: {
       HTMLAttributes: {
-        class: "not-prose space-y-2",
+        class: "not-prose gap-y-2",
       },
     },
     code: false,

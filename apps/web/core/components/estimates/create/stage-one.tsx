@@ -34,8 +34,8 @@ export function EstimateCreateStageOne(props: TEstimateCreateStageOne) {
 
   if (!currentEstimateSystem) return <></>;
   return (
-    <div className="space-y-6">
-      <div className="mb-2 gap-2 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
+    <div className="gap-y-6">
+      <div className="mb-2 gap-2 sm:flex sm:items-center sm:gap-x-10 sm:gap-y-0">
         <RadioInput
           options={Object.keys(ESTIMATE_SYSTEMS)
             .map((system) => {
@@ -75,12 +75,12 @@ export function EstimateCreateStageOne(props: TEstimateCreateStageOne) {
       </div>
       {ESTIMATE_SYSTEMS[estimateSystem]?.is_available && !ESTIMATE_SYSTEMS[estimateSystem]?.is_ee && (
         <>
-          <div className="space-y-1.5">
+          <div className="gap-y-1.5">
             <div className="text-13 font-medium text-secondary">
               {t("project_settings.estimates.create.start_from_scratch")}
             </div>
             <button
-              className="block w-full space-y-1 rounded-md border border-subtle p-3 py-2.5 text-left hover:bg-layer-transparent-hover"
+              className="block w-full gap-y-1 rounded-md border border-subtle p-3 py-2.5 text-left hover:bg-layer-transparent-hover"
               onClick={() => handleEstimatePoints("custom")}
             >
               <p className="text-14 font-medium">{t("project_settings.estimates.create.custom")}</p>
@@ -91,7 +91,7 @@ export function EstimateCreateStageOne(props: TEstimateCreateStageOne) {
             </button>
           </div>
 
-          <div className="space-y-1.5">
+          <div className="gap-y-1.5">
             <div className="text-13 font-medium text-secondary">
               {t("project_settings.estimates.create.choose_template")}
             </div>
@@ -100,7 +100,7 @@ export function EstimateCreateStageOne(props: TEstimateCreateStageOne) {
                 currentEstimateSystem.templates[name]?.hide ? null : (
                   <button
                     key={name}
-                    className="space-y-1 rounded-md border border-subtle p-3 py-2.5 text-left hover:bg-surface-2"
+                    className="gap-y-1 rounded-md border border-subtle p-3 py-2.5 text-left hover:bg-surface-2"
                     onClick={() => handleEstimatePoints(name)}
                   >
                     <p className="text-14 font-medium">{currentEstimateSystem.templates[name]?.title}</p>

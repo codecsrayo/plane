@@ -185,7 +185,7 @@ export const CreateProjectForm = observer(function CreateProjectForm(props: TCre
       <ProjectCreateHeader handleClose={handleClose} isMobile={isMobile} />
 
       <form onSubmit={handleSubmit(onSubmit)} className="px-3">
-        <div className="mt-9 space-y-6 pb-5">
+        <div className="mt-9 gap-y-6 pb-5">
           <ProjectCommonAttributes
             setValue={setValue}
             isMobile={isMobile}

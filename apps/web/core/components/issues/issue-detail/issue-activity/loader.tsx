@@ -9,10 +9,10 @@ import { Loader } from "@plane/ui";
 
 export function IssueActivityLoader() {
   return (
-    <Loader className="space-y-8">
+    <Loader className="gap-y-8">
       <div className="flex items-start gap-3">
         <Loader.Item className="shrink-0" height="28px" width="28px" />
-        <div className="w-full space-y-2">
+        <div className="w-full gap-y-2">
           <Loader.Item height="8px" width="60%" />
           <Loader.Item height="8px" width="40%" />
           <Loader.Item height="10px" width="100%" />
@@ -20,7 +20,7 @@ export function IssueActivityLoader() {
       </div>
       <div className="flex items-start gap-3">
         <Loader.Item className="shrink-0" height="28px" width="28px" />
-        <div className="w-full space-y-2">
+        <div className="w-full gap-y-2">
           <Loader.Item height="8px" width="40%" />
           <Loader.Item height="8px" width="60%" />
           <Loader.Item height="10px" width="80%" />
@@ -28,7 +28,7 @@ export function IssueActivityLoader() {
       </div>
       <div className="flex items-start gap-3">
         <Loader.Item className="shrink-0" height="28px" width="28px" />
-        <div className="w-full space-y-2">
+        <div className="w-full gap-y-2">
           <Loader.Item height="8px" width="60%" />
           <Loader.Item height="8px" width="40%" />
           <Loader.Item height="10px" width="100%" />

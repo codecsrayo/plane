@@ -23,7 +23,7 @@ export function ProfileStateDistribution({ stateDistribution, userProfile }: Pro
   if (!userProfile) return null;
 
   return (
-    <div className="flex flex-col space-y-2">
+    <div className="flex flex-col gap-y-2">
       <h3 className="text-16 font-medium">{t("profile.stats.state_distribution.title")}</h3>
       <Card className="h-full">
         {userProfile.state_distribution.length > 0 ? (
@@ -58,7 +58,7 @@ export function ProfileStateDistribution({ stateDistribution, userProfile }: Pro
               showLabel={false}
             />
             <div className="flex items-center">
-              <div className="w-full space-y-4">
+              <div className="w-full gap-y-4">
                 {stateDistribution.map((group) => (
                   <div key={group.state_group} className="flex items-center justify-between gap-2 text-11">
                     <div className="flex items-center gap-1.5">

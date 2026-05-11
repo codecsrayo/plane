@@ -59,7 +59,7 @@ export const GroupList = observer(function GroupList(props: TGroupList) {
     });
   };
   return (
-    <div className={cn("space-y-5", groupListClassName)}>
+    <div className={cn("gap-y-5", groupListClassName)}>
       {Object.entries(groupedStates).map(([key, value]) => {
         const groupKey = key as TStateGroups;
         const groupStates = value;

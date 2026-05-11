@@ -158,7 +158,7 @@ export const AvatarGroup: Story = {
   },
   render() {
     return (
-      <div className="flex -space-x-2">
+      <div className="-gap-x-2 flex">
         <Avatar name="User 1" src="https://i.pravatar.cc/150?img=20" size="md" className="ring-2 ring-white" />
         <Avatar name="User 2" src="https://i.pravatar.cc/150?img=21" size="md" className="ring-2 ring-white" />
         <Avatar name="User 3" src="https://i.pravatar.cc/150?img=22" size="md" className="ring-2 ring-white" />

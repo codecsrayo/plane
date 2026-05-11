@@ -149,7 +149,7 @@ export const DraftIssueBlock = observer(function DraftIssueBlock(props: Props) {
               <div className="flex items-center gap-1">
                 <div className="flex-shrink-0">
                   {issue.project_id && projectIdentifier && (
-                    <div className="flex items-center space-x-2">
+                    <div className="flex items-center gap-x-2">
                       {issue?.type_id && <IssueTypeIdentifier issueTypeId={issue.type_id} />}
                       <IdentifierText
                         identifier={projectIdentifier}

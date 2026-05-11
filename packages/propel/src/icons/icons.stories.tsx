@@ -38,8 +38,8 @@ type Story = StoryObj;
 
 export const AllIcons: Story = {
   render: () => (
-    <div className="space-y-12">
-      <div className="space-y-4">
+    <div className="gap-y-12">
+      <div className="gap-y-4">
         <h3 className="text-16 font-semibold text-primary">Sub-Brand Icons</h3>
         <div className="grid w-full grid-cols-12 gap-6">
           {SubBrandIconsMap.map((item) => (
@@ -51,7 +51,7 @@ export const AllIcons: Story = {
         </div>
       </div>
 
-      <div className="space-y-4">
+      <div className="gap-y-4">
         <h3 className="text-16 font-semibold text-primary">Workspace Icons</h3>
         <div className="grid w-full grid-cols-12 gap-6">
           {WorkspaceIconsMap.map((item) => (
@@ -63,7 +63,7 @@ export const AllIcons: Story = {
         </div>
       </div>
 
-      <div className="space-y-4">
+      <div className="gap-y-4">
         <h3 className="text-16 font-semibold text-primary">Project Icons</h3>
         <div className="grid w-full grid-cols-12 gap-6">
           {ProjectIconsMap.map((item) => (
@@ -75,7 +75,7 @@ export const AllIcons: Story = {
         </div>
       </div>
 
-      <div className="space-y-4">
+      <div className="gap-y-4">
         <h3 className="text-16 font-semibold text-primary">Layout Icons</h3>
         <div className="grid w-full grid-cols-12 gap-6">
           {LayoutIconsMap.map((item) => (
@@ -87,7 +87,7 @@ export const AllIcons: Story = {
         </div>
       </div>
 
-      <div className="space-y-4">
+      <div className="gap-y-4">
         <h3 className="text-16 font-semibold text-primary">Property Icons</h3>
         <div className="grid w-full grid-cols-12 gap-6">
           {PropertyIconsMap.map((item) => (
@@ -99,7 +99,7 @@ export const AllIcons: Story = {
         </div>
       </div>
 
-      <div className="space-y-4">
+      <div className="gap-y-4">
         <h3 className="text-16 font-semibold text-primary">Actions Icons</h3>
         <div className="grid w-full grid-cols-12 gap-6">
           {ActionsIconsMap.map((item) => (
@@ -111,7 +111,7 @@ export const AllIcons: Story = {
         </div>
       </div>
 
-      <div className="space-y-4">
+      <div className="gap-y-4">
         <h3 className="text-16 font-semibold text-primary">Arrows Icons</h3>
         <div className="grid w-full grid-cols-12 gap-6">
           {ArrowsIconsMap.map((item) => (
@@ -123,7 +123,7 @@ export const AllIcons: Story = {
         </div>
       </div>
 
-      <div className="space-y-4">
+      <div className="gap-y-4">
         <h3 className="text-lg text-custom-text-100 font-semibold">Misc Icons</h3>
         <div className="grid w-full grid-cols-12 gap-6">
           {MiscIconsMap.map((item) => (
@@ -140,8 +140,8 @@ export const AllIcons: Story = {
 
 export const RegistryUsage: Story = {
   render: () => (
-    <div className="space-y-8">
-      <div className="space-y-4">
+    <div className="gap-y-8">
+      <div className="gap-y-4">
         <h3 className="text-16 font-semibold text-primary">Registry-Based Usage</h3>
         <p className="text-13 text-tertiary">
           Use the <code className="rounded-sm bg-layer-1 px-1 py-0.5">Icon</code> component with{" "}
@@ -167,7 +167,7 @@ export const RegistryUsage: Story = {
         </div>
       </div>
 
-      <div className="space-y-4">
+      <div className="gap-y-4">
         <h3 className="text-16 font-semibold text-primary">Direct Import Usage</h3>
         <p className="text-13 text-tertiary">
           Import icon components directly for better tree-shaking and type safety.
@@ -193,8 +193,8 @@ export const RegistryUsage: Story = {
 
 export const IconSizes: Story = {
   render: () => (
-    <div className="space-y-6">
-      <div className="space-y-4">
+    <div className="gap-y-6">
+      <div className="gap-y-4">
         <h3 className="text-16 font-semibold text-primary">Icon Sizes</h3>
         <p className="text-13 text-tertiary">Icons can be rendered in different sizes using width and height props.</p>
       </div>

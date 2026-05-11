@@ -22,7 +22,7 @@ type Story = StoryObj<typeof Popover>;
 
 // components
 const RenderCustomPopoverComponent = (
-  <div className="space-y-2">
+  <div className="gap-y-2">
     <div className="text-gray-500 text-13 font-medium">Your custom component</div>
     <div>
       {["option1", "option2", "option3"].map((option) => (

@@ -110,8 +110,8 @@ export const SetPasswordForm = observer(function SetPasswordForm() {
   return (
     <FormContainer>
       <AuthFormHeader title="Set password" description="Create a new password." />
-      <form className="space-y-4" onSubmit={(e) => handleSubmit(e)}>
-        <div className="space-y-1">
+      <form className="gap-y-4" onSubmit={(e) => handleSubmit(e)}>
+        <div className="gap-y-1">
           <label className="text-13 font-medium text-tertiary" htmlFor="email">
             {t("auth.common.email.label")}
           </label>
@@ -129,7 +129,7 @@ export const SetPasswordForm = observer(function SetPasswordForm() {
             />
           </div>
         </div>
-        <div className="space-y-1">
+        <div className="gap-y-1">
           <label className="text-13 font-medium text-tertiary" htmlFor="password">
             {t("auth.common.password.label")}
           </label>
@@ -161,7 +161,7 @@ export const SetPasswordForm = observer(function SetPasswordForm() {
           </div>
           <PasswordStrengthIndicator password={passwordFormData.password} isFocused={isPasswordInputFocused} />
         </div>
-        <div className="space-y-1">
+        <div className="gap-y-1">
           <label className="text-13 font-medium text-tertiary" htmlFor="confirm_password">
             {t("auth.common.password.confirm_password.label")}
           </label>

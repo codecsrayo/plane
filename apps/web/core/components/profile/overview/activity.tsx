@@ -42,12 +42,12 @@ export const ProfileActivity = observer(function ProfileActivity() {
   );
 
   return (
-    <div className="space-y-2">
+    <div className="gap-y-2">
       <h3 className="text-16 font-medium">{t("profile.stats.recent_activity.title")}</h3>
       <Card>
         {userProfileActivity ? (
           userProfileActivity.results.length > 0 ? (
-            <div className="space-y-5">
+            <div className="gap-y-5">
               {userProfileActivity.results.map((activity) => (
                 <div key={activity.id} className="flex gap-3">
                   <Avatar
@@ -80,7 +80,7 @@ export const ProfileActivity = observer(function ProfileActivity() {
             <EmptyStateCompact title={t("no_data_yet")} assetKey="unknown" assetClassName="size-20" />
           )
         ) : (
-          <Loader className="space-y-5">
+          <Loader className="gap-y-5">
             <Loader.Item height="40px" />
             <Loader.Item height="40px" />
             <Loader.Item height="40px" />

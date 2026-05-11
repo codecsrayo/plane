@@ -24,7 +24,7 @@ export const PlanFrequencyToggle = observer(function PlanFrequencyToggle(props: 
 
   return (
     <div className="flex w-full cursor-pointer items-center py-1">
-      <div className="flex w-full space-x-1 rounded-md bg-layer-3 p-0.5">
+      <div className="flex w-full gap-x-1 rounded-md bg-layer-3 p-0.5">
         <button
           type="button"
           onClick={() => setSelectedFrequency("month")}

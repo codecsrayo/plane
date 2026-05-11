@@ -55,7 +55,7 @@ export function TourSidebar({ step, setStep }: Props) {
         <br />
         Get more out of Plane.
       </h3>
-      <div className="mt-8 space-y-5">
+      <div className="mt-8 gap-y-5">
         {sidebarOptions.map((option) => (
           <button
             type="button"

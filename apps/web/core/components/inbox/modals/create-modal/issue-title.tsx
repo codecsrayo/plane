@@ -29,7 +29,7 @@ export const InboxIssueTitle = observer(function InboxIssueTitle(props: TInboxIs
   const { getIndex } = getTabIndex(ETabIndices.INTAKE_ISSUE_FORM, isMobile);
   const { t } = useTranslation();
   return (
-    <div className="space-y-1">
+    <div className="gap-y-1">
       <Input
         id="name"
         name="name"

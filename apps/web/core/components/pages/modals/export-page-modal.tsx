@@ -205,9 +205,9 @@ export function ExportPageModal(props: Props) {
   return (
     <ModalCore isOpen={isOpen} handleClose={handleClose} position={EModalPosition.CENTER} width={EModalWidth.SM}>
       <div>
-        <div className="space-y-5 p-5">
+        <div className="gap-y-5 p-5">
           <h3 className="text-18 font-medium text-secondary">Export page</h3>
-          <div className="space-y-3">
+          <div className="gap-y-3">
             <div className="flex items-center justify-between gap-2">
               <h6 className="flex-shrink-0 text-13 text-secondary">Export format</h6>
               <Controller

@@ -32,7 +32,7 @@ const InstanceAIPage = observer(function InstanceAIPage(_props: Route.ComponentP
       {formattedConfig ? (
         <InstanceAIForm config={formattedConfig} />
       ) : (
-        <Loader className="space-y-8">
+        <Loader className="gap-y-8">
           <Loader.Item height="50px" width="40%" />
           <div className="grid w-2/3 grid-cols-2 gap-x-8 gap-y-4">
             <Loader.Item height="50px" />

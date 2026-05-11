@@ -212,7 +212,7 @@ export const ImagePickerPopover = observer(function ImagePickerPopover(props: Pr
                 <Tabs.Indicator />
               </Tabs.List>
               <div className="vertical-scrollbar mt-3 scrollbar-sm flex-1 overflow-x-hidden overflow-y-auto p-3">
-                <Tabs.Content value="unsplash" className="h-full w-full space-y-4">
+                <Tabs.Content value="unsplash" className="h-full w-full gap-y-4">
                   {(unsplashImages || !unsplashError) && (
                     <>
                       <div className="flex items-center gap-x-2">
@@ -281,7 +281,7 @@ export const ImagePickerPopover = observer(function ImagePickerPopover(props: Pr
                     </>
                   )}
                 </Tabs.Content>
-                <Tabs.Content value="images" className="h-full w-full space-y-4">
+                <Tabs.Content value="images" className="h-full w-full gap-y-4">
                   <div className="grid grid-cols-4 gap-4">
                     {Object.values(STATIC_COVER_IMAGES).map((imageUrl, index) => (
                       <button

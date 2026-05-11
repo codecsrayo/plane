@@ -164,8 +164,7 @@ export const PublishProjectModal = observer(function PublishProjectModal(props: 
     });
   }, [projectPublishSettings, reset]);
 
-  const SPACE_APP_URL =
-    (SPACE_BASE_URL.trim() === "" ? new URL(WEB_URL).origin : SPACE_BASE_URL) + SPACE_BASE_PATH;
+  const SPACE_APP_URL = (SPACE_BASE_URL.trim() === "" ? new URL(WEB_URL).origin : SPACE_BASE_URL) + SPACE_BASE_PATH;
   const publishLink = `${SPACE_APP_URL}/issues/${projectPublishSettings?.anchor}`;
 
   const handleCopyLink = () =>
@@ -196,14 +195,14 @@ export const PublishProjectModal = observer(function PublishProjectModal(props: 
 
         {/* content */}
         {fetchSettingsLoader ? (
-          <Loader className="space-y-4 px-5">
+          <Loader className="gap-y-4 px-5">
             <Loader.Item height="30px" />
             <Loader.Item height="30px" />
             <Loader.Item height="30px" />
             <Loader.Item height="30px" />
           </Loader>
         ) : (
-          <div className="space-y-4 px-5">
+          <div className="gap-y-4 px-5">
             {isProjectPublished && projectPublishSettings && (
               <>
                 <div className="flex items-center justify-between gap-2 rounded-md border border-strong py-1.5 pr-1 pl-4">
@@ -242,7 +241,7 @@ export const PublishProjectModal = observer(function PublishProjectModal(props: 
                 </p>
               </>
             )}
-            <div className="space-y-4">
+            <div className="gap-y-4">
               <div className="relative flex items-center justify-between gap-2">
                 <div className="text-13">Views</div>
                 <Controller

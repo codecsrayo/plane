@@ -119,10 +119,10 @@ export const ModuleAnalyticsProgress = observer(function ModuleAnalyticsProgress
 
   if (!moduleDetails) return <></>;
   return (
-    <div className="space-y-4 border-t border-subtle px-3 py-4">
+    <div className="gap-y-4 border-t border-subtle px-3 py-4">
       <Disclosure defaultOpen={isModuleDateValid}>
         {({ open }) => (
-          <div className="space-y-6">
+          <div className="gap-y-6">
             {/* progress bar header */}
             {isModuleDateValid ? (
               <div className="relative flex w-full items-center justify-between gap-2">
@@ -178,7 +178,7 @@ export const ModuleAnalyticsProgress = observer(function ModuleAnalyticsProgress
             )}
 
             <Transition show={open}>
-              <Disclosure.Panel className="space-y-4">
+              <Disclosure.Panel className="gap-y-4">
                 {/* progress burndown chart */}
                 <div>
                   {moduleStartDate && moduleEndDate && completionChartDistributionData && (

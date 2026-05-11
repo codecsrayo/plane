@@ -101,7 +101,7 @@ export const CreateWorkspace = observer(function CreateWorkspace(props: Props) {
   const isButtonDisabled = !isValid || invalidSlug || isSubmitting;
 
   return (
-    <div className="space-y-4">
+    <div className="gap-y-4">
       {!!invitedWorkspaces && (
         <>
           <Button
@@ -122,12 +122,12 @@ export const CreateWorkspace = observer(function CreateWorkspace(props: Props) {
           </div>
         </>
       )}
-      <div className="mx-auto space-y-1 py-4 text-center">
+      <div className="mx-auto gap-y-1 py-4 text-center">
         <h3 className="text-24 font-bold text-primary">{t("workspace_creation.heading")}</h3>
         <p className="font-medium text-placeholder">{t("workspace_creation.subheading")}</p>
       </div>
-      <form className="mx-auto mt-2 w-full space-y-4" onSubmit={handleSubmit(handleCreateWorkspace)}>
-        <div className="space-y-1">
+      <form className="mx-auto mt-2 w-full gap-y-4" onSubmit={handleSubmit(handleCreateWorkspace)}>
+        <div className="gap-y-1">
           <label
             className="text-13 font-medium text-tertiary after:ml-0.5 after:text-danger-primary after:content-['*']"
             htmlFor="name"
@@ -169,7 +169,7 @@ export const CreateWorkspace = observer(function CreateWorkspace(props: Props) {
           />
           {errors.name && <span className="text-13 text-danger-primary">{errors.name.message}</span>}
         </div>
-        <div className="space-y-1">
+        <div className="gap-y-1">
           <label
             className="text-13 font-medium text-tertiary after:ml-0.5 after:text-danger-primary after:content-['*']"
             htmlFor="slug"
@@ -224,7 +224,7 @@ export const CreateWorkspace = observer(function CreateWorkspace(props: Props) {
           {errors.slug && <span className="text-13 text-danger-primary">{errors.slug.message}</span>}
         </div>
         <hr className="w-full border-strong" />
-        <div className="space-y-1">
+        <div className="gap-y-1">
           <label
             className="text-13 font-medium text-tertiary after:ml-0.5 after:text-danger-primary after:content-['*']"
             htmlFor="organization_size"

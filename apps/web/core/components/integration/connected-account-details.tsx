@@ -49,7 +49,7 @@ export function ConnectedAccountDetails({ metadata }: Props) {
   }
 
   return (
-    <dl className="space-y-2">
+    <dl className="gap-y-2">
       {rows.map(({ label, value }) => (
         <div key={label} className="flex items-center gap-3">
           <dt className="text-xs text-custom-text-200 w-36 shrink-0 font-medium">{label}</dt>

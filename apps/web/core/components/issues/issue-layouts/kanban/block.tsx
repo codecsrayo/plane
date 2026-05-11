@@ -293,7 +293,7 @@ export const KanbanIssueBlock = observer(function KanbanIssueBlock(props: IssueB
           disabled={!!issue?.tempId}
         >
           <RenderIfVisible
-            classNames="space-y-2"
+            classNames="gap-y-2"
             root={scrollableContainerRef}
             defaultHeight="100px"
             horizontalOffset={100}

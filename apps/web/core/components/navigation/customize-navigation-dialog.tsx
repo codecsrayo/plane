@@ -197,7 +197,7 @@ export const CustomizeNavigationDialog = observer(function CustomizeNavigationDi
         </div>
 
         {/* Content */}
-        <div className="flex-1 space-y-4 overflow-y-auto px-6 py-4">
+        <div className="flex-1 gap-y-4 overflow-y-auto px-6 py-4">
           {/* Personal Section */}
           <div className="flex flex-col gap-2">
             <h3 className="text-13 font-semibold text-placeholder">{t("personal")}</h3>
@@ -260,10 +260,10 @@ export const CustomizeNavigationDialog = observer(function CustomizeNavigationDi
           <div className="flex flex-col gap-2">
             <h3 className="text-13 font-semibold text-placeholder">{t("projects")}</h3>
 
-            <div className="rounded-md border border-subtle bg-surface-2 px-2 py-2">
-              <div className="space-y-3">
+            <div className="rounded-md border border-subtle bg-surface-2 p-2">
+              <div className="gap-y-3">
                 {/* Navigation Mode Radio Buttons */}
-                <div className="space-y-2">
+                <div className="gap-y-2">
                   <label
                     aria-label={t("accordion_navigation_control")}
                     className="flex cursor-pointer gap-2 rounded-md px-2 py-1.5 hover:bg-surface-2"
@@ -306,7 +306,7 @@ export const CustomizeNavigationDialog = observer(function CustomizeNavigationDi
                 </div>
 
                 {/* Limited Projects Checkbox */}
-                <div className="space-y-1">
+                <div className="gap-y-1">
                   <label className="flex cursor-pointer items-center gap-2 rounded-md px-2 py-1.5 hover:bg-surface-2">
                     <Checkbox
                       checked={projectPreferences.showLimitedProjects}

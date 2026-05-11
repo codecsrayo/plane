@@ -35,11 +35,11 @@ export const CycleDetailsSidebar = observer(function CycleDetailsSidebar(props: 
   if (!cycleDetails)
     return (
       <Loader className="px-5">
-        <div className="space-y-2">
+        <div className="gap-y-2">
           <Loader.Item height="15px" width="50%" />
           <Loader.Item height="15px" width="30%" />
         </div>
-        <div className="mt-8 space-y-3">
+        <div className="mt-8 gap-y-3">
           <Loader.Item height="30px" />
           <Loader.Item height="30px" />
           <Loader.Item height="30px" />

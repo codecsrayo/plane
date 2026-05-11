@@ -107,13 +107,13 @@ export const IssueDetailsPage = observer(function IssueDetailsPage({ params }: R
   if (issueLoader) {
     return (
       <Loader className="flex h-full gap-5 p-5">
-        <div className="basis-2/3 space-y-2">
+        <div className="basis-2/3 gap-y-2">
           <Loader.Item height="30px" width="40%" />
           <Loader.Item height="15px" width="60%" />
           <Loader.Item height="15px" width="60%" />
           <Loader.Item height="15px" width="40%" />
         </div>
-        <div className="basis-1/3 space-y-3">
+        <div className="basis-1/3 gap-y-3">
           <Loader.Item height="30px" />
           <Loader.Item height="30px" />
           <Loader.Item height="30px" />

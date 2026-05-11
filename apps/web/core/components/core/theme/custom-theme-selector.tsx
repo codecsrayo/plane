@@ -105,7 +105,7 @@ export const CustomThemeSelector = observer(function CustomThemeSelector() {
       }}
       className="rounded-lg border border-subtle bg-layer-1 px-4 py-3"
     >
-      <div className="space-y-5">
+      <div className="gap-y-5">
         <ProfileSettingsHeading
           title={t("customize_your_theme")}
           control={<CustomThemeImportConfigButton handleUpdateTheme={handleUpdateTheme} setValue={setValue} />}

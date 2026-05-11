@@ -80,7 +80,7 @@ export function BubbleMenuNodeSelector(props: Props) {
       getFloatingProps={getFloatingProps}
       getReferenceProps={getReferenceProps}
     >
-      <section className="mt-1 flex max-h-[90vh] w-48 flex-col overflow-y-scroll rounded-md border-[0.5px] border-strong bg-surface-1 px-2 py-2.5 shadow-raised-200">
+      <section className="mt-1 flex max-h-[90vh] w-48 flex-col overflow-y-scroll rounded-md border-[0.5px] border-strong bg-surface-1 p-2.5 shadow-raised-200">
         {items.map((item) => (
           <button
             key={item.name}
@@ -91,13 +91,13 @@ export function BubbleMenuNodeSelector(props: Props) {
               e.stopPropagation();
             }}
             className={cn(
-              "flex items-center justify-between rounded-sm px-1 py-1.5 text-13 text-secondary hover:bg-layer-1",
+              "flex items-center justify-between rounded-sm p-1.5 text-13 text-secondary hover:bg-layer-1",
               {
                 "bg-layer-1": activeItem.name === item.name,
               }
             )}
           >
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center gap-x-2">
               <item.icon className="size-3 flex-shrink-0" />
               <span>{item.name}</span>
             </div>

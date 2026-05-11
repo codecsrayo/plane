@@ -41,7 +41,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render() {
     return (
-      <div className="space-y-4 p-4">
+      <div className="gap-y-4 p-4">
         <div className="w-96 rounded-sm border">
           <Toolbar>
             <Toolbar.Group isFirst>
@@ -104,7 +104,7 @@ export const WithActiveStates: Story = {
 export const CommentToolbar: Story = {
   render() {
     return (
-      <div className="space-y-4 p-4">
+      <div className="gap-y-4 p-4">
         <h3 className="text-13 font-medium">Comment Toolbar with Access Control</h3>
         <div className="rounded-sm border-[0.5px] border-subtle p-1">
           <Toolbar>

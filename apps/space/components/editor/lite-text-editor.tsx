@@ -66,7 +66,7 @@ export const LiteTextEditor = React.forwardRef(function LiteTextEditor(
   });
 
   return (
-    <div className="space-y-3 rounded-sm border border-subtle p-3">
+    <div className="gap-y-3 rounded-sm border border-subtle p-3">
       <LiteTextEditorWithRef
         ref={ref}
         disabledExtensions={[...liteTextEditorExtensions.disabled, ...additionalDisabledExtensions]}

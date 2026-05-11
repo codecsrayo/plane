@@ -126,7 +126,7 @@ export const WidgetItem = observer(function WidgetItem(props: Props) {
       <div
         ref={elementRef}
         className={cn(
-          "group/widget-item relative flex items-center justify-between rounded-sm px-2 py-2 text-13 font-medium hover:bg-layer-1",
+          "group/widget-item relative flex items-center justify-between rounded-sm p-2 text-13 font-medium hover:bg-layer-1",
           {
             "cursor-grabbing bg-layer-1": isDragging,
           }

@@ -84,7 +84,7 @@ const InstanceEmailPage = observer(function InstanceEmailPage(_props: Route.Comp
           {formattedConfig ? (
             <InstanceEmailForm config={formattedConfig} />
           ) : (
-            <Loader className="space-y-10">
+            <Loader className="gap-y-10">
               <Loader.Item height="50px" width="75%" />
               <Loader.Item height="50px" width="75%" />
               <Loader.Item height="50px" width="40%" />

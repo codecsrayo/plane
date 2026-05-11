@@ -33,7 +33,7 @@ export const Default: Story = {
   render(args) {
     return (
       <ScrollArea {...args} className="h-64 w-80 rounded-lg border">
-        <div className="space-y-4 p-4">
+        <div className="gap-y-4 p-4">
           <h3 className="text-16 font-semibold">Long Text Content</h3>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
@@ -62,7 +62,7 @@ export const Default: Story = {
 export const Sizes: Story = {
   render() {
     const content = (
-      <div className="space-y-2 p-4">
+      <div className="gap-y-2 p-4">
         {Array.from({ length: 10 }, (_, index) => index + 1).map((item) => (
           <p key={item}>Line {item}: This is some scrollable content to demonstrate different sizes.</p>
         ))}
@@ -71,19 +71,19 @@ export const Sizes: Story = {
 
     return (
       <div className="flex flex-col gap-6">
-        <div className="space-y-2">
+        <div className="gap-y-2">
           <div className="text-13 font-medium">Small</div>
           <ScrollArea className="h-48 w-80 rounded-lg border" size="sm">
             {content}
           </ScrollArea>
         </div>
-        <div className="space-y-2">
+        <div className="gap-y-2">
           <div className="text-13 font-medium">Medium</div>
           <ScrollArea className="h-48 w-80 rounded-lg border" size="md">
             {content}
           </ScrollArea>
         </div>
-        <div className="space-y-2">
+        <div className="gap-y-2">
           <div className="text-13 font-medium">Large</div>
           <ScrollArea className="h-48 w-80 rounded-lg border" size="lg">
             {content}
@@ -98,7 +98,7 @@ export const ScrollTypeAlways: Story = {
   render() {
     return (
       <ScrollArea className="h-64 w-80 rounded-lg border" scrollType="always">
-        <div className="space-y-2 p-4">
+        <div className="gap-y-2 p-4">
           <h3 className="text-16 font-semibold">Always Visible Scrollbar</h3>
           {Array.from({ length: 15 }, (_, index) => index + 1).map((item) => (
             <p key={item}>Line {item}: The scrollbar is always visible.</p>
@@ -113,7 +113,7 @@ export const ScrollTypeScroll: Story = {
   render() {
     return (
       <ScrollArea className="h-64 w-80 rounded-lg border" scrollType="scroll">
-        <div className="space-y-2 p-4">
+        <div className="gap-y-2 p-4">
           <h3 className="text-16 font-semibold">Scroll to Show</h3>
           <p className="text-13 text-placeholder">Scrollbar appears when scrolling</p>
           {Array.from({ length: 15 }, (_, index) => index + 1).map((item) => (
@@ -129,7 +129,7 @@ export const ScrollTypeHover: Story = {
   render() {
     return (
       <ScrollArea className="h-64 w-80 rounded-lg border" scrollType="hover">
-        <div className="space-y-2 p-4">
+        <div className="gap-y-2 p-4">
           <h3 className="text-16 font-semibold">Hover to Show</h3>
           <p className="text-13 text-placeholder">Scrollbar appears on hover</p>
           {Array.from({ length: 15 }, (_, index) => index + 1).map((item) => (
@@ -161,7 +161,7 @@ export const BothDirections: Story = {
   render() {
     return (
       <ScrollArea className="h-64 w-96 rounded-lg border">
-        <div className="w-[800px] space-y-2 p-4">
+        <div className="w-[800px] gap-y-2 p-4">
           <h3 className="text-16 font-semibold">Both Directions</h3>
           <p className="text-13 text-placeholder">Content scrolls both vertically and horizontally</p>
           {Array.from({ length: 20 }, (_, index) => index + 1).map((item) => (
@@ -182,7 +182,7 @@ export const ListExample: Story = {
       <ScrollArea className="h-80 w-96 rounded-lg border">
         <div className="p-4">
           <h3 className="mb-4 text-16 font-semibold">User List</h3>
-          <div className="space-y-2">
+          <div className="gap-y-2">
             {Array.from({ length: 25 }, (_, index) => index + 1).map((item) => (
               <div
                 key={item}
@@ -251,7 +251,7 @@ export const ChatMessages: Story = {
   render() {
     return (
       <ScrollArea className="h-96 w-full max-w-md rounded-lg border">
-        <div className="space-y-4 p-4">
+        <div className="gap-y-4 p-4">
           {Array.from({ length: 20 }, (_, index) => index + 1).map((item) => (
             <div key={item} className={`flex ${item % 3 === 1 ? "justify-end" : "justify-start"}`}>
               <div

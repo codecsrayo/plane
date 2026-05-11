@@ -55,7 +55,7 @@ export const SidePeekView = observer(function SidePeekView(props: Props) {
       ) : (
         <Loader className="px-6">
           <Loader.Item height="30px" />
-          <div className="mt-3 space-y-2">
+          <div className="mt-3 gap-y-2">
             <Loader.Item height="20px" width="70%" />
             <Loader.Item height="20px" width="60%" />
             <Loader.Item height="20px" width="60%" />

@@ -46,9 +46,9 @@ export function PageContentLoader(props: Props) {
       <div className="relative flex size-full overflow-hidden pt-[64px]">
         {/* editor loader */}
         <div className="size-full py-5">
-          <Loader className="relative space-y-4">
+          <Loader className="relative gap-y-4">
             <Loader.Item width="50%" height="36px" />
-            <div className="space-y-2">
+            <div className="gap-y-2">
               <div className="py-2">
                 <Loader.Item width="100%" height="36px" />
               </div>

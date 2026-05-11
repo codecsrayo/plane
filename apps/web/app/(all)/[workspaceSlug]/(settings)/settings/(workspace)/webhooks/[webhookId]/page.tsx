@@ -101,7 +101,7 @@ function WebhookDetailsPage({ params }: Route.ComponentProps) {
     <SettingsContentWrapper header={<WebhookDetailsWorkspaceSettingsHeader />}>
       <PageHead title={pageTitle} />
       <DeleteWebhookModal isOpen={deleteWebhookModal} onClose={() => setDeleteWebhookModal(false)} />
-      <div className="w-full space-y-8 overflow-y-auto">
+      <div className="w-full gap-y-8 overflow-y-auto">
         <div>
           <WebhookForm onSubmit={handleUpdateWebhook} data={currentWebhook} />
         </div>

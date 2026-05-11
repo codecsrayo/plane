@@ -234,7 +234,7 @@ export function ExistingIssuesListModal(props: Props) {
           )}
 
           {isSearching || isLoading ? (
-            <Loader className="space-y-3 p-3">
+            <Loader className="gap-y-3 p-3">
               <Loader.Item height="40px" />
               <Loader.Item height="40px" />
               <Loader.Item height="40px" />

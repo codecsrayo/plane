@@ -24,17 +24,17 @@ export const PageWrapper = (props: TPageWrapperProps) => {
 
   return (
     <div
-      className={cn("mx-auto h-full w-full space-y-6 py-4", {
+      className={cn("mx-auto h-full w-full gap-y-6 py-4", {
         "max-w-[1000px] md:px-4 2xl:max-w-[1200px]": size === "md",
         "px-4 lg:px-12": size === "lg",
       })}
     >
       {customHeader ? (
-        <div className="mx-4 shrink-0 space-y-1 border-b border-subtle py-4">{customHeader}</div>
+        <div className="mx-4 shrink-0 gap-y-1 border-b border-subtle py-4">{customHeader}</div>
       ) : (
         header && (
-          <div className="mx-4 flex shrink-0 items-center justify-between gap-4 space-y-1 border-b border-subtle py-4">
-            <div className={header.actions ? "flex flex-col gap-1" : "space-y-1"}>
+          <div className="mx-4 flex shrink-0 items-center justify-between gap-4 gap-y-1 border-b border-subtle py-4">
+            <div className={header.actions ? "flex flex-col gap-1" : "gap-y-1"}>
               <div className="text-h5-semibold text-primary">{header.title}</div>
               <div className="text-body-sm-regular text-secondary">{header.description}</div>
             </div>

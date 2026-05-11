@@ -94,7 +94,7 @@ const InstanceGitlabAuthenticationPage = observer(function InstanceGitlabAuthent
       {formattedConfig ? (
         <InstanceGitlabConfigForm config={formattedConfig} />
       ) : (
-        <Loader className="space-y-8">
+        <Loader className="gap-y-8">
           <Loader.Item height="50px" width="25%" />
           <Loader.Item height="50px" />
           <Loader.Item height="50px" />

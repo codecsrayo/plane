@@ -71,7 +71,7 @@ export function CycleForm(props: Props) {
 
   return (
     <form onSubmit={handleSubmit((formData) => handleFormSubmit(formData))}>
-      <div className="space-y-5 p-5">
+      <div className="gap-y-5 p-5">
         <div className="flex items-center gap-x-3">
           {!status && (
             <Controller
@@ -100,8 +100,8 @@ export function CycleForm(props: Props) {
             {status ? t("project_cycles.update_cycle") : t("project_cycles.create_cycle")}
           </h3>
         </div>
-        <div className="space-y-3">
-          <div className="space-y-1">
+        <div className="gap-y-3">
+          <div className="gap-y-1">
             <Controller
               name="name"
               control={control}

@@ -67,7 +67,7 @@ export const ProfileActivityListPage = observer(function ProfileActivityListPage
             if (activityItem.field === "comment")
               return (
                 <div key={activityItem.id} className="mt-2">
-                  <div className="relative flex items-start space-x-3">
+                  <div className="relative flex items-start gap-x-3">
                     <div className="relative px-1">
                       {activityItem.field ? (
                         activityItem.new_value === "restore" && <History className="h-3.5 w-3.5 text-secondary" />
@@ -124,7 +124,7 @@ export const ProfileActivityListPage = observer(function ProfileActivityListPage
               return (
                 <li key={activityItem.id}>
                   <div className="relative pb-1">
-                    <div className="relative flex items-start space-x-2">
+                    <div className="relative flex items-start gap-x-2">
                       <>
                         <div>
                           <div className="relative mt-4 px-1.5">

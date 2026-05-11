@@ -8,7 +8,7 @@ import { range } from "lodash-es";
 
 export function PagesLoader() {
   return (
-    <div className="flex h-full flex-col space-y-5 overflow-hidden p-6">
+    <div className="flex h-full flex-col gap-y-5 overflow-hidden p-6">
       <div className="flex justify-between gap-4">
         <h3 className="text-20 font-semibold text-primary">Pages</h3>
       </div>

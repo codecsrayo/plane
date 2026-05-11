@@ -44,7 +44,7 @@ export const BasePaidPlanCard = observer(function BasePaidPlanCard(props: TBaseP
     <div className="flex flex-col rounded-xl border border-subtle bg-layer-2 px-3 py-6">
       <Tab.Group selectedIndex={selectedPlan === "month" ? 0 : 1}>
         <div className="flex h-9 w-full justify-center">
-          <Tab.List className="flex w-60 space-x-1 rounded-md bg-layer-3 p-0.5">
+          <Tab.List className="flex w-60 gap-x-1 rounded-md bg-layer-3 p-0.5">
             {prices.map((price: TSubscriptionPrice) => (
               <Tab
                 key={price.key}

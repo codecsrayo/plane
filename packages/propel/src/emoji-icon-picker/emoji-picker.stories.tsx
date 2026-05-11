@@ -34,7 +34,7 @@ export const Default: Story = {
     const [selectedValue, setSelectedValue] = useState<TChangeHandlerProps | null>(null);
 
     return (
-      <div className="space-y-4 p-4">
+      <div className="gap-y-4 p-4">
         <EmojiPicker
           isOpen={isOpen}
           handleToggle={setIsOpen}
@@ -66,7 +66,7 @@ export const OpenToEmojiTab: Story = {
     const [selectedValue, setSelectedValue] = useState<TChangeHandlerProps | null>(null);
 
     return (
-      <div className="space-y-4 p-4">
+      <div className="gap-y-4 p-4">
         <EmojiPicker
           isOpen={isOpen}
           handleToggle={setIsOpen}
@@ -95,7 +95,7 @@ export const OpenToIconTab: Story = {
     const [selectedValue, setSelectedValue] = useState<TChangeHandlerProps | null>(null);
 
     return (
-      <div className="space-y-4 p-4">
+      <div className="gap-y-4 p-4">
         <EmojiPicker
           isOpen={isOpen}
           handleToggle={setIsOpen}
@@ -129,7 +129,7 @@ export const LucideIcons: Story = {
     const [selectedValue, setSelectedValue] = useState<TChangeHandlerProps | null>(null);
 
     return (
-      <div className="space-y-4 p-4">
+      <div className="gap-y-4 p-4">
         <EmojiPicker
           isOpen={isOpen}
           handleToggle={setIsOpen}
@@ -162,7 +162,7 @@ export const MaterialIcons: Story = {
     const [selectedValue, setSelectedValue] = useState<TChangeHandlerProps | null>(null);
 
     return (
-      <div className="space-y-4 p-4">
+      <div className="gap-y-4 p-4">
         <EmojiPicker
           isOpen={isOpen}
           handleToggle={setIsOpen}
@@ -199,7 +199,7 @@ export const CloseOnSelectDisabled: Story = {
     };
 
     return (
-      <div className="space-y-4 p-4">
+      <div className="gap-y-4 p-4">
         <div className="flex items-center gap-2">
           <EmojiPicker
             isOpen={isOpen}
@@ -248,7 +248,7 @@ export const CustomSearchPlaceholder: Story = {
     const [selectedValue, setSelectedValue] = useState<TChangeHandlerProps | null>(null);
 
     return (
-      <div className="space-y-4 p-4">
+      <div className="gap-y-4 p-4">
         <EmojiPicker
           isOpen={isOpen}
           handleToggle={setIsOpen}
@@ -276,7 +276,7 @@ export const SearchDisabled: Story = {
     const [selectedValue, setSelectedValue] = useState<TChangeHandlerProps | null>(null);
 
     return (
-      <div className="space-y-4 p-4">
+      <div className="gap-y-4 p-4">
         <EmojiPicker
           isOpen={isOpen}
           handleToggle={setIsOpen}
@@ -304,7 +304,7 @@ export const CustomIconColor: Story = {
     const [selectedValue, setSelectedValue] = useState<TChangeHandlerProps | null>(null);
 
     return (
-      <div className="space-y-4 p-4">
+      <div className="gap-y-4 p-4">
         <EmojiPicker
           isOpen={isOpen}
           handleToggle={setIsOpen}
@@ -338,7 +338,7 @@ export const DifferentPlacements: Story = {
     const [isOpen4, setIsOpen4] = useState(false);
 
     return (
-      <div className="space-y-8 p-8">
+      <div className="gap-y-8 p-8">
         <div className="flex items-center gap-4">
           <span className="w-32 text-13">Bottom Start:</span>
           <EmojiPicker
@@ -409,7 +409,7 @@ export const InFormContext: Story = {
 
     return (
       <div className="max-w-md p-4">
-        <form onSubmit={handleSubmit} className="space-y-4 rounded-lg border border-subtle p-6">
+        <form onSubmit={handleSubmit} className="gap-y-4 rounded-lg border border-subtle p-6">
           <div>
             <label htmlFor="project-title" className="mb-2 block text-13 font-medium">
               Project Title

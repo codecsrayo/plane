@@ -173,7 +173,7 @@ export const ComplexContent: Story = {
   args: {
     tooltipHeading: "User Information",
     tooltipContent: (
-      <div className="space-y-1">
+      <div className="gap-y-1">
         <p className="font-semibold">John Doe</p>
         <p className="text-11">john@example.com</p>
         <p className="text-gray-400 text-11">Last seen: 2 hours ago</p>

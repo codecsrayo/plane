@@ -119,7 +119,7 @@ export const RoleSetupStep = observer(function RoleSetupStep({ handleStepChange 
                         : "border-subtle text-tertiary hover:border-strong"
                     }`}
                   >
-                    <div className="flex items-center space-x-3">
+                    <div className="flex items-center gap-x-3">
                       <Icon className="size-3.5" />
                       <span className="text-body-sm-semibold">{role.label}</span>
                     </div>
@@ -141,7 +141,7 @@ export const RoleSetupStep = observer(function RoleSetupStep({ handleStepChange 
         {errors.role && <span className="text-13 text-danger-primary">{errors.role.message}</span>}
       </div>
       {/* Action Buttons */}
-      <div className="space-y-3">
+      <div className="gap-y-3">
         <Button variant="primary" type="submit" className="w-full" size="xl" disabled={isButtonDisabled}>
           Continue
         </Button>

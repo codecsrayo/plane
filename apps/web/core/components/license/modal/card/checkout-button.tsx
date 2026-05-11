@@ -72,7 +72,7 @@ export const PlanCheckoutButton = observer(function PlanCheckoutButton(props: Pr
           <Loader.Item height="38px" width="14rem" />
         </Loader>
       ) : (
-        <div className="flex w-full flex-col items-center justify-center space-y-4">
+        <div className="flex w-full flex-col items-center justify-center gap-y-4">
           <Button
             variant="primary"
             size="lg"

@@ -46,7 +46,7 @@ export const FullScreenPeekView = observer(function FullScreenPeekView(props: Pr
         ) : (
           <Loader className="px-6">
             <Loader.Item height="30px" />
-            <div className="mt-3 space-y-2">
+            <div className="mt-3 gap-y-2">
               <Loader.Item height="20px" width="70%" />
               <Loader.Item height="20px" width="60%" />
               <Loader.Item height="20px" width="60%" />
@@ -60,7 +60,7 @@ export const FullScreenPeekView = observer(function FullScreenPeekView(props: Pr
           {issueDetails ? (
             <PeekOverviewIssueProperties issueDetails={issueDetails} />
           ) : (
-            <Loader className="mt-11 space-y-4">
+            <Loader className="mt-11 gap-y-4">
               <Loader.Item height="30px" />
               <Loader.Item height="30px" />
               <Loader.Item height="30px" />

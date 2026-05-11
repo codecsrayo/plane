@@ -180,7 +180,7 @@ export const WorkspaceAuthWrapper = observer(function WorkspaceAuthWrapper(props
               </button>
             </div>
           </div>
-          <div className="relative flex h-full w-full flex-grow flex-col items-center justify-center space-y-3">
+          <div className="relative flex h-full w-full flex-grow flex-col items-center justify-center gap-y-3">
             <div className="relative flex-shrink-0">
               <img src={WorkSpaceNotAvailable} className="h-[220px] object-contain object-center" alt="Plane logo" />
             </div>
@@ -217,8 +217,8 @@ export const WorkspaceAuthWrapper = observer(function WorkspaceAuthWrapper(props
     return (
       <div className="h-screen w-full overflow-hidden bg-surface-1">
         <div className="grid h-full place-items-center p-4">
-          <div className="space-y-8 text-center">
-            <div className="space-y-2">
+          <div className="gap-y-8 text-center">
+            <div className="gap-y-2">
               <h3 className="text-16 font-semibold">Unable to load workspace</h3>
               <p className="mx-auto w-1/2 text-13 text-secondary">
                 We could not complete the workspace bootstrap. Please retry the load.
@@ -240,8 +240,8 @@ export const WorkspaceAuthWrapper = observer(function WorkspaceAuthWrapper(props
     return (
       <div className={`h-screen w-full overflow-hidden bg-surface-1`}>
         <div className="grid h-full place-items-center p-4">
-          <div className="space-y-8 text-center">
-            <div className="space-y-2">
+          <div className="gap-y-8 text-center">
+            <div className="gap-y-2">
               <h3 className="text-16 font-semibold">Not Authorized!</h3>
               <p className="mx-auto w-1/2 text-13 text-secondary">
                 You{"'"}re not a member of this workspace. Please contact the workspace admin to get an invitation or

@@ -137,7 +137,7 @@ export const DescriptionVersionsModal = observer(function DescriptionVersionsMod
               workspaceSlug={workspaceSlug}
             />
           ) : (
-            <div className="space-y-1">
+            <div className="gap-y-1">
               <Loader.Item width="300px" height="15px" />
               <Loader.Item width="400px" height="15px" />
               <div className="flex items-center gap-2">

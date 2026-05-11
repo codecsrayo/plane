@@ -147,7 +147,7 @@ export function InstanceEmailForm(props: IInstanceEmailForm) {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="gap-y-8">
       <div>
         <SendTestEmailModal isOpen={isSendTestEmailModalOpen} handleClose={() => setIsSendTestEmailModalOpen(false)} />
         <div className="grid-col grid w-full max-w-4xl grid-cols-1 items-start justify-between gap-10 lg:grid-cols-2">

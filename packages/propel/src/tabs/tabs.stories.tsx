@@ -320,7 +320,7 @@ export const WithComplexContent: Story = {
             <Tabs.Indicator />
           </Tabs.List>
           <Tabs.Content value="account" className="p-4">
-            <div className="space-y-4">
+            <div className="gap-y-4">
               <div>
                 <label htmlFor="tabs-username" className="text-13 font-medium">
                   Username
@@ -336,7 +336,7 @@ export const WithComplexContent: Story = {
             </div>
           </Tabs.Content>
           <Tabs.Content value="password" className="p-4">
-            <div className="space-y-4">
+            <div className="gap-y-4">
               <div>
                 <label htmlFor="tabs-current-password" className="text-13 font-medium">
                   Current Password
@@ -356,7 +356,7 @@ export const WithComplexContent: Story = {
             </div>
           </Tabs.Content>
           <Tabs.Content value="notifications" className="p-4">
-            <div className="space-y-3">
+            <div className="gap-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-13">Email notifications</span>
                 <input type="checkbox" />

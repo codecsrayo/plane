@@ -32,7 +32,7 @@ const InstanceIntegrationsPage = observer(function InstanceIntegrationsPage(_pro
       {formattedConfig ? (
         <InstanceIntegrationsConfigForm config={formattedConfig} />
       ) : (
-        <Loader className="space-y-8">
+        <Loader className="gap-y-8">
           <Loader.Item height="50px" width="40%" />
           <Loader.Item height="50px" />
           <Loader.Item height="50px" />

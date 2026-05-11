@@ -98,7 +98,7 @@ export const AllStates: Story = {
     const [disabledChecked] = useState(true);
 
     return (
-      <div className="space-y-4">
+      <div className="gap-y-4">
         <div className="flex items-center gap-4">
           <Switch value={unchecked} onChange={setUnchecked} />
           <span className="text-gray-600 text-13">Unchecked</span>
@@ -129,7 +129,7 @@ export const InForm: Story = {
     return (
       <div className="border-gray-200 shadow-md w-80 rounded-lg border bg-white p-6">
         <h3 className="text-16 font-semibold">Notification Settings</h3>
-        <div className="mt-4 space-y-4">
+        <div className="mt-4 gap-y-4">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-13 font-medium">Push Notifications</p>
@@ -182,7 +182,7 @@ export const Interactive: Story = {
     const [enabled, setEnabled] = useState(false);
 
     return (
-      <div className="border-gray-200 w-80 space-y-4 rounded-lg border bg-white p-6">
+      <div className="border-gray-200 w-80 gap-y-4 rounded-lg border bg-white p-6">
         <div className="flex items-center justify-between">
           <span className="text-13 font-medium">Feature Toggle</span>
           <Switch value={enabled} onChange={setEnabled} size="md" />
@@ -233,7 +233,7 @@ export const MultipleControls: Story = {
     return (
       <div className="border-gray-200 w-96 rounded-lg border bg-white p-6">
         <h3 className="mb-4 text-16 font-semibold">Feature Flags</h3>
-        <div className="space-y-3">
+        <div className="gap-y-3">
           {Object.entries(settings).map(([key, value]) => (
             <div key={key} className="flex items-center justify-between">
               <span className="text-13 capitalize">{key.replace(/([A-Z])/g, " $1").trim()}</span>

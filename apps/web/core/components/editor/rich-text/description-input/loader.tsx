@@ -16,7 +16,7 @@ export function DescriptionInputLoader(props: Props) {
   const { className } = props;
 
   return (
-    <Loader className={cn("space-y-2", className)}>
+    <Loader className={cn("gap-y-2", className)}>
       <Loader.Item width="100%" height="26px" />
       <div className="flex items-center gap-2">
         <Loader.Item width="26px" height="26px" />

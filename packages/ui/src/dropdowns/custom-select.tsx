@@ -125,7 +125,7 @@ function CustomSelect(props: ICustomSelectProps) {
               <Combobox.Options data-prevent-outside-click>
                 <div
                   className={cn(
-                    "z-30 my-1 min-w-48 overflow-y-scroll rounded-md border-[0.5px] border-subtle-1 bg-surface-1 px-2 py-2.5 text-11 whitespace-nowrap focus:outline-none",
+                    "z-30 my-1 min-w-48 overflow-y-scroll rounded-md border-[0.5px] border-subtle-1 bg-surface-1 p-2.5 text-11 whitespace-nowrap focus:outline-none",
                     optionsClassName
                   )}
                   ref={setPopperElement}
@@ -133,7 +133,7 @@ function CustomSelect(props: ICustomSelectProps) {
                   {...attributes.popper}
                 >
                   <div
-                    className={cn("space-y-1 overflow-y-scroll", {
+                    className={cn("gap-y-1 overflow-y-scroll", {
                       "max-h-60": maxHeight === "lg",
                       "max-h-48": maxHeight === "md",
                       "max-h-36": maxHeight === "rg",
@@ -170,7 +170,7 @@ function Option(props: ICustomSelectItemProps) {
       value={value}
       className={({ active }) =>
         cn(
-          "flex cursor-pointer items-center justify-between gap-2 truncate rounded-sm px-1 py-1.5 text-secondary select-none",
+          "flex cursor-pointer items-center justify-between gap-2 truncate rounded-sm p-1.5 text-secondary select-none",
           {
             "bg-layer-transparent-hover": active,
           },

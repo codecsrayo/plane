@@ -82,7 +82,7 @@ const WorkspaceManagementPage = observer(function WorkspaceManagementPage(_props
         description: "See all workspaces and control who can create them.",
       }}
     >
-      <div className="space-y-3">
+      <div className="gap-y-3">
         {formattedConfig ? (
           <div className={cn("flex w-full items-center gap-14 rounded-sm")}>
             <div className="flex grow items-center gap-4">
@@ -156,7 +156,7 @@ const WorkspaceManagementPage = observer(function WorkspaceManagementPage(_props
             )}
           </>
         ) : (
-          <Loader className="space-y-10 py-8">
+          <Loader className="gap-y-10 py-8">
             <Loader.Item height="24px" width="20%" />
             <Loader.Item height="92px" width="100%" />
             <Loader.Item height="92px" width="100%" />

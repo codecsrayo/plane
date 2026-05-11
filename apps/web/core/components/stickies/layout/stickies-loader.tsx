@@ -13,12 +13,12 @@ export function StickiesLoader() {
   return (
     <div className="grid grid-cols-4 gap-4 overflow-scroll pb-2">
       {stickyLoaderKeys.map((stickyLoaderKey) => (
-        <Loader key={stickyLoaderKey} className="space-y-5 rounded-sm border border-subtle p-3">
-          <div className="space-y-2">
+        <Loader key={stickyLoaderKey} className="gap-y-5 rounded-sm border border-subtle p-3">
+          <div className="gap-y-2">
             <Loader.Item height="20px" />
             <Loader.Item height="15px" width="75%" />
           </div>
-          <div className="space-y-2">
+          <div className="gap-y-2">
             <div className="flex items-center gap-2">
               <Loader.Item height="15px" width="15px" className="flex-shrink-0" />
               <Loader.Item height="15px" width="100%" />

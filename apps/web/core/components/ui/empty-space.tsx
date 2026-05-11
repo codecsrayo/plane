@@ -57,7 +57,7 @@ type EmptySpaceItemProps = {
 
 function EmptySpaceItem({ title, description, Icon, action, href }: EmptySpaceItemProps) {
   let spaceItem = (
-    <div className={`group relative flex ${description ? "items-start" : "items-center"} space-x-3 py-4`}>
+    <div className={`group relative flex ${description ? "items-start" : "items-center"} gap-x-3 py-4`}>
       <div className="flex-shrink-0">
         <span className="inline-flex size-10 items-center justify-center rounded-lg bg-accent-primary">
           <Icon className="size-6 text-on-color" aria-hidden="true" />

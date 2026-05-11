@@ -110,12 +110,12 @@ export const CreateWorkspaceForm = observer(function CreateWorkspaceForm(props: 
 
   return (
     <form
-      className="space-y-6 sm:space-y-9"
+      className="gap-y-6 sm:gap-y-9"
       onSubmit={(e) => {
         void handleSubmit(handleCreateWorkspace)(e);
       }}
     >
-      <div className="space-y-6 sm:space-y-7">
+      <div className="gap-y-6 sm:gap-y-7">
         <div className="flex flex-col gap-2 text-13">
           <label htmlFor="workspaceName">
             {t("workspace_creation.form.name.label")}

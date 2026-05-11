@@ -52,7 +52,7 @@ export function DateFilterModal({ title, handleClose, isOpen, onSelect }: Props)
 
   return (
     <ModalCore isOpen={isOpen} handleClose={handleClose} position={EModalPosition.CENTER} width={EModalWidth.XXL}>
-      <form className="space-y-4 px-5 py-8 sm:p-6">
+      <form className="gap-y-4 px-5 py-8 sm:p-6">
         <div className="flex w-full justify-between">
           <Controller
             control={control}

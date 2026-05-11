@@ -23,8 +23,8 @@ export function GeneratedHookDetails(props: Props) {
 
   return (
     <>
-      <div className="space-y-5 p-5">
-        <div className="space-y-3">
+      <div className="gap-y-5 p-5">
+        <div className="gap-y-3">
           <h3 className="text-18 font-medium text-secondary">{t("workspace_settings.key_created")}</h3>
           <p className="text-13 text-placeholder">{t("workspace_settings.copy_key")}</p>
         </div>

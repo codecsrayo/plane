@@ -104,7 +104,7 @@ export const AuthPasswordForm = observer(function AuthPasswordForm(props: Props)
   return (
     <form
       ref={formRef}
-      className="mt-5 space-y-4"
+      className="mt-5 gap-y-4"
       method="POST"
       action={`${API_BASE_URL}/auth/spaces/${mode === EAuthModes.SIGN_IN ? "sign-in" : "sign-up"}/`}
       onSubmit={async (event) => {
@@ -120,7 +120,7 @@ export const AuthPasswordForm = observer(function AuthPasswordForm(props: Props)
       <input type="hidden" name="csrfmiddlewaretoken" />
       <input type="hidden" value={passwordFormData.email} name="email" />
       <input type="hidden" value={nextPath} name="next_path" />
-      <div className="space-y-1">
+      <div className="gap-y-1">
         <label className="text-13 font-medium text-tertiary" htmlFor="email">
           Email
         </label>
@@ -144,7 +144,7 @@ export const AuthPasswordForm = observer(function AuthPasswordForm(props: Props)
         </div>
       </div>
 
-      <div className="space-y-1">
+      <div className="gap-y-1">
         <label className="text-13 font-medium text-tertiary" htmlFor="password">
           {mode === EAuthModes.SIGN_IN ? "Password" : "Set a password"}
         </label>
@@ -176,7 +176,7 @@ export const AuthPasswordForm = observer(function AuthPasswordForm(props: Props)
       </div>
 
       {mode === EAuthModes.SIGN_UP && (
-        <div className="space-y-1">
+        <div className="gap-y-1">
           <label className="text-13 font-medium text-tertiary" htmlFor="confirm_password">
             Confirm password
           </label>
@@ -210,7 +210,7 @@ export const AuthPasswordForm = observer(function AuthPasswordForm(props: Props)
         </div>
       )}
 
-      <div className="space-y-2.5">
+      <div className="gap-y-2.5">
         {mode === EAuthModes.SIGN_IN ? (
           <>
             <Button type="submit" variant="primary" className="w-full" size="xl" disabled={isButtonDisabled}>

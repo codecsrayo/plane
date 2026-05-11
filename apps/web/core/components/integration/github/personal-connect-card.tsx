@@ -159,7 +159,7 @@ export function GithubPersonalConnectCard({ githubClientId }: Props) {
   if (!githubClientId) return null;
 
   return (
-    <div className="border-custom-border-200 bg-custom-background-100 space-y-4 rounded-lg border p-5">
+    <div className="border-custom-border-200 bg-custom-background-100 gap-y-4 rounded-lg border p-5">
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-sm text-custom-text-100 font-semibold">Your GitHub Account</h2>

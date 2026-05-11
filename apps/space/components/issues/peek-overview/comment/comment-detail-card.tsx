@@ -66,7 +66,7 @@ export const CommentCard = observer(function CommentCard(props: Props) {
   };
 
   return (
-    <div className="relative flex items-start space-x-3">
+    <div className="relative flex items-start gap-x-3">
       <div className="relative px-1">
         {comment.actor_detail.avatar_url && comment.actor_detail.avatar_url !== "" ? (
           <img
@@ -195,7 +195,7 @@ export const CommentCard = observer(function CommentCard(props: Props) {
                       onClick={() => {
                         setIsEditing(true);
                       }}
-                      className={`w-full truncate rounded-sm px-1 py-1.5 text-left text-secondary select-none hover:bg-layer-transparent-hover ${
+                      className={`w-full truncate rounded-sm p-1.5 text-left text-secondary select-none hover:bg-layer-transparent-hover ${
                         active ? "bg-layer-transparent-hover" : ""
                       }`}
                     >
@@ -210,7 +210,7 @@ export const CommentCard = observer(function CommentCard(props: Props) {
                     <button
                       type="button"
                       onClick={handleDelete}
-                      className={`w-full truncate rounded-sm px-1 py-1.5 text-left text-secondary select-none hover:bg-layer-transparent-hover ${
+                      className={`w-full truncate rounded-sm p-1.5 text-left text-secondary select-none hover:bg-layer-transparent-hover ${
                         active ? "bg-layer-transparent-hover" : ""
                       }`}
                     >

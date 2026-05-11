@@ -45,7 +45,7 @@ export function ProfileStats({ userProfile }: Props) {
   ];
 
   return (
-    <div className="space-y-2">
+    <div className="gap-y-2">
       <h3 className="text-16 font-medium">{t("profile.stats.overview")}</h3>
       {userProfile ? (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -55,7 +55,7 @@ export function ProfileStats({ userProfile }: Props) {
                 <div className="grid size-11 place-items-center rounded-sm bg-surface-2">
                   <card.icon className="size-5" />
                 </div>
-                <div className="space-y-1">
+                <div className="gap-y-1">
                   <p className="text-13 text-placeholder">{t(card.i18n_title)}</p>
                   <p className="text-18 font-semibold">{card.value}</p>
                 </div>

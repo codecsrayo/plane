@@ -139,11 +139,11 @@ export const ModuleAnalyticsSidebar = observer(function ModuleAnalyticsSidebar(p
   if (!moduleDetails)
     return (
       <Loader>
-        <div className="space-y-2">
+        <div className="gap-y-2">
           <Loader.Item height="15px" width="50%" />
           <Loader.Item height="15px" width="30%" />
         </div>
-        <div className="mt-8 space-y-3">
+        <div className="mt-8 gap-y-3">
           <Loader.Item height="30px" />
           <Loader.Item height="30px" />
           <Loader.Item height="30px" />
@@ -390,7 +390,7 @@ export const ModuleAnalyticsSidebar = observer(function ModuleAnalyticsSidebar(p
                   </Disclosure.Button>
                   <Transition show={open}>
                     <Disclosure.Panel>
-                      <div className="mt-2 flex min-h-72 w-full flex-col space-y-3 overflow-y-auto">
+                      <div className="mt-2 flex min-h-72 w-full flex-col gap-y-3 overflow-y-auto">
                         {isEditingAllowed && moduleDetails.link_module && moduleDetails.link_module.length > 0 ? (
                           <>
                             {isEditingAllowed && !isArchived && (

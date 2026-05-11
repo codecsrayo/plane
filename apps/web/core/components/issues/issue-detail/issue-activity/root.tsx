@@ -105,7 +105,7 @@ export const IssueActivity = observer(function IssueActivity(props: TIssueActivi
   if (!project) return <></>;
 
   return (
-    <div className="space-y-4">
+    <div className="gap-y-4">
       {/* header */}
       <div className="flex items-center justify-between">
         <div className="text-h5-medium text-primary">{t("common.activity")}</div>
@@ -129,9 +129,9 @@ export const IssueActivity = observer(function IssueActivity(props: TIssueActivi
       </div>
 
       {/* rendering activity */}
-      <div className="space-y-3">
+      <div className="gap-y-3">
         <div className="min-h-[200px]">
-          <div className="space-y-3">
+          <div className="gap-y-3">
             {!disabled && sortOrder === E_SORT_ORDER.DESC && renderCommentCreationBox}
             <IssueActivityCommentRoot
               projectId={projectId}

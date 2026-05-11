@@ -94,7 +94,7 @@ export const CoreEditorExtensions = (args: TArguments): Extensions => {
     TextStyle,
     TaskListExtension.configure({
       HTMLAttributes: {
-        class: "not-prose pl-2 space-y-2",
+        class: "not-prose pl-2 gap-y-2",
       },
     }),
     TaskItemExtension.configure({

@@ -209,7 +209,7 @@ export const InMessageContext: Story = {
     };
 
     return (
-      <div className="max-w-md space-y-3 rounded-lg border border-subtle p-4">
+      <div className="max-w-md gap-y-3 rounded-lg border border-subtle p-4">
         <div className="flex items-start gap-3">
           <div className="flex size-8 items-center justify-center rounded-full bg-accent-primary text-13 text-on-color">
             AB

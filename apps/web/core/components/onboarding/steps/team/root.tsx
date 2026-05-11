@@ -205,7 +205,7 @@ const InviteMemberInput = observer(function InviteMemberInput(props: InviteMembe
 
                 <Listbox.Options as="div">
                   <div
-                    className="shadow-sm absolute z-10 mt-1 h-fit w-48 space-y-1 rounded-md border border-strong bg-surface-1 p-2 focus:outline-none sm:w-60"
+                    className="shadow-sm absolute z-10 mt-1 h-fit w-48 gap-y-1 rounded-md border border-strong bg-surface-1 p-2 focus:outline-none sm:w-60"
                     ref={setPopperElement}
                     style={styles.popper}
                     {...attributes.popper}
@@ -216,7 +216,7 @@ const InviteMemberInput = observer(function InviteMemberInput(props: InviteMembe
                         key={key}
                         value={parseInt(key)}
                         className={({ active, selected }) =>
-                          `cursor-pointer truncate rounded-sm px-1 py-1.5 select-none ${
+                          `cursor-pointer truncate rounded-sm p-1.5 select-none ${
                             active || selected ? "bg-onboarding-background-400/40" : ""
                           } ${selected ? "text-primary" : "text-secondary"}`
                         }
@@ -349,7 +349,7 @@ export const InviteTeamStep = observer(function InviteTeamStep(props: Props) {
           <div className="col-span-6 px-1 text-13 font-medium text-secondary">Email</div>
           <div className="col-span-4 px-1 text-13 font-medium text-secondary">Role</div>
         </div>
-        <div className="mb-3 space-y-3 sm:space-y-4">
+        <div className="mb-3 gap-y-3 sm:gap-y-4">
           {fields.map((field, index) => (
             <InviteMemberInput
               watch={watch}

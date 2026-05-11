@@ -75,7 +75,7 @@ export const PeekOverviewIssueProperties = observer(function PeekOverviewIssuePr
           </div>
         </div>
       )}
-      <div className={`space-y-2 ${mode === "full" ? "pt-3" : ""}`}>
+      <div className={`gap-y-2 ${mode === "full" ? "pt-3" : ""}`}>
         <div className="flex h-8 items-center gap-3">
           <div className="flex w-1/4 flex-shrink-0 items-center gap-1 text-13 text-tertiary">
             <StatePropertyIcon className="size-4 flex-shrink-0" />

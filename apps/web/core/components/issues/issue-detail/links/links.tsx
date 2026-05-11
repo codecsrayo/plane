@@ -32,7 +32,7 @@ export const IssueLinkList = observer(function IssueLinkList(props: TIssueLinkLi
   if (!issueLinks) return <></>;
 
   return (
-    <div className="space-y-2">
+    <div className="gap-y-2">
       {issueLinks &&
         issueLinks.length > 0 &&
         issueLinks.map((linkId) => (

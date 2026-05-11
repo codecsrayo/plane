@@ -102,7 +102,7 @@ export const FilterMembers = observer(function FilterMembers(props: Props) {
               <p className="text-11 text-placeholder italic">No matches found</p>
             )
           ) : (
-            <Loader className="space-y-2">
+            <Loader className="gap-y-2">
               <Loader.Item height="20px" />
               <Loader.Item height="20px" />
               <Loader.Item height="20px" />

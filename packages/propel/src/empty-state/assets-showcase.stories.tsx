@@ -136,7 +136,7 @@ export const AllAssets: Story = {
     },
   },
   render: () => (
-    <div className="space-y-12 p-8">
+    <div className="gap-y-12 p-8">
       {/* Horizontal Stack */}
       <div>
         <div className="mb-6">

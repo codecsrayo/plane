@@ -37,7 +37,7 @@ export function TabNavigationOverflowMenu({ overflowItems, isActive, tabPreferen
     <Menu
       ellipsis
       buttonClassName="!p-1.5"
-      optionsClassName="min-w-[200px] space-y-1"
+      optionsClassName="min-w-[200px] gap-y-1"
       customButton={
         <div className="flex items-center justify-center rounded-md p-1 transition-colors hover:bg-layer-1">
           <MoreHorizontal className="size-4 text-secondary" />

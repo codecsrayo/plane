@@ -119,7 +119,7 @@ const InstanceAuthenticationPage = observer(function InstanceAuthenticationPage(
       }}
     >
       {formattedConfig ? (
-        <div className="space-y-3">
+        <div className="gap-y-3">
           <div className={cn("flex w-full items-center gap-14 rounded-sm")}>
             <div className="flex grow items-center gap-4">
               <div className="grow">
@@ -160,7 +160,7 @@ const InstanceAuthenticationPage = observer(function InstanceAuthenticationPage(
           ))}
         </div>
       ) : (
-        <Loader className="space-y-10">
+        <Loader className="gap-y-10">
           <Loader.Item height="50px" width="75%" />
           <Loader.Item height="50px" width="75%" />
           <Loader.Item height="50px" width="40%" />

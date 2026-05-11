@@ -132,7 +132,7 @@ export const CenteredInCard: Story = {
   render() {
     return (
       <div className="border-gray-200 shadow-md w-96 rounded-lg border bg-white p-8">
-        <div className="flex flex-col items-center justify-center space-y-4">
+        <div className="flex flex-col items-center justify-center gap-y-4">
           <CircularBarSpinner height="48px" width="48px" />
           <p className="text-gray-600 text-13">Processing data…</p>
         </div>

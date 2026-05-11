@@ -102,7 +102,7 @@ export const WebhookSecretKey = observer(function WebhookSecretKey(props: Props)
   return (
     <>
       {(data || webhookSecretKey) && (
-        <div className="space-y-2">
+        <div className="gap-y-2">
           {webhookId && (
             <div className="text-13 font-medium">{t("workspace_settings.settings.webhooks.secret_key.title")}</div>
           )}

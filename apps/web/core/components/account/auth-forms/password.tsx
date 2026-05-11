@@ -149,7 +149,7 @@ export const AuthPasswordForm = observer(function AuthPasswordForm(props: Props)
       )}
       <form
         ref={formRef}
-        className="space-y-4"
+        className="gap-y-4"
         method="POST"
         action={`${API_BASE_URL}/auth/${mode === EAuthModes.SIGN_IN ? "sign-in" : "sign-up"}/`}
         onSubmit={async (event) => {
@@ -173,7 +173,7 @@ export const AuthPasswordForm = observer(function AuthPasswordForm(props: Props)
         <input type="hidden" name="csrfmiddlewaretoken" />
         <input type="hidden" value={passwordFormData.email} name="email" />
         {nextPath && <input type="hidden" value={nextPath} name="next_path" />}
-        <div className="space-y-1">
+        <div className="gap-y-1">
           <label htmlFor="email" className="text-13 font-medium text-tertiary">
             {t("auth.common.email.label")}
           </label>
@@ -201,7 +201,7 @@ export const AuthPasswordForm = observer(function AuthPasswordForm(props: Props)
           </div>
         </div>
 
-        <div className="space-y-1">
+        <div className="gap-y-1">
           <label htmlFor="password" className="text-13 font-medium text-tertiary">
             {mode === EAuthModes.SIGN_IN ? t("auth.common.password.label") : t("auth.common.password.set_password")}
           </label>
@@ -237,7 +237,7 @@ export const AuthPasswordForm = observer(function AuthPasswordForm(props: Props)
         </div>
 
         {mode === EAuthModes.SIGN_UP && (
-          <div className="space-y-1">
+          <div className="gap-y-1">
             <label htmlFor="confirm-password" className="text-13 font-medium text-tertiary">
               {t("auth.common.password.confirm_password.label")}
             </label>
@@ -279,7 +279,7 @@ export const AuthPasswordForm = observer(function AuthPasswordForm(props: Props)
           </div>
         )}
 
-        <div className="space-y-2.5">
+        <div className="gap-y-2.5">
           {mode === EAuthModes.SIGN_IN ? (
             <>
               <Button type="submit" variant="primary" className="w-full" size="xl" disabled={!isButtonEnabled}>

@@ -128,7 +128,7 @@ export const MultiSelectWithLimit: Story = {
     const [value, setValue] = useState<string[]>([]);
 
     return (
-      <div className="space-y-2">
+      <div className="gap-y-2">
         <Combobox multiSelect maxSelections={3} value={value} onValueChange={(v) => setValue(v as string[])}>
           <Combobox.Button className="border-gray-300 hover:bg-gray-50 flex w-72 items-center justify-between rounded-md border bg-white px-4 py-2">
             <span className="truncate">

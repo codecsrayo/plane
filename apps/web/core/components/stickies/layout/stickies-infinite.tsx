@@ -43,7 +43,7 @@ export const StickiesInfinite = observer(function StickiesInfinite() {
   useIntersectionObserver(containerRef, shouldObserve ? elementRef : null, handleLoadMore);
 
   return (
-    <ContentWrapper ref={containerRef} className="space-y-4">
+    <ContentWrapper ref={containerRef} className="gap-y-4">
       <StickiesLayout
         workspaceSlug={workspaceSlug.toString()}
         intersectionElement={

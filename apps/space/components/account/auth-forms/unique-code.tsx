@@ -76,7 +76,7 @@ export function AuthUniqueCodeForm(props: TAuthUniqueCodeForm) {
 
   return (
     <form
-      className="mt-5 space-y-4"
+      className="mt-5 gap-y-4"
       method="POST"
       action={`${API_BASE_URL}/auth/spaces/${mode === EAuthModes.SIGN_IN ? "magic-sign-in" : "magic-sign-up"}/`}
       onSubmit={() => setIsSubmitting(true)}
@@ -85,7 +85,7 @@ export function AuthUniqueCodeForm(props: TAuthUniqueCodeForm) {
       <input type="hidden" name="csrfmiddlewaretoken" value={csrfToken} />
       <input type="hidden" value={uniqueCodeFormData.email} name="email" />
       <input type="hidden" value={nextPath} name="next_path" />
-      <div className="space-y-1">
+      <div className="gap-y-1">
         <label className="text-13 font-medium text-tertiary" htmlFor="email">
           Email
         </label>
@@ -110,7 +110,7 @@ export function AuthUniqueCodeForm(props: TAuthUniqueCodeForm) {
         </div>
       </div>
 
-      <div className="space-y-1">
+      <div className="gap-y-1">
         <label className="text-13 font-medium text-tertiary" htmlFor="code">
           Unique code
         </label>
@@ -146,7 +146,7 @@ export function AuthUniqueCodeForm(props: TAuthUniqueCodeForm) {
         </div>
       </div>
 
-      <div className="space-y-2.5">
+      <div className="gap-y-2.5">
         <Button type="submit" variant="primary" className="w-full" size="xl" disabled={isButtonDisabled}>
           {isRequestingNewCode ? "Sending code" : isSubmitting ? <Spinner height="20px" width="20px" /> : "Continue"}
         </Button>

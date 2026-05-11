@@ -292,7 +292,7 @@ export const FormDialog: Story = {
             <Dialog.Panel width={EDialogWidth.MD}>
               <form onSubmit={handleSubmit} className="p-6">
                 <Dialog.Title>Create New Item</Dialog.Title>
-                <div className="mt-4 space-y-4">
+                <div className="mt-4 gap-y-4">
                   <div>
                     <label htmlFor="name" className="text-gray-700 block text-13 font-medium">
                       Name

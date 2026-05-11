@@ -96,10 +96,10 @@ function ModalContent({
       <div className="flex-1 overflow-y-auto p-6">
         <p className="text-gray-600 mb-6">{description}</p>
 
-        <div className="space-y-4">
+        <div className="gap-y-4">
           <div className="bg-gray-50 rounded-lg p-4">
             <h3 className="text-gray-900 mb-2 font-medium">Feature Highlights</h3>
-            <ul className="text-gray-600 space-y-1 text-13">
+            <ul className="text-gray-600 gap-y-1 text-13">
               <li>• ESC key closes the modal</li>
               <li>• Click outside overlay to close</li>
             </ul>

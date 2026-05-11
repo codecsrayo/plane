@@ -96,7 +96,7 @@ export const NotificationItem = observer(function NotificationItem(props: TNotif
           )}
         </div>
 
-        <div className="-mt-2 w-full space-y-1">
+        <div className="-mt-2 w-full gap-y-1">
           <div className="relative flex h-8 items-center gap-3">
             <div className="line-clamp-1 w-full truncate overflow-hidden text-body-xs-medium break-all whitespace-normal text-primary">
               <NotificationContent

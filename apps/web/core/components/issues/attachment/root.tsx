@@ -25,7 +25,7 @@ export const IssueAttachmentRoot = observer(function IssueAttachmentRoot(props: 
   const attachmentHelpers = useAttachmentOperations(workspaceSlug, projectId, issueId);
 
   return (
-    <div className="relative space-y-3">
+    <div className="relative gap-y-3">
       <h3 className="text-body-sm-medium">Attachments</h3>
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
         <IssueAttachmentUpload

@@ -17,7 +17,7 @@ export function BreadcrumbLink(props: Props) {
   const { href, label, icon } = props;
   return (
     <Tooltip tooltipContent={label} position="bottom">
-      <li className="flex items-center space-x-2" tabIndex={-1}>
+      <li className="flex items-center gap-x-2" tabIndex={-1}>
         <div className="flex flex-wrap items-center gap-2.5">
           {href ? (
             <Link className="flex items-center gap-1 text-13 font-medium text-tertiary hover:text-primary" href={href}>

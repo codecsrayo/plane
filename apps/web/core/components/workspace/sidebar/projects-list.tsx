@@ -155,7 +155,7 @@ export const SidebarProjectsList = observer(function SidebarProjectsList() {
     if (pathname.includes("projects")) {
       setIsAllProjectsListOpen(true);
     }
-  }, [pathname]);
+  }, [pathname, setIsAllProjectsListOpen]);
   return (
     <>
       {workspaceSlug && (
@@ -231,7 +231,7 @@ export const SidebarProjectsList = observer(function SidebarProjectsList() {
               leaveTo="transform scale-95 opacity-0"
             >
               {loader === "init-loader" && (
-                <Loader className="w-full space-y-1.5">
+                <Loader className="w-full gap-y-1.5">
                   {Array.from({ length: 4 }, (_, loaderItem) => loaderItem).map((loaderItem) => (
                     <Loader.Item key={loaderItem} height="28px" />
                   ))}

@@ -131,7 +131,7 @@ export const EmojisListDropdown = forwardRef(function EmojisListDropdown(
         ref={dropdownContainerRef}
         role="presentation"
         className={cn(
-          "invisible relative max-h-80 w-[14rem] space-y-2 overflow-y-auto rounded-md border-[0.5px] border-strong bg-surface-1 px-2 py-2.5 opacity-0 shadow-raised-200 transition-opacity",
+          "invisible relative max-h-80 w-[14rem] gap-y-2 overflow-y-auto rounded-md border-[0.5px] border-strong bg-surface-1 p-2.5 opacity-0 shadow-raised-200 transition-opacity",
           {
             "visible opacity-100": isVisible,
           }

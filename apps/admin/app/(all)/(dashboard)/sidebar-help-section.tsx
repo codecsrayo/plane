@@ -106,7 +106,7 @@ export const AdminSidebarHelpSection = observer(function AdminSidebarHelpSection
             } divide-y divide-subtle-1 rounded-sm bg-surface-1 p-1 whitespace-nowrap shadow-raised-100`}
             ref={helpOptionsRef}
           >
-            <div className="space-y-1 pb-2">
+            <div className="gap-y-1 pb-2">
               {helpOptions.map(({ name, Icon, href }) => {
                 if (href)
                   return (

@@ -45,7 +45,7 @@ export const ModuleGanttBlock = observer(function ModuleGanttBlock(props: Props)
     <Tooltip
       isMobile={isMobile}
       tooltipContent={
-        <div className="space-y-1">
+        <div className="gap-y-1">
           <h5>{moduleDetails?.name}</h5>
           <div>{message}</div>
         </div>

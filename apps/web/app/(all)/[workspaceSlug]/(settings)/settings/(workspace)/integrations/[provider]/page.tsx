@@ -153,7 +153,7 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
   return (
     <>
       <PageHead title={pageTitle} />
-      <section className="w-full max-w-3xl space-y-8 p-6">
+      <section className="w-full max-w-3xl gap-y-8 p-6">
         {/* ----------------------------------------------------------------
             Header
         ---------------------------------------------------------------- */}
@@ -183,7 +183,7 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
         {/* ----------------------------------------------------------------
             Connected account card
         ---------------------------------------------------------------- */}
-        <div className="border-custom-border-200 bg-custom-background-100 space-y-4 rounded-lg border p-5">
+        <div className="border-custom-border-200 bg-custom-background-100 gap-y-4 rounded-lg border p-5">
           <div className="flex items-center justify-between">
             <h2 className="text-sm text-custom-text-100 font-semibold">Connected account</h2>
             <Button
@@ -209,7 +209,7 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
         {/* ----------------------------------------------------------------
             Pull Request State Mapping — GitHub only
         ---------------------------------------------------------------- */}
-        <div className="border-custom-border-200 bg-custom-background-100 space-y-4 rounded-lg border p-5">
+        <div className="border-custom-border-200 bg-custom-background-100 gap-y-4 rounded-lg border p-5">
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-sm text-custom-text-100 font-semibold">Pull Request State Mapping</h2>
@@ -240,7 +240,7 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
         {/* ----------------------------------------------------------------
             Project Issue Sync — GitHub only
         ---------------------------------------------------------------- */}
-        <div className="border-custom-border-200 bg-custom-background-100 space-y-4 rounded-lg border p-5">
+        <div className="border-custom-border-200 bg-custom-background-100 gap-y-4 rounded-lg border p-5">
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-sm text-custom-text-100 font-semibold">Project Issue Sync</h2>

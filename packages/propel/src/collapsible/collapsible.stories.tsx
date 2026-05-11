@@ -60,7 +60,7 @@ export const Controlled: Story = {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-      <div className="space-y-4">
+      <div className="gap-y-4">
         <div className="flex gap-2">
           <button onClick={() => setIsOpen(true)} className="bg-blue-500 rounded-sm px-4 py-2 text-13 text-on-color">
             Open
@@ -102,7 +102,7 @@ export const NestedContent: Story = {
           <ChevronDownIcon className="size-4 transition-transform group-data-[panel-open]:rotate-180" />
         </Collapsible.CollapsibleTrigger>
         <Collapsible.CollapsibleContent className="mt-2">
-          <div className="border-gray-200 space-y-2 rounded-md border p-4">
+          <div className="border-gray-200 gap-y-2 rounded-md border p-4">
             <h4 className="font-semibold">Section 1</h4>
             <p className="text-13">This is some content in the first section.</p>
             <h4 className="font-semibold">Section 2</h4>
@@ -141,7 +141,7 @@ export const CustomStyling: Story = {
 export const MultipleCollapsibles: Story = {
   render() {
     return (
-      <div className="w-96 space-y-2">
+      <div className="w-96 gap-y-2">
         <Collapsible.CollapsibleRoot>
           <Collapsible.CollapsibleTrigger className="bg-gray-100 hover:bg-gray-200 flex w-full items-center justify-between rounded-md px-4 py-2">
             <span className="font-semibold">First Item</span>

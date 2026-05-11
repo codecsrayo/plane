@@ -27,7 +27,7 @@ export const Provider: Story = {
     return (
       <div>
         <Toast theme="light" />
-        <div className="space-y-2">
+        <div className="gap-y-2">
           <p className="text-gray-600 text-13">
             Toast provider is required to display toasts. It should be added to your app root.
           </p>
@@ -509,7 +509,7 @@ export const StaticDarkMode: Story = {
 export const DesignTokens: Story = {
   render() {
     return (
-      <div className="space-y-6">
+      <div className="gap-y-6">
         <div>
           <h2 className="mb-2 text-16 font-semibold text-primary">Toast Design Tokens</h2>
           <p className="text-13 text-secondary">
@@ -614,7 +614,7 @@ export const DesignTokens: Story = {
         <div className="grid grid-cols-2 gap-4">
           <div>
             <h3 className="mb-3 text-14 font-semibold text-primary">Typography</h3>
-            <ul className="space-y-2 text-12 text-secondary">
+            <ul className="gap-y-2 text-12 text-secondary">
               <li>
                 <span className="font-medium text-primary">Title:</span>{" "}
                 <code className="rounded bg-layer-1 px-1.5 py-0.5 text-10">text-14 font-semibold</code>
@@ -636,7 +636,7 @@ export const DesignTokens: Story = {
 
           <div>
             <h3 className="mb-3 text-14 font-semibold text-primary">Dimensions & Styling</h3>
-            <ul className="space-y-2 text-12 text-secondary">
+            <ul className="gap-y-2 text-12 text-secondary">
               <li>
                 <span className="font-medium text-primary">Width:</span> 350px
               </li>
@@ -659,7 +659,7 @@ export const DesignTokens: Story = {
 
         <div>
           <h3 className="mb-3 text-14 font-semibold text-primary">Icon Specifications</h3>
-          <ul className="space-y-2 text-12 text-secondary">
+          <ul className="gap-y-2 text-12 text-secondary">
             <li>
               <span className="font-medium text-primary">Icon Size:</span> 20x20px
             </li>

@@ -182,7 +182,7 @@ export function EditorAIMenu(props: Props) {
           "divide-x divide-subtle-1": activeTask,
         })}
       >
-        <div className="w-[210px] flex-shrink-0 overflow-y-auto px-2 py-2.5 transition-all">
+        <div className="w-[210px] flex-shrink-0 overflow-y-auto p-2.5 transition-all">
           {MENU_ITEMS.map((item) => {
             const isActiveTask = activeTask === item.key;
 
@@ -191,7 +191,7 @@ export function EditorAIMenu(props: Props) {
                 key={item.key}
                 type="button"
                 className={cn(
-                  "flex w-full items-center justify-between gap-2 truncate rounded-sm px-1 py-1.5 text-11 text-secondary transition-colors hover:bg-layer-1",
+                  "flex w-full items-center justify-between gap-2 truncate rounded-sm p-1.5 text-11 text-secondary transition-colors hover:bg-layer-1",
                   {
                     "bg-layer-1": isActiveTask,
                   }
@@ -336,4 +336,3 @@ export function EditorAIMenu(props: Props) {
     </div>
   );
 }
-

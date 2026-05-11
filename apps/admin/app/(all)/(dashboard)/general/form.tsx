@@ -70,8 +70,8 @@ export const GeneralConfigurationForm = observer(function GeneralConfigurationFo
   };
 
   return (
-    <div className="space-y-8">
-      <div className="space-y-4">
+    <div className="gap-y-8">
+      <div className="gap-y-4">
         <div className="text-16 font-medium text-primary">Instance details</div>
         <div className="grid-col grid w-full grid-cols-1 items-center justify-between gap-8 md:grid-cols-2 lg:grid-cols-3">
           <ControllerInput
@@ -113,7 +113,7 @@ export const GeneralConfigurationForm = observer(function GeneralConfigurationFo
         </div>
       </div>
 
-      <div className="space-y-6">
+      <div className="gap-y-6">
         <div className="border-b border-subtle pb-1.5 text-16 font-medium text-primary">Chat + telemetry</div>
         <IntercomConfig isTelemetryEnabled={watch("is_telemetry_enabled") ?? false} />
         <div className="flex items-center gap-14">

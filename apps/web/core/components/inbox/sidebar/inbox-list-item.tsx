@@ -69,7 +69,7 @@ export const InboxIssueListItem = observer(function InboxIssueListItem(props: In
             { "border border-accent-strong": selectedInboxIssueId === issue.id }
           )}
         >
-          <div className="space-y-1">
+          <div className="gap-y-1">
             <div className="relative flex items-center justify-between gap-2">
               <div className="flex-shrink-0 text-11 font-medium text-tertiary">
                 {projectIdentifier}-{issue.sequence_id}

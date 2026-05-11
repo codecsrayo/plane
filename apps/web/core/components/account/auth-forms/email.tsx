@@ -49,8 +49,8 @@ export const AuthEmailForm = observer(function AuthEmailForm(props: TAuthEmailFo
   const inputRef = useRef<HTMLInputElement>(null);
 
   return (
-    <form onSubmit={handleFormSubmit} className="space-y-4">
-      <div className="space-y-1">
+    <form onSubmit={handleFormSubmit} className="gap-y-4">
+      <div className="gap-y-1">
         <label htmlFor="email" className="text-13 font-medium text-tertiary">
           {t("auth.common.email.label")}
         </label>

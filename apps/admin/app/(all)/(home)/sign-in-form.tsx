@@ -118,7 +118,7 @@ export function InstanceSignInForm() {
             subHeading="Configure instance-wide settings to secure your instance"
           />
           <form
-            className="space-y-4"
+            className="gap-y-4"
             method="POST"
             action={`${API_BASE_URL}/api/instances/admins/sign-in/`}
             onSubmit={() => setIsSubmitting(true)}
@@ -133,7 +133,7 @@ export function InstanceSignInForm() {
             )}
             <input type="hidden" name="csrfmiddlewaretoken" value={csrfToken} />
 
-            <div className="w-full space-y-1">
+            <div className="w-full gap-y-1">
               <label className="text-13 font-medium text-tertiary" htmlFor="email">
                 Email <span className="text-danger-primary">*</span>
               </label>
@@ -150,7 +150,7 @@ export function InstanceSignInForm() {
               />
             </div>
 
-            <div className="w-full space-y-1">
+            <div className="w-full gap-y-1">
               <label className="text-13 font-medium text-tertiary" htmlFor="password">
                 Password <span className="text-danger-primary">*</span>
               </label>

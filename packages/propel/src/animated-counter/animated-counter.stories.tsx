@@ -29,7 +29,7 @@ export const Default: Story = {
     const [count, setCount] = useState(0);
 
     return (
-      <div className="space-y-6 p-4">
+      <div className="gap-y-6 p-4">
         <div className="flex items-center justify-center gap-6">
           <button
             className="bg-red-500 hover:bg-red-600 shadow-md rounded-lg px-4 py-2 font-medium text-on-color transition-colors focus:ring-2 focus:ring-danger-strong focus:ring-offset-2 focus:outline-none"
@@ -57,7 +57,7 @@ export const Sizes: Story = {
     const [count, setCount] = useState(42);
 
     return (
-      <div className="space-y-6 p-4">
+      <div className="gap-y-6 p-4">
         <div className="flex items-center gap-4">
           <button
             className="rounded-sm bg-layer-1 px-3 py-1 text-13 hover:bg-surface-2"
@@ -102,7 +102,7 @@ export const LargeNumbers: Story = {
     const [count, setCount] = useState(1234567);
 
     return (
-      <div className="space-y-6 p-4">
+      <div className="gap-y-6 p-4">
         <div className="flex items-center gap-4">
           <button
             className="bg-red-500 hover:bg-red-600 rounded-sm px-3 py-1 text-13 text-on-color"
@@ -146,7 +146,7 @@ export const Countdown: Story = {
     };
 
     return (
-      <div className="space-y-6 p-4">
+      <div className="gap-y-6 p-4">
         <div className="flex flex-col items-center gap-4">
           <div className="flex h-16 min-w-[60px] items-center justify-center rounded-lg border-2 border-subtle bg-layer-1">
             <AnimatedCounter count={count} size="lg" className="text-20" />
@@ -177,7 +177,7 @@ export const LiveCounter: Story = {
     }, [isRunning]);
 
     return (
-      <div className="space-y-6 p-4">
+      <div className="gap-y-6 p-4">
         <div className="flex flex-col items-center gap-4">
           <div className="flex h-16 min-w-[80px] items-center justify-center rounded-lg border-2 border-subtle bg-layer-1">
             <AnimatedCounter count={count} size="lg" className="text-20" />
@@ -220,7 +220,7 @@ export const MultipleCounters: Story = {
     const [shares, setShares] = useState(8);
 
     return (
-      <div className="space-y-6 p-4">
+      <div className="gap-y-6 p-4">
         <div className="max-w-md rounded-lg border border-subtle p-4">
           <div className="mb-4 flex items-center justify-between">
             <h3 className="font-medium">Engagement Stats</h3>
@@ -280,7 +280,7 @@ export const InBadge: Story = {
     const [notifications, setNotifications] = useState(3);
 
     return (
-      <div className="space-y-6 p-4">
+      <div className="gap-y-6 p-4">
         <div className="flex flex-col items-center gap-4">
           <div className="relative">
             <button className="rounded-lg border border-subtle bg-layer-1 px-4 py-2">Notifications</button>
@@ -311,7 +311,7 @@ export const FastAnimation: Story = {
     };
 
     return (
-      <div className="space-y-6 p-4">
+      <div className="gap-y-6 p-4">
         <div className="flex flex-col items-center gap-4">
           <div className="flex h-12 min-w-[60px] items-center justify-center rounded-lg border border-subtle bg-layer-1">
             <AnimatedCounter count={count} size="lg" />

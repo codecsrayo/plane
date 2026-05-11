@@ -103,12 +103,12 @@ export const ResetPasswordForm = observer(function ResetPasswordForm() {
         <AuthBanner message={errorInfo.message} handleBannerData={(value) => setErrorInfo(value)} />
       )}
       <form
-        className="space-y-4"
+        className="gap-y-4"
         method="POST"
         action={`${API_BASE_URL}/auth/reset-password/${uidb64?.toString()}/${token?.toString()}/`}
       >
         <input type="hidden" name="csrfmiddlewaretoken" value={csrfToken} />
-        <div className="space-y-1">
+        <div className="gap-y-1">
           <label className="text-13 font-medium text-tertiary" htmlFor="email">
             {t("auth.common.email.label")}
           </label>
@@ -126,7 +126,7 @@ export const ResetPasswordForm = observer(function ResetPasswordForm() {
             />
           </div>
         </div>
-        <div className="space-y-1">
+        <div className="gap-y-1">
           <label className="text-13 font-medium text-tertiary" htmlFor="password">
             {t("auth.common.password.label")}
           </label>
@@ -158,7 +158,7 @@ export const ResetPasswordForm = observer(function ResetPasswordForm() {
           </div>
           <PasswordStrengthIndicator password={resetFormData.password} isFocused={isPasswordInputFocused} />
         </div>
-        <div className="space-y-1">
+        <div className="gap-y-1">
           <label className="text-13 font-medium text-tertiary" htmlFor="confirm_password">
             {t("auth.common.password.confirm_password.label")}
           </label>

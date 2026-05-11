@@ -20,7 +20,7 @@ export function ProfileWorkload({ stateDistribution }: Props) {
   const { t } = useTranslation();
 
   return (
-    <div className="space-y-2">
+    <div className="gap-y-2">
       <h3 className="text-16 font-medium">{t("profile.stats.workload")}</h3>
       <div className="grid grid-cols-1 justify-stretch gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
         {stateDistribution.map((group) => (
@@ -32,7 +32,7 @@ export function ProfileWorkload({ stateDistribution }: Props) {
                   backgroundColor: STATE_GROUPS[group.state_group].color,
                 }}
               />
-              <div className="flex-col space-y-1">
+              <div className="flex-col gap-y-1">
                 <span className="text-13 text-placeholder">
                   {group.state_group === "unstarted"
                     ? "Not started"

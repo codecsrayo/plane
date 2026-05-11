@@ -65,7 +65,7 @@ export function DataTable<TData, TValue>({ columns, data, searchPlaceholder, act
   });
 
   return (
-    <div className="space-y-4">
+    <div className="gap-y-4">
       <div className="flex w-full items-center justify-between">
         <div className="relative flex max-w-[300px] items-center gap-4">
           {table.getHeaderGroups()?.[0]?.headers?.[0]?.id && (

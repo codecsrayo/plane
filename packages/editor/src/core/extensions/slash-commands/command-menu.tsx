@@ -138,7 +138,7 @@ export const SlashCommandsMenu = forwardRef(function SlashCommandsMenu(props: Sl
         id="slash-command"
         ref={commandListContainer}
         role="presentation"
-        className="relative max-h-80 min-w-[12rem] space-y-2 overflow-y-auto rounded-md border-[0.5px] border-strong bg-surface-1 px-2 py-2.5 shadow-raised-200"
+        className="relative max-h-80 min-w-[12rem] gap-y-2 overflow-y-auto rounded-md border-[0.5px] border-strong bg-surface-1 p-2.5 shadow-raised-200"
         style={{
           zIndex: 100,
         }}
@@ -153,7 +153,7 @@ export const SlashCommandsMenu = forwardRef(function SlashCommandsMenu(props: Sl
         }}
       >
         {sections.map((section, sectionIndex) => (
-          <div key={section.key} className="space-y-2">
+          <div key={section.key} className="gap-y-2">
             {section.title && <h6 className="text-11 font-semibold text-tertiary">{section.title}</h6>}
             <div>
               {section.items?.map((item, itemIndex) => (

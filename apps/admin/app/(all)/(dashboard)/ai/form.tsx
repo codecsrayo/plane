@@ -99,8 +99,8 @@ export function InstanceAIForm(props: IInstanceAIForm) {
   };
 
   return (
-    <div className="space-y-8">
-      <div className="space-y-3">
+    <div className="gap-y-8">
+      <div className="gap-y-3">
         <div>
           <div className="pb-1 text-18 font-medium text-primary">OpenAI</div>
           <div className="text-13 font-regular text-tertiary">If you use ChatGPT, this is for you.</div>

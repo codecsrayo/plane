@@ -124,12 +124,12 @@ export function CreateApiTokenForm(props: Props) {
 
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)}>
-      <div className="space-y-5 p-5">
+      <div className="gap-y-5 p-5">
         <h3 className="text-18 font-medium text-secondary">
           {t("workspace_settings.settings.api_tokens.create_token")}
         </h3>
-        <div className="space-y-3">
-          <div className="space-y-1">
+        <div className="gap-y-3">
+          <div className="gap-y-1">
             <Controller
               control={control}
               name="label"

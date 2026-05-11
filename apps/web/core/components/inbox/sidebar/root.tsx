@@ -175,7 +175,7 @@ export const InboxSidebar = observer(function InboxSidebar(props: IInboxSidebarP
             )}
             <div ref={setElementRef}>
               {inboxIssuePaginationInfo?.next_page_results && (
-                <Loader className="mx-auto w-full space-y-4 px-2 py-4">
+                <Loader className="mx-auto w-full gap-y-4 px-2 py-4">
                   <Loader.Item height="64px" width="w-100" />
                   <Loader.Item height="64px" width="w-100" />
                 </Loader>

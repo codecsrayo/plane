@@ -79,7 +79,7 @@ const AssetItem = observer(function AssetItem(props: AssetItemProps) {
             backgroundImage: `url('${assetSrc}')`,
           }}
         />
-        <div className="flex-1 space-y-0.5 truncate">
+        <div className="flex-1 gap-y-0.5 truncate">
           <p className="truncate text-13 font-medium">{asset.name}</p>
           <div className="flex items-end justify-between gap-2">
             <p className="shrink-0 text-11 text-secondary" />
@@ -117,7 +117,7 @@ export const PageNavigationPaneAssetsTabPanel = observer(function PageNavigation
   if (assetsList.length === 0) return <PageNavigationPaneAssetsTabEmptyState />;
 
   return (
-    <div className="mt-5 space-y-4 px-4">
+    <div className="mt-5 gap-y-4 px-4">
       {assetsList?.map((asset) => (
         <AssetItem key={asset.id} asset={asset} page={page} />
       ))}

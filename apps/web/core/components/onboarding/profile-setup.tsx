@@ -243,7 +243,7 @@ export const ProfileSetup = observer(function ProfileSetup(props: Props) {
   return (
     <div className="flex h-full w-full">
       <div className="mt-6 flex w-full flex-col items-center justify-center p-8">
-        <form onSubmit={handleSubmit(onSubmit)} className="mx-auto mt-2 w-full space-y-4 sm:w-96">
+        <form onSubmit={handleSubmit(onSubmit)} className="mx-auto mt-2 w-full gap-y-4 sm:w-96">
           {profileSetupStep !== EProfileSetupSteps.USER_PERSONALIZATION && (
             <>
               <Controller
@@ -262,7 +262,7 @@ export const ProfileSetup = observer(function ProfileSetup(props: Props) {
                   />
                 )}
               />
-              <div className="flex items-center justify-center space-y-1">
+              <div className="flex items-center justify-center gap-y-1">
                 <button type="button" onClick={() => setIsImageUploadModalOpen(true)}>
                   {!userAvatar || userAvatar === "" ? (
                     <div className="flex flex-col items-center justify-between">
@@ -287,7 +287,7 @@ export const ProfileSetup = observer(function ProfileSetup(props: Props) {
                 </button>
               </div>
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <div className="space-y-1">
+                <div className="gap-y-1">
                   <label
                     className="text-13 font-medium text-tertiary after:ml-0.5 after:text-danger-primary after:content-['*']"
                     htmlFor="first_name"
@@ -324,7 +324,7 @@ export const ProfileSetup = observer(function ProfileSetup(props: Props) {
                     <span className="text-13 text-danger-primary">{errors.first_name.message}</span>
                   )}
                 </div>
-                <div className="space-y-1">
+                <div className="gap-y-1">
                   <label
                     className="text-13 font-medium text-tertiary after:ml-0.5 after:text-danger-primary after:content-['*']"
                     htmlFor="last_name"
@@ -364,7 +364,7 @@ export const ProfileSetup = observer(function ProfileSetup(props: Props) {
               {/* setting up password for the first time */}
               {!isPasswordAlreadySetup && (
                 <>
-                  <div className="space-y-1">
+                  <div className="gap-y-1">
                     <label className="text-13 font-medium text-tertiary" htmlFor="password">
                       Set a password ({t("common.optional")})
                     </label>
@@ -405,7 +405,7 @@ export const ProfileSetup = observer(function ProfileSetup(props: Props) {
                     />
                     <PasswordStrengthIndicator password={watch("password") ?? ""} isFocused={isPasswordInputFocused} />
                   </div>
-                  <div className="space-y-1">
+                  <div className="gap-y-1">
                     <label className="text-13 font-medium text-tertiary" htmlFor="confirm_password">
                       {t("auth.common.password.confirm_password.label")} ({t("common.optional")})
                     </label>
@@ -456,7 +456,7 @@ export const ProfileSetup = observer(function ProfileSetup(props: Props) {
           {/* user role once the password is set */}
           {profileSetupStep !== EProfileSetupSteps.USER_DETAILS && (
             <>
-              <div className="space-y-1">
+              <div className="gap-y-1">
                 <label
                   className="text-13 font-medium text-tertiary after:ml-0.5 after:text-danger-primary after:content-['*']"
                   htmlFor="role"
@@ -492,7 +492,7 @@ export const ProfileSetup = observer(function ProfileSetup(props: Props) {
                 />
                 {errors.role && <span className="text-13 text-danger-primary">{errors.role.message}</span>}
               </div>
-              <div className="space-y-1">
+              <div className="gap-y-1">
                 <label
                   className="text-13 font-medium text-tertiary after:ml-0.5 after:text-danger-primary after:content-['*']"
                   htmlFor="use_case"

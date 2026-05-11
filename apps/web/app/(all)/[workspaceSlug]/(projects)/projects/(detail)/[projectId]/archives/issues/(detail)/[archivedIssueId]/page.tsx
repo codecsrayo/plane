@@ -52,13 +52,13 @@ function ArchivedIssueDetailsPage({ params }: Route.ComponentProps) {
       <PageHead title={pageTitle} />
       {issueLoader ? (
         <Loader className="flex h-full gap-5 p-5">
-          <div className="basis-2/3 space-y-2">
+          <div className="basis-2/3 gap-y-2">
             <Loader.Item height="30px" width="40%" />
             <Loader.Item height="15px" width="60%" />
             <Loader.Item height="15px" width="60%" />
             <Loader.Item height="15px" width="40%" />
           </div>
-          <div className="basis-1/3 space-y-3">
+          <div className="basis-1/3 gap-y-3">
             <Loader.Item height="30px" />
             <Loader.Item height="30px" />
             <Loader.Item height="30px" />
@@ -82,7 +82,7 @@ function ArchivedIssueDetailsPage({ params }: Route.ComponentProps) {
             className="border-b border-subtle"
           />
           <div className="flex h-full overflow-hidden">
-            <div className="h-full w-full space-y-3 divide-y-2 divide-subtle-1 overflow-y-auto">
+            <div className="h-full w-full gap-y-3 divide-y-2 divide-subtle-1 overflow-y-auto">
               <IssueDetailRoot
                 workspaceSlug={workspaceSlug}
                 projectId={projectId}

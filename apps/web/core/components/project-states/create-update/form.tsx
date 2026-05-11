@@ -63,7 +63,7 @@ export function StateForm(props: TStateForm) {
   };
 
   return (
-    <div className="relative flex space-x-2 rounded-sm bg-surface-1 p-3">
+    <div className="relative flex gap-x-2 rounded-sm bg-surface-1 p-3">
       {/* color */}
       <div className="mt-2 h-full flex-shrink-0">
         <Popover button={<PopoverButton color={formData?.color} />} panelClassName="mt-4 -ml-3">
@@ -71,7 +71,7 @@ export function StateForm(props: TStateForm) {
         </Popover>
       </div>
 
-      <div className="w-full space-y-2">
+      <div className="w-full gap-y-2">
         {/* title */}
         <Input
           id="name"
@@ -96,7 +96,7 @@ export function StateForm(props: TStateForm) {
           className="min-h-14 w-full resize-none text-13"
         />
 
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center gap-x-2">
           <Button onClick={formSubmit} variant="primary" size="lg" disabled={buttonDisabled}>
             {buttonTitle}
           </Button>

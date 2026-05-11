@@ -52,7 +52,7 @@ export const GithubProjectIssueSync = observer(function GithubProjectIssueSync({
 
   if (isLoading) {
     return (
-      <Loader className="space-y-2">
+      <Loader className="gap-y-2">
         <Loader.Item height="36px" />
         <Loader.Item height="36px" />
       </Loader>

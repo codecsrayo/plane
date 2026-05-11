@@ -106,7 +106,7 @@ export const AutoArchiveAutomation = observer(function AutoArchiveAutomation(pro
 
                       <button
                         type="button"
-                        className="flex w-full items-center rounded-sm px-1 py-1.5 text-13 text-secondary select-none hover:bg-layer-1"
+                        className="flex w-full items-center rounded-sm p-1.5 text-13 text-secondary select-none hover:bg-layer-1"
                         onClick={() => setmonthModal(true)}
                       >
                         {t("common.customize_time_range")}

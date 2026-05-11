@@ -42,7 +42,7 @@ export const PeekOverviewIssueActivity = observer(function PeekOverviewIssueActi
     <div className="pb-10">
       <h4 className="font-medium">Comments</h4>
       <div className="mt-4">
-        <div className="space-y-4">
+        <div className="gap-y-4">
           {comments.map((comment) => (
             <CommentCard key={comment.id} anchor={anchor} comment={comment} />
           ))}
@@ -57,7 +57,7 @@ export const PeekOverviewIssueActivity = observer(function PeekOverviewIssueActi
               )}
             </>
           ) : (
-            <div className="mt-4 flex items-center justify-between gap-2 rounded-sm border border-strong bg-layer-2 px-2 py-2.5">
+            <div className="mt-4 flex items-center justify-between gap-2 rounded-sm border border-strong bg-layer-2 p-2.5">
               <p className="flex items-center gap-2 overflow-hidden text-13 break-words text-secondary">
                 <Lock className="size-3 shrink-0" />
                 Sign in to add your comment

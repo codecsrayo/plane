@@ -36,7 +36,7 @@ export const Default: Story = {
     const [selectedEmoji, setSelectedEmoji] = useState<string | null>(null);
 
     return (
-      <div className="space-y-4 p-4">
+      <div className="gap-y-4 p-4">
         <EmojiReactionPicker
           isOpen={isOpen}
           handleToggle={setIsOpen}
@@ -68,7 +68,7 @@ export const WithCustomLabel: Story = {
     const [selectedEmoji, setSelectedEmoji] = useState<string | null>(null);
 
     return (
-      <div className="space-y-4 p-4">
+      <div className="gap-y-4 p-4">
         <EmojiReactionPicker
           isOpen={isOpen}
           handleToggle={setIsOpen}
@@ -164,7 +164,7 @@ export const DifferentPlacements: Story = {
     const [isOpen4, setIsOpen4] = useState(false);
 
     return (
-      <div className="space-y-8 p-8">
+      <div className="gap-y-8 p-8">
         <div className="flex items-center gap-4">
           <span className="w-32 text-13">Bottom Start:</span>
           <EmojiReactionPicker
@@ -222,7 +222,7 @@ export const SearchDisabled: Story = {
     const [selectedEmoji, setSelectedEmoji] = useState<string | null>(null);
 
     return (
-      <div className="space-y-4 p-4">
+      <div className="gap-y-4 p-4">
         <EmojiReactionPicker
           isOpen={isOpen}
           handleToggle={setIsOpen}
@@ -253,7 +253,7 @@ export const CustomSearchPlaceholder: Story = {
     const [selectedEmoji, setSelectedEmoji] = useState<string | null>(null);
 
     return (
-      <div className="space-y-4 p-4">
+      <div className="gap-y-4 p-4">
         <EmojiReactionPicker
           isOpen={isOpen}
           handleToggle={setIsOpen}
@@ -288,7 +288,7 @@ export const CloseOnSelectDisabled: Story = {
     };
 
     return (
-      <div className="space-y-4 p-4">
+      <div className="gap-y-4 p-4">
         <div className="flex items-center gap-2">
           <EmojiReactionPicker
             isOpen={isOpen}
@@ -364,7 +364,7 @@ export const InMessageContext: Story = {
     };
 
     return (
-      <div className="max-w-md space-y-3 rounded-lg border border-subtle p-4">
+      <div className="max-w-md gap-y-3 rounded-lg border border-subtle p-4">
         <div className="flex items-start gap-3">
           <div className="flex size-8 items-center justify-center rounded-full bg-accent-primary text-13 text-on-color">
             AB

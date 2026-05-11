@@ -158,8 +158,8 @@ export const WithAppendIcon: Story = {
 export const AllVariants: Story = {
   render() {
     return (
-      <div className="space-y-4">
-        <div className="space-y-2">
+      <div className="gap-y-4">
+        <div className="gap-y-2">
           <h3 className="text-16 font-semibold">Primary Variants</h3>
           <div className="flex flex-wrap gap-2">
             <Button variant="primary">Primary</Button>
@@ -179,7 +179,7 @@ export const AllVariants: Story = {
 export const AllSizes: Story = {
   render() {
     return (
-      <div className="space-y-4">
+      <div className="gap-y-4">
         <div className="flex items-center gap-2">
           <Button size="sm">Small</Button>
           <Button size="base">Base</Button>
@@ -194,8 +194,8 @@ export const AllSizes: Story = {
 export const AllStates: Story = {
   render() {
     return (
-      <div className="space-y-4">
-        <div className="space-y-2">
+      <div className="gap-y-4">
+        <div className="gap-y-2">
           <h3 className="text-16 font-semibold">Button States</h3>
           <div className="flex flex-wrap gap-2">
             <Button>Default</Button>

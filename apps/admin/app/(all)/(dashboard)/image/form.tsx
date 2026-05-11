@@ -51,7 +51,7 @@ export function InstanceImageConfigForm(props: IInstanceImageConfigForm) {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="gap-y-8">
       <div className="grid-col grid w-full grid-cols-1 items-center justify-between gap-x-16 gap-y-8 lg:grid-cols-2">
         <ControllerInput
           control={control}

@@ -170,7 +170,7 @@ export const SurfaceLayerAssociation: Story = {
         </Info>
         <Surface>
           <h4 className="mb-3 font-semibold text-primary">Modal with Input (Rare Exception)</h4>
-          <div className="space-y-3">
+          <div className="gap-y-3">
             <div>
               <label htmlFor="example-input" className="text-13 text-secondary">
                 Name
@@ -229,7 +229,7 @@ export const CardListPattern: Story = {
 
       <Surface>
         <h4 className="mb-4 font-semibold text-primary">Task List</h4>
-        <div className="space-y-3">
+        <div className="gap-y-3">
           {[1, 2, 3].map((item) => (
             <Layer key={item} className="rounded-md bg-layer-1 p-4 hover:bg-layer-1-hover">
               <h5 className="mb-1 font-medium text-primary">Task {item}</h5>
@@ -253,7 +253,7 @@ export const SidebarLayoutPattern: Story = {
       <Surface className="flex rounded-md bg-surface-1">
         <aside className="w-64 border-r border-subtle p-4">
           <h4 className="mb-3 font-semibold text-primary">Sidebar</h4>
-          <div className="space-y-2">
+          <div className="gap-y-2">
             {["Home", "Projects", "Settings"].map((item) => (
               <div key={item} className="rounded-md p-2 transition-colors hover:bg-layer-1-hover">
                 <p className="text-13 text-primary">{item}</p>
@@ -279,7 +279,7 @@ export const StateVariants: Story = {
       <Info title="✅ State Variants">Demonstrating hover, active, and selected states</Info>
 
       <Surface>
-        <div className="space-y-4">
+        <div className="gap-y-4">
           <Layer className="rounded-md bg-layer-1 p-4 hover:bg-layer-1-hover">
             <h5 className="mb-1 font-medium text-primary">Hover State</h5>
             <p className="text-13 text-secondary">Hover over me to see bg-layer-1-hover</p>
@@ -349,7 +349,7 @@ export const CompleteExample: Story = {
       <div className="mt-6 grid grid-cols-2 gap-6">
         <Surface>
           <h3 className="mb-4 font-semibold text-primary">Recent Activity</h3>
-          <div className="space-y-2">
+          <div className="gap-y-2">
             {[1, 2, 3].map((item) => (
               <Layer key={item} className="rounded-md bg-layer-1 p-3 hover:bg-layer-1-hover">
                 <p className="mb-1 text-13 font-medium text-primary">Activity {item}</p>
@@ -361,7 +361,7 @@ export const CompleteExample: Story = {
 
         <Surface className="rounded-md bg-surface-2 p-6">
           <h3 className="mb-4 font-semibold text-primary">Quick Actions</h3>
-          <div className="space-y-2">
+          <div className="gap-y-2">
             {["Create Project", "Invite Team", "View Reports"].map((action) => (
               <Layer key={action} className="rounded-md bg-layer-2 p-3 hover:bg-layer-2-hover">
                 <p className="text-13 text-primary">{action}</p>
@@ -381,7 +381,7 @@ export const CommonMistakes: Story = {
         These examples show incorrect usage patterns
       </Info>
 
-      <div className="space-y-6">
+      <div className="gap-y-6">
         <div className="rounded-md border-2 border-danger-strong p-4">
           <h4 className="mb-2 font-semibold text-primary">❌ Mistake 1: Nested Surfaces (Same Plane)</h4>
           <Surface>

@@ -180,7 +180,7 @@ export const WorkspaceMenuRoot = observer(function WorkspaceMenuRoot(props: Work
                       </div>
                     ) : (
                       <div className="w-full">
-                        <Loader className="space-y-2">
+                        <Loader className="gap-y-2">
                           <Loader.Item height="30px" />
                           <Loader.Item height="30px" />
                         </Loader>

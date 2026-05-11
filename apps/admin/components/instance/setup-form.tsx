@@ -151,7 +151,7 @@ export function InstanceSetupForm() {
               <Banner type="error" message={errorData?.message} />
             )}
           <form
-            className="space-y-4"
+            className="gap-y-4"
             method="POST"
             action={`${API_BASE_URL}/api/instances/admins/sign-up/`}
             onSubmit={() => setIsSubmitting(true)}
@@ -161,7 +161,7 @@ export function InstanceSetupForm() {
             <input type="hidden" name="is_telemetry_enabled" value={formData.is_telemetry_enabled ? "True" : "False"} />
 
             <div className="flex flex-col items-center gap-4 sm:flex-row">
-              <div className="w-full space-y-1">
+              <div className="w-full gap-y-1">
                 <label className="text-13 font-medium text-tertiary" htmlFor="first_name">
                   First name <span className="text-danger-primary">*</span>
                 </label>
@@ -183,7 +183,7 @@ export function InstanceSetupForm() {
                   maxLength={50}
                 />
               </div>
-              <div className="w-full space-y-1">
+              <div className="w-full gap-y-1">
                 <label className="text-13 font-medium text-tertiary" htmlFor="last_name">
                   Last name <span className="text-danger-primary">*</span>
                 </label>
@@ -207,7 +207,7 @@ export function InstanceSetupForm() {
               </div>
             </div>
 
-            <div className="w-full space-y-1">
+            <div className="w-full gap-y-1">
               <label className="text-13 font-medium text-tertiary" htmlFor="email">
                 Email <span className="text-danger-primary">*</span>
               </label>
@@ -228,7 +228,7 @@ export function InstanceSetupForm() {
               )}
             </div>
 
-            <div className="w-full space-y-1">
+            <div className="w-full gap-y-1">
               <label className="text-13 font-medium text-tertiary" htmlFor="company_name">
                 Company name <span className="text-danger-primary">*</span>
               </label>
@@ -250,7 +250,7 @@ export function InstanceSetupForm() {
               />
             </div>
 
-            <div className="w-full space-y-1">
+            <div className="w-full gap-y-1">
               <label className="text-13 font-medium text-tertiary" htmlFor="password">
                 Set a password <span className="text-danger-primary">*</span>
               </label>
@@ -295,7 +295,7 @@ export function InstanceSetupForm() {
               <PasswordStrengthIndicator password={formData.password} isFocused={isPasswordInputFocused} />
             </div>
 
-            <div className="w-full space-y-1">
+            <div className="w-full gap-y-1">
               <label className="text-13 font-medium text-tertiary" htmlFor="confirm_password">
                 Confirm password <span className="text-danger-primary">*</span>
               </label>

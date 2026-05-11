@@ -68,7 +68,7 @@ export function PageForm(props: Props) {
 
   return (
     <form onSubmit={handlePageFormSubmit}>
-      <div className="space-y-5 p-5">
+      <div className="gap-y-5 p-5">
         <h3 className="text-18 font-medium text-secondary">Create page</h3>
         <div className="flex h-9 w-full items-start gap-2">
           <EmojiPicker
@@ -114,7 +114,7 @@ export function PageForm(props: Props) {
                 : EmojiIconPickerTypes.ICON
             }
           />
-          <div className="flew-grow w-full space-y-1">
+          <div className="flew-grow w-full gap-y-1">
             <Input
               id="name"
               type="text"

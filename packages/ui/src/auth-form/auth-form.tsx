@@ -131,7 +131,7 @@ export function AuthForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className={cn("space-y-4", className)}>
+    <form onSubmit={handleSubmit} className={cn("gap-y-4", className)}>
       {/* Email Input */}
       <AuthInput
         id="email"
@@ -188,7 +188,7 @@ export function AuthForm({
       )}
 
       {/* Submit Button */}
-      <div className="space-y-2.5">
+      <div className="gap-y-2.5">
         <Button type="submit" variant="primary" className="w-full" size="lg" disabled={!isFormValid} loading={loading}>
           {loading ? <Spinner height="20px" width="20px" /> : getSubmitButtonText()}
         </Button>

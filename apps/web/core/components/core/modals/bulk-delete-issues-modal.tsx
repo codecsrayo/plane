@@ -183,7 +183,7 @@ export const BulkDeleteIssuesModal = observer(function BulkDeleteIssuesModal(pro
 
           <Combobox.Options static className="max-h-80 scroll-py-2 divide-y divide-subtle-1 overflow-y-auto">
             {isSearching ? (
-              <Loader className="space-y-3 p-3">
+              <Loader className="gap-y-3 p-3">
                 <Loader.Item height="40px" />
                 <Loader.Item height="40px" />
                 <Loader.Item height="40px" />

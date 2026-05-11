@@ -133,11 +133,11 @@ export const ChangeEmailModal = observer(function ChangeEmailModal(props: Props)
 
   return (
     <ModalCore isOpen={isOpen} handleClose={handleClose} position={EModalPosition.CENTER} width={EModalWidth.XXL}>
-      <div className="space-y-0 px-4 py-4">
+      <div className="gap-y-0 p-4">
         <h3 className="text-16 leading-6 font-medium text-primary">{changeEmailT("title")}</h3>
         <p className="my-4 text-13 text-secondary">{changeEmailT("description")}</p>
       </div>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 px-4" noValidate>
+      <form onSubmit={handleSubmit(onSubmit)} className="gap-y-4 px-4" noValidate>
         <div className="flex flex-col gap-1">
           {secondStep && <h4 className="text-13 font-medium text-secondary">{changeEmailT("form.email.label")}</h4>}
           <Controller

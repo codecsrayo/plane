@@ -17,8 +17,8 @@ export function DocumentContentLoader(props: Props) {
 
   return (
     <div className={cn("document-editor-loader", className)}>
-      <Loader className="relative space-y-4">
-        <div className="space-y-2">
+      <Loader className="relative gap-y-4">
+        <div className="gap-y-2">
           <div className="py-2">
             <Loader.Item width="100%" height="36px" />
           </div>

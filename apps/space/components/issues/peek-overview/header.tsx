@@ -94,13 +94,13 @@ export const PeekOverviewHeader = observer(function PeekOverviewHeader(props: Pr
               leaveTo="transform opacity-0 scale-95"
             >
               <Listbox.Options className="shadow-lg absolute left-0 z-10 mt-1 min-w-[12rem] origin-top-left overflow-y-auto rounded-md border border-strong bg-surface-2 text-11 whitespace-nowrap focus:outline-none">
-                <div className="space-y-1 p-2">
+                <div className="gap-y-1 p-2">
                   {PEEK_MODES.map((mode) => (
                     <Listbox.Option
                       key={mode.key}
                       value={mode.key}
                       className={({ active, selected }) =>
-                        `cursor-pointer truncate rounded-sm px-1 py-1.5 select-none ${
+                        `cursor-pointer truncate rounded-sm p-1.5 select-none ${
                           active ? "bg-layer-transparent-hover" : ""
                         } ${selected ? "text-primary" : "text-secondary"}`
                       }

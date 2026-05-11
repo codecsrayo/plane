@@ -103,7 +103,7 @@ export const CycleAnalyticsProgress = observer(function CycleAnalyticsProgress(p
 
   if (!cycleDetails) return <></>;
   return (
-    <div className="space-y-4 border-t border-subtle py-5">
+    <div className="gap-y-4 border-t border-subtle py-5">
       <Disclosure defaultOpen>
         {({ open }) => (
           <div className="flex flex-col">
@@ -161,7 +161,7 @@ export const CycleAnalyticsProgress = observer(function CycleAnalyticsProgress(p
                     )}
                   </>
                 ) : (
-                  <div className="my-2 w-full rounded-md bg-surface-2 px-2 py-2 text-13 text-tertiary">
+                  <div className="my-2 w-full rounded-md bg-surface-2 p-2 text-13 text-tertiary">
                     {t("no_data_yet")}
                   </div>
                 )}

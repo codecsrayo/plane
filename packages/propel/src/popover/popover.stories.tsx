@@ -59,7 +59,7 @@ export const Controlled: Story = {
     const [open, setOpen] = useState(false);
 
     return (
-      <div className="space-y-4">
+      <div className="gap-y-4">
         <div className="flex gap-2">
           <button onClick={() => setOpen(true)} className="bg-blue-500 rounded-sm px-3 py-1.5 text-13 text-on-color">
             Open
@@ -221,7 +221,7 @@ export const WithForm: Story = {
         </Popover.Button>
         <Popover.Panel className="border-gray-200 shadow-lg w-72 rounded-lg border bg-white p-4">
           <h3 className="text-13 font-semibold">Quick Form</h3>
-          <form onSubmit={handleSubmit} className="mt-3 space-y-3">
+          <form onSubmit={handleSubmit} className="mt-3 gap-y-3">
             <div>
               <label htmlFor="name" className="text-gray-700 block text-11 font-medium">
                 Name

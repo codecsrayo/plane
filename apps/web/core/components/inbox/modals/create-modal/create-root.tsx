@@ -199,7 +199,7 @@ export const InboxIssueCreateRoot = observer(function InboxIssueCreateRoot(props
     <div className="flex w-full gap-2 bg-transparent">
       <div className="w-full rounded-lg">
         <form ref={formRef} onSubmit={handleFormSubmit} className="flex w-full flex-col">
-          <div className="space-y-5 rounded-t-lg bg-surface-1 p-5">
+          <div className="gap-y-5 rounded-t-lg bg-surface-1 p-5">
             <div className="flex items-center justify-between gap-2">
               <h3 className="text-18 font-medium text-secondary">{t("inbox_issue.modal.title")}</h3>
               {duplicateIssues?.length > 0 && (
@@ -211,7 +211,7 @@ export const InboxIssueCreateRoot = observer(function InboxIssueCreateRoot(props
                 />
               )}
             </div>
-            <div className="space-y-3">
+            <div className="gap-y-3">
               <InboxIssueTitle
                 data={formData}
                 handleData={handleFormData}

@@ -108,9 +108,9 @@ export const ProjectViewForm = observer(function ProjectViewForm(props: Props) {
 
   return (
     <form onSubmit={handleSubmit(handleCreateUpdateView)}>
-      <div className="space-y-5 p-5">
+      <div className="gap-y-5 p-5">
         <h3 className="text-18 font-medium text-secondary">{data ? t("view.update.label") : t("view.create.label")}</h3>
-        <div className="space-y-3">
+        <div className="gap-y-3">
           <div className="flex w-full items-start gap-2">
             <EmojiPicker
               iconType="lucide"
@@ -152,7 +152,7 @@ export const ProjectViewForm = observer(function ProjectViewForm(props: Props) {
                   : EmojiIconPickerTypes.ICON
               }
             />
-            <div className="flew-grow w-full space-y-1">
+            <div className="flew-grow w-full gap-y-1">
               <Controller
                 control={control}
                 name="name"

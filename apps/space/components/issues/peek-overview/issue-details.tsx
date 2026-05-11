@@ -26,7 +26,7 @@ export const PeekOverviewIssueDetails = observer(function PeekOverviewIssueDetai
   const description = issueDetails.description_html;
 
   return (
-    <div className="space-y-2">
+    <div className="gap-y-2">
       <h6 className="text-14 font-medium text-placeholder">
         {project_details?.identifier}-{issueDetails?.sequence_id}
       </h6>

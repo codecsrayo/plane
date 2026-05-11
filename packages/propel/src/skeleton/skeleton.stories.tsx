@@ -118,7 +118,7 @@ export const Avatar: Story = {
 export const AvatarGroup: Story = {
   render() {
     return (
-      <Skeleton className="flex -space-x-2">
+      <Skeleton className="-gap-x-2 flex">
         {Array.from({ length: 4 }, (_, index) => index + 1).map((item) => (
           <Skeleton.Item key={item} height="40px" width="40px" className="rounded-full border-2 border-white" />
         ))}

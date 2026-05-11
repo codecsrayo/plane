@@ -68,14 +68,14 @@ export const WebhookForm = observer(function WebhookForm(props: Props) {
 
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)}>
-      <div className="space-y-5">
+      <div className="gap-y-5">
         <div className="text-18 font-medium text-secondary">
           {data
             ? t("workspace_settings.settings.webhooks.modal.details")
             : t("workspace_settings.settings.webhooks.modal.title")}
         </div>
-        <div className="space-y-3">
-          <div className="space-y-1">
+        <div className="gap-y-3">
+          <div className="gap-y-1">
             <Controller
               control={control}
               name="url"
@@ -96,7 +96,7 @@ export const WebhookForm = observer(function WebhookForm(props: Props) {
         </div>
       </div>
       {data ? (
-        <div className="space-y-5 pt-0">
+        <div className="gap-y-5 pt-0">
           <WebhookSecretKey data={data} />
           <Button
             size="lg"

@@ -34,8 +34,8 @@ export const spacings = {
   [ECardSpacing.LG]: "p-6",
 };
 export const directions = {
-  [ECardDirection.ROW]: "flex-row space-x-3",
-  [ECardDirection.COLUMN]: "flex-col space-y-3",
+  [ECardDirection.ROW]: "flex-row gap-x-3",
+  [ECardDirection.COLUMN]: "flex-col gap-y-3",
 };
 export const getCardStyle = (variant: TCardVariant, spacing: TCardSpacing, direction: TCardDirection) =>
   DEFAULT_STYLE + " " + directions[direction] + " " + containerStyle[variant] + " " + spacings[spacing];

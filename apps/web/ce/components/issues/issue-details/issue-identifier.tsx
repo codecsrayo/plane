@@ -30,7 +30,7 @@ export const IssueIdentifier = observer(function IssueIdentifier(props: TIssueId
   if (!shouldRenderIssueID) return null;
 
   return (
-    <div className="flex shrink-0 items-center space-x-2">
+    <div className="flex shrink-0 items-center gap-x-2">
       <IdentifierText
         identifier={`${projectIdentifier}-${issueSequenceId}`}
         enableClickToCopyIdentifier={enableClickToCopyIdentifier}

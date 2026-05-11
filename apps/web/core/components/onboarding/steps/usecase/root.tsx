@@ -146,7 +146,7 @@ export const UseCaseSetupStep = observer(function UseCaseSetupStep({ handleStepC
       </div>
 
       {/* Action Buttons */}
-      <div className="space-y-3">
+      <div className="gap-y-3">
         <Button variant="primary" type="submit" className="w-full" size="xl" disabled={isButtonDisabled}>
           Continue
         </Button>

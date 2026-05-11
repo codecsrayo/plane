@@ -123,8 +123,8 @@ export const WithAppendIcon: Story = {
 export const AllVariants: Story = {
   render() {
     return (
-      <div className="space-y-4">
-        <div className="space-y-2">
+      <div className="gap-y-4">
+        <div className="gap-y-2">
           <h3 className="text-16 font-semibold">Primary Variants</h3>
           <div className="flex flex-wrap gap-2">
             <Badge variant="neutral">Neutral</Badge>
@@ -142,7 +142,7 @@ export const AllVariants: Story = {
 export const AllSizes: Story = {
   render() {
     return (
-      <div className="space-y-4">
+      <div className="gap-y-4">
         <div className="flex items-center gap-2">
           <Badge size="sm">Small</Badge>
           <Badge size="base">Base</Badge>

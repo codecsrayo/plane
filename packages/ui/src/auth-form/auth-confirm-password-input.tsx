@@ -60,7 +60,7 @@ export function AuthConfirmPasswordInput({
   };
 
   return (
-    <div className={cn("space-y-2", containerClassName)}>
+    <div className={cn("gap-y-2", containerClassName)}>
       <AuthInput
         {...props}
         type="password"

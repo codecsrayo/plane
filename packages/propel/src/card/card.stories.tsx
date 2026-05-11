@@ -164,7 +164,7 @@ export const NotificationCard: Story = {
 export const AllVariants: Story = {
   render() {
     return (
-      <div className="space-y-4">
+      <div className="gap-y-4">
         <Card variant={ECardVariant.WITH_SHADOW}>
           <h3 className="font-semibold">With Shadow</h3>
           <p className="text-gray-600 text-13">Hover to see the shadow effect</p>
@@ -181,7 +181,7 @@ export const AllVariants: Story = {
 export const AllSpacings: Story = {
   render() {
     return (
-      <div className="space-y-4">
+      <div className="gap-y-4">
         <Card spacing={ECardSpacing.SM}>
           <h3 className="font-semibold">Small Spacing (p-4)</h3>
           <p className="text-gray-600 text-13">Compact padding</p>
@@ -198,7 +198,7 @@ export const AllSpacings: Story = {
 export const AllDirections: Story = {
   render() {
     return (
-      <div className="space-y-4">
+      <div className="gap-y-4">
         <Card direction={ECardDirection.COLUMN}>
           <h3 className="font-semibold">Column Direction</h3>
           <p className="text-gray-600 text-13">Vertical layout</p>

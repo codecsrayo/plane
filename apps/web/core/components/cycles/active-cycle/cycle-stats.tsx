@@ -98,7 +98,7 @@ export const ActiveCycleStats = observer(function ActiveCycleStats(props: Active
   useIntersectionObserver(issuesContainerRef, issuesLoaderElement, loadMoreIssues, `0% 0% 100% 0%`);
 
   const loaders = (
-    <Loader className="space-y-3">
+    <Loader className="gap-y-3">
       <Loader.Item height="30px" />
       <Loader.Item height="30px" />
       <Loader.Item height="30px" />

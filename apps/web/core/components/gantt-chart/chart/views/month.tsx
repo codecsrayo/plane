@@ -80,7 +80,7 @@ export const MonthChartView = observer(function MonthChartView() {
                   )}
                   style={{ width: `${currentViewData?.data.dayWidth * 7}px` }}
                 >
-                  <div className="space-x-1 text-11 font-medium text-placeholder">
+                  <div className="gap-x-1 text-11 font-medium text-placeholder">
                     <span
                       className={cn({
                         "rounded-sm bg-accent-primary px-1 text-on-color": weekBlock.today,
@@ -89,7 +89,7 @@ export const MonthChartView = observer(function MonthChartView() {
                       {weekBlock.startDate.getDate()}-{weekBlock.endDate.getDate()}
                     </span>
                   </div>
-                  <div className="space-x-1 text-11 font-medium">{weekBlock.weekData.shortTitle}</div>
+                  <div className="gap-x-1 text-11 font-medium">{weekBlock.weekData.shortTitle}</div>
                 </div>
               ))}
             </div>

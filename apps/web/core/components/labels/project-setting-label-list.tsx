@@ -160,7 +160,7 @@ export const ProjectSettingsLabelList = observer(function ProjectSettingsLabelLi
           )
         ) : (
           !showLabelForm && (
-            <Loader className="space-y-5">
+            <Loader className="gap-y-5">
               <Loader.Item height="42px" />
               <Loader.Item height="42px" />
               <Loader.Item height="42px" />

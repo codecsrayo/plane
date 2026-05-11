@@ -70,7 +70,7 @@ export const QuarterChartView = observer(function QuarterChartView() {
                     )}
                     style={{ width: `${currentViewData?.data.dayWidth * monthBlock.days}px` }}
                   >
-                    <div className="flex h-full items-center justify-center space-x-1 text-11 font-medium">
+                    <div className="flex h-full items-center justify-center gap-x-1 text-11 font-medium">
                       <span
                         className={cn({
                           "rounded-lg bg-accent-primary px-2 text-on-color": monthBlock.today,

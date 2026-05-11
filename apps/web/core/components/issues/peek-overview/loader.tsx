@@ -20,7 +20,7 @@ export function IssuePeekOverviewLoader(props: TIssuePeekOverviewLoader) {
   const { isMobile } = usePlatformOS();
 
   return (
-    <Loader className="h-screen w-full space-y-6 overflow-hidden p-5">
+    <Loader className="h-screen w-full gap-y-6 overflow-hidden p-5">
       <div className="flex items-center justify-between gap-2">
         <div className="flex items-center gap-2">
           <Tooltip tooltipContent="Close the peek view" isMobile={isMobile}>
@@ -39,10 +39,10 @@ export function IssuePeekOverviewLoader(props: TIssuePeekOverviewLoader) {
       </div>
 
       {/* issue title and description and comments */}
-      <div className="space-y-3">
+      <div className="gap-y-3">
         <Loader.Item width="100px" height="20px" />
 
-        <div className="space-y-1">
+        <div className="gap-y-1">
           <Loader.Item width="300px" height="15px" />
           <Loader.Item width="400px" height="15px" />
           <div className="flex items-center gap-2">
@@ -67,7 +67,7 @@ export function IssuePeekOverviewLoader(props: TIssuePeekOverviewLoader) {
       </div>
 
       {/* attachments */}
-      <div className="space-y-3">
+      <div className="gap-y-3">
         <Loader.Item width="80px" height="20px" />
         <div className="flex items-center gap-2">
           <Loader.Item width="250px" height="50px" />
@@ -76,9 +76,9 @@ export function IssuePeekOverviewLoader(props: TIssuePeekOverviewLoader) {
       </div>
 
       {/* properties */}
-      <div className="space-y-3">
+      <div className="gap-y-3">
         <Loader.Item width="80px" height="20px" />
-        <div className="space-y-2">
+        <div className="gap-y-2">
           <div className="flex items-center gap-8">
             <Loader.Item width="150px" height="25px" />
             <Loader.Item width="150px" height="25px" />
