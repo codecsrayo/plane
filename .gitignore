@@ -176,3 +176,5 @@ result
 
 # Claude Code
 .claude/
+
+.graphify_*
