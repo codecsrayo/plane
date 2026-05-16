@@ -665,3 +665,32 @@ tasks:
         # ── 5. record deployed SHA ────────────────────────────
         echo "$NEW" > .ci-last-sha
         echo "[ci] Deploy complete. SHA recorded: $(echo "$NEW" | cut -c1-8)"
+
+  # ----------------------------------------------------------
+  # Graphify — knowledge graph
+  # ----------------------------------------------------------
+  graphify:run:
+    desc: Full graphify pipeline (Gemini backend, respects .graphifyignore)
+    cmds:
+      - |
+        export GEMINI_API_KEY="${GEMINI_API_KEY:-$(grep GEMINI_API_KEY .env 2>/dev/null | cut -d= -f2-)}"
+        python3 -m graphify extract . --backend gemini --no-viz
+
+  graphify:update:
+    desc: Incremental update — re-extract only new/changed files
+    cmds:
+      - |
+        export GEMINI_API_KEY="${GEMINI_API_KEY:-$(grep GEMINI_API_KEY .env 2>/dev/null | cut -d= -f2-)}"
+        python3 -m graphify extract . --update --backend gemini --no-viz
+
+  graphify:query:
+    desc: Query the knowledge graph (requires Q="your question")
+    requires:
+      vars: [Q]
+    cmds:
+      - python3 -m graphify query "{{.Q}}"
+
+  graphify:report:
+    desc: Print the GRAPH_REPORT.md to stdout
+    cmds:
+      - cat graphify-out/GRAPH_REPORT.md
