@@ -1,5 +1,0 @@
-{
-  "permissions": {
-    "allow": ["Bash(python3 -c ' *)", "Bash(echo \"exit: $?\")"]
-  }
-}

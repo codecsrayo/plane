@@ -173,3 +173,6 @@ result
 
 # Graphify
 **/graphify-out/
+
+# Claude Code
+.claude/
