@@ -119,14 +119,25 @@ use api_rust::{auth::rate_limit::RateLimitState, config::Config, jobs, routes, u
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
-    // 1. Structured logging
+    // 1. Structured logging — JSON in production, text in development
+    let debug_mode = std::env::var("DEBUG")
+        .map(|v| v == "1" || v.to_lowercase() == "true")
+        .unwrap_or(false);
+
     let env_filter = EnvFilter::try_from_default_env()
         .unwrap_or_else(|_| EnvFilter::new("info,api_rust=debug,sea_orm=warn"));
 
-    tracing_subscriber::registry()
-        .with(env_filter)
-        .with(tracing_subscriber::fmt::layer())
-        .init();
+    if debug_mode {
+        tracing_subscriber::registry()
+            .with(env_filter)
+            .with(tracing_subscriber::fmt::layer())
+            .init();
+    } else {
+        tracing_subscriber::registry()
+            .with(env_filter)
+            .with(tracing_subscriber::fmt::layer().json())
+            .init();
+    }
 
     tracing::info!("🦀 Plane API Rust starting up...");
 

@@ -2,9 +2,14 @@
 use crate::{auth, AppState};
 use axum::{
     extract::DefaultBodyLimit,
+    http::HeaderName,
     middleware,
     routing::{delete, get, patch, post},
     Json, Router,
+};
+use tower_http::{
+    request_id::{MakeRequestUuid, PropagateRequestIdLayer, SetRequestIdLayer},
+    trace::TraceLayer,
 };
 use utoipa::OpenApi;
 use utoipa_scalar::{Scalar, Servable};
@@ -2058,6 +2063,8 @@ pub fn build_router(state: AppState) -> Router {
     // Mounted BEFORE /api so that the more specific prefix wins.
     let v1 = v1_router::v1_router(state.clone());
 
+    let request_id_header = HeaderName::from_static("x-request-id");
+
     let router = root
         .nest("/api/v1", v1)
         .nest("/api", api_router)
@@ -2065,7 +2072,17 @@ pub fn build_router(state: AppState) -> Router {
         // Auth routes at /auth/* — matches Django: path("auth/", include("plane.authentication.urls"))
         // Caddy routes /auth/* to the API server, frontend calls /auth/email-check/ etc.
         .nest("/auth", auth_router)
-        .nest("/auth", auth_public_routes);
+        .nest("/auth", auth_public_routes)
+        // Middleware order (outermost → innermost):
+        //   SetRequestId  — generates x-request-id UUID if absent from incoming request
+        //   PropagateRequestId — copies x-request-id to every response header
+        //   TraceLayer    — emits INFO span per HTTP request with method, uri, status, latency
+        .layer(TraceLayer::new_for_http())
+        .layer(PropagateRequestIdLayer::new(request_id_header.clone()))
+        .layer(SetRequestIdLayer::new(
+            request_id_header,
+            MakeRequestUuid::default(),
+        ));
 
     // NormalizePathLayer is applied in main.rs wrapping the Router *from
     // the outside* with `NormalizePathLayer::trim_trailing_slash().layer(router)`.
