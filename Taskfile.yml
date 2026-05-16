@@ -674,6 +674,7 @@ tasks:
     cmds:
       - |
         export GEMINI_API_KEY="${GEMINI_API_KEY:-$(grep GEMINI_API_KEY .env 2>/dev/null | cut -d= -f2-)}"
+        export LD_LIBRARY_PATH="/nix/store/1c6pfixbahxcm6pbwwc1wf5wv48lc0hk-ld-library-path/share/nix-ld/lib:$LD_LIBRARY_PATH"
         python3 -m graphify extract . --backend gemini --no-viz
 
   graphify:update:
@@ -681,6 +682,7 @@ tasks:
     cmds:
       - |
         export GEMINI_API_KEY="${GEMINI_API_KEY:-$(grep GEMINI_API_KEY .env 2>/dev/null | cut -d= -f2-)}"
+        export LD_LIBRARY_PATH="/nix/store/1c6pfixbahxcm6pbwwc1wf5wv48lc0hk-ld-library-path/share/nix-ld/lib:$LD_LIBRARY_PATH"
         python3 -m graphify extract . --update --backend gemini --no-viz
 
   graphify:query:
@@ -688,7 +690,9 @@ tasks:
     requires:
       vars: [Q]
     cmds:
-      - python3 -m graphify query "{{.Q}}"
+      - |
+        export LD_LIBRARY_PATH="/nix/store/1c6pfixbahxcm6pbwwc1wf5wv48lc0hk-ld-library-path/share/nix-ld/lib:$LD_LIBRARY_PATH"
+        python3 -m graphify query "{{.Q}}"
 
   graphify:report:
     desc: Print the GRAPH_REPORT.md to stdout
