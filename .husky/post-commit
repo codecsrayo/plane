@@ -1,0 +1,6 @@
+#!/bin/sh
+# graphify: rebuild knowledge graph after each commit (code-only, no LLM)
+if command -v python3 >/dev/null 2>&1; then
+  export GEMINI_API_KEY="${GEMINI_API_KEY:-$(grep GEMINI_API_KEY /home/nixos/plane/.env 2>/dev/null | cut -d= -f2-)}"
+  python3 -m graphify extract . --update --backend gemini --no-viz 2>&1 | tail -3 &
+fi

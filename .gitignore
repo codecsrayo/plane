@@ -172,4 +172,4 @@ flake.lock
 result
 
 # Graphify
-**/graphify-out/cache/
+**/graphify-out/
