@@ -139,3 +139,5 @@ from .draft import (
     DraftIssueSerializer,
     DraftIssueDetailSerializer,
 )
+
+from .template import ProjectTemplateSerializer

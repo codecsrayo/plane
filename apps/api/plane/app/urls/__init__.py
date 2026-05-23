@@ -24,6 +24,7 @@ from .timezone import urlpatterns as timezone_urls
 from .exporter import urlpatterns as exporter_urls
 from .importer import urlpatterns as importer_urls
 from .integration import urlpatterns as integration_urls
+from .template import urlpatterns as template_urls
 
 urlpatterns = [
     *analytic_urls,
@@ -48,4 +49,5 @@ urlpatterns = [
     *exporter_urls,
     *importer_urls,
     *integration_urls,
+    *template_urls,
 ]

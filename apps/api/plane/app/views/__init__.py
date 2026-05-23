@@ -11,6 +11,12 @@ from .project.base import (
     ProjectArchiveUnarchiveEndpoint,
 )
 
+from .project.template import (
+    ProjectTemplateViewSet,
+    ProjectSaveAsTemplateEndpoint,
+    ProjectTemplateInstantiateEndpoint,
+)
+
 from .project.invite import (
     UserProjectInvitationsViewset,
     ProjectInvitationsViewset,
