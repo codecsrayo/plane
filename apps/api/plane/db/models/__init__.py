@@ -98,5 +98,3 @@ from .sticky import Sticky
 from .description import Description, DescriptionVersion
 
 from .template import ProjectTemplate
-
-from .teamspace import Teamspace, TeamspaceMember

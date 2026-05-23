@@ -64,11 +64,3 @@ from .asset import (
 from .invite import WorkspaceInviteSerializer
 from .member import ProjectMemberSerializer
 from .sticky import StickySerializer
-from .teamspace import (
-    TeamspaceSerializer,
-    TeamspaceCreateSerializer,
-    TeamspaceUpdateSerializer,
-    TeamspaceMemberSerializer,
-    TeamspaceMemberCreateSerializer,
-    TeamspaceMemberUpdateSerializer,
-)
