@@ -2,7 +2,7 @@ from django.urls import path
 
 
 from plane.app.views import UnsplashEndpoint
-from plane.app.views import GPTIntegrationEndpoint, RephraseGrammarEndpoint, WorkspaceGPTIntegrationEndpoint
+from plane.app.views import GPTIntegrationEndpoint, WorkspaceGPTIntegrationEndpoint
 from plane.app.views.external.sync import GitHubWebhookEndpoint, GitLabWebhookEndpoint
 
 
@@ -19,10 +19,5 @@ urlpatterns = [
         "workspaces/<str:slug>/ai-assistant/",
         WorkspaceGPTIntegrationEndpoint.as_view(),
         name="importer",
-    ),
-    path(
-        "workspaces/<str:slug>/rephrase-grammar/",
-        RephraseGrammarEndpoint.as_view(),
-        name="rephrase-grammar",
     ),
 ]
