@@ -160,6 +160,43 @@ pub async fn unsplash(
 
 // ── AI Assistant ──────────────────────────────────────────────────────────────
 
+// Provider model lists — mirrors Python's SUPPORTED_PROVIDERS in base.py
+const OPENAI_MODELS: &[&str] = &[
+    "gpt-3.5-turbo",
+    "gpt-4o-mini",
+    "gpt-4o",
+    "o1-mini",
+    "o1-preview",
+];
+
+const ANTHROPIC_MODELS: &[&str] = &[
+    // Claude 4 (latest)
+    "claude-opus-4-6",
+    "claude-sonnet-4-6",
+    "claude-haiku-4-5-20251001",
+    // Claude 3.7
+    "claude-3-7-sonnet-20250219",
+    // Claude 3.5
+    "claude-3-5-sonnet-20241022",
+    "claude-3-5-haiku-20241022",
+    "claude-3-5-sonnet-20240620",
+    // Claude 3
+    "claude-3-haiku-20240307",
+    "claude-3-opus-20240229",
+    "claude-3-sonnet-20240229",
+    // Legacy
+    "claude-2.1",
+    "claude-2",
+    "claude-instant-1.2",
+    "claude-instant-1",
+];
+
+const GEMINI_MODELS: &[&str] = &[
+    "gemini-pro",
+    "gemini-1.5-pro-latest",
+    "gemini-pro-vision",
+];
+
 /// Calls the configured LLM provider (OpenAI / Anthropic / Gemini).
 async fn call_llm(
     http: &reqwest::Client,
@@ -169,6 +206,23 @@ async fn call_llm(
     task: &str,
     prompt: Option<&str>,
 ) -> Result<String, AppError> {
+    let valid_models: &[&str] = match provider {
+        "openai" => OPENAI_MODELS,
+        "anthropic" => ANTHROPIC_MODELS,
+        "gemini" => GEMINI_MODELS,
+        other => {
+            return Err(AppError::BadRequest(
+                format!("Unsupported LLM provider: {other}").into(),
+            ))
+        }
+    };
+
+    if !valid_models.contains(&model) {
+        return Err(AppError::BadRequest(
+            format!("Model '{model}' is not supported by provider '{provider}'").into(),
+        ));
+    }
+
     let full_prompt = match prompt {
         Some(p) if !p.is_empty() => format!("{task}\n{p}"),
         _ => task.to_string(),
