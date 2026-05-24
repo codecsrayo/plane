@@ -36,6 +36,7 @@ pub mod modules;
 pub mod helpers;
 pub mod integrations;
 pub mod projects;
+pub mod project_templates;
 pub mod project_user_properties;
 pub mod states;
 pub mod timezones;
@@ -873,6 +874,26 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/{slug}/project-identifiers",
             get(projects::check_project_identifier).delete(projects::delete_project_identifier),
+        )
+        // ── Project Templates ─────────────────────────────────────────────────
+        // Mirror Django: apps/api/plane/app/urls/template.py
+        .route(
+            "/workspaces/{slug}/project-templates",
+            get(project_templates::list_templates).post(project_templates::create_template),
+        )
+        .route(
+            "/workspaces/{slug}/project-templates/{pk}",
+            get(project_templates::get_template)
+                .patch(project_templates::update_template)
+                .delete(project_templates::delete_template),
+        )
+        .route(
+            "/workspaces/{slug}/project-templates/{template_id}/instantiate",
+            post(project_templates::instantiate_template),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/save-as-template",
+            post(project_templates::save_as_template),
         )
         // Mirror Django: workspaces/<slug>/projects/<project_id>/project-deploy-boards/
         // (`apps/api/plane/app/urls/project.py:113-120`). GET→list, POST→upsert deploy board.

@@ -493,6 +493,10 @@ Todos requieren sesión activa.
 | GET / POST           | `/api/workspaces/{slug}/user-favorite-projects`                               | ✅ OK  | Correcto. |
 | DELETE               | `/api/workspaces/{slug}/user-favorite-projects/{project_id}`                  | ✅ OK  | Correcto. |
 | GET / DELETE         | `/api/workspaces/{slug}/project-identifiers`                                  | ✅ OK  | `{ exists: count, identifiers: [] }` correcto. |
+| GET / POST           | `/api/workspaces/{slug}/project-templates`                                    | 🐛 FIXED | Implementado en pl-222. CRUD completo + save-as-template + instantiate. |
+| GET / PATCH / DELETE | `/api/workspaces/{slug}/project-templates/{pk}`                               | 🐛 FIXED | Idem pl-222. |
+| POST                 | `/api/workspaces/{slug}/project-templates/{template_id}/instantiate`          | 🐛 FIXED | Crea proyecto desde template (estados, labels, módulos, ciclos). pl-222. |
+| POST                 | `/api/workspaces/{slug}/projects/{project_id}/save-as-template`               | 🐛 FIXED | Snapshot de proyecto como template. pl-222. |
 | GET / POST           | `/api/workspaces/{slug}/projects/{project_id}/project-deploy-boards`          | 🐛 FIXED | `project_id`→`project`, `workspace_id`→`workspace`; faltaban `created_by`, `updated_by`, `inbox`, `project_details`, `workspace_detail` (430a23a). |
 | GET / PATCH / DELETE | `/api/workspaces/{slug}/projects/{project_id}/project-deploy-boards/{pk}`     | 🐛 FIXED | Mismo fix struct. |
 | GET / PATCH          | `/api/workspaces/{slug}/projects/{project_id}/preferences/member/{member_id}` | ✅ OK  | Correcto. |

@@ -5,6 +5,7 @@ mod migrations;
 
 use migrations::m20240101_000007_seed_data;
 use migrations::m20260410_000001_baseline;
+use migrations::m20260523_000001_add_project_templates;
 
 pub struct Migrator;
 
@@ -14,6 +15,7 @@ impl MigratorTrait for Migrator {
         vec![
             Box::new(m20260410_000001_baseline::Migration),
             Box::new(m20240101_000007_seed_data::Migration),
+            Box::new(m20260523_000001_add_project_templates::Migration),
         ]
     }
 }

@@ -202,7 +202,7 @@ pub struct ProjectResponse {
 }
 
 impl ProjectResponse {
-    fn from_model(
+    pub(crate) fn from_model(
         p: &projects::Model,
         total_members: Option<i64>,
         member_role: Option<i16>,

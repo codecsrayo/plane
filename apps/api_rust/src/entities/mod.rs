@@ -91,6 +91,7 @@ pub mod project_issue_types;
 pub mod project_member_invites;
 pub mod project_members;
 pub mod project_pages;
+pub mod project_templates;
 pub mod project_public_members;
 pub mod project_user_properties;
 pub mod project_webhooks;
@@ -201,6 +202,10 @@ impl_soft_delete!(
 );
 impl_soft_delete!(project_members::Entity, project_members::Column::DeletedAt);
 impl_soft_delete!(project_pages::Entity, project_pages::Column::DeletedAt);
+impl_soft_delete!(
+    project_templates::Entity,
+    project_templates::Column::DeletedAt
+);
 impl_soft_delete!(
     project_public_members::Entity,
     project_public_members::Column::DeletedAt
