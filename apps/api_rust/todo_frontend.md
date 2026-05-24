@@ -970,5 +970,5 @@ These pre-v2 paths are still called by `FileService` for cleanup of old tiptap-e
 
 | Método | Path | Estado | Notas |
 | ------ | ---- | ------ | ----- |
-| GET / POST | `/api/workspaces/{slug}/projects/{pid}/workspace-integrations/{id}/project-slack-sync/` | ⏳ Pending | `AppInstallationService.addSlackChannel` / `getSlackChannelDetail`. Entity `slack_project_syncs` exists; no handler implemented yet. Low priority (Slack CE integration rare). |
-| DELETE | `/api/workspaces/{slug}/projects/{pid}/workspace-integrations/{id}/project-slack-sync/{sid}` | ⏳ Pending | `AppInstallationService.removeSlackChannel`. Same as above. |
+| GET / POST | `/api/workspaces/{slug}/projects/{pid}/workspace-integrations/{id}/project-slack-sync/` | ✅ Done | `AppInstallationService.addSlackChannel` / `getSlackChannelDetail`. Handler in `routes/integrations/slack.rs`; routes registered in `routes/mod.rs`. (pl-9t3) |
+| DELETE | `/api/workspaces/{slug}/projects/{pid}/workspace-integrations/{id}/project-slack-sync/{sid}` | ✅ Done | `AppInstallationService.removeSlackChannel`. Same handler file. (pl-9t3) |
