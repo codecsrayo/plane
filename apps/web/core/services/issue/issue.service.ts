@@ -170,7 +170,7 @@ export class IssueService extends APIService {
   }
 
   async getIssueDisplayProperties(workspaceSlug: string, projectId: string): Promise<any> {
-    return this.get(`/api/workspaces/${workspaceSlug}/projects/${projectId}/issue-display-properties/`)
+    return this.get(`/api/workspaces/${workspaceSlug}/projects/${projectId}/user-properties/`)
       .then((response) => response?.data)
       .catch((error) => {
         throw new ApiError(error?.response);
@@ -182,7 +182,7 @@ export class IssueService extends APIService {
     projectId: string,
     data: IIssueDisplayProperties
   ): Promise<any> {
-    return this.post(`/api/workspaces/${workspaceSlug}/projects/${projectId}/issue-display-properties/`, {
+    return this.post(`/api/workspaces/${workspaceSlug}/projects/${projectId}/user-properties/`, {
       properties: data,
     })
       .then((response) => response?.data)

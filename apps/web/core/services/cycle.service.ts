@@ -54,7 +54,7 @@ export class CycleService extends APIService {
     projectId: string,
     cycleId: string
   ): Promise<TProgressSnapshot> {
-    return this.get(`/api/workspaces/${workspaceSlug}/projects/${projectId}/cycles/${cycleId}/cycle-progress/`)
+    return this.get(`/api/workspaces/${workspaceSlug}/projects/${projectId}/cycles/${cycleId}/progress/`)
       .then((res) => res?.data)
       .catch((err) => {
         throw err?.response?.data;
