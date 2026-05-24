@@ -933,6 +933,16 @@ pub fn build_router(state: AppState) -> Router {
             get(projects::get_project_invitation)
                 .delete(projects::delete_project_invitation),
         )
+        // ── Slack project sync ────────────────────────────────────────────────
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/workspace-integrations/{wi_id}/project-slack-sync",
+            get(integrations::list_project_slack_syncs)
+                .post(integrations::create_project_slack_sync),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/workspace-integrations/{wi_id}/project-slack-sync/{sid}",
+            delete(integrations::delete_project_slack_sync),
+        )
         // ── States (Phase 3) ──────────────────────────────────────────────────
         .route(
             "/workspaces/{slug}/projects/{project_id}/states",

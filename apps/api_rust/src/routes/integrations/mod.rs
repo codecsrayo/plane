@@ -8,12 +8,14 @@
 //!   github.rs    — GitHub App callback, user callback, repositories, repo-syncs
 //!   gitlab.rs    — GitLab repositories
 //!   pr_state.rs  — PR state mappings
+//!   slack.rs     — Slack project sync (per-project channel binding)
 
 pub mod dtos;
 mod helpers;
 pub mod github;
 pub mod gitlab;
 pub mod pr_state;
+pub mod slack;
 pub mod workspace;
 
 // Re-export all public handlers so `routes/mod.rs` continues
@@ -34,6 +36,11 @@ pub use pr_state::{
     create_pr_state_mapping,
     delete_pr_state_mapping,
     list_pr_state_mappings,
+};
+pub use slack::{
+    create_project_slack_sync,
+    delete_project_slack_sync,
+    list_project_slack_syncs,
 };
 pub use workspace::{
     create_workspace_integration,
