@@ -28,11 +28,130 @@ use crate::{
         extractors::ProjectMemberGuard,
         permissions::{require_role, ROLE_GUEST, ROLE_MEMBER},
     },
-    entities::{intake_issues, intakes, issues, states},
+    entities::{
+        cycle_issues, intake_issues, intakes, issue_assignees, issue_attachments, issue_labels,
+        issue_links, issues, module_issues, states,
+    },
     error::AppError,
     utils::soft_delete::SoftDeleteExt,
     AppState,
 };
+
+// ── Aggregate helpers ─────────────────────────────────────────────────────────
+
+#[derive(Default)]
+struct IssueAggregates {
+    label_ids: Vec<Uuid>,
+    assignee_ids: Vec<Uuid>,
+    module_ids: Vec<Uuid>,
+    cycle_id: Option<Uuid>,
+    sub_issues_count: i64,
+    attachment_count: i64,
+    link_count: i64,
+}
+
+/// Batch-loads aggregate data for a slice of issue IDs to avoid N+1.
+/// Parity with Django `IssueDetailSerializer` annotated fields.
+async fn fetch_issue_aggregates(
+    db: &sea_orm::DatabaseConnection,
+    issue_ids: &[Uuid],
+) -> Result<std::collections::HashMap<Uuid, IssueAggregates>, AppError> {
+    if issue_ids.is_empty() {
+        return Ok(std::collections::HashMap::new());
+    }
+    let mut map: std::collections::HashMap<Uuid, IssueAggregates> =
+        issue_ids.iter().map(|&id| (id, IssueAggregates::default())).collect();
+
+    for row in issue_labels::Entity::find()
+        .filter(issue_labels::Column::IssueId.is_in(issue_ids.to_vec()))
+        .filter(issue_labels::Column::DeletedAt.is_null())
+        .all(db)
+        .await
+        .map_err(AppError::Database)?
+    {
+        if let Some(e) = map.get_mut(&row.issue_id) {
+            e.label_ids.push(row.label_id);
+        }
+    }
+
+    for row in issue_assignees::Entity::find()
+        .filter(issue_assignees::Column::IssueId.is_in(issue_ids.to_vec()))
+        .filter(issue_assignees::Column::DeletedAt.is_null())
+        .all(db)
+        .await
+        .map_err(AppError::Database)?
+    {
+        if let Some(e) = map.get_mut(&row.issue_id) {
+            e.assignee_ids.push(row.assignee_id);
+        }
+    }
+
+    for row in module_issues::Entity::find()
+        .filter(module_issues::Column::IssueId.is_in(issue_ids.to_vec()))
+        .filter(module_issues::Column::DeletedAt.is_null())
+        .all(db)
+        .await
+        .map_err(AppError::Database)?
+    {
+        if let Some(e) = map.get_mut(&row.issue_id) {
+            e.module_ids.push(row.module_id);
+        }
+    }
+
+    for row in cycle_issues::Entity::find()
+        .filter(cycle_issues::Column::IssueId.is_in(issue_ids.to_vec()))
+        .filter(cycle_issues::Column::DeletedAt.is_null())
+        .all(db)
+        .await
+        .map_err(AppError::Database)?
+    {
+        if let Some(e) = map.get_mut(&row.issue_id) {
+            if e.cycle_id.is_none() {
+                e.cycle_id = Some(row.cycle_id);
+            }
+        }
+    }
+
+    for row in issues::Entity::find()
+        .filter(issues::Column::ParentId.is_in(issue_ids.to_vec()))
+        .filter(issues::Column::DeletedAt.is_null())
+        .all(db)
+        .await
+        .map_err(AppError::Database)?
+    {
+        if let Some(parent_id) = row.parent_id {
+            if let Some(e) = map.get_mut(&parent_id) {
+                e.sub_issues_count += 1;
+            }
+        }
+    }
+
+    for row in issue_attachments::Entity::find()
+        .filter(issue_attachments::Column::IssueId.is_in(issue_ids.to_vec()))
+        .filter(issue_attachments::Column::DeletedAt.is_null())
+        .all(db)
+        .await
+        .map_err(AppError::Database)?
+    {
+        if let Some(e) = map.get_mut(&row.issue_id) {
+            e.attachment_count += 1;
+        }
+    }
+
+    for row in issue_links::Entity::find()
+        .filter(issue_links::Column::IssueId.is_in(issue_ids.to_vec()))
+        .filter(issue_links::Column::DeletedAt.is_null())
+        .all(db)
+        .await
+        .map_err(AppError::Database)?
+    {
+        if let Some(e) = map.get_mut(&row.issue_id) {
+            e.link_count += 1;
+        }
+    }
+
+    Ok(map)
+}
 
 // ── Intake status constants (matches Django IntakeIssue.STATUS_CHOICES) ───────
 pub const STATUS_PENDING: i32 = -2;
@@ -89,12 +208,6 @@ impl IntakeResponse {
 /// The frontend reads `inboxIssue.issue.created_by` (root.tsx:77,80),
 /// `issue.name`, `issue.description_html`, `issue.priority`, `issue.sequence_id`,
 /// `issue.label_ids`, `issue.assignee_ids` — all mandatory.
-///
-/// TODO(aggregate-parity): count fields (sub_issues_count,
-/// attachment_count, link_count) and *_ids (label_ids, assignee_ids,
-/// module_ids) require extra queries (ArrayAgg in Django). Currently
-/// returned with default values (0 / empty vec) to unblock the
-/// frontend. Pending refactor: batch in list_intake_issues.
 pub struct IntakeIssueNestedIssue {
     pub id: Uuid,
     pub name: String,
