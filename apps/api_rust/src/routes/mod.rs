@@ -50,6 +50,7 @@ pub mod issue_description_versions;
 pub mod issue_extras2;
 pub mod api_tokens;
 pub mod instances;
+pub mod space;
 pub mod v1_router;
 
 #[derive(OpenApi)]
@@ -2094,10 +2095,58 @@ pub fn build_router(state: AppState) -> Router {
     // Mounted BEFORE /api so that the more specific prefix wins.
     let v1 = v1_router::v1_router(state.clone());
 
+    // ── Public Space / Publish-board routes (no auth required for reads) ─────
+    // Mirror of Django path("api/public/", include("plane.space.urls")).
+    let public_space_routes = Router::new()
+        .route("/anchor/{anchor}/settings", get(space::get_anchor_settings))
+        .route("/anchor/{anchor}/meta", get(space::get_anchor_meta))
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/anchor",
+            get(space::get_workspace_project_anchor),
+        )
+        .route("/anchor/{anchor}/states", get(space::list_anchor_states))
+        .route("/anchor/{anchor}/labels", get(space::list_anchor_labels))
+        .route("/anchor/{anchor}/members", get(space::list_anchor_members))
+        .route("/anchor/{anchor}/cycles", get(space::list_anchor_cycles))
+        .route("/anchor/{anchor}/modules", get(space::list_anchor_modules))
+        .route("/anchor/{anchor}/issues", get(space::list_anchor_issues))
+        .route("/anchor/{anchor}/issues/{issue_id}", get(space::get_anchor_issue))
+        .route(
+            "/anchor/{anchor}/issues/{issue_id}/comments",
+            get(space::list_issue_comments).post(space::create_issue_comment),
+        )
+        .route(
+            "/anchor/{anchor}/issues/{issue_id}/comments/{pk}",
+            patch(space::update_issue_comment).delete(space::delete_issue_comment),
+        )
+        .route(
+            "/anchor/{anchor}/issues/{issue_id}/reactions",
+            get(space::list_issue_reactions).post(space::add_issue_reaction),
+        )
+        .route(
+            "/anchor/{anchor}/issues/{issue_id}/reactions/{reaction_code}",
+            delete(space::remove_issue_reaction),
+        )
+        .route(
+            "/anchor/{anchor}/comments/{comment_id}/reactions",
+            get(space::list_comment_reactions).post(space::add_comment_reaction),
+        )
+        .route(
+            "/anchor/{anchor}/comments/{comment_id}/reactions/{reaction_code}",
+            delete(space::remove_comment_reaction),
+        )
+        .route(
+            "/anchor/{anchor}/issues/{issue_id}/votes",
+            get(space::list_issue_votes)
+                .post(space::add_issue_vote)
+                .delete(space::remove_issue_vote),
+        );
+
     let request_id_header = HeaderName::from_static("x-request-id");
 
     let router = root
         .nest("/api/v1", v1)
+        .nest("/api/public", public_space_routes)
         .nest("/api", api_router)
         .nest("/api", public_routes)
         // Auth routes at /auth/* — matches Django: path("auth/", include("plane.authentication.urls"))
