@@ -34,7 +34,7 @@ use std::sync::Arc;
 use api_rust::{
     auth::rate_limit::RateLimitState,
     config::Config,
-    entities::{api_tokens, instances, profiles, project_identifiers, project_members, projects, users, workspace_members, workspaces},
+    entities::{api_tokens, deploy_boards, instances, profiles, project_identifiers, project_members, projects, users, workspace_members, workspaces},
     routes::build_router,
     utils::startup::{ensure_configurations_seeded, ensure_instance_registered},
     AppState,
@@ -572,6 +572,45 @@ impl TestApp {
             .expect("query workspace by slug")
             .unwrap_or_else(|| panic!("workspace slug={slug} no existe"))
             .id
+    }
+
+    /// Crea un deploy board público para un proyecto.
+    ///
+    /// Devuelve el `anchor` string único del board.
+    pub async fn create_deploy_board(
+        &self,
+        owner_id: Uuid,
+        workspace_id: Uuid,
+        project_id: Uuid,
+        anchor: &str,
+    ) -> String {
+        use sea_orm::ActiveValue::Set;
+        let now = Utc::now();
+        let board_am = deploy_boards::ActiveModel {
+            id: Set(Uuid::new_v4()),
+            anchor: Set(anchor.to_owned()),
+            entity_identifier: Set(Some(project_id)),
+            entity_name: Set(Some("project".to_owned())),
+            is_comments_enabled: Set(true),
+            is_reactions_enabled: Set(true),
+            is_votes_enabled: Set(true),
+            is_activity_enabled: Set(true),
+            is_disabled: Set(false),
+            view_props: Set(serde_json::json!({})),
+            project_id: Set(Some(project_id)),
+            workspace_id: Set(workspace_id),
+            intake_id: Set(None),
+            created_by_id: Set(Some(owner_id)),
+            updated_by_id: Set(Some(owner_id)),
+            created_at: Set(now.into()),
+            updated_at: Set(now.into()),
+            deleted_at: Set(None),
+        };
+        board_am
+            .insert(&self.state.db)
+            .await
+            .expect("insert deploy board");
+        anchor.to_owned()
     }
 
     /// GET autenticado vía API key (`x-api-key` header).
