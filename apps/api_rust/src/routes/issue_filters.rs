@@ -15,15 +15,17 @@
 //!   - subscriber                                          (m2m via issue_subscribers)
 //!   - type                                               (all/backlog/active → state_group)
 //!   - start_target_date                                  (boolean toggle)
+//!   - estimate_point                                     (FK filter on estimate_point_id)
+//!   - mention                                            (m2m via issue_mentions)
+//!   - logged_by                                          (m2m via issue_activities actor_id)
 //!
-//! **Not implemented** (marginal use or high complexity, postponed):
-//!   - mentions, logged_by                                 (seldom used relationships)
-//!   - estimate_point                                     (rare in default views)
+//! **Not implemented** (high complexity, not yet ported):
 //!   - relative date syntax (`2_weeks;after;fromnow`)
 //!   - inbox_status, intake_status                        (intake specific)
 //!
-//! An unimplemented filter is silently ignored — behavioral parity
-//! with Django for covered filters; doesn't break the request.
+//! An unimplemented flat query param is silently ignored to preserve
+//! backward compatibility.  Unknown keys in the JSON `?filters` blob
+//! return 400 (see `merge_json_filters`).
 //!
 //! # Strategy for m2m filters
 //!
@@ -56,7 +58,10 @@ use serde::Deserialize;
 use uuid::Uuid;
 
 use crate::{
-    entities::{cycle_issues, issue_assignees, issue_labels, issue_subscribers, issues, module_issues, states},
+    entities::{
+        cycle_issues, issue_activities, issue_assignees, issue_labels, issue_mentions,
+        issue_subscribers, issues, module_issues, states,
+    },
     error::AppError,
 };
 
@@ -93,6 +98,9 @@ pub struct IssueFilterParams {
     #[serde(rename = "type")]
     pub type_filter:        Option<String>,
     pub start_target_date:  Option<String>,
+    pub estimate_point:     Option<String>,
+    pub mention:            Option<String>,
+    pub logged_by:          Option<String>,
 }
 
 /// "Empty result" marker: when a filter implies no possible matches
@@ -149,16 +157,19 @@ fn csv_contains_none(raw: &str) -> bool {
 /// Recognized keys (mirroring `IssueFilterSet` in
 /// `plane/utils/filters/filterset.py`):
 ///
-/// | JSON key                   | `IssueFilterParams` field |
-/// |----------------------------|--------------------------|
-/// | `state_group` / `...__in`  | `state_group`            |
-/// | `state_id`    / `...__in`  | `state`                  |
-/// | `priority`    / `...__in`  | `priority`               |
-/// | `label_id`    / `...__in`  | `labels`                 |
-/// | `assignee_id` / `...__in`  | `assignees`              |
-/// | `created_by_id`/ `...__in` | `created_by`             |
-/// | `module_id`   / `...__in`  | `module`                 |
-/// | `cycle_id`    / `...__in`  | `cycle`                  |
+/// | JSON key                         | `IssueFilterParams` field |
+/// |----------------------------------|--------------------------|
+/// | `state_group` / `...__in`        | `state_group`            |
+/// | `state_id`    / `...__in`        | `state`                  |
+/// | `priority`    / `...__in`        | `priority`               |
+/// | `label_id`    / `...__in`        | `labels`                 |
+/// | `assignee_id` / `...__in`        | `assignees`              |
+/// | `created_by_id`/ `...__in`       | `created_by`             |
+/// | `module_id`   / `...__in`        | `module`                 |
+/// | `cycle_id`    / `...__in`        | `cycle`                  |
+/// | `estimate_point_id` / `...__in`  | `estimate_point`         |
+/// | `mention_id`  / `...__in`        | `mention`                |
+/// | `logged_by_id` / `...__in`       | `logged_by`              |
 ///
 /// # Priority
 ///
@@ -233,6 +244,15 @@ pub fn merge_json_filters(
             }
             "cycle_id" | "cycle_id__in" => {
                 params.cycle.get_or_insert(csv);
+            }
+            "estimate_point_id" | "estimate_point_id__in" => {
+                params.estimate_point.get_or_insert(csv);
+            }
+            "mention_id" | "mention_id__in" => {
+                params.mention.get_or_insert(csv);
+            }
+            "logged_by_id" | "logged_by_id__in" => {
+                params.logged_by.get_or_insert(csv);
             }
             unknown => {
                 return Err(AppError::BadRequest(format!(
@@ -411,6 +431,52 @@ pub async fn apply_issue_filters(
         query = query
             .filter(issues::Column::StartDate.is_not_null())
             .filter(issues::Column::TargetDate.is_not_null());
+    }
+
+    // ── estimate_point ────────────────────────────────────────────────────────
+
+    if let Some(raw) = params.estimate_point.as_deref() {
+        let ids = parse_uuids_csv(raw);
+        let has_none = csv_contains_none(raw);
+        let mut cond = Condition::any();
+        let mut touched = false;
+        if has_none {
+            cond = cond.add(issues::Column::EstimatePointId.is_null());
+            touched = true;
+        }
+        if !ids.is_empty() {
+            cond = cond.add(issues::Column::EstimatePointId.is_in(ids));
+            touched = true;
+        }
+        if touched {
+            query = query.filter(cond);
+        }
+    }
+
+    // ── mention ───────────────────────────────────────────────────────────────
+
+    if let Some(raw) = params.mention.as_deref() {
+        let ids = parse_uuids_csv(raw);
+        if !ids.is_empty() {
+            let issue_ids = load_issues_with_mentions(db, workspace_id, ids).await?;
+            if issue_ids.is_empty() {
+                return Ok(FilteredQuery::Empty);
+            }
+            query = query.filter(issues::Column::Id.is_in(issue_ids));
+        }
+    }
+
+    // ── logged_by ─────────────────────────────────────────────────────────────
+
+    if let Some(raw) = params.logged_by.as_deref() {
+        let ids = parse_uuids_csv(raw);
+        if !ids.is_empty() {
+            let issue_ids = load_issues_logged_by(db, workspace_id, ids).await?;
+            if issue_ids.is_empty() {
+                return Ok(FilteredQuery::Empty);
+            }
+            query = query.filter(issues::Column::Id.is_in(issue_ids));
+        }
     }
 
     // ── m2m via pre-query ─────────────────────────────────────────────────────
@@ -735,6 +801,47 @@ fn dedup(mut v: Vec<Uuid>) -> Vec<Uuid> {
     v.sort();
     v.dedup();
     v
+}
+
+/// Mirror of `filter_mentions` (issue_filters.py:177-185).
+/// Returns issue_ids where `mention_id` (the mentioned user) is in `mention_ids`.
+async fn load_issues_with_mentions(
+    db: &sea_orm::DatabaseConnection,
+    workspace_id: Uuid,
+    mention_ids: Vec<Uuid>,
+) -> Result<Vec<Uuid>, AppError> {
+    let rows: Vec<Uuid> = issue_mentions::Entity::find()
+        .select_only()
+        .column(issue_mentions::Column::IssueId)
+        .filter(issue_mentions::Column::WorkspaceId.eq(workspace_id))
+        .filter(issue_mentions::Column::MentionId.is_in(mention_ids))
+        .filter(issue_mentions::Column::DeletedAt.is_null())
+        .into_tuple()
+        .all(db)
+        .await
+        .map_err(AppError::Database)?;
+    Ok(dedup(rows))
+}
+
+/// Mirror of `filter_logged_by` (issue_filters.py:414-424).
+/// Returns issue_ids where `actor_id` matches any of the given user IDs.
+async fn load_issues_logged_by(
+    db: &sea_orm::DatabaseConnection,
+    workspace_id: Uuid,
+    actor_ids: Vec<Uuid>,
+) -> Result<Vec<Uuid>, AppError> {
+    let rows: Vec<Option<Uuid>> = issue_activities::Entity::find()
+        .select_only()
+        .column(issue_activities::Column::IssueId)
+        .filter(issue_activities::Column::WorkspaceId.eq(workspace_id))
+        .filter(issue_activities::Column::ActorId.is_in(actor_ids))
+        .filter(issue_activities::Column::DeletedAt.is_null())
+        .into_tuple()
+        .all(db)
+        .await
+        .map_err(AppError::Database)?;
+    let ids: Vec<Uuid> = rows.into_iter().flatten().collect();
+    Ok(dedup(ids))
 }
 
 // ── Helper: state groups → state IDs ──────────────────────────────────────────
