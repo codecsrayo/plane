@@ -243,9 +243,11 @@ pub struct IntakeIssueNestedIssue {
 }
 
 impl IntakeIssueNestedIssue {
-    /// Builds issue details from Model, with default values for aggregates.
-    /// See TODO in struct documentation.
     fn from_model(m: &issues::Model) -> Self {
+        Self::from_model_with_aggregates(m, None)
+    }
+
+    fn from_model_with_aggregates(m: &issues::Model, agg: Option<&IssueAggregates>) -> Self {
         Self {
             id: m.id,
             name: m.name.clone(),
@@ -267,13 +269,13 @@ impl IntakeIssueNestedIssue {
             is_draft: m.is_draft,
             is_intake: false,
             estimate_point: m.estimate_point_id,
-            cycle_id: None,
-            label_ids: Vec::new(),
-            assignee_ids: Vec::new(),
-            module_ids: Vec::new(),
-            sub_issues_count: 0,
-            attachment_count: 0,
-            link_count: 0,
+            cycle_id: agg.and_then(|a| a.cycle_id),
+            label_ids: agg.map(|a| a.label_ids.clone()).unwrap_or_default(),
+            assignee_ids: agg.map(|a| a.assignee_ids.clone()).unwrap_or_default(),
+            module_ids: agg.map(|a| a.module_ids.clone()).unwrap_or_default(),
+            sub_issues_count: agg.map(|a| a.sub_issues_count).unwrap_or(0),
+            attachment_count: agg.map(|a| a.attachment_count).unwrap_or(0),
+            link_count: agg.map(|a| a.link_count).unwrap_or(0),
         }
     }
 }
@@ -298,6 +300,14 @@ pub struct IntakeIssueResponse {
 
 impl IntakeIssueResponse {
     fn from_joined(ii: intake_issues::Model, issue: &issues::Model) -> Self {
+        Self::from_joined_with_aggregates(ii, issue, None)
+    }
+
+    fn from_joined_with_aggregates(
+        ii: intake_issues::Model,
+        issue: &issues::Model,
+        agg: Option<&IssueAggregates>,
+    ) -> Self {
         Self {
             id: ii.id,
             issue_id: ii.issue_id,
@@ -310,7 +320,7 @@ impl IntakeIssueResponse {
             workspace_id: ii.workspace_id,
             created_by_id: ii.created_by_id,
             created_at: ii.created_at,
-            issue: IntakeIssueNestedIssue::from_model(issue),
+            issue: IntakeIssueNestedIssue::from_model_with_aggregates(issue, agg),
         }
     }
 }
@@ -607,7 +617,7 @@ pub async fn list_intake_issues(
     let issue_ids: Vec<Uuid> = rows.iter().map(|r| r.issue_id).collect();
     let issues_by_id: std::collections::HashMap<Uuid, issues::Model> = issues::Entity::find()
         .active()
-        .filter(issues::Column::Id.is_in(issue_ids))
+        .filter(issues::Column::Id.is_in(issue_ids.clone()))
         .all(&state.db)
         .await
         .map_err(AppError::Database)?
@@ -615,12 +625,18 @@ pub async fn list_intake_issues(
         .map(|i| (i.id, i))
         .collect();
 
+    let aggregates = fetch_issue_aggregates(&state.db, &issue_ids).await?;
+
     let responses: Vec<IntakeIssueResponse> = rows
         .into_iter()
         .filter_map(|ii| {
-            issues_by_id
-                .get(&ii.issue_id)
-                .map(|issue| IntakeIssueResponse::from_joined(ii, issue))
+            issues_by_id.get(&ii.issue_id).map(|issue| {
+                IntakeIssueResponse::from_joined_with_aggregates(
+                    ii,
+                    issue,
+                    aggregates.get(&issue.id),
+                )
+            })
         })
         .collect();
 
@@ -854,7 +870,17 @@ pub async fn create_intake_issue(
     .await
     .map_err(AppError::Database)?;
 
-    Ok((StatusCode::CREATED, Json(IntakeIssueResponse::from_joined(intake_issue, &issue))))
+    let mut aggregates = fetch_issue_aggregates(&state.db, &[issue.id]).await?;
+    let agg = aggregates.remove(&issue.id);
+
+    Ok((
+        StatusCode::CREATED,
+        Json(IntakeIssueResponse::from_joined_with_aggregates(
+            intake_issue,
+            &issue,
+            agg.as_ref(),
+        )),
+    ))
 }
 
 // ── GET /intake-issues/{pk}/ ──────────────────────────────────────────────────
@@ -904,7 +930,14 @@ pub async fn get_intake_issue(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    Ok(Json(IntakeIssueResponse::from_joined(ii, &issue)))
+    let mut aggregates = fetch_issue_aggregates(&state.db, &[issue.id]).await?;
+    let agg = aggregates.remove(&issue.id);
+
+    Ok(Json(IntakeIssueResponse::from_joined_with_aggregates(
+        ii,
+        &issue,
+        agg.as_ref(),
+    )))
 }
 
 // ── PATCH /intake-issues/{pk}/ ────────────────────────────────────────────────
@@ -993,7 +1026,14 @@ pub async fn update_intake_issue(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    Ok(Json(IntakeIssueResponse::from_joined(updated, &issue)))
+    let mut aggregates = fetch_issue_aggregates(&state.db, &[issue.id]).await?;
+    let agg = aggregates.remove(&issue.id);
+
+    Ok(Json(IntakeIssueResponse::from_joined_with_aggregates(
+        updated,
+        &issue,
+        agg.as_ref(),
+    )))
 }
 
 // ── DELETE /intake-issues/{pk}/ ───────────────────────────────────────────────
