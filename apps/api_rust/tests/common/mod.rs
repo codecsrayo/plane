@@ -584,7 +584,6 @@ impl TestApp {
         project_id: Uuid,
         anchor: &str,
     ) -> String {
-        use sea_orm::ActiveValue::Set;
         let now = Utc::now();
         let board_am = deploy_boards::ActiveModel {
             id: Set(Uuid::new_v4()),
