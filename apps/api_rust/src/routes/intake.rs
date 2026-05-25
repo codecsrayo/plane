@@ -19,6 +19,7 @@ use axum::{
 };
 use sea_orm::{
     ActiveModelTrait, ActiveValue::Set, ColumnTrait, EntityTrait, QueryFilter, QueryOrder,
+    TransactionTrait,
 };
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
@@ -33,6 +34,7 @@ use crate::{
         issue_links, issues, module_issues, states,
     },
     error::AppError,
+    routes::issues::{sync_assignees, sync_labels},
     utils::soft_delete::SoftDeleteExt,
     AppState,
 };
@@ -228,9 +230,8 @@ pub struct IntakeIssueNestedIssue {
     pub created_by: Option<Uuid>,
     pub updated_by: Option<Uuid>,
     pub is_draft: bool,
-    /// Django `is_intake` is calculated at runtime. Always `false` here because
-    /// the issue is still in draft/intake — the flag only becomes true after
-    /// acceptance. TODO: calculate correctly.
+    /// Django `is_intake` is always false for issues in the intake queue.
+    /// It becomes true only after the issue is accepted and moved out of intake.
     pub is_intake: bool,
     pub estimate_point: Option<Uuid>,
     pub cycle_id: Option<Uuid>,
@@ -364,6 +365,16 @@ pub struct CreateIntakeIssueBody {
     pub name: String,
     pub description_html: Option<String>,
     pub priority: Option<String>,
+    // Django IssueCreateSerializer also accepts these optional fields.
+    pub parent_id: Option<Uuid>,
+    pub start_date: Option<chrono::NaiveDate>,
+    pub target_date: Option<chrono::NaiveDate>,
+    pub estimate_point: Option<Uuid>,
+    pub type_id: Option<Uuid>,
+    #[serde(default)]
+    pub assignee_ids: Vec<Uuid>,
+    #[serde(default)]
+    pub label_ids: Vec<Uuid>,
 }
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
@@ -806,22 +817,17 @@ pub async fn create_intake_issue(
         .flatten();
     let sequence_id = max_seq.unwrap_or(0) + 1;
 
-    // ── Create issue (Django parity IssueCreateSerializer.save) ────────────
+    // ── Create issue + assignees + labels in a transaction ────────────────
     //
-    // DIVERGENCE: Django uses IssueCreateSerializer which accepts parent_id,
-    // start_date, target_date, estimate_point, type_id, assignee_ids,
-    // label_ids. Here those fields are silently discarded by serde.
-    //
-    // TODO(full-parity): add those fields to CreateIntakeIssueBody,
-    // wrap issue INSERT + sync_assignees + sync_labels in a transaction
-    // (pattern already exists in issues::create_issue), and make
-    // sync_assignees/sync_labels from issues.rs pub(crate).
-    //
-    // is_draft=false: Django parity. IssueCreateSerializer does not mark is_draft,
-    // and the field is bool NOT NULL with default false in DB. Previous tweak
-    // (is_draft=true) was our divergence.
+    // Django parity: IssueCreateSerializer.save handles parent_id, start_date,
+    // target_date, estimate_point, type_id, assignee_ids, label_ids.
+    // is_draft=false: IssueCreateSerializer does not set is_draft.
+    let issue_id = Uuid::new_v4();
+    let assignee_ids = body.issue.assignee_ids.clone();
+    let label_ids = body.issue.label_ids.clone();
+    let txn = state.db.begin().await.map_err(AppError::Database)?;
     let issue = issues::ActiveModel {
-        id: Set(Uuid::new_v4()),
+        id: Set(issue_id),
         name: Set(body.issue.name),
         description_html: Set(body.issue.description_html.unwrap_or_default()),
         description_json: Set(serde_json::json!({})),
@@ -831,6 +837,11 @@ pub async fn create_intake_issue(
         project_id: Set(guard.project.id),
         workspace_id: Set(guard.workspace.id),
         state_id: Set(Some(triage_state.id)), // Django base.py:250
+        parent_id: Set(body.issue.parent_id),
+        start_date: Set(body.issue.start_date),
+        target_date: Set(body.issue.target_date),
+        estimate_point_id: Set(body.issue.estimate_point),
+        type_id: Set(body.issue.type_id),
         created_by_id: Set(Some(guard.user.id)),
         updated_by_id: Set(Some(guard.user.id)),
         is_draft: Set(false),
@@ -840,9 +851,32 @@ pub async fn create_intake_issue(
         deleted_at: Set(None),
         ..Default::default()
     }
-    .insert(&state.db)
+    .insert(&txn)
     .await
     .map_err(AppError::Database)?;
+
+    if !assignee_ids.is_empty() {
+        sync_assignees(
+            &txn,
+            issue.id,
+            guard.project.id,
+            guard.workspace.id,
+            guard.user.id,
+            &assignee_ids,
+        )
+        .await?;
+    }
+    if !label_ids.is_empty() {
+        sync_labels(
+            &txn,
+            issue.id,
+            guard.project.id,
+            guard.workspace.id,
+            guard.user.id,
+            &label_ids,
+        )
+        .await?;
+    }
 
     // ── Create intake_issue (Django parity base.py:266-271) ────────────────
     //
@@ -866,9 +900,11 @@ pub async fn create_intake_issue(
         deleted_at: Set(None),
         ..Default::default()
     }
-    .insert(&state.db)
+    .insert(&txn)
     .await
     .map_err(AppError::Database)?;
+
+    txn.commit().await.map_err(AppError::Database)?;
 
     let mut aggregates = fetch_issue_aggregates(&state.db, &[issue.id]).await?;
     let agg = aggregates.remove(&issue.id);

@@ -493,7 +493,7 @@ async fn build_create_response(
 
 /// Synchronizes issue assignees within a transaction.
 /// Soft-deletes existing ones not in `new_ids`, inserts new ones.
-async fn sync_assignees(
+pub(crate) async fn sync_assignees(
     txn: &sea_orm::DatabaseTransaction,
     issue_id: Uuid,
     project_id: Uuid,
@@ -542,7 +542,7 @@ async fn sync_assignees(
 }
 
 /// Synchronizes issue labels within a transaction.
-async fn sync_labels(
+pub(crate) async fn sync_labels(
     txn: &sea_orm::DatabaseTransaction,
     issue_id: Uuid,
     project_id: Uuid,
