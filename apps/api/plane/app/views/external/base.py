@@ -133,24 +133,54 @@ def get_llm_config() -> Tuple[str | None, str | None, str | None]:
 
 def get_llm_response(task, prompt, api_key: str, model: str, provider: str) -> Tuple[str | None, str | None]:
     """Helper to get LLM completion response"""
-    final_text = task + "\n" + prompt
+    final_text = task + "\n" + prompt if prompt else task
     try:
-        # Prepend provider prefix for LiteLLM proxy routing
-        if provider.lower() == "gemini":
-            model = f"gemini/{model}"
-        elif provider.lower() == "anthropic":
-            model = f"anthropic/{model}"
+        provider_lower = provider.lower()
 
-        client = OpenAI(api_key=api_key)
-        chat_completion = client.chat.completions.create(
-            model=model, messages=[{"role": "user", "content": final_text}]
-        )
-        text = chat_completion.choices[0].message.content
-        return text, None
+        if provider_lower == "gemini":
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
+            resp = requests.post(
+                url,
+                json={"contents": [{"parts": [{"text": final_text}]}]},
+                timeout=60,
+            )
+            resp.raise_for_status()
+            data = resp.json()
+            text = data["candidates"][0]["content"]["parts"][0]["text"]
+            return text, None
+
+        elif provider_lower == "anthropic":
+            resp = requests.post(
+                "https://api.anthropic.com/v1/messages",
+                headers={
+                    "x-api-key": api_key,
+                    "anthropic-version": "2023-06-01",
+                    "content-type": "application/json",
+                },
+                json={
+                    "model": model,
+                    "max_tokens": 1024,
+                    "messages": [{"role": "user", "content": final_text}],
+                },
+                timeout=60,
+            )
+            resp.raise_for_status()
+            data = resp.json()
+            text = data["content"][0]["text"]
+            return text, None
+
+        else:
+            client = OpenAI(api_key=api_key)
+            chat_completion = client.chat.completions.create(
+                model=model, messages=[{"role": "user", "content": final_text}]
+            )
+            text = chat_completion.choices[0].message.content
+            return text, None
+
     except Exception as e:
         log_exception(e)
         error_type = e.__class__.__name__
-        if error_type == "AuthenticationError":
+        if error_type in ("AuthenticationError", "HTTPError"):
             return None, f"Invalid API key for {provider}"
         elif error_type == "RateLimitError":
             return None, f"Rate limit exceeded for {provider}"
