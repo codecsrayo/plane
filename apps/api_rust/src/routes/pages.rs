@@ -31,12 +31,15 @@ use sea_orm::{
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
+use regex::Regex;
+use std::{collections::HashSet, sync::OnceLock};
+
 use crate::{
     auth::{
         extractors::ProjectMemberGuard,
         permissions::{require_role, ROLE_GUEST, ROLE_MEMBER},
     },
-    entities::{page_labels, page_versions, pages, project_pages, user_favorites},
+    entities::{page_labels, page_logs, page_versions, pages, project_pages, user_favorites},
     error::AppError,
     utils::{content_validator, soft_delete::SoftDeleteExt},
     AppState,
@@ -1006,6 +1009,233 @@ pub async fn get_page_description(
     Ok((headers, bytes))
 }
 
+// ── Page versioning & transaction helpers ────────────────────────────────────
+//
+// Parity with Django Celery tasks:
+//   page_version_task.track_page_version  (bgtasks/page_version_task.py)
+//   page_transaction_task.page_transaction (bgtasks/page_transaction_task.py)
+// Implemented inline (synchronous) — no dedicated job type required.
+
+const PAGE_VERSION_TIMEOUT_SECS: i64 = 600;
+const PAGE_VERSION_MAX_COUNT: u64 = 20;
+
+struct PageComponent {
+    /// Component's own `id` attribute — used as PageLog.transaction.
+    id: Uuid,
+    /// Referenced entity (e.g. user UUID for mention, None for image).
+    entity_identifier: Option<Uuid>,
+    entity_name: String,
+}
+
+/// Extracts mention-component and image-component elements from HTML.
+/// Returns (mention_components, image_components).
+fn extract_page_components(html: &str) -> (Vec<PageComponent>, Vec<PageComponent>) {
+    static MENTION_RE: OnceLock<Regex> = OnceLock::new();
+    static IMAGE_RE: OnceLock<Regex> = OnceLock::new();
+    static ATTR_ID_RE: OnceLock<Regex> = OnceLock::new();
+    static ATTR_EI_RE: OnceLock<Regex> = OnceLock::new();
+    static ATTR_EN_RE: OnceLock<Regex> = OnceLock::new();
+    static ATTR_SRC_RE: OnceLock<Regex> = OnceLock::new();
+
+    let mention_re = MENTION_RE
+        .get_or_init(|| Regex::new(r"(?i)<mention-component\s[^>]*/?>").unwrap());
+    let image_re = IMAGE_RE
+        .get_or_init(|| Regex::new(r"(?i)<image-component\s[^>]*/?>").unwrap());
+    let attr_id_re = ATTR_ID_RE
+        .get_or_init(|| Regex::new(r#"(?i)\bid\s*=\s*"([^"]+)""#).unwrap());
+    let attr_ei_re = ATTR_EI_RE
+        .get_or_init(|| Regex::new(r#"(?i)\bentity_identifier\s*=\s*"([^"]+)""#).unwrap());
+    let attr_en_re = ATTR_EN_RE
+        .get_or_init(|| Regex::new(r#"(?i)\bentity_name\s*=\s*"([^"]+)""#).unwrap());
+    let attr_src_re = ATTR_SRC_RE
+        .get_or_init(|| Regex::new(r#"(?i)\bsrc\s*=\s*"([^"]+)""#).unwrap());
+
+    let extract_attr = |tag: &str, re: &Regex| -> Option<String> {
+        re.captures(tag)
+            .and_then(|c| c.get(1))
+            .map(|m| m.as_str().to_string())
+    };
+
+    let mentions: Vec<PageComponent> = mention_re
+        .find_iter(html)
+        .filter_map(|m| {
+            let tag = m.as_str();
+            let id_str = extract_attr(tag, attr_id_re)?;
+            let id = id_str.parse::<Uuid>().ok()?;
+            let entity_identifier = extract_attr(tag, attr_ei_re)
+                .and_then(|s| s.parse::<Uuid>().ok());
+            let entity_name = extract_attr(tag, attr_en_re).unwrap_or_default();
+            Some(PageComponent { id, entity_identifier, entity_name })
+        })
+        .collect();
+
+    let images: Vec<PageComponent> = image_re
+        .find_iter(html)
+        .filter_map(|m| {
+            let tag = m.as_str();
+            let id_str = extract_attr(tag, attr_id_re)?;
+            let id = id_str.parse::<Uuid>().ok()?;
+            // `src` is a URL — not storable as UUID; entity_identifier is None.
+            let _ = attr_src_re;
+            Some(PageComponent { id, entity_identifier: None, entity_name: "image".to_string() })
+        })
+        .collect();
+
+    (mentions, images)
+}
+
+/// Parity with `track_page_version` Celery task.
+/// Upserts the current page snapshot into `page_versions` with a 600-second
+/// rolling window per user.
+async fn track_page_version_inline(
+    db: &sea_orm::DatabaseConnection,
+    page: &pages::Model,
+    old_html: &str,
+    user_id: Uuid,
+) -> Result<(), AppError> {
+    if old_html == page.description_html {
+        return Ok(());
+    }
+
+    let now: DateTime<FixedOffset> = Utc::now().into();
+
+    // Latest version for this page, ordered by last_saved_at DESC.
+    let latest = page_versions::Entity::find()
+        .filter(page_versions::Column::PageId.eq(page.id))
+        .filter(page_versions::Column::DeletedAt.is_null())
+        .order_by_desc(page_versions::Column::LastSavedAt)
+        .one(db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let reuse = latest.as_ref().is_some_and(|v| {
+        v.owned_by_id == user_id
+            && (now.timestamp() - v.last_saved_at.timestamp()) <= PAGE_VERSION_TIMEOUT_SECS
+    });
+
+    if reuse {
+        let version = latest.unwrap();
+        let mut am: page_versions::ActiveModel = version.into();
+        am.description_html = Set(page.description_html.clone());
+        am.description_binary = Set(page.description_binary.clone());
+        am.description_json = Set(page.description_json.clone());
+        am.description_stripped = Set(page.description_stripped.clone());
+        am.sub_pages_data = Set(serde_json::json!({}));
+        am.updated_at = Set(now);
+        am.update(db).await.map_err(AppError::Database)?;
+    } else {
+        page_versions::ActiveModel {
+            id: Set(Uuid::new_v4()),
+            page_id: Set(page.id),
+            workspace_id: Set(page.workspace_id),
+            description_html: Set(page.description_html.clone()),
+            description_binary: Set(page.description_binary.clone()),
+            description_json: Set(page.description_json.clone()),
+            description_stripped: Set(page.description_stripped.clone()),
+            owned_by_id: Set(user_id),
+            last_saved_at: Set(now),
+            sub_pages_data: Set(serde_json::json!({})),
+            created_at: Set(now),
+            updated_at: Set(now),
+            deleted_at: Set(None),
+            ..Default::default()
+        }
+        .insert(db)
+        .await
+        .map_err(AppError::Database)?;
+
+        // Cap at 20 versions: delete oldest if exceeded.
+        let count = page_versions::Entity::find()
+            .filter(page_versions::Column::PageId.eq(page.id))
+            .filter(page_versions::Column::DeletedAt.is_null())
+            .count(db)
+            .await
+            .map_err(AppError::Database)?;
+
+        if count > PAGE_VERSION_MAX_COUNT {
+            if let Some(oldest) = page_versions::Entity::find()
+                .filter(page_versions::Column::PageId.eq(page.id))
+                .filter(page_versions::Column::DeletedAt.is_null())
+                .order_by_asc(page_versions::Column::LastSavedAt)
+                .one(db)
+                .await
+                .map_err(AppError::Database)?
+            {
+                let mut am: page_versions::ActiveModel = oldest.into();
+                am.deleted_at = Set(Some(now));
+                am.update(db).await.map_err(AppError::Database)?;
+            }
+        }
+    }
+
+    Ok(())
+}
+
+/// Parity with `page_transaction` Celery task.
+/// Diffs old vs new HTML for mention/image components and upserts PageLog rows.
+async fn page_transaction_inline(
+    db: &sea_orm::DatabaseConnection,
+    new_html: &str,
+    old_html: &str,
+    page_id: Uuid,
+    workspace_id: Uuid,
+) -> Result<(), AppError> {
+    let has_existing = page_logs::Entity::find()
+        .filter(page_logs::Column::PageId.eq(page_id))
+        .filter(page_logs::Column::DeletedAt.is_null())
+        .count(db)
+        .await
+        .map_err(AppError::Database)?
+        > 0;
+
+    let (old_mentions, old_images) = extract_page_components(old_html);
+    let (new_mentions, new_images) = extract_page_components(new_html);
+
+    let old_ids: HashSet<Uuid> = old_mentions.iter().chain(old_images.iter()).map(|c| c.id).collect();
+    let new_ids: HashSet<Uuid> = new_mentions.iter().chain(new_images.iter()).map(|c| c.id).collect();
+
+    let deleted_ids: Vec<Uuid> = old_ids.difference(&new_ids).copied().collect();
+    if !deleted_ids.is_empty() {
+        let now: DateTime<FixedOffset> = Utc::now().into();
+        let to_delete = page_logs::Entity::find()
+            .filter(page_logs::Column::Transaction.is_in(deleted_ids))
+            .filter(page_logs::Column::PageId.eq(page_id))
+            .all(db)
+            .await
+            .map_err(AppError::Database)?;
+        for log in to_delete {
+            let mut am: page_logs::ActiveModel = log.into();
+            am.deleted_at = Set(Some(now));
+            am.update(db).await.map_err(AppError::Database)?;
+        }
+    }
+
+    let now: DateTime<FixedOffset> = Utc::now().into();
+    for component in new_mentions.iter().chain(new_images.iter()) {
+        if old_ids.contains(&component.id) && has_existing {
+            continue;
+        }
+        page_logs::ActiveModel {
+            id: Set(Uuid::new_v4()),
+            transaction: Set(component.id),
+            page_id: Set(page_id),
+            entity_identifier: Set(component.entity_identifier),
+            entity_name: Set(component.entity_name.clone()),
+            entity_type: Set(None),
+            workspace_id: Set(workspace_id),
+            created_at: Set(now),
+            updated_at: Set(now),
+            deleted_at: Set(None),
+            ..Default::default()
+        }
+        .insert(db)
+        .await
+        .map_err(AppError::Database)?;
+    }
+
+    Ok(())
+}
+
 // ── PATCH /pages/{page_id}/description/ ──────────────────────────────────────
 //
 // Mirror of `PagesDescriptionViewSet.partial_update` in
@@ -1019,14 +1249,10 @@ pub async fn get_page_description(
 // * `page.is_locked`   ⇒ 400 {"error_code": 4701, "error_message": "PAGE_LOCKED"}
 // * `page.archived_at` ⇒ 400 {"error_code": 4702, "error_message": "PAGE_ARCHIVED"}
 //
-// NOTE: Django triggers two background Celery tasks after saving:
-//   * `page_transaction(new_html, old_html, page_id)` — change tracking.
-//   * `track_page_version(page_id, existing_instance, user_id)` — snapshot in
-//     `page_versions`.
-// The Rust API does not yet have the job system for these tasks (the job worker
-// only covers notifications today). We leave them as visible TODOs to not
-// lose traceability; the editor still works without historical versioning
-// in the Rust path — when there is a client, the Django path is still available.
+// After saving, two inline tasks run for parity with Django Celery tasks:
+//   * `page_transaction_inline` — diffs old/new HTML for component changes.
+//   * `track_page_version_inline` — snapshots the page into `page_versions`.
+// Both errors are swallowed (non-fatal) so a failed snapshot never blocks the save.
 
 #[utoipa::path(
     patch,
@@ -1113,6 +1339,7 @@ pub async fn update_page_description(
     // calling `update()` if the model has `auto_now`; in this project it is
     // not so, so we set it manually as in `update_page`.
     let now: DateTime<FixedOffset> = Utc::now().into();
+    let old_html = page.description_html.clone();
     let mut am: pages::ActiveModel = page.into();
 
     if let Some(bytes) = decoded_binary {
@@ -1130,12 +1357,19 @@ pub async fn update_page_description(
     am.updated_by_id = Set(Some(guard.user.id));
     am.updated_at = Set(now);
 
-    am.update(&state.db).await.map_err(AppError::Database)?;
+    let updated_page = am.update(&state.db).await.map_err(AppError::Database)?;
 
-    // TODO(api_rust): enqueue `page_transaction` and `track_page_version` when
-    // the job worker supports page versioning tasks. For now the Django
-    // path remains available as a fallback for clients that need the
-    // history. See `apps/api/plane/app/views/page/base.py:556-571`.
+    // Inline parity with Django post-save Celery tasks (base.py:556-571).
+    // Errors are non-fatal: the description was already saved successfully.
+    let _ = track_page_version_inline(&state.db, &updated_page, &old_html, guard.user.id).await;
+    let _ = page_transaction_inline(
+        &state.db,
+        &updated_page.description_html,
+        &old_html,
+        updated_page.id,
+        updated_page.workspace_id,
+    )
+    .await;
 
     Ok(Json(serde_json::json!({ "message": "Updated successfully" })))
 }
